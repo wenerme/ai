@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Forward certificate to server
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Add Client-Cert and Client-Cert-Chain headers (RFC 9440)
 
 [RFC 9440 ↗](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:
 
-* [cf.tls\_client\_auth.cert\_rfc9440](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Frfc9440/) — The client leaf certificate encoded in RFC 9440 formatting (see reference).
-* [cf.tls\_client\_auth.cert\_chain\_rfc9440](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fchain%5Frfc9440/) — The certificate chain (excluding the leaf certificate) encoded in RFC 9440 formatting (see reference).
+- [`cf.tls_client_auth.cert_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_rfc9440/) — The client leaf certificate encoded in RFC 9440 formatting (see reference).
+- [`cf.tls_client_auth.cert_chain_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440/) — The certificate chain (excluding the leaf certificate) encoded in RFC 9440 formatting (see reference).
 
 As indicated in field definitions, the fields may be set to either an empty string or a valid RFC 9440 encoding. Proper usage depends on a couple of factors discussed in the following sections.
 
@@ -31,8 +31,8 @@ Before constructing `Client-Cert` or `Client-Cert-Chain` headers, you must addre
 
 The `cert_rfc9440` and `cert_chain_rfc9440` fields are populated **regardless of the certificate validation result**. This means a client can present an invalid, expired, or self-signed certificate, and the fields will still contain the encoded certificate data. Always check the following fields before trusting the values:
 
-* [cf.tls\_client\_auth.cert\_verified](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fverified/) — Returns `true` when the client certificate is valid.
-* [cf.tls\_client\_auth.cert\_revoked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Frevoked/) — Returns `true` when the client certificate has been revoked.
+- [`cf.tls_client_auth.cert_verified`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/) — Returns `true` when the client certificate is valid.
+- [`cf.tls_client_auth.cert_revoked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_revoked/) — Returns `true` when the client certificate has been revoked.
 
 A client can also include its own `Client-Cert` or `Client-Cert-Chain` headers on a request to inject arbitrary values. As described in the [RFC 9440 security considerations ↗](https://datatracker.ietf.org/doc/html/rfc9440#name-security-considerations), you must unconditionally remove any existing `Client-Cert` and `Client-Cert-Chain` headers from incoming requests, regardless of certificate validity. This prevents a client from injecting forged certificate data that your origin would trust.
 
@@ -42,8 +42,8 @@ See [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enab
 
 The encoded leaf certificate is limited to 10 KiB and the encoded chain is limited to 16 KiB. If the encoded value exceeds the limit, the corresponding field contains an empty string. Use the following fields to check for this condition:
 
-* [cf.tls\_client\_auth.cert\_rfc9440\_too\_large](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Frfc9440%5Ftoo%5Flarge/) — Returns `true` when the encoded certificate exceeds 10 KiB.
-* [cf.tls\_client\_auth.cert\_chain\_rfc9440\_too\_large](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Fchain%5Frfc9440%5Ftoo%5Flarge/) — Returns `true` when the encoded chain exceeds 16 KiB.
+- [`cf.tls_client_auth.cert_rfc9440_too_large`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_rfc9440_too_large/) — Returns `true` when the encoded certificate exceeds 10 KiB.
+- [`cf.tls_client_auth.cert_chain_rfc9440_too_large`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440_too_large/) — Returns `true` when the encoded chain exceeds 16 KiB.
 
 ### Example Transform Rules
 
@@ -61,7 +61,7 @@ Text in **Expression Editor**:
 true
 ```
 
-Selected operation under **Modify request header**: _Remove_
+Selected operation under **Modify request header**: *Remove*
 
 **Header name**: `Client-Cert`
 
@@ -75,7 +75,7 @@ Text in **Expression Editor**:
 true
 ```
 
-Selected operation under **Modify request header**: _Remove_
+Selected operation under **Modify request header**: *Remove*
 
 **Header name**: `Client-Cert-Chain`
 
@@ -91,7 +91,7 @@ and not cf.tls_client_auth.cert_revoked
 and not cf.tls_client_auth.cert_rfc9440_too_large
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Client-Cert`
 
@@ -110,7 +110,7 @@ and cf.tls_client_auth.cert_chain_rfc9440 ne ""
 and not cf.tls_client_auth.cert_chain_rfc9440_too_large
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Client-Cert-Chain`
 
@@ -118,7 +118,7 @@ Selected operation under **Modify request header**: _Set dynamic_
 
 ### Cloudflare Workers
 
-You can also construct RFC 9440 headers in a [Cloudflare Worker](https://developers.cloudflare.com/workers/)using the [tlsClientAuth](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/#workers-variables)properties on the incoming request.
+You can also construct RFC 9440 headers in a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [`tlsClientAuth`](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/#workers-variables) properties on the incoming request.
 
 The same security considerations mentioned above apply.
 
@@ -134,12 +134,23 @@ This process is only available on accounts with [Cloudflare Access](https://deve
 
 ### Cloudflare API
 
-The most common approach to forwarding a certificate is to use the Cloudflare API to [update an mTLS certificate's hostname settings](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/certificates/subresources/settings/methods/update/).
+The most common approach to forwarding a certificate is to use the Cloudflare API to [update an mTLS certificate's hostname settings](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/certificates/subresources/settings/methods/update/).
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Access: Mutual TLS Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Access: Mutual TLS Certificates Write</code>
+
+</details>
+
+*Update an mTLS certificate's hostname settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/settings" \
@@ -158,12 +169,12 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/access/certificates/se
 
 Once `client_certificate_forwarding` is set to `true`, every request within an mTLS connection will now include the following headers:
 
-* `Cf-Client-Cert-Der-Base64`
-* `Cf-Client-Cert-Sha256`
+- `Cf-Client-Cert-Der-Base64`
+- `Cf-Client-Cert-Sha256`
 
 Note
 
-The `Cf-Client-Cert-Der-Base64` and `Cf-Client-Cert-Sha256` headers are a Cloudflare-proprietary mechanism. For a standardized approach, use [RFC 9440 Client-Cert and Client-Cert-Chain headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#add-client-cert-and-client-cert-chain-headers-rfc-9440).
+The `Cf-Client-Cert-Der-Base64` and `Cf-Client-Cert-Sha256` headers are a Cloudflare-proprietary mechanism. For a standardized approach, use [RFC 9440 `Client-Cert` and `Client-Cert-Chain` headers](https://developers.cloudflare.com/ssl/client-certificates/forward-a-client-certificate/#add-client-cert-and-client-cert-chain-headers-rfc-9440).
 
 ### Managed Transforms
 

@@ -12,10 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Server and pool health
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/server-pool-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As discussed before, a monitor issues health checks periodically to evaluate the health of each server within a pool.
 
+```
     flowchart RL
       accTitle: Load balancing monitor flow
       accDescr: Monitors issue health monitor requests, which validate the current status of servers within each pool.
@@ -25,6 +26,9 @@ As discussed before, a monitor issues health checks periodically to evaluate the
       Endpoint1((Endpoint 1))
       Endpoint2((Endpoint 2))
       end
+
+```
+
 
 
 Requests issued by a monitor at regular interval and — depending on the monitor settings — return a **pass** or **fail** value to make sure an endpoint is still able to receive traffic.
@@ -46,7 +50,8 @@ Based on the characteristics of your server pools, you have several customizatio
 
 #### Health threshold
 
-The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered _Healthy_ and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
+The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered *Healthy* and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
+
 
 
 #### Health monitor regions
@@ -83,38 +88,54 @@ The same problem can occur when setting low values for a monitor's **Interval**.
 
 When you [create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/), there are several configuration settings you can adjust based on the characteristics of the attached pools:
 
+<details>
+
+<summary>
+
 Basic settings
 
-* **Type**: The protocol to use for health monitors
-  * _Non-enterprise customers_: Choose **HTTP**, **HTTPS**, or **TCP**.
-  * _Enterprise customers_: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
-* **Path**: The endpoint path to run health monitor requests against
-* **Port**: The destination port for health monitors
+</summary>
+
+- **Type**: The protocol to use for health monitors
+  - *Non-enterprise customers*: Choose **HTTP**, **HTTPS**, or **TCP**.
+  - *Enterprise customers*: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
+- **Path**: The endpoint path to run health monitor requests against
+- **Port**: The destination port for health monitors
+
+</details>
+
+<details>
+
+<summary>
 
 Advanced settings
 
-* **Interval**:
-  * By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
-  * Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
-* **Timeout** and **Retries**:
-  * The health monitor request will return unhealthy if it exceeds the duration specified in **Timeout** (and exceeds this duration more times than the specified number of **Retries**).
-* **Expected Code(s)**: The expected HTTP response codes listed individually (`200`, `302`) or as a range (for example, entering `2xx` would cover all response codes in the `200` range).
-* **Response Body**:
-  * Looks for a case-insensitive substring in the response body.
-  * Make sure that the value is relatively static and within the first 10 KB of the HTML page.
-* **Simulate Zone**:
-  * It is recommended to use the same zone in which the Load Balancer exists.
-  * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).
-* **Follow Redirects**:
-  * Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.
-* **Configure Request Header(s)**:
-  * Useful if your endpoints are expecting specific incoming headers.
-* **Header**:
-  * The HTTP request headers to send in the health monitor. It is recommended that you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
+</summary>
+
+- **Interval**:
+  - By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
+  - Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
+- **Timeout** and **Retries**:
+  - The health monitor request will return unhealthy if it exceeds the duration specified in **Timeout** (and exceeds this duration more times than the specified number of **Retries**).
+- **Expected Code(s)**: The expected HTTP response codes listed individually (<code>200</code>, <code>302</code>) or as a range (for example, entering <code>2xx</code> would cover all response codes in the <code>200</code> range).
+- **Response Body**:
+  - Looks for a case-insensitive substring in the response body.
+  - Make sure that the value is relatively static and within the first 10 KB of the HTML page.
+- **Simulate Zone**:
+  - It is recommended to use the same zone in which the Load Balancer exists.
+  - Changes the egress zone settings of a health monitor request to ensure compatibility with features like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/">Authenticated Origin Pulls (mTLS)</a>, <a href="https://developers.cloudflare.com/argo-smart-routing/">Argo Smart Routing</a>, <a href="https://developers.cloudflare.com/ssl/client-certificates/byo-ca/">Bring your own CA (mTLS)</a>, <a href="https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/">Dedicated CDN Egress IPs</a>, and <a href="https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/">HTTP/2 to Origin</a>.
+- **Follow Redirects**:
+  - Instead of reporting a <code>301</code> or <code>302</code> code as unhealthy, the health monitor request follows redirects to the final endpoint.
+- **Configure Request Header(s)**:
+  - Useful if your endpoints are expecting specific incoming headers.
+- **Header**:
+  - The HTTP request headers to send in the health monitor. It is recommended that you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
+
+</details>
 
 Note
 
-To increase confidence in pool status, you can also increase the `consecutive_up` and `consecutive_down` fields when [creating a monitor with the API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/create/).
+To increase confidence in pool status, you can also increase the `consecutive_up` and `consecutive_down` fields when [creating a monitor with the API](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/create/).
 
 To become healthy or unhealthy, monitored endpoints must pass this health monitor request the consecutive number of times specified in these parameters.
 

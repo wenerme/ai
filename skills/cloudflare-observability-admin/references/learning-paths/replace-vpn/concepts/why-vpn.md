@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Why should you replace your VPN?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/why-vpn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many organizations rely on VPNs to protect their data, but for many reasons, VPNs are often not ideal for defending against today's risks.
 

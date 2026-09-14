@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkParticipantCountView
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-participant-count-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-participant-count-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A label that displays the current participant count. Automatically updates when participants join or leave the meeting.
 
 ## Initializer parameters
 
-| Parameter  | Type              | Required | Default                                    | Description                                            |
-| ---------- | ----------------- | -------- | ------------------------------------------ | ------------------------------------------------------ |
-| meeting    | RealtimeKitClient | ✅        | \-                                         | The RealtimeKit client instance for the active meeting |
-| appearance | RtkTextAppearance | ❌        | AppTheme.shared.participantCountAppearance | Text appearance configuration for font and color       |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance for the active meeting |
+| `appearance` | `RtkTextAppearance` | ❌ | `AppTheme.shared.participantCountAppearance` | Text appearance configuration for font and color |
 
 ## Usage Examples
 

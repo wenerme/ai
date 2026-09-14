@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Logpush
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Workers Logpush on and off in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) settings. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/ai-gateway/reference/pricing).
 
@@ -42,9 +42,11 @@ This method combines the best of both worlds: the efficiency of AES for data enc
 
 To configure Workers Logpush for AI Gateway, follow these steps:
 
-## 1\. Generate an RSA key pair locally
+## 1. Generate an RSA key pair locally
 
 You need to generate a key pair to encrypt and decrypt the logs. This script will output your RSA privateKey and publicKey. Keep the private key secure, as it will be used to decrypt the logs. Below is a sample script to generate the keys using Node.js and OpenSSL.
+
+*JavaScriptjs*
 
 ```js
 const crypto = require("crypto");
@@ -72,35 +74,43 @@ node {file name}
 ```
 
 1. Generate private key: Use the following command to generate a RSA private key:
-```bash
-openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:4096
-```
-2. Generate public key: After generating the private key, you can extract the corresponding public key using:
-```bash
-openssl rsa -pubout -in private_key.pem -out public_key.pem
-```
 
-## 2\. Upload public key to gateway settings
+   ```bash
+   openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:4096
+   ```
+
+
+2. Generate public key: After generating the private key, you can extract the corresponding public key using:
+
+   ```bash
+   openssl rsa -pubout -in private_key.pem -out public_key.pem
+   ```
+
+
+
+## 2. Upload public key to gateway settings
 
 Once you have generated the key pair, upload the public key to your AI Gateway settings. This key will be used to encrypt your logs. In order to enable Workers Logpush, you will need logs enabled for that gateway.
 
-## 3\. Set up Logpush
+## 3. Set up Logpush
 
 Uploading your public key enables Workers Logpush for the gateway, but logs will not be exported until you also create and enable a Logpush job that specifies where to send them. Both steps are required.
 
 To create the Logpush job, choose your destination and follow the steps in the [Enable destinations](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/) documentation. For example, to export logs to Cloudflare R2, refer to [Enable Cloudflare R2](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/). When configuring the job, select the AI Gateway dataset.
 
-## 4\. Receive encrypted logs
+## 4. Receive encrypted logs
 
 After configuring Workers Logpush, logs will be sent encrypted using the public key you uploaded. To access the data, you will need to decrypt it using your private key. The logs will be sent to the object storage provider that you have selected.
 
-## 5\. Decrypt logs
+## 5. Decrypt logs
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, you can use the following Node.js script or OpenSSL:
 
 To decrypt the encrypted log bodies and metadata from AI Gateway, download the logs to a folder, in this case its named `my_log.log.gz`.
 
 Then copy this JavaScript file into the same folder and place your private key in the top variable.
+
+*JavaScriptjs*
 
 ```js
 const privateKeyStr = `-----BEGIN RSA PRIVATE KEY-----
@@ -210,11 +220,12 @@ For example, if the encrypted logs are in a file named `encrypted_logs.bin`, you
 openssl rsautl -decrypt -inkey private_key.pem -in encrypted_logs.bin -out decrypted_logs.txt
 ```
 
-* `-decrypt` tells OpenSSL that we want to decrypt the file.
-* `-inkey private_key.pem` specifies the private key that will be used to decrypt the logs.
-* `-in encrypted_logs.bin` is the encrypted log file.
-* `-out decrypted_logs.txt`decrypted logs will be saved into this file.
-1. View the decrypted logs Once decrypted, you can view the logs by simply running:
+- `-decrypt` tells OpenSSL that we want to decrypt the file.
+- `-inkey private_key.pem` specifies the private key that will be used to decrypt the logs.
+- `-in encrypted_logs.bin` is the encrypted log file.
+- `-out decrypted_logs.txt`decrypted logs will be saved into this file.
+
+2. View the decrypted logs Once decrypted, you can view the logs by simply running:
 
 ```bash
 cat decrypted_logs.txt

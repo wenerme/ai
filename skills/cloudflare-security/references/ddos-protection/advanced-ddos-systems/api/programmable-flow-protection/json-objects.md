@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON objects
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page contains examples of the JSON objects used in the Programmable Flow Protection API.
 
@@ -28,13 +28,13 @@ This page contains examples of the JSON objects used in the Programmable Flow Pr
 }
 ```
 
-| Field        | Description                                                                                                                                       |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id           | Unique identifier for the program.                                                                                                                |
-| name         | Name of the program, derived from the uploaded filename.                                                                                          |
-| status       | Compilation and verification status. One of success or failed. Programs with failed status are automatically deleted after 30 days of inactivity. |
-| created\_on  | Timestamp when the program was created.                                                                                                           |
-| modified\_on | Timestamp when the program was last modified.                                                                                                     |
+| Field | Description |
+| --- | --- |
+| `id` | Unique identifier for the program. |
+| `name` | Name of the program, derived from the uploaded filename. |
+| `status` | Compilation and verification status. One of `success` or `failed`. Programs with `failed` status are automatically deleted after 30 days of inactivity. |
+| `created_on` | Timestamp when the program was created. |
+| `modified_on` | Timestamp when the program was last modified. |
 
 ## Rule
 
@@ -51,24 +51,24 @@ This page contains examples of the JSON objects used in the Programmable Flow Pr
 }
 ```
 
-| Field        | Description                                                                                                                                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| id           | Unique identifier for the rule.                                                                                                                                    |
-| program\_id  | The ID of the program this rule executes.                                                                                                                          |
-| scope        | The scope of the rule. Must be one of global, region, or datacenter.                                                                                               |
-| name         | For global scope, use global. For region or datacenter scope, provide the region code or datacenter code.                                                          |
-| mode         | The rule mode. Must be one of enabled, disabled, or monitoring.                                                                                                    |
-| expression   | A [Rules language expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) to filter which packets the rule applies to. Optional. |
-| created\_on  | Timestamp when the rule was created.                                                                                                                               |
-| modified\_on | Timestamp when the rule was last modified.                                                                                                                         |
+| Field | Description |
+| --- | --- |
+| `id` | Unique identifier for the rule. |
+| `program_id` | The ID of the program this rule executes. |
+| `scope` | The scope of the rule. Must be one of `global`, `region`, or `datacenter`. |
+| `name` | For `global` scope, use `global`. For `region` or `datacenter` scope, provide the region code or datacenter code. |
+| `mode` | The rule mode. Must be one of `enabled`, `disabled`, or `monitoring`. |
+| `expression` | A [Rules language expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) to filter which packets the rule applies to. Optional. |
+| `created_on` | Timestamp when the rule was created. |
+| `modified_on` | Timestamp when the rule was last modified. |
 
 ### Scope
 
 The `scope` field determines where the rule executes:
 
-* `global` — The rule executes at all Cloudflare locations. You can only create one global rule per account.
-* `region` — The rule executes at all Cloudflare locations within the specified region.
-* `datacenter` — The rule executes only at the specified Cloudflare datacenter.
+- `global` — The rule executes at all Cloudflare locations. You can only create one global rule per account.
+- `region` — The rule executes at all Cloudflare locations within the specified region.
+- `datacenter` — The rule executes only at the specified Cloudflare datacenter.
 
 When multiple rules match a packet, the rule with the most specific scope executes. A datacenter-scoped rule takes precedence over a region-scoped rule, which takes precedence over a global rule.
 
@@ -76,9 +76,9 @@ When multiple rules match a packet, the rule with the most specific scope execut
 
 The `mode` field determines how the rule behaves:
 
-* `enabled` — The program runs and its verdict (pass or drop) is applied to packets.
-* `disabled` — The rule is inactive and the program does not run.
-* `monitoring` — The program runs but packets are never dropped, regardless of the program's verdict. Use this mode to test a program before enabling it.
+- `enabled` — The program runs and its verdict (pass or drop) is applied to packets.
+- `disabled` — The rule is inactive and the program does not run.
+- `monitoring` — The program runs but packets are never dropped, regardless of the program's verdict. Use this mode to test a program before enabling it.
 
 ### Expression
 
@@ -86,10 +86,10 @@ The `expression` field is a [Rules language expression](https://developers.cloud
 
 Supported fields:
 
-* `ip.src`
-* `ip.dst`
-* `udp.srcport`
-* `udp.dstport`
+- `ip.src`
+- `ip.dst`
+- `udp.srcport`
+- `udp.dstport`
 
 If the expression is empty or omitted, the rule applies to all UDP packets within its scope.
 

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bulk Redirects concepts
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bulk Redirects involve the following elements:
 
-* **URL redirect**: An entry with a source URL, a target URL, a status code, and redirect parameters. URL redirects are the individual items in Bulk Redirect Lists.
-* **Bulk Redirect List**: A named collection containing one or more URL redirects. To activate all the URL redirects in a Bulk Redirect List, reference the list in a Bulk Redirect Rule. Different Bulk Redirect Rules can reference the same Bulk Redirect List.
-* **Bulk Redirect Rule**: A rule powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/), which is the system Cloudflare uses to evaluate and execute rules. A Bulk Redirect Rule has an associated Bulk Redirect List.
+- **URL redirect**: An entry with a source URL, a target URL, a status code, and redirect parameters. URL redirects are the individual items in Bulk Redirect Lists.
+- **Bulk Redirect List**: A named collection containing one or more URL redirects. To activate all the URL redirects in a Bulk Redirect List, reference the list in a Bulk Redirect Rule. Different Bulk Redirect Rules can reference the same Bulk Redirect List.
+- **Bulk Redirect Rule**: A rule powered by the [Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/), which is the system Cloudflare uses to evaluate and execute rules. A Bulk Redirect Rule has an associated Bulk Redirect List.
 
 A Bulk Redirect Rule enables a Bulk Redirect List, which contains one or more URL redirects.
 
@@ -28,17 +28,17 @@ The following example defines a Bulk Redirect List named `list_b` with two URL r
 
 **`list_b` Bulk Redirect List**
 
-| Source URL               | Target URL               | Status code       |
-| ------------------------ | ------------------------ | ----------------- |
-| example.com/about        | https://example.com/news | 301 (the default) |
-| example.com/new\_feature | https://example.com/soon | 302               |
+| Source URL | Target URL | Status code |
+| --- | --- | --- |
+| `example.com/about` | `https://example.com/news` | `301` (the default) |
+| `example.com/new_feature` | `https://example.com/soon` | `302` |
 
 The following Bulk Redirect Rule, named `Rule 2`, enables the URL redirects in the `list_b` Bulk Redirect List:
 
 **`Rule 2` Bulk Redirect Rule**
 
-* **Rule name**: `Rule 2`
-* **Associated list**: `list_b`
+- **Rule name**: `Rule 2`
+- **Associated list**: `list_b`
 
 ## URL redirects
 
@@ -80,7 +80,9 @@ The default expression of a Bulk Redirect Rule is the following:
 http.request.full_uri in $<LIST_NAME>
 ```
 
-This expression means that the request URL, after some basic normalization (if [URL normalization](https://developers.cloudflare.com/rules/normalization/) is enabled), should match the source URL of a URL redirect in the list `<LIST_NAME>` for the redirect to be applied.
+This expression means that the request URL, after some basic normalization
+
+ (if [URL normalization](https://developers.cloudflare.com/rules/normalization/) is enabled), should match the source URL of a URL redirect in the list `<LIST_NAME>` for the redirect to be applied.
 
 You can use an expression different from the default one to increase the specificity of URL redirect matches. For example, if you set the expression of a Bulk Redirect Rule to the following expression, there will only be a match for requests coming from the United Kingdom:
 
@@ -94,8 +96,8 @@ Note
 
 At the left of the `in` operator you can only use fields directly and not values returned by a function. In most situations, you will want to use one of the following fields with the `in` operator:
 
-* `http.request.full_uri`
-* `raw.http.request.full_uri`
+- `http.request.full_uri`
+- `raw.http.request.full_uri`
 
 Refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for more information.
 

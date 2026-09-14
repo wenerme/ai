@@ -12,37 +12,37 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Device metrics
 
 Cloudflare customers can inspect metrics for a specific Cloudflare One Appliance (formerly Magic WAN Connector) in the Cloudflare dashboard. These metrics help you troubleshoot potential issues with your device. The information spans categories such as:
 
-* Performance analytics
-* Port analytics
-* Event logs
-* DHCP leasing information
+- Performance analytics
+- Port analytics
+- Event logs
+- DHCP leasing information
 
 To find the information above and start troubleshooting your Cloudflare One Appliance:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
-2. Go to **Appliances** \> **Profiles**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Connectors**.
+2. Go to **Appliances** > **Profiles**.
 3. Select your Appliance > **View analytics**.
 
 ### Performance analytics
 
 In Performance analytics you can review your Cloudflare One Appliance's performance over time including:
 
-* Kernel boot time (how long it has been running and if it is activated or not)
-* Last device snapshot (this also shows the frequency with which your device captures the snapshots that are used in several troubleshooting procedures)
-* CPU temperature
-* CPU load over time
-* Used RAM over time
+- Kernel boot time (how long it has been running and if it is activated or not)
+- Last device snapshot (this also shows the frequency with which your device captures the snapshots that are used in several troubleshooting procedures)
+- CPU temperature
+- CPU load over time
+- Used RAM over time
 
 To access performance analytics:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
-2. Go to **Appliances** \> **Profiles**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Connectors**.
+2. Go to **Appliances** > **Profiles**.
 3. Select your Appliance > **View analytics**.
 4. Select **Performance analytics**.
 
@@ -50,13 +50,13 @@ To access performance analytics:
 
 Port analytics gives you access to information related to the packets sent and received through the ports in your Cloudflare One Appliance. You can adjust the time range for the information displayed in the dashboard regarding to:
 
-* Rate for packets sent and received
-* Rate for data sent and received
+- Rate for packets sent and received
+- Rate for data sent and received
 
 The dashboard provides this information for all active ports in your Cloudflare One Appliance. To access port analytics:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
-2. Go to **Appliances** \> **Profiles**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Connectors**.
+2. Go to **Appliances** > **Profiles**.
 3. Select your Appliance > **View analytics**.
 4. Select **Port analytics**.
 
@@ -64,27 +64,27 @@ The dashboard provides this information for all active ports in your Cloudflare 
 
 Use Event logs to identify general patterns and changes over time. This is useful to find correlations with other data and gather deeper insights into your Cloudflare One Appliance. The following event logs are available:
 
-* `Init`: Initialized `mcon-agent` process. This process manages the Appliance.
-* `Leave`: Stopped `mcon-agent` process.
-* `StartAttestation`: Started attestation to verify the integrity of the Appliance before allowing the device to connect to your account.
-* `FinishAttestationSuccess`: Finished attestation successfully.
-* `FinishAttestationFailure`: Failed attestation.
-* `StartRotateCryptKey`: Started cryptography key rotation.
-* `FinishRotateCryptKeySuccess`: Finished cryptography key rotation.
-* `FinishRotateCryptKeyFailure`: Failed cryptography key rotation.
-* `StartRotatePki`: Started public key infrastructure (PKI) rotation.
-* `FinishRotatePkiSuccess`: Finished PKI rotation.
-* `FinishRotatePkiFailure`: Failed PKI rotation.
-* `StartUpgrade`: Began Appliance's operating system upgrade.
-* `FinishUpgradeSuccess`: Finished operating system upgrade.
-* `FinishUpgradeFailure`: Failed operating system upgrade.
-* `Reconcile`: Cloudflare is comparing the system's current state against its desired state.
-* `ConfigureCloudflaredTunnel`: Configured Cloudflare Tunnel to debug device.
+- `Init`: Initialized `mcon-agent` process. This process manages the Appliance.
+- `Leave`: Stopped `mcon-agent` process.
+- `StartAttestation`: Started attestation to verify the integrity of the Appliance before allowing the device to connect to your account.
+- `FinishAttestationSuccess`: Finished attestation successfully.
+- `FinishAttestationFailure`: Failed attestation.
+- `StartRotateCryptKey`: Started cryptography key rotation.
+- `FinishRotateCryptKeySuccess`: Finished cryptography key rotation.
+- `FinishRotateCryptKeyFailure`: Failed cryptography key rotation.
+- `StartRotatePki`: Started public key infrastructure (PKI) rotation.
+- `FinishRotatePkiSuccess`: Finished PKI rotation.
+- `FinishRotatePkiFailure`: Failed PKI rotation.
+- `StartUpgrade`: Began Appliance's operating system upgrade.
+- `FinishUpgradeSuccess`: Finished operating system upgrade.
+- `FinishUpgradeFailure`: Failed operating system upgrade.
+- `Reconcile`: Cloudflare is comparing the system's current state against its desired state.
+- `ConfigureCloudflaredTunnel`: Configured Cloudflare Tunnel to debug device.
 
 To access event logs:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
-2. Go to **Appliances** \> **Profiles**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Connectors**.
+2. Go to **Appliances** > **Profiles**.
 3. Select your Appliance > **View analytics**.
 4. Select **Events**.
 5. You can filter results by specific events, and by time.
@@ -93,8 +93,8 @@ To access event logs:
 
 The DHCP leasing section identifies DHCP assigned leases and their expiration dates. To access DHCP leasing:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** \> **Connectors**.
-2. Go to **Appliances** \> **Profiles**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Connectors**.
+2. Go to **Appliances** > **Profiles**.
 3. Select your Appliance > **View analytics**.
 4. Select **DHCP leasing**.
 

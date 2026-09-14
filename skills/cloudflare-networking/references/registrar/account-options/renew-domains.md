@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Renew domains
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/renew-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/renew-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Automatic renewal of domain
 
@@ -32,8 +32,7 @@ You can continue to keep your domain registered with Cloudflare for the time rem
 
 If you want your domains to renew automatically, keep the default settings for your domain (**Auto Renew** should be set to **On**). To find this setting:
 
-1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+1. In the Cloudflare dashboard, go to the **Manage domains** page. [Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to automatically renew, and make sure the **Auto-renew** toggle is enabled.
 
 Cloudflare attempts to renew these domains automatically 30 days before their expiration date. Several more attempts are made if the first attempt fails. The last attempt to renew is made on the day before expiration. You can also [manually renew](#renew-a-domain-manually) a domain at any time.
@@ -50,8 +49,7 @@ If you want to delete your domain from Cloudflare, **disable** Auto-Renew first.
 
 You can renew a domain at any time. To renew a domain registered with Cloudflare:
 
-1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+1. In the Cloudflare dashboard, go to the **Manage domains** page. [Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the domain you want to renew and select **Manage**.
 3. In **Registration** select **Renew/Extend Domain**.
 4. In the **Renew for** drop-down menu, choose a number of years to renew your domain (up to 10 years).
@@ -63,15 +61,15 @@ Once Cloudflare validates your payment, the status of your domain changes to **R
 
 Once a domain is registered, Registrar sends the following expiration notices to the Super Admin of the domain:
 
-* A monthly email listing all domains set to renew automatically within the next 45 days.
-* A monthly email listing all domains expiring in the next 60-90 days.
+- A monthly email listing all domains set to renew automatically within the next 45 days.
+- A monthly email listing all domains expiring in the next 60-90 days.
 
 In addition to the Super Admin, the following expiration notices are sent to the WHOIS Registrant contact associated with the domain:
 
-* A weekly email listing all domains expiring within the next month.
-* A daily email listing all domains expiring in seven days.
-* An email one day after a domain expires.
-* An email 20 days after the expiration date.
+- A weekly email listing all domains expiring within the next month.
+- A daily email listing all domains expiring in seven days.
+- An email one day after a domain expires.
+- An email 20 days after the expiration date.
 
 Note
 

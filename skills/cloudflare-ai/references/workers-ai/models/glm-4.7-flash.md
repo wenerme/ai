@@ -10,28 +10,28 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
 
 # glm-4.7-flash
 
 Text Generation • Zhipu AI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/zai-org/glm-4.7-flash`
 
-* Cloudflare-hosted
-* Function calling
-* Reasoning
+- Cloudflare-hosted
+- Function calling
+- Reasoning
 
 GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.
 
-| Model Info                                                                            |                                                     |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 131,072 tokens                                      |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                 |
-| Reasoning                                                                             | Yes                                                 |
-| Unit Pricing                                                                          | $0.06 per M input tokens, $0.40 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
+| Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Reasoning | Yes |
+| Unit Pricing | $0.06 per M input tokens, $0.40 per M output tokens |
 
 ## Playground
 
@@ -42,7 +42,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -71,7 +70,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -94,7 +92,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -117,7 +114,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/zai-org/glm-4.7-flash \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -174,7 +170,7 @@ metadata
 
 modalities
 
-`array | null`Output types requested from the model (e.g. \['text'\] or \['text', 'audio'\]).
+`array | null`Output types requested from the model (e.g. \['text'] or \['text', 'audio']).
 
 n
 
@@ -236,7 +232,7 @@ temperature
 
 `one of`Controls which (if any) tool is called by the model. 'none' = no tools, 'auto' = model decides, 'required' = must call a tool.
 
-▶tools\[\]
+▶tools\[]
 
 `array`A list of tools the model may call.
 
@@ -256,69 +252,81 @@ user
 
 `one of`
 
-▶functions\[\]
+▶functions\[]
 
 `array`minItems: 1maxItems: 128
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 id
 
-`string`A unique identifier for the chat completion.
+<code>string</code>A unique identifier for the chat completion.
 
 object
 
-`string`
+<code>string</code>
 
 created
 
-`integer`Unix timestamp (seconds) of when the completion was created.
+<code>integer</code>Unix timestamp (seconds) of when the completion was created.
 
 model
 
-`string`The model used for the chat completion.
+<code>string</code>The model used for the chat completion.
 
-▶choices\[\]
+▶choices\[]
 
-`array`minItems: 1
+<code>array</code>minItems: 1
 
 ▶usage{}
 
-`object`
+<code>object</code>
 
 system\_fingerprint
 
-`string | null`
+<code>string | null</code>
 
 service\_tier
 
-`string | null`enum: auto, default, flex, scale, priority
+<code>string | null</code>enum: auto, default, flex, scale, priority
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 contentType
 
-`text/event-stream`
+<code>text/event-stream</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/streaming-output.json)
 
 Was this helpful?
 

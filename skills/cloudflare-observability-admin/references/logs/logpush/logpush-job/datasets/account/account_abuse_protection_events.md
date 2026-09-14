@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account Abuse Protection Events
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account%5Fabuse%5Fprotection%5Fevents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `account_abuse_protection_events`.
 
@@ -21,21 +21,21 @@ The descriptions below detail the fields available for `account_abuse_protection
 Type: `string`
 
 The identity provider used for login authentication. Only populated for login events.
-Possible values are _unknown_ | _other_ | _selfHosted_ | _amazon_ | _apple_ | _discord_ | _facebook_ | _github_ | _linkedin_ | _microsoft_.
+Possible values are *unknown* | *other* | *selfHosted* | *amazon* | *apple* | *discord* | *facebook* | *github* | *linkedin* | *microsoft*.
 
 ## AuthenticationMethod
 
 Type: `string`
 
 The authentication method used for login. Only populated for login events.
-Possible values are _unknown_ | _password_ | _sso_ | _magicLink_ | _biometric_ | _passkey_.
+Possible values are *unknown* | *password* | *sso* | *magicLink* | *biometric* | *passkey*.
 
 ## AuthenticationStatus
 
 Type: `string`
 
 The outcome of a login attempt. Only populated for login events.
-Possible values are _unknown_ | _other_ | _success_ | _failureOther_ | _failureUserNotFound_ | _failureIncorrectPassword_ | _failureAccountLocked_ | _pendingMfa_.
+Possible values are *unknown* | *other* | *success* | *failureOther* | *failureUserNotFound* | *failureIncorrectPassword* | *failureAccountLocked* | *pendingMfa*.
 
 ## BotScore
 
@@ -84,21 +84,21 @@ The Turnstile ephemeral device identifier, hex-encoded.
 Type: `string`
 
 The source of the Account Abuse Protection event.
-Possible values are _cdn_ | _api_.
+Possible values are *cdn* | *api*.
 
 ## EventType
 
 Type: `string`
 
 The type of user action.
-Possible values are _login_ | _logout_ | _signup_ | _warpEnrollment_ | _profileUpdate_ | _transaction_ | _unknown_ | _passwordReset_ | _addPaymentMethod_.
+Possible values are *login* | *logout* | *signup* | *warpEnrollment* | *profileUpdate* | *transaction* | *unknown* | *passwordReset* | *addPaymentMethod*.
 
 ## FraudEmailRisk
 
 Type: `string`
 
 Risk level of the email address.
-Possible values are _Unknown_ | _Low_ | _Medium_ | _High_.
+Possible values are *Unknown* | *Low* | *Medium* | *High*.
 
 ## Host
 
@@ -145,5 +145,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/#page","headline":"Account Abuse Protection Events · Cloudflare Logs docs","description":"The descriptions below detail the fields available for account_abuse_protection_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/#page","headline":"Account Abuse Protection Events · Cloudflare Logs docs","description":"The descriptions below detail the fields available for account_abuse_protection_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/account_abuse_protection_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection pooling
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive maintains a pool of connections to your database. These are optimally placed to minimize the latency for your applications. You can configure the amount of connections your Hyperdrive configuration uses to connect to your origin database. This enables you to right-size your connection pool based on your database capacity and application requirements.
 
@@ -42,7 +42,7 @@ Restarting drops all active connections in the pool and forces them to be re-est
 
 The Hyperdrive connection pooler operates in transaction mode, where the client that executes the query communicates through a single connection for the duration of a transaction. When that transaction has completed, the connection is returned to the pool.
 
-Hyperdrive supports [SET statements ↗](https://www.postgresql.org/docs/current/sql-set.html) for the duration of a transaction or a query. For instance, if you manually create a transaction with `BEGIN`/`COMMIT`, `SET` statements within the transaction will take effect. Moreover, a query that includes a `SET` command (`SET X; SELECT foo FROM bar;`) will also apply the `SET` command. When a connection is returned to the pool, the connection is `RESET` such that the `SET` commands will not take effect on subsequent queries.
+Hyperdrive supports [`SET` statements ↗](https://www.postgresql.org/docs/current/sql-set.html) for the duration of a transaction or a query. For instance, if you manually create a transaction with `BEGIN`/`COMMIT`, `SET` statements within the transaction will take effect. Moreover, a query that includes a `SET` command (`SET X; SELECT foo FROM bar;`) will also apply the `SET` command. When a connection is returned to the pool, the connection is `RESET` such that the `SET` commands will not take effect on subsequent queries.
 
 This implies that a single Worker invocation may obtain multiple connections to perform its database operations and may need to `SET` any configurations for every query or transaction. It is not recommended to wrap multiple database operations with a single transaction to maintain the `SET` state. Doing so will affect the performance and scaling of Hyperdrive, as the connection cannot be reused by other Worker isolates for the duration of the transaction.
 
@@ -52,16 +52,16 @@ Hyperdrive supports named prepared statements as implemented in the `postgres.js
 
 You can configure connection counts using the Cloudflare dashboard or the Cloudflare API. Consider the following best practices to determine the right limit for your use-case:
 
-* **Start conservatively**: Begin with a lower connection count and increase as needed based on your application's performance.
-* **Monitor database metrics**: Watch your database's connection usage and performance metrics to optimize the connection count.
-* **Consider database limits**: Ensure your configured connection count doesn't exceed your database's maximum connection limit.
-* **Account for multiple configurations**: If you have multiple Hyperdrive configurations connecting to the same database, consider the total connection count across all configurations.
+- **Start conservatively**: Begin with a lower connection count and increase as needed based on your application's performance.
+- **Monitor database metrics**: Watch your database's connection usage and performance metrics to optimize the connection count.
+- **Consider database limits**: Ensure your configured connection count doesn't exceed your database's maximum connection limit.
+- **Account for multiple configurations**: If you have multiple Hyperdrive configurations connecting to the same database, consider the total connection count across all configurations.
 
 ## Next steps
 
-* Learn more about [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Review [Hyperdrive limits](https://developers.cloudflare.com/hyperdrive/platform/limits/) for your Workers plan.
-* Learn how to [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/) from Hyperdrive.
+- Learn more about [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Review [Hyperdrive limits](https://developers.cloudflare.com/hyperdrive/platform/limits/) for your Workers plan.
+- Learn how to [Connect to PostgreSQL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/) from Hyperdrive.
 
 Was this helpful?
 

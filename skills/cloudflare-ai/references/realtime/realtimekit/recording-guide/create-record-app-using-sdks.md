@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create Custom Recording App Using Recording SDKs
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid ↗](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
 
 If you wish to have a customized layout for your recording application, RealtimeKit's custom recording SDKs provide the flexibility to tailor the appearance of your recordings according to your preferences. You can choose from options like:
 
-* Show only active speaker view
-* Shared screen with thumbnail gallery view
-* Shared screen with large active speaker thumbnail
-* Shared screen without active speaker or gallery view
-* Customized background for your recording
-* Portrait layout, and so on and so forth
+- Show only active speaker view
+- Shared screen with thumbnail gallery view
+- Shared screen with large active speaker thumbnail
+- Shared screen without active speaker or gallery view
+- Customized background for your recording
+- Portrait layout, and so on and so forth
 
 ## How the recorder works
 
-When you call [Start Recording](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), RealtimeKit launches a Cloudflare container, opens a Chrome browser inside it, and loads the recording app URL. If you do not provide a custom URL in the [url parameter](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), RealtimeKit's internal recording app is used.
+When you call [Start Recording](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/), RealtimeKit launches a Cloudflare container, opens a Chrome browser inside it, and loads the recording app URL. If you do not provide a custom URL in the [`url` parameter](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/), RealtimeKit's internal recording app is used.
 
 ### URL parameters
 
-Before loading your custom recording app in the Chrome browser, RealtimeKit appends the `authToken` and `config` query parameters to the URL. For example, if you provide this URL in the [Start Recording](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) API:
+Before loading your custom recording app in the Chrome browser, RealtimeKit appends the `authToken` and `config` query parameters to the URL. For example, if you provide this URL in the [Start Recording](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) API:
 
 ```txt
 https://example.com/my-custom-recorder
@@ -85,7 +85,7 @@ Refer to the [recording SDK app examples ↗](https://github.com/cloudflare/real
 
 ## Recording SDK reference
 
-The custom recording SDKs are used on top of the [UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) or [Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/). The [@cloudflare/realtimekit-recording-sdk package ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk) provides the `RealtimeKitRecording` class for managing recording functionality.
+The custom recording SDKs are used on top of the [UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) or [Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/). The [`@cloudflare/realtimekit-recording-sdk` package ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk) provides the `RealtimeKitRecording` class for managing recording functionality.
 
 ### Constructor
 
@@ -97,13 +97,13 @@ Creates an instance of the `RealtimeKitRecording` class.
 
 `options (object)`: The options object. All constructor options are optional. If you omit an option, RealtimeKit uses its default value.
 
-| **options (object)**          | **Description**                                                                                                                                                                                                                                                                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| options.waitTimeMs (number)   | The time (in milliseconds) to wait after all peers have left before stopping the recording. This option applies when autoStop is set to true.                                                                                                                                                                                        |
-| options.autoStart (boolean)   | Defaults to true, so recording starts automatically when init() is called. Set it to false only when you want to start recording manually with startRecording(). When set to false, you must call startRecording() within 2 minutes of the WebSocket connection being established, or the recording process will encounter an error. |
-| options.autoStop (boolean)    | Defaults to true, so recording stops automatically after all peers have left. Set it to false only when you want to stop recording manually with stopRecording().                                                                                                                                                                    |
-| options.scanInterval (number) | The interval (in milliseconds) between scans for automatic peer leave.                                                                                                                                                                                                                                                               |
-| options.devMode (boolean)     | Set to true to enable development mode, which enables logs and disables certain functionality. Also you must ensure that this is set this to true when testing your recording-app locally.                                                                                                                                           |
+| **options (object)** | **Description** |
+| --- | --- |
+| `options.waitTimeMs (number)` | The time (in milliseconds) to wait after all peers have left before stopping the recording. This option applies when `autoStop` is set to true. |
+| `options.autoStart (boolean)` | Defaults to `true`, so recording starts automatically when `init()` is called. Set it to `false` only when you want to start recording manually with `startRecording()`. When set to `false`, you must call `startRecording()` within 2 minutes of the WebSocket connection being established, or the recording process will encounter an error. |
+| `options.autoStop (boolean)` | Defaults to `true`, so recording stops automatically after all peers have left. Set it to `false` only when you want to stop recording manually with `stopRecording()`. |
+| `options.scanInterval (number)` | The interval (in milliseconds) between scans for automatic peer leave. |
+| `options.devMode (boolean)` | Set to true to enable development mode, which enables logs and disables certain functionality. Also you must ensure that this is set this to true when testing your recording-app locally. |
 
 ### Methods
 
@@ -186,7 +186,7 @@ Once you've created the app, deploy it using a platform like [Cloudflare Workers
 
 ### Step 8: Specify the custom URL
 
-In the [Start Recording a Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) API, provide the custom URL (obtained from the previous step) to indicate the location of your deployed app. Do not append an `authToken` to this URL. RealtimeKit adds the generated `authToken` and `config` parameters when it loads the app.
+In the [Start Recording a Meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) API, provide the custom URL (obtained from the previous step) to indicate the location of your deployed app. Do not append an `authToken` to this URL. RealtimeKit adds the generated `authToken` and `config` parameters when it loads the app.
 
 Was this helpful?
 

@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analytics integrations
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Enterprise customers can use Cloudflare integrations with their preferred analytics provider and configure ready-to-use Cloudflare Dashboards. Most analytics integrations are built on Cloudflare Logs by using Logpush with either Amazon S3 bucket or GCP Storage bucket.
 
 Analyze [Cloudflare Logs](https://developers.cloudflare.com/logs/) data with the following analytics platforms:
 
-* [Datadog](https://developers.cloudflare.com/analytics/analytics-integrations/datadog/)
-* [Prometheus](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/)
-* [Graylog](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/)
-* [New Relic](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/)
-* [Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/)
-* [Sentinel](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/)
+- [Datadog](https://developers.cloudflare.com/analytics/analytics-integrations/datadog/)
+- [Prometheus](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/)
+- [Graylog](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/)
+- [New Relic](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/)
+- [Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/)
+- [Sentinel](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/)
 
 Was this helpful?
 

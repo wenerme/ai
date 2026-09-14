@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Geo
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Geo steering** directs traffic to pools tied to specific countries, regions, or — for Enterprise customers only — data centers.
 
@@ -44,9 +44,11 @@ When [creating or editing a load balancer](https://developers.cloudflare.com/loa
 6. If adding multiple pools, re-order them into your preferred failback order.
 7. (optional) Add more regions if needed.
 
-Use the `regions_pool` property of the [Update Load Balancers](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/update/) command to specify an array of regions. Specify each region using the [appropriate region code](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions) followed by a list of endpoints to use for that region.
+Use the `regions_pool` property of the [Update Load Balancers](https://developers.cloudflare.com/api/resources/load_balancers/methods/update/) command to specify an array of regions. Specify each region using the [appropriate region code](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions) followed by a list of endpoints to use for that region.
 
 In the example below, `WNAM` and `ENAM` represent the West and East Coasts of North America, respectively.
+
+*Requestjson*
 
 ```json
 // PUT /zones/:zone_id/load_balancers
@@ -91,7 +93,7 @@ When [creating or editing a load balancer](https://developers.cloudflare.com/loa
 6. If adding multiple pools, re-order them into your preferred failback order.
 7. (optional) Add more countries if needed.
 
-When creating a load balancer [via the API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/), include the `country_pools` object to map countries to a list of pool IDs (ordered by their failover priority).
+When creating a load balancer [via the API](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/), include the `country_pools` object to map countries to a list of pool IDs (ordered by their failover priority).
 
 To get a list of country codes, use the [Region API](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/).
 
@@ -99,7 +101,7 @@ Any country not explicitly defined will fall back to using the corresponding `re
 
 ### PoP steering
 
-When creating a load balancer [via the API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/), include the `pop_pools` object to map Cloudflare data centers to a list of pool IDs (ordered by their failover priority).
+When creating a load balancer [via the API](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/), include the `pop_pools` object to map Cloudflare data centers to a list of pool IDs (ordered by their failover priority).
 
 For help finding data center identifiers, refer to [this community thread ↗](https://community.cloudflare.com/t/is-there-a-way-to-retrieve-cloudflare-pops-list-and-locations-programmatically/234643).
 

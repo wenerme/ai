@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Waiting Room
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prerequisites
 
@@ -28,8 +28,8 @@ ReactWeb ComponentsAngular
 
 After you call `meeting.join()`, one of two events will occur:
 
-* **`roomJoined`** \- You are allowed to join the meeting immediately
-* **`waitlisted`** \- You are placed in the waiting room and must wait for host approval
+- **`roomJoined`** - You are allowed to join the meeting immediately
+- **`waitlisted`** - You are placed in the waiting room and must wait for host approval
 
 Use `meeting.self.roomState` to track the user's state in the meeting.
 
@@ -488,8 +488,8 @@ function WaitingRoomManager() {
 
 Hosts can manage waiting room requests using participant management methods. See [Remote Participants](https://developers.cloudflare.com/realtime/realtimekit/core/remote-participants/) for details on:
 
-* **`acceptWaitingRoomRequest(participantId)`** \- Accept a participant from the waiting room
-* **`rejectWaitingRoomRequest(participantId)`** \- Reject a participant's entry request
+- **`acceptWaitingRoomRequest(participantId)`** - Accept a participant from the waiting room
+- **`rejectWaitingRoomRequest(participantId)`** - Reject a participant's entry request
 
 ### Example: Host Accepting Participants
 
@@ -657,11 +657,11 @@ function WaitingRoomHost() {
 
 ## Best Practices
 
-* **Provide Clear Feedback** \- Show users when they're in the waiting room and that they're waiting for approval
-* **Set Expectations** \- Let users know their request is being reviewed
-* **Handle Rejection Gracefully** \- Provide a friendly message if entry is rejected
-* **Monitor State Changes** \- Subscribe to room state changes to update your UI accordingly
-* **Check Permissions** \- Ensure your app has appropriate permissions configured in the preset to use waiting room features
+- **Provide Clear Feedback** - Show users when they're in the waiting room and that they're waiting for approval
+- **Set Expectations** - Let users know their request is being reviewed
+- **Handle Rejection Gracefully** - Provide a friendly message if entry is rejected
+- **Monitor State Changes** - Subscribe to room state changes to update your UI accordingly
+- **Check Permissions** - Ensure your app has appropriate permissions configured in the preset to use waiting room features
 
 Was this helpful?
 

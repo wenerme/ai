@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Explorer
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and debugging Worker invocations during development. It is available at `/cdn-cgi/local/explorer` on your local development server.
 
@@ -22,25 +22,28 @@ Local Explorer works with both [Wrangler](https://developers.cloudflare.com/work
 
 ## Prerequisites
 
-* Wrangler 4.118.0 or later, or [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) 1.50.0 or later
+- Wrangler 4.118.0 or later, or [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) 1.50.0 or later
 
 ## Open Local Explorer
 
-1. Start a local development session:
-npmyarnpnpm
-```
-npx wrangler dev
-```
-```
-yarn wrangler dev
-```
-```
-pnpm wrangler dev
-```
-2. Open Local Explorer in your browser:
+1. Start a local development session:npmyarnpnpm
 
-  * **Wrangler**: press `e` in your terminal.
-  * **Vite plugin**: navigate directly to `/cdn-cgi/local/explorer` on your dev server's route and port.
+   ```
+   npx wrangler dev
+   ```
+
+   ```
+   yarn wrangler dev
+   ```
+
+   ```
+   pnpm wrangler dev
+   ```
+
+
+2. Open Local Explorer in your browser:
+   - **Wrangler**: press `e` in your terminal.
+   - **Vite plugin**: navigate directly to `/cdn-cgi/local/explorer` on your dev server's route and port.
 
 Local Explorer is available by default and detects the bindings defined in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) automatically.
 
@@ -48,13 +51,13 @@ Local Explorer is available by default and detects the bindings defined in your 
 
 Local Explorer supports the following binding types:
 
-| Binding                                                                                | View                                           | Edit                                        |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------- |
-| [KV](https://developers.cloudflare.com/kv/)                                            | Browse keys, view values and metadata          | Create, update, and delete key-value pairs  |
-| [R2](https://developers.cloudflare.com/r2/)                                            | List objects, view metadata                    | Upload and delete objects                   |
-| [D1](https://developers.cloudflare.com/d1/)                                            | Browse tables and rows, run SQL queries        | Insert, update, and delete rows through SQL |
+| Binding | View | Edit |
+| --- | --- | --- |
+| [KV](https://developers.cloudflare.com/kv/) | Browse keys, view values and metadata | Create, update, and delete key-value pairs |
+| [R2](https://developers.cloudflare.com/r2/) | List objects, view metadata | Upload and delete objects |
+| [D1](https://developers.cloudflare.com/d1/) | Browse tables and rows, run SQL queries | Insert, update, and delete rows through SQL |
 | [Durable Objects](https://developers.cloudflare.com/durable-objects/) (SQLite storage) | Browse SQLite tables and rows, run SQL queries | Insert, update, and delete rows through SQL |
-| [Workflows](https://developers.cloudflare.com/workflows/)                              | List instances, view status and step history   | Trigger new runs, retry failed instances    |
+| [Workflows](https://developers.cloudflare.com/workflows/) | List instances, view status and step history | Trigger new runs, retry failed instances |
 
 ### D1 and Durable Objects SQL Studio
 
@@ -76,7 +79,7 @@ Tracing also captures operations made through [remote bindings](https://develope
 
 For example, if a request makes two D1 calls and the second one fails, the trace shows you exactly which call succeeded and which errored without adding `console.log()` or try/catch blocks.
 
-![Trace view for POST /api/todos showing two D1 database spans: the first INSERT succeeded, the second failed with error "no such table: audit_log"](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=847,format=webp/_astro/local-trace-failed-request.Bf0avznU.png)
+![Trace view for POST /api/todos showing two D1 database spans: the first INSERT succeeded, the second failed with error "no such table: audit\_log"](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=847,format=webp/_astro/local-trace-failed-request.Bf0avznU.png)
 
 ## API
 
@@ -108,11 +111,11 @@ POST /cdn-cgi/local/explorer/api/local/observability/query -- query traces and l
 
 This can be useful as an alternative to the CLI when you want an agent to:
 
-* Populate test data in your local [KV](https://developers.cloudflare.com/kv/) namespaces or [D1](https://developers.cloudflare.com/d1/) databases
-* Inspect the state of a [Durable Object](https://developers.cloudflare.com/durable-objects/) during debugging
-* Trigger or retry a [Workflow](https://developers.cloudflare.com/workflows/) run with different input data
-* Upload test files to a local [R2](https://developers.cloudflare.com/r2/) bucket
-* Find recent requests with errors and drill into failing spans
+- Populate test data in your local [KV](https://developers.cloudflare.com/kv/) namespaces or [D1](https://developers.cloudflare.com/d1/) databases
+- Inspect the state of a [Durable Object](https://developers.cloudflare.com/durable-objects/) during debugging
+- Trigger or retry a [Workflow](https://developers.cloudflare.com/workflows/) run with different input data
+- Upload test files to a local [R2](https://developers.cloudflare.com/r2/) bucket
+- Find recent requests with errors and drill into failing spans
 
 Was this helpful?
 

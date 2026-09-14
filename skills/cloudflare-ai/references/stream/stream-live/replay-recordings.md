@@ -12,15 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Record and replay live streams
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/replay-recordings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/replay-recordings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Live streams are automatically recorded, and available instantly once a live stream ends. To get a list of recordings for a given input ID, make a [GET request to /live\_inputs/<UID>/videos](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/get/) and filter for videos where `state` is set to `ready`:
+Live streams are automatically recorded, and available instantly once a live stream ends. To get a list of recordings for a given input ID, make a [`GET` request to `/live_inputs/<UID>/videos`](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/get/) and filter for videos where `state` is set to `ready`:
+
+*Requestbash*
 
 ```bash
 curl -X GET \
 -H "Authorization: Bearer <API_TOKEN>" \
 https://dash.cloudflare.com/api/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<LIVE_INPUT_UID>/videos
 ```
+
+*Responsejson*
 
 ```json
 {

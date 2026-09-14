@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Timed DNS policies
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/timed-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Cloudflare Gateway policies apply at all times when turned on. With timed DNS policies, you can control when DNS policies are active — for example, to block social media only during work hours or to temporarily allow access to a restricted site for a maintenance window. You can configure a policy to be active during specific time periods or set the policy to expire after a certain duration.
 
 There are two timed DNS policy options:
 
-* [Policy duration](#policy-duration): The policy is active for a specific amount of time after being turned on (for example, 30 minutes).
-* [Policy schedule](#policy-schedule): The policy is active during a recurring weekly schedule (for example, weekdays from 9 AM to 5 PM).
+- [Policy duration](#policy-duration): The policy is active for a specific amount of time after being turned on (for example, 30 minutes).
+- [Policy schedule](#policy-schedule): The policy is active during a recurring weekly schedule (for example, weekdays from 9 AM to 5 PM).
 
 ## Policy duration
 
@@ -27,12 +27,12 @@ You can use a time-based policy duration to set a specific time frame for the po
 
 To set a duration for a DNS policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy duration**.
 4. In **Input method**, choose the type of duration:
-  * Choose _Duration_ and enter a specific amount of time until the policy turns off.
-  * Choose _Exact end date_ and enter a specific date and time in your account's time zone for the policy to turn off.
+   - Choose *Duration* and enter a specific amount of time until the policy turns off.
+   - Choose *Exact end date* and enter a specific date and time in your account's time zone for the policy to turn off.
 5. Select **Save policy**.
 
 When a policy turns off, it will remain off until you turn it back on.
@@ -52,21 +52,23 @@ For policies with an exact end time, you can change the time before the policy t
 1. Select the policy.
 2. Choose **Edit**.
 3. Turn on **Set a policy duration**.
-4. In **Input method**, choose _Exact end date_. In **Date and time**, enter a new date and time for the policy to turn off.
+4. In **Input method**, choose *Exact end date*. In **Date and time**, enter a new date and time for the policy to turn off.
 5. Select **Save policy**.
 
 ## Policy schedule
 
 You can use Gateway to create a new DNS policy with a schedule or add a schedule to an existing policy.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Create a new DNS policy or choose an existing policy and select **Edit**.
 3. In **Apply durations and schedules**, turn on **Policy schedule**.
 4. (Optional) In **Time Zone**, choose a time zone to apply the policy based on the time zone you select, regardless of the user's location. By default, Gateway will use the end user's time zone to apply the policy based on the local time of the user making the DNS query.
-5. In **Schedule template**, choose a preset schedule, or choose _Custom schedule_ to define a custom schedule. You can choose up to three non-overlapping time ranges of 15 minute intervals.
+5. In **Schedule template**, choose a preset schedule, or choose *Custom schedule* to define a custom schedule. You can choose up to three non-overlapping time ranges of 15 minute intervals.
 6. Select **Save policy**.
 
-To schedule a policy with the API, use the [Create a Zero Trust Gateway rule endpoint](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/create/) with the `schedule` parameter set to your desired days of the week, times of day, and an optional time zone. For example:
+To schedule a policy with the API, use the [Create a Zero Trust Gateway rule endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/create/) with the `schedule` parameter set to your desired days of the week, times of day, and an optional time zone. For example:
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -84,7 +86,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **DNS** when you select the policy.
+The policy's schedule will appear in the Cloudflare dashboard under **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS** when you select the policy.
 
 ### How Gateway determines time zone
 
@@ -99,6 +101,8 @@ Users on VPNs or corporate proxies may have their time zone inferred incorrectly
 #### Example: Fixed time zone
 
 The following command creates a DNS policy to block `facebook.com` only on weekdays from 8:00 AM - 12:30 PM and 1:30 PM - 5:00 PM in the Chicago, USA time zone.
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -120,11 +124,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-Refer to [this table ↗](https://en.wikipedia.org/wiki/List%5Fof%5Ftz%5Fdatabase%5Ftime%5Fzones#List) for a list of all time zone identifiers.
+Refer to [this table ↗](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List) for a list of all time zone identifiers.
 
 #### Example: User's time zone
 
 The following command creates a DNS policy to block `clockin.com` only on weekends in the time zone where the user is currently located.
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \

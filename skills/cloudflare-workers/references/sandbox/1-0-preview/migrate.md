@@ -12,41 +12,41 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This guide moves a project onto `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. Migrate when you can so you are ready when 1.0 becomes the stable release. For the full preview section, refer to [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/).
+This guide moves a project onto `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. Migrate when you can so you are ready when 1.0 becomes the stable release. For the full preview section, refer to [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/).
 
 ## Before you start
 
 1. Work on a branch or staging deployment. Finish the code migration steps in this guide, then cut production over in one deploy.
 2. Expect a short cutover window. Live processes, terminals, and other container work stop when the new image replaces the old one.
 3. Inventory call sites in the Worker:
-  * Commands: `exec`, `execStream`, `startProcess`, string kill signals, process stdin
-  * Sessions and transport: `createSession`, `enableDefaultSession`, `SANDBOX_TRANSPORT`, `setTransport`
-  * Terminals: `sandbox.terminal`, session `terminal()`, xterm `sessionId`
-  * Interpreter: `createCodeContext` / `runCode` on bare `Sandbox`
-  * Git: `gitCheckout`
+   - Commands: `exec`, `execStream`, `startProcess`, string kill signals, process stdin
+   - Sessions and transport: `createSession`, `enableDefaultSession`, `SANDBOX_TRANSPORT`, `setTransport`
+   - Terminals: `sandbox.terminal`, session `terminal()`, xterm `sessionId`
+   - Interpreter: `createCodeContext` / `runCode` on bare `Sandbox`
+   - Git: `gitCheckout`
 
 If you still need stable-line cleanup first (RPC transport, `exposePort`, stream helpers), complete the [2026 deprecation migration](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/), then return here.
 
 ## What you will change
 
-| Stable surface                                                | Preview action                                                                                                                                                                                          |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SANDBOX\_TRANSPORT, transport on getSandbox(), setTransport() | Remove. The preview uses RPC automatically; no transport setting.                                                                                                                                       |
-| await sandbox.exec(string) → buffered result                  | await sandbox.exec(argv) then await process.output(...).                                                                                                                                                |
-| execStream, startProcess, process log helpers                 | Process handle: logs, kill, waitFor\*.                                                                                                                                                                  |
-| Default session / enableDefaultSession                        | Gone. Each exec is independent.                                                                                                                                                                         |
-| createSession / ExecutionSession                              | Gone from the core public surface. Pass cwd/env per exec, or one shell argv script.                                                                                                                     |
-| Interpreter methods on Sandbox                                | Same method names on sandbox.interpreter after withInterpreter. runCode returns plain ExecutionResult. Refer to [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/). |
-| String kill signals                                           | Numeric signals on process.kill.                                                                                                                                                                        |
-| waitForPort default mode                                      | Preview default is **tcp**. Pass mode: "http" for HTTP checks.                                                                                                                                          |
-| Process / stream **stdin**                                    | No process stdin on the handle. Non-interactive: argv/cwd/env. Interactive PTY: [terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/).                                          |
-| sandbox.terminal(request) / session terminal()                | createTerminal, then terminal.connect(request).                                                                                                                                                         |
-| xterm sessionId                                               | terminalId (and optional cursor).                                                                                                                                                                       |
-| sandbox.gitCheckout(...)                                      | Removed. Run git with argv exec, for example \['git', 'clone', '--', url, dir\], then output() / waits as needed.                                                                                       |
+| Stable surface | Preview action |
+| --- | --- |
+| `SANDBOX_TRANSPORT`, `transport` on `getSandbox()`, `setTransport()` | Remove. The preview uses RPC automatically; no transport setting. |
+| `await sandbox.exec(string)` → buffered result | `await sandbox.exec(argv)` then `await process.output(...)`. |
+| `execStream`, `startProcess`, process log helpers | Process handle: `logs`, `kill`, `waitFor*`. |
+| Default session / `enableDefaultSession` | Gone. Each `exec` is independent. |
+| `createSession` / `ExecutionSession` | Gone from the core public surface. Pass `cwd`/`env` per `exec`, or one shell argv script. |
+| Interpreter methods on `Sandbox` | Same method names on `sandbox.interpreter` after `withInterpreter`. `runCode` returns plain `ExecutionResult`. Refer to [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/). |
+| String kill signals | Numeric signals on `process.kill`. |
+| `waitForPort` default mode | Preview default is **`tcp`**. Pass `mode: "http"` for HTTP checks. |
+| Process / stream **stdin** | No process stdin on the handle. Non-interactive: argv/`cwd`/`env`. Interactive PTY: [terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/). |
+| `sandbox.terminal(request)` / session `terminal()` | `createTerminal`, then `terminal.connect(request)`. |
+| xterm `sessionId` | `terminalId` (and optional `cursor`). |
+| `sandbox.gitCheckout(...)` | Removed. Run `git` with argv `exec`, for example `['git', 'clone', '--', url, dir]`, then `output()` / waits as needed. |
 
 Files, mounts, backups, ports, tunnels, `proxyToSandbox`, and most lifecycle options stay available. Use the main Sandbox docs for those signatures. Where a stable page still describes sessions, transport selection, string `exec` helpers, or `sandbox.terminal`, follow this preview section instead.
 
@@ -105,10 +105,10 @@ console.log(result.stdout, result.exitCode);
 
 Rules:
 
-* `await sandbox.exec(...)` means **launch succeeded**, not **command finished**.
-* Prefer argv without a shell when you run a single binary: `['npm', 'test']` with `cwd` set.
-* `output()` defaults to **byte** streams (`Uint8Array`). Pass `{ encoding: "utf8" }` for strings.
-* There is no `sandbox.run()` compatibility helper on the current preview tip.
+- `await sandbox.exec(...)` means **launch succeeded**, not **command finished**.
+- Prefer argv without a shell when you run a single binary: `['npm', 'test']` with `cwd` set.
+- `output()` defaults to **byte** streams ( `Uint8Array`). Pass `{ encoding: "utf8" }` for strings.
+- There is no `sandbox.run()` compatibility helper on the current preview tip.
 
 ### Background processes and streaming
 
@@ -148,11 +148,11 @@ Across Worker requests, keep `server.id` and resume with `getProcess(id)` only w
 
 ### Working directory and environment
 
-| Stable                               | Preview                                                                                         |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| exec("cd /app"); exec("npm test");   | exec(\['/bin/bash', '-lc', 'cd /app && npm test'\]) or exec(\['npm', 'test'\], { cwd: '/app' }) |
-| Exported vars in the default session | setEnvVars and/or env on each exec                                                              |
-| createSession({ env })               | setEnvVars and/or env on each exec / createTerminal                                             |
+| Stable | Preview |
+| --- | --- |
+| `exec("cd /app"); exec("npm test");` | `exec(['/bin/bash', '-lc', 'cd /app && npm test'])` or `exec(['npm', 'test'], { cwd: '/app' })` |
+| Exported vars in the default session | `setEnvVars` and/or `env` on each `exec` |
+| `createSession({ env })` | `setEnvVars` and/or `env` on each `exec` / `createTerminal` |
 
 Details: [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/).
 
@@ -160,10 +160,10 @@ Do not put live API keys or long-lived provider credentials into `setEnvVars` or
 
 ### Timeouts and cancellation
 
-| Goal                    | API                                                                             |
-| ----------------------- | ------------------------------------------------------------------------------- |
-| Limit process lifetime  | exec(argv, { timeout }) — may finish with timedOut: true                        |
-| Limit how long you wait | Options or AbortSignal on output / waits / logs — does **not** kill the process |
+| Goal | API |
+| --- | --- |
+| Limit process lifetime | `exec(argv, { timeout })` — may finish with `timedOut: true` |
+| Limit how long you wait | Options or `AbortSignal` on `output` / waits / `logs` — does **not** kill the process |
 
 ## Drop session APIs
 
@@ -246,14 +246,14 @@ When you migrate long-running work:
 
 Handle at least these errors as follows:
 
-| Error                                                      | What to do                                                                                         |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ContainerUnavailableError                                  | Container did not start the work — back off (retryAfterMs when set), then try the work again       |
-| StaleProcessHandleError / StaleTerminalHandleError         | Previous container — start again from stored work state                                            |
-| OperationInterruptedError                                  | Work may have started — read reason / retryable; check state before repeating                      |
-| RPCTransportError                                          | Lost contact during the call — a later call may work; this call may already have run               |
-| ProcessWaitTimeoutError / ProcessAbortedError              | Wait ended only — process may still be running                                                     |
-| RuntimeControlProtocolError or unusable image after deploy | Worker package and container image must match on the same @next line; do not treat as a slow start |
+| Error | What to do |
+| --- | --- |
+| `ContainerUnavailableError` | Container did not start the work — back off (`retryAfterMs` when set), then try the work again |
+| `StaleProcessHandleError` / `StaleTerminalHandleError` | Previous container — start again from stored work state |
+| `OperationInterruptedError` | Work may have started — read `reason` / `retryable`; check state before repeating |
+| `RPCTransportError` | Lost contact during the call — a later call may work; this call may already have run |
+| `ProcessWaitTimeoutError` / `ProcessAbortedError` | Wait ended only — process may still be running |
+| `RuntimeControlProtocolError` or unusable image after deploy | Worker package and container image must match on the same `@next` line; do not treat as a slow start |
 
 `getProcess` / `getTerminal` / `list*` do not start a container. They return `null` or `[]` when none is running (not an exception).
 
@@ -269,7 +269,7 @@ On a normal `wrangler deploy`, Worker code becomes active immediately while cont
 npx wrangler deploy --containers-rollout=immediate
 ```
 
-`--containers-rollout=immediate` does not override [rollout\_active\_grace\_period](https://developers.cloudflare.com/workers/wrangler/configuration/#containers). Leave that setting at its default of `0` for the cutover (or set it to `0` if you raised it earlier). A nonzero grace period keeps active old containers eligible longer while the new Worker is already live.
+`--containers-rollout=immediate` does not override [`rollout_active_grace_period`](https://developers.cloudflare.com/workers/wrangler/configuration/#containers). Leave that setting at its default of `0` for the cutover (or set it to `0` if you raised it earlier). A nonzero grace period keeps active old containers eligible longer while the new Worker is already live.
 
 Before production:
 
@@ -298,23 +298,23 @@ Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your a
 
 ## Related
 
-* [1.0 preview overview](https://developers.cloudflare.com/sandbox/1-0-preview/)
-* [Get started](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/)
-* [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/)
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) (including [how long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives))
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
-* [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
-* [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/)
-* [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
-* [Troubleshooting](https://developers.cloudflare.com/sandbox/1-0-preview/troubleshooting/)
-* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
-* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
-* [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
+- [1.0 preview overview](https://developers.cloudflare.com/sandbox/1-0-preview/)
+- [Get started](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/)
+- [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/)
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) (including [how long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives))
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
+- [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
+- [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/)
+- [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
+- [Troubleshooting](https://developers.cloudflare.com/sandbox/1-0-preview/troubleshooting/)
+- [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
+- [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
+- [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
 
 Was this helpful?
 

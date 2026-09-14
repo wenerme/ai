@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hardware security modules
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to private keys stored on disk, Keyless SSL supports keys stored in a Hardware Security Module (HSM) via the PKCS#11 standard. Keyless uses PKCS#11 for signing and decrypting payloads without having direct access to the private keys.
 
@@ -38,19 +38,19 @@ For more details on initializing your PKCS#11 token, refer to [Configuration](ht
 
 Keyless SSL has interoperability with the following modules:
 
-* [Entrust nShield Connect ↗](https://www.entrust.com/digital-security/hsm)
-* [Gemalto SafeNet Luna ↗](https://cpl.thalesgroup.com/compliance/fips-common-criteria-validations)
-* [SoftHSMv2 ↗](https://github.com/opendnssec/SoftHSMv2)
-* [YubiKey Neo ↗](https://www.yubico.com/product/yubikey-neo/)
+- [Entrust nShield Connect ↗](https://www.entrust.com/digital-security/hsm)
+- [Gemalto SafeNet Luna ↗](https://cpl.thalesgroup.com/compliance/fips-common-criteria-validations)
+- [SoftHSMv2 ↗](https://github.com/opendnssec/SoftHSMv2)
+- [YubiKey Neo ↗](https://www.yubico.com/product/yubikey-neo/)
 
 Also, the following cloud HSM offerings have been tested with Keyless SSL:
 
-* [AWS CloudHSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm/)
-* [Azure Dedicated HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/)
-* [Azure Managed HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-managed-hsm/)
-* [Fortanix DSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/fortanix-dsm/)
-* [IBM Cloud HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/)
-* [Google Cloud HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm/)
+- [AWS CloudHSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/aws-cloud-hsm/)
+- [Azure Dedicated HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/)
+- [Azure Managed HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-managed-hsm/)
+- [Fortanix DSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/fortanix-dsm/)
+- [IBM Cloud HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/)
+- [Google Cloud HSM](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm/)
 
 Was this helpful?
 

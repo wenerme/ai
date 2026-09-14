@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection lifecycle
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding how connections work between Workers, Hyperdrive, and your origin database is essential for building efficient applications with Hyperdrive.
 
@@ -71,6 +71,8 @@ You should always create database clients inside your request handlers (`fetch`,
 
 Do not create database clients or connection pools in the global scope. Instead, create a new client inside each handler invocation — Hyperdrive's connection pool ensures this is fast:
 
+*index.jsjs*
+
 ```js
 import { Client } from "pg";
 
@@ -97,6 +99,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { Client } from "pg";
@@ -147,10 +151,10 @@ Refer to [Limits](https://developers.cloudflare.com/hyperdrive/platform/limits/)
 
 ## Related resources
 
-* [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/)
-* [Connection pooling](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/)
-* [Limits](https://developers.cloudflare.com/hyperdrive/platform/limits/)
-* [Durable Objects](https://developers.cloudflare.com/durable-objects/)
+- [How Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/)
+- [Connection pooling](https://developers.cloudflare.com/hyperdrive/concepts/connection-pooling/)
+- [Limits](https://developers.cloudflare.com/hyperdrive/platform/limits/)
+- [Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
 Was this helpful?
 

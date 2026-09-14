@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bandwidth measurement
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/bandwidth-measurement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/bandwidth-measurement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare measures Cloudflare WAN (formerly Magic WAN) usage based on the 95th percentile of bandwidth utilized by your configured network. This measurement reflects your overall network capacity consumption.
 
@@ -20,10 +20,10 @@ Cloudflare measures Cloudflare WAN (formerly Magic WAN) usage based on the 95th 
 
 Cloudflare WAN bandwidth includes the sum of traffic routed to and from the Cloudflare WAN network namespace across all your connections. This measurement includes traffic from the following tunnel types:
 
-* [GRE (Generic Routing Encapsulation) ↗](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
-* [IPsec (Internet Protocol Security) ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/)
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/)
-* [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
+- [GRE (Generic Routing Encapsulation) ↗](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
+- [IPsec (Internet Protocol Security) ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/)
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/)
+- [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
 For each tunnel, Cloudflare uses the highest 95th percentile value (ingress or egress traffic). The usage measurement excludes [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) traffic.
 

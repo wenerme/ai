@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account-level load balancing
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/multiple-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/multiple-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to set up load balancing for multiple hostnames or domains within your account, your approach would depend on the requirements for each hostname.
 
@@ -20,8 +20,8 @@ If you want to set up load balancing for multiple hostnames or domains within yo
 
 If you want to share a load balancing configuration across multiple hostnames, you can use the same load balancer through `CNAME` routing.
 
-1. When you [set up](https://developers.cloudflare.com/learning-paths/load-balancing/setup/) the load balancer, create the load balancer on a new hostname (`lb.example.com`).
-2. When you are ready to [route production traffic](https://developers.cloudflare.com/learning-paths/load-balancing/setup/production-traffic/), [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a `CNAME` record on a hostname that points to the load balancer created in step 1 (`lb.example.com`).
+1. When you [set up](https://developers.cloudflare.com/learning-paths/load-balancing/setup/) the load balancer, create the load balancer on a new hostname ( `lb.example.com`).
+2. When you are ready to [route production traffic](https://developers.cloudflare.com/learning-paths/load-balancing/setup/production-traffic/), [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a `CNAME` record on a hostname that points to the load balancer created in step 1 ( `lb.example.com`).
 3. Repeat steps 1 and 2 with all other hostnames.
 
 Note

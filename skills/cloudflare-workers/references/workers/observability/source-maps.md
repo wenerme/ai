@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Source maps and stack traces
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
+[Stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
 Most JavaScript code is first bundled, often transpiled, and then minified before being deployed to production. This process creates smaller bundles to optimize performance and converts code from TypeScript to Javascript if needed.
 
@@ -34,7 +34,7 @@ To enable source maps, add the following to your Worker's [Wrangler configuratio
 upload_source_maps = true
 ```
 
-When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy). ​​
+When `upload_source_maps` is set to `true`, Wrangler will automatically generate and upload source map files when you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) or [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy). ​​
 
 Note
 
@@ -48,7 +48,7 @@ You can then view the stack trace when streaming [real-time logs](https://develo
 
 Note
 
-The source map is retrieved after your Worker invocation completes — it's an asynchronous process that does not impact your Worker's CPU utilization or performance. Source maps are not accessible inside the Worker at runtime, if you `console.log()` the [stack property ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error/stack) within a Worker, you will not get a deobfuscated stack trace.
+The source map is retrieved after your Worker invocation completes — it's an asynchronous process that does not impact your Worker's CPU utilization or performance. Source maps are not accessible inside the Worker at runtime, if you `console.log()` the [stack property ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) within a Worker, you will not get a deobfuscated stack trace.
 
 When Cloudflare attempts to remap a stack trace to the Worker's source map, it does so line-by-line, remapping as much as possible. If a line of the stack trace cannot be remapped for any reason, Cloudflare will leave that line of the stack trace unchanged, and continue to the next line of the stack trace.
 
@@ -56,21 +56,21 @@ When Cloudflare attempts to remap a stack trace to the Worker's source map, it d
 
 Wrangler version
 
-Minimum required Wrangler version for source maps: 3.46.0\. Check your version by running `wrangler --version`.
+Minimum required Wrangler version for source maps: 3.46.0. Check your version by running `wrangler --version`.
 
-| Description             | Limit         |
-| ----------------------- | ------------- |
+| Description | Limit |
+| --- | --- |
 | Maximum Source Map Size | 15 MB gzipped |
 
 ## Example
 
 Consider a simple project. `src/index.ts` serves as the entrypoint of the application and `src/calculator.ts` defines a ComplexCalculator class that supports basic arithmetic.
 
-* wrangler.jsonc
-* tsconfig.json
-* src
-  * calculator.ts
-  * index.ts
+- wrangler.jsonc
+- tsconfig.json
+- src
+  - calculator.ts
+  - index.ts
 
 Let's see how source maps can simplify debugging an error in the ComplexCalculator class.
 
@@ -84,9 +84,9 @@ With **source maps uploaded**: all methods reference the correct files and line 
 
 ## Related resources
 
-* [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) \- Learn how to attach Tail Workers to transform your logs and send them to HTTP endpoints.
-* [Real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) \- Learn how to capture Workers logs in real-time.
-* [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) \- Learn how exceptions are handled over RPC (Remote Procedure Call).
+- [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) - Learn how to attach Tail Workers to transform your logs and send them to HTTP endpoints.
+- [Real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) - Learn how to capture Workers logs in real-time.
+- [RPC error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/) - Learn how exceptions are handled over RPC (Remote Procedure Call).
 
 Was this helpful?
 

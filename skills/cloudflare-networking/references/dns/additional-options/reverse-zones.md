@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reverse zones and PTR records
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/additional-options/reverse-zones/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/additional-options/reverse-zones/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you control your own IP prefix(es), you can set up reverse zones with PTR records to allow reverse DNS lookups.
 
@@ -30,8 +30,8 @@ As PTR records are mainly used for reverse DNS lookups, they should preferably b
 
 The following Cloudflare customers can create reverse zones.
 
-* Customers with an IPv4 or IPv6 address space can add the IPv4 or IPv6 reverse zone for their IP space to their account, and create the required PTR records for forward resolution.
-* DNS Firewall customers need to contact their account team to add PTR records for the IPs used for their DNS Firewall clusters.
+- Customers with an IPv4 or IPv6 address space can add the IPv4 or IPv6 reverse zone for their IP space to their account, and create the required PTR records for forward resolution.
+- DNS Firewall customers need to contact their account team to add PTR records for the IPs used for their DNS Firewall clusters.
 
 If your account does not meet these qualifications and you do not own the IP prefix you want to add PTR records on, contact the owner of the IP address based on a [whois lookup ↗](https://lookup.icann.org/).
 
@@ -39,66 +39,78 @@ If your account does not meet these qualifications and you do not own the IP pre
 
 To set up a reverse zone, you need to create a reverse DNS zone and add PTR records for forward resolution.
 
-### 1\. Create a reverse DNS zone
+### 1. Create a reverse DNS zone
 
-1. Within your account, click **Add** \> **Connect a domain**.
+1. Within your account, click **Add** > **Connect a domain**.
 2. For your site name, use the reverse IP address:
+   - For IPv4 /24 prefixes, the pattern is:
+     - **IP prefix**: `<octet_1>.<octet_2>.<octet_3>.0/24`
+     - **Reverse zone address**: `<octet_3>.<octet_2>.<octet_1>.in-addr.arpa`
+   - For IPv4 /16 prefixes, the pattern is:
+     - **IP prefix**: `<octet_1>.<octet_2>.0.0/16`
+     - **Reverse zone address**: `<octet_2>.<octet_1>.in-addr.arpa`<details><summary>
 
-  * For IPv4 /24 prefixes, the pattern is:
+   Example</summary>
 
-    * **IP prefix**: `<octet_1>.<octet_2>.<octet_3>.0/24`
-    * **Reverse zone address**: `<octet_3>.<octet_2>.<octet_1>.in-addr.arpa`
-  * For IPv4 /16 prefixes, the pattern is:
+   - **IPv4 prefix**: <code>198.51.100.0/24</code>
+   - **Reverse zone**: <code>100.51.198.in-addr.arpa</code></details>
 
-    * **IP prefix**: `<octet_1>.<octet_2>.0.0/16`
-    * **Reverse zone address**: `<octet_2>.<octet_1>.in-addr.arpa`
-Example
-
-  * **IPv4 prefix**: `198.51.100.0/24`
-  * **Reverse zone**: `100.51.198.in-addr.arpa`
-  * For IPv6, consider the following examples:
-
-  * **IPv6 prefix**: `2001:DB8::0/32`
-  * **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`
-
-  * **IPv6 prefix**: `2001:DB8::0/48`
-  * **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
+   - For IPv6, consider the following examples:
+   - **IPv6 prefix**: `2001:DB8::0/32`
+   - **Reverse zone**: `8.b.d.0.1.0.0.2.ip6.arpa`
+   - **IPv6 prefix**: `2001:DB8::0/48`
+   - **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
 3. If you are adding less than 200 PTR records, select the **Free** plan. If you are adding more, select a paid plan.
 4. Skip the rest of the onboarding process.
 
-### 2\. Add PTR records
+### 2. Add PTR records
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. For each IP within the prefix, add a PTR record using the least significant octet(s) as the subdomain.
+
+<details>
+
+<summary>
 
 IPv4 example
 
+</summary>
+
 Suppose you have the following configuration:
 
-* **Reverse zone**: `100.51.198.in-addr.arpa`
-* **IP address**: `198.51.100.123`
+- **Reverse zone**: <code>100.51.198.in-addr.arpa</code>
+- **IP address**: <code>198.51.100.123</code>
 
-The subdomain for the PTR record would be `123`, making the full domain for forward lookup `123.100.51.198.in-addr.arpa`.
+The subdomain for the PTR record would be <code>123</code>, making the full domain for forward lookup <code>123.100.51.198.in-addr.arpa</code>.
 
-| Type | Name | Domain name | TTL  |
-| ---- | ---- | ----------- | ---- |
-| PTR  | 123  | example.com | Auto |
+| Type | Name | Domain name | TTL |
+| --- | --- | --- | --- |
+| <code>PTR</code> | <code>123</code> | <code>example.com</code> | <code>Auto</code> |
+
+</details>
+
+<details>
+
+<summary>
 
 IPv6 example
 
+</summary>
+
 Suppose you have the following configuration:
 
-* **Reverse zone**: `0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`
-* **IP address**: `2001:DB8::5`
+- **Reverse zone**: <code>0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa</code>
+- **IP address**: <code>2001:DB8::5</code>
 
-The subdomain for the PTR record would be `5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0`, making the full domain for forward lookup `5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa`.
+The subdomain for the PTR record would be <code>5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0</code>, making the full domain for forward lookup <code>5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.8.b.d.0.1.0.0.2.ip6.arpa</code>.
 
-| Type | Name                                    | Domain name | TTL  |
-| ---- | --------------------------------------- | ----------- | ---- |
-| PTR  | 5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0 | example.com | Auto |
+| Type | Name | Domain name | TTL |
+| --- | --- | --- | --- |
+| <code>PTR</code> | <code>5.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0</code> | <code>example.com</code> | <code>Auto</code> |
 
-### 3\. Set Cloudflare nameservers
+</details>
+
+### 3. Set Cloudflare nameservers
 
 Add the two Cloudflare nameservers provided for the zone at your Regional Internet Registry (RIR). The exact steps to update your nameservers will depend on the registry you are using.
 
@@ -108,8 +120,8 @@ After this process, your reverse zone will be activated and you can perform reve
 
 While setting up reverse zones, the following third-party tools may be useful:
 
-* [Reverse DNS record generator ↗](https://www.whatsmydns.net/reverse-dns-generator)
-* [IPv6 subnet calculator ↗](https://www.internex.at/de/toolbox/ipv6)
+- [Reverse DNS record generator ↗](https://www.whatsmydns.net/reverse-dns-generator)
+- [IPv6 subnet calculator ↗](https://www.internex.at/de/toolbox/ipv6)
 
 Was this helpful?
 

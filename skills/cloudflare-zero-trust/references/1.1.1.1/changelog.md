@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/1.1.1.1.xml)
 
@@ -47,11 +47,15 @@ OPENPGPKEY: AwEA...
 
 DNSSEC-related records now use numeric algorithm identifiers as defined in [RFC 4034 ↗](https://datatracker.ietf.org/doc/html/rfc4034) instead of mnemonic names. This affects `RRSIG`, `DS`, `CDS`, `DNSKEY`, and `CDNSKEY` records. For example, `RSASHA256` becomes `8`, `ECDSAP256SHA256` becomes `13`, and `ED25519` becomes `15`. DS digest types also change from mnemonic to numeric: `SHA-256` becomes `2`.
 
+*Beforetxt*
+
 ```txt
 RRSIG:  A RSASHA256 2 300 ...
 DS:     12345 RSASHA256 SHA-256 aabb...
 DNSKEY: 257 3 RSASHA256 AwEA...
 ```
+
+*Aftertxt*
 
 ```txt
 RRSIG:  A 8 2 300 ...
@@ -63,9 +67,13 @@ DNSKEY: 257 3 8 AwEA...
 
 `HINFO` character-strings are now individually quoted to remove ambiguity when values contain spaces:
 
+*Beforetxt*
+
 ```txt
 "data": "Intel Xeon Linux"
 ```
+
+*Aftertxt*
 
 ```txt
 "data": "\"Intel Xeon\" \"Linux\""

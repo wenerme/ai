@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get Started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the [ai-utils package ↗](https://github.com/cloudflare/ai-utils), and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
+This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the [`ai-utils package` ↗](https://github.com/cloudflare/ai-utils), and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
 
-## 1\. Create a Worker project with Workers AI
+## 1. Create a Worker project with Workers AI
 
 Follow the [Workers AI Get Started Guide](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/) until step 2.
 
-## 2\. Install additional npm package
+## 2. Install additional npm package
 
 Next, run the following command in your project repository to install the Worker AI utilities package.
 
@@ -42,9 +42,11 @@ pnpm add @cloudflare/ai-utils
 bun add @cloudflare/ai-utils
 ```
 
-## 3\. Add Workers AI Embedded function calling
+## 3. Add Workers AI Embedded function calling
 
 Update the `index.ts` file in your application directory with the following code:
+
+*index.jsjs*
 
 ```js
 import { runWithTools } from "@cloudflare/ai-utils";
@@ -92,6 +94,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { runWithTools } from "@cloudflare/ai-utils";
@@ -150,6 +154,7 @@ Moreover, in this example we define and describe a list of tools that the LLM ca
 
 Abstracted by the `runWithTools` function, the following steps occur:
 
+```
 sequenceDiagram
     participant Worker as Worker
     participant WorkersAI as Workers AI
@@ -160,9 +165,11 @@ sequenceDiagram
     Worker-->>+WorkersAI: Send messages, function calling prompt and function result
     WorkersAI-->>-Worker: Send response incorporating function output
 
+```
+
 The `ai-utils package` is also open-sourced on [Github ↗](https://github.com/cloudflare/ai-utils).
 
-## 4\. Local development & deployment
+## 4. Local development & deployment
 
 Follow steps 4 and 5 of the [Workers AI Get Started Guide](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/) for local development and deployment.
 

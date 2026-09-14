@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Organizations for Enterprise
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -26,11 +26,11 @@ Organizations is designed for **Enterprise customers of any size** who manage mu
 
 Common use cases:
 
-* Multi-brand companies managing separate accounts per brand
-* Regional operations with accounts per geography
-* Business units or subsidiaries with independent accounts
-* Development workflows with separate accounts per environment
-* Growing companies consolidating account management
+- Multi-brand companies managing separate accounts per brand
+- Regional operations with accounts per geography
+- Business units or subsidiaries with independent accounts
+- Development workflows with separate accounts per environment
+- Growing companies consolidating account management
 
 Looking for MSSP (Managed Security Service Provider) or Distributor documentation? Refer to [Organizations for MSSP and Distributors](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/).
 
@@ -52,35 +52,35 @@ Organization
 
 **Key characteristics:**
 
-* One Organization contains multiple accounts
-* Each account can contain multiple zones
-* All accounts are at the same level (no sub-organizations)
-* Organization members have [implicit access](#implicit-access) to all accounts
-* Maximum: **500 accounts** and **5,000 zones** per Organization
+- One Organization contains multiple accounts
+- Each account can contain multiple zones
+- All accounts are at the same level (no sub-organizations)
+- Organization members have [implicit access](#implicit-access) to all accounts
+- Maximum: **500 accounts** and **5,000 zones** per Organization
 
 ## Example: Company A
 
 **Company A** is a SaaS company with 12 Cloudflare accounts:
 
-* 3 accounts for different product lines (Product Alpha, Product Beta, Product Gamma)
-* 3 environments per product (Development, Staging, Production)
-* Each account manages its own zones and configurations
+- 3 accounts for different product lines (Product Alpha, Product Beta, Product Gamma)
+- 3 environments per product (Development, Staging, Production)
+- Each account manages its own zones and configurations
 
 **Before Organizations:**
 
-* Security team manually copies WAF rules to all 12 accounts
-* Admins switch between accounts individually
-* No unified view of traffic or security events
-* Each new admin needs explicit access to all 12 accounts
+- Security team manually copies WAF rules to all 12 accounts
+- Admins switch between accounts individually
+- No unified view of traffic or security events
+- Each new admin needs explicit access to all 12 accounts
 
 **With Organizations:**
 
-* Create one Organization containing all 12 accounts
-* Security team creates WAF rules once, shares to all production accounts
-* Admins see all accounts in one dashboard with the enhanced account switcher
-* View aggregate HTTP analytics across all accounts
-* New Organization members automatically get access to all 12 accounts
-* Use tags to organize accounts by product line and environment
+- Create one Organization containing all 12 accounts
+- Security team creates WAF rules once, shares to all production accounts
+- Admins see all accounts in one dashboard with the enhanced account switcher
+- View aggregate HTTP analytics across all accounts
+- New Organization members automatically get access to all 12 accounts
+- Use tags to organize accounts by product line and environment
 
 ## Set up your Organization
 
@@ -88,12 +88,12 @@ Organization
 
 Before you create an Organization:
 
-* Your user must have Super Admin role access to an account with an Enterprise plan.
-* You (the Organization creator) must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on your Cloudflare user account. This is a per-user requirement — 2FA/SSO is not an account-level setting.
-* You must be a Super Administrator on the accounts you want to assign. You can add accounts of any plan type (eg Enterprise, or Free).
-* Each Organization supports a maximum of **500 accounts** and **5,000 zones**. Refer to [Limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) for details.
-* You may only create a single Organization. You, or another member of your company, must not have already created an Organization.
-* Your accounts must not already belong to another Organization.
+- Your user must have Super Admin role access to an account with an Enterprise plan.
+- You (the Organization creator) must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on your Cloudflare user account. This is a per-user requirement — 2FA/SSO is not an account-level setting.
+- You must be a Super Administrator on the accounts you want to assign. You can add accounts of any plan type (eg Enterprise, or Free).
+- Each Organization supports a maximum of **500 accounts** and **5,000 zones**. Refer to [Limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) for details.
+- You may only create a single Organization. You, or another member of your company, must not have already created an Organization.
+- Your accounts must not already belong to another Organization.
 
 ### Create an Organization
 
@@ -136,10 +136,10 @@ Any Organization Super Administrator can add or remove other Organization Super 
 
 Organization members receive **implicit access** to all accounts in the Organization. Implicit access means:
 
-* You do not need explicit membership on each individual account.
-* When you go to any account within your Organization, you automatically have Super Administrator permissions on that account.
-* Implicit access is granted at the Organization level — you cannot grant implicit access to a subset of accounts.
-* Implicit access is equivalent to Super Administrator. There is no read-only implicit access today.
+- You do not need explicit membership on each individual account.
+- When you go to any account within your Organization, you automatically have Super Administrator permissions on that account.
+- Implicit access is granted at the Organization level — you cannot grant implicit access to a subset of accounts.
+- Implicit access is equivalent to Super Administrator. There is no read-only implicit access today.
 
 Implicit access is separate from any existing per-account membership. If you were already an explicit member of an account before it was added to the Organization, that existing membership is unaffected.
 
@@ -158,10 +158,10 @@ The user receives an email invitation. After accepting, they have implicit acces
 
 All users who will be Organization members must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on their Cloudflare user account **before** they can accept an Organization invitation. This is a per-user requirement, not an account-level setting.
 
-* If a user does not have 2FA or SSO enabled, they will not be able to accept the invitation.
-* Ask the user to enable 2FA or SSO first, then resend the invitation.
-* For instructions on enabling 2FA, refer to [Set up 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
-* For SSO configuration, refer to [Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
+- If a user does not have 2FA or SSO enabled, they will not be able to accept the invitation.
+- Ask the user to enable 2FA or SSO first, then resend the invitation.
+- For instructions on enabling 2FA, refer to [Set up 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
+- For SSO configuration, refer to [Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
 
 ## Share policies
 
@@ -189,14 +189,14 @@ The data includes traffic for proxied hostnames and may be based on a sample. Th
 
 ### Rename your Organization
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Next to **Organization name**, select **Rename**.
 3. Enter the new name.
 4. Select **Rename**.
 
 ### Edit customer identification data
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Next to **Customer identification data**, select **Edit**.
 3. Update the information.
 4. Select **Save**.
@@ -207,7 +207,7 @@ Organization audit logs capture user-initiated actions performed by Organization
 
 To view Organization audit logs in the dashboard:
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Select **Audit Logs**.
 
 You can also retrieve Organization audit logs via the API:

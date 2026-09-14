@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GRE and IPsec tunnels
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Tunnels and encapsulation
 
 To route traffic between Cloudflare's global network and your origin network, Cloudflare WAN wraps your original packets inside an outer packet — a process called encapsulation. The outer packet carries your traffic across the Internet to its destination, where it is unwrapped (decapsulated) and delivered.
 
-Cloudflare WAN uses two encapsulation protocols: [Generic Routing Encapsulation (GRE)](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/) and [IPsec](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/). GRE is stateless and simpler to configure but does not encrypt traffic. IPsec encrypts traffic and authenticates the source, providing stronger security. Both create tunnels — logical point-to-point connections between Cloudflare and your network. Cloudflare sets up tunnel endpoints on global network servers inside your network namespace, and you set up tunnel endpoints on routers at your data center.
+Cloudflare WAN uses two encapsulation protocols: [Generic Routing Encapsulation (GRE)](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
+
+ and [IPsec](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/). GRE is stateless and simpler to configure but does not encrypt traffic. IPsec encrypts traffic and authenticates the source, providing stronger security. Both create tunnels — logical point-to-point connections between Cloudflare and your network. Cloudflare sets up tunnel endpoints on global network servers inside your network namespace, and you set up tunnel endpoints on routers at your data center.
 
 To accommodate additional header data introduced by encapsulation, you must adjust the maximum segment size (MSS) to comply with the standard Internet routable maximum transmission unit (MTU), which is 1500 bytes.
 
@@ -26,6 +28,7 @@ For instructions, refer to [Set maximum segment size](https://developers.cloudfl
 
 This diagram illustrates the flow of traffic with Cloudflare WAN.
 
+```
 sequenceDiagram
 accTitle: Tunnels and encapsulation
 accDescr: This diagram shows the flow of traffic with Cloudflare WAN.
@@ -37,6 +40,8 @@ Note left of A: Ingress <br> traffic
 B->>C: Payload <br> Protocol <br> IP header <br> GRE <br> IP header
 C->>A: IP header <br> Protocol <br> Payload
 Note right of C: Egress <br> traffic
+```
+
 
 
 Note
@@ -53,6 +58,7 @@ For IPsec tunnels, the customer's router negotiates the creation of an IPsec tun
 
 Cloudflare's anycast architecture provides a conduit to your tunnel for every server in every data center on Cloudflare's global network. The following image shows this architecture.
 
+```
 flowchart LR
 accTitle: Anycast tunnel
 accDescr: Multiple servers in data center preparing packets to send through anycast tunnel.
@@ -84,6 +90,8 @@ a --> 1== Cloudflare anycast GRE <br> single endpoint ==>i --> j
 
 1== Cloudflare anycast IPsec <br> single endpoint ==>x --> z
 
+```
+
 ## IPsec tunnels
 
 Post-quantum IPsec
@@ -98,10 +106,10 @@ For information on how to set up an IPsec tunnel, refer to [Configure tunnel end
 
 Cloudflare WAN uses the following stages to establish an IPsec tunnel:
 
-* **Initial Exchange** (`IKE_SA_INIT`): IKE peers negotiate parameters for the IKE Security Association (SA) and establish a shared secret for key derivation, and when relevant, signal support for post-quantum key exchange with [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/). When [downgrade protection](#improved-downgrade-protection-beta) is enabled, Cloudflare also sends an `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification during this exchange to signal support for full transcript authentication. After this exchange, the peers have a secure communication channel but they have not yet authenticated each other.
-* **Intermediate Exchange** (`IKE_INTERMEDIATE`): If both peers support RFC 9370, they perform an additional key exchange using ML-KEM (Module-Lattice-based Key-Encapsulation Mechanism), a post-quantum key exchange specified in [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/). This creates a hybrid shared secret by combining a secret derived from classical Diffie-Hellman (established during the `IKE_SA_INIT`) with post-quantum ML-KEM to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest%5Fnow,%5Fdecrypt%5Flater) attacks.
-* **Auth Exchange** (`IKE_AUTH`): Using the keys established from both the `IKE_SA_INIT` and the `IKE_INTERMEDIATE` exchange, IKE peers mutually authenticate each other. After authentication, they establish the IKE security association (SA). Next, the peers negotiate and establish an IPsec tunnel, known as a Child SA.
-* **Rekeying**: Periodically, or through manual intervention, IKE SAs can be rekeyed to generate new SAs with fresh keys for the session. This rekey operation is performed for both the IKE SA (to refresh the control plane) and the Child SAs (to refresh the data plane). When a hybrid exchange is in use (RFC 9370), the rekey process for the IKE SA will once again perform the parallel classical (DH) and post-quantum (ML-KEM) exchanges to ensure continued quantum resistance.
+- **Initial Exchange** ( `IKE_SA_INIT`): IKE peers negotiate parameters for the IKE Security Association (SA) and establish a shared secret for key derivation, and when relevant, signal support for post-quantum key exchange with [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/). When [downgrade protection](#improved-downgrade-protection-beta) is enabled, Cloudflare also sends an `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification during this exchange to signal support for full transcript authentication. After this exchange, the peers have a secure communication channel but they have not yet authenticated each other.
+- **Intermediate Exchange** ( `IKE_INTERMEDIATE`): If both peers support RFC 9370, they perform an additional key exchange using ML-KEM (Module-Lattice-based Key-Encapsulation Mechanism), a post-quantum key exchange specified in [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/). This creates a hybrid shared secret by combining a secret derived from classical Diffie-Hellman (established during the `IKE_SA_INIT`) with post-quantum ML-KEM to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks.
+- **Auth Exchange** ( `IKE_AUTH`): Using the keys established from both the `IKE_SA_INIT` and the `IKE_INTERMEDIATE` exchange, IKE peers mutually authenticate each other. After authentication, they establish the IKE security association (SA). Next, the peers negotiate and establish an IPsec tunnel, known as a Child SA.
+- **Rekeying**: Periodically, or through manual intervention, IKE SAs can be rekeyed to generate new SAs with fresh keys for the session. This rekey operation is performed for both the IKE SA (to refresh the control plane) and the Child SAs (to refresh the data plane). When a hybrid exchange is in use (RFC 9370), the rekey process for the IKE SA will once again perform the parallel classical (DH) and post-quantum (ML-KEM) exchanges to ensure continued quantum resistance.
 
 Note
 
@@ -117,83 +125,120 @@ IKE is one of the protocols that makes up IPsec. Cloudflare only operates as an 
 
 Choose from the following configuration parameters that Cloudflare WAN supports, based on what your appliance supports.
 
+<details>
+
+<summary>
+
 IKE SA (also known as Phase 1)
+
+</summary>
 
 Documentation sometimes refers to IKE SA as Phase 1 as per IKEv1 language.
 
-* **Encryption**
+- **Encryption**
+  - AES-GCM-16 with 128-bit or 256-bit key length
+  - AES-CBC with 256-bit key length
+- **Integrity** (sometimes referred to as Authentication)
+  - SHA2-256
+- **Key Exchange Method** (formerly Diffie-Hellman group): Cloudflare supports the following key exchange methods for the IKE SA. Note that <a href="https://datatracker.ietf.org/doc/rfc9370/">RFC 9370 ↗</a> renames "DH Group" to "Key Exchange Method" to accommodate non-DH algorithms.
+  - **Post-quantum hybrid (recommended)**: ML-KEM-768 as an additional Key Exchange to DH Group 20 (per RFC 9370 and <a href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/">draft-ietf-ipsecme-ikev2-mlkem ↗</a>)
+  - Post-quantum hybrid: ML-KEM-1024 as an additional Key Exchange to DH Group 20 (per RFC 9370 and <a href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/">draft-ietf-ipsecme-ikev2-mlkem ↗</a>)
+  - Classical DH group 20 (384-bit random ECP group)
+  - Classical DH group 14 (2048-bit MODP group)
+  - Classical DH group 5 (1536-bit MODP group)
 
-  * AES-GCM-16 with 128-bit or 256-bit key length
-  * AES-CBC with 256-bit key length
-* **Integrity** (sometimes referred to as Authentication)
+    Caution
 
-  * SHA2-256
-* **Key Exchange Method** (formerly Diffie-Hellman group): Cloudflare supports the following key exchange methods for the IKE SA. Note that [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) renames "DH Group" to "Key Exchange Method" to accommodate non-DH algorithms.
+    Cloudflare recommends the **ML-KEM-768 + DH Group 20** hybrid exchange for post-quantum key agreement. If your appliance does not yet support RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem, use DH group 20.
+- **Pseudorandom function (PRF)**
 
-  * **Post-quantum hybrid (recommended)**: ML-KEM-768 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))
-  * Post-quantum hybrid: ML-KEM-1024 as an additional Key Exchange to DH Group 20 (per RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/))
-  * Classical DH group 20 (384-bit random ECP group)
-  * Classical DH group 14 (2048-bit MODP group)
-  * Classical DH group 5 (1536-bit MODP group)
-  Caution
-  Cloudflare recommends the **ML-KEM-768 + DH Group 20** hybrid exchange for post-quantum key agreement. If your appliance does not yet support RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem, use DH group 20.
-* **Pseudorandom function (PRF)**
-Do not confuse this with Perfect Forward Secrecy (PFS). You often cannot configure PRF.
+  Do not confuse this with Perfect Forward Secrecy (PFS). You often cannot configure PRF.
+  - SHA2-256
+  - SHA2-384
+  - SHA2-512
 
-  * SHA2-256
-  * SHA2-384
-  * SHA2-512
+</details>
+
+<details>
+
+<summary>
 
 Child SA (also known as Phase 2 or IPsec SA)
 
+</summary>
+
 The Child SA. Documentation sometimes refers to this as Phase 2 as per IKEv1 language.
 
-* **Encryption**:
+- **Encryption**:
+  - AES-GCM-16 with 128-bit or 256-bit key length
+  - AES-CBC with 128-bit or 256-bit key length
+- **Integrity** (sometimes referred to as Authentication.)
+  - SHA2-256
+  - SHA-1
 
-  * AES-GCM-16 with 128-bit or 256-bit key length
-  * AES-CBC with 128-bit or 256-bit key length
-* **Integrity** (sometimes referred to as Authentication.)
-
-  * SHA2-256
-  * SHA-1
-Note
-When using AES-GCM-16, you do not need an integrity algorithm because AES GCM includes integrity checking (since it is an Authenticated Encryption with Associated Data (AEAD) algorithm). Even when using an AEAD algorithm, however, some routers still require you to select an integrity algorithm.
-* **Perfect Forward Secrecy (PFS) group**
-Documentation sometimes refers to this as Phase 2 Diffie-Hellman Group. Do not confuse this with PRF. Cloudflare supports the following Diffie-Hellman (DH) groups.
-
-  * DH group 20 (384-bit random ECP group)
-  * DH group 14 (2048-bit MODP group)
-  * DH group 5 (1536-bit MODP group)
-  Post-quantum security
-  If the Child SA uses DH groups for Perfect Forward Secrecy, it is still protected against quantum threats if the parent IKE SA was established using a hybrid ML-KEM exchange.
-  Caution
-  Cloudflare recommends that you use only one DH group when configuring your device, specifically **DH group 20**.
   Note
-  Cloudflare recommends configuring the Child SA rekey interval (SA lifetime) between 30 minutes and 8 hours.
+
+  When using AES-GCM-16, you do not need an integrity algorithm because AES GCM includes integrity checking (since it is an Authenticated Encryption with Associated Data (AEAD) algorithm). Even when using an AEAD algorithm, however, some routers still require you to select an integrity algorithm.
+- **Perfect Forward Secrecy (PFS) group**
+
+  Documentation sometimes refers to this as Phase 2 Diffie-Hellman Group. Do not confuse this with PRF. Cloudflare supports the following Diffie-Hellman (DH) groups.
+  - DH group 20 (384-bit random ECP group)
+  - DH group 14 (2048-bit MODP group)
+  - DH group 5 (1536-bit MODP group)
+
+    Post-quantum security
+
+    If the Child SA uses DH groups for Perfect Forward Secrecy, it is still protected against quantum threats if the parent IKE SA was established using a hybrid ML-KEM exchange.
+
+    Caution
+
+    Cloudflare recommends that you use only one DH group when configuring your device, specifically **DH group 20**.
+
+    Note
+
+    Cloudflare recommends configuring the Child SA rekey interval (SA lifetime) between 30 minutes and 8 hours.
+
+</details>
+
+<details>
+
+<summary>
 
 Required configuration parameters
 
-* The IKE version must be IKEv2.
-* The IKE authentication method must be Pre-Shared Key (PSK).
-* Cloudflare supports NAT traversal (NAT-T). Cloudflare also supports NAT-T starting on port `4500`.
-* (Uncommon) You must disable Extended Sequence Numbers (ESN).
-* If your tunnels need replay protection, enable Dead Peer Detection (DPD) in your router and select the option that restarts your IKE session when a DPD timeout occurs. This "restart" option ensures that the connection can recover in the event that a Cloudflare server goes offline. If your router does not offer this setting, check the router documentation for its dead peer detection behavior.
-* **Multiple Key Exchange ([RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/))**: To use post-quantum security, your router must support the `IKE_INTERMEDIATE` and `IKE_FOLLOWUP_KE` exchange as defined in RFC 9370 and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/). Because post-quantum public keys and ciphertexts (like ML-KEM-768) are larger than classical keys, you must enable IKEv2 fragmentation on your router to prevent packets from exceeding the 1,500-byte MTU. When configuring the first Additional Key Exchange, use the IANA-assigned Transform ID `36` for ML-KEM-768, or Transform ID `37` for ML-KEM-1024.
+</summary>
+
+- The IKE version must be IKEv2.
+- The IKE authentication method must be Pre-Shared Key (PSK).
+- Cloudflare supports NAT traversal (NAT-T). Cloudflare also supports NAT-T starting on port <code>4500</code>.
+- (Uncommon) You must disable Extended Sequence Numbers (ESN).
+- If your tunnels need replay protection, enable Dead Peer Detection (DPD) in your router and select the option that restarts your IKE session when a DPD timeout occurs. This "restart" option ensures that the connection can recover in the event that a Cloudflare server goes offline. If your router does not offer this setting, check the router documentation for its dead peer detection behavior.
+- **Multiple Key Exchange (<a href="https://datatracker.ietf.org/doc/rfc9370/">RFC 9370 ↗</a>)**: To use post-quantum security, your router must support the <code>IKE_INTERMEDIATE</code> and <code>IKE_FOLLOWUP_KE</code> exchange as defined in RFC 9370 and <a href="https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/">draft-ietf-ipsecme-ikev2-mlkem ↗</a>. Because post-quantum public keys and ciphertexts (like ML-KEM-768) are larger than classical keys, you must enable IKEv2 fragmentation on your router to prevent packets from exceeding the 1,500-byte MTU. When configuring the first Additional Key Exchange, use the IANA-assigned Transform ID <code>36</code> for ML-KEM-768, or Transform ID <code>37</code> for ML-KEM-1024.
+
+</details>
+
+<details>
+
+<summary>
 
 Optional configuration parameters
 
-* Disable [anti-replay protection](https://developers.cloudflare.com/cloudflare-wan/reference/anti-replay-protection/).
-* **`NULL` encryption for IPsec (not recommended):** Do not use this option unless necessary because it reduces security by leaving IPsec traffic unencrypted. You must explicitly opt in to use this option. Using this option also eliminates post-quantum protections.
+</summary>
+
+- Disable <a href="https://developers.cloudflare.com/cloudflare-wan/reference/anti-replay-protection/">anti-replay protection</a>.
+- **<code>NULL</code> encryption for IPsec (not recommended):** Do not use this option unless necessary because it reduces security by leaving IPsec traffic unencrypted. You must explicitly opt in to use this option. Using this option also eliminates post-quantum protections.
+
+</details>
 
 ### Tested third-party vendor interoperability
 
 The following third-party vendors have been tested and validated to interoperate with Cloudflare IPsec for post-quantum key agreement:
 
-| Vendor   | Product / Version                                           | ML-KEM variant | DH group | Notes                                                         |
-| -------- | ----------------------------------------------------------- | -------------- | -------- | ------------------------------------------------------------- |
-| Cisco    | Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 | ML-KEM-1024    | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
-| Fortinet | FortiOS 7.6.6+                                              | ML-KEM-768     | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
-| Fortinet | FortiOS 7.6.6+                                              | ML-KEM-1024    | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
+| Vendor | Product / Version | ML-KEM variant | DH group | Notes |
+| --- | --- | --- | --- | --- |
+| Cisco | Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 | ML-KEM-1024 | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
+| Fortinet | FortiOS 7.6.6+ | ML-KEM-768 | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
+| Fortinet | FortiOS 7.6.6+ | ML-KEM-1024 | Group 20 | Requires RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem support. |
 
 Cloudflare continues to test and validate additional third-party devices. If you have successfully configured post-quantum IPsec with a vendor not listed here, contact your account team.
 
@@ -201,20 +246,44 @@ Cloudflare continues to test and validate additional third-party devices. If you
 
 Cloudflare WAN supports the following IKE ID types for IPsec:
 
-Request for Comments (RFC) name `ID_RFC822_ADDR`
+<details>
 
-* **Format**: `ipsec@<TUNNEL_ID>.<ACCOUNT_ID>.ipsec.cloudflare.com`
-* **Example**: `ipsec@f5407d8db1a542b196c59f6d04ba8bd1.123456789.ipsec.cloudflare.com`
+<summary>
 
-RFC name `ID_FQDN`
+Request for Comments (RFC) name <code>ID_RFC822_ADDR</code>
 
-* **Format**: `<TUNNEL_ID>.<ACCOUNT_ID>.ipsec.cloudflare.com`
-* **Example**: `f5407d8db1a542b196c59f6d04ba8bd1.123456789.ipsec.cloudflare.com`
+</summary>
 
-RFC name `ID_KEY_ID`
+- **Format**: <code>ipsec@&lt;TUNNEL_ID&gt;.&lt;ACCOUNT_ID&gt;.ipsec.cloudflare.com</code>
+- **Example**: <code>ipsec@f5407d8db1a542b196c59f6d04ba8bd1.123456789.ipsec.cloudflare.com</code>
 
-* **Format**: `<ACCOUNT_ID>_<TUNNEL_ID>`
-* **Example**: `123456789_f5407d8db1a542b196c59f6d04ba8bd1`
+</details>
+
+<details>
+
+<summary>
+
+RFC name <code>ID_FQDN</code>
+
+</summary>
+
+- **Format**: <code>&lt;TUNNEL_ID&gt;.&lt;ACCOUNT_ID&gt;.ipsec.cloudflare.com</code>
+- **Example**: <code>f5407d8db1a542b196c59f6d04ba8bd1.123456789.ipsec.cloudflare.com</code>
+
+</details>
+
+<details>
+
+<summary>
+
+RFC name <code>ID_KEY_ID</code>
+
+</summary>
+
+- **Format**: <code>&lt;ACCOUNT_ID&gt;_&lt;TUNNEL_ID&gt;</code>
+- **Example**: <code>123456789_f5407d8db1a542b196c59f6d04ba8bd1</code>
+
+</details>
 
 Additionally, Cloudflare supports the IKE ID type of `ID_IPV4_ADDR` if the following two conditions are met:
 
@@ -231,9 +300,9 @@ Although Cloudflare supports both route-based and policy-based VPNs, we recommen
 
 If route-based VPNs are not an option and you must use policy-based VPNs, be aware of the following limitations:
 
-* Cloudflare only supports a single set of traffic selectors per Child SA.
-* A policy must cover reply-style health checks — that is, they must match traffic selectors — otherwise, Cloudflare drops them, just like any other traffic from an IPsec tunnel that does not match a policy.
-* A single IPsec tunnel can only contain around 100 Child SAs. Therefore, there is effectively a limit on the number of different policies per tunnel.
+- Cloudflare only supports a single set of traffic selectors per Child SA.
+- A policy must cover reply-style health checks — that is, they must match traffic selectors — otherwise, Cloudflare drops them, just like any other traffic from an IPsec tunnel that does not match a policy.
+- A single IPsec tunnel can only contain around 100 Child SAs. Therefore, there is effectively a limit on the number of different policies per tunnel.
 
 ### Improved downgrade protection (beta)
 
@@ -243,31 +312,31 @@ This feature is in beta. Contact your account team to turn on the `ipsec_downgra
 
 IKEv2's original authentication design has each endpoint sign only its own outbound messages, not the full handshake transcript. A quantum-capable [on-path attacker ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) can exploit this to create a "split view" of the handshake, tricking the endpoints into downgrading a post-quantum connection back to classical cryptography even when both sides support post-quantum key exchange.
 
-To address this, Cloudflare supports the [IKE\_SA\_INIT\_FULL\_TRANSCRIPT\_AUTH ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension. When enabled, both IKEv2 peers sign the entire handshake transcript during the authentication exchange, rather than only their own messages. This prevents an attacker from downgrading the connection without being detected.
+To address this, Cloudflare supports the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension. When enabled, both IKEv2 peers sign the entire handshake transcript during the authentication exchange, rather than only their own messages. This prevents an attacker from downgrading the connection without being detected.
 
 **How it works:**
 
-* When the feature flag is enabled, Cloudflare (acting as IKE responder) unconditionally includes an `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification in its `IKE_SA_INIT` response.
-* If the initiator also supports the extension, both sides use full transcript authentication, which improves protection again downgrade attacks.
-* If the initiator does not support the extension, the handshake proceeds with standard IKEv2 authentication. Both parties must support the extension for downgrade protection to be effective.
+- When the feature flag is enabled, Cloudflare (acting as IKE responder) unconditionally includes an `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification in its `IKE_SA_INIT` response.
+- If the initiator also supports the extension, both sides use full transcript authentication, which improves protection again downgrade attacks.
+- If the initiator does not support the extension, the handshake proceeds with standard IKEv2 authentication. Both parties must support the extension for downgrade protection to be effective.
 
 **Requirements:**
 
-* Your IKEv2 initiator must support the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification as defined in [draft-ietf-ipsecme-ikev2-downgrade-prevention ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/).
+- Your IKEv2 initiator must support the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification as defined in [draft-ietf-ipsecme-ikev2-downgrade-prevention ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/).
 
 ### Troubleshooting
 
 For help resolving tunnel issues:
 
-* [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) \- Diagnose and fix health check failures
-* [Troubleshoot with IPsec logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/) \- Use Logpush to analyze IPsec handshake issues
+- [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/) - Diagnose and fix health check failures
+- [Troubleshoot with IPsec logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/) - Use Logpush to analyze IPsec handshake issues
 
 ## Troubleshooting
 
 For help resolving tunnel issues:
 
-* [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/) \- Diagnose and fix health check failures
-* [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/) \- Use Logpush to analyze IPsec handshake issues
+- [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/) - Diagnose and fix health check failures
+- [Troubleshoot with IPsec logs](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/ipsec-troubleshoot/) - Use Logpush to analyze IPsec handshake issues
 
 Was this helpful?
 

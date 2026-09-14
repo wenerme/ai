@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client libraries
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/client-libraries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists open source libraries and tools you can use to connect to Privacy Proxy.
 
@@ -24,10 +24,10 @@ tokio-quiche powers Privacy Proxy infrastructure, including Proxy B for iCloud P
 
 ### Features
 
-* Async QUIC client and server
-* HTTP/3 support via `H3Driver`
-* MASQUE CONNECT and CONNECT-UDP support
-* Battle-tested at scale on Cloudflare's network
+- Async QUIC client and server
+- HTTP/3 support via `H3Driver`
+- MASQUE CONNECT and CONNECT-UDP support
+- Battle-tested at scale on Cloudflare's network
 
 ### Installation
 
@@ -40,9 +40,9 @@ tokio-quiche = "0.1"
 
 ### Resources
 
-* [GitHub repository ↗](https://github.com/cloudflare/quiche/tree/master/tokio-quiche)
-* [crates.io ↗](https://crates.io/crates/tokio-quiche)
-* [Blog post: Async QUIC and HTTP/3 made easy ↗](https://blog.cloudflare.com/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source/)
+- [GitHub repository ↗](https://github.com/cloudflare/quiche/tree/master/tokio-quiche)
+- [crates.io ↗](https://crates.io/crates/tokio-quiche)
+- [Blog post: Async QUIC and HTTP/3 made easy ↗](https://blog.cloudflare.com/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source/)
 
 ---
 
@@ -54,9 +54,9 @@ quiche is the foundation that tokio-quiche builds upon. Use quiche directly if y
 
 ### Resources
 
-* [GitHub repository ↗](https://github.com/cloudflare/quiche)
-* [Documentation ↗](https://docs.quic.tech/quiche/)
-* [crates.io ↗](https://crates.io/crates/quiche)
+- [GitHub repository ↗](https://github.com/cloudflare/quiche)
+- [Documentation ↗](https://docs.quic.tech/quiche/)
+- [crates.io ↗](https://crates.io/crates/quiche)
 
 ---
 
@@ -68,10 +68,10 @@ Chaussette is useful for integrating applications that support SOCKS5 but not HT
 
 ### Features
 
-* SOCKS5 to HTTP CONNECT conversion
-* Pre-shared key authentication
-* Geohash support for geolocation hints
-* Optional mTLS authentication
+- SOCKS5 to HTTP CONNECT conversion
+- Pre-shared key authentication
+- Geohash support for geolocation hints
+- Optional mTLS authentication
 
 ### Usage
 
@@ -86,7 +86,7 @@ Then configure your application to use `socks5://127.0.0.1:1987` as its proxy.
 
 ### Resources
 
-* [GitHub repository ↗](https://github.com/cloudflare/chaussette)
+- [GitHub repository ↗](https://github.com/cloudflare/chaussette)
 
 ---
 
@@ -111,9 +111,9 @@ curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/maste
 
 ### Features
 
-* Privacy Pass token issuance and redemption
-* Support for publicly verifiable and rate-limited token types
-* Compatible with browser and Node.js environments
+- Privacy Pass token issuance and redemption
+- Support for publicly verifiable and rate-limited token types
+- Compatible with browser and Node.js environments
 
 ### Installation
 
@@ -123,8 +123,8 @@ npm install @cloudflare/privacypass-ts
 
 ### Resources
 
-* [GitHub repository ↗](https://github.com/cloudflare/privacypass-ts)
-* [npm package ↗](https://www.npmjs.com/package/@cloudflare/privacypass-ts)
+- [GitHub repository ↗](https://github.com/cloudflare/privacypass-ts)
+- [npm package ↗](https://www.npmjs.com/package/@cloudflare/privacypass-ts)
 
 Was this helpful?
 

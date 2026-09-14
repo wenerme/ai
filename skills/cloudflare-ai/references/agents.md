@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build Agents on Cloudflare
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build and host Agents on Cloudflare, connect chat, voice, email, Slack, and webhooks to a durable agent runtime with Browser, Sandbox, AI Search, MCP, Payments, and other MCP tools.
 
@@ -20,13 +20,13 @@ When you host agents on Cloudflare, each agent session has a durable identity, l
 
 Deploy once and Cloudflare runs your agents across its global network, scaling to tens of millions of instances. No infrastructure to manage, no sessions to reconstruct, no state to externalize.
 
-[Chat](https://developers.cloudflare.com/agents/communication-channels/chat/)[Email](https://developers.cloudflare.com/agents/communication-channels/email/)[Voice](https://developers.cloudflare.com/agents/communication-channels/voice/)[Slack](https://developers.cloudflare.com/agents/communication-channels/slack/)[Webhook](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
+[Chat](https://developers.cloudflare.com/agents/communication-channels/chat/) [Email](https://developers.cloudflare.com/agents/communication-channels/email/) [Voice](https://developers.cloudflare.com/agents/communication-channels/voice/) [Slack](https://developers.cloudflare.com/agents/communication-channels/slack/) [Webhook](https://developers.cloudflare.com/agents/communication-channels/webhooks/)
 
 Agent harness
 
 Controls planning, tool use, and response flow.
 
-[Project Think](https://developers.cloudflare.com/agents/harnesses/think/)[Build-your-own agent](https://developers.cloudflare.com/agents/runtime/agents-api/)
+[Project Think](https://developers.cloudflare.com/agents/harnesses/think/) [Build-your-own agent](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
 Agents SDK runtime
 
@@ -34,18 +34,18 @@ Durable identity, state, connections, scheduling, and recovery.
 
 [Agent class](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
-[State](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)[Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)[Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)[WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)[Scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)[Fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
+[State](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/) [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/) [Scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) [Fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
 
-[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/)[MCP](https://developers.cloudflare.com/agents/tools/mcp/)[Browser](https://developers.cloudflare.com/agents/tools/browser/)[AI Search](https://developers.cloudflare.com/agents/tools/ai-search/)[Payments](https://developers.cloudflare.com/agents/tools/payments/)
+[Sandbox](https://developers.cloudflare.com/agents/tools/sandbox/) [MCP](https://developers.cloudflare.com/agents/tools/mcp/) [Browser](https://developers.cloudflare.com/agents/tools/browser/) [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/) [Payments](https://developers.cloudflare.com/agents/tools/payments/)
 
 [ObservabilityLogs · metrics · traces](https://developers.cloudflare.com/agents/runtime/operations/observability/)
 
 Agents on Cloudflare are composed from four parts:
 
-* **Communication channels** define how users and systems reach your agent, such as [chat](https://developers.cloudflare.com/agents/communication-channels/chat/), [voice](https://developers.cloudflare.com/agents/communication-channels/voice/), [email](https://developers.cloudflare.com/agents/communication-channels/email/), [Slack](https://developers.cloudflare.com/agents/communication-channels/slack/), [webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/), and other event sources.
-* **The agent harness** defines the loop: how the agent calls models, selects tools, handles tool results, streams responses, and decides whether to continue. Use [Project Think](https://developers.cloudflare.com/agents/harnesses/think/) for an opinionated harness, or build your own loop directly on the [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/).
-* **The Agents SDK runtime** provides durable infrastructure: the [Agent class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
-* **Tools** give the agent capabilities: [browser automation](https://developers.cloudflare.com/agents/tools/browser/), [sandboxed code execution](https://developers.cloudflare.com/agents/tools/sandbox/), [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/), [MCP tools](https://developers.cloudflare.com/agents/tools/mcp/), and [payments](https://developers.cloudflare.com/agents/tools/payments/). [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) lets models discover and orchestrate multiple tools by writing code.
+- **Communication channels** define how users and systems reach your agent, such as [chat](https://developers.cloudflare.com/agents/communication-channels/chat/), [voice](https://developers.cloudflare.com/agents/communication-channels/voice/), [email](https://developers.cloudflare.com/agents/communication-channels/email/), [Slack](https://developers.cloudflare.com/agents/communication-channels/slack/), [webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/), and other event sources.
+- **The agent harness** defines the loop: how the agent calls models, selects tools, handles tool results, streams responses, and decides whether to continue. Use [Project Think](https://developers.cloudflare.com/agents/harnesses/think/) for an opinionated harness, or build your own loop directly on the [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/).
+- **The Agents SDK runtime** provides durable infrastructure: the [`Agent` class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
+- **Tools** give the agent capabilities: [browser automation](https://developers.cloudflare.com/agents/tools/browser/), [sandboxed code execution](https://developers.cloudflare.com/agents/tools/sandbox/), [AI Search](https://developers.cloudflare.com/agents/tools/ai-search/), [MCP tools](https://developers.cloudflare.com/agents/tools/mcp/), and [payments](https://developers.cloudflare.com/agents/tools/payments/). [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) lets models discover and orchestrate multiple tools by writing code.
 
 ### Get started
 

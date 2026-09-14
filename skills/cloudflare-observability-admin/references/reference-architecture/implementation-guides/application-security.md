@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application Security
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/implementation-guides/application-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/implementation-guides/application-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Application security implementation guides walk you through the steps to secure your public applications, devices and APIs with Cloudflare.
 
 ## Application Security
 
-* [Use mTLS with Cloudflare protected resources](https://developers.cloudflare.com/learning-paths/mtls/concepts/)
+- [Use mTLS with Cloudflare protected resources](https://developers.cloudflare.com/learning-paths/mtls/concepts/)
 
 Was this helpful?
 

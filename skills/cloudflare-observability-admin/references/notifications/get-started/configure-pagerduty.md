@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure PagerDuty
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -30,8 +30,7 @@ According to PagerDuty, you will need an account with the following permissions 
 
 ## Connect PagerDuty to a Cloudflare account
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **Connect**.
 4. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) to connect it to your Cloudflare account.
@@ -48,11 +47,10 @@ Disconnecting PagerDuty will disable any notifications being sent to PagerDuty w
 
 If other delivery destinations were selected, then those notifications will still be routed as configured.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **View** on the PagerDuty service you want to disconnect.
-4. Select **Disconnect** \> **Confirm**.
+4. Select **Disconnect** > **Confirm**.
 5. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) and make the required changes.
 6. [Reconnect PagerDuty to Cloudflare](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
 

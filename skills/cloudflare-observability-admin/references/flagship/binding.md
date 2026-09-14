@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Binding API
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers access Flagship through a binding that you add to your Wrangler configuration file. The `binding` field sets the variable name you use in your Worker code.
 
@@ -61,8 +61,8 @@ export default {
 
 The binding has the type `Flagship` from the `@cloudflare/workers-types` package.
 
-* [Types](https://developers.cloudflare.com/flagship/binding/types/)
-* [Methods](https://developers.cloudflare.com/flagship/binding/methods/)
+- [Types](https://developers.cloudflare.com/flagship/binding/types/)
+- [Methods](https://developers.cloudflare.com/flagship/binding/methods/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a rule via API
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a Cache Response Rule via API. To configure the Cloudflare API, refer to the [API documentation](https://developers.cloudflare.com/fundamentals/api/get-started/).
 
@@ -20,23 +20,31 @@ Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets
 
 When creating a Cache Response Rule via API, make sure you:
 
-* Set the rule action to one of the [available actions](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/#available-actions).
-* Define the parameters in the `action_parameters` field according to the [settings](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/) you wish to configure for matching responses.
-* Deploy the rule to the `http_response_cache_settings` phase entry point ruleset.
+- Set the rule action to one of the [available actions](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/#available-actions).
+- Define the parameters in the `action_parameters` field according to the [settings](https://developers.cloudflare.com/cache/how-to/cache-response-rules/settings/) you wish to configure for matching responses.
+- Deploy the rule to the `http_response_cache_settings` phase entry point ruleset.
 
 ## Procedure
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method to check if a ruleset already exists for the `http_response_cache_settings` phase.
 2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:
-  * kind: `zone`
-  * phase: `http_response_cache_settings`
+   - kind: `zone`
+   - phase: `http_response_cache_settings`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add rules to the ruleset. Alternatively, include the rules in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 
 ## Example requests
 
 These examples demonstrate all the available actions in Cache Response Rules using request and response matching criteria. Using these examples directly will cause any existing rules in the phase to be replaced.
 
+<details>
+
+<summary>
+
 Example: Strip response headers from JS files before caching
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -58,7 +66,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Set static cache tags on API responses
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -82,7 +100,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Add cache tags from a response header using an expression
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -103,7 +131,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Override cache-control with max-age
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -127,7 +165,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Set private directive with qualifiers
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -156,7 +204,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Set immutable for static font assets
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -182,7 +240,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Multiple rules with strip headers, tag responses, and set cache control
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_response_cache_settings/entrypoint" \
@@ -230,13 +298,15 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
 ## Required API token permissions
 
 The API token used in API requests to manage Cache Response Rules must have the following permissions:
 
-* _Zone_ \> _Cache Rules_ \> _Edit_
-* _Account Rulesets_ \> _Edit_
-* _Account Filter Lists_ \> _Edit_
+- *Zone* > *Cache Rules* > *Edit*
+- *Account Rulesets* > *Edit*
+- *Account Filter Lists* > *Edit*
 
 Was this helpful?
 

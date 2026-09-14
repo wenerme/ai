@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Atlassian Confluence
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-confluence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/atlassian-confluence/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Atlassian Confluence integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Atlassian Confluence Cloud account that could leave you and your organization vulnerable.
 
@@ -22,20 +22,20 @@ At this time, the CASB integration for Confluence is only compatible with Conflu
 
 ## Integration prerequisites
 
-* A Confluence Cloud plan (Free, Standard, Premium, Enterprise)
-* Access to a Confluence Cloud account with Site admin and/or Organization admin permissions
+- A Confluence Cloud plan (Free, Standard, Premium, Enterprise)
+- Access to a Confluence Cloud account with Site admin and/or Organization admin permissions
 
 ## Integration permissions
 
 For the Confluence Cloud integration to function, Cloudflare CASB requires the following permissions via an OAuth 2.0 app:
 
-* `read:confluence-space.summary`
-* `read:confluence-props`
-* `read:confluence-content.all`
-* `read:confluence-content.summary`
-* `read:confluence-content.permission`
-* `read:confluence-user`
-* `read:confluence-groups`
+- `read:confluence-space.summary`
+- `read:confluence-props`
+- `read:confluence-content.all`
+- `read:confluence-content.summary`
+- `read:confluence-content.permission`
+- `read:confluence-user`
+- `read:confluence-groups`
 
 These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Atlassian scopes documentation ↗](https://developer.atlassian.com/cloud/confluence/scopes-for-oauth-2-3LO-and-forge-apps/).
 
@@ -49,14 +49,14 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 
 Flag user and third-party app access issues, including account misuse, sharing security, and users not following best practices.
 
-| Finding type                                                      | FindingTypeID                        | Severity |
-| ----------------------------------------------------------------- | ------------------------------------ | -------- |
-| Confluence: Unknown or anonymous user with edit access to content | d5ad6f5e-3e7a-4409-a9dc-9707caca047e | Critical |
-| Confluence: Unknown or anonymous user with edit access to space   | a531c40f-76f5-404e-9c9b-3b21a6da7b98 | High     |
-| Confluence: Third-party app with edit access to space             | aac0ac18-25ad-442a-9a24-01ecd85b0b2b | Medium   |
-| Confluence: Third-party app with edit access to content           | 8214431e-b708-49c9-b28b-3214f1b491d8 | Medium   |
-| Confluence: Unknown or anonymous user with access                 | a1d0d098-2602-4312-85a8-a62d3bc56aca | Low      |
-| Confluence: Third-party app with content access                   | 5ccf7326-386d-4afb-867a-fbf25978c33a | Low      |
+| Finding type | FindingTypeID | Severity |
+| --- | --- | --- |
+| Confluence: Unknown or anonymous user with edit access to content | `d5ad6f5e-3e7a-4409-a9dc-9707caca047e` | Critical |
+| Confluence: Unknown or anonymous user with edit access to space | `a531c40f-76f5-404e-9c9b-3b21a6da7b98` | High |
+| Confluence: Third-party app with edit access to space | `aac0ac18-25ad-442a-9a24-01ecd85b0b2b` | Medium |
+| Confluence: Third-party app with edit access to content | `8214431e-b708-49c9-b28b-3214f1b491d8` | Medium |
+| Confluence: Unknown or anonymous user with access | `a1d0d098-2602-4312-85a8-a62d3bc56aca` | Low |
+| Confluence: Third-party app with content access | `5ccf7326-386d-4afb-867a-fbf25978c33a` | Low |
 
 Was this helpful?
 

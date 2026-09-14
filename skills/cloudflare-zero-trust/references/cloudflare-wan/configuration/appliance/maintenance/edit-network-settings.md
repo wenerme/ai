@@ -12,16 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Edit network settings
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/edit-network-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/edit-network-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. Go to the **Appliances** tab > **Profiles**.
-2. Find the Appliance that you want to edit > select the three dots next to it > **Edit**.
-3. Go to **Network configuration** \> **WAN configuration** or **LAN configuration**.
-4. Find the WAN/LAN you want to edit > select the three dots next to it > **Edit**.
-5. Make the necessary changes.
-6. Select **Save**.
+
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+
+2. Go to the **Appliances** tab > **Profiles**.
+3. Find the Appliance that you want to edit > select the three dots next to it > **Edit**.
+4. Go to **Network configuration** > **WAN configuration** or **LAN configuration**.
+5. Find the WAN/LAN you want to edit > select the three dots next to it > **Edit**.
+6. Make the necessary changes.
+7. Select **Save**.
 
 Was this helpful?
 

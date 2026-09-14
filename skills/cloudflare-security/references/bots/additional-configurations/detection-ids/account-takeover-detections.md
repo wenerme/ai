@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account takeover detections
 
-Last updated Aug 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using the detection IDs below, you can detect and mitigate account takeover attacks. You can monitor the number of login requests for a given software and network combination, as well as the percentage of login errors. When it reaches a suspicious level, you can prevent these attacks by using [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), and [Workers](https://developers.cloudflare.com/workers/).
 
-| Detection ID | Description                                                                                                                                                                                                                                                                                                                                                                        |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 201326592    | Matches traffic that is making a suspicious amount of login failures to the zone.                                                                                                                                                                                                                                                                                                  |
-| 201326593    | Matches traffic that is making a suspicious amount of login attempts to the zone.                                                                                                                                                                                                                                                                                                  |
-| 201326598    | Sets a dynamic threshold based on the normal traffic that is unique to the zone. When the ID matches a login failure, Bot Management sets the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to 29 and uses [anomaly detection](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#anomaly-detection-enterprise) as its score source. |
+| Detection ID | Description |
+| --- | --- |
+| `201326592` | Matches traffic that is making a suspicious amount of login failures to the zone. |
+| `201326593` | Matches traffic that is making a suspicious amount of login attempts to the zone. |
+| `201326598` | Sets a dynamic threshold based on the normal traffic that is unique to the zone.<br><br> When the ID matches a login failure, Bot Management sets the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to 29 and uses [anomaly detection](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/#anomaly-detection-enterprise) as its score source. |
 
 Login endpoints
 
@@ -36,14 +36,14 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 
 To access account takeover detections:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Custom rule**.
 3. Fill out the form using **Bot Detection IDs** along with other necessary information.
 4. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
 
-```js
+*Rule examplejs*
 
+```js
 (any(cf.bot_management.detection_ids[*] eq 201326593))
 ```
 
@@ -53,8 +53,7 @@ Rate limiting rules can limit the number of logins from a particular IP, JA4 fin
 
 To use rate limiting rules with account takeover detections:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Rate limiting rule**.
 3. Fill out the form using the **Custom expression builder** and `cf.bot_management_detection_ids` along with other necessary information.
 4. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.

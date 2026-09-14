@@ -12,9 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data Loss Prevention
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/dlp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/dlp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dlp.xml)
+
+## 2026-09-14
+
+
+**Discover where sensitive data goes before you create a Data Loss Prevention policy**
+
+**Passive Detection** for [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) lets you learn from your Gateway traffic before deciding what to log or block. Discover the sensitive data types in sampled traffic, explore their destinations, and use the findings to build policies around your organization's needs.
+
+The dashboard brings together detections from sampled HTTP request and response bodies. Select an entry to follow its detections over time, review destinations, and check policy coverage. You do not need a Gateway DLP policy to get these insights, and existing Gateway policies continue to apply.
+
+![Passive Detection dashboard showing detection totals, data type distribution, policy coverage, and detection entries](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=593,format=webp/_astro/passive-detection.B_-_POtg.gif)
+
+Passive Detection is generally available. The detection entries available to your account depend on your [Zero Trust plan](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
+
+To get started, refer to the [Passive Detection documentation](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/).
 
 ## 2026-08-21
 
@@ -59,7 +74,7 @@ Custom topics run through the same [application granular controls](https://devel
 
 #### Create a custom AI prompt topic
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. Select **AI prompt topics**, then select **Custom Prompt Topic**.
 3. Describe the topic in natural language. Be specific about the concept you want to detect. For example, describe unreleased product roadmap details or confidential customer contract terms.
 4. Add this detection entry to an existing DLP profile, or [create a new DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/#build-a-custom-profile).
@@ -119,20 +134,20 @@ Most predefined and custom DLP profiles match when any enabled detection entry m
 
 Detection entries included in the profile:
 
-* AU Passport Number
-* American Express Card Number
-* Diners Club Card Number
-* US Driver's License Number
-* Email Address
-* Full Name
-* US Mailing Address
-* Mastercard Card Number
-* US Individual Tax Identification Number (ITIN)
-* US Passport Number
-* US Phone Number
-* Union Pay Card Number
-* United States SSN Numeric Detection
-* Visa Card Number
+- AU Passport Number
+- American Express Card Number
+- Diners Club Card Number
+- US Driver's License Number
+- Email Address
+- Full Name
+- US Mailing Address
+- Mastercard Card Number
+- US Individual Tax Identification Number (ITIN)
+- US Passport Number
+- US Phone Number
+- Union Pay Card Number
+- United States SSN Numeric Detection
+- Visa Card Number
 
 For more information, refer to [predefined DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/).
 
@@ -145,9 +160,9 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 Key changes:
 
-* **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
-* **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
-* **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
+- **Consistent enforcement**: Settings configured at the account level apply to all DLP profiles
+- **Simplified migration**: Settings enabled on any profile are automatically migrated to account level
+- **Deprecation notice**: Profile-level advanced settings will be deprecated in a future release
 
 **Migration details:**
 
@@ -164,11 +179,11 @@ For more details, refer to the [DLP settings documentation](https://developers.c
 
 The **Credentials and Secrets** DLP profile now includes three new predefined entries for detecting Cloudflare API credentials:
 
-| Entry name                         | Token prefix | Detects                   |
-| ---------------------------------- | ------------ | ------------------------- |
-| Cloudflare User API Key            | cfk\_        | User-scoped API keys      |
-| Cloudflare User API Token          | cfut\_       | User-scoped API tokens    |
-| Cloudflare Account Owned API Token | cfat\_       | Account-scoped API tokens |
+| Entry name | Token prefix | Detects |
+| --- | --- | --- |
+| Cloudflare User API Key | `cfk_` | User-scoped API keys |
+| Cloudflare User API Token | `cfut_` | User-scoped API tokens |
+| Cloudflare Account Owned API Token | `cfat_` | Account-scoped API tokens |
 
 These detections target the new [Cloudflare API credential format](https://developers.cloudflare.com/fundamentals/api/get-started/token-formats/), which uses a structured prefix and a CRC32 checksum suffix. The identifiable prefix makes it possible to detect leaked credentials with high confidence and low false positive rates — no surrounding context such as `Authorization: Bearer` headers is required.
 
@@ -176,16 +191,16 @@ Credentials generated before this format change will not be matched by these ent
 
 #### How to enable Cloudflare API token detections
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **DLP** \> **DLP Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **DLP** > **DLP Profiles**.
 2. Select the **Credentials and Secrets** profile.
 3. Turn on one or more of the new Cloudflare API token entries.
 4. Use the profile in a Gateway HTTP policy to log or block traffic containing these credentials.
 
 Example policy:
 
-| Selector    | Operator | Value                     | Action |
-| ----------- | -------- | ------------------------- | ------ |
-| DLP Profile | in       | _Credentials and Secrets_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| DLP Profile | in | *Credentials and Secrets* | Block |
 
 You can also enable individual entries to scope detection to specific credential types — for example, enabling **Account Owned API Token** detection without enabling **User API Key** detection.
 
@@ -198,13 +213,13 @@ For more information, refer to [predefined DLP profiles](https://developers.clou
 
 You can now configure how sensitive data matches are displayed in your DLP payload match logs — giving your incident response team the context they need to validate alerts without compromising your security posture.
 
-To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** \> **Data loss prevention** \> **DLP settings** and find the **Payload log masking** card.
+To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust** > **Data loss prevention** > **DLP settings** and find the **Payload log masking** card.
 
 Previously, all DLP payload logs used a single masking mode that obscured matched data entirely and hid the original character count, making it difficult to distinguish true positives from false positives. This update introduces three options:
 
-* **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
-* **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
-* **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
+- **Full Mask (default):** Masks the match while preserving character count and visual formatting (for example, `***-**-****` for a Social Security Number). This is an improvement over the previous default, which did not preserve character count.
+- **Partial Mask:** Reveals 25% of the matched content while masking the remainder (for example, `***-**-6789`).
+- **Clear Text:** Stores the full, unmasked violation for deep investigation (for example, `123-45-6789`).
 
 **Important:** The masking level you select is applied at detection time, before the payload is encrypted. This means the chosen format is what your team will see after decrypting the log with your private key — the existing encryption workflow is unchanged.
 
@@ -234,16 +249,16 @@ Gateway now includes a predefined DLP profile called **Unsanitized HAR** that de
 
 #### How to configure a HAR file policy
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall Policies** \> **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall Policies** > **HTTP** and create a new HTTP policy using the **DLP Profile** selector:
 
-| Selector    | Operator | Value             | Action |
-| ----------- | -------- | ----------------- | ------ |
-| DLP Profile | in       | _Unsanitized HAR_ |        |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| DLP Profile | in | *Unsanitized HAR* | |
 
 Then choose one of the following actions:
 
-* **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
-* **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
+- **Block**: Prevents the upload of any HAR file that has not been sanitized by Cloudflare's sanitizer. Use this for strict environments where HAR file sharing must be disallowed entirely.
+- **Block** with **Gateway Redirect**: Intercepts the upload and redirects the user to `https://har-sanitizer.pages.dev/`, where they can sanitize the file. Once sanitized, the user can re-upload the clean file and proceed with their workflow.
 
 #### Sanitized HAR recognition
 
@@ -264,19 +279,19 @@ You can now enhance your security posture by blocking additional application ins
 
 We have expanded Gateway's file type controls to include:
 
-* Apple Disk Image (dmg)
-* Microsoft Software Installer (msix, appx)
-* Apple Software Package (pkg)
+- Apple Disk Image (dmg)
+- Microsoft Software Installer (msix, appx)
+- Apple Software Package (pkg)
 
-You can find these new options within the [_Upload File Types_ and _Download File Types_ selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
+You can find these new options within the [*Upload File Types* and *Download File Types* selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) when creating or editing an HTTP policy. The file types are categorized as follows:
 
-* **System**: _Apple Disk Image (dmg)_
-* **Executable**: _Microsoft Software Installer (msix)_, _Microsoft Software Installer (appx)_, _Apple Software Package (pkg)_
+- **System**: *Apple Disk Image (dmg)*
+- **Executable**: *Microsoft Software Installer (msix)*, *Microsoft Software Installer (appx)*, *Apple Software Package (pkg)*
 
 To ensure these file types are blocked effectively, please note the following behaviors:
 
-* DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
-* MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type _Unscannable_. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
+- DMG: Due to their file structure, DMG files are blocked at the very end of the transfer. A user's download may appear to progress but will fail at the last moment, preventing the browser from saving the file.
+- MSIX: To comprehensively block Microsoft Software Installers, you should also include the file type *Unscannable*. MSIX files larger than 100 MB are identified as Unscannable ZIP files during inspection.
 
 To get started, go to your HTTP policies in Zero Trust. For a full list of file types, refer to [supported file types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#supported-file-types).
 
@@ -287,12 +302,12 @@ To get started, go to your HTTP policies in Zero Trust. For a full list of file 
 
 You can now more precisely control your HTTP DLP policies by specifying whether to scan the request or response body, helping to reduce false positives and target specific data flows.
 
-In the Gateway HTTP policy builder, you will find a new selector called _Body Phase_. This allows you to define the direction of traffic the DLP engine will inspect:
+In the Gateway HTTP policy builder, you will find a new selector called *Body Phase*. This allows you to define the direction of traffic the DLP engine will inspect:
 
-* _Request Body_: Scans data sent from a user's machine to an upstream service. This is ideal for monitoring data uploads, form submissions, or other user-initiated data exfiltration attempts.
-* _Response Body_: Scans data sent to a user's machine from an upstream service. Use this to inspect file downloads and website content for sensitive data.
+- *Request Body*: Scans data sent from a user's machine to an upstream service. This is ideal for monitoring data uploads, form submissions, or other user-initiated data exfiltration attempts.
+- *Response Body*: Scans data sent to a user's machine from an upstream service. Use this to inspect file downloads and website content for sensitive data.
 
-For example, consider a policy that blocks Social Security Numbers (SSNs). Previously, this policy might trigger when a user visits a website that contains example SSNs in its content (the response body). Now, by setting the **Body Phase** to _Request Body_, the policy will only trigger if the user attempts to upload or submit an SSN, ignoring the content of the web page itself.
+For example, consider a policy that blocks Social Security Numbers (SSNs). Previously, this policy might trigger when a user visits a website that contains example SSNs in its content (the response body). Now, by setting the **Body Phase** to *Request Body*, the policy will only trigger if the user attempts to upload or submit an SSN, ignoring the content of the web page itself.
 
 All policies without this selector will continue to scan both request and response bodies to ensure continued protection.
 
@@ -309,22 +324,23 @@ You now have access to a comprehensive suite of capabilities to secure your orga
 
 DLP can now natively detect and inspect user prompts submitted to popular AI applications, including **Google Gemini**, **ChatGPT**, **Claude**, and **Perplexity**.
 
-1. **Prompt Analysis and Topic Classification**
+2. **Prompt Analysis and Topic Classification**
 
 Our DLP engine performs deep analysis on each prompt, applying [topic classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics). These topics are grouped into two evaluation categories:
 
-* **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
-* **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
+- **Content:** PII, Source Code, Credentials and Secrets, Financial Information, and Customer Data.
+- **Intent:** Jailbreak attempts, requests for malicious code, or attempts to extract PII.
 
 To help you apply these topics quickly, we have also released five new predefined profiles (for example, AI Prompt: AI Security, AI Prompt: PII) that bundle these new topics.
 
 ![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=439,format=webp/_astro/ai-prompt-detection-entry.4QmdkAuv.png)
-1. **Granular Guardrails**
-You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.
-![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
-2. **Full Prompt Logging**
-To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.
-![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
+
+3. **Granular Guardrails**
+
+   You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
+4. **Full Prompt Logging**
+
+   To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
 
 AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
 
@@ -339,13 +355,12 @@ You can now create [document-based](https://developers.cloudflare.com/cloudflare
 
 **Key features and benefits:**
 
-* **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
-* **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
-* **Comprehensive coverage:** Apply these document-based detection entries in:
-
-  * **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.
-  * **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
-* **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
+- **Upload documents, forms, or templates:** Easily upload .docx and .txt files (up to 10 MB) that contain sensitive information you want to protect.
+- **Granular control with similarity percentage:** Define a minimum similarity percentage (0-100%) that a document must meet to trigger a detection, reducing false positives.
+- **Comprehensive coverage:** Apply these document-based detection entries in:
+  - **Gateway policies:** To inspect network traffic for sensitive documents as they are uploaded or shared.
+  - **CASB (Cloud Access Security Broker):** To scan files stored in cloud applications for sensitive documents at rest.
+- **Identify sensitive data:** This new detection entry type is ideal for identifying sensitive data within completed forms, templates, or even small snippets of a larger document, helping you prevent data exfiltration and ensure compliance.
 
 Once uploaded and processed, you can add this new document entry into a DLP profile and policies to enhance your data protection strategy.
 
@@ -358,16 +373,14 @@ Zero Trust now includes **Data security analytics**, providing you with unpreced
 
 The new dashboard includes:
 
-* **Sensitive Data Movement Over Time:**
+- **Sensitive Data Movement Over Time:**
+  - See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
+- **Sensitive Data at Rest in SaaS & Cloud:**
+  - View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
+- **DLP Policy Activity:**
+  - Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
+  - See which specific users are responsible for triggering DLP policies.
 
-  * See patterns and trends in how sensitive data moves across your environment. This helps understand where data is flowing and identify common paths.
-* **Sensitive Data at Rest in SaaS & Cloud:**
-
-  * View an inventory of sensitive data stored within your corporate SaaS applications (for example, Google Drive, Microsoft 365) and cloud accounts (such as AWS S3).
-* **DLP Policy Activity:**
-
-  * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
-  * See which specific users are responsible for triggering DLP policies.
 ![Data Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3254,height=1580,format=webp/_astro/cf1-data-security-analytics-v1.BGl6fYXl.png)
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
@@ -410,10 +423,10 @@ Gateway HTTP policies can now block files that are password-protected, compresse
 
 These unscannable files are now matched with the [Download and Upload File Types traffic selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#download-and-upload-file-types) for HTTP policies:
 
-* Password-protected Microsoft Office document
-* Password-protected PDF
-* Password-protected ZIP archive
-* Unscannable ZIP archive
+- Password-protected Microsoft Office document
+- Password-protected PDF
+- Password-protected ZIP archive
+- Unscannable ZIP archive
 
 To get started inspecting and modifying behavior based on these and other rules, refer to [HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
 
@@ -426,18 +439,18 @@ You can now detect source code leaks with Data Loss Prevention (DLP) with predef
 
 The following programming languages are validated with natural language processing (NLP).
 
-* C
-* C++
-* C#
-* Go
-* Haskell
-* Java
-* JavaScript
-* Lua
-* Python
-* R
-* Rust
-* Swift
+- C
+- C++
+- C#
+- Go
+- Haskell
+- Java
+- JavaScript
+- Lua
+- Python
+- R
+- Rust
+- Swift
 
 DLP also supports confidence level for [source code profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
 

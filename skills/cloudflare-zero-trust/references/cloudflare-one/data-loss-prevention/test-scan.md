@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Test scan
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/test-scan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -32,19 +32,18 @@ Content goes directly to the DLP scanner. Gateway policies are not evaluated, no
 
 Use this tool to:
 
-* Check whether a new or updated [detection entry](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) matches the content you expect.
-* Compare sample content against one or more [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) before using them in production.
-* Investigate false positives and missed detections by reviewing confidence levels, match context, and proximity keywords.
-* Confirm how DLP identifies a file and review its antivirus and OCR results.
+- Check whether a new or updated [detection entry](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) matches the content you expect.
+- Compare sample content against one or more [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) before using them in production.
+- Investigate false positives and missed detections by reviewing confidence levels, match context, and proximity keywords.
+- Confirm how DLP identifies a file and review its antivirus and OCR results.
 
 ## Run a test scan
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Test scan**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Test scan**.
 2. Under **Input method**, select the type of content you want to test:
-
-  * **Text**: Enter or paste content into **Content to scan**.
-  * **File**: Select or drag a file into the upload area. Files can be up to 10 MB. To test several files at once, upload a `.zip` archive. Each file inside the archive is scanned and reported separately.
-  * **HAR**: Select or drag a `.har` file into the upload area. Up to 50 bodies are scanned per file. Request and response bodies count toward the same limit.
+   - **Text**: Enter or paste content into **Content to scan**.
+   - **File**: Select or drag a file into the upload area. Files can be up to 10 MB. To test several files at once, upload a `.zip` archive. Each file inside the archive is scanned and reported separately.
+   - **HAR**: Select or drag a `.har` file into the upload area. Up to 50 bodies are scanned per file. Request and response bodies count toward the same limit.
 3. Choose which profiles to test. Turn on **Scan against all profiles**, or select one or more profiles from the list.
 4. Select **Scan**.
 
@@ -52,15 +51,15 @@ Use this tool to:
 
 Depending on the input and scan result, the results can include the following sections:
 
-| Section               | What it shows                                                                                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Summary**           | The number of profiles matched and files scanned, and the overall antivirus status.                                                                  |
-| **File metadata**     | The detected file name, size, MIME type, extension, and file categories.                                                                             |
+| Section | What it shows |
+| --- | --- |
+| **Summary** | The number of profiles matched and files scanned, and the overall antivirus status. |
+| **File metadata** | The detected file name, size, MIME type, extension, and file categories. |
 | **Antivirus results** | Whether each file is clean, suspicious, infected, or was not scanned, along with its SHA-256 hash. Infected files include available malware details. |
-| **OCR results**       | The text that OCR extracted from each image.                                                                                                         |
-| **Profile matches**   | The profiles, detection entries, data classes, data tags, and sensitivity levels that matched.                                                       |
-| **Match contexts**    | The matched content, confidence level, and proximity keywords that increased or decreased confidence.                                                |
-| **JSON**              | The complete scanner response, which you can download for further analysis.                                                                          |
+| **OCR results** | The text that OCR extracted from each image. |
+| **Profile matches** | The profiles, detection entries, data classes, data tags, and sensitivity levels that matched. |
+| **Match contexts** | The matched content, confidence level, and proximity keywords that increased or decreased confidence. |
+| **JSON** | The complete scanner response, which you can download for further analysis. |
 
 To save the complete response as `dlp-scan-results.json`, open **JSON** and select **Download**. The file can contain sample payloads and match context. Store and share it as sensitive data.
 
@@ -105,9 +104,9 @@ For file uploads, confirm that the file is 10 MB or smaller. For HAR files, conf
 
 ## Limitations
 
-* **AI prompt profiles are not supported.**
-* Changes to your DLP configuration can take up to two minutes to take effect in a test scan. After you update a profile, detection entry, or data class, wait before testing.
-* Profile detection is validated, but Gateway policy conditions and actions are not. To verify that a complete policy allows, blocks, or logs traffic as expected, [test the DLP policy with Gateway traffic](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#3-test-dlp-policy).
+- **AI prompt profiles are not supported.**
+- Changes to your DLP configuration can take up to two minutes to take effect in a test scan. After you update a profile, detection entry, or data class, wait before testing.
+- Profile detection is validated, but Gateway policy conditions and actions are not. To verify that a complete policy allows, blocks, or logs traffic as expected, [test the DLP policy with Gateway traffic](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/#3-test-dlp-policy).
 
 Note
 

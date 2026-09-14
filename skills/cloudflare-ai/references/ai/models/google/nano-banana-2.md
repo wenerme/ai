@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/nano-banana-2`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's second-generation image generation model with improved quality and speed.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                       |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                 |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2) |
 
 ## Usage
 
@@ -75,7 +75,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Abstract Art** — Modern abstract expressionist painting
+<details>
+
+<summary>**Abstract Art** — Modern abstract expressionist painting</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +122,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Google Search** — Use web search grounding for current events
+</details>
+
+<details>
+
+<summary>**With Google Search** — Use web search grounding for current events</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -160,7 +170,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Resolution Portrait** — 4K portrait with specific aspect ratio
+</details>
+
+<details>
+
+<summary>**High Resolution Portrait** — 4K portrait with specific aspect ratio</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -205,13 +221,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`required
 
-▶image\_input\[\]
+▶image\_input\[]
 
 `array`maxItems: 3
 
@@ -241,9 +259,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana-2/schema-output.json)
 
 Was this helpful?
 

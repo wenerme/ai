@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Maximum DNS TTL
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps the TTL to the value you specify. Lower values ensure that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients, at the cost of increased query volume from reduced caching.
 
@@ -32,7 +32,7 @@ The valid range for any maximum TTL value is **60 to 36,000 seconds** (1 minute 
 
 The account-level setting applies to all DNS locations that do not have a per-location override.
 
-1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Traffic Policies** \> **Traffic Settings**.
+1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Traffic Policies** > **Traffic Settings**.
 2. Under **Proxy and inspection**, find the **Configure time-to-live for DNS resolution** section.
 3. Enter a value in seconds (between 60 and 36,000).
 4. Select **Save**.
@@ -55,19 +55,19 @@ To remove the account-level cap (allow upstream TTLs to pass through), omit the 
 
 Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can override the account-level setting. The per-location setting supports three modes:
 
-| Mode                                        | Behavior                                                                                                                                    |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Respect account-level setting** (inherit) | Uses whatever value is configured at the account level. This is the default for new locations.                                              |
-| **Do not set max value** (disabled)         | Disables the maximum TTL cap for this location, even if one is configured at the account level. Upstream TTL values pass through unchanged. |
-| **Custom** (override)                       | Sets a location-specific maximum TTL that overrides the account-level value. Requires a ttl\_secs value between 60 and 36,000.              |
+| Mode | Behavior |
+| --- | --- |
+| **Respect account-level setting** (`inherit`) | Uses whatever value is configured at the account level. This is the default for new locations. |
+| **Do not set max value** (`disabled`) | Disables the maximum TTL cap for this location, even if one is configured at the account level. Upstream TTL values pass through unchanged. |
+| **Custom** (`override`) | Sets a location-specific maximum TTL that overrides the account-level value. Requires a `ttl_secs` value between 60 and 36,000. |
 
-1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Networks** \> **Resolvers & Proxies** \> **DNS locations**.
+1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Networks** > **Resolvers & Proxies** > **DNS locations**.
 2. Select a location, or create a new one.
 3. In the **DNS Endpoints** tab, find the **Configure time-to-live for this location** section.
 4. Choose one of:
-  * **Respect account-level setting** \- inherits the account-level TTL cap.
-  * **Do not set max value** \- disables the TTL cap for this location.
-  * **Custom** \- enter a TTL value in seconds.
+   - **Respect account-level setting** - inherits the account-level TTL cap.
+   - **Do not set max value** - disables the TTL cap for this location.
+   - **Custom** - enter a TTL value in seconds.
 5. Select **Save**.
 
 ```sh
@@ -114,10 +114,10 @@ curl --request PUT \
 
 When a maximum TTL is active, two additional fields appear in Gateway DNS logs:
 
-| Field                  | Description                                                                                              |
-| ---------------------- | -------------------------------------------------------------------------------------------------------- |
-| upstream\_record\_ttls | The original TTL values from the upstream DNS response, before any cap was applied.                      |
-| applied\_max\_ttl      | The maximum TTL value that Gateway applied to the response. If no cap was applied, this field is absent. |
+| Field | Description |
+| --- | --- |
+| `upstream_record_ttls` | The original TTL values from the upstream DNS response, before any cap was applied. |
+| `applied_max_ttl` | The maximum TTL value that Gateway applied to the response. If no cap was applied, this field is absent. |
 
 These fields are visible in the DNS logs column picker under the **DNS Response Details** group in the dashboard, and in Logpush datasets.
 

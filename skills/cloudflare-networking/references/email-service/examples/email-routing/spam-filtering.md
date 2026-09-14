@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Implement intelligent spam detection with keyword analysis, domain reputation, and machine learning techniques
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build spam filtering systems with keyword matching, domain validation, and intelligent detection methods for effective email security.
 
@@ -166,9 +166,9 @@ For more sophisticated spam detection, you can enhance the basic filter using [W
 
 ## Next steps
 
-* [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for `setReject()` and `forward()` actions used here.
-* [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect bounce notifications that often originate from spam infrastructure.
-* [Email storage and processing](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/) — log filtered emails to KV for later review.
+- [Email handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — reference for `setReject()` and `forward()` actions used here.
+- [Hard bounce handling](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/) — detect bounce notifications that often originate from spam infrastructure.
+- [Email storage and processing](https://developers.cloudflare.com/email-service/examples/email-routing/email-storage/) — log filtered emails to KV for later review.
 
 Was this helpful?
 

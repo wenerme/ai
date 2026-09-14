@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enforce MFA
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
-* **[Identity provider-based MFA](#identity-provider-based-mfa)** — Require specific MFA methods reported by your identity provider (IdP).
-* **[Independent MFA](#independent-mfa)** — Prompt users for a second factor directly in Access, without relying on a third-party identity provider.
+- **[Identity provider-based MFA](#identity-provider-based-mfa)** — Require specific MFA methods reported by your identity provider (IdP).
+- **[Independent MFA](#independent-mfa)** — Prompt users for a second factor directly in Access, without relying on a third-party identity provider.
 
 For SSH connections to [infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), Access also supports [independent MFA with PIV and FIDO2 keys](#infrastructure-applications).
 
@@ -27,24 +27,26 @@ You can require that users log in with specific MFA methods provided by their id
 
 IdP-based MFA enforcement is only available with the following identity providers:
 
-* [Okta](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/)
-* [Microsoft Entra ID (formerly Azure AD)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/)
-* [Generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/)
-* [Generic SAML 2.0](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/)
+- [Okta](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/)
+- [Microsoft Entra ID (formerly Azure AD)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/)
+- [Generic OIDC](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/)
+- [Generic SAML 2.0](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/)
 
 To enforce an IdP MFA requirement on an application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the application for which you want to enforce MFA and select **Configure**. Alternatively, [create a new application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
 3. Go to **Policies**.
 4. If your application already has a policy containing an identity requirement, find it and select **Configure**.
-Note
-The policy should contain an Include rule that uses identity-based selectors. For example, the Include rule could allow users who are part of a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/), email domain, or identity provider group.
+
+   Note
+
+   The policy should contain an Include rule that uses identity-based selectors. For example, the Include rule could allow users who are part of a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/), email domain, or identity provider group.
 5. Add the following rule to the policy:
 
-| Rule type | Selector              | Value                                |
-| --------- | --------------------- | ------------------------------------ |
-| Require   | Authentication method | mfa - multiple-factor authentication |
+   | Rule type | Selector | Value |
+   | --- | --- | --- |
+   | Require | Authentication method | `mfa - multiple-factor authentication` |
 6. Save the policy.
 
 Important
@@ -53,7 +55,9 @@ If the user fails to present the required MFA method, Cloudflare Access rejects 
 
 ### Authentication methods in the JWT
 
-When users authenticate with their identity provider, the IdP shares their username with Cloudflare Access. Access writes that value into the JSON Web Token (JWT) generated for the user.
+When users authenticate with their identity provider, the IdP shares their username with Cloudflare Access. Access writes that value into the JSON Web Token (JWT)
+
+ generated for the user.
 
 Certain identity providers also share the MFA method presented by the user. Access can add these values into the JWT. For example, if the user authenticated with their password and a security key, the IdP can send a confirmation to Cloudflare Access. Access then stores that method in the JWT issued to the user.
 
@@ -65,13 +69,13 @@ Independent MFA prompts users for a second factor directly in Access. This allow
 
 You can configure MFA requirements at three levels:
 
-| Level                                                                                                             | Description                                                    |
-| ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Organization](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) | Enforce MFA by default for all applications in your account.   |
-| [Application](#configure-independent-mfa-for-an-application)                                                      | Require or turn off MFA for a specific application.            |
-| [Policy](#configure-independent-mfa-for-a-policy)                                                                 | Require or turn off MFA for users who match a specific policy. |
+| Level | Description |
+| --- | --- |
+| [Organization](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) | Enforce MFA by default for all applications in your account. |
+| [Application](#configure-independent-mfa-for-an-application) | Require or turn off MFA for a specific application. |
+| [Policy](#configure-independent-mfa-for-a-policy) | Require or turn off MFA for users who match a specific policy. |
 
-MFA settings use this precedence: **Policy** \> **Application** \> **Organization**.
+MFA settings use this precedence: **Policy** > **Application** > **Organization**.
 
 ### Prerequisites
 
@@ -79,27 +83,27 @@ Before you configure independent MFA on applications or policies, you must [turn
 
 Tip
 
-At the organization level, you can also [restrict which authenticators can be enrolled using AAGUIDs](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) and \[skip independent MFA when the identity provider already performed MFA\](/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa.
+At the organization level, you can also [restrict which authenticators can be enrolled using AAGUIDs](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) and \[skip independent MFA when the identity provider already performed MFA](/cloudflare-one/access-controls/access-settings/independent-mfa/#use-identity-provider-mfa.
 
 ### Configure independent MFA for an application
 
 Each application has three MFA options:
 
-| Option                                 | Behavior                                                                                                                                                                                                                                                                                |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Option | Behavior |
+| --- | --- |
 | **Respect global enforcement setting** | Uses the [organization-level](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) MFA configuration. If MFA is required globally, users must complete MFA. If MFA is not required globally, users are not prompted. This is the default. |
-| **Custom MFA settings**                | Overrides the organization setting with application-specific allowed authenticators and session duration.                                                                                                                                                                               |
-| **Disable MFA**                        | Users are not prompted for independent MFA when accessing this application, even if MFA is required globally.                                                                                                                                                                           |
+| **Custom MFA settings** | Overrides the organization setting with application-specific allowed authenticators and session duration. |
+| **Disable MFA** | Users are not prompted for independent MFA when accessing this application, even if MFA is required globally. |
 
 To configure MFA for an application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the application you want to configure and select **Configure**.
 3. Scroll down to **Authentication** and select the **MFA**.tab.
 4. Select one of the following options:
-  * To inherit the organization setting, select **Respect global enforcement setting**.
-  * To set custom requirements, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
-  * To exempt the application from MFA, select **Disable MFA**.
+   - To inherit the organization setting, select **Respect global enforcement setting**.
+   - To set custom requirements, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
+   - To exempt the application from MFA, select **Disable MFA**.
 5. Select **Save**.
 
 To configure MFA for an infrastructure application, refer to [Infrastructure applications](#infrastructure-applications).
@@ -108,12 +112,12 @@ To configure MFA for an infrastructure application, refer to [Infrastructure app
 
 Each policy has the same three MFA options described in [Configure independent MFA for an application](#configure-independent-mfa-for-an-application). Policy-level settings override application-level settings.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Choose an **Allow** policy and select **Configure**.
 3. Under **Multi-factor authentication (MFA)**, select an option:
-  * To inherit the application or organization setting, select **Respect global enforcement setting**.
-  * To set custom requirements for users who match this policy, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
-  * To exempt users who match this policy from MFA, select **Disable MFA**.
+   - To inherit the application or organization setting, select **Respect global enforcement setting**.
+   - To set custom requirements for users who match this policy, select **Custom MFA settings**, then configure the [allowed MFA methods](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#supported-mfa-methods) and [authentication duration](#mfa-session-duration).
+   - To exempt users who match this policy from MFA, select **Disable MFA**.
 4. Select **Save**.
 
 To configure MFA for an infrastructure application policy, refer to [Infrastructure applications](#infrastructure-applications).
@@ -132,9 +136,9 @@ Access checks MFA sessions from most specific to least specific:
 
 To require MFA every time a user logs in to an application, set the authentication duration to **Require every login**. This prevents Access from caching a successful MFA session.
 
-* **Organization** — Go to **Zero Trust** \> **Access controls** \> **Access settings** \> **Allow multi-factor authentication (MFA)**. Set **Authentication duration** to **Require every login**. This applies to all applications unless overridden at the application or policy level. For more details, refer to [independent MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
-* **Application** — Go to **Zero Trust** \> **Access controls** \> **Applications** \> select your application > **Configure** \> **Authentication** \> **MFA** tab. Select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
-* **Policy** — Go to **Zero Trust** \> **Access controls** \> **Policies** \> select your policy > **Configure**. Under **Multi-factor authentication (MFA)**, select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+- **Organization** — Go to **Zero Trust** > **Access controls** > **Access settings** > **Allow multi-factor authentication (MFA)**. Set **Authentication duration** to **Require every login**. This applies to all applications unless overridden at the application or policy level. For more details, refer to [independent MFA settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/).
+- **Application** — Go to **Zero Trust** > **Access controls** > **Applications** > select your application > **Configure** > **Authentication** > **MFA** tab. Select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
+- **Policy** — Go to **Zero Trust** > **Access controls** > **Policies** > select your policy > **Configure**. Under **Multi-factor authentication (MFA)**, select **Custom MFA settings** and set **Authentication duration** to **Require every login**.
 
 To configure this for an application via the API, first send a `GET` request to retrieve the full application configuration, then send a `PUT` request with the complete application body including the updated `mfa_config`. Set `session_duration` to `"0m"`:
 
@@ -155,6 +159,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 
 Consider the following configuration:
 
+```
 flowchart TD
     subgraph org["Organization"]
         orgSettings["**Apply global MFA settings by default**, <br/>**MFA methods**: Authenticator app + Security key, <br/>**Authentication duration**: 24 hours"]
@@ -177,12 +182,14 @@ flowchart TD
     appASettings -.->|"overridden by"| policy1
     appASettings -.->|"overridden by"| policy2
 
+```
+
 In this example:
 
-* Users who access Application A and match Policy 1 must use a security key and re-authenticate every hour.
-* Users who access Application A and match Policy 2 are not prompted for MFA.
-* Users who access Application A and match neither policy must use an authenticator application or a security key, with a 24-hour session.
-* Users who access Application B are not prompted for MFA.
+- Users who access Application A and match Policy 1 must use a security key and re-authenticate every hour.
+- Users who access Application A and match Policy 2 are not prompted for MFA.
+- Users who access Application A and match neither policy must use an authenticator application or a security key, with a 24-hour session.
+- Users who access Application B are not prompted for MFA.
 
 ## Infrastructure applications
 
@@ -202,20 +209,34 @@ Non-infrastructure applications: If PIV and FIDO2 keys are the only allowed MFA 
 
 Infrastructure applications: If MFA is globally required but your global settings do not include the infrastructure authenticator you want to use, users cannot access infrastructure applications that require MFA. To fix this, add the authenticator to your global MFA settings, or disable MFA for the specific application or policy.
 
+<details>
+
+<summary>
+
 Dashboard
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+</summary>
+
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Find your infrastructure application and select **Configure**.
 3. Go to the **Authentication** tab and select **MFA**.
 4. Select one of the following options:
-  * **Respect global enforcement setting** — Uses the [organization-level](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) MFA configuration. This is the default.
-  * **Custom MFA settings** — Override the global setting for this application. Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators, then set a custom MFA session duration.
-  * **Disable MFA** — Users are not prompted for MFA when accessing this application.
+   - **Respect global enforcement setting** — Uses the <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/">organization-level</a> MFA configuration. This is the default.
+   - **Custom MFA settings** — Override the global setting for this application. Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators, then set a custom MFA session duration.
+   - **Disable MFA** — Users are not prompted for MFA when accessing this application.
 5. Select **Save**.
+
+</details>
+
+<details>
+
+<summary>
 
 API
 
-To update MFA settings for an infrastructure application, first send a `GET` request to retrieve the full application configuration, then send a `PUT` request with the complete application body including the `mfa_config` object. The `PUT` request must contain all fields returned by the `GET` to avoid overwriting existing settings.
+</summary>
+
+To update MFA settings for an infrastructure application, first send a <code>GET</code> request to retrieve the full application configuration, then send a <code>PUT</code> request with the complete application body including the <code>mfa_config</code> object. The <code>PUT</code> request must contain all fields returned by the <code>GET</code> to avoid overwriting existing settings.
 
 ```bash
 curl --request PUT \
@@ -231,30 +252,46 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 }'
 ```
 
-| Field                   | Type    | Description                                                                                                                           |
-| ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| mfa\_disabled           | Boolean | If true, MFA is not required for this application, even if global settings enforce MFA.                                               |
-| session\_duration       | String  | Duration before the user must re-authenticate with MFA (for example, 30m, 1h, 24h). Set to 0m to require MFA on every SSH connection. |
-| allowed\_authenticators | Array   | Use \["piv\_key"\], \["ssh\_fido2\_key"\], or \["piv\_key", "ssh\_fido2\_key"\].                                                      |
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>mfa_disabled</code> | Boolean | If <code>true</code>, MFA is not required for this application, even if global settings enforce MFA. |
+| <code>session_duration</code> | String | Duration before the user must re-authenticate with MFA (for example, <code>30m</code>, <code>1h</code>, <code>24h</code>). Set to <code>0m</code> to require MFA on every SSH connection. |
+| <code>allowed_authenticators</code> | Array | Use <code>["piv_key"]</code>, <code>["ssh_fido2_key"]</code>, or <code>["piv_key", "ssh_fido2_key"]</code>. |
+
+</details>
 
 ### Configure MFA for an infrastructure policy
 
 You can set different MFA requirements for different SSH usernames by configuring MFA at the policy level. Policy-level MFA settings override application-level settings.
 
+<details>
+
+<summary>
+
 Dashboard
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+</summary>
+
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Find your infrastructure application and select **Configure**.
 3. Go to **Policies** and select the policy you want to configure.
 4. Under **Multi-factor authentication (MFA)**, select an option:
-  * **Respect global enforcement setting** — Inherits the application or organization setting.
-  * **Custom MFA settings** — Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators and set a custom MFA session duration for users who match this policy.
-  * **Disable MFA** — Users who match this policy are not prompted for MFA.
+   - **Respect global enforcement setting** — Inherits the application or organization setting.
+   - **Custom MFA settings** — Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators and set a custom MFA session duration for users who match this policy.
+   - **Disable MFA** — Users who match this policy are not prompted for MFA.
 5. Select **Save**.
+
+</details>
+
+<details>
+
+<summary>
 
 API
 
-To update MFA settings for a policy, first send a `GET` request to retrieve the full policy configuration, then send a `PUT` request with the complete policy body including the `mfa_config` object. The `mfa_config` object uses the same fields as the [application-level configuration](#configure-mfa-for-an-infrastructure-application).
+</summary>
+
+To update MFA settings for a policy, first send a <code>GET</code> request to retrieve the full policy configuration, then send a <code>PUT</code> request with the complete policy body including the <code>mfa_config</code> object. The <code>mfa_config</code> object uses the same fields as the <a href="#configure-mfa-for-an-infrastructure-application">application-level configuration</a>.
 
 ```bash
 curl --request PUT \
@@ -285,6 +322,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/policies/{poli
 }'
 ```
 
+</details>
+
 ### MFA session duration for SSH
 
 The MFA session duration determines how long users can open new SSH connections without another MFA prompt. Set the duration to `0m` to require MFA for every new connection. Expiration does not terminate an active connection.
@@ -301,14 +340,14 @@ When a user matches multiple policies that each define a session duration, Acces
 
 ### Precedence and conflict resolution
 
-MFA configuration is evaluated from most specific to least specific: **policy** \> **application** \> **organization**.
+MFA configuration is evaluated from most specific to least specific: **policy** > **application** > **organization**.
 
-| Organization MFA | Application MFA | Policy MFA | Result                                      |
-| ---------------- | --------------- | ---------- | ------------------------------------------- |
-| Required         | Required        | Required   | MFA required                                |
-| Required         | Required        | Disabled   | MFA not required (policy wins)              |
-| Required         | Disabled        | (not set)  | MFA not required (application wins)         |
-| Required         | (not set)       | (not set)  | MFA required (organization setting applies) |
+| Organization MFA | Application MFA | Policy MFA | Result |
+| --- | --- | --- | --- |
+| Required | Required | Required | MFA required |
+| Required | Required | Disabled | MFA not required (policy wins) |
+| Required | Disabled | (not set) | MFA not required (application wins) |
+| Required | (not set) | (not set) | MFA required (organization setting applies) |
 
 Organization-level MFA must be enabled for users to enroll PIV keys. Explicit settings at a lower level (policy or application) override higher levels. If no explicit setting exists at a level, the next higher level applies.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Storage and Broadcast
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The RealtimeKit Stores API allows you to create multiple key-value pair realtime stores. Users can subscribe to changes in a store and receive real-time updates. Data is stored until a [session](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/#session) is active.
 
@@ -24,9 +24,9 @@ ReactWeb ComponentsAngular
 
 You can create a realtime store (changes are synced with other users):
 
-| Param | Type   | Description       | Required |
-| ----- | ------ | ----------------- | -------- |
-| name  | string | Name of the store | true     |
+| Param | Type | Description | Required |
+| --- | --- | --- | --- |
+| `name` | string | Name of the store | true |
 
 To create a store:
 
@@ -61,10 +61,10 @@ This method must be executed for every user.
 
 You can add, update or delete entries in a store:
 
-| Param | Type       | Description                                                 | Required |
-| ----- | ---------- | ----------------------------------------------------------- | -------- |
-| key   | string     | Unique identifier used to store/update a value in the store | Yes      |
-| value | StoreValue | Value that can be stored against a key                      | Yes      |
+| Param | Type | Description | Required |
+| --- | --- | --- | --- |
+| `key` | string | Unique identifier used to store/update a value in the store | Yes |
+| `value` | StoreValue | Value that can be stored against a key | Yes |
 
 ```ts
 type StoreValue = string | number | object | array;

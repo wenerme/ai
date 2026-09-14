@@ -12,21 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Egress IPs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/egress-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/egress-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you use Cloudflare [as a reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy), [Cloudflare's global network ↗](https://www.cloudflare.com/network/) sits between client requests and your origin servers.
 
+```
 flowchart LR
         accTitle: Cloudflare as a reverse proxy
         accDescr: Diagram showing Cloudflare's network between clients and the origin server.
         A[Client] <--> B((Cloudflare))<--> C[(Origin server)]
 
+```
+
 Zooming into what happens as a request routes through Cloudflare, you can consider two parts of the process: ingress and egress.
 
+```
 flowchart LR
         accTitle: Cloudflare as a reverse proxy
         accDescr: Diagram showing Cloudflare's network between clients and the origin server.
         A[Client] --ingress--> B((Cloudflare))--egress--> C[(Origin server)]
+
+```
 
 Ingress refers to the data center where the client request lands on, based on Internet routing. From there on, the request will be processed according to your Cloudflare configurations and, if needed, a connection to the origin will be initiated via an egress data center.
 
@@ -36,7 +42,7 @@ Traditionally, Cloudflare maintains a very large pool of egress IPs that are use
 
 Each dedicated CDN egress IP pool can consist of either IPs from a [BYOIP prefix](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs. A single dedicated CDN egress IP pool cannot contain both BYOIPs and leased IPs.
 
-You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** \> **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 If you are using BYOIP, refer to **BYOIP prefixes** instead.
 

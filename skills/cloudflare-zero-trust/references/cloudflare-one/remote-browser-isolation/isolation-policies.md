@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Isolation policies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Browser Isolation, you can define policies to dynamically isolate websites based on identity, security threats, or content.
 
@@ -22,15 +22,15 @@ When an HTTP policy applies the Isolate action, the user's web browser is transp
 
 The following example enables isolation for all web traffic:
 
-| Selector | Operator      | Value | Action  |
-| -------- | ------------- | ----- | ------- |
-| Host     | matches regex | .\*   | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Host | matches regex | `.*` | Isolate |
 
 If instead you need to isolate specific pages, you can list the domains for which you would like to isolate traffic:
 
-| Selector | Operator | Value                    | Action  |
-| -------- | -------- | ------------------------ | ------- |
-| Domain   | In       | example.com, example.net | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Domain | In | `example.com`, `example.net` | Isolate |
 
 Isolate identity providers for applications
 
@@ -42,16 +42,17 @@ For example, if `example.com` authenticates using Google Workspace, you will als
 
 You can choose to disable isolation for certain destinations or categories. The following configuration disables isolation for traffic directed to `example.com`:
 
-| Selector | Operator | Value       | Action         |
-| -------- | -------- | ----------- | -------------- |
-| Host     | In       | example.com | Do Not Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Host | In | `example.com` | Do Not Isolate |
 
 ## Policy settings
 
-When you isolate a website, you can also restrict what users do on that site. The following optional settings appear in the Gateway HTTP policy builder when you select the _Isolate_ action. Configure these settings to [prevent data loss ↗](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser — for example, to stop a user from copying confidential data out of an isolated internal application.
+When you isolate a website, you can also restrict what users do on that site. The following optional settings appear in the Gateway HTTP policy builder when you select the *Isolate* action. Configure these settings to [prevent data loss ↗](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser — for example, to stop a user from copying confidential data out of an isolated internal application.
 
 ### Copy (from remote to client)
 
+```
     flowchart LR
 			subgraph remotebrowser[Remote browser]
         siteA["Isolated
@@ -64,12 +65,15 @@ When you isolate a website, you can also restrict what users do on that site. Th
       end
 			remoteclip-->localclip
 
-* _Allow_: (Default) Users can copy content from an isolated website to their local clipboard.
-* _Allow only within isolated browser_: Users can only copy content from an isolated website to the remote clipboard. Users cannot copy content out of the remote browser to the local clipboard. You can use this setting alongside [**Paste (from client to remote)**: _Allow only within isolated browser_](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#paste-from-client-to-remote) to only allow copy-pasting between isolated websites.
-* _Do not allow_: Prohibits users from copying content from an isolated website.
+```
+
+- *Allow*: (Default) Users can copy content from an isolated website to their local clipboard.
+- *Allow only within isolated browser*: Users can only copy content from an isolated website to the remote clipboard. Users cannot copy content out of the remote browser to the local clipboard. You can use this setting alongside [**Paste (from client to remote)**: *Allow only within isolated browser*](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#paste-from-client-to-remote) to only allow copy-pasting between isolated websites.
+- *Do not allow*: Prohibits users from copying content from an isolated website.
 
 ### Paste (from client to remote)
 
+```
     flowchart LR
 			subgraph client[Client]
         localclip["Local
@@ -82,15 +86,17 @@ When you isolate a website, you can also restrict what users do on that site. Th
       end
 			localclip--Data-->remoteclip
 
-* _Allow_: (Default) Users can paste content from their local clipboard to an isolated website.
-* _Allow only within isolated browser_: Users can only paste content from the remote clipboard to an isolated website. Users cannot paste content from their local clipboard to the remote browser. You can use this setting alongside [**Copy (from remote to client)**: _Allow only within isolated browser_](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#copy-from-remote-to-client) to only allow copy-pasting between isolated websites.
-* _Do not allow_: Prohibits users from pasting content into an isolated website.
+```
+
+- *Allow*: (Default) Users can paste content from their local clipboard to an isolated website.
+- *Allow only within isolated browser*: Users can only paste content from the remote clipboard to an isolated website. Users cannot paste content from their local clipboard to the remote browser. You can use this setting alongside [**Copy (from remote to client)**: *Allow only within isolated browser*](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#copy-from-remote-to-client) to only allow copy-pasting between isolated websites.
+- *Do not allow*: Prohibits users from pasting content into an isolated website.
 
 ### File downloads
 
-* _Allow_: (Default) User can download files from an isolated website to their local machine.
-* _Do not allow_: Prohibits users from downloading files from an isolated website to their local machine.
-* _View in remote browser_: Users can open and view files in an isolated environment.
+- *Allow*: (Default) User can download files from an isolated website to their local machine.
+- *Do not allow*: Prohibits users from downloading files from an isolated website to their local machine.
+- *View in remote browser*: Users can open and view files in an isolated environment.
 
 Note
 
@@ -98,8 +104,8 @@ This option does not prevent files from being downloaded into the remote browser
 
 ### File uploads
 
-* _Allow_: (Default) Users can upload files from their local machine into an isolated website.
-* _Do not allow_: Prohibits users from uploading files from their local machine into an isolated website.
+- *Allow*: (Default) Users can upload files from their local machine into an isolated website.
+- *Do not allow*: Prohibits users from uploading files from their local machine into an isolated website.
 
 Note
 
@@ -107,8 +113,8 @@ This option does not prevent files being uploaded to websites from third-party c
 
 ### Keyboard
 
-* _Allow_: (Default) Users can perform keyboard inputs into an isolated website.
-* _Do not allow_: Prohibits users from performing keyboard inputs into an isolated website.
+- *Allow*: (Default) Users can perform keyboard inputs into an isolated website.
+- *Do not allow*: Prohibits users from performing keyboard inputs into an isolated website.
 
 Note
 
@@ -116,8 +122,8 @@ Mouse input remains available to allow users to browse a website by following hy
 
 ### Printing
 
-* _Allow_: (Default) Users can print isolated web pages to their local machine.
-* _Do not allow_: Prohibits users from printing isolated web pages to their local machine.
+- *Allow*: (Default) Users can print isolated web pages to their local machine.
+- *Do not allow*: Prohibits users from printing isolated web pages to their local machine.
 
 ## Custom block dialog Beta
 
@@ -125,12 +131,12 @@ With custom block dialogs, you can host a custom block page when users are block
 
 Administrators can configure custom block dialogs to explain the reason for the block, and guide the users on how to resolve their issue using the provided query parameters:
 
-* `action`: copy, paste, download, upload, perform keyboard inputs, and print
-* `cf_colo`: for example, `sea01`
-* `client_url`: for example, `https://example.com`
-* `policy_id`: 32-character id
-* `rbi_debug_id`: 32-character id
-* `user_id`: 32-character id
+- `action`: copy, paste, download, upload, perform keyboard inputs, and print
+- `cf_colo`: for example, `sea01`
+- `client_url`: for example, `https://example.com`
+- `policy_id`: 32-character id
+- `rbi_debug_id`: 32-character id
+- `user_id`: 32-character id
 
 Custom block dialogs are still in beta. Contact your account team to start using custom block dialogs.
 
@@ -140,9 +146,11 @@ Custom block dialogs are still in beta. Contact your account team to start using
 
 Isolate security threats such as malware and phishing.
 
-| Selector            | Operator | Value                | Action  |
-| ------------------- | -------- | -------------------- | ------- |
-| Security Categories | in       | _All security risks_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Security Categories | in | *All security risks* | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -166,9 +174,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate high risk content categories such as newly registered domains.
 
-| Selector           | Operator | Value            | Action  |
-| ------------------ | -------- | ---------------- | ------- |
-| Content Categories | in       | _Security Risks_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *Security Risks* | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -192,9 +202,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate news and media sites, which are targets for malvertising attacks.
 
-| Selector           | Operator | Value            | Action  |
-| ------------------ | -------- | ---------------- | ------- |
-| Content Categories | in       | _News and Media_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | in | *News and Media* | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -218,9 +230,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate content that has not been categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/).
 
-| Selector           | Operator | Value                    | Action  |
-| ------------------ | -------- | ------------------------ | ------- |
-| Content Categories | not in   | _All content categories_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Content Categories | not in | *All content categories* | Isolate |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -244,11 +258,13 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 Isolate the use of ChatGPT.
 
-| Selector    | Operator | Value     | Action  |
-| ----------- | -------- | --------- | ------- |
-| Application | in       | _ChatGPT_ | Isolate |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Application | in | *ChatGPT* | Isolate |
 
 In **Configure policy settings**, you can customize restrictions for ChatGPT. For example, to prevent your users from inputting sensitive information, you can select **Disable copy / paste** and **Disable file uploads**.
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \

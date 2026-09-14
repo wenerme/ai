@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SCIM provisioning
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports bulk provisioning of users into the Cloudflare dashboard by using the System for Cross-domain Identity Management (SCIM) protocol. This allows you to connect an external identity provider (IdP) to Cloudflare, quickly onboard and manage user permissions. Currently, SCIM provisioning has been integrated with Okta, Microsoft Entra, and Authentik.
 
@@ -24,21 +24,21 @@ This section covers SCIM provisioning for the Cloudflare dashboard. If you need 
 
 Once the SCIM provisioning is enabled:
 
-* A Cloudflare account can receive user group provisioning from the identity provider.
-* Members of each user group can be assigned one or more [policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/). Each policy defines one or more [roles ↗](https://developers.cloudflare.com/fundamentals/manage-members/roles/) applied to all group members thereof.
-* Members can belong to multiple user groups, and each group can also be configured with different policies.
-* Policies provisioned via SCIM can coexist with policies configured via the [traditional setup](https://developers.cloudflare.com/fundamentals/manage-members/manage/#edit-member-permissions).
+- A Cloudflare account can receive user group provisioning from the identity provider.
+- Members of each user group can be assigned one or more [policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/). Each policy defines one or more [roles ↗](https://developers.cloudflare.com/fundamentals/manage-members/roles/) applied to all group members thereof.
+- Members can belong to multiple user groups, and each group can also be configured with different policies.
+- Policies provisioned via SCIM can coexist with policies configured via the [traditional setup](https://developers.cloudflare.com/fundamentals/manage-members/manage/#edit-member-permissions).
 
 ## Expected behaviors
 
 Expectations for user lifecycle management with SCIM:
 
-| Expected Cloudflare dash behavior              | Identity provider action                                                                                                                                        |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| User is added to account as member             | Assign the user to a SCIM application. They will be assigned the Minimal Account Access role so that their dash experience is not broken.                       |
-| User is removed from account as member         | Unassign the user from the SCIM application.                                                                                                                    |
-| Add role to user                               | Add the user to a group in the IdP which is pushed via SCIM. They must also be assigned to the SCIM application and exist as an account member.                 |
-| Remove role from user                          | Remove the user from the corresponding group in the IdP.                                                                                                        |
+| Expected Cloudflare dash behavior | Identity provider action |
+| --- | --- |
+| User is added to account as member | Assign the user to a SCIM application. They will be assigned the Minimal Account Access role so that their dash experience is not broken. |
+| User is removed from account as member | Unassign the user from the SCIM application. |
+| Add role to user | Add the user to a group in the IdP which is pushed via SCIM. They must also be assigned to the SCIM application and exist as an account member. |
+| Remove role from user | Remove the user from the corresponding group in the IdP. |
 | Retain user in account but with no permissions | Remove the user from all role groups but leave them assigned to the SCIM application. They will be an account member with only the role Minimal Account Access. |
 
 Note
@@ -47,15 +47,15 @@ Dashboard SCIM handles group membership and user account lifecycle through separ
 
 ## Limitations
 
-* If a user is the only Super Administrator on an Enterprise account, they will not be deprovisioned.
-* It is possible to unintentionally remove all account Super Administrators by misconfiguring SCIM groups. Refer to [SCIM troubleshooting](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/troubleshooting/) for more information.
-* SCIM group names cannot begin with the reserved prefix `CF`.
+- If a user is the only Super Administrator on an Enterprise account, they will not be deprovisioned.
+- It is possible to unintentionally remove all account Super Administrators by misconfiguring SCIM groups. Refer to [SCIM troubleshooting](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/troubleshooting/) for more information.
+- SCIM group names cannot begin with the reserved prefix `CF`.
 
 ## Prerequisites
 
-* Cloudflare dashboard SCIM provisioning is only available to Enterprise customers using Okta, Microsoft Entra, or Authentik.
-* You must be a Super Administrator for the initial setup.
-* In the identity provider, you must have the ability to create applications and groups.
+- Cloudflare dashboard SCIM provisioning is only available to Enterprise customers using Okta, Microsoft Entra, or Authentik.
+- You must be a Super Administrator for the initial setup.
+- In the identity provider, you must have the ability to create applications and groups.
 
 ---
 
@@ -71,11 +71,13 @@ The account ID can be found via dashboard or API. For more information, refer to
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
 
-| Type    | Item              | Permission |
-| ------- | ----------------- | ---------- |
-| Account | SCIM Provisioning | Edit       |
-Note
-Account API tokens are recommended for SCIM Provisioning. User owned API tokens, while supported, may result in a broken SCIM connection in the event when the user's policies are revoked from the SCIM integration, or the [API access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) is unexpectedly disabled. Learn more about [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/).
+   | Type | Item | Permission |
+   | --- | --- | --- |
+   | Account | SCIM Provisioning | Edit |
+
+   Note
+
+   Account API tokens are recommended for SCIM Provisioning. User owned API tokens, while supported, may result in a broken SCIM connection in the event when the user's policies are revoked from the SCIM integration, or the [API access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) is unexpectedly disabled. Learn more about [Account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/).
 2. Under **Account Resources**, select the specific account to include or exclude from the dropdown menu, if applicable.
 3. Select **Continue to summary**.
 4. Validate the permissions and select **Create Token**.

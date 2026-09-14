@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ideogram
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/ideogram/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/ideogram/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Ideogram ↗](https://ideogram.ai/) provides advanced text-to-image generation models with exceptional text rendering capabilities and visual quality.
 
@@ -26,14 +26,16 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram
 
 When making requests to Ideogram, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Ideogram API key.
-* The name of the Ideogram model you want to use (e.g., `V_3`).
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Ideogram API key.
+- The name of the Ideogram model you want to use (e.g., `V_3`).
 
 ## Examples
 
 ### cURL
+
+*Example fetch requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/ideogram-v3/generate \
@@ -46,6 +48,8 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/ideogram/v1/
 ```
 
 ### Use with JavaScript
+
+*JavaScriptjs*
 
 ```js
 const accountId = "{account_id}";

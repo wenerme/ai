@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Glossary
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/glossary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/glossary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the definitions for terms used across Cloudflare's Network Flow (formerly Magic Network Monitoring) documentation.
 
-| Term      | Definition                                                                                                                                |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| flow data | Represents records of communication between devices. There are a number of flow data protocols, such as NetFlow or sFlow.                 |
-| NetFlow   | Network protocol developed by Cisco to collect and monitor network traffic flow data.                                                     |
-| sampling  | In the context of Network Flow, sampling is the process of taking samples of packets for a specific period to identify potential attacks. |
-| sFlow     | An industry standard packet sampling protocol to monitor network devices.                                                                 |
+| Term | Definition |
+| --- | --- |
+| flow data | Represents records of communication between devices. There are a number of flow data protocols, such as NetFlow or sFlow. |
+| NetFlow | Network protocol developed by Cisco to collect and monitor network traffic flow data. |
+| sampling | In the context of Network Flow, sampling is the process of taking samples of packets for a specific period to identify potential attacks. |
+| sFlow | An industry standard packet sampling protocol to monitor network devices. |
 
 Was this helpful?
 

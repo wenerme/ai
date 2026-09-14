@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Workers
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/workers-concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/workers-concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers gives developers the power to deploy serverless code instantly to Cloudflare's global network.
 
@@ -26,7 +26,7 @@ Your application can be made up of multiple Workers that work together and deliv
 
 ## Runtime
 
-The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-workers-runtime) is designed to be JavaScript-standards compliant and web-interoperable. The Workers runtime uses the V8 engine — the same engine used by Chromium and Node.js, and has an open-source version, [workerd ↗](https://github.com/cloudflare/workerd).
+The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-workers-runtime) is designed to be JavaScript-standards compliant and web-interoperable. The Workers runtime uses the V8 engine — the same engine used by Chromium and Node.js, and has an open-source version, [`workerd` ↗](https://github.com/cloudflare/workerd).
 
 ## Execution
 
@@ -55,16 +55,16 @@ HTTP server
 Inbound
 HTTP proxy
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Outbound
 HTTP proxy
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Supervisor
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Main Runtime Process
 
@@ -80,48 +80,48 @@ Disk
 
 Control plane
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- HTTP
+HTTP
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- Cap'n Proto RPC
+Cap'n Proto RPC
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- In-process calls
+In-process calls
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- Other
+Other
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Process
 Sandbox
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Scheduling and routing
 
@@ -130,11 +130,11 @@ Scheduling and routing
 Process
 Sandbox
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Scheduling and routing
 
@@ -160,23 +160,23 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) object.
+For Workers written in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/), when a request to your `*.workers.dev` subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's data centers, the request invokes the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) defined in your Worker code with the given request. You can respond to the request by returning a [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/) object.
 
 ## Summary
 
 By reading this page, you have learned:
 
-* The basics of how Worker projects are organized.
-* The fundamentals of how Workers execute on the Cloudflare network.
-* How the request to response flow executes.
+- The basics of how Worker projects are organized.
+- The fundamentals of how Workers execute on the Cloudflare network.
+- How the request to response flow executes.
 
 In the next module, you build and deploy your first Worker to the Cloudflare global network.
 
 ## Related resources
 
-* [Cloud computing without containers ↗](https://blog.cloudflare.com/cloud-computing-without-containers) \- A blog post detailing the containers versus isolates difference in the context of Cloudflare.
-* [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) \- Learn the difference between the Workers runtime versus traditional browsers and Node.js.
-* [How the cache works](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) \- Learn how Workers interacts with the Cloudflare cache.
+- [Cloud computing without containers ↗](https://blog.cloudflare.com/cloud-computing-without-containers) - A blog post detailing the containers versus isolates difference in the context of Cloudflare.
+- [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) - Learn the difference between the Workers runtime versus traditional browsers and Node.js.
+- [How the cache works](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) - Learn how Workers interacts with the Cloudflare cache.
 
 ## Feedback
 

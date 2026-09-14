@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # McpClient
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect your agent to external [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) servers to use their tools, resources, and prompts. Agents SDK v0.20.0 uses `@modelcontextprotocol/client` and negotiates stateless or legacy behavior automatically.
 
@@ -22,10 +22,10 @@ Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-
 
 The MCP client capability lets your agent:
 
-* **Connect to external MCP servers** \- GitHub, Slack, databases, AI services
-* **Use their tools** \- Call functions exposed by MCP servers
-* **Access resources** \- Read data from MCP servers
-* **Use prompts** \- Leverage pre-built prompt templates
+- **Connect to external MCP servers** - GitHub, Slack, databases, AI services
+- **Use their tools** - Call functions exposed by MCP servers
+- **Access resources** - Read data from MCP servers
+- **Use prompts** - Leverage pre-built prompt templates
 
 Note
 
@@ -133,7 +133,7 @@ await this.addMcpServer("GitHub", env.MCP_SESSION, {
 
 When provided, this `id` replaces the generated value as the server's ID in storage, restore, `listServers()`, `listTools()`, `getAITools()`, and OAuth state. The supplied ID is normalized via the exported `normalizeServerId` helper, so values like `"GitHub MCP!"` become `"github-mcp"` — guaranteeing the ID is safe to embed in AI SDK tool names and storage keys.
 
-Stable IDs are fully additive — no existing code breaks. If you add `{ id: "github" }` to an `addMcpServer` call for a server already registered under an auto-generated ID, the SDK transparently migrates the existing storage row, in-memory connection, and OAuth-related storage keys to the new stable ID. No `removeMcpServer` step is required. `addMcpServer` only throws on a genuinely ambiguous collision: the same stable ID already belongs to a _different_ `(name, url)` server.
+Stable IDs are fully additive — no existing code breaks. If you add `{ id: "github" }` to an `addMcpServer` call for a server already registered under an auto-generated ID, the SDK transparently migrates the existing storage row, in-memory connection, and OAuth-related storage keys to the new stable ID. No `removeMcpServer` step is required. `addMcpServer` only throws on a genuinely ambiguous collision: the same stable ID already belongs to a *different* `(name, url)` server.
 
 ### Transport options
 
@@ -155,11 +155,11 @@ await this.addMcpServer("server", "https://mcp.example.com/mcp", {
 });
 ```
 
-| Transport       | Description                                         |
-| --------------- | --------------------------------------------------- |
-| auto            | Auto-detect based on server response (default)      |
-| streamable-http | HTTP with streaming                                 |
-| sse             | Server-Sent Events - legacy/compatibility transport |
+| Transport | Description |
+| --- | --- |
+| `auto` | Auto-detect based on server response (default) |
+| `streamable-http` | HTTP with streaming |
+| `sse` | Server-Sent Events - legacy/compatibility transport |
 
 ### Custom headers
 
@@ -193,12 +193,12 @@ await this.addMcpServer("internal", "https://internal-mcp.example.com/mcp", {
 
 MCP server URLs are validated before connection to prevent Server-Side Request Forgery (SSRF). The following URL targets are blocked:
 
-* Private/internal IP ranges (RFC 1918: `10.x`, `172.16-31.x`, `192.168.x`)
-* Unspecified addresses (`0.0.0.0`, `[::]`)
-* Link-local addresses (`169.254.x`, `fe80::`)
-* IPv6 unique-local addresses (`fc00::/7`)
-* IPv4-mapped IPv6 addresses that resolve to private ranges (for example, `[::ffff:10.0.0.1]`)
-* Cloud metadata endpoints (`metadata.google.internal`)
+- Private/internal IP ranges (RFC 1918: `10.x`, `172.16-31.x`, `192.168.x`)
+- Unspecified addresses ( `0.0.0.0`, `[::]`)
+- Link-local addresses ( `169.254.x`, `fe80::`)
+- IPv6 unique-local addresses ( `fc00::/7`)
+- IPv4-mapped IPv6 addresses that resolve to private ranges (for example, `[::ffff:10.0.0.1]`)
+- Cloud metadata endpoints ( `metadata.google.internal`)
 
 Loopback addresses (`localhost`, `127.x.x.x`, `[::1]`) are **allowed** for local development.
 
@@ -208,8 +208,8 @@ For production connections to internal services, use the [RPC transport](https:/
 
 `addMcpServer()` returns the connection state:
 
-* `ready` \- Server connected and tools discovered
-* `authenticating` \- Server requires OAuth; redirect user to `authUrl`
+- `ready` - Server connected and tools discovered
+- `authenticating` - Server requires OAuth; redirect user to `authUrl`
 
 ## OAuth authentication
 
@@ -217,6 +217,7 @@ Many MCP servers require OAuth authentication. The agent handles the OAuth flow 
 
 ### How it works
 
+```
 sequenceDiagram
     participant Client
     participant Agent
@@ -230,6 +231,8 @@ sequenceDiagram
     MCPServer->>Agent: Callback with code
     Agent->>MCPServer: Exchange for token
     Agent-->>Client: onMcpUpdate (ready)
+
+```
 
 ### Handling OAuth in your agent
 
@@ -670,11 +673,11 @@ For URL mode, `accept` means the user consented to open the URL. It does not mea
 
 Both modes support three actions:
 
-| Action  | Meaning                                                           |
-| ------- | ----------------------------------------------------------------- |
-| accept  | The user submitted the form or consented to open the URL.         |
-| decline | The user explicitly rejected the request.                         |
-| cancel  | The user dismissed the request without making an explicit choice. |
+| Action | Meaning |
+| --- | --- |
+| `accept` | The user submitted the form or consented to open the URL. |
+| `decline` | The user explicitly rejected the request. |
+| `cancel` | The user dismissed the request without making an explicit choice. |
 
 Include `content` only for an accepted form response. Omit it for URL, decline, and cancel responses.
 
@@ -791,7 +794,7 @@ class MyAgent extends Agent<Env> {
 
 The example uses a 55-second timeout because MCP SDK requests default to 60 seconds. If your client call sets a longer request timeout, adjust this timeout to finish first.
 
-Refer to the [mcp-client example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [mcp-elicitation-mrtr ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation. [mcp-elicitation ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) demonstrates legacy elicitation.
+Refer to the [`mcp-client` example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [`mcp-elicitation-mrtr` ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation. [`mcp-elicitation` ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) demonstrates legacy elicitation.
 
 For server-side patterns, refer to [Elicitation with a stateless handler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#elicitation-with-a-stateless-handler) and [Elicitation on legacy servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation-on-legacy-servers).
 
@@ -974,28 +977,28 @@ async addMcpServer(
 
 #### Parameters (HTTP transport)
 
-* `serverName` (string, required) — Display name for the MCP server
-* `url` (string, required) — URL of the MCP server endpoint
-* `options` (object, optional) — Connection configuration:
-  * `id` — Optional stable, caller-supplied server ID for connector-style integrations. When provided, it replaces the generated `nanoid(8)` across storage, `listServers()`, `listTools()`, `getAITools()` (so tool keys become readable, for example `tool_github_create_pull_request`), and OAuth state. Refer to [Stable server IDs](#stable-server-ids)
-  * `callbackHost` — Host for OAuth callback URL. Only needed for OAuth-authenticated servers. If omitted, automatically derived from the incoming request or WebSocket connection URI — you typically do not need to set this unless you are using a custom domain that differs from the Worker's hostname
-  * `callbackPath` — Custom callback URL path that bypasses the default `/agents/{class}/{name}/callback` construction. **Required when `sendIdentityOnConnect` is `false`** to prevent leaking the instance name. When set, the callback URL becomes `{callbackHost}/{callbackPath}`. You must route this path to the agent instance via `getAgentByName`
-  * `agentsPrefix` — URL prefix for OAuth callback path. Default: `"agents"`. Ignored when `callbackPath` is provided
-  * `client` — The Agents-supported `McpClientOptions` subset from `@modelcontextprotocol/client`. The default validator supports JSON Schema 2020-12 and legacy draft-07 schemas in Workers
-  * `transport` — Transport layer configuration:
-    * `headers` — Custom HTTP headers for authentication
-    * `type` — Transport type: `"auto"` (default), `"streamable-http"`, or `"sse"`
-  * `retry` — Retry options for connection and reconnection attempts. Persisted and used when restoring connections after hibernation or after OAuth completion. Default: 3 attempts, 500ms base delay, 5s max delay. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details on `RetryOptions`.
+- `serverName` (string, required) — Display name for the MCP server
+- `url` (string, required) — URL of the MCP server endpoint
+- `options` (object, optional) — Connection configuration:
+  - `id` — Optional stable, caller-supplied server ID for connector-style integrations. When provided, it replaces the generated `nanoid(8)` across storage, `listServers()`, `listTools()`, `getAITools()` (so tool keys become readable, for example `tool_github_create_pull_request`), and OAuth state. Refer to [Stable server IDs](#stable-server-ids)
+  - `callbackHost` — Host for OAuth callback URL. Only needed for OAuth-authenticated servers. If omitted, automatically derived from the incoming request or WebSocket connection URI — you typically do not need to set this unless you are using a custom domain that differs from the Worker's hostname
+  - `callbackPath` — Custom callback URL path that bypasses the default `/agents/{class}/{name}/callback` construction. **Required when `sendIdentityOnConnect` is `false`** to prevent leaking the instance name. When set, the callback URL becomes `{callbackHost}/{callbackPath}`. You must route this path to the agent instance via `getAgentByName`
+  - `agentsPrefix` — URL prefix for OAuth callback path. Default: `"agents"`. Ignored when `callbackPath` is provided
+  - `client` — The Agents-supported `McpClientOptions` subset from `@modelcontextprotocol/client`. The default validator supports JSON Schema 2020-12 and legacy draft-07 schemas in Workers
+  - `transport` — Transport layer configuration:
+    - `headers` — Custom HTTP headers for authentication
+    - `type` — Transport type: `"auto"` (default), `"streamable-http"`, or `"sse"`
+  - `retry` — Retry options for connection and reconnection attempts. Persisted and used when restoring connections after hibernation or after OAuth completion. Default: 3 attempts, 500ms base delay, 5s max delay. Refer to [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) for details on `RetryOptions`.
 
 #### Parameters (RPC transport)
 
-* `serverName` (string, required) — Display name for the MCP server
-* `binding` (`DurableObjectNamespace`, required) — The Durable Object binding for the `McpAgent` class
-* `options` (object, optional) — Connection configuration:
-  * `id` — Optional stable, caller-supplied server ID. Refer to [Stable server IDs](#stable-server-ids)
-  * `props` — Initialization data passed to the `McpAgent`'s `onStart(props)`. Use this to pass user context, configuration, or other data to the MCP server instance
-  * `client` — MCP client configuration options
-  * `retry` — Retry options for the connection
+- `serverName` (string, required) — Display name for the MCP server
+- `binding` ( `DurableObjectNamespace`, required) — The Durable Object binding for the `McpAgent` class
+- `options` (object, optional) — Connection configuration:
+  - `id` — Optional stable, caller-supplied server ID. Refer to [Stable server IDs](#stable-server-ids)
+  - `props` — Initialization data passed to the `McpAgent`'s `onStart(props)`. Use this to pass user context, configuration, or other data to the MCP server instance
+  - `client` — MCP client configuration options
+  - `retry` — Retry options for the connection
 
 RPC transport connects your Agent directly to an `McpAgent` via Durable Object bindings without HTTP overhead. Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/) for details on configuring RPC transport.
 
@@ -1003,15 +1006,13 @@ RPC transport connects your Agent directly to an `McpAgent` via Durable Object b
 
 A Promise that resolves to a discriminated union based on connection state:
 
-* When `state` is `"authenticating"`:
-
-  * `id` (string) — Unique identifier for this server connection
-  * `state` (`"authenticating"`) — Server is waiting for OAuth authorization
-  * `authUrl` (string) — OAuth authorization URL for user authentication
-* When `state` is `"ready"`:
-
-  * `id` (string) — Unique identifier for this server connection
-  * `state` (`"ready"`) — Server is fully connected and operational
+- When `state` is `"authenticating"`:
+  - `id` (string) — Unique identifier for this server connection
+  - `state` ( `"authenticating"`) — Server is waiting for OAuth authorization
+  - `authUrl` (string) — OAuth authorization URL for user authentication
+- When `state` is `"ready"`:
+  - `id` (string) — Unique identifier for this server connection
+  - `state` ( `"ready"`) — Server is fully connected and operational
 
 ### `removeMcpServer()`
 
@@ -1023,7 +1024,7 @@ async removeMcpServer(id: string): Promise<void>
 
 #### Parameters
 
-* `id` (string, required) — Server connection ID returned from `addMcpServer()`
+- `id` (string, required) — Server connection ID returned from `addMcpServer()`
 
 ### `getMcpServers()`
 
@@ -1064,12 +1065,12 @@ type MCPServersState = {
 
 The `state` field indicates the connection lifecycle:
 
-* `authenticating` — Waiting for OAuth authorization to complete
-* `connecting` — Establishing transport connection
-* `connected` — Transport connection established
-* `discovering` — Discovering server capabilities (tools, resources, prompts)
-* `ready` — Fully connected and operational
-* `failed` — Connection failed (see `error` field for details)
+- `authenticating` — Waiting for OAuth authorization to complete
+- `connecting` — Establishing transport connection
+- `connected` — Transport connection established
+- `discovering` — Discovering server capabilities (tools, resources, prompts)
+- `ready` — Fully connected and operational
+- `failed` — Connection failed (see `error` field for details)
 
 The `error` field contains an error message when `state` is `"failed"`. Error messages from external OAuth providers are automatically escaped to prevent XSS attacks, making them safe to display directly in your UI.
 
@@ -1087,17 +1088,17 @@ this.mcp.configureOAuthCallback(options: {
 
 #### Parameters
 
-* `options` (object, required) — OAuth callback configuration:
-  * `successRedirect` (string, optional) — URL to redirect to after successful authentication
-  * `errorRedirect` (string, optional) — URL to redirect to after failed authentication. Error message is appended as `?error=<message>` query parameter
-  * `customHandler` (function, optional) — Custom handler for complete control over the callback response. Must return a Response
+- `options` (object, required) — OAuth callback configuration:
+  - `successRedirect` (string, optional) — URL to redirect to after successful authentication
+  - `errorRedirect` (string, optional) — URL to redirect to after failed authentication. Error message is appended as `?error=<message>` query parameter
+  - `customHandler` (function, optional) — Custom handler for complete control over the callback response. Must return a Response
 
 #### Default behavior
 
 When no configuration is provided:
 
-* **Success**: Redirects to your application origin
-* **Failure**: Displays an HTML error page with the error message
+- **Success**: Redirects to your application origin
+- **Failure**: Displays an HTML error page with the error message
 
 If OAuth fails, the connection state becomes `"failed"` and the error message is stored in the `server.error` field for display in your UI.
 
@@ -1168,12 +1169,12 @@ this.mcp.configureElicitationHandlers(handlers?: {
 
 #### Parameters
 
-* `handlers` (object, optional) — Elicitation handlers keyed by mode:
-  * `form` (function, optional) — Handles form-mode requests for structured, non-sensitive input.
-  * `url` (function, optional) — Handles URL-mode requests for out-of-band interactions.
-* `request` (`ElicitRequest`) — The MCP elicitation request. Inspect `request.params.mode` for the mode-specific fields.
-* `serverId` (string) — The ID of the MCP server connection that sent the request.
-* `signal` (`AbortSignal`, optional) — Aborts when the originating MCP operation is cancelled.
+- `handlers` (object, optional) — Elicitation handlers keyed by mode:
+  - `form` (function, optional) — Handles form-mode requests for structured, non-sensitive input.
+  - `url` (function, optional) — Handles URL-mode requests for out-of-band interactions.
+- `request` ( `ElicitRequest`) — The MCP elicitation request. Inspect `request.params.mode` for the mode-specific fields.
+- `serverId` (string) — The ID of the MCP server connection that sent the request.
+- `signal` ( `AbortSignal`, optional) — Aborts when the originating MCP operation is cancelled.
 
 Each handler returns a promise containing an `ElicitResult`. Return `accept`, `decline`, or `cancel`. Accepted form responses include `content` that matches `requestedSchema`. URL responses omit `content`.
 
@@ -1435,7 +1436,7 @@ const disposable = this.mcp.onServerStateChanged(() => {
 
 Note
 
-MCP server list broadcasts (`cf_agent_mcp_servers`) are automatically filtered to exclude connections where [shouldSendProtocolMessages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`.
+MCP server list broadcasts (`cf_agent_mcp_servers`) are automatically filtered to exclude connections where [`shouldSendProtocolMessages`](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) returned `false`.
 
 ### Lifecycle methods
 
@@ -1500,7 +1501,7 @@ await this.mcp.waitForConnections({ timeout: 10_000 });
 
 Note
 
-`AIChatAgent` calls this automatically via its [waitForMcpConnections](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#waitformcpconnections) property (defaults to `{ timeout: 10_000 }`). You only need `waitForConnections()` directly when using `Agent` with MCP, or when you want finer control inside `onChatMessage`.
+`AIChatAgent` calls this automatically via its [`waitForMcpConnections`](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#waitformcpconnections) property (defaults to `{ timeout: 10_000 }`). You only need `waitForConnections()` directly when using `Agent` with MCP, or when you want finer control inside `onChatMessage`.
 
 #### `this.mcp.closeConnection()`
 

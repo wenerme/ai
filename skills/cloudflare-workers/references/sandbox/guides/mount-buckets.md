@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mount buckets
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/mount-buckets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/mount-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Mount S3-compatible object storage buckets as local filesystem paths. Access object storage using standard file operations. For Cloudflare R2 in production, you can also mount by Worker R2 binding name so credentials stay in the Worker runtime.
 
@@ -64,10 +64,10 @@ When you omit `endpoint`, the first argument to `mountBucket()` must be the Work
 
 Mount S3-compatible buckets when you need:
 
-* **Persistent data** \- Data survives sandbox destruction
-* **Large datasets** \- Process data without downloading
-* **Shared storage** \- Multiple sandboxes access the same data
-* **Cost-effective persistence** \- Cheaper than keeping sandboxes alive
+- **Persistent data** - Data survives sandbox destruction
+- **Large datasets** - Process data without downloading
+- **Shared storage** - Multiple sandboxes access the same data
+- **Cost-effective persistence** - Cheaper than keeping sandboxes alive
 
 ## Mount an R2 bucket
 
@@ -375,9 +375,9 @@ await sandbox.mountBucket('MY_BUCKET', '/images', {
 
 During local development, files are synchronized between R2 and the container using a periodic sync process rather than a direct filesystem mount. Keep the following in mind:
 
-* **Synchronization window** \- A brief delay exists between when a file is written and when it appears on the other side. For example, if you upload a file to R2 and then immediately read it from the mounted path in the container, the file may not yet be available. Allow a short window for synchronization to complete before reading recently written data.
-* **High-frequency writes** \- Rapid successive writes to the same file path may take slightly longer to fully propagate. For best results, avoid writing to the same file from both R2 and the container at the same time.
-* **Bidirectional sync** \- Changes made in the container are synced to R2, and changes made in R2 are synced to the container. Both directions follow the same periodic sync model.
+- **Synchronization window** - A brief delay exists between when a file is written and when it appears on the other side. For example, if you upload a file to R2 and then immediately read it from the mounted path in the container, the file may not yet be available. Allow a short window for synchronization to complete before reading recently written data.
+- **High-frequency writes** - Rapid successive writes to the same file path may take slightly longer to fully propagate. For best results, avoid writing to the same file from both R2 and the container at the same time.
+- **Bidirectional sync** - Changes made in the container are synced to R2, and changes made in R2 are synced to the container. Both directions follow the same periodic sync model.
 
 Note
 
@@ -461,7 +461,7 @@ await sandbox.mountBucket('my-gcs-bucket', '/data', {
 
 GCS requires HMAC keys
 
-Generate HMAC keys in GCS console under **Settings** \> **Interoperability**.
+Generate HMAC keys in GCS console under **Settings** > **Interoperability**.
 
 ### Other S3-compatible providers
 
@@ -543,11 +543,11 @@ npx wrangler secret put AWS_SECRET_ACCESS_KEY
 
 **Common causes**:
 
-* Incorrect endpoint URL
-* Invalid credentials
-* Missing `ContainerProxy` export, or on older Wrangler versions missing `enable_ctx_exports`
-* Bucket does not exist
-* Network connectivity issues
+- Incorrect endpoint URL
+- Invalid credentials
+- Missing `ContainerProxy` export, or on older Wrangler versions missing `enable_ctx_exports`
+- Bucket does not exist
+- Network connectivity issues
 
 Verify your binding or endpoint configuration:
 
@@ -627,24 +627,24 @@ await sandbox.exec('cp', { args: ['/workspace/results.json', '/data/results/outp
 
 ## Best practices
 
-* **Mount early** \- Mount buckets at sandbox initialization
-* **Choose the right mount mode** \- Use R2 binding mounts when you want Worker-managed R2 access, or use `endpoint` for explicit R2, S3, GCS, and other S3-compatible providers
-* **Secure credentials** \- Always use Worker secrets, never hardcode
-* **Read-only when possible** \- Protect data with read-only mounts
-* **Mount the narrowest path** \- Use prefixes to expose only the data a sandbox needs
-* **Mount paths** \- Prefer `/data`, `/storage`, or `/mnt/*`; if you mount under `/workspace`, account for the mount overlaying that path in production
-* **Handle errors** \- Wrap mount operations in `try...catch` blocks
-* **Optimize access** \- Copy frequently accessed files locally
+- **Mount early** - Mount buckets at sandbox initialization
+- **Choose the right mount mode** - Use R2 binding mounts when you want Worker-managed R2 access, or use `endpoint` for explicit R2, S3, GCS, and other S3-compatible providers
+- **Secure credentials** - Always use Worker secrets, never hardcode
+- **Read-only when possible** - Protect data with read-only mounts
+- **Mount the narrowest path** - Use prefixes to expose only the data a sandbox needs
+- **Mount paths** - Prefer `/data`, `/storage`, or `/mnt/*`; if you mount under `/workspace`, account for the mount overlaying that path in production
+- **Handle errors** - Wrap mount operations in `try...catch` blocks
+- **Optimize access** - Copy frequently accessed files locally
 
 ## Related resources
 
-* [Persistent storage tutorial](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/) \- Complete R2 example
-* [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) \- Persist a project directory such as `/workspace`
-* [Storage API reference](https://developers.cloudflare.com/sandbox/api/storage/) \- Full method documentation
-* [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) \- Credential configuration for remote endpoint mounts
-* [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Configure R2 bindings and compatibility flags
-* [R2 documentation](https://developers.cloudflare.com/r2/) \- Learn about Cloudflare R2
-* [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Learn how `ContainerProxy` and outbound interception work
+- [Persistent storage tutorial](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/) - Complete R2 example
+- [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) - Persist a project directory such as `/workspace`
+- [Storage API reference](https://developers.cloudflare.com/sandbox/api/storage/) - Full method documentation
+- [Environment variables](https://developers.cloudflare.com/sandbox/configuration/environment-variables/) - Credential configuration for remote endpoint mounts
+- [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) - Configure R2 bindings and compatibility flags
+- [R2 documentation](https://developers.cloudflare.com/r2/) - Learn about Cloudflare R2
+- [Outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) - Learn how `ContainerProxy` and outbound interception work
 
 Was this helpful?
 

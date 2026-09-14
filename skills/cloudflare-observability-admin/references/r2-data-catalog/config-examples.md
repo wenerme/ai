@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to Iceberg engines
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below are configuration examples to connect various Iceberg engines to [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/):
 
-* [DuckDB](https://developers.cloudflare.com/r2-data-catalog/config-examples/duckdb/)
-* [PyIceberg](https://developers.cloudflare.com/r2-data-catalog/config-examples/pyiceberg/)
-* [Snowflake](https://developers.cloudflare.com/r2-data-catalog/config-examples/snowflake/)
-* [Spark (PySpark)](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/)
-* [Spark (Scala)](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-scala/)
-* [StarRocks](https://developers.cloudflare.com/r2-data-catalog/config-examples/starrocks/)
-* [Trino](https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/)
+- [DuckDB](https://developers.cloudflare.com/r2-data-catalog/config-examples/duckdb/)
+- [PyIceberg](https://developers.cloudflare.com/r2-data-catalog/config-examples/pyiceberg/)
+- [Snowflake](https://developers.cloudflare.com/r2-data-catalog/config-examples/snowflake/)
+- [Spark (PySpark)](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/)
+- [Spark (Scala)](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-scala/)
+- [StarRocks](https://developers.cloudflare.com/r2-data-catalog/config-examples/starrocks/)
+- [Trino](https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Crawl Control
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
@@ -22,12 +22,13 @@ AI companies use web content to train their models and power AI applications. AI
 
 With AI Crawl Control, you can:
 
-* **See which AI services access your content** \- Monitor the dashboard to see crawler activity and request patterns
-* **Control access with granular policies** \- Set allow or block rules for individual crawlers
-* **Monitor robots.txt compliance** \- Track which crawlers follow your directives and create enforcement rules
-* **Explore monetization options** \- Set up pay per crawl pricing for content access [(private beta)](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/)
-* **Deploy with zero configuration** \- Works automatically on all Cloudflare plans
-[Get started ](https://developers.cloudflare.com/ai-crawl-control/get-started/)
+- **See which AI services access your content** - Monitor the dashboard to see crawler activity and request patterns
+- **Control access with granular policies** - Set allow or block rules for individual crawlers
+- **Monitor robots.txt compliance** - Track which crawlers follow your directives and create enforcement rules
+- **Explore monetization options** - Set up pay per crawl pricing for content access [(private beta)](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/)
+- **Deploy with zero configuration** - Works automatically on all Cloudflare plans
+
+[Get started](https://developers.cloudflare.com/ai-crawl-control/get-started/)
 
 ---
 

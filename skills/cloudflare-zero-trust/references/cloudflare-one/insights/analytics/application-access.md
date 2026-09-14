@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application Access Report
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Application Access Report provides a high-level summary of [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) usage across your organization. This dashboard helps administrators monitor authentication patterns, identity provider usage, and Access configuration metrics. If Access is not configured in your account, the dashboard appears empty.
 
@@ -20,7 +20,7 @@ The Application Access Report is powered by [Access authentication logs](https:/
 
 To view the Application Access Report dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select **Application Access Report**.
 
@@ -32,20 +32,20 @@ Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/in
 
 To populate the Application Access Report dashboard, you must have:
 
-* At least one [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) configured in your account.
-* Users authenticating to these applications through Cloudflare Access.
+- At least one [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) configured in your account.
+- Users authenticating to these applications through Cloudflare Access.
 
 ## Available insights
 
 The Application Access Report dashboard includes the following panels and metrics:
 
-* [Summary of Access activity](#summary-of-access-activity)
-* [Access events](#access-events)
-* [Access decisions by event count](#access-decisions-by-event-count)
-* [Access applications by event count](#access-applications-by-event-count)
-* [Access events by type](#access-events-by-type)
-* [Top counts of event details](#top-counts-of-event-details)
-* [Access admin metrics](#access-admin-metrics)
+- [Summary of Access activity](#summary-of-access-activity)
+- [Access events](#access-events)
+- [Access decisions by event count](#access-decisions-by-event-count)
+- [Access applications by event count](#access-applications-by-event-count)
+- [Access events by type](#access-events-by-type)
+- [Top counts of event details](#top-counts-of-event-details)
+- [Access admin metrics](#access-admin-metrics)
 
 ### Summary of Access activity
 
@@ -62,22 +62,22 @@ Displays the total number of Access decisions made, grouped by outcome (for exam
 ### Access applications by event count
 
 Shows a breakdown of authentication events by application type (for example, **Self-hosted**, **SaaS**, **Private network**, **Infrastructure** or **MCP Portal**).
-Use this view to determine which application types users most frequently access.
+ Use this view to determine which application types users most frequently access.
 
 ### Access events by type
 
 Categorizes authentication events by method, such as **SSO** or **Login** (direct credential-based authentication).
-This panel helps administrators understand how users are authenticating across applications and identity providers.
+ This panel helps administrators understand how users are authenticating across applications and identity providers.
 
 ### Top counts of event details
 
 Lists the most common Access event attributes, including:
 
-* Application name — Displays the top accessed applications.
-* Identity provider — Shows which identity providers (IdPs) were most used.
-* Users — Lists top users by number of login events.
-* Countries — Displays top countries where users logged in.
-* IP addresses — Lists the top source IPs associated with login events.
+- Application name — Displays the top accessed applications.
+- Identity provider — Shows which identity providers (IdPs) were most used.
+- Users — Lists top users by number of login events.
+- Countries — Displays top countries where users logged in.
+- IP addresses — Lists the top source IPs associated with login events.
 
 These insights help administrators identify usage patterns and trends.
 
@@ -85,8 +85,8 @@ These insights help administrators identify usage patterns and trends.
 
 Provides a summary of Access configurations made by admin in your organization, including:
 
-* Applications configured — Total number of Access-protected applications, broken down by type (for example, Self-hosted, SaaS, RDP, SSH, Private network, and [Cloudflare Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/)).
-* Policies configured — Total number of Access policies, grouped by [policy action](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) (for example, Allow, Block, Bypass, or Service Auth).
+- Applications configured — Total number of Access-protected applications, broken down by type (for example, Self-hosted, SaaS, RDP, SSH, Private network, and [Cloudflare Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/)).
+- Policies configured — Total number of Access policies, grouped by [policy action](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) (for example, Allow, Block, Bypass, or Service Auth).
 
 This section helps administrators audit their Access setup and verify that expected resources and policies are in place.
 

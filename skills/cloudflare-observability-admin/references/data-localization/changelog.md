@@ -12,16 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/data-localization/changelog/index.xml)
 
 ## 2024-05-22
 
 **Expanded Regional Services for more precise data localization.**
-* Added Austria, Brazil, France, Hong Kong, Italy, NATO, the Netherlands, Russia, Saudi Arabia, South Africa, Spain, Switzerland, and Taiwan. Some regions may not appear in the dropdown as they require Cloudflare approval. Contact your account team for more information.
-* Introduced Exclusive of Hong Kong and Macau, and Exclusive of Russia and Belarus options.
-* Launched the Cloudflare Green Energy region, using renewable-powered data centers.
+
+- Added Austria, Brazil, France, Hong Kong, Italy, NATO, the Netherlands, Russia, Saudi Arabia, South Africa, Spain, Switzerland, and Taiwan. Some regions may not appear in the dropdown as they require Cloudflare approval. Contact your account team for more information.
+- Introduced Exclusive of Hong Kong and Macau, and Exclusive of Russia and Belarus options.
+- Launched the Cloudflare Green Energy region, using renewable-powered data centers.
 
 Was this helpful?
 

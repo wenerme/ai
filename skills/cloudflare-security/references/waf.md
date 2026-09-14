@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Web Application Firewall
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get automatic protection from vulnerabilities and the flexibility to create custom rules.
 
@@ -72,31 +72,31 @@ Explore Security Analytics
 
 ## Availability
 
-| Feature                         | Free                      | Pro | Business        | Enterprise  |
-| ------------------------------- | ------------------------- | --- | --------------- | ----------- |
-| Attack score                    | No                        | No  | Yes (one field) | Yes         |
-| Leaked credentials detection    | Yes (one field)           | Yes | Yes             | Yes         |
-| Malicious uploads detection     | No                        | No  | No              | Paid add-on |
-| AI Security for Apps            | No                        | No  | No              | Paid add-on |
-| Custom rules                    | Yes                       | Yes | Yes             | Yes         |
-| Rate limiting rules             | Yes (one rule)            | Yes | Yes             | Yes         |
-| Advanced Rate Limiting          | No                        | No  | No              | Paid add-on |
-| WAF Managed Rules               | Free Managed Ruleset only | Yes | Yes             | Yes         |
-| Sensitive Data Detection (SDD)  | No                        | No  | No              | Yes         |
-| Account-level WAF configuration | No                        | No  | No              | Yes         |
-| Custom lists                    | Yes                       | Yes | Yes             | Yes         |
-| Managed IP Lists                | No                        | No  | No              | Yes         |
-| Email Address Obfuscation       | Yes                       | Yes | Yes             | Yes         |
-| Hotlink Protection              | Yes                       | Yes | Yes             | Yes         |
-| Replace insecure JS libraries   | Yes                       | Yes | Yes             | Yes         |
-| IP Access rules                 | Yes                       | Yes | Yes             | Yes         |
-| User Agent Blocking             | Yes                       | Yes | Yes             | Yes         |
-| Zone Lockdown                   | Yes                       | Yes | Yes             | Yes         |
-| Security Analytics (zone)       | Yes                       | Yes | Yes             | Yes         |
-| Security Analytics (account)    | No                        | No  | Yes             | Yes         |
-| Security Events                 | Yes (sampled logs only)   | Yes | Yes             | Yes         |
-| Security Events alerts          | No                        | No  | Yes             | Yes         |
-| Advanced Security Events alerts | No                        | No  | No              | Yes         |
+| Feature | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Attack score | No | No | Yes (one field) | Yes |
+| Leaked credentials detection | Yes (one field) | Yes | Yes | Yes |
+| Malicious uploads detection | No | No | No | Paid add-on |
+| AI Security for Apps | No | No | No | Paid add-on |
+| Custom rules | Yes | Yes | Yes | Yes |
+| Rate limiting rules | Yes (one rule) | Yes | Yes | Yes |
+| Advanced Rate Limiting | No | No | No | Paid add-on |
+| WAF Managed Rules | Free Managed Ruleset only | Yes | Yes | Yes |
+| Sensitive Data Detection (SDD) | No | No | No | Yes |
+| Account-level WAF configuration | No | No | No | Yes |
+| Custom lists | Yes | Yes | Yes | Yes |
+| Managed IP Lists | No | No | No | Yes |
+| Email Address Obfuscation | Yes | Yes | Yes | Yes |
+| Hotlink Protection | Yes | Yes | Yes | Yes |
+| Replace insecure JS libraries | Yes | Yes | Yes | Yes |
+| IP Access rules | Yes | Yes | Yes | Yes |
+| User Agent Blocking | Yes | Yes | Yes | Yes |
+| Zone Lockdown | Yes | Yes | Yes | Yes |
+| Security Analytics (zone) | Yes | Yes | Yes | Yes |
+| Security Analytics (account) | No | No | Yes | Yes |
+| Security Events | Yes (sampled logs only) | Yes | Yes | Yes |
+| Security Events alerts | No | No | Yes | Yes |
+| Advanced Security Events alerts | No | No | No | Yes |
 
 This is a summary of available features per Cloudflare plan. Refer to the documentation of individual features for more details.
 

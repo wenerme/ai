@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
@@ -22,12 +22,12 @@ No provider SDKs or API keys are needed. Authentication and billing are handled 
 
 Four endpoints are available, each suited to different use cases:
 
-| Endpoint                     | Format                     | Use case                                         | Third-Party Models | Workers AI Models (@cf/) |
-| ---------------------------- | -------------------------- | ------------------------------------------------ | ------------------ | ------------------------ |
-| POST /ai/run                 | Envelope with model, input | All models and modalities (LLM, image, TTS, ASR) | ✅ Yes              | ✅ Yes                    |
-| POST /ai/v1/chat/completions | OpenAI chat completions    | LLMs — OpenAI SDK compatible                     | ✅ Yes              | ✅ Yes                    |
-| POST /ai/v1/responses        | OpenAI Responses API       | Agentic workflows — OpenAI SDK compatible        | ✅ Yes              | ✅ Model dependent        |
-| POST /ai/v1/messages         | Anthropic Messages API     | LLMs — Anthropic SDK compatible                  | ✅ Yes              | ❌ No                     |
+| Endpoint | Format | Use case | Third-Party Models | Workers AI Models (`@cf/`) |
+| --- | --- | --- | --- | --- |
+| `POST /ai/run` | Envelope with `model`, `input` | All models and modalities (LLM, image, TTS, ASR) | ✅ Yes | ✅ Yes |
+| `POST /ai/v1/chat/completions` | OpenAI chat completions | LLMs — OpenAI SDK compatible | ✅ Yes | ✅ Yes |
+| `POST /ai/v1/responses` | OpenAI Responses API | Agentic workflows — OpenAI SDK compatible | ✅ Yes | ✅ Model dependent |
+| `POST /ai/v1/messages` | Anthropic Messages API | LLMs — Anthropic SDK compatible | ✅ Yes | ❌ No |
 
 Note
 
@@ -35,7 +35,7 @@ The `/ai/v1/messages` endpoint strictly uses Anthropic's API schema and supports
 
 ## Authentication
 
-Authenticate with a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that has the **Account** \> **Workers AI** \> **Read** permission. Pass it in the `Authorization` header.
+Authenticate with a [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that has the **Account** > **Workers AI** > **Read** permission. Pass it in the `Authorization` header.
 
 All `/accounts/{account_id}/ai/*` endpoints require the Workers AI permission. This applies to third-party models and to Workers AI (`@cf/`) models. A token that holds only an `AI Gateway` permission returns `401` with error code `10000`.
 
@@ -49,10 +49,10 @@ Ensure your Cloudflare account has [sufficient credits loaded](https://developer
 
 Third-party models use the `author/model` format:
 
-* `openai/gpt-4.1` — OpenAI
-* `anthropic/claude-sonnet-4` — Anthropic
-* `google/gemini-3-flash` — Google
-* `xai/grok-3` — xAI
+- `openai/gpt-4.1` — OpenAI
+- `anthropic/claude-sonnet-4` — Anthropic
+- `google/gemini-3-flash` — Google
+- `xai/grok-3` — xAI
 
 Workers AI models use the `@cf/author/model` format (for example, `@cf/moonshotai/kimi-k2.6`). Workers AI requests also require the `cf-aig-gateway-id` header — refer to [Call a Workers AI model](#call-a-workers-ai-model) for details.
 
@@ -178,10 +178,10 @@ Webhook delivery is best-effort and is not retried. The destination must be an H
 
 Use the optional `webhookFormat` field in the `options` object to control the shape of the webhook body. The default is `raw`. `webhookFormat` can only be provided when `webhookUrl` is present. Otherwise, the request returns a `400` error.
 
-| Format | Description                                                                                                                 |
-| ------ | --------------------------------------------------------------------------------------------------------------------------- |
-| raw    | Sends the payload as-is (default).                                                                                          |
-| chat   | Wraps the payload in { "text": "<prettified JSON>" }, matching the incoming-webhook body accepted by Google Chat and Slack. |
+| Format | Description |
+| --- | --- |
+| `raw` | Sends the payload as-is (default). |
+| `chat` | Wraps the payload in `{ "text": "<prettified JSON>" }`, matching the incoming-webhook body accepted by Google Chat and Slack. |
 
 ## `/ai/v1/chat/completions` — OpenAI compatible
 
@@ -330,25 +330,25 @@ All AI Gateway features configured on that gateway — caching, rate limiting, g
 
 Use `cf-aig-*` headers to control AI Gateway behavior on a per-request basis:
 
-| Header                 | Type        | Description                                       |
-| ---------------------- | ----------- | ------------------------------------------------- |
-| cf-aig-skip-cache      | boolean     | Skip the cache for this request.                  |
-| cf-aig-cache-ttl       | number      | Cache TTL in seconds.                             |
-| cf-aig-cache-key       | string      | Custom cache key.                                 |
-| cf-aig-collect-log     | boolean     | Turn logging on or off for this request.          |
-| cf-aig-request-timeout | number      | Request timeout in milliseconds.                  |
-| cf-aig-max-attempts    | number      | Retry attempts (max 5).                           |
-| cf-aig-retry-delay     | number      | Retry delay in milliseconds (max 5000).           |
-| cf-aig-backoff         | string      | Backoff method: constant, linear, or exponential. |
-| cf-aig-metadata        | JSON string | Custom metadata to attach to the log entry.       |
+| Header | Type | Description |
+| --- | --- | --- |
+| `cf-aig-skip-cache` | boolean | Skip the cache for this request. |
+| `cf-aig-cache-ttl` | number | Cache TTL in seconds. |
+| `cf-aig-cache-key` | string | Custom cache key. |
+| `cf-aig-collect-log` | boolean | Turn logging on or off for this request. |
+| `cf-aig-request-timeout` | number | Request timeout in milliseconds. |
+| `cf-aig-max-attempts` | number | Retry attempts (max 5). |
+| `cf-aig-retry-delay` | number | Retry delay in milliseconds (max 5000). |
+| `cf-aig-backoff` | string | Backoff method: `constant`, `linear`, or `exponential`. |
+| `cf-aig-metadata` | JSON string | Custom metadata to attach to the log entry. |
 
 For more details on these options, refer to [Request handling](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/) and [Caching](https://developers.cloudflare.com/ai-gateway/features/caching/).
 
 ## Related resources
 
-* [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) — load credits and pay for inference requests with a single Cloudflare bill.
-* [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — call models from within a Cloudflare Worker using `env.AI.run()`.
-* [Model catalog](https://developers.cloudflare.com/ai/models/) — browse models supported by the REST API.
+- [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) — load credits and pay for inference requests with a single Cloudflare bill.
+- [Workers AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) — call models from within a Cloudflare Worker using `env.AI.run()`.
+- [Model catalog](https://developers.cloudflare.com/ai/models/) — browse models supported by the REST API.
 
 Was this helpful?
 

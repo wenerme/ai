@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Classic Schema validation (deprecated)
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/reference/classic-schema-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -20,7 +20,9 @@ Classic Schema validation has been deprecated.
 
 Upload all new schemas to [Schema validation 2.0](https://developers.cloudflare.com/api-shield/security/schema-validation/).
 
-Use the **API Shield** interface to configure [API Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), which validates requests according to the API schema you provide.
+Use the **API Shield** interface to configure [API Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), which validates requests according to the API schema
+
+ you provide.
 
 Before you can configure Schema validation for an API, you must obtain an API Schema file matching our [specifications](https://developers.cloudflare.com/api-shield/security/schema-validation/#specifications).
 
@@ -35,17 +37,17 @@ This feature is only available for customers on an Enterprise plan. Contact your
 To configure Schema validation in the Cloudflare dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
-2. Select **Security** \> **API Shield**.
+2. Select **Security** > **API Shield**.
 3. Go to **Schema validation** and select **Add schema**.
-4. Enter a descriptive name for your policy and optionally edit the expression to trigger Schema validation. For example, if your API is available at `http://api.example.com/v1`, include a check for the _Hostname_ field — equal to `api.example.com` — and a check for the _URI Path_ field using a regular expression — matching the regex `^/v1`.
+4. Enter a descriptive name for your policy and optionally edit the expression to trigger Schema validation. For example, if your API is available at `http://api.example.com/v1`, include a check for the *Hostname* field — equal to `api.example.com` — and a check for the *URI Path* field using a regular expression — matching the regex `^/v1`.
 
 Important
 
-To validate the hostname, you must include the _Hostname_ field explicitly in the rule, even if the hostname value is in the schema file. Any hostname value present in the schema file will be ignored.
+To validate the hostname, you must include the *Hostname* field explicitly in the rule, even if the hostname value is in the schema file. Any hostname value present in the schema file will be ignored.
 
-1. Select **Next**.
-2. Upload your schema file.
-3. Select **Save** to validate the content of the schema file and deploy the Schema validation rule. If you get a validation error, ensure that you are using one of the [supported file formats](https://developers.cloudflare.com/api-shield/security/schema-validation/#specifications) and that each endpoint and method pair has a unique operation ID.
+5. Select **Next**.
+6. Upload your schema file.
+7. Select **Save** to validate the content of the schema file and deploy the Schema validation rule. If you get a validation error, ensure that you are using one of the [supported file formats](https://developers.cloudflare.com/api-shield/security/schema-validation/#specifications) and that each endpoint and method pair has a unique operation ID.
 
 After deploying your API Shield rule, Cloudflare displays a summary of all API endpoints organized by their protection level and actions that will occur for non-compliant and unprotected requests.
 

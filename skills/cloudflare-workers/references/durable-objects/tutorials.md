@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/tutorials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-View tutorials to help you get started with Durable Objects.
+View tutorials
 
-| Name                                                                                                                                             | Last Updated | Difficulty   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ------------ |
-| [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | 2 years ago  | Intermediate |
+ to help you get started with Durable Objects.
+
+| Name | Last Updated | Difficulty |
+| --- | --- | --- |
+| [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | 2 years ago | Intermediate |
 
 Was this helpful?
 

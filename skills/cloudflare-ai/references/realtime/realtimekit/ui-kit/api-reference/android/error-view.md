@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkErrorView
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/error-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/error-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A full-screen error view that displays an error message and a retry button.
 
 ## Methods
 
-| Method  | Parameters                                       | Description                                     |
-| ------- | ------------------------------------------------ | ----------------------------------------------- |
-| refresh | errorMessage: String, onRetryClicked: () -> Unit | Set the error message and retry button callback |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `refresh` | `errorMessage: String, onRetryClicked: () -> Unit` | Set the error message and retry button callback |
 
 ## Usage Examples
 

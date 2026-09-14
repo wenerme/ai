@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # React
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-react-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [React ↗](https://reactjs.org/) is a popular framework for building reactive and powerful front-end applications, built by the open-source team at Facebook.
 
@@ -20,7 +20,7 @@ In this guide, you will create a new React application and deploy it using Cloud
 
 ## Setting up a new project
 
-Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate React's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate React's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new React project, run the following command:
 
@@ -74,19 +74,19 @@ git push -u origin main
 
 ### Deploy via the `create-cloudflare` CLI (C3)
 
-If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new React project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
+If you use [`create-cloudflare`(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new React project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
 
 ### Deploy via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application** > **Pages** > **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and, in the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value         | |  Production branch | main |
-| -------------------- | ------------- | -------------------- | ---- |
-| Build command        | npm run build |                      |      |
-| Build directory      | dist          |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npm run build` |
+| Build directory | `dist` |
 
 After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `react`, your project dependencies, and building your site, before deploying it.
 

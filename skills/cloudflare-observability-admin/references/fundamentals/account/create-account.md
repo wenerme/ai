@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create account
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/create-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/create-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To create a Cloudflare account:
 
@@ -30,8 +30,7 @@ You may want to customize the name of this account, either to help specify its p
 
 To change your account name:
 
-1. In the Cloudflare dashboard, go to the **Configurations** page.
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to the **Configurations** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. For **Account Name**, select **Change Name**.
 3. Enter a new account name.
 4. Select **Save**.
@@ -56,13 +55,13 @@ If your domain was added to Cloudflare by a hosting partner, manage your DNS rec
 
 For those who prefer to interact with Cloudflare programmatically, you can use several methods:
 
-| Resource                                                                                 | Docs                                                                   | Description                                                                    |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/)                    | [API docs](https://developers.cloudflare.com/api/)                     | RESTful API based on HTTPS requests and JSON responses.                        |
-| [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) | [Terraform docs](https://developers.cloudflare.com/terraform/)         | Configure Cloudflare using HashiCorp's Infrastructure as Code tool, Terraform. |
-| [cloudflare-go ↗](https://github.com/cloudflare/cloudflare-go)                           | [README ↗](https://github.com/cloudflare/cloudflare-go#readme)         | The official Go library for the Cloudflare API.                                |
-| [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript)           | [README ↗](https://github.com/cloudflare/cloudflare-typescript#readme) | The official TypeScript library for the Cloudflare API.                        |
-| [cloudflare-python ↗](https://github.com/cloudflare/cloudflare-python)                   | [README ↗](https://github.com/cloudflare/cloudflare-python#readme)     | The official Python library for the Cloudflare API.                            |
+| Resource | Docs | Description |
+| --- | --- | --- |
+| [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/) | [API docs](https://developers.cloudflare.com/api/) | RESTful API based on HTTPS requests and JSON responses. |
+| [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) | [Terraform docs](https://developers.cloudflare.com/terraform/) | Configure Cloudflare using HashiCorp's Infrastructure as Code tool, Terraform. |
+| [cloudflare-go ↗](https://github.com/cloudflare/cloudflare-go) | [README ↗](https://github.com/cloudflare/cloudflare-go#readme) | The official Go library for the Cloudflare API. |
+| [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) | [README ↗](https://github.com/cloudflare/cloudflare-typescript#readme) | The official TypeScript library for the Cloudflare API. |
+| [cloudflare-python ↗](https://github.com/cloudflare/cloudflare-python) | [README ↗](https://github.com/cloudflare/cloudflare-python#readme) | The official Python library for the Cloudflare API. |
 
 Was this helpful?
 

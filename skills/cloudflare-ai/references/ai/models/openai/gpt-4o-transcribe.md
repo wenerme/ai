@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-4o-transcribe`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 A speech-to-text model that uses GPT-4o to transcribe audio with improved word error rate and better language recognition compared to original Whisper models.
 
-| Model Info          |                                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                                     |
-| More information    | [link ↗](https://openai.com/)                                                                                              |
-| Zero data retention | Yes                                                                                                                        |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-transcribe) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-transcribe) |
 
 ## Usage
 
@@ -54,7 +54,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Hello
+```
 
 ```json
 {
@@ -70,7 +72,11 @@ Hello
 
 ## Examples
 
-**With Language Hint** — Transcribe with a language hint for better accuracy
+<details>
+
+<summary>**With Language Hint** — Transcribe with a language hint for better accuracy</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -93,7 +99,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Hello
+```
 
 ```json
 {
@@ -107,7 +115,13 @@ Hello
 }
 ```
 
-**Guided Transcription** — Use a prompt to guide transcription style and context
+</details>
+
+<details>
+
+<summary>**Guided Transcription** — Use a prompt to guide transcription style and context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -135,7 +149,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 This is a technical discussion about Kubernetes and cloud-native architecture.
+```
 
 ```json
 {
@@ -149,7 +165,13 @@ This is a technical discussion about Kubernetes and cloud-native architecture.
 }
 ```
 
-**High Temperature** — Higher temperature for more varied transcription
+</details>
+
+<details>
+
+<summary>**High Temperature** — Higher temperature for more varied transcription</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -172,7 +194,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Hello, world!
+```
 
 ```json
 {
@@ -185,6 +209,8 @@ Hello, world!
   "state": "Completed"
 }
 ```
+
+</details>
 
 ## Parameters
 
@@ -202,7 +228,7 @@ prompt
 
 temperature
 
-`number`minimum: 0maximum: 1The sampling temperature, between 0 and 1\. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Defaults to 0 if omitted.
+`number`minimum: 0maximum: 1The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. Defaults to 0 if omitted.
 
 text
 
@@ -210,9 +236,9 @@ text
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4o-transcribe/schema-output.json)
 
 Was this helpful?
 

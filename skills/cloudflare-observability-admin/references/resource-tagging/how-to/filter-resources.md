@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Filter resources by tag
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `GET /accounts/{account_id}/tags/resources` endpoint supports tag filtering via the `tag` query parameter. Multiple `tag` parameters combine with AND logic. For the full endpoint specification, refer to the [Resource Tagging API reference ↗](https://developers.cloudflare.com/api/resources/tags/).
 

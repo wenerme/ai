@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP/2 to Origin
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A protocol is a set of rules governing the exchange or transmission of data between devices. One of the most important protocols that run on the human-computer interaction layer, where applications can access the network services, is HTTP (Hypertext Transfer Protocol).
 
@@ -20,9 +20,9 @@ HTTP is a well established protocol that has several versions, and each version 
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Disable HTTP/2 to Origin
 
@@ -30,8 +30,7 @@ At Cloudflare, HTTP/2 connection to the origin is enabled by default.
 
 If you wish to disable HTTP/2 to Origin, you can follow these steps:
 
-1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Speed** > **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to the **Protocol Optimization** tab and under **HTTP/2 to Origin** set the toggle to **Off**.
 
 ## Connection multiplexing
@@ -44,64 +43,87 @@ By pooling many requests into fewer TCP connections, Cloudflare lowers the numbe
 
 When a new request arrives, Cloudflare attempts to reuse an existing HTTP/2 connection to the origin:
 
-* If the connection has not reached its concurrent stream limit, Cloudflare multiplexes the request over that same connection.
-* If the stream limit has been reached, Cloudflare opens a new TCP connection as needed.
+- If the connection has not reached its concurrent stream limit, Cloudflare multiplexes the request over that same connection.
+- If the stream limit has been reached, Cloudflare opens a new TCP connection as needed.
 
 Connections are kept alive and reused until they become idle or hit their concurrency limit.
 
 #### Connection lifecycle
 
-* **Connection reuse**: Cloudflare maintains persistent (keep-alive) TCP connections to your origin. Reuse continues until the HTTP/2 stream limit is reached or the connection goes idle.
-* **Idle timeout (900s)**: If a connection remains idle (no active streams) for 900 seconds, Cloudflare closes it. Attempting to reuse a closed connection may result in a `520` error.
-* **Keep-alives**: Cloudflare sends periodic TCP keep-alives to detect unresponsive origins. After two unanswered probes, the connection is reset.
-
-  * First probe after \~30 seconds of inactivity
-  * Second probe after 15 seconds
-* **Connection tear-down**: Connections may also close due to:
-
-  * Load balancing decisions
-  * Data center or node maintenance
-  * Reaching the maximum concurrency limit
-  * Origin or intermediary network closing idle connections
+- **Connection reuse**: Cloudflare maintains persistent (keep-alive) TCP connections to your origin. Reuse continues until the HTTP/2 stream limit is reached or the connection goes idle.
+- **Idle timeout (900s)**: If a connection remains idle (no active streams) for 900 seconds, Cloudflare closes it. Attempting to reuse a closed connection may result in a `520` error.
+- **Keep-alives**: Cloudflare sends periodic TCP keep-alives to detect unresponsive origins. After two unanswered probes, the connection is reset.
+  - First probe after \~30 seconds of inactivity
+  - Second probe after 15 seconds
+- **Connection tear-down**: Connections may also close due to:
+  - Load balancing decisions
+  - Data center or node maintenance
+  - Reaching the maximum concurrency limit
+  - Origin or intermediary network closing idle connections
 
 ### Benefits
 
-| Advantage            | Description                                                                                                              |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Fewer TCP handshakes | Multiple requests share a single long-lived TCP connection, minimizing connection churn.                                 |
-| Lower latency        | Eliminates repeated TCP/TLS handshakes, reducing round-trip delays for new requests.                                     |
-| Reduced origin load  | Fewer concurrent connections for the origin to manage, easing load on resource-constrained systems.                      |
-| Adaptive scaling     | During surges (for example, failovers), Cloudflare reuses available streams first, then opens new connections as needed. |
+| Advantage | Description |
+| --- | --- |
+| Fewer TCP handshakes | Multiple requests share a single long-lived TCP connection, minimizing connection churn. |
+| Lower latency | Eliminates repeated TCP/TLS handshakes, reducing round-trip delays for new requests. |
+| Reduced origin load | Fewer concurrent connections for the origin to manage, easing load on resource-constrained systems. |
+| Adaptive scaling | During surges (for example, failovers), Cloudflare reuses available streams first, then opens new connections as needed. |
 
 ### Default behavior by plan
 
-| Plan                  | Default State                                 | Max concurrent streams per connection | Configurable? |
-| --------------------- | --------------------------------------------- | ------------------------------------- | ------------- |
-| Free / Pro / Business | Enabled by default                            | 200                                   | No            |
-| Enterprise            | Disabled by default (1 stream per connection) | 1–200+                                | Yes           |
+| Plan | Default State | Max concurrent streams per connection | Configurable? |
+| --- | --- | --- | --- |
+| Free / Pro / Business | Enabled by default | 200 | No |
+| Enterprise | Disabled by default (1 stream per connection) | 1–200+ | Yes |
 
-* **Free/Pro/Business**: Multiplexing is automatically enabled. Each connection supports up to 200 concurrent streams.
-* **Enterprise**: Multiplexing starts effectively disabled (1 stream). You can enable and configure concurrency per zone (up to 200+ concurrent streams).
+- **Free/Pro/Business**: Multiplexing is automatically enabled. Each connection supports up to 200 concurrent streams.
+- **Enterprise**: Multiplexing starts effectively disabled (1 stream). You can enable and configure concurrency per zone (up to 200+ concurrent streams).
 
 ### Configuration
 
 Connection multiplexing is enabled by default on Free, Pro and Business zones and uses up to 100 concurrent streams by default. Enterprise plans can explicitly configure the maximum number of concurrent streams (often called the “multiplexing ratio”) for a zone in the dashboard or via API.
 
+<details>
+
+<summary>
+
 Dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
+</summary>
+
+1. Log in to the <a href="https://dash.cloudflare.com/login">Cloudflare dashboard ↗</a> and select your account.
 2. Choose the domain that will use HTTP/2 to Origin.
-3. Select **Speed > Optimization**.
+3. Select **Speed &gt; Optimization**.
 4. Open the **Protocol Optimization** tab.
 5. Under **HTTP/2 to Origin**, select **Configure** and adjust the stream settings as needed.
 
+</details>
+
+<details>
+
+<summary>
+
 API
+
+</summary>
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Change Origin H2 Max Streams Settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max_streams" \
@@ -112,9 +134,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/origin_h2_max
 	}'
 ```
 
-Refer to the [API documentation](https://developers.cloudflare.com/api/python/resources/zones/subresources/settings/methods/edit/) for more information.
+Refer to the <a href="https://developers.cloudflare.com/api/python/resources/zones/subresources/settings/methods/edit/">API documentation</a> for more information.
+
+</details>
+
+<details>
+
+<summary>
 
 Terraform
+
+</summary>
 
 ```hcl
 resource "cloudflare_zone_setting" "example" {
@@ -124,6 +154,8 @@ resource "cloudflare_zone_setting" "example" {
 }
 ```
 
+</details>
+
 Note
 
 If your origin does not support multiplexing, enabling HTTP/2 to origin may result in 5xx errors, particularly 520s.
@@ -132,13 +164,13 @@ During the HTTP/2 handshake, our edge reads the SETTINGS\_MAX\_CONCURRENT\_STREA
 
 ### Timeouts and error codes
 
-| Condition               | Default / Range                   | Error code | Description                                                |
-| ----------------------- | --------------------------------- | ---------- | ---------------------------------------------------------- |
-| Proxy Read Timeout      | 125s (up to 6000s for Enterprise) | 524        | Origin took too long to respond.                           |
-| Proxy Idle Timeout      | 900s (fixed)                      | 520        | Connection closed due to idleness.                         |
-| TCP Keep-Alive Interval | 30s initial, 15s between probes   | 520        | After two missed probes, Cloudflare resets the connection. |
-| TCP Handshake Timeout   | 19s                               | 522        | Origin did not complete the SYN handshake.                 |
-| TCP ACK Timeout         | 90s                               | 522        | Origin stopped acknowledging data.                         |
+| Condition | Default / Range | Error code | Description |
+| --- | --- | --- | --- |
+| Proxy Read Timeout | 125s (up to 6000s for Enterprise) | `524` | Origin took too long to respond. |
+| Proxy Idle Timeout | 900s (fixed) | `520` | Connection closed due to idleness. |
+| TCP Keep-Alive Interval | 30s initial, 15s between probes | `520` | After two missed probes, Cloudflare resets the connection. |
+| TCP Handshake Timeout | 19s | `522` | Origin did not complete the SYN handshake. |
+| TCP ACK Timeout | 90s | `522` | Origin stopped acknowledging data. |
 
 ### Common scenarios
 
@@ -148,8 +180,8 @@ When traffic shifts suddenly (for example, during origin failover), Cloudflare r
 
 **Long-Lived or idle requests**
 
-* If your requests exceed 125 seconds (for example, streaming), increase the Proxy Read Timeout (Enterprise only).
-* Origins that close connections faster than 900 seconds may experience connection churn, but Cloudflare automatically reestablishes new connections as needed.
+- If your requests exceed 125 seconds (for example, streaming), increase the Proxy Read Timeout (Enterprise only).
+- Origins that close connections faster than 900 seconds may experience connection churn, but Cloudflare automatically reestablishes new connections as needed.
 
 **Potential 5xx errors**
 

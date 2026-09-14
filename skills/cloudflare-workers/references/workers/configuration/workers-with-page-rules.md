@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Page Rules
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Page Rules trigger certain actions whenever a request matches one of the URL patterns you define. You can define a page rule to trigger one or more actions whenever a certain URL pattern is matched. Refer to [Page Rules](https://developers.cloudflare.com/rules/page-rules/) to learn more about configuring Page Rules.
 
@@ -36,24 +36,24 @@ If you are experiencing Page Rule errors when running Workers, contact your Clou
 
 The following Page Rules may not work as expected when an incoming request is matched to a Worker route:
 
-* Always Online
-* [Always Use HTTPS](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#always-use-https)
-* [Automatic HTTPS Rewrites](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#automatic-https-rewrites)
-* [Browser Cache TTL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#browser-cache-ttl)
-* [Browser Integrity Check](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#browser-integrity-check)
-* [Cache Deception Armor](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#cache-deception-armor)
-* [Cache Level](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#cache-level)
-* Disable Apps
-* [Disable Zaraz](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#disable-zaraz)
-* [Edge Cache TTL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#edge-cache-ttl)
-* [Email Obfuscation](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#email-obfuscation)
-* [Forwarding URL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#forwarding-url)
-* Host Header Override
-* [IP Geolocation Header](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#ip-geolocation-header)
-* [Origin Cache Control](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#origin-cache-control)
-* [Rocket Loader](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#rocket-loader)
-* [Security Level](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#security-level)
-* [SSL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#ssl)
+- Always Online
+- [Always Use HTTPS](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#always-use-https)
+- [Automatic HTTPS Rewrites](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#automatic-https-rewrites)
+- [Browser Cache TTL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#browser-cache-ttl)
+- [Browser Integrity Check](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#browser-integrity-check)
+- [Cache Deception Armor](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#cache-deception-armor)
+- [Cache Level](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#cache-level)
+- Disable Apps
+- [Disable Zaraz](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#disable-zaraz)
+- [Edge Cache TTL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#edge-cache-ttl)
+- [Email Obfuscation](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#email-obfuscation)
+- [Forwarding URL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#forwarding-url)
+- Host Header Override
+- [IP Geolocation Header](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#ip-geolocation-header)
+- [Origin Cache Control](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#origin-cache-control)
+- [Rocket Loader](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#rocket-loader)
+- [Security Level](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#security-level)
+- [SSL](https://developers.cloudflare.com/workers/configuration/workers-with-page-rules/#ssl)
 
 This is because the default setting of these Page Rules will be disabled when Cloudflare recognizes that the request is headed to a Worker.
 
@@ -69,123 +69,123 @@ A same zone subrequest is a request the Worker makes to an orange-clouded hostna
 
 ### Always Use HTTPS
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Ignored   |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Ignored |
+| Worker | Other Zone | Rule Ignored |
 
 ### Automatic HTTPS Rewrites
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Ignored   |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Ignored |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Browser Cache TTL
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Ignored   |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Ignored |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Browser Integrity Check
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Ignored   |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Ignored |
+| Worker | Other Zone | Rule Ignored |
 
 ### Cache Deception Armor
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Cache Level
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Disable Zaraz
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Edge Cache TTL
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Email Obfuscation
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Ignored   |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Ignored |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Forwarding URL
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Ignored   |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Ignored |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### IP Geolocation Header
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Origin Cache Control
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 ### Rocket Loader
 
-| Source | Target     | Behavior     |
-| ------ | ---------- | ------------ |
-| Client | Worker     | Rule Ignored |
-| Worker | Same Zone  | Rule Ignored |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Ignored |
+| Worker | Same Zone | Rule Ignored |
 | Worker | Other Zone | Rule Ignored |
 
 ### Security Level
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Ignored   |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Ignored |
+| Worker | Other Zone | Rule Ignored |
 
 ### SSL
 
-| Source | Target     | Behavior       |
-| ------ | ---------- | -------------- |
-| Client | Worker     | Rule Respected |
-| Worker | Same Zone  | Rule Respected |
-| Worker | Other Zone | Rule Ignored   |
+| Source | Target | Behavior |
+| --- | --- | --- |
+| Client | Worker | Rule Respected |
+| Worker | Same Zone | Rule Respected |
+| Worker | Other Zone | Rule Ignored |
 
 Was this helpful?
 

@@ -1,5 +1,5 @@
 ---
-description: FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
+description: "FLUX.1 [schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions. "
 title: flux-1-schnell
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,23 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-1-schnell/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/black-forest-labs/flux-1-schnell`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
-FLUX.1 \[schnell\] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
+FLUX.1 \[schnell] is a 12 billion parameter rectified flow transformer capable of generating images from text descriptions.
 
-| Model Info        |                                                  |
-| ----------------- | ------------------------------------------------ |
-| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service)  |
-| Unit Pricing      | $0.000053 per 512 by 512 tile, $0.00011 per step |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Unit Pricing | $0.000053 per 512 by 512 tile, $0.00011 per step |
 
 ## Usage
 
 ```ts
-
 export interface Env {
 	AI: Ai;
 }
@@ -48,11 +47,9 @@ export default {
 		return Response.json({ dataURI });
 	},
 } satisfies ExportedHandler<Env>;
-
 ```
 
 ```ts
-
 export interface Env {
 	AI: Ai;
 }
@@ -77,7 +74,6 @@ export default {
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/black-forest-labs/flux-1-schnell  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -100,9 +96,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-1-schnell/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-1-schnell/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-1-schnell/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-1-schnell/schema-output.json)
 
 Was this helpful?
 

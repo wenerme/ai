@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage files
 
-Last updated May 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/manage-files/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/manage-files/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to read, write, organize, and synchronize files in the sandbox filesystem.
 
@@ -20,9 +20,9 @@ This guide shows you how to read, write, organize, and synchronize files in the 
 
 File operations support both absolute and relative paths:
 
-* `/workspace` \- Default working directory for application files
-* `/tmp` \- Temporary files (may be cleared)
-* `/home` \- User home directory
+- `/workspace` - Default working directory for application files
+- `/tmp` - Temporary files (may be cleared)
+- `/home` - User home directory
 
 ```js
 // Absolute paths
@@ -232,11 +232,11 @@ const sessionResult = await session.exists('/workspace/temp.txt');
 
 ## Best practices
 
-* **Use `/workspace`** \- Default working directory for app files
-* **Use absolute paths** \- Always use full paths like `/workspace/file.txt`
-* **Batch operations** \- Use `Promise.all()` for multiple independent file writes
-* **Create parent directories** \- Use `recursive: true` when creating nested paths
-* **Handle errors** \- Check for `FILE_NOT_FOUND` errors gracefully
+- **Use `/workspace`** - Default working directory for app files
+- **Use absolute paths** - Always use full paths like `/workspace/file.txt`
+- **Batch operations** - Use `Promise.all()` for multiple independent file writes
+- **Create parent directories** - Use `recursive: true` when creating nested paths
+- **Handle errors** - Check for `FILE_NOT_FOUND` errors gracefully
 
 ## Troubleshooting
 
@@ -338,10 +338,10 @@ try {
 
 ## Related resources
 
-* [Files API reference](https://developers.cloudflare.com/sandbox/api/files/) \- Complete method documentation
-* [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Run file operations with commands
-* [Git workflows guide](https://developers.cloudflare.com/sandbox/guides/git-workflows/) \- Clone and manage repositories
-* [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) \- Generate and execute code files
+- [Files API reference](https://developers.cloudflare.com/sandbox/api/files/) - Complete method documentation
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Run file operations with commands
+- [Git workflows guide](https://developers.cloudflare.com/sandbox/guides/git-workflows/) - Clone and manage repositories
+- [Code Interpreter guide](https://developers.cloudflare.com/sandbox/guides/code-execution/) - Generate and execute code files
 
 Was this helpful?
 

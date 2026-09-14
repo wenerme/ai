@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Image Classification • Microsoft
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/microsoft/resnet-50`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 50 layers deep image classification CNN trained on more than 1M images from ImageNet
 
-| Model Info       |                                                                                                                                                                       |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | More information | [link ↗](https://www.microsoft.com/en-us/research/blog/microsoft-vision-model-resnet-50-combines-web-scale-data-and-multi-task-learning-to-achieve-state-of-the-art/) |
-| Unit Pricing     | $0.0000025 per inference request                                                                                                                                      |
+| Unit Pricing | $0.0000025 per inference request |
 
 ## Parameters
 
@@ -55,9 +55,9 @@ items
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-output.json)
 
 Was this helpful?
 

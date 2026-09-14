@@ -1,12 +1,5 @@
 ---
-description: When using the API, Miniflare allows you to substitute custom Responses for
-fetch() calls using undici's
-MockAgent API.
-This is useful for testing Workers that make HTTP requests to other services. To
-enable fetch mocking, create a
-MockAgent
-using the createFetchMock() function, then set this using the fetchMock
-option.
+description: "When using the API, Miniflare allows you to substitute custom Responses for\nfetch() calls using undici's\nMockAgent API.\nThis is useful for testing Workers that make HTTP requests to other services. To\nenable fetch mocking, create a\nMockAgent\nusing the createFetchMock() function, then set this using the fetchMock\noption."
 title: Web Standards
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -19,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web Standards
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/standards/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/standards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Web Standards Reference](https://developers.cloudflare.com/workers/runtime-apis/web-standards)
-* [Encoding Reference](https://developers.cloudflare.com/workers/runtime-apis/encoding)
-* [Fetch Reference](https://developers.cloudflare.com/workers/runtime-apis/fetch)
-* [Request Reference](https://developers.cloudflare.com/workers/runtime-apis/request)
-* [Response Reference](https://developers.cloudflare.com/workers/runtime-apis/response)
-* [Streams Reference](https://developers.cloudflare.com/workers/runtime-apis/streams)
-* [Web Crypto Reference](https://developers.cloudflare.com/workers/runtime-apis/web-crypto)
+- [Web Standards Reference](https://developers.cloudflare.com/workers/runtime-apis/web-standards)
+- [Encoding Reference](https://developers.cloudflare.com/workers/runtime-apis/encoding)
+- [Fetch Reference](https://developers.cloudflare.com/workers/runtime-apis/fetch)
+- [Request Reference](https://developers.cloudflare.com/workers/runtime-apis/request)
+- [Response Reference](https://developers.cloudflare.com/workers/runtime-apis/response)
+- [Streams Reference](https://developers.cloudflare.com/workers/runtime-apis/streams)
+- [Web Crypto Reference](https://developers.cloudflare.com/workers/runtime-apis/web-crypto)
 
 ## Mocking Outbound `fetch` Requests
 
-When using the API, Miniflare allows you to substitute custom `Response`s for `fetch()` calls using `undici`'s [MockAgent API ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a [MockAgent ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin)using the `createFetchMock()` function, then set this using the `fetchMock`option.
+When using the API, Miniflare allows you to substitute custom `Response`s for `fetch()` calls using `undici`'s [`MockAgent` API ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a [`MockAgent` ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin) using the `createFetchMock()` function, then set this using the `fetchMock` option.
 
 ```js
 import { Miniflare, createFetchMock } from "miniflare";

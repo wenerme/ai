@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete objects
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/objects/delete-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/delete-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can delete objects from R2 using the dashboard, Workers API, S3 API, or command-line tools. To empty or delete an entire bucket, refer to [Delete buckets](https://developers.cloudflare.com/r2/buckets/delete-buckets/).
 
 ## Delete via dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. (Optional) Select the **View prefixes as directories** checkbox to view prefixes grouped as [folders](https://developers.cloudflare.com/r2/objects/#prefixes-and-folders).
 4. Select the objects or folders you want to delete. You can select a mix of both in the same operation.
@@ -93,7 +92,7 @@ Caution
 
 Deleting objects from a bucket is irreversible.
 
-Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to delete objects. Run the [r2 object delete command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-delete):
+Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to delete objects. Run the [`r2 object delete` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-delete):
 
 ```sh
 wrangler r2 object delete test-bucket/image.png

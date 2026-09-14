@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Microsoft Azure VPN Gateway
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/azure/azure-vpn-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial provides information on how to connect Cloudflare WAN (formerly Magic WAN) to your Azure Virtual Network, using the Azure Virtual Network Gateway.
 
@@ -22,16 +22,16 @@ You will need to have an existing Resource group, Virtual Network, and Virtual M
 
 ## Configure Azure Virtual Network Gateway
 
-### 1\. Create a Gateway subnet
+### 1. Create a Gateway subnet
 
 You should already have a Virtual Network (VNET) created with a subnet assigned to it. The next step is to create a gateway subnet that Azure will use for addressing services related to Azure's Virtual Network Gateway. If you already have a gateway subnet, Azure will prevent you from creating a second one. If that is your case, update your gateway subnet settings.
 
-1. Go to your **Virtual Network** \> **Subnets**.
+1. Go to your **Virtual Network** > **Subnets**.
 2. Select the option to add a **Gateway subnet**.
 3. Configure the subnet address range. The gateway subnet must be contained by the address space of the virtual network, and have a subnet mask of `/27` or greater.
 4. Make sure all other settings are set to **None**.
 
-### 2\. Create a Virtual Network Gateway
+### 2. Create a Virtual Network Gateway
 
 The Virtual Network Gateway is used to form the tunnel to the devices on your premises.
 
@@ -65,19 +65,19 @@ The time it takes for Azure to fully provision the Virtual Network Gateway depen
 
 1. Create an [IPsec tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) in the Cloudflare dashboard.
 2. Make sure you have the following settings:
-  1. **Interface address**: As the Azure Local Network Gateway will only permit specifying the lower IP address in a `/31` subnet, add the upper IP address within the `/31` subnet. You will configure the corresponding `/32` address in Azure in a later step (refer to [Configure Local Network Gateway for IPsec tunnel health checks](#2-configure-local-network-gateway-for-ipsec-tunnel-health-checks)). Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.
-  2. **Customer endpoint**: The Public IP associated with your Azure Virtual Network Gateway. For example, `40.xxx.xxx.xxx`.
-  3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.
-  4. **Health check rate**: Leave the default option (Medium) selected.
-  5. **Health check type**: Leave the default option (Reply) selected.
-  6. **Health check direction**: Leave default option (Bidirectional) selected.
-  7. **Health check target**: Select **Custom**.
-  8. **Target address**: Enter the same address that is used in the **Customer endpoint** field.
-  9. **Add pre-shared key later**: Select this option to create a PSK that will be used later in Azure.
-  10. **Replay protection**: **Enable**.
+   1. **Interface address**: As the Azure Local Network Gateway will only permit specifying the lower IP address in a `/31` subnet, add the upper IP address within the `/31` subnet. You will configure the corresponding `/32` address in Azure in a later step (refer to [Configure Local Network Gateway for IPsec tunnel health checks](#2-configure-local-network-gateway-for-ipsec-tunnel-health-checks)). Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.
+   2. **Customer endpoint**: The Public IP associated with your Azure Virtual Network Gateway. For example, `40.xxx.xxx.xxx`.
+   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.
+   4. **Health check rate**: Leave the default option (Medium) selected.
+   5. **Health check type**: Leave the default option (Reply) selected.
+   6. **Health check direction**: Leave default option (Bidirectional) selected.
+   7. **Health check target**: Select **Custom**.
+   8. **Target address**: Enter the same address that is used in the **Customer endpoint** field.
+   9. **Add pre-shared key later**: Select this option to create a PSK that will be used later in Azure.
+   10. **Replay protection**: **Enable**.
 3. If you are using the Active/Active configuration, select **Add IPsec tunnel** and repeat step 2 to create the second Cloudflare WAN IPsec tunnel. Use the same **Cloudflare endpoint** as for the first tunnel.
 4. Select **Add Tunnels** when you are finished.
-5. The Cloudflare dashboard will show you a list of your tunnels. Edit the tunnel(s) you have created > select **Generate a new pre-shared key** \> copy the generated key. If using the Active/Active configuration, select **Change to a new custom pre-shared key** on the second tunnel and use the PSK generated for the first tunnel.
+5. The Cloudflare dashboard will show you a list of your tunnels. Edit the tunnel(s) you have created > select **Generate a new pre-shared key** > copy the generated key. If using the Active/Active configuration, select **Change to a new custom pre-shared key** on the second tunnel and use the PSK generated for the first tunnel.
 6. Create [static routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) for your Azure Virtual Network subnets, specifying the newly created tunnel as the next hop.
 
 Note
@@ -86,14 +86,14 @@ Both tunnels in an Active/Active configuration must use the same **Cloudflare en
 
 ## Complete the Azure Configuration
 
-### 1\. Create a Local Network Gateway
+### 1. Create a Local Network Gateway
 
 The Local Network Gateway typically refers to your on-premises location. In this case, the Local Network Gateway represents the Cloudflare side of the connection.
 
 We recommend creating a Local Network Gateway for your Cloudflare IPsec tunnel.
 
 1. Create a new local network gateway.
-2. In **Instance details** \> **Endpoint**, select **IP address** and enter the Cloudflare anycast address in the IP address field.
+2. In **Instance details** > **Endpoint**, select **IP address** and enter the Cloudflare anycast address in the IP address field.
 3. In **Address space(s)**, specify the address range of any subnets you wish to access remotely through the Cloudflare WAN connection. For example, if you want to reach a network with an IP range of `192.168.1.0/24`, and this network is connected to your Cloudflare WAN tenant, you would add `192.168.1.0/24` to the local network gateway address space.
 4. Go to the **Advanced** tab > **BGP settings**, and make sure you select **No**.
 
@@ -101,7 +101,7 @@ Note
 
 A single Cloudflare anycast address must be used in both Active/Active and Active/Standby configurations.
 
-### 2\. Configure Local Network Gateway for IPsec tunnel health checks
+### 2. Configure Local Network Gateway for IPsec tunnel health checks
 
 Cloudflare WAN uses [Tunnel Health Checks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/) to monitor whether a tunnel is available.
 
@@ -114,9 +114,9 @@ Cloudflare recommends customers select a unique `/31` subnet ([RFC 1918 - Addres
 
 Example:
 
-* Select 10.252.3.55/31 as your unique point-to-point link subnet.
-* In the Cloudflare dashboard, set `10.252.3.55/31` as your tunnel's **IPv4 Interface address** (refer to [Configure Cloudflare WAN](#configure-cloudflare-wan)).
-* In the Azure portal, add `10.252.3.55/32` to your Local Network Gateway's **Address space**.
+- Select 10.252.3.55/31 as your unique point-to-point link subnet.
+- In the Cloudflare dashboard, set `10.252.3.55/31` as your tunnel's **IPv4 Interface address** (refer to [Configure Cloudflare WAN](#configure-cloudflare-wan)).
+- In the Azure portal, add `10.252.3.55/32` to your Local Network Gateway's **Address space**.
 
 Note
 
@@ -138,7 +138,7 @@ Note
 
 The IPsec Tunnel Interface Address should be entered as a `/31` in the Cloudflare Dashboard, but as a `/32` when configuring the Local Network Gateway Address Space(s) in the Azure portal.
 
-### 3\. Create an IPsec VPN Connection
+### 3. Create an IPsec VPN Connection
 
 Choose the following settings when creating your VPN Connection:
 
@@ -147,32 +147,32 @@ Choose the following settings when creating your VPN Connection:
 3. **Use Azure Private IP Address**: **Disabled**
 4. **BGP**: **Disabled**
 5. **IPsec / IKE policy**: **Custom**
-  1. **IKE Phase 1**
-    1. **Encryption**: _GCMAES256_
-    2. **Integrity/PRF**: _SHA384_
-    3. **DH Group**: _ECP384_
-  2. **IKE Phase 2(IPsec)**
-    1. **IPsec Encryption**: _GCMAES256_
-    2. **IPsec Integrity**: _GCMAES256_
-    3. **PFS Group**: _ECP384_
-  3. **IPsec SA lifetime in KiloBytes**: `0`
-  4. **IPsec SA lifetime in seconds**: `28800`
-  5. **Use policy based traffic selector**: **Disable**
-  6. **DPD timeout in seconds**: `45`
-  7. **Connection mode**: **InitiatorOnly**
-  8. **Use custom traffic selectors**: **Disabled**
-6. After the connection is created, select **Settings** \> **Authentication**, and input your PSK (this will need to match the PSK used by the Cloudflare WAN configuration).
+   1. **IKE Phase 1**
+      1. **Encryption**: *GCMAES256*
+      2. **Integrity/PRF**: *SHA384*
+      3. **DH Group**: *ECP384*
+   2. **IKE Phase 2(IPsec)**
+      1. **IPsec Encryption**: *GCMAES256*
+      2. **IPsec Integrity**: *GCMAES256*
+      3. **PFS Group**: *ECP384*
+   3. **IPsec SA lifetime in KiloBytes**: `0`
+   4. **IPsec SA lifetime in seconds**: `28800`
+   5. **Use policy based traffic selector**: **Disable**
+   6. **DPD timeout in seconds**: `45`
+   7. **Connection mode**: **InitiatorOnly**
+   8. **Use custom traffic selectors**: **Disabled**
+6. After the connection is created, select **Settings** > **Authentication**, and input your PSK (this will need to match the PSK used by the Cloudflare WAN configuration).
 
 Repeat this process to define the settings for the Connection to the Local Network Gateway that corresponds to the redundant Cloudflare anycast IP address.
 
-### 4\. Route all Internet traffic through Cloudflare WAN and Cloudflare Gateway
+### 4. Route all Internet traffic through Cloudflare WAN and Cloudflare Gateway
 
 Cloudflare Zero Trust customers can route Internet-bound traffic through Cloudflare WAN to the Internet through Cloudflare Gateway.
 
 Microsoft does not permit specifying a default route (`0.0.0.0/0`) under Address Space in the Local Network Gateway. However, it is possible to work around this limitation through the use of route summarization.
 
 1. Go to **Local network gateways** and select the desired object.
-2. Go to **Configuration** \> **Address Space(s)** and specify the following two subnets: `0.0.0.0/1` & `128.0.0.0/1`.
+2. Go to **Configuration** > **Address Space(s)** and specify the following two subnets: `0.0.0.0/1` & `128.0.0.0/1`.
 3. Do not remove the subnet configured to support the Tunnel Health Checks.
 4. Select **Save**.
 
@@ -224,14 +224,14 @@ TenantId  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 UserId    : user@domain.com
 ```
 
-1. Issue the API call to display the details of the site-to-site VPN Connection associated with the Azure Virtual Network Gateway (`GET` request):
+2. Issue the API call to display the details of the site-to-site VPN Connection associated with the Azure Virtual Network Gateway ( `GET` request):
 
 ```bash
 curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/resourceGroups/{{resourceGroupName}}/providers/Microsoft.Network/virtualNetworkGateways/{{virtualNetworkGatewayName}}?api-version=2022-05-01' \
 --header 'Authorization: Bearer eyJ0e<REDACTED>AH-PdSPg'
 ```
 
-1. Copy/paste the entire response into a text editor:
+3. Copy/paste the entire response into a text editor:
 
 ```json
 {
@@ -305,13 +305,13 @@ curl --location 'https://management.azure.com/subscriptions/{{subscriptionId}}/r
 }
 ```
 
-1. Locate the line that controls disabling IPsec anti-replay protection, and change it from `false` to `true`:
+4. Locate the line that controls disabling IPsec anti-replay protection, and change it from `false` to `true`:
 
 ```txt
 "disableIPSecReplayProtection": true
 ```
 
-1. Upload the entire response in a subsequent API call (`PUT` request):
+5. Upload the entire response in a subsequent API call ( `PUT` request):
 
 ```bash
 curl --location --request PUT \
@@ -389,7 +389,7 @@ curl --location --request PUT \
 }'
 ```
 
-1. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.
+6. Leave the replay protection setting checked in the Cloudflare dashboard, and wait several minutes before validating connectivity again.
 
 Was this helpful?
 

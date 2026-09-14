@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Interactive Recordings with Timed Metadata
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
 
@@ -20,7 +20,7 @@ RealtimeKit's interactive recording feature allows you to add timed metadata to 
 
 Ever wondered how Netflix displays small images on the seek bar or how additional content is shown while watching a cricket match on Hotstar? It's all metadata inserted at a specific time inside the video feed itself, which is called timed metadata.
 
-Timed metadata is metadata with timestamps. It refers to digital markers added to a video file to provide additional context and information at specific points in the content range. These data points can be inserted into a stream programmatically, using the `interactive_config` in the [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
+Timed metadata is metadata with timestamps. It refers to digital markers added to a video file to provide additional context and information at specific points in the content range. These data points can be inserted into a stream programmatically, using the `interactive_config` in the [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
 
 Once RealtimeKit processes the stream, the timed metadata gets synchronized with the audio and video frames. This metadata is available to all viewers during playback at the same time relative to the stream. The timecode acts as a cue point and can trigger specific actions based on the data. For example:
 
@@ -30,11 +30,11 @@ These features are made possible through the use of ID3 tags that are embedded i
 
 To add interactivity to your RealtimeKit recording, perform the following steps:
 
-1. In the [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/), pass the `interactive_config` parameter.
+1. In the [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/), pass the `interactive_config` parameter.
 
 This parameter enables you to add timed metadata to your recordings, which is made available to clients in HLS format via ID3 tags. The output files are packaged as a tar file.
 
-1. In [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module%5FRealtimeKitClient+participants) object.
+2. In [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module_RealtimeKitClient+participants) object.
 
 ```ts
 meeting.participants.broadcastMessage(“ID3Data”, yourData);
@@ -46,7 +46,7 @@ This action should only be performed after the recording has been initiated and 
 
 The recommended time to perform this action is after the recording indicator has been displayed for 3 to 4 seconds.
 
-1. To stop sending the data, call the following method. Once you make this call, you will no longer be able to send additional ID3 data.
+3. To stop sending the data, call the following method. Once you make this call, you will no longer be able to send additional ID3 data.
 
 ```ts
 meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
@@ -54,12 +54,13 @@ meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
 
 If you do not pass this parameter, the ID3 metadata stream will automatically be closed when the recording is stopped.
 
-1. Once the recording is completed, you can retrieve the tar file that contains video segments and a playlist file. The `download_url` provides the link to the tar file. Below is an example screenshot of a tar file:
+4. Once the recording is completed, you can retrieve the tar file that contains video segments and a playlist file. The `download_url` provides the link to the tar file. Below is an example screenshot of a tar file:
+
 ![Recording Tar Format](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=744,height=552,format=webp/_astro/interactive-recording-tar-format.JbEcOmI6.png)
 
 It's also important to note that the length of each segment depends on the frames of the video. Therefore, each segment may not have the same length, although it is typically close to the specified segment length when the recording was started. By default, the segment length is set to 10 seconds.
 
-1. You can play the stream using the [hls.js ↗](https://github.com/video-dev/hls.js/).
+5. You can play the stream using the [`hls.js` ↗](https://github.com/video-dev/hls.js/).
 
 ```js
 const onFragChanged = (_) => {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use Ethereum gateway
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you have an Ethereum gateway — meaning that you [create a new gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway) with a `target` of **Ethereum** — you can interact with [different Ethereum networks](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/) by specifying the correct JSON blob for your query.
 
@@ -29,7 +29,7 @@ The Cloudflare Ethereum Gateway allows HTTP requests where the body of the reque
 }
 ```
 
-Each blob use a valid [method parameter](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/). The `params` array here contains the block number that we would like to locate and a boolean expressing whether each individual transaction in the block should be shown in their entirety (`true`) or as stubs (`false`).
+Each blob use a valid [`method` parameter](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/). The `params` array here contains the block number that we would like to locate and a boolean expressing whether each individual transaction in the block should be shown in their entirety (`true`) or as stubs (`false`).
 
 To send this query to your [custom Ethereum Gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/), you could use a cURL command:
 
@@ -91,7 +91,7 @@ The response in both cases will be a JSON blob of the form:
 
 ## Write to the network
 
-Currently, the Ethereum Gateway allows you to write to the network using the `eth_sendRawTransaction` RPC method. This creates a new message call transaction or a contract creation for signed transactions. The transactions are signed using a secret key corresponding to your own [Ethereum wallet ↗](https://www.ethereum.org/use/#%5F3-what-is-a-wallet-and-which-one-should-i-use).
+Currently, the Ethereum Gateway allows you to write to the network using the `eth_sendRawTransaction` RPC method. This creates a new message call transaction or a contract creation for signed transactions. The transactions are signed using a secret key corresponding to your own [Ethereum wallet ↗](https://www.ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use).
 
 Once you have a wallet set up and a method of signing your own transactions, you can write that transaction to the Ethereum network via the [Cloudflare Ethereum Gateway](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/). Signed transactions use hexadecimal strings of the form:
 
@@ -128,7 +128,7 @@ await fetch(
 });
 ```
 
-_(The actual command above will not work — you need to provide your own signed transaction.)_
+*(The actual command above will not work — you need to provide your own signed transaction.)*
 
 Was this helpful?
 

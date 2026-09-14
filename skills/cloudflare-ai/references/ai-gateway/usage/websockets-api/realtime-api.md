@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Realtime WebSockets API
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/realtime-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/websockets-api/realtime-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some AI providers support real-time, low-latency interactions over WebSockets. AI Gateway allows seamless integration with these APIs, supporting multimodal interactions such as text, audio, and video.
 
 ## Supported Providers
 
-* [OpenAI ↗](https://platform.openai.com/docs/guides/realtime-websocket)
-* [Google AI Studio ↗](https://ai.google.dev/gemini-api/docs/multimodal-live)
-* [Cartesia ↗](https://docs.cartesia.ai/api-reference/tts/tts)
-* [ElevenLabs ↗](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket)
-* [Fal AI ↗](https://docs.fal.ai/model-apis/model-endpoints/websockets)
-* [Deepgram (Workers AI) ↗](https://developers.cloudflare.com/workers-ai/models/?authors=deepgram)
+- [OpenAI ↗](https://platform.openai.com/docs/guides/realtime-websocket)
+- [Google AI Studio ↗](https://ai.google.dev/gemini-api/docs/multimodal-live)
+- [Cartesia ↗](https://docs.cartesia.ai/api-reference/tts/tts)
+- [ElevenLabs ↗](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket)
+- [Fal AI ↗](https://docs.fal.ai/model-apis/model-endpoints/websockets)
+- [Deepgram (Workers AI) ↗](https://developers.cloudflare.com/workers-ai/models/?authors=deepgram)
 
 ## Authentication
 
 For real-time WebSockets, authentication can be done using:
 
-* Headers (for non-browser environments)
-* `sec-websocket-protocol` (for browsers)
+- Headers (for non-browser environments)
+- `sec-websocket-protocol` (for browsers)
 
 Note
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Order and priority
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/order/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/order/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cache rules affect requests differently from Page Rules. This is how they are applied:
 
@@ -25,22 +25,22 @@ Cache rules affect requests differently from Page Rules. This is how they are ap
 
 The execution order of Rules features is the following:
 
-* [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
-* [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
-* [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
-* [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
-* [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
-* [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
-* [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
-* [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
-* [Snippets](https://developers.cloudflare.com/rules/snippets/)
-* [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
+- [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
+- [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
+- [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
+- [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
+- [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
+- [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+- [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
+- [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+- [Snippets](https://developers.cloudflare.com/rules/snippets/)
+- [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
 
 The different types of rules listed above will take precedence over [Page Rules](https://developers.cloudflare.com/rules/page-rules/). This means that Page Rules will be overridden if there is a match for both Page Rules and the Rules products listed above.
 
-Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (_Block_, _Redirect_, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
+Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (*Block*, *Redirect*, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
 
-For example, if multiple rules with the _Redirect_ action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
+For example, if multiple rules with the *Redirect* action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 

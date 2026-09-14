@@ -12,22 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hardware-backed registration
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+<details>
+
+<summary>
 
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2026.6.0             |
-| macOS    | ✅            | 2026.6.0             |
-| Linux    | ✅            | 2026.6.0             |
-| iOS      | ❌            | N/A                  |
-| Android  | ❌            | N/A                  |
-| ChromeOS | ❌            | N/A                  |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.6.0 |
+| macOS | ✅ | 2026.6.0 |
+| Linux | ✅ | 2026.6.0 |
+| iOS | ❌ | N/A |
+| Android | ❌ | N/A |
+| ChromeOS | ❌ | N/A |
+
+</details>
 
 Hardware-backed registration binds a device registration to a non-exportable private key stored in device hardware. The Cloudflare One Client uses this key to prove that API requests originate from the device that created the registration.
 
@@ -35,9 +43,9 @@ By default, the Cloudflare One Client stores its API token in the device keystor
 
 Before you turn on hardware-backed registration, note the following:
 
-* **Re-registration is required.** Turning the setting on or off invalidates the existing registration and forces affected devices to register again. The Cloudflare One Client does not migrate a registration between hardware-backed and standard registration.
-* **Configure it at the organization layer.** Set `hardware_backed_registration` in [organization\_configs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) so the setting applies consistently to every configuration for an organization.
-* **Certificates expire.** The hardware-backed certificate is valid for 90 days. A device that stays offline until the certificate expires — for example, during an extended vacation — must register again.
+- **Re-registration is required.** Turning the setting on or off invalidates the existing registration and forces affected devices to register again. The Cloudflare One Client does not migrate a registration between hardware-backed and standard registration.
+- **Configure it at the organization layer.** Set `hardware_backed_registration` in [`organization_configs`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) so the setting applies consistently to every configuration for an organization.
+- **Certificates expire.** The hardware-backed certificate is valid for 90 days. A device that stays offline until the certificate expires — for example, during an extended vacation — must register again.
 
 ## How it works
 
@@ -56,17 +64,17 @@ The client renews the certificate automatically before it expires, reusing the e
 
 Hardware-backed registration uses the security hardware available on each desktop platform:
 
-| Operating system | Hardware                             |
-| ---------------- | ------------------------------------ |
-| Windows          | TPM 2.0                              |
-| macOS            | Secure Enclave (T2 or Apple silicon) |
-| Linux            | TPM 2.0                              |
+| Operating system | Hardware |
+| --- | --- |
+| Windows | TPM 2.0 |
+| macOS | Secure Enclave (T2 or Apple silicon) |
+| Linux | TPM 2.0 |
 
 Devices without a supported security module cannot complete a hardware-backed registration.
 
 ## Turn on hardware-backed registration
 
-Hardware-backed registration is turned off by default. To turn it on, set the [hardware\_backed\_registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#hardware%5Fbacked%5Fregistration) parameter to `true` in the [organization\_configs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization%5Fconfigs) layer of your [MDM configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/).
+Hardware-backed registration is turned off by default. To turn it on, set the [`hardware_backed_registration`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#hardware_backed_registration) parameter to `true` in the [`organization_configs`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#organization_configs) layer of your [MDM configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/).
 
 The following example turns on hardware-backed registration for the `example-team` organization:
 

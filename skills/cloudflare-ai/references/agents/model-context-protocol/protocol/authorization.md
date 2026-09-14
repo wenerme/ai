@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authorization
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When building a [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io) server, you need both a way to allow users to login (authentication) and allow them to grant the MCP client access to resources on their account (authorization).
 
@@ -60,6 +60,7 @@ export default new OAuthProvider({
 
 Note that as [defined in the Model Context Protocol specification ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-flow-steps) when you use a third-party OAuth provider, the MCP Server (your Worker) generates and issues its own token to the MCP client:
 
+```
 sequenceDiagram
     participant B as User-Agent (Browser)
     participant C as MCP Client
@@ -80,6 +81,8 @@ sequenceDiagram
     C->>M: Exchange code for token
     M->>C: MCP access token
 
+```
+
 Read the docs for the [Workers OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider) for more details.
 
 ### (3) Bring your own OAuth Provider
@@ -88,10 +91,10 @@ If your application already implements an OAuth Provider itself, or you use an a
 
 You can use the auth provider to:
 
-* Allow users to authenticate to your MCP server through email, social logins, SSO (single sign-on), and MFA (multi-factor authentication).
-* Define scopes and permissions that directly map to your MCP tools.
-* Present users with a consent page corresponding with the requested permissions.
-* Enforce the permissions so that agents can only invoke permitted tools.
+- Allow users to authenticate to your MCP server through email, social logins, SSO (single sign-on), and MFA (multi-factor authentication).
+- Define scopes and permissions that directly map to your MCP tools.
+- Present users with a consent page corresponding with the requested permissions.
+- Enforce the permissions so that agents can only invoke permitted tools.
 
 #### Stytch
 
@@ -131,7 +134,7 @@ Get started with a remote MCP server that uses [Descope ↗](https://www.descope
 
 Your MCP Server, using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), can handle the complete OAuth authorization flow, without any third-party involvement.
 
-The [Workers OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider) is a Cloudflare Worker that implements a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), and handles incoming requests to your MCP server.
+The [Workers OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider) is a Cloudflare Worker that implements a [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), and handles incoming requests to your MCP server.
 
 You provide your own handlers for your MCP Server's API, and authentication and authorization logic, and URI paths for the OAuth endpoints, as shown below:
 
@@ -152,6 +155,7 @@ Refer to the [getting started example](https://developers.cloudflare.com/agents/
 
 The authorization flow in this case works like this:
 
+```
 sequenceDiagram
     participant B as User-Agent (Browser)
     participant C as MCP Client
@@ -170,7 +174,9 @@ sequenceDiagram
     C->>M: MCP Request with Access Token
     Note over C,M: Begin standard MCP message exchange
 
-Remember — [authentication is different from authorization ↗](https://www.cloudflare.com/learning/access-management/authn-vs-authz/). Your MCP Server can handle authorization itself, while still relying on an external authentication service to first authenticate users. The [example](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) in getting started provides a mock authentication flow. You will need to implement your own authentication handler — either handling authentication yourself, or using an external authentication services.
+```
+
+Remember —  [authentication is different from authorization ↗](https://www.cloudflare.com/learning/access-management/authn-vs-authz/). Your MCP Server can handle authorization itself, while still relying on an external authentication service to first authenticate users. The [example](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) in getting started provides a mock authentication flow. You will need to implement your own authentication handler — either handling authentication yourself, or using an external authentication services.
 
 ## Using authentication context in tools
 

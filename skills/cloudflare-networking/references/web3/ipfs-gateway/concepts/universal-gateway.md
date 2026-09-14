@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Universal Path gateway
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Universal Path gateway is a gateway without a DNSLink record. It allows users to access any content hosted on the IPFS network by specifying a CID or IPNS path in the URL.
 
@@ -24,9 +24,9 @@ You can set up a Universal Path gateway the same way you [create any gateway](ht
 
 Because a Universal Path gateway is open by default, you may want to use the [gateway blocklist](https://developers.cloudflare.com/web3/how-to/manage-gateways/#update-blocklist) to prevent access to specific content. You can block one or more:
 
-* CIDs (`QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB`)
-* IPFS content paths (`/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
-* IPNS content paths (`/ipns/example.com`)
+- CIDs ( `QmPZ9gcCEpqKTo6aq61g2nXGUhM4iCL3ewB6LDXZCtioEB`)
+- IPFS content paths ( `/ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme`)
+- IPNS content paths ( `/ipns/example.com`)
 
 Note
 

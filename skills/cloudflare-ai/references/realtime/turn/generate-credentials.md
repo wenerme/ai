@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generate Credentials
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/generate-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/generate-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare will issue TURN keys, but these keys cannot be used as credentials with `turn.cloudflare.com`. To use TURN, you need to create credentials with a expiring TTL value.
 
@@ -24,8 +24,8 @@ You should keep your TURN key on the server side (don't share it with the browse
 
 With a TURN key you can:
 
-* Generate TURN credentials that expire
-* Revoke previously issued TURN credentials
+- Generate TURN credentials that expire
+- Revoke previously issued TURN credentials
 
 ## Create credentials
 
@@ -94,7 +94,7 @@ const myPeerConnection = new RTCPeerConnection({
 
 The `ttl` value can be adjusted to expire the short lived key in a certain amount of time. This value should be larger than the time you'd expect the users to use the TURN service. For example, if you're using TURN for a video conferencing app, the value should be set to the longest video call you'd expect to happen in the app.
 
-When using short-lived TURN credentials with WebRTC, credentials can be refreshed during a WebRTC session using the `RTCPeerConnection` [setConfiguration() ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setConfiguration) API.
+When using short-lived TURN credentials with WebRTC, credentials can be refreshed during a WebRTC session using the `RTCPeerConnection` [`setConfiguration()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setConfiguration) API.
 
 ## Revoke credentials
 

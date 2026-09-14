@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dashboard
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating an AI Search instance using the Cloudflare dashboard.
 
 ## Create an AI Search instance
 
-1. Go to **AI Search** in the Cloudflare dashboard.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select **Create Instance**.
 3. Name your AI Search instance.
 4. Optionally connect a [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) such as a website you own or an R2 bucket.
@@ -30,8 +29,7 @@ This guide walks you through creating an AI Search instance using the Cloudflare
 
 Once an instance has been created, you can upload files directly from the dashboard.
 
-1. Go to **AI Search** in the Cloudflare dashboard.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your instance.
 3. Select the **Items** tab.
 4. Upload your files. AI Search indexes them automatically.

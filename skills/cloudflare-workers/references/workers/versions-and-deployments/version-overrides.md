@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Version overrides
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use version overrides to send a request to a specific version of your Worker in the current deployment, even those set to serve 0% of traffic.
 
@@ -26,7 +26,7 @@ curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-
 
 Version must be in current deployment
 
-A version override will only be applied if the specified version is in the current deployment. The versions in the current deployment can be found using the [wrangler deployments list](https://developers.cloudflare.com/workers/wrangler/commands/general/#deployments-list) command or on the [**Workers & Pages** page of the Cloudflare dashboard > select your Worker > **Deployments** \> **Active Deployment** ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/deployments).
+A version override will only be applied if the specified version is in the current deployment. The versions in the current deployment can be found using the [`wrangler deployments list`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deployments-list) command or on the [**Workers & Pages** page of the Cloudflare dashboard > select your Worker > **Deployments** > **Active Deployment** ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/deployments).
 
 Workers currently only supports serving **two** different versions in one deployment. Follow the instructions for [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#use-gradual-deployments) to ensure the requested version is in the current deployment. You can set the new version to 0% traffic to avoid normal traffic being routed to it.
 
@@ -34,8 +34,8 @@ Workers currently only supports serving **two** different versions in one deploy
 
 There are a number of reasons why a request's version override may not be applied. For example:
 
-* The deployment may not contain the specified version. It can take up to a couple of seconds to be available globally after a recent change.
-* The header value may not be a valid [Dictionary ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
+- The deployment may not contain the specified version. It can take up to a couple of seconds to be available globally after a recent change.
+- The header value may not be a valid [Dictionary ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
 
 In the case that a request's version override is not applied, the request will be routed according to the percentages set in the gradual deployment configuration.
 
@@ -47,16 +47,16 @@ You may want to test a new version in production before gradually deploying it t
 
 In this example, your deployment is initially configured to route all traffic to a single version:
 
-| Version ID                           | Percentage |
-| ------------------------------------ | ---------- |
-| db7cd8d3-4425-4fe7-8c81-01bf963b6067 | 100%       |
+| Version ID | Percentage |
+| --- | --- |
+| db7cd8d3-4425-4fe7-8c81-01bf963b6067 | 100% |
 
-Create a new deployment using [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) and specify 0% for the new version whilst keeping the previous version at 100%.
+Create a new deployment using [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) and specify 0% for the new version whilst keeping the previous version at 100%.
 
-| Version ID                           | Percentage |
-| ------------------------------------ | ---------- |
-| dc8dcd28-271b-4367-9840-6c244f84cb40 | 0%         |
-| db7cd8d3-4425-4fe7-8c81-01bf963b6067 | 100%       |
+| Version ID | Percentage |
+| --- | --- |
+| dc8dcd28-271b-4367-9840-6c244f84cb40 | 0% |
+| db7cd8d3-4425-4fe7-8c81-01bf963b6067 | 100% |
 
 Now test the new version with a version override before gradually progressing the new version to 100%:
 
@@ -122,14 +122,14 @@ export default {
 
 Note
 
-Version overrides only apply to `fetch()`\-based service binding calls. There is currently no way to specify version overrides when calling a service binding via RPC (`env.MY_SERVICE.someMethod()`), because RPC calls do not support attaching headers.
+Version overrides only apply to `fetch()`-based service binding calls. There is currently no way to specify version overrides when calling a service binding via RPC (`env.MY_SERVICE.someMethod()`), because RPC calls do not support attaching headers.
 
 ## Related resources
 
-* [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) \- Use cookies & headers to pin users to a specific version during a gradual deployment.
-* [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) \- Learn how percentage-based traffic splitting works.
-* [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) \- How Workers communicate with each other.
-* [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) \- Access version ID and tag from within your Worker.
+- [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) - Use cookies & headers to pin users to a specific version during a gradual deployment.
+- [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) - Learn how percentage-based traffic splitting works.
+- [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) - How Workers communicate with each other.
+- [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) - Access version ID and tag from within your Worker.
 
 Was this helpful?
 

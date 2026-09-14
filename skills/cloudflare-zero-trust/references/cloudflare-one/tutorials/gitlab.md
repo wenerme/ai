@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust GitLab SSH & HTTP
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/gitlab/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Cloudflare Access to add Zero Trust rules to a self-hosted instance of GitLab. Combined with Cloudflare Tunnel, users can connect through HTTP and SSH and authenticate with your team's identity provider.
 
 **This walkthrough covers how to:**
 
-* Deploy an instance of GitLab
-* Lock down all inbound connections to that instance and use Cloudflare Tunnel to set outbound connections to Cloudflare
-* Build policies with Cloudflare Access to control who can reach GitLab
-* Connect over HTTP and SSH through Cloudflare
+- Deploy an instance of GitLab
+- Lock down all inbound connections to that instance and use Cloudflare Tunnel to set outbound connections to Cloudflare
+- Build policies with Cloudflare Access to control who can reach GitLab
+- Connect over HTTP and SSH through Cloudflare
 
 **Time to complete:**
 
@@ -192,7 +192,7 @@ cloudflared tunnel create gitlab
 
 `cloudflared` will generate a unique ID for this Tunnel, for example `6ff42ae2-765d-4adf-8112-31c55c1551ef`. You can use this Tunnel both for SSH and HTTP traffic.
 
-1. You will need to configure Cloudflare Tunnel to proxy traffic to both destinations. The configuration below will take traffic bound for the DNS record that will be created for the web app and the DNS record to represent SSH traffic to the right port.
+2. You will need to configure Cloudflare Tunnel to proxy traffic to both destinations. The configuration below will take traffic bound for the DNS record that will be created for the web app and the DNS record to represent SSH traffic to the right port.
 
 You use the text editor of your choice to edit the configuration file. The example relies on `Vi`.
 
@@ -200,7 +200,7 @@ You use the text editor of your choice to edit the configuration file. The examp
 vim ~/.cloudflared/config.yml
 ```
 
-1. Configure the Tunnel to serve traffic.
+3. Configure the Tunnel to serve traffic.
 
 ```yml
 tunnel: 6ff42ae2-765d-4adf-8112-31c55c1551ef
@@ -217,7 +217,8 @@ ingress:
 ```
 
 ![Self Hosted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1392,height=814,format=webp/_astro/config-file.C9yhlhb3.png)
-1. You can test that the configuration file is set correctly with the following command:
+
+4. You can test that the configuration file is set correctly with the following command:
 
 ```sh
 cloudflared tunnel ingress validate
@@ -239,8 +240,7 @@ This command should be run as a `systemd` service for long-term use; if it termi
 
 You can now create DNS records for GitLab in the Cloudflare dashboard. Remember, you will still need two records - one for the web application and one for SSH traffic.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**. Choose `CNAME` as the record type.
 3. In the **Name** field, input `gitlab`.
 4. In the **Target** field, input the ID of the Tunnel created followed by `cfargotunnel.com`. In this example, that value is:
@@ -249,8 +249,9 @@ You can now create DNS records for GitLab in the Cloudflare dashboard. Remember,
 6ff42ae2-765d-4adf-8112-31c55c1551ef.cfargotunnel.com
 ```
 
-1. Select **Save**.
-2. Repeat the process again by creating a second `CNAME` record, with the same **Target**, but input `gitlab-ssh` for the **Name**. Both records should then appear, pointing to the same Tunnel. The ingress rules defined in the configuration file above will direct traffic to the appropriate port.
+5. Select **Save**.
+6. Repeat the process again by creating a second `CNAME` record, with the same **Target**, but input `gitlab-ssh` for the **Name**. Both records should then appear, pointing to the same Tunnel. The ingress rules defined in the configuration file above will direct traffic to the appropriate port.
+
 ![View DNS](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3104,height=1978,format=webp/_astro/view-dns.D18Ri4DU.png)
 
 ### Connecting to the web application

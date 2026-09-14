@@ -12,43 +12,51 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PII detection
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/pii-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps (formerly Firewall for AI) can detect personally identifiable information (PII) in incoming LLM prompts. There are two approaches to PII detection, and you can use them together for layered protection:
 
-* [AI-based detection](#ai-based-pii-detection) — AI Security for Apps uses an AI model to identify common PII types in the prompt content. This approach catches PII even when it appears in natural language or unexpected formats.
-* [Exact detection (regex)](#exact-pii-detection-regex) — You write a WAF custom rule with a regular expression on the raw request body. This approach is ideal for organization-specific identifiers with a known, predictable format.
+- [AI-based detection](#ai-based-pii-detection) — AI Security for Apps uses an AI model to identify common PII types in the prompt content. This approach catches PII even when it appears in natural language or unexpected formats.
+- [Exact detection (regex)](#exact-pii-detection-regex) — You write a WAF custom rule with a regular expression on the raw request body. This approach is ideal for organization-specific identifiers with a known, predictable format.
 
 ## AI-based PII detection
 
 When AI Security for Apps is enabled and a request arrives at a `cf-llm` labeled endpoint, it scans the prompt for PII and populates two fields:
 
-* **LLM PII detected** ([cf.llm.prompt.pii\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fdetected/)) — `true` if any PII was found.
-* **LLM PII categories** ([cf.llm.prompt.pii\_categories](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/)) — An array of the specific PII types found.
+- **LLM PII detected** ([`cf.llm.prompt.pii_detected`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_detected/)) — `true` if any PII was found.
+- **LLM PII categories** ([`cf.llm.prompt.pii_categories`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/)) — An array of the specific PII types found.
 
-The detection is powered by an AI-based Named Entity Recognition (NER) model. Refer to the [cf.llm.prompt.pii\_categories field reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii%5Fcategories/) for the full list of recognized categories.
+The detection is powered by an AI-based Named Entity Recognition (NER) model. Refer to the [`cf.llm.prompt.pii_categories` field reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.llm.prompt.pii_categories/) for the full list of recognized categories.
 
 Detecting PII in responses
 
 AI Security for Apps PII detection runs on incoming requests (prompts) only. If you also need to detect PII in LLM responses, you can use [Sensitive Data Detection](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/) to scan response bodies for patterns like credit card numbers, Social Security numbers, and API keys. Sensitive Data Detection logs matches, but does not block responses. Use it alongside request-side rules for layered visibility.
 
+<details>
+
+<summary>
+
 Supported PII categories
 
-| Category        | Description                           |
-| --------------- | ------------------------------------- |
-| BANK\_ACCOUNT   | Bank account number                   |
-| CREDIT\_CARD    | Credit card number                    |
-| DATE\_TIME      | Date or time expression               |
-| DRIVER\_LICENSE | Driver license number                 |
-| EMAIL\_ADDRESS  | Email address                         |
-| IP\_ADDRESS     | IPv4 address                          |
-| LOCATION        | Physical location or address          |
-| PASSPORT        | Passport number                       |
-| PERSON          | Full or partial name of an individual |
-| PHONE\_NUMBER   | Phone number                          |
-| TAX\_ID         | Tax identification number             |
-| US\_SSN         | US Social Security Number             |
-| URL             | URL                                   |
+</summary>
+
+| Category | Description |
+| --- | --- |
+| <code>BANK_ACCOUNT</code> | Bank account number |
+| <code>CREDIT_CARD</code> | Credit card number |
+| <code>DATE_TIME</code> | Date or time expression |
+| <code>DRIVER_LICENSE</code> | Driver license number |
+| <code>EMAIL_ADDRESS</code> | Email address |
+| <code>IP_ADDRESS</code> | IPv4 address |
+| <code>LOCATION</code> | Physical location or address |
+| <code>PASSPORT</code> | Passport number |
+| <code>PERSON</code> | Full or partial name of an individual |
+| <code>PHONE_NUMBER</code> | Phone number |
+| <code>TAX_ID</code> | Tax identification number |
+| <code>US_SSN</code> | US Social Security Number |
+| <code>URL</code> | URL |
+
+</details>
 
 ### Be specific to reduce false positives
 
@@ -60,38 +68,40 @@ Instead, build rules against `cf.llm.prompt.pii_categories` and list only the ca
 
 #### Block any request containing PII
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field            | Operator | Value |
-| ---------------- | -------- | ----- |
-| LLM PII Detected | equals   | True  |
-Expression when using the editor:
-`(cf.llm.prompt.pii_detected)`
-* **Action**: _Block_
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | LLM PII Detected | equals | True |
+
+  Expression when using the editor:
+  `(cf.llm.prompt.pii_detected)`
+- **Action**: *Block*
 
 #### Block only specific PII categories
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field              | Operator | Value       |
-| ------------------ | -------- | ----------- |
-| LLM PII Categories | is in    | Credit Card |
-Expression when using the editor:
-`(any(cf.llm.prompt.pii_categories[*] in {"CREDIT_CARD"}))`
-* **Action**: _Block_
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | LLM PII Categories | is in | `Credit Card` |
+
+  Expression when using the editor:
+  `(any(cf.llm.prompt.pii_categories[*] in {"CREDIT_CARD"}))`
+- **Action**: *Block*
 
 #### Log email addresses but block credit cards and SSNs
 
 Create two [custom rules](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/):
 
-1. A rule with action _Block_ and the following expression:
-`(any(cf.llm.prompt.pii_categories[*] in {"CREDIT_CARD" "US_SSN"}))`
-2. A rule with action _Log_ and the following expression:
-`(any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS"}))`
+1. A rule with action *Block* and the following expression:
+   `(any(cf.llm.prompt.pii_categories[*] in {"CREDIT_CARD" "US_SSN"}))`
+2. A rule with action *Log* and the following expression:
+   `(any(cf.llm.prompt.pii_categories[*] in {"EMAIL_ADDRESS"}))`
 
 ## Exact PII detection (regex)
 
-If you need to detect **custom PII formats** specific to your organization — such as internal employee IDs, patient record numbers, or proprietary account identifiers — you can create a WAF [custom rule](https://developers.cloudflare.com/waf/custom-rules/) using a regex match on the raw body ([http.request.body.raw](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/) field).
+If you need to detect **custom PII formats** specific to your organization — such as internal employee IDs, patient record numbers, or proprietary account identifiers — you can create a WAF [custom rule](https://developers.cloudflare.com/waf/custom-rules/) using a regex match on the raw body ([`http.request.body.raw`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/) field).
 
 This approach complements AI-based detection by matching predefined patterns, including organization-specific identifiers.
 
@@ -101,44 +111,52 @@ In the following example, an organization uses employee IDs in the format `EMP-`
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) with the following configuration:
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field            | Operator      | Value          |
-| ---------------- | ------------- | -------------- |
-| Raw request body | matches regex | EMP-\[0-9\]{6} |
-Expression when using the editor:
-`(http.request.body.raw matches "EMP-[0-9]{6}")`
-* **Action**: _Block_
-* **With response type**: Custom JSON
-* **Response body**: `{ "error": "Request blocked: employee ID detected in prompt." }`
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | Raw request body | matches regex | `EMP-[0-9]{6}` |
+
+  Expression when using the editor:
+  `(http.request.body.raw matches "EMP-[0-9]{6}")`
+- **Action**: *Block*
+- **With response type**: Custom JSON
+- **Response body**: `{ "error": "Request blocked: employee ID detected in prompt." }`
+
+<details>
+
+<summary>
 
 Scope to a specific endpoint
 
+</summary>
+
 To limit this rule to only your LLM endpoint, combine it with a path condition:
 
-| Field            | Operator      | Value          | Logic |
-| ---------------- | ------------- | -------------- | ----- |
-| URI Path         | equals        | /api/chat      | And   |
-| Raw request body | matches regex | EMP-\[0-9\]{6} |       |
+| Field | Operator | Value | Logic |
+| --- | --- | --- | --- |
+| URI Path | equals | <code>/api/chat</code> | And |
+| Raw request body | matches regex | <code>EMP-[0-9]{6}</code> | |
 
-Expression when using the editor:
-`(http.request.uri.path eq "/api/chat" and http.request.body.raw matches "EMP-[0-9]{6}")`
+Expression when using the editor:<br> <code>(http.request.uri.path eq "/api/chat" and http.request.body.raw matches "EMP-[0-9]{6}")</code>
+
+</details>
 
 ### More regex examples
 
-| Custom PII type       | Example format      | Regex pattern                |
-| --------------------- | ------------------- | ---------------------------- |
-| Employee ID           | EMP-482910          | EMP-\[0-9\]{6}               |
-| Patient record number | PAT/2024/00391      | PAT/\[0-9\]{4}/\[0-9\]{5}    |
-| Internal account ID   | ACCT-XX-99999       | ACCT-\[A-Z\]{2}-\[0-9\]{5}   |
-| Custom API key prefix | sk\_live\_abc123... | sk\_live\_\[a-zA-Z0-9\]{20,} |
+| Custom PII type | Example format | Regex pattern |
+| --- | --- | --- |
+| Employee ID | `EMP-482910` | `EMP-[0-9]{6}` |
+| Patient record number | `PAT/2024/00391` | `PAT/[0-9]{4}/[0-9]{5}` |
+| Internal account ID | `ACCT-XX-99999` | `ACCT-[A-Z]{2}-[0-9]{5}` |
+| Custom API key prefix | `sk_live_abc123...` | `sk_live_[a-zA-Z0-9]{20,}` |
 
 ### Considerations for regex rules
 
-* **Cloudflare Plan requirement.** Regex operators (`matches` and `~`) require a Business or Enterprise plan.
-* **Body size limit.** The `http.request.body.raw` field inspects a limited portion of the request body. The exact limit [varies by plan](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/).
-* **JSON payloads.** The raw body includes the full JSON structure. Your regex should account for the fact that the prompt text is nested inside a JSON string.
-* **Performance.** Complex regex patterns can impact rule evaluation time. Keep patterns as specific as possible.
+- **Cloudflare Plan requirement.** Regex operators ( `matches` and `~`) require a Business or Enterprise plan.
+- **Body size limit.** The `http.request.body.raw` field inspects a limited portion of the request body. The exact limit [varies by plan](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.body.raw/).
+- **JSON payloads.** The raw body includes the full JSON structure. Your regex should account for the fact that the prompt text is nested inside a JSON string.
+- **Performance.** Complex regex patterns can impact rule evaluation time. Keep patterns as specific as possible.
 
 ## Combine both approaches
 

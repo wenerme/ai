@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_issuer\_ski
 
-`cf.tls_client_auth.cert_issuer_ski` `String`
+`cf.tls_client_auth.cert_issuer_ski``String`
 
 The Subject Key Identifier (SKI) of the direct issuer of the mTLS client certificate.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* mTLS
+- Request
+- mTLS
 
 Was this helpful?
 

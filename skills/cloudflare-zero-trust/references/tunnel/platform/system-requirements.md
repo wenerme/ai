@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # System requirements
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/platform/system-requirements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/platform/system-requirements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `cloudflared` is lightweight enough to run on a Raspberry Pi or a data center server. Tunnel throughput is primarily limited by the number of ports configured in system software, not hardware.
 
@@ -51,9 +51,9 @@ netsh int ipv6 set dynamicport udp start=11000 num=50000
 
 On Linux and macOS, `ulimit` settings determine the system resources available to a logged-in user. We recommend configuring the following ulimits on the `cloudflared` server:
 
-| ulimit | Description                                      | Value    |
-| ------ | ------------------------------------------------ | -------- |
-| \-n    | Maximum number of open files or file descriptors | ≥ 70,000 |
+| ulimit | Description | Value |
+| --- | --- | --- |
+| `-n` | Maximum number of open files or file descriptors | ≥ 70,000 |
 
 To view your current ulimits, open a terminal and run:
 
@@ -104,7 +104,7 @@ Percent capacity across all replicas
 
 Maximum DNS requests per minute across all replicas
 
-This calculator is for informational purposes only and all results are estimates.
+<sup>This calculator is for informational purposes only and all results are estimates.</sup>
 
 To increase tunnel capacity, add identical hosts running `cloudflared` replicas.
 

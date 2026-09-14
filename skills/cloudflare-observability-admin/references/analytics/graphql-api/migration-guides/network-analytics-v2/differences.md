@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Main differences
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/differences/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/differences/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Aggregated roll-ups versus Adaptive Bit Rate
 
@@ -24,11 +24,11 @@ On the other hand, Network Analytics v2 (NAv2) uses [Adaptive Bit Rate (ABR)](ht
 
 Network Analytics v2 provides more accurate data due to the better sample rate and [Edge Sample Enrichment](https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/#edge-sample-enrichment). NAv1 samples 1/8,192 packets (that is, one in every 8,192 packets), while NAv2 sample rates vary depending on the mitigation service. For example:
 
-* The sample rate for `dosd` changes dynamically from 1/100 to 1/10,000 packets based on the volume of packets.
-* The sample rate for Cloudflare Network Firewall events changes dynamically from 1/100 to 1/1,000,000 packets based on the number of packets.
-* The sample rate for `flowtrackd` is 1/10,000 packets.
+- The sample rate for `dosd` changes dynamically from 1/100 to 1/10,000 packets based on the volume of packets.
+- The sample rate for Cloudflare Network Firewall events changes dynamically from 1/100 to 1/1,000,000 packets based on the number of packets.
+- The sample rate for `flowtrackd` is 1/10,000 packets.
 
-The NAv2 data pipeline is also more resilient compared to NAv1\. NAv1 uses Core Sample Enrichment, where raw packet samples are sent from all of Cloudflare's edge data centers to the Core data centers. In the Core data centers, the packet samples are cross-referenced with additional databases and infused with the associated customer account ID, attack ID, attack type, and other metadata. Then, the packet samples are inserted into storage. One of the main shortcomings of this method is the potential congestion of samples when cross-referencing information, which could, in rare cases, cause temporary data lag.
+The NAv2 data pipeline is also more resilient compared to NAv1. NAv1 uses Core Sample Enrichment, where raw packet samples are sent from all of Cloudflare's edge data centers to the Core data centers. In the Core data centers, the packet samples are cross-referenced with additional databases and infused with the associated customer account ID, attack ID, attack type, and other metadata. Then, the packet samples are inserted into storage. One of the main shortcomings of this method is the potential congestion of samples when cross-referencing information, which could, in rare cases, cause temporary data lag.
 
 To eliminate this potential data lag, NAv2 uses a new data logging pipeline which relies on Edge Sample Enrichment. By delegating the packet sample enrichment and cross-referencing to the edge data centers, we improve the data pipeline's resilience and tolerance against congestion. Using this method, enriched packet samples are immediately stored in Cloudflare's core data centers as soon as they arrive.
 

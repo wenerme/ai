@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What are Durable Objects?
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Durable Object is a special kind of [Cloudflare Worker](https://developers.cloudflare.com/workers/) which uniquely combines compute with storage. Like a Worker, a Durable Object is automatically provisioned geographically close to where it is first requested, starts up quickly when needed, and shuts down when idle. You can have millions of them around the world. However, unlike regular Workers:
 
-* Each Durable Object has a **globally-unique name**, which allows you to send requests to a specific object from anywhere in the world. Thus, a Durable Object can be used to coordinate between multiple clients who need to work together.
-* Each Durable Object has some **durable storage** attached. Since this storage lives together with the object, it is strongly consistent yet fast to access.
+- Each Durable Object has a **globally-unique name**, which allows you to send requests to a specific object from anywhere in the world. Thus, a Durable Object can be used to coordinate between multiple clients who need to work together.
+- Each Durable Object has some **durable storage** attached. Since this storage lives together with the object, it is strongly consistent yet fast to access.
 
 Therefore, Durable Objects enable **stateful** serverless applications.
 
@@ -27,24 +27,24 @@ Durable Objects have properties that make them a great fit for distributed state
 
 **Serverless compute, zero infrastructure management**
 
-* Durable Objects are built on-top of the Workers runtime, so they support exactly the same code (JavaScript and WASM), and similar memory and CPU limits.
-* Each Durable Object is [implicitly created on first access](https://developers.cloudflare.com/durable-objects/api/namespace/#get). User applications are not concerned with their lifecycle, creating them or destroying them. Durable Objects migrate among healthy servers, and therefore applications never have to worry about managing them.
-* Each Durable Object stays alive as long as requests are being processed, and remains alive for several seconds after being idle before hibernating, allowing applications to [exploit in-memory caching](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/) while handling many consecutive requests and boosting their performance.
+- Durable Objects are built on-top of the Workers runtime, so they support exactly the same code (JavaScript and WASM), and similar memory and CPU limits.
+- Each Durable Object is [implicitly created on first access](https://developers.cloudflare.com/durable-objects/api/namespace/#get). User applications are not concerned with their lifecycle, creating them or destroying them. Durable Objects migrate among healthy servers, and therefore applications never have to worry about managing them.
+- Each Durable Object stays alive as long as requests are being processed, and remains alive for several seconds after being idle before hibernating, allowing applications to [exploit in-memory caching](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/) while handling many consecutive requests and boosting their performance.
 
 **Storage colocated with compute**
 
-* Each Durable Object has its own [durable, transactional, and strongly consistent storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) (up to 10 GB[1](#user-content-fn-1)), persisted across requests, and accessible only within that object.
+- Each Durable Object has its own [durable, transactional, and strongly consistent storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) (up to 10 GB<sup>[1](#user-content-fn-1)</sup>), persisted across requests, and accessible only within that object.
 
 **Single-threaded concurrency**
 
-* Each [Durable Object instance has an identifier](https://developers.cloudflare.com/durable-objects/api/id/), either randomly-generated or user-generated, which allows you to globally address which Durable Object should handle a specific action or request.
-* Durable Objects are single-threaded and cooperatively multi-tasked, just like code running in a web browser. For more details on how safety and correctness are achieved, refer to the blog post ["Durable Objects: Easy, Fast, Correct — Choose three" ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- Each [Durable Object instance has an identifier](https://developers.cloudflare.com/durable-objects/api/id/), either randomly-generated or user-generated, which allows you to globally address which Durable Object should handle a specific action or request.
+- Durable Objects are single-threaded and cooperatively multi-tasked, just like code running in a web browser. For more details on how safety and correctness are achieved, refer to the blog post ["Durable Objects: Easy, Fast, Correct — Choose three" ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 **Elastic horizontal scaling across Cloudflare's global network**
 
-* Durable Objects can be spread around the world, and you can [optionally influence where each instance should be located](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint). Durable Objects are not yet available in every Cloudflare data center; refer to the [where.durableobjects.live ↗](https://where.durableobjects.live/) project for live locations.
-* Each Durable Object type (or ["Namespace binding"](https://developers.cloudflare.com/durable-objects/api/namespace/) in Cloudflare terms) corresponds to a JavaScript class implementing the actual logic. There is no hard limit on how many Durable Objects can be created for each namespace.
-* Durable Objects scale elastically as your application creates millions of objects. There is no need for applications to manage infrastructure or plan ahead for capacity.
+- Durable Objects can be spread around the world, and you can [optionally influence where each instance should be located](https://developers.cloudflare.com/durable-objects/reference/data-location/#provide-a-location-hint). Durable Objects are not yet available in every Cloudflare data center; refer to the [where.durableobjects.live ↗](https://where.durableobjects.live/) project for live locations.
+- Each Durable Object type (or ["Namespace binding"](https://developers.cloudflare.com/durable-objects/api/namespace/) in Cloudflare terms) corresponds to a JavaScript class implementing the actual logic. There is no hard limit on how many Durable Objects can be created for each namespace.
+- Durable Objects scale elastically as your application creates millions of objects. There is no need for applications to manage infrastructure or plan ahead for capacity.
 
 ## Durable Objects features
 
@@ -86,7 +86,7 @@ Using RPC for communication makes application development easier and simpler to 
 
 ## Actor programming model
 
-Another way to describe and think about Durable Objects is through the lens of the [Actor programming model ↗](https://en.wikipedia.org/wiki/Actor%5Fmodel). There are several popular examples of the Actor model supported at the programming language level through runtimes or library frameworks, like [Erlang ↗](https://www.erlang.org/), [Elixir ↗](https://elixir-lang.org/), [Akka ↗](https://akka.io/), or [Microsoft Orleans for .NET ↗](https://learn.microsoft.com/en-us/dotnet/orleans/overview).
+Another way to describe and think about Durable Objects is through the lens of the [Actor programming model ↗](https://en.wikipedia.org/wiki/Actor_model). There are several popular examples of the Actor model supported at the programming language level through runtimes or library frameworks, like [Erlang ↗](https://www.erlang.org/), [Elixir ↗](https://elixir-lang.org/), [Akka ↗](https://akka.io/), or [Microsoft Orleans for .NET ↗](https://learn.microsoft.com/en-us/dotnet/orleans/overview).
 
 The Actor model simplifies a lot of problems in distributed systems by abstracting away the communication between actors using RPC calls (or message sending) that could be implemented on-top of any transport protocol, and it avoids most of the concurrency pitfalls you get when doing concurrency through shared memory such as race conditions when multiple processes/threads access the same data in-memory.
 
@@ -102,20 +102,20 @@ Many of Cloudflare's products use Durable Objects. Some of our technical blog po
 
 These blog posts may also serve as inspiration on how to architect scalable applications using Durable Objects, and how to integrate them with the rest of Cloudflare Developer Platform.
 
-* [Durable Objects aren't just durable, they're fast: a 10x speedup for Cloudflare Queues ↗](https://blog.cloudflare.com/how-we-built-cloudflare-queues/)
-* [Behind the scenes with Stream Live, Cloudflare's live streaming service ↗](https://blog.cloudflare.com/behind-the-scenes-with-stream-live-cloudflares-live-streaming-service/)
-* [DO it again: how we used Durable Objects to add WebSockets support and authentication to AI Gateway ↗](https://blog.cloudflare.com/do-it-again/)
-* [Workers Builds: integrated CI/CD built on the Workers platform ↗](https://blog.cloudflare.com/workers-builds-integrated-ci-cd-built-on-the-workers-platform/)
-* [Build durable applications on Cloudflare Workers: you write the Workflows, we take care of the rest ↗](https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/)
-* [Building D1: a Global Database ↗](https://blog.cloudflare.com/building-d1-a-global-database/)
-* [Billions and billions (of logs): scaling AI Gateway with the Cloudflare Developer Platform ↗](https://blog.cloudflare.com/billions-and-billions-of-logs-scaling-ai-gateway-with-the-cloudflare/)
-* [Indexing millions of HTTP requests using Durable Objects ↗](https://blog.cloudflare.com/r2-rayid-retrieval/)
+- [Durable Objects aren't just durable, they're fast: a 10x speedup for Cloudflare Queues ↗](https://blog.cloudflare.com/how-we-built-cloudflare-queues/)
+- [Behind the scenes with Stream Live, Cloudflare's live streaming service ↗](https://blog.cloudflare.com/behind-the-scenes-with-stream-live-cloudflares-live-streaming-service/)
+- [DO it again: how we used Durable Objects to add WebSockets support and authentication to AI Gateway ↗](https://blog.cloudflare.com/do-it-again/)
+- [Workers Builds: integrated CI/CD built on the Workers platform ↗](https://blog.cloudflare.com/workers-builds-integrated-ci-cd-built-on-the-workers-platform/)
+- [Build durable applications on Cloudflare Workers: you write the Workflows, we take care of the rest ↗](https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/)
+- [Building D1: a Global Database ↗](https://blog.cloudflare.com/building-d1-a-global-database/)
+- [Billions and billions (of logs): scaling AI Gateway with the Cloudflare Developer Platform ↗](https://blog.cloudflare.com/billions-and-billions-of-logs-scaling-ai-gateway-with-the-cloudflare/)
+- [Indexing millions of HTTP requests using Durable Objects ↗](https://blog.cloudflare.com/r2-rayid-retrieval/)
 
 Finally, the following blog posts may help you learn some of the technical implementation aspects of Durable Objects, and how they work.
 
-* [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
-* [Zero-latency SQLite storage in every Durable Object ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
-* [Workers Durable Objects Beta: A New Approach to Stateful Serverless ↗](https://blog.cloudflare.com/introducing-workers-durable-objects/)
+- [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
+- [Zero-latency SQLite storage in every Durable Object ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
+- [Workers Durable Objects Beta: A New Approach to Stateful Serverless ↗](https://blog.cloudflare.com/introducing-workers-durable-objects/)
 
 ## Get started
 

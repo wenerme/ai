@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fetch and index single web pages
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/fetch-and-index-web-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [/content endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
+This guide builds a Worker that fetches a single web page's rendered HTML with the [Browser Run](https://developers.cloudflare.com/browser-run/) [`/content` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/) and uploads it to an [AI Search](https://developers.cloudflare.com/ai-search/) instance's [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/) using the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/). AI Search then indexes the page so it is searchable, the same as any other uploaded document. The Worker also exposes a `/search` endpoint that queries the indexed pages, so one service both indexes and searches.
 
 ## When to use this pattern
 
@@ -25,15 +25,23 @@ Both Browser Run and the AI Search instance are reached through bindings, so a s
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You also need an AI Search instance to upload to. To create one, refer to [Get started](https://developers.cloudflare.com/ai-search/get-started/). This guide uploads to the instance's built-in storage, so the instance does not need an external data source.
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -55,11 +63,11 @@ pnpm create cloudflare@latest fetch-and-index
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -67,7 +75,7 @@ Go to your application directory:
 cd fetch-and-index
 ```
 
-## 2\. Configure Wrangler
+## 2. Configure Wrangler
 
 Add both bindings to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/): a [browser binding](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings) for Browser Run and an [AI Search namespace binding](https://developers.cloudflare.com/ai-search/api/items/workers-binding/) for uploads. The `/content` endpoint runs through the browser binding, so you do not need to install Puppeteer or any other package.
 
@@ -77,7 +85,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
   "name": "fetch-and-index",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "browser": {
     "binding": "BROWSER",
     "remote": true
@@ -96,7 +104,7 @@ Add both bindings to your [Wrangler configuration file](https://developers.cloud
 name = "fetch-and-index"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [browser]
 binding = "BROWSER"
@@ -110,9 +118,11 @@ remote = true
 
 The browser binding's `quickAction` method requires a compatibility date of `2026-03-24` or later, and is not supported in local development without remote mode. Setting `remote = true` on the browser binding enables remote mode for `wrangler dev`. The `remote` option on the AI Search binding proxies uploads to your deployed instance, since AI Search does not run locally.
 
-## 3\. Add the Worker code
+## 3. Add the Worker code
 
 Update `src/index.ts`. This Worker has two routes: a request with a `?url=` parameter fetches that page's rendered HTML and indexes it, and a request to `/search?q=` queries the indexed content. Replace `my-instance` with the name of your instance.
+
+*src/index.jsjs*
 
 ```js
 // The instance that indexes the fetched page.
@@ -203,6 +213,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -308,7 +320,7 @@ Caution
 
 Fetch only URLs you trust. A Worker that fetches arbitrary user-supplied URLs can become an open proxy. Consider restricting the accepted hostnames to an allowlist. Uploaded content is also limited to 4 MB per item.
 
-## 4\. Attach metadata for filtering
+## 4. Attach metadata for filtering
 
 This step is optional. Because this Worker controls the upload, you can enrich each page with structured [metadata](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/), such as its title and section, and then [filter searches](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) by those fields. This is something the built-in crawler cannot do on its own.
 
@@ -318,9 +330,9 @@ First, define the custom metadata fields on your instance. If you are creating t
 npx wrangler ai-search create my-instance --type builtin --custom-metadata title:text --custom-metadata section:text
 ```
 
-To add fields to an existing instance, use the dashboard under **Settings**, or the [update()](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) binding method. An instance supports up to five custom fields, and each field can be a `text`, `number`, `boolean`, or `datetime` type. Changing the schema re-indexes existing documents.
+To add fields to an existing instance, use the dashboard under **Settings**, or the [`update()`](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) binding method. An instance supports up to five custom fields, and each field can be a `text`, `number`, `boolean`, or `datetime` type. Changing the schema re-indexes existing documents.
 
-Next, use the Browser Run [/json endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) to extract those fields from the same page. It runs through the same browser binding and returns structured JSON that matches a schema you provide. In the `fetch` handler from step 3, after you have the rendered `html` and before the upload, add:
+Next, use the Browser Run [`/json` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) to extract those fields from the same page. It runs through the same browser binding and returns structured JSON that matches a schema you provide. In the `fetch` handler from step 3, after you have the rendered `html` and before the upload, add:
 
 ```ts
 // Extract structured metadata from the page with the /json endpoint.
@@ -369,7 +381,7 @@ const item = await env.AI_SEARCH.get(INSTANCE_ID).items.uploadAndPoll(
 
 Once indexed, you can restrict queries to pages in a given section, for example. Refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) for the query syntax.
 
-## 5\. Run and deploy
+## 5. Run and deploy
 
 Start a local development server. Because `remote = true` is set on the browser binding, `wrangler dev` runs the `/content` endpoint in remote mode:
 

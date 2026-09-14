@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client errors
 
-Last updated May 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the error codes that can appear in the Cloudflare One Client (formerly WARP) GUI. If you do not see your error below, refer to [common issues](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/) or [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
@@ -20,10 +20,10 @@ Troubleshoot the Cloudflare One Client
 
 For step-by-step guidance on diagnosing and resolving Cloudflare One Client issues, refer to the [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/). The guide covers:
 
-* How to collect diagnostic logs via the Cloudflare dashboard or CLI
-* How to review key configuration files
-* Common misconfigurations and their fixes
-* Best practices for filing support tickets
+- How to collect diagnostic logs via the Cloudflare dashboard or CLI
+- How to review key configuration files
+- Common misconfigurations and their fixes
+- Best practices for filing support tickets
 
 ![Example of error message in Cloudflare One Client GUI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=748,height=421,format=webp/_astro/warp-gui-error.vzmG4-Ab.png)
 
@@ -31,15 +31,15 @@ For step-by-step guidance on diagnosing and resolving Cloudflare One Client issu
 
 ### Symptoms
 
-* Unable to login to a captive portal network
-* No Internet connectivity
+- Unable to login to a captive portal network
+- No Internet connectivity
 
 ### Cause
 
 [Captive portal detection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#captive-portal-detection) is turned on and one of the following issues occurred:
 
-* The user did not complete the captive portal login process within the time limit set by the Cloudflare One Client.
-* The captive portal redirected the user to a flow that is not yet supported by the captive portal detection feature.
+- The user did not complete the captive portal login process within the time limit set by the Cloudflare One Client.
+- The captive portal redirected the user to a flow that is not yet supported by the captive portal detection feature.
 
 ### Resolution
 
@@ -50,9 +50,9 @@ For step-by-step guidance on diagnosing and resolving Cloudflare One Client issu
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* No Internet connectivity
-* User may be behind a captive portal
+- Unable to connect the Cloudflare One Client
+- No Internet connectivity
+- User may be behind a captive portal
 
 ### Cause
 
@@ -67,9 +67,9 @@ The initial [connectivity check](https://developers.cloudflare.com/cloudflare-on
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* Unable to browse the Internet
-* `nslookup` and `dig` commands fail on the device
+- Unable to connect the Cloudflare One Client
+- Unable to browse the Internet
+- `nslookup` and `dig` commands fail on the device
 
 ### Cause
 
@@ -86,7 +86,7 @@ The Cloudflare One Client was unable to resolve hostnames via its [local DNS pro
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client in a [mode that enables DNS filtering](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
+- Unable to connect the Cloudflare One Client in a [mode that enables DNS filtering](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/).
 
 ### Cause
 
@@ -98,30 +98,39 @@ On macOS, you may see `mDNSResponder` instead of the specific application name -
 
 1. Remove or disable DNS interception in the third-party process.
 
+<details>
+
+<summary>
+
 mDNSResponder
 
-Below is a non-exhaustive list of third-party software that are known to cause `mDNSResponder` to bind to port `53`. Rather than try to stop `mDNSResponder`, you should either configure the third-party software so that they no longer use port `53`, or temporarily disable them before connecting the Cloudflare One Client.
+</summary>
 
-* **Docker**: [Turn off kernel networking for UDP ↗](https://github.com/docker/for-mac/issues/7008#issuecomment-1746653802) in Docker. Alternatively, uncheck **Start Docker Desktop when you sign in to your computer** under [**Settings** \> **General** ↗](https://docs.docker.com/desktop/settings-and-maintenance/settings/#general). Disabling the automatic startup process will prevent Docker from binding to port `53` before the Cloudflare One Client.
-* **Internet Sharing feature**: To disable Internet Sharing:
-  1. On macOS, go to **System Settings** \> **General** \> **Sharing**.
+Below is a non-exhaustive list of third-party software that are known to cause <code>mDNSResponder</code> to bind to port <code>53</code>. Rather than try to stop <code>mDNSResponder</code>, you should either configure the third-party software so that they no longer use port <code>53</code>, or temporarily disable them before connecting the Cloudflare One Client.
+
+- **Docker**: <a href="https://github.com/docker/for-mac/issues/7008#issuecomment-1746653802">Turn off kernel networking for UDP ↗</a> in Docker. Alternatively, uncheck **Start Docker Desktop when you sign in to your computer** under <a href="https://docs.docker.com/desktop/settings-and-maintenance/settings/#general">**Settings** &gt; **General** ↗</a>. Disabling the automatic startup process will prevent Docker from binding to port <code>53</code> before the Cloudflare One Client.
+- **Internet Sharing feature**: To disable Internet Sharing:
+  1. On macOS, go to **System Settings** &gt; **General** &gt; **Sharing**.
   2. Turn off **Internet Sharing**.
-* **Certain VM software (such as VMware Workstation or Parallels)**: The presence of VM software does not guarantee that it is the offending program, since compatibility with the Cloudflare One Client is highly dependent on the VM's configuration. To work around the issue, connect the Cloudflare One Client before running any VMs:
+- **Certain VM software (such as VMware Workstation or Parallels)**: The presence of VM software does not guarantee that it is the offending program, since compatibility with the Cloudflare One Client is highly dependent on the VM's configuration. To work around the issue, connect the Cloudflare One Client before running any VMs:
   1. Stop/quit all VMs.
   2. Connect the Cloudflare One Client.
   3. Start the VMs again.
-* **Apple Container**: [Apple Container ↗](https://github.com/apple/container) will also bind `mDNSResponder` to port `53` if started before the Cloudflare One Client (or while the Client is stopped).
-  1. On macOS, run this in the terminal to temporarily stop the container system: `container system stop`
+- **Apple Container**: <a href="https://github.com/apple/container">Apple Container ↗</a> will also bind <code>mDNSResponder</code> to port <code>53</code> if started before the Cloudflare One Client (or while the Client is stopped).
+  1. On macOS, run this in the terminal to temporarily stop the container system: <code>container system stop</code>
   2. Cloudflare One Client DNS mode should now start with no errors.
-  3. You can then restart the container system (`container system start`) and pass explicit DNS flags when running containers.
-1. Alternatively, switch the Cloudflare One Client to [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) mode.
+  3. You can then restart the container system (<code>container system start</code>) and pass explicit DNS flags when running containers.
+
+</details>
+
+2. Alternatively, switch the Cloudflare One Client to [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) mode.
 
 ## CF\_FAILED\_READ\_SYSTEM\_DNS\_CONFIG
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* Unable to browse the Internet
+- Unable to connect the Cloudflare One Client
+- Unable to browse the Internet
 
 ### Cause
 
@@ -137,7 +146,7 @@ On Windows, validate that the registry entry `HKLM\System\CurrentControlSet\Serv
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
@@ -152,7 +161,7 @@ The device failed to present a [valid mTLS certificate](https://developers.cloud
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
@@ -162,15 +171,15 @@ A router, firewall, antivirus software, or other third-party security product is
 
 1. Configure the third-party security product to allow the [WARP ingress IPs and ports](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip).
 2. Ensure that your Internet router is working properly and try rebooting the router.
-3. Check that the device is not revoked by going to **Team & Resources** \> **Devices**.
+3. Check that the device is not revoked by going to **Team & Resources** > **Devices**.
 
 ## CF\_HOST\_UNREACHABLE\_CHECK
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* No Internet connectivity
-* User may be behind a captive portal
+- Unable to connect the Cloudflare One Client
+- No Internet connectivity
+- User may be behind a captive portal
 
 ### Cause
 
@@ -185,8 +194,8 @@ The [connectivity check](https://developers.cloudflare.com/cloudflare-one/team-a
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* OS warns that the disk is full
+- Unable to connect the Cloudflare One Client
+- OS warns that the disk is full
 
 ### Cause
 
@@ -202,8 +211,8 @@ The hard drive is full or has incorrect permissions for the Cloudflare One Clien
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* Unable to open files on the device
+- Unable to connect the Cloudflare One Client
+- Unable to open files on the device
 
 ### Cause
 
@@ -217,8 +226,8 @@ Increase the file descriptor limit in your system settings.
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* Device is very slow
+- Unable to connect the Cloudflare One Client
+- Device is very slow
 
 ### Cause
 
@@ -233,7 +242,7 @@ The device does not have enough memory to run the Cloudflare One Client.
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
@@ -249,8 +258,8 @@ The Cloudflare One Client was deployed on the device using an invalid MDM config
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
-* No Internet connectivity
+- Unable to connect the Cloudflare One Client
+- No Internet connectivity
 
 ### Cause
 
@@ -267,30 +276,30 @@ The device is not connected to a Wi-Fi network or LAN that has connectivity to t
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
 The device is not authenticated to an [organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization) because:
 
-* The device was revoked in Zero Trust.
-* The registration was corrupted or deleted for an unknown reason.
+- The device was revoked in Zero Trust.
+- The registration was corrupted or deleted for an unknown reason.
 
 ### Resolution
 
 1. Launch the Cloudflare One Client.
-2. Go to **Profile** \> **Account information**.
+2. Go to **Profile** > **Account information**.
 3. Select **Re-Authenticate**.
 4. Complete the authentication steps required by your organization.
 5. If this does not resolve the error, select **Logout** and then [re-enroll your device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/). Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
 6. If the issue persists, contact your administrator for assistance.
 
-1. Launch the Cloudflare One Client.
-2. Select the gear icon and go to **Preferences** \> **Account**.
-3. Select **Re-Authenticate Session**.
-4. Complete the authentication steps required by your organization.
-5. If this does not resolve the error, select **Logout from Cloudflare Zero Trust** and then log back in. Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
-6. If the issue persists, contact your administrator for assistance.
+7. Launch the Cloudflare One Client.
+8. Select the gear icon and go to **Preferences** > **Account**.
+9. Select **Re-Authenticate Session**.
+10. Complete the authentication steps required by your organization.
+11. If this does not resolve the error, select **Logout from Cloudflare Zero Trust** and then log back in. Logging out is only possible if [Allow device to leave organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-device-to-leave-organization) is enabled for your device.
+12. If the issue persists, contact your administrator for assistance.
 
 ### CF\_REGISTRATION\_MISSING (Revoked)
 
@@ -306,7 +315,7 @@ Contact your company or team administrator for assistance.
 
 ### Symptoms
 
-* DNS requests fail to resolve when the Cloudflare One Client is connected.
+- DNS requests fail to resolve when the Cloudflare One Client is connected.
 
 ### Cause
 
@@ -320,7 +329,7 @@ Configure the third-party application to exempt the [WARP DoH IPs](https://devel
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
@@ -334,7 +343,7 @@ In the third-party security product, disable HTTPS inspection and TLS decryption
 
 ### Symptoms
 
-* Unable to connect the Cloudflare One Client
+- Unable to connect the Cloudflare One Client
 
 ### Cause
 
@@ -342,7 +351,7 @@ The account administrator has disconnected the Cloudflare One Client for all dev
 
 ### Resolution
 
-The account administrator must turn off both of the following features: - [Disconnect the Cloudflare One Client on all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices) \- [Manage device connection using an external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#manage-device-connection-using-an-external-signal)
+The account administrator must turn off both of the following features: - [Disconnect the Cloudflare One Client on all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices) - [Manage device connection using an external signal](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#manage-device-connection-using-an-external-signal)
 
 Was this helpful?
 

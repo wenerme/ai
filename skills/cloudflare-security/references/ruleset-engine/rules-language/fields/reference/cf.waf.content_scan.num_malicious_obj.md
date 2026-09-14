@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.content\_scan.num\_malicious\_obj
 
-`cf.waf.content_scan.num_malicious_obj` `Integer`
+`cf.waf.content_scan.num_malicious_obj``Integer`
 
 The number of malicious content objects detected in the request (zero or greater).
 
@@ -22,7 +22,7 @@ cf.waf.content_scan.num_malicious_obj > 2 and http.request.uri.path eq "/upload"
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

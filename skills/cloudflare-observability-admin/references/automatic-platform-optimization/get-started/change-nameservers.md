@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Change nameservers
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you [confirm your DNS records](https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/), change your nameservers.
 

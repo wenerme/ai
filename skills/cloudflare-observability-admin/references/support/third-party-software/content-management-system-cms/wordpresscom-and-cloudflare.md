@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WordPress.com and Cloudflare
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/wordpresscom-and-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Getting started with WordPress.com and Cloudflare
 
@@ -20,13 +20,13 @@ Cloudflare and WordPress.com are partnering to offer customers Cloudflare's perf
 
 1\. Add your WordPress site to Cloudflare. Do the following:
 
-* [Create a Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
-* [Onboard your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare.
+- [Create a Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
+- [Onboard your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare.
 
 During this process, Cloudflare scans your existing WordPress.com DNS records and displays them. The records will look similar to the examples below.
 
-* `A example.com 192.0.78.12`
-* `A example.com 192.0.78.13`
+- `A example.com 192.0.78.12`
+- `A example.com 192.0.78.13`
 
 WordPress.com does not guarantee the IP address will never change. For maximum uptime, you should complete the following:
 
@@ -66,7 +66,7 @@ Cloudflare Web Analytics gives web creators the information they need in a simpl
 
 1\. Open WordPress and select your site.
 
-2\. Select **Tools** \> **Marketing**.
+2\. Select **Tools** > **Marketing**.
 
 3\. Locate the Cloudflare section.
 
@@ -84,10 +84,10 @@ Cloudflare's [Automatic Platform Optimization ↗](https://www.cloudflare.com/au
 
 Caution
 
-The [Automatic Platform Optimization (APO) ↗](https://www.cloudflare.com/automatic-platform-optimization/wordpress/)feature requires that you be on a [Full Setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/)using Cloudflare nameservers.
+The [Automatic Platform Optimization (APO) ↗](https://www.cloudflare.com/automatic-platform-optimization/wordpress/) feature requires that you be on a [Full Setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) using Cloudflare nameservers.
 
-* Cloudflare free plan + $5/month APO add-on or a Pro or Business plan subscription (includes APO)
-* WordPress.com Business plan or above (requires plugins)
+- Cloudflare free plan + $5/month APO add-on or a Pro or Business plan subscription (includes APO)
+- WordPress.com Business plan or above (requires plugins)
 
 ### **Install and enable APO**
 
@@ -129,8 +129,8 @@ curl -svo /dev/null -A "CF" 'https://example.com/' -H 'accept: text/html' 2>&1 |
 
 As always, `cf-cache-status` displays if the asset hit the cache or was considered dynamic and served from the origin.
 
-* The `cf-apo-via` header returns the APO status for the given request.
-* The `cf-edge-cache` header means the WordPress plugin is installed and enabled.
+- The `cf-apo-via` header returns the APO status for the given request.
+- The `cf-edge-cache` header means the WordPress plugin is installed and enabled.
 
 ### How can I verify APO and the WordPress.com integration works?
 

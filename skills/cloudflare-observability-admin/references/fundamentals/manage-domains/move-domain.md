@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Move a domain between Cloudflare accounts
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/move-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You will have to move or transfer domains from one Cloudflare account to another if you:
 
-* Manage a multi-user organization and need to segment domain access by user.
-* Receive a `Cloudflare is already hosting under a different account` error.
-* Lose access to your email address or Cloudflare account (though you can also use the [backup codes](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#use-a-backup-code) if you have two-factor authentication enabled).
-* Registered a Cloudflare account with a typo in your email.
+- Manage a multi-user organization and need to segment domain access by user.
+- Receive a `Cloudflare is already hosting under a different account` error.
+- Lose access to your email address or Cloudflare account (though you can also use the [backup codes](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#use-a-backup-code) if you have two-factor authentication enabled).
+- Registered a Cloudflare account with a typo in your email.
 
 Caution
 
@@ -31,8 +31,8 @@ Refer to [Transfer a Cloudflare Registrar domain registration between accounts](
 
 To transfer a domain from one Cloudflare account to another, you will need:
 
-* Access to your domain registrar. If your domain is using Cloudflare Registrar, refer to [Transfer a Cloudflare Registrar domain registration between accounts](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/).
-* At least one Cloudflare account associated with the domain.
+- Access to your domain registrar. If your domain is using Cloudflare Registrar, refer to [Transfer a Cloudflare Registrar domain registration between accounts](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/).
+- At least one Cloudflare account associated with the domain.
 
 ## Transfer your domain
 
@@ -51,7 +51,7 @@ The domain transfer process depends on your DNS settings. If Cloudflare is your 
 1. [Create a new Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/) or log in to an existing Cloudflare account.
 2. [Add the domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to the account (as if you were adding it for the first time).
 3. Log in to your domain registrar account and [update the nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) to the provided Cloudflare nameservers.
-4. Finalize the nameserver update by selecting your domain in the dashboard > **Overview** \> **Re-check now**.
+4. Finalize the nameserver update by selecting your domain in the dashboard > **Overview** > **Re-check now**.
 
 Once the Cloudflare network recognizes the nameserver change, the domain in the new account will be marked as **Active**. While the domain in the new account is **Pending**, it cannot proxy traffic through Cloudflare and the origin IP addresses will be returned until the domain is marked as **Active**.
 

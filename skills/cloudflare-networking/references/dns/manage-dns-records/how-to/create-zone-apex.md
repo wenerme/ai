@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create zone apex record
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you add a domain to Cloudflare, you may also need to create or review the DNS record on your zone apex. Zone apex refers to the domain (`example.com`) or subdomain (`blog.example.com`) that you are [adding to Cloudflare](https://developers.cloudflare.com/dns/concepts/#zone).
 
@@ -20,7 +20,7 @@ Usually, the zone apex record makes your domain accessible by visitors. In this 
 
 ### ANAME or ALIAS
 
-ANAME or ALIAS are DNS records used by specific DNS providers. If your previous provider was using ANAME or ALIAS, you can recreate these records on Cloudflare as CNAME records. Cloudflare's [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)[1](#user-content-fn-1) allows you to create CNAME records at your [zone apex](https://developers.cloudflare.com/dns/concepts/#zone-apex), removing the need for those other record types.
+ANAME or ALIAS are DNS records used by specific DNS providers. If your previous provider was using ANAME or ALIAS, you can recreate these records on Cloudflare as CNAME records. Cloudflare's [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)<sup>[1](#user-content-fn-1)</sup> allows you to create CNAME records at your [zone apex](https://developers.cloudflare.com/dns/concepts/#zone-apex), removing the need for those other record types.
 
 ## Footnotes
 
@@ -31,17 +31,15 @@ ANAME or ALIAS are DNS records used by specific DNS providers. If your previous 
 To create a zone apex record, use `@` for the record **Name**, as in the following example.
 
 | Type | Name | IPv4 address | Proxy status |
-| ---- | ---- | ------------ | ------------ |
-| A    | @    | 192.0.2.1    | Proxied      |
+| --- | --- | --- | --- |
+| A | `@` | `192.0.2.1` | Proxied |
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:
-
-  * To point to an IPv4 address, select `A`, use your zone apex (`@`) for the record **Name**, and insert the IPv4 address in the respective field.
-  * To point to an IPv6 address, select `AAAA`, use your zone apex (`@`) for the record **Name**, and insert the IPv6 address in the respective field.
-  * To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select `CNAME`, use your zone apex (`@`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
+   - To point to an IPv4 address, select `A`, use your zone apex ( `@`) for the record **Name**, and insert the IPv4 address in the respective field.
+   - To point to an IPv6 address, select `AAAA`, use your zone apex ( `@`) for the record **Name**, and insert the IPv6 address in the respective field.
+   - To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select `CNAME`, use your zone apex ( `@`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
 4. Specify the [**Proxy status**](https://developers.cloudflare.com/dns/proxy-status/) and [**TTL**](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) according to your needs.
 5. Select **Save** to confirm.
 
@@ -49,9 +47,9 @@ Use the [Create DNS Record API endpoint](https://developers.cloudflare.com/api/r
 
 For field definitions, refer to the [API documentation](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) (visible once you select the record type under the request body specification).
 
-* To point to an IPv4 address, select **A Record**, use your zone apex (`@`) for the field `name`, and use the IPv4 address for the field `content`.
-* To point to an IPv6 address, select **AAAA Record**, use your zone apex (`@`) for the field `name`, and use the IPv6 address for the field `content`.
-* To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully%5Fqualified%5Fdomain%5Fname) (such as `your-site.host.example.com`), select **CNAME Record**, use your zone apex (`@`) for the field `name`, and use the fully qualified domain name for the field `content`.
+- To point to an IPv4 address, select **A Record**, use your zone apex ( `@`) for the field `name`, and use the IPv4 address for the field `content`.
+- To point to an IPv6 address, select **AAAA Record**, use your zone apex ( `@`) for the field `name`, and use the IPv6 address for the field `content`.
+- To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select **CNAME Record**, use your zone apex ( `@`) for the field `name`, and use the fully qualified domain name for the field `content`.
 
 ## Domain redirects
 

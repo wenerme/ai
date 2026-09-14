@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure with Connector
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect and steer any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
+Cloudflare One Appliance is a lightweight appliance you can install in corporate network locations to automatically connect and steer
+
+ any IP traffic through [secure IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#security-and-other-information). Cloudflare One Appliance is the easiest way to onboard your network locations to Cloudflare One. It is managed remotely through the Cloudflare dashboard, so you do not require an onsite IT team.
 
 You can [purchase Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/) software pre-installed on a Cloudflare-certified device, or download and deploy [Virtual Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/) in your own infrastructure.
 
@@ -24,13 +26,13 @@ Cloudflare One Appliance has the same type of support process as other Cloudflar
 
 Review this section to learn how to configure and deploy Cloudflare One Appliance.
 
-* [Configure hardware Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/)
-* [Configure Virtual Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/)
-* [Network options](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/)
-* [Maintenance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/)
-* [Device metrics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/)
-* [Reference](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/)
-* [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/)
+- [Configure hardware Connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/)
+- [Configure Virtual Appliance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/)
+- [Network options](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/)
+- [Maintenance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/)
+- [Device metrics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/device-metrics/)
+- [Reference](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/)
+- [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/)
 
 Was this helpful?
 

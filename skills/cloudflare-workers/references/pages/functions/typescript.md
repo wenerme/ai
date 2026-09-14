@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TypeScript
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/typescript/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/typescript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pages Functions supports TypeScript. Author any files in your `/functions` directory with a `.ts` extension instead of a `.js` extension to start using TypeScript.
 
@@ -45,7 +45,7 @@ Then configure the types by creating a `functions/tsconfig.json` file:
 }
 ```
 
-See [the wrangler types command docs](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) for more details.
+See [the `wrangler types` command docs](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) for more details.
 
 If you already have a `tsconfig.json` at the root of your project, you may wish to explicitly exclude the `/functions` directory to avoid conflicts. To exclude the `/functions` directory:
 

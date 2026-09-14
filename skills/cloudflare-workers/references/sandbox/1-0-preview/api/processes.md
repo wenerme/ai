@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Processes
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents the process API on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. For today's stable command surface, refer to [Commands](https://developers.cloudflare.com/sandbox/api/commands/).
+This page documents the process API on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. For today's stable command surface, refer to [Commands](https://developers.cloudflare.com/sandbox/api/commands/).
 
 Launch and observe supervised processes in the current container for a sandbox.
 
@@ -38,18 +38,18 @@ exec(command: SandboxCommand, options?: ExecOptions): Promise<SandboxProcess>
 type SandboxCommand = readonly [executable: string, ...args: string[]];
 ```
 
-* `command[0]` must be a non-empty executable path or name.
-* Later arguments may be empty strings.
-* Entries are passed through as-is (no shell escaping of argv).
-* Shell syntax requires an explicit shell, for example `['/bin/bash', '-lc', script]`.
+- `command[0]` must be a non-empty executable path or name.
+- Later arguments may be empty strings.
+- Entries are passed through as-is (no shell escaping of argv).
+- Shell syntax requires an explicit shell, for example `['/bin/bash', '-lc', script]`.
 
 ### `ExecOptions`
 
-| Field   | Type                   | Description                                                                                                         |
-| ------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| cwd     | string                 | Working directory for this launch. Defaults to /workspace when unset.                                               |
-| env     | Record<string, string> | Environment overlay for this launch. Does not mutate later launches. Sandbox-level env still applies.               |
-| timeout | number                 | Remote process lifetime in milliseconds. The supervisor may stop the process; completion can report timedOut: true. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `cwd` | `string` | Working directory for this launch. Defaults to `/workspace` when unset. |
+| `env` | `Record<string, string>` | Environment overlay for this launch. Does not mutate later launches. Sandbox-level env still applies. |
+| `timeout` | `number` | Remote process lifetime in milliseconds. The supervisor may stop the process; completion can report `timedOut: true`. |
 
 ### Returns
 
@@ -93,18 +93,18 @@ Each entry is a [ProcessStatus](#processstatus) value (the same shape as `status
 
 ## `SandboxProcess`
 
-| Member                        | Description                                                              |
-| ----------------------------- | ------------------------------------------------------------------------ |
-| id                            | Process ID in the current container.                                     |
-| pid                           | Container pid at launch.                                                 |
-| exitCode                      | Promise<number> that resolves when the supervised process group settles. |
-| status()                      | Current discriminated status.                                            |
-| logs(options?)                | Cursor-based log stream.                                                 |
-| output(options?)              | Buffered stdout and stderr plus exit metadata.                           |
-| waitForExit(options?)         | Wait until the supervised process group settles.                         |
-| waitForLog(pattern, options?) | Wait until stdout or stderr matches.                                     |
-| waitForPort(port, options?)   | Wait until a port is ready or readiness fails.                           |
-| kill(signal?)                 | Send a numeric signal. Default 15 (SIGTERM).                             |
+| Member | Description |
+| --- | --- |
+| `id` | Process ID in the current container. |
+| `pid` | Container pid at launch. |
+| `exitCode` | `Promise<number>` that resolves when the supervised process group settles. |
+| `status()` | Current discriminated status. |
+| `logs(options?)` | Cursor-based log stream. |
+| `output(options?)` | Buffered stdout and stderr plus exit metadata. |
+| `waitForExit(options?)` | Wait until the supervised process group settles. |
+| `waitForLog(pattern, options?)` | Wait until stdout or stderr matches. |
+| `waitForPort(port, options?)` | Wait until a port is ready or readiness fails. |
+| `kill(signal?)` | Send a numeric signal. Default `15` (`SIGTERM`). |
 
 There is no process stdin API on this handle.
 
@@ -144,12 +144,12 @@ Default body encoding is binary (`Uint8Array`) unless you pass `encoding: "utf8"
 
 #### `ProcessOutputOptions`
 
-| Field    | Type        | Description                                                                                             |
-| -------- | ----------- | ------------------------------------------------------------------------------------------------------- |
-| encoding | "utf8"      | Decode stdout/stderr as strings.                                                                        |
-| maxBytes | number      | Cap buffered bytes per stream side of the result; may set truncated: true. No default cap when omitted. |
-| timeout  | number      | Local wait deadline in milliseconds only; does not kill the process.                                    |
-| signal   | AbortSignal | Cancel this wait only; does not kill the process.                                                       |
+| Field | Type | Description |
+| --- | --- | --- |
+| `encoding` | `"utf8"` | Decode stdout/stderr as strings. |
+| `maxBytes` | `number` | Cap buffered bytes per stream side of the result; may set `truncated: true`. No default cap when omitted. |
+| `timeout` | `number` | Local wait deadline in milliseconds only; does not kill the process. |
+| `signal` | `AbortSignal` | Cancel this wait only; does not kill the process. |
 
 `maxBytes` must be a non-negative finite number when set.
 
@@ -181,12 +181,12 @@ logs(options?: ProcessLogsOptions): Promise<ReadableStream<ProcessLogEvent>>
 
 #### `ProcessLogsOptions`
 
-| Field  | Type        | Description                                               |
-| ------ | ----------- | --------------------------------------------------------- |
-| since  | string      | Opaque cursor; resume after a previous event.             |
-| replay | boolean     | Include buffered history when resuming.                   |
-| follow | boolean     | Keep the stream open for live output.                     |
-| signal | AbortSignal | Cancel this subscription only; the process keeps running. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `since` | `string` | Opaque cursor; resume after a previous event. |
+| `replay` | `boolean` | Include buffered history when resuming. |
+| `follow` | `boolean` | Keep the stream open for live output. |
+| `signal` | `AbortSignal` | Cancel this subscription only; the process keeps running. |
 
 #### `ProcessLogEvent`
 
@@ -284,10 +284,10 @@ waitForExit(options?: {
 }): Promise<ProcessExit>
 ```
 
-| Field   | Type        | Description                                          |
-| ------- | ----------- | ---------------------------------------------------- |
-| timeout | number      | Local wait deadline only; does not kill the process. |
-| signal  | AbortSignal | Cancel this wait only; does not kill the process.    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `timeout` | `number` | Local wait deadline only; does not kill the process. |
+| `signal` | `AbortSignal` | Cancel this wait only; does not kill the process. |
 
 Returns [ProcessExit](#processexit). Local timeout surfaces as `ProcessWaitTimeoutError`. Local abort surfaces as `ProcessAbortedError`.
 
@@ -320,11 +320,11 @@ waitForLog(
 
 #### `WaitForLogOptions`
 
-| Field   | Type                 | Description                                          |                                          |
-| ------- | -------------------- | ---------------------------------------------------- | ---------------------------------------- |
-| stream  | "stdout" \| "stderr" | "both"                                               | Which streams to match. Default: "both". |
-| timeout | number               | Local wait deadline only; does not kill the process. |                                          |
-| signal  | AbortSignal          | Cancel this wait only; does not kill the process.    |                                          |
+| Field | Type | Description |
+| --- | --- | --- |
+| `stream` | `"stdout" \| "stderr" \| "both"` | Which streams to match. Default: `"both"`. |
+| `timeout` | `number` | Local wait deadline only; does not kill the process. |
+| `signal` | `AbortSignal` | Cancel this wait only; does not kill the process. |
 
 #### `WaitForLogResult`
 
@@ -337,9 +337,9 @@ interface WaitForLogResult {
 }
 ```
 
-* `text` is the matching window of decoded output for that stream.
-* `match` is the matched substring.
-* `cursor` is the log cursor at the match when available.
+- `text` is the matching window of decoded output for that stream.
+- `match` is the matched substring.
+- `cursor` is the log cursor at the match when available.
 
 If the process exits before a match, the SDK throws `ProcessExitedBeforeLogError`. A local wait timeout throws `ProcessWaitTimeoutError`.
 
@@ -377,14 +377,14 @@ waitForPort(port: number, options?: WaitForPortOptions): Promise<void>
 
 #### `WaitForPortOptions`
 
-| Field    | Type                                   | Description                                                                                   |
-| -------- | -------------------------------------- | --------------------------------------------------------------------------------------------- |
-| mode     | "tcp" \| "http"                        | Readiness check. Default: "tcp" (accepts a TCP connection).                                   |
-| path     | string                                 | HTTP path to request when mode is "http". Default: "/".                                       |
-| status   | number \| { min: number; max: number } | Expected HTTP status or inclusive range when mode is "http". Default: { min: 200, max: 399 }. |
-| interval | number                                 | Milliseconds between checks. Default: 500.                                                    |
-| timeout  | number                                 | Local wait deadline only; does not kill the process. No default timeout when omitted.         |
-| signal   | AbortSignal                            | Cancel this wait only; does not kill the process.                                             |
+| Field | Type | Description |
+| --- | --- | --- |
+| `mode` | `"tcp" \| "http"` | Readiness check. Default: `"tcp"` (accepts a TCP connection). |
+| `path` | `string` | HTTP path to request when `mode` is `"http"`. Default: `"/"`. |
+| `status` | `number \| { min: number; max: number }` | Expected HTTP status or inclusive range when `mode` is `"http"`. Default: `{ min: 200, max: 399 }`. |
+| `interval` | `number` | Milliseconds between checks. Default: `500`. |
+| `timeout` | `number` | Local wait deadline only; does not kill the process. No default timeout when omitted. |
+| `signal` | `AbortSignal` | Cancel this wait only; does not kill the process. |
 
 **TCP mode** (default) succeeds when the port accepts a connection:
 
@@ -436,9 +436,9 @@ await server.waitForPort(3000, {
 
 Typical failures:
 
-* `ProcessReadyTimeoutError` — port not ready before the local timeout
-* `ProcessExitedBeforeReadyError` — process exited before the port was ready
-* `ProcessAbortedError` — local `AbortSignal` cancelled the wait (process may still run)
+- `ProcessReadyTimeoutError` — port not ready before the local timeout
+- `ProcessExitedBeforeReadyError` — process exited before the port was ready
+- `ProcessAbortedError` — local `AbortSignal` cancelled the wait (process may still run)
 
 ### `kill()`
 
@@ -523,35 +523,35 @@ interface ProcessFailure {
 
 `getProcess` and `listProcesses` do not throw for missing work. They return `null` or `[]` when no container is up, the ID is unknown in the current container, or the process belonged to a previous container. The following error classes apply to operations on a process handle (and to launch), not to those lookups.
 
-| Situation                                                               | Class / outcome                                        |
-| ----------------------------------------------------------------------- | ------------------------------------------------------ |
-| getProcess / listProcesses while no container is running                | null / \[\] (not an error; does not start a container) |
-| getProcess for an unknown ID or a process from a previous container     | null                                                   |
-| Operation on a handle after the container was replaced                  | StaleProcessHandleError                                |
-| Operation on a handle when the process is gone in the current container | ProcessNotFoundError                                   |
-| Local wait timed out (output / waitForExit / waitForLog)                | ProcessWaitTimeoutError                                |
-| Local AbortSignal on a wait or stream                                   | ProcessAbortedError                                    |
-| Port not ready before local timeout                                     | ProcessReadyTimeoutError                               |
-| Process exited before port readiness                                    | ProcessExitedBeforeReadyError                          |
-| Process exited before a log match                                       | ProcessExitedBeforeLogError                            |
-| Invalid working directory at launch                                     | InvalidProcessCwdError                                 |
-| Invalid environment at launch                                           | InvalidProcessEnvironmentError                         |
-| Invalid log cursor                                                      | InvalidProcessCursorError                              |
-| Process failed to start                                                 | ProcessSpawnFailedError                                |
-| Container not ready; work did not start                                 | ContainerUnavailableError                              |
-| Work interrupted after it may have started                              | OperationInterruptedError                              |
+| Situation | Class / outcome |
+| --- | --- |
+| `getProcess` / `listProcesses` while no container is running | `null` / `[]` (not an error; does not start a container) |
+| `getProcess` for an unknown ID or a process from a previous container | `null` |
+| Operation on a handle after the container was replaced | `StaleProcessHandleError` |
+| Operation on a handle when the process is gone in the current container | `ProcessNotFoundError` |
+| Local wait timed out (`output` / `waitForExit` / `waitForLog`) | `ProcessWaitTimeoutError` |
+| Local `AbortSignal` on a wait or stream | `ProcessAbortedError` |
+| Port not ready before local timeout | `ProcessReadyTimeoutError` |
+| Process exited before port readiness | `ProcessExitedBeforeReadyError` |
+| Process exited before a log match | `ProcessExitedBeforeLogError` |
+| Invalid working directory at launch | `InvalidProcessCwdError` |
+| Invalid environment at launch | `InvalidProcessEnvironmentError` |
+| Invalid log cursor | `InvalidProcessCursorError` |
+| Process failed to start | `ProcessSpawnFailedError` |
+| Container not ready; work did not start | `ContainerUnavailableError` |
+| Work interrupted after it may have started | `OperationInterruptedError` |
 
 Recovery guidance: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/). Full catalog: [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/). Lifetime: [How long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives).
 
 ## Related
 
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
-* [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
-* [Migrate from the stable SDK](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
-* Stable: [Commands](https://developers.cloudflare.com/sandbox/api/commands/)
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
+- [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
+- [Migrate from the stable SDK](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- Stable: [Commands](https://developers.cloudflare.com/sandbox/api/commands/)
 
 Was this helpful?
 

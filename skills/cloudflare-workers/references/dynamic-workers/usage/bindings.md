@@ -12,28 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bindings
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bindings let you control what a Dynamic Worker can access. When you create a Dynamic Worker, you decide exactly what resources and operations it can use.
 
 This allows you to:
 
-* **Give each Dynamic Worker its own resources** — Partition a [KV](https://developers.cloudflare.com/kv/) namespace, [R2](https://developers.cloudflare.com/r2/) bucket, or database so each worker only sees its own data.
-* **Expose custom capabilities** — Define your own methods that Dynamic Workers can call — like posting to a chat room, sending an email, or querying an internal service. You design the interface and the Dynamic Worker just calls it.
-* **Restrict and control access** — Inspect, transform, or reject calls before they reach the underlying resource.
+- **Give each Dynamic Worker its own resources** — Partition a [KV](https://developers.cloudflare.com/kv/) namespace, [R2](https://developers.cloudflare.com/r2/) bucket, or database so each worker only sees its own data.
+- **Expose custom capabilities** — Define your own methods that Dynamic Workers can call — like posting to a chat room, sending an email, or querying an internal service. You design the interface and the Dynamic Worker just calls it.
+- **Restrict and control access** — Inspect, transform, or reject calls before they reach the underlying resource.
 
 ## Custom Bindings with Dynamic Workers
 
 With custom bindings, you:
 
-* **Define the binding implementation in your loader Worker**: You create a class with methods. Because this runs in your loader Worker, that's where you can add authentication, logging, scope access per customer.
-* **Pass it to the Dynamic Worker as a binding**: It just calls methods like `this.env.CHAT_ROOM.post("Hello!")` without knowing anything about the implementation behind it.
+- **Define the binding implementation in your loader Worker**: You create a class with methods. Because this runs in your loader Worker, that's where you can add authentication, logging, scope access per customer.
+- **Pass it to the Dynamic Worker as a binding**: It just calls methods like `this.env.CHAT_ROOM.post("Hello!")` without knowing anything about the implementation behind it.
 
 ### How it works
 
 #### Step 1: Define the binding
 
-To create a custom binding, your loader Worker needs to implement a [WorkerEntrypoint class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc#the-workerentrypoint-class) and export it. The methods you define on this class are the methods the Dynamic Worker will be able to call.
+To create a custom binding, your loader Worker needs to implement a [`WorkerEntrypoint` class](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc#the-workerentrypoint-class) and export it. The methods you define on this class are the methods the Dynamic Worker will be able to call.
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -75,7 +75,7 @@ let aliceRoom = ctx.exports.ChatRoom({ props: { roomName: "#alice", apiKey: ALIC
 let bobRoom   = ctx.exports.ChatRoom({ props: { roomName: "#bob", apiKey: BOB_KEY } });
 ```
 
-When the Dynamic Worker calls a method on the binding, it's actually making a call back to your loader Worker, that's where the method runs. Inside that method, you can read the `props` via [this.ctx.props](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props, the Dynamic Worker never sees them.
+When the Dynamic Worker calls a method on the binding, it's actually making a call back to your loader Worker, that's where the method runs. Inside that method, you can read the `props` via [`this.ctx.props`](https://developers.cloudflare.com/workers/runtime-apis/context#props). Only the loader Worker has access to the props, the Dynamic Worker never sees them.
 
 ```ts
 export class ChatRoom extends WorkerEntrypoint<Cloudflare.Env, ChatRoomProps> {

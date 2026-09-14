@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # https
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,7 @@ For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_c
 
 ### Client-side methods
 
-To use the HTTPS client-side methods (`https.get`, `https.request`, etc.), you must enable the [enable\_nodejs\_http\_modules](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) compatibility flag in addition to the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) flag.
+To use the HTTPS client-side methods (`https.get`, `https.request`, etc.), you must enable the [`enable_nodejs_http_modules`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) compatibility flag in addition to the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) flag.
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-08-15` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your `wrangler.toml`:
 
@@ -32,7 +32,7 @@ compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules"]
 
 ### Server-side methods
 
-To use the HTTPS server-side methods (`https.createServer`, `https.Server`, `https.ServerResponse`), you must enable the `enable_nodejs_http_server_modules` compatibility flag in addition to the [nodejs\_compat](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) flag.
+To use the HTTPS server-side methods (`https.createServer`, `https.Server`, `https.ServerResponse`), you must enable the `enable_nodejs_http_server_modules` compatibility flag in addition to the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) flag.
 
 This flag is automatically enabled for Workers using a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) of `2025-09-01` or later when `nodejs_compat` is enabled. For Workers using an earlier compatibility date, you can manually enable it by adding the flag to your `wrangler.toml`:
 
@@ -76,7 +76,7 @@ export default {
 };
 ```
 
-The implementation of `get` in Workers is a wrapper around the global [fetch API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/)and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
+The implementation of `get` in Workers is a wrapper around the global [`fetch` API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/) and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
 
@@ -88,11 +88,11 @@ The `request` method creates an HTTPS request with customizable options like met
 
 Because `get` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `get` will throw an error.
 
-The request method accepts all options from [http.request](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#request) with some differences in default values:
+The request method accepts all options from [`http.request`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#request) with some differences in default values:
 
-* `protocol`: default `https:`
-* `port`: default `443`
-* `agent`: default `https.globalAgent`
+- `protocol`: default `https:`
+- `port`: default `443`
+- `agent`: default `https.globalAgent`
 
 ```js
 import { request } from "node:https";
@@ -130,7 +130,7 @@ The following additional options are not supported: `ca`, `cert`, `ciphers`, `cl
 
 ## createServer
 
-An implementation of the Node.js [https.createServer ↗](https://nodejs.org/docs/latest/api/https.html#httpscreateserveroptions-requestlistener) method.
+An implementation of the Node.js [`https.createServer` ↗](https://nodejs.org/docs/latest/api/https.html#httpscreateserveroptions-requestlistener) method.
 
 The `createServer` method creates an HTTPS server instance that can handle incoming secure requests. It's a convenience function that creates a new `Server` instance and optionally sets up a request listener callback.
 
@@ -164,15 +164,15 @@ await using server = createServer((req, res) => {
 
 ## Agent
 
-An implementation of the Node.js [https.Agent ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) class.
+An implementation of the Node.js [`https.Agent` ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) class.
 
 An [Agent ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) manages HTTPS connection reuse by maintaining request queues per host/port. In the Workers environment, however, such low-level management of the network connection, ports, etc, is not relevant because it is handled by the Cloudflare infrastructure instead. Accordingly, the implementation of `Agent` in Workers is a stub implementation that does not support connection pooling or keep-alive.
 
 ## Server
 
-An implementation of the Node.js [https.Server ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsserver) class.
+An implementation of the Node.js [`https.Server` ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsserver) class.
 
-In Node.js, the `https.Server` class represents an HTTPS server and provides methods for handling incoming secure requests. In Workers, handling of secure requests is provided by the Cloudflare infrastructure so there really is not much difference between using `https.Server` or `http.Server`. The workers runtime provides an implementation for completeness but most workers should probably just use [http.Server](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#server).
+In Node.js, the `https.Server` class represents an HTTPS server and provides methods for handling incoming secure requests. In Workers, handling of secure requests is provided by the Cloudflare infrastructure so there really is not much difference between using `https.Server` or `http.Server`. The workers runtime provides an implementation for completeness but most workers should probably just use [`http.Server`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#server).
 
 ```js
 import { Server } from "node:https";
@@ -188,25 +188,25 @@ export default httpServerHandler({ port: 8080 });
 
 The following differences exist between the Workers implementation and Node.js:
 
-* Connection management methods such as `closeAllConnections()` and `closeIdleConnections()` are not implemented due to the nature of the Workers environment.
-* Only `listen()` variants with a port number or no parameters are supported: `listen()`, `listen(0, callback)`, `listen(callback)`, etc.
-* The following server options are not supported: `maxHeaderSize`, `insecureHTTPParser`, `keepAliveTimeout`, `connectionsCheckingInterval`
-* TLS/SSL-specific options such as `ca`, `cert`, `key`, `pfx`, `rejectUnauthorized`, `secureProtocol` are not supported in the Workers environment. If you need to use mTLS, use the [mTLS binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
+- Connection management methods such as `closeAllConnections()` and `closeIdleConnections()` are not implemented due to the nature of the Workers environment.
+- Only `listen()` variants with a port number or no parameters are supported: `listen()`, `listen(0, callback)`, `listen(callback)`, etc.
+- The following server options are not supported: `maxHeaderSize`, `insecureHTTPParser`, `keepAliveTimeout`, `connectionsCheckingInterval`
+- TLS/SSL-specific options such as `ca`, `cert`, `key`, `pfx`, `rejectUnauthorized`, `secureProtocol` are not supported in the Workers environment. If you need to use mTLS, use the [mTLS binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/).
 
 ## Other differences between Node.js and Workers implementation of `node:https`
 
 Because the Workers implementation of `node:https` is a wrapper around the global `fetch` API, there are some differences in behavior compared to Node.js:
 
-* `Connection` headers are not used. Workers will manage connections automatically.
-* `Content-Length` headers will be handled the same way as in the `fetch` API. If a body is provided, the header will be set automatically and manually set values will be ignored.
-* `Expect: 100-continue` headers are not supported.
-* Trailing headers are not supported.
-* The `'continue'` event is not supported.
-* The `'information'` event is not supported.
-* The `'socket'` event is not supported.
-* The `'upgrade'` event is not supported.
-* Gaining direct access to the underlying `socket` is not supported.
-* Configuring TLS-specific options like `ca`, `cert`, `key`, `rejectUnauthorized`, etc, is not supported.
+- `Connection` headers are not used. Workers will manage connections automatically.
+- `Content-Length` headers will be handled the same way as in the `fetch` API. If a body is provided, the header will be set automatically and manually set values will be ignored.
+- `Expect: 100-continue` headers are not supported.
+- Trailing headers are not supported.
+- The `'continue'` event is not supported.
+- The `'information'` event is not supported.
+- The `'socket'` event is not supported.
+- The `'upgrade'` event is not supported.
+- Gaining direct access to the underlying `socket` is not supported.
+- Configuring TLS-specific options like `ca`, `cert`, `key`, `rejectUnauthorized`, etc, is not supported.
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Access the name from within a Durable Object using RpcTarget.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When working with Durable Objects, you will need to access the name that was used to create the Durable Object via `idFromName()`. This name is typically a meaningful identifier that represents what the Durable Object is responsible for (like a user ID, room name, or resource identifier).
 

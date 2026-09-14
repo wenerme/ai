@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build HTTP security policies
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After securing your organization's DNS queries and network level traffic, you can begin implementing advanced security controls for web traffic by inspecting HTTPS and taking actions based on the full URL or the body of HTTP requests.
 
@@ -20,10 +20,10 @@ After securing your organization's DNS queries and network level traffic, you ca
 
 By the end of this module, you will be able to:
 
-* Understand how and when to use TLS inspection to decrypt HTTPS traffic.
-* Configure and enable Data Loss Prevention to protect your organization's sensitive data.
-* Protect user endpoints with Browser Isolation.
-* Add recommended HTTP security policies.
+- Understand how and when to use TLS inspection to decrypt HTTPS traffic.
+- Configure and enable Data Loss Prevention to protect your organization's sensitive data.
+- Protect user endpoints with Browser Isolation.
+- Add recommended HTTP security policies.
 
 Was this helpful?
 

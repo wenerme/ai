@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Function calling
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Function calling enables people to take Large Language Models (LLMs) and use the model response to execute functions or interact with external APIs. The developer usually defines a set of functions and the required input schema for each function, which we call `tools`. The model then intelligently understands when it needs to do a tool call, and it returns a JSON output which the user needs to feed to another function or API.
 
@@ -20,7 +20,7 @@ In essence, function calling allows you to perform actions with LLMs by executin
 
 ## How can I use function calling?
 
-Workers AI has [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/) which allows you to execute function code alongside your inference calls. We have a package called [@cloudflare/ai-utils ↗](https://www.npmjs.com/package/@cloudflare/ai-utils) to help facilitate this, which we have open-sourced on [Github ↗](https://github.com/cloudflare/ai-utils).
+Workers AI has [embedded function calling](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/) which allows you to execute function code alongside your inference calls. We have a package called [`@cloudflare/ai-utils` ↗](https://www.npmjs.com/package/@cloudflare/ai-utils) to help facilitate this, which we have open-sourced on [Github ↗](https://github.com/cloudflare/ai-utils).
 
 For industry-standard function calling, take a look at the documentation on [Traditional Function Calling](https://developers.cloudflare.com/workers-ai/features/function-calling/traditional/).
 
@@ -30,6 +30,8 @@ To show you the value of embedded function calling, take a look at the example b
 # The ai-utils package enables embedded function calling
 npm i @cloudflare/ai-utils
 ```
+
+*Embedded function calling examplejs*
 
 ```js
 import {
@@ -76,6 +78,8 @@ export default {
 	},
 };
 ```
+
+*Traditional function calling examplejs*
 
 ```js
 export default {

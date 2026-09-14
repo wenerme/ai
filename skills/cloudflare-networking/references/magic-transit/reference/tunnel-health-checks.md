@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnel health checks
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.
 
@@ -70,8 +70,8 @@ By default, Cloudflare destinations these packets for the Cloudflare side of the
 
 The interface address field uses either a `/30` or `/31` CIDR range:
 
-* **`/31` range**: The IP you provide is the Cloudflare side, and the other IP is the client side. For example, if the interface address is `10.100.0.8/31`, then `10.100.0.8` is the Cloudflare side and `10.100.0.9` is the client side.
-* **`/30` range**: The IP you provide is the Cloudflare side, and the other IP (excluding the broadcast and network identifier) is the client side. For example, if the interface address is `10.100.0.9/30`, then `10.100.0.9` is the Cloudflare side and `10.100.0.10` is the client side.
+- **`/31` range**: The IP you provide is the Cloudflare side, and the other IP is the client side. For example, if the interface address is `10.100.0.8/31`, then `10.100.0.8` is the Cloudflare side and `10.100.0.9` is the client side.
+- **`/30` range**: The IP you provide is the Cloudflare side, and the other IP (excluding the broadcast and network identifier) is the client side. For example, if the interface address is `10.100.0.9/30`, then `10.100.0.9` is the Cloudflare side and `10.100.0.10` is the client side.
 
 You can also configure a bidirectional health check with a custom public target, which is the recommended approach for an Azure Active Standby tunnel setup.
 
@@ -83,8 +83,8 @@ Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/co
 
 For customers using the legacy health check system with a public IP range, Cloudflare recommends:
 
-* Configuring the tunnel health check target IP address to one within the `172.64.240.252/30` prefix range.
-* Applying a policy-based route that matches packets with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
+- Configuring the tunnel health check target IP address to one within the `172.64.240.252/30` prefix range.
+- Applying a policy-based route that matches packets with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
 
 ### Type
 
@@ -112,17 +112,18 @@ To avoid control plane policies enforced by the origin network, you can set tunn
 
 ### Summary table with tunnel health check probe types
 
-| Attribute           | Type          | Unidirectional health checks               | Bidirectional health checks                                   |
-| ------------------- | ------------- | ------------------------------------------ | ------------------------------------------------------------- |
-| Source Address      | Request Style | Cloudflare Address (Publicly Routable)     | Cloudflare Interface Address (Privately Routable)             |
+| Attribute | Type | Unidirectional health checks | Bidirectional health checks |
+| --- | --- | --- | --- |
+| Source Address | Request Style | Cloudflare Address (Publicly Routable) | Cloudflare Interface Address (Privately Routable) |
 | Destination Address | Request Style | Origin Tunnel Endpoint (Publicly Routable) | Origin Interface Address (Privately Routable) / Custom Target |
-| Source Address      | Reply Style   | Origin Tunnel Endpoint (Publicly Routable) | Origin Interface Address (Privately Routable) / Custom Target |
-| Destination Address | Reply Style   | Cloudflare Address (Publicly Routable)     | Cloudflare Interface Address (Privately Routable)             |
+| Source Address | Reply Style | Origin Tunnel Endpoint (Publicly Routable) | Origin Interface Address (Privately Routable) / Custom Target |
+| Destination Address | Reply Style | Cloudflare Address (Publicly Routable) | Cloudflare Interface Address (Privately Routable) |
 
 ### Graphics summarizing health check types
 
 #### Bidirectional request style
 
+```
 flowchart TB
 accTitle: Bidirectional request style
 accDescr: Shows the flow of a bidirectional request-style tunnel health check probe and response between Cloudflare and the origin.
@@ -147,8 +148,11 @@ accDescr: Shows the flow of a bidirectional request-style tunnel health check pr
    bare_echo_reply_2 --> cloudflare
    end
 
+```
+
 #### Bidirectional reply style
 
+```
 flowchart TB
 accTitle: Bidirectional reply style
 accDescr: Shows the flow of a bidirectional reply-style tunnel health check probe and response between Cloudflare and the origin.
@@ -173,8 +177,11 @@ accDescr: Shows the flow of a bidirectional reply-style tunnel health check prob
    bare_echo_reply_2 --> cloudflare
    end
 
+```
+
 #### Unidirectional echo request
 
+```
 flowchart TB
 accTitle: Unidirectional echo request
 accDescr: Shows the flow of a unidirectional echo request health check from Cloudflare to the origin and back.
@@ -190,8 +197,11 @@ accDescr: Shows the flow of a unidirectional echo request health check from Clou
    received_bare_echo_reply_2 --> Internet_2([Internet])
    Internet_2 --> cloudflare
 
+```
+
 #### Unidirectional echo reply
 
+```
 flowchart TB
 accTitle: Unidirectional echo reply
 accDescr: Shows the flow of a unidirectional echo reply health check from Cloudflare to the origin and back.
@@ -207,13 +217,17 @@ accDescr: Shows the flow of a unidirectional echo reply health check from Cloudf
    received_bare_echo_reply_2 --> Internet_2([Internet])
    Internet_2 --> cloudflare
 
+```
+
 ### Rate
 
 Caution
 
-Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
+Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks
 
-Every Cloudflare data center configured to process your traffic sends tunnel health check probes. The rate at which Cloudflare sends these probes varies based on tunnel and location. You can tune this rate on a per-tunnel basis by modifying the `health_check` rate with the [API or the dashboard](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/). You can set the rate as _low_, _mid_, or _high_, with _mid_ being the default.
+ will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
+
+Every Cloudflare data center configured to process your traffic sends tunnel health check probes. The rate at which Cloudflare sends these probes varies based on tunnel and location. You can tune this rate on a per-tunnel basis by modifying the `health_check` rate with the [API or the dashboard](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/). You can set the rate as *low*, *mid*, or *high*, with *mid* being the default.
 
 The actual rate formula considers the number of servers in a Cloudflare data center or the number of servers with the customer namespace provisioned on them for dynamically provisioned namespaces. The rate is dynamic and depends on the size of Cloudflare's network.
 
@@ -235,19 +249,19 @@ Cloudflare global network servers may reach the origin infrastructure from some 
 
 ### Degraded
 
-* When at least 0.1% of tunnel health checks fail in the previous five minutes (with at least two failures), Magic Transit considers the link lossy and sets the tunnel state to degraded (assuming the tunnel is not down).
-* Magic Transit requires two failures so that a single lost packet does not trigger a penalty.
-* Magic Transit then immediately sets the tunnel status to degraded and applies a priority penalty.
+- When at least 0.1% of tunnel health checks fail in the previous five minutes (with at least two failures), Magic Transit considers the link lossy and sets the tunnel state to degraded (assuming the tunnel is not down).
+- Magic Transit requires two failures so that a single lost packet does not trigger a penalty.
+- Magic Transit then immediately sets the tunnel status to degraded and applies a priority penalty.
 
 ### Down
 
-* When all health checks of at least three samples in the last one second fail, Magic Transit immediately transitions the tunnel from healthy or degraded to down, and applies a priority penalty to routes through that tunnel.
-* A down state determination takes precedence over a degraded state determination. This means that a tunnel can only be one of the following: down, degraded, or healthy.
+- When all health checks of at least three samples in the last one second fail, Magic Transit immediately transitions the tunnel from healthy or degraded to down, and applies a priority penalty to routes through that tunnel.
+- A down state determination takes precedence over a degraded state determination. This means that a tunnel can only be one of the following: down, degraded, or healthy.
 
 When Magic Transit identifies a route that is not healthy, it applies these penalties:
 
-* **Degraded**: Add `500,000` to priority.
-* **Down**: Add `1,000,000` to priority.
+- **Degraded**: Add `500,000` to priority.
+- **Down**: Add `1,000,000` to priority.
 
 The values for failure penalties are intentionally extreme so that they always exceed the priority values assigned during [routing configuration](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/).
 
@@ -273,10 +287,10 @@ Cloudflare always attempts to send traffic over available tunnel routes with the
 
 Consider two tunnels and their associated routing priorities. Remember that lower route values have priority.
 
-* Tunnel 1, route priority `100`
-* Tunnel 2, route priority `200`
+- Tunnel 1, route priority `100`
+- Tunnel 2, route priority `200`
 
-When both tunnels are in a healthy state, routing priority directs traffic exclusively to Tunnel 1 because its route priority of `100` beats that of Tunnel 2\. Tunnel 2 does not receive any traffic, except for tunnel health check probes. Endpoint health checks only flow over Tunnel 1 to their destination inside the origin network.
+When both tunnels are in a healthy state, routing priority directs traffic exclusively to Tunnel 1 because its route priority of `100` beats that of Tunnel 2. Tunnel 2 does not receive any traffic, except for tunnel health check probes. Endpoint health checks only flow over Tunnel 1 to their destination inside the origin network.
 
 ### Failure response
 
@@ -290,7 +304,7 @@ Suppose the connectivity issue that set Tunnel 1 health to down becomes resolved
 
 When all three probes return successfully, Magic Transit transitions the tunnel from down to degraded. As part of this transition, Cloudflare reduces the priority penalty for that route so that its priority becomes `500,100`. Because Tunnel 2 has a priority of `200`, traffic continues to flow over Tunnel 2.
 
-Global network servers continue probing Tunnel 1\. When the health check failure rate drops below 0.1% for a five-minute period, Magic Transit sets tunnel status to healthy. Cloudflare fully restores Tunnel 1's routing priority to `100`, and traffic steering returns the data flow to Tunnel 1.
+Global network servers continue probing Tunnel 1. When the health check failure rate drops below 0.1% for a five-minute period, Magic Transit sets tunnel status to healthy. Cloudflare fully restores Tunnel 1's routing priority to `100`, and traffic steering returns the data flow to Tunnel 1.
 
 ## Troubleshooting
 

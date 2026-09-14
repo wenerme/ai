@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What security features does Cloudflare provide?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/concepts/security-concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review concepts related to Cloudflare Internet traffic and SaaS app security.
 

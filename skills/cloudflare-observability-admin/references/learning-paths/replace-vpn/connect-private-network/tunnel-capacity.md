@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnel capacity for cloudflared
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/tunnel-capacity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Now that you have a Cloudflare Tunnel up and running, evaluate whether `cloudflared` has enough system resources to handle the expected volume of requests from end users.
 
@@ -25,10 +25,11 @@ If you have exhausted the ports on a single machine, you will need to add additi
 To determine how many `cloudflared` host servers you need:
 
 1. Start with our baseline recommendations:
-  * Run a [cloudflared replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) on two dedicated host machines per network location. Using two hosts enables server-side redundancy and traffic balancing.
-  * Size each host with minimum 4GB of RAM and 4 CPU cores.
-  * Allocate 50,000 [ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#number-of-ports) to the `cloudflared` process on each host.
-This setup is usually sufficient to handle traffic from 8,000 users (4,000 per host).
+   - Run a [`cloudflared` replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) on two dedicated host machines per network location. Using two hosts enables server-side redundancy and traffic balancing.
+   - Size each host with minimum 4GB of RAM and 4 CPU cores.
+   - Allocate 50,000 [ports](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#number-of-ports) to the `cloudflared` process on each host.
+
+   This setup is usually sufficient to handle traffic from 8,000 users (4,000 per host).
 2. After you have completed this learning path and have users actively engaging with the network, [calculate](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/#calculate-your-tunnel-capacity) your actual tunnel usage.
 3. Decide how much headroom you want to include and [resize the tunnel](#scale-the-tunnel) if needed.
 
@@ -36,6 +37,7 @@ This setup is usually sufficient to handle traffic from 8,000 users (4,000 per h
 
 There are two ways to scale Cloudflare Tunnel: you could either add additional replicas of the existing tunnel (Figure 1), or you could divide your network's IP space across multiple tunnels (Figure 2).
 
+```
 flowchart TB
 accTitle: Figure 1: Multiple replicas of a tunnel that proxies all private networks.
 subgraph replica1[my-tunnel]
@@ -51,6 +53,9 @@ replica1 <--> C((Cloudflare))
 replica2 <--> C
 replica3 <--> C
 
+```
+
+```
 flowchart TB
 accTitle: Figure 2: Multiple tunnels proxying different private networks.
 subgraph tunnel-1
@@ -65,6 +70,8 @@ end
 tunnel-1 <--> C((Cloudflare))
 tunnel-2 <--> C
 tunnel-3 <--> C
+
+```
 
 ### When to add replicas
 

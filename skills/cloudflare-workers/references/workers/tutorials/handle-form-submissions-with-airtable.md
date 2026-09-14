@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Handle form submissions with Airtable
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
@@ -22,7 +22,7 @@ In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflar
 
 All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
-## 1\. Create a form
+## 1. Create a form
 
 For this tutorial, you will be building a Workers function that handles input from a contact form. The form this tutorial references will collect a first name, last name, email address, phone number, message subject, and a message.
 
@@ -31,6 +31,8 @@ Build a form
 If this is your first time building a form and you would like to follow a tutorial to create a form with Cloudflare Pages, refer to the [HTML forms](https://developers.cloudflare.com/pages/tutorials/forms) tutorial.
 
 Review a simplified example of the form used in this tuttorial. Note that the `action` parameter of the `<form>` tag should point to the deployed Workers application that you will build in this tutorial.
+
+*Your front-end codehtml*
 
 ```html
 <form action="https://workers-airtable-form.signalnerve.workers.dev/submit" method="POST">
@@ -79,7 +81,7 @@ Review a simplified example of the form used in this tuttorial. Note that the `a
 </form>
 ```
 
-## 2\. Create a Worker project
+## 2. Create a Worker project
 
 To handle the form submission, create and deploy a Worker that parses the incoming form data and prepares it for submission to Airtable.
 
@@ -101,11 +103,11 @@ pnpm create cloudflare@latest airtable-form-handler
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, move into the newly created directory:
 
@@ -113,7 +115,7 @@ Then, move into the newly created directory:
 cd airtable-form-handler
 ```
 
-## 3\. Configure an Airtable base
+## 3. Configure an Airtable base
 
 When your Worker is complete, it will send data up to an Airtable base via Airtable's REST API.
 
@@ -121,25 +123,25 @@ If you do not have an Airtable account, create one (the free plan is sufficient 
 
 After you have created a new base, set it up for use with the front-end form. Delete the existing columns, and create six columns, with the following field types:
 
-| Field name   | Airtable field type |
-| ------------ | ------------------- |
-| First Name   | "Single line text"  |
-| Last Name    | "Single line text"  |
-| Email        | "Email"             |
-| Phone Number | "Phone number"      |
-| Subject      | "Single line text"  |
-| Message      | "Long text"         |
+| Field name | Airtable field type |
+| --- | --- |
+| First Name | "Single line text" |
+| Last Name | "Single line text" |
+| Email | "Email" |
+| Phone Number | "Phone number" |
+| Subject | "Single line text" |
+| Message | "Long text" |
 
-Note that the field names are case-sensitive. If you change the field names, you will need to exactly match your new field names in the API request you make to Airtable later in the tutorial. Finally, you can optionally rename your table -- by defaulte it will have a name like Table 1\. In the below code, we assume the table has been renamed with a more descriptive name, like `Form Submissions`.
+Note that the field names are case-sensitive. If you change the field names, you will need to exactly match your new field names in the API request you make to Airtable later in the tutorial. Finally, you can optionally rename your table -- by defaulte it will have a name like Table 1. In the below code, we assume the table has been renamed with a more descriptive name, like `Form Submissions`.
 
 Next, navigate to [Airtable's API page ↗](https://airtable.com/api) and select your new base. Note that you must be logged into Airtable to see your base information. In the API documentation page, find your **Airtable base ID**.
 
 You will also need to create a **Personal access token** that you'll use to access your Airtable base. You can do so by visiting the [Personal access tokens ↗](https://airtable.com/create/tokens) page on Airtable's website and creating a new token. Make sure that you configure the token in the following way:
 
-* Scope: the `data.records:write` scope must be set on the token
-* Access: access should be granted to the base you have been working with in this tutorial
+- Scope: the `data.records:write` scope must be set on the token
+- Access: access should be granted to the base you have been working with in this tutorial
 
-The results access token should now be set in your application. To make the token available in your codebase, use the [wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command. The `secret` command encrypts and stores environment variables for use in your function, without revealing them to users.
+The results access token should now be set in your application. To make the token available in your codebase, use the [`wrangler secret`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command. The `secret` command encrypts and stores environment variables for use in your function, without revealing them to users.
 
 Run `wrangler secret put`, passing `AIRTABLE_ACCESS_TOKEN` as the name of your secret:
 
@@ -160,7 +162,7 @@ Before you continue, review the keys that you should have from Airtable:
 2. **Airtable Base ID**: The alphanumeric base ID found at the top of your base's API page.
 3. **Airtable Access Token**: A Personal Access Token created by the user to access information about your new Airtable base.
 
-## 4\. Submit data to Airtable
+## 4. Submit data to Airtable
 
 With your Airtable base set up, and the keys and IDs you need to communicate with the API ready, you will now set up your Worker to persist data from your form into Airtable.
 
@@ -218,7 +220,7 @@ The body of a [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Req
 
 To avoid errors, create a clone of the Request object with `request.clone()` for each subsequent attempt to access a Request's body. Keep in mind that Workers have a [memory limit of 128 MB per Worker](https://developers.cloudflare.com/workers/platform/limits/#memory) and loading particularly large files into a Worker's memory multiple times may reach this limit. To ensure memory usage does not reach this limit, consider using [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/).
 
-While the majority of this function is concerned with parsing the request body (the data being sent as part of the request), there are two important things to note. First, if the HTTP method sent to this function is not `POST`, you will return a new response with the status code of [405 Method Not Allowed ↗](https://httpstatuses.com/405).
+While the majority of this function is concerned with parsing the request body (the data being sent as part of the request), there are two important things to note. First, if the HTTP method sent to this function is not `POST`, you will return a new response with the status code of [`405 Method Not Allowed` ↗](https://httpstatuses.com/405).
 
 The variable `reqBody` represents a collection of fields, which are key-value pairs for each column in your Airtable table. By formatting `reqBody` as an object with a collection of fields, you are creating a new record in your table with a value for each field.
 
@@ -249,7 +251,7 @@ async function createAirtableRecord(env, body) {
 // export default ...
 ```
 
-To make an authenticated request to Airtable, you need to provide four constants that represent data about your Airtable account, base, and table name. You have already set `AIRTABLE_ACCESS_TOKEN` using `wrangler secret`, since it is a value that should be encrypted. The **Airtable base ID** and **table name**, and `FORM_URL` are values that can be publicly shared in places like GitHub. Use Wrangler's [vars](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#vars) feature to pass public environment variables from your Wrangler file.
+To make an authenticated request to Airtable, you need to provide four constants that represent data about your Airtable account, base, and table name. You have already set `AIRTABLE_ACCESS_TOKEN` using `wrangler secret`, since it is a value that should be encrypted. The **Airtable base ID** and **table name**, and `FORM_URL` are values that can be publicly shared in places like GitHub. Use Wrangler's [`vars`](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#vars) feature to pass public environment variables from your Wrangler file.
 
 Add a `vars` table at the end of your Wrangler file:
 
@@ -259,7 +261,7 @@ Add a `vars` table at the end of your Wrangler file:
 	"name": "workers-airtable-form",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"vars": {
 		"AIRTABLE_BASE_ID": "exampleBaseId",
 		"AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -272,7 +274,7 @@ Add a `vars` table at the end of your Wrangler file:
 name = "workers-airtable-form"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"
@@ -280,6 +282,8 @@ AIRTABLE_TABLE_NAME = "Form Submissions"
 ```
 
 With all these fields submitted, it is time to deploy your Workers serverless function and get your form communicating with it. First, publish your Worker:
+
+*Deploy your Workersh*
 
 ```sh
 npx wrangler deploy
@@ -307,10 +311,10 @@ With this tutorial completed, you have created a Worker that can accept form sub
 
 ## Related resources
 
-* [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot)
-* [Build a To-Do List Jamstack App](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app)
-* [Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity)
-* [James Quick's video on building a Cloudflare Workers + Airtable integration ↗](https://www.youtube.com/watch?v=tFQ2kbiu1K4)
+- [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot)
+- [Build a To-Do List Jamstack App](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app)
+- [Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages](https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity)
+- [James Quick's video on building a Cloudflare Workers + Airtable integration ↗](https://www.youtube.com/watch?v=tFQ2kbiu1K4)
 
 Was this helpful?
 
@@ -321,5 +325,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}
 ```

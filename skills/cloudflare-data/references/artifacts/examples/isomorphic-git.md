@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # isomorphic-git
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/examples/isomorphic-git/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/isomorphic-git/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [isomorphic-git ↗](https://isomorphic-git.org/) to run Git operations on Artifacts repos directly from a Cloudflare Worker.
 
@@ -55,6 +55,8 @@ Use this as a reference for the end-to-end flow. In a production Worker, look up
 Protect write-capable routes
 
 This example omits authentication so it can focus on the Git flow. In production, authorize the caller before creating repos or granting write capability.
+
+*src/index.jsjs*
 
 ```js
 import git from "isomorphic-git";
@@ -122,6 +124,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import git from "isomorphic-git";
@@ -194,9 +198,17 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
+<details>
+
+<summary>
+
 In-memory filesystem helper
 
-Use this helper with `isomorphic-git` in Workers when you need a short-lived working tree in memory.
+</summary>
+
+Use this helper with <code>isomorphic-git</code> in Workers when you need a short-lived working tree in memory.
+
+*src/memory-fs.jsjs*
 
 ```js
 class MemoryStats {
@@ -405,6 +417,8 @@ export class MemoryFS {
 	}
 }
 ```
+
+*src/memory-fs.tsts*
 
 ```ts
 type Entry =
@@ -625,6 +639,8 @@ export class MemoryFS {
 	}
 }
 ```
+
+</details>
 
 Was this helpful?
 

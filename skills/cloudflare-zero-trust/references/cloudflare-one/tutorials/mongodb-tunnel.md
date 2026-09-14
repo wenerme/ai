@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MongoDB SSH
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflare Tunnel. Cloudflare Tunnel requires a lightweight daemon, `cloudflared`, running alongside the deployment and as on the client side.
 
@@ -20,10 +20,10 @@ In this tutorial, a client running `cloudflared` connects over SSH to a MongoDB 
 
 **This tutorial covers how to:**
 
-* Create a Cloudflare Access rule to secure a MongoDB deployment
-* Configure a StatefulSet and service definition for the deployment
-* Configure an Cloudflare Tunnel connection to Cloudflare's edge
-* Create an SSH configuration file for the client
+- Create a Cloudflare Access rule to secure a MongoDB deployment
+- Configure a StatefulSet and service definition for the deployment
+- Configure an Cloudflare Tunnel connection to Cloudflare's edge
+- Create an SSH configuration file for the client
 
 **Time to complete:**
 
@@ -35,7 +35,7 @@ In this tutorial, a client running `cloudflared` connects over SSH to a MongoDB 
 
 You can build a rule in Cloudflare Access to control who can connect to your MongoDB deployment. Cloudflare Access rules are built around a hostname; even though this deployment will be accessible over SSH, the resource will be represented in Cloudflare as a hostname. For example, if you have the website `app.com` in your Cloudflare account, you can build a rule to secure `mongodb.app.com`.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname** and enter the subdomain where users will connect to your deployment (for example, `mongodb.app.com`).
@@ -46,7 +46,13 @@ You can build a rule in Cloudflare Access to control who can connect to your Mon
 
 To be accessible over SSH, the Kubernetes deployment should manage both the MongoDB standalone service and an SSH proxy service. The configuration below will deploy 1 replica of the database service, available at port 27017, as well as an SSH proxy available at port 22.
 
+<details>
+
+<summary>
+
 StatefulSet Configuration
+
+</summary>
 
 ```yaml
 apiVersion: apps/v1
@@ -136,9 +142,17 @@ spec:
                 mode: 0400
 ```
 
+</details>
+
 The corresponding service definition should also specify the ports and target ports for the containers (in this case, the database service and the SSH proxy service).
 
+<details>
+
+<summary>
+
 Service Definition
+
+</summary>
 
 ```yaml
 apiVersion: v1
@@ -172,6 +186,8 @@ spec:
       port: 22
       targetPort: 22
 ```
+
+</details>
 
 The MongoDB pod and the SSH jump host will share a Unix socket over an empty directory volume. The `entrypoint.sh` file run by the jump host, example below, will start an OpenSSH server.
 
@@ -233,7 +249,13 @@ The previous setps used `cloudflared` to generate a credentials file for your Cl
 
 The configuration below will run a single replica of `cloudflared` as an ingress point alongside the MongoDB and SSH proxy services. `cloudflared` will proxy traffic to the SSH proxy service. The `cloudflared` instance will run as its own deployment in a different namespace and, if network policy allows, ingress to any service in the Kubernetes node.
 
-`cloudflared` Configuration
+<details>
+
+<summary>
+
+<code>cloudflared</code> Configuration
+
+</summary>
 
 ```yaml
 apiVersion: apps/v1
@@ -297,6 +319,8 @@ data:
         bastionMode: true
     - service: http_status:404
 ```
+
+</details>
 
 ## Connect from a client
 

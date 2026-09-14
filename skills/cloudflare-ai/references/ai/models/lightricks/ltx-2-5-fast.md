@@ -16,18 +16,18 @@ l
 
 Text-to-Video • lightricks
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `lightricks/ltx-2-5-fast`
 
-* Third-party
+- Third-party
 
 Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and image-to-video workflows, with synchronized audio, configurable duration, resolution, and frame rate.
 
-| Model Info       |                                                                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://docs.ltx.io/api-documentation/api-reference/video-generation/text-to-video)                              |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/lightricks/ltx-2-5-fast) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://docs.ltx.io/api-documentation/api-reference/video-generation/text-to-video) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/lightricks/ltx-2-5-fast) |
 
 ## Usage
 
@@ -75,7 +75,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Image-to-Video** — Animate a reference image with a final frame
+<details>
+
+<summary>**Image-to-Video** — Animate a reference image with a final frame</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -125,6 +129,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -161,9 +167,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/lightricks/ltx-2-5-fast/schema-output.json)
 
 Was this helpful?
 

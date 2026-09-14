@@ -12,23 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Registrant contact updates
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 It is important that you keep your contact details accurate and up-to-date. [ICANN rules state ↗](https://www.icann.org/resources/pages/registrant-contact-information-wdrp-2017-08-31-en) that if you do not have updated contact information, your domain name registration may be suspended or even cancelled.
 
 The contact information you can update includes:
 
-* First name
-* Last name
-* Email
-* Organization
-* Phone
-* Address including City, State/Province, Postal code & Country
+- First name
+- Last name
+- Email
+- Organization
+- Phone
+- Address including City, State/Province, Postal code & Country
 
 To update your registrant contacts:
 
-1. In the Cloudflare dashboard, go to the **Manage domains** page.
-[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+1. In the Cloudflare dashboard, go to the **Manage domains** page. [Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find **Default contact** and select **Edit**.
 3. Update the relevant information, and select **Save**.
 4. Find the domain where you want to update your contact information, and select **Manage**.
@@ -36,10 +35,10 @@ To update your registrant contacts:
 
 If you change any of the following fields, Cloudflare Registrar will require a Change of Registrant approval before the changes are finalized:
 
-* First name
-* Last name
-* Organization
-* Email address
+- First name
+- Last name
+- Organization
+- Email address
 
 If you update any of the fields mentioned above, Cloudflare Registrar will send an approval email to the current registrant's email address. The approval email contains a link to a web page where the requested change may be viewed and approved or rejected. If the pending change is not approved or rejected within seven days, the request will automatically be canceled.
 
@@ -49,7 +48,7 @@ Important
 
 After selecting the link in the approval email Cloudflare sends you, you have the option to accept or reject the contact changes. If you select the **Accept** button, your domain will be transfer-locked for 60 days.
 
-If you do not want your domain to be locked, be sure to select the **Do not apply 60 day transfer lock** checkbox _before_ selecting the **Accept** button. This applies to all supported TLDs, including `.uk`.
+If you do not want your domain to be locked, be sure to select the **Do not apply 60 day transfer lock** checkbox *before* selecting the **Accept** button. This applies to all supported TLDs, including `.uk`.
 
 ## Changing email contact
 

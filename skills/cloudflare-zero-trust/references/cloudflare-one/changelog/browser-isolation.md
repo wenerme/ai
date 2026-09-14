@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser Isolation
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/browser-isolation.xml)
 
@@ -53,10 +53,10 @@ Remote Browser Isolation now supports **Canvas Remoting**, improving performance
 
 #### Key improvements
 
-* **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
-* **Smooth performance:** Google Sheets maintains consistent 30fps rendering
-* **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
-* **Zero configuration:** Enabled by default for all Browser Isolation customers
+- **10x bandwidth reduction:** Microsoft Word and other Office apps use 90% less bandwidth
+- **Smooth performance:** Google Sheets maintains consistent 30fps rendering
+- **Responsive terminals:** Web-based development environments and AI notebooks work in real-time
+- **Zero configuration:** Enabled by default for all Browser Isolation customers
 
 #### How it works
 
@@ -72,9 +72,9 @@ This reduces bandwidth from hundreds of kilobytes per second to tens of kilobyte
 
 To temporarily disable for troubleshooting:
 
-* Right-click the isolated webpage background
-* Select **Disable Canvas Remoting**
-* Re-enable the same way by selecting **Enable Canvas Remoting**
+- Right-click the isolated webpage background
+- Select **Disable Canvas Remoting**
+- Re-enable the same way by selecting **Enable Canvas Remoting**
 
 #### Limitations
 
@@ -96,10 +96,10 @@ With expanded support for major IdPs like Okta and Azure AD, this enhancement de
 
 A new **Browser Isolation Overview** page is now available in the Cloudflare Zero Trust dashboard. This centralized view simplifies the management of [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) deployments, providing:
 
-* **Streamlined Onboarding:** Easily set up and manage isolation policies from one location.
-* **Quick Testing:** Validate [clientless web application isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) with ease.
-* **Simplified Configuration:** Configure [isolated access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/) and policies efficiently.
-* **Centralized Monitoring:** Track aggregate usage and blocked actions.
+- **Streamlined Onboarding:** Easily set up and manage isolation policies from one location.
+- **Quick Testing:** Validate [clientless web application isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/) with ease.
+- **Simplified Configuration:** Configure [isolated access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/) and policies efficiently.
+- **Centralized Monitoring:** Track aggregate usage and blocked actions.
 
 This update consolidates previously disparate settings, accelerating deployment, improving visibility into isolation activity, and making it easier to ensure your protections are working effectively.
 
@@ -129,9 +129,9 @@ With these enhanced logs, administrators can gain visibility into end user behav
 
 User Actions available:
 
-* **Copy & Paste**
-* **Downloads & Uploads**
-* **Printing**
+- **Copy & Paste**
+- **Downloads & Uploads**
+- **Printing**
 
 Learn more about how to get started with Logpush in our [documentation](https://developers.cloudflare.com/logs/logpush/).
 

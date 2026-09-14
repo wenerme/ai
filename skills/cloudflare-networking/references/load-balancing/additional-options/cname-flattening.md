@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CNAME flattening for endpoints
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When a [DNS-only (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) load balancer selects an endpoint whose address is a hostname (for example `origin.example.com`), Cloudflare resolves that hostname to an IP address and returns an `A`/`AAAA` record to the client. This is _CNAME flattening_, and it matches how [CNAME flattening works in Cloudflare DNS](https://developers.cloudflare.com/dns/cname-flattening/).
+When a [DNS-only (gray-clouded)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) load balancer selects an endpoint whose address is a hostname (for example `origin.example.com`), Cloudflare resolves that hostname to an IP address and returns an `A`/`AAAA` record to the client. This is *CNAME flattening*, and it matches how [CNAME flattening works in Cloudflare DNS](https://developers.cloudflare.com/dns/cname-flattening/).
 
 Some use cases — such as third-party endpoints that perform their own DNS-based steering — require the load balancer to return the `CNAME` record itself instead of a resolved IP. The `flatten_cname` property on a pool endpoint lets you opt out of flattening on a per-endpoint basis.
 
@@ -26,9 +26,9 @@ This feature is only available with an Enterprise subscription.
 
 Turn `flatten_cname` off (`flatten_cname: false`) on an endpoint when:
 
-* You want clients to receive a `CNAME` answer pointing at a third-party SaaS provider or cloud endpoint (for example `origin-b.example.com`).
-* The endpoint resolves to addresses that are dynamic, geo-aware, or client-aware downstream.
-* You are failing over between two hostname endpoints and want the client to resolve each provider's hostname directly.
+- You want clients to receive a `CNAME` answer pointing at a third-party SaaS provider or cloud endpoint (for example `origin-b.example.com`).
+- The endpoint resolves to addresses that are dynamic, geo-aware, or client-aware downstream.
+- You are failing over between two hostname endpoints and want the client to resolve each provider's hostname directly.
 
 Leave `flatten_cname` on (`flatten_cname: true`, the default) for normal IP-based or hostname endpoints where you just want a fast `A`/`AAAA` answer.
 
@@ -36,12 +36,12 @@ Leave `flatten_cname` on (`flatten_cname: true`, the default) for normal IP-base
 
 `flatten_cname` only changes resolver output when all of the following are true:
 
-| Condition                                                                                                   | Required value                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Load balancer [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) | DNS-only (gray-clouded). Proxied load balancers must return Cloudflare anycast IPs, so the setting is ignored.                                       |
-| Endpoint address                                                                                            | A hostname (CNAME target). For raw IPv4/IPv6 endpoint addresses the setting has no effect.                                                           |
-| Load balancer hostname                                                                                      | Not the zone apex. CNAME records at a zone apex are not permitted, so the load balancer falls back to flattening at the apex.                        |
-| The selected endpoint                                                                                       | Steering selected this specific endpoint. Setting flatten\_cname: false on endpoint A has no effect when steering picks endpoint B in the same pool. |
+| Condition | Required value |
+| --- | --- |
+| Load balancer [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) | DNS-only (gray-clouded). Proxied load balancers must return Cloudflare anycast IPs, so the setting is ignored. |
+| Endpoint address | A hostname (CNAME target). For raw IPv4/IPv6 endpoint addresses the setting has no effect. |
+| Load balancer hostname | Not the zone apex. `CNAME` records at a zone apex are not permitted, so the load balancer falls back to flattening at the apex. |
+| The selected endpoint | Steering selected this specific endpoint. Setting `flatten_cname: false` on endpoint A has no effect when steering picks endpoint B in the same pool. |
 
 If the selected endpoint has `flatten_cname: false` but any of the conditions in the preceding table is not met, the load balancer flattens the CNAME and returns `A`/`AAAA` records as if the toggle were on.
 
@@ -51,8 +51,7 @@ If the selected endpoint has `flatten_cname: false` but any of the conditions in
 
 In the dashboard, this setting appears as a **Flatten CNAME** toggle on each endpoint in a pool. Turn the toggle off to return the endpoint hostname as a `CNAME` record.
 
-1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
+1. In the Cloudflare dashboard, go to the **Load Balancing** page. [Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select the **Pools** tab.
 3. On the pool that contains the endpoint, select **Edit**.
 4. In the **Endpoints** section, find the endpoint you want to change.
@@ -61,12 +60,23 @@ In the dashboard, this setting appears as a **Flatten CNAME** toggle on each end
 
 **Flatten CNAME** is only available for endpoints whose address is a hostname. Endpoints that use an IP address cannot turn it off.
 
-Use [Create Pool](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/create/) or [Edit Pool](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/edit/) and set `flatten_cname` on each endpoint in the `origins` array.
+Use [Create Pool](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/create/) or [Edit Pool](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/edit/) and set `flatten_cname` on each endpoint in the `origins` array.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancing: Monitors and Pools Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancing: Monitors and Pools Write</code>
+
+</details>
+
+*Create Poolbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
@@ -141,8 +151,8 @@ Query the load balancer hostname with `dig`:
 dig lb.example.com A +short
 ```
 
-* If steering selected an endpoint where `flatten_cname` is `false`, the answer section contains a `CNAME` record pointing at the endpoint address (for example, `origin-a.example.com.`). The client (or its resolver) is responsible for resolving that `CNAME` further.
-* If steering selected an endpoint where `flatten_cname` is `true` (or an endpoint whose address is an IP), the answer contains the resolved `A`/`AAAA` records.
+- If steering selected an endpoint where `flatten_cname` is `false`, the answer section contains a `CNAME` record pointing at the endpoint address (for example, `origin-a.example.com.`). The client (or its resolver) is responsible for resolving that `CNAME` further.
+- If steering selected an endpoint where `flatten_cname` is `true` (or an endpoint whose address is an IP), the answer contains the resolved `A`/ `AAAA` records.
 
 Because the answer depends on which endpoint steering selects, repeated `dig` queries against the same load balancer can legitimately alternate between `CNAME` and `A`/`AAAA` answers when a pool mixes hostname endpoints with `flatten_cname: false` and IP endpoints.
 
@@ -152,21 +162,21 @@ Endpoint health monitors are unaffected by this setting. Cloudflare always resol
 
 ## Analytics
 
-Per-endpoint request counts and steering decisions remain visible in [load balancing analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/), keyed by endpoint name. This lets you track how traffic is distributed across `CNAME`\-returning endpoints.
+Per-endpoint request counts and steering decisions remain visible in [load balancing analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/), keyed by endpoint name. This lets you track how traffic is distributed across `CNAME`-returning endpoints.
 
 ## Limitations
 
-* Proxied (orange-clouded) load balancers: `flatten_cname` is ignored. Proxied load balancers must resolve to Cloudflare anycast IPs to deliver Cloudflare's HTTP/HTTPS proxy features.
-* Zone apex load balancers: `flatten_cname` is ignored because `CNAME` records are not permitted at a zone apex.
-* IP endpoints: `flatten_cname` has no effect — there is no `CNAME` to flatten or return.
-* DNS resolver caching: As with any DNS-only load balancer, downstream resolvers may cache the returned record for the TTL. Clients that ignore TTLs may continue to use a previously cached `CNAME` or `A` answer.
-* Plan requirement: Available to Enterprise customers on the Load Balancing add-on.
+- Proxied (orange-clouded) load balancers: `flatten_cname` is ignored. Proxied load balancers must resolve to Cloudflare anycast IPs to deliver Cloudflare's HTTP/HTTPS proxy features.
+- Zone apex load balancers: `flatten_cname` is ignored because `CNAME` records are not permitted at a zone apex.
+- IP endpoints: `flatten_cname` has no effect — there is no `CNAME` to flatten or return.
+- DNS resolver caching: As with any DNS-only load balancer, downstream resolvers may cache the returned record for the TTL. Clients that ignore TTLs may continue to use a previously cached `CNAME` or `A` answer.
+- Plan requirement: Available to Enterprise customers on the Load Balancing add-on.
 
 ## Related
 
-* [DNS CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) — the equivalent feature for non-load-balancer DNS records.
-* [Proxy modes](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) — when to use DNS-only versus proxied load balancing.
-* [Common configurations](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/) — patterns including active-active failover that benefit from CNAME-returning endpoints.
+- [DNS CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) — the equivalent feature for non-load-balancer DNS records.
+- [Proxy modes](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) — when to use DNS-only versus proxied load balancing.
+- [Common configurations](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/) — patterns including active-active failover that benefit from CNAME-returning endpoints.
 
 Was this helpful?
 

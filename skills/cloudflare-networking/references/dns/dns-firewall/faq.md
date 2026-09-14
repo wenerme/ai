@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS Firewall FAQ
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the answers for frequently asked questions about Cloudflare DNS Firewall.
 
@@ -28,11 +28,13 @@ As long as there is enough allocated memory, Cloudflare does not clear items fro
 
 ## Does the DNS Firewall cache SERVFAIL?
 
-Yes. `SERVFAIL` is treated like any other negative answer for caching purposes. The default TTL is 30 seconds. You can set a different negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) (`negative_cache_ttl` parameter).
+Yes. `SERVFAIL` is treated like any other negative answer for caching purposes. The default TTL is 30 seconds. You can set a different negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns_firewall/methods/edit/) (`negative_cache_ttl` parameter).
 
 ## Does DNS Firewall support EDNS Client Subnet (ECS)?
 
-Yes. Often, DNS providers want to see a client's IP via EDNS Client Subnet (ECS) ([RFC 7871 ↗](https://www.rfc-editor.org/rfc/rfc7871.html)) because they serve geographically specific DNS answers based on the client's IP. With EDNS Client Subnet enabled, the DNS Firewall will forward the client's IP subnet along with the DNS query to the upstream nameserver.
+Yes. Often, DNS providers want to see a client's IP via EDNS Client Subnet (ECS)
+
+ ([RFC 7871 ↗](https://www.rfc-editor.org/rfc/rfc7871.html)) because they serve geographically specific DNS answers based on the client's IP. With EDNS Client Subnet enabled, the DNS Firewall will forward the client's IP subnet along with the DNS query to the upstream nameserver.
 
 When EDNS is enabled, the DNS Firewall gives out the geographically correct answer in cache based on the client IP subnet. To do this, the DNS Firewall segments its cache. For example:
 
@@ -45,18 +47,18 @@ Note
 
 EDNS limits the effectiveness of the DNS cache.
 
-Some resolvers might not be sending any EDNS data. When you enable ECS fallback on your cluster in the Cloudflare dashboard — or set the `ecs_fallback` parameter to `true` via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) — DNS Firewall will forward the IP subnet of the resolver instead, only if there is no EDNS data present in the incoming DNS query.
+Some resolvers might not be sending any EDNS data. When you enable ECS fallback on your cluster in the Cloudflare dashboard — or set the `ecs_fallback` parameter to `true` via the [API](https://developers.cloudflare.com/api/resources/dns_firewall/methods/edit/) — DNS Firewall will forward the IP subnet of the resolver instead, only if there is no EDNS data present in the incoming DNS query.
 
 ## Does DNS Firewall cache negative answers?
 
-Yes. The default TTL is 30 seconds. You can configure the negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/methods/edit/) (`negative_cache_ttl` parameter). This will affect the TTL of responses with status `REFUSED`, `NXDOMAIN`, or `SERVFAIL`.
+Yes. The default TTL is 30 seconds. You can configure the negative cache TTL on your cluster in the Cloudflare dashboard, or via the [API](https://developers.cloudflare.com/api/resources/dns_firewall/methods/edit/) (`negative_cache_ttl` parameter). This will affect the TTL of responses with status `REFUSED`, `NXDOMAIN`, or `SERVFAIL`.
 
 ## How can I set PTR records for nameserver hostnames?
 
 To set up PTR records for the DNS Firewall cluster IPs that point to your nameserver hostnames, use the following API endpoints:
 
-* [Show DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/subresources/reverse%5Fdns/methods/get/)
-* [Update DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns%5Ffirewall/subresources/reverse%5Fdns/methods/edit/)
+- [Show DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns_firewall/subresources/reverse_dns/methods/get/)
+- [Update DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns_firewall/subresources/reverse_dns/methods/edit/)
 
 Was this helpful?
 

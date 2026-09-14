@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnels FAQ
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/faq/cloudflare-tunnels-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/cloudflare-one/faq/)
 
@@ -89,7 +89,7 @@ Cloudflare Tunnel was previously named Warp during the beta phase. As Warp was a
 
 ## Is it possible to restore a deleted tunnel?
 
-No. You cannot undo a tunnel deletion. If the tunnel was locally-managed, its [config.yaml file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/#configuration-file) will still be present and you can create a new tunnel with the same configuration. If the tunnel was remotely-managed, both the tunnel and its configuration are permanently deleted.
+No. You cannot undo a tunnel deletion. If the tunnel was locally-managed, its [`config.yaml` file](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/#configuration-file) will still be present and you can create a new tunnel with the same configuration. If the tunnel was remotely-managed, both the tunnel and its configuration are permanently deleted.
 
 ## How do I contact support?
 
@@ -98,8 +98,8 @@ Before contacting the Cloudflare support team:
 1. Take note of any specific error messages and/or problematic behaviors.
 2. Make sure that `cloudflared` is updated to the [latest version ↗](https://github.com/cloudflare/cloudflared).
 3. Gather any relevant error/access logs from your server.
-4. If needed set [\--loglevel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to `debug`, so the Cloudflare support team can get more info from the `cloudflared.log` file.
-5. Include your [Cloudflare Tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/) (`cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip`).
+4. If needed set [`--loglevel`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to `debug`, so the Cloudflare support team can get more info from the `cloudflared.log` file.
+5. Include your [Cloudflare Tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/) ( `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip`).
 
 Was this helpful?
 

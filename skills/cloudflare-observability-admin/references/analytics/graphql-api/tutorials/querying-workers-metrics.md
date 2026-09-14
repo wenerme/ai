@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Querying Workers Metrics with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-workers-metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-workers-metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, we are going to use the GraphQL Analytics API to query for Workers Metrics over a specified time period. We can query up to one month of data for dates up to three months ago.
 
-The following API call will request a Worker script's metrics over a one day period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ACCOUNT_TAG>` and `<API_TOKEN>`[1](#user-content-fn-1) with your API credentials, and adjust the `datetimeStart`, `datetimeEnd`, and `scriptName` variables as needed.
+The following API call will request a Worker script's metrics over a one day period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ACCOUNT_TAG>` and `<API_TOKEN>`<sup>[1](#user-content-fn-1)</sup> with your API credentials, and adjust the `datetimeStart`, `datetimeEnd`, and `scriptName` variables as needed.
 
 ## API Call
 

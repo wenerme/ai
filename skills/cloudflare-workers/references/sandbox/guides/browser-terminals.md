@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser terminals
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/browser-terminals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/browser-terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to connect a browser-based terminal to a sandbox shell. You can use the `SandboxAddon` with xterm.js, or connect directly over WebSockets.
 
@@ -271,25 +271,25 @@ function sendInput(text: string): void {
 
 Key protocol details:
 
-* Set `binaryType` to `arraybuffer` before connecting.
-* Buffered output from a previous connection arrives as binary frames before the `ready` message.
-* Send keystrokes as binary (UTF-8). Send control messages (`resize`) as JSON text.
-* The PTY stays alive when a client disconnects. Reconnecting replays buffered output.
+- Set `binaryType` to `arraybuffer` before connecting.
+- Buffered output from a previous connection arrives as binary frames before the `ready` message.
+- Send keystrokes as binary (UTF-8). Send control messages ( `resize`) as JSON text.
+- The PTY stays alive when a client disconnects. Reconnecting replays buffered output.
 
 For the full protocol specification, refer to the [WebSocket protocol section](https://developers.cloudflare.com/sandbox/api/terminal/#websocket-protocol) in the API reference.
 
 ## Best practices
 
-* **Always use FitAddon** — Without it, terminal dimensions do not match the container and text wraps incorrectly.
-* **Handle resize events** — Call `fitAddon.fit()` on window resize so the terminal and PTY stay in sync.
-* **Clean up on unmount** — Call `addon.disconnect()` when removing the terminal from the page.
-* **Scope terminals to a user sandbox** — Use sessions for multiple terminal contexts in the same workspace. Use separate sandboxes for separate users.
+- **Always use FitAddon** — Without it, terminal dimensions do not match the container and text wraps incorrectly.
+- **Handle resize events** — Call `fitAddon.fit()` on window resize so the terminal and PTY stay in sync.
+- **Clean up on unmount** — Call `addon.disconnect()` when removing the terminal from the page.
+- **Scope terminals to a user sandbox** — Use sessions for multiple terminal contexts in the same workspace. Use separate sandboxes for separate users.
 
 ## Related resources
 
-* [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/) — Method signatures, addon API, and WebSocket protocol
-* [Terminal connections](https://developers.cloudflare.com/sandbox/concepts/terminal/) — How terminal connections work
-* [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) — How sessions work
+- [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/) — Method signatures, addon API, and WebSocket protocol
+- [Terminal connections](https://developers.cloudflare.com/sandbox/concepts/terminal/) — How terminal connections work
+- [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) — How sessions work
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build caching
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Improve Workers build times by caching dependencies and build output between builds with a project-wide shared cache.
 
@@ -28,12 +28,12 @@ The following shows which package managers and frameworks are supported for depe
 
 Workers build cache will cache the global cache directories of the following package managers:
 
-| Package Manager                 | Directories cached                   |
-| ------------------------------- | ------------------------------------ |
-| [npm ↗](https://www.npmjs.com/) | .npm                                 |
-| [yarn ↗](https://yarnpkg.com/)  | .cache/yarn                          |
-| [pnpm ↗](https://pnpm.io/)      | .pnpm-store, .local/share/pnpm/store |
-| [bun ↗](https://bun.sh/)        | .bun/install/cache                   |
+| Package Manager | Directories cached |
+| --- | --- |
+| [npm ↗](https://www.npmjs.com/) | `.npm` |
+| [yarn ↗](https://yarnpkg.com/) | `.cache/yarn` |
+| [pnpm ↗](https://pnpm.io/) | `.pnpm-store`, `.local/share/pnpm/store` |
+| [bun ↗](https://bun.sh/) | `.bun/install/cache` |
 
 If you configure pnpm to use a different store directory, Workers Builds does not cache it.
 
@@ -43,15 +43,15 @@ Some frameworks provide a cache directory that is typically populated by the fra
 
 The following frameworks support build output caching:
 
-| Framework  | Directories cached                       |
-| ---------- | ---------------------------------------- |
-| Astro      | node\_modules/.astro                     |
-| Docusaurus | node\_modules/.cache, .docusaurus, build |
-| Eleventy   | .cache                                   |
-| Gatsby     | .cache, public                           |
-| Next.js    | .next/cache                              |
-| Nuxt       | node\_modules/.cache/nuxt                |
-| SvelteKit  | node\_modules/.cache/imagetools          |
+| Framework | Directories cached |
+| --- | --- |
+| Astro | `node_modules/.astro` |
+| Docusaurus | `node_modules/.cache`, `.docusaurus`, `build` |
+| Eleventy | `.cache` |
+| Gatsby | `.cache`, `public` |
+| Next.js | `.next/cache` |
+| Nuxt | `node_modules/.cache/nuxt` |
+| SvelteKit | `node_modules/.cache/imagetools` |
 
 Note
 
@@ -61,8 +61,8 @@ Note
 
 The following limits are imposed for build caching:
 
-* **Retention**: Cache is purged 7 days after its last read date. Unread cache artifacts are purged 7 days after creation.
-* **Storage**: Every project is allocated 10 GB. If the project cache exceeds this limit, the project will automatically start deleting artifacts that were read least recently.
+- **Retention**: Cache is purged 7 days after its last read date. Unread cache artifacts are purged 7 days after creation.
+- **Storage**: Every project is allocated 10 GB. If the project cache exceeds this limit, the project will automatically start deleting artifacts that were read least recently.
 
 ## Enable build cache
 
@@ -70,7 +70,7 @@ To enable build caching:
 
 1. Navigate to [Workers & Pages Overview ↗](https://dash.cloudflare.com) on the Dashboard.
 2. Find your Workers project.
-3. Go to **Settings** \> **Build** \> **Build cache**.
+3. Go to **Settings** > **Build** > **Build cache**.
 4. Select **Enable** to turn on build caching.
 
 ## Clear build cache
@@ -79,7 +79,7 @@ The build cache can be cleared for a project when needed, such as when debugging
 
 1. Navigate to [Workers & Pages Overview ↗](https://dash.cloudflare.com) on the Dashboard.
 2. Find your Workers project.
-3. Go to **Settings** \> **Build** \> **Build cache**.
+3. Go to **Settings** > **Build** > **Build cache**.
 4. Select **Clear Cache** to clear the build cache.
 
 Was this helpful?

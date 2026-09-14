@@ -12,34 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protect data center networks
 
-Last updated Feb 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
-Network security teams have traditionally used various network firewalls or security appliances at the perimeter to protect their data center networks against both external and internal threats, for example, DDoS attacks, malware, ransomware, phishing, leaking of sensitive information, etc. In addition, the same or additional firewall or security appliances are deployed at the [DMZ ↗](https://en.wikipedia.org/wiki/DMZ%5F%28computing%29) or core layer of the data center networks to control and secure internal private network traffic routed between multiple data center sites across their wide-area network (WAN).
+Network security teams have traditionally used various network firewalls or security appliances at the perimeter to protect their data center networks against both external and internal threats, for example, DDoS attacks, malware, ransomware, phishing, leaking of sensitive information, etc. In addition, the same or additional firewall or security appliances are deployed at the [DMZ ↗](<https://en.wikipedia.org/wiki/DMZ_(computing)>) or core layer of the data center networks to control and secure internal private network traffic routed between multiple data center sites across their wide-area network (WAN).
 
 But these firewalls and security appliances are often expensive, complex to configure and manage, difficult to scale to handle large attacks, and require upgrades and patches to defend against newly discovered threats and vulnerabilities.
 
 [Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/), [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN), [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) and [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) services running natively on [Cloudflare's massive global network ↗](https://www.cloudflare.com/network/) provide solutions to all the shortcomings described above and more. These services offer in-line, scalable and performant global protection for your data center networks, all from a single cloud network platform.
 
-* [Magic Transit ↗](https://www.cloudflare.com/network-services/products/magic-transit/) provides instant detection and mitigation against network-layer DDoS attacks on your public, Internet-facing networks.
-* [Cloudflare WAN ↗](https://www.cloudflare.com/network-services/products/magic-wan/) provides any-to-any, hybrid/multi-cloud secure connectivity between your private, enterprise networks.
-* [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) is a cloud-native network firewall service that can be used to filter traffic that is routed to and from your networks that are protected by Magic Transit. It also supports functionalities such as [Intrusion Detection](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/) (IDS) and [packet capture](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/).
-* [Gateway ↗](https://www.cloudflare.com/zero-trust/products/gateway/) is a secure web gateway (SWG) service that allows you to inspect and control both Internet-bound traffic that is originated from your networks, as well as private network-to-private network traffic (that is, east-west), by proxying such traffic through Cloudflare's global network while applying DNS, network and HTTP based [policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
+- [Magic Transit ↗](https://www.cloudflare.com/network-services/products/magic-transit/) provides instant detection and mitigation against network-layer DDoS attacks on your public, Internet-facing networks.
+- [Cloudflare WAN ↗](https://www.cloudflare.com/network-services/products/magic-wan/) provides any-to-any, hybrid/multi-cloud secure connectivity between your private, enterprise networks.
+- [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) is a cloud-native network firewall service that can be used to filter traffic that is routed to and from your networks that are protected by Magic Transit. It also supports functionalities such as [Intrusion Detection](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/) (IDS) and [packet capture](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/).
+- [Gateway ↗](https://www.cloudflare.com/zero-trust/products/gateway/) is a secure web gateway (SWG) service that allows you to inspect and control both Internet-bound traffic that is originated from your networks, as well as private network-to-private network traffic (that is, east-west), by proxying such traffic through Cloudflare's global network while applying DNS, network and HTTP based [policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
 This document focuses specifically on the reference architectures of using Cloudflare Magic Transit, Cloudflare WAN, Cloudflare Network Firewall and Cloudflare Gateway services to protect both external and internal communications to your data center networks. For details of how Magic Transit, Cloudflare WAN, Cloudflare Network Firewall and Cloudflare Gateway works and how it can be architected for various use cases, see the linked resources at the end of the document.
 
 To illustrate the architecture and how it works, the following diagrams visualize an example corporation with a set of data center networks that are either public-facing, connecting to users on the Internet or private, internal facing, used for communication within the enterprise. These networks are deployed at two on-premises locations. The prefixes of the public-facing networks are to be protected by Cloudflare Magic Transit.
 
-| Data center 1                       | Data center 2                         |
-| ----------------------------------- | ------------------------------------- |
-| Public-facing network: 192.0.2.0/24 | Public-facing network: 203.0.113.0/24 |
-| Private network: 192.168.1.0/24     | Private network: 172.16.2.0/24        |
+| Data center 1 | Data center 2 |
+| --- | --- |
+| Public-facing network: `192.0.2.0/24` | Public-facing network: `203.0.113.0/24` |
+| Private network: `192.168.1.0/24` | Private network: `172.16.2.0/24` |
 
 The edge router(s) at each data center is connected to Cloudflare network via two Direct [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) (CNI) connections, which are direct, private connections between your network and Cloudflare network. One of the Direct CNI connections is for carrying public-facing network traffic, while the other is for carrying private network traffic. Optionally, you can choose to carry both public and private network traffic over a single CNI connection but many organizations do desire to transport external and internal network traffic over separate connections in their security practice.
 
-* For data center 1, CNI connection 1 is used to transport public-facing network traffic and connection 2 is used to transport private network traffic.
-* For data center 2, CNI connection 3 is used to transport public-facing network traffic and connection 4 is used to transport private network traffic.
+- For data center 1, CNI connection 1 is used to transport public-facing network traffic and connection 2 is used to transport private network traffic.
+- For data center 2, CNI connection 3 is used to transport public-facing network traffic and connection 4 is used to transport private network traffic.
 
 ## Protect inbound traffic to public-facing networks
 
@@ -47,9 +47,9 @@ The reference architecture diagram below illustrates how Cloudflare Magic Transi
 
 ![Figure 1. Protect Public-facing Networks from Inbound Traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1221,height=684,format=svg/_astro/figure1.ByCLqfND.svg "Figure 1. Protect Public-facing Networks from Inbound Traffic.")
 
-Figure 1\. Protect Public-facing Networks from Inbound Traffic.
+*Figure 1. Protect Public-facing Networks from Inbound Traffic.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. Using Border Gateway Protocol ([BGP ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/)) and [IP anycast ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), Cloudflare advertises the customer's protected IP prefixes to the Internet from all of [Cloudflare's global data centers ↗](https://www.cloudflare.com/network/). At the same time, on-premises network(s) would stop advertising the same exact prefixes from their respective on-premises border routers. This ensures that all traffic passes through Cloudflare for Magic Transit DDoS protection and policy enforcement before being delivered to the customer's data center. Internet traffic destined to these protected IP prefixes will always be routed to the Cloudflare data center that is closest to the source of the traffic. Optionally, you could advertise less-specific IP prefixes from the border routers to the Internet. This way, in the unlikely event of a Magic Transit service failure, traffic can be quickly re-routed directly to network locations from the Internet.
 2. Traffic originating from the Internet and destined to the protected IP prefixes is ingested into the global Cloudflare network.
@@ -65,9 +65,9 @@ The reference architecture diagram below illustrates how Cloudflare services - M
 
 ![Figure 2. Protect outbound traffic from public-facing networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=836,format=svg/_astro/figure2.CWqDwBZ8.svg "Figure 2. Protect outbound traffic from public-facing networks.")
 
-Figure 2\. Protect outbound traffic from public-facing networks.
+*Figure 2. Protect outbound traffic from public-facing networks.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. Each site network routes outbound Internet traffic originating from the public-facing networks to Cloudflare, via the same CNIs that inbound traffic traverses. This can be done at your site through routing techniques of your choice, such as policy based routing (PBR).
 2. Upon entering the Cloudflare network, outbound Internet traffic is first routed through Cloudflare Network Firewall where it is subject to any configured network firewall policies.
@@ -88,9 +88,9 @@ First, let us examine the use case where you do not intend to subject site-to-si
 
 ![Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=716,format=svg/_astro/figure3.1.Bcrim4pP.svg "Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.")
 
-Figure 3.1\. Protect inter-data center non-gateway-proxied traffic between private networks.
+*Figure 3.1. Protect inter-data center non-gateway-proxied traffic between private networks.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. Each site routes site-to-site private network traffic, destined to the other data center location, to Cloudflare WAN via the corresponding CNI connections. This can be done at your site through routing techniques of your choice, such as policy based routing (PBR).
 2. Upon entering the Cloudflare network, traffic is routed through Cloudflare Network Firewall.
@@ -103,9 +103,9 @@ For the use case where you do want to apply application level policy for fine-gr
 
 ![Figure 3.2: Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=702,format=svg/_astro/figure3.2.D9WLCVnf.svg "Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.")
 
-Figure 3.2\. Protect inter-data center gateway-proxied traffic between private networks.
+*Figure 3.2. Protect inter-data center gateway-proxied traffic between private networks.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. Each site routes private network traffic destined to the other data center location to Cloudflare WAN via the corresponding CNI connections. This can be done at your site through routing techniques of your choice, such as policy based routing (PBR).
 2. Upon entering the Cloudflare network, traffic is routed through Cloudflare Network Firewall where it is subject to any configured network firewall policies.
@@ -120,9 +120,9 @@ The reference architecture diagram below illustrates how Cloudflare services —
 
 ![Figure 4. Protect outbound traffic from private networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=824,format=svg/_astro/figure4.Chl4DAXi.svg "Figure 4. Protect outbound traffic from private networks.")
 
-Figure 4\. Protect outbound traffic from private networks.
+*Figure 4. Protect outbound traffic from private networks.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 1. Each site routes outbound Internet traffic originating from its private networks to Cloudflare WAN via the corresponding CNI connections. This can be done at your site through routing techniques of your choice, such as policy based routing (PBR).
 2. Upon entering the Cloudflare network, outbound Internet traffic is first routed through Cloudflare Network Firewall where it is subject to any configured network firewall policies.
@@ -135,14 +135,14 @@ _Note: Labels in this image may reflect a previous product name._
 
 ## Related Resources
 
-* [Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/)
-* [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-protection/)
-* [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
-* [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
-* [Cloudflare Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
-* [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
-* [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-* [Integration of Cloudflare Magic services and Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)
+- [Cloudflare Magic Transit](https://developers.cloudflare.com/magic-transit/)
+- [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-protection/)
+- [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
+- [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
+- [Cloudflare Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
+- [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+- [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- [Integration of Cloudflare Magic services and Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/)
 
 Was this helpful?
 

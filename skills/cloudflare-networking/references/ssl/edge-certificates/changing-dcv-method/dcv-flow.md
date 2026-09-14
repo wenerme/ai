@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Domain control validation flow
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To obtain [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [Custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/) certificates, Cloudflare partners with different publicly trusted [certificate authorities (CAs)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/).
 
@@ -22,9 +22,9 @@ However, every time a CA is requested to issue or renew a certificate, the reque
 
 For the use cases mentioned above, there are three different parties involved in the process:
 
-* The website or application for which the certificate is issued.
-* The requester (Cloudflare).
-* The CA that processes the request.
+- The website or application for which the certificate is issued.
+- The requester (Cloudflare).
+- The CA that processes the request.
 
 ## Steps in the process
 
@@ -38,16 +38,16 @@ In summary, five steps have to succeed after Cloudflare requests a CA to issue o
 
 ## Aspects to consider
 
-* Settings that interfere with the validation URLs - firewall blocks or misconfigured DNSSEC, for example - can cause issues with your certificate issuance or renewal. Refer to the [troubleshooting guide](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/).
-* When your certificate is in `pending_validation` and valid tokens are in place, some security features targeting your zone's path for `/.well-known/*` can be automatically bypassed.
-* Certificate authority authorization (CAA) records may block certificate issuance. Refer to [CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/).
+- Settings that interfere with the validation URLs - firewall blocks or misconfigured DNSSEC, for example - can cause issues with your certificate issuance or renewal. Refer to the [troubleshooting guide](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/).
+- When your certificate is in `pending_validation` and valid tokens are in place, some security features targeting your zone's path for `/.well-known/*` can be automatically bypassed.
+- Certificate authority authorization (CAA) records may block certificate issuance. Refer to [CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/).
 
 ### DCV tokens
 
 DCV tokens are generated and controlled by the CA and not by Cloudflare. You can find further technical specification of how they work in [RFC 8555 ↗](https://www.rfc-editor.org/rfc/rfc8555#section-7.1.5).
 
-* As mentioned in [Step 5](#steps-in-the-process), DCV tokens will change upon verification failures. For example, if a DCV check fails because of a DNSSEC issue, the certificate order is no longer valid and Cloudflare must start a new certificate request. Since tokens cannot be reused, a new token is required.
-* DCV tokens also have [validity periods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/). If you are handling the DCV process manually, it is recommended that you place the tokens as soon as the certificate is up for renewal. Otherwise, the tokens may expire and new tokens will be required.
+- As mentioned in [Step 5](#steps-in-the-process), DCV tokens will change upon verification failures. For example, if a DCV check fails because of a DNSSEC issue, the certificate order is no longer valid and Cloudflare must start a new certificate request. Since tokens cannot be reused, a new token is required.
+- DCV tokens also have [validity periods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/). If you are handling the DCV process manually, it is recommended that you place the tokens as soon as the certificate is up for renewal. Otherwise, the tokens may expire and new tokens will be required.
 
 Was this helpful?
 

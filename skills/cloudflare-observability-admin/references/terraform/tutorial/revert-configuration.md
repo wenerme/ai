@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 6 – Revert configuration
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/revert-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/revert-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sometimes, you may have to roll back configuration changes. For example, you might want to run performance tests on a new configuration or maybe you mistyped an IP address and brought your entire site down.
 
@@ -22,7 +22,7 @@ Note
 
 Terraform code snippets below refer to the v5 SDK only.
 
-## 1\. Review your configuration history
+## 1. Review your configuration history
 
 Before determining how far back to revert, review your Git history:
 
@@ -51,7 +51,7 @@ git show
 
 This shows the most recent commit and what files changed.
 
-## 2\. Scenario: Revert the Page Rules
+## 2. Scenario: Revert the Page Rules
 
 Assume that shortly after you deployed the Page Rules when following the [Add exceptions with Page Rules](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/) tutorial, you are told the URL is no longer needed, and the security setting and redirect should be dropped.
 
@@ -73,7 +73,7 @@ Revert "Add Page Rules for security and redirects"
 This reverts commit f1a2b3c4d5e6f7a8b9c0d1e2f3g4h5i6j7k8l9m0.
 ```
 
-## 3\. Preview the changes
+## 3. Preview the changes
 
 Check what Terraform will do with the reverted configuration:
 
@@ -94,7 +94,7 @@ Terraform will perform the following actions:
 
 As expected, Terraform will remove the two Page Rules that were added in tutorial 5.
 
-## 4\. Apply the changes
+## 4. Apply the changes
 
 Apply the changes to remove the Page Rules from your Cloudflare zone:
 
@@ -113,7 +113,7 @@ Apply complete! Resources: 0 added, 0 changed, 2 destroyed.
 
 Two resources were destroyed, as expected, and you have rolled back to the previous version.
 
-## 5\. Verify the revert
+## 5. Verify the revert
 
 Test that the Page Rules are no longer active:
 

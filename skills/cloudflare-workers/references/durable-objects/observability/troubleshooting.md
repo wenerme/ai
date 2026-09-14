@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Debugging
 
-[wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) and [wrangler tail](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail) are both available to help you debug your Durable Objects.
+[`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) and [`wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail) are both available to help you debug your Durable Objects.
 
 `wrangler tail` displays a live feed of console and exception logs for each request served by your Worker code, including both normal Worker requests and Durable Object requests. After running `npx wrangler deploy`, you can use `wrangler tail` in the root directory of your Worker project and visit your Worker URL to see console and error logs in your terminal.
 
@@ -34,14 +34,14 @@ When deleting a migration using `npx wrangler deploy --delete-class <ClassName>`
 
 A single instance of a Durable Object cannot do more work than is possible on a single thread. These errors mean the Durable Object has too much work to keep up with incoming requests:
 
-* `Error: Durable Object is overloaded. Too many requests queued.` The total count of queued requests is too high.
-* `Error: Durable Object is overloaded. Too much data queued.` The total size of data in queued requests is too high.
-* `Error: Durable Object is overloaded. Requests queued for too long.` The oldest request has been in the queue too long.
-* `Error: Durable Object is overloaded. Too many requests for the same object within a 10 second window.` The number of requests for a Durable Object is too high within a short span of time (10 seconds). This error indicates a more extreme level of overload.
+- `Error: Durable Object is overloaded. Too many requests queued.` The total count of queued requests is too high.
+- `Error: Durable Object is overloaded. Too much data queued.` The total size of data in queued requests is too high.
+- `Error: Durable Object is overloaded. Requests queued for too long.` The oldest request has been in the queue too long.
+- `Error: Durable Object is overloaded. Too many requests for the same object within a 10 second window.` The number of requests for a Durable Object is too high within a short span of time (10 seconds). This error indicates a more extreme level of overload.
 
 To solve this error, you can either do less work per request, or send fewer requests. For example, you can split the requests among more instances of the Durable Object.
 
-These errors and others that are due to overload will have an [.overloaded property](https://developers.cloudflare.com/durable-objects/best-practices/error-handling) set on their exceptions, which can be used to avoid retrying overloaded operations.
+These errors and others that are due to overload will have an [`.overloaded` property](https://developers.cloudflare.com/durable-objects/best-practices/error-handling) set on their exceptions, which can be used to avoid retrying overloaded operations.
 
 ### Your account is generating too much load on Durable Objects. Please back off and try again later.
 

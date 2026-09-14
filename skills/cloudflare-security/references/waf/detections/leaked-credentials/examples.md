@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Example mitigation rules
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Rate limit suspicious logins with leaked credentials
 
@@ -27,31 +27,35 @@ The following example rule applies rate limiting to requests with a specific [AT
 **When incoming requests match**:
 `(any(cf.bot_management.detection_ids[*] eq 201326593) and cf.waf.credential_check.username_and_password_leaked)`
 
-**With the same characteristics**: _IP_
+**With the same characteristics**: *IP*
 
 When rate exceeds:
 
-* **Requests**: `5`
-* **Period**: _1 minute_
+- **Requests**: `5`
+- **Period**: *1 minute*
 
 ## Challenge requests containing leaked credentials
 
 Note
 
-Access to the _User and Password Leaked_ (`cf.waf.credential_check.username_and_password_leaked`) field requires a Pro plan or above.
+Access to the *User and Password Leaked* (`cf.waf.credential_check.username_and_password_leaked`) field requires a Pro plan or above.
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that challenges requests containing a previously leaked set of credentials (username and password).
 
-* **Expression**: If you use the Expression Builder, configure the following expression:
+- **Expression**: If you use the Expression Builder, configure the following expression:
 
-| Field                    | Operator | Value |
-| ------------------------ | -------- | ----- |
-| User and Password Leaked | equals   | True  |
-If you use the Expression Editor, enter the following expression:
-```txt
-(cf.waf.credential_check.username_and_password_leaked)
-```
-* **Action**: _Managed Challenge_
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | User and Password Leaked | equals | True |
+
+  If you use the Expression Editor, enter the following expression:
+
+  ```txt
+  (cf.waf.credential_check.username_and_password_leaked)
+  ```
+
+
+- **Action**: *Managed Challenge*
 
 ---
 

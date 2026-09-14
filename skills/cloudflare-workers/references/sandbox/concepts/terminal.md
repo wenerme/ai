@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terminal connections
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/terminal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/terminal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Terminal connections let browser-based UIs interact directly with sandbox shells. Instead of executing discrete commands with `exec()`, a terminal connection opens a persistent, bidirectional channel to a bash shell — the same model as SSH or a local terminal emulator.
 
@@ -37,16 +37,16 @@ Browser (xterm.js) <-- WebSocket --> Worker <-- proxy --> Container PTY (bash)
 
 This is fundamentally different from `exec()`:
 
-* **`exec()`** runs a single command to completion and returns the result
-* **`terminal()`** opens a persistent shell where users type commands interactively
+- **`exec()`** runs a single command to completion and returns the result
+- **`terminal()`** opens a persistent shell where users type commands interactively
 
 ## Output buffering
 
 The container buffers terminal output in a ring buffer. When a client disconnects and reconnects, the server replays buffered output so the terminal appears unchanged. This means:
 
-* Short network interruptions are invisible to users
-* Reconnected terminals show previous output without re-running commands
-* The buffer has a fixed size, so very old output may be lost
+- Short network interruptions are invisible to users
+- Reconnected terminals show previous output without re-running commands
+- The buffer has a fixed size, so very old output may be lost
 
 No client-side code is needed to handle buffering — the container manages it transparently.
 
@@ -87,19 +87,19 @@ For the full protocol specification, including the connection lifecycle and mess
 
 ## When to use terminals vs commands
 
-| Use case                                   | Approach                              |
-| ------------------------------------------ | ------------------------------------- |
-| Run a command and get the result           | exec() or execStream()                |
-| Interactive shell for end users            | terminal()                            |
-| Long-running process with real-time output | startProcess() \+ streamProcessLogs() |
-| Collaborative terminal sharing             | terminal() with shared session        |
+| Use case | Approach |
+| --- | --- |
+| Run a command and get the result | `exec()` or `execStream()` |
+| Interactive shell for end users | `terminal()` |
+| Long-running process with real-time output | `startProcess()` + `streamProcessLogs()` |
+| Collaborative terminal sharing | `terminal()` with shared session |
 
 ## Related resources
 
-* [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/) — Method signatures and types
-* [Browser terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/) — Step-by-step setup guide
-* [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) — How sessions work
-* [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) — Overall SDK design
+- [Terminal API reference](https://developers.cloudflare.com/sandbox/api/terminal/) — Method signatures and types
+- [Browser terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/) — Step-by-step setup guide
+- [Session management](https://developers.cloudflare.com/sandbox/concepts/sessions/) — How sessions work
+- [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) — Overall SDK design
 
 Was this helpful?
 

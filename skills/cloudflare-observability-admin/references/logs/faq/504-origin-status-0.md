@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 504 responses with origin status 0 in Logpush
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/faq/504-origin-status-0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/504-origin-status-0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
@@ -39,12 +39,12 @@ Your application is working normally, your origin is healthy, and no 504 respons
 
 ### What the fields mean
 
-From the [HTTP requests dataset reference](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/):
+From the [HTTP requests dataset reference](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/):
 
-| Field                | Definition                                                                                                                                                                                                                                                                          |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EdgeResponseStatus   | HTTP status code returned by Cloudflare to the client.                                                                                                                                                                                                                              |
-| OriginResponseStatus | Status returned by the upstream server. The value 0 means that there was no response received from the origin server and the response was served by Cloudflare's edge. If the zone has a Worker running on it, 0 can also be the result of a Workers subrequest made to the origin. |
+| Field | Definition |
+| --- | --- |
+| `EdgeResponseStatus` | HTTP status code returned by Cloudflare to the client. |
+| `OriginResponseStatus` | Status returned by the upstream server. The value `0` means that there was no response received from the origin server and the response was served by Cloudflare's edge. If the zone has a Worker running on it, `0` can also be the result of a Workers subrequest made to the origin. |
 
 `OriginResponseStatus=0` on its own is not an error signal. It means Cloudflare did not make a successful origin fetch for that log line. This is normal for cache hits, Worker responses, WAF blocks, redirects, and internal subrequests.
 
@@ -97,11 +97,11 @@ curl -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs/$J
 
 Once the field flows, re-check your `504` / `0` entries:
 
-| RequestSource value | Meaning                                  | Action                       |
-| ------------------- | ---------------------------------------- | ---------------------------- |
-| earlyHintsCache     | Early Hints internal subrequest (benign) | Filter out                   |
-| edgeWorkerCacheAPI  | Workers Cache API MISS (benign)          | Filter out                   |
-| eyeball or empty    | Real end-user request                    | Investigate as a genuine 504 |
+| `RequestSource` value | Meaning | Action |
+| --- | --- | --- |
+| `earlyHintsCache` | Early Hints internal subrequest (benign) | Filter out |
+| `edgeWorkerCacheAPI` | Workers Cache API MISS (benign) | Filter out |
+| `eyeball` or empty | Real end-user request | Investigate as a genuine `504` |
 
 ### Filter in your SIEM
 
@@ -129,9 +129,9 @@ NOT @RequestSource:("earlyHintsCache" OR "edgeWorkerCacheAPI")
 
 Not every `504` with `OriginResponseStatus=0` is an internal subrequest. Real origin-side failures produce the same field combination:
 
-* **Origin timeout** — Cloudflare opened the connection (or tried to) but got no response. `OriginResponseStatus` stays `0` because no status was received.
-* **Cloudflare Tunnel cannot reach origin** — `cloudflared` is connected but cannot reach the configured service. Refer to [Tunnel common errors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/).
-* **Worker `fetch()` to origin fails or times out** — per the `OriginResponseStatus` field definition, if the zone has a Worker running on it, the value `0` can be the result of a Workers subrequest made to the origin.
+- **Origin timeout** — Cloudflare opened the connection (or tried to) but got no response. `OriginResponseStatus` stays `0` because no status was received.
+- **Cloudflare Tunnel cannot reach origin** — `cloudflared` is connected but cannot reach the configured service. Refer to [Tunnel common errors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/).
+- **Worker `fetch()` to origin fails or times out** — per the `OriginResponseStatus` field definition, if the zone has a Worker running on it, the value `0` can be the result of a Workers subrequest made to the origin.
 
 The `RequestSource` field distinguishes these from internal subrequests. If `RequestSource` is `eyeball` or empty and the edge returned `504`, investigate origin health, Tunnel connectivity, or Worker reliability.
 
@@ -139,7 +139,7 @@ The `RequestSource` field distinguishes these from internal subrequests. If `Req
 
 If you do not benefit from Early Hints — for example, your origin does not emit `Link` preload or preconnect headers — you can turn Early Hints off entirely:
 
-1. In the Cloudflare dashboard, go to **Speed** \> **Optimization** \> **Content Optimization**.
+1. In the Cloudflare dashboard, go to **Speed** > **Optimization** > **Content Optimization**.
 2. Turn **Early Hints** off.
 
 This eliminates the `earlyHintsCache` subrequests at source rather than filtering them downstream. To check whether Early Hints is doing anything useful for your zone, query the GraphQL Analytics API for `103` status codes served to clients. If that count is zero while `earlyHintsCache` activity is high, Early Hints is on but not serving anything.
@@ -157,14 +157,14 @@ For the Workers Cache API case, the `504` MISS behavior is intrinsic to how `cac
 
 ### Related resources
 
-* [HTTP requests dataset — field reference](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/)
-* [Early Hints — Emit Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#emit-early-hints)
-* [Workers Cache API — Errors](https://developers.cloudflare.com/workers/runtime-apis/cache/#errors)
-* [Error 502 or 504](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502-504/)
-* [GraphQL Analytics API — Filter end users](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#filter-end-users)
-* [Logpush API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
-* [Cloudflare Tunnel — Common errors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/)
-* [Worker subrequests — Why origin fields appear on Worker subrequest log entries](https://developers.cloudflare.com/logs/faq/worker-subrequests/)
+- [HTTP requests dataset — field reference](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)
+- [Early Hints — Emit Early Hints](https://developers.cloudflare.com/cache/advanced-configuration/early-hints/#emit-early-hints)
+- [Workers Cache API — Errors](https://developers.cloudflare.com/workers/runtime-apis/cache/#errors)
+- [Error 502 or 504](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-502-504/)
+- [GraphQL Analytics API — Filter end users](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/#filter-end-users)
+- [Logpush API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/)
+- [Cloudflare Tunnel — Common errors](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/)
+- [Worker subrequests — Why origin fields appear on Worker subrequest log entries](https://developers.cloudflare.com/logs/faq/worker-subrequests/)
 
 Was this helpful?
 

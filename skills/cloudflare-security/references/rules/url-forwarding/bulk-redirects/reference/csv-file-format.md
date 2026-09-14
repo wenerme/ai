@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CSV file format for Bulk Redirects
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/csv-file-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use a CSV file to import URL redirects into a Bulk Redirect List [using the Cloudflare dashboard](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/#1-create-a-bulk-redirect-list). Each line in the CSV file must follow this format:
 
@@ -36,11 +36,11 @@ example.com/docs,https://example.com/draft-docs,302,,TRUE
 
 ## Important remarks
 
-* The source URL cannot include a query string. For details on which URL components are supported in source URLs, refer to [Supported URL components in Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/).
-* The CSV file must not include a header row with column names.
-* A source/target URL must be enclosed in quotes (`"`) when it includes a comma (`,`). You can always enclose URL values in quotes, but it is not required.
-* You can skip an optional value by immediately entering a comma (the delimiter) without entering any value.
-* You do not need to include trailing commas.
+- The source URL cannot include a query string. For details on which URL components are supported in source URLs, refer to [Supported URL components in Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/url-components/).
+- The CSV file must not include a header row with column names.
+- A source/target URL must be enclosed in quotes ( `"`) when it includes a comma ( `,`). You can always enclose URL values in quotes, but it is not required.
+- You can skip an optional value by immediately entering a comma (the delimiter) without entering any value.
+- You do not need to include trailing commas.
 
 Was this helpful?
 

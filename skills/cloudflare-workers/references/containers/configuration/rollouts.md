@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rollouts
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## How rollouts work
 
@@ -34,11 +34,11 @@ Field names and allowed values are listed under [Containers configuration](https
 
 ## Defaults
 
-| Setting                                           | Default                                                                         |
-| ------------------------------------------------- | ------------------------------------------------------------------------------- |
-| rollout\_step\_percentage                         | 100 if max\_instances is omitted or less than 2; otherwise \[10, 100\]          |
-| rollout\_active\_grace\_period                    | 0 seconds                                                                       |
-| Stop sequence when replacing a container instance | SIGTERM to the main process, then SIGKILL after 15 minutes if it has not exited |
+| Setting | Default |
+| --- | --- |
+| `rollout_step_percentage` | `100` if `max_instances` is omitted or less than `2`; otherwise `[10, 100]` |
+| `rollout_active_grace_period` | `0` seconds |
+| Stop sequence when replacing a container instance | `SIGTERM` to the main process, then `SIGKILL` after 15 minutes if it has not exited |
 
 ## Gradual rollouts
 
@@ -47,7 +47,7 @@ By default, Wrangler starts a rolling rollout using `rollout_step_percentage`. I
 1. Request a target of about 10% of container instances with the new configuration. The platform raises this percentage when necessary so the step represents at least one instance at the configured `max_instances`.
 2. Target 100% of container instances with the new configuration.
 
-Configure the steps with `rollout_step_percentage` in Wrangler. Override the default plan for one deploy with [\--containers-rollout](#rollout-modes).
+Configure the steps with `rollout_step_percentage` in Wrangler. Override the default plan for one deploy with [`--containers-rollout`](#rollout-modes).
 
 ## How a container instance is replaced
 
@@ -57,7 +57,7 @@ When the rollout selects a container instance to update:
 2. **Signal stop.** The platform sends `SIGTERM` to the main process in the container so it can stop accepting new work and finish in-flight work. Handle `SIGTERM` in your image if that process needs cleanup before exit.
 3. **Drain.** The process has up to 15 minutes to exit after `SIGTERM`.
 4. **Force stop if needed.** If the process is still running after 15 minutes, the platform sends `SIGKILL`.
-5. **After exit.** The Container class [onStop](https://developers.cloudflare.com/containers/reference/container-class/#onstop) hook can run in the Worker once the container process has exited.
+5. **After exit.** The Container class [`onStop`](https://developers.cloudflare.com/containers/reference/container-class/#onstop) hook can run in the Worker once the container process has exited.
 6. **Start a new container instance** with the target image. Disk is [ephemeral](https://developers.cloudflare.com/containers/faq/#is-disk-persistent-what-happens-to-my-disk-when-my-container-sleeps) unless you store data outside the container filesystem.
 
 Each selected container instance follows this sequence on its own schedule. The fleet does not restart in a single moment.
@@ -74,10 +74,10 @@ A request that needs that container instance may wait until the container is rea
 
 Containers are [backed by Durable Objects](https://developers.cloudflare.com/containers/concepts/architecture/#worker-to-durable-object). Each running container instance is associated with a Durable Object instance that starts it and sends it traffic. The grace period is how long that connection must already have been up before a rollout may shut the container down. It is not measured from deploy completion.
 
-| Value                            | Effect                                                                                                                           |
-| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| 0 (default)                      | No extra protection. Selected container instances may be replaced as soon as the rollout reaches them.                           |
-| Greater than 0 (for example 300) | Container instances connected to their Durable Object for less than this many seconds are left alone until they pass the window. |
+| Value | Effect |
+| --- | --- |
+| `0` (default) | No extra protection. Selected container instances may be replaced as soon as the rollout reaches them. |
+| Greater than `0` (for example `300`) | Container instances connected to their Durable Object for less than this many seconds are left alone until they pass the window. |
 
 Use a non-zero value when short sessions should finish before a rollout replaces the container. Container instances that have been connected longer can still be replaced once they pass the window.
 
@@ -85,15 +85,15 @@ Use a non-zero value when short sessions should finish before a rollout replaces
 
 ## Rollout modes
 
-`--containers-rollout` applies to [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) only. It does not apply to [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions).
+`--containers-rollout` applies to [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) only. It does not apply to [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#versions).
 
 On a full deploy, Wrangler activates the Worker before it processes the container image and rollout. Rollout mode controls how the target container configuration is applied.
 
-| Mode              | Flag                            | Container instances                                                             |
-| ----------------- | ------------------------------- | ------------------------------------------------------------------------------- |
-| Gradual (default) | omit flag                       | Use rollout\_step\_percentage, which can contain one or multiple steps          |
-| Immediate         | \--containers-rollout=immediate | Target 100% of container instances in one step                                  |
-| None              | \--containers-rollout=none      | Leave images and running container instances unchanged; deploy Worker code only |
+| Mode | Flag | Container instances |
+| --- | --- | --- |
+| Gradual (default) | omit flag | Use `rollout_step_percentage`, which can contain one or multiple steps |
+| Immediate | `--containers-rollout=immediate` | Target 100% of container instances in one step |
+| None | `--containers-rollout=none` | Leave images and running container instances unchanged; deploy Worker code only |
 
 ### Immediate
 
@@ -117,11 +117,11 @@ Use immediate when Worker code and the container image need to stay compatible a
 
 Behavior:
 
-* The new Worker version is activated before the container image and rollout are processed.
-* The rollout then replaces container instances toward 100% using the same [replace sequence](#how-a-container-instance-is-replaced) as gradual mode, including grace period when configured.
-* Replacements complete over wall-clock time. How long depends on how many container instances are running, how long each takes to stop and start, and any grace period.
-* When the image changes, immediate minimizes but does not eliminate the period when the new Worker can reach instances on the previous image.
-* Deploy success means the rollout started, not that replacements finished.
+- The new Worker version is activated before the container image and rollout are processed.
+- The rollout then replaces container instances toward 100% using the same [replace sequence](#how-a-container-instance-is-replaced) as gradual mode, including grace period when configured.
+- Replacements complete over wall-clock time. How long depends on how many container instances are running, how long each takes to stop and start, and any grace period.
+- When the image changes, immediate minimizes but does not eliminate the period when the new Worker can reach instances on the previous image.
+- Deploy success means the rollout started, not that replacements finished.
 
 ### None
 
@@ -180,10 +180,10 @@ new_sqlite_classes = [ "MyContainer" ]
 
 ## Related
 
-* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
-* [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
-* [Image management](https://developers.cloudflare.com/containers/guides/image-management/)
-* [Containers configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers)
+- [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
+- [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
+- [Image management](https://developers.cloudflare.com/containers/guides/image-management/)
+- [Containers configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers)
 
 Was this helpful?
 

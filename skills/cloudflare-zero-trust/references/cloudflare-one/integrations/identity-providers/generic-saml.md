@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generic SAML 2.0
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare One integrates with any identity provider that supports SAML 2.0\. If your identity provider is not listed in the integration list of login methods in Cloudflare One, it can be configured using SAML 2.0 (or OpenID if OIDC based). Generic SAML can also be used if you would like to pass additional SAML headers or claims for an IdP in the integration list.
+Cloudflare One integrates with any identity provider that supports SAML 2.0. If your identity provider is not listed in the integration list of login methods in Cloudflare One, it can be configured using SAML 2.0 (or OpenID if OIDC based). Generic SAML can also be used if you would like to pass additional SAML headers or claims for an IdP in the integration list.
 
 ## Prerequisites
 
 Minimum requirements for identity providers:
 
-* The IdP must conform to SAML 2.0.
-* The IdP must provide a **Single sign-on URL**, an **Entity ID or Issuer URL**, and a **Signing certificate**.
-* The IdP must include the signing public key in the SAML response.
+- The IdP must conform to SAML 2.0.
+- The IdP must provide a **Single sign-on URL**, an **Entity ID or Issuer URL**, and a **Signing certificate**.
+- The IdP must include the signing public key in the SAML response.
 
-## 1\. Create an application in your identity provider
+## 1. Create an application in your identity provider
 
 Most identity providers allow users to create an **Application**. In this context, an application is a set of parameters that the identity provider will then pass on to Cloudflare to establish an integration.
 
@@ -32,25 +32,25 @@ The typical setup requirements are:
 
 1. Create a new integration in the identity provider with the type set as **SAML**.
 2. Set both the **Entity/Issuer ID** and the **Single sign-on URL** to:
-```txt
-https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-```
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+
+   ```txt
+   https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
+   ``` You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 3. Set the **Name ID/Email format** to `emailAddress`.
-4. (Optional) Set the signature policy to _Always Sign_.
+4. (Optional) Set the signature policy to *Always Sign*.
 
 ### (Optional) Upload SAML metadata
 
 If your identity provider supports metadata file configuration, you can use the default or identity provider specific metadata endpoint:
 
-* **Default:** `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata`
-* **Identity provider specific:** `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/<identity-provider-id>/saml-metadata`, where `<identity-provider-id>` is the `id` value obtained from [List Access identity providers](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/identity%5Fproviders/methods/list/). Use this endpoint if your IdP requires a configuration not defined in the default metadata file.
+- **Default:** `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/saml-metadata`
+- **Identity provider specific:** `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/<identity-provider-id>/saml-metadata`, where `<identity-provider-id>` is the `id` value obtained from [List Access identity providers](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/list/). Use this endpoint if your IdP requires a configuration not defined in the default metadata file.
 
 To download the SAML metadata file, copy-paste the metadata endpoint into a web browser and save the page as an `.xml` file. Upload this XML file to the identity provider.
 
-## 2\. Add a SAML identity provider to Cloudflare One
+## 2. Add a SAML identity provider to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
 3. Choose a descriptive name for your identity provider.
 4. Enter the **Single Sign on URL**, **IdP Entity ID or Issuer URL**, and **Signing certificate** obtained from your identity provider.
@@ -58,31 +58,33 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 6. (Optional) Under **Optional configurations**, configure [additional SAML options](#optional-configurations).
 7. Select **Save**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Access: Organizations, Identity Providers, and Groups Write`
+2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
 
-  * `Access: Organizations, Identity Providers, and Groups Write`
-2. Configure the [cloudflare\_zero\_trust\_access\_identity\_provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Faccess%5Fidentity%5Fprovider) resource:
-```tf
-resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {
-	account_id = var.cloudflare_account_id
-	name       = "Generic SAML example"
-	type       = "saml"
-	config 		 = {
-		sso_target_url = "https://example.com/1234/sso/saml"
-		issuer_url = "https://example.com/1234"
-		idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]
-		sign_request = false
-		email_attribute_name = "email"
-		attributes = ["employeeID", "groups"]
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {
+   	account_id = var.cloudflare_account_id
+   	name       = "Generic SAML example"
+   	type       = "saml"
+   	config 		 = {
+   		sso_target_url = "https://example.com/1234/sso/saml"
+   		issuer_url = "https://example.com/1234"
+   		idp_public_certs = ["-----BEGIN CERTIFICATE-----\nXXXXX\n-----END CERTIFICATE-----"]
+   		sign_request = false
+   		email_attribute_name = "email"
+   		attributes = ["employeeID", "groups"]
+   	}
+   }
+   ```
+
+
 
 Caution
 
 Set a reminder for the expiry date of the signing certificate obtained from your generic SAML identity provider. After the certificate expires, you will need to generate a new signing certificate and re-add it to your Cloudflare configuration via the Cloudflare dashboard or Terraform.
 
-## 3\. Test the connection
+## 3. Test the connection
 
 You can now [test the IdP integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one). A success response should return the configured SAML attributes.
 
@@ -100,24 +102,26 @@ Gateway evaluates identity-based policies against the [User Registry identity](h
 
 Your identity provider must support SCIM version 2.0.
 
-### 1\. Enable SCIM in Cloudflare One
+### 1. Enable SCIM in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the IdP integration and select **Edit**.
 3. Turn on **Enable SCIM**.
 4. (Optional) Configure the following settings:
-* **Enable user deprovisioning**: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when they are removed from the SCIM application in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
-* **Remove user seat on deprovision**: [Remove a user's seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/) from your Cloudflare One account when they are removed from the SCIM application in IdP.
-* **SCIM identity update behavior**: Choose what happens in Cloudflare One when the user's identity updates in IdP.
-  * _Automatic identity updates_: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when IdP sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.
-  * _Group membership change reauthentication_: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.
-  * _No action_: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
-1. Select **Regenerate Secret**. Copy the **SCIM Endpoint** and **SCIM Secret**. You will need to enter these values into IdP.
-2. Select **Save**.
+
+- **Enable user deprovisioning**: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when they are removed from the SCIM application in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/).
+- **Remove user seat on deprovision**: [Remove a user's seat](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/) from your Cloudflare One account when they are removed from the SCIM application in IdP.
+- **SCIM identity update behavior**: Choose what happens in Cloudflare One when the user's identity updates in IdP.
+  - *Automatic identity updates*: Automatically update the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/) when IdP sends an updated identity or group membership through SCIM. This identity is used for Gateway policies and Cloudflare One Client [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/); Access will read the user's updated identity when they reauthenticate.
+  - *Group membership change reauthentication*: [Revoke a user's active session](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#per-user) when their group membership changes in IdP. This will invalidate all active Access sessions and prompt for reauthentication for any [Cloudflare One Client session policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/). Access will read the user's updated group membership when they reauthenticate.
+  - *No action*: Update the user's identity the next time they reauthenticate to Access or the Cloudflare One Client.
+
+5. Select **Regenerate Secret**. Copy the **SCIM Endpoint** and **SCIM Secret**. You will need to enter these values into IdP.
+6. Select **Save**.
 
 The SCIM secret never expires, but you can manually regenerate the secret at any time.
 
-### 2\. Configure SCIM in the IdP
+### 2. Configure SCIM in the IdP
 
 Setup instructions vary depending on the identity provider. In your identity provider, you will either need to edit the [original SSO application](#1-create-an-application-in-your-identity-provider) or create a new SCIM application. Refer to your identity provider's documentation for more details. For example instructions, refer to our [Okta](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/#synchronize-users-and-groups) or [JumpCloud](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/jumpcloud-saml/#synchronize-users-and-groups) guides.
 
@@ -125,10 +129,10 @@ Setup instructions vary depending on the identity provider. In your identity pro
 
 If you would like to build policies based on IdP groups:
 
-* Ensure that your IdP sends a `groups` field. The naming must match exactly (case insensitive). All other values will be sent as a SAML attribute.
-* If your IdP requires a new SCIM application, ensure that its groups match the groups in the [original SSO application](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#1-create-an-application-in-your-identity-provider). Matching the groups keeps the Gateway identity synchronized with the groups that the IdP returns when the user authenticates to Access.
+- Ensure that your IdP sends a `groups` field. The naming must match exactly (case insensitive). All other values will be sent as a SAML attribute.
+- If your IdP requires a new SCIM application, ensure that its groups match the groups in the [original SSO application](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#1-create-an-application-in-your-identity-provider). Matching the groups keeps the Gateway identity synchronized with the groups that the IdP returns when the user authenticates to Access.
 
-### 3\. Verify SCIM provisioning
+### 3. Verify SCIM provisioning
 
 To check if user identities were updated in Cloudflare One, view your [SCIM provisioning logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/).
 
@@ -148,11 +152,11 @@ Without encryption, SAML assertions are transmitted in plaintext after TLS termi
 
 Note
 
-SAML assertion encryption is separate from [signed AuthN requests](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/signed%5Fauthn/). Signing verifies the authenticity of SAML messages, while encryption adds an additional layer of security by protecting assertion contents. You can use both features together.
+SAML assertion encryption is separate from [signed AuthN requests](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/signed_authn/). Signing verifies the authenticity of SAML messages, while encryption adds an additional layer of security by protecting assertion contents. You can use both features together.
 
 To turn on SAML assertion encryption:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select your SAML identity provider and select **Edit**.
 3. Under **SAML encryption**, turn on the **Enable SAML encryption** toggle. Access will automatically generate an encryption certificate.
 4. Copy the displayed certificate (in PEM format) or the certificate set ID.
@@ -165,10 +169,10 @@ After you turn on encryption, Access will reject any unencrypted assertions from
 
 Access supports the following encryption algorithms:
 
-| Algorithm type     | Supported values                                   |
-| ------------------ | -------------------------------------------------- |
+| Algorithm type | Supported values |
+| --- | --- |
 | Content encryption | AES-128-CBC, AES-256-CBC, AES-128-GCM, AES-256-GCM |
-| Key transport      | RSA-OAEP (XML Encryption 1.0 and 1.1), RSA-1.5     |
+| Key transport | RSA-OAEP (XML Encryption 1.0 and 1.1), RSA-1.5 |
 
 Caution
 
@@ -184,7 +188,7 @@ Encryption certificates are valid for one year. Thirty days before a certificate
 
 To manually rotate a certificate:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select your SAML identity provider and select **Edit**.
 3. Under **SAML encryption**, select **Rotate certificate**.
 4. Upload the new certificate to your identity provider.
@@ -196,6 +200,14 @@ If you rotate again before updating your IdP with the current certificate, the p
 ### Sign SAML authentication request
 
 This optional configuration signs the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/) with the Cloudflare Access public key to ensure that the JWT is coming from a legitimate source. The Cloudflare public key can be obtained at `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs`.
+
+### Require fresh authentication at the identity provider
+
+You can ask your identity provider to reauthenticate the user for every SAML authentication request. This option applies whether the request is signed or unsigned.
+
+This setting is available through the API. First, retrieve the identity provider's current configuration from the [Access identity provider endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/get/). Then, send the complete configuration to the [update identity provider endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/identity_providers/methods/update/) with `force_authn` set to `true` in the `config` object. The default value is `false`.
+
+When this option is turned on, Access sets `ForceAuthn` to `true` in each SAML authentication request. Access may also set `ForceAuthn` to `true` when a security check requires the user to reauthenticate, even if `force_authn` is `false`.
 
 ### Email attribute name
 
@@ -244,5 +256,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
 ```

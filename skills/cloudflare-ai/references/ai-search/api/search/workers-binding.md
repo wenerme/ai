@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers binding
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/search/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to search and chat with your AI Search instances from a Cloudflare Worker.
 
@@ -24,8 +24,8 @@ The previous `env.AI.autorag()` binding is no longer recommended for use. Refer 
 
 To use AI Search with Workers, you must create an AI Search binding. You create bindings by updating your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/). AI Search provides two types of bindings:
 
-* Namespace binding: `ai_search_namespaces`
-* Instance binding: `ai_search`
+- Namespace binding: `ai_search_namespaces`
+- Instance binding: `ai_search`
 
 ### Namespace binding
 
@@ -52,11 +52,11 @@ binding = "AI_SEARCH"
 namespace = "my-namespace"
 ```
 
-| Field     | Type    | Required | Description                                                                                                                                                                                                                   |
-| --------- | ------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| binding   | string  | Yes      | The variable name available on env. For example, "AI\_SEARCH" makes it accessible as env.AI\_SEARCH.                                                                                                                          |
-| namespace | string  | Yes      | The [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to bind to. A default namespace is created automatically for every account. If the namespace does not exist, Wrangler creates it on deploy. |
-| remote    | boolean | No       | Set to true for local development with wrangler dev.                                                                                                                                                                          |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `binding` | string | Yes | The variable name available on `env`. For example, `"AI_SEARCH"` makes it accessible as `env.AI_SEARCH`. |
+| `namespace` | string | Yes | The [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to bind to. A `default` namespace is created automatically for every account. If the namespace does not exist, Wrangler creates it on deploy. |
+| `remote` | boolean | No | Set to `true` for local development with `wrangler dev`. |
 
 ### Instance binding
 
@@ -83,11 +83,11 @@ binding = "MY_SEARCH"
 instance_name = "my-instance"
 ```
 
-| Field          | Type    | Required | Description                                                                                          |
-| -------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------- |
-| binding        | string  | Yes      | The variable name available on env. For example, "MY\_SEARCH" makes it accessible as env.MY\_SEARCH. |
-| instance\_name | string  | Yes      | The name of the AI Search instance. Must exist in the default namespace at deploy time.              |
-| remote         | boolean | No       | Set to true for local development with wrangler dev.                                                 |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `binding` | string | Yes | The variable name available on `env`. For example, `"MY_SEARCH"` makes it accessible as `env.MY_SEARCH`. |
+| `instance_name` | string | Yes | The name of the AI Search instance. Must exist in the default namespace at deploy time. |
+| `remote` | boolean | No | Set to `true` for local development with `wrangler dev`. |
 
 ## Instance methods
 
@@ -113,12 +113,10 @@ const results = await instance.search({
 
 An array of message objects representing the conversation. Each message has a `role` and `content` field.
 
-* `role` `string` required
-
-  * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-* `content` `string` required
-
-  * The content of the message.
+- `role` `string` required
+  - The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
+- `content` `string` required
+  - The content of the message.
 
 ---
 
@@ -132,94 +130,72 @@ A simple text query string. Alternative to `messages`. Provide either `query` or
 
 Configuration options for the search operation.
 
-* `retrieval` `object` optional
-
-  * `retrieval_type` `string` optional
-
-    * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
-  * `match_threshold` `number` optional
-
-    * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
-  * `max_num_results` `integer` optional
-
-    * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
-  * `filters` `object` optional
-
-    * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
-  * `context_expansion` `integer` optional
-
-    * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
-  * `fusion_method` `string` optional
-
-    * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
-  * `keyword_match_mode` `string` optional
-
-    * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
-  * `boost_by` `array` optional
-
-    * Boost results by metadata fields. Maximum 3 items. Each item has:
-      * `field` `string` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
-      * `direction` `string` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
-  * `metadata_only` `boolean` optional
-
-    * Return only metadata for each chunk without the text content.
-  * `return_on_failure` `boolean` optional
-
-    * Whether to return partial results if some processing steps fail. Defaults to `true`.
-* `query_rewrite` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Rewrites the query to improve retrieval accuracy. Defaults to `false`.
-  * `model` `string` optional
-
-    * The model to use for query rewriting.
-  * `rewrite_prompt` `string` optional
-
-    * A custom prompt to guide query rewriting.
-* `reranking` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
-  * `model` `string` optional
-
-    * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
-  * `match_threshold` `number` optional
-
-    * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
-* `cache` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Override the instance-level cache setting for this request.
-  * `cache_threshold` `string` optional
-
-    * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
+- `retrieval` `object` optional
+  - `retrieval_type` `string` optional
+    - The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
+  - `match_threshold` `number` optional
+    - The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
+  - `max_num_results` `integer` optional
+    - The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
+  - `filters` `object` optional
+    - Filter search results based on metadata. Supports comparison filters ( `eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters ( `and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
+  - `context_expansion` `integer` optional
+    - The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
+  - `fusion_method` `string` optional
+    - Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
+  - `keyword_match_mode` `string` optional
+    - Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
+  - `boost_by` `array` optional
+    - Boost results by metadata fields. Maximum 3 items. Each item has:
+      - `field` `string` required - The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
+      - `direction` `string` optional - The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
+  - `metadata_only` `boolean` optional
+    - Return only metadata for each chunk without the text content.
+  - `return_on_failure` `boolean` optional
+    - Whether to return partial results if some processing steps fail. Defaults to `true`.
+- `query_rewrite` `object` optional
+  - `enabled` `boolean` optional
+    - Rewrites the query to improve retrieval accuracy. Defaults to `false`.
+  - `model` `string` optional
+    - The model to use for query rewriting.
+  - `rewrite_prompt` `string` optional
+    - A custom prompt to guide query rewriting.
+- `reranking` `object` optional
+  - `enabled` `boolean` optional
+    - Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
+  - `model` `string` optional
+    - The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
+  - `match_threshold` `number` optional
+    - The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
+- `cache` `object` optional
+  - `enabled` `boolean` optional
+    - Override the instance-level cache setting for this request.
+  - `cache_threshold` `string` optional
+    - The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
 
 #### Response
 
 The response contains the following fields:
 
-| Field                                        | Type   | Description                                                                          |
-| -------------------------------------------- | ------ | ------------------------------------------------------------------------------------ |
-| search\_query                                | string | The query used for the search, which may be rewritten if query rewriting is enabled. |
-| chunks                                       | array  | An array of matching content chunks.                                                 |
-| chunks\[\].id                                | string | The unique identifier for the chunk.                                                 |
-| chunks\[\].type                              | string | The type of content, typically text.                                                 |
-| chunks\[\].score                             | number | The overall match score between 0 and 1.                                             |
-| chunks\[\].text                              | string | The text content of the chunk.                                                       |
-| chunks\[\].item                              | object | Information about the source item.                                                   |
-| chunks\[\].item.key                          | string | The file path or URL of the source document.                                         |
-| chunks\[\].item.timestamp                    | number | Unix timestamp of when the item was last modified.                                   |
-| chunks\[\].item.metadata                     | object | Custom metadata associated with the source item.                                     |
-| chunks\[\].scoring\_details                  | object | Breakdown of how the chunk was scored.                                               |
-| chunks\[\].scoring\_details.vector\_score    | number | The semantic similarity score (0 to 1).                                              |
-| chunks\[\].scoring\_details.keyword\_score   | number | The keyword (BM25) match score. Present when using hybrid or keyword retrieval.      |
-| chunks\[\].scoring\_details.keyword\_rank    | number | The keyword rank position.                                                           |
-| chunks\[\].scoring\_details.vector\_rank     | number | The vector rank position.                                                            |
-| chunks\[\].scoring\_details.reranking\_score | number | The reranking score (0 to 1). Present when reranking is enabled.                     |
-| chunks\[\].scoring\_details.fusion\_method   | string | The fusion method used (rrf or max). Present when using hybrid retrieval.            |
+| Field | Type | Description |
+| --- | --- | --- |
+| `search_query` | string | The query used for the search, which may be rewritten if query rewriting is enabled. |
+| `chunks` | array | An array of matching content chunks. |
+| `chunks[].id` | string | The unique identifier for the chunk. |
+| `chunks[].type` | string | The type of content, typically `text`. |
+| `chunks[].score` | number | The overall match score between 0 and 1. |
+| `chunks[].text` | string | The text content of the chunk. |
+| `chunks[].item` | object | Information about the source item. |
+| `chunks[].item.key` | string | The file path or URL of the source document. |
+| `chunks[].item.timestamp` | number | Unix timestamp of when the item was last modified. |
+| `chunks[].item.metadata` | object | Custom metadata associated with the source item. |
+| `chunks[].scoring_details` | object | Breakdown of how the chunk was scored. |
+| `chunks[].scoring_details.vector_score` | number | The semantic similarity score (0 to 1). |
+| `chunks[].scoring_details.keyword_score` | number | The keyword (BM25) match score. Present when using hybrid or keyword retrieval. |
+| `chunks[].scoring_details.keyword_rank` | number | The keyword rank position. |
+| `chunks[].scoring_details.vector_rank` | number | The vector rank position. |
+| `chunks[].scoring_details.reranking_score` | number | The reranking score (0 to 1). Present when reranking is enabled. |
+| `chunks[].scoring_details.fusion_method` | string | The fusion method used (`rrf` or `max`). Present when using hybrid retrieval. |
 
 ### `chatCompletions()`
 
@@ -273,12 +249,10 @@ When `stream` is enabled, the method returns a `ReadableStream` of SSE events. E
 
 An array of message objects representing the conversation. Each message has a `role` and `content` field.
 
-* `role` `string` required
-
-  * The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-* `content` `string` required
-
-  * The content of the message.
+- `role` `string` required
+  - The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
+- `content` `string` required
+  - The content of the message.
 
 ---
 
@@ -298,87 +272,65 @@ Returns a stream of results as they are generated. When enabled, returns a `Resp
 
 Configuration options for the search and generation operation.
 
-* `retrieval` `object` optional
-
-  * `retrieval_type` `string` optional
-
-    * The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
-  * `match_threshold` `number` optional
-
-    * The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
-  * `max_num_results` `integer` optional
-
-    * The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
-  * `filters` `object` optional
-
-    * Filter search results based on metadata. Supports comparison filters (`eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters (`and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
-  * `context_expansion` `integer` optional
-
-    * The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
-  * `fusion_method` `string` optional
-
-    * Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
-  * `keyword_match_mode` `string` optional
-
-    * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
-  * `boost_by` `array` optional
-
-    * Boost results by metadata fields. Maximum 3 items. Each item has:
-      * `field` `string` required \- The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
-      * `direction` `string` optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
-  * `metadata_only` `boolean` optional
-
-    * Return only metadata for each chunk without the text content.
-  * `return_on_failure` `boolean` optional
-
-    * Whether to return partial results if some processing steps fail. Defaults to `true`.
-* `query_rewrite` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Rewrites the query to improve retrieval accuracy. Defaults to `false`.
-  * `model` `string` optional
-
-    * The model to use for query rewriting.
-  * `rewrite_prompt` `string` optional
-
-    * A custom prompt to guide query rewriting.
-* `reranking` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
-  * `model` `string` optional
-
-    * The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
-  * `match_threshold` `number` optional
-
-    * The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
-* `cache` `object` optional
-
-  * `enabled` `boolean` optional
-
-    * Override the instance-level cache setting for this request.
-  * `cache_threshold` `string` optional
-
-    * The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
+- `retrieval` `object` optional
+  - `retrieval_type` `string` optional
+    - The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
+  - `match_threshold` `number` optional
+    - The minimum match score required for a result to be considered a match. Must be between `0` and `1`. Defaults to `0.4`.
+  - `max_num_results` `integer` optional
+    - The maximum number of results to return. Must be between `1` and `50`. Defaults to `10`.
+  - `filters` `object` optional
+    - Filter search results based on metadata. Supports comparison filters ( `eq`, `ne`, `gt`, `gte`, `lt`, `lte`) and compound filters ( `and`, `or`). For more details, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
+  - `context_expansion` `integer` optional
+    - The number of surrounding chunks to include for additional context. Must be between `0` and `3`. Defaults to `0`.
+  - `fusion_method` `string` optional
+    - Controls how vector and keyword scores are combined when using hybrid retrieval. Valid values: `rrf` (Reciprocal Rank Fusion), `max` (takes the maximum score). Defaults to the instance-level setting.
+  - `keyword_match_mode` `string` optional
+    - Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
+  - `boost_by` `array` optional
+    - Boost results by metadata fields. Maximum 3 items. Each item has:
+      - `field` `string` required - The metadata field name to boost by (for example, `timestamp`). Maximum 64 characters.
+      - `direction` `string` optional - The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`. Defaults to `asc` for numeric fields and `exists` for text fields.
+  - `metadata_only` `boolean` optional
+    - Return only metadata for each chunk without the text content.
+  - `return_on_failure` `boolean` optional
+    - Whether to return partial results if some processing steps fail. Defaults to `true`.
+- `query_rewrite` `object` optional
+  - `enabled` `boolean` optional
+    - Rewrites the query to improve retrieval accuracy. Defaults to `false`.
+  - `model` `string` optional
+    - The model to use for query rewriting.
+  - `rewrite_prompt` `string` optional
+    - A custom prompt to guide query rewriting.
+- `reranking` `object` optional
+  - `enabled` `boolean` optional
+    - Reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
+  - `model` `string` optional
+    - The reranking model to use. Valid value: `@cf/baai/bge-reranker-base`.
+  - `match_threshold` `number` optional
+    - The minimum score for reranked results. Must be between `0` and `1`. Defaults to `0.4`.
+- `cache` `object` optional
+  - `enabled` `boolean` optional
+    - Override the instance-level cache setting for this request.
+  - `cache_threshold` `string` optional
+    - The similarity threshold for cache hits. Valid values: `super_strict_match`, `close_enough`, `flexible_friend`, `anything_goes`.
 
 #### Response (non-streaming)
 
-| Field                       | Type   | Description                                                                         |
-| --------------------------- | ------ | ----------------------------------------------------------------------------------- |
-| id                          | string | Unique identifier for the completion.                                               |
-| object                      | string | Always chat.completion.                                                             |
-| created                     | number | Unix timestamp of when the completion was created.                                  |
-| model                       | string | The model used to generate the response.                                            |
-| choices                     | array  | Array of completion choices.                                                        |
-| choices\[\].message.role    | string | Always assistant.                                                                   |
-| choices\[\].message.content | string | The generated response text.                                                        |
-| choices\[\].finish\_reason  | string | Why the model stopped generating. Typically stop.                                   |
-| usage.prompt\_tokens        | number | Number of tokens in the prompt.                                                     |
-| usage.completion\_tokens    | number | Number of tokens in the generated response.                                         |
-| usage.total\_tokens         | number | Total tokens used.                                                                  |
-| chunks                      | array  | The source chunks used as context. Same format as the [search response](#response). |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string | Unique identifier for the completion. |
+| `object` | string | Always `chat.completion`. |
+| `created` | number | Unix timestamp of when the completion was created. |
+| `model` | string | The model used to generate the response. |
+| `choices` | array | Array of completion choices. |
+| `choices[].message.role` | string | Always `assistant`. |
+| `choices[].message.content` | string | The generated response text. |
+| `choices[].finish_reason` | string | Why the model stopped generating. Typically `stop`. |
+| `usage.prompt_tokens` | number | Number of tokens in the prompt. |
+| `usage.completion_tokens` | number | Number of tokens in the generated response. |
+| `usage.total_tokens` | number | Total tokens used. |
+| `chunks` | array | The source chunks used as context. Same format as the [search response](#response). |
 
 #### Response (streaming)
 
@@ -420,19 +372,19 @@ const results = await env.AI_SEARCH.search({
 
 Same as [instance-level search](#parameters), with one additional required field:
 
-| Parameter                         | Type   | Required | Description                                           |
-| --------------------------------- | ------ | -------- | ----------------------------------------------------- |
-| ai\_search\_options               | object | Yes      | Required for namespace-level search.                  |
-| ai\_search\_options.instance\_ids | array  | Yes      | Instance IDs to search across. Minimum 1, maximum 10. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ai_search_options` | object | Yes | Required for namespace-level search. |
+| `ai_search_options.instance_ids` | array | Yes | Instance IDs to search across. Minimum 1, maximum 10. |
 
 #### Response
 
 Same as [instance-level search](#response), with additional fields:
 
-| Field                   | Type   | Description                                                                            |
-| ----------------------- | ------ | -------------------------------------------------------------------------------------- |
-| chunks\[\].instance\_id | string | The instance this chunk came from.                                                     |
-| errors                  | array  | Per-instance errors if any instances failed. Each object has instance\_id and message. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `chunks[].instance_id` | string | The instance this chunk came from. |
+| `errors` | array | Per-instance errors if any instances failed. Each object has `instance_id` and `message`. |
 
 ### `chatCompletions()`
 
@@ -453,19 +405,19 @@ Streaming is supported with `stream: true`.
 
 Same as [instance-level chat completions](#parameters-1), with one additional required field:
 
-| Parameter                         | Type   | Required | Description                                           |
-| --------------------------------- | ------ | -------- | ----------------------------------------------------- |
-| ai\_search\_options               | object | Yes      | Required for namespace-level chat completions.        |
-| ai\_search\_options.instance\_ids | array  | Yes      | Instance IDs to search across. Minimum 1, maximum 10. |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `ai_search_options` | object | Yes | Required for namespace-level chat completions. |
+| `ai_search_options.instance_ids` | array | Yes | Instance IDs to search across. Minimum 1, maximum 10. |
 
 #### Response
 
 Same as [instance-level chat completions](#response-non-streaming), with additional fields on each chunk:
 
-| Field                   | Type   | Description                                                                            |
-| ----------------------- | ------ | -------------------------------------------------------------------------------------- |
-| chunks\[\].instance\_id | string | The instance this chunk came from.                                                     |
-| errors                  | array  | Per-instance errors if any instances failed. Each object has instance\_id and message. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `chunks[].instance_id` | string | The instance this chunk came from. |
+| `errors` | array | Per-instance errors if any instances failed. Each object has `instance_id` and `message`. |
 
 ## Local development
 

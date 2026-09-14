@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Messengers
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/messengers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/messengers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use messengers when a Think agent should receive and reply to Chat SDK webhooks directly. Think owns the webhook route, durable reply fiber, conversation routing, and streamed delivery back to the provider.
 

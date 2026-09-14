@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Email sending quotas, rate limits, and how to request higher limits for production use
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) unless noted otherwise.
 
@@ -32,30 +32,30 @@ Sends to verified destination addresses are always free: they do not count towar
 
 ## Email content limits
 
-| Component                    | Limit          | Notes                                                                                                                                                   |
-| ---------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Recipients (to, cc, bcc)** | 50 per email   | Combined across all recipient fields                                                                                                                    |
-| **Subject line**             | 998 characters | RFC 5322 compliant                                                                                                                                      |
-| **Total message size**       | 5 MiB          | Including attachments                                                                                                                                   |
-| **Total message size**       | 25 MiB         | For [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) only |
-| **Header size**              | 16 KB          | All custom headers combined                                                                                                                             |
+| Component | Limit | Notes |
+| --- | --- | --- |
+| **Recipients (to, cc, bcc)** | 50 per email | Combined across all recipient fields |
+| **Subject line** | 998 characters | RFC 5322 compliant |
+| **Total message size** | 5 MiB | Including attachments |
+| **Total message size** | 25 MiB | For [verified destination addresses](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses) only |
+| **Header size** | 16 KB | All custom headers combined |
 
 ## Zone limits
 
-| Limit                | Value | Notes                                                                                                        |
-| -------------------- | ----- | ------------------------------------------------------------------------------------------------------------ |
-| **Domains per zone** | 30    | Combined total of domains configured for Email Routing or Email Sending in a zone, including the apex domain |
+| Limit | Value | Notes |
+| --- | --- | --- |
+| **Domains per zone** | 30 | Combined total of domains configured for Email Routing or Email Sending in a zone, including the apex domain |
 
 ## Email Routing limits
 
 The following limits apply to inbound email handled by Email Routing.
 
-| Limit                                 | Value  | Notes                                                                                                    |
-| ------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------- |
-| **Routing rules per domain**          | 200    | Each rule maps an email pattern to a destination                                                         |
-| **Destination addresses per account** | 200    | Verified destination addresses are shared across all domains in the account                              |
-| **Inbound message size**              | 25 MiB | Messages larger than this are rejected                                                                   |
-| **Reply References entries**          | 100    | If the incoming email has more than 100 References entries, message.reply() throws. Reduces reply loops. |
+| Limit | Value | Notes |
+| --- | --- | --- |
+| **Routing rules per domain** | 200 | Each rule maps an email pattern to a destination |
+| **Destination addresses per account** | 200 | Verified destination addresses are shared across all domains in the account |
+| **Inbound message size** | 25 MiB | Messages larger than this are rejected |
+| **Reply `References` entries** | 100 | If the incoming email has more than 100 `References` entries, `message.reply()` throws. Reduces reply loops. |
 
 Each routing rule maps one email pattern to one destination address or one Worker. To forward a single email pattern to multiple destinations, use a Worker that calls `forward()` once per destination. All destinations must be verified beforehand.
 
@@ -71,11 +71,11 @@ Emails sent from a Worker using the `send_email` binding appear in the Email Rou
 
 All email sending must follow applicable anti-spam laws and regulations to maintain good standing and deliverability.
 
-* **CAN-SPAM Act** (United States)
-* **GDPR** (European Union)
-* **CASL** (Canada)
-* Include proper unsubscribe mechanisms
-* Honor opt-out requests promptly
+- **CAN-SPAM Act** (United States)
+- **GDPR** (European Union)
+- **CASL** (Canada)
+- Include proper unsubscribe mechanisms
+- Honor opt-out requests promptly
 
 Need a higher limit?
 

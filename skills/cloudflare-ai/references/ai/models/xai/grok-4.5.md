@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.5`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).
 
-| Model Info                                                                          |                                                                                                                |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens                                                                                                 |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                       |
-| More information                                                                    | [link ↗](https://docs.x.ai/developers/models/grok-4.5)                                                         |
-| Zero data retention                                                                 | Yes                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service-enterprise) |
+| More information | [link ↗](https://docs.x.ai/developers/models/grok-4.5) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.5) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **First Law (Conservation of Energy):**
 The total energy of an isolated system is constant. Energy can be transformed from one form to another (e.g., heat into work) but cannot be created or destroyed. For a closed thermodynamic system this is commonly expressed as
 \[
@@ -79,6 +80,7 @@ As the temperature of a system approaches absolute zero (0 K), the entropy appro
 (Note: A “zeroth” law is also recognized—systems in thermal equilibrium with a third system are in equilibrium with each other, defining temperature—but it is not counted among the classical three laws.)
 
 These laws form the foundation of classical thermodynamics and constrain all macroscopic energy-conversion processes.
+```
 
 ```json
 {
@@ -127,7 +129,11 @@ These laws form the foundation of classical thermodynamics and constrain all mac
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -161,6 +167,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, use the built-in `json` module:
 
 ```python
@@ -197,6 +204,7 @@ except FileNotFoundError:
 except json.JSONDecodeError as e:
     print(f"Invalid JSON: {e}")
 ```
+````
 
 ```json
 {
@@ -243,7 +251,13 @@ except json.JSONDecodeError as e:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -291,6 +305,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **Great choice—there are tons of excellent stops depending on whether you take the faster inland route (I-5, ~5–6 hours) or the scenic coastal route (Highway 1 / Pacific Coast Highway, ~8–10+ hours with stops).**
 
 Most people planning a fun road trip prefer the **coastal route** for the views and variety. Here are some of the best places to stop (roughly north to south):
@@ -325,6 +340,7 @@ Most people planning a fun road trip prefer the **coastal route** for the views 
 - Check road conditions—Hwy 1 in Big Sur occasionally has closures due to slides.
 
 **What kind of trip are you aiming for?** (e.g., scenic/nature-focused, food & wine, beaches, family-friendly, one long day vs. overnight, any must-sees or avoidances like crowds?) Also, roughly how many days/hours do you have, and any interests (hiking, photography, history, kids, etc.)? I can refine a sample itinerary or map out timing from there.
+```
 
 ```json
 {
@@ -371,7 +387,13 @@ Most people planning a fun road trip prefer the **coastal route** for the views 
 }
 ```
 
-**Coding with Low Reasoning Effort** — Setting a lower reasoning effort for a fast, low-latency response
+</details>
+
+<details>
+
+<summary>**Coding with Low Reasoning Effort** — Setting a lower reasoning effort for a fast, low-latency response</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -408,6 +430,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 ```js
 function median(a) {
   if (!Array.isArray(a) || a.length === 0) return undefined;
@@ -426,6 +449,7 @@ function median(a) {
    - For even length the conventional median is the average of the two central elements, not a single one.
 3. **In-place mutation** – `sort()` changes the caller’s array; a shallow copy avoids that.
 4. Empty / non-array input is now handled safely.
+````
 
 ```json
 {
@@ -472,7 +496,13 @@ function median(a) {
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -505,6 +535,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a programming technique where a function calls itself to solve a smaller instance of the same problem, until it reaches a simple stopping condition.
 
 ### Core Idea
@@ -559,6 +590,7 @@ Each call reduces \( n \) by 1, guaranteed to eventually hit the base case. The 
 - Recursion is elegant for problems with natural recursive structure (trees, divide-and-conquer, factorial, Fibonacci, etc.), but deep recursion can cause stack overflows—iteration or tail-call optimization can be alternatives when needed.
 
 This pattern (base case + recursive case that shrinks the problem) is the essence of recursion.
+````
 
 ```json
 [
@@ -9569,7 +9601,13 @@ This pattern (base case + recursive case that shrinks the problem) is the essenc
 ]
 ```
 
-**Image Understanding** — Analyze an image supplied alongside a text prompt
+</details>
+
+<details>
+
+<summary>**Image Understanding** — Analyze an image supplied alongside a text prompt</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -9621,7 +9659,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 A smiling young woman with dark hair pulled back, wearing a blue knit sweater and multiple rings, holds a small fuzzy microphone while posing in a cozy indoor room with warm lighting, a framed photo collage on the wall, and decorative elements like a plant and artwork.
+```
 
 ```json
 {
@@ -9668,7 +9708,13 @@ A smiling young woman with dark hair pulled back, wearing a blue knit sweater an
 }
 ```
 
-**Function Calling** — Force the model to return a typed function call
+</details>
+
+<details>
+
+<summary>**Function Calling** — Force the model to return a typed function call</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -9746,7 +9792,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 I'll check the current temperature in San Francisco for you.
+```
 
 ```json
 {
@@ -9803,7 +9851,13 @@ I'll check the current temperature in San Francisco for you.
 }
 ```
 
-**Structured Output** — Constrain the response to a JSON schema
+</details>
+
+<details>
+
+<summary>**Structured Output** — Constrain the response to a JSON schema</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -9881,7 +9935,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 {"confidence":0.95,"sentiment":"positive"}
+```
 
 ```json
 {
@@ -9928,9 +9984,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredminItems: 1maxItems: 500
 
@@ -10022,7 +10080,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -10048,9 +10106,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-output.json)
 
 Was this helpful?
 

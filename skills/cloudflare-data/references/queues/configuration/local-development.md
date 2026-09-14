@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Development
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Queues support local development workflows using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Wrangler runs the same version of Queues as Cloudflare runs globally.
 
@@ -20,9 +20,9 @@ Queues support local development workflows using [Wrangler](https://developers.c
 
 To develop locally with Queues, you will need:
 
-* [Wrangler v3.1.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
-* Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
-* If you are new to Queues and/or Cloudflare Workers, refer to the [Queues tutorial](https://developers.cloudflare.com/queues/get-started/) to install `wrangler` and deploy their first Queue.
+- [Wrangler v3.1.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
+- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
+- If you are new to Queues and/or Cloudflare Workers, refer to the [Queues tutorial](https://developers.cloudflare.com/queues/get-started/) to install `wrangler` and deploy their first Queue.
 
 ## Start a local development session
 
@@ -40,9 +40,9 @@ Your worker has access to the following bindings:
 - Queues: <QUEUE-NAME>
 ```
 
-Local development sessions create a standalone, local-only environment that mirrors the production environment Queues runs in so you can test your Workers _before_ you deploy to production.
+Local development sessions create a standalone, local-only environment that mirrors the production environment Queues runs in so you can test your Workers *before* you deploy to production.
 
-Refer to the [wrangler dev documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
+Refer to the [`wrangler dev` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
 
 ## Separating producer & consumer Workers
 
@@ -77,7 +77,7 @@ Note
 
 ## Known Issues
 
-* Queues does not support Wrangler remote mode (`wrangler dev --remote`).
+- Queues does not support Wrangler remote mode ( `wrangler dev --remote`).
 
 Was this helpful?
 

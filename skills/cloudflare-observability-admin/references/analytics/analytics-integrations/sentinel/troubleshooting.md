@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this guide to resolve common issues when integrating Cloudflare logs with [Microsoft Sentinel](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/) through the Codeless Connector Framework (CCF).
 
@@ -29,15 +29,20 @@ Cloudflare Support can guide you through these checks but cannot access or modif
 **Fix:**
 
 1. Confirm that the `Microsoft.SecurityInsights` resource provider is registered on your subscription:
-```sh
-az provider show --namespace Microsoft.SecurityInsights --query "{state:registrationState}"
-```
-The output should return `"state": "Registered"`.
+
+   ```sh
+   az provider show --namespace Microsoft.SecurityInsights --query "{state:registrationState}"
+   ```
+
+   The output should return `"state": "Registered"`.
 2. In an **InPrivate/Incognito** browser session, sign in as a user holding one of these Microsoft Entra roles: **Privileged Role Administrator**, **Cloud Application Administrator**, **AI Administrator**, or **Application Administrator**.
 3. Open the direct tenant-wide admin consent URL for the Microsoft-managed application (App ID `4f05ce56-95b6-4612-9d98-a45c8cc33f9f`), replacing `{tenant-id}` with your Entra tenant ID:
-```txt
-https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id=4f05ce56-95b6-4612-9d98-a45c8cc33f9f
-```
+
+   ```txt
+   https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id=4f05ce56-95b6-4612-9d98-a45c8cc33f9f
+   ```
+
+
 4. Complete the consent flow, including any MFA challenge.
 
 **Verify:** Refresh the Cloudflare connector configuration page in Microsoft Sentinel. The **Service Principal ID** field should populate automatically, and the **Grant tenant-wide admin consent** button should no longer be displayed. Retry the connector deployment.
@@ -60,14 +65,16 @@ A less common variant of this error occurs when the `Microsoft.EventGrid` resour
 
 1. Confirm that both resources are co-located in the same Azure subscription and the same resource group. If they are not, redeploy or migrate them so they share both.
 2. Register the required resource providers on the target subscription:
-```sh
-az provider register --namespace Microsoft.SecurityInsights
-az provider register --namespace Microsoft.EventGrid
-```
-3. After deployment, confirm that the Microsoft-managed service principal holds these role assignments on the Storage account:
 
-  * `Storage Blob Data Reader`
-  * `Storage Queue Data Contributor`
+   ```sh
+   az provider register --namespace Microsoft.SecurityInsights
+   az provider register --namespace Microsoft.EventGrid
+   ```
+
+
+3. After deployment, confirm that the Microsoft-managed service principal holds these role assignments on the Storage account:
+   - `Storage Blob Data Reader`
+   - `Storage Queue Data Contributor`
 4. Confirm that the Storage account's networking configuration allows the connector to access the Azure Storage Queue.
 
 **Verify:** Redeploy the connector. The Deployments blade should show status **Succeeded**, and the connector should transition to **Connected**.
@@ -89,16 +96,22 @@ different types.
 
 1. Download the latest `CloudflareV2_CL.json` schema definition from the Cloudflare CCF connector solution package (available in the [Microsoft Sentinel Content Hub ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)) and upload it to your Cloud Shell session.
 2. Request an Azure Resource Manager access token:
-```sh
-az account get-access-token --resource https://management.azure.com/
-```
+
+   ```sh
+   az account get-access-token --resource https://management.azure.com/
+   ```
+
+
 3. Apply the updated table schema, replacing the placeholders with your values:
-```sh
-az rest --method PUT \
-  --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/tables/CloudflareV2_CL?api-version=2025-07-01" \
-  --headers "Authorization=Bearer <access-token>" "Content-Type=application/json" \
-  --body @CloudflareV2_CL.json
-```
+
+   ```sh
+   az rest --method PUT \
+     --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/tables/CloudflareV2_CL?api-version=2025-07-01" \
+     --headers "Authorization=Bearer <access-token>" "Content-Type=application/json" \
+     --body @CloudflareV2_CL.json
+   ```
+
+
 
 **Verify:** The command returns the updated table definition as JSON. Redeploy the Cloudflare CCF connector — the deployment should complete without a schema validation error.
 
@@ -106,21 +119,23 @@ az rest --method PUT \
 
 **Cause:** The Data Collection Rule (DCR) schema is out of sync with the Cloudflare Logpush schema being delivered. Two variants are common:
 
-* **Datatype mismatch:** A field is declared with the wrong Sentinel datatype in the DCR `streamDeclarations` — for example, a numeric field declared as `string`, or a variable-shape field such as `BotDetectionIDs` declared as anything other than `dynamic`. The record is ingested, but the mismatched column is populated with `null`.
-* **Reserved column name conflict:** A Cloudflare field name collides with a [Microsoft Sentinel reserved column name ↗](https://learn.microsoft.com/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#add-or-delete-a-custom-column). For example, the Cloudflare Network Error Logging (NEL) dataset contains a `Type` field, but `Type` is reserved in Sentinel. Fields with reserved names cannot be stored under their original name.
+- **Datatype mismatch:** A field is declared with the wrong Sentinel datatype in the DCR `streamDeclarations` — for example, a numeric field declared as `string`, or a variable-shape field such as `BotDetectionIDs` declared as anything other than `dynamic`. The record is ingested, but the mismatched column is populated with `null`.
+- **Reserved column name conflict:** A Cloudflare field name collides with a [Microsoft Sentinel reserved column name ↗](https://learn.microsoft.com/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#add-or-delete-a-custom-column). For example, the Cloudflare Network Error Logging (NEL) dataset contains a `Type` field, but `Type` is reserved in Sentinel. Fields with reserved names cannot be stored under their original name.
 
 **Fix:**
 
 1. Upgrade the Cloudflare CCF solution to the latest version from the [Microsoft Sentinel Content Hub ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview). New releases progressively correct field datatypes shipped by the connector and add support for new Cloudflare Logpush fields.
 2. If missing fields persist after upgrading — for example, because the DCR has been customized — apply a manual fix:
-  * **For datatype mismatches:** Update the field's datatype in both the DCR `streamDeclarations` and the `CloudflareV2_CL` table definition to match the Cloudflare Logpush schema (for example, `real` for floating-point values such as `EdgeResponseCompressionRatio`, or `dynamic` for `BotDetectionIDs`).
-  * **For reserved name conflicts:** Rename the field in the DCR `transformKql` transformation and add the renamed column to the `CloudflareV2_CL` table definition. For example, to preserve the NEL `Type` value:
-  ```kusto
-  source
-| extend NELType = Type
-| project-away Type
-  ```
-  Add a `NELType` column to `CloudflareV2_CL` with datatype `string`.
+   - **For datatype mismatches:** Update the field's datatype in both the DCR `streamDeclarations` and the `CloudflareV2_CL` table definition to match the Cloudflare Logpush schema (for example, `real` for floating-point values such as `EdgeResponseCompressionRatio`, or `dynamic` for `BotDetectionIDs`).
+   - **For reserved name conflicts:** Rename the field in the DCR `transformKql` transformation and add the renamed column to the `CloudflareV2_CL` table definition. For example, to preserve the NEL `Type` value:
+
+     ```kusto
+     source
+     | extend NELType = Type
+     | project-away Type
+     ```
+
+     Add a `NELType` column to `CloudflareV2_CL` with datatype `string`.
 
 **Verify:** Send a fresh Logpush batch and query `CloudflareV2_CL` for the affected fields. Values should now be populated and no longer `null`.
 
@@ -142,10 +157,10 @@ The Cloudflare workbook shipped with the CCF solution loads but shows no data, o
 
 If your issue is not covered here:
 
-* Consult the [Cloudflare CCF solution page ↗](https://azuremarketplace.microsoft.com/marketplace/apps/cloudflare.azure-sentinel-solution-cloudflare-ccf) on the Azure Marketplace for the latest solution version and deployment prerequisites.
-* Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your DCR or table definitions.
-* [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
-* Contact Microsoft Support for issues isolated to Microsoft Azure or the Microsoft Sentinel CCF environment.
+- Consult the [Cloudflare CCF solution page ↗](https://azuremarketplace.microsoft.com/marketplace/apps/cloudflare.azure-sentinel-solution-cloudflare-ccf) on the Azure Marketplace for the latest solution version and deployment prerequisites.
+- Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your DCR or table definitions.
+- [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
+- Contact Microsoft Support for issues isolated to Microsoft Azure or the Microsoft Sentinel CCF environment.
 
 Was this helpful?
 

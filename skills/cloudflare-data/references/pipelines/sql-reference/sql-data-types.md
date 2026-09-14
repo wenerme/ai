@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL data types
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pipelines supports a set of primitive and composite data types for SQL transformations. These types can be used in stream schemas and SQL literals with automatic type inference.
 
 ## Primitive types
 
-| Pipelines | SQL Types                   | Example Literals                                 |
-| --------- | --------------------------- | ------------------------------------------------ |
-| bool      | BOOLEAN                     | TRUE, FALSE                                      |
-| int32     | INT, INTEGER                | 0, 1, \-2                                        |
-| int64     | BIGINT                      | 0, 1, \-2                                        |
-| float32   | FLOAT, REAL                 | 0.0, \-2.4, 1E-3                                 |
-| float64   | DOUBLE                      | 0.0, \-2.4, 1E-35                                |
-| string    | VARCHAR, CHAR, TEXT, STRING | "hello", "world"                                 |
-| timestamp | TIMESTAMP                   | '2020-01-01', '2023-05-17T22:16:00.648662+00:00' |
-| binary    | BYTEA                       | X'A123' (hex)                                    |
-| json      | JSON                        | '{"event": "purchase", "amount": 29.99}'         |
+| Pipelines | SQL Types | Example Literals |
+| --- | --- | --- |
+| `bool` | `BOOLEAN` | `TRUE`, `FALSE` |
+| `int32` | `INT`, `INTEGER` | `0`, `1`, `-2` |
+| `int64` | `BIGINT` | `0`, `1`, `-2` |
+| `float32` | `FLOAT`, `REAL` | `0.0`, `-2.4`, `1E-3` |
+| `float64` | `DOUBLE` | `0.0`, `-2.4`, `1E-35` |
+| `string` | `VARCHAR`, `CHAR`, `TEXT`, `STRING` | `"hello"`, `"world"` |
+| `timestamp` | `TIMESTAMP` | `'2020-01-01'`, `'2023-05-17T22:16:00.648662+00:00'` |
+| `binary` | `BYTEA` | `X'A123'` (hex) |
+| `json` | `JSON` | `'{"event": "purchase", "amount": 29.99}'` |
 
 ## Composite types
 

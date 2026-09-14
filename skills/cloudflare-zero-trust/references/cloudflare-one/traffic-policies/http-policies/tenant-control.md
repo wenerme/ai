@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Modify HTTP request headers in Gateway
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway HTTP policies with Allow actions can modify the headers of matching requests before they reach their destination. You can add dynamic values to set headers to forward information like user identity, source IP, and other inputs to upstream services, enforce SaaS tenant control, strip internal headers, override header content.
 
@@ -22,9 +22,9 @@ Header manipulation requires [TLS decryption](https://developers.cloudflare.com/
 
 Gateway supports three header operations on HTTP policies. When a request matches an Allow policy with header operations configured, Gateway applies them in the following order:
 
-1. **Delete** \- Remove headers from the request.
-2. **Overwrite** \- Overwrite headers on the request. Headers with matched names will have their values overwritten. If the header does not exist, it is created.
-3. **Add** \- Append headers to the request. If the header already exists, the added value is appended to the existing value.
+1. **Delete** - Remove headers from the request.
+2. **Overwrite** - Overwrite headers on the request. Headers with matched names will have their values overwritten. If the header does not exist, it is created.
+3. **Add** - Append headers to the request. If the header already exists, the added value is appended to the existing value.
 
 You can configure up to 20 header operations per policy. Header names are limited to 256 bytes, and header values are limited to 4 KB.
 
@@ -48,18 +48,18 @@ For example, a header value of `user-@{identity.email}` resolves to `user-jdoe@e
 
 The following dynamic variables are available:
 
-| Variable           | Description                                                      |
-| ------------------ | ---------------------------------------------------------------- |
-| @{identity.email}  | User's email address from the identity provider.                 |
-| @{identity.name}   | User's display name from the identity provider.                  |
-| @{identity.id}     | User's Cloudflare identity UUID.                                 |
-| @{identity.groups} | User's identity provider group memberships.                      |
-| @{identity.SAML}   | User's SAML attributes from the identity provider if configured. |
-| @{identity.OIDC}   | User's OIDC claims from the identity provider if configured.     |
-| @{source.ip}       | Source IP address of the user's connection as seen in Gateway.   |
-| @{destination.ip}  | Destination IP address of the request.                           |
-| @{device.id}       | Cloudflare One Client device UUID.                               |
-| @{device.posture}  | Device posture check results (serialized as a JSON string).      |
+| Variable | Description |
+| --- | --- |
+| `@{identity.email}` | User's email address from the identity provider. |
+| `@{identity.name}` | User's display name from the identity provider. |
+| `@{identity.id}` | User's Cloudflare identity UUID. |
+| `@{identity.groups}` | User's identity provider group memberships. |
+| `@{identity.SAML}` | User's SAML attributes from the identity provider if configured. |
+| `@{identity.OIDC}` | User's OIDC claims from the identity provider if configured. |
+| `@{source.ip}` | Source IP address of the user's connection as seen in Gateway. |
+| `@{destination.ip}` | Destination IP address of the request. |
+| `@{device.id}` | Cloudflare One Client device UUID. |
+| `@{device.posture}` | Device posture check results (serialized as a JSON string). |
 
 Dynamic variables require an active identity session. If Gateway cannot resolve a variable (for example, the user is not authenticated), the variable is replaced with a warning string such as `cf-unresolved` or `cf-invalid`, and a warning is added to the HTTP log.
 
@@ -69,10 +69,10 @@ Dynamic variables require an active identity session. If Gateway cannot resolve 
 
 To create an HTTP policy with header operations:
 
-1. In the [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one), go to **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. In the [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one), go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Build an expression to match the traffic you want to modify.
-4. In **Action**, select _Allow_.
+4. In **Action**, select *Allow*.
 5. Under **Modify request headers**, select **Add** or **Overwrite** to add or overwrite headers, or select **Remove** to delete a header.
 6. For Add and Overwrite operations, enter the header name and value. To use a dynamic variable, enter the `@{...}` syntax in the value field, or select the `{}` button to see the list of available values. For Remove operations, enter only the header name.
 7. Save your policy.
@@ -106,11 +106,11 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/gateway/rules \
 
 The `rule_settings` fields for header manipulation are:
 
-| Field           | Type                       | Description                                                                             |
-| --------------- | -------------------------- | --------------------------------------------------------------------------------------- |
-| add\_headers    | map<string, array<string>> | Headers to append. Each key is a header name, each value is a list of values to add.    |
-| set\_headers    | map<string, array<string>> | Headers to overwrite. Each key is a header name, each value is a list of values to set. |
-| delete\_headers | array<string>              | Header names to remove from the request.                                                |
+| Field | Type | Description |
+| --- | --- | --- |
+| `add_headers` | `map<string, array<string>>` | Headers to append. Each key is a header name, each value is a list of values to add. |
+| `set_headers` | `map<string, array<string>>` | Headers to overwrite. Each key is a header name, each value is a list of values to set. |
+| `delete_headers` | `array<string>` | Header names to remove from the request. |
 
 A single header value can contain a mix of static text and dynamic variables. For example:
 
@@ -130,11 +130,11 @@ To verify Gateway is applying a custom header:
 
 1. In your policy with custom headers, add a selector to match traffic for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests. For example:
 
-| Selector    | Operator | Value              | Logic | Action | Untrusted certificate action |
-| ----------- | -------- | ------------------ | ----- | ------ | ---------------------------- |
-| Application | in       | _Google Workspace_ | Or    | Allow  | Block                        |
-| Domain      | in       | httpbin.org        |       |        |                              |
-2. On your device, go to [httpbin.org/anything ↗](https://httpbin.org/anything). Your custom header will appear in the list of headers.
+   | Selector | Operator | Value | Logic | Action | Untrusted certificate action |
+   | --- | --- | --- | --- | --- | --- |
+   | Application | in | *Google Workspace* | Or | Allow | Block |
+   | Domain | in | `httpbin.org` |  |  |  |
+2. On your device, go to [`httpbin.org/anything` ↗](https://httpbin.org/anything). Your custom header will appear in the list of headers.
 3. (Optional) Remove the HTTPBin expression from your policy.
 
 ## Use cases
@@ -145,102 +145,150 @@ Tenant control allows your users to access corporate SaaS applications while blo
 
 Gateway implements tenant control by injecting custom HTTP headers into matching requests. These headers tell the SaaS application which tenant (organization) is authorized. If the user attempts to authenticate with a personal account, the SaaS application reads the header and rejects the request.
 
+<details>
+
+<summary>
+
 Microsoft 365
 
-Microsoft 365 tenant control requires two policies. When you order your policies, make sure they follow [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence).
+</summary>
 
-| Precedence | Selector | Operator | Value          | Action | Untrusted certificate action |
-| ---------- | -------- | -------- | -------------- | ------ | ---------------------------- |
-| 1          | Domain   | is       | login.live.com | Allow  | Block                        |
+Microsoft 365 tenant control requires two policies. When you order your policies, make sure they follow <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence">order of precedence</a>.
 
-| Custom header name                | Custom header value |
-| --------------------------------- | ------------------- |
-| Sec-Restrict-Tenant-Access-Policy | restrict-msa        |
+| Precedence | Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Domain | is | <code>login.live.com</code> | Allow | Block |
 
-| Precedence | Selector    | Operator | Value                 | Action | Untrusted certificate action |
-| ---------- | ----------- | -------- | --------------------- | ------ | ---------------------------- |
-| 2          | Application | in       | _Microsoft Office365_ | Allow  | Block                        |
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>Sec-Restrict-Tenant-Access-Policy</code> | <code>restrict-msa</code> |
 
-| Custom header name                                  | Custom header value        |
-| --------------------------------------------------- | -------------------------- |
-| Restrict-Access-To-Tenants, Restrict-Access-Context | Your organization's domain |
+| Precedence | Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Application | in | *Microsoft Office365* | Allow | Block |
 
-For more information, refer to the [Microsoft Entra ID documentation ↗](https://learn.microsoft.com/entra/identity/enterprise-apps/tenant-restrictions).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>Restrict-Access-To-Tenants</code>, <code>Restrict-Access-Context</code> | Your organization's domain |
+
+For more information, refer to the <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tenant-restrictions">Microsoft Entra ID documentation ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Google Workspace
 
-| Selector    | Operator | Value              | Action | Untrusted certificate action |
-| ----------- | -------- | ------------------ | ------ | ---------------------------- |
-| Application | in       | _Google Workspace_ | Allow  | Block                        |
+</summary>
 
-| Custom header name         | Custom header value        |
-| -------------------------- | -------------------------- |
-| X-GoogApps-Allowed-Domains | Your organization's domain |
+| Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Google Workspace* | Allow | Block |
 
-For more information, refer to the [Google Workspace documentation ↗](https://support.google.com/a/answer/1668854).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>X-GoogApps-Allowed-Domains</code> | Your organization's domain |
+
+For more information, refer to the <a href="https://support.google.com/a/answer/1668854">Google Workspace documentation ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Slack
 
-| Selector    | Operator | Value   | Action | Untrusted certificate action |
-| ----------- | -------- | ------- | ------ | ---------------------------- |
-| Application | in       | _Slack_ | Allow  | Block                        |
+</summary>
 
-| Custom header name                                               | Custom header value           |
-| ---------------------------------------------------------------- | ----------------------------- |
-| X-Slack-Allowed-Workspaces-Requester, X-Slack-Allowed-Workspaces | Your organization's workspace |
+| Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Slack* | Allow | Block |
 
-For more information, refer to the [Slack documentation ↗](https://slack.com/help/articles/360024821873-Approve-Slack-workspaces-for-your-network).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>X-Slack-Allowed-Workspaces-Requester</code>, <code>X-Slack-Allowed-Workspaces</code> | Your organization's workspace |
+
+For more information, refer to the <a href="https://slack.com/help/articles/360024821873-Approve-Slack-workspaces-for-your-network">Slack documentation ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Dropbox
 
-| Selector    | Operator | Value     | Action | Untrusted certificate action |
-| ----------- | -------- | --------- | ------ | ---------------------------- |
-| Application | in       | _Dropbox_ | Allow  | Block                        |
+</summary>
 
-| Custom header name         | Custom header value    |
-| -------------------------- | ---------------------- |
-| X-Dropbox-allowed-Team-Ids | Your organization's ID |
+| Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Dropbox* | Allow | Block |
 
-For more information, refer to the [Dropbox documentation ↗](https://help.dropbox.com/security/network-control).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>X-Dropbox-allowed-Team-Ids</code> | Your organization's ID |
+
+For more information, refer to the <a href="https://help.dropbox.com/security/network-control">Dropbox documentation ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 ChatGPT
 
-| Selector    | Operator | Value     | Action | Untrusted certificate action |
-| ----------- | -------- | --------- | ------ | ---------------------------- |
-| Application | in       | _ChatGPT_ | Allow  | Block                        |
+</summary>
 
-| Custom header name           | Custom header value              |
-| ---------------------------- | -------------------------------- |
-| Chatgpt-Allowed-Workspace-Id | Your organization's workspace ID |
+| Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- |
+| Application | in | *ChatGPT* | Allow | Block |
 
-For more information, refer to the [OpenAI documentation ↗](https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>Chatgpt-Allowed-Workspace-Id</code> | Your organization's workspace ID |
+
+For more information, refer to the <a href="https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace">OpenAI documentation ↗</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 Claude
 
-| Selector    | Operator | Value    | Action | Untrusted certificate action |
-| ----------- | -------- | -------- | ------ | ---------------------------- |
-| Application | in       | _Claude_ | Allow  | Block                        |
+</summary>
 
-| Custom header name        | Custom header value      |
-| ------------------------- | ------------------------ |
-| anthropic-allowed-org-ids | Your organization's UUID |
+| Selector | Operator | Value | Action | Untrusted certificate action |
+| --- | --- | --- | --- | --- |
+| Application | in | *Claude* | Allow | Block |
 
-To allow access from multiple organizations, enter a comma-separated list of UUIDs with no spaces (for example, `<org-uuid-1>,<org-uuid-2>`).
+| Custom header name | Custom header value |
+| --- | --- |
+| <code>anthropic-allowed-org-ids</code> | Your organization's UUID |
 
-You can find your organization UUID in **Settings** \> **Account** \> **Organization ID** on [claude.ai ↗](https://claude.ai/settings/account).
+To allow access from multiple organizations, enter a comma-separated list of UUIDs with no spaces (for example, <code>&lt;org-uuid-1&gt;,&lt;org-uuid-2&gt;</code>).
 
-For more information, refer to the [Claude documentation ↗](https://support.claude.com/en/articles/13198485-enforce-network-level-access-control-with-tenant-restrictions).
+You can find your organization UUID in **Settings** &gt; **Account** &gt; **Organization ID** on <a href="https://claude.ai/settings/account">claude.ai ↗</a>.
+
+For more information, refer to the <a href="https://support.claude.com/en/articles/13198485-enforce-network-level-access-control-with-tenant-restrictions">Claude documentation ↗</a>.
+
+</details>
 
 ### Forward user identity to upstream services
 
 You can use dynamic header values to forward user identity information to your upstream applications without requiring those applications to integrate with Cloudflare Access directly.
 
-| Header name   | Header value       |
-| ------------- | ------------------ |
-| X-User-Email  | @{identity.email}  |
-| X-User-Name   | @{identity.name}   |
-| X-User-Groups | @{identity.groups} |
-| X-Source-IP   | @{source.ip}       |
+| Header name | Header value |
+| --- | --- |
+| `X-User-Email` | `@{identity.email}` |
+| `X-User-Name` | `@{identity.name}` |
+| `X-User-Groups` | `@{identity.groups}` |
+| `X-Source-IP` | `@{source.ip}` |
 
 Your upstream application can read these headers to identify the user, enforce authorization logic, or populate audit logs.
 
@@ -273,13 +321,12 @@ You can include custom headers in an HTTP policy to allow your users through [Cl
 
 1. Create an Allow policy for an internal domain behind your WAF with a custom header.
 
-| Selector | Operator | Value           | Action |
-| -------- | -------- | --------------- | ------ |
-| Domain   | in       | internalapp.com | Allow  |
-
-| Custom header name | Custom header value |
-| ------------------ | ------------------- |
-| X-Example-Header   | example-value       |
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Domain | in | `internalapp.com` | Allow |
+   | Custom header name | Custom header value |
+   | --- | --- |
+   | `X-Example-Header` | `example-value` |
 2. In Cloudflare WAF, [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/) to [require the same HTTP header](https://developers.cloudflare.com/waf/custom-rules/use-cases/require-specific-headers/#example-2-require-http-header-with-a-specific-value).
 
 ### Use custom headers with Browser Isolation
@@ -290,19 +337,18 @@ To use custom headers with Browser Isolation, create two HTTP policies targeting
 
 1. Create an Isolate policy for `httpbin.org`.
 
-| Selector | Operator | Value       | Action  |
-| -------- | -------- | ----------- | ------- |
-| Domain   | in       | httpbin.org | Isolate |
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Domain | in | `httpbin.org` | Isolate |
 2. Create an Allow policy for `httpbin.org` with a custom header.
 
-| Selector | Operator | Value       | Action |
-| -------- | -------- | ----------- | ------ |
-| Domain   | in       | httpbin.org | Allow  |
-
-| Custom header name | Custom header value |
-| ------------------ | ------------------- |
-| Example-Header     | example-value       |
-3. Go to [httpbin.org/anything ↗](https://httpbin.org/anything). Cloudflare will render the site in an isolated browser. Your custom header will appear in the list of headers.
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Domain | in | `httpbin.org` | Allow |
+   | Custom header name | Custom header value |
+   | --- | --- |
+   | `Example-Header` | `example-value` |
+3. Go to [`httpbin.org/anything` ↗](https://httpbin.org/anything). Cloudflare will render the site in an isolated browser. Your custom header will appear in the list of headers.
 
 Was this helpful?
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use WebSockets
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/websockets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can act as WebSocket servers that connect thousands of clients per instance. You can also use WebSockets as a client to connect to other servers or Durable Objects.
 
 Two WebSocket APIs are available:
 
-1. **Hibernation WebSocket API** \- Allows the Durable Object to hibernate without disconnecting clients when idle. **(recommended)**
-2. **Web Standard WebSocket API** \- Uses the familiar `addEventListener` event pattern.
+1. **Hibernation WebSocket API** - Allows the Durable Object to hibernate without disconnecting clients when idle. **(recommended)**
+2. **Web Standard WebSocket API** - Uses the familiar `addEventListener` event pattern.
 
 ## What are WebSockets?
 
@@ -27,9 +27,9 @@ WebSockets are long-lived TCP connections that enable bi-directional, real-time 
 
 Key characteristics:
 
-* Both Workers and Durable Objects can act as WebSocket endpoints (client or server)
-* WebSocket sessions are long-lived, making Durable Objects ideal for accepting connections
-* A single Durable Object instance can coordinate between multiple clients (for example, chat rooms or multiplayer games)
+- Both Workers and Durable Objects can act as WebSocket endpoints (client or server)
+- WebSocket sessions are long-lived, making Durable Objects ideal for accepting connections
+- A single Durable Object instance can coordinate between multiple clients (for example, chat rooms or multiplayer games)
 
 Refer to [Cloudflare Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo) for an example of using Durable Objects with WebSockets.
 
@@ -37,9 +37,9 @@ Refer to [Cloudflare Edge Chat Demo ↗](https://github.com/cloudflare/workers-c
 
 The Hibernation WebSocket API reduces costs by allowing Durable Objects to sleep when idle:
 
-* Clients remain connected while the Durable Object is not in memory
-* [Billable Duration (GB-s) charges](https://developers.cloudflare.com/durable-objects/platform/pricing/) do not accrue during hibernation
-* When a message arrives, the Durable Object wakes up automatically
+- Clients remain connected while the Durable Object is not in memory
+- [Billable Duration (GB-s) charges](https://developers.cloudflare.com/durable-objects/platform/pricing/) do not accrue during hibernation
+- When a message arrives, the Durable Object wakes up automatically
 
 ## Durable Objects Hibernation WebSocket API
 
@@ -49,11 +49,11 @@ The Hibernation WebSocket API extends the [Web Standard WebSocket API](https://d
 
 When a Durable Object receives no events (such as alarms or messages) for a short period, it is evicted from memory. During hibernation:
 
-* WebSocket clients remain connected to the Cloudflare network
-* In-memory state is reset
-* When an event arrives, the Durable Object is re-initialized and its `constructor` runs
+- WebSocket clients remain connected to the Cloudflare network
+- In-memory state is reset
+- When an event arrives, the Durable Object is re-initialized and its `constructor` runs
 
-To restore state after hibernation, use [serializeAttachment](#websocketserializeattachment) and [deserializeAttachment](#websocketdeserializeattachment) to persist data with each WebSocket connection.
+To restore state after hibernation, use [`serializeAttachment`](#websocketserializeattachment) and [`deserializeAttachment`](#websocketdeserializeattachment) to persist data with each WebSocket connection.
 
 Refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/) for more information.
 
@@ -62,7 +62,7 @@ Refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durab
 To use WebSockets with Durable Objects:
 
 1. Proxy the request from the Worker to the Durable Object
-2. Call [DurableObjectState::acceptWebSocket](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket) to accept the server side connection
+2. Call [`DurableObjectState::acceptWebSocket`](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket) to accept the server side connection
 3. Define handler methods on the Durable Object class for relevant events
 
 If an event occurs for a hibernated Durable Object, the runtime re-initializes it by calling the constructor. Minimize work in the constructor when using hibernation.
@@ -229,15 +229,15 @@ A full example is available in [Build a WebSocket server with WebSocket Hibernat
 
 Local development support
 
-Prior to `wrangler@3.13.2` and Miniflare `v3.20231016.0`, WebSockets did not hibernate in local development. Hibernatable WebSocket events like [webSocketMessage()](https://developers.cloudflare.com/durable-objects/api/base/#websocketmessage) are still delivered. However, the Durable Object is never evicted from memory.
+Prior to `wrangler@3.13.2` and Miniflare `v3.20231016.0`, WebSockets did not hibernate in local development. Hibernatable WebSocket events like [`webSocketMessage()`](https://developers.cloudflare.com/durable-objects/api/base/#websocketmessage) are still delivered. However, the Durable Object is never evicted from memory.
 
 ### Automatic ping/pong handling
 
 The Cloudflare runtime automatically handles WebSocket protocol ping frames:
 
-* Incoming [ping frames ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) receive automatic pong responses
-* Ping/pong handling does not interrupt hibernation
-* The `webSocketMessage` handler is not called for control frames
+- Incoming [ping frames ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) receive automatic pong responses
+- Ping/pong handling does not interrupt hibernation
+- The `webSocketMessage` handler is not called for control frames
 
 This behavior keeps connections alive without waking the Durable Object.
 
@@ -247,9 +247,9 @@ Each WebSocket message incurs processing overhead from context switches between 
 
 To maximize throughput:
 
-* **Batch multiple logical messages** into a single WebSocket frame
-* **Use a simple envelope format** to pack and unpack batched messages
-* **Target fewer, larger messages** rather than many small ones
+- **Batch multiple logical messages** into a single WebSocket frame
+- **Use a simple envelope format** to pack and unpack batched messages
+- **Target fewer, larger messages** rather than many small ones
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -347,23 +347,23 @@ The following methods are available on the Hibernation WebSocket API. Use them t
 
 #### `WebSocket.serializeAttachment`
 
-* `` serializeAttachment(value `any`) ``: `void`
+- ``serializeAttachment(value `any`)`` : `void`
 
 Keeps a copy of `value` associated with the WebSocket connection.
 
 Key behaviors:
 
-* Serialized attachments persist through hibernation as long as the WebSocket remains healthy
-* If either side closes the connection, attachments are lost
-* Modifications to `value` after calling this method are not retained unless you call it again
-* The `value` can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm)
-* Maximum serialized size is 16,384 bytes
+- Serialized attachments persist through hibernation as long as the WebSocket remains healthy
+- If either side closes the connection, attachments are lost
+- Modifications to `value` after calling this method are not retained unless you call it again
+- The `value` can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)
+- Maximum serialized size is 16,384 bytes
 
 For larger values or data that must persist beyond WebSocket lifetime, use the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and store the corresponding key as an attachment.
 
 #### `WebSocket.deserializeAttachment`
 
-* `deserializeAttachment()`: `any`
+- `deserializeAttachment()`: `any`
 
 Retrieves the most recent value passed to `serializeAttachment()`, or `null` if none exists.
 
@@ -762,10 +762,10 @@ Code updates disconnect all WebSockets. Deploying a new version restarts every D
 
 ## Related resources
 
-* [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
-* [Cloudflare's WebSocket template for building applications on Workers using WebSockets ↗](https://github.com/cloudflare/websocket-template)
-* [Durable Object base class](https://developers.cloudflare.com/durable-objects/api/base/)
-* [Durable Object State interface](https://developers.cloudflare.com/durable-objects/api/state/)
+- [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+- [Cloudflare's WebSocket template for building applications on Workers using WebSockets ↗](https://github.com/cloudflare/websocket-template)
+- [Durable Object base class](https://developers.cloudflare.com/durable-objects/api/base/)
+- [Durable Object State interface](https://developers.cloudflare.com/durable-objects/api/state/)
 
 ```plaintext
 

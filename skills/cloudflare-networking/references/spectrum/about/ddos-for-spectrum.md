@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DDoS Protection for Spectrum
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum provides DDoS Protection at layers 3-4 of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), that is against TCP and UDP based DDoS attacks.
 
@@ -32,17 +32,17 @@ Refer to [Cloudflare DDoS Protection](https://developers.cloudflare.com/ddos-pro
 
 ## Mitigation reasons
 
-The **Mitigation reason** field shown in the **DDoS managed rules** tab of [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) (**Networking** \> **Insights** \> **Network Analytics** in the dashboard) will contain more information on why a given packet was dropped by the Spectrum system.
+The **Mitigation reason** field shown in the **DDoS managed rules** tab of [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) (**Networking** > **Insights** > **Network Analytics** in the dashboard) will contain more information on why a given packet was dropped by the Spectrum system.
 
 The mitigation reasons are the following:
 
-| Reason                 | Description                                                                                                          |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Blocked**            | Packet dropped because it matched a DDoS protection rule.                                                            |
-| **Rate limited**       | Packet dropped because it exceeded rate limits.                                                                      |
-| **Connection limited** | Packet dropped because it exceeded connection limits.                                                                |
-| **Unexpected**         | Packet dropped because it was not expected given the current state of the connection it was associated with.         |
-| **Not found**          | Packet dropped because it does not match any configured Spectrum application on the destination IP address and port. |
+| Reason | Description |
+| --- | --- |
+| **Blocked** | Packet dropped because it matched a DDoS protection rule. |
+| **Rate limited** | Packet dropped because it exceeded rate limits. |
+| **Connection limited** | Packet dropped because it exceeded connection limits. |
+| **Unexpected** | Packet dropped because it was not expected given the current state of the connection it was associated with. |
+| **Not found** | Packet dropped because it does not match any configured Spectrum application on the destination IP address and port. |
 
 Was this helpful?
 

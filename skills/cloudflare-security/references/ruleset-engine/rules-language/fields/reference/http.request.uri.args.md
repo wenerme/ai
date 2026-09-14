@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.uri.args
 
-`http.request.uri.args` `Map<Array<String>>`
+`http.request.uri.args``Map<Array<String>>`
 
 The HTTP URI arguments associated with a request represented as a Map (associative array).
 
@@ -16,8 +16,8 @@ When an argument repeats, the array contains multiple items in the order they ap
 
 The values are not pre-processed and retain the original case used in the request.
 
-* **Decoding**: No decoding performed
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Non-ASCII**: Preserved
 
 Example value:
 
@@ -32,8 +32,8 @@ any(http.request.uri.args["search"][*] == "red+apples")
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

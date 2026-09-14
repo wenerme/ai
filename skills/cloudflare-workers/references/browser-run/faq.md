@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
 
@@ -38,9 +38,9 @@ A `422 Unprocessable Entity` error usually means that Browser Run was not able t
 
 This can happen if:
 
-* The website consumes too much memory during rendering.
-* The page itself crashed or returned an error before the action completed.
-* The request exceeded one of the [timeout limits](https://developers.cloudflare.com/browser-run/reference/timeouts/) for page load, element load, or an action.
+- The website consumes too much memory during rendering.
+- The page itself crashed or returned an error before the action completed.
+- The request exceeded one of the [timeout limits](https://developers.cloudflare.com/browser-run/reference/timeouts/) for page load, element load, or an action.
 
 Most often, this error is caused by a timeout. You can review the different timers and their limits in the [Quick Actions timeouts reference](https://developers.cloudflare.com/browser-run/reference/timeouts/).
 
@@ -52,10 +52,10 @@ JavaScript-heavy pages and Single Page Applications (SPAs) often load content dy
 
 To fix this, use the `goToOptions.waitUntil` parameter with one of these values:
 
-| Value        | Use when                                                                                                         |
-| ------------ | ---------------------------------------------------------------------------------------------------------------- |
-| networkidle0 | The page must be completely idle (no network requests for 500 ms). Best for pages that load all content upfront. |
-| networkidle2 | The page can have up to 2 ongoing connections (like analytics or websockets). Best for most dynamic pages.       |
+| Value | Use when |
+| --- | --- |
+| `networkidle0` | The page must be completely idle (no network requests for 500 ms). Best for pages that load all content upfront. |
+| `networkidle2` | The page can have up to 2 ongoing connections (like analytics or websockets). Best for most dynamic pages. |
 
 Quick Actions example:
 
@@ -70,9 +70,9 @@ Quick Actions example:
 
 If content is still missing:
 
-* Use `waitForSelector` to wait for a specific element to appear before capturing.
-* Increase `goToOptions.timeout` (up to 60 seconds) for slow-loading pages.
-* Check if the page requires authentication or returns different content to bots.
+- Use `waitForSelector` to wait for a specific element to appear before capturing.
+- Increase `goToOptions.timeout` (up to 60 seconds) for slow-loading pages.
+- Check if the page requires authentication or returns different content to bots.
 
 For a complete reference, see [Quick Actions timeouts](https://developers.cloudflare.com/browser-run/reference/timeouts/).
 
@@ -94,7 +94,7 @@ Browser sessions open on Cloudflare's global network, close to the incoming requ
 
 Not yet. Local development currently has the following limitation(s):
 
-* Requests larger than 1 MB are not supported.
+- Requests larger than 1 MB are not supported.
 
 You can also run Chrome in visible (headful) mode during local development to visually debug your automation scripts (experimental). Set the `X_BROWSER_HEADFUL` environment variable before starting your dev server:
 
@@ -162,11 +162,10 @@ You must be on an Enterprise plan to allowlist Browser Run on your own website b
 
 Browser Run uses different [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) depending on the method. Use the ID that matches the method you want to allowlist.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page of your account and domain.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. To create a new empty rule, select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page of your account and domain. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. To create a new empty rule, select **Create rule** > **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**, such as `Allow Browser Run`.
-4. Under **When incoming requests match**, use the **Field** dropdown to choose _Bot Detection ID_. For **Operator**, select _equals_. For **Value**, enter the [bot detection ID](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) for the method you want to allowlist.
+4. Under **When incoming requests match**, use the **Field** dropdown to choose *Bot Detection ID*. For **Operator**, select *equals*. For **Value**, enter the [bot detection ID](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) for the method you want to allowlist.
 5. Under **Then take action**, in the **Choose action** dropdown, select **Skip**.
 6. Under **Place at**, select the order of the rule in the **Select order** dropdown to be **First**. Setting the order as **First** allows this rule to be applied before subsequent rules.
 7. To save and deploy your rule, select **Deploy**.
@@ -187,8 +186,8 @@ Yes. If your webpage or PDF requires a font that is not pre-installed, you can l
 
 If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-run/limits/#workers-paid), or want to optimize concurrent browser usage, here are a few tips:
 
-* Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
-* [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
+- Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
+- [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
 
 If you are still running into concurrency limits you can [request a higher limit ↗](https://forms.gle/CdueDKvb26mTaepa9).
 
@@ -232,20 +231,20 @@ Open a fresh browser only when you need full process-level isolation, a differen
 
 ### Does Cloudflare store or retain the HTML content I submit for rendering?
 
-For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
+For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), Cloudflare processes content ephemerally and does not retain customer-submitted HTML or generated output (such as PDFs or screenshots) beyond what is required to perform the rendering operation. Once the response is returned, the content is immediately discarded from the rendering environment.
 
 There are two exceptions where data is retained beyond the session:
 
-* **Crawl endpoint**: The [/crawl Quick Actions endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) runs jobs asynchronously, so job results (including crawled page content in HTML, Markdown, or JSON format) are stored for 14 days after the job completes, after which the data is deleted. Crawl jobs have a maximum run time of seven days.
-* **Session recording**: Puppeteer, Playwright, and CDP sessions support an opt-in [session recording](https://developers.cloudflare.com/browser-run/features/session-recording/) feature. When enabled, DOM changes, mouse and keyboard events, and page navigation are captured as structured JSON events and retained for 30 days. Input field content is masked by default. Recordings are accessible through the [dashboard](https://developers.cloudflare.com/browser-run/features/session-recording/#view-recordings) and [API](https://developers.cloudflare.com/browser-run/features/session-recording/#retrieve-a-recording-via-api), and are automatically deleted after the retention period.
+- **Crawl endpoint**: The [`/crawl` Quick Actions endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) runs jobs asynchronously, so job results (including crawled page content in HTML, Markdown, or JSON format) are stored for 14 days after the job completes, after which the data is deleted. Crawl jobs have a maximum run time of seven days.
+- **Session recording**: Puppeteer, Playwright, and CDP sessions support an opt-in [session recording](https://developers.cloudflare.com/browser-run/features/session-recording/) feature. When enabled, DOM changes, mouse and keyboard events, and page navigation are captured as structured JSON events and retained for 30 days. Input field content is masked by default. Recordings are accessible through the [dashboard](https://developers.cloudflare.com/browser-run/features/session-recording/#view-recordings) and [API](https://developers.cloudflare.com/browser-run/features/session-recording/#retrieve-a-recording-via-api), and are automatically deleted after the retention period.
 
 ### Is there any temporary caching of submitted content?
 
-For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
+For [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) (except the [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)), generated content is cached by default for five seconds (configurable up to one day via the `cacheTTL` parameter, or set to `0` to disable caching). This cache protects against repeated requests for the same URL by the same account. Customer-submitted HTML content itself is not cached.
 
 For [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), and [CDP](https://developers.cloudflare.com/browser-run/cdp/), no caching is used. Content exists only in memory for the duration of the rendering operation and is discarded immediately after the response is returned.
 
-For the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), all crawl job results are stored in R2 for 14 days after completion.
+For the [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/), all crawl job results are stored in R2 for 14 days after completion.
 
 Was this helpful?
 

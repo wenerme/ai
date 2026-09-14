@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Batching, Retries and Delays
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/batching-retries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/configuration/batching-retries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Batching
 
@@ -26,8 +26,8 @@ Batching can:
 
 There are two ways to configure how messages are batched. You configure batching when connecting your consumer Worker to a queue.
 
-* `max_batch_size` \- The maximum size of a batch delivered to a consumer (defaults to 10 messages).
-* `max_batch_timeout` \- the _maximum_ amount of time the queue will wait before delivering a batch to a consumer (defaults to 5 seconds)
+- `max_batch_size` - The maximum size of a batch delivered to a consumer (defaults to 10 messages).
+- `max_batch_timeout` - the *maximum* amount of time the queue will wait before delivering a batch to a consumer (defaults to 5 seconds)
 
 Batch size configuration
 
@@ -47,19 +47,21 @@ When determining what size and timeout settings to configure, you will want to c
 
 The following batch-level settings can be configured to adjust how Queues delivers batches to your configured consumer.
 
-| Setting                                   | Default     | Minimum   | Maximum      |
-| ----------------------------------------- | ----------- | --------- | ------------ |
-| Maximum Batch Size max\_batch\_size       | 10 messages | 1 message | 100 messages |
-| Maximum Batch Timeout max\_batch\_timeout | 5 seconds   | 0 seconds | 60 seconds   |
+| Setting | Default | Minimum | Maximum |
+| --- | --- | --- | --- |
+| Maximum Batch Size `max_batch_size` | 10 messages | 1 message | 100 messages |
+| Maximum Batch Timeout `max_batch_timeout` | 5 seconds | 0 seconds | 60 seconds |
 
 ## Explicit acknowledgement and retries
 
 You can acknowledge individual messages within a batch by explicitly acknowledging each message as it is processed. Messages that are explicitly acknowledged will not be re-delivered, even if your queue consumer fails on a subsequent message and/or fails to return successfully when processing a batch.
 
-* Each message can be acknowledged as you process it within a batch, and avoids the entire batch from being re-delivered if your consumer throws an error during batch processing.
-* Acknowledging individual messages is useful when you are calling external APIs, writing messages to a database, or otherwise performing non-idempotent (state changing) actions on individual messages.
+- Each message can be acknowledged as you process it within a batch, and avoids the entire batch from being re-delivered if your consumer throws an error during batch processing.
+- Acknowledging individual messages is useful when you are calling external APIs, writing messages to a database, or otherwise performing non-idempotent (state changing) actions on individual messages.
 
 To explicitly acknowledge a message as delivered, call the `ack()` method on the message.
+
+*index.jsjs*
 
 ```js
 export default {
@@ -72,6 +74,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -98,6 +102,8 @@ class Default(WorkerEntrypoint):
 
 You can also call `retry()` to explicitly force a message to be redelivered in a subsequent batch. This is referred to as "negative acknowledgement". This can be particularly useful when you want to process the rest of the messages in that batch without throwing an error that would force the entire batch to be redelivered.
 
+*index.jsjs*
+
 ```js
 export default {
 	async queue(batch, env, ctx) {
@@ -108,6 +114,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -134,9 +142,9 @@ You can also acknowledge or negatively acknowledge messages at a batch level wit
 
 Note that calls to `ack()`, `retry()` and their `ackAll()` / `retryAll()` equivalents follow the below precedence rules:
 
-* If you call `ack()` on a message, subsequent calls to `ack()` or `retry()` are silently ignored.
-* If you call `retry()` on a message and then call `ack()`: the `ack()` is ignored. The first method call wins in all cases.
-* If you call either `ack()` or `retry()` on a single message, and then either/any of `ackAll()` or `retryAll()` on the batch, the call on the single message takes precedence. That is, the batch-level call does not apply to that message (or messages, if multiple calls were made).
+- If you call `ack()` on a message, subsequent calls to `ack()` or `retry()` are silently ignored.
+- If you call `retry()` on a message and then call `ack()`: the `ack()` is ignored. The first method call wins in all cases.
+- If you call either `ack()` or `retry()` on a single message, and then either/any of `ackAll()` or `retryAll()` on the batch, the call on the single message takes precedence. That is, the batch-level call does not apply to that message (or messages, if multiple calls were made).
 
 ## Delivery failure
 
@@ -170,6 +178,8 @@ Configuring delivery and retry delays via the `wrangler` CLI or when [developing
 
 To delay a message or batch of messages when sending to a queue, you can provide a `delaySeconds` parameter when sending a message.
 
+*index.jsjs*
+
 ```js
 // Delay a singular message by 600 seconds (10 minutes)
 await env.YOUR_QUEUE.send(message, { delaySeconds: 600 });
@@ -181,6 +191,8 @@ await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 300 });
 // If there is a global delay configured on the queue, ignore it.
 await env.YOUR_QUEUE.sendBatch(messages, { delaySeconds: 0 });
 ```
+
+*index.tsts*
 
 ```ts
 // Delay a singular message by 600 seconds (10 minutes)
@@ -219,6 +231,8 @@ When [consuming messages from a queue](https://developers.cloudflare.com/queues/
 
 To delay an individual message within a batch:
 
+*index.jsjs*
+
 ```js
 export default {
 	async queue(batch, env, ctx) {
@@ -230,6 +244,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -256,6 +272,8 @@ class Default(WorkerEntrypoint):
 
 To delay a batch of messages:
 
+*index.jsjs*
+
 ```js
 export default {
 	async queue(batch, env, ctx) {
@@ -265,6 +283,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -341,9 +361,9 @@ Refer to the [Queues REST API documentation](https://developers.cloudflare.com/a
 
 Messages can be delayed by default at the queue level, or per-message (or batch).
 
-* Per-message/batch delay settings take precedence over queue-level settings.
-* Setting `delaySeconds: 0` on a message when sending or retrying will ignore any queue-level delays and cause the message to be delivered in the next batch.
-* A message sent or retried with `delaySeconds: <any positive integer>` to a queue with a shorter default delay will still respect the message-level setting.
+- Per-message/batch delay settings take precedence over queue-level settings.
+- Setting `delaySeconds: 0` on a message when sending or retrying will ignore any queue-level delays and cause the message to be delivered in the next batch.
+- A message sent or retried with `delaySeconds: <any positive integer>` to a queue with a shorter default delay will still respect the message-level setting.
 
 ### Apply a backoff algorithm
 
@@ -351,13 +371,17 @@ You can apply a backoff algorithm to increasingly delay messages based on the cu
 
 Each message delivered to a consumer includes an `attempts` property that tracks the number of delivery attempts made.
 
-For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential%5Fbackoff) for a message, you can create a helper function that calculates this for you:
+For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential_backoff) for a message, you can create a helper function that calculates this for you:
+
+*index.jsjs*
 
 ```js
 function calculateExponentialBackoff(attempts, baseDelaySeconds) {
 	return baseDelaySeconds ** attempts;
 }
 ```
+
+*index.tsts*
 
 ```ts
 function calculateExponentialBackoff(
@@ -374,6 +398,8 @@ def calculate_exponential_backoff(attempts, base_delay_seconds):
 ```
 
 In your consumer, you then pass the value of `msg.attempts` and your desired delay factor as the argument to `delaySeconds` when calling `retry()` on an individual message:
+
+*index.jsjs*
 
 ```js
 const BASE_DELAY_SECONDS = 30;
@@ -392,6 +418,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 const BASE_DELAY_SECONDS = 30;
@@ -431,9 +459,9 @@ class Default(WorkerEntrypoint):
 
 ## Related
 
-* Review the [JavaScript API](https://developers.cloudflare.com/queues/configuration/javascript-apis/) documentation for Queues.
-* Learn more about [How Queues Works](https://developers.cloudflare.com/queues/reference/how-queues-works/).
-* Understand the [metrics available](https://developers.cloudflare.com/queues/observability/metrics/) for your queues, including backlog and delayed message counts.
+- Review the [JavaScript API](https://developers.cloudflare.com/queues/configuration/javascript-apis/) documentation for Queues.
+- Learn more about [How Queues Works](https://developers.cloudflare.com/queues/reference/how-queues-works/).
+- Understand the [metrics available](https://developers.cloudflare.com/queues/observability/metrics/) for your queues, including backlog and delayed message counts.
 
 Was this helpful?
 

@@ -12,27 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multitenancy
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In a multi-tenant application, each tenant must only ever see their own data. AI Search supports two ways to isolate search per tenant: give each tenant its own instance, or share one instance and filter by tenant at query time.
 
 ## Choose an approach
 
-| Approach                                                                                         | How it isolates                                                      | Choose it when                                                         |
-| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [Instance per tenant](#option-1-one-instance-per-tenant) (recommended)                           | Each tenant gets a separate instance with its own storage and index  | You need strong isolation, or you create and delete tenants at runtime |
-| [Shared instance with filtering](#option-2-shared-instance-with-metadata-filtering-on-retrieval) | One instance holds every tenant; a metadata filter scopes each query | You have many small tenants and want the simplest setup                |
+| Approach | How it isolates | Choose it when |
+| --- | --- | --- |
+| [Instance per tenant](#option-1-one-instance-per-tenant) (recommended) | Each tenant gets a separate instance with its own storage and index | You need strong isolation, or you create and delete tenants at runtime |
+| [Shared instance with filtering](#option-2-shared-instance-with-metadata-filtering-on-retrieval) | One instance holds every tenant; a metadata filter scopes each query | You have many small tenants and want the simplest setup |
 
 ## Prerequisites
 
 Both approaches use a Cloudflare Worker. Create the project first, then follow the option you chose.
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 ## Create a Worker project
 
@@ -56,11 +64,11 @@ pnpm create cloudflare@latest tenant-search
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -74,13 +82,13 @@ This is the **recommended** approach. Each tenant gets a separate instance with 
 
 Create an isolated AI Search instance for each tenant at runtime using the [namespace binding](https://developers.cloudflare.com/ai-search/concepts/namespaces/).
 
-[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[Tenant A](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant B](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [Tenant C](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 [env.AI\_SEARCH.get(id)Worker](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 namespace: tenants
 
-[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)[AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
+[AI Search instancetenant-a](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [AI Search instancetenant-b](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/) [AI Search instancetenant-c](https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/)
 
 Note
 
@@ -115,6 +123,8 @@ The `remote` option lets `wrangler dev` proxy requests to your deployed instance
 Each tenant's instance holds documents that you upload directly to it, with no external data source.
 
 Update `src/index.ts`. This Worker identifies the tenant from a request header, then creates, populates, searches, and deletes that tenant's instance.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -168,6 +178,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export type Env = {
@@ -256,7 +268,7 @@ If your tenants' data already lives in [R2](https://developers.cloudflare.com/ai
 
 Note
 
-Creating an `r2`\-backed instance from a binding requires a [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/). Cloudflare registers one for your account automatically the first time you create an R2-backed instance through the [dashboard](https://developers.cloudflare.com/ai-search/get-started/dashboard/) or [Wrangler](https://developers.cloudflare.com/ai-search/get-started/wrangler/), and reuses it afterward.
+Creating an `r2`-backed instance from a binding requires a [service API token](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/). Cloudflare registers one for your account automatically the first time you create an R2-backed instance through the [dashboard](https://developers.cloudflare.com/ai-search/get-started/dashboard/) or [Wrangler](https://developers.cloudflare.com/ai-search/get-started/wrangler/), and reuses it afterward.
 
 **A bucket per tenant:** if each tenant's data is already in its own bucket, point the instance at that whole bucket:
 
@@ -270,10 +282,10 @@ const instance = await env.TENANTS.create({
 
 **A shared bucket:** if every tenant's data lives in one bucket, organized by folder:
 
-* my-bucket
-  * customers/
-    * acme/
-    * globex/
+- my-bucket
+  - customers/
+    - acme/
+    - globex/
 
 Scope each instance to that tenant's folder with [path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/), so it only ever indexes and searches that tenant's objects:
 
@@ -322,13 +334,15 @@ remote = true
 
 Organize your content by tenant using unique folder paths:
 
-* customer-a
-  * logs/
-  * contracts/
-* customer-b
-  * contracts/
+- customer-a
+  - logs/
+  - contracts/
+- customer-b
+  - contracts/
 
 Update `src/index.ts` to filter by the tenant's folder at query time:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -355,6 +369,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export type Env = {
@@ -429,5 +445,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/#page","headline":"Multitenancy · Cloudflare AI Search docs","description":"Keep each tenant's data isolated in AI Search using a separate instance per tenant or a shared instance with metadata filtering.","url":"https://developers.cloudflare.com/ai-search/how-to/per-tenant-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

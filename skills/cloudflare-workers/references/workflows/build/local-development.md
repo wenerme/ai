@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Development
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workflows support local development using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Wrangler runs an emulated version of Workflows compared to the one that Cloudflare runs globally.
 
@@ -20,9 +20,9 @@ Workflows support local development using [Wrangler](https://developers.cloudfla
 
 To develop locally with Workflows, you will need:
 
-* [Wrangler v3.89.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
-* Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
-* If you are new to Workflows and/or Cloudflare Workers, refer to the [Workflows Guide](https://developers.cloudflare.com/workflows/get-started/guide/) to install `wrangler` and deploy their first Workflows.
+- [Wrangler v3.89.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
+- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
+- If you are new to Workflows and/or Cloudflare Workers, refer to the [Workflows Guide](https://developers.cloudflare.com/workflows/get-started/guide/) to install `wrangler` and deploy their first Workflows.
 
 ## Start a local development session
 
@@ -53,9 +53,9 @@ Your worker has access to the following bindings:
 [wrangler:inf] Ready on http://127.0.0.1:8787/
 ```
 
-Local development sessions create a standalone, local-only environment that mirrors the production environment Workflows runs in so you can test your Workflows _before_ you deploy to production.
+Local development sessions create a standalone, local-only environment that mirrors the production environment Workflows runs in so you can test your Workflows *before* you deploy to production.
 
-Refer to the [wrangler dev documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
+Refer to the [`wrangler dev` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to learn more about how to configure a local development session.
 
 ## Manage Workflows locally
 
@@ -63,7 +63,7 @@ Note
 
 The `--local` flag for `wrangler workflows` commands requires Wrangler version `4.79.0` or greater. Use `npx wrangler@latest` to always use the latest version.
 
-While a `wrangler dev` session is running, you can use all [wrangler workflows commands](https://developers.cloudflare.com/workers/wrangler/commands/workflows/) with the `--local` flag to interact with your local Workflow instances.
+While a `wrangler dev` session is running, you can use all [`wrangler workflows` commands](https://developers.cloudflare.com/workers/wrangler/commands/workflows/) with the `--local` flag to interact with your local Workflow instances.
 
 For example, to list your local Workflows:
 
@@ -93,11 +93,11 @@ While a `wrangler dev` session is running, press `e` in your terminal to open Lo
 
 With Local Explorer you can:
 
-* View all Workflows defined in your project and their instances.
-* Inspect the step history and current status of each instance.
-* Trigger new Workflow runs and send events to running instances.
-* Pause, resume, terminate, and restart instances.
-* Delete specific instances or clear all of them at once.
+- View all Workflows defined in your project and their instances.
+- Inspect the step history and current status of each instance.
+- Trigger new Workflow runs and send events to running instances.
+- Pause, resume, terminate, and restart instances.
+- Delete specific instances or clear all of them at once.
 
 Local Explorer requires Wrangler version `4.82.1` or later, or [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) version `1.32.0` or later.
 

@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-2.5-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's most capable Gemini 2.5 model with strong reasoning, thinking support, and a 1M token context window.
 
-| Model Info                                                                          |                                                                                                                         |
-| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                        |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                        |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                  |
-| Zero data retention                                                                 | Yes                                                                                                                     |
-| Request formats                                                                     | Chat Completions                                                                                                        |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-pro) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-pro) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Of course! The three laws of thermodynamics are fundamental principles in physics that describe the relationships between heat, energy, and work.
 
 Here they are, explained from a simple "catchphrase" summary to a more detailed breakdown.
@@ -119,6 +120,7 @@ Before the three main laws, it's helpful to understand the **Zeroth Law**, which
 | **First** | Energy is conserved. | Conservation of Energy |
 | **Second**| Disorder (entropy) increases. | Entropy & The Arrow of Time |
 | **Third** | Absolute zero is unreachable. | Absolute Zero & Minimum Entropy |
+```
 
 ```json
 {
@@ -166,7 +168,11 @@ Before the three main laws, it's helpful to understand the **Zeroth Law**, which
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -213,6 +219,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 Of course! Reading a JSON file in Python is a common task, and the built-in `json` module makes it very straightforward.
 
 Here is the most common and recommended way to do it.
@@ -372,6 +379,7 @@ data = json.loads(json_string)
 
 print(data['city'])  # Output: New York
 ```
+````
 
 ```json
 {
@@ -417,7 +425,13 @@ print(data['city'])  # Output: New York
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -484,7 +498,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Of course! The drive from San Francisco to Los Angeles offers two very different experiences, depending on
+```
 
 ```json
 {
@@ -530,7 +546,13 @@ Of course! The drive from San Francisco to Los Angeles offers two very different
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -573,7 +595,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The stale, metallic tang of blood was the first
+```
 
 ```json
 {
@@ -619,13 +643,15 @@ The stale, metallic tang of blood was the first
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -637,19 +663,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -671,11 +695,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -685,19 +709,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -705,7 +725,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -733,7 +753,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -743,9 +763,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-pro/schema-output.json)
 
 Was this helpful?
 

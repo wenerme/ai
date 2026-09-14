@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure private apps
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access lets users reach internal applications through a browser without a VPN or client software on their device. You connect your application to Cloudflare using a secure connection called a tunnel, then protect it with policies that control who can access it. For more background, refer to [What is clientless access?](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/).
 

@@ -12,11 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quickstart
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/get-started/quickstart/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get up and running quickly with Load Balancing. For more in-depth explanations, refer to the [Learning path](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/).
 
 This guide assumes you are familiar with the Cloudflare [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/).
+
 
 
 ---
@@ -25,9 +26,9 @@ This guide assumes you are familiar with the Cloudflare [Load Balancing componen
 
 Make sure you:
 
-* Have access to multiple endpoints (origin servers, private or public IP addresses, virtual IP addresses (VIPs), etc), either physical or cloud-based.
-* Have access to Load Balancing, available as an [add-on](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/) for any type of account.
-* Have test and production hostnames that are covered by [SSL/TLS certificates](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#ssltls-coverage).
+- Have access to multiple endpoints (origin servers, private or public IP addresses, virtual IP addresses (VIPs), etc), either physical or cloud-based.
+- Have access to Load Balancing, available as an [add-on](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/) for any type of account.
+- Have test and production hostnames that are covered by [SSL/TLS certificates](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#ssltls-coverage).
 
 ## Create a monitor
 
@@ -43,35 +44,35 @@ You can create a monitor within the [load balancer workflow](https://developers.
 2. Select the **Monitors** tab.
 3. Select **Create monitor**.
 4. Add the following information:
-  * **Type**: The protocol to use for health monitors
-    * _Non-enterprise customers_: Choose **HTTP**, **HTTPS**, or **TCP**.
-    * _Enterprise customers_: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
-  * **Path**: The endpoint path to run health monitor requests against
-  * **Port**: The destination port for health monitors
+   - **Type**: The protocol to use for health monitors
+     - *Non-enterprise customers*: Choose **HTTP**, **HTTPS**, or **TCP**.
+     - *Enterprise customers*: Choose **HTTP**, **HTTPS**, **TCP**, **UDP ICMP**, **ICMP Ping**, or **SMTP**.
+   - **Path**: The endpoint path to run health monitor requests against
+   - **Port**: The destination port for health monitors
 5. For additional settings, select **Advanced health monitor settings**:
-  * **Interval**:
-    * By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
-    * Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
-  * **Timeout** and **Retries**:
-    * The health monitor request will return unhealthy if it exceeds the duration specified in **Timeout** (and exceeds this duration more times than the specified number of **Retries**).
-  * **Expected Code(s)**: The expected HTTP response codes listed individually (`200`, `302`) or as a range (for example, entering `2xx` would cover all response codes in the `200` range).
-  * **Response Body**:
-    * Looks for a case-insensitive substring in the response body.
-    * Make sure that the value is relatively static and within the first 10 KB of the HTML page.
-  * **Simulate Zone**:
-    * It is recommended to use the same zone in which the Load Balancer exists.
-    * Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).
-  * **Follow Redirects**:
-    * Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.
-  * **Configure Request Header(s)**:
-    * Useful if your endpoints are expecting specific incoming headers.
-  * **Header**:
-    * The HTTP request headers to send in the health monitor. It is recommended that you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
+   - **Interval**:
+     - By increasing the default, you can improve failover time, but you may also increase load on your endpoints.
+     - Minimum time in seconds is 60 (Pro), 15 (Business), and 10 (Enterprise).
+   - **Timeout** and **Retries**:
+     - The health monitor request will return unhealthy if it exceeds the duration specified in **Timeout** (and exceeds this duration more times than the specified number of **Retries**).
+   - **Expected Code(s)**: The expected HTTP response codes listed individually ( `200`, `302`) or as a range (for example, entering `2xx` would cover all response codes in the `200` range).
+   - **Response Body**:
+     - Looks for a case-insensitive substring in the response body.
+     - Make sure that the value is relatively static and within the first 10 KB of the HTML page.
+   - **Simulate Zone**:
+     - It is recommended to use the same zone in which the Load Balancer exists.
+     - Changes the egress zone settings of a health monitor request to ensure compatibility with features like [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), and [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/).
+   - **Follow Redirects**:
+     - Instead of reporting a `301` or `302` code as unhealthy, the health monitor request follows redirects to the final endpoint.
+   - **Configure Request Header(s)**:
+     - Useful if your endpoints are expecting specific incoming headers.
+   - **Header**:
+     - The HTTP request headers to send in the health monitor. It is recommended that you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors.
 6. Select **Save**.
 
 Note
 
-To increase confidence in pool status, you can also increase the `consecutive_up` and `consecutive_down` fields when [creating a monitor with the API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/create/).
+To increase confidence in pool status, you can also increase the `consecutive_up` and `consecutive_down` fields when [creating a monitor with the API](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/create/).
 
 To become healthy or unhealthy, monitored endpoints must pass this health monitor request the consecutive number of times specified in these parameters.
 
@@ -87,12 +88,23 @@ If you know that your endpoint is healthy but Load Balancing is reporting it as 
 
 **Set up the monitor**
 
-For a full list of monitor properties, refer to [Create Monitor](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+For a full list of monitor properties, refer to [Create Monitor](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancing: Monitors and Pools Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancing: Monitors and Pools Write</code>
+
+</details>
+
+*Create Monitorbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/monitors" \
@@ -126,6 +138,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/m
 ```
 
 The response contains the complete definition of the new monitor.
+
+*Responsejson*
 
 ```json
 {
@@ -173,18 +187,26 @@ Caution
 
 If you know that your endpoint is healthy but Load Balancing is reporting it as unhealthy, refer to our [Monitor troubleshooting guide](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/#why-is-my-endpoint-or-pool-considered-unhealthy).
 
+<details>
+
+<summary>
+
 Example monitor configuration
 
-| Field            | Value     |
-| ---------------- | --------- |
-| Type             | HTTP      |
-| Path             | /         |
-| Port             | 80        |
-| Interval         | 60        |
-| Method           | GET       |
-| Timeout          | 5 seconds |
-| Retries          | 2         |
-| Expected Code(s) | 200       |
+</summary>
+
+| Field | Value |
+| --- | --- |
+| Type | HTTP |
+| Path | / |
+| Port | 80 |
+| Interval | 60 |
+| Method | GET |
+| Timeout | 5 seconds |
+| Retries | 2 |
+| Expected Code(s) | 200 |
+
+</details>
 
 ## Create pools
 
@@ -197,40 +219,47 @@ You can create a pool within the [load balancer workflow](https://developers.clo
 1. Go to **Load Balancing**.
 2. Select the **Pools** tab and then **Create pool**.
 3. For your pool, enter the following information:
-
-  * A name (must be unique)
-  * A description to provide more detail on the name
-  * A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
+   - A name (must be unique)
+   - A description to provide more detail on the name
+   - A choice for [**Endpoint Steering**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/), which affects how your pool routes traffic to each endpoint
 4. For each endpoint, enter the following information:
-
-  * A name (must be unique)
-  * The endpoint address or associated hostname
-  * (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.
-  * A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)
-  * (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**
-  * (Optional) The destination port to which the traffic will be served.
+   - A name (must be unique)
+   - The endpoint address or associated hostname
+   - (Optional) A [**Virtual Network**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/). Required when the endpoint has a private IP address.
+   - A [**Weight**](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/origin-level-steering/#weights)
+   - (Optional) A [hostname](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/) by clicking **Add host header**
+   - (Optional) The destination port to which the traffic will be served.
 
 Note
 
 If your endpoint is a website or application hosted on [Cloudflare Pages](https://developers.cloudflare.com/pages/), you will need to fill in the host header field with the project domain for it to resolve correctly.
 
-1. Repeat this process for additional endpoints in the pool.
-2. (Optional) Set up coordinates for [Proximity Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/) on the pool.
-3. On the pool, update the following information:
+5. Repeat this process for additional endpoints in the pool.
+6. (Optional) Set up coordinates for [Proximity Steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/proximity-steering/) on the pool.
+7. On the pool, update the following information:
+   - **Health Threshold**: The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered *Healthy* and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
+   - **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)
+   - **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint
+   - **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
+8. When finished, select **Save**.
 
-  * **Health Threshold**:
-  The Health Threshold is the number of healthy endpoints for the pool as a whole to be considered _Healthy_ and receive traffic based on pool order in a load balancer. Increasing this number makes the pool more reliable, but also more likely to become unhealthy.
-  * **Monitor**: Attach a [monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/)
-  * **Health Monitor Regions**: Choose whether to check pool health from [multiple locations](https://developers.cloudflare.com/load-balancing/monitors/#health-monitor-regions), which increases accuracy but can lead to probe traffic to your endpoint
-  * **Pool Notifications**: You can set up new alerts - and view existing alerts - to be notified when pools are enabled or disabled, or pools or endpoints have changes in their [health status](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
-4. When finished, select **Save**.
+For a full list of properties, refer to [Create Pool](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
-For a full list of properties, refer to [Create Pool](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancing: Monitors and Pools Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancing: Monitors and Pools Write</code>
+
+</details>
+
+*Create Poolbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
@@ -282,6 +311,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 ```
 
 The response contains the complete definition of the new pool.
+
+*Responsejson*
 
 ```json
 {
@@ -350,7 +381,7 @@ After creating the pool, you would also want to [create a new notification](http
 
 ## Confirm pool health
 
-Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be _unknown_ until the results of the first check are available.
+Before directing any traffic to your pools, make sure that your pools and monitors are set up correctly. The status of your health check will be *unknown* until the results of the first check are available.
 
 To confirm pool health using the dashboard:
 
@@ -360,16 +391,16 @@ To confirm pool health using the dashboard:
 
 For more information on pool and endpoint health statuses, refer to [How a pool becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#how-a-pool-becomes-unhealthy).
 
-To fetch the latest health status of all pools, use the [List Pools](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/list/) command, paying attention to the `healthy` value for pools and origins (endpoints).
+To fetch the latest health status of all pools, use the [List Pools](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/list/) command, paying attention to the `healthy` value for pools and origins (endpoints).
 
-For troubleshooting a specific pool's health, use the [Pool Health Details](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/subresources/health/methods/get/) command.
+For troubleshooting a specific pool's health, use the [Pool Health Details](https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/subresources/health/methods/get/) command.
 
 ### Unexpected health status
 
 If you notice that healthy pools are being marked unhealthy:
 
-* Review [how endpoints and pools become unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
-* Refer to the [Troubleshooting section](https://developers.cloudflare.com/load-balancing/troubleshooting/).
+- Review [how endpoints and pools become unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/).
+- Refer to the [Troubleshooting section](https://developers.cloudflare.com/load-balancing/troubleshooting/).
 
 ## Create a load balancer on a test subdomain
 
@@ -385,33 +416,29 @@ To create a Public or a Private load balancer in the dashboard:
 2. On the **Load Balancer Setup**, select **Public load balancer**
 3. Choose the website to which you want to add this load balancer.
 4. On the **Hostname** page:
-
-  * Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
-  * From the **Data Localization** dropdown, select the [region](https://developers.cloudflare.com/data-localization/how-to/load-balancing/#regional-services) you would like to use on your domain.
-  * Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.
-  * Add a description for your load balancer.
-  * If you want [session-based load balancing](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), toggle the **Session Affinity** switch.
-  * If you want [Adaptive Routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/), toggle the **Adaptive Routing** switch.
+   - Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
+   - From the **Data Localization** dropdown, select the [region](https://developers.cloudflare.com/data-localization/how-to/load-balancing/#regional-services) you would like to use on your domain.
+   - Toggle the orange cloud icon to update the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/), which affects how traffic is routed and which IP addresses are advertised.
+   - Add a description for your load balancer.
+   - If you want [session-based load balancing](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), toggle the **Session Affinity** switch.
+   - If you want [Adaptive Routing](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/), toggle the **Adaptive Routing** switch.
 5. Select **Next**.
 6. On the **Add a Pool** page:
-
-  * Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
-  * If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
-  * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
-  * If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
+   - Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
+   - If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
+   - If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
+   - If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
 7. Select **Next**.
 8. On the **Monitors** page:
-
-  * Review the monitors attached to your pools.
-  * If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
+   - Review the monitors attached to your pools.
+   - If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
 9. Select **Next**.
 10. On the **Traffic Steering** page, choose an option for [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) and select **Next**.
 11. On the **Custom Rules** page, select an existing rule or [create a new rule](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/).
 12. Select **Next**.
 13. On the **Review** page:
-
-  * Review your configuration and make any changes.
-  * Choose whether to **Save as Draft** or **Save and Deploy**.
+    - Review your configuration and make any changes.
+    - Choose whether to **Save as Draft** or **Save and Deploy**.
 
 ### Create a Private load balancer
 
@@ -419,34 +446,42 @@ To create a Public or a Private load balancer in the dashboard:
 2. On the **Load Balancer Setup**, select **Private load balancer**
 3. Associate your load balancer with either a Cloudflare private IP or a specified IP address and create a description for your load balancer.
 4. On the **Add a Pool** page:
-
-  * Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
-  * If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
-  * If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
-  * If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
+   - Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool).
+   - If you are going to set [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/) to **Off**, re-order the pools in your load balancer to adjust the fallback order.
+   - If needed, update the [**Fallback Pool**](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools).
+   - If you choose to set traffic steering to **Random**, you can set [Weights](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the API) to your pools to determine the percentage of traffic sent to each pool.
 5. Select **Next**.
 6. On the **Monitors** page:
-
-  * Review the monitors attached to your pools.
-  * If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
+   - Review the monitors attached to your pools.
+   - If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
 7. Select **Next**.
 8. On the **Traffic Steering** page, choose an option for [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) and select **Next**.
 9. Select **Next**.
 10. On the **Review** page:
+    - Review your configuration and make any changes.
+    - Choose whether to **Save as Draft** or **Save and Deploy**.
 
-  * Review your configuration and make any changes.
-  * Choose whether to **Save as Draft** or **Save and Deploy**.
-
-For a full list of properties, refer to [Create Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+For a full list of properties, refer to [Create Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/). If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
 
 Note
 
 Since load balancers only exist on a zone — and not an account — you may need to get the zone `id` with the [List Zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) command.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancers Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancers Write</code>
+
+</details>
+
+*Create Load Balancerbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
@@ -491,6 +526,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/load_balancers" \
 ```
 
 The response contains the complete definition of the new load balancer.
+
+*Responsejson*
 
 ```json
 {
@@ -543,8 +580,8 @@ Now that you have set up your load balancer and verified everything is working c
 1. If you update your pools and monitors, review the pool health again to make sure everything is working as expected.
 2. Confirm that your production hostname has the correct [priority order](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#priority-order) of DNS records and is covered by an [SSL/TLS certificate](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/#ssltls-coverage).
 3. Configure your load balancer to receive production traffic, which could involve either:
-  * Editing the **Hostname** of your existing load balancer.
-  * Updating the `CNAME` record sending traffic to your load balancer.
+   - Editing the **Hostname** of your existing load balancer.
+   - Updating the `CNAME` record sending traffic to your load balancer.
 
 Note
 
@@ -562,34 +599,34 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 
 To set up those notifications:
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
+   - **Name**
+   - **Product**
+   - **Notification limit** (exact metric will vary based on product)
+   - **Notification email**
 
-  * **Name**
-  * **Product**
-  * **Notification limit** (exact metric will vary based on product)
-  * **Notification email**
-Note
-Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
+   Note
+
+   Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 4. Select **Save**.
 
 ### Additional configuration options
 
 You may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products:
 
-* [Cloudflare Tunnel (published applications)](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
-* [Spectrum](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
-* [Perform planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
-* [Load shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
-* [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
-* [Load Balancing with the China Network](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
-* [Override HTTP Host headers](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
-* [CNAME flattening for endpoints](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/)
-* [Custom load balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
-* [Integrate with PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
-* [Additional DNS records](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
+- [Cloudflare Tunnel (published applications)](https://developers.cloudflare.com/load-balancing/additional-options/cloudflare-tunnel/)
+- [Spectrum](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/)
+- [Perform planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
+- [Load shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
+- [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
+- [Load Balancing with the China Network](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
+- [Override HTTP Host headers](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
+- [CNAME flattening for endpoints](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/)
+- [Custom load balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
+- [Integrate with PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
+- [Additional DNS records](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)
 
 Was this helpful?
 

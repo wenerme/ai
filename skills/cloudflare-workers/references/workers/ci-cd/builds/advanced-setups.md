@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced setups
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Monorepos
 
 A monorepo is a single repository that contains multiple applications. This setup can be useful for a few reasons:
 
-* **Simplified dependency management**: Manage dependencies across all your workers and shared packages from a single place using tools like [pnpm workspaces ↗](https://pnpm.io/workspaces) and [syncpack ↗](https://syncpack.dev/).
-* **Code sharing and reuse**: Easily create and share common logic, types, and utilities between workers by creating shared packages.
-* **Atomic commits**: Changes affecting multiple workers or shared libraries can be committed together, making the history easier to understand and reducing the risk of inconsistencies.
-* **Consistent tooling**: Apply the same build, test, linting, and formatting configurations (e.g., via [Turborepo ↗](https://turborepo.com) for task orchestration and shared configs in `packages/`) across all projects, ensuring consistent tooling and code quality across Workers.
-* **Easier refactoring**: Refactoring code that spans multiple Workers or shared packages is significantly easier within a single repository.
+- **Simplified dependency management**: Manage dependencies across all your workers and shared packages from a single place using tools like [pnpm workspaces ↗](https://pnpm.io/workspaces) and [syncpack ↗](https://syncpack.dev/).
+- **Code sharing and reuse**: Easily create and share common logic, types, and utilities between workers by creating shared packages.
+- **Atomic commits**: Changes affecting multiple workers or shared libraries can be committed together, making the history easier to understand and reducing the risk of inconsistencies.
+- **Consistent tooling**: Apply the same build, test, linting, and formatting configurations (e.g., via [Turborepo ↗](https://turborepo.com) for task orchestration and shared configs in `packages/`) across all projects, ensuring consistent tooling and code quality across Workers.
+- **Easier refactoring**: Refactoring code that spans multiple Workers or shared packages is significantly easier within a single repository.
 
 #### Example Workers monorepos:
 
-* [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare)
-* [jahands/workers-monorepo-template ↗](https://github.com/jahands/workers-monorepo-template)
-* [cloudflare/templates ↗](https://github.com/cloudflare/templates)
-* [cloudflare/workers-sdk ↗](https://github.com/cloudflare/workers-sdk)
+- [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare)
+- [jahands/workers-monorepo-template ↗](https://github.com/jahands/workers-monorepo-template)
+- [cloudflare/templates ↗](https://github.com/cloudflare/templates)
+- [cloudflare/workers-sdk ↗](https://github.com/cloudflare/workers-sdk)
 
 ### Getting Started
 
@@ -53,20 +53,20 @@ Set the root directory of each Worker to where its Wrangler configuration file i
 
 When a new commit is made to `ecommerce-monorepo`, a build and deploy will be triggered for each of the Workers if the change is within its included watch paths using the configured commands for that Worker.
 
-* ecommerce-monorepo/
-  * workers/
-    * product-service/
-      * src/
-      * wrangler.jsonc
-    * order-service/
-      * src/
-      * wrangler.jsonc
-    * notification-service/
-      * src/
-      * wrangler.jsonc
-  * packages/
-    * schema/
-  * README.md
+- ecommerce-monorepo/
+  - workers/
+    - product-service/
+      - src/
+      - wrangler.jsonc
+    - order-service/
+      - src/
+      - wrangler.jsonc
+    - notification-service/
+      - src/
+      - wrangler.jsonc
+  - packages/
+    - schema/
+  - README.md
 
 ## Wrangler Environments
 

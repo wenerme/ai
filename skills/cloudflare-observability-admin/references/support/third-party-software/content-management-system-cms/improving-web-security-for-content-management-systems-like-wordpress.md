@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Improving web security for content management systems like WordPress
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/improving-web-security-for-content-management-systems-like-wordpress/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/improving-web-security-for-content-management-systems-like-wordpress/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Content Management Systems make it easy to create, update, and manage content. However, they can also introduce vulnerabilities that may lead to server compromise and data theft.
 
@@ -36,9 +36,9 @@ The [WAF Managed Rulesets](https://developers.cloudflare.com/waf/managed-rules/)
 
 While the feature to customize these managed rulesets required a paid plan, the [Free Cloudflare Managed Ruleset ↗](https://blog.cloudflare.com/waf-for-everyone/#the-free-cloudflare-managed-ruleset) is automatically deployed on any new Cloudflare zone. This ruleset is specially designed to reduce false positives to a minimum across a very broad range of traffic types. As of today, the ruleset contains the following rules:
 
-* Log4J rules matching payloads in the URI and HTTP headers;
-* Shellshock rules;
-* Rules matching very common WordPress exploits;
+- Log4J rules matching payloads in the URI and HTTP headers;
+- Shellshock rules;
+- Rules matching very common WordPress exploits;
 
 Additionally, you can configure many aspects of the [OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/), including the anomaly threshold, paranoia level, and individual rules. One good practice is to ensure any rules related to XSS and SQL injection are enabled.
 
@@ -63,12 +63,12 @@ Next, you can use this information to create a Skip Rule that excludes only the 
 
 It is recommended to make this rule as tightly defined as possible, particularly without the additional protections listed below. While the exact content will be site-specific, some possible fields to use are:
 
-* IP Source Address
-* AS Num
-* Cookie
-* User Agent
+- IP Source Address
+- AS Num
+- Cookie
+- User Agent
 
-Make sure to apply the rule _only_ to the admin portion of your CMS. With WordPress for example, you can set a condition like '_URI Path contains /wp-admin/_'.
+Make sure to apply the rule *only* to the admin portion of your CMS. With WordPress for example, you can set a condition like '*URI Path contains /wp-admin/*'.
 
 Any of these fields can be spoofed, so this is not a security measure on its own. The purpose is to restore administrative functions only to conditions that may need them, while using other tools and features (including strong passwords on your CMS logins!) to secure access.
 
@@ -107,9 +107,9 @@ Do the following:
 1. [Create a client certificate](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/) and save both the certificate and key to your device.
 2. Import the certificate to your computer’s key storage. With macOS Keychain, you can use the steps listed in [Test in the browser](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#test-in-the-browser).
 3. [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) by adding the correct host.
-4. In **SSL/TLS** \> **Client Certificates**, select **Create mTLS Rule**.
+4. In **SSL/TLS** > **Client Certificates**, select **Create mTLS Rule**.
 5. Under **When incoming requests match**, enter a value for the **URI Path** field to narrow the rule scope to the admin section, otherwise you will block your visitors from accessing the public content.
-6. Set the rule to _Block_ any requests made to your admin panel if the client certificate is not verified.
+6. Set the rule to *Block* any requests made to your admin panel if the client certificate is not verified.
 7. Select **Deploy**. This creates a WAF custom rule that checks all requests to the admin section for a valid client certificate.
 
 **Note:** If you have issues getting your certificate to verify, try accessing the page in a private window. If it works, the previous successful TLS state may be cached in your browser.
@@ -124,12 +124,12 @@ Rate Limiting Rules are now available unmetered, on all plans. For more informat
 
 ## Resources
 
-* [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/)
-* [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/)
-* [Configure a custom rule with the Skip action](https://developers.cloudflare.com/waf/custom-rules/skip/)
-* [Zero Trust Services ↗](https://www.cloudflare.com/plans/zero-trust-services/)
-* [Client certificates](https://developers.cloudflare.com/ssl/client-certificates/)
-* [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/)
+- [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/)
+- [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/)
+- [Configure a custom rule with the Skip action](https://developers.cloudflare.com/waf/custom-rules/skip/)
+- [Zero Trust Services ↗](https://www.cloudflare.com/plans/zero-trust-services/)
+- [Client certificates](https://developers.cloudflare.com/ssl/client-certificates/)
+- [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/)
 
 Was this helpful?
 

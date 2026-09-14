@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Python Workflows SDK
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/python/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workflow entrypoints can be declared using Python. To achieve this, you can export a `WorkflowEntrypoint` that runs on the Cloudflare Workers platform. Refer to [Python Workers](https://developers.cloudflare.com/workers/languages/python) for more information about Python on the Workers runtime.
 
@@ -22,7 +22,7 @@ Join the #python-workers channel in the [Cloudflare Developers Discord ↗](http
 
 ## Get Started
 
-The main entrypoint for a Python workflow is the [WorkflowEntrypoint](https://developers.cloudflare.com/workflows/build/workers-api/#workflowentrypoint) class. Your workflow logic should exist inside the [run](https://developers.cloudflare.com/workflows/build/workers-api/#run) handler.
+The main entrypoint for a Python workflow is the [`WorkflowEntrypoint`](https://developers.cloudflare.com/workflows/build/workers-api/#workflowentrypoint) class. Your workflow logic should exist inside the [`run`](https://developers.cloudflare.com/workflows/build/workers-api/#run) handler.
 
 ```python
 from workers import WorkflowEntrypoint
@@ -71,7 +71,7 @@ You must add both `python_workflows` and `python_workers` compatibility flags to
 		"python_workflows"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"workflows": [
 		{
 			"name": "workflows-demo",
@@ -88,7 +88,7 @@ name = "hello-python"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers", "python_workflows" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[workflows]]
 name = "workflows-demo"
@@ -102,7 +102,7 @@ To run a Python Workflow locally, use [Wrangler](https://developers.cloudflare.c
 npx wrangler@latest dev
 ```
 
-To deploy a Python Workflow to Cloudflare, run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
+To deploy a Python Workflow to Cloudflare, run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
 
 ```bash
 npx wrangler@latest deploy

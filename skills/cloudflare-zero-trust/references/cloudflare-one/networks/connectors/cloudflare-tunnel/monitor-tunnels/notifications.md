@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Notifications
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Administrators can receive an alert when Cloudflare Tunnels in an account change their health or deployment status. Notifications can be delivered via email, webhook, and third-party services.
 
@@ -22,7 +22,13 @@ Tunnel notifications are configured on the [Cloudflare dashboard ↗](https://da
 
 ## Available notifications
 
+<details>
+
+<summary>
+
 Tunnel Creation or Deletion Event
+
+</summary>
 
 **Who is it for?**
 
@@ -40,7 +46,15 @@ All Cloudflare Zero Trust plans.
 
 No action is needed.
 
+</details>
+
+<details>
+
+<summary>
+
 Tunnel Health Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -56,11 +70,13 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-Monitor tunnel health over time and consider deploying [cloudflared replicas or load balancers](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/).
+Monitor tunnel health over time and consider deploying <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/"><code>cloudflared</code> replicas or load balancers</a>.
 
 **Additional information**
 
-Refer to [Tunnel status](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status) to review the list of possible tunnel statuses (`Healthy`, `Inactive`, `Down` and `Degraded`).
+Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/common-errors/#tunnel-status">Tunnel status</a> to review the list of possible tunnel statuses (<code>Healthy</code>, <code>Inactive</code>, <code>Down</code> and <code>Degraded</code>).
+
+</details>
 
 Was this helpful?
 

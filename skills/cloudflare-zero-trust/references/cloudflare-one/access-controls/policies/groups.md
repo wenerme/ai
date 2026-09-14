@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rule groups
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A rule group is a collection of Access rules that can be configured once and then quickly applied across many Access policies. Rule groups use the same [rule types](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) and [selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) shown in the Access policy builder.
 
@@ -24,23 +24,34 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**, and select the **Rule groups** tab.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
 3. Enter a name for the group (for example, `Lisbon-team`).
 4. Specify as many rules as needed to define your user group. For example, the following rules define a team based in Lisbon, Portugal:
 
-| Rule type | Selector         | Value     |
-| --------- | ---------------- | --------- |
-| Include   | Country          | Portugal  |
-| Require   | Emails Ending In | @team.com |
+   | Rule type | Selector | Value |
+   | --- | --- | --- |
+   | Include | Country | `Portugal` |
+   | Require | Emails Ending In | `@team.com` |
 5. Select **Save**.
 
-Send a `POST` request to the [/access/groups](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/groups/methods/create/) endpoint:
+Send a `POST` request to the [`/access/groups`](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/groups/methods/create/) endpoint:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Access: Organizations, Identity Providers, and Groups Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Access: Organizations, Identity Providers, and Groups Write</code>
+
+</details>
+
+*Create an Access groupbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
@@ -67,7 +78,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/groups" \
 	}'
 ```
 
-You can now add this group to an Access policy using the _Rule groups_ selector.
+You can now add this group to an Access policy using the *Rule groups* selector.
 
 ## Use cases
 

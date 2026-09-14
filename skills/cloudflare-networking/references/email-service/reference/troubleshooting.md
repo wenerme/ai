@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email authentication is critical for successful email delivery. This guide helps you troubleshoot common SPF, DKIM, and DMARC issues with Email Service.
 
@@ -22,40 +22,36 @@ Email authentication is critical for successful email delivery. This guide helps
 
 Having multiple SPF records on your domain is not allowed and will prevent Email Service from working properly. If your domain has multiple SPF records:
 
-1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** \> **Records**.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** > **Records**. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Look for multiple TXT records starting with `v=spf1`.
 3. Delete the incorrect SPF record.
 4. Ensure you have the correct SPF records:
-
-  * For **Email Routing** (root domain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
-  * For **Email Sending** (`cf-bounce` subdomain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - For **Email Routing** (root domain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - For **Email Sending** ( `cf-bounce` subdomain): `v=spf1 include:_spf.mx.cloudflare.net ~all`
 
 If you are unsure which SPF record is the correct one to keep, you can remove all of them and let Cloudflare regenerate the required records:
 
-1. In **DNS** \> **Records**, delete every TXT record starting with `v=spf1` on the affected name.
-2. Go to **Compute** \> **Email Service** and re-onboard or re-enable the affected service. Cloudflare adds the correct SPF record back automatically.
+1. In **DNS** > **Records**, delete every TXT record starting with `v=spf1` on the affected name.
+2. Go to **Compute** > **Email Service** and re-onboard or re-enable the affected service. Cloudflare adds the correct SPF record back automatically.
 
 ### Missing SPF record
 
 If emails are being rejected due to SPF failures:
 
-1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** \> **Records**.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the Cloudflare dashboard, select your account and domain, then go to **DNS** > **Records**. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Add TXT records for the appropriate service:
-
-  * For **Email Routing**: **Name**: `@` (root domain), **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
-  * For **Email Sending**: **Name**: `cf-bounce`, **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - For **Email Routing**: **Name**: `@` (root domain), **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
+   - For **Email Sending**: **Name**: `cf-bounce`, **Content**: `v=spf1 include:_spf.mx.cloudflare.net ~all`
 3. If you already have an SPF record on the root domain, modify it to include `include:_spf.mx.cloudflare.net`
 
 ### SPF record syntax errors
 
 Common SPF record syntax issues:
 
-* **Missing version**: SPF records must start with `v=spf1`
-* **Multiple includes**: Combine multiple services using separate `include:` statements
-* **Too many DNS lookups**: SPF records are limited to 10 DNS lookups total
-* **Incorrect all mechanism**: Use `~all` (SoftFail) or `-all` (Fail), not `+all`
+- **Missing version**: SPF records must start with `v=spf1`
+- **Multiple includes**: Combine multiple services using separate `include:` statements
+- **Too many DNS lookups**: SPF records are limited to 10 DNS lookups total
+- **Incorrect all mechanism**: Use `~all` (SoftFail) or `-all` (Fail), not `+all`
 
 **Correct format:**
 
@@ -83,13 +79,13 @@ Expected result should include:
 
 Email Service automatically generates DKIM keys for your domain, but the DNS records must be properly configured. Email Sending and Email Routing use separate DKIM selectors:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Compute** \> **Email Service**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Compute** > **Email Service**.
 2. Select your domain.
 3. Check the **Settings** page for the appropriate service:
-  * **Email Sending**: Go to **Email Sending** \> **Settings** to find the sending DKIM record (`cf-bounce._domainkey`).
-  * **Email Routing**: Go to **Email Routing** \> **Settings** to find the routing DKIM record (`cf2024-1._domainkey`).
+   - **Email Sending**: Go to **Email Sending** > **Settings** to find the sending DKIM record ( `cf-bounce._domainkey`).
+   - **Email Routing**: Go to **Email Routing** > **Settings** to find the routing DKIM record ( `cf2024-1._domainkey`).
 4. Copy the DKIM record details.
-5. Go to **DNS** \> **Records** and add the DKIM TXT record with the correct selector name and public key.
+5. Go to **DNS** > **Records** and add the DKIM TXT record with the correct selector name and public key.
 
 ### DKIM key rotation
 
@@ -123,8 +119,8 @@ If DKIM validation is failing:
 
 1. Verify the DKIM record exists in DNS
 2. Check that the record name matches the correct selector:
-  * Email Sending: `cf-bounce._domainkey.yourdomain.com`
-  * Email Routing: `cf2024-1._domainkey.yourdomain.com`
+   - Email Sending: `cf-bounce._domainkey.yourdomain.com`
+   - Email Routing: `cf2024-1._domainkey.yourdomain.com`
 3. Ensure there are no extra spaces or characters in the DNS record
 4. Wait for DNS propagation (up to 48 hours)
 5. Use online DKIM validators to test your configuration
@@ -135,12 +131,10 @@ If DKIM validation is failing:
 
 While not required, DMARC significantly improves email deliverability:
 
-1. Go to **DNS** \> **Records** in the Cloudflare dashboard.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Go to **DNS** > **Records** in the Cloudflare dashboard. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Add a TXT record:
-
-  * **Name**: `_dmarc`
-  * **Content**: `v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com`
+   - **Name**: `_dmarc`
+   - **Content**: `v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com`
 
 ### DMARC policy too strict
 
@@ -175,7 +169,7 @@ Example result:
 
 ## Local development issues
 
-### "Cannot serialize value: \[object ArrayBuffer\]"
+### "Cannot serialize value: \[object ArrayBuffer]"
 
 This error occurs when passing `ArrayBuffer` content in attachment fields during local development with `wrangler dev`. The local email binding simulator cannot serialize `ArrayBuffer` values.
 
@@ -206,10 +200,10 @@ To reduce bounce rates:
 
 Different ISPs have specific requirements:
 
-* Gmail: Requires strong domain reputation and authentication
-* Outlook/Hotmail: Sensitive to content and sender reputation
-* Yahoo: Strict DMARC enforcement
-* Corporate: Often have strict filtering rules
+- Gmail: Requires strong domain reputation and authentication
+- Outlook/Hotmail: Sensitive to content and sender reputation
+- Yahoo: Strict DMARC enforcement
+- Corporate: Often have strict filtering rules
 
 ## Testing tools
 
@@ -227,10 +221,10 @@ If you continue to experience authentication issues:
 1. Check the [Email Service analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) for delivery metrics
 2. Review bounce messages for specific error codes
 3. Contact [Cloudflare Support ↗](https://dash.cloudflare.com/?to=/:account/support) with:
-  * Domain name
-  * Example email headers
-  * Specific error messages
-  * SPF, DKIM, and DMARC record configurations
+   - Domain name
+   - Example email headers
+   - Specific error messages
+   - SPF, DKIM, and DMARC record configurations
 
 Was this helpful?
 

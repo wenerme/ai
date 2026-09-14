@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DHCP relay
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DHCP Relay provides a way for DHCP clients to communicate with DHCP servers that are not available on the same local subnet/broadcast domain. When you enable DHCP Relay, Cloudflare One Appliance (formerly Magic WAN Connector) forwards DHCP discover messages to a predefined DHCP server, and routes the responses back to the original device that sent the discover message.
 
-
+```
 	flowchart LR
 	accTitle: DHCP Relay diagram
 	accDescr: The graph shows Cloudflare One Appliance sending DHCP discover messages to a DHCP server offsite.
@@ -33,7 +33,9 @@ DHCP Relay provides a way for DHCP clients to communicate with DHCP servers that
 			classDef orange fill:#f48120,color: black
 			class a,b,c orange
 
-_The graph shows Cloudflare One Appliance sending DHCP discover messages to a DHCP server offsite._
+```
+
+*The graph shows Cloudflare One Appliance sending DHCP discover messages to a DHCP server offsite.*
 
 Caution
 
@@ -42,7 +44,7 @@ DHCP relay will not work if your DHCP server is behind a [Cloudflare Tunnel](htt
 To configure DHCP relay:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select your Cloudflare One Appliance > **Edit**.
 4. Select **Network Configuration**.
 5. In **LAN configuration**, select the LAN where you need to configure DHCP relay.
@@ -55,15 +57,26 @@ Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-Create a [PUT request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to enable DHCP relay:
+Create a [`PUT` request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to enable DHCP relay:
 
 Example:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Update Site LANbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \

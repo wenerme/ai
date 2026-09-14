@@ -12,14 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up your account
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/set-up-cloudflare-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/set-up-cloudflare-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+```
 graph LR
 A[Set up your<br>Cloudflare Account]:::highlight --> B[Verify your<br>AI crawler]
 B --> C[Discover<br>payable content]
 C --> D[Connect to<br>Stripe]
 D --> E[Crawl pages]
 classDef highlight fill:#F6821F,color:white
+
+```
 
 To begin using pay per crawl, set up your Cloudflare account.
 

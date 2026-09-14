@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on Free and Paid plans
 
 Billing depends on how you use Browser Run:
 
-* [**Quick Actions**](https://developers.cloudflare.com/browser-run/quick-actions/): Charged for browser hours only.
-* **Browser Sessions** ([Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/)): Direct browser control, charged for both browser hours and concurrent browsers.
+- [**Quick Actions**](https://developers.cloudflare.com/browser-run/quick-actions/): Charged for browser hours only.
+- **Browser Sessions** ([Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/)): Direct browser control, charged for both browser hours and concurrent browsers.
 
 Browser hours are shared across all methods.
 
-|                                             | Workers Free       | Workers Paid                                                                                                              |
-| ------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| Browser hours                               | 10 minutes per day | 10 hours per month, then $0.09 per additional hour                                                                        |
-| Concurrent browsers (Browser Sessions only) | 3 browsers         | 10 browsers ([averaged monthly](#how-is-the-number-of-concurrent-browsers-calculated)), then $2.00 per additional browser |
+|  | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Browser hours | 10 minutes per day | 10 hours per month, then $0.09 per additional hour |
+| Concurrent browsers (Browser Sessions only) | 3 browsers | 10 browsers ([averaged monthly](#how-is-the-number-of-concurrent-browsers-calculated)), then $2.00 per additional browser |
 
 To view or change your plan, go to the **Workers plans** page in the Cloudflare dashboard:
 
-[Go to **Workers plans** ↗](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[Go to **Workers plans** ↗](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 ## Examples of Workers Paid pricing
 
@@ -41,7 +41,9 @@ If a Workers Paid user uses Quick Actions for 50 hours during the month, the est
 For browser hours:
 
 
+
 50 hours - 10 hours (included in plan) = 40 hours
+
 
 
 40 hours × $0.09 per hour = $3.60
@@ -53,7 +55,9 @@ If a Workers Paid plan user uses Browser Sessions (Puppeteer, Playwright, or CDP
 For browser hours:
 
 
+
 50 hours - 10 hours (included in plan) = 40 hours
+
 
 
 40 hours × $0.09 per hour = $3.60
@@ -61,16 +65,20 @@ For browser hours:
 For concurrent browsers:
 
 
+
 ((10 browsers × 15 days) + (20 browsers × 15 days)) = 450 total browsers used in month
 
 
+
 450 browsers used in month ÷ 30 days in month = 15 browsers (averaged monthly)
+
 
 
 15 browsers (averaged monthly) − 10 (included in plan) = 5 browsers
 5 browsers × $2.00 per browser = $10.00
 
 For browser hours and concurrent browsers:
+
 
 
 $3.60 + $10.00 = $13.60
@@ -81,19 +89,22 @@ $3.60 + $10.00 = $13.60
 
 You can monitor Browser Run usage in two ways:
 
-* To monitor your Browser Run usage in the Cloudflare dashboard, go to the **Browser Run** page.
-[Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
-* The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:
-```ts
-const contentRes = await client.browserRendering.content
-	.create({
-		account_id: "account_id",
-	})
-	.asResponse();
-const browserMsUsed = parseInt(
-	contentRes.headers.get("X-Browser-Ms-Used") || "",
-);
-```
+- To monitor your Browser Run usage in the Cloudflare dashboard, go to the **Browser Run** page. [Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+- The `X-Browser-Ms-Used` header, which is returned in every Quick Actions response, reports browser time used for the request (in milliseconds). You can also access this header using the Typescript SDK with the .asResponse() method:
+
+  ```ts
+  const contentRes = await client.browserRendering.content
+  	.create({
+  		account_id: "account_id",
+  	})
+  	.asResponse();
+
+  const browserMsUsed = parseInt(
+  	contentRes.headers.get("X-Browser-Ms-Used") || "",
+  );
+  ```
+
+
 
 You can then use the tables above to estimate your costs based on your usage.
 

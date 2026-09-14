@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Published applications
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel allows you to publish local applications to the Internet via a public hostname. For example, you can [add a published application route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2a-publish-an-application) that points `docs.example.com` to `https://localhost:8080`. Anyone can now view your application by going to `docs.example.com` in their web browser.
 

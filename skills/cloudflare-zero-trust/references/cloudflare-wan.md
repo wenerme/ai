@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare WAN
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect and secure your entire corporate network through Cloudflare, replacing MPLS circuits and hub-and-spoke routing with cloud-native networking.
 
@@ -22,7 +22,9 @@ Cloudflare WAN (formerly Magic WAN) connects your data centers, offices, and clo
 
 Cloudflare WAN provides secure, performant [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) for your entire corporate network. [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) integrates with Cloudflare WAN, enabling you to enforce network firewall policies at Cloudflare's global network, across traffic from any entity within your network.
 
-You connect your sites to Cloudflare through on-ramps — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels. To make it easier to onboard your cloud resources, you can use [Multi-Cloud Networking](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/), which automates creating on-ramps from your cloud networks. Refer to [On-ramps](https://developers.cloudflare.com/cloudflare-wan/on-ramps/) for a full list of supported on-ramps.
+You connect your sites to Cloudflare through on-ramps
+
+ — tunnels or direct connections from your network to Cloudflare. Cloudflare WAN supports any device that uses anycast GRE or IPsec tunnels. To make it easier to onboard your cloud resources, you can use [Multi-Cloud Networking](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/), which automates creating on-ramps from your cloud networks. Refer to [On-ramps](https://developers.cloudflare.com/cloudflare-wan/on-ramps/) for a full list of supported on-ramps.
 
 Refer to [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/) to compare approaches and plan your migration, or go straight to [get started](https://developers.cloudflare.com/cloudflare-wan/get-started/).
 
@@ -32,10 +34,10 @@ Cloudflare WAN is a standalone WAN-as-a-Service (WANaaS) product. It provides si
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) is the full SASE (Secure Access Service Edge) platform. It extends Cloudflare WAN with identity-aware security services:
 
-* **[Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)** — deploys on user devices to route traffic through Cloudflare with identity context.
-* **[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)** — creates outbound-only connections from your infrastructure to Cloudflare, with no inbound ports required.
-* **[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)** — applies secure web gateway (SWG) policies to filter and inspect Internet-bound traffic.
-* **[Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/)** — enforces Zero Trust Network Access (ZTNA) policies based on user identity, device posture, and context.
+- **[Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)** — deploys on user devices to route traffic through Cloudflare with identity context.
+- **[Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)** — creates outbound-only connections from your infrastructure to Cloudflare, with no inbound ports required.
+- **[Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)** — applies secure web gateway (SWG) policies to filter and inspect Internet-bound traffic.
+- **[Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/)** — enforces Zero Trust Network Access (ZTNA) policies based on user identity, device posture, and context.
 
 If your requirements are limited to site-to-site connectivity and network-layer security, Cloudflare WAN provides what you need. When you need user-level security policies, identity-based access controls, or secure Internet egress, you can add Cloudflare One capabilities to your existing deployment.
 

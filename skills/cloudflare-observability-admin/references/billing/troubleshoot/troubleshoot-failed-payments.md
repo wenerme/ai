@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Resolve a payment failure
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/troubleshoot/troubleshoot-failed-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a payment fails when purchasing a product, changing a subscription, or paying an invoice, you may see one of the following error messages:
 
-* "The payment has failed. Please contact your bank or use a different payment method."
-* "Payment error: authorization failed for \[“example.com”\]"
+- "The payment has failed. Please contact your bank or use a different payment method."
+- "Payment error: authorization failed for \[“example.com”]"
 
-You may also receive an email with the subject "\[Cloudflare\]: We could not process your renewal payment" when a recurring subscription charge fails.
+You may also receive an email with the subject "\[Cloudflare]: We could not process your renewal payment" when a recurring subscription charge fails.
 
 ## What happens next
 
@@ -29,19 +29,19 @@ To avoid this, resolve the failed payment and retry using the steps below. If yo
 
 ## Causes
 
-* Your card details are incorrect.
-* Your account has insufficient funds.
-* The 3D Secure (3DS) authentication did not complete.
-* Your bank is rate limiting payments from Cloudflare.
-* Your bank is declining the payment.
+- Your card details are incorrect.
+- Your account has insufficient funds.
+- The 3D Secure (3DS) authentication did not complete.
+- Your bank is rate limiting payments from Cloudflare.
+- Your bank is declining the payment.
 
 ## Fix the payment method
 
 ### Check your payment details
 
-* Confirm that your billing address matches the address registered with your bank.
-* Confirm that the Card Verification Value (CVC) is correct.
-* If you use PayPal, check your PayPal email address for a verification email and follow the authorization instructions.
+- Confirm that your billing address matches the address registered with your bank.
+- Confirm that the Card Verification Value (CVC) is correct.
+- If you use PayPal, check your PayPal email address for a verification email and follow the authorization instructions.
 
 ### Check account funds
 
@@ -64,8 +64,7 @@ If you purchased or renewed multiple domains through [Cloudflare Registrar](http
 After you check the items above, retry your transaction in the Cloudflare dashboard. If the failed payment was for a renewal, Cloudflare retries automatically five times over five days. Retrying manually in the dashboard gives you instant feedback.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **Manage Account** \> **Billing**.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Go to **Invoices and documents**.
 4. Select **Pay now** next to your invoice. You can also open the invoice PDF and select the payment link.
 5. Follow the on-screen instructions to retry the payment.
@@ -80,9 +79,9 @@ After payment succeeds, allow up to 24 hours for Cloudflare to recognize the pay
 
 ## Related resources
 
-* [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
-* [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your payment method
-* [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
+- [Pay an outstanding balance](https://developers.cloudflare.com/billing/manage/pay-invoices-overdue-balances/) — Resolve unpaid invoices
+- [Update billing information](https://developers.cloudflare.com/billing/get-started/update-billing-info/) — Change your payment method
+- [Error reference](https://developers.cloudflare.com/billing/troubleshoot/error-reference/) — Look up other billing error messages
 
 Was this helpful?
 

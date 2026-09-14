@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Managed Rules
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides pre-configured managed rulesets that protect against web application exploits such as the following:
 
-* Zero-day vulnerabilities
-* Top-10 attack techniques
-* Use of stolen/leaked credentials
-* Extraction of sensitive data
+- Zero-day vulnerabilities
+- Top-10 attack techniques
+- Use of stolen/leaked credentials
+- Extraction of sensitive data
 
 Managed rulesets are [regularly updated](https://developers.cloudflare.com/waf/change-log/). Each rule has a default action that varies according to the severity of the rule. You can adjust the behavior of specific rules, choosing from several possible actions.
 
@@ -29,45 +29,45 @@ Rules of managed rulesets have associated tags (such as `wordpress`) that allow 
 
 ## Available managed rulesets
 
-* [**Cloudflare Managed Ruleset**](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/): Created by the Cloudflare security team, this ruleset provides fast and effective protection for all of your applications. It covers known attack techniques and zero-day vulnerabilities (newly discovered flaws with no available patch). The ruleset is updated frequently to address new threats and reduce false positives (legitimate requests incorrectly flagged).
-Ruleset ID: ...376e9aee
-* [**Cloudflare OWASP Core Ruleset**](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/): Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. This ruleset uses a scoring model — each matching rule adds its score to a cumulative [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score), and the WAF executes the configured action when the score exceeds the [threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold).
-Ruleset ID: ...c25d2f1f
-* [**Cloudflare Exposed Credentials Check**](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/): Deploys an automated credentials check on your end-user authentication endpoints. For any credential pair, the Cloudflare WAF performs a lookup against a public database of stolen credentials to determine if they were previously compromised. Cloudflare recommends that you use [leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) instead of this ruleset.
-Ruleset ID: ...14069605
-* **Cloudflare Free Managed Ruleset**: Available on all Cloudflare plans. Provides protection against high-impact and widely exploited vulnerabilities. The rules are safe to deploy on most applications. If you have already deployed the Cloudflare Managed Ruleset, you do not need this ruleset — the Cloudflare Managed Ruleset includes broader coverage.
-Ruleset ID: ...dfb893ba
+- [**Cloudflare Managed Ruleset**](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/): Created by the Cloudflare security team, this ruleset provides fast and effective protection for all of your applications. It covers known attack techniques and zero-day vulnerabilities (newly discovered flaws with no available patch). The ruleset is updated frequently to address new threats and reduce false positives (legitimate requests incorrectly flagged).
+  Ruleset ID: ...376e9aee
+- [**Cloudflare OWASP Core Ruleset**](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/): Cloudflare's implementation of the Open Web Application Security Project (OWASP) ModSecurity Core Rule Set. This ruleset uses a scoring model — each matching rule adds its score to a cumulative [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score), and the WAF executes the configured action when the score exceeds the [threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold).
+  Ruleset ID: ...c25d2f1f
+- [**Cloudflare Exposed Credentials Check**](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/): Deploys an automated credentials check on your end-user authentication endpoints. For any credential pair, the Cloudflare WAF performs a lookup against a public database of stolen credentials to determine if they were previously compromised. Cloudflare recommends that you use [leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) instead of this ruleset.
+  Ruleset ID: ...14069605
+- **Cloudflare Free Managed Ruleset**: Available on all Cloudflare plans. Provides protection against high-impact and widely exploited vulnerabilities. The rules are safe to deploy on most applications. If you have already deployed the Cloudflare Managed Ruleset, you do not need this ruleset — the Cloudflare Managed Ruleset includes broader coverage.
+  Ruleset ID: ...dfb893ba
 
 The following managed rulesets run in a response phase:
 
-* [**Cloudflare Sensitive Data Detection**](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/): Created by Cloudflare to address common data loss threats. These rules monitor the download of specific sensitive data — for example, financial and personally identifiable information.
-Ruleset ID: ...499d988e
+- [**Cloudflare Sensitive Data Detection**](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/): Created by Cloudflare to address common data loss threats. These rules monitor the download of specific sensitive data — for example, financial and personally identifiable information.
+  Ruleset ID: ...499d988e
 
 ## Availability
 
 The managed rulesets you can deploy depend on your Cloudflare plan.
 
-|                                                   | Free | Pro | Business | Enterprise |
-| ------------------------------------------------- | ---- | --- | -------- | ---------- |
-| Availability                                      | Yes  | Yes | Yes      | Yes        |
-| Free Managed Ruleset                              | Yes  | Yes | Yes      | Yes        |
-| Cloudflare Managed Ruleset                        | No   | Yes | Yes      | Yes        |
-| Cloudflare OWASP Core Ruleset                     | No   | Yes | Yes      | Yes        |
-| Cloudflare Exposed Credentials Check (deprecated) | No   | Yes | Yes      | Yes        |
-| Cloudflare Sensitive Data Detection               | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Free Managed Ruleset | Yes | Yes | Yes | Yes |
+| Cloudflare Managed Ruleset | No | Yes | Yes | Yes |
+| Cloudflare OWASP Core Ruleset | No | Yes | Yes | Yes |
+| Cloudflare Exposed Credentials Check (deprecated) | No | Yes | Yes | Yes |
+| Cloudflare Sensitive Data Detection | No | No | No | Yes |
 
 ## Customize the behavior of managed rulesets
 
 To customize the behavior of managed rulesets, do one of the following:
 
-* [Create exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of managed rulesets or some of their rules under certain conditions.
-* [Configure overrides](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset) to change the rule action or disable one or more rules of managed rulesets. Overrides can affect an entire managed ruleset, specific tags, or specific rules in the managed ruleset.
+- [Create exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of managed rulesets or some of their rules under certain conditions.
+- [Configure overrides](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset) to change the rule action or disable one or more rules of managed rulesets. Overrides can affect an entire managed ruleset, specific tags, or specific rules in the managed ruleset.
 
 Exceptions have priority over overrides.
 
 Important
 
-Ruleset overrides and tag overrides apply to both existing and _future_ rules in the managed ruleset. If you want to override existing rules only, you must use rule overrides.
+Ruleset overrides and tag overrides apply to both existing and *future* rules in the managed ruleset. If you want to override existing rules only, you must use rule overrides.
 
 ## Interaction with other app security features
 
@@ -79,9 +79,9 @@ If you are using several app security features like custom rules, Managed Rules,
 
 Managed rules inspect the body of each incoming request up to a maximum size. This limit varies by plan:
 
-* For Enterprise customers, the maximum body size is 128 KB.
-* For other paid plans, the limit is lower by default — contact your account team or Cloudflare Support to increase the limit.
-* For users in the Free plan, the limit is 1 MB.
+- For Enterprise customers, the maximum body size is 128 KB.
+- For other paid plans, the limit is lower by default — contact your account team or Cloudflare Support to increase the limit.
+- For users in the Free plan, the limit is 1 MB.
 
 Request content beyond this limit may not be fully analyzed, which can affect how managed rules behave. For example, the [OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) calculates a cumulative [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score) based on the scores of individual rules that match a request. Larger payloads give more content for rules to match against, which increases the score and makes it more likely to exceed the [score threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold) — resulting in a false positive.
 
@@ -95,9 +95,9 @@ At the zone level, you can deploy each managed ruleset once. At the [account lev
 
 WAF Managed Rules run in the `http_request_firewall_managed` phase, which executes **after**:
 
-* HTTP DDoS Attack Protection (`ddos_l7` phase)
-* Custom Rules (`http_request_firewall_custom` phase)
-* Rate Limiting Rules (`http_ratelimit` phase)
+- HTTP DDoS Attack Protection ( `ddos_l7` phase)
+- Custom Rules ( `http_request_firewall_custom` phase)
+- Rate Limiting Rules ( `http_ratelimit` phase)
 
 This means a rule with a terminal action (such as Block or Managed Challenge) in any of these earlier phases prevents Managed Rules from evaluating that request. For the complete security feature execution order, refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/).
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add a custom domain to a branch
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/custom-branch-aliases/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to add a custom domain (`staging.example.com`) that will point to a specific branch (`staging`) on your Pages project.
 
@@ -32,12 +32,12 @@ Next, add a custom domain under your Pages project for your desired custom domai
 
 To do this:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Select **Custom domains** \> **Setup a custom domain**.
+3. Select **Custom domains** > **Setup a custom domain**.
 4. Input the domain you would like to use, such as `staging.example.com`
-5. Select **Continue** \> **Activate domain**
+5. Select **Continue** > **Activate domain**
+
 ![After selecting your custom domain, you will be asked to activate it.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1816,height=869,format=webp/_astro/pages_custom_domain-2.BTtd80-v.png)
 
 After activating your custom domain, go to [DNS ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns) for the `example.com` zone and find the `CNAME` record with the name `staging` and change the target to include your branch alias.

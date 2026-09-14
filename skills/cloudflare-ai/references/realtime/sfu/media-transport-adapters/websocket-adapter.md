@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WebSocket adapter
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/media-transport-adapters/websocket-adapter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,12 +22,12 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 ## What you can build
 
-* AI services with WebSocket APIs for audio processing
-* Custom audio processing pipelines
-* Legacy system bridges
-* Server-side audio generation and consumption
-* Video snapshotting and thumbnails
-* Computer vision ingestion (low FPS)
+- AI services with WebSocket APIs for audio processing
+- Custom audio processing pipelines
+- Legacy system bridges
+- Server-side audio generation and consumption
+- Video snapshotting and thumbnails
+- Computer vision ingestion (low FPS)
 
 ## How it works
 
@@ -35,47 +35,53 @@ Stream audio and video between WebRTC tracks and WebSocket endpoints. Supports i
 
 Ingest audio from external sources via WebSocket to create WebRTC tracks for distribution.
 
+```
 graph LR
     A[External System] -->|Audio Data| B[WebSocket Endpoint]
     B -->|Adapter| C[Realtime SFU]
     C -->|New Session| D[WebRTC Track]
     D -->|WebRTC| E[WebRTC Clients]
 
+```
+
 **Use cases:**
 
-* AI text-to-speech generation streaming into WebRTC
-* Audio from backend services or databases
-* Live audio feeds from external systems
+- AI text-to-speech generation streaming into WebRTC
+- Audio from backend services or databases
+- Live audio feeds from external systems
 
 **Key characteristics:**
 
-* Creates a new session ID automatically
-* Uses `buffer` mode for chunked audio transmission
-* Maximum 32 KB per WebSocket message
+- Creates a new session ID automatically
+- Uses `buffer` mode for chunked audio transmission
+- Maximum 32 KB per WebSocket message
 
 ### Stream WebRTC audio and video to external systems
 
 Stream audio and video from existing WebRTC tracks to external systems via WebSocket for processing or storage.
 
+```
 graph LR
     A[WebRTC Source] -->|WebRTC| B[Realtime SFU Session]
     B -->|Adapter| C[WebSocket Endpoint]
     C -->|Media Data| D[External System]
 
+```
+
 **Use cases:**
 
-* Real-time speech-to-text transcription
-* Audio recording and archival
-* Live audio processing pipelines
-* Video snapshotting and thumbnails
-* Computer vision ingestion (low FPS)
+- Real-time speech-to-text transcription
+- Audio recording and archival
+- Live audio processing pipelines
+- Video snapshotting and thumbnails
+- Computer vision ingestion (low FPS)
 
 **Key characteristics:**
 
-* Requires existing session ID with track
-* Audio: Sends individual PCM frames as they are produced; each includes timestamp and sequence number
-* Video: Sends individual JPEG frames at approximately 1 FPS; each includes timestamp (sequence number may be unset)
-* Automatically retries the same WebSocket endpoint for up to 5 seconds after brief disconnects or endpoint restarts. Refer to [Automatic reconnection for streaming](#automatic-reconnection-for-streaming).
+- Requires existing session ID with track
+- Audio: Sends individual PCM frames as they are produced; each includes timestamp and sequence number
+- Video: Sends individual JPEG frames at approximately 1 FPS; each includes timestamp (sequence number may be unset)
+- Automatically retries the same WebSocket endpoint for up to 5 seconds after brief disconnects or endpoint restarts. Refer to [Automatic reconnection for streaming](#automatic-reconnection-for-streaming).
 
 ## API reference
 
@@ -103,13 +109,13 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 #### Parameters
 
-| Parameter  | Type   | Description                                                 |
-| ---------- | ------ | ----------------------------------------------------------- |
-| location   | string | **Required**. Must be "local" for ingesting audio           |
-| trackName  | string | **Required**. Name for the new WebRTC track to create       |
-| endpoint   | string | **Required**. WebSocket URL to receive audio from           |
-| inputCodec | string | **Required**. Codec of incoming audio. Currently only "pcm" |
-| mode       | string | **Required**. Must be "buffer" for local mode               |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `location` | string | **Required**. Must be `"local"` for ingesting audio |
+| `trackName` | string | **Required**. Name for the new WebRTC track to create |
+| `endpoint` | string | **Required**. WebSocket URL to receive audio from |
+| `inputCodec` | string | **Required**. Codec of incoming audio. Currently only `"pcm"` |
+| `mode` | string | **Required**. Must be `"buffer"` for local mode |
 
 #### Response
 
@@ -128,9 +134,9 @@ POST /v1/apps/{appId}/adapters/websocket/new
 
 Important
 
-* A new session ID is automatically generated.
-* The `sessionId` field in the request is ignored if provided.
-* Send audio in chunks up to 32 KB per WebSocket message.
+- A new session ID is automatically generated.
+- The `sessionId` field in the request is ignored if provided.
+- Send audio in chunks up to 32 KB per WebSocket message.
 
 #### Request body
 
@@ -150,13 +156,13 @@ Important
 
 #### Parameters
 
-| Parameter   | Type   | Description                                                                                 |
-| ----------- | ------ | ------------------------------------------------------------------------------------------- |
-| location    | string | **Required**. Must be "remote" for streaming media out                                      |
-| sessionId   | string | **Required**. Existing session ID containing the track                                      |
-| trackName   | string | **Required**. Name of the existing track to stream                                          |
-| endpoint    | string | **Required**. WebSocket URL to send media to                                                |
-| outputCodec | string | **Required**. Codec for outgoing media. Use "pcm" for audio, "jpeg" for video (egress only) |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `location` | string | **Required**. Must be `"remote"` for streaming media out |
+| `sessionId` | string | **Required**. Existing session ID containing the track |
+| `trackName` | string | **Required**. Name of the existing track to stream |
+| `endpoint` | string | **Required**. WebSocket URL to send media to |
+| `outputCodec` | string | **Required**. Codec for outgoing media. Use `"pcm"` for audio, `"jpeg"` for video (egress only) |
 
 #### Response
 
@@ -175,12 +181,12 @@ Important
 
 Important
 
-* Requires an existing session with the specified track.
-* Audio frames are sent individually with timestamp and sequence number.
-* Video frames are sent individually as JPEG at approximately 1 FPS with timestamp; sequence number may be unset.
-* Each frame is a separate WebSocket message.
-* No mode parameter; frames are sent as produced.
-* The SFU automatically retries the same WebSocket endpoint for up to 5 seconds after brief disconnects.
+- Requires an existing session with the specified track.
+- Audio frames are sent individually with timestamp and sequence number.
+- Video frames are sent individually as JPEG at approximately 1 FPS with timestamp; sequence number may be unset.
+- Each frame is a separate WebSocket message.
+- No mode parameter; frames are sent as produced.
+- The SFU automatically retries the same WebSocket endpoint for up to 5 seconds after brief disconnects.
 
 ### Close adapter
 
@@ -204,18 +210,18 @@ POST /v1/apps/{appId}/adapters/websocket/close
 
 ### WebRTC tracks
 
-* **Codec**: Opus
-* **Sample rate**: 48 kHz
-* **Channels**: Stereo
+- **Codec**: Opus
+- **Sample rate**: 48 kHz
+- **Channels**: Stereo
 
 ### WebSocket binary format
 
 Media uses Protocol Buffers. Audio uses PCM payloads; video uses JPEG payloads:
 
-* 16-bit signed little-endian PCM
-* 48 kHz sample rate
-* Stereo (left/right interleaved)
-* Video: JPEG image payload (one frame per message)
+- 16-bit signed little-endian PCM
+- 48 kHz sample rate
+- Stereo (left/right interleaved)
+- Video: JPEG image payload (one frame per message)
 
 ```proto
 message Packet {
@@ -229,19 +235,19 @@ message Packet {
 
 **Stream mode (egress)**:
 
-* For audio frames:
-  * `sequenceNumber`: Incremental packet counter
-  * `timestamp`: Timestamp for synchronization
-  * `payload`: Individual PCM audio frame data
-* For video frames (JPEG):
-  * `timestamp`: Timestamp for synchronization
-  * `payload`: JPEG image data (one frame per message)
-  * Note: `sequenceNumber` may be unset for video frames
+- For audio frames:
+  - `sequenceNumber`: Incremental packet counter
+  - `timestamp`: Timestamp for synchronization
+  - `payload`: Individual PCM audio frame data
+- For video frames (JPEG):
+  - `timestamp`: Timestamp for synchronization
+  - `payload`: JPEG image data (one frame per message)
+  - Note: `sequenceNumber` may be unset for video frames
 
 ### Video (JPEG)
 
-* Supported WebRTC input codecs: H264, H265, VP8, VP9
-* Output over WebSocket: JPEG images at approximately 1 FPS
+- Supported WebRTC input codecs: H264, H265, VP8, VP9
+- Output over WebSocket: JPEG images at approximately 1 FPS
 
 ## Connection protocol
 
@@ -255,24 +261,24 @@ Connects to your WebSocket endpoint:
 
 #### Buffer mode (ingest)
 
-* **Binary messages**: PCM audio data in chunks
-* **Maximum message size**: 32 KB per WebSocket message
-* **Important**: Account for serialization overhead when chunking audio buffers
-* Send audio in small, frequent chunks rather than large batches
+- **Binary messages**: PCM audio data in chunks
+- **Maximum message size**: 32 KB per WebSocket message
+- **Important**: Account for serialization overhead when chunking audio buffers
+- Send audio in small, frequent chunks rather than large batches
 
 #### Stream mode (egress)
 
-* **Binary messages**: Individual frames with metadata (audio or video)
-* Audio frames include:
-  * Timestamp information
-  * Sequence number
-  * PCM audio frame data
-* Video frames include:
-  * Timestamp information
-  * JPEG image data
-  * Note: Sequence number may be unset for video frames
-* Frames are sent individually as they arrive from the WebRTC track
-* Video frames are emitted at approximately 1 FPS
+- **Binary messages**: Individual frames with metadata (audio or video)
+- Audio frames include:
+  - Timestamp information
+  - Sequence number
+  - PCM audio frame data
+- Video frames include:
+  - Timestamp information
+  - JPEG image data
+  - Note: Sequence number may be unset for video frames
+- Frames are sent individually as they arrive from the WebRTC track
+- Video frames are emitted at approximately 1 FPS
 
 ### Connection lifecycle
 
@@ -292,9 +298,9 @@ The SFU retries the same WebSocket endpoint for up to 5 seconds. No API changes 
 
 Automatic reconnection uses live-first buffering while the WebSocket endpoint is temporarily unavailable:
 
-* **Audio buffering**: The SFU keeps a short, bounded backlog of audio frames. If the interruption lasts longer than the backlog can cover, older audio may be dropped so reconnect recovery stays bounded.
-* **Video buffering**: The SFU keeps only the latest available JPEG frame. Newer frames replace older frames while reconnecting, so video resumes near-live instead of replaying stale frames.
-* **Delivery behavior**: Buffering reduces media loss during brief interruptions, but it is not a replay mechanism and does not guarantee gapless or exactly-once delivery.
+- **Audio buffering**: The SFU keeps a short, bounded backlog of audio frames. If the interruption lasts longer than the backlog can cover, older audio may be dropped so reconnect recovery stays bounded.
+- **Video buffering**: The SFU keeps only the latest available JPEG frame. Newer frames replace older frames while reconnecting, so video resumes near-live instead of replaying stale frames.
+- **Delivery behavior**: Buffering reduces media loss during brief interruptions, but it is not a replay mechanism and does not guarantee gapless or exactly-once delivery.
 
 Automatic reconnection applies only when using [Stream mode (egress)](#stream-mode-egress). It retries the same endpoint only and does not provide multi-endpoint failover.
 
@@ -310,47 +316,47 @@ Usage counts towards your Cloudflare Realtime free tier of 1,000 GB.
 
 ### Connection management
 
-* Closing an already-closed instance returns success
-* Close when sessions end
-* When using [Stream mode (egress)](#stream-mode-egress), handle adapter closure after the 5-second [automatic reconnect window](#automatic-reconnection-for-streaming) is exhausted.
-* When ingesting from WebSocket to WebRTC, implement reconnection logic in your WebSocket client if the connection drops.
-* Make your WebSocket endpoint restart-safe so it can accept reconnects to the same URL during brief restarts.
+- Closing an already-closed instance returns success
+- Close when sessions end
+- When using [Stream mode (egress)](#stream-mode-egress), handle adapter closure after the 5-second [automatic reconnect window](#automatic-reconnection-for-streaming) is exhausted.
+- When ingesting from WebSocket to WebRTC, implement reconnection logic in your WebSocket client if the connection drops.
+- Make your WebSocket endpoint restart-safe so it can accept reconnects to the same URL during brief restarts.
 
 ### Performance
 
-* Deploy WebSocket endpoints close to Cloudflare edge
-* Use appropriate buffer sizes
-* Monitor connection quality
+- Deploy WebSocket endpoints close to Cloudflare edge
+- Use appropriate buffer sizes
+- Monitor connection quality
 
 ### Security
 
-* Secure WebSocket endpoints with authentication
-* Use `wss://` for production
-* Implement rate limiting
+- Secure WebSocket endpoints with authentication
+- Use `wss://` for production
+- Implement rate limiting
 
 ## Limitations
 
-* **WebSocket payloads**: PCM (audio) for ingest and stream; JPEG (video) for stream
-* **Beta status**: API may change in future releases
-* **Video support**: Egress only (JPEG)
-* **Video frame rate**: Approximately 1 FPS (beta; not configurable)
-* **Streaming reconnects**: When using [Stream mode (egress)](#stream-mode-egress), the SFU automatically retries the same WebSocket endpoint for short disconnects only. It does not fail over to alternate endpoints.
-* **Best-effort recovery**: Brief reconnects reduce media loss, but do not guarantee gapless or exactly-once delivery.
-* **Video reconnect behavior**: Video resumes from the latest available JPEG frame rather than replaying older frames.
-* **Unidirectional flow**: Each instance handles one direction
+- **WebSocket payloads**: PCM (audio) for ingest and stream; JPEG (video) for stream
+- **Beta status**: API may change in future releases
+- **Video support**: Egress only (JPEG)
+- **Video frame rate**: Approximately 1 FPS (beta; not configurable)
+- **Streaming reconnects**: When using [Stream mode (egress)](#stream-mode-egress), the SFU automatically retries the same WebSocket endpoint for short disconnects only. It does not fail over to alternate endpoints.
+- **Best-effort recovery**: Brief reconnects reduce media loss, but do not guarantee gapless or exactly-once delivery.
+- **Video reconnect behavior**: Video resumes from the latest available JPEG frame rather than replaying older frames.
+- **Unidirectional flow**: Each instance handles one direction
 
 ## Error handling
 
-| Error Code | Description                              |
-| ---------- | ---------------------------------------- |
-| 400        | Invalid request parameters               |
-| 404        | Session or track not found               |
-| 503        | Adapter not found (for close operations) |
+| Error Code | Description |
+| --- | --- |
+| `400` | Invalid request parameters |
+| `404` | Session or track not found |
+| `503` | Adapter not found (for close operations) |
 
 ## Reference implementations
 
-* Audio (PCM over WebSocket): [Cloudflare Realtime Examples – ai-tts-stt ↗](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt)
-* Video (JPEG egress): [Cloudflare Realtime Examples – video-to-jpeg ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg)
+- Audio (PCM over WebSocket): [Cloudflare Realtime Examples – ai-tts-stt ↗](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt)
+- Video (JPEG egress): [Cloudflare Realtime Examples – video-to-jpeg ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg)
 
 ## Migration from custom bridges
 
@@ -361,7 +367,7 @@ Usage counts towards your Cloudflare Realtime free tier of 1,000 GB.
 
 ## FAQ
 
-**Q: Can I use the same adapter for bidirectional audio?**A: No, each instance is unidirectional. Create separate adapters for send and receive.
+**Q: Can I use the same adapter for bidirectional audio?** A: No, each instance is unidirectional. Create separate adapters for send and receive.
 
 **Q: What happens if the WebSocket connection drops?**
 
@@ -373,9 +379,9 @@ If the endpoint remains unavailable after the 5-second [automatic reconnect wind
 
 When ingesting from WebSocket to WebRTC, your WebSocket client should reconnect and recreate the adapter as needed.
 
-**Q: Is there a limit on concurrent adapters?**A: Limits follow standard Cloudflare Realtime quotas. Contact support for specific requirements.
+**Q: Is there a limit on concurrent adapters?** A: Limits follow standard Cloudflare Realtime quotas. Contact support for specific requirements.
 
-**Q: Can I change the audio format after creating an adapter?**A: No, audio format is fixed at creation time. Create a new adapter for different formats.
+**Q: Can I change the audio format after creating an adapter?** A: No, audio format is fixed at creation time. Create a new adapter for different formats.
 
 Was this helpful?
 

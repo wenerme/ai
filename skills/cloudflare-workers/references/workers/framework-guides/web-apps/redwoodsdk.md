@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RedwoodSDK
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [RedwoodSDK ↗](https://rwsdk.com/) application and deploy it to Cloudflare Workers.
 
@@ -21,89 +21,121 @@ RedwoodSDK is a framework for building server-side web applications on Cloudflar
 ## Deploy a new RedwoodSDK application on Workers
 
 1. **Create a new project.**
-Run the following command, replacing `my-project-name` with your desired project name:
-npmyarnpnpm
-```
-npx create-rwsdk my-project-name
-```
-```
-yarn dlx create-rwsdk my-project-name
-```
-```
-pnpx create-rwsdk my-project-name
-```
+
+   Run the following command, replacing `my-project-name` with your desired project name:npmyarnpnpm
+
+   ```
+   npx create-rwsdk my-project-name
+   ```
+
+   ```
+   yarn dlx create-rwsdk my-project-name
+   ```
+
+   ```
+   pnpx create-rwsdk my-project-name
+   ```
+
+
 2. **Change the directory.**
-```sh
-cd my-project-name
-```
-3. **Install dependencies.**
-npmyarnpnpmbun
-```
-npm install
-```
-```
-yarn install
-```
-```
-pnpm install
-```
-```
-bun install
-```
+
+   ```sh
+   cd my-project-name
+   ```
+
+
+3. **Install dependencies.**npmyarnpnpmbun
+
+   ```
+   npm install
+   ```
+
+   ```
+   yarn install
+   ```
+
+   ```
+   pnpm install
+   ```
+
+   ```
+   bun install
+   ```
+
+
 4. **Develop locally.**
-Run the following command in the project directory to start a local development server. RedwoodSDK is a Vite plugin, so you can use the same development workflow as any other Vite project:
-npmyarnpnpm
-```
-npm run dev
-```
-```
-yarn run dev
-```
-```
-pnpm run dev
-```
-Access the development server in your browser at `http://localhost:5173`, where you should see "Hello, World!" displayed on the page.
+
+   Run the following command in the project directory to start a local development server. RedwoodSDK is a Vite plugin, so you can use the same development workflow as any other Vite project:npmyarnpnpm
+
+   ```
+   npm run dev
+   ```
+
+   ```
+   yarn run dev
+   ```
+
+   ```
+   pnpm run dev
+   ```
+
+   Access the development server in your browser at `http://localhost:5173`, where you should see "Hello, World!" displayed on the page.
 5. **Add your first route.**
-The entry point of your application is `src/worker.tsx`. Open that file in your editor.
-You will see the `defineApp` function, which handles requests by returning responses to the client:
-```tsx
-import { defineApp } from "rwsdk/worker";
-import { route, render } from "rwsdk/router";
-import { Document } from "@/app/Document";
-import { Home } from "@/app/pages/Home";
-export default defineApp([
-  render(Document, [route("/", () => new Response("Hello, World!"))]),
-]);
-```
-Add a `/ping` route handler:
-```tsx
-import { defineApp } from "rwsdk/worker";
-import { route, render } from "rwsdk/router";
-export default defineApp([
-  render(Document, [
-    route("/", () => new Response("Hello, World!")),
-    route("/ping", function () {
-      return <h1>Pong!</h1>;
-    }),
-  ]),
-]);
-```
-Navigate to `http://localhost:5173/ping` to see "Pong!" displayed on the page.
-Routes can return JSX directly. RedwoodSDK has support for React Server Components, which renders JSX on the server and sends HTML to the client.
+
+   The entry point of your application is `src/worker.tsx`. Open that file in your editor.
+
+   You will see the `defineApp` function, which handles requests by returning responses to the client:
+
+   ```tsx
+   import { defineApp } from "rwsdk/worker";
+   import { route, render } from "rwsdk/router";
+
+   import { Document } from "@/app/Document";
+   import { Home } from "@/app/pages/Home";
+
+   export default defineApp([
+     render(Document, [route("/", () => new Response("Hello, World!"))]),
+   ]);
+   ```
+
+   Add a `/ping` route handler:
+
+   ```tsx
+   import { defineApp } from "rwsdk/worker";
+   import { route, render } from "rwsdk/router";
+
+   export default defineApp([
+     render(Document, [
+       route("/", () => new Response("Hello, World!")),
+       route("/ping", function () {
+         return <h1>Pong!</h1>;
+       }),
+     ]),
+   ]);
+   ```
+
+   Navigate to `http://localhost:5173/ping` to see "Pong!" displayed on the page.
+
+   Routes can return JSX directly. RedwoodSDK has support for React Server Components, which renders JSX on the server and sends HTML to the client.
 6. **Deploy your project.**
-You can deploy your project to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), either from your local machine or from any CI/CD system, including [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/builds/).
-Use the following command to build and deploy. If you are using CI, make sure to update your [deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration accordingly.
-npmyarnpnpm
-```
-npm run release
-```
-```
-yarn run release
-```
-```
-pnpm run release
-```
-The first time you run the command it might fail and ask you to create a workers.dev subdomain. Go to the dashboard and open the Workers menu. Opening the Workers landing page for the first time will create a workers.dev subdomain automatically.
+
+   You can deploy your project to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), either from your local machine or from any CI/CD system, including [Cloudflare Workers CI/CD](https://developers.cloudflare.com/workers/ci-cd/builds/).
+
+   Use the following command to build and deploy. If you are using CI, make sure to update your [deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration accordingly.npmyarnpnpm
+
+   ```
+   npm run release
+   ```
+
+   ```
+   yarn run release
+   ```
+
+   ```
+   pnpm run release
+   ```
+
+   The first time you run the command it might fail and ask you to create a workers.dev subdomain. Go to the dashboard and open the Workers menu. Opening the Workers landing page for the first time will create a workers.dev subdomain automatically.
 
 Was this helpful?
 

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.response.code
 
-`http.response.code` `Integer`
+`http.response.code``Integer`
 
 The HTTP status code returned to the client, either set by a Cloudflare product or returned by the origin server.
 
@@ -21,7 +21,7 @@ Example value:
 ```
 
 Categories:
-* Response
+- Response
 
 Was this helpful?
 

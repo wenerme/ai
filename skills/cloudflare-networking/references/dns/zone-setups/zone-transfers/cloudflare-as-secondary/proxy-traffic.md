@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Proxy traffic
 
-Last updated May 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you set up [incoming zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) on a secondary zone, you cannot enable the proxy on any transferred DNS records by default.
 
@@ -26,26 +26,38 @@ Only A, AAAA, and CNAME records can be proxied.
 
 Before you set up Secondary DNS override, make sure that you have:
 
-* [Set up a secondary DNS zone](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) and confirmed your DNS records are transferred correctly.
-* Set your [DNSSEC with Secondary DNS ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings/) option to either **Unsigned** or **Live Signing**. If set to [Pre-signed](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec), Cloudflare will treat all your DNS records as unproxied (DNS only).
-* Removed all nameservers from your registrar except for those provided by Cloudflare (highly recommended).
-Caution
-If you use Secondary DNS override and keep other nameservers at your registrar, DNS responses will be inconsistent across DNS providers, which goes against [official standards ↗](https://www.iana.org/help/nameserver-requirements).
+- [Set up a secondary DNS zone](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) and confirmed your DNS records are transferred correctly.
+- Set your [DNSSEC with Secondary DNS ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings/) option to either **Unsigned** or **Live Signing**. If set to [Pre-signed](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec), Cloudflare will treat all your DNS records as unproxied (DNS only).
+- Removed all nameservers from your registrar except for those provided by Cloudflare (highly recommended).
+
+  Caution
+
+  If you use Secondary DNS override and keep other nameservers at your registrar, DNS responses will be inconsistent across DNS providers, which goes against [official standards ↗](https://www.iana.org/help/nameserver-requirements).
 
 ## Set up Secondary DNS override
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Enable **Secondary DNS override**.
 3. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, for specific A, AAAA, or CNAME records, select the grey cloud icon to set their **Proxy status** to **Proxied**.
 
 1. To enable Secondary DNS override on a zone, use the following PATCH request:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone DNS Settings Write`
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone DNS Settings Write</code>
+- <code>DNS Write</code>
+
+</details>
+
+*Update DNS Settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
@@ -56,8 +68,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
 	}'
 ```
 
-1. For specific A, AAAA, or CNAME records, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) request with the `proxied` status as `true`.
-  * Make sure the added record has the same name as the transferred record you intend to proxy. Cloudflare only looks at the name and the proxy status, so the record content does not matter.
+2. For specific A, AAAA, or CNAME records, send a [POST](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/) request with the `proxied` status as `true`.
+   - Make sure the added record has the same name as the transferred record you intend to proxy. Cloudflare only looks at the name and the proxy status, so the record content does not matter.
 
 Zone transfers interaction
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Exposed Credentials Check Managed Ruleset
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecation notice
 
@@ -24,22 +24,22 @@ The Cloudflare Exposed Credentials Check Managed Ruleset is a set of pre-configu
 
 The managed ruleset includes rules for the following CMS applications:
 
-* WordPress
-* Joomla
-* Drupal
-* Ghost
-* Plone
-* Magento
+- WordPress
+- Joomla
+- Drupal
+- Ghost
+- Plone
+- Magento
 
 Additionally, this managed ruleset also includes generic rules for other common patterns:
 
-* Check forms submitted using a `POST` request containing `username` and `password` arguments
-* Check credentials sent as JSON with `email` and `password` keys
-* Check credentials sent as JSON with `username` and `password` keys
+- Check forms submitted using a `POST` request containing `username` and `password` arguments
+- Check credentials sent as JSON with `email` and `password` keys
+- Check credentials sent as JSON with `username` and `password` keys
 
-The default action for the rules in managed ruleset is _Exposed-Credential-Check Header_ (named `rewrite` in the API and in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs)).
+The default action for the rules in managed ruleset is *Exposed-Credential-Check Header* (named `rewrite` in the API and in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs)).
 
-The managed ruleset also contains a rule that blocks HTTP requests already containing the `Exposed-Credential-Check` HTTP header used by the _Exposed-Credential-Check Header_ action. These requests could be used to trick the origin into believing that a request contained (or did not contain) exposed credentials.
+The managed ruleset also contains a rule that blocks HTTP requests already containing the `Exposed-Credential-Check` HTTP header used by the *Exposed-Credential-Check Header* action. These requests could be used to trick the origin into believing that a request contained (or did not contain) exposed credentials.
 
 For more information on exposed credential checks, refer to [Check for exposed credentials](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/).
 
@@ -51,11 +51,11 @@ The Exposed Credentials Check managed ruleset is only shown in the Cloudflare da
 
 You can configure the following settings of the Cloudflare Exposed Credentials Check Managed Ruleset in the dashboard:
 
-* **Set the action to perform.** When you define an action for the ruleset, you override the default action defined for each rule. The available actions are: _Block_, _Log_, _Non-Interactive Challenge_, _Managed Challenge_, and _Interactive Challenge_. To remove the action override, set the ruleset action to _Default_.
-* **Override the action performed by individual rules.** The available actions are: _Exposed-Credential-Check Header_, _Block_, _Log_, _Non-Interactive Challenge_, _Managed Challenge_, and _Interactive Challenge_. For more information, refer to [Available actions](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/#available-actions).
-* **Disable specific rules.**
-* **Customize the filter expression.** With a custom expression, the Cloudflare Exposed Credentials Check Managed Ruleset applies only to a subset of the incoming requests.
-* **Configure [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/)**.
+- **Set the action to perform.** When you define an action for the ruleset, you override the default action defined for each rule. The available actions are: *Block*, *Log*, *Non-Interactive Challenge*, *Managed Challenge*, and *Interactive Challenge*. To remove the action override, set the ruleset action to *Default*.
+- **Override the action performed by individual rules.** The available actions are: *Exposed-Credential-Check Header*, *Block*, *Log*, *Non-Interactive Challenge*, *Managed Challenge*, and *Interactive Challenge*. For more information, refer to [Available actions](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/#available-actions).
+- **Disable specific rules.**
+- **Customize the filter expression.** With a custom expression, the Cloudflare Exposed Credentials Check Managed Ruleset applies only to a subset of the incoming requests.
+- **Configure [payload logging](https://developers.cloudflare.com/waf/managed-rules/payload-logging/configure/)**.
 
 For details on configuring a managed ruleset in the dashboard, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).
 
@@ -68,107 +68,130 @@ To enable the Cloudflare Exposed Credentials Check Managed Ruleset for a given z
 This example deploys the Cloudflare Exposed Credentials Check Managed Ruleset to the `http_request_firewall_managed` phase of a given zone (`$ZONE_ID`) by creating a rule that executes the managed ruleset. The rules in the managed ruleset are executed for all incoming requests.
 
 1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_managed` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-{
-	"result": {
-		"description": "Zone-level phase entry point",
-		"id": "<ENTRY_POINT_RULESET_ID>",
-		"kind": "zone",
-		"last_updated": "2024-03-16T15:40:08.202335Z",
-		"name": "zone",
-		"phase": "http_request_firewall_managed",
-		"rules": [
-			// ...
-		],
-		"source": "firewall_managed",
-		"version": "10"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+
+   *Get a zone entry point rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"description": "Zone-level phase entry point",
+   		"id": "<ENTRY_POINT_RULESET_ID>",
+   		"kind": "zone",
+   		"last_updated": "2024-03-16T15:40:08.202335Z",
+   		"name": "zone",
+   		"phase": "http_request_firewall_managed",
+   		"rules": [
+   			// ...
+   		],
+   		"source": "firewall_managed",
+   		"version": "10"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`). By default, the rule will be added at the end of the list of rules already in the ruleset.
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"action": "execute",
-		"action_parameters": {
-				"id": "c2e184081120413c86c3ab7e14069605"
-		},
-		"expression": "true",
-		"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
-	}'
-```
-```json
-{
-	"result": {
-		"id": "<ENTRY_POINT_RULESET_ID>",
-		"name": "Zone-level phase entry point",
-		"description": "",
-		"kind": "zone",
-		"version": "11",
-		"rules": [
-			// ... any existing rules
-			{
-				"id": "<RULE_ID>",
-				"version": "1",
-				"action": "execute",
-				"action_parameters": {
-					"id": "c2e184081120413c86c3ab7e14069605",
-					"version": "latest"
-				},
-				"expression": "true",
-				"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",
-				"last_updated": "2024-03-18T18:08:14.003361Z",
-				"ref": "<RULE_REF>",
-				"enabled": true
-			}
-		],
-		"last_updated": "2024-03-18T18:08:14.003361Z",
-		"phase": "http_request_firewall_managed"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+
+   *Create a zone ruleset rulebash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"action": "execute",
+   		"action_parameters": {
+   				"id": "c2e184081120413c86c3ab7e14069605"
+   		},
+   		"expression": "true",
+   		"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
+   	}'
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"id": "<ENTRY_POINT_RULESET_ID>",
+   		"name": "Zone-level phase entry point",
+   		"description": "",
+   		"kind": "zone",
+   		"version": "11",
+   		"rules": [
+   			// ... any existing rules
+   			{
+   				"id": "<RULE_ID>",
+   				"version": "1",
+   				"action": "execute",
+   				"action_parameters": {
+   					"id": "c2e184081120413c86c3ab7e14069605",
+   					"version": "latest"
+   				},
+   				"expression": "true",
+   				"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset",
+   				"last_updated": "2024-03-18T18:08:14.003361Z",
+   				"ref": "<RULE_REF>",
+   				"enabled": true
+   			}
+   		],
+   		"last_updated": "2024-03-18T18:08:14.003361Z",
+   		"phase": "http_request_firewall_managed"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the Cloudflare Exposed Credentials Check Managed Ruleset (with ID `c2e184081120413c86c3ab7e14069605`) for all incoming requests in the zone.
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"name": "My ruleset",
-		"description": "Entry point ruleset for WAF managed rulesets",
-		"kind": "zone",
-		"phase": "http_request_firewall_managed",
-		"rules": [
-				{
-						"action": "execute",
-						"action_parameters": {
-								"id": "c2e184081120413c86c3ab7e14069605"
-						},
-						"expression": "true",
-						"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
-				}
-		]
-	}'
-```
+
+   *Create a zone rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"name": "My ruleset",
+   		"description": "Entry point ruleset for WAF managed rulesets",
+   		"kind": "zone",
+   		"phase": "http_request_firewall_managed",
+   		"rules": [
+   				{
+   						"action": "execute",
+   						"action_parameters": {
+   								"id": "c2e184081120413c86c3ab7e14069605"
+   						},
+   						"expression": "true",
+   						"description": "Execute the Cloudflare Exposed Credentials Check Managed Ruleset"
+   				}
+   		]
+   	}'
+   ```
+
+
 
 ### Next steps
 
 To configure the Exposed Credentials Check Managed Ruleset via API, create [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) using the Rulesets API. You can perform the following configurations:
 
-* Specify the action to perform for all the rules in the ruleset by creating a ruleset override.
-* Disable or customize the action of individual rules by creating rule overrides.
+- Specify the action to perform for all the rules in the ruleset by creating a ruleset override.
+- Disable or customize the action of individual rules by creating rule overrides.
 
 For examples of creating overrides using the API, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 

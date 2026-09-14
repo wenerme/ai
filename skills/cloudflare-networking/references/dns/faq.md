@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The sections below cover frequently asked questions about Cloudflare authoritative DNS. For DNS Firewall, refer to [DNS Firewall FAQ](https://developers.cloudflare.com/dns/dns-firewall/faq/).
 
@@ -24,8 +24,8 @@ The sections below cover frequently asked questions about Cloudflare authoritati
 
 Yes. Cloudflare offers [free DNS services ↗](https://www.cloudflare.com/dns) to customers on all plans. Note that:
 
-* You do not need to change your hosting provider to use Cloudflare.
-* You do not need to move away from your registrar. The only change you make with your registrar is to point the authoritative nameservers to the Cloudflare nameservers.
+- You do not need to change your hosting provider to use Cloudflare.
+- You do not need to move away from your registrar. The only change you make with your registrar is to point the authoritative nameservers to the Cloudflare nameservers.
 
 ### Does Cloudflare charge for or limit DNS queries?
 
@@ -45,7 +45,7 @@ Yes. Enterprise customers can add subdomains directly to Cloudflare via [subdoma
 
 Yes, EDNS0 is a building block for modern DNS implementations and is enabled for all Cloudflare customers. EDNS0 adds support for signaling if the DNS Resolver (recursive DNS provider) supports larger message sizes and DNSSEC.
 
-EDNS0 is the first approved set of mechanisms for [DNS extensions ↗](http://en.wikipedia.org/wiki/Extension%5Fmechanisms%5Ffor%5FDNS), originally published as [RFC 2671 ↗](https://www.rfc-editor.org/rfc/rfc2671.html).
+EDNS0 is the first approved set of mechanisms for [DNS extensions ↗](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS), originally published as [RFC 2671 ↗](https://www.rfc-editor.org/rfc/rfc2671.html).
 
 ---
 
@@ -55,7 +55,7 @@ EDNS0 is the first approved set of mechanisms for [DNS extensions ↗](http://en
 
 On the **DNS Records** page, locate the **Cloudflare Nameservers** card.
 
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 Also, the IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as [whatsmydns.net ↗](https://www.whatsmydns.net/):
 
@@ -81,45 +81,53 @@ Some country code TLDs may not be supported by ICANN Lookup. If that is the case
 
 Once you identify your registrar, follow their instructions.
 
+<details>
+
+<summary>
+
 Provider-specific instructions
+
+</summary>
 
 This is not an exhaustive list of provider-specific instructions, but the following links may be helpful:
 
-* [Ionos ↗](https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/)
-* [101Domain ↗](https://help.101domain.com/kb/managing-name-server-records)
-* [Amazon ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing)
-* [Blacknight ↗](https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain)
-* [BlueHost ↗](https://www.bluehost.com/help/article/custom-nameservers)
-* [DirectNIC ↗](https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F)
-* [DNSMadeEasy ↗](http://www.dnsmadeeasy.com/support/faq/)
-* [Domain.com ↗](https://www.domain.com/help/article/domain-management-how-to-update-nameservers)
-* [Dotster ↗](https://www.dotster.com/help/article/domain-management-how-to-update-nameservers)
-* [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/360038897151)
-* [EasyDNS ↗](https://kb.easydns.com/knowledge/settingchanging-nameservers/)
-* [Enom ↗](https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS)
-* [Fast Domain ↗](https://www.fastdomain.com/hosting/help/transfer%5Fclient%5Fstart)
-* [FlokiNET ↗](https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html)
-* [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/common%5Foperations/changing%5Fnameservers.html)
-* [GoDaddy ↗](https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664)
-* [HostGator ↗](https://www.hostgator.com/help/article/changing-name-servers)
-* [Hostico ↗](https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/)
-* [HostMonster ↗](https://my.hostmonster.com/cgi/help/222)
-* [Hover ↗](https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers)
-* [Internetdbs ↗](https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain)
-* [iPage ↗](https://www.ipage.com/help/article/domain-management-how-to-update-nameservers)
-* [MelbourneIT ↗](https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel)
-* [Moniker ↗](https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain)
-* [Name.com ↗](https://www.name.com/support/articles/205934457-registering-custom-nameservers)
-* [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain)
-* [Network Solutions ↗](https://www.networksolutions.com/manage-it/edit-nameservers.jsp)
-* [OVH ↗](https://docs.ovh.com/gb/en/domains/web%5Fhosting%5Fgeneral%5Finformation%5Fabout%5Fdns%5Fservers/#step-2-edit-your-domains-dns-servers)
-* [Porkbun ↗](https://kb.porkbun.com/article/22-how-to-change-your-nameservers)
-* [Rackspace ↗](https://support.rackspace.com/how-to/rackspace-name-servers/)
-* [Register ↗](https://www.register.com/knowledge)
-* [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings)
-* [Site5 ↗](https://kb.site5.com/dns-2/custom-nameservers/)
-* [Softlayer ↗](https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain)
-* [Yola ↗](https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers)
+- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗</a>
+- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗</a>
+- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗</a>
+- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗</a>
+- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗</a>
+- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗</a>
+- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗</a>
+- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗</a>
+- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗</a>
+- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗</a>
+- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗</a>
+- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗</a>
+- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗</a>
+- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗</a>
+- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗</a>
+- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗</a>
+- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗</a>
+- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗</a>
+- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗</a>
+- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗</a>
+- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗</a>
+- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗</a>
+- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗</a>
+- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗</a>
+- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗</a>
+- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗</a>
+- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗</a>
+- <a href="https://www.register.com/knowledge">Register ↗</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗</a>
+- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗</a>
+- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗</a>
+- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗</a>
+
+</details>
 
 ### Why have I received an email: (mydomain) stopped using Cloudflare's nameservers?
 
@@ -139,15 +147,15 @@ Nameserver assignments happen at zone creation and [cannot be changed](https://d
 
 A newly added zone can be assigned different nameservers from your other zones for a few reasons:
 
-* The same domain is (or was recently) active on another Cloudflare account.
-* The zone was previously deleted from Cloudflare and re-added.
-* A parent or child zone in the same account already uses the preferred nameservers.
-* The account uses [Foundation DNS advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/), which use different sets (`blue`, `gold`, `orange`) and rotate to keep [directly descending zones](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment) on different nameservers.
+- The same domain is (or was recently) active on another Cloudflare account.
+- The zone was previously deleted from Cloudflare and re-added.
+- A parent or child zone in the same account already uses the preferred nameservers.
+- The account uses [Foundation DNS advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/), which use different sets ( `blue`, `gold`, `orange`) and rotate to keep [directly descending zones](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment) on different nameservers.
 
 To make future zones share the same nameservers, use one of the following options depending on your plan:
 
-* [Account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) — available on Enterprise (self-serve), or on Business after [contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to enable them.
-* [DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) with advanced nameservers or account custom nameservers — available on Enterprise.
+- [Account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) — available on Enterprise (self-serve), or on Business after [contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to enable them.
+- [DNS zone defaults](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) with advanced nameservers or account custom nameservers — available on Enterprise.
 
 Deleting and re-adding the zone does not force a specific nameserver assignment and can produce yet another different set.
 
@@ -177,7 +185,7 @@ Refer to [Deprecating the DNS ANY meta-query type ↗](https://blog.cloudflare.c
 
 ### How do I add ANAME records on Cloudflare?
 
-ANAME or ALIAS are DNS records used by specific DNS providers. If your previous provider was using ANAME or ALIAS, you can recreate these records on Cloudflare as CNAME records. Cloudflare's [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)[1](#user-content-fn-1) allows you to create CNAME records at your [zone apex](https://developers.cloudflare.com/dns/concepts/#zone-apex), removing the need for those other record types.
+ANAME or ALIAS are DNS records used by specific DNS providers. If your previous provider was using ANAME or ALIAS, you can recreate these records on Cloudflare as CNAME records. Cloudflare's [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)<sup>[1](#user-content-fn-1)</sup> allows you to create CNAME records at your [zone apex](https://developers.cloudflare.com/dns/concepts/#zone-apex), removing the need for those other record types.
 
 ## Footnotes
 

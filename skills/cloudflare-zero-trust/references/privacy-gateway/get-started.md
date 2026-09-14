@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-gateway/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-gateway/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Gateway implementation consists of three main parts:
 
@@ -40,11 +40,11 @@ Applications can also implement this functionality themselves. Details about [pu
 
 Use the following resources for help with server configuration:
 
-* **Go**:
-  * [Sample gateway server ↗](https://github.com/cloudflare/privacy-gateway-server-go)
-  * [Gateway library ↗](https://github.com/chris-wood/ohttp-go)
-* **Rust**: [Gateway library ↗](https://github.com/martinthomson/ohttp/tree/main/ohttp-server)
-* **JavaScript / TypeScript**: [Gateway library ↗](https://github.com/chris-wood/ohttp-js)
+- **Go**:
+  - [Sample gateway server ↗](https://github.com/cloudflare/privacy-gateway-server-go)
+  - [Gateway library ↗](https://github.com/chris-wood/ohttp-go)
+- **Rust**: [Gateway library ↗](https://github.com/martinthomson/ohttp/tree/main/ohttp-server)
+- **JavaScript / TypeScript**: [Gateway library ↗](https://github.com/chris-wood/ohttp-js)
 
 ---
 
@@ -58,9 +58,9 @@ Additionally, app developers need to [configure the client](#resources-1) to fet
 
 Use the following resources for help with client configuration:
 
-* **Objective C**: [Sample application ↗](https://github.com/cloudflare/privacy-gateway-client-demo)
-* **Rust**: [Client library ↗](https://github.com/martinthomson/ohttp/tree/main/ohttp-client)
-* **JavaScript / TypeScript**: [Client library ↗](https://github.com/chris-wood/ohttp-js)
+- **Objective C**: [Sample application ↗](https://github.com/cloudflare/privacy-gateway-client-demo)
+- **Rust**: [Client library ↗](https://github.com/martinthomson/ohttp/tree/main/ohttp-client)
+- **JavaScript / TypeScript**: [Client library ↗](https://github.com/chris-wood/ohttp-js)
 
 ---
 
@@ -68,9 +68,9 @@ Use the following resources for help with client configuration:
 
 After you have configured your client and server, review your application to make sure you are only sending intended data to Cloudflare and the application backend. In particular, application data should not contain anything unique to an end-user, as this would invalidate the benefits that OHTTP provides.
 
-* Applications should scrub identifying user data from requests forwarded through the Privacy Gateway. This includes, for example, names, email addresses, phone numbers, etc.
-* Applications should encourage users to disable crash reporting when using Privacy Gateway. Crash reports can contain sensitive user information and data, including email addresses.
-* Where possible, application data should be encrypted on the client device with a key known only to the client. For example, iOS generally has good support for [client-side encryption (and key synchronization via the KeyChain) ↗](https://developer.apple.com/documentation/security/certificate%5Fkey%5Fand%5Ftrust%5Fservices/keys). Android likely has similar features available.
+- Applications should scrub identifying user data from requests forwarded through the Privacy Gateway. This includes, for example, names, email addresses, phone numbers, etc.
+- Applications should encourage users to disable crash reporting when using Privacy Gateway. Crash reports can contain sensitive user information and data, including email addresses.
+- Where possible, application data should be encrypted on the client device with a key known only to the client. For example, iOS generally has good support for [client-side encryption (and key synchronization via the KeyChain) ↗](https://developer.apple.com/documentation/security/certificate_key_and_trust_services/keys). Android likely has similar features available.
 
 ---
 

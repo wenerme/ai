@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a data class
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Data classes are reusable classification rules built from detection entries, other data classes, sensitivity levels, and data tags.
 
@@ -28,7 +28,7 @@ Data classes can also assign labels to matched content. This lets you connect ra
 
 ## Create a data class
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Data classification** \> **Data classes**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Data classes**.
 2. Select **Create data class**.
 3. Enter a name and optional description.
 4. Build the detection rules for the data class.
@@ -41,8 +41,8 @@ Data classes use a rule builder to combine multiple signals into one classificat
 
 You can build rules from:
 
-* [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/)
-* other existing data classes
+- [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/)
+- other existing data classes
 
 Use logical operators such as `AND` and `OR` to control how those conditions are evaluated.
 
@@ -54,8 +54,8 @@ After you define the rule logic, choose the labels you want matching content to 
 
 You can assign:
 
-* a sensitivity schema and sensitivity level
-* a data tag group and one or more data tags
+- a sensitivity schema and sensitivity level
+- a data tag group and one or more data tags
 
 When content matches the data class, Cloudflare applies those labels to the match.
 
@@ -63,7 +63,7 @@ When content matches the data class, Cloudflare applies those labels to the matc
 
 After you create a data class, you can add it to a custom DLP profile.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Create or edit a custom DLP profile.
 3. In **Data classes**, select **Add data classes**.
 4. Choose the data classes you want to include, then select **Confirm**.

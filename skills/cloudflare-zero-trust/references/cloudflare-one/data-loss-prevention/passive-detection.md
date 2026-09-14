@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Passive Detection
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/passive-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -30,20 +30,19 @@ Passive Detection works without a Gateway DLP policy. It does not change how Gat
 
 To collect Passive Detection results:
 
-* Route HTTP traffic through Cloudflare Gateway.
-* Turn on [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
-* Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) for HTTPS traffic.
-* Make sure each detection entry you want to scan is enabled in at least one [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) in your account. Passive Detection scans entries enabled in any profile in your account, not just profiles selected for a policy.
+- Route HTTP traffic through Cloudflare Gateway.
+- Turn on [Gateway HTTP filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/get-started/http/).
+- Turn on [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) for HTTPS traffic.
+- Make sure each detection entry you want to scan is enabled in at least one [DLP profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) in your account. Passive Detection scans entries enabled in any profile in your account, not just profiles selected for a policy.
 
 For uploaded or downloaded files, refer to the [supported file types](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/#supported-file-types). Traffic that bypasses Gateway or matches a [Do Not Inspect](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) policy cannot produce findings.
 
 ### View Passive Detection
 
-1. In the Cloudflare dashboard, go to **Zero Trust** \> **Insights & Logs** \> **Dashboards**.
-[Go to **Dashboards** ↗](https://one.dash.cloudflare.com/?to=/:account/analytics/dashboards)
+1. In the Cloudflare dashboard, go to **Zero Trust** > **Insights & Logs** > **Dashboards**. [Go to **Dashboards** ↗](https://one.dash.cloudflare.com/?to=/:account/analytics/dashboards)
 2. Select **Passive Detection**.
 3. Select a time range of 7, 30, or 90 days.
-4. (Optional) Select **Add filter** \> **Traffic direction**, then select _Request_, _Response_, or _Unknown_.
+4. (Optional) Select **Add filter** > **Traffic direction**, then select *Request*, *Response*, or *Unknown*.
 
 Use **Request** to see data sent to destinations and **Response** to see data received from them. **Unknown** includes HTTP bodies without a recorded traffic direction. Remove the filter to include all traffic directions. Request and response bodies are counted separately.
 
@@ -57,9 +56,9 @@ Start with the account summary for the broad picture. From there, select a detec
 
 The summary cards describe detections within your selected time range and traffic direction:
 
-* **Total detections**: Each entry counts once per HTTP body.
-* **Unique traffic with detections**: HTTP bodies with at least one detection, counted once.
-* **Entries detected**: Unique DLP entries matched in the selected scope.
+- **Total detections**: Each entry counts once per HTTP body.
+- **Unique traffic with detections**: HTTP bodies with at least one detection, counted once.
+- **Entries detected**: Unique DLP entries matched in the selected scope.
 
 For example, one request body that matches two different entries contributes two detections to **Total detections** and one body to **Unique traffic with detections**. These counts do not tell you how many individual sensitive values the body contains.
 
@@ -71,15 +70,15 @@ Next, use the detection table to decide what to investigate. Compare entries, th
 
 Use these fields to compare entries:
 
-| Field              | Meaning                                                                                                                                                        |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Entry              | The DLP detection entry found in sampled traffic.                                                                                                              |
-| Profiles           | The profiles associated with the detection.                                                                                                                    |
-| Detections         | HTTP bodies where this entry was detected at least once. Multiple occurrences of the same entry in one body count once.                                        |
-| URL destinations   | The number of distinct destinations associated with the entry.                                                                                                 |
-| Confidence (H/M/L) | Observed detections grouped by high, medium, and low confidence.                                                                                               |
-| Policy coverage    | Whether matching profiles were selected for policy enforcement when the bodies were scanned. Refer to [Find policy coverage gaps](#find-policy-coverage-gaps). |
-| Last seen          | When the entry was most recently observed during the selected time range.                                                                                      |
+| Field | Meaning |
+| --- | --- |
+| Entry | The DLP detection entry found in sampled traffic. |
+| Profiles | The profiles associated with the detection. |
+| Detections | HTTP bodies where this entry was detected at least once. Multiple occurrences of the same entry in one body count once. |
+| URL destinations | The number of distinct destinations associated with the entry. |
+| Confidence (H/M/L) | Observed detections grouped by high, medium, and low confidence. |
+| Policy coverage | Whether matching profiles were selected for policy enforcement when the bodies were scanned. Refer to [Find policy coverage gaps](#find-policy-coverage-gaps). |
+| Last seen | When the entry was most recently observed during the selected time range. |
 
 All times are reported in UTC.
 
@@ -107,11 +106,11 @@ Policy coverage helps you find detections that may need a closer look. A detecti
 
 Coverage does not confirm that the complete Gateway policy matched or that Gateway logged or blocked the traffic. The dashboard groups coverage into three statuses:
 
-| Status         | Meaning                                                                           |
-| -------------- | --------------------------------------------------------------------------------- |
-| Covered        | Each detection had at least one matching profile selected for enforcement.        |
+| Status | Meaning |
+| --- | --- |
+| Covered | Each detection had at least one matching profile selected for enforcement. |
 | Partly covered | Some detections had a matching profile selected for enforcement and some did not. |
-| Not covered    | No detections had a matching profile selected for enforcement.                    |
+| Not covered | No detections had a matching profile selected for enforcement. |
 
 Start with entries that are **Not covered** or **Partly covered**, then review their destinations and the relevant policies. A coverage gap is a reason to investigate, not a recommendation to block every detection.
 
@@ -129,11 +128,11 @@ For an existing policy, use your findings to review its scope and detection sett
 
 ## Limitations
 
-* Passive Detection scans a random sample of eligible Gateway HTTP traffic, not every request or response body.
-* Counts may be estimated for high-volume detections due to analytics sampling. They describe sampled traffic, not all eligible Gateway traffic.
-* The dashboard does not report total sampled traffic or detection rates.
-* Destinations are scoped to one detection entry. Passive Detection does not provide an account-wide destination inventory.
-* Results do not include user identity.
+- Passive Detection scans a random sample of eligible Gateway HTTP traffic, not every request or response body.
+- Counts may be estimated for high-volume detections due to analytics sampling. They describe sampled traffic, not all eligible Gateway traffic.
+- The dashboard does not report total sampled traffic or detection rates.
+- Destinations are scoped to one detection entry. Passive Detection does not provide an account-wide destination inventory.
+- Results do not include user identity.
 
 An empty dashboard does not confirm that sensitive data is absent.
 

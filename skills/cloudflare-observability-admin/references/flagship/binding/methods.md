@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Methods
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/binding/methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Flagship binding provides the following methods for evaluating feature flags. All methods are asynchronous and return a `Promise`. For known evaluation failures, typed methods return the `defaultValue` you provide.
 
@@ -28,11 +28,11 @@ If you provide `defaultValue`, `get()` returns that value for known evaluation f
 get(flagKey: string, defaultValue?: unknown, context?: FlagshipEvaluationContext): Promise<unknown>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | unknown                   | No       | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `unknown` | No | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const value = await env.FLAGS.get("checkout-flow", "v1", {
@@ -48,11 +48,11 @@ Returns the flag value as a `boolean`.
 getBooleanValue(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<boolean>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `boolean` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const enabled = await env.FLAGS.getBooleanValue("dark-mode", false, {
@@ -68,11 +68,11 @@ Returns the flag value as a `string`.
 getStringValue(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<string>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `string` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const variant = await env.FLAGS.getStringValue("checkout-flow", "v1", {
@@ -89,11 +89,11 @@ Returns the flag value as a `number`.
 getNumberValue(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<number>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `number` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const maxRetries = await env.FLAGS.getNumberValue("max-retries", 3, {
@@ -109,11 +109,11 @@ Returns the flag value as a typed object. Use the generic parameter `T` to speci
 getObjectValue<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<T>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `T` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 interface ThemeConfig {
@@ -136,11 +136,11 @@ Returns the flag value as a `boolean` with evaluation metadata.
 getBooleanDetails(flagKey: string, defaultValue: boolean, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<boolean>>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | boolean                   | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `boolean` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const details = await env.FLAGS.getBooleanDetails("dark-mode", false, {
@@ -158,11 +158,11 @@ Returns the flag value as a `string` with evaluation metadata.
 getStringDetails(flagKey: string, defaultValue: string, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<string>>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | string                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `string` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const details = await env.FLAGS.getStringDetails("checkout-flow", "v1", {
@@ -181,11 +181,11 @@ Returns the flag value as a `number` with evaluation metadata.
 getNumberDetails(flagKey: string, defaultValue: number, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<number>>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | number                    | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `number` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 const details = await env.FLAGS.getNumberDetails("max-retries", 3, {
@@ -203,11 +203,11 @@ Returns the flag value as a typed object with evaluation metadata. Use the gener
 getObjectDetails<T extends object>(flagKey: string, defaultValue: T, context?: FlagshipEvaluationContext): Promise<FlagshipEvaluationDetails<T>>
 ```
 
-| Parameter    | Type                      | Required | Description                                                               |
-| ------------ | ------------------------- | -------- | ------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes      | The key of the flag to evaluate.                                          |
-| defaultValue | T                         | Yes      | The fallback value returned if evaluation fails or the flag is not found. |
-| context      | FlagshipEvaluationContext | No       | Key-value attributes for targeting rules.                                 |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | `T` | Yes | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules. |
 
 ```ts
 interface ThemeConfig {
@@ -256,11 +256,11 @@ console.log(details.errorCode); // "FLAG_NOT_FOUND"
 
 The following table summarizes the parameters shared across all evaluation methods.
 
-| Parameter    | Type                      | Required         | Description                                                                                   |
-| ------------ | ------------------------- | ---------------- | --------------------------------------------------------------------------------------------- |
-| flagKey      | string                    | Yes              | The key of the flag to evaluate.                                                              |
-| defaultValue | varies                    | Yes (except get) | The fallback value returned if evaluation fails or the flag is not found.                     |
-| context      | FlagshipEvaluationContext | No               | Key-value attributes for targeting rules (for example, { userId: "user-42", country: "US" }). |
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `flagKey` | `string` | Yes | The key of the flag to evaluate. |
+| `defaultValue` | varies | Yes (except `get`) | The fallback value returned if evaluation fails or the flag is not found. |
+| `context` | `FlagshipEvaluationContext` | No | Key-value attributes for targeting rules (for example, `{ userId: "user-42", country: "US" }`). |
 
 Was this helpful?
 

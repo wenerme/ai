@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create exceptions
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an exception to skip the execution of WAF managed rulesets or some of their rules. The exception configuration includes an expression that defines the skip conditions, and the rules or rulesets to skip under those conditions.
 
@@ -20,9 +20,9 @@ Create an exception to skip the execution of WAF managed rulesets or some of the
 
 An exception can have one of the following behaviors (from highest to lowest priority):
 
-* Skip all remaining rules (belonging to WAF managed rulesets)
-* Skip one or more WAF managed rulesets
-* Skip one or more rules of WAF managed rulesets
+- Skip all remaining rules (belonging to WAF managed rulesets)
+- Skip one or more WAF managed rulesets
+- Skip one or more rules of WAF managed rulesets
 
 For more information on exceptions, refer to [Create an exception](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/) in the Ruleset Engine documentation.
 
@@ -30,8 +30,8 @@ For more information on exceptions, refer to [Create an exception](https://devel
 
 You can define exceptions at the account level and at the zone level. The scope of an exception determines which rules it affects:
 
-* An account-level exception only skips rules configured at the account level. It does not affect zone-level rules.
-* A zone-level exception only skips rules configured at the zone level. It does not affect account-level rules.
+- An account-level exception only skips rules configured at the account level. It does not affect zone-level rules.
+- A zone-level exception only skips rules configured at the zone level. It does not affect account-level rules.
 
 Within each phase, account-level rulesets run before zone-level rulesets. This means that if you deploy managed rules at both the account level and the zone level, a request is evaluated against account-level rules first. An exception defined at the zone level will not prevent a match at the account level.
 

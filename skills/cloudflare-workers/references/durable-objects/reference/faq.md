@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Pricing
 
@@ -34,7 +34,7 @@ Yes, although minimal. Empty tables can consume at least a few kilobytes, based 
 
 All writes to a SQLite-backed Durable Object stores nominal amounts of metadata in internal tables in the Durable Object, which counts towards your billable storage.
 
-The metadata remains in the Durable Object until you call [deleteAll()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall).
+The metadata remains in the Durable Object until you call [`deleteAll()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#deleteall).
 
 ## Limits
 
@@ -42,9 +42,9 @@ The metadata remains in the Durable Object until you call [deleteAll()](https://
 
 Durable Objects can scale horizontally across many Durable Objects. Each individual Object is inherently single-threaded.
 
-* An individual Object has a soft limit of 1,000 requests per second. You can have an unlimited number of individual objects per namespace.
-* A simple [storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) `get()` on a small value that directly returns the response may realize a higher request throughput compared to a Durable Object that (for example) serializes and/or deserializes large JSON values.
-* Similarly, a Durable Object that performs multiple `list()` operations may be more limited in terms of request throughput.
+- An individual Object has a soft limit of 1,000 requests per second. You can have an unlimited number of individual objects per namespace.
+- A simple [storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) `get()` on a small value that directly returns the response may realize a higher request throughput compared to a Durable Object that (for example) serializes and/or deserializes large JSON values.
+- Similarly, a Durable Object that performs multiple `list()` operations may be more limited in terms of request throughput.
 
 A Durable Object that receives too many requests will, after attempting to queue them, return an [overloaded](https://developers.cloudflare.com/durable-objects/observability/troubleshooting/#durable-object-is-overloaded) error to the caller.
 
@@ -52,10 +52,10 @@ A Durable Object that receives too many requests will, after attempting to queue
 
 Durable Objects are designed such that the number of individual objects in the system do not need to be limited, and can scale horizontally.
 
-* You can create and run as many separate Durable Objects as you want within a given Durable Object namespace.
-* There are no limits for storage per account when using SQLite-backed Durable Objects on a Workers Paid plan.
-* Each SQLite-backed Durable Object has a storage limit of 10 GB on a Workers Paid plan.
-* Refer to [Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/) for more information.
+- You can create and run as many separate Durable Objects as you want within a given Durable Object namespace.
+- There are no limits for storage per account when using SQLite-backed Durable Objects on a Workers Paid plan.
+- Each SQLite-backed Durable Object has a storage limit of 10 GB on a Workers Paid plan.
+- Refer to [Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/) for more information.
 
 ### Can I increase Durable Objects' CPU limit?
 

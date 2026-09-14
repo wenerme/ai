@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page uses `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. Prefer this path for new projects. For today's stable package, refer to [Getting started](https://developers.cloudflare.com/sandbox/get-started/).
+This page uses `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. Prefer this path for new projects. For today's stable package, refer to [Getting started](https://developers.cloudflare.com/sandbox/get-started/).
 
-## 1\. Install the preview package
+## 1. Install the preview package
 
 In a Workers project that already uses Sandbox, or a new project from the Sandbox template:
 
@@ -42,7 +42,7 @@ bun add @cloudflare/sandbox@next
 
 Build and deploy the Worker **and** the sandbox container image from the same preview line.
 
-## 2\. Export your Sandbox class
+## 2. Export your Sandbox class
 
 ```js
 import { Sandbox } from "@cloudflare/sandbox";
@@ -58,7 +58,7 @@ export { Sandbox };
 
 Keep your `wrangler` Durable Object binding and container configuration. Preview-specific transport variables are not required.
 
-## 3\. Run a process
+## 3. Run a process
 
 `exec()` starts a program from **argv** — an array of the executable path or name, then its arguments. It waits until the sandbox can start the process, then returns a **process handle**. It does **not** wait for the process to exit.
 
@@ -138,23 +138,23 @@ const process = await sandbox.exec([
 const { stdout } = await process.output({ encoding: "utf8" });
 ```
 
-## 4\. How this differs from the stable package
+## 4. How this differs from the stable package
 
-* `await sandbox.exec(...)` creates a process. It does **not** wait for exit. Use `output()`, `waitForExit()`, or other handle methods for completion.
-* Each `exec()` is independent. A `cd` or `export` in one call is not remembered in the next.
-* Pass `cwd` and `env` on each `exec()` when you need them, or use `setEnvVars` for sandbox-wide values. Refer to [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/).
-* A process runs only in the **current container** for that sandbox. After the container stops or is replaced, start a new process. Model: [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/).
-* Before production traffic, learn which failures are safe to retry: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
+- `await sandbox.exec(...)` creates a process. It does **not** wait for exit. Use `output()`, `waitForExit()`, or other handle methods for completion.
+- Each `exec()` is independent. A `cd` or `export` in one call is not remembered in the next.
+- Pass `cwd` and `env` on each `exec()` when you need them, or use `setEnvVars` for sandbox-wide values. Refer to [Environment variables](https://developers.cloudflare.com/sandbox/1-0-preview/environment/).
+- A process runs only in the **current container** for that sandbox. After the container stops or is replaced, start a new process. Model: [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/).
+- Before production traffic, learn which failures are safe to retry: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
 ## Next
 
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/) — sandbox ID, container, stop, and replace
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) — `exec()`, handles, and continuing work across requests
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/) — retries, interrupted calls, and stale handles
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/) — update an existing stable app
-* [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/) — processes, terminals, and errors
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) — interactive PTY and browser connections
-* [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/) — sandbox ID, container, stop, and replace
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) — `exec()`, handles, and continuing work across requests
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/) — retries, interrupted calls, and stale handles
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/) — update an existing stable app
+- [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/) — processes, terminals, and errors
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) — interactive PTY and browser connections
+- [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
 
 Was this helpful?
 

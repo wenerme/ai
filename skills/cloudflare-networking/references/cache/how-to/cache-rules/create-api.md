@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a rule via API
 
-Last updated Jun 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/create-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a cache rule via API. To configure Cloudflare’s API refer to the [API documentation](https://developers.cloudflare.com/fundamentals/api/get-started/).
 
@@ -20,16 +20,16 @@ Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets
 
 When creating a cache rule via API, make sure you:
 
-* Set the rule action to `set_cache_settings`.
-* Define the parameters in the `action_parameters` field according to the [settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/) you wish to override for matching requests.
-* Deploy the rule to the `http_request_cache_settings` phase entry point ruleset.
+- Set the rule action to `set_cache_settings`.
+- Define the parameters in the `action_parameters` field according to the [settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/) you wish to override for matching requests.
+- Deploy the rule to the `http_request_cache_settings` phase entry point ruleset.
 
 ## Procedure
 
 1. Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) method to obtain the list of rules already present in the `http_request_cache_settings` phase entry point ruleset.
 2. If the phase ruleset does not exist, create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. In the new ruleset properties, set the following values:
-  * kind: `zone`
-  * phase: `http_request_cache_settings`
+   - kind: `zone`
+   - phase: `http_request_cache_settings`
 3. Use the [Update a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation to add a cache rule to the list of ruleset rules. Alternatively, include the rule in the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) request mentioned in the previous step.
 4. (Optional) To update an existing cache rule, use the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/methods/update/) operation. For an example, refer to the section below.
 
@@ -37,7 +37,15 @@ When creating a cache rule via API, make sure you:
 
 These examples are setting all the Cache Rules of a zone to a single rule, since using these examples directly will cause any existing rules to be deleted.
 
+<details>
+
+<summary>
+
 Example: Cache everything for example.com
+
+</summary>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -57,7 +65,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Extend read timeout for Android clients
+
+</summary>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -78,7 +96,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Disable Cache Reserve for frequently updated assets
+
+</summary>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -101,7 +129,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Turn off default cache TTLs
+
+</summary>
+
+*Update a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" \
@@ -124,7 +162,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID" 
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Cache expected Vary responses
+
+</summary>
+
+*Update a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_cache_settings/entrypoint" \
@@ -166,7 +214,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Update the position of an existing rule
+
+</summary>
+
+*Update a zone ruleset rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules/$RULE_ID" \
@@ -186,13 +244,15 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/r
 	}'
 ```
 
+</details>
+
 ## Required API token permissions
 
 The API token used in API requests to manage Cache Rules must have the following permissions:
 
-* _Zone_ \> _Cache Rules_ \> _Edit_
-* _Account Rulesets_ \> _Edit_
-* _Account Filter Lists_ \> _Edit_
+- *Zone* > *Cache Rules* > *Edit*
+- *Account Rulesets* > *Edit*
+- *Account Filter Lists* > *Edit*
 
 Was this helpful?
 

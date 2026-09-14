@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Slack agent
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/slack-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/examples/slack-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Deploy your first Slack Agent
 
 This guide will show you how to build and deploy an AI-powered Slack bot on Cloudflare Workers that can:
 
-* Respond to direct messages
-* Reply when mentioned in channels
-* Maintain conversation context in threads
-* Use AI to generate intelligent responses
+- Respond to direct messages
+- Reply when mentioned in channels
+- Maintain conversation context in threads
+- Use AI to generate intelligent responses
 
 Your Slack Agent will be a multi-tenant application, meaning a single deployment can serve multiple Slack workspaces. Each workspace gets its own isolated agent instance with dedicated storage, powered by the [Agents SDK](https://developers.cloudflare.com/agents/).
 
@@ -31,12 +31,12 @@ You can view the full code for this example [here ↗](https://github.com/cloudf
 
 Before you begin, you will need:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-* [Node.js ↗](https://nodejs.org/) installed (v18 or later)
-* A [Slack workspace ↗](https://slack.com/create) where you have permission to install apps
-* An [OpenAI API key ↗](https://platform.openai.com/api-keys) (or another LLM provider)
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- [Node.js ↗](https://nodejs.org/) installed (v18 or later)
+- A [Slack workspace ↗](https://slack.com/create) where you have permission to install apps
+- An [OpenAI API key ↗](https://platform.openai.com/api-keys) (or another LLM provider)
 
-## 1\. Create a Slack App
+## 1. Create a Slack App
 
 First, create a new Slack App that your agent will use to interact with Slack:
 
@@ -49,12 +49,12 @@ First, create a new Slack App that your agent will use to interact with Slack:
 
 In your Slack App settings, go to **OAuth & Permissions** and add the following **Bot Token Scopes**:
 
-* `chat:write` — Send messages as the bot
-* `chat:write.public` — Send messages to channels without joining
-* `channels:history` — View messages in public channels
-* `app_mentions:read` — Receive mentions
-* `im:write` — Send direct messages
-* `im:history` — View direct message history
+- `chat:write` — Send messages as the bot
+- `chat:write.public` — Send messages to channels without joining
+- `channels:history` — View messages in public channels
+- `app_mentions:read` — Receive mentions
+- `im:write` — Send direct messages
+- `im:history` — View direct message history
 
 ### Enable Event Subscriptions
 
@@ -62,8 +62,8 @@ You will later configure the Event Subscriptions URL after deploying your agent.
 
 Subscribe to the following bot events:
 
-* `app_mention` — When the bot is @mentioned
-* `message.im` — Direct messages to the bot
+- `app_mention` — When the bot is @mentioned
+- `message.im` — Direct messages to the bot
 
 Do not enable it yet. You will enable it after deployment.
 
@@ -71,14 +71,14 @@ Do not enable it yet. You will enable it after deployment.
 
 From your Slack App settings, collect these values:
 
-1. **Basic Information** \> **App Credentials**:
-  * **Client ID**
-  * **Client Secret**
-  * **Signing Secret**
+1. **Basic Information** > **App Credentials**:
+   - **Client ID**
+   - **Client Secret**
+   - **Signing Secret**
 
 Keep these handy — you will need them in the next step.
 
-## 2\. Create your Slack Agent project
+## 2. Create your Slack Agent project
 
 1. Create a new project for your Slack Agent:
 
@@ -96,19 +96,19 @@ yarn create cloudflare my-slack-agent
 pnpm create cloudflare@latest my-slack-agent
 ```
 
-1. Navigate into your project:
+2. Navigate into your project:
 
 ```sh
 cd my-slack-agent
 ```
 
-1. Install the required dependencies:
+3. Install the required dependencies:
 
 ```sh
 npm install agents openai
 ```
 
-## 3\. Set up your environment variables
+## 3. Set up your environment variables
 
 1. Create a `.env` file in your project root for local development secrets:
 
@@ -116,7 +116,7 @@ npm install agents openai
 touch .env
 ```
 
-1. Add your credentials to `.env`:
+2. Add your credentials to `.env`:
 
 ```sh
 SLACK_CLIENT_ID="your-slack-client-id"
@@ -130,7 +130,7 @@ Note
 
 The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway](https://developers.cloudflare.com/ai-gateway/) gives you caching, rate limiting, and analytics for your AI requests.
 
-1. Update your `wrangler.jsonc` to configure your Agent:
+3. Update your `wrangler.jsonc` to configure your Agent:
 
 ```jsonc
 {
@@ -138,7 +138,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 	"name": "my-slack-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -167,7 +167,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 name = "my-slack-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -180,7 +180,7 @@ tag = "v1"
 new_classes = [ "MyAgent" ]
 ```
 
-## 4\. Create your Slack Agent
+## 4. Create your Slack Agent
 
 1. First, create the base `SlackAgent` class at `src/slack.ts`. This class handles OAuth, request verification, and event routing. You can view the [full implementation on GitHub ↗](https://github.com/cloudflare/awesome-agents/blob/69963298b359ddd66331e8b3b378bb9ae666629f/agents/slack/src/slack.ts).
 2. Now create your agent implementation at `src/index.ts`:
@@ -285,7 +285,7 @@ export default MyAgent.listen({
 });
 ```
 
-## 5\. Test locally
+## 5. Test locally
 
 Start your development server:
 
@@ -312,9 +312,8 @@ Go back to your Slack App settings:
 3. Enter your Request URL: `https://random-subdomain.trycloudflare.com/slack`.
 4. Slack will send a verification request — if your agent is running correctly, it should show **Verified**.
 5. Under **Subscribe to bot events**, add:
-
-  * `app_mention`
-  * `message.im`
+   - `app_mention`
+   - `message.im`
 6. Select **Save Changes**.
 
 Note
@@ -336,7 +335,7 @@ Open Slack. Then:
 
 If everything works, you're ready to deploy to production!
 
-## 6\. Deploy to production
+## 6. Deploy to production
 
 1. Before deploying, add your secrets to Cloudflare:
 
@@ -352,7 +351,7 @@ Note
 
 You can skip `OPENAI_BASE_URL` if you're not using AI Gateway.
 
-1. Deploy your agent:
+2. Deploy your agent:
 
 ```sh
 npx wrangler deploy
@@ -376,8 +375,8 @@ Go back to your Slack App settings:
 
 Now that your agent is deployed, you can share it with others:
 
-* **Single workspace**: Install it via `https://my-slack-agent.your-account.workers.dev/install`.
-* **Public distribution**: Submit your app to the [Slack App Directory ↗](https://api.slack.com/start/distributing).
+- **Single workspace**: Install it via `https://my-slack-agent.your-account.workers.dev/install`.
+- **Public distribution**: Submit your app to the [Slack App Directory ↗](https://api.slack.com/start/distributing).
 
 Each workspace that installs your app will get its own isolated agent instance with dedicated storage.
 
@@ -387,17 +386,17 @@ Each workspace that installs your app will get its own isolated agent instance w
 
 Your Slack Agent uses [Durable Objects](https://developers.cloudflare.com/durable-objects/) to provide isolated, stateful instances for each Slack workspace:
 
-* Each workspace's `team_id` is used as the Durable Object ID.
-* Each agent instance stores its own Slack access token in KV storage.
-* Conversations are fetched on-demand from Slack's API.
-* All agent logic runs in an isolated, consistent environment.
+- Each workspace's `team_id` is used as the Durable Object ID.
+- Each agent instance stores its own Slack access token in KV storage.
+- Conversations are fetched on-demand from Slack's API.
+- All agent logic runs in an isolated, consistent environment.
 
 ### OAuth flow
 
 The agent handles Slack's OAuth 2.0 flow:
 
-1. User visits `/install` \> redirected to Slack authorization.
-2. User selects **Allow** \> Slack redirects to `/accept` with an authorization code.
+1. User visits `/install` > redirected to Slack authorization.
+2. User selects **Allow** > Slack redirects to `/accept` with an authorization code.
 3. Agent exchanges code for access token.
 4. Agent stores token in the workspace's Durable Object.
 
@@ -476,12 +475,12 @@ export class MyAgent extends SlackAgent {
 
 ## Next steps
 
-* Add [Slack Interactive Components ↗](https://api.slack.com/interactivity) (buttons, modals)
-* Connect your Agent to an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
-* Add rate limiting to prevent abuse
-* Implement conversation state management
-* Use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) to track usage
-* Add [schedules](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) for scheduled tasks
+- Add [Slack Interactive Components ↗](https://api.slack.com/interactivity) (buttons, modals)
+- Connect your Agent to an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+- Add rate limiting to prevent abuse
+- Implement conversation state management
+- Use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) to track usage
+- Add [schedules](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) for scheduled tasks
 
 ## Related resources
 

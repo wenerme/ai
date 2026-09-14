@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agentic Payments
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI agents need to discover, pay for, and consume resources and services programmatically. Traditional onboarding requires account creation, a payment method, and an API key before an agent can pay for a service. Agentic payments let AI agents purchase resources and services directly through the HTTP `402 Payment Required` response code.
 
@@ -33,8 +33,8 @@ No pre-created service account or pre-shared API key is required. Agents handle 
 
 The Agents SDK provides first-class x402 integration:
 
-* **Server-side**: `withX402` and `paidTool` for Model Context Protocol (MCP) servers, plus `x402-hono` middleware for HTTP Workers.
-* **Client-side**: `withX402Client` wraps MCP connections with automatic `402` handling and optional human approval.
+- **Server-side**: `withX402` and `paidTool` for Model Context Protocol (MCP) servers, plus `x402-hono` middleware for HTTP Workers.
+- **Client-side**: `withX402Client` wraps MCP connections with automatic `402` handling and optional human approval.
 
 ### Machine Payments Protocol
 
@@ -62,10 +62,10 @@ Give an Agent MPP-aware HTTP fetch and MCP clients
 
 ## Related
 
-* [x402.org ↗](https://x402.org) — x402 protocol specification
-* [mpp.dev ↗](https://mpp.dev) — MPP protocol specification
-* [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native monetization for web content
-* [x402 examples ↗](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
+- [x402.org ↗](https://x402.org) — x402 protocol specification
+- [mpp.dev ↗](https://mpp.dev) — MPP protocol specification
+- [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native monetization for web content
+- [x402 examples ↗](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
 
 Was this helpful?
 

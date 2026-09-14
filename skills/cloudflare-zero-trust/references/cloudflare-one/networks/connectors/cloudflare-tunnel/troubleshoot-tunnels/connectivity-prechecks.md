@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connectivity pre-checks
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you validate connectivity between your environment and [Cloudflare Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/) before deploying [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). You will run DNS and network checks from the same host machine that will run `cloudflared` to help you identify issues that may prevent `cloudflared` from connecting to Cloudflare Tunnel endpoints.
 
@@ -29,14 +29,14 @@ This guide is structured as follows:
 3. [Test network connectivity](#3-test-network-connectivity): Verify that your firewall allows outbound traffic on port `7844` (TCP and UDP).
 4. [Get help](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#4-get-help): What to collect and who to contact if tests fail.
 
-## 1\. Before you start
+## 1. Before you start
 
 ### Prerequisites
 
 You must have:
 
-* A host machine connected to the Internet where you plan to run `cloudflared`. The tests must run from the same environment where `cloudflared` will run (same network, same firewall path).
-* A terminal session with permission to run `dig` and `nc` (netcat), or similar software.
+- A host machine connected to the Internet where you plan to run `cloudflared`. The tests must run from the same environment where `cloudflared` will run (same network, same firewall path).
+- A terminal session with permission to run `dig` and `nc` (netcat), or similar software.
 
 `cloudflared` is platform-agnostic and supports a wide range of operating systems. For details, refer to [Tunnel system requirements](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/system-requirements/).
 
@@ -44,14 +44,14 @@ You must have:
 
 When troubleshooting connectivity to Cloudflare, it is important to distinguish between:
 
-* Host machine: The server or virtual machine (VM) where you will run `cloudflared`.
-* Environment: The broader setup containing the host machine (network and firewall configuration).
+- Host machine: The server or virtual machine (VM) where you will run `cloudflared`.
+- Environment: The broader setup containing the host machine (network and firewall configuration).
 
 Cloudflare Tunnel errors can originate from the environment (for example, DNS or firewall policies), even though they surface as `cloudflared` errors on the host machine. This guide focuses on the environment, not on `cloudflared` itself.
 
 `cloudflared` establishes [outbound-only connections](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/#outbound-only-connection) to Cloudflare's global network over port `7844`. The specific destinations and ports are documented in [Tunnel with firewall](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/).
 
-## 2\. DNS test with dig
+## 2. DNS test with dig
 
 Cloudflare Tunnel requires outbound connectivity to `region1.v2.argotunnel.com` and `region2.v2.argotunnel.com` (or to the equivalent `us-region1` and `us-region2` endpoints when using the [US region](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#region-us), or `fed-region1` and `fed-region2` when using the [FedRAMP High region](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-with-firewall/#region-fedramp-high)).
 
@@ -59,7 +59,7 @@ For a successful and healthy deployment, `cloudflared` should have [four active 
 
 First, you need to verify that your DNS resolver returns the expected IP addresses for Cloudflare Tunnel endpoints.
 
-### 2.1\. Test DNS with your current resolver
+### 2.1. Test DNS with your current resolver
 
 Depending on whether you are testing a global region or the US region, run one of the following commands:
 
@@ -295,10 +295,10 @@ The `ANSWER SECTION` should include the expected IP addresses for Cloudflare Tun
 
 If you receive:
 
-* Status `NOERROR` with valid IP addresses - Your DNS resolver is successfully returning addresses for the Tunnel hostname. Continue to [Test network connectivity](#3-test-network-connectivity).
-* Status `SERVFAIL`, `NXDOMAIN`, or an empty answer - Your DNS resolver cannot resolve the Tunnel endpoint. Continue to [Compare against 1.1.1.1](#compare-against-1111).
+- Status `NOERROR` with valid IP addresses - Your DNS resolver is successfully returning addresses for the Tunnel hostname. Continue to [Test network connectivity](#3-test-network-connectivity).
+- Status `SERVFAIL`, `NXDOMAIN`, or an empty answer - Your DNS resolver cannot resolve the Tunnel endpoint. Continue to [Compare against `1.1.1.1`](#compare-against-1111).
 
-### 2.2\. Compare against `1.1.1.1`
+### 2.2. Compare against `1.1.1.1`
 
 If your original `dig` response is empty or does not match the documented IPs, test again using Cloudflare's public resolver `1.1.1.1`:
 
@@ -312,8 +312,8 @@ If `1.1.1.1` returns the correct IPs, but your original resolver does not, your 
 
 To resolve:
 
-* Configure the host machine to use `1.1.1.1` as its resolver.
-* If you must keep using your existing resolver, then investigate with your system administrator or ISP why it is returning different IPs. A recursive resolver should return the same response as the authoritative DNS server. If this cannot be fixed, the issue lies within your local environment and must be resolved before deploying Cloudflare Tunnel.
+- Configure the host machine to use `1.1.1.1` as its resolver.
+- If you must keep using your existing resolver, then investigate with your system administrator or ISP why it is returning different IPs. A recursive resolver should return the same response as the authoritative DNS server. If this cannot be fixed, the issue lies within your local environment and must be resolved before deploying Cloudflare Tunnel.
 
 #### If neither resolver works
 
@@ -321,18 +321,18 @@ If neither your original resolver nor `1.1.1.1` returns an answer, your firewall
 
 To resolve:
 
-* Check for firewall rules blocking DNS traffic altogether (UDP on port `53`) or specific DNS queries related to Cloudflare.
-* If you are behind a managed DNS or security appliance, contact that provider to understand why queries to `region1.v2.argotunnel.com` and other Cloudflare Tunnel endpoints are blocked.
+- Check for firewall rules blocking DNS traffic altogether (UDP on port `53`) or specific DNS queries related to Cloudflare.
+- If you are behind a managed DNS or security appliance, contact that provider to understand why queries to `region1.v2.argotunnel.com` and other Cloudflare Tunnel endpoints are blocked.
 
 Once DNS resolution returns the expected IPs from your DNS resolver, proceed to connectivity testing in step 3.
 
-## 3\. Test network connectivity
+## 3. Test network connectivity
 
 After confirming that your DNS resolver returns the correct IPs, test whether your host machine can send packets to Cloudflare on port `7844` using both UDP and TCP.
 
 Choose one of the IPs from your `dig` output (for example, `198.41.192.167`) and run the following tests.
 
-### 3.1\. Test UDP connectivity
+### 3.1. Test UDP connectivity
 
 ```sh
 nc -uvz -w 3 198.41.192.167 7844
@@ -344,7 +344,7 @@ Example output:
 Connection to 198.41.192.167 port 7844 [udp/*] succeeded!
 ```
 
-### 3.2\. Test TCP connectivity
+### 3.2. Test TCP connectivity
 
 ```sh
 nc -vz -w 3 198.41.192.167 7844
@@ -360,8 +360,8 @@ Connection to 198.41.192.167 port 7844 [tcp/*] succeeded!
 
 These tests answer two key questions:
 
-* Can the host machine send a UDP packet to Cloudflare Tunnel endpoints?
-* Can the host machine send a TCP packet to Cloudflare Tunnel endpoints?
+- Can the host machine send a UDP packet to Cloudflare Tunnel endpoints?
+- Can the host machine send a TCP packet to Cloudflare Tunnel endpoints?
 
 If either protocol succeeds, `cloudflared` can use that protocol to establish the tunnel.
 
@@ -397,7 +397,7 @@ This usually indicates a firewall policy or upstream security control that does 
 
 To resolve: Allow all traffic over port `7844` on the local network firewall. If this does not resolve the issue, troubleshoot with your ISP or service provider.
 
-## 4\. Get help
+## 4. Get help
 
 If either DNS or network test failed, it will likely be a problem in your local environment. You will need to debug with your administrator, ISP or cloud provider. If you believe the issue is with Cloudflare, please provide detailed information when contacting support.
 
@@ -405,15 +405,15 @@ For the fastest possible troubleshooting, ensure your support ticket includes co
 
 To ensure efficient resolution when [contacting support](https://developers.cloudflare.com/support/contacting-cloudflare-support/), include as much relevant detail as possible in your ticket:
 
-* Context: Briefly describe the scenario or use case (for example, where the user was, what they were trying to do).
-* Reproduction steps: Describe the steps you took to reproduce the issue during troubleshhooting.
-* Timestamps: Be specific and include the exact time and time zone when the issue occurred.
-* Troubleshooting attempts: Outline any troubleshooting steps or changes already attempted to resolve the issue.
-* Tunnel ID and tunnel name.
-* `cloudflared` version (run `cloudflared --version`).
-* How the tunnel was set up (locally-managed or remotely-managed via the dashboard).
-* Tunnel logs: Include the [logs from your local machine](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/#view-logs-on-your-local-machine).
-* Tunnel diagnostic logs: Include [tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/).
+- Context: Briefly describe the scenario or use case (for example, where the user was, what they were trying to do).
+- Reproduction steps: Describe the steps you took to reproduce the issue during troubleshhooting.
+- Timestamps: Be specific and include the exact time and time zone when the issue occurred.
+- Troubleshooting attempts: Outline any troubleshooting steps or changes already attempted to resolve the issue.
+- Tunnel ID and tunnel name.
+- `cloudflared` version (run `cloudflared --version`).
+- How the tunnel was set up (locally-managed or remotely-managed via the dashboard).
+- Tunnel logs: Include the [logs from your local machine](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/#view-logs-on-your-local-machine).
+- Tunnel diagnostic logs: Include [tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/).
 
 Write a detailed ticket to resolve your issue faster
 
@@ -430,5 +430,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#page","headline":"Connectivity pre-checks · Cloudflare One docs","description":"Connectivity pre-checks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/#page","headline":"Connectivity pre-checks · Cloudflare One docs","description":"Connectivity pre-checks in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["QUIC","DNS"]}
 ```

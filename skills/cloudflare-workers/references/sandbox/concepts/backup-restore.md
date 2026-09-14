@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Directory backups
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/backup-restore/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/backup-restore/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Backup and restore snapshot a sandbox directory into an R2 archive, then bring that tree back later. The public API is the same in production and in `wrangler dev`. The restore mechanism is not.
 
@@ -22,10 +22,10 @@ Use backups when you want a project directory such as `/workspace` to return lat
 
 In production, `restoreBackup()` mounts the squashfs archive with FUSE overlayfs:
 
-* The backup is a read-only lower layer.
-* New writes go to a writable upper layer.
-* The original archive in R2 does not change.
-* Restoring the same handle again discards the upper layer.
+- The backup is a read-only lower layer.
+- New writes go to a writable upper layer.
+- The original archive in R2 does not change.
+- Restoring the same handle again discards the upper layer.
 
 The overlay exists only while the container is running. When the sandbox sleeps or the container restarts, the mount is gone and the directory is empty. Store the `DirectoryBackup` handle and restore again.
 
@@ -43,9 +43,9 @@ For the procedure, refer to [Exclude generated caches](https://developers.cloudf
 
 ## Related resources
 
-* [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) \- Create, restore, and exclude caches
-* [Backups API](https://developers.cloudflare.com/sandbox/api/backups/) \- Method signatures and options
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- What happens when a sandbox sleeps
+- [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) - Create, restore, and exclude caches
+- [Backups API](https://developers.cloudflare.com/sandbox/api/backups/) - Method signatures and options
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - What happens when a sandbox sleeps
 
 Was this helpful?
 

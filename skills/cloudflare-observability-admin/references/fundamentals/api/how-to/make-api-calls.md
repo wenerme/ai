@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Make API calls
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
 
@@ -36,13 +36,13 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
 
 ## Using Cloudflare's APIs
 
-Every Cloudflare API element is fixed to a version number. The latest version is Version 4\. The stable base URL for all Version 4 HTTPS endpoints is: `https://api.cloudflare.com/client/v4/`
+Every Cloudflare API element is fixed to a version number. The latest version is Version 4. The stable base URL for all Version 4 HTTPS endpoints is: `https://api.cloudflare.com/client/v4/`
 
 For specific guidance on making API calls, refer to the following resources:
 
-* The product's [Developer Docs section](https://developers.cloudflare.com/directory/) for how-to guides.
-* [API schema docs](https://developers.cloudflare.com/api/) for request and response payloads for each endpoint.
-* The first-party libraries for [Go ↗](https://github.com/cloudflare/cloudflare-go), [TypeScript ↗](https://github.com/cloudflare/cloudflare-typescript), [Python ↗](https://github.com/cloudflare/cloudflare-python), or [HashiCorp's Terraform ↗](https://github.com/cloudflare/terraform-provider-cloudflare).
+- The product's [Developer Docs section](https://developers.cloudflare.com/directory/) for how-to guides.
+- [API schema docs](https://developers.cloudflare.com/api/) for request and response payloads for each endpoint.
+- The first-party libraries for [Go ↗](https://github.com/cloudflare/cloudflare-go), [TypeScript ↗](https://github.com/cloudflare/cloudflare-typescript), [Python ↗](https://github.com/cloudflare/cloudflare-python), or [HashiCorp's Terraform ↗](https://github.com/cloudflare/terraform-provider-cloudflare).
 
 ## Query parameters
 
@@ -70,15 +70,15 @@ Sometimes there will be too many results to display via the default page size, f
 
 Two query parameter options exist, which can be combined to paginate across the results.
 
-* `page=x` enables you to select a specific page.
-* `per_page=xx` enables you to adjust the number of results displayed on a page. If you select too many, you may get a timeout.
+- `page=x` enables you to select a specific page.
+- `per_page=xx` enables you to adjust the number of results displayed on a page. If you select too many, you may get a timeout.
 
 An example might be `https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?per_page=100&page=2`.
 
 Other options are:
 
-* `order`: Select the attribute to order by.
-* `direction`: Either `ASC` (ascending order) or `DESC` (descending order).
+- `order`: Select the attribute to order by.
+- `direction`: Either `ASC` (ascending order) or `DESC` (descending order).
 
 The available options will be listed at the end of the `result_info` of all endpoints in the [API documentation](https://developers.cloudflare.com/api/).
 

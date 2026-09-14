@@ -12,30 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Handle a client-side resource alert
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you receive a [client-side resource alert](https://developers.cloudflare.com/client-side-security/alerts/alert-types/), sometimes you need to perform some manual investigation to confirm the nature of the script. Use the guidance provided in this page as a starting point for your investigation.
 
-## 1\. Understand what triggered the alert
+## 1. Understand what triggered the alert
 
 Start by identifying the [detection system](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) that triggered the alert. A link is provided in the alert that will send you directly to the Cloudflare dashboard to the relevant resource that needs reviewing. Alternatively, do the following:
 
-1. In the Cloudflare dashboard, go to the **Web assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select the **Client-side resources** tab.
 3. Select **Scripts** or **Connections** and search for the resource mentioned on the alert you received.
-4. Select **Details** next to the resource you identified. The example screenshot below shows a malicious script resource.
-![Dialog box showing the details of a script considered malicious.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=850,height=644,format=webp/_astro/handle-alert-malicious-script-example.DqLS6vtx.png)
+4. Select **Details** next to the resource you identified. The example screenshot below shows a malicious script resource.![Dialog box showing the details of a script considered malicious.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=850,height=644,format=webp/_astro/handle-alert-malicious-script-example.DqLS6vtx.png)
 
 The details page will specify which detection system triggered the alert. Check the values of the following fields:
 
-* **Malicious code**
-* **Malicious URL**
-* **Malicious domain**
+- **Malicious code**
+- **Malicious URL**
+- **Malicious domain**
 
 Different detection mechanisms may consider the script malicious at the same time. This increases the likelihood of the detection not being a false positive.
 
-## 2\. Find the page where the resource was detected
+## 2. Find the page where the resource was detected
 
 If you received an alert for a potentially malicious script:
 
@@ -51,17 +49,17 @@ If you find the script or connection, this means the script is being loaded (or 
 
 If you do not find the script being loaded or the connection being made, this could mean one of the following:
 
-* The script is being loaded (or the connection is being made) by visitors' browser extensions.
-* Your current state will not load the script or make the connection. Complex applications might load scripts and establish connections based on state.
-* You are not in the correct geographic location (or similar condition).
-* The attacker is only loading the script or making the connection for a percentage of visitors or visitors with specific browsers/signatures.
+- The script is being loaded (or the connection is being made) by visitors' browser extensions.
+- Your current state will not load the script or make the connection. Complex applications might load scripts and establish connections based on state.
+- You are not in the correct geographic location (or similar condition).
+- The attacker is only loading the script or making the connection for a percentage of visitors or visitors with specific browsers/signatures.
 
 In this case, in addition to the steps indicated below, the best approach is:
 
-* From a safe virtual environment, use online search tools and search for the given resource. Review results and resource metadata, for example domain registration details;
-* If in doubt, scan the application codebase for the resource and if found, clarify the purpose.
+- From a safe virtual environment, use online search tools and search for the given resource. Review results and resource metadata, for example domain registration details;
+- If in doubt, scan the application codebase for the resource and if found, clarify the purpose.
 
-## 3\. Check the script reputation
+## 3. Check the script reputation
 
 If Cloudflare considers the resource’s domain a "malicious domain", it is likely that the domain does not have a good reputation. The domain may be known for hosting malware or for being used for phishing attacks. Usually, reviewing the domain/hostname is sufficient to understand why you received the alert. You can use tools like Cloudflare's [Security Center Investigate ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate) platform to help with this validation.
 
@@ -69,7 +67,7 @@ If Cloudflare's internal systems classified the script as containing "malicious 
 
 If you believe that Cloudflare's classification is a false positive, contact your account team so that we can further improve client-side security's underlying technology.
 
-## 4\. (Optional) Analyze the script content
+## 4. (Optional) Analyze the script content
 
 You could use a virtual machine to perform some of the following analysis:
 
@@ -83,9 +81,9 @@ You could use a virtual machine to perform some of the following analysis:
 
 If a resource which triggered a malicious resource alert:
 
-* Is actively present in your application
-* Is being loaded from a malicious host or IP address, or has malicious code
-* Has malicious hostnames or IP addresses in its source code, which may be obfuscated/encoded
+- Is actively present in your application
+- Is being loaded from a malicious host or IP address, or has malicious code
+- Has malicious hostnames or IP addresses in its source code, which may be obfuscated/encoded
 
 You should investigate further, since these indicators can be a sign of an ongoing active compromise.
 

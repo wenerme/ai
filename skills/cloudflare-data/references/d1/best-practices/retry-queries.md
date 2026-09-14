@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Retry queries
 
-Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/best-practices/retry-queries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/retry-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 It is useful to retry write queries from your application when you encounter a transient [error](https://developers.cloudflare.com/d1/observability/debug-d1/#error-list). From the list of `D1_ERROR`s, refer to the Recommended action column to determine if a query should be retried.
 
@@ -24,7 +24,7 @@ D1 automatically retries read-only queries up to two more times when it encounte
 
 Consider the following example of a `shouldRetry(...)` function, taken from the [D1 read replication starter template ↗](https://github.com/cloudflare/templates/blob/main/d1-starter-sessions-api-template/src/index.ts#L108).
 
-You should make sure your retries apply an exponential backoff with jitter strategy for more successful retries. You can use libraries abstracting that already like [@cloudflare/actors ↗](https://github.com/cloudflare/actors), or [copy the retry logic ↗](https://github.com/cloudflare/actors/blob/9ba112503132ddf6b5cef37ff145e7a2dd5ffbfc/packages/core/src/retries.ts#L18) in your own code directly.
+You should make sure your retries apply an exponential backoff with jitter strategy for more successful retries. You can use libraries abstracting that already like [`@cloudflare/actors` ↗](https://github.com/cloudflare/actors), or [copy the retry logic ↗](https://github.com/cloudflare/actors/blob/9ba112503132ddf6b5cef37ff145e7a2dd5ffbfc/packages/core/src/retries.ts#L18) in your own code directly.
 
 ```ts
 import { tryWhile } from "@cloudflare/actors";

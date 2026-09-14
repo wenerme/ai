@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Granular permissions
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/guides/granular-permissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/granular-permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can scope Cloudflare member permissions to individual [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instances instead of granting account-wide access. This lets you delegate management of specific Tunnels — for example, letting an application team manage one Tunnel for its service without exposing every Tunnel in the account.
 
@@ -22,8 +22,8 @@ Granular permissions are a parallel layer to account-level roles — they do not
 
 For any API request on a specific Cloudflare Tunnel, access is granted if the principal has **either**:
 
-* An account-level role that covers Tunnels (for example, `Cloudflare Access`), **or**
-* A [resource-scoped role](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) bound to that specific Tunnel.
+- An account-level role that covers Tunnels (for example, `Cloudflare Access`), **or**
+- A [resource-scoped role](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) bound to that specific Tunnel.
 
 [Listing endpoints](#resource-enumeration) (`GET /accounts/{id}/cfd_tunnel`, `GET /accounts/{id}/teamnet/routes`) return only the Tunnels and routes the principal has at least read access to.
 
@@ -31,7 +31,7 @@ For any API request on a specific Cloudflare Tunnel, access is granted if the pr
 
 Granular permissions are assigned through the standard [member management](https://developers.cloudflare.com/fundamentals/manage-members/manage/) flow.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Manage Account** \> **Members** and select **Invite Members**, or open an existing member to edit their permissions.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Manage Account** > **Members** and select **Invite Members**, or open an existing member to edit their permissions.
 2. Add a permission policy and choose a [resource-scoped role](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) that targets Cloudflare Tunnel instances.
 3. In the **Scope** section, choose **Specific resources**.
 4. Set **Resource type** to **Cloudflare Tunnel instances**.
@@ -44,24 +44,24 @@ You can attach multiple granular policies to the same member to cover different 
 
 Listing endpoints are authorization-aware. When a principal calls a listing endpoint, the response is filtered to the Tunnels and routes they have at least read access to.
 
-| Endpoint                               | Method | Returns                                                       |
-| -------------------------------------- | ------ | ------------------------------------------------------------- |
-| /accounts/{account\_id}/cfd\_tunnel    | GET    | Cloudflare Tunnel instances the principal can read or manage. |
-| /accounts/{account\_id}/teamnet/routes | GET    | Routes attached to Tunnels the principal can read or manage.  |
+| Endpoint | Method | Returns |
+| --- | --- | --- |
+| `/accounts/{account_id}/cfd_tunnel` | `GET` | Cloudflare Tunnel instances the principal can read or manage. |
+| `/accounts/{account_id}/teamnet/routes` | `GET` | Routes attached to Tunnels the principal can read or manage. |
 
 Members with an account-level role that covers Tunnels continue to see all Tunnels in the account.
 
 ## Backward compatibility
 
-* Existing account-level roles and API tokens continue to function as before.
-* Existing automation that authenticates with an account-level token (for example, Terraform pipelines using a `Cloudflare Access` token) is unaffected.
-* Granular permissions are opt-in. Granting one to a member adds capability; it never removes capability that the member already has from an account-level role.
+- Existing account-level roles and API tokens continue to function as before.
+- Existing automation that authenticates with an account-level token (for example, Terraform pipelines using a `Cloudflare Access` token) is unaffected.
+- Granular permissions are opt-in. Granting one to a member adds capability; it never removes capability that the member already has from an account-level role.
 
 ## Related resources
 
-* [Roles reference](https://developers.cloudflare.com/fundamentals/manage-members/roles/) — the full list of Cloudflare roles, including resource-scoped roles for Cloudflare Tunnel instances.
-* [Manage account members](https://developers.cloudflare.com/fundamentals/manage-members/manage/) — the member invite and edit flow.
-* [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) — the same RBAC capability applied to Cloudflare Mesh nodes alongside Tunnels.
+- [Roles reference](https://developers.cloudflare.com/fundamentals/manage-members/roles/) — the full list of Cloudflare roles, including resource-scoped roles for Cloudflare Tunnel instances.
+- [Manage account members](https://developers.cloudflare.com/fundamentals/manage-members/manage/) — the member invite and edit flow.
+- [Granular permissions for Cloudflare Tunnel and Cloudflare Mesh in Cloudflare One](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) — the same RBAC capability applied to Cloudflare Mesh nodes alongside Tunnels.
 
 Was this helpful?
 

@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 2022-10-06 - Emergency
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2022-10-06-emergency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2022-10-06-emergency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Rule ID     | Description                                              | Previous Action    | New Action    | Notes                                                                                    |
-| ----------- | -------------------------------------------------------- | ------------------ | ------------- | ---------------------------------------------------------------------------------------- |
-| ...6fa59d23 | HTTP requests that are very likely coming from bots.     | managed\_challenge | ddos\_dynamic | Block very large attacks instead of challenging them.                                    |
-| ...91b2849e | HTTP requests with unusual HTTP headers (signature #13). | block              | block         | Some attacks were only partially mitigated. Now the rule should stop attacks completely. |
+| Rule ID | Description | Previous Action | New Action | Notes |
+| --- | --- | --- | --- | --- |
+| ...6fa59d23 | HTTP requests that are very likely coming from bots. | managed\_challenge | ddos\_dynamic | Block very large attacks instead of challenging them. |
+| ...91b2849e | HTTP requests with unusual HTTP headers (signature #13). | block | block | Some attacks were only partially mitigated. Now the rule should stop attacks completely. |
 
 Was this helpful?
 

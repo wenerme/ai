@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sequence rules
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Sequence rules](https://developers.cloudflare.com/bots/additional-configurations/sequence-rules/) uses cookies to track the order of requests a user has made and the time between requests and makes them available via [Cloudflare Rules](https://developers.cloudflare.com/rules/). This allows you to write rules that match valid or invalid sequences. The specific cookies used to validate sequences are called sequence cookies.
 
@@ -22,8 +22,8 @@ Too many concurrent requests to your zone may add cookies that create a header t
 
 ## Prerequisites
 
-* Your account must have the Fraud Detection subscription.
-* Each zone must configure the endpoints to track via Endpoint Management.
+- Your account must have the Fraud Detection subscription.
+- Each zone must configure the endpoints to track via Endpoint Management.
 
 You can [build a sequence custom rule via the Cloudflare dashboard](#build-a-sequence-custom-rule-via-the-cloudflare-dashboard) or [using the API](#manage-sequence-rules-via-the-api).
 
@@ -33,38 +33,36 @@ You can [build a sequence custom rule via the Cloudflare dashboard](#build-a-seq
 
 These sequence fields are available in:
 
-* [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) (`http_request_firewall_custom` phase)
-* [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) (`http_request_ratelimit`)
-* [Bulk Redirects](https://developers.cloudflare.com/workers/examples/bulk-redirects/) (`http_request_redirect`)
-* [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/) (`http_request_late_transform`)
+- [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) ( `http_request_firewall_custom` phase)
+- [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) ( `http_request_ratelimit`)
+- [Bulk Redirects](https://developers.cloudflare.com/workers/examples/bulk-redirects/) ( `http_request_redirect`)
+- [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/response-header-modification/) ( `http_request_late_transform`)
 
-| Field name                             | Description                                                                                                                                                                                                                                                                  | Example value                          |
-| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| cf.sequence.current\_opString          | This field contains the ID of the operation that matches the current request. If the current request does not match any operations defined in Endpoint Management, it will be an empty string.                                                                               | c821cc00                               |
-| cf.sequence.previous\_opsArray<String> | This field contains an array of the prior operation IDs in the sequence, ordered from most to least recent. It does not include the current request.  If an operation is repeated, it will appear multiple times in the sequence.                                            | \["f54dac32", "c821cc00", "a37dc89b"\] |
-| cf.sequence.msec\_since\_opMap<Number> | This field contains a map where the keys are operation IDs and the values are the number of milliseconds since that operation has most recently occurred.  This does not include the current request or operation as it only factors in previous operations in the sequence. | {"f54dac32": 1000, "c821cc00": 2000}   |
+| Field name | Description | Example value |
+| --- | --- | --- |
+| `cf.sequence.current_op`<br>`String` | This field contains the ID of the operation that matches the current request. If the current request does not match any operations defined in Endpoint Management, it will be an empty string. | `c821cc00` |
+| `cf.sequence.previous_ops`<br>`Array<String>` | This field contains an array of the prior operation IDs in the sequence, ordered from most to least recent. It does not include the current request. <br><br> If an operation is repeated, it will appear multiple times in the sequence. | `["f54dac32", "c821cc00", "a37dc89b"]` |
+| `cf.sequence.msec_since_op`<br>`Map<Number>` | This field contains a map where the keys are operation IDs and the values are the number of milliseconds since that operation has most recently occurred. <br><br> This does not include the current request or operation as it only factors in previous operations in the sequence. | `{"f54dac32": 1000, "c821cc00": 2000}` |
 
 ---
 
 ## Build a sequence custom rule via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. To create a new empty rule, select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. To create a new empty rule, select **Create rule** > **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
-
-  * Current Operation
-  * Previous Operations
-  * Elapsed time
+   - Current Operation
+   - Previous Operations
+   - Elapsed time
 5. Under **Value**, select the edit icon to use Builder and build a sequence on the side panel.
 6. Under **Select a hostname for this sequence**, choose all or a specific hostname from the dropdown list. Optionally, you can use the search bar to search for a specific hostname.
 7. From the **Methods** dropdown list, choose all methods or a specific request method.
 8. Select the checkbox for each endpoint in the order that you want them to appear in the sequence.
 9. Set the time to complete.
 10. Select **Save**.
-11. Under **Then take action**, select the rule action in the **Choose action** dropdown. For example, selecting _Block_ tells Cloudflare to refuse requests that match the conditions you specified.
-12. (Optional) If you selected the _Block_ action, you can configure a custom response.
+11. Under **Then take action**, select the rule action in the **Choose action** dropdown. For example, selecting *Block* tells Cloudflare to refuse requests that match the conditions you specified.
+12. (Optional) If you selected the *Block* action, you can configure a custom response.
 13. Under **Place at**, select the order of when the rule will fire.
 14. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 
@@ -78,11 +76,13 @@ The fields in the custom rule are populated as a grouped sequence based on the v
 
 ### Enable sequence rules
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not already have one. The API token must include the _Zone_ \> _Fraud Detection_ \> _Edit_ permission. 2\. [Get the zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the zone(s) where you want to enable sequence rules. 3\. [Add the endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that you want to track in your sequence rules using API Shield's Endpoint Management and make note of the short ID. 4\. Enable the sequence cookie by adding your API token and zone ID to the following API call.
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not already have one. The API token must include the *Zone* > *Fraud Detection* > *Edit* permission. 2. [Get the zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the zone(s) where you want to enable sequence rules. 3. [Add the endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that you want to track in your sequence rules using API Shield's Endpoint Management and make note of the short ID. 4. Enable the sequence cookie by adding your API token and zone ID to the following API call.
 
 Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
+
+*API callbash*
 
 ```bash
 curl --request PUT \
@@ -92,7 +92,7 @@ https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_co
 --data '{"enabled": true}'
 ```
 
-1. Use the expression editor to write sequence or timing based rules via [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or [transform rules](https://developers.cloudflare.com/rules/transform/). You can put these rules in log only mode to monitor.
+5. Use the expression editor to write sequence or timing based rules via [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), or [transform rules](https://developers.cloudflare.com/rules/transform/). You can put these rules in log only mode to monitor.
 
 Note
 
@@ -106,11 +106,13 @@ Disabling sequence rules will stop the rules fields from being populated. If you
 
 To disable sequence rules:
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not already have one. The API token must include the _Zone_ \> _Fraud Detection_ \> _Edit_ permission. 2\. [Get the zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the zone(s) where you want to enable sequence rules. 3\. [Add the endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that you want to track in your sequence rules using API Shield's Endpoint Management and make note of the short ID. 4\. Disable the sequence cookie using your API token, zone ID, and by setting `enabled` to `false` on the following API call.
+1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not already have one. The API token must include the *Zone* > *Fraud Detection* > *Edit* permission. 2. [Get the zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for the zone(s) where you want to enable sequence rules. 3. [Add the endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/) that you want to track in your sequence rules using API Shield's Endpoint Management and make note of the short ID. 4. Disable the sequence cookie using your API token, zone ID, and by setting `enabled` to `false` on the following API call.
 
 Note
 
 The short ID will not be visible until your account team has enabled this feature for you.
+
+*API callbash*
 
 ```bash
 curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_detection/sequence_cookies \
@@ -122,7 +124,7 @@ curl --request PUT https://api.cloudflare.com/client/v4/zones/{zone_id}/fraud_de
 
 ## Rules fields
 
-Sequence rules introduces three new fields to Cloudflare Rules. All of these fields reference operations by their short ID. Accounts that have the Fraud Detection subscription can refer to the short ID by viewing the endpoint details via **API Shield** \> **Endpoint Management** in the Cloudflare dashboard. Accounts without Fraud Detection do not have access to this field.
+Sequence rules introduces three new fields to Cloudflare Rules. All of these fields reference operations by their short ID. Accounts that have the Fraud Detection subscription can refer to the short ID by viewing the endpoint details via **API Shield** > **Endpoint Management** in the Cloudflare dashboard. Accounts without Fraud Detection do not have access to this field.
 
 Cloudflare only stores up to the 10 most recent operations in a sequence for up to one hour. If there are more than 10 operations in the sequence, older operations will be dropped and will not be included in the following fields. Similarly, if an operation happened more than one hour ago, it will also not be included in the following fields.
 
@@ -130,10 +132,14 @@ Cloudflare only stores up to the 10 most recent operations in a sequence for up 
 
 The customer must request endpoint A before endpoint B.
 
+*Valid sequencetxt*
+
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
 any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 ```
+
+*Invalid sequencetxt*
 
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
@@ -142,10 +148,14 @@ not any(cf.sequence.previous_ops[*] == "aaaaaaaa")
 
 Customer must request endpoint A at least one second before endpoint B.
 
+*Valid sequencetxt*
+
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
 cf.sequence.msec_since_op["aaaaaaaa"] ge 1000
 ```
+
+*Invalid sequencetxt*
 
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and

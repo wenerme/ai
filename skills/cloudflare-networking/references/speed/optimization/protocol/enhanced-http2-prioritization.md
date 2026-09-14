@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enhanced HTTP/2 Prioritization
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/enhanced-http2-prioritization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/enhanced-http2-prioritization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Enhanced HTTP/2 Prioritization, Cloudflare delivers resources in the optimal order for the fastest experience across all browsers. It also supports control of content delivery when used in conjunction with [Workers](https://developers.cloudflare.com/workers/).
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
 
 ## How it works
 
@@ -36,11 +36,11 @@ To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
 2. Select your account and zone.
-3. Go to **Speed** \> **Settings**.
+3. Go to **Speed** > **Settings**.
 4. Go to **Protocol Optimization**.
 5. For **Enhanced HTTP/2 Prioritization**, switch the toggle to **On**.
 
-To enable **Enhanced HTTP/2 Prioritization** using the Cloudflare API, send a [PATCH request](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) with `h2_prioritization` as the setting name in the URI path, and the `value` parameter set to `"on"`.
+To enable **Enhanced HTTP/2 Prioritization** using the Cloudflare API, send a [`PATCH` request](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) with `h2_prioritization` as the setting name in the URI path, and the `value` parameter set to `"on"`.
 
 Was this helpful?
 

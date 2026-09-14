@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network to network
 
-Last updated Apr 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/network-to-network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect two separate private networks so devices on each network can send and receive traffic in both directions through Cloudflare. This is useful when you need to link office locations, data centers, or cloud environments. For example, employees in one office could access a file server, printer, or internal application in another office.
 
@@ -24,9 +24,9 @@ To explore other connection scenarios, refer to [Replace your VPN](https://devel
 
 ## Prerequisites
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* A Linux device or virtual machine on your first private network. This is where you install your first mesh node.
-* A second Linux device or virtual machine on a separate private network. This is where you install your second mesh node.
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A Linux device or virtual machine on your first private network. This is where you install your first mesh node.
+- A second Linux device or virtual machine on a separate private network. This is where you install your second mesh node.
 
 Note
 
@@ -34,8 +34,7 @@ Mesh nodes are currently Linux-only. For more details on requirements, refer to 
 
 ## Step 1: Create your first mesh node
 
-1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select **Add a node**.
 3. Enter a name for the node (for example, `office-a`).
 4. Follow the wizard to configure enrollment and device profile settings.
@@ -74,9 +73,9 @@ Devices on both networks can now communicate through Cloudflare. To verify conne
 
 After verifying your connection, consider securing your connected networks with policies and access controls:
 
-* **Set up Gateway policies**: By default, all traffic between your network segments flows through Cloudflare without restriction. Gateway policies let you scan, filter, and log traffic between your networks. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
-* **Create an Access application**: Restrict access to specific services or hosts on your connected networks with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
-* **Enable high availability**: Deploy multiple replicas of each mesh node for automatic failover. For more information, refer to [High availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/).
+- **Set up Gateway policies**: By default, all traffic between your network segments flows through Cloudflare without restriction. Gateway policies let you scan, filter, and log traffic between your networks. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+- **Create an Access application**: Restrict access to specific services or hosts on your connected networks with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
+- **Enable high availability**: Deploy multiple replicas of each mesh node for automatic failover. For more information, refer to [High availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/).
 
 For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
 
@@ -84,8 +83,8 @@ For in-depth guidance on policy design and device posture checks, refer to the [
 
 If you have issues connecting, refer to these resources:
 
-* [Tips and best practices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/): review common Cloudflare Mesh configuration tips and troubleshooting strategies.
-* [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
+- [Tips and best practices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/): review common Cloudflare Mesh configuration tips and troubleshooting strategies.
+- [Troubleshoot tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/): diagnose tunnel connectivity and routing problems.
 
 Was this helpful?
 

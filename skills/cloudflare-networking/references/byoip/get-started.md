@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To use your own IP addresses with Cloudflare, please check with your account team to confirm your contract covers this functionality. You will need to configure settings specific to the services you want to use, as well as meet some standard requirements for all BYOIP customers.
 
@@ -24,25 +24,25 @@ The process described on this page does not support onboarding IP prefixes for u
 
 ## Before you begin
 
-* Your prefix must be registered under one of the Regional Internet Registries (RIRs):
+- Your prefix must be registered under one of the Regional Internet Registries (RIRs):
+  - [AFRINIC ↗](https://afrinic.net/)
+  - [APNIC ↗](https://www.apnic.net/)
+  - [ARIN ↗](https://www.arin.net/)
+  - [LACNIC ↗](https://lacnic.net/)
+  - [RIPE ↗](https://www.ripe.net/)
+- Also verify that your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) records are up to date and contain:
+  - `route` or `route6` objects matching the exact prefixes you want to onboard
+  - `origin` matching the correct ASN you want to onboard
 
-  * [AFRINIC ↗](https://afrinic.net/)
-  * [APNIC ↗](https://www.apnic.net/)
-  * [ARIN ↗](https://www.arin.net/)
-  * [LACNIC ↗](https://lacnic.net/)
-  * [RIPE ↗](https://www.ripe.net/)
-* Also verify that your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) records are up to date and contain:
+  Use Cloudflare's ASN
 
-  * `route` or `route6` objects matching the exact prefixes you want to onboard
-  * `origin` matching the correct ASN you want to onboard
-Use Cloudflare's ASN
-The process described on this page only supports using Cloudflare's ASN (AS13335). If you must announce the prefixes under your own ASN, contact your account team.
-* You must use [Resource Public Key Infrastructure (RPKI) validation](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/) and make sure your ROAs are accurate. You can use [Cloudflare's RPKI Portal ↗](https://rpki.cloudflare.com/?view=validator) and a second source such as [Routinator ↗](https://rpki-validator.ripe.net/ui/) to double-check your prefixes.
-* If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/). Make sure you have the necessary permissions and that you have your account ID.
+  The process described on this page only supports using Cloudflare's ASN (AS13335). If you must announce the prefixes under your own ASN, contact your account team.
+- You must use [Resource Public Key Infrastructure (RPKI) validation](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/) and make sure your ROAs are accurate. You can use [Cloudflare's RPKI Portal ↗](https://rpki.cloudflare.com/?view=validator) and a second source such as [Routinator ↗](https://rpki-validator.ripe.net/ui/) to double-check your prefixes.
+- If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/). Make sure you have the necessary permissions and that you have your account ID.
 
 ---
 
-## 1\. Set up your prefixes
+## 1. Set up your prefixes
 
 ### Add your prefix
 
@@ -51,6 +51,8 @@ The process described on this page only supports using Cloudflare's ASN (AS13335
 Use Cloudflare's ASN
 
 The process described on this page only supports using Cloudflare's ASN (AS13335). If you must announce the prefixes under your own ASN, contact your account team.
+
+*Add Prefixbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes" \
@@ -63,9 +65,10 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 	}'
 ```
 
-```json
+*Responsejson*
 
- "result": {
+```json
+"result": {
 	 "id": "72823e95d6c64d48a8111fec81179816",
     "created_at": "2025-02-25T00:34:11.423722Z",
     "modified_at": "2025-02-25T00:34:11.423722Z",
@@ -87,54 +90,73 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
   }
 ```
 
-1. Take note of the `id` assigned to the prefix you added. It will be used in future steps.
+2. Take note of the `id` assigned to the prefix you added. It will be used in future steps.
 
 Letter of Agency (LOA)
 
-The process described on this page leverages automated [LOA](https://developers.cloudflare.com/byoip/concepts/loa/) generation. If you set `delegate_loa_creation` to `false`, you have to manually upload your LOA, make a [PATCH request](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/edit/) once the prefix is approved, and contact your account team - which is more prone to error and increases the onboarding time.
+The process described on this page leverages automated [LOA](https://developers.cloudflare.com/byoip/concepts/loa/)
+
+ generation. If you set `delegate_loa_creation` to `false`, you have to manually upload your LOA, make a [PATCH request](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/edit/) once the prefix is approved, and contact your account team - which is more prone to error and increases the onboarding time.
 
 ### Validate prefix ownership
 
 1. Validate prefix ownership using one of the following methods:
+   1. Copy the `ownership_validation_token` returned by the API call.
+   2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.
 
-  1. Copy the `ownership_validation_token` returned by the API call.
-  2. On the IRR record of the prefix you are onboarding, add the following string in either a `description` or `remarks` field. Replace `<OWNERSHIP_VALIDATION_TOKEN>` by the actual token you copied in the previous step.
-```plaintext
-cf-validation: <OWNERSHIP_VALIDATION_TOKEN>
-```
-Note
-The exact steps to update your IRR record will depend on the registry you are using. Refer to [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/) for details.
+   ```plaintext
+   cf-validation: <OWNERSHIP_VALIDATION_TOKEN>
+   ```
 
-  1. Consider the size of the prefix you are bringing to Cloudflare. Since the standard `in-addr.arpa` tree assumes delegations on octet or nibble boundaries, if you onboard prefixes that are not aligned with those, you will have to split up the prefix into subnets and create the corresponding reverse DNS zones for each.
-Example
+   Note
+
+   The exact steps to update your IRR record will depend on the registry you are using. Refer to [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/) for details.
+   1. Consider the size of the prefix you are bringing to Cloudflare. Since the standard `in-addr.arpa` tree assumes delegations on octet or nibble boundaries, if you onboard prefixes that are not aligned with those, you will have to split up the prefix into subnets and create the corresponding reverse DNS zones for each.<details><summary>
+
+   Example</summary>
+
 To calculate how many smaller subnets you need, use the following formula:
-```plaintext
-2^(next boundary - current netmask)
-```
-For `1.1.0.0/23`, you would setup two (`2^(24-23)`) reverse DNS zones, one for `1.1.0.0/24` and another for `1.1.1.0/24`.
-For `2001:0db8::/34`, you would setup four (`2^(36-34)`) reverse DNS zones, for `2001:0db8::/36`, `2001:0db8:1:/36`, `2001:0db8:2::/36`, and `2001:0db8:3::/36`.
 
-  1. Set up a reverse DNS zone. If you use Cloudflare for DNS, refer to [Reverse DNS zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/#set-up-a-reverse-zone). If you use a different DNS provider, follow their instructions.
-  2. Create TXT records using `cf-validation` as their `name`. They should look like the following example:
-```plaintext
-cf-validation.<REVERSE_ZONE_ADDRESS> IN TXT <TOKEN>
-```
+   ```plaintext
+   2^(next boundary - current netmask)
+   ```
 
-  1. Update nameservers at your Regional Internet Registry (RIR). The exact steps to update your nameservers will depend on the registry you are using.
-2. After applying the necessary changes, use the Validate Prefix endpoint to trigger the validation checks.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic Transit Write`
-  * `IP Prefixes: Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
+   For <code>1.1.0.0/23</code>, you would setup two (<code>2^(24-23)</code>) reverse DNS zones, one for <code>1.1.0.0/24</code> and another for <code>1.1.1.0/24</code>.
+
+   For <code>2001:0db8::/34</code>, you would setup four (<code>2^(36-34)</code>) reverse DNS zones, for <code>2001:0db8::/36</code>, <code>2001:0db8:1:/36</code>, <code>2001:0db8:2::/36</code>, and <code>2001:0db8:3::/36</code>.</details>
+
+   2. Set up a reverse DNS zone. If you use Cloudflare for DNS, refer to [Reverse DNS zones](https://developers.cloudflare.com/dns/additional-options/reverse-zones/#set-up-a-reverse-zone). If you use a different DNS provider, follow their instructions.
+   3. Create TXT records using `cf-validation` as their `name`. They should look like the following example:
+
+   ```plaintext
+   cf-validation.<REVERSE_ZONE_ADDRESS> IN TXT <TOKEN>
+   ```
+
+
+   4. Update nameservers at your Regional Internet Registry (RIR). The exact steps to update your nameservers will depend on the registry you are using.
+2. After applying the necessary changes, use the Validate Prefix endpoint to trigger the validation checks.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic Transit Write</code>
+   - <code>IP Prefixes: Write</code></details>
+
+   *Validate Prefixbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/validate" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+
 
 Once the ownership validation is successful, you can remove the token.
 
-When all validations pass - RPKI, IRR, and ownership - the `approved` field in your prefix will return `"V"`. This means you can proceed to create IP address service bindings[1](#user-content-fn-1).
+When all validations pass - RPKI, IRR, and ownership - the `approved` field in your prefix will return `"V"`. This means you can proceed to create IP address service bindings<sup>[1](#user-content-fn-1)</sup>.
 
 If needed, you can use the [Prefix Details endpoint](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/get/) to check if any issues were found during validation. If so, proceed with the necessary changes and make a request to restart validation. Refer to [Prefix validation checks](https://developers.cloudflare.com/byoip/troubleshooting/prefix-validation/) for details.
 
@@ -142,10 +164,21 @@ If needed, you can use the [Prefix Details endpoint](https://developers.cloudfla
 
 You can allow other accounts to use part or all of your BYOIP prefix. Refer to [Prefix delegations](https://developers.cloudflare.com/byoip/concepts/prefix-delegations/) for details.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `IP Prefixes: Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>IP Prefixes: Write</code>
+
+</details>
+
+*Create Prefix Delegationbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/delegations" \
@@ -163,7 +196,7 @@ Although you can delegate IPs to other accounts, the IP address service bindings
 
 ---
 
-## 2\. Create service bindings
+## 2. Create service bindings
 
 In IP address management, service bindings map the traffic destined for a given IP address to the Cloudflare service that it should be routed through.
 
@@ -177,13 +210,24 @@ CDN egress
 
 [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) (formerly known as Aegis) is only available for Enterprise. If you are interested, reach out to your account team. Also note that a single BYOIP prefix can be used for either CDN ingress or CDN egress, but not both.
 
-1. (Optional) If needed, use the [List Prefixes](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/list/) endpoint to get or confirm the `id` associated with your prefix.
-2. Make a `POST` request to the [Create service binding](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/create/) endpoint, indicating the entire BYOIP prefix that you are onboarding and the service that should be used for your default binding.
+2. (Optional) If needed, use the [List Prefixes](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/methods/list/) endpoint to get or confirm the `id` associated with your prefix.
+3. Make a `POST` request to the [Create service binding](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings/methods/create/) endpoint, indicating the entire BYOIP prefix that you are onboarding and the service that should be used for your default binding.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `IP Prefixes: Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>IP Prefixes: Write</code>
+
+</details>
+
+*Create Service Bindingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
@@ -207,29 +251,41 @@ The steps below only cover assigning specific IPs to additional services. For gu
 
 1. Plan for what IP(s) will get the additional binding. Cloudflare **strongly** recommends implementing service bindings through an **aggregated** CIDR block, as it is more efficient than adding discrete bindings for non-contiguous CIDR blocks.
 
+<details>
+
+<summary>
+
 Example
 
-**Spectrum protected prefix:** `203.0.113.0/24`
+</summary>
+
+**Spectrum protected prefix:** <code>203.0.113.0/24</code>
 
 **IPs to upgrade to CDN:**
 
-`203.0.113.16`
-`203.0.113.17`
-`203.0.113.18`
-`203.0.113.19`
-`203.0.113.20`
-`203.0.113.21`
-`203.0.113.22`
-`203.0.113.23`
+<code>203.0.113.16</code><br> <code>203.0.113.17</code><br> <code>203.0.113.18</code><br> <code>203.0.113.19</code><br> <code>203.0.113.20</code><br> <code>203.0.113.21</code><br> <code>203.0.113.22</code><br> <code>203.0.113.23</code>
 
-Add one discrete CDN service binding for `203.0.113.16` with a `/29` netmask.
+Add one discrete CDN service binding for <code>203.0.113.16</code> with a <code>/29</code> netmask.
 
-1. Make a `POST` request to the [Create service binding](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service%5Fbindings/methods/create/) endpoint, indicating the IP address you want to bind to the CDN or Spectrum. Specify the **corresponding network mask** as needed.
+</details>
+
+2. Make a `POST` request to the [Create service binding](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/service_bindings/methods/create/) endpoint, indicating the IP address you want to bind to the CDN or Spectrum. Specify the **corresponding network mask** as needed.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `IP Prefixes: Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>IP Prefixes: Write</code>
+
+</details>
+
+*Create Service Bindingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bindings" \
@@ -244,7 +300,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefi
 In the response body, the initial provisioning state should be `provisioning`.
 
 ```json
-
    {
      "errors": [],
      "messages": [],
@@ -269,18 +324,29 @@ Magic Transit can only be used as default binding, spanning across your entire p
 
 ---
 
-## 3\. Advertise the BGP prefix
+## 3. Advertise the BGP prefix
 
-Once automatically created (following [step 2](#2-create-service-bindings)), BGP prefixes are initially withdrawn. After all your configurations are in place - including [address maps](https://developers.cloudflare.com/byoip/address-maps/)[2](#user-content-fn-2) if you will use CDN service -, proceed to advertise the BGP route for your prefix.
+Once automatically created (following [step 2](#2-create-service-bindings)), BGP prefixes are initially withdrawn. After all your configurations are in place - including [address maps](https://developers.cloudflare.com/byoip/address-maps/)<sup>[2](#user-content-fn-2)</sup> if you will use CDN service -, proceed to advertise the BGP route for your prefix.
 
-1. Use the [Update BGP prefix](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp%5Fprefixes/methods/edit/) endpoint to start the advertisement.
+1. Use the [Update BGP prefix](https://developers.cloudflare.com/api/resources/addressing/subresources/prefixes/subresources/bgp_prefixes/methods/edit/) endpoint to start the advertisement.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic Transit Write`
-* `IP Prefixes: Write`
-* `IP Prefixes: BGP On Demand Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic Transit Write</code>
+- <code>IP Prefixes: Write</code>
+- <code>IP Prefixes: BGP On Demand Write</code>
+
+</details>
+
+*Update BGP Prefixbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/addressing/prefixes/$PREFIX_ID/bgp/prefixes/$BGP_PREFIX_ID" \

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control waiting room traffic
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/how-to/control-waiting-room/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To change whether and how traffic reaches a waiting room, update the values for **Enabled**, **Queue All**, and **Queueing Method** on your waiting room.
 
@@ -20,7 +20,7 @@ To change whether and how traffic reaches a waiting room, update the values for 
 
 To enable a waiting room:
 
-1. Go to **Traffic** \> **Waiting Room**.
+1. Go to **Traffic** > **Waiting Room**.
 2. On a waiting room, set **Enabled** to **On**.
 
 ## Queue options
@@ -35,7 +35,7 @@ You may also use the **Queue-all** option on a waiting room as an emergency stop
 
 To queue visitors only when necessary:
 
-1. Go to **Traffic** \> **Waiting Room**.
+1. Go to **Traffic** > **Waiting Room**.
 2. On a waiting room, set **Enabled** to **On**.
 3. Your waiting room will begin queueing visitors once it approaches the target traffic thresholds defined in [**Total active users**](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/) and in [**New users per minute**](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/).
 
@@ -45,17 +45,17 @@ To queue all visitors prior to a time-based offering, set up a pre-queue as part
 
 To start queueing all new visitors without a scheduled event:
 
-1. Go to **Traffic** \> **Waiting Room**.
+1. Go to **Traffic** > **Waiting Room**.
 2. On a waiting room:
-  1. Ensure **Enabled** is set to **On**.
-  2. Set **Queue-all** to **On**.
+   1. Ensure **Enabled** is set to **On**.
+   2. Set **Queue-all** to **On**.
 3. Your waiting room will begin queueing all new visitors and will not allow any new visitors to the path protected by your waiting room. Queue-all will override all other waiting room settings, including event settings.
 
 Note
 
 Only new visitors will be queued. Active users that are already on your website will continue there and will not return to the queue until their session expires.
 
-1. To begin allowing visitors to the path protected by your waiting room, set **Queue-all** to **Off**.
+4. To begin allowing visitors to the path protected by your waiting room, set **Queue-all** to **Off**.
 
 ## Queueing method
 

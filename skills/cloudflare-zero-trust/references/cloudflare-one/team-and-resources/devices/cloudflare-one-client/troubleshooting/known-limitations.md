@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known limitations
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below, you will find information on devices, software, and configurations that are incompatible with the Cloudflare One Client (formerly WARP).
 
@@ -20,10 +20,10 @@ Troubleshoot the Cloudflare One Client
 
 For step-by-step guidance on diagnosing and resolving Cloudflare One Client issues, refer to the [Cloudflare One Client troubleshooting guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/). The guide covers:
 
-* How to collect diagnostic logs via the Cloudflare dashboard or CLI
-* How to review key configuration files
-* Common misconfigurations and their fixes
-* Best practices for filing support tickets
+- How to collect diagnostic logs via the Cloudflare dashboard or CLI
+- How to review key configuration files
+- Common misconfigurations and their fixes
+- Best practices for filing support tickets
 
 ## Windows Server
 
@@ -37,7 +37,7 @@ To work around this issue, you can temporarily remove the WARP network adapter:
 
 1. Open the Cloudflare One Client GUI and disconnect.
 2. In Windows, open Device Manager.
-3. Select **View** \> **Show hidden devices**.
+3. Select **View** > **Show hidden devices**.
 4. Under **Network adapters**, find **Cloudflare WARP Interface Tunnel** and select **Uninstall device**.
 5. Select **Attempt to remove the drive for this device**, then select **Uninstall**.
 6. Reconnect the Cloudflare One Client.
@@ -46,11 +46,11 @@ The Cloudflare One Client will now reinstall its network adapter, and the Cloudf
 
 ## Managed network on legacy Windows Server
 
-[Managed network detection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) will not work when the TLS certificate is served from IIS 8.5 on Windows Server 2012 R2\. To work around the limitation, move the certificate to a different host.
+[Managed network detection](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) will not work when the TLS certificate is served from IIS 8.5 on Windows Server 2012 R2. To work around the limitation, move the certificate to a different host.
 
 ## nslookup on Windows in DoH mode
 
-On Windows devices in [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode), `nslookup` by default sends DNS requests to the [WARP local DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) over IPv6\. However, because the Cloudflare One Client uses an IPv4-mapped IPv6 address (instead of a real IPv6 address), `nslookup` will not recognize this address type and the query will fail:
+On Windows devices in [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode), `nslookup` by default sends DNS requests to the [WARP local DNS proxy](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#dns-traffic) over IPv6. However, because the Cloudflare One Client uses an IPv4-mapped IPv6 address (instead of a real IPv6 address), `nslookup` will not recognize this address type and the query will fail:
 
 ```txt
 C:\Users\JohnDoe>nslookup google.com
@@ -76,20 +76,20 @@ Resolve-DnsName -Name google.com
 
 Comcast DNS traffic (to the IPs below) cannot be proxied through the Cloudflare One Client. This is because Comcast rejects DNS traffic that is not sent directly from the user's device.
 
-* IPv4 Addresses: `75.75.75.75` and `75.75.76.76`
-* IPv6 Addresses: `2001:558:feed::1` and `2001:558:feed::2`
+- IPv4 Addresses: `75.75.75.75` and `75.75.76.76`
+- IPv6 Addresses: `2001:558:feed::1` and `2001:558:feed::2`
 
 To work around the issue, you can either:
 
-* Create a [Split Tunnel rule](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) that excludes the above IPs from the Cloudflare One Client.
-* Configure your device or router to use a public DNS server such as [1.1.1.1 ↗](https://1.1.1.1/dns/).
+- Create a [Split Tunnel rule](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) that excludes the above IPs from the Cloudflare One Client.
+- Configure your device or router to use a public DNS server such as [`1.1.1.1` ↗](https://1.1.1.1/dns/).
 
 ## Cox DNS servers
 
 Similar to the [Comcast DNS servers](#comcast-dns-servers) limitation listed above, Cox DNS servers will not respond to traffic from the WARP egress IPs (or any IP that is not a Cox IP). The workaround is nearly identical, except that Cox DNS servers may be specific to the individual end user. You can either:
 
-* Create a [Split Tunnel rule](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) that excludes all Cox DNS servers. For business customers, refer to the [COX documentation ↗](https://www.cox.com/business/support/cox-business-dns-and-mail-exchange-hosting-services.html) for the DNS server IPs. For residential customers, check your local DNS servers. The residential DNS servers typically fall under `68.105.28.0/24` and `68.105.29.0/24`.
-* Configure your device or router to use a public DNS server such as [1.1.1.1 ↗](https://1.1.1.1/dns/).
+- Create a [Split Tunnel rule](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) that excludes all Cox DNS servers. For business customers, refer to the [COX documentation ↗](https://www.cox.com/business/support/cox-business-dns-and-mail-exchange-hosting-services.html) for the DNS server IPs. For residential customers, check your local DNS servers. The residential DNS servers typically fall under `68.105.28.0/24` and `68.105.29.0/24`.
+- Configure your device or router to use a public DNS server such as [`1.1.1.1` ↗](https://1.1.1.1/dns/).
 
 ## HP Velocity
 
@@ -101,7 +101,7 @@ For Dell devices running firmware version `1.35.0` (released 2025-07-07), regard
 
 ## Cisco Meraki
 
-Cisco Meraki devices have a bug where client traffic can sometimes be identified as [Statistical-P2P ↗](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos%5Fnbar/prot%5Flib/config%5Flibrary/pp4600/nbar-prot-pack4600/s.html#wp1488575851) and de-prioritised or dropped entirely. To resolve the issue, disable `Statistical-P2P` on the Cisco Meraki device.
+Cisco Meraki devices have a bug where client traffic can sometimes be identified as [`Statistical-P2P` ↗](https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/qos_nbar/prot_lib/config_library/pp4600/nbar-prot-pack4600/s.html#wp1488575851) and de-prioritised or dropped entirely. To resolve the issue, disable `Statistical-P2P` on the Cisco Meraki device.
 
 ## Windows Teredo
 
@@ -133,8 +133,8 @@ The Cloudflare One Client runs a local DNS proxy on `127.0.2.2` and `127.0.2.3`.
 
 To enable Cloudflare One Client DNS resolution with containers:
 
-* Use a [custom Docker network ↗](https://docs.docker.com/engine/network/#user-defined-networks) (recommended): Allows the Docker container to still use the bridge network driver that maintains network isolation from the host. If you are creating your own bridge network, you should also [adjust the MTU accordingly](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#docker-on-linux-with-bridged-networking).
-* Use [host networking ↗](https://docs.docker.com/engine/network/drivers/host/) (not recommended): Removes the security benefits of network isolation and may lead to port conflicts.
+- Use a [custom Docker network ↗](https://docs.docker.com/engine/network/#user-defined-networks) (recommended): Allows the Docker container to still use the bridge network driver that maintains network isolation from the host. If you are creating your own bridge network, you should also [adjust the MTU accordingly](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#docker-on-linux-with-bridged-networking).
+- Use [host networking ↗](https://docs.docker.com/engine/network/drivers/host/) (not recommended): Removes the security benefits of network isolation and may lead to port conflicts.
 
 The following example uses a special host (`connectivity-check.warp-svc`) that is only resolvable by the local DNS proxy to show the supported Docker networking modes.
 
@@ -243,7 +243,7 @@ This is a known limitation of the Android OS, which has been reported to Google.
 To work around this issue, you can disable Lockdown mode while keeping Always-On VPN enabled:
 
 1. In your Intune profile, disable **Lockdown mode** while keeping **Always-On VPN** enabled.
-2. Use the [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) and [switch\_locked](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#switch%5Flocked) parameters in the managed configuration for seamless connectivity.
+2. Use the [`auto_connect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto_connect) and [`switch_locked`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#switch_locked) parameters in the managed configuration for seamless connectivity.
 3. Instruct users to launch the Cloudflare One agent app and complete the one-time registration manually.
 
 ## Repeated reinstalls on macOS with Microsoft Intune
@@ -252,17 +252,18 @@ When you deploy the Cloudflare One Client `.pkg` to macOS with Microsoft Intune,
 
 This affects Cloudflare One Client versions from 2026.3.566.1 — the first release with the redesigned client interface (the new client UI). The redesigned client bundles several embedded frameworks inside the application, which is what triggers the reinstall loop. This is an Intune-side detection configuration issue rather than a client defect, so apply the following workaround on any affected version.
 
-This happens because of how Intune detects whether a macOS `.pkg` app is already installed. When you upload the package, Intune automatically populates the app's **Included apps** detection list with every bundle it finds inside the package — including the roughly two dozen embedded framework bundles that ship inside the client (for example `io.flutter.flutter-macos`, `org.sparkle-project.Sparkle`, and several `org.cocoapods.*` bundles). Intune only considers the app installed when _every_ entry in the **Included apps** list is detected on the device.
+This happens because of how Intune detects whether a macOS `.pkg` app is already installed. When you upload the package, Intune automatically populates the app's **Included apps** detection list with every bundle it finds inside the package — including the roughly two dozen embedded framework bundles that ship inside the client (for example `io.flutter.flutter-macos`, `org.sparkle-project.Sparkle`, and several `org.cocoapods.*` bundles). Intune only considers the app installed when *every* entry in the **Included apps** list is detected on the device.
 
 These embedded frameworks are not independently installable apps. They live inside the client's application bundle and have no installer receipt or standalone presence, so Intune cannot detect them as installed applications on their own. As a result, Intune never detects them, always concludes the app is not fully installed, and reinstalls the package — cycling through each undetectable framework. Intune detects the client's own bundle identifier (`com.cloudflare.1dot1dot1dot1.macos`) correctly the entire time. The extra framework entries are what fail detection and drive the reinstall loop. Cloudflare has reported this behavior to Microsoft.
 
 To work around this issue, remove the embedded framework bundles from the **Included apps** list so that only the client's own bundle identifier remains, and turn off version-based detection:
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Apps** \> **macOS** and select the Cloudflare One Client app.
+1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Apps** > **macOS** and select the Cloudflare One Client app.
 2. Go to **Properties** and, next to **Detection rules**, select **Edit**.
 3. In the **Included apps** list, remove every entry except `com.cloudflare.1dot1dot1dot1.macos`.
 4. Set **Ignore app version** to **Yes** so that detection succeeds regardless of the deployed client version.
 5. Select **Review + save** to apply the change.
+
 ![The Included apps detection list in Intune with only the Cloudflare One Client bundle identifier and Ignore app version set to Yes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=367,format=webp/_astro/intune-included-apps-detection.74iUWzuj.png)
 
 Note

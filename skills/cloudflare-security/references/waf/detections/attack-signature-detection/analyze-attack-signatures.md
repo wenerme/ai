@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analyze attack signatures
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use **Security Analytics** \> **Attack Analysis** to investigate attack signature matches before applying mitigation.
+Use **Security Analytics** > **Attack Analysis** to investigate attack signature matches before applying mitigation.
 
 Note
 
@@ -22,8 +22,7 @@ Attack Signature Detection is available in Early Access. Contact your Cloudflare
 
 ## Review signature matches
 
-1. In the Cloudflare dashboard, go to **Security** \> **Analytics**.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to **Security** > **Analytics**. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select **Attack Analysis**.
 3. Choose the time range and application scope to investigate.
 4. Plot request volume over time by signature Ref, category, or WAF Attack Score.
@@ -40,10 +39,10 @@ The request outcome shows whether existing protections mitigated matching traffi
 
 Confidence describes the expected false-positive characteristics of a signature. It does not prove that a request is malicious.
 
-| Confidence | Meaning                                                                      | Comparison with Managed Rules                                                   | Recommended analysis                                                            |
-| ---------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| high       | The signature targets a high true-positive and low false-positive rate.      | Includes the same signatures that the default Managed Rules deployment enables. | Confirm affected traffic and current mitigation before applying a broad action. |
-| low        | The signature has a greater risk of matching legitimate application traffic. | Includes the Managed Rules signatures that are disabled by default.             | Review requests and scope mitigation to the affected application surface.       |
+| Confidence | Meaning | Comparison with Managed Rules | Recommended analysis |
+| --- | --- | --- | --- |
+| `high` | The signature targets a high true-positive and low false-positive rate. | Includes the same signatures that the default Managed Rules deployment enables. | Confirm affected traffic and current mitigation before applying a broad action. |
+| `low` | The signature has a greater risk of matching legitimate application traffic. | Includes the Managed Rules signatures that are disabled by default. | Review requests and scope mitigation to the affected application surface. |
 
 ## Investigate possible false positives
 

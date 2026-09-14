@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debugging
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Vite plugin has debugging enabled by default and listens on port `9229`. You may choose a custom port or disable debugging by setting the `inspectorPort` option in the [plugin config](https://developers.cloudflare.com/workers/vite-plugin/reference/api#interface-pluginconfig). There are two recommended methods for debugging your Workers during local development:
 
@@ -29,6 +29,8 @@ When debugging multiple Workers, you may need to allow your browser to open pop-
 ## VS Code
 
 To set up [VS Code ↗](https://code.visualstudio.com/) to support breakpoint debugging in your application, you should create a `.vscode/launch.json` file that contains the following configuration:
+
+*.vscode/launch.jsonjson*
 
 ```json
 {

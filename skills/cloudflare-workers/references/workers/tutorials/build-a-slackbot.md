@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a Slackbot
 
-Last updated Apr 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a [Slack ↗](https://slack.com) bot using [Cloudflare Workers](https://developers.cloudflare.com/workers/). Your bot will make use of GitHub webhooks to send messages to a Slack channel when issues are updated or created, and allow users to write a command to look up GitHub issues from inside Slack.
 
@@ -70,27 +70,28 @@ Your Cloudflare Workers application will be able to handle incoming requests fro
 
 To configure a webhook:
 
-1. Go to your GitHub repository's **Settings** \> **Webhooks** \> **Add webhook**.
+1. Go to your GitHub repository's **Settings** > **Webhooks** > **Add webhook**.
 
 If you have a repository like `https://github.com/user/repo`, you can access the **Webhooks** page directly at `https://github.com/user/repo/settings/hooks`.
 
-1. Set the Payload URL to the `/webhook` path on your Worker URL.
+2. Set the Payload URL to the `/webhook` path on your Worker URL.
 
 For example, if your Worker will be hosted at `https://myworkerurl.com`, the Payload URL should be `https://myworkerurl.com/webhook`.
 
-1. In the **Content type** dropdown, select **application/json**.
+3. In the **Content type** dropdown, select **application/json**.
 
 The **Content type** for your payload can either be a URL-encoded payload (`application/x-www-form-urlencoded`) or JSON (`application/json`). For the purpose of this tutorial and to make parsing the payload sent to your application, select JSON.
 
-1. In **Which events would you like to trigger this webhook?**, select **Let me select individual events**.
+4. In **Which events would you like to trigger this webhook?**, select **Let me select individual events**.
 
 GitHub webhooks allow you to specify which events you would like to have sent to your webhook. By default, the webhook will send `push` events from your repository. For the purpose of this tutorial, you will choose **Let me select individual events**.
 
-1. Select the **Issues** event type.
+5. Select the **Issues** event type.
 
 There are many different event types that can be enabled for your webhook. Selecting **Issues** will send every issue-related event to your webhook, including when issues are opened, edited, deleted, and more. If you would like to expand your Slack bot application in the future, you can select more of these events after the tutorial.
 
-1. Select **Add webhook**.
+6. Select **Add webhook**.
+
 ![Create a GitHub Webhook in the GitHub dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2068,height=2408,format=webp/_astro/new-github-webhook.DtHDy8MC.png)
 
 When your webhook is created, it will attempt to send a test payload to your application. Since your application is not actually deployed yet, leave the configuration as it is. You will later return to your repository to create, edit, and close some issues to ensure that the webhook is working once your application is deployed.
@@ -115,9 +116,9 @@ pnpm create cloudflare@latest slack-bot
 
 Follow these steps to create a Hono project.
 
-* For _What would you like to start with_?, select `Framework Starter`.
-* For _Which development framework do you want to use?_, select `Hono`.
-* For, _Do you want to deploy your application?_, select `No`.
+- For *What would you like to start with*?, select `Framework Starter`.
+- For *Which development framework do you want to use?*, select `Hono`.
+- For, *Do you want to deploy your application?*, select `No`.
 
 Go to the `slack-bot` directory:
 
@@ -211,6 +212,8 @@ The Slack bot will have two child applications called "route" each.
 2. `webhook` route will be called when an issue changes on GitHub, via a configured webhook. This application will be add to `/webhook` in the main application.
 
 Create the route files in a directory named `routes`.
+
+*Create new folders and filessh*
 
 ```sh
 mkdir -p src/routes
@@ -573,7 +576,7 @@ const app = new Hono<{ Bindings: Bindings }>();
 export default app;
 ```
 
-Much like with the `lookup` route, you will need to parse the incoming payload inside of `request`, get the relevant issue data from it (refer to [the GitHub API documentation on IssueEvent ↗](https://developer.github.com/v3/activity/events/types/#issuesevent) for the full payload schema), and send a formatted message to Slack to indicate what has changed. The final version will look something like this:
+Much like with the `lookup` route, you will need to parse the incoming payload inside of `request`, get the relevant issue data from it (refer to [the GitHub API documentation on `IssueEvent` ↗](https://developer.github.com/v3/activity/events/types/#issuesevent) for the full payload schema), and send a formatted message to Slack to indicate what has changed. The final version will look something like this:
 
 ![A successful Webhook Message example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1372,height=744,format=webp/_astro/webhook_example.EQJW9q2u.png)
 
@@ -697,7 +700,9 @@ Caution
 
 Since this webhook allows developers to post directly to your Slack channel, keep it secret.
 
-To use this constant inside of your codebase, use the [wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command:
+To use this constant inside of your codebase, use the [`wrangler secret`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command:
+
+*Set the SLACK\_WEBHOOK\_URL secretsh*
 
 ```sh
 npx wrangler secret put SLACK_WEBHOOK_URL

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.timings.client\_quic\_rtt\_msec
 
-`cf.timings.client_quic_rtt_msec` `Integer`
+`cf.timings.client_quic_rtt_msec``Integer`
 
 The smoothed QUIC round-trip time (RTT) between Cloudflare and the client in milliseconds.
 
@@ -28,7 +28,7 @@ cf.timings.client_quic_rtt_msec > 200
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

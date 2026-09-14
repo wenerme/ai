@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delay action
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/workers-templates/delay-action/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/workers-templates/delay-action/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Customers with a Bot Management and a [Workers](https://developers.cloudflare.com/workers/) subscription can use the template below to introduce a delay to requests that are likely from bots.
 
@@ -44,6 +44,8 @@ export default {
 	},
 };
 ```
+
+*Workers templatets*
 
 ```ts
 // Configurable Variables

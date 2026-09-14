@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Parameters
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each Cloudflare One Client (formerly WARP) supports the following set of parameters as part of their deployment, regardless of the deployment mechanism.
 
 Note
 
-Most of the parameters listed below are also configurable in Cloudflare One under **Team & Resources** \> **Devices**. In the event of conflicting settings, the Cloudflare One Client will always give precedence to settings on the local device (for example, in your `mdm.xml` or `com.cloudflare.warp.plist` files).
+Most of the parameters listed below are also configurable in Cloudflare One under **Team & Resources** > **Devices**. In the event of conflicting settings, the Cloudflare One Client will always give precedence to settings on the local device (for example, in your `mdm.xml` or `com.cloudflare.warp.plist` files).
 
 ## Required for full Cloudflare Zero Trust features
 
@@ -30,7 +30,9 @@ Instructs the client to register the device with your organization. Registration
 
 **Value Type:** `string`
 
-**Value:** Your team name.
+**Value:** Your team name
+
+.
 
 ## Required for DNS-only policy enforcement
 
@@ -50,20 +52,28 @@ You can use the following parameters to configure a specific Zero Trust organiza
 
 ### `allow_managed_deployments`
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.6.0               |
-| macOS    | ✅            | 2026.6.0               |
-| Linux    | ❌            | —                      |
-| iOS      | ❌            | —                      |
-| Android  | ❌            | —                      |
-| ChromeOS | ❌            | —                      |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.6.0 |
+| macOS | ✅ | 2026.6.0 |
+| Linux | ❌ | — |
+| iOS | ❌ | — |
+| Android | ❌ | — |
+| ChromeOS | ❌ | — |
+
+</details>
 
 Local kill switch for [client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) pushed from the Cloudflare dashboard. Use this parameter to opt a device out of dashboard-managed version changes regardless of what is configured in the dashboard.
 
@@ -73,8 +83,8 @@ By default, the device applies any assignment the dashboard sends. If no assignm
 
 **Value:**
 
-* `true` — (default) The device applies client version assignments configured for it in the Cloudflare dashboard. If no assignment targets the device, this setting has no effect.
-* `false` — The device ignores client version assignments and stays on its current installed version, regardless of what is configured in the dashboard.
+- `true` — (default) The device applies client version assignments configured for it in the Cloudflare dashboard. If no assignment targets the device, this setting has no effect.
+- `false` — The device ignores client version assignments and stays on its current installed version, regardless of what is configured in the dashboard.
 
 ### `auth_client_id`
 
@@ -95,7 +105,7 @@ Example configuration:
 
 Note
 
-The service token must have _Service Auth_ [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#check-for-service-token). Allow permissions will not work for service tokens.
+The service token must have *Service Auth* [device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/#check-for-service-token). Allow permissions will not work for service tokens.
 
 ### `auth_client_secret`
 
@@ -113,8 +123,8 @@ If switch has been turned off by user, the client will automatically turn itself
 
 **Value:**
 
-* `0` — Allow the switch to stay in the off position indefinitely until the user turns it back on.
-* `1` to `1440` — Turn switch back on automatically after the specified number of minutes.
+- `0` — Allow the switch to stay in the off position indefinitely until the user turns it back on.
+- `1` to `1440` — Turn switch back on automatically after the specified number of minutes.
 
 Note
 
@@ -122,7 +132,7 @@ This parameter replaces the old `enabled` property, which can no longer be used 
 
 ### `display_name`
 
-Identifies a Zero Trust organization in the Cloudflare One Client GUI when the client is deployed with [multiple organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/). Required if the `organization` parameter is specified within a [configs array](#configs).
+Identifies a Zero Trust organization in the Cloudflare One Client GUI when the client is deployed with [multiple organizations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/). Required if the `organization` parameter is specified within a [`configs` array](#configs).
 
 **Value Type:** `string`
 
@@ -136,8 +146,8 @@ NetBIOS over TCP/IP (NetBT) is a legacy feature in Windows primarily used for na
 
 **Value:**
 
-* `false` — (default) Disables NetBT on the Cloudflare One Client tunnel interface.
-* `true` — Enables NetBT on the Cloudflare One Client tunnel interface.
+- `false` — (default) Disables NetBT on the Cloudflare One Client tunnel interface.
+- `true` — Enables NetBT on the Cloudflare One Client tunnel interface.
 
 ### `enable_pmtud`
 
@@ -147,51 +157,67 @@ NetBIOS over TCP/IP (NetBT) is a legacy feature in Windows primarily used for na
 
 **Value:**
 
-* `false` — (default) Disables PMTUD.
-* `true` — Enables PMTUD on the Cloudflare One Client tunnel interface.
+- `false` — (default) Disables PMTUD.
+- `true` — Enables PMTUD on the Cloudflare One Client tunnel interface.
 
 ### `enable_post_quantum`
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2025.5.735.1         |
-| macOS    | ✅            | 2025.5.735.1         |
-| Linux    | ✅            | 2025.5.735.1         |
-| iOS      | ✅            | 1.10                 |
-| Android  | ✅            | 2.4                  |
-| ChromeOS | ✅            | 2.4                  |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
-The Cloudflare One Client uses [post-quantum cryptography](https://developers.cloudflare.com/ssl/post-quantum-cryptography/) to secure connections from the device to Cloudflare's network. Post-quantum cryptography requires the [MASQUE protocol](#warp%5Ftunnel%5Fprotocol) and is enabled by default on all devices using MASQUE.
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.5.735.1 |
+| macOS | ✅ | 2025.5.735.1 |
+| Linux | ✅ | 2025.5.735.1 |
+| iOS | ✅ | 1.10 |
+| Android | ✅ | 2.4 |
+| ChromeOS | ✅ | 2.4 |
+
+</details>
+
+The Cloudflare One Client uses [post-quantum cryptography](https://developers.cloudflare.com/ssl/post-quantum-cryptography/) to secure connections from the device to Cloudflare's network. Post-quantum cryptography requires the [MASQUE protocol](#warp_tunnel_protocol) and is enabled by default on all devices using MASQUE.
 
 **Value Type:** `boolean`
 
 **Value:**
 
-* `false` — Disables post-quantum key agreement.
-* `true` — Enables post-quantum key agreement for all traffic through the WARP tunnel.
+- `false` — Disables post-quantum key agreement.
+- `true` — Enables post-quantum key agreement for all traffic through the WARP tunnel.
 
 ### `environment`
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2025.9.558.0         |
-| macOS    | ✅            | 2025.9.558.0         |
-| Linux    | ✅            | 2025.9.558.0         |
-| iOS      | ✅            | 1.12.0               |
-| Android  | ✅            | 2.5.1                |
-| ChromeOS | ✅            | 2.5.1                |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.9.558.0 |
+| macOS | ✅ | 2025.9.558.0 |
+| Linux | ✅ | 2025.9.558.0 |
+| iOS | ✅ | 1.12.0 |
+| Android | ✅ | 2.5.1 |
+| ChromeOS | ✅ | 2.5.1 |
+
+</details>
 
 Configures the Cloudflare One Client to connect to Cloudflare's FedRAMP High authorized environment.
 
@@ -199,12 +225,12 @@ Configures the Cloudflare One Client to connect to Cloudflare's FedRAMP High aut
 
 **Value:**
 
-* `normal` — (default) The Cloudflare One Client connects to the standard API endpoints, IPs, and domains (like `<ACCOUNT_ID>.cloudflare-gateway.com`) and forwards traffic to Cloudflare data centers worldwide.
-* `fedramp_high` — The Cloudflare One Client connects to FedRAMP-specific API endpoints, IPs, and domains (like `<ACCOUNT_ID>.fed.cloudflare-gateway.com`). Traffic is forwarded to FedRAMP High compliant data centers for processing. To configure the FedRAMP High environment, you must allow the [FedRAMP-specific endpoints, IPs, and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) through your firewall.
+- `normal` — (default) The Cloudflare One Client connects to the standard API endpoints, IPs, and domains (like `<ACCOUNT_ID>.cloudflare-gateway.com`) and forwards traffic to Cloudflare data centers worldwide.
+- `fedramp_high` — The Cloudflare One Client connects to FedRAMP-specific API endpoints, IPs, and domains (like `<ACCOUNT_ID>.fed.cloudflare-gateway.com`). Traffic is forwarded to FedRAMP High compliant data centers for processing. To configure the FedRAMP High environment, you must allow the [FedRAMP-specific endpoints, IPs, and domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) through your firewall.
 
 When using [multiple configurations](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/) for the same organization, all configurations must specify the same `environment` value. A single organization cannot operate in both the normal and FedRAMP High environments.
 
-In version 2026.5.0 and above, use [organization\_configs](#organization%5Fconfigs) to set `environment` once per organization rather than repeating it in every config entry:
+In version 2026.5.0 and above, use [`organization_configs`](#organization_configs) to set `environment` once per organization rather than repeating it in every config entry:
 
 ```xml
 <dict>
@@ -278,7 +304,7 @@ In earlier versions, each configuration for that organization must include `envi
 
 ### `external_emergency_signal_fingerprint`
 
-The SHA-256 fingerprint that the Cloudflare One Client will use to validate the [external\_emergency\_signal\_url](#external%5Femergency%5Fsignal%5Furl) HTTPS endpoint. Refer to [External Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect) for details on how to extract this fingerprint.
+The SHA-256 fingerprint that the Cloudflare One Client will use to validate the [`external_emergency_signal_url`](#external_emergency_signal_url) HTTPS endpoint. Refer to [External Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect) for details on how to extract this fingerprint.
 
 **Value Type:** `string`
 
@@ -286,7 +312,7 @@ The SHA-256 fingerprint that the Cloudflare One Client will use to validate the 
 
 ### `external_emergency_signal_interval`
 
-How often the Cloudflare One Client will poll [external\_emergency\_signal\_url](#external%5Femergency%5Fsignal%5Furl) for an [External Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect) signal.
+How often the Cloudflare One Client will poll [`external_emergency_signal_url`](#external_emergency_signal_url) for an [External Emergency Disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect) signal.
 
 **Value Type:** `integer`
 
@@ -304,20 +330,28 @@ The URL must use `https://` and use an IPv4 or IPv6 address as host (not a domai
 
 ### `hardware_backed_registration`
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2026.6.0             |
-| macOS    | ✅            | 2026.6.0             |
-| Linux    | ✅            | 2026.6.0             |
-| iOS      | ❌            | N/A                  |
-| Android  | ❌            | N/A                  |
-| ChromeOS | ❌            | N/A                  |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.6.0 |
+| macOS | ✅ | 2026.6.0 |
+| Linux | ✅ | 2026.6.0 |
+| iOS | ❌ | N/A |
+| Android | ❌ | N/A |
+| ChromeOS | ❌ | N/A |
+
+</details>
 
 Binds the registration to a non-exportable key stored in device hardware (Secure Enclave or TPM 2.0) and authenticates API requests with mTLS. For more information, refer to [Hardware-backed registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/hardware-backed-registration/).
 
@@ -325,8 +359,8 @@ Binds the registration to a non-exportable key stored in device hardware (Secure
 
 **Value:**
 
-* `false` — (default) The Cloudflare One Client stores its API token in the device keystore.
-* `true` — The Cloudflare One Client generates a hardware-backed key during registration and uses mTLS for subsequent API calls.
+- `false` — (default) The Cloudflare One Client stores its API token in the device keystore.
+- `true` — The Cloudflare One Client generates a hardware-backed key during registration and uses mTLS for subsequent API calls.
 
 Caution
 
@@ -340,8 +374,8 @@ Enables [Local Emergency Disconnect](https://developers.cloudflare.com/cloudflar
 
 **Value:**
 
-* `false` — (default) Local signal file monitoring is disabled.
-* `true` — The client monitors the local signal file for emergency disconnect.
+- `false` — (default) Local signal file monitoring is disabled.
+- `true` — The client monitors the local signal file for emergency disconnect.
 
 ### `onboarding`
 
@@ -351,8 +385,8 @@ Controls the visibility of the onboarding screens that ask the user to review th
 
 **Value:**
 
-* `false` — Screens hidden.
-* `true` — (default) Screens visible.
+- `false` — Screens hidden.
+- `true` — (default) Screens visible.
 
 ### `override_api_endpoint`
 
@@ -370,7 +404,7 @@ The string must be a valid IPv4 or IPv6 address, otherwise the Cloudflare One Cl
 
 Note
 
-Only supported in DNS only mode.[1](#user-content-fn-1)
+Only supported in DNS only mode.<sup>[1](#user-content-fn-1)</sup>
 
 Overrides the [IP address](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#doh-ip) used by the Cloudflare One Client to resolve DNS queries via DNS over HTTPS (DoH). If you set this parameter, be sure to update your organization's firewall to ensure the new IP is allowed through.
 
@@ -402,17 +436,18 @@ Allows you to choose the operational mode of the client.
 
 **Value:**
 
-* `warp` — (default) [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default).
-* `1dot1` — [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode).
-* `proxy` — [Local proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). Use the `proxy_port` parameter to specify the localhost SOCKS proxy port (between `0`\-`66535`). For example,
-```xml
-<key>service_mode</key>
-<string>proxy</string>
-<key>proxy_port</key>
-<integer>44444</integer>
-```
-* `postureonly` — [Posture only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode).
-* `tunnelonly` \- [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode).
+- `warp` — (default) [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default).
+- `1dot1` — [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode).
+- `proxy` — [Local proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). Use the `proxy_port` parameter to specify the localhost SOCKS proxy port (between `0`- `66535`). For example,
+
+  ```xml
+  <key>service_mode</key>
+  <string>proxy</string>
+  <key>proxy_port</key>
+  <integer>44444</integer>
+  ```
+- `postureonly` — [Posture only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode).
+- `tunnelonly` - [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode).
 
 ### `support_url`
 
@@ -422,8 +457,8 @@ When the Cloudflare One Client is deployed via MDM, the in-app **Send Feedback**
 
 **Value:**
 
-* `https://<support.example.com>` — Use an `https://` link to open your company's internal help site.
-* `mailto:<yoursupport@example.com>` — Use a `mailto:` link to open your default mail client.
+- `https://<support.example.com>` — Use an `https://` link to open your company's internal help site.
+- `mailto:<yoursupport@example.com>` — Use a `mailto:` link to open your default mail client.
 
 ### `switch_locked`
 
@@ -433,8 +468,8 @@ Allows the user to turn off the client switch and disconnect the Cloudflare One 
 
 **Value:**
 
-* `false` — (default) The user is able to turn the switch on/off at their discretion. When the switch is off, the user will not have the ability to reach sites protected by Access that leverage certain device posture checks.
-* `true` — The user is prevented from turning off the switch. The Cloudflare One Client will automatically start in the connected state.
+- `false` — (default) The user is able to turn the switch on/off at their discretion. When the switch is off, the user will not have the ability to reach sites protected by Access that leverage certain device posture checks.
+- `true` — The user is prevented from turning off the switch. The Cloudflare One Client will automatically start in the connected state.
 
 On new deployments, you must also include the `auto_connect` parameter with at least a value of `0`. This will prevent clients from being deployed in the off state without a way for users to manually enable them.
 
@@ -466,8 +501,8 @@ Uses an in-app WebView for Zero Trust authentication instead of the default syst
 
 **Value:**
 
-* `false` — (default) Uses the default system browser for Zero Trust authentication.
-* `true` — Uses an in-app WebView for Zero Trust authentication.
+- `false` — (default) Uses the default system browser for Zero Trust authentication.
+- `true` — Uses an in-app WebView for Zero Trust authentication.
 
 ### `warp_tunnel_protocol`
 
@@ -477,8 +512,8 @@ Configures the protocol used to route IP traffic from the device to Cloudflare G
 
 **Value:**
 
-* `masque` — (default) [MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) protocol
-* `wireguard` — [WireGuard ↗](https://www.wireguard.com/) protocol
+- `masque` — (default) [MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) protocol
+- `wireguard` — [WireGuard ↗](https://www.wireguard.com/) protocol
 
 ## Top-level parameters
 
@@ -500,27 +535,35 @@ Enables multiple user registrations on a Windows device.
 
 **Value:**
 
-* `false` — (default) Only one Cloudflare One Client registration is stored per device. After a user logs in to the Cloudflare One Client, their settings and identity will apply to all traffic from the device.
-* `true` — Each Windows user has their own Cloudflare One Client registration. For more information, refer to [Multiple users on a Windows device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/).
+- `false` — (default) Only one Cloudflare One Client registration is stored per device. After a user logs in to the Cloudflare One Client, their settings and identity will apply to all traffic from the device.
+- `true` — Each Windows user has their own Cloudflare One Client registration. For more information, refer to [Multiple users on a Windows device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/).
 
 ### `organization_configs`
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2026.5.0             |
-| macOS    | ✅            | 2026.5.0             |
-| Linux    | ✅            | 2026.5.0             |
-| iOS      | ❌            | N/A                  |
-| Android  | ❌            | N/A                  |
-| ChromeOS | ❌            | N/A                  |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
 
-Defines organization-wide settings that apply to all [configs](#configs) entries for a given organization, overriding any conflicting values set within individual config entries.
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ✅ | 2026.5.0 |
+| Linux | ✅ | 2026.5.0 |
+| iOS | ❌ | N/A |
+| Android | ❌ | N/A |
+| ChromeOS | ❌ | N/A |
+
+</details>
+
+Defines organization-wide settings that apply to all [`configs`](#configs) entries for a given organization, overriding any conflicting values set within individual config entries.
 
 **Value Type:** `dict`
 
@@ -528,10 +571,10 @@ Defines organization-wide settings that apply to all [configs](#configs) entries
 
 Supported settings:
 
-| Key                            | Description                                                                                                                             |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| environment                    | Overrides the [environment](#environment) value for all configs belonging to this organization.                                         |
-| hardware\_backed\_registration | Overrides the [hardware\_backed\_registration](#hardware%5Fbacked%5Fregistration) value for all configs belonging to this organization. |
+| Key | Description |
+| --- | --- |
+| `environment` | Overrides the [`environment`](#environment) value for all configs belonging to this organization. |
+| `hardware_backed_registration` | Overrides the [`hardware_backed_registration`](#hardware_backed_registration) value for all configs belonging to this organization. |
 
 Use `organization_configs` when you have multiple configurations for the same organization and want to enforce a single `environment` value across all of them. Any `environment` value set inside an individual `configs` entry for that organization will be overridden by the value specified in `organization_configs`.
 

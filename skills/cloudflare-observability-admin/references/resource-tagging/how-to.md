@@ -11,10 +11,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How-to guides
 
-Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Manage tags](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/)
-* [Filter resources by tag](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/)
+- [Manage tags](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/)
+- [Filter resources by tag](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/)
 
 Was this helpful?
 

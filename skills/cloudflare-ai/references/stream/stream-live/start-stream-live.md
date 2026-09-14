@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Start a live stream
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
@@ -26,7 +26,7 @@ Stream only supports the SRT caller mode, which is responsible for broadcasting 
 
 **Step 1:** In the Cloudflare dashboard, go to the **Live inputs** page and create a live input.
 
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs) ![Create live input field from dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1554,height=862,format=webp/_astro/create-live-input-from-stream-dashboard.BPPM6pVj.png)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs) ![Create live input field from dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1554,height=862,format=webp/_astro/create-live-input-from-stream-dashboard.BPPM6pVj.png)
 
 **Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
 
@@ -40,12 +40,16 @@ In the Stream Dashboard, within seconds of going live, you will see a preview of
 
 To start a live stream programmatically, make a `POST` request to the `/live_inputs` endpoint:
 
+*Requestbash*
+
 ```bash
 curl -X POST \
 --header "Authorization: Bearer <API_TOKEN>" \
 --data '{"meta": {"name":"test stream"},"recording": { "mode": "automatic" }}' \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -74,43 +78,39 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs
 
 #### Optional API parameters
 
-[API Reference Docs for /live\_inputs](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/create/)
+[API Reference Docs for `/live_inputs`](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/create/)
 
-* `enabled` boolean default: `true`
+- `enabled` boolean default: `true`
+  - Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
+- `preferLowLatency` boolean default: `false` Beta
+  - When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
+- `deleteRecordingAfterDays` integer default: `null` (any)
+  - Specifies a date and time when the recording, not the input, will be deleted. This property applies from the time the recording is made available and ready to stream. After the recording is deleted, it is no longer viewable and no longer counts towards storage for billing. Minimum value is `30`, maximum value is `1096`.
 
-  * Controls whether the live input accepts incoming broadcasts. When set to `false`, the live input will reject any incoming RTMPS or SRT connections. Use this property to programmatically end creator broadcasts or prevent new broadcasts from starting on a specific input.
-* `preferLowLatency` boolean default: `false` Beta
+    When the stream ends, a `scheduledDeletion` timestamp is calculated using the `deleteRecordingAfterDays` value if present.
 
-  * When set to true, this live input will be enabled for the beta Low-Latency HLS pipeline. The Stream built-in player will automatically use LL-HLS when possible. (Recording `mode` property must also be set to `automatic`.)
-* `deleteRecordingAfterDays` integer default: `null` (any)
-
-  * Specifies a date and time when the recording, not the input, will be deleted. This property applies from the time the recording is made available and ready to stream. After the recording is deleted, it is no longer viewable and no longer counts towards storage for billing. Minimum value is `30`, maximum value is `1096`.
-  When the stream ends, a `scheduledDeletion` timestamp is calculated using the `deleteRecordingAfterDays` value if present.
-  Note that if the value is added to a live input while a stream is live, the property will only apply to future streams.
-* `timeoutSeconds` integer default: `0`
-
-  * The `timeoutSeconds` property specifies how long a live feed can be disconnected before it results in a new video being created.
+    Note that if the value is added to a live input while a stream is live, the property will only apply to future streams.
+- `timeoutSeconds` integer default: `0`
+  - The `timeoutSeconds` property specifies how long a live feed can be disconnected before it results in a new video being created.
 
 The following four properties are nested under the `recording` object.
 
-* `mode` string default: `off`
-
-  * When the mode property is set to `automatic`, the live stream will be automatically available for viewing using HLS/DASH. In addition, the live stream will be automatically recorded for later replays. By default, recording mode is set to `off`, and the input will not be recorded or available for playback.
-* `requireSignedURLs` boolean default: `false`
-
-  * The `requireSignedURLs` property indicates if signed URLs are required to view the video. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
-* `allowedOrigins` integer default: `null` (any)
-
-  * The `allowedOrigins` property can optionally be invoked to provide a list of allowed origins. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
-* `hideLiveViewerCount` boolean default: `false`
-
-  * Restrict access to the live viewer count and remove the value from the player.
+- `mode` string default: `off`
+  - When the mode property is set to `automatic`, the live stream will be automatically available for viewing using HLS/DASH. In addition, the live stream will be automatically recorded for later replays. By default, recording mode is set to `off`, and the input will not be recorded or available for playback.
+- `requireSignedURLs` boolean default: `false`
+  - The `requireSignedURLs` property indicates if signed URLs are required to view the video. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
+- `allowedOrigins` integer default: `null` (any)
+  - The `allowedOrigins` property can optionally be invoked to provide a list of allowed origins. This setting is applied by default to all videos recorded from the input. In addition, if viewing a video via the live input ID, this field takes effect over any video-level settings.
+- `hideLiveViewerCount` boolean default: `false`
+  - Restrict access to the live viewer count and remove the value from the player.
 
 ## Manage live inputs
 
 ### Update a live input
 
 Update a live input by making a `PUT` request:
+
+*Requestbash*
 
 ```bash
 curl --request PUT \
@@ -125,6 +125,8 @@ Live inputs are enabled by default. When a live input is disabled, it rejects in
 
 To disable a live input, set `enabled` to `false`:
 
+*Requestbash*
+
 ```bash
 curl --request PUT \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
@@ -133,6 +135,8 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{i
 ```
 
 To enable the live input again, set `enabled` to `true`:
+
+*Requestbash*
 
 ```bash
 curl --request PUT \
@@ -147,6 +151,8 @@ Rotate the broadcast credentials for a live input when credentials may have been
 
 When keys are rotated, old credentials are revoked, broadcasts using stale credentials are disconnected, and refreshed credentials are returned in the API response.
 
+*Requestbash*
+
 ```bash
 curl --request POST \
 https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id}/rotate_keys \
@@ -158,6 +164,8 @@ Live input responses include `keysRotatedAt`, which indicates when the live inpu
 ### Delete a live input
 
 Delete a live input by making a `DELETE` request:
+
+*Requestbash*
 
 ```bash
 curl --request DELETE \
@@ -171,27 +179,27 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 
 ### Recommendations
 
-* Your creators should use an appropriate bitrate for their live streams, typically well under 12Mbps (12000Kbps). High motion, high frame rate content typically should use a higher bitrate, while low motion content like slide presentations should use a lower bitrate.
-* Your creators should use a [GOP duration ↗](https://en.wikipedia.org/wiki/Group%5Fof%5Fpictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
-* When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
+- Your creators should use an appropriate bitrate for their live streams, typically well under 12Mbps (12000Kbps). High motion, high frame rate content typically should use a higher bitrate, while low motion content like slide presentations should use a lower bitrate.
+- Your creators should use a [GOP duration ↗](https://en.wikipedia.org/wiki/Group_of_pictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
+- When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
 
 #### Low-Latency HLS broadcast recommendations Beta
 
-* Turn off B Frames or set them to 0\. B Frames are incompatible with LL-HLS and will result in jitter and sporadic buffering delays.
-* For lowest latency, use a GOP size (or "keyframe interval") of 2 - 4 seconds.
-* Broadcast to the RTMP endpoint if possible, SRT otherwise.
-* If using OBS, select the "ultra low" latency profile.
+- Turn off B Frames or set them to 0. B Frames are incompatible with LL-HLS and will result in jitter and sporadic buffering delays.
+- For lowest latency, use a GOP size (or "keyframe interval") of 2 - 4 seconds.
+- Broadcast to the RTMP endpoint if possible, SRT otherwise.
+- If using OBS, select the "ultra low" latency profile.
 
 ### Requirements
 
-* Closed GOPs are required. This means that if there are any B frames in the video, they should always refer to frames within the same GOP. This setting is the default in most encoding software and hardware, including [OBS Studio ↗](https://obsproject.com/).
-* Stream Live only supports H.264 video and AAC audio codecs as inputs. This requirement does not apply to inputs that are relayed to Stream Connect outputs. Stream Live supports ADTS but does not presently support LATM.
-* Clients must be configured to reconnect when a disconnection occurs. Stream Live is designed to handle reconnection gracefully by continuing the live stream.
+- Closed GOPs are required. This means that if there are any B frames in the video, they should always refer to frames within the same GOP. This setting is the default in most encoding software and hardware, including [OBS Studio ↗](https://obsproject.com/).
+- Stream Live only supports H.264 video and AAC audio codecs as inputs. This requirement does not apply to inputs that are relayed to Stream Connect outputs. Stream Live supports ADTS but does not presently support LATM.
+- Clients must be configured to reconnect when a disconnection occurs. Stream Live is designed to handle reconnection gracefully by continuing the live stream.
 
 ### Limitations
 
-* Watermarks cannot yet be used with live videos.
-* If a live video exceeds seven days in length, the recording will be truncated to seven days. Only the first seven days of live video content will be recorded.
+- Watermarks cannot yet be used with live videos.
+- If a live video exceeds seven days in length, the recording will be truncated to seven days. Only the first seven days of live video content will be recorded.
 
 Was this helpful?
 

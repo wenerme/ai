@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 2023-08-25 - Emergency
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2023-08-25-emergency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/change-log/http/2023-08-25-emergency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Rule ID     | Description                                                          | Previous Action | New Action | Notes                                                                                                              |
-| ----------- | -------------------------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
-| ...20c5afb5 | HTTP requests with unusual HTTP headers or URI path (signature #36). | block           | block      | This rule was previously readonly, but can cause false positives in rare cases. It is now possible to override it. |
-| ...cb26e2e2 | HTTP requests from known botnet (signature #69).                     | N/A             | block      |                                                                                                                    |
-| ...ebff5ef1 | HTTP requests with unusual HTTP headers or URI path (signature #43). | N/A             | block      |                                                                                                                    |
+| Rule ID | Description | Previous Action | New Action | Notes |
+| --- | --- | --- | --- | --- |
+| ...20c5afb5 | HTTP requests with unusual HTTP headers or URI path (signature #36). | block | block | This rule was previously readonly, but can cause false positives in rare cases. It is now possible to override it. |
+| ...cb26e2e2 | HTTP requests from known botnet (signature #69). | N/A | block | |
+| ...ebff5ef1 | HTTP requests with unusual HTTP headers or URI path (signature #43). | N/A | block | |
 
 Was this helpful?
 

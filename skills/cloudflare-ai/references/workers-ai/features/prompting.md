@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Prompting
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/prompting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Part of getting good results from text generation models is asking questions correctly. LLMs are usually trained with specific predefined templates, which should then be used with the model's tokenizer for better results when doing inference tasks.
 
@@ -30,9 +30,9 @@ Scoped prompts are a list of messages. Each message defines two keys: the role a
 
 Typically, the role can be one of three options:
 
-* **system** \- System messages define the AI's personality. You can use them to set rules and how you expect the AI to behave.
-* **user** \- User messages are where you actually query the AI by providing a question or a conversation.
-* **assistant** \- Assistant messages hint to the AI about the desired output format. Not all models support this role.
+- **system** - System messages define the AI's personality. You can use them to set rules and how you expect the AI to behave.
+- **user** - User messages are where you actually query the AI by providing a question or a conversation.
+- **assistant** - Assistant messages hint to the AI about the desired output format. Not all models support this role.
 
 OpenAI has a [good explanation ↗](https://platform.openai.com/docs/guides/text-generation#messages-and-roles) of how they use these roles with their GPT models. Even though chat templates are flexible, other text generation models tend to follow the same conventions.
 

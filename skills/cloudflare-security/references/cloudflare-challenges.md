@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Challenges
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Challenges are security mechanisms used by Cloudflare to verify whether a visitor to your site is a real human and not a bot or automated script.
 

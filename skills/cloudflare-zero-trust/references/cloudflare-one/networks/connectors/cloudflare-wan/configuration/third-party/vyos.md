@@ -12,42 +12,37 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # VyOS
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/vyos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/vyos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial provides configuration information and a sample template for using a VyOS device with an IPsec configuration.
 
 ## Notes
 
-* `vti <NAME_OF_VTI_INTERFACE>` \- Specifies the virtual tunnel interface of the IPsec tunnel.
-* `esp-group <NAME_OF_ESP_GROUP>` \- Encrypts traffic through the tunnel using a particular ESP policy or profile.
-* `ike-group <NAME_OF_IKE_GROUP>` \- Exchanges keys using a particular IKE policy or profile.
-* The IP addresses of the IPsec tunnel interfaces on both ends of the tunnel should be a pair of private IP addresses (RFC 1918) on the same `/31` or `/30` subnet, specifying a point-to-point link.
-* The IPsec tunnel endpoint on this VyOS router is the `<IP_ADDR_OF_UPLINK_INTF_TO_INTERNET/WAN>`.
-* The IP address of the IPsec tunnel endpoint on the Cloudflare side is one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
-* This router is configured to initiate the IPsec tunnel connection.
+- `vti <NAME_OF_VTI_INTERFACE>` - Specifies the virtual tunnel interface of the IPsec tunnel.
+- `esp-group <NAME_OF_ESP_GROUP>` - Encrypts traffic through the tunnel using a particular ESP policy or profile.
+- `ike-group <NAME_OF_IKE_GROUP>` - Exchanges keys using a particular IKE policy or profile.
+- The IP addresses of the IPsec tunnel interfaces on both ends of the tunnel should be a pair of private IP addresses (RFC 1918) on the same `/31` or `/30` subnet, specifying a point-to-point link.
+- The IPsec tunnel endpoint on this VyOS router is the `<IP_ADDR_OF_UPLINK_INTF_TO_INTERNET/WAN>`.
+- The IP address of the IPsec tunnel endpoint on the Cloudflare side is one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+- This router is configured to initiate the IPsec tunnel connection.
 
 ## Configuration parameters
 
 ### Phase 1
 
-* **Encryption**
-
-  * AES-GCM with 128-bit or 256-bit key length
-* **Integrity**
-
-  * SHA512
+- **Encryption**
+  - AES-GCM with 128-bit or 256-bit key length
+- **Integrity**
+  - SHA512
 
 ### Phase 2
 
-* **Encryption**
-
-  * AES-GCM with 128-bit or 256-bit key length
-* **Integrity**
-
-  * SHA512
-* **PFS group**
-
-  * DH group 20 (348-bit random ECP group)
+- **Encryption**
+  - AES-GCM with 128-bit or 256-bit key length
+- **Integrity**
+  - SHA512
+- **PFS group**
+  - DH group 20 (348-bit random ECP group)
 
 ## Configuration template
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP Strict Transport Security (HSTS)
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 HSTS protects HTTPS web servers from downgrade attacks. These attacks redirect web browsers from an HTTPS web server to an attacker-controlled server, allowing bad actors to compromise user data and cookies.
 
 HSTS adds an HTTP header that directs [compliant web browsers](https://developers.cloudflare.com/ssl/reference/browser-compatibility/) to:
 
-* Transform HTTP links to HTTPS links
-* Prevent users from bypassing SSL browser warnings
+- Transform HTTP links to HTTPS links
+- Prevent users from bypassing SSL browser warnings
 
 Before enabling HSTS, review the [requirements](#requirements).
 
@@ -29,24 +29,24 @@ For more background information on HSTS, see the [introductory blog post ↗](ht
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Requirements
 
 In order for HSTS to work as expected, you need to:
 
-* Have enabled HTTPS before HSTS so browsers can accept your HSTS settings
-* Keep HTTPS enabled so visitors can access your site
+- Have enabled HTTPS before HSTS so browsers can accept your HSTS settings
+- Keep HTTPS enabled so visitors can access your site
 
 Once you enabled HSTS, avoid the following actions to ensure visitors can still access your site:
 
-* Changing your DNS records from [Proxied to DNS only](https://developers.cloudflare.com/dns/proxy-status/)
-* [Pausing Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) on your site
-* Pointing your nameservers away from Cloudflare
-* Redirecting HTTPS to HTTP
-* Disabling SSL (invalid or expired certificates or certificates with mismatched hostnames)
+- Changing your DNS records from [Proxied to DNS only](https://developers.cloudflare.com/dns/proxy-status/)
+- [Pausing Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) on your site
+- Pointing your nameservers away from Cloudflare
+- Redirecting HTTPS to HTTP
+- Disabling SSL (invalid or expired certificates or certificates with mismatched hostnames)
 
 Caution
 
@@ -56,15 +56,14 @@ If you remove HTTPS before disabling HSTS or before waiting for the duration of 
 
 To enable HSTS using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Read the dialog and select **I understand**.
 4. Select **Next**.
 5. Configure the [HSTS settings](#configuration-settings).
 6. Select **Save**.
 
-To enable HSTS with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `security_header` as the setting name in the URI path, and specify the `value` object that includes your HSTS settings.
+To enable HSTS with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `security_header` as the setting name in the URI path, and specify the `value` object that includes your HSTS settings.
 
 Note
 
@@ -74,8 +73,7 @@ To enable HSTS on a specific subdomain only, configure a [subdomain setup](https
 
 To disable HSTS on your website:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **HTTP Strict Transport Security (HSTS)**, select **Enable HSTS**.
 3. Set the **Max Age Header** to **0 (Disable)**.
 4. If you previously enabled the **No-Sniff** header and want to remove it, set it to **Off**.
@@ -83,13 +81,13 @@ To disable HSTS on your website:
 
 ## Configuration settings
 
-| Name                                                | Required | Description                                                                                                                                                                                               | Options                                 |
-| --------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| Enable HSTS (Strict-Transport-Security)             | Yes      | Serves HSTS headers to browsers for all HTTPS requests. HTTP (non-secure) requests will not contain the header.                                                                                           | Off / On                                |
-| Max Age Header (max-age)                            | Yes      | Specifies duration for a browser HSTS policy and requires HTTPS on your website.                                                                                                                          | Disable, or a range from 1 to 12 months |
-| Apply HSTS policy to subdomains (includeSubDomains) | No       | Applies the HSTS policy from a parent domain to subdomains. Subdomains are inaccessible if they do not support HTTPS.                                                                                     | Off / On                                |
-| Preload                                             | No       | Permits browsers to automatically preload HSTS configuration. Prevents an attacker from downgrading a first request from HTTPS to HTTP. Preload can make a website without HTTPS completely inaccessible. | Off / On                                |
-| No-Sniff Header                                     | No       | Sends the X-Content-Type-Options: nosniff header to prevent Internet Explorer and Chrome from automatically detecting a content type other than those explicitly specified by the Content-Type header.    | Off / On                                |
+| Name | Required | Description | Options |
+| --- | --- | --- | --- |
+| Enable HSTS (Strict-Transport-Security) | Yes | Serves HSTS headers to browsers for all HTTPS requests. HTTP (non-secure) requests will not contain the header. | Off / On |
+| Max Age Header (max-age) | Yes | Specifies duration for a browser HSTS policy and requires HTTPS on your website. | Disable, or a range from 1 to 12 months |
+| Apply HSTS policy to subdomains (includeSubDomains) | No | Applies the HSTS policy from a parent domain to subdomains. Subdomains are inaccessible if they do not support HTTPS. | Off / On |
+| Preload | No | Permits browsers to automatically preload HSTS configuration. Prevents an attacker from downgrading a first request from HTTPS to HTTP. Preload can make a website without HTTPS completely inaccessible. | Off / On |
+| No-Sniff Header | No | Sends the `X-Content-Type-Options: nosniff` header to prevent Internet Explorer and Chrome from automatically detecting a content type other than those explicitly specified by the Content-Type header. | Off / On |
 
 Note
 

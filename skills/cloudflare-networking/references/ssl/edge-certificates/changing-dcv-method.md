@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Domain control validation (DCV)
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
@@ -40,14 +40,16 @@ If your application is on a [partial DNS setup](https://developers.cloudflare.co
 
 ### Non-wildcard certificates
 
-If every hostname on a non-wildcard certificate is [proxying traffic](https://developers.cloudflare.com/dns/proxy-status/) through Cloudflare and the DCV method is [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/), Cloudflare can automatically complete DCV on your behalf.
+If every hostname on a non-wildcard certificate is [proxying traffic](https://developers.cloudflare.com/dns/proxy-status/)
+
+ through Cloudflare and the DCV method is [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/), Cloudflare can automatically complete DCV on your behalf.
 
 This applies to customers using [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
 
 If one of the hostnames on the certificate is not proxying traffic through Cloudflare, certificate issuance and renewal will vary based on the type of certificate you are using:
 
-* **Universal**: Perform DCV using one of the available [methods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/).
-* **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
+- **Universal**: Perform DCV using one of the available [methods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/).
+- **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
 
 Tip
 
@@ -57,8 +59,8 @@ If all hostnames are proxied and non-wildcard but you are using [TXT](https://de
 
 For wildcard hostname certificates, certificate issuance and renewal varies based on the type of certificate you are using:
 
-* **Universal**: Perform DCV using [TXT validation method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/).
-* **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
+- **Universal**: Perform DCV using [TXT validation method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/).
+- **Advanced**: In most cases, you can opt for [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/), which greatly simplifies certificate management.
 
 If you cannot use Delegated DCV, you need to use [TXT based DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/) for certificate issuance and renewal. This means you will need to place one TXT DCV token for every hostname on the certificate. If one or more of the hostnames on the certificate fails to validate, the certificate will not be issued or renewed.
 

@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Alerts
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure alerts to receive notifications for changes in your certificates.
 
+<details>
+
+<summary>
+
 Universal SSL Alert
+
+</summary>
 
 **Who is it for?**
 
@@ -32,7 +38,9 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in [Troubleshooting SSL errors](https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/).
+You only need to take action if you are notified that you have a certificate that failed. You can find the reasons why a certificate is not being issued in <a href="https://developers.cloudflare.com/ssl/troubleshooting/general-ssl-errors/">Troubleshooting SSL errors</a>.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

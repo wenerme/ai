@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Managed Rulesets
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/), you can quickly deploy rules maintained by Cloudflare, and you can use Cloudflare Network Firewall (formerly Magic Firewall) to control which rules are enabled.
 
@@ -24,27 +24,29 @@ To enable or disable a rule, you can specify which properties should be overridd
 
 You have multiple options for enabling rules:
 
-* Select an individual rule and enable it.
-* Enable multiple rules by enabling by category in the `magic-transit-phase`.
-* Enable an entire ruleset.
+- Select an individual rule and enable it.
+- Enable multiple rules by enabling by category in the `magic-transit-phase`.
+- Enable an entire ruleset.
 
 ## API
 
-### 1\. Create a Managed phase Managed kind ruleset
+### 1. Create a Managed phase Managed kind ruleset
 
 To create a managed ruleset, you must first build a request with the following:
 
-* `managed_ruleset_id`: The ID of the Managed phase Managed kind ruleset that contains the rule you want to enable.
-* `managed_rule_id`: The ID of the rule you want to enable.
+- `managed_ruleset_id`: The ID of the Managed phase Managed kind ruleset that contains the rule you want to enable.
+- `managed_rule_id`: The ID of the rule you want to enable.
 
 Additionally, you need the properties you want to override. The properties you can override include:
 
-* `enabled`: This value can be set to `true` or `false`. When set to `true`, the rule matches packets and applies the rule's default action if the action is not overridden. When set to `false`, the rule is disabled and does not match any packets.
-* `action`: The value can be set to `log` so the rule only produces logs instead of applying the rule's default action.
+- `enabled`: This value can be set to `true` or `false`. When set to `true`, the rule matches packets and applies the rule's default action if the action is not overridden. When set to `false`, the rule is disabled and does not match any packets.
+- `action`: The value can be set to `log` so the rule only produces logs instead of applying the rule's default action.
 
 The `enabled` and `action` properties for a rule are set in the Managed phase Managed kind ruleset. All rules in the Managed phase are currently disabled by default.
 
 The example below contains a request for a Managed phase Managed Kind ruleset.
+
+*Example request - Create a Managed phase Managed Kind rulesetbash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets
@@ -78,11 +80,13 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets
 }'
 ```
 
-### 2\. Patch a Managed phase Managed kind ruleset
+### 2. Patch a Managed phase Managed kind ruleset
 
 To ensure a root kind ruleset only contains one rule, patch the rule to enable new managed rules.
 
 Building off the example from the previous step, the example below enables a category to select multiple rules instead of a single rule. The category will be set to `log` mode, which means the rule can produce logs but will not accept or drop packets.
+
+*Example request - Patch a Managed phase Managed kind rulesetbash*
 
 ```bash
 curl --request PATCH \
@@ -114,9 +118,11 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets/{root_kind_r
 }'
 ```
 
-### 3\. Enable all rules
+### 3. Enable all rules
 
 To enable the complete ruleset or enable all rules, send the request below.
+
+*Example request to enable all rulesbash*
 
 ```bash
 curl --request PATCH \
@@ -136,7 +142,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}{account_id}/rulesets/
 }'
 ```
 
-### 4\. Delete a ruleset
+### 4. Delete a ruleset
 
 To delete a ruleset, refer to [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/).
 
@@ -144,11 +150,11 @@ To delete a ruleset, refer to [Delete a rule in a ruleset](https://developers.cl
 
 You can also use the dashboard to enable managed rulesets.
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall/managed) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall/managed) page.
 2. In the **Managed rulesets** tab, select **Deploy managed ruleset**.
 3. The page will refresh and show you rulesets configured by Cloudflare that are available to your account. Choose the ruleset you want with **Manage**. If the ruleset you want is not displayed, contact your account manager to get a list of all Network Firewall Managed rulesets.
 4. Under **Ruleset configuration**, configure the **Ruleset action** from the drop-down menu. Cloudflare recommends you change this setting to **Log** to evaluate how the ruleset impacts your traffic before deciding on an action. For more information, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
-5. Still under **Ruleset configuration**, choose _Enabled_ from the dropdown-menu for the **Ruleset status**. This will apply an override to the default status of all the rules in the ruleset.
+5. Still under **Ruleset configuration**, choose *Enabled* from the dropdown-menu for the **Ruleset status**. This will apply an override to the default status of all the rules in the ruleset.
 6. Select **Save** to deploy the Network Firewall Managed ruleset with no rule-level overrides.
 
 ### Add rule-level overrides
@@ -159,7 +165,7 @@ On the other hand, if you did not apply Cloudflare's recommendation in the previ
 
 To add rule-level overrides in the dashboard:
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall/managed) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall/managed) page.
 2. In the **Managed rulesets** tab, locate the Network Firewall managed ruleset you want to add rule-overrides to and select **Manage**.
 3. Select **Browse rules**.
 4. In the rule you need to change, select an **Action** from the drop-down to change its action, or use the toggle to disable or enable the rule.
@@ -170,7 +176,7 @@ The Cloudflare dashboard should now show you the rule-level override you have se
 
 ### Delete Network Firewall managed ruleset
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall/managed) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall/managed) page.
 2. In the **Managed rulesets** tab, locate the Network Firewall managed ruleset you want to delete and select **Manage**.
 3. Select **Delete deployment**.
 

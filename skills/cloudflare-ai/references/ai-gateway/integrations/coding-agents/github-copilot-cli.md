@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GitHub Copilot CLI
 
-Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) supports bring-your-own-key (BYOK) model providers configured through environment variables. Route it through AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), an OpenAI-compatible `/chat/completions` endpoint authenticated with a Cloudflare API token. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so no provider API keys are needed in your environment. Alternatively, you can store your own provider API keys in AI Gateway with [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) and use the same Cloudflare API token to authenticate — AI Gateway resolves the stored key on each request.
 
@@ -22,29 +22,37 @@ Unlike [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/c
 
 Before you start, you need:
 
-* GitHub Copilot CLI installed. To install it, refer to [Installing GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli).
-* A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway` permission.
-* [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
-* A model that supports tool calling and streaming. For best results, use a model with a context window of at least 128k tokens.
+- GitHub Copilot CLI installed. To install it, refer to [Installing GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli).
+- A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway` permission.
+- [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
+- A model that supports tool calling and streaming. For best results, use a model with a context window of at least 128k tokens.
 
 1. Set the provider environment variables. GitHub Copilot CLI reads these on startup and appends `/chat/completions` to the base URL. The commands set these variables for the current session. To persist them, add them to your shell profile (for example, `~/.zshrc` or `~/.bashrc`).
-Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
-```bash
-export COPILOT_PROVIDER_TYPE="openai"
-export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
-export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"
-export COPILOT_MODEL="openai/gpt-4.1"
-```
-```powershell
-$env:COPILOT_PROVIDER_TYPE = "openai"
-$env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
-$env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"
-$env:COPILOT_MODEL = "openai/gpt-4.1"
-```
+
+   Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CF_API_TOKEN>` with your Cloudflare API token. Set `COPILOT_MODEL` to any supported model in `provider/model` format.
+
+   ```bash
+   export COPILOT_PROVIDER_TYPE="openai"
+   export COPILOT_PROVIDER_BASE_URL="https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+   export COPILOT_PROVIDER_API_KEY="<CF_API_TOKEN>"
+   export COPILOT_MODEL="openai/gpt-4.1"
+   ```
+
+   ```powershell
+   $env:COPILOT_PROVIDER_TYPE = "openai"
+   $env:COPILOT_PROVIDER_BASE_URL = "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1"
+   $env:COPILOT_PROVIDER_API_KEY = "<CF_API_TOKEN>"
+   $env:COPILOT_MODEL = "openai/gpt-4.1"
+   ```
+
+
 2. Start GitHub Copilot CLI and send a prompt. Requests now route through AI Gateway.
-```bash
-copilot
-```
+
+   ```bash
+   copilot
+   ```
+
+
 
 Note
 

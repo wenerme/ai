@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to load balancing between DNS records used for IP resolution — `A`, `AAAA`, and `CNAME` records — Enterprise customers can also load balance between **MX** and **SRV** records.
 
@@ -21,7 +21,7 @@ In addition to load balancing between DNS records used for IP resolution — `A`
 To load balance between multiple mail servers:
 
 1. Make sure you have the [required DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#send-and-receive-email) for your mail servers.
-2. [Create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) with a **Type** of _SMTP_.
+2. [Create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) with a **Type** of *SMTP*.
 3. [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/) with your mail servers and attach the newly created monitor.
 4. [Create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) that includes your newly created pools. Since it will forward SMTP traffic, the load balancer should be [unproxied (DNS-only)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#dns-only-load-balancing).
 
@@ -30,7 +30,7 @@ To load balance between multiple mail servers:
 To load balance between different **SRV** records, which contain significantly more information than many other DNS records:
 
 1. [Create your SRV records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records).
-2. [Create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) with a **Type** of _UDP-ICMP_ or _TCP_.
+2. [Create a monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) with a **Type** of *UDP-ICMP* or *TCP*.
 3. [Create a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/) with your various SRV records and attach the newly created monitor.
 4. [Create a load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/) that includes your newly created pools. This load balancer should be [unproxied (DNS-only)](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#dns-only-load-balancing).
 

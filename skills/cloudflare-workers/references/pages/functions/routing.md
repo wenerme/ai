@@ -12,29 +12,29 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Routing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Functions utilize file-based routing. Your `/functions` directory structure determines the designated routes that your Functions will run on. You can create a `/functions` directory with as many levels as needed for your project's use case. Review the following directory:
 
-* ...
-* functions
-  * index.js
-  * helloworld.js
-  * howdyworld.js
-  * fruits
-    * index.js
-    * apple.js
-    * banana.js
+- ...
+- functions
+  - index.js
+  - helloworld.js
+  - howdyworld.js
+  - fruits
+    - index.js
+    - apple.js
+    - banana.js
 
 The following routes will be generated based on the above file structure. These routes map the URL pattern to the `/functions` file that will be invoked when a visitor goes to the URL:
 
-| File path                   | Route                     |
-| --------------------------- | ------------------------- |
-| /functions/index.js         | example.com               |
-| /functions/helloworld.js    | example.com/helloworld    |
-| /functions/howdyworld.js    | example.com/howdyworld    |
-| /functions/fruits/index.js  | example.com/fruits        |
-| /functions/fruits/apple.js  | example.com/fruits/apple  |
+| File path | Route |
+| --- | --- |
+| /functions/index.js | example.com |
+| /functions/helloworld.js | example.com/helloworld |
+| /functions/howdyworld.js | example.com/howdyworld |
+| /functions/fruits/index.js | example.com/fruits |
+| /functions/fruits/apple.js | example.com/fruits/apple |
 | /functions/fruits/banana.js | example.com/fruits/banana |
 
 Trailing slash
@@ -51,26 +51,26 @@ Dynamic routes allow you to match URLs with parameterized segments. This can be 
 
 To create a dynamic route, place one set of brackets around your filename – for example, `/users/[user].js`. By doing this, you are creating a placeholder for a single path segment:
 
-| Path               | Matches? |
-| ------------------ | -------- |
-| /users/nevi        | Yes      |
-| /users/daniel      | Yes      |
-| /profile/nevi      | No       |
-| /users/nevi/foobar | No       |
-| /nevi              | No       |
+| Path | Matches? |
+| --- | --- |
+| /users/nevi | Yes |
+| /users/daniel | Yes |
+| /profile/nevi | No |
+| /users/nevi/foobar | No |
+| /nevi | No |
 
 ### Multipath segments
 
 By placing two sets of brackets around your filename – for example, `/users/[[user]].js` – you are matching any depth of route after `/users/`:
 
-| Path                  | Matches? |
-| --------------------- | -------- |
-| /users/nevi           | Yes      |
-| /users/daniel         | Yes      |
-| /profile/nevi         | No       |
-| /users/nevi/foobar    | Yes      |
-| /users/daniel/xyz/123 | Yes      |
-| /nevi                 | No       |
+| Path | Matches? |
+| --- | --- |
+| /users/nevi | Yes |
+| /users/daniel | Yes |
+| /profile/nevi | No |
+| /users/nevi/foobar | Yes |
+| /users/daniel/xyz/123 | Yes |
+| /nevi | No |
 
 Route specificity
 
@@ -80,26 +80,26 @@ More specific routes (routes with fewer wildcards) take precedence over less spe
 
 Review the following `/functions/` directory structure:
 
-* ...
-* functions
-  * date.js
-  * users
-    * special.js
-    * \[user\].js
-    * \[\[catchall\]\].js
+- ...
+- functions
+  - date.js
+  - users
+    - special.js
+    - \[user].js
+    - \[\[catchall]].js
 
 The following requests will match the following files:
 
-| Request               | File                                              |
-| --------------------- | ------------------------------------------------- |
-| /foo                  | Will route to a static asset if one is available. |
-| /date                 | /date.js                                          |
-| /users/daniel         | /users/\[user\].js                                |
-| /users/nevi           | /users/\[user\].js                                |
-| /users/special        | /users/special.js                                 |
-| /users/daniel/xyz/123 | /users/\[\[catchall\]\].js                        |
+| Request | File |
+| --- | --- |
+| /foo | Will route to a static asset if one is available. |
+| /date | /date.js |
+| /users/daniel | /users/\[user].js |
+| /users/nevi | /users/\[user].js |
+| /users/special | /users/special.js |
+| /users/daniel/xyz/123 | /users/\[\[catchall]].js |
 
-The URL segment(s) that match the placeholder (`[user]`) will be available in the request [context](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The [context.params](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object can be used to find the matched value for a given filename placeholder.
+The URL segment(s) that match the placeholder (`[user]`) will be available in the request [`context`](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object. The [`context.params`](https://developers.cloudflare.com/pages/functions/api-reference/#eventcontext) object can be used to find the matched value for a given filename placeholder.
 
 For files which match a single URL segment (use a single set of brackets), the values are returned as a string:
 
@@ -133,46 +133,54 @@ Some frameworks (such as [Remix](https://developers.cloudflare.com/pages/framewo
 
 Create a `_routes.json` file to control when your Function is invoked. It should be placed in the build directory of your project.
 
+<details>
+
+<summary>
+
 Default build directories
+
+</summary>
 
 Below are some standard build commands and directories for popular frameworks and tools.
 
-| Framework/tool               | Build command                 | Build directory        |
-| ---------------------------- | ----------------------------- | ---------------------- |
-| React (Vite)                 | npm run build                 | dist                   |
-| Gatsby                       | npx gatsby build              | public                 |
-| Next.js (Static HTML Export) | npx next build                | out                    |
-| Nuxt.js                      | npm run build                 | dist                   |
-| Qwik                         | npm run build                 | dist                   |
-| Remix                        | npm run build                 | build/client           |
-| Svelte                       | npm run build                 | public                 |
-| SvelteKit                    | npm run build                 | .svelte-kit/cloudflare |
-| Vue                          | npm run build                 | dist                   |
-| Analog                       | npm run build                 | dist/analog/public     |
-| Astro                        | npm run build                 | dist                   |
-| Angular                      | npm run build                 | dist/cloudflare        |
-| Brunch                       | npx brunch build --production | public                 |
-| Docusaurus                   | npm run build                 | build                  |
-| Elder.js                     | npm run build                 | public                 |
-| Eleventy                     | npx @11ty/eleventy            | \_site                 |
-| Ember.js                     | npx ember-cli build           | dist                   |
-| GitBook                      | npx gitbook-cli build         | \_book                 |
-| Gridsome                     | npx gridsome build            | dist                   |
-| Hugo                         | hugo                          | public                 |
-| Jekyll                       | jekyll build                  | \_site                 |
-| MkDocs                       | mkdocs build                  | site                   |
-| Pelican                      | pelican content               | output                 |
-| React Static                 | react-static build            | dist                   |
-| Slate                        | ./deploy.sh                   | build                  |
-| Umi                          | npx umi build                 | dist                   |
-| VitePress                    | npx vitepress build           | .vitepress/dist        |
-| Zola                         | zola build                    | public                 |
+| Framework/tool | Build command | Build directory |
+| --- | --- | --- |
+| React (Vite) | <code>npm run build</code> | <code>dist</code> |
+| Gatsby | <code>npx gatsby build</code> | <code>public</code> |
+| Next.js (Static HTML Export) | <code>npx next build</code> | <code>out</code> |
+| Nuxt.js | <code>npm run build</code> | <code>dist</code> |
+| Qwik | <code>npm run build</code> | <code>dist</code> |
+| Remix | <code>npm run build</code> | <code>build/client</code> |
+| Svelte | <code>npm run build</code> | <code>public</code> |
+| SvelteKit | <code>npm run build</code> | <code>.svelte-kit/cloudflare</code> |
+| Vue | <code>npm run build</code> | <code>dist</code> |
+| Analog | <code>npm run build</code> | <code>dist/analog/public</code> |
+| Astro | <code>npm run build</code> | <code>dist</code> |
+| Angular | <code>npm run build</code> | <code>dist/cloudflare</code> |
+| Brunch | <code>npx brunch build --production</code> | <code>public</code> |
+| Docusaurus | <code>npm run build</code> | <code>build</code> |
+| Elder.js | <code>npm run build</code> | <code>public</code> |
+| Eleventy | <code>npx @11ty/eleventy</code> | <code>_site</code> |
+| Ember.js | <code>npx ember-cli build</code> | <code>dist</code> |
+| GitBook | <code>npx gitbook-cli build</code> | <code>_book</code> |
+| Gridsome | <code>npx gridsome build</code> | <code>dist</code> |
+| Hugo | <code>hugo</code> | <code>public</code> |
+| Jekyll | <code>jekyll build</code> | <code>_site</code> |
+| MkDocs | <code>mkdocs build</code> | <code>site</code> |
+| Pelican | <code>pelican content</code> | <code>output</code> |
+| React Static | <code>react-static build</code> | <code>dist</code> |
+| Slate | <code>./deploy.sh</code> | <code>build</code> |
+| Umi | <code>npx umi build</code> | <code>dist</code> |
+| VitePress | <code>npx vitepress build</code> | <code>.vitepress/dist</code> |
+| Zola | <code>zola build</code> | <code>public</code> |
+
+</details>
 
 This file will include three different properties:
 
-* **version**: Defines the version of the schema. Currently there is only one version of the schema (version 1), however, we may add more in the future and aim to be backwards compatible.
-* **include**: Defines routes that will be invoked by Functions. Accepts wildcard behavior.
-* **exclude**: Defines routes that will not be invoked by Functions. Accepts wildcard behavior. `exclude` always take priority over `include`.
+- **version**: Defines the version of the schema. Currently there is only one version of the schema (version 1), however, we may add more in the future and aim to be backwards compatible.
+- **include**: Defines routes that will be invoked by Functions. Accepts wildcard behavior.
+- **exclude**: Defines routes that will not be invoked by Functions. Accepts wildcard behavior. `exclude` always take priority over `include`.
 
 Note
 
@@ -206,10 +214,9 @@ Below is another example of a `_routes.json` file. Any route inside the `/build`
 
 If on the Workers Free plan, you can configure how Pages behaves when your daily free tier allowance of Pages Functions requests is exhausted. If, for example, you are performing authentication checks or other critical functionality in your Pages Functions, you may wish to disable your Pages project when the allowance is exhausted.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Runtime** \> **Fail open / closed**.
+3. Go to **Settings** > **Runtime** > **Fail open / closed**.
 
 "Fail open" means that static assets will continue to be served, even if Pages Functions would ordinarily have run first. "Fail closed" means an error page will be returned, rather than static assets.
 
@@ -219,9 +226,9 @@ The daily request limit for Pages Functions can be removed entirely by upgrading
 
 Functions invocation routes have the following limits:
 
-* You must have at least one include rule.
-* You may have no more than 100 include/exclude rules combined.
-* Each rule may have no more than 100 characters.
+- You must have at least one include rule.
+- You may have no more than 100 include/exclude rules combined.
+- Each rule may have no more than 100 characters.
 
 Was this helpful?
 

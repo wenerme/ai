@@ -12,24 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get account details
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/how-to/get-account-details/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/get-account-details/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An [**Account**](https://developers.cloudflare.com/tenant/glossary/#account) will contain various settings, resources, and subscriptions to products for users. Each Tenant can have multiple associated accounts.
 
 To retrieve a list of accounts associated with a Tenant details, send a `GET` request to the `/tenants/{tenant_id}/accounts` endpoint. You can find the Tenant tag and all Tenants associated with the user with the [**Tenant Details**](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/) API. The Tenant Accounts API also requires pagination passed as query parameters:
 
-* `page` number
+- `page` number
+  - Page number of accounts list response, indexed from 1
+- `per_page` number
+  - Number of accounts to display per page
+- `order` string
+  - (optional) Order by a specific column, has to be a valid top-level key from the response
+  - `direction` number
+    - (optional) 0 for ascending or 1 for descending, is 0 by default
 
-  * Page number of accounts list response, indexed from 1
-* `per_page` number
-
-  * Number of accounts to display per page
-* `order` string
-
-  * (optional) Order by a specific column, has to be a valid top-level key from the response
-  * `direction` number
-
-    * (optional) 0 for ascending or 1 for descending, is 0 by default
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/tenants/{tenant_id}/accounts?page=1&per_page=10" \

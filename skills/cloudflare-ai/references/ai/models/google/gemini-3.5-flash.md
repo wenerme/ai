@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.5-flash`
 
-* Third-party
+- Third-party
 
 Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
 
-| Model Info                                                                          |                                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens                                                                                                          |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
-| Request formats                                                                     | Chat Completions                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 While there are actually **four** fundamental laws of thermodynamics, they are numbered from Zero to Three.
 
 Here are the **Three Laws of Thermodynamics** (traditionally numbered 1, 2, and 3), followed by the "Zeroth" law which was added later.
@@ -102,6 +103,7 @@ Physicists often summarize the laws of thermodynamics as a game you cannot win:
 *   **First Law:** You can't win. (You can't get more energy out than you put in).
 *   **Second Law:** You can't break even. (You can't even get back all the energy you put in; some is always wasted as heat/entropy).
 *   **Third Law:** You can't get out of the game. (You can't reach absolute zero to stop the process entirely).
+```
 
 ```json
 {
@@ -149,7 +151,11 @@ Physicists often summarize the laws of thermodynamics as a game you cannot win:
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -196,6 +202,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 To read a JSON file in Python, you should use the built-in `json` module.
 
 Here is the standard and most secure way to do it using a `with` statement (which ensures the file is properly closed after reading):
@@ -247,6 +254,7 @@ import pandas as pd
 df = pd.read_json("data.json")
 print(df.head())
 ```
+````
 
 ```json
 {
@@ -292,7 +300,13 @@ print(df.head())
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -359,6 +373,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 To give you the best recommendations, it helps to know which route you’re planning to take.
 
 There are two main scenic ways to make this drive: **The Iconic Coastal Route (Highway 1)** and **The Central Valley/Wine Route (US-101)**. (The third option, Interstate 5, is the fastest at 5.5 hours, but it is mostly flat farmland with very few scenic stops).
@@ -397,6 +412,7 @@ Here are the best places to stop along the two scenic routes:
 ### To help me narrow this down for you:
 1. **How many days** do you have for the trip? (Are you doing this in one day, or making a weekend out of it?)
 2. **What are you most interested in?** (e.g., wine tasting, hiking, beaches, cute towns, or food?)
+```
 
 ```json
 {
@@ -442,7 +458,13 @@ Here are the best places to stop along the two scenic routes:
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -485,6 +507,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The rain against the penthouse glass sounded like a handful of gravel thrown repeatedly against the window. Detective Silas Thorne ignored it, kneeling beside the body of Julian Vance. Vance, a billionaire philanthropist with a reputation for pristine health, sat upright in his velvet wingback chair, looking less like a corpse and more like a man waiting for a late-night guest. There were no signs of struggle, no traces of poison in the half-empty scotch glass, and no marks on his throat.
 
 Thorne snapped on a pair of latex gloves and leaned closer, tilting Vance’s chin upward. Under the harsh, sterile beam of his penlight, the dead man’s mouth was slightly agape.
@@ -500,6 +523,7 @@ Thorne held the object up to the light. It was a masterpiece of micro-engineerin
 Frowning, Thorne pressed the tiny tooth to his ear.
 
 From the depths of the dead man's molar, a microscopic music box was playing a tinny, three-note lullaby. It was the exact melody Thorne's mother used to hum to him when he was a boy—a song he had never told a living soul about.
+```
 
 ```json
 {
@@ -545,7 +569,13 @@ From the depths of the dead man's molar, a microscopic music box was playing a t
 }
 ```
 
-**Image Understanding** — Sending an image with a text prompt for visual understanding
+</details>
+
+<details>
+
+<summary>**Image Understanding** — Sending an image with a text prompt for visual understanding</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -597,6 +627,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The logo shown in the image is the **Google "G" logo** (specifically, the "Super G" icon used for Google Search, the Google app, and various other Google services).
 
 ### **Design and Colors:**
@@ -607,6 +638,7 @@ The logo shown in the image is the **Google "G" logo** (specifically, the "Super
     *   **Yellow:** Covers the left side.
     *   **Green:** Arches across the bottom section.
 *   **Background:** In this specific image, the logo is set against a solid **black** background.
+```
 
 ```json
 {
@@ -656,13 +688,15 @@ The logo shown in the image is the **Google "G" logo** (specifically, the "Super
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -674,19 +708,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -708,11 +740,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -722,19 +754,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -742,7 +770,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -770,7 +798,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -780,9 +808,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-output.json)
 
 Was this helpful?
 

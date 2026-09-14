@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Snippets
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1201: Snippet tried to continue to origin multiple times
 
@@ -24,7 +24,9 @@ Ensure that your Snippet code only calls `fetch(request)` once. This method is u
 
 ## Error 1202: Snippets exceeded subrequests limit
 
-This error occurs when the number of subrequests exceeds [the limit](https://developers.cloudflare.com/rules/snippets/#availability) for your Cloudflare plan.
+This error occurs when the number of subrequests
+
+ exceeds [the limit](https://developers.cloudflare.com/rules/snippets/#availability) for your Cloudflare plan.
 
 ### Resolution
 
@@ -58,14 +60,14 @@ This is a temporary issue. Retry your request after a few seconds — the Snippe
 
 The Snippet encountered an unhandled JavaScript exception during execution. This may be caused by one of the following:
 
-* Runtime JavaScript errors in Snippet code
-* Unhandled promise rejections
-* Type errors or reference errors
+- Runtime JavaScript errors in Snippet code
+- Unhandled promise rejections
+- Type errors or reference errors
 
 ### Resolution
 
-* Review the Snippet code to identify where the exception might have occurred and fix any detected bugs.
-* Add proper error handling ([try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks).
+- Review the Snippet code to identify where the exception might have occurred and fix any detected bugs.
+- Add proper error handling ([`try...catch` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) blocks).
 
 ## Snippets cannot be renamed
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data localization
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/guides/data-localization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/data-localization/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts jurisdictions ensure repo data is stored and processed only within a selected location. Set a jurisdiction when you create a namespace to apply the restriction to every repo in that namespace.
 
@@ -20,10 +20,10 @@ Artifacts jurisdictions ensure repo data is stored and processed only within a s
 
 Artifacts supports the following jurisdictions:
 
-| Jurisdiction | Location       |
-| ------------ | -------------- |
-| eu           | European Union |
-| us           | United States  |
+| Jurisdiction | Location |
+| --- | --- |
+| `eu` | European Union |
+| `us` | United States |
 
 ## Create a namespace with a jurisdiction
 

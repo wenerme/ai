@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Trino
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [Trino ↗](https://trino.io/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to [Trino documentation ↗](https://trino.io/docs/current/connector/iceberg.html).
 
 ## Prerequisites
 
-* Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-* [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
-* [Create an R2 API token, key, and secret](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
-* Install [Docker ↗](https://docs.docker.com/get-docker/) to run the Trino container.
+- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
+- [Create an R2 API token, key, and secret](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
+- Install [Docker ↗](https://docs.docker.com/get-docker/) to run the Trino container.
 
 ## Setup
 
@@ -56,49 +56,60 @@ iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
 ## Example usage
 
 1. Start Trino with the R2 catalog configuration:
-```bash
-# Create a local directory for the catalog configuration
-mkdir -p trino-catalog
-# Place your r2.properties file in the catalog directory
-cp r2.properties trino-catalog/
-# Run Trino with the catalog configuration
-docker run -d \
-  --name trino-r2 \
-  -p 8080:8080 \
-  -v $(pwd)/trino-catalog:/etc/trino/catalog \
-  trinodb/trino:latest
-```
+
+   ```bash
+   # Create a local directory for the catalog configuration
+   mkdir -p trino-catalog
+
+   # Place your r2.properties file in the catalog directory
+   cp r2.properties trino-catalog/
+
+   # Run Trino with the catalog configuration
+   docker run -d \
+     --name trino-r2 \
+     -p 8080:8080 \
+     -v $(pwd)/trino-catalog:/etc/trino/catalog \
+     trinodb/trino:latest
+   ```
+
+
 2. Connect to Trino and query your R2 Data Catalog:
-```bash
-# Connect to the Trino CLI
-docker exec -it trino-r2 trino
-```
+
+   ```bash
+   # Connect to the Trino CLI
+   docker exec -it trino-r2 trino
+   ```
+
+
 3. In the Trino CLI, run the following commands:
-```sql
--- Show all schemas in the R2 catalog
-SHOW SCHEMAS IN r2;
 
--- Show all schemas in the R2 catalog
-CREATE SCHEMA r2.example_schema
+   ```sql
+   -- Show all schemas in the R2 catalog
+   SHOW SCHEMAS IN r2;
 
--- Create a table with some values in it
-CREATE TABLE r2.example_schema.yearly_clicks (
-    year,
-    clicks
-)
-WITH (
-   partitioning = ARRAY['year']
-)
-AS VALUES
-    (2021, 10000),
-    (2022, 20000);
+   -- Create a schema in the R2 catalog
+   CREATE SCHEMA r2.example_schema;
 
--- Show tables in a specific schema
-SHOW TABLES IN r2.example_schema;
+   -- Create a table with some values in it
+   CREATE TABLE r2.example_schema.yearly_clicks (
+       year,
+       clicks
+   )
+   WITH (
+      partitioning = ARRAY['year']
+   )
+   AS VALUES
+       (2021, 10000),
+       (2022, 20000);
 
--- Query your Iceberg table
-SELECT * FROM r2.example_schema.yearly_clicks;
-```
+   -- Show tables in a specific schema
+   SHOW TABLES IN r2.example_schema;
+
+   -- Query your Iceberg table
+   SELECT * FROM r2.example_schema.yearly_clicks;
+   ```
+
+
 
 Was this helpful?
 
@@ -109,5 +120,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/#page","headline":"Trino · Cloudflare R2 Data Catalog docs","description":"Connect Trino to R2 Data Catalog using the Iceberg REST catalog connector.","url":"https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/#page","headline":"Trino · Cloudflare R2 Data Catalog docs","description":"Connect Trino to R2 Data Catalog using the Iceberg REST catalog connector.","url":"https://developers.cloudflare.com/r2-data-catalog/config-examples/trino/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

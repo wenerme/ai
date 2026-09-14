@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Shadow AI?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Shadow AI is the use of any AI tool or application by employees without the formal approval or oversight of the IT department. A common example is an employee using a generative AI application like ChatGPT to draft a report or analyze data, unknowingly exposing the company to significant risks. While employees often turn to these tools to increase productivity, their use can lead to major issues with data security, compliance, and even a company's reputation. For IT and security leaders, the key to managing these risks is to create a robust AI strategy that includes clear policies and governance.
 

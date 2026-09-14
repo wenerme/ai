@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Certificate authorities
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-authorities/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-authorities/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For publicly trusted certificates, Cloudflare partners with different certificate authorities (CAs). Refer to this page to check what CAs are used for each Cloudflare offering and for more details about the CAs [features, limitations, and browser compatibility](#features-limitations-and-browser-compatibility).
 
 ## Availability per certificate type and encryption algorithm
 
-| Certificate                                                                                                                                        | Algorithm                 | [Let's Encrypt](#lets-encrypt) | [Google Trust Services](#google-trust-services) | [SSL.com](#sslcom) | [Sectigo](#sectigo) |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ------------------------------ | ----------------------------------------------- | ------------------ | ------------------- |
-| [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/)                                                                | ECDSARSA(Paid plans only) | ✅✅                             | ✅✅                                              | ✅✅                 | N/AN/A              |
-| [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/)                                                  | ECDSARSA                  | ✅✅                             | ✅✅                                              | ✅  ✅               | N/AN/A              |
-| [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/)                                                 | ECDSARSA                  | ✅✅                             | ✅✅                                              | ✅  ✅               | N/AN/A              |
-| [SSL for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/) | ECDSARSA                  | ✅✅                             | ✅✅                                              | ✅  ✅               | N/AN/A              |
-| [Backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)                                                             | ECDSARSA                  | ✅✅                             | ✅✅                                              | ✅✅                 | ✅✅                  |
+| Certificate | Algorithm | [Let's Encrypt](#lets-encrypt) | [Google Trust Services](#google-trust-services) | [SSL.com](#sslcom) | [Sectigo](#sectigo) |
+| --- | --- | --- | --- | --- | --- |
+| [Universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) | ECDSA<br><br><br>RSA<br><sub>(Paid plans only)</sub> | ✅<br><br><br>✅ | ✅<br><br><br>✅ | ✅<br><br><br>✅ | N/A<br><br><br>N/A |
+| [Advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | ECDSA<br><br><br>RSA | ✅<br><br><br>✅ | ✅<br><br><br>✅ | ✅<br><br> <br> ✅<br><br> | N/A<br><br><br>N/A |
+| [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) | ECDSA<br><br><br>RSA | ✅<br><br><br>✅ | ✅<br><br><br>✅ | ✅<br><br> <br> ✅<br><br> | N/A<br><br><br>N/A |
+| [SSL for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/) | ECDSA<br><br><br>RSA | ✅<br><br><br>✅ | ✅<br><br><br>✅ | ✅<br><br> <br> ✅<br><br> | N/A<br><br><br>N/A |
+| [Backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/) | ECDSA<br><br>RSA | ✅<br><br>✅ | ✅<br><br>✅ | ✅<br><br>✅ | ✅<br><br>✅ |
 
 ## Features, limitations, and browser compatibility
 
@@ -36,14 +36,14 @@ For Universal certificates, Cloudflare controls the validity periods and certifi
 
 ### Let's Encrypt
 
-* Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 90 days.
-* [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 7 days.
+- Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 90 days.
+- [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 7 days.
 
 #### Limitations
 
-* Hostname on certificate can contain up to 10 levels of subdomains.
-* Duplicate certificate limit of [5 certificates ↗](https://letsencrypt.org/docs/rate-limits/) per week.
-* Redsys[1](#user-content-fn-1) is not compatible with Let's Encrypt certificates. If you use Redsys and find issues with Let's Encrypt certificates, order an advanced certificate or upload a custom certificate to use a different CA.
+- Hostname on certificate can contain up to 10 levels of subdomains.
+- Duplicate certificate limit of [5 certificates ↗](https://letsencrypt.org/docs/rate-limits/) per week.
+- Redsys<sup>[1](#user-content-fn-1)</sup> is not compatible with Let's Encrypt certificates. If you use Redsys and find issues with Let's Encrypt certificates, order an advanced certificate or upload a custom certificate to use a different CA.
 
 #### Browser compatibility
 
@@ -63,8 +63,8 @@ You can find the full list of supported clients in the [Let's Encrypt documentat
 
 ### Google Trust Services
 
-* Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 14, 30, and 90 days.
-* [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 14 days.
+- Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 14, 30, and 90 days.
+- [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 14 days.
 
 #### Browser compatibility (most compatible)
 
@@ -82,8 +82,8 @@ You can use the [root CAs list ↗](https://pki.goog/faq/#connecting-to-google) 
 
 ### SSL.com
 
-* Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 14, 30, and 90 days. Enterprise customers using [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) can also choose a validity period of one year.
-* [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 14 days.
+- Supports [validity periods](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) of 14, 30, and 90 days. Enterprise customers using [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) can also choose a validity period of one year.
+- [DCV tokens](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) are valid for 14 days.
 
 #### Limitations
 
@@ -93,7 +93,7 @@ SSL.com DCV tokens are specific for RSA certificates and ECDSA certificates. Thi
 
 Warning
 
-This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [SSL.com documentation ↗](https://www.ssl.com/browser%5Fcompatibility/).
+This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [SSL.com documentation ↗](https://www.ssl.com/browser_compatibility/).
 
 SSL.com is highly compatible, being accepted by over 99.9% of browsers, tablets, and mobile devices.
 
@@ -107,8 +107,8 @@ SSL.com certificates are [cross-signed with Certum ↗](https://www.ssl.com/repo
 
 ### Sectigo
 
-* Only used for [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/).
-* Backup certificates are valid for 90 days.
+- Only used for [Backup certificates](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/).
+- Backup certificates are valid for 90 days.
 
 #### Browser compatibility
 
@@ -121,16 +121,17 @@ Refer to [Sectigo documentation ↗](https://www.sectigo.com/resource-library/se
 A Certificate Authority Authorization (CAA) DNS record specifies which certificate authorities (CAs) are allowed to issue certificates for a domain. This record reduces the chance of unauthorized certificate issuance and promotes standardization across your organization.
 
 
+
 If you are using Cloudflare as your DNS provider, then the CAA records will be added on your behalf. If you need to add CAA records, refer to [Add CAA records](https://developers.cloudflare.com/ssl/edge-certificates/caa-records/).
 
 The following table lists the CAA record content for each CA:
 
-| Certificate authority | CAA record content                 |
-| --------------------- | ---------------------------------- |
-| Let's Encrypt         | letsencrypt.org                    |
-| Google Trust Services | pki.goog; cansignhttpexchanges=yes |
-| SSL.com               | ssl.com                            |
-| Sectigo               | sectigo.com                        |
+| Certificate authority | CAA record content |
+| --- | --- |
+| Let's Encrypt | `letsencrypt.org` |
+| Google Trust Services | `pki.goog; cansignhttpexchanges=yes` |
+| SSL.com | `ssl.com` |
+| Sectigo | `sectigo.com` |
 
 ## Footnotes
 

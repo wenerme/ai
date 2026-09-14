@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Eleventy
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-eleventy-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Eleventy ↗](https://www.11ty.dev/) is a simple static site generator. In this guide, you will create a new Eleventy site and deploy it using Cloudflare Pages. You will be using the `eleventy` CLI to create a new Eleventy site.
 
@@ -56,18 +56,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
-6. In the **Build settings** section, select _Eleventy_ as your **Framework preset**. Your selection will provide the following information:
+6. In the **Build settings** section, select *Eleventy* as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value              | |  Production branch | main |
-| -------------------- | ------------------ | -------------------- | ---- |
-| Build command        | npx @11ty/eleventy |                      |      |
-| Build directory      | \_site             |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npx @11ty/eleventy` |
+| Build directory | `_site` |
 
 Note
 

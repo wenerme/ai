@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # File sandboxing
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,6 +24,7 @@ When a file download passes AV scanning without a malware detection, Gateway qua
 
 Gateway will log any file sandbox decisions in your [HTTP logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#http-logs).
 
+```
 flowchart TD
     A(["User starts file download"]) --> B["File sent to AV scanner"]
     B --> C["Malicious file detected?"]
@@ -50,11 +51,13 @@ flowchart TD
     style N stroke:#D50000
     style n3 stroke:#00C853
 
+```
+
 ## Get started
 
 To begin quarantining downloaded files, turn on file sandboxing:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Policy settings**, turn on **Open previously unseen files in a sandbox environment**.
 3. (Optional) To block requests containing [non-scannable files](#non-scannable-files), select **Block requests for files that cannot be scanned**.
 
@@ -64,14 +67,14 @@ You can now create [Quarantine HTTP policies](https://developers.cloudflare.com/
 
 To test if file sandboxing is working, you can create a Quarantine policy that matches the [Cloudflare Sandbox Test ↗](https://sandbox.cloudflaredemos.com/):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies** \> **HTTP**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Add the following expression:
 
-| Selector | Operator | Value                       | Action     |
-| -------- | -------- | --------------------------- | ---------- |
-| Host     | is       | sandbox.cloudflaredemos.com | Quarantine |
-4. In **Sandbox file types**, select _ZIP Archive (zip)_.
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Host | is | `sandbox.cloudflaredemos.com` | Quarantine |
+4. In **Sandbox file types**, select *ZIP Archive (zip)*.
 5. From a device [connected to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/), open a browser and go to the [Cloudflare Sandbox Test ↗](https://sandbox.cloudflaredemos.com/).
 6. Select **Download Test File**.
 
@@ -87,28 +90,36 @@ Gateway executes quarantined files in a sandboxed Windows operating system envir
 
 File sandboxing supports scanning the following file types:
 
+<details>
+
+<summary>
+
 Supported sandboxing file types
 
-* `.exe`
-* `.pdf`
-* `.doc`
-* `.docm`
-* `.docx`
-* `.rtf`
-* `.ppt`
-* `.pptx`
-* `.xls`
-* `.xlsm`
-* `.xlsx`
-* `.zip`
-* `.rar`
+</summary>
+
+- <code>.exe</code>
+- <code>.pdf</code>
+- <code>.doc</code>
+- <code>.docm</code>
+- <code>.docx</code>
+- <code>.rtf</code>
+- <code>.ppt</code>
+- <code>.pptx</code>
+- <code>.xls</code>
+- <code>.xlsm</code>
+- <code>.xlsx</code>
+- <code>.zip</code>
+- <code>.rar</code>
+
+</details>
 
 ### Non-scannable files
 
 Gateway cannot scan requests containing the following files:
 
-* Files larger than 100 MB
-* PGP encrypted files
+- Files larger than 100 MB
+- PGP encrypted files
 
 Was this helpful?
 

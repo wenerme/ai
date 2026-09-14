@@ -18,17 +18,17 @@ Beta
 
 Image-to-Text • llava-hf
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/llava-hf/llava-1.5-7b-hf`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.
 
-| Model Info |     |
-| ---------- | --- |
-| Beta       | Yes |
+| Model Info | |
+| --- | --- |
+| Beta | Yes |
 
 ## Parameters
 
@@ -48,9 +48,9 @@ description
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llava-1.5-7b-hf/schema-output.json)
 
 Was this helpful?
 

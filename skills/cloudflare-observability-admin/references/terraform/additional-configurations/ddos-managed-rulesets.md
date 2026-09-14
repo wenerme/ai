@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DDoS managed rulesets configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/ddos-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of configuring [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) in your zone or account using Terraform. It covers the following configurations:
 
-* [Example: Configure HTTP DDoS Attack Protection](#example-configure-http-ddos-attack-protection)
-* [Example: Configure Network-layer DDoS Attack Protection](#example-configure-network-layer-ddos-attack-protection)
-* [Use case: Mitigate large HTTP DDoS attacks and monitor flagged traffic](#use-case-mitigate-large-http-ddos-attacks-and-monitor-flagged-traffic)
+- [Example: Configure HTTP DDoS Attack Protection](#example-configure-http-ddos-attack-protection)
+- [Example: Configure Network-layer DDoS Attack Protection](#example-configure-network-layer-ddos-attack-protection)
+- [Use case: Mitigate large HTTP DDoS attacks and monitor flagged traffic](#use-case-mitigate-large-http-ddos-attacks-and-monitor-flagged-traffic)
 
 DDoS managed rulesets are always enabled. Depending on your Cloudflare services, you may be able to adjust their behavior.
 
 If you are using the Cloudflare API, refer to the following resources:
 
-* [Configure HTTP DDoS Attack Protection via API](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/)
-* [Configure Network-layer DDoS Attack Protection via API](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/)
+- [Configure HTTP DDoS Attack Protection via API](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/configure-api/)
+- [Configure Network-layer DDoS Attack Protection via API](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-api/)
 
 For more information on deploying and configuring rulesets using the Rulesets API, refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/) in the Ruleset Engine documentation.
 
@@ -35,8 +35,8 @@ For more information on deploying and configuring rulesets using the Rulesets AP
 
 The Terraform configurations provided in this page need the zone ID (or account ID) of the zone/account where you will deploy the managed rulesets.
 
-* To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
-* To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
+- To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
+- To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
 
 The deployment of managed rulesets via Terraform requires that you use the ruleset IDs. To find the IDs of managed rulesets, use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation. The response will include the description and IDs of existing managed rulesets.
 
@@ -44,8 +44,8 @@ The deployment of managed rulesets via Terraform requires that you use the rules
 
 Terraform assumes that it has complete control over account and zone rulesets. If you already have rulesets configured in your account or zone, do one of the following:
 
-* [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
-* Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
+- [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
+- Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
 
 ---
 
@@ -53,13 +53,21 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 This example configures the [HTTP DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) managed ruleset for a zone using Terraform.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `HTTP DDoS Managed Ruleset Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>HTTP DDoS Managed Ruleset Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
@@ -157,16 +165,24 @@ This example configures the [Network-layer DDoS Attack Protection](https://devel
 
 Important
 
-* Only Magic Transit and Spectrum customers on an Enterprise plan can configure this managed ruleset using overrides.
-* This managed ruleset only supports overrides at the account level.
+- Only Magic Transit and Spectrum customers on an Enterprise plan can configure this managed ruleset using overrides.
+- This managed ruleset only supports overrides at the account level.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `L4 DDoS Managed Ruleset Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>L4 DDoS Managed Ruleset Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_level_network_ddos_config" {
@@ -232,24 +248,32 @@ For more information about Network-layer DDoS Attack Protection, refer to [Netwo
 
 In the following example, a customer is concerned about false positives, but wants to get protection against large HTTP DDoS attacks. The two rules, containing two overrides each, in their [HTTP DDoS protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) configuration will have the following behavior:
 
-1. Mitigate any large HTTP DDoS attacks by configuring a rule with a _Low_ [sensitivity level](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/#sensitivity-level) and a _Block_ action.
-2. Monitor traffic being flagged by the DDoS protection system by configuring a rule with the default sensitivity level (_High_) and a _Log_ action.
+1. Mitigate any large HTTP DDoS attacks by configuring a rule with a *Low* [sensitivity level](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/override-parameters/#sensitivity-level) and a *Block* action.
+2. Monitor traffic being flagged by the DDoS protection system by configuring a rule with the default sensitivity level (*High*) and a *Log* action.
 
 The order of the rules is important: the rule with the highest sensitivity level must come after the rule with the lowest sensitivity level, otherwise it will never be evaluated.
 
 Important considerations
 
-* When a DDoS attack mitigation is ongoing, Cloudflare will check the rules order and apply the first one that matches both the expression and the sensitivity level.
-* Since rules are evaluated in order and the first one to match the conditions of both the expression and the sensitivity level will get applied, take care when editing and reordering existing rules. Changing a rule from Block to Log may allow attack traffic to reach your web property.
-* Overrides will not affect read-only rules in the managed ruleset.
+- When a DDoS attack mitigation is ongoing, Cloudflare will check the rules order and apply the first one that matches both the expression and the sensitivity level.
+- Since rules are evaluated in order and the first one to match the conditions of both the expression and the sensitivity level will get applied, take care when editing and reordering existing rules. Changing a rule from Block to Log may allow attack traffic to reach your web property.
+- Overrides will not affect read-only rules in the managed ruleset.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `HTTP DDoS Managed Ruleset Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>HTTP DDoS Managed Ruleset Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_level_http_ddos_config" {

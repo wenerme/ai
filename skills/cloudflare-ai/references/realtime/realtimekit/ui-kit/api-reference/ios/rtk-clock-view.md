@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkClockView
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-clock-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-clock-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A label that displays the elapsed meeting time in `HH:MM:SS` format. Updates every second while the meeting is active.
 
 ## Initializer parameters
 
-| Parameter  | Type              | Required | Default                             | Description                                            |
-| ---------- | ----------------- | -------- | ----------------------------------- | ------------------------------------------------------ |
-| meeting    | RealtimeKitClient | ✅        | \-                                  | The RealtimeKit client instance for the active meeting |
-| appearance | RtkTextAppearance | ❌        | AppTheme.shared.clockViewAppearance | Text appearance configuration for font and color       |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance for the active meeting |
+| `appearance` | `RtkTextAppearance` | ❌ | `AppTheme.shared.clockViewAppearance` | Text appearance configuration for font and color |
 
 ## Usage Examples
 

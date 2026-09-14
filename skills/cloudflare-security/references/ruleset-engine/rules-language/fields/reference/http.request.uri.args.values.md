@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.uri.args.values
 
-`http.request.uri.args.values` `Array<String>`
+`http.request.uri.args.values``Array<String>`
 
 The values of arguments in the HTTP URI query string.
 
@@ -16,8 +16,8 @@ The values are not pre-processed and retain the original case used in the reques
 
 Duplicated values are listed multiple times.
 
-* **Decoding**: No decoding performed
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Non-ASCII**: Preserved
 
 Example value:
 
@@ -32,8 +32,8 @@ any(http.request.uri.args.values[*] == "red+apples")
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

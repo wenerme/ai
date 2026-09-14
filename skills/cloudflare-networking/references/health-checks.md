@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health Checks
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ---
 
@@ -46,17 +46,19 @@ Use Health Checks Analytics
 
 [Load Balancing](https://developers.cloudflare.com/load-balancing/)
 
-Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/), which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/)
+
+, which reduces endpoint strain and latency and improves the experience for end users.
 
 ---
 
 ## Availability
 
-|                  | Free | Pro | Business | Enterprise |
-| ---------------- | ---- | --- | -------- | ---------- |
-| Availability     | No   | Yes | Yes      | Yes        |
-| Number of checks | 0    | 10  | 50       | 1,000      |
-| Analytics        | No   | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
+| Number of checks | 0 | 10 | 50 | 1,000 |
+| Analytics | No | Yes | Yes | Yes |
 
 ---
 

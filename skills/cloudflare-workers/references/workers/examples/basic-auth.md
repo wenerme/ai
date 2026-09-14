@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Shows how to restrict access using the HTTP Basic schema.
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/basic-auth/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/basic-auth/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-This example Worker makes use of the [Node.js Buffer API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/buffer/), which is available as part of the Workers runtime [Node.js compatibility mode](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). To run this Worker, you will need to [enable the nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
+This example Worker makes use of the [Node.js Buffer API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/buffer/), which is available as part of the Workers runtime [Node.js compatibility mode](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). To run this Worker, you will need to [enable the `nodejs_compat` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
 Caution when using in production
 

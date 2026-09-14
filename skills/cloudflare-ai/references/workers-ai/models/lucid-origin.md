@@ -1,6 +1,5 @@
 ---
-description: Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.
-
+description: "Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.\n"
 title: lucid-origin
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -17,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Leonardo
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/lucid-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/lucid-origin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/leonardo/lucid-origin`
 
-* Cloudflare-hosted
-* Partner
+- Cloudflare-hosted
+- Partner
 
 Lucid Origin from Leonardo.AI is their most adaptable and prompt-responsive model to date. Whether you're generating images with sharp graphic design, stunning full-HD renders, or highly specific creative direction, it adheres closely to your prompts, renders text with accuracy, and supports a wide array of visual styles and aesthetics – from stylized concept art to crisp product mockups.
 
-| Model Info        |                                                 |
-| ----------------- | ----------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | Terms and License | [link ↗](https://leonardo.ai/terms-of-service/) |
-| Partner           | Yes                                             |
-| Unit Pricing      | $0.007 per 512 by 512 tile, $0.00013 per step   |
+| Partner | Yes |
+| Unit Pricing | $0.007 per 512 by 512 tile, $0.00013 per step |
 
 ## Parameters
 
@@ -68,9 +67,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/lucid-origin/schema-output.json)
 
 Was this helpful?
 

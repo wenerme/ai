@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure your content
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/secure-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/secure-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Media assets are vulnerable to hotlinking, unauthorized downloads, and piracy. Cloudflare Hotlink Protection blocks other sites from embedding your media, Stream signed URLs provide time-limited access tokens, and Access gates premium content behind identity policies.
 
@@ -22,19 +22,19 @@ Media assets are vulnerable to hotlinking, unauthorized downloads, and piracy. C
 
 Block unauthorized embedding of resources from external sites. [Learn more about Hotlink Protection](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/).
 
-* **Hotlink protection** \- Block other sites from embedding or hot-linking your images and video without permission
+- **Hotlink protection** - Block other sites from embedding or hot-linking your images and video without permission
 
 ### Stream
 
 Live streaming with automatic recording and instant playback. [Learn more about Stream Live](https://developers.cloudflare.com/stream/stream-live/).
 
-* **Token authentication** \- Issue time-limited access tokens so only authorized viewers can access protected media
+- **Token authentication** - Issue time-limited access tokens so only authorized viewers can access protected media
 
 ### Access
 
 Zero Trust access control for applications and infrastructure. [Learn more about Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
-* **Identity-based access** \- Gate premium or subscriber-only content behind Cloudflare Access identity policies
+- **Identity-based access** - Gate premium or subscriber-only content behind Cloudflare Access identity policies
 
 ## Get started
 

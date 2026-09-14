@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # VPC Services
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Services are the core building block of Workers VPC. They represent specific resources in your private network that Workers can access through Cloudflare Tunnel.
 
@@ -30,13 +30,13 @@ Workers VPC is currently in beta. Features and APIs may change before general av
 
 A VPC Service consists of:
 
-* **Type**: `http` for HTTP/HTTPS services, or `tcp` for TCP services (for example, PostgreSQL, MySQL)
-* **Tunnel ID**: The Cloudflare Tunnel that provides network connectivity
-* **Hostname or IPv4/IPv6 addresses**: The hostname, or IPv4 and/or IPv6 addresses to use to route to your service from the tunnel in your private network
-* **Ports**: For `http` type, HTTP and/or HTTPS port configuration (optional, defaults to 80/443). For `tcp` type, a TCP port (required).
-* **Application protocol** (TCP only): Optionally, specify `postgresql` or `mysql` to indicate the application-layer protocol for the TCP service
-* **TLS certificate verification mode**: Optionally, configure how the connection to the origin verifies TLS certificates
-* **Resolver IPs**: Optionally, a specific resolver IP can be provided — when not provided, `cloudflared` will direct DNS traffic to the currently configured default system resolver.
+- **Type**: `http` for HTTP/HTTPS services, or `tcp` for TCP services (for example, PostgreSQL, MySQL)
+- **Tunnel ID**: The Cloudflare Tunnel that provides network connectivity
+- **Hostname or IPv4/IPv6 addresses**: The hostname, or IPv4 and/or IPv6 addresses to use to route to your service from the tunnel in your private network
+- **Ports**: For `http` type, HTTP and/or HTTPS port configuration (optional, defaults to 80/443). For `tcp` type, a TCP port (required).
+- **Application protocol** (TCP only): Optionally, specify `postgresql` or `mysql` to indicate the application-layer protocol for the TCP service
+- **TLS certificate verification mode**: Optionally, configure how the connection to the origin verifies TLS certificates
+- **Resolver IPs**: Optionally, a specific resolver IP can be provided — when not provided, `cloudflared` will direct DNS traffic to the currently configured default system resolver.
 
 ### HTTP services
 
@@ -70,8 +70,8 @@ The port provided in the `fetch()` operation is ignored — the port specified i
 
 When using the `https` scheme, the tunnel verifies the TLS certificate presented by your origin service. Workers VPC trusts the following certificate types:
 
-* **Publicly trusted certificates** — Certificates issued by well-known public certificate authorities (for example, Let's Encrypt, DigiCert).
-* **[Cloudflare Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/)** — Free certificates issued by Cloudflare that encrypt traffic between Cloudflare and your origin. Origin CA certificates are not trusted by browsers, but are trusted by Workers VPC when connecting to your private services.
+- **Publicly trusted certificates** — Certificates issued by well-known public certificate authorities (for example, Let's Encrypt, DigiCert).
+- **[Cloudflare Origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/)** — Free certificates issued by Cloudflare that encrypt traffic between Cloudflare and your origin. Origin CA certificates are not trusted by browsers, but are trusted by Workers VPC when connecting to your private services.
 
 If your origin service presents a certificate that is not issued by a publicly trusted CA or by Cloudflare Origin CA, the TLS handshake will fail and `fetch()` will throw an exception.
 
@@ -79,11 +79,11 @@ If your origin service presents a certificate that is not issued by a publicly t
 
 You can configure how the connection to your origin service verifies TLS certificates by setting the `--cert-verification-mode` option when creating or updating a VPC Service. This applies to both HTTP and TCP service types.
 
-| Mode         | Description                                                   |
-| ------------ | ------------------------------------------------------------- |
-| verify\_full | Verify the full certificate chain and hostname (default)      |
-| verify\_ca   | Verify the certificate chain only, skip hostname verification |
-| disabled     | Do not verify the server certificate                          |
+| Mode | Description |
+| --- | --- |
+| `verify_full` | Verify the full certificate chain and hostname (default) |
+| `verify_ca` | Verify the certificate chain only, skip hostname verification |
+| `disabled` | Do not verify the server certificate |
 
 ## Configuration examples
 
@@ -256,9 +256,9 @@ remote = true
 
 Workers VPC uses the following account roles:
 
-* `Connectivity Directory Read` to view Workers VPC Services and Tunnels.
-* `Connectivity Directory Bind` to list, read, and bind VPC Services in Workers.
-* `Connectivity Directory Admin` to create, update, and delete VPC Services, and bind directly to tunnels through a VPC Network binding.
+- `Connectivity Directory Read` to view Workers VPC Services and Tunnels.
+- `Connectivity Directory Bind` to list, read, and bind VPC Services in Workers.
+- `Connectivity Directory Admin` to create, update, and delete VPC Services, and bind directly to tunnels through a VPC Network binding.
 
 For role definitions, refer to [Roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#account-scoped-roles).
 
@@ -273,10 +273,10 @@ If you authenticate with an API token (`CLOUDFLARE_API_TOKEN`), ensure the token
 
 ## Next steps
 
-* [Configure VPC Services with Terraform](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/) for managing VPC Services as infrastructure
-* Set up [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) for your environment
-* Learn about the [Service Binding API](https://developers.cloudflare.com/workers-vpc/api/)
-* Refer to [examples](https://developers.cloudflare.com/workers-vpc/examples/) of common use cases
+- [Configure VPC Services with Terraform](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/) for managing VPC Services as infrastructure
+- Set up [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) for your environment
+- Learn about the [Service Binding API](https://developers.cloudflare.com/workers-vpc/api/)
+- Refer to [examples](https://developers.cloudflare.com/workers-vpc/examples/) of common use cases
 
 Was this helpful?
 

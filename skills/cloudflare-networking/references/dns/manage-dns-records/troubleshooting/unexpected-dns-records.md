@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Unexpected DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/unexpected-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Additional records after import
 
@@ -26,9 +26,8 @@ A wildcard (`*`) record at your previous authoritative DNS provider may have bee
 
 To solve this issue, you can do one of the following:
 
-* [Delete records in bulk](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#delete-records-in-bulk).
-* Remove and re-add your domain:
-
+- [Delete records in bulk](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/#delete-records-in-bulk).
+- Remove and re-add your domain:
   1. [Remove your domain](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/) from Cloudflare.
   2. Delete the wildcard record from your authoritative DNS.
   3. [Re-add](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) the domain.
@@ -41,7 +40,9 @@ You might notice TXT records like `_acme-challenge.<hostname>` are returned by y
 
 ### Cause
 
-These records are automatically created to allow Cloudflare edge certificates ([universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)) to be provisioned. `_acme-challenge` records are required by certificate authorities (CAs) so that they can verify your domain ownership before issuing the SSL/TLS certificate. For details, refer to [Domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
+These records are automatically created to allow Cloudflare edge certificates ([universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/), and [backup](https://developers.cloudflare.com/ssl/edge-certificates/backup-certificates/)) to be provisioned. `_acme-challenge` records are required by certificate authorities (CAs)
+
+ so that they can verify your domain ownership before issuing the SSL/TLS certificate. For details, refer to [Domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
 
 ### Solution
 
@@ -51,8 +52,8 @@ If you need more `_acme-challenge.<hostname>` TXT records in order to provision 
 
 If you want to remove these records:
 
-* [Disable Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/) to remove the records related to universal and backup certificates.
-* [Delete advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#delete-a-certificate) to remove the records related to advanced certificates.
+- [Disable Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/) to remove the records related to universal and backup certificates.
+- [Delete advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#delete-a-certificate) to remove the records related to advanced certificates.
 
 ---
 
@@ -66,8 +67,8 @@ When your `MX` or `SRV` record resolves to a domain configured to [proxy](https:
 
 The prefix of the auto-generated record depends on the record type that triggered it:
 
-* **MX records:** Cloudflare inserts a record with the `_dc-mx` prefix (for example, `_dc-mx.a1b2c3d4e5f6.example.com`).
-* **SRV records:** Cloudflare inserts a record with the `dc-` prefix (for example, `dc-a1b2c3d4e5f6.example.com`).
+- **MX records:** Cloudflare inserts a record with the `_dc-mx` prefix (for example, `_dc-mx.a1b2c3d4e5f6.example.com`).
+- **SRV records:** Cloudflare inserts a record with the `dc-` prefix (for example, `dc-a1b2c3d4e5f6.example.com`).
 
 #### How \_dc-mx records work
 
@@ -117,11 +118,14 @@ These records are safe — they ensure your mail traffic reaches your server cor
 
 If you want to avoid a `_dc-mx` or `dc-#####` response, you must address the underlying proxy conflict:
 
-* If no mail is received for the domain, delete the `MX` record.
-* If mail is received for the domain, update the `MX` record to resolve to a separate `A` record for a mail subdomain that is not proxied by Cloudflare:
-`example.com MX mail.example.com`
-`mail.example.com A 192.0.2.1`
-`example.com A 203.0.113.1`
+- If no mail is received for the domain, delete the `MX` record.
+- If mail is received for the domain, update the `MX` record to resolve to a separate `A` record for a mail subdomain that is not proxied by Cloudflare:
+
+  `example.com MX mail.example.com`
+
+  `mail.example.com A 192.0.2.1`
+
+  `example.com A 203.0.113.1`
 
 Caution
 
@@ -141,9 +145,9 @@ Third-party tools can sometimes fail to return correct DNS results if a recursiv
 
 In this circumstance, purge your public DNS cache via these methods:
 
-* [Purge your DNS cache at OpenDNS ↗](http://www.opendns.com/support/cache/)
-* [Purge your DNS cache at Google ↗](https://developers.google.com/speed/public-dns/cache)
-* [Purge your DNS cache locally ↗](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
+- [Purge your DNS cache at OpenDNS ↗](http://www.opendns.com/support/cache/)
+- [Purge your DNS cache at Google ↗](https://developers.google.com/speed/public-dns/cache)
+- [Purge your DNS cache locally ↗](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
 
 Was this helpful?
 

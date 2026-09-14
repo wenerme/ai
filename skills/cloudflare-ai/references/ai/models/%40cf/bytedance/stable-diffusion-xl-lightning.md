@@ -18,19 +18,19 @@ Beta
 
 Text-to-Image • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/bytedance/stable-diffusion-xl-lightning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/bytedance/stable-diffusion-xl-lightning`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 SDXL-Lightning is a lightning-fast text-to-image generation model. It can generate high-quality 1024px images in a few steps.
 
-| Model Info       |                                                           |
-| ---------------- | --------------------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | More information | [link ↗](https://huggingface.co/ByteDance/SDXL-Lightning) |
-| Beta             | Yes                                                       |
-| Unit Pricing     | $0.00 per step                                            |
+| Beta | Yes |
+| Unit Pricing | $0.00 per step |
 
 ## Parameters
 
@@ -50,7 +50,7 @@ width
 
 `integer`minimum: 256maximum: 2048The width of the generated image in pixels
 
-▶image\[\]
+▶image\[]
 
 `array`For use with img2img tasks. An array of integers that represent the image data constrained to 8-bit unsigned integer values
 
@@ -58,7 +58,7 @@ image\_b64
 
 `string`For use with img2img tasks. A base64-encoded string of the input image
 
-▶mask\[\]
+▶mask\[]
 
 `array`An array representing An array of integers that represent mask image data for inpainting constrained to 8-bit unsigned integer values
 
@@ -82,9 +82,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/bytedance/stable-diffusion-xl-lightning/schema-output.json)
 
 Was this helpful?
 

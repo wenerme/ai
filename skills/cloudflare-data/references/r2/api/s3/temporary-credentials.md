@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Temporary credentials
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Temporary credentials are short-lived, scoped S3 credentials derived from an existing [R2 API token](https://developers.cloudflare.com/r2/api/tokens/). They authenticate with AWS Signature Version 4, the same as a long-lived token, but include a session token and expire automatically. The session token is sent with every request via the `X-Amz-Security-Token` header; all S3-compatible clients expose this as a standard session token credential field.
 
@@ -22,16 +22,16 @@ Use temporary credentials to delegate access without issuing a long-lived token.
 
 R2 supports two patterns for time-limited access. They overlap but have different trade-offs:
 
-| Pattern                                                                       | Grants                                                                                                         | Good for                                                                                                                   |
-| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Temporary credentials (this page)                                             | Multiple S3 operations, scoped to a bucket and a set of permitted operations, and optionally to specific paths | Callers that use a standard S3 client or SDK to perform multiple operations in a scoped session                            |
-| [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) | A single S3 operation on a single object                                                                       | Granting direct HTTP access to a single object without an S3 client, such as a browser upload or a shareable download link |
+| Pattern | Grants | Good for |
+| --- | --- | --- |
+| Temporary credentials (this page) | Multiple S3 operations, scoped to a bucket and a set of permitted operations, and optionally to specific paths | Callers that use a standard S3 client or SDK to perform multiple operations in a scoped session |
+| [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) | A single S3 operation on a single object | Granting direct HTTP access to a single object without an S3 client, such as a browser upload or a shareable download link |
 
 ## Generate temporary credentials
 
 ### Via the Temporary Credentials API
 
-The [Temporary Credentials API](https://developers.cloudflare.com/api/resources/r2/subresources/temporary%5Fcredentials/methods/create/) accepts a parent API token, the bucket name, and optional scoping parameters, and returns a new access key ID, secret access key, and session token. Cloudflare signs the session token on your behalf.
+The [Temporary Credentials API](https://developers.cloudflare.com/api/resources/r2/subresources/temporary_credentials/methods/create/) accepts a parent API token, the bucket name, and optional scoping parameters, and returns a new access key ID, secret access key, and session token. Cloudflare signs the session token on your behalf.
 
 Use this method when you want Cloudflare to manage the signing flow for you.
 
@@ -43,9 +43,9 @@ You can also generate temporary credentials locally by signing a JWT with your p
 
 Use this method when:
 
-* You are issuing many short-lived credentials and want to avoid per-mint API latency.
-* You need to mint credentials in an environment that cannot reach the Cloudflare API.
-* You want to scope credentials by S3 action (see [Scope by action](#actions)), which is currently supported via local signing only.
+- You are issuing many short-lived credentials and want to avoid per-mint API latency.
+- You need to mint credentials in an environment that cannot reach the Cloudflare API.
+- You want to scope credentials by S3 action (see [Scope by action](#actions)), which is currently supported via local signing only.
 
 Signing happens in three steps:
 
@@ -75,12 +75,12 @@ Specify permitted operations using `scope` (passed as `permission` to the API) o
 
 `scope` is a preset category of operations. Refer to [Permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions) for full definitions.
 
-| Scope             | Allows                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------- |
-| object-read-only  | Read and list objects in the bucket.                                                              |
-| object-read-write | Read, write, and list objects in the bucket.                                                      |
-| admin-read-only   | Read and list objects, view bucket configuration, and read from the data catalog.                 |
-| admin-read-write  | Read, write, and list objects, edit bucket configuration, and read and write to the data catalog. |
+| Scope | Allows |
+| --- | --- |
+| `object-read-only` | Read and list objects in the bucket. |
+| `object-read-write` | Read, write, and list objects in the bucket. |
+| `admin-read-only` | Read and list objects, view bucket configuration, and read from the data catalog. |
+| `admin-read-write` | Read, write, and list objects, edit bucket configuration, and read and write to the data catalog. |
 
 #### Actions
 
@@ -94,11 +94,11 @@ Note
 
 Valid actions:
 
-| Category  | Actions                                                                                                 |
-| --------- | ------------------------------------------------------------------------------------------------------- |
-| Read      | HeadObject, GetObject, GetBucketLocation, ListObjectsV1, ListObjectsV2, ListMultipartUploads, ListParts |
-| Write     | PutObject, DeleteObject, DeleteObjects, CopyObject                                                      |
-| Multipart | CreateMultipartUpload, UploadPart, UploadPartCopy, AbortMultipartUpload, CompleteMultipartUpload        |
+| Category | Actions |
+| --- | --- |
+| Read | `HeadObject`, `GetObject`, `GetBucketLocation`, `ListObjectsV1`, `ListObjectsV2`, `ListMultipartUploads`, `ListParts` |
+| Write | `PutObject`, `DeleteObject`, `DeleteObjects`, `CopyObject` |
+| Multipart | `CreateMultipartUpload`, `UploadPart`, `UploadPartCopy`, `AbortMultipartUpload`, `CompleteMultipartUpload` |
 
 ### Paths
 
@@ -124,8 +124,8 @@ Restrict access to specific prefixes or objects within the bucket. Omit these fi
 }
 ```
 
-* `prefixes` / `prefixPaths`: keys starting with any listed prefix.
-* `objects` / `objectPaths`: exact object keys.
+- `prefixes` / `prefixPaths`: keys starting with any listed prefix.
+- `objects` / `objectPaths`: exact object keys.
 
 ## Using temporary credentials
 
@@ -171,10 +171,10 @@ AWS_SESSION_TOKEN=<SESSION_TOKEN>
 
 Treat temporary credentials as bearer tokens. Anyone in possession of all three values can perform the allowed operations until the credential expires.
 
-* **Scope as narrowly as possible.** Set paths and permission scope so the credential can only do what the caller needs.
-* **Use short TTLs.** Set `ttlSeconds` to the shortest value that fits your use case. A credential that lives for 15 minutes has a smaller blast radius than one that lives for a day.
-* **A temporary credential cannot exceed its parent.** If you revoke the parent API token, all temporary credentials derived from it stop working immediately.
-* **Never ship your parent secret access key to a client.** Local signing must happen in a trusted environment (such as your backend or a Worker).
+- **Scope as narrowly as possible.** Set paths and permission scope so the credential can only do what the caller needs.
+- **Use short TTLs.** Set `ttlSeconds` to the shortest value that fits your use case. A credential that lives for 15 minutes has a smaller blast radius than one that lives for a day.
+- **A temporary credential cannot exceed its parent.** If you revoke the parent API token, all temporary credentials derived from it stop working immediately.
+- **Never ship your parent secret access key to a client.** Local signing must happen in a trusted environment (such as your backend or a Worker).
 
 ## Related resources
 

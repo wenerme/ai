@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Stream ReadableStream from Durable Objects.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/readable-stream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/readable-stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates:
 
-* A Worker receives a request, and forwards it to a Durable Object `my-id`.
-* The Durable Object streams an incrementing number every second, until it receives `AbortSignal`.
-* The Worker reads and logs the values from the stream.
-* The Worker then cancels the stream after 5 values.
+- A Worker receives a request, and forwards it to a Durable Object `my-id`.
+- The Durable Object streams an incrementing number every second, until it receives `AbortSignal`.
+- The Worker reads and logs the values from the stream.
+- The Worker then cancels the stream after 5 values.
 
 ```js
 import { DurableObject } from "cloudflare:workers";

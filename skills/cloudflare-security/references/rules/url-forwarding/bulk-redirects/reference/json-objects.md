@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bulk Redirects API JSON objects
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/reference/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Bulk Redirect Rule
 
@@ -33,13 +33,12 @@ A fully populated Bulk Redirect Rule object has the following JSON structure:
 
 The JSON object properties must comply with the following:
 
-* `action` must be `redirect`
-* `action_parameters` must contain a `from_list` object with additional settings.
-* `from_list` must contain the following properties:
-
-  * `name`: The name of an existing Bulk Redirect List to associate with the current Bulk Redirect Rule.
-  * `key`: An expression that defines the value that will be matched against the configured URL redirect's source URL values, following the rules of the [URL matching algorithm](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#url-matching-algorithm). Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information.
-* `expression` must reference the request field used in the `key` property. Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information.
+- `action` must be `redirect`
+- `action_parameters` must contain a `from_list` object with additional settings.
+- `from_list` must contain the following properties:
+  - `name`: The name of an existing Bulk Redirect List to associate with the current Bulk Redirect Rule.
+  - `key`: An expression that defines the value that will be matched against the configured URL redirect's source URL values, following the rules of the [URL matching algorithm](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/how-it-works/#url-matching-algorithm). Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information.
+- `expression` must reference the request field used in the `key` property. Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information.
 
 ## URL redirect list item
 

@@ -16,20 +16,20 @@ t
 
 Text Generation • thinkingmachines
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `thinkingmachines/inkling-256k`
 
-* Third-party
+- Third-party
 
 The 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments.
 
-| Model Info                                                                          |                                                                                                                                 |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens                                                                                                                  |
-| More information                                                                    | [link ↗](https://huggingface.co/thinkingmachines/Inkling)                                                                       |
-| Request formats                                                                     | Anthropic Messages                                                                                                              |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling-256k) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
+| More information | [link ↗](https://huggingface.co/thinkingmachines/Inkling) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling-256k) |
 
 ## Usage
 
@@ -57,7 +57,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The capital of France is **Paris**.
+```
 
 ```json
 {
@@ -88,7 +90,11 @@ The capital of France is **Paris**.
 
 ## Examples
 
-**Tool Use** — Tool use round-trip: the model requests a tool call, then answers using the tool\_result supplied in a follow-up user message
+<details>
+
+<summary>**Tool Use** — Tool use round-trip: the model requests a tool call, then answers using the tool_result supplied in a follow-up user message</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -191,7 +197,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The weather in Paris is sunny with a temperature of 22°C.
+```
 
 ```json
 {
@@ -220,9 +228,11 @@ The weather in Paris is sunny with a temperature of 22°C.
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -266,7 +276,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -284,9 +294,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/schema-output.json)
 
 Was this helpful?
 

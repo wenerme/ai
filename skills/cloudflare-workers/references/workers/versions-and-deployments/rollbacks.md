@@ -12,25 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rollbacks
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
 
 You can roll back from any deployment, including:
 
-* A single-version deployment (rolling back replaces the current version with the selected version).
-* A [split deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) with two versions (rolling back replaces both versions with the selected version at 100% traffic).
+- A single-version deployment (rolling back replaces the current version with the selected version).
+- A [split deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) with two versions (rolling back replaces both versions with the selected version at 100% traffic).
 
 ## Via Wrangler
 
-To roll back to a specified version of your Worker via Wrangler, use the [wrangler rollback](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) command.
+To roll back to a specified version of your Worker via Wrangler, use the [`wrangler rollback`](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) command.
 
 ## Via the Cloudflare Dashboard
 
 To roll back to a specified version of your Worker via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 3. Select the three dot icon on the right of the version you would like to roll back to and select **Rollback**.
 
@@ -63,14 +62,14 @@ You can only roll back to the 100 most recently published versions.
 
 Note
 
-When using Wrangler in interactive mode, you can select from up to 100 recent versions. To roll back to a specific version, you can also specify the version ID directly on the command line. Refer to the [wrangler rollback](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) documentation for details on specifying version IDs.
+When using Wrangler in interactive mode, you can select from up to 100 recent versions. To roll back to a specific version, you can also specify the version ID directly on the command line. Refer to the [`wrangler rollback`](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) documentation for details on specifying version IDs.
 
 ### Bindings
 
 You cannot roll back to a previous version of your Worker if the [Cloudflare Developer Platform resources](https://developers.cloudflare.com/workers/runtime-apis/bindings/) (such as [KV](https://developers.cloudflare.com/kv/) and [D1](https://developers.cloudflare.com/d1/)) have been deleted or modified between the version selected to roll back to and the version in the active deployment. Specifically, rollbacks will not be allowed if:
 
-* A Durable Object class lifecycle change (via [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) or the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array) has occurred between the version in the active deployment and the version selected to roll back to.
-* If the target deployment has a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to an R2 bucket, KV namespace, or queue that no longer exists.
+- A Durable Object class lifecycle change (via [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) or the legacy [`migrations`](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array) has occurred between the version in the active deployment and the version selected to roll back to.
+- If the target deployment has a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to an R2 bucket, KV namespace, or queue that no longer exists.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom fonts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/custom-fonts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/custom-fonts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser Run uses a managed Chromium environment that includes a [standard set of pre-installed fonts](https://developers.cloudflare.com/browser-run/reference/supported-fonts/). When you generate a screenshot or PDF, text is rendered using the fonts available in this environment. If your page specifies a font that is not pre-installed, Chromium will automatically fall back to a similar supported font.
 
@@ -20,8 +20,8 @@ If you need a specific font that is not pre-installed, you can inject it into th
 
 How you add a custom font depends on how you are using Browser Run:
 
-* If you are using [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/), refer to the [Browser sessions](#browser-sessions) section.
-* If you are using [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), refer to the [Quick Actions](#quick-actions) section.
+- If you are using [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/), refer to the [Browser sessions](#browser-sessions) section.
+- If you are using [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), refer to the [Quick Actions](#quick-actions) section.
 
 ## Browser sessions
 

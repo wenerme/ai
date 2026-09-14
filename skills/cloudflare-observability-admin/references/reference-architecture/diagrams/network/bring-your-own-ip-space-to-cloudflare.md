@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bring your own IP space to Cloudflare
 
-Last updated Feb 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -30,19 +30,19 @@ In the diagram below, instead of the default behavior, traffic will proxy throug
 
 There are two different network ranges used in this example:
 
-* `152.3.15.0/24` \- Customer owned IP range that will be associated with the Cloudflare network.
-* `152.3.14.0/24` \- Customer owned IP range that will continue to be associated with their origin network.
+- `152.3.15.0/24` - Customer owned IP range that will be associated with the Cloudflare network.
+- `152.3.14.0/24` - Customer owned IP range that will continue to be associated with their origin network.
 
 ![Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=911,height=323,format=svg/_astro/figure1.BXY13mGX.svg "Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.")
 
-Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.
+*Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.*
 
 1. In order for Cloudflare to respond to DNS queries with addresses from the customer's space, a Letter of Agency (LOA) must be provided by the customer to Cloudflare, so that the addresses can be provisioned and advertised. This address space (in the example, `152.3.15.0/24`) must be dedicated for Cloudflare's configuration and not used anywhere within the customer environment.
 2. The Cloudflare DNS configuration for the origin server `www.abc.com` is configured with the IP address `152.3.14.10/32`.
 3. A DNS query for `www.abc.com` is made.
 4. Cloudflare returns an address from the customer's space that was previously configured from a BYOIP space provided by the customer. In this case, the response was `152.2.15.200`, which is a part of the `/24` prefix of `152.2.15.0/24`.
 5. The eyeball sends a request to `152.2.15.200` which is routed to Cloudflare.
-6. Cloudflare proxies the connection, using the SNI (`www.abc.com`) to determine the actual origin IP, `152.3.14.10`. The request is then routed through Cloudflare's proxy services, such as DDoS protection, Web Application Firewall, and Bot Management.
+6. Cloudflare proxies the connection, using the SNI ( `www.abc.com`) to determine the actual origin IP, `152.3.14.10`. The request is then routed through Cloudflare's proxy services, such as DDoS protection, Web Application Firewall, and Bot Management.
 7. Successful requests are sent to origin (if not served by cache) to `152.3.14.10` with a source IP of the Cloudflare network.
 
 ## BYOIP scenario two - network DDoS protection
@@ -51,7 +51,7 @@ Cloudflare is well known for its DDoS mitigation services protecting public webs
 
 ![Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1006,height=396,format=svg/_astro/figure2.D70IrQeq.svg "Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.")
 
-Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.
+*Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.*
 
 1. In order for Cloudflare to attract traffic destined for customer network prefixes, a Letter of Agency (LOA) must be provided by the customer to Cloudflare, so that the network prefixes can be provisioned and advertised.
 2. Once provisioned, Cloudflare will advertise the customer prefixes to the Internet, attracting traffic destined for those networks to the Cloudflare network.
@@ -62,8 +62,8 @@ More detailed information about Magic Transit capabilities can be found in the [
 
 ## Related resources
 
-* [Protect hybrid cloud networks with Cloudflare Magic Transit](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/)
-* [Protect public networks with Cloudflare](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/)
+- [Protect hybrid cloud networks with Cloudflare Magic Transit](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/)
+- [Protect public networks with Cloudflare](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/)
 
 Was this helpful?
 

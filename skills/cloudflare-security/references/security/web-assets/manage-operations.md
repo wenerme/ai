@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage operations
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/manage-operations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Operation states
 
 Each operation has one of the following states:
 
-| State     | Meaning                                                                                                                                                           |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| full      | An operation that you selected, added manually, or created from a schema. Full operations are used for matching, logging, detections, and rules.                  |
-| candidate | An operation that Cloudflare discovered from traffic. Candidate operations are used for matching, logging, detections, and rules before you manually review them. |
-| shadow    | An operation that exists in Web Assets but is not used for matching, logging, detections, or rules.                                                               |
+| State | Meaning |
+| --- | --- |
+| `full` | An operation that you selected, added manually, or created from a schema. Full operations are used for matching, logging, detections, and rules. |
+| `candidate` | An operation that Cloudflare discovered from traffic. Candidate operations are used for matching, logging, detections, and rules before you manually review them. |
+| `shadow` | An operation that exists in Web Assets but is not used for matching, logging, detections, or rules. |
 
 You do not need to move every discovered operation to the `full` state. Candidate operations provide operation context automatically. Profile learning starts only when you select **Learn profile**.
 
@@ -30,9 +30,9 @@ You do not need to move every discovered operation to the `full` state. Candidat
 
 If an operation does not appear in Web Assets, Cloudflare may not have observed enough valid requests over a continuous period. Discovery only processes requests that satisfy all of the following requirements:
 
-* The request must return a `2xx` response code from the Cloudflare edge.
-* The request must not come directly from Cloudflare Workers.
-* The operation must receive at least 500 requests within a 10-day period.
+- The request must return a `2xx` response code from the Cloudflare edge.
+- The request must not come directly from Cloudflare Workers.
+- The operation must receive at least 500 requests within a 10-day period.
 
 ## Discovered operations
 
@@ -65,17 +65,16 @@ For a candidate or shadow operation, this action also moves the operation into t
 
 For API endpoints, API Shield also collects data for other context:
 
-* Request structures through [schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
-* Normal request volume through [rate limit recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/)
-* Authentication usage through [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/)
-* Persisted security findings through [API endpoint risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels)
+- Request structures through [schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/)
+- Normal request volume through [rate limit recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/)
+- Authentication usage through [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/)
+- Persisted security findings through [API endpoint risk labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels)
 
 Each feature has separate data and timing requirements. For Schema Profiles, refer to [Schema learning](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/).
 
 Full operations can also use protections that require a known API endpoint, including [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), [fallthrough rules](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-adding-a-fallthrough-rule), and [sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page with the **Operations** tab highlighted.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page with the **Operations** tab highlighted. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Open the row actions for the operation.
 3. Select **Learn profile**.
 
@@ -104,8 +103,7 @@ For the same method, hostname pattern, and path pattern, Cloudflare generates th
 
 Add an operation manually when traffic you want to protect has not been discovered, or when you want to define the operation structure yourself.
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select **Add operation**.
 3. Choose **Manually add**.
 4. Select the HTTP method, enter the hostname pattern and path pattern.
@@ -151,8 +149,7 @@ For example, you may want separate operations for login and password reset traff
 
 Review overlapping operations before making changes. Cloudflare matches a request to one operation. A broad operation can change how similar requests are grouped, while a narrow operation can isolate one flow from related traffic.
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page with the **Operations** tab highlighted.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page with the **Operations** tab highlighted. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Open the row actions for the operation.
 3. Select **Edit operation**.
 4. Update the HTTP method, hostname pattern, or path pattern.
@@ -168,8 +165,7 @@ Cloudflare computes operation IDs from the HTTP method, hostname, and path. Chan
 
 You can delete operations one at a time or in bulk.
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page with **Operations** tab highlighted. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select the operation(s) that you want to delete.
 3. Confirm with **Delete operations**.
 
@@ -179,7 +175,7 @@ After you delete an operation, Cloudflare no longer matches future traffic to th
 
 ## Use the Cloudflare API
 
-You can interact with operations through the Cloudflare API. For more information, refer to [operations API documentation](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/discovery/subresources/operations/methods/list/).
+You can interact with operations through the Cloudflare API. For more information, refer to [operations API documentation](https://developers.cloudflare.com/api/resources/api_gateway/subresources/discovery/subresources/operations/methods/list/).
 
 Was this helpful?
 

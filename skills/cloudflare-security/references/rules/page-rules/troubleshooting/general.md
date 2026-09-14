@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Page Rules - General
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/troubleshooting/general/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,7 @@ For more flexibility and customization, consider using [Snippets](https://develo
 
 ## Why is a page rule not working?
 
-The most common reason that a page rule is not working — such as URL forwarding — is that the page rule you created is on a record that is not proxied by Cloudflare in your [DNS settings](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+The most common reason that a page rule is not working — such as URL forwarding — is that the page rule you created is on a record that is not proxied by Cloudflare in your  [DNS settings](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Consider an example where you have a page rule that redirects a subdomain (`subdomain.yoursitename.com`) back to your apex domain (`yoursitename.com`). If you do not have that record proxied in your DNS settings for the subdomain record, Cloudflare's proxy is not running over the record and a page rule will not work because it is going direct to your server.
 
@@ -30,7 +30,7 @@ Consider an example where you have a page rule that redirects a subdomain (`subd
 
 ### Root cause
 
-This may be due to a configuration issue on a page rule. When creating a page rule that uses two wildcards, like a _Forwarding URL_ rule, it is possible to create a rule that mentions the second wildcard with the `$2` placeholder. Refer to the example below:
+This may be due to a configuration issue on a page rule. When creating a page rule that uses two wildcards, like a *Forwarding URL* rule, it is possible to create a rule that mentions the second wildcard with the `$2` placeholder. Refer to the example below:
 
 ![Example Page Rule configuration with two wildcards. The forwarding URL contains a $2 placeholder, which will be replaced with the content matched by the second ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=600,height=250,format=webp/_astro/page-rule-create.G2sl-mqe.png)
 

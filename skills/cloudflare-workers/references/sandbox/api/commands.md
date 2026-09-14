@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Commands
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Execute commands and manage background processes in the sandbox's isolated container environment.
 
@@ -34,14 +34,14 @@ const result = await sandbox.exec(command: string, options?: ExecOptions): Promi
 
 **Parameters**:
 
-* `command` \- The command to execute (can include arguments)
-* `options` (optional):
-  * `stream` \- Enable streaming callbacks (default: `false`)
-  * `onOutput` \- Callback for real-time output: `(stream: 'stdout' | 'stderr', data: string) => void`
-  * `timeout` \- Maximum execution time in milliseconds
-  * `env` \- Environment variables for this command: `Record<string, string | undefined>`
-  * `cwd` \- Working directory for this command
-  * `stdin` \- Data to pass to the command's standard input (enables arbitrary input without shell injection risks)
+- `command` - The command to execute (can include arguments)
+- `options` (optional):
+  - `stream` - Enable streaming callbacks (default: `false`)
+  - `onOutput` - Callback for real-time output: `(stream: 'stdout' | 'stderr', data: string) => void`
+  - `timeout` - Maximum execution time in milliseconds
+  - `env` - Environment variables for this command: `Record<string, string | undefined>`
+  - `cwd` - Working directory for this command
+  - `stdin` - Data to pass to the command's standard input (enables arbitrary input without shell injection risks)
 
 **Returns**: `Promise<ExecuteResponse>` with `success`, `stdout`, `stderr`, `exitCode`
 
@@ -121,9 +121,9 @@ await sandbox.exec('python process_login.py', {
 
 Timeout behavior
 
-When a command times out, the SDK raises an error on the caller side and closes the connection. The underlying process **continues running** inside the container. To stop a timed-out process, delete the session with [deleteSession()](https://developers.cloudflare.com/sandbox/api/sessions/#deletesession) or destroy the sandbox with [destroy()](https://developers.cloudflare.com/sandbox/api/lifecycle/#destroy).
+When a command times out, the SDK raises an error on the caller side and closes the connection. The underlying process **continues running** inside the container. To stop a timed-out process, delete the session with [`deleteSession()`](https://developers.cloudflare.com/sandbox/api/sessions/#deletesession) or destroy the sandbox with [`destroy()`](https://developers.cloudflare.com/sandbox/api/lifecycle/#destroy).
 
-Timeout precedence: per-command `timeout` on `exec()` \> session-level `commandTimeoutMs` on [createSession()](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) \> global [COMMAND\_TIMEOUT\_MS](https://developers.cloudflare.com/sandbox/configuration/environment-variables/#command%5Ftimeout%5Fms) environment variable. If none are set, commands run without a timeout.
+Timeout precedence: per-command `timeout` on `exec()` > session-level `commandTimeoutMs` on [`createSession()`](https://developers.cloudflare.com/sandbox/api/sessions/#createsession) > global [`COMMAND_TIMEOUT_MS`](https://developers.cloudflare.com/sandbox/configuration/environment-variables/#command_timeout_ms) environment variable. If none are set, commands run without a timeout.
 
 ### `execStream()`
 
@@ -135,8 +135,8 @@ const stream = await sandbox.execStream(command: string, options?: ExecOptions):
 
 **Parameters**:
 
-* `command` \- The command to execute
-* `options` \- Same as `exec()` (including `stdin` support)
+- `command` - The command to execute
+- `options` - Same as `exec()` (including `stdin` support)
 
 **Returns**: `Promise<ReadableStream>` emitting `ExecEvent` objects (`start`, `stdout`, `stderr`, `complete`, `error`)
 
@@ -215,28 +215,28 @@ const process = await sandbox.startProcess(command: string, options?: ProcessOpt
 
 **Parameters**:
 
-* `command` \- The command to start as a background process
-* `options` (optional):
-  * `cwd` \- Working directory
-  * `env` \- Environment variables: `Record<string, string | undefined>`
-  * `stdin` \- Data to pass to the command's standard input
-  * `timeout` \- Maximum execution time in milliseconds
-  * `processId` \- Custom process ID
-  * `encoding` \- Output encoding (default: `'utf8'`)
-  * `autoCleanup` \- Whether to clean up process on sandbox sleep
+- `command` - The command to start as a background process
+- `options` (optional):
+  - `cwd` - Working directory
+  - `env` - Environment variables: `Record<string, string | undefined>`
+  - `stdin` - Data to pass to the command's standard input
+  - `timeout` - Maximum execution time in milliseconds
+  - `processId` - Custom process ID
+  - `encoding` - Output encoding (default: `'utf8'`)
+  - `autoCleanup` - Whether to clean up process on sandbox sleep
 
 **Returns**: `Promise<Process>` object with:
 
-* `id` \- Unique process identifier
-* `pid` \- System process ID
-* `command` \- The command being executed
-* `status` \- Current status (`'running'`, `'exited'`, etc.)
-* `kill()` \- Stop the process
-* `getStatus()` \- Get current status
-* `getLogs()` \- Get accumulated logs
-* `waitForPort()` \- Wait for process to listen on a port
-* `waitForLog()` \- Wait for pattern in process output
-* `waitForExit()` \- Wait for process to terminate and return exit code
+- `id` - Unique process identifier
+- `pid` - System process ID
+- `command` - The command being executed
+- `status` - Current status ( `'running'`, `'exited'`, etc.)
+- `kill()` - Stop the process
+- `getStatus()` - Get current status
+- `getLogs()` - Get accumulated logs
+- `waitForPort()` - Wait for process to listen on a port
+- `waitForLog()` - Wait for pattern in process output
+- `waitForExit()` - Wait for process to terminate and return exit code
 
 ```js
 const server = await sandbox.startProcess("python -m http.server 8000");
@@ -304,8 +304,8 @@ await sandbox.killProcess(processId: string, signal?: string): Promise<void>
 
 **Parameters**:
 
-* `processId` \- The process ID (from `startProcess()` or `listProcesses()`)
-* `signal` \- Signal to send (default: `"SIGTERM"`)
+- `processId` - The process ID (from `startProcess()` or `listProcesses()`)
+- `signal` - Signal to send (default: `"SIGTERM"`)
 
 Sends the signal to the entire process group, ensuring that both the main process and any child processes it spawned are terminated. This prevents orphaned processes from continuing to run after the parent is killed.
 
@@ -357,7 +357,7 @@ const stream = await sandbox.streamProcessLogs(processId: string): Promise<Reada
 
 **Parameters**:
 
-* `processId` \- The process ID
+- `processId` - The process ID
 
 **Returns**: `Promise<ReadableStream>` emitting `LogEvent` objects
 
@@ -397,7 +397,7 @@ const logs = await sandbox.getProcessLogs(processId: string): Promise<string>
 
 **Parameters**:
 
-* `processId` \- The process ID
+- `processId` - The process ID
 
 **Returns**: `Promise<string>` with all accumulated output
 
@@ -531,13 +531,13 @@ await process.waitForPort(port: number, options?: WaitForPortOptions): Promise<v
 
 **Parameters**:
 
-* `port` \- The port number to check
-* `options` (optional):
-  * `mode` \- Check mode: `'http'` (default) or `'tcp'`
-  * `timeout` \- Maximum wait time in milliseconds
-  * `interval` \- Check interval in milliseconds (default: `100`)
-  * `path` \- HTTP path to check (default: `'/'`, HTTP mode only)
-  * `status` \- Expected HTTP status range (default: `{ min: 200, max: 399 }`, HTTP mode only)
+- `port` - The port number to check
+- `options` (optional):
+  - `mode` - Check mode: `'http'` (default) or `'tcp'`
+  - `timeout` - Maximum wait time in milliseconds
+  - `interval` - Check interval in milliseconds (default: `100`)
+  - `path` - HTTP path to check (default: `'/'`, HTTP mode only)
+  - `status` - Expected HTTP status range (default: `{ min: 200, max: 399 }`, HTTP mode only)
 
 **HTTP mode** (default) makes an HTTP GET request and checks the response status:
 
@@ -593,8 +593,8 @@ await db.waitForPort(6379, {
 
 **Throws**:
 
-* `ProcessReadyTimeoutError` \- If port does not become ready within timeout
-* `ProcessExitedBeforeReadyError` \- If process exits before becoming ready
+- `ProcessReadyTimeoutError` - If port does not become ready within timeout
+- `ProcessExitedBeforeReadyError` - If process exits before becoming ready
 
 ### `process.waitForLog()`
 
@@ -606,13 +606,13 @@ const result = await process.waitForLog(pattern: string | RegExp, timeout?: numb
 
 **Parameters**:
 
-* `pattern` \- String or RegExp to match in stdout/stderr
-* `timeout` \- Maximum wait time in milliseconds (optional)
+- `pattern` - String or RegExp to match in stdout/stderr
+- `timeout` - Maximum wait time in milliseconds (optional)
 
 **Returns**: `Promise<WaitForLogResult>` with:
 
-* `line` \- The matching line of output
-* `matches` \- Array of capture groups (for RegExp patterns)
+- `line` - The matching line of output
+- `matches` - Array of capture groups (for RegExp patterns)
 
 ```js
 const server = await sandbox.startProcess("node server.js");
@@ -646,8 +646,8 @@ await server.waitForLog('Ready', 30000);
 
 **Throws**:
 
-* `ProcessReadyTimeoutError` \- If pattern is not found within timeout
-* `ProcessExitedBeforeReadyError` \- If process exits before pattern appears
+- `ProcessReadyTimeoutError` - If pattern is not found within timeout
+- `ProcessExitedBeforeReadyError` - If process exits before pattern appears
 
 ### `process.waitForExit()`
 
@@ -659,11 +659,11 @@ const result = await process.waitForExit(timeout?: number): Promise<WaitForExitR
 
 **Parameters**:
 
-* `timeout` \- Maximum wait time in milliseconds (optional)
+- `timeout` - Maximum wait time in milliseconds (optional)
 
 **Returns**: `Promise<WaitForExitResult>` with:
 
-* `exitCode` \- The process exit code
+- `exitCode` - The process exit code
 
 ```js
 const build = await sandbox.startProcess("npm run build");
@@ -689,12 +689,12 @@ const result = await build.waitForExit(60000); // 60 second timeout
 
 **Throws**:
 
-* `ProcessReadyTimeoutError` \- If process does not exit within timeout
+- `ProcessReadyTimeoutError` - If process does not exit within timeout
 
 ## Related resources
 
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running processes
-* [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- File operations
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Managing long-running processes
+- [Files API](https://developers.cloudflare.com/sandbox/api/files/) - File operations
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create your OAuth client
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -20,21 +20,21 @@ To create an OAuth client, you must have one of these roles for the associated a
 
 1. Log in to the Cloudflare dashboard.
 2. Select your account.
-3. Go to **Manage Account** \> **OAuth clients**.
+3. Go to **Manage Account** > **OAuth clients**.
 4. Select **Create client**.
 5. Enter the required configuration details:
-  * Client name
-  * Response type
-  * Grant type
-  * Token authentication method
-  * Redirect URLs
+   - Client name
+   - Response type
+   - Grant type
+   - Token authentication method
+   - Redirect URLs
 6. Optional: Add non-required fields.
 7. Select **Continue** and define the scopes required for your client.
 8. Optional: In **Choose optional scopes**, turn off **Required** for each scope you want to make optional. All scopes are required by default.
 9. Select **Create client**.
 10. Save your **Client ID** and **Client Secret** in a secure location.
 
-[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 To create OAuth clients with the Cloudflare API, create an API token with the `OAuth Clients Write` permission.
 
@@ -93,26 +93,26 @@ Cloudflare does not support Client Credentials, Implicit, Resource Owner Passwor
 
 Use the following guidance to choose an OAuth flow:
 
-| Client type                                | Flow                                    | Token endpoint authentication                 | PKCE                  |
-| ------------------------------------------ | --------------------------------------- | --------------------------------------------- | --------------------- |
-| Server-side web app or backend service     | Authorization Code with a client secret | client\_secret\_basic or client\_secret\_post | Optional/not required |
-| Browser-based, mobile, desktop, or CLI app | Authorization Code with PKCE            | none                                          | Required, S256        |
+| Client type | Flow | Token endpoint authentication | PKCE |
+| --- | --- | --- | --- |
+| Server-side web app or backend service | Authorization Code with a client secret | `client_secret_basic` or `client_secret_post` | Optional/not required |
+| Browser-based, mobile, desktop, or CLI app | Authorization Code with PKCE | `none` | Required, `S256` |
 
 ### Client secret
 
 The Authorization Code flow is intended for secure server-side applications that can protect a client secret from exposure.
 
-* **Use when:** Your OAuth client is a server-side web application or backend service.
-* **How it works:** Your client redirects the user to the authorization page. After authorization, Cloudflare returns an authorization code to your backend. Your backend exchanges the code and client secret for an access token.
-* **Security note:** Never expose your client secret in client-side code or embed it in mobile client binaries.
+- **Use when:** Your OAuth client is a server-side web application or backend service.
+- **How it works:** Your client redirects the user to the authorization page. After authorization, Cloudflare returns an authorization code to your backend. Your backend exchanges the code and client secret for an access token.
+- **Security note:** Never expose your client secret in client-side code or embed it in mobile client binaries.
 
 ### PKCE
 
 Proof Key for Code Exchange (PKCE) extends the Authorization Code flow for public clients, such as mobile or single-page apps, where a client secret cannot be securely stored.
 
-* **Use when:** Your OAuth client is a single-page, mobile, desktop, or CLI application.
-* **How it works:** Your application generates a unique code verifier and code challenge for every login request instead of using a static client secret.
-* **Security note:** Clients that use PKCE do not need a client secret.
+- **Use when:** Your OAuth client is a single-page, mobile, desktop, or CLI application.
+- **How it works:** Your application generates a unique code verifier and code challenge for every login request instead of using a static client secret.
+- **Security note:** Clients that use PKCE do not need a client secret.
 
 ## Private and public clients
 
@@ -122,10 +122,10 @@ Before you make a client public, complete the required actions and populate the 
 
 ### Required fields
 
-* Client name
-* Logo
-* Client URL
-* Scopes
+- Client name
+- Logo
+- Client URL
+- Scopes
 
 ### Required actions
 
@@ -137,11 +137,11 @@ Caution
 
 Setting a client's visibility to public is permanent. You cannot change the visibility back to private.
 
-1. Go to **Manage Account** \> **OAuth clients**.
+1. Go to **Manage Account** > **OAuth clients**.
 2. Open the action menu for your client.
 3. Select **Change Visibility**.
 
-[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 ```bash
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \
@@ -179,13 +179,13 @@ curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_c
 
 Each client can have two secrets. This lets you create a new secret, update your client to use the new secret, and delete the old secret.
 
-1. Go to **Manage Account** \> **OAuth clients**.
+1. Go to **Manage Account** > **OAuth clients**.
 2. Open the action menu for your client.
 3. Select **Rotate client secret**.
 4. Save the new secret in a secure location.
 5. After your client uses the new secret, delete the old secret.
 
-[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 To check whether a client is in the middle of a secret rotation, look for `has_rotated_secret` in the `GET` response. If the value is `true`, delete the old secret before you create another secret.
 

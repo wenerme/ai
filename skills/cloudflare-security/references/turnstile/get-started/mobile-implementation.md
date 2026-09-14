@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mobile implementation
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/mobile-implementation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile requires a browser environment because it runs JavaScript challenges in the visitor's browser. On mobile devices, Turnstile works in mobile browsers without additional configuration.
 
@@ -30,21 +30,21 @@ For Turnstile to function properly in WebView, the following requirements must b
 
 #### JavaScript support
 
-* JavaScript execution must be enabled.
-* DOM storage API must be available.
-* Standard web APIs must be accessible.
+- JavaScript execution must be enabled.
+- DOM storage API must be available.
+- Standard web APIs must be accessible.
 
 #### Network access
 
-* Access to `challenges.cloudflare.com`
-* Support for both HTTP and HTTPS connections.
-* Allow connections to `about:blank` and `about:srcdoc`
+- Access to `challenges.cloudflare.com`
+- Support for both HTTP and HTTPS connections.
+- Allow connections to `about:blank` and `about:srcdoc`
 
 #### Environment consistency
 
-* Consistent User Agent throughout the session
-* Stable device and browser characteristics
-* No modification to core browser behavior
+- Consistent User Agent throughout the session
+- Stable device and browser characteristics
+- No modification to core browser behavior
 
 ### Platform-specific implementation
 
@@ -180,10 +180,10 @@ WebView security restrictions can prevent access to the domains that Turnstile r
 
 To resolve this, configure your WebView's allowed origins to include all domains that Turnstile needs:
 
-* `challenges.cloudflare.com`
-* `about:blank`
-* `about:srcdoc`
-* Your own domain(s)
+- `challenges.cloudflare.com`
+- `about:blank`
+- `about:srcdoc`
+- Your own domain(s)
 
 The exact configuration method varies by platform, but the principle is to explicitly allow network access for these domains.
 

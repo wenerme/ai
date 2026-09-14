@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Challenge solve issues
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/challenge-solve-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,11 +22,11 @@ Challenge Pages are issued through the Cloudflare Challenge Platform, which uses
 
 You may encounter a challenge loop where the challenge keeps reappearing without being solved. This is in very specific cases where we detect strong bot signals. If you are a legitimate human, you can follow the troubleshooting guide below to resolve the issue or submit a feedback report. Challenge loops can happen for several reasons:
 
-* **Network issues**: Poor or unstable network connections can prevent the challenge from being completed.
-* **Browser configuration**: Some browser settings or extensions may block the scripts needed to execute the challenge.
-* **Unsupported browsers**: Using a browser that is not supported by Turnstile.
-* **JavaScript disabled**: Turnstile relies on JavaScript to function properly.
-* **Detection errors**: If Turnstile suspects bot-like behavior, you may encounter repeated challenges for verification.
+- **Network issues**: Poor or unstable network connections can prevent the challenge from being completed.
+- **Browser configuration**: Some browser settings or extensions may block the scripts needed to execute the challenge.
+- **Unsupported browsers**: Using a browser that is not supported by Turnstile.
+- **JavaScript disabled**: Turnstile relies on JavaScript to function properly.
+- **Detection errors**: If Turnstile suspects bot-like behavior, you may encounter repeated challenges for verification.
 
 Most challenges are quick to complete and typically take only a few seconds. If it takes longer, ensure your network is stable and follow the [troubleshooting steps](#troubleshooting).
 
@@ -53,29 +53,29 @@ Given that these DNS host lookup failures are **expected** and **non-fatal** for
 Follow the steps below to ensure that your environment is properly configured.
 
 1. Verify your browser compatibility.
-  * Turnstile supports all major browsers, except Internet Explorer.
-  * Ensure your browser is up to date. For more information, refer to our [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/).
-  * Run a test on the [compatibility checking tool ↗](https://debug.challenges.cloudflare.com/).
+   - Turnstile supports all major browsers, except Internet Explorer.
+   - Ensure your browser is up to date. For more information, refer to our [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/).
+   - Run a test on the [compatibility checking tool ↗](https://debug.challenges.cloudflare.com/).
 2. Disable your browser extensions.
-  * Some browser extensions, such as ad blockers, may block the scripts Turnstile needs to operate.
-  * Temporarily disable all extensions and reload the page.
+   - Some browser extensions, such as ad blockers, may block the scripts Turnstile needs to operate.
+   - Temporarily disable all extensions and reload the page.
 3. Enable JavaScript.
-  * Turnstile requires JavaScript to run. Ensure it is enabled in your browser settings. Refer to your browser's documentation for instructions on enabling JavaScript.
+   - Turnstile requires JavaScript to run. Ensure it is enabled in your browser settings. Refer to your browser's documentation for instructions on enabling JavaScript.
 4. Try Incognito or Private mode.
-  * Use your browser's incognito or private mode to rule out issues caused by extensions or cached data.
+   - Use your browser's incognito or private mode to rule out issues caused by extensions or cached data.
 5. Test another browser or device.
-  * Switch to a different browser or device to see if the issue is specific to your current setup.
+   - Switch to a different browser or device to see if the issue is specific to your current setup.
 6. Avoid VPNs or proxies.
-  * Some virtual private networks (VPN) or proxies may interfere with Turnstile. Disable them temporarily to test.
+   - Some virtual private networks (VPN) or proxies may interfere with Turnstile. Disable them temporarily to test.
 7. Switch to a different network.
-  * Your current network may have restrictions causing Turnstile challenges to fail. Try switching to another network, such as a mobile hotspot.
+   - Your current network may have restrictions causing Turnstile challenges to fail. Try switching to another network, such as a mobile hotspot.
 
 ## Collect diagnostic information
 
 If the issue persists, collect the following information before contacting the website administrator or Cloudflare Support:
 
-* A HAR file captured while reproducing the issue. For challenge loops, enable **Preserve log** in your browser's developer tools before reproducing the problem. You may also need to select **Disable cache**.
-* A browser console log export captured during the same session.
+- A HAR file captured while reproducing the issue. For challenge loops, enable **Preserve log** in your browser's developer tools before reproducing the problem. You may also need to select **Disable cache**.
+- A browser console log export captured during the same session.
 
 For step-by-step instructions, refer to [Gathering information for troubleshooting sites](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/).
 

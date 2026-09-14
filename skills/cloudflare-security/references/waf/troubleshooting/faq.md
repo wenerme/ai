@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## General questions
 
@@ -26,8 +26,8 @@ In this case, Cloudflare considers the client details, including its IP address,
 
 Yes, you may have to escape certain characters in expressions. The exact escaping will depend on the string syntax you use:
 
-* If you use the raw string syntax (for example, `r#"this is a string"#`), you will only need to escape characters that have a special meaning in regular expressions.
-* If you use the quoted string syntax (for example, `"this is a string"`), you need to perform additional escaping, such as escaping special characters `"` and `\` using `\"` and `\\`, both in literal strings and in regular expressions.
+- If you use the raw string syntax (for example, `r#"this is a string"#`), you will only need to escape characters that have a special meaning in regular expressions.
+- If you use the quoted string syntax (for example, `"this is a string"`), you need to perform additional escaping, such as escaping special characters `"` and `\` using `\"` and `\\`, both in literal strings and in regular expressions.
 
 For more information on string syntaxes and escaping, refer to [String values and regular expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#string-values-and-regular-expressions).
 
@@ -45,22 +45,22 @@ These automatic bypasses do not appear in [Trace](https://developers.cloudflare.
 
 Cloudflare may block requests when it detects activity that could be unsafe. Common reasons include:
 
-* Security protection against malicious traffic, DDoS attacks, or other threats.
-* Excessive requests in a short time (rate limiting).
-* Bot-like or automated traffic.
-* IP addresses listed on public blocklists, such as [Project Honey Pot ↗](https://projecthoneypot.org/).
+- Security protection against malicious traffic, DDoS attacks, or other threats.
+- Excessive requests in a short time (rate limiting).
+- Bot-like or automated traffic.
+- IP addresses listed on public blocklists, such as [Project Honey Pot ↗](https://projecthoneypot.org/).
 
 If you are a site visitor:
 
-* Contact the site owner, providing details of your actions when the block occurred and the Cloudflare Ray ID displayed at the bottom of the error page.
-* Avoid suspicious inputs or automated scripts.
-* Check your IP reputation through [Project Honey Pot ↗](https://projecthoneypot.org/).
+- Contact the site owner, providing details of your actions when the block occurred and the Cloudflare Ray ID displayed at the bottom of the error page.
+- Avoid suspicious inputs or automated scripts.
+- Check your IP reputation through [Project Honey Pot ↗](https://projecthoneypot.org/).
 
 If you are the site owner:
 
-* Adjust security settings to balance protection with accessibility.
-* Monitor blocked requests in your Cloudflare dashboard.
-* Allowlist trusted IPs or fine-tune WAF/bot rules to reduce false positives.
+- Adjust security settings to balance protection with accessibility.
+- Monitor blocked requests in your Cloudflare dashboard.
+- Allowlist trusted IPs or fine-tune WAF/bot rules to reduce false positives.
 
 Note
 
@@ -72,7 +72,7 @@ ISP-level blocks are distinct from Cloudflare or site-owner security restriction
 
 #### Caution about potentially blocking bots
 
-When you create a custom rule with a _Block_, _Non-Interactive Challenge_, _Managed Challenge_, or _Interactive Challenge_ action, you might unintentionally block traffic from known bots. Specifically, this might affect search engine optimization (SEO) and website monitoring when trying to enforce a mitigation action based on URI, path, host, ASN, or country.
+When you create a custom rule with a *Block*, *Non-Interactive Challenge*, *Managed Challenge*, or *Interactive Challenge* action, you might unintentionally block traffic from known bots. Specifically, this might affect search engine optimization (SEO) and website monitoring when trying to enforce a mitigation action based on URI, path, host, ASN, or country.
 
 Refer to the [Challenges documentation](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/#allowlist-traffic-from-mitigation-actions) for more information.
 

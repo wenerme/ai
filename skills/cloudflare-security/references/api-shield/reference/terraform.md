@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terraform
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/reference/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/reference/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Get started with API Shield using Terraform from the examples below. For more information on how to use Terraform with Cloudflare, refer to the [Terraform documentation](https://developers.cloudflare.com/terraform/).
 
@@ -20,24 +20,26 @@ The following resources are available to configure through Terraform:
 
 **Session identifiers**
 
-* [api\_shield ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield) for configuring session identifiers in API Shield.
+- [`api_shield` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield) for configuring session identifiers in API Shield.
 
 **Web Assets operations**
 
-* [api\_shield\_operation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Foperation) for configuring operations.
+- [`api_shield_operation` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_operation) for configuring operations.
 
 **Schema validation**
 
-* [cloudflare\_schema\_validation\_schemas ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema%5Fvalidation%5Fschemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/). ~~[api\_shield\_schema ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Fshield%5Fschema)~~ has been deprecated and will be removed in a future version of the terraform provider.
+- [`cloudflare_schema_validation_schemas` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema_validation_schemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/). ~~ [`api_shield_schema` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_schema)~~ has been deprecated and will be removed in a future version of the terraform provider.
 
 **JWT Validation**
 
-* [cloudflare\_token\_validation\_config ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token%5Fvalidation%5Fconfig) for setting up JWT validation with specific keying material and token locations.
-* [cloudflare\_token\_validation\_rules ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token%5Fvalidation%5Frules) for setting up rules to action on the validation result.
+- [`cloudflare_token_validation_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_config) for setting up JWT validation with specific keying material and token locations.
+- [`cloudflare_token_validation_rules` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_rules) for setting up rules to action on the validation result.
 
 ## Manage API Shield session identifiers
 
 Refer to the example configuration below to set up [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers) on your zone.
+
+*Example configurationtf*
 
 ```tf
 resource "cloudflare_api_shield" "session_identifiers" {
@@ -52,6 +54,8 @@ resource "cloudflare_api_shield" "session_identifiers" {
 ## Manage Web Assets operations
 
 Manage operations by method, hostname, and path. Operations appear in the Web Assets inventory.
+
+*Example configurationtf*
 
 ```tf
 resource "cloudflare_api_shield_operation" "get_image" {
@@ -77,6 +81,8 @@ Configure Web Assets operations before activating uploaded schema evaluation wit
 
 The schema resource uploads an OpenAPI schema. Setting `validation_enabled` to `true` makes uploaded profile evaluation available.
 
+*Example configurationtf*
+
 ```tf
 # Upload an OpenAPI schema for Schema Validation
 resource "cloudflare_schema_validation_schemas" "example_schema" {
@@ -94,6 +100,8 @@ Activation does not configure mitigation. Use `cf.schema_validation.uploaded.vio
 ## Validate JWTs
 
 Refer to the example configuration below to perform [JWT Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) on your zone.
+
+*Example configurationtf*
 
 ```tf
 # Setting up JWT validation with specific keying material and location of the token

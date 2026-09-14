@@ -12,39 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secure remote access to your critical infrastructure
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/secure-remote-access-to-critical-infrastructure-3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this video learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles. Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction to SASE and Securing Access to Critical Infrastructure**0s
-* ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)
+- ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction to SASE and Securing Access to Critical Infrastructure**0s
+- ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)**Connecting and Securing Private Servers with Cloudflare Tunnels**50s
+- ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)**Using Internal DNS to Securely Resolve Private Network Resources**2m12s
+- ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)**Connecting User Devices Securely with Cloudflare's Device Agent**3m1s
+- ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)**Enforcing Access Control with Identity, Network and Device Based Security Policies**3m48s
+- ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)**Auditing and Logging Access to Critical Infrastructure**5m3s
 
-**Connecting and Securing Private Servers with Cloudflare Tunnels**50s
-* ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)
-
-**Using Internal DNS to Securely Resolve Private Network Resources**2m12s
-* ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)
-
-**Connecting User Devices Securely with Cloudflare's Device Agent**3m1s
-* ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)
-
-**Enforcing Access Control with Identity, Network and Device Based Security Policies**3m48s
-* ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)
-
-**Auditing and Logging Access to Critical Infrastructure**5m3s
+</details>
 
 **Related content**
 
 If you want to dive into detail about using Cloudflare to access critical infrastructure, refer to the following pages:
 
-* [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-* [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/)
-* [Using a Zero Trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
-* [Building Zero Trust architecture into your startup](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
+- [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- [SSH with Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/)
+- [Using a Zero Trust framework to secure SaaS applications](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/)
+- [Building Zero Trust architecture into your startup](https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-startups/)
 
 ### [Watch Episode 1: The evolution of corporate networks](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/)
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Third party licenses
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/legal/3rdparty/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/legal/3rdparty/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Following is the third party license information for RealtimeKit SDKs.
 
@@ -20,21 +20,21 @@ Following is the third party license information for RealtimeKit SDKs.
 
 The following SDKs are collectively referred to as Web SDKs:
 
-* [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit)
-* [@cloudflare/realtimekit-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)
-* [@cloudflare/realtimekit-react ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react)
-* [@cloudflare/realtimekit-react-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)
-* [@cloudflare/realtimekit-angular-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)
-* [@cloudflare/realtimekit-ui-addons ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui-addons)
-* [@cloudflare/realtimekit-recording-sdk ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk)
-* [@cloudflare/realtimekit-virtual-background ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-virtual-background)
+- [`@cloudflare/realtimekit` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit)
+- [`@cloudflare/realtimekit-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)
+- [`@cloudflare/realtimekit-react` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react)
+- [`@cloudflare/realtimekit-react-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)
+- [`@cloudflare/realtimekit-angular-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)
+- [`@cloudflare/realtimekit-ui-addons` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui-addons)
+- [`@cloudflare/realtimekit-recording-sdk` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk)
+- [`@cloudflare/realtimekit-virtual-background` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-virtual-background)
 
 Overview of licenses:
 
-* Apache-2.0 (3)
-* ISC (1)
-* MIT (16)
-* Unknown (1)
+- Apache-2.0 (3)
+- ISC (1)
+- MIT (16)
+- Unknown (1)
 
 ### MIT (6 packages)
 
@@ -822,12 +822,12 @@ Apache License
 
 The following SDKs are collectively referred to as Android SDKs:
 
-* [com.cloudflare.realtimekit:core-android ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-android)
-* [com.cloudflare.realtimekit:ui-android ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android)
+- [`com.cloudflare.realtimekit:core-android` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-android)
+- [`com.cloudflare.realtimekit:ui-android` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android)
 
 Overview of licenses:
 
-* Apache-2.0 (24)
+- Apache-2.0 (24)
 
 ### Apache-2.0 (15 packages)
 
@@ -1943,13 +1943,13 @@ Apache License
 
 The following SDKs are collectively referred to as iOS SDKs:
 
-* [RealtimeKit ↗](https://github.com/dyte-in/RealtimeKitCoreiOS)
-* [RealtimeKitUI ↗](https://github.com/dyte-in/RealtimeKitUI)
-* [RealtimeKit KMM Core ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-iosarm64)
+- [`RealtimeKit` ↗](https://github.com/dyte-in/RealtimeKitCoreiOS)
+- [`RealtimeKitUI` ↗](https://github.com/dyte-in/RealtimeKitUI)
+- [`RealtimeKit KMM Core` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-iosarm64)
 
 Overview of licenses:
 
-* Apache-2.0 (8)
+- Apache-2.0 (8)
 
 ### Apache-2.0 (4 packages)
 
@@ -2825,20 +2825,20 @@ Apache License
 
 The following SDKs are collectively referred to as React Native SDKs:
 
-* [@cloudflare/realtimekit-react-native ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native)
-* [@cloudflare/realtimekit-react-native-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui)
+- [`@cloudflare/realtimekit-react-native` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native)
+- [`@cloudflare/realtimekit-react-native-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui)
 
 Overview of licenses:
 
-* Apache-2.0 (3)
-* BSD-2-Clause (10)
-* BSD-3-Clause (3)
-* GPL-2.0 (1)
-* ISC (10)
-* MIT (203)
-* Artistic License 2.0 (1)
-* CC-BY-4.0 (1)
-* CC0 1.0 Universal (1)
+- Apache-2.0 (3)
+- BSD-2-Clause (10)
+- BSD-3-Clause (3)
+- GPL-2.0 (1)
+- ISC (10)
+- MIT (203)
+- Artistic License 2.0 (1)
+- CC-BY-4.0 (1)
+- CC0 1.0 Universal (1)
 
 ### MIT (15 packages)
 
@@ -3136,7 +3136,7 @@ Used by:
 
 [create-hmac ↗](https://github.com/crypto-browserify/createHmac)
 
-[evp\_bytestokey ↗](https://github.com/crypto-browserify/EVP%5FBytesToKey)
+[evp\_bytestokey ↗](https://github.com/crypto-browserify/EVP_BytesToKey)
 
 ```plaintext
 The MIT License (MIT)
@@ -3228,7 +3228,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (3 packages)
@@ -4060,7 +4059,6 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
-
 ```
 
 ### MIT (function-bind)
@@ -4089,7 +4087,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
 ```
 
 ### MIT (get-proto)
@@ -4270,7 +4267,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (define-properties)
@@ -4832,7 +4828,6 @@ Used by:
 [querystring-es3 ↗](https://github.com/mike-spainhower/querystring)
 
 ```plaintext
-
 Copyright 2012 Irakli Gozalishvili. All rights reserved.
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -5120,14 +5115,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (string\_decoder)
 
 Used by:
 
-[string\_decoder ↗](https://github.com/nodejs/string%5Fdecoder)
+[string\_decoder ↗](https://github.com/nodejs/string_decoder)
 
 ```plaintext
 Node.js is licensed for use as follows:
@@ -5177,7 +5171,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 """
-
 ```
 
 ### MIT (ripemd160)
@@ -5265,7 +5258,6 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
 ```
 
 ### MIT (to-buffer)
@@ -5756,7 +5748,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### BSD-2-Clause (sjcl)
@@ -6627,7 +6618,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### BSD-2-Clause (hoist-non-react-statics)
@@ -6812,7 +6802,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (react-native-iphone-x-helper)
@@ -6873,7 +6862,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (react-native-parsed-text)
@@ -7082,7 +7070,6 @@ LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE A
 IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 ```
 
 ### MIT (ms)
@@ -8117,7 +8104,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 ```
 
 ### MIT (resolve-from)
@@ -8736,7 +8722,6 @@ Used by:
 [source-map-js ↗](https://github.com/7rulnik/source-map-js)
 
 ```plaintext
-
 Copyright (c) 2009-2011, Mozilla Foundation and contributors
 All rights reserved.
 
@@ -8852,7 +8837,6 @@ Used by:
 [path-dirname ↗](https://github.com/es128/path-dirname)
 
 ```plaintext
-
 The MIT License (MIT)
 
 Copyright (c) Elan Shanker and Node.js contributors. All rights reserved.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gathering information for troubleshooting sites
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About this guide
 
@@ -28,18 +28,18 @@ Cloudflare support cannot make configuration changes on behalf of customers due 
 
 Use this table to quickly identify which troubleshooting method to use based on your issue:
 
-| Issue Type                     | Recommended Tool                                                                    | When to Use                                               |
-| ------------------------------ | ----------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| Page not loading correctly     | [HAR file](#generate-a-har-file)                                                    | Visual issues, broken elements, slow page loads           |
-| JavaScript errors              | [Console log](#export-console-log)                                                  | CORS errors, scripts failing, browser-side errors         |
-| Protocol errors (QUIC/HTTP2)   | [NetLog dump](#capture-a-netlog-dump)                                               | ERR\_QUIC\_PROTOCOL\_ERROR, ERR\_HTTP2\_PROTOCOL\_ERROR   |
-| Slow response times            | [curl (performance)](#performance)                                                  | Measuring latency, TLS handshake times                    |
-| HTTP errors (5xx, 4xx)         | [curl (HTTP errors)](#http-errors)                                                  | Determining if errors originate from Cloudflare or origin |
-| Caching issues                 | [curl (caching)](#caching)                                                          | Cache misses, stale content, cache headers                |
-| SSL/TLS certificate issues     | [curl (SSL/TLS)](#ssltls-certificates)                                              | Certificate errors, TLS version issues                    |
-| Connection timeouts/drops      | [Traceroute](#perform-a-traceroute) / [MTR](#perform-a-mtr)                         | Network path issues, latency between hops                 |
-| Packet loss, connection resets | [Packet capture](#run-packet-captures)                                              | Layer 3/4 issues, SSL handshake failures                  |
-| Identifying serving location   | [Cloudflare data center](#identify-the-cloudflare-data-center-serving-your-request) | Determine which Cloudflare PoP is serving requests        |
+| Issue Type | Recommended Tool | When to Use |
+| --- | --- | --- |
+| Page not loading correctly | [HAR file](#generate-a-har-file) | Visual issues, broken elements, slow page loads |
+| JavaScript errors | [Console log](#export-console-log) | CORS errors, scripts failing, browser-side errors |
+| Protocol errors (QUIC/HTTP2) | [NetLog dump](#capture-a-netlog-dump) | `ERR_QUIC_PROTOCOL_ERROR`, `ERR_HTTP2_PROTOCOL_ERROR` |
+| Slow response times | [curl (performance)](#performance) | Measuring latency, TLS handshake times |
+| HTTP errors (5xx, 4xx) | [curl (HTTP errors)](#http-errors) | Determining if errors originate from Cloudflare or origin |
+| Caching issues | [curl (caching)](#caching) | Cache misses, stale content, cache headers |
+| SSL/TLS certificate issues | [curl (SSL/TLS)](#ssltls-certificates) | Certificate errors, TLS version issues |
+| Connection timeouts/drops | [Traceroute](#perform-a-traceroute) / [MTR](#perform-a-mtr) | Network path issues, latency between hops |
+| Packet loss, connection resets | [Packet capture](#run-packet-captures) | Layer 3/4 issues, SSL handshake failures |
+| Identifying serving location | [Cloudflare data center](#identify-the-cloudflare-data-center-serving-your-request) | Determine which Cloudflare PoP is serving requests |
 
 ---
 
@@ -69,23 +69,27 @@ Some browsers either require a browser extension or cannot generate a HAR. When 
 
 1. In a browser page viewed in Incognito Mode, right-click anywhere and select **Inspect Element**.
 2. The Chrome DevTools appear either at the bottom, or left side of the browser. Click the **Network** tab.
+
 ![HAR network tab screenshot from Chrome developer tools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/gathering_har_file_network.ChkQZzBt.png)
-1. Check **Preserve log**. Please also check **Disable cache** if you are reporting a Cloudflare Cache issue.
-2. Click record.
+
+3. Check **Preserve log**. Please also check **Disable cache** if you are reporting a Cloudflare Cache issue.
+4. Click record.
+
 ![HAR record button in chrome dev tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/gathering_har_file_record.BkFUFIPY.png)
-1. Browse to the URL that causes issues. Once the issue is experienced, click the "Export HAR" option at the top of DevTools.
+
+5. Browse to the URL that causes issues. Once the issue is experienced, click the "Export HAR" option at the top of DevTools.
 
 ![export HAR option in Chrome DevTools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1404,height=240,format=webp/_astro/export_har_chrome.DaDwwlXd.png).
 
-1. Attach the HAR file to your support ticket.
+6. Attach the HAR file to your support ticket.
 
 Note
 
-As of Chrome 130, this exports a sanitized HAR with redacted cookies and personalised data. To disable this, go to DevTools **Settings** \> **Preferences** \> **Network** \> **Allow to generate HAR with sensitive data**.
+As of Chrome 130, this exports a sanitized HAR with redacted cookies and personalised data. To disable this, go to DevTools **Settings** > **Preferences** > **Network** > **Allow to generate HAR with sensitive data**.
 
 #### In Firefox
 
-1. While using a Private Window, use the application menu and select **Tools** \> **Web Developer** \> **Network** or press _Ctrl+Shift+I_ (Windows/Linux) or _Cmd+Option+I_ (OS X).
+1. While using a Private Window, use the application menu and select **Tools** > **Web Developer** > **Network** or press *Ctrl+Shift+I* (Windows/Linux) or *Cmd+Option+I* (OS X).
 2. Browse to the URL that causes issues.
 3. After duplicating the issue, right-click and choose **Save All As HAR**.
 
@@ -97,8 +101,8 @@ As of Chrome 130, this exports a sanitized HAR with redacted cookies and persona
 
 #### In Safari
 
-1. In Safari, ensure a **Develop** menu appears at the top of a Private Window in the browser window. Otherwise, go to **Safari** \> **Preferences** \> **Advanced** and select **Show Develop Menu in menu bar**
-2. Navigate to **Develop** \> **Show Web Inspector**.
+1. In Safari, ensure a **Develop** menu appears at the top of a Private Window in the browser window. Otherwise, go to **Safari** > **Preferences** > **Advanced** and select **Show Develop Menu in menu bar**
+2. Navigate to **Develop** > **Show Web Inspector**.
 3. Browse to the URL that causes issues.
 4. Ctrl + click on a resource within Web Inspector and click **Export HAR**.
 
@@ -109,21 +113,27 @@ As of Chrome 130, this exports a sanitized HAR with redacted cookies and persona
 1. Enable USB Debugging mode on your mobile device.
 2. Go to `chrome://inspect/#devices`.
 3. If debugging mode is enabled, you will see your device listed below “Remote Target” like the example below:
+
 ![Where to find the Inspect Devices when in Debug Mode for Android.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1116,height=572,format=webp/_astro/step_1.BKH5ksch.jpg)
-1. Type in the URL, select **Open** and **inspect** to open Chrome’s DevTools.
-2. Select the **Network** tab in the DevTools window.
-3. Check **Preserve log**. Please also check **_Disable cache_** if you are reporting a Cloudflare Cache issue.
-4. Click **record**.
+
+4. Type in the URL, select **Open** and **inspect** to open Chrome’s DevTools.
+5. Select the **Network** tab in the DevTools window.
+6. Check **Preserve log**. Please also check ***Disable cache*** if you are reporting a Cloudflare Cache issue.
+7. Click **record**.
+
 ![Where to find the record button in Chrome's dev tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/step_2_-_better.CJPZfMsT.jpg)
-1. Browse to the URL that causes issues. Once the issue is experienced, right-click on any of the items within the **Network** tab and select **Save all as HAR with Content**.
+
+8. Browse to the URL that causes issues. Once the issue is experienced, right-click on any of the items within the **Network** tab and select **Save all as HAR with Content**.
+
 ![How to save HAR content. ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=384,format=webp/_astro/step_3.D5uw6wSa.png)
-1. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in [Samsung's documentation here ↗](https://www.samsung.com/au/support/mobile-devices/screen-recorder/).
+
+9. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in [Samsung's documentation here ↗](https://www.samsung.com/au/support/mobile-devices/screen-recorder/).
 
 ---
 
 **For iPhone:**
 
-Refer to [Okta ↗](https://support.okta.com/help/s/article/How-to-generate-a-HAR-capture-on-an-iOS-device?language=en%5FUS) or [Apple's ↗](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari%5FDeveloper%5FGuide/GettingStarted/GettingStarted.html#//apple%5Fref/doc/uid/TP40007874-CH2-SW1) support article on how to generate a HAR file from an iOS device. Attach the HAR file to your support ticket alongside a screen recording from the affected iOS device. Apple devices now have [built-in screen recording functionality ↗](https://support.apple.com/en-us/HT207935).
+Refer to [Okta ↗](https://support.okta.com/help/s/article/How-to-generate-a-HAR-capture-on-an-iOS-device?language=en_US) or [Apple's ↗](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW1) support article on how to generate a HAR file from an iOS device. Attach the HAR file to your support ticket alongside a screen recording from the affected iOS device. Apple devices now have [built-in screen recording functionality ↗](https://support.apple.com/en-us/HT207935).
 
 ### Export Console Log
 
@@ -140,6 +150,7 @@ In certain situations when request is not issued or cancelled by the browser (fo
 3. Leave the console open and perform the steps that reproduce the issue.
 4. Right-click on any of the items within the **Console** tab and select **Save as** log file.
 5. Attach the log file to your support ticket.
+
 ![How to find the console tab in Chrome's developer tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2478,height=274,format=webp/_astro/console_snapshot.BshJeLnS.png)
 
 #### In Firefox
@@ -179,13 +190,15 @@ Caution
 You can only generate a NetLog dump on the Google Chrome, Opera or Microsoft Edge browsers.
 
 1. Open a new tab and enter the following depending on the browser you're using:
-* `chrome://net-export`
-* `edge://net-export`
-* `opera://net-export`
-1. Click the **Start Logging To Disk** button.
-2. Reproduce the network problem in a different tab. (the `chrome://net-export/`, `edge://net-export/` or `opera://net-export` tab needs to stay open otherwise logging will automatically stop)
-3. Click **Stop Logging** button.
-4. Attach the log file to your support ticket.
+
+- `chrome://net-export`
+- `edge://net-export`
+- `opera://net-export`
+
+2. Click the **Start Logging To Disk** button.
+3. Reproduce the network problem in a different tab. (the `chrome://net-export/`, `edge://net-export/` or `opera://net-export` tab needs to stay open otherwise logging will automatically stop)
+4. Click **Stop Logging** button.
+5. Attach the log file to your support ticket.
 
 ---
 
@@ -199,7 +212,7 @@ When to use
 
 Use this when you need to **determine which Cloudflare Point of Presence (PoP) is serving your requests**. This is helpful when troubleshooting regional issues or verifying traffic routing.
 
-[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [status page locations view ↗](https://www.cloudflarestatus.com/locations), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ``` http://``_www.example.com_``/cdn-cgi/trace. ```
+[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [status page locations view ↗](https://www.cloudflarestatus.com/locations), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA_airport_code) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ```http://``_www.example.com_``/cdn-cgi/trace.```
 
 Replace `www.example.com` with your domain and hostname. Note the `colo` field from the output.
 
@@ -211,16 +224,16 @@ Use curl when you need to **test HTTP requests without browser interference**, m
 
 [curl ↗](https://curl.se/) is a command line tool for sending HTTP/HTTPS requests and is useful for troubleshooting:
 
-* HTTP/HTTPS Performance
-* HTTP Error Responses
-* HTTP Headers
-* APIs
-* Comparing Server/Proxy Responses
-* SSL Certificates
+- HTTP/HTTPS Performance
+- HTTP Error Responses
+- HTTP Headers
+- APIs
+- Comparing Server/Proxy Responses
+- SSL Certificates
 
 Note
 
-If you are using Windows, you can find more details on how to use curl on Windows in our [Making API calls on Windows ](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#making-api-calls-on-windows) article.
+If you are using Windows, you can find more details on how to use curl on Windows in our [Making API calls on Windows](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#making-api-calls-on-windows) article.
 
 Run the following command to send a standard HTTP GET request to your website (replace `www.example.com` with your hostname):
 
@@ -250,7 +263,7 @@ If you have multiple origin web servers, test each one to ensure there are no re
 
 #### Performance
 
-curl measures latency or performance degradation for HTTP/HTTPS requests via the [\-w or \--write-out curl option ↗](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
+curl measures latency or performance degradation for HTTP/HTTPS requests via the [`-w` or `--write-out` curl option ↗](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
 
 ```bash
 curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
@@ -282,11 +295,11 @@ As demonstrated in the preceding example, cleaner results are achieved by denoti
 
 curl helps review the HTTP response headers that influence caching. In particular, review several HTTP headers when troubleshooting Cloudflare caching:
 
-* CF-Cache-Status
-* Cache-Control/Pragma
-* Expires
-* Last-Modified
-* s-maxage
+- CF-Cache-Status
+- Cache-Control/Pragma
+- Expires
+- Last-Modified
+- s-maxage
 
 Note
 
@@ -314,12 +327,12 @@ curl -svo /dev/null https://www.example.com --connect-to ::203.0.113.34 2>&1 | e
 
 #### Testing TLS Versions
 
-If troubleshooting browser support or confirming what TLS versions are supported, curl allows you to test a specific TLS version by adding the [\--tlsv1.X ↗](https://curl.se/docs/manpage.html#--tlsv10) and [\--tls-max ↗](https://curl.se/docs/manpage.html#--tls-max) options to your curl:
+If troubleshooting browser support or confirming what TLS versions are supported, curl allows you to test a specific TLS version by adding the [--tlsv1.X ↗](https://curl.se/docs/manpage.html#--tlsv10) and [--tls-max ↗](https://curl.se/docs/manpage.html#--tls-max) options to your curl:
 
-* `--tlsv1.0 --tls-max 1.0`
-* `--tlsv1.1 --tls-max 1.1`
-* `--tlsv1.2 --tls-max 1.2`
-* `--tlsv1.3 --tls-max 1.3`
+- `--tlsv1.0 --tls-max 1.0`
+- `--tlsv1.1 --tls-max 1.1`
+- `--tlsv1.2 --tls-max 1.2`
+- `--tlsv1.3 --tls-max 1.3`
 
 ### Temporarily pause Cloudflare
 
@@ -368,8 +381,8 @@ For IPv6 -
 tracert -6 www.example.com
 ```
 
-1. Press **Enter**.
-2. You can copy the results to save in a file or paste in another program.
+5. Press **Enter**.
+6. You can copy the results to save in a file or paste in another program.
 
 #### Run traceroute on Linux
 
@@ -388,13 +401,13 @@ For IPv6 -
 traceroute -6 www.example.com
 ```
 
-1. You can copy the results to save in a file or paste in another program.
+3. You can copy the results to save in a file or paste in another program.
 
 #### Run traceroute on Mac OS
 
 1. Open the **Network Utility** application.
 2. Click the **Traceroute** tab.
-3. Type the _domain_ or _IP address_ in the appropriate input field and press **Trace**.
+3. Type the *domain* or *IP address* in the appropriate input field and press **Trace**.
 4. You can copy the results to save in a file or paste in another program.
 
 Alternatively, follow the same Linux traceroute instructions above when using the Mac OS terminal program.
@@ -478,7 +491,7 @@ Caution
 
 Please be aware, if you transmit any sensitive information while a packet capture is running, it will be recorded.
 
-Cloudflare suggests [Wireshark ↗](https://www.wireshark.org/download.html) for running packet captures. For instructions on how to use the _tcpdump_ command line, refer to [this ↗](https://www.wireshark.org/docs/wsug%5Fhtml%5Fchunked/AppToolstcpdump.html) article.
+Cloudflare suggests [Wireshark ↗](https://www.wireshark.org/download.html) for running packet captures. For instructions on how to use the *tcpdump* command line, refer to [this ↗](https://www.wireshark.org/docs/wsug_html_chunked/AppToolstcpdump.html) article.
 
 1. Close all programs/browser tabs that could be sending data in the background to avoid having to use a lot of display filters later.
 2. Create your Wireshark capture filter (refer to [this ↗](https://wiki.wireshark.org/CaptureFilters) article for more information).
@@ -492,10 +505,10 @@ Cloudflare suggests [Wireshark ↗](https://www.wireshark.org/download.html) for
 
 ## Related resources
 
-* [Contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)
-* [Cloudflare HTTP 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/)
-* [Diagnosing network issues with MTR and traceroute ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/)
-* [cURL command line tool ↗](https://curl.haxx.se/)
+- [Contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)
+- [Cloudflare HTTP 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/)
+- [Diagnosing network issues with MTR and traceroute ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/)
+- [cURL command line tool ↗](https://curl.haxx.se/)
 
 Was this helpful?
 

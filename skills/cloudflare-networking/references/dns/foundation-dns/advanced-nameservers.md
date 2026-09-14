@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced nameservers
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced nameservers included with [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/) offer improved resiliency and more consistent nameserver assignment.
 
@@ -26,17 +26,27 @@ Also, [some behaviors are different](https://developers.cloudflare.com/dns/found
 
 ## Anycast network groups
 
-To increase resiliency, the advertisement of advanced nameserver IPs is organized into three anycast network groups.
+To increase resiliency, the advertisement of advanced nameserver IPs is organized into three anycast
+
+ network groups.
 
 Two groups consist of IPs advertised from geographically distributed data centers, and a third group consists of IPs advertised from all data centers in the Cloudflare network.
 
+<details>
+
+<summary>
+
 United Kingdom example
 
-| IPs           | Group | Data centers                      |
-| ------------- | ----- | --------------------------------- |
-| 108.162.198.1 | A     | London and Edinburgh              |
-| 172.64.40.1   | B     | Manchester                        |
-| 162.159.60.1  | C     | Manchester, London, and Edinburgh |
+</summary>
+
+| IPs | Group | Data centers |
+| --- | --- | --- |
+| <code>108.162.198.1</code> | A | London and Edinburgh |
+| <code>172.64.40.1</code> | B | Manchester |
+| <code>162.159.60.1</code> | C | Manchester, London, and Edinburgh |
+
+</details>
 
 In DNS resolution, a resolver eventually acquires a list of all IPs where authoritative nameservers for a domain can be reached, and will then usually prefer the IP with the best resolution performance.
 
@@ -58,29 +68,37 @@ The dedicated release process means that only changes that have been in producti
 
 While standard Cloudflare nameservers are hosted under `ns.cloudflare.com` or `secondary.cloudflare.com`, advanced nameservers use different domains:
 
-* `foundationdns.com`
-* `foundationdns.net`
-* `foundationdns.org`
+- `foundationdns.com`
+- `foundationdns.net`
+- `foundationdns.org`
 
 Using the different TLDs (`.com`, `.net`, and `.org`) and making these available only to enterprise accounts allows for better predictability and consistency in nameserver assignment.
 
 There should also be less conflicts when guaranteeing that directly descending zones do not have the same nameserver set.
 
+<details>
+
+<summary>
+
 Descending zones example
 
-Consider the domain `example.com`, and subdomains `abc.example.com` and `123.example.com`:
+</summary>
 
-* `abc.example.com` and `123.example.com` directly descend from `example.com` and cannot have the same nameservers as `example.com`.
-* `abc.example.com` and `123.example.com` are sibling domains and can have the same nameservers.
-* `new.abc.example.com` directly descends from both `abc.example.com` and `example.com`, and cannot have the same nameservers as them, but can have the same nameservers as `123.example.com`.
+Consider the domain <code>example.com</code>, and subdomains <code>abc.example.com</code> and <code>123.example.com</code>:
+
+- <code>abc.example.com</code> and <code>123.example.com</code> directly descend from <code>example.com</code> and cannot have the same nameservers as <code>example.com</code>.
+- <code>abc.example.com</code> and <code>123.example.com</code> are sibling domains and can have the same nameservers.
+- <code>new.abc.example.com</code> directly descends from both <code>abc.example.com</code> and <code>example.com</code>, and cannot have the same nameservers as them, but can have the same nameservers as <code>123.example.com</code>.
+
+</details>
 
 ### Consistent assignment across new zones
 
 Advanced nameservers try to keep the same nameserver set (`blue`, `gold`, or `orange`) for new zones added to the same account, but a new zone can still be assigned a different set when:
 
-* The same domain is (or was recently) active on another Cloudflare account.
-* A directly descending zone in the same or another account already uses the same set.
-* The zone was previously deleted from Cloudflare and re-added.
+- The same domain is (or was recently) active on another Cloudflare account.
+- A directly descending zone in the same or another account already uses the same set.
+- The zone was previously deleted from Cloudflare and re-added.
 
 [Assigned nameservers cannot be changed](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#assignment-method) after a zone is created. If your zones must share the same nameservers, [account custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/account-custom-nameservers/) provide a single set that every zone in the account can use, and can be configured as the account's [DNS zone default](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/) so new zones automatically receive them.
 

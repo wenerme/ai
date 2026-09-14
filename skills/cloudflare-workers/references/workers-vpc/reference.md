@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Limits](https://developers.cloudflare.com/workers-vpc/reference/limits/)
-* [Wrangler commands](https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/)
-* [Pricing](https://developers.cloudflare.com/workers-vpc/reference/pricing/)
-* [Troubleshoot and debug](https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/)
+- [Limits](https://developers.cloudflare.com/workers-vpc/reference/limits/)
+- [Wrangler commands](https://developers.cloudflare.com/workers-vpc/reference/wrangler-commands/)
+- [Pricing](https://developers.cloudflare.com/workers-vpc/reference/pricing/)
+- [Troubleshoot and debug](https://developers.cloudflare.com/workers-vpc/reference/troubleshooting/)
 
 Was this helpful?
 

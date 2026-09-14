@@ -12,34 +12,45 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DHCP server
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you use a static IP address, Cloudflare One Appliance (formerly Magic WAN Connector) can also act as a DHCP server in your network. To enable this feature:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
-4. Select **Network Configuration** \> **LAN configuration**.
+4. Select **Network Configuration** > **LAN configuration**.
 5. In **LAN configuration**, select the LAN where you want to enable DHCP server.
 6. Select **Edit**.
 7. Under **Static addressing**, select **This is a DHCP Server**. You also have to specify:
-  * The DNS server address. You can have more than one IP address. Select **Add DNS Server** for each server you want to add.
-  * The DHCP pool start
-  * The DHCP pool end
+   - The DNS server address. You can have more than one IP address. Select **Add DNS Server** for each server you want to add.
+   - The DHCP pool start
+   - The DHCP pool end
 
 Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-Create a [PUT request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to enable DHCP server:
+Create a [`PUT` request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to enable DHCP server:
 
 Example:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Update Site LANbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \

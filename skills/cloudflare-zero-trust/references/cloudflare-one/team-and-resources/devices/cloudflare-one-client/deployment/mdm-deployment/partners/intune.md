@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Intune
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to deploy the Cloudflare One Client (formerly WARP) using Microsoft Intune.
 
@@ -22,21 +22,23 @@ This guide covers how to deploy the Cloudflare One Client (formerly WARP) using 
 
 To deploy the Cloudflare One Client on Windows using Intune:
 
-1. [Download the Cloudflare\_WARP\_<VERSION>.msi installer](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#windows).
+1. [Download the `Cloudflare_WARP_<VERSION>.msi` installer](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#windows).
 2. Log in to your Microsoft Intune account.
-3. Go to **Apps** \> **All Apps** \> **Add**.
-4. In **App type**, select _Line-of-business app_ from the drop-down menu. Select **Select**.
+3. Go to **Apps** > **All Apps** > **Add**.
+4. In **App type**, select *Line-of-business app* from the drop-down menu. Select **Select**.
 5. Select **Select app package file** and upload the `Cloudflare_WARP_<VERSION>.msi` installer you downloaded previously.
 6. Select **OK**.
-7. For **Run this script using the logged on credentials**, choose _No_.
-8. For **Enforce script signature check**, choose _No_.
+7. For **Run this script using the logged on credentials**, choose *No*.
+8. For **Enforce script signature check**, choose *No*.
 9. In the **Name** field, we recommend entering the version number of the package being uploaded.
 10. In the **Publisher** field, we recommend entering `Cloudflare, Inc`.
 11. In the **Command-line arguments** field, enter a valid installation command. For example:
-```txt
-/qn ORGANIZATION="your-team-name" SUPPORT_URL="http://support.example.com"
-```
-Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument. You can change these parameters at any time by pushing a new [MDM file](#update-mdm-parameters).
+
+    ```txt
+    /qn ORGANIZATION="your-team-name" SUPPORT_URL="http://support.example.com"
+    ```
+
+    Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each argument. You can change these parameters at any time by pushing a new [MDM file](#update-mdm-parameters).
 12. Select **Next**.
 13. Add the users or groups who require the Cloudflare One Client and select **Next**.
 14. Review your configuration and select **Create**.
@@ -50,59 +52,69 @@ You can use Intune to update [MDM parameters](https://developers.cloudflare.com/
 To push a new `mdm.xml` file using Intune:
 
 1. Log in to your Microsoft Intune account.
-2. Go to **Devices** \> **Scripts and remediations**.
+2. Go to **Devices** > **Scripts and remediations**.
 3. Select the **Platform scripts** tab and select **Add**.
 4. Select **Windows 10 and later**.
 5. Enter a name for the script (for example, `Deploy Cloudflare mdm.xml`).
 6. In **PowerShell script**, upload the following `.ps1` file. Be sure to modify the XML content with your desired [parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-```powershell
-# Define the path to the file
-$filePath = "C:\ProgramData\Cloudflare\mdm.xml"
-# Create the XML content as a string
-$xmlContent = @"
-<dict>
-	<key>multi_user</key>
-	<true/>
-	<key>pre_login</key>
-	<dict>
-		<key>organization</key>
-		<string>mycompany</string>
-		<key>auth_client_id</key>
-		<string>88bf3b6d86161464f6509f7219099e57.access</string>
-		<key>auth_client_secret</key>
-		<string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
-	</dict>
-	<key>configs</key>
-	<array>
-		<dict>
-			<key>organization</key>
-			<string>mycompany</string>
-			<key>display_name</key>
-			<string>Production environment</string>
-		</dict>
-		<dict>
-			<key>organization</key>
-			<string>test-org</string>
-			<key>display_name</key>
-			<string>Test environment</string>
-		</dict>
-	</array>
-</dict>
-"@
-# Ensure the directory exists
-$directory = Split-Path $filePath -parent
-if (-not (Test-Path $directory)) {
-	New-Item -ItemType Directory -Path $directory | Out-Null
-}
-# Write the XML content to the file
-try {
-	$xmlContent | Out-File -Encoding UTF8 -FilePath $filePath
-	Write-Host "mdm.xml file created successfully at: $filePath"
-}
-catch {
-	Write-Error "Failed to create mdm.xml file: $_"
-}
-```
+
+   *mdm-template.ps1powershell*
+
+
+
+   ```powershell
+   # Define the path to the file
+   $filePath = "C:\ProgramData\Cloudflare\mdm.xml"
+
+   # Create the XML content as a string
+   $xmlContent = @"
+   <dict>
+   	<key>multi_user</key>
+   	<true/>
+   	<key>pre_login</key>
+   	<dict>
+   		<key>organization</key>
+   		<string>mycompany</string>
+   		<key>auth_client_id</key>
+   		<string>88bf3b6d86161464f6509f7219099e57.access</string>
+   		<key>auth_client_secret</key>
+   		<string>bdd31cbc4dec990953e39163fbbb194c93313ca9f0a6e420346af9d326b1d2a5</string>
+   	</dict>
+   	<key>configs</key>
+   	<array>
+   		<dict>
+   			<key>organization</key>
+   			<string>mycompany</string>
+   			<key>display_name</key>
+   			<string>Production environment</string>
+   		</dict>
+   		<dict>
+   			<key>organization</key>
+   			<string>test-org</string>
+   			<key>display_name</key>
+   			<string>Test environment</string>
+   		</dict>
+   	</array>
+   </dict>
+   "@
+
+   # Ensure the directory exists
+   $directory = Split-Path $filePath -parent
+   if (-not (Test-Path $directory)) {
+   	New-Item -ItemType Directory -Path $directory | Out-Null
+   }
+
+   # Write the XML content to the file
+   try {
+   	$xmlContent | Out-File -Encoding UTF8 -FilePath $filePath
+   	Write-Host "mdm.xml file created successfully at: $filePath"
+   }
+   catch {
+   	Write-Error "Failed to create mdm.xml file: $_"
+   }
+   ```
+
+
 7. In **Assignments**, select the Windows devices that should receive the new `mdm.xml` file.
 8. To deploy the script, select **Add**.
 
@@ -118,13 +130,13 @@ The following steps outline deploying the Cloudflare One Client on macOS using I
 
 Caution
 
-Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's .pkg deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
+Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
 
 ### Prerequisites
 
-* A [Microsoft Intune account ↗](https://login.microsoftonline.com/).
-* A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization).
-* macOS devices enrolled in Intune.
+- A [Microsoft Intune account ↗](https://login.microsoftonline.com/).
+- A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization).
+- macOS devices enrolled in Intune.
 
 ### Deployment order
 
@@ -132,12 +144,12 @@ Best practice
 
 Deploy configuration profiles (steps 1, 2, and 3) before the Cloudflare One Client application (step 4) itself. This order ensures that when the Cloudflare One Client installs, it already has the required permissions and certificates, avoiding failed installations.
 
-* Upload user-side certificate.
-* Allow system extensions (bundle ID and team identifier policy).
-* Upload MobileConfig (custom configuration policy).
-* Upload and assign the Cloudflare One Client `.pkg` (application policy).
+- Upload user-side certificate.
+- Allow system extensions (bundle ID and team identifier policy).
+- Upload MobileConfig (custom configuration policy).
+- Upload and assign the Cloudflare One Client `.pkg` (application policy).
 
-### 1\. Upload user-side certificate
+### 1. Upload user-side certificate
 
 #### 1.1 Download user-side certificate
 
@@ -148,13 +160,11 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 #### 1.2 Upload user-side certificate to Intune
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> select **macOS**.
-![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3754,height=1497,format=webp/_astro/devices-macos.CVmp807I.png)
-2. Under **Manage devices**, select **Configuration**.
-![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=892,format=webp/_astro/manage-devices-configuration.DAFUmjfO.png)
-3. Select **Create** \> **New Policy**.
-4. For **Profile Type**, select _Templates_ \> select **Trusted certificate** as the Template name > select **Create**.
-5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` \> select **Next**.
+1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > select **macOS**.![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3754,height=1497,format=webp/_astro/devices-macos.CVmp807I.png)
+2. Under **Manage devices**, select **Configuration**.![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=892,format=webp/_astro/manage-devices-configuration.DAFUmjfO.png)
+3. Select **Create** > **New Policy**.
+4. For **Profile Type**, select *Templates* > select **Trusted certificate** as the Template name > select **Create**.
+5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` > select **Next**.
 6. For **Deployment Channel**, select **Device Channel**.
 7. Upload your file (Intune may request `.cer` format, though `.crt` files are also accepted) > select **Next**.
 8. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. This will be the same scope for all steps. Select **Next**.
@@ -162,72 +172,78 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 Sharing this certificate with Intune automates the installation of this certificate on your user devices, creating trust between browsers on a user's device and Cloudflare.
 
-### 2\. Upload `MobileConfig` configuration
+### 2. Upload `MobileConfig` configuration
 
 1. Open a text editor and paste in the following `.mobileconfig` template:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-		<dict>
-				<key>PayloadDisplayName</key>
-				<string>Cloudflare WARP</string>
-				<key>PayloadIdentifier</key>
-				<string>cloudflare_warp</string>
-				<key>PayloadOrganization</key>
-				<string>Cloudflare, Ltd.</string>
-				<key>PayloadRemovalDisallowed</key>
-				<false/>
-				<key>PayloadType</key>
-				<string>Configuration</string>
-				<key>PayloadScope</key>
-				<string>System</string>
-				<key>PayloadUUID</key>
-				<string>YOUR_PAYLOAD_UUID_HERE</string>
-				<key>PayloadVersion</key>
-				<integer>1</integer>
-				<key>PayloadContent</key>
-				<array>
-						<dict>
-								<key>organization</key>
-								<string>YOUR_TEAM_NAME_HERE</string>
-								<key>auto_connect</key>
-								<integer>120</integer>
-								<key>onboarding</key>
-								<false/>
-								<key>PayloadDisplayName</key>
-								<string>Warp Configuration</string>
-								<key>PayloadIdentifier</key>
-								<string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>
-								<key>PayloadOrganization</key>
-								<string>Cloudflare Ltd.</string>
-								<key>PayloadType</key>
-								<string>com.cloudflare.warp</string>
-								<key>PayloadUUID</key>
-								<string>YOUR_PAYLOAD_UUID_HERE</string>
-								<key>PayloadVersion</key>
-								<integer>1</integer>
-						</dict>
-				</array>
-		</dict>
-</plist>
-```
-2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value (`YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
-3. Update your organization's string (`YOUR_TEAM_NAME_HERE`) with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).
+
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+   <plist version="1.0">
+   		<dict>
+   				<key>PayloadDisplayName</key>
+   				<string>Cloudflare WARP</string>
+   				<key>PayloadIdentifier</key>
+   				<string>cloudflare_warp</string>
+   				<key>PayloadOrganization</key>
+   				<string>Cloudflare, Ltd.</string>
+   				<key>PayloadRemovalDisallowed</key>
+   				<false/>
+   				<key>PayloadType</key>
+   				<string>Configuration</string>
+   				<key>PayloadScope</key>
+   				<string>System</string>
+   				<key>PayloadUUID</key>
+   				<string>YOUR_PAYLOAD_UUID_HERE</string>
+   				<key>PayloadVersion</key>
+   				<integer>1</integer>
+   				<key>PayloadContent</key>
+   				<array>
+   						<dict>
+   								<key>organization</key>
+   								<string>YOUR_TEAM_NAME_HERE</string>
+   								<key>auto_connect</key>
+   								<integer>120</integer>
+   								<key>onboarding</key>
+   								<false/>
+   								<key>PayloadDisplayName</key>
+   								<string>Warp Configuration</string>
+   								<key>PayloadIdentifier</key>
+   								<string>com.cloudflare.warp.YOUR_PAYLOAD_UUID_HERE</string>
+   								<key>PayloadOrganization</key>
+   								<string>Cloudflare Ltd.</string>
+   								<key>PayloadType</key>
+   								<string>com.cloudflare.warp</string>
+   								<key>PayloadUUID</key>
+   								<string>YOUR_PAYLOAD_UUID_HERE</string>
+   								<key>PayloadVersion</key>
+   								<integer>1</integer>
+   						</dict>
+   				</array>
+   		</dict>
+   </plist>
+   ```
+
+
+2. Open your macOS Terminal and run `uuidgen`. This will generate a value for `PayloadUUID`. Use this value to replace the default value ( `YOUR_PAYLOAD_UUID_HERE`) used in the template (three locations total).
+3. Update your organization's string ( `YOUR_TEAM_NAME_HERE`) with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name).
 4. Modify the file with your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-```xml
-<array>
-	<dict>
-			<key>organization</key>
-			<string>YOUR_TEAM_NAME_HERE</string>
-			// add desired deployment parameters here
-```
-Best practice
-Start by deploying the template in its default, minimal form. This helps you verify a successful deployment before adding custom parameters.
-5. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> **macOS**.
+
+   ```xml
+   <array>
+   	<dict>
+   			<key>organization</key>
+   			<string>YOUR_TEAM_NAME_HERE</string>
+   			// add desired deployment parameters here
+   ```
+
+   Best practice
+
+   Start by deploying the template in its default, minimal form. This helps you verify a successful deployment before adding custom parameters.
+5. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > **macOS**.
 6. Under **Manage devices**, select **Configuration**.
-7. Select **Create** \> **New Policy**.
-8. For **Profile Type**, select _Templates_ \> select **Custom** as the **Template name** \> select **Create**.
+7. Select **Create** > **New Policy**.
+8. For **Profile Type**, select *Templates* > select **Custom** as the **Template name** > select **Create**.
 9. In **Basics**, input the necessary field(s) > select **Next**.
 10. In **Custom configuration profile name**, input a name.
 11. For **Deployment Channel**, select **Device Channel**.
@@ -237,18 +253,20 @@ Start by deploying the template in its default, minimal form. This helps you ver
 
 By completing this step, you preconfigure the Cloudflare One Client with your team settings so it connects automatically upon installation.
 
-### 3\. Upload Cloudflare One Client `.pkg`
+### 3. Upload Cloudflare One Client `.pkg`
 
 Best practice
 
 Complete Step 4 at least one hour after steps 1, 2, and 3 so clients have enough time to check in and update their device configurations.
 
 1. [Download the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) in `.pkg` format.
-Repeat this step to update the Cloudflare One Client when a new release is available
-Every time a new Cloudflare One Client version is released, you must repeat this process and get a new `.pkg` file for the new version.
-2. Log in to the [Microsoft Intune admin center ↗](https://intune.microsoft.com), and go to **Apps** \> **macOS**.
+
+   Repeat this step to update the Cloudflare One Client when a new release is available
+
+   Every time a new Cloudflare One Client version is released, you must repeat this process and get a new `.pkg` file for the new version.
+2. Log in to the [Microsoft Intune admin center ↗](https://intune.microsoft.com), and go to **Apps** > **macOS**.
 3. Select **Create**.
-4. For **App type**, select _macOS app (PKG)_.
+4. For **App type**, select *macOS app (PKG)*.
 5. In **App information**, select the `.pkg` file you downloaded and input required details. Enter `Cloudflare` as the Publisher.
 6. In **Requirements**, refer to the OS versions listed in [stable releases for macOS](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) and find what matches for you.
 7. In **Detection rules**, note that the Cloudflare One Client package will have filled in the App bundle ID and App version.
@@ -267,12 +285,12 @@ The following steps outline how to deploy the Cloudflare One Agent (Cloudflare O
 
 ### Prerequisites
 
-* A [Microsoft Intune account ↗](https://intune.microsoft.com)
-* A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name)
-* iOS/iPadOS devices enrolled in Intune
-* [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) enabled in Cloudflare Gateway (if you plan to inspect HTTPS traffic)
+- A [Microsoft Intune account ↗](https://intune.microsoft.com)
+- A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name)
+- iOS/iPadOS devices enrolled in Intune
+- [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) enabled in Cloudflare Gateway (if you plan to inspect HTTPS traffic)
 
-### 1\. Upload user-side certificate
+### 1. Upload user-side certificate
 
 #### 1.1 Download user-side certificate
 
@@ -283,13 +301,11 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 #### 1.2 Upload user-side certificate to Intune
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> select **iOS/iPadOS**.
-![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1898,height=747,format=webp/_astro/devices-iOS.DY1lHEJ0.png)
-2. Under **Manage devices**, select **Configuration**.
-![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1217,height=584,format=webp/_astro/manage-devices-configuration-iOS.CAfH5ZA2.png)
-3. Select **Create** \> **New Policy**.
-4. For **Profile Type**, select _Templates_ \> select **Trusted certificate** as the Template name > select **Create**.
-5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` \> select **Next**.
+1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > select **iOS/iPadOS**.![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1898,height=747,format=webp/_astro/devices-iOS.DY1lHEJ0.png)
+2. Under **Manage devices**, select **Configuration**.![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1217,height=584,format=webp/_astro/manage-devices-configuration-iOS.CAfH5ZA2.png)
+3. Select **Create** > **New Policy**.
+4. For **Profile Type**, select *Templates* > select **Trusted certificate** as the Template name > select **Create**.
+5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` > select **Next**.
 6. For **Deployment Channel**, select **Device Channel**.
 7. Upload your file (Intune may request `.cer` format, though `.crt` files are also accepted) > select **Next**.
 8. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. This will be the same scope for all steps. Select **Next**.
@@ -297,38 +313,45 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 Sharing this certificate with Intune automates the installation of this certificate on your user devices, creating trust between browsers on a user's device and Cloudflare.
 
-### 2\. Add Cloudflare One Agent app to Intune configuration
+### 2. Add Cloudflare One Agent app to Intune configuration
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** \> **iOS/iPadOS**.
+1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** > **iOS/iPadOS**.
 2. Select **Create**.
-3. For App type, select _iOS store app_ \> select **Select** to continue.
+3. For App type, select *iOS store app* > select **Select** to continue.
 4. Select **Search the App Store** and search for the [Cloudflare One Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios). After you have found the Cloudflare One Agent, select it and select **Select** to continue.
-Add the right app
-Make sure to add the [Cloudflare One Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) application. Do not add the 1.1.1.1 app.
+
+   Add the right app
+
+   Make sure to add the [Cloudflare One Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios) application. Do not add the 1.1.1.1 app.
 5. The fields in **App information** will be filled in automatically. Select **Next** to continue.
 6. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. Select **Next**.
 7. Review your configuration in **Review + create** and select **Create**.
 
 By completing this step, you deliver the Cloudflare One Client to targeted iOS devices, either automatically (assignment scope set as **Required**) or on-demand (assignment scope as **Available**) through your company portal.
 
-### 3\. Configure Cloudflare One Agent app
+### 3. Configure Cloudflare One Agent app
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** \> **Manage apps** \> **Configuration**.
-2. Select **Create** \> _Managed devices_.
-3. In **Basics**, input the necessary field(s) and give your policy an easily identifiable name like `Cloudflare One Agent`. Select _iOS/iPadOS_ for Platform and target the Cloudflare One Agent app. Select **Next**.
-4. In **Settings**, select _Enter XML data_ and copy and paste the following:
-```xml
-<dict>
-	<key>organization</key>
-	<string>YOUR_TEAM_NAME_HERE</string>
-	<key>auto_connect</key>
-	<integer>1</integer>
-</dict>
-```
-Replace `YOUR_TEAM_NAME_HERE` with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name). Review the definitions of the above parameters in the [Parameters documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
-Successfully complete your registration
-You should set the [auto\_connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto%5Fconnect) parameter to `1` to ensure the Cloudflare One Client auto-connects to Cloudflare. If you set this parameter to `0` or exclude it, the client will not auto-connect, and registration will not complete successfully.
-If you do not include this parameter, registration will not be complete without manual intervention by the user. Manual intervention requires opening the Cloudflare One Client application and attempting to connect.
+1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** > **Manage apps** > **Configuration**.
+2. Select **Create** > *Managed devices*.
+3. In **Basics**, input the necessary field(s) and give your policy an easily identifiable name like `Cloudflare One Agent`. Select *iOS/iPadOS* for Platform and target the Cloudflare One Agent app. Select **Next**.
+4. In **Settings**, select *Enter XML data* and copy and paste the following:
+
+   ```xml
+   <dict>
+   	<key>organization</key>
+   	<string>YOUR_TEAM_NAME_HERE</string>
+   	<key>auto_connect</key>
+   	<integer>1</integer>
+   </dict>
+   ```
+
+   Replace `YOUR_TEAM_NAME_HERE` with your [team name](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name). Review the definitions of the above parameters in the [Parameters documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/).
+
+   Successfully complete your registration
+
+   You should set the [`auto_connect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#auto_connect) parameter to `1` to ensure the Cloudflare One Client auto-connects to Cloudflare. If you set this parameter to `0` or exclude it, the client will not auto-connect, and registration will not complete successfully.
+
+   If you do not include this parameter, registration will not be complete without manual intervention by the user. Manual intervention requires opening the Cloudflare One Client application and attempting to connect.
 5. In **Assignments**, select an option (for example, **Add all devices** or **Add all users**) that is valid for your scope. Select **Next**.
 6. Review your configuration in **Review + create** and select **Create**.
 
@@ -336,7 +359,7 @@ By completing this step, you preconfigure the Cloudflare One Agent with your [Ze
 
 ### Intune configuration
 
-Intune allows you to insert [predefined variables ↗](https://learn.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-ios#tokens-used-in-the-property-list) into the XML configuration file. For example, you can set the [unique\_client\_id](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#unique%5Fclient%5Fid) key to `{{deviceid}}` for a [device UUID posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/) deployment.
+Intune allows you to insert [predefined variables ↗](https://learn.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-ios#tokens-used-in-the-property-list) into the XML configuration file. For example, you can set the [`unique_client_id`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#unique_client_id) key to `{{deviceid}}` for a [device UUID posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/) deployment.
 
 ### Per-app VPN for iOS
 
@@ -346,33 +369,33 @@ Per-app VPN is supported on Cloudflare One Agent version `1.8` or greater for iO
 
 Before proceeding with per-app VPN configuration, you must make sure [Auto connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) is disabled in Zero Trust. To disable Auto connect:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Select your device profile and select **Edit**.
 3. Turn off **Auto Connect**.
 
 To configure per-app VPN:
 
 1. Log in to Microsoft Intune admin center for your organization.
-2. Go to **Devices** \> **iOS/iPadOS Devices** \> **Manage Devices** \> **Configuration** \> select **\+ Create** \> **New Policy.**
-3. Select _Templates_ in the **Profile Type** dropdown menu, then select **VPN** as the **Template Name** and select **Create**.
+2. Go to **Devices** > **iOS/iPadOS Devices** > **Manage Devices** > **Configuration** > select **+ Create** > **New Policy.**
+3. Select *Templates* in the **Profile Type** dropdown menu, then select **VPN** as the **Template Name** and select **Create**.
 4. Give the configuration a name, and an optional description, if you desire, then select **Next**.
-5. Select _Custom VPN_ from the **Connection Type** dropdown menu.
+5. Select *Custom VPN* from the **Connection Type** dropdown menu.
 6. Expand the **Base VPN** section.
-  * Give the VPN connection a name.
-  * Enter "1.1.1.1" as the VPN server address (this value is not actually used.)
-  * Set _Username and password_ as the **Authentication method**.
-  * Enter "com.cloudflare.cloudflareoneagent" as the VPN identifier.
-  * Enter any Key and Value into the custom VPN attributes (Cloudflare One does not use these but Intunes requires at least one entry.)
+   - Give the VPN connection a name.
+   - Enter "1.1.1.1" as the VPN server address (this value is not actually used.)
+   - Set *Username and password* as the **Authentication method**.
+   - Enter "com.cloudflare.cloudflareoneagent" as the VPN identifier.
+   - Enter any Key and Value into the custom VPN attributes (Cloudflare One does not use these but Intunes requires at least one entry.)
 7. Expand the **Automatic VPN** section.
-  * Select _Per-app VPN_ as the **Type of automatic VPN**.
-  * Select _packet-tunnel_ as the **Provider Type**. Select **Next**.
+   - Select *Per-app VPN* as the **Type of automatic VPN**.
+   - Select *packet-tunnel* as the **Provider Type**. Select **Next**.
 8. Add any Groups, Users, or Devices to which you want to distribute this configuration and select **Next**.
 9. Review the settings and select **Create**.
-10. Go to **Apps** \> **iOS/iPadOS Apps** and select **\+ Add**.
-11. Select _iOS store app_ from the **App Type** dropdown > **Select**.
+10. Go to **Apps** > **iOS/iPadOS Apps** and select **+ Add**.
+11. Select *iOS store app* from the **App Type** dropdown > **Select**.
 12. Select **Search the App Store**, then search for the app whose traffic you want to go through the VPN > select the desired app > **Select**.
 13. Review the selected app settings and select **Next**.
-14. Select **\+ Add Group** to add the group of users to which to distribute this app. Then select **None** underneath VPN.
+14. Select **+ Add Group** to add the group of users to which to distribute this app. Then select **None** underneath VPN.
 15. Select the configuration you just created from the VPN dropdown menu and select **OK**.
 16. Select **Next**, review the settings, then select **Create**.
 17. Repeat steps 10-16 for each app you want to use the VPN with.
@@ -381,12 +404,12 @@ Note
 
 To support re-authentication, you must include a third-party browser that Cloudflare One can use to re-authenticate the user. The following third-party browsers are supported:
 
-* Google Chrome
-* Firefox
-* Firefox Focus
-* Microsoft Edge
-* Brave
-* Opera
+- Google Chrome
+- Firefox
+- Firefox Focus
+- Microsoft Edge
+- Brave
+- Opera
 
 Cloudflare One will continue to use a Safari window for initial authentication per-security best practices.
 
@@ -399,74 +422,76 @@ Cloudflare One cannot apply split tunnel setting for a per app VPN. Included or 
 To deploy the Cloudflare One Client on Android devices:
 
 1. Log in to your Microsoft Intune account.
-2. Go to **Apps** \> **Android** \>**Add**.
-3. In **App type**, select _Managed Google Play app_.
+2. Go to **Apps** > **Android** >**Add**.
+3. In **App type**, select *Managed Google Play app*.
 4. Add the **Cloudflare One Agent** app from the Google Play store. Its application ID is `com.cloudflare.cloudflareoneagent`.
-5. Go to **Apps** \> **App Configuration policies** \> **Add**.
-6. Select _Managed devices_.
+5. Go to **Apps** > **App Configuration policies** > **Add**.
+6. Select *Managed devices*.
 7. In **Name**, enter `Cloudflare One Agent`.
-8. For **Platform**, select _Android Enterprise_.
+8. For **Platform**, select *Android Enterprise*.
 9. Choose your desired **Profile Type**.
 10. For **Targeted app**, select **Cloudflare One Agent**. Select **Next**.
-11. For **Configuration settings format**, select _Enter JSON data_. Enter your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) in the `managedProperty` field. For example:
-```json
-{
-	"kind": "androidenterprise#managedConfiguration",
-	"productId": "app:com.cloudflare.cloudflareoneagent",
-	"managedProperty": [
-		{
-			"key": "app_config_bundle_list",
-			"valueBundleArray": [
-				{
-					"managedProperty": [
-						{
-							"key": "organization",
-							"valueString": "your-team-name"
-						},
-						{
-							"key": "display_name",
-							"valueString": "Production environment"
-						},
-						{
-							"key": "service_mode",
-							"valueString": "warp"
-						},
-						{
-							"key": "onboarding",
-							"valueBool": false
-						},
-						{
-							"key": "support_url",
-							"valueString": "https://support.example.com/"
-						}
-					]
-				},
-				{
-					"managedProperty": [
-						{
-							"key": "organization",
-							"valueString": "test-org"
-						},
-						{
-							"key": "display_name",
-							"valueString": "Test environment"
-						}
-					]
-				}
-			]
-		}
-	]
-}
-```
-Alternatively, if you do not want to copy and paste the JSON data, you can change **Configuration settings format** to _Use configuration designer_ and manually configure each deployment parameter.
-Once you have configured the deployment parameters, select **Next**.
+11. For **Configuration settings format**, select *Enter JSON data*. Enter your desired [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) in the `managedProperty` field. For example:
+
+    ```json
+    {
+    	"kind": "androidenterprise#managedConfiguration",
+    	"productId": "app:com.cloudflare.cloudflareoneagent",
+    	"managedProperty": [
+    		{
+    			"key": "app_config_bundle_list",
+    			"valueBundleArray": [
+    				{
+    					"managedProperty": [
+    						{
+    							"key": "organization",
+    							"valueString": "your-team-name"
+    						},
+    						{
+    							"key": "display_name",
+    							"valueString": "Production environment"
+    						},
+    						{
+    							"key": "service_mode",
+    							"valueString": "warp"
+    						},
+    						{
+    							"key": "onboarding",
+    							"valueBool": false
+    						},
+    						{
+    							"key": "support_url",
+    							"valueString": "https://support.example.com/"
+    						}
+    					]
+    				},
+    				{
+    					"managedProperty": [
+    						{
+    							"key": "organization",
+    							"valueString": "test-org"
+    						},
+    						{
+    							"key": "display_name",
+    							"valueString": "Test environment"
+    						}
+    					]
+    				}
+    			]
+    		}
+    	]
+    }
+    ```
+
+    Alternatively, if you do not want to copy and paste the JSON data, you can change **Configuration settings format** to *Use configuration designer* and manually configure each deployment parameter.
+
+    Once you have configured the deployment parameters, select **Next**.
 12. Assign users or groups to this policy and select **Next**.
 13. Save the app configuration policy.
 14. Assign users or groups to the application:
-
-  1. Go to **Apps** \> **Android** \> **Cloudflare One Agent** \> **Manage Properties**.
-  2. Select **Edit** and add users or groups.
-  3. Select **Review + save** \> **Save**.
+    1. Go to **Apps** > **Android** > **Cloudflare One Agent** > **Manage Properties**.
+    2. Select **Edit** and add users or groups.
+    3. Select **Review + save** > **Save**.
 
 Intune will now deploy the Cloudflare One Agent to user devices.
 
@@ -485,123 +510,123 @@ Review the following steps to approve and deploy the Cloudflare One Agent applic
 #### Approve the Cloudflare One Agent app within Microsoft Intune
 
 1. Log into the Microsoft Intune admin center.
-2. Go to **Apps** \> **All apps** \> select **Add**.
-3. In App type, select _Managed Google Play_.
-4. Search for _Cloudflare One Agent_ \> select the app > select **Sync**.
+2. Go to **Apps** > **All apps** > select **Add**.
+3. In App type, select *Managed Google Play*.
+4. Search for *Cloudflare One Agent* > select the app > select **Sync**.
 5. Once the sync is successful, admin will see the Cloudflare One Agent app within the **All apps** view in the Microsoft Intune admin center.
 
 #### Configure your Cloudflare One Agent app policy
 
 To configure your Cloudflare One Agent app policy:
 
-1. In the Microsoft Intune admin center, go to **Apps** \> **App configuration policies** \> select **Add** \> **Managed Devices**.
+1. In the Microsoft Intune admin center, go to **Apps** > **App configuration policies** > select **Add** > **Managed Devices**.
 2. Fill out the basic details of your configuration policy:
-
-  1. Enter the **Name** of the profile. (For example: Cloudflare One Agent - configuration policy)
-  2. Select the Platform as **Android Enterprise**.
-  3. Select the desired **Profile Type**. (For example: Personally-Owned Work Profile Only)
-  4. Select **Cloudflare One Agent** as the **Targeted app**.
-  5. Select **Next**.
+   1. Enter the **Name** of the profile. (For example: Cloudflare One Agent - configuration policy)
+   2. Select the Platform as **Android Enterprise**.
+   3. Select the desired **Profile Type**. (For example: Personally-Owned Work Profile Only)
+   4. Select **Cloudflare One Agent** as the **Targeted app**.
+   5. Select **Next**.
 3. Fill out the settings for the configuration policy.
+   1. Select **Configuration setting format** as **Enter JSON data**.
+   2. Enter your desired deployment parameters in the `managedProperty` field. For example:
 
-  1. Select **Configuration setting format** as **Enter JSON data**.
-  2. Enter your desired deployment parameters in the `managedProperty` field. For example:
-  ```sh
-  	{
-  	"kind": "androidenterprise#managedConfiguration",
-  	"productId": "app:com.cloudflare.cloudflareoneagent",
-  	"managedProperty": [
-  		{
-  			"key": "app_config_bundle_list",
-  			"valueBundleArray": [
-  				{
-  					"managedProperty": [
-  						{
-  							"key": "organization",
-  							"valueString": "${ORGANIZATION_NAME-1}"
-  						},
-  						{
-  							"key": "service_mode",
-  							"valueString": "warp"
-  						},
-  						{
-  							"key": "onboarding",
-  							"valueBool": true
-  						},
-  						{
-  							"key": "display_name",
-  							"valueString": "${UNIQUE_DISPLAY_NAME-1}"
-  						},
-  						{
-  							"key": "warp_tunnel_protocol",
-  							"valueString": "MASQUE"
-  						},
-  						{
-  							"key": "tunneled_apps",
-  							"valueBundleArray" :[
-  								{
-  									"managedProperty": [
-  										{
-  											"key": "app_identifier",
-  											"valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser
-  										},
-  										{
-  											"key": "is_browser",
-  											"valueBool": true
-  										}
-  									]
-  								},
-  								{
-  									"managedProperty": [
-  										{
-  											"key": "app_identifier",
-  											"valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app
-  										},
-  										{
-  											"key": "is_browser",
-  											"valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.
-  										}
-  									]
-  								}
-  							]
-  						}
-  					]
-  				},
-  				{
-  					"managedProperty": [
-  						{
-  							"key": "organization",
-  							"valueString": "${ORGANIZATION_NAME-1}"
-  						},
-  						{
-  							"key": "service_mode",
-  							"valueString": "warp"
-  						},
-  						{
-  							"key": "display_name",
-  							"valueString": "${UNIQUE_DISPLAY_NAME-2}"
-  						},
-  						{
-  							"key": "warp_tunnel_protocol",
-  							"valueString": "wireguard"
-  						}
-  					]
-  				}
-  			]
-  		}
-  	]
-  }
-  ```
-  Refer to [Per-app VPN parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#per-app-vpn-parameters-android) to learn more about the MDM parameters introduced to support the per-app VPN for Android devices.
-  3. After you have configured the deployment parameters, click **Next**.
+      ```sh
+      	{
+      	"kind": "androidenterprise#managedConfiguration",
+      	"productId": "app:com.cloudflare.cloudflareoneagent",
+      	"managedProperty": [
+      		{
+      			"key": "app_config_bundle_list",
+      			"valueBundleArray": [
+      				{
+      					"managedProperty": [
+      						{
+      							"key": "organization",
+      							"valueString": "${ORGANIZATION_NAME-1}"
+      						},
+      						{
+      							"key": "service_mode",
+      							"valueString": "warp"
+      						},
+      						{
+      							"key": "onboarding",
+      							"valueBool": true
+      						},
+      						{
+      							"key": "display_name",
+      							"valueString": "${UNIQUE_DISPLAY_NAME-1}"
+      						},
+      						{
+      							"key": "warp_tunnel_protocol",
+      							"valueString": "MASQUE"
+      						},
+      						{
+      							"key": "tunneled_apps",
+      							"valueBundleArray" :[
+      								{
+      									"managedProperty": [
+      										{
+      											"key": "app_identifier",
+      											"valueString": "com.android.chrome" # Application package name/unique bundle identifier for the Chrome app browser
+      										},
+      										{
+      											"key": "is_browser",
+      											"valueBool": true
+      										}
+      									]
+      								},
+      								{
+      									"managedProperty": [
+      										{
+      											"key": "app_identifier",
+      											"valueString": "com.google.android.gm" # Application package name/unique bundle identifier for the Gmail app
+      										},
+      										{
+      											"key": "is_browser",
+      											"valueBool": false # Default value is false, if a user does not define `is_browser` property our app would not treat `app_identifier` package name as a browser.
+      										}
+      									]
+      								}
+      							]
+      						}
+      					]
+      				},
+      				{
+      					"managedProperty": [
+      						{
+      							"key": "organization",
+      							"valueString": "${ORGANIZATION_NAME-1}"
+      						},
+      						{
+      							"key": "service_mode",
+      							"valueString": "warp"
+      						},
+      						{
+      							"key": "display_name",
+      							"valueString": "${UNIQUE_DISPLAY_NAME-2}"
+      						},
+      						{
+      							"key": "warp_tunnel_protocol",
+      							"valueString": "wireguard"
+      						}
+      					]
+      				}
+      			]
+      		}
+      	]
+      }
+      ```
+
+      Refer to [Per-app VPN parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#per-app-vpn-parameters-android) to learn more about the MDM parameters introduced to support the per-app VPN for Android devices.
+   3. After you have configured the deployment parameters, click **Next**.
 4. Fill out the assignments for the configuration policy. The admin can `Include` or `Exclude` specific groups of users to this policy. After you finish, select **Next**.
 5. Review the policy and select **Create**.
 
 #### Assign users to the Cloudflare One Agent application
 
-1. Go to **Apps** \> **All Apps** \> select **Cloudflare One Agent**.
+1. Go to **Apps** > **All Apps** > select **Cloudflare One Agent**.
 2. Under **Manage**, select **Properties** and near **Assignments**, select **Edit**.
-3. Add the groups of users in the assignments > select **Review + Save** \> select **Save**.
+3. Add the groups of users in the assignments > select **Review + Save** > select **Save**.
 
 Intune will now deploy the Cloudflare One Agent application on a user's device with the managed parameters.
 

@@ -12,38 +12,38 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review detailed logs for your Zero Trust organization.
 
-* [Dashboard logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/)
-* [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/)
+- [Dashboard logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/)
+- [Logpush integration](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/)
 
 ## Log retention
 
 Cloudflare stores Zero Trust logs for different periods of time based on the service and plan type:
 
-|                         | Free      | Standard  | Access    | Gateway   | Enterprise                      |
-| ----------------------- | --------- | --------- | --------- | --------- | ------------------------------- |
-| **Admin logs**          | 18 months | 18 months | 18 months | 18 months | 18 months                       |
-| **Access logs**         | 24 hours  | 30 days   | 30 days   | 24 hours  | 180 days                        |
-| **DNS logs**            | 24 hours  | 30 days   | 24 hours  | 30 days   | 180 days[1](#user-content-fn-1) |
-| **Network logs**        | 24 hours  | 30 days   | 24 hours  | 30 days   | 30 days                         |
-| **HTTP logs**           | 24 hours  | 30 days   | 24 hours  | 30 days   | 30 days                         |
-| **DEX logs**            | 7 days    | 7 days    | 7 days    | 7 days    | 7 days                          |
-| **Device posture logs** | 30 days   | 30 days   | 30 days   | 30 days   | 30 days                         |
+|  | Free | Standard | Access | Gateway | Enterprise |
+| --- | --- | --- | --- | --- | --- |
+| **Admin logs** | 18 months | 18 months | 18 months | 18 months | 18 months |
+| **Access logs** | 24 hours | 30 days | 30 days | 24 hours | 180 days |
+| **DNS logs** | 24 hours | 30 days | 24 hours | 30 days | 180 days<sup>[1](#user-content-fn-1)</sup> |
+| **Network logs** | 24 hours | 30 days | 24 hours | 30 days | 30 days |
+| **HTTP logs** | 24 hours | 30 days | 24 hours | 30 days | 30 days |
+| **DEX logs** | 7 days | 7 days | 7 days | 7 days | 7 days |
+| **Device posture logs** | 30 days | 30 days | 30 days | 30 days | 30 days |
 
 ## Log Explorer Beta
 
 Log Explorer users can store Zero Trust logs directly within Cloudflare in an [R2 bucket](https://developers.cloudflare.com/r2/) and access them with the dashboard or API. Log Explorer supports the following Zero Trust datasets:
 
-* [Access requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access%5Frequests/) (`FROM access_requests`)
-* [CASB Findings](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/casb%5Ffindings/) (`FROM casb_findings`)
-* [Device posture results](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/device%5Fposture%5Fresults/) (`FROM device_posture_results`)
-* [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fdns/) (`FROM gateway_dns`)
-* [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/) (`FROM gateway_http`)
-* [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fnetwork/) (`FROM gateway_network`)
-* [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero%5Ftrust%5Fnetwork%5Fsessions/) (`FROM zero_trust_network_sessions`)
+- [Access requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/access_requests/) ( `FROM access_requests`)
+- [CASB Findings](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/casb_findings/) ( `FROM casb_findings`)
+- [Device posture results](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/device_posture_results/) ( `FROM device_posture_results`)
+- [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/) ( `FROM gateway_dns`)
+- [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/) ( `FROM gateway_http`)
+- [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/) ( `FROM gateway_network`)
+- [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) ( `FROM zero_trust_network_sessions`)
 
 For more information, refer to [Log Explorer](https://developers.cloudflare.com/log-explorer/).
 

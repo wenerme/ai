@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare WordPress Plugin Automatic Cache Management
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/cloudflare-wordpress-plugin-automatic-cache-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/cloudflare-wordpress-plugin-automatic-cache-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -22,12 +22,12 @@ When you switch a theme or customise a theme within the WordPress admin panel, t
 
 Automatic Cache Management uses native hooks built into WordPress. The Cloudflare WordPress plugin purges the following cache URLs:
 
-* deleted\_post
-* edit\_post
-* delete\_attachment
-* autoptimize\_action\_cachepurged (for compatibility with the Autoptimize WordPress plugin)
-* switch\_theme
-* customize\_save\_after
+- deleted\_post
+- edit\_post
+- delete\_attachment
+- autoptimize\_action\_cachepurged (for compatibility with the Autoptimize WordPress plugin)
+- switch\_theme
+- customize\_save\_after
 
 ---
 

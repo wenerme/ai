@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # List vectors
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/list-vectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/list-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The list-vectors operation allows you to enumerate all vector identifiers in a Vectorize index using paginated requests. This guide covers best practices for efficiently using this operation.
 
 Python SDK availability
 
-The `client.vectorize.indexes.list_vectors()` method is not yet available in the current release of the [Cloudflare Python SDK ↗](https://pypi.org/project/cloudflare/). While the method appears in the [API reference](https://developers.cloudflare.com/api/python/resources/vectorize/subresources/indexes/methods/list%5Fvectors/), it has not been included in a published SDK version as of v4.3.1\. In the meantime, you can use the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/list%5Fvectors/) or the Wrangler CLI to list vectors.
+The `client.vectorize.indexes.list_vectors()` method is not yet available in the current release of the [Cloudflare Python SDK ↗](https://pypi.org/project/cloudflare/). While the method appears in the [API reference](https://developers.cloudflare.com/api/python/resources/vectorize/subresources/indexes/methods/list_vectors/), it has not been included in a published SDK version as of v4.3.1. In the meantime, you can use the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/list_vectors/) or the Wrangler CLI to list vectors.
 
 ## When to use list-vectors
 
 Use list-vectors for:
 
-* **Bulk operations**: To process all vectors in an index
-* **Auditing**: To verify the contents of your index or generate reports
-* **Data migration**: To move vectors between indexes or systems
-* **Cleanup operations**: To identify and remove outdated vectors
+- **Bulk operations**: To process all vectors in an index
+- **Auditing**: To verify the contents of your index or generate reports
+- **Data migration**: To move vectors between indexes or systems
+- **Cleanup operations**: To identify and remove outdated vectors
 
 ## Pagination behavior
 
@@ -37,8 +37,8 @@ The list-vectors operation uses cursor-based pagination with important consisten
 
 Vector identifiers returned belong to the index snapshot captured at the time of the first list-vectors request. This ensures consistent pagination even when the index is being modified during iteration:
 
-* **New vectors**: Vectors inserted after the initial request will not appear in subsequent paginated results
-* **Deleted vectors**: Vectors deleted after the initial request will continue to appear in the remaining responses until pagination is complete
+- **New vectors**: Vectors inserted after the initial request will not appear in subsequent paginated results
+- **Deleted vectors**: Vectors deleted after the initial request will continue to appear in the remaining responses until pagination is complete
 
 ### Starting a new iteration
 
@@ -48,12 +48,12 @@ To see recently added or removed vectors, you must start a new list-vectors requ
 
 Each response includes:
 
-* `count`: Number of vectors returned in this response
-* `totalCount`: Total number of vectors in the index
-* `isTruncated`: Whether there are more vectors available
-* `nextCursor`: Cursor for the next page (null if no more results)
-* `cursorExpirationTimestamp`: Timestamp of when the cursor expires
-* `vectors`: Array of vector identifiers
+- `count`: Number of vectors returned in this response
+- `totalCount`: Total number of vectors in the index
+- `isTruncated`: Whether there are more vectors available
+- `nextCursor`: Cursor for the next page (null if no more results)
+- `cursorExpirationTimestamp`: Timestamp of when the cursor expires
+- `vectors`: Array of vector identifiers
 
 ### Cursor expiration
 

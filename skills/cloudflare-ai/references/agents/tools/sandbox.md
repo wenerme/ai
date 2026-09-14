@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/sandbox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Sandbox](https://developers.cloudflare.com/sandbox/) to run code in isolated container environments. Use Sandbox when an agent needs a real filesystem, shell commands, language runtimes, package installation, or long-lived project state that should not run inside the agent's own Worker isolate.
 
@@ -22,11 +22,11 @@ Sandbox is built on [Cloudflare Containers](https://developers.cloudflare.com/co
 
 Use Sandbox for agents that need to:
 
-* Run untrusted or model-generated code in isolation.
-* Execute Python, Node.js, shell commands, or package managers.
-* Read, write, and manage project files.
-* Run tests, linters, build tools, or data analysis scripts.
-* Maintain a workspace across multiple agent turns.
+- Run untrusted or model-generated code in isolation.
+- Execute Python, Node.js, shell commands, or package managers.
+- Read, write, and manage project files.
+- Run tests, linters, build tools, or data analysis scripts.
+- Maintain a workspace across multiple agent turns.
 
 ## Basic pattern
 

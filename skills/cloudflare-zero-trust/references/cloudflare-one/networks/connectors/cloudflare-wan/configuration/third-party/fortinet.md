@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fortinet
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fortinet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/fortinet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide provides information and examples of how to configure Cloudflare WAN (formerly Magic WAN) with Internet Protocol Security (IPsec) tunnels in conjunction with Fortinet FortiGate firewalls.
 
@@ -22,22 +22,22 @@ The FortiGate configuration settings presented here support [bidirectional healt
 
 The FortiGate configuration was tested on two different FortiGate firewalls:
 
-* FortiGate Virtual Appliance version 7.0.8, running on VMware ESXi 6.5
-* FortiGate FG80F, version 7.0.12
+- FortiGate Virtual Appliance version 7.0.8, running on VMware ESXi 6.5
+- FortiGate FG80F, version 7.0.12
 
 ## Cloudflare WAN configuration
 
 To set up Cloudflare WAN, add IPsec tunnels and static routes to your Cloudflare account using the dashboard or API.
 
-Before proceeding, ensure that you have the IPv4 anycast address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+Before proceeding, ensure that you have the IPv4 anycast address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ### IPsec tunnels
 
 Cloudflare handles failures on its network automatically by advertising your endpoint IP from multiple nodes across many globally distributed data centers. To handle failures on your network, configure two IPsec tunnels from separate routers.
 
 1. Follow the [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#add-tunnels) instructions to create the required IPsec tunnels with the following options:
-  * **Health check type**: Change to _Request_.
-  * **Replay Protection**: Do not change from the default setting.
+   - **Health check type**: Change to *Request*.
+   - **Replay Protection**: Do not change from the default setting.
 
 ### Static routes
 
@@ -47,13 +47,11 @@ By default, the static routes are defined with the priority set to `100`. Cloudf
 
 1. Follow the [Configure static routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) instructions to create a static route.
 2. For the first route, ensure the following settings are defined:
-
-  * **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the first IPsec tunnel you have defined in the previous section.
-  * **Tunnel/Next hop**: Select your first tunnel (Tunnel 01 of 02).
+   - **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the first IPsec tunnel you have defined in the previous section.
+   - **Tunnel/Next hop**: Select your first tunnel (Tunnel 01 of 02).
 3. For the second route, ensure the following settings are defined:
-
-  * **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the second IPsec tunnel defined in the previous section.
-  * **Tunnel/Next hop**: Select your second tunnel (Tunnel 02 of 02).
+   - **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the second IPsec tunnel defined in the previous section.
+   - **Tunnel/Next hop**: Select your second tunnel (Tunnel 02 of 02).
 
 ## Fortinet FortiGate configuration
 
@@ -115,7 +113,7 @@ Note
 
 Refer to the Cloudflare WAN dashboard to obtain the FQDN ID value when specifying the `localid` attribute/value pair in the `phase1-interface` configuration. To find this value go to the **Connectors** page. Then, in the **IPsec/GRE tunnels** tab, select your IPsec tunnel to reveal all the information associated to it.
 
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 
 The following examples assume `wan1` is the external/egress interface of the FortiGate firewall.
 
@@ -158,7 +156,7 @@ end
 
 #### Add Phase 2 interfaces
 
-Add two `phase2-interfaces` \- one for each of the two `phase1-interfaces` as follows:
+Add two `phase2-interfaces` - one for each of the two `phase1-interfaces` as follows:
 
 ```txt
 fortigate # config vpn ipsec phase2-interface
@@ -191,9 +189,9 @@ Configure the virtual tunnel interfaces that were automatically added when speci
 
 These are the only settings that should need to be added to the virtual tunnel interfaces:
 
-* `ip`: The local IP address (specify with a `/32` netmask - `255.255.255.255`).
-* `remote-ip`: The value associated with the interface address specified earlier in the IPsec tunnels section (specify with a `/31` netmask - `255.255.255.254`).
-* `alias`: This value is optional.
+- `ip`: The local IP address (specify with a `/32` netmask - `255.255.255.255`).
+- `remote-ip`: The value associated with the interface address specified earlier in the IPsec tunnels section (specify with a `/31` netmask - `255.255.255.254`).
+- `alias`: This value is optional.
 
 The following examples assume `wan1` is the external/egress interface of the FortiGate firewall.
 
@@ -264,9 +262,9 @@ round-trip min/avg/max = 6.0/6.0/6.1 ms
 
 This sample configuration assumes there are three zones configured on the FortiGate firewall. These zone objects are used in the policies referenced later in this document:
 
-* `Trust_Zone`: Contains the LAN interface(s).
-* `Untrust_Zone`: Contains the WAN interface.
-* `Cloudflare_Zone`: Contains both IPsec Tunnel interfaces.
+- `Trust_Zone`: Contains the LAN interface(s).
+- `Untrust_Zone`: Contains the WAN interface.
+- `Cloudflare_Zone`: Contains both IPsec Tunnel interfaces.
 
 ```txt
 fortigate # config system zone

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Infrastructure as Code (IaC)
 
-Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 While [Wrangler](https://developers.cloudflare.com/workers/wrangler/configuration) makes it easy to upload and manage Workers, there are times when you need a more programmatic approach. This could involve using Infrastructure as Code (IaC) tools or interacting directly with the [Workers API](https://developers.cloudflare.com/api/resources/workers/). Examples include build and deploy scripts, CI/CD pipelines, custom developer tools, and automated testing.
 
@@ -36,7 +36,7 @@ When using Wrangler for building and a different method for uploading, make sure
 
 ## Terraform
 
-In this example, you need a local file named `my-script.mjs` with script content similar to the below examples. Learn more about the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform/), and refer to the [Workers script resource example ↗](https://github.com/cloudflare/terraform-provider-cloudflare/blob/main/examples/resources/cloudflare%5Fworkers%5Fscript/resource.tf) for all available resource settings.
+In this example, you need a local file named `my-script.mjs` with script content similar to the below examples. Learn more about the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform/), and refer to the [Workers script resource example ↗](https://github.com/cloudflare/terraform-provider-cloudflare/blob/main/examples/resources/cloudflare_workers_script/resource.tf) for all available resource settings.
 
 ```tf
 variable "account_id" {
@@ -99,9 +99,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"kv_namespace"`
-* `name`: The variable name for the binding, accessible via `env.MY_KV`
-* `namespace_id`: The ID of your KV namespace
+- `type`: `"kv_namespace"`
+- `name`: The variable name for the binding, accessible via `env.MY_KV`
+- `namespace_id`: The ID of your KV namespace
 
 ### R2 Bucket Binding
 
@@ -117,9 +117,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"r2_bucket"`
-* `name`: The binding name to access via `env.MY_BUCKET`
-* `bucket_name`: The name of your R2 bucket
+- `type`: `"r2_bucket"`
+- `name`: The binding name to access via `env.MY_BUCKET`
+- `bucket_name`: The name of your R2 bucket
 
 ### D1 Database Binding
 
@@ -135,9 +135,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"d1"`
-* `name`: The binding name to access via `env.DB`
-* `id`: The ID of your D1 database
+- `type`: `"d1"`
+- `name`: The binding name to access via `env.DB`
+- `id`: The ID of your D1 database
 
 ### Durable Object Binding
 
@@ -153,10 +153,10 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"durable_object_namespace"`
-* `name`: The binding name to access via `env.MY_DURABLE_OBJECT`
-* `class_name`: The exported class name of the Durable Object
-* `script_name`: (Optional) The Worker script that exports this Durable Object class. Omit if the class is defined in the same Worker.
+- `type`: `"durable_object_namespace"`
+- `name`: The binding name to access via `env.MY_DURABLE_OBJECT`
+- `class_name`: The exported class name of the Durable Object
+- `script_name`: (Optional) The Worker script that exports this Durable Object class. Omit if the class is defined in the same Worker.
 
 ### Service Binding
 
@@ -172,10 +172,10 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"service"`
-* `name`: The binding name to access via `env.MY_SERVICE`
-* `service`: The name of the target Worker
-* `entrypoint`: (Optional) The named [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) to bind to
+- `type`: `"service"`
+- `name`: The binding name to access via `env.MY_SERVICE`
+- `service`: The name of the target Worker
+- `entrypoint`: (Optional) The named [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) to bind to
 
 ### Queue Binding
 
@@ -193,9 +193,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"queue"`
-* `name`: The binding name to access via `env.MY_QUEUE`
-* `queue_name`: The name of your Queue
+- `type`: `"queue"`
+- `name`: The binding name to access via `env.MY_QUEUE`
+- `queue_name`: The name of your Queue
 
 For consuming messages, configure your Worker as a consumer in the queue resource itself, not via bindings.
 
@@ -213,9 +213,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"vectorize"`
-* `name`: The binding name to access via `env.VECTORIZE_INDEX`
-* `index_name`: The name of your Vectorize index
+- `type`: `"vectorize"`
+- `name`: The binding name to access via `env.VECTORIZE_INDEX`
+- `index_name`: The name of your Vectorize index
 
 ### Workers AI Binding
 
@@ -230,8 +230,8 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"ai"`
-* `name`: The binding name to access via `env.AI`
+- `type`: `"ai"`
+- `name`: The binding name to access via `env.AI`
 
 ### Hyperdrive Binding
 
@@ -247,9 +247,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"hyperdrive"`
-* `name`: The binding name to access via `env.HYPERDRIVE`
-* `id`: The ID of your Hyperdrive configuration
+- `type`: `"hyperdrive"`
+- `name`: The binding name to access via `env.HYPERDRIVE`
+- `id`: The ID of your Hyperdrive configuration
 
 ### VPC Service Binding
 
@@ -265,9 +265,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"vpc_service"`
-* `name`: The binding name to access via `env.PRIVATE_API`
-* `service_id`: The ID of your VPC Service (from `cloudflare_connectivity_directory_service` or the dashboard)
+- `type`: `"vpc_service"`
+- `name`: The binding name to access via `env.PRIVATE_API`
+- `service_id`: The ID of your VPC Service (from `cloudflare_connectivity_directory_service` or the dashboard)
 
 You can create the VPC Service with Terraform using the `cloudflare_connectivity_directory_service` resource. For a full walkthrough, refer to [Configure VPC Services with Terraform](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/).
 
@@ -285,9 +285,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"analytics_engine"`
-* `name`: The binding name to access via `env.ANALYTICS`
-* `dataset`: The name of your Analytics Engine dataset
+- `type`: `"analytics_engine"`
+- `name`: The binding name to access via `env.ANALYTICS`
+- `dataset`: The name of your Analytics Engine dataset
 
 ### Environment Variables
 
@@ -303,9 +303,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"plain_text"`
-* `name`: The binding name to access via `env.MY_VARIABLE`
-* `text`: The value of the environment variable
+- `type`: `"plain_text"`
+- `name`: The binding name to access via `env.MY_VARIABLE`
+- `text`: The value of the environment variable
 
 ### Secret Text Binding
 
@@ -321,9 +321,9 @@ bindings = [{
 
 **Properties:**
 
-* `type`: `"secret_text"`
-* `name`: The binding name to access via `env.API_KEY`
-* `text`: The secret value (will be encrypted)
+- `type`: `"secret_text"`
+- `name`: The binding name to access via `env.API_KEY`
+- `text`: The secret value (will be encrypted)
 
 ### Complete Example
 
@@ -910,7 +910,7 @@ $script_content
 EOF
 ```
 
-For [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms), you can upload a [User Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) to a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Note the [API endpoint](https://developers.cloudflare.com/api/resources/workers%5Ffor%5Fplatforms/subresources/dispatch/subresources/namespaces/subresources/scripts/methods/update/) is on `/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME`.
+For [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms), you can upload a [User Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) to a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Note the [API endpoint](https://developers.cloudflare.com/api/resources/workers_for_platforms/subresources/dispatch/subresources/namespaces/subresources/scripts/methods/update/) is on `/workers/dispatch/namespaces/$DISPATCH_NAMESPACE/scripts/$SCRIPT_NAME`.
 
 ```bash
 account_id="replace_me"
@@ -1029,8 +1029,8 @@ Worker versions are immutable at the API level, meaning they cannot be updated a
 
 Worker version modules support two mutually exclusive ways to provide content:
 
-* **`content_file`** \- Points to a local file
-* **`content_base64`** \- Inline base64-encoded content
+- **`content_file`** - Points to a local file
+- **`content_base64`** - Inline base64-encoded content
 
 In both cases, changes to the underlying content are tracked using the computed `content_sha256` attribute. Specifying content using the `content_file` attribute is preferred in almost all cases, as it avoids storing the content itself in state. Module content may be quite large (up to tens of megabytes), and storing it in state will bloat the state file and negatively affect the performance of Terraform operations. The main use case for the `content_base64` attribute is importing the `cloudflare_worker_version` Terraform resource from the API, discussed below.
 

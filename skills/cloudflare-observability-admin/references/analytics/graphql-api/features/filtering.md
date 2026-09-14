@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Filtering
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Filters constrain queries to a particular account or set of zones, requests by date, or those from a specific user agent, for example. Without filters, queries can suffer performance degradation, results can exceed supported bounds, and the data returned can be noisy.
 
@@ -22,9 +22,9 @@ The GraphQL filter is represented by the [GraphQL Input Object ↗](https://grap
 
 You can use filters as an argument on the following resources:
 
-* zones
-* accounts
-* tables (datasets)
+- zones
+- accounts
+- tables (datasets)
 
 ### Zone filter
 
@@ -91,24 +91,24 @@ Operator support varies, depending on the node type and node name.
 
 The following operators are supported for all array types:
 
-| Operator | Comparison                                      |
-| -------- | ----------------------------------------------- |
-| has      | array contains a value                          |
-| hasall   | array contains all of a list of values          |
-| hasany   | array contains at least one of a list of values |
+| Operator | Comparison |
+| --- | --- |
+| `has` | array contains a value |
+| `hasall` | array contains all of a list of values |
+| `hasany` | array contains at least one of a list of values |
 
 #### Scalar operators
 
 The following operators are supported for all scalar types:
 
-| Operator | Comparison          |
-| -------- | ------------------- |
-| gt       | greater than        |
-| lt       | less than           |
-| geq      | greater or equal to |
-| leq      | less or equal to    |
-| neq      | not equal           |
-| in       | in                  |
+| Operator | Comparison |
+| --- | --- |
+| `gt` | greater than |
+| `lt` | less than |
+| `geq` | greater or equal to |
+| `leq` | less or equal to |
+| `neq` | not equal |
+| `in` | in |
 
 #### String operators
 

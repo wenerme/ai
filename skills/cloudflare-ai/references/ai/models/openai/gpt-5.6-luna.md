@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.6-luna`
 
-* Third-party
+- Third-party
 
 GPT-5.6 Luna is an OpenAI GPT-5.6 model optimized for cost-sensitive workloads, using the Responses API for efficient text generation.
 
-| Model Info                                                                          |                                                                                                                       |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens                                                                                                      |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                         |
-| Request formats                                                                     | Responses                                                                                                             |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-luna) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-luna) |
 
 ## Usage
 
@@ -56,9 +56,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - **Protects system stability:** Prevents overload, reduces outages, and ensures predictable performance during traffic spikes.
 - **Ensures fair access:** Stops individual users or applications from consuming disproportionate resources.
 - **Improves security and cost control:** Helps mitigate abuse, brute-force attacks, and unexpected infrastructure usage.
+```
 
 ```json
 {
@@ -159,7 +161,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 
 ## Examples
 
-**Pull Request Description** — Using instructions for a cost-sensitive drafting task
+<details>
+
+<summary>**Pull Request Description** — Using instructions for a cost-sensitive drafting task</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -186,6 +192,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 ## Summary
 Prevents duplicate webhook deliveries by ensuring each event is processed only once, even when retries or concurrent requests occur.
 
@@ -196,6 +203,7 @@ Prevents duplicate webhook deliveries by ensuring each event is processed only o
 
 ## Testing
 All existing and new tests pass.
+```
 
 ```json
 {
@@ -294,6 +302,8 @@ All existing and new tests pass.
 }
 ```
 
+</details>
+
 ## Parameters
 
 ▶input
@@ -320,13 +330,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -352,7 +360,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -370,9 +378,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.6-luna/schema-output.json)
 
 Was this helpful?
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quarterly DDoS threat reports
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack insights and trends over a three-month period.
+Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack
+
+ insights and trends over a three-month period.
 
 Thanks to our vast network, Cloudflare provides insights on the evolving threat landscape, including variations in attack sizes, techniques, top source countries, top targeted countries and targeted industries. Each report presents a global outlook, dives into significant attacks and campaigns, and explores shifts in DDoS tactics, offering a blend of data analysis and insights to better understand the cyber threat environment.
 
@@ -38,7 +40,7 @@ Cloudflare’s systems constantly analyze traffic and automatically apply mitiga
 
 #### Source country
 
-At the application layer, Cloudflare uses the attacking IP addresses to understand the origin country of the attacks. That is because at that layer, IP addresses cannot be spoofed [1](#user-content-fn-1) (or modified). However, at the network layer, source IP addresses can be spoofed. So, instead of relying on IP addresses to understand the source, Cloudflare uses the location of our data centers where the attack packets were ingested. It is possible to obtain geographical accuracy due to Cloudflare's large global coverage in over 300 locations around the world.
+At the application layer, Cloudflare uses the attacking IP addresses to understand the origin country of the attacks. That is because at that layer, IP addresses cannot be spoofed <sup>[1](#user-content-fn-1)</sup> (or modified). However, at the network layer, source IP addresses can be spoofed. So, instead of relying on IP addresses to understand the source, Cloudflare uses the location of our data centers where the attack packets were ingested. It is possible to obtain geographical accuracy due to Cloudflare's large global coverage in over 300 locations around the world.
 
 #### Target country
 

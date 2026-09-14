@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # New Relic
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to analyze Cloudflare metrics using the [New Relic One Cloudflare Quickstart ↗](https://newrelic.com/instant-observability/cloudflare/fc2bb0ac-6622-43c6-8c1f-6a4c26ab5434).
 
@@ -20,18 +20,20 @@ This tutorial explains how to analyze Cloudflare metrics using the [New Relic On
 
 Before sending your Cloudflare log data to New Relic, make sure that you:
 
-* Have a Cloudflare Enterprise account with Cloudflare Logs enabled.
-* Have a New Relic account.
-* Configure [Logpush to New Relic](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/new-relic/).
+- Have a Cloudflare Enterprise account with Cloudflare Logs enabled.
+- Have a New Relic account.
+- Configure [Logpush to New Relic](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/new-relic/).
 
 ## Task 1 - Install the Cloudflare Network Logs quickstart
 
 1. Log in to New Relic.
 2. Click the Instant Observability button (top right).
 3. Search for **Cloudflare Network Logs**.
+
 ![Cloudflare Network Logs install screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1030,format=webp/_astro/cloudflare-network-logs.CYJYSb1Z.png)
-1. Click **Install this quickstart**.
-2. Follow the steps to deploy.
+
+4. Click **Install this quickstart**.
+5. Follow the steps to deploy.
 
 ## Task 2 - View the Cloudflare Dashboards
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Non-HTTP applications
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers both client-based and clientless ways to grant secure access to non-HTTP applications.
 
@@ -26,9 +26,9 @@ Users can connect by installing the Cloudflare One Client on their device and en
 
 If you would like to define how users access specific infrastructure servers within your network, [create an infrastructure application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) in Access for Infrastructure. Access for Infrastructure provides an additional layer of control and visibility over how users access non-HTTP applications, including:
 
-* Define fine-grained policies to govern who has access to specific servers and exactly how a user may access that server.
-* Eliminate SSH keys by using short-lived certificates to authenticate users.
-* Export SSH command logs to a storage service or SIEM solution using [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
+- Define fine-grained policies to govern who has access to specific servers and exactly how a user may access that server.
+- Eliminate SSH keys by using short-lived certificates to authenticate users.
+- Export SSH command logs to a storage service or SIEM solution using [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
 ## Clientless access
 
@@ -46,9 +46,9 @@ Users can log in to the application by installing `cloudflared` on their device 
 
 To connect to an application over a specific protocol, refer to these tutorials:
 
-* [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/)
-* [SMB](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/)
-* [RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/)
+- [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/)
+- [SMB](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/)
+- [RDP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/rdp/)
 
 Was this helpful?
 

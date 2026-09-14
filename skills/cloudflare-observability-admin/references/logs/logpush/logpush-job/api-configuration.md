@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API configuration
 
-Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
 The table below summarizes the job operations available for both Logpush and Edge Log Delivery jobs. Make sure that Account-scoped datasets use `/accounts/{account_id}` and Zone-scoped datasets use `/zone/{zone_id}`. For more information, refer to the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) page.
 
-You can locate `{zone_id}` and `{account_id}` arguments based on the [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) page. The `{job_id}` argument is numeric, like 123456\. The `{dataset_id}` argument indicates the log category (such as `http_requests` or `audit_logs`).
+You can locate `{zone_id}` and `{account_id}` arguments based on the [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) page. The `{job_id}` argument is numeric, like 123456. The `{dataset_id}` argument indicates the log category (such as `http_requests` or `audit_logs`).
 
-| Operation | Description                                 | API                                                                                                                             |
-| --------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| POST      | Create job                                  | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/)                      |
-| GET       | Retrieve job details                        | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/jobs/methods/get/)   |
-| GET       | Retrieve all jobs for all datasets          | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/list/)                        |
-| GET       | Retrieve all jobs for a dataset             | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/jobs/methods/get/)   |
-| GET       | Retrieve all available fields for a dataset | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/fields/methods/get/) |
-| PUT       | Update job                                  | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/update/)                      |
-| DELETE    | Delete job                                  | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/delete/)                      |
-| POST      | Check whether destination exists            | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/validate/methods/destination/)             |
-| POST      | Get ownership challenge                     | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/ownership/methods/validate/)               |
-| POST      | Validate ownership challenge                | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/ownership/methods/validate/)               |
-| POST      | Validate log options                        | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/validate/methods/origin/)                  |
+| Operation | Description | API |
+| --- | --- | --- |
+| `POST` | Create job | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/create/) |
+| `GET` | Retrieve job details | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/jobs/methods/get/) |
+| `GET` | Retrieve all jobs for all datasets | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/list/) |
+| `GET` | Retrieve all jobs for a dataset | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/jobs/methods/get/) |
+| `GET` | Retrieve all available fields for a dataset | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/datasets/subresources/fields/methods/get/) |
+| `PUT` | Update job | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/update/) |
+| `DELETE` | Delete job | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/methods/delete/) |
+| `POST` | Check whether destination exists | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/validate/methods/destination/) |
+| `POST` | Get ownership challenge | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/ownership/methods/validate/) |
+| `POST` | Validate ownership challenge | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/ownership/methods/validate/) |
+| `POST` | Validate log options | [Documentation](https://developers.cloudflare.com/api/resources/logpush/subresources/validate/methods/origin/) |
 
 For concrete examples, refer to the tutorials in [Logpush examples](https://developers.cloudflare.com/logs/logpush/examples/).
 
@@ -40,10 +40,21 @@ For concrete examples, refer to the tutorials in [Logpush examples](https://deve
 
 The Logpush API requires credentials like any other Cloudflare API.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*List Logpush jobsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -57,10 +68,21 @@ Before creating a new job, ownership of the destination must be proven.
 
 To issue an ownership challenge token to your destination:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Get ownership challengebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/ownership" \
@@ -108,50 +130,61 @@ The `destination_conf` parameter must follow this format:
 
 Supported schemes are listed below, each tailored to specific providers such as R2, S3, etc. Additionally, generic use cases like `https` are also covered:
 
-* `r2`,
-* `gs`,
-* `s3`,
-* `sumo`,
-* `https`,
-* `azure`,
-* `splunk`,
-* `sentinelone`,
-* `datadog`.
+- `r2`,
+- `gs`,
+- `s3`,
+- `sumo`,
+- `https`,
+- `azure`,
+- `splunk`,
+- `sentinelone`,
+- `datadog`.
 
-The `destination-address` should generally be provided by the destination provider. However, for certain providers, we require the `destination-address`to follow a specific format:
+The `destination-address` should generally be provided by the destination provider. However, for certain providers, we require the `destination-address` to follow a specific format:
 
-* **Cloudflare R2** (scheme `r2`): bucket path + account ID + R2 access key ID + R2 secret access key; for example: `r2://<BUCKET_PATH>?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>`
-* **AWS S3** (scheme `s3`): bucket + optional directory + region + optional encryption parameter (if required by your policy); for example: `s3://bucket/[dir]?region=<REGION>[&sse=AES256]`
-* **Datadog** (scheme `datadog`): Datadog endpoint URL + Datadog API key + optional parameters; for example: `datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>`
-* **Google Cloud Storage** (scheme `gs`): bucket + optional directory; for example: `gs://bucket/[dir]`
-* **Microsoft Azure** (scheme `azure`): service-level SAS URL with `https` replaced by `azure` \+ optional directory added before query string; for example: `azure://<BLOB_CONTAINER_PATH>/[dir]?<QUERY_STRING>`
-* **New Relic** (use scheme `https`): New Relic endpoint URL which is `https://log-api.newrelic.com/log/v1` for US or `https://log-api.eu.newrelic.com/log/v1` for EU + a license key + a format; for example: for US `"https://log-api.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"` and for EU `"https://log-api.eu.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
-* **Splunk** (scheme `splunk`): Splunk endpoint URL + Splunk channel ID + insecure-skip-verify flag + Splunk sourcetype + Splunk authorization token; for example: `splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>`
-* **Sumo Logic** (scheme `sumo`): HTTP source address URL with `https` replaced by `sumo`; for example: `sumo://<SUMO_ENDPOINT_URL>/receiver/v1/http/<UNIQUE_HTTP_COLLECTOR_CODE>`
-* **SentinelOne** (scheme `sentinelone`): SentinelOne endpoint URL + SentinelOne sourcetype + SentinelOne authorization token; for example: `sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>`
+- **Cloudflare R2** (scheme `r2`): bucket path + account ID + R2 access key ID + R2 secret access key; for example: `r2://<BUCKET_PATH>?account-id=<ACCOUNT_ID>&access-key-id=<R2_ACCESS_KEY_ID>&secret-access-key=<R2_SECRET_ACCESS_KEY>`
+- **AWS S3** (scheme `s3`): bucket + optional directory + region + optional encryption parameter (if required by your policy); for example:  `s3://bucket/[dir]?region=<REGION>[&sse=AES256]`
+- **Datadog** (scheme `datadog`): Datadog endpoint URL + Datadog API key + optional parameters; for example: `datadog://<DATADOG_ENDPOINT_URL>?header_DD-API-KEY=<DATADOG_API_KEY>&ddsource=cloudflare&service=<SERVICE>&host=<HOST>&ddtags=<TAGS>`
+- **Google Cloud Storage** (scheme `gs`): bucket + optional directory; for example: `gs://bucket/[dir]`
+- **Microsoft Azure** (scheme `azure`): service-level SAS URL with `https` replaced by `azure` + optional directory added before query string; for example: `azure://<BLOB_CONTAINER_PATH>/[dir]?<QUERY_STRING>`
+- **New Relic** (use scheme `https`): New Relic endpoint URL which is `https://log-api.newrelic.com/log/v1` for US or `https://log-api.eu.newrelic.com/log/v1` for EU + a license key + a format; for example: for US `"https://log-api.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"` and for EU `"https://log-api.eu.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
+- **Splunk** (scheme `splunk`): Splunk endpoint URL + Splunk channel ID + insecure-skip-verify flag + Splunk sourcetype + Splunk authorization token; for example: `splunk://<SPLUNK_ENDPOINT_URL>?channel=<SPLUNK_CHANNEL_ID>&insecure-skip-verify=<INSECURE_SKIP_VERIFY>&sourcetype=<SOURCE_TYPE>&header_Authorization=<SPLUNK_AUTH_TOKEN>`
+- **Sumo Logic** (scheme `sumo`): HTTP source address URL with `https` replaced by `sumo`; for example: `sumo://<SUMO_ENDPOINT_URL>/receiver/v1/http/<UNIQUE_HTTP_COLLECTOR_CODE>`
+- **SentinelOne** (scheme `sentinelone`): SentinelOne endpoint URL + SentinelOne sourcetype + SentinelOne authorization token; for example: `sentinelone://<SENTINELONE_ENDPOINT_URL>?sourcetype=<SOURCE_TYPE>&header_Authorization=<SENTINELONE_AUTH_TOKEN>`
 
 For **R2**, **S3**, **Google Cloud Storage**, and **Azure**, you can organize logs into daily subdirectories by including the special placeholder `{DATE}` in the URL path. This placeholder will automatically be replaced with the date in the `YYYYMMDD` format (for example, `20180523`).
 
 For example:
 
-* `s3://mybucket/logs/{DATE}?region=us-east-1&sse=AES256`
-* `azure://myblobcontainer/logs/{DATE}?[QueryString]`
+- `s3://mybucket/logs/{DATE}?region=us-east-1&sse=AES256`
+- `azure://myblobcontainer/logs/{DATE}?[QueryString]`
 
 This approach is useful when you want your logs grouped by day.
 
 For more information on the value for your cloud storage provider, consult the following conventions:
 
-* [AWS S3 CLI ↗](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) (S3Uri path argument type)
-* [Google Cloud Storage CLI ↗](https://cloud.google.com/storage/docs/gsutil) (Syntax for accessing resources)
-* [Microsoft Azure Shared Access Signature ↗](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
-* [Sumo Logic HTTP Source ↗](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source)
+- [AWS S3 CLI ↗](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) (S3Uri path argument type)
+- [Google Cloud Storage CLI ↗](https://cloud.google.com/storage/docs/gsutil) (Syntax for accessing resources)
+- [Microsoft Azure Shared Access Signature ↗](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+- [Sumo Logic HTTP Source ↗](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source)
 
 To check if a destination is already in use:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Check destination existsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/destination/exists" \
@@ -187,10 +220,21 @@ Note
 
 The kind parameter cannot be used to update existing Logpush jobs. You can only specify the kind parameter when creating a new job.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -234,10 +278,21 @@ The **CVE-2021-44228** parameter can only be set through the API at this time. U
 
 To check if the selected **logpull\_options** are valid:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Validate originbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/validate/origin" \
@@ -291,8 +346,8 @@ Value can range from `0.0` (exclusive) to `1.0` (inclusive). `sample=0.1` means 
 
 The `sample_rate` parameter and `SampleInterval` field are independent mechanisms that operate at different stages of the logging pipeline:
 
-* **`sample_rate`**: A configuration parameter you set on your Logpush job to control what percentage of logs are delivered to your destination (0.0-1.0). For example, setting `sample_rate: 0.1` delivers approximately 10% of logs.
-* **`SampleInterval`**: A data field that appears in certain datasets (particularly [Network Analytics Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network%5Fanalytics%5Flogs/)) indicating upstream sampling applied during data collection. A `SampleInterval` of 1000 means the log entry represents 1 in 1000 packets.
+- **`sample_rate`**: A configuration parameter you set on your Logpush job to control what percentage of logs are delivered to your destination (0.0-1.0). For example, setting `sample_rate: 0.1` delivers approximately 10% of logs.
+- **`SampleInterval`**: A data field that appears in certain datasets (particularly [Network Analytics Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/network_analytics_logs/)) indicating upstream sampling applied during data collection. A `SampleInterval` of 1000 means the log entry represents 1 in 1000 packets.
 
 The `sample_rate` you configure applies on top of any pre-existing sampling. If your data already has `SampleInterval: 1000` and you set `sample_rate: 0.1`, you receive approximately 1 in 10,000 of the original events (1000 × 10).
 
@@ -304,11 +359,11 @@ When customer-configured sampling is applied, the `SampleInterval` field value i
 
 These parameters control the size of each upload batch — not how quickly data is delivered. Use them to prevent overloading your destination with uploads that are too large or too small.
 
-| Parameter                      | Description                                                               | Default               |
-| ------------------------------ | ------------------------------------------------------------------------- | --------------------- |
-| max\_upload\_bytes             | Maximum uncompressed file size of a batch of logs.                        | Varies by destination |
-| max\_upload\_records           | Maximum number of log lines per batch.                                    | 100,000               |
-| max\_upload\_interval\_seconds | Maximum time-span of log data per batch (used during catch-up scenarios). | Varies by destination |
+| Parameter | Description | Default |
+| --- | --- | --- |
+| `max_upload_bytes` | Maximum uncompressed file size of a batch of logs. | Varies by destination |
+| `max_upload_records` | Maximum number of log lines per batch. | 100,000 |
+| `max_upload_interval_seconds` | Maximum time-span of log data per batch (used during catch-up scenarios). | Varies by destination |
 
 Note
 
@@ -320,9 +375,9 @@ When a Logpush job is catching up after a period of buffering (for example, afte
 
 ### When to adjust these parameters
 
-* Reduce `max_upload_records` if your destination struggles with large payloads or runs out of memory processing big batches.
-* Increase `max_upload_records` if you want fewer, larger files (for example, when pushing to object storage like R2 or S3).
-* For destinations like Datadog that have strict payload limits, Logpush automatically uses smaller batch sizes (for example, 1,000 rows).
+- Reduce `max_upload_records` if your destination struggles with large payloads or runs out of memory processing big batches.
+- Increase `max_upload_records` if you want fewer, larger files (for example, when pushing to object storage like R2 or S3).
+- For destinations like Datadog that have strict payload limits, Logpush automatically uses smaller batch sizes (for example, 1,000 rows).
 
 Tip
 

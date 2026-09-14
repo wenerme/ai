@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zola
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Zola ↗](https://www.getzola.org/) is a fast static site generator in a single binary with everything built-in. In this guide, you will create a new Zola application and deploy it using Cloudflare Pages. You will use the `zola` CLI to create a new Zola site.
 
@@ -71,9 +71,9 @@ zola init my-zola-project
 Upon running `zola init`, you will prompted with three questions:
 
 1. What is the URL of your site? ([https://example.com ↗](https://example.com)): You can leave this one blank for now.
-2. Do you want to enable Sass compilation? \[Y/n\]: Y
-3. Do you want to enable syntax highlighting? \[y/N\]: y
-4. Do you want to build a search index of the content? \[y/N\]: y
+2. Do you want to enable Sass compilation? \[Y/n]: Y
+3. Do you want to enable syntax highlighting? \[y/N]: y
+4. Do you want to build a search index of the content? \[y/N]: y
 
 ## Before you continue
 
@@ -95,10 +95,11 @@ git push -u origin main
 
 ## Deploy with Cloudflare Pages
 
-| Configuration option | Value      | |  Production branch | main |
-| -------------------- | ---------- | -------------------- | ---- |
-| Build command        | zola build |                      |      |
-| Build directory      | public     |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `zola build` |
+| Build directory | `public` |
 
 Zola is preinstalled in the Cloudflare Pages build environment, so no additional configuration is required. You can optionally set the `ZOLA_VERSION` environment variable under **Environment Variables (advanced)** to pin a specific version.
 
@@ -135,8 +136,8 @@ if [ "$CF_PAGES_BRANCH" = "main" ]; then zola build; else zola build --base-url 
 
 This command uses:
 
-* The `base_url` set in `config.toml` when building from the `main` branch
-* The preview deployment URL (automatically provided by Cloudflare Pages as `$CF_PAGES_URL`) for all other branches
+- The `base_url` set in `config.toml` when building from the `main` branch
+- The preview deployment URL (automatically provided by Cloudflare Pages as `$CF_PAGES_URL`) for all other branches
 
 ## Learn more
 

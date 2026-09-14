@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Git protocol
 
-Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/api/git-protocol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/api/git-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts exposes Git access for every Artifacts repository.
 
@@ -26,10 +26,10 @@ Use the returned repo `remote` with a regular Git client for `clone`, `fetch`, `
 
 Git routes accept repo access tokens in two forms:
 
-| Format                            | Details                                                                                                                              | Example                                                                                                      |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| Bearer token in http.extraHeader  | Recommended for local workflows. Use the full token string returned by the control plane and keep credentials out of the remote URL. | git -c http.extraHeader="Authorization: Bearer $ARTIFACTS\_TOKEN" clone "$ARTIFACTS\_REMOTE" artifacts-clone |
-| HTTP Basic auth in the remote URL | Use for short-lived, one-off commands when you need a self-contained remote. Put the token secret in the password slot.              | https://x:<token-secret>@<ACCOUNT\_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git                   |
+| Format | Details | Example |
+| --- | --- | --- |
+| Bearer token in `http.extraHeader` | Recommended for local workflows. Use the full token string returned by the control plane and keep credentials out of the remote URL. | `git -c http.extraHeader="Authorization: Bearer $ARTIFACTS_TOKEN" clone "$ARTIFACTS_REMOTE" artifacts-clone` |
+| HTTP Basic auth in the remote URL | Use for short-lived, one-off commands when you need a self-contained remote. Put the token secret in the password slot. | `https://x:<token-secret>@<ACCOUNT_ID>.artifacts.cloudflare.net/git/<namespace>/<repo>.git` |
 
 ### Token format
 
@@ -37,7 +37,7 @@ Repo tokens are issued in the format `art_v1_<40 hex>?expires=<unix_seconds>`. T
 
 ### Git `extraHeader` parameter
 
-Git's [http.extraHeader ↗](https://git-scm.com/docs/git-config#Documentation/git-config.txt-httpextraHeader) setting lets you attach an HTTP header to git requests.
+Git's [`http.extraHeader` ↗](https://git-scm.com/docs/git-config#Documentation/git-config.txt-httpextraHeader) setting lets you attach an HTTP header to git requests.
 
 If you want to use the full token string returned by the API, pass it as a Bearer token:
 
@@ -70,19 +70,19 @@ Use any non-empty username in the URL. Artifacts accepts that username but does 
 
 Artifacts supports Git protocol v1 and v2 for clone and fetch. Git clients negotiate the protocol automatically.
 
-| Operation                         | Git service      | Protocol support | Notes                                                                                                                  |
-| --------------------------------- | ---------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Clone and fetch                   | git-upload-pack  | v1 and v2        | Protocol v2 supports ls-refs and fetch. Protocol v1 supports normal fetch flows, including shallow and deepen fetches. |
-| Push                              | git-receive-pack | v1               | Push uses the standard v1 receive-pack flow.                                                                           |
-| Push over protocol v2             | git-receive-pack | Not supported    | Artifacts does not support v2 receive-pack.                                                                            |
-| Optional protocol v1 capabilities | git-upload-pack  | Partial          | Some optional v1 capabilities, such as filter and include-tag, are not supported.                                      |
+| Operation | Git service | Protocol support | Notes |
+| --- | --- | --- | --- |
+| Clone and fetch | `git-upload-pack` | v1 and v2 | Protocol v2 supports `ls-refs` and `fetch`. Protocol v1 supports normal fetch flows, including shallow and deepen fetches. |
+| Push | `git-receive-pack` | v1 | Push uses the standard v1 receive-pack flow. |
+| Push over protocol v2 | `git-receive-pack` | Not supported | Artifacts does not support v2 receive-pack. |
+| Optional protocol v1 capabilities | `git-upload-pack` | Partial | Some optional v1 capabilities, such as `filter` and `include-tag`, are not supported. |
 
 ## Token scopes
 
-| Scope | Commands                                 | Notes                                                 |
-| ----- | ---------------------------------------- | ----------------------------------------------------- |
-| read  | git clone, git fetch, git pull           | Use for read-only access.                             |
-| write | git clone, git fetch, git pull, git push | git push mutates the repo and requires a write token. |
+| Scope | Commands | Notes |
+| --- | --- | --- |
+| `read` | `git clone`, `git fetch`, `git pull` | Use for read-only access. |
+| `write` | `git clone`, `git fetch`, `git pull`, `git push` | `git push` mutates the repo and requires a write token. |
 
 Was this helpful?
 

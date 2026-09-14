@@ -16,22 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/meta/llama-3-8b-instruct-awq`
 
-* Cloudflare-hosted
-* Deprecated
+- Cloudflare-hosted
+- Deprecated
 
 Quantized (int4) generative text model with 8 billion parameters from Meta.
 
-| Model Info                                                                          |                                                     |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Deprecated                                                                          | 5/30/2026                                           |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens                                        |
-| Terms and License                                                                   | [link ↗](https://llama.meta.com/llama3/license/#)   |
-| More information                                                                    | [link ↗](https://llama.meta.com)                    |
-| Unit Pricing                                                                        | $0.12 per M input tokens, $0.27 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Deprecated | 5/30/2026 |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| Terms and License | [link ↗](https://llama.meta.com/llama3/license/#) |
+| More information | [link ↗](https://llama.meta.com) |
+| Unit Pricing | $0.12 per M input tokens, $0.27 per M output tokens |
 
 ## Playground
 
@@ -42,7 +42,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -71,7 +70,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -94,7 +92,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -117,7 +114,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3-8b-instruct-awq \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -178,47 +174,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/sync-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/sync-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct-awq/streaming-output.json)
 
 Was this helpful?
 

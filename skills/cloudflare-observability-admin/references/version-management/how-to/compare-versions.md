@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Compare versions
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/how-to/compare-versions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/version-management/how-to/compare-versions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quickly view differences between versions to make sure your configurations are correct before [promoting a version](https://developers.cloudflare.com/version-management/how-to/environments/#change-environment-version) to a new environment.
 
@@ -20,10 +20,9 @@ A common use case would be to compare the versions in staging and production to 
 
 To compare versions:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
-3. Go to **Version Management** \> **Comparisons**.
+3. Go to **Version Management** > **Comparisons**.
 4. Select two different versions.
 5. Select **Compare**.
 

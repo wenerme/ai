@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Example architecture
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/example-architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/example-architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ![Example Architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=745,height=475,format=webp/_astro/video-calling-application.CIYa-lzM.png)
 

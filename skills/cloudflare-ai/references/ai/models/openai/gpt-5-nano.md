@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5-nano`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized for low latency and cheap, high-throughput tasks.
 
-| Model Info                                                                          |                                                                                                                     |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                      |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                              |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                       |
-| Zero data retention                                                                 | Yes                                                                                                                 |
-| Request formats                                                                     | Responses, Chat Completions                                                                                         |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-nano) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-nano) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 There are four laws in the standard formulation, but many introductions refer to the three fundamental ones (the Zeroth law is often treated separately). Here are the three most commonly cited (plus a note about the fourth):
 
 Three fundamental laws (often taught as the main ones)
@@ -76,6 +77,7 @@ Note on Zeroth Law
 - Zeroth Law: If two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other. This provides the definition of temperature: if A and C are in equilibrium, and B and C are in equilibrium, then A and B are in equilibrium. It underpins the concept of temperature as a property that can be compared.
 
 If you want, I can also give a few simple examples illustrating each law.
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ If you want, I can also give a few simple examples illustrating each law.
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 You can read a JSON file in Python using the built-in json module. Open the file and use json.load to parse it into Python objects (usually dictionaries or lists).
 
 A simple example:
@@ -233,6 +240,7 @@ with open('people.json', 'r', encoding='utf-8') as f:
 ```
 
 If you tell me the shape of your JSON (dict vs list, any large size concerns), I can tailor the example.
+````
 
 ```json
 {
@@ -275,7 +283,13 @@ If you tell me the shape of your JSON (dict vs list, any large size concerns), I
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -323,6 +337,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great question. Here are some standout stops for two popular SF-to-LA routes. Pick the vibe you want and I can tailor a day-by-day plan.
 
 Option 1 — Scenic Pacific Coast Highway (CA-1 / US-101)
@@ -366,6 +381,7 @@ Would you like me to tailor a day-by-day plan based on:
 - Whether you prefer the coastal route or the inland route
 - Your interests (wine, hiking, beaches, food, photography)
 - Any must-see stops or budget/overnight constraints?
+```
 
 ```json
 {
@@ -408,7 +424,13 @@ Would you like me to tailor a day-by-day plan based on:
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -442,6 +464,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain turned the city into a bleary watercolor, every streetlight smeared into halos that bled down the sidewalks. Detective Isla Voss slipped into the alley behind the Glasswright Gallery, where the security guard stood under a lone lamp, shaking out a soggy notebook. The building loomed quiet and serene, the way a locked box does after a storm. Inside, something had happened, but nothing obvious remained.
 
 “Not a thing missing,” the guard said, eyes wary. “Doors were closed, windows intact. Nothing broken, nothing stolen. Just… not right.”
@@ -497,6 +520,7 @@ And then the room’s lights flickered, briefly bathing them in a cold, blue gla
 Isla realized then what the clue was truly asking: not who would steal or why, but where to begin. The map wasn’t just a message; it was a map of the city’s memory, drawn by someone who knew where every shadow slept and which doors remained unlocked after hours.
 
 In that moment, she understood that the unusual clue wasn’t merely the soot, or the glow of the map, or even Mina’s whispered confession. It was the promise of a trail that stretched beyond the gallery walls and into the heart of a city that spoke in smoke, light, and memory. And she intended to follow it, one precise step at a time.
+```
 
 ```json
 {
@@ -539,7 +563,13 @@ In that moment, she understood that the unusual clue wasn’t merely the soot, o
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -572,6 +602,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Recursion is when a function solves a problem by calling itself to solve a smaller version of the same problem, and it uses a simple base case to stop.
 
 Key ideas:
@@ -619,6 +650,7 @@ def factorial_iter(n):
     return result
 
 If you’d like, I can tailor a recursion example to a different problem.
+```
 
 ```json
 [
@@ -8706,6 +8738,8 @@ If you’d like, I can tailor a recursion example to a different problem.
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -8736,13 +8770,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -8752,7 +8784,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -8774,11 +8806,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -8788,19 +8820,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -8824,7 +8852,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -8856,7 +8884,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -8866,9 +8894,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/schema-output.json)
 
 Was this helpful?
 

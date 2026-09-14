@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-imagine-image-quality`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.
 
-| Model Info          |                                                                                                                                  |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
-| More information    | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image-quality)                                                         |
-| Zero data retention | Yes                                                                                                                              |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-quality) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image-quality) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-quality) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Quality Portrait** — High-quality portrait-orientation render at 2K resolution
+<details>
+
+<summary>**High Quality Portrait** — High-quality portrait-orientation render at 2K resolution</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -115,7 +119,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Cinematic Widescreen** — Widescreen cinematic composition
+</details>
+
+<details>
+
+<summary>**Cinematic Widescreen** — Widescreen cinematic composition</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -160,7 +170,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Medium Quality Landscape** — Balanced quality landscape render
+</details>
+
+<details>
+
+<summary>**Medium Quality Landscape** — Balanced quality landscape render</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -205,7 +221,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Square Low Quality Draft** — Fast, rough draft for iteration
+</details>
+
+<details>
+
+<summary>**Square Low Quality Draft** — Fast, rough draft for iteration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -249,6 +271,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -283,7 +307,7 @@ user
 
 `object`
 
-▶images\[\]
+▶images\[]
 
 `array`maxItems: 10
 
@@ -297,9 +321,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/schema-output.json)
 
 Was this helpful?
 

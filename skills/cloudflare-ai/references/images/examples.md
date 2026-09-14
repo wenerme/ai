@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[**Watermarks**Draw a watermark from KV on an image from R2](https://developers.cloudflare.com/images/examples/watermark-from-kv/)
+[**Watermarks** Draw a watermark from KV on an image from R2](https://developers.cloudflare.com/images/examples/watermark-from-kv/)
 
-[**Transcode images**Transcode an image from Workers AI before uploading to R2](https://developers.cloudflare.com/images/examples/transcode-from-workers-ai/)
+[**Transcode images** Transcode an image from Workers AI before uploading to R2](https://developers.cloudflare.com/images/examples/transcode-from-workers-ai/)
 
 Was this helpful?
 

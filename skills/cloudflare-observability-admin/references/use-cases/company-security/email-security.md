@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Stop email phishing attacks
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/company-security/email-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/company-security/email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email is the most common vector for phishing, Business Email Compromise (BEC), and malware delivery. Cloudflare Email Security scans inbound messages to block these threats before they reach the inbox, and DMARC management prevents domain spoofing.
 
@@ -22,15 +22,15 @@ Email is the most common vector for phishing, Business Email Compromise (BEC), a
 
 Detect and block email-based threats including phishing, BEC, and malware. [Learn more about Email security](https://developers.cloudflare.com/email-security/).
 
-* **Phishing protection** \- Block sophisticated phishing attacks including credential harvesting and impersonation
-* **BEC prevention** \- Detect Business Email Compromise (BEC) attempts using behavioral analysis
-* **Malware scanning** \- Inspect attachments and links to stop malware before it reaches the inbox
+- **Phishing protection** - Block sophisticated phishing attacks including credential harvesting and impersonation
+- **BEC prevention** - Detect Business Email Compromise (BEC) attempts using behavioral analysis
+- **Malware scanning** - Inspect attachments and links to stop malware before it reaches the inbox
 
 ### DMARC management
 
 Prevent email spoofing and improve deliverability. [Learn more about DMARC management](https://developers.cloudflare.com/dmarc-management/).
 
-* **Brand protection** \- Prevent domain spoofing by enforcing Domain-based Message Authentication, Reporting and Conformance (DMARC) policy and monitoring email sources
+- **Brand protection** - Prevent domain spoofing by enforcing Domain-based Message Authentication, Reporting and Conformance (DMARC) policy and monitoring email sources
 
 ## Get started
 

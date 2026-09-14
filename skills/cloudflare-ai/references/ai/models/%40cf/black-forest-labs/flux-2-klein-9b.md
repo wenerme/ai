@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-klein-9b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/black-forest-labs/flux-2-klein-9b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/black-forest-labs/flux-2-klein-9b`
 
-* Cloudflare-hosted
-* Partner
+- Cloudflare-hosted
+- Partner
 
-FLUX.2 \[klein\] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications.
+FLUX.2 \[klein] 9B is an ultra-fast, distilled image model with enhanced quality. It unifies image generation and editing in a single model, delivering state-of-the-art quality enabling interactive workflows, real-time previews, and latency-critical applications.
 
-| Model Info        |                                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service)                                      |
-| Partner           | Yes                                                                                  |
-| Unit Pricing      | $0.015 per first MP (1024x1024), $0.002 per subsequent MP, $0.002 per input image MP |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://bfl.ai/legal/terms-of-service) |
+| Partner | Yes |
+| Unit Pricing | $0.015 per first MP (1024x1024), $0.002 per subsequent MP, $0.002 per input image MP |
 
 ## Parameters
 
@@ -43,9 +43,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/black-forest-labs/flux-2-klein-9b/schema-output.json)
 
 Was this helpful?
 

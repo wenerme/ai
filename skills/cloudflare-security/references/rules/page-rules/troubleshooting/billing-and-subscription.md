@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Page Rules - Billing and subscription
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/troubleshooting/billing-and-subscription/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,8 +28,7 @@ No, you cannot buy additional Page Rules. You will need to [migrate to modern Ru
 
 To cancel a purchase:
 
-1. In the Cloudflare dashboard, go to the **Billing** page.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Go to **Subscriptions**.
 3. Find the associated website (listed in alphabetical order) and select **Edit**.
 4. For **Additional page rules**, change the amount to your previous value. If you are over your current limit, you may have to delete existing page rules (paused or active).

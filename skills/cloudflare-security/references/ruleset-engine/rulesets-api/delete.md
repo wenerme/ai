@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete a ruleset
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use the API to delete all the versions of a ruleset or delete a specific version of a ruleset.
 
-* [Delete ruleset (all versions)](#delete-ruleset)
-* [Delete ruleset version](#delete-ruleset-version)
+- [Delete ruleset (all versions)](#delete-ruleset)
+- [Delete ruleset version](#delete-ruleset-version)
 
 ## Delete ruleset
 
@@ -25,10 +25,10 @@ Deletes all the versions of an existing ruleset at the account or zone level.
 
 Use one of the following API endpoints:
 
-* [Delete an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/delete/)
-`DELETE /accounts/{account_id}/rulesets/{ruleset_id}`
-* [Delete a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/delete/)
-`DELETE /zones/{zone_id}/rulesets/{ruleset_id}`
+- [Delete an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/delete/)
+  `DELETE /accounts/{account_id}/rulesets/{ruleset_id}`
+- [Delete a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/delete/)
+  `DELETE /zones/{zone_id}/rulesets/{ruleset_id}`
 
 If the delete operation succeeds, the API method call returns a `204 No Content` HTTP status code.
 
@@ -42,17 +42,28 @@ To delete the ruleset, update or delete any rules that reference the ruleset and
 
 The following example request deletes an existing ruleset with ID `$RULESET_ID`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Delete an account rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID" \
@@ -66,10 +77,10 @@ Deletes a specific version of a ruleset.
 
 Use one of the following API endpoints:
 
-* [Delete an account ruleset version](https://developers.cloudflare.com/api/resources/rulesets/subresources/versions/methods/delete/)
-`DELETE /accounts/{account_id}/rulesets/{ruleset_id}/versions/{version_number}`
-* [Delete a zone ruleset version](https://developers.cloudflare.com/api/resources/rulesets/subresources/versions/methods/delete/)
-`DELETE /zones/{zone_id}/rulesets/{ruleset_id}/versions/{version_number}`
+- [Delete an account ruleset version](https://developers.cloudflare.com/api/resources/rulesets/subresources/versions/methods/delete/)
+  `DELETE /accounts/{account_id}/rulesets/{ruleset_id}/versions/{version_number}`
+- [Delete a zone ruleset version](https://developers.cloudflare.com/api/resources/rulesets/subresources/versions/methods/delete/)
+  `DELETE /zones/{zone_id}/rulesets/{ruleset_id}/versions/{version_number}`
 
 If the delete operation succeeds, the method call returns a `204 No Content` HTTP status code.
 
@@ -85,17 +96,28 @@ To delete the ruleset version, update or delete any rules that reference the rul
 
 The following example request deletes a version of an existing ruleset.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Magic Firewall Write`
-* `L4 DDoS Managed Ruleset Write`
-* `Transform Rules Write`
-* `Select Configuration Write`
-* `Account WAF Write`
-* `Account Rulesets Write`
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Magic Firewall Write</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>Transform Rules Write</code>
+- <code>Select Configuration Write</code>
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+
+</details>
+
+*Delete an account ruleset versionbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$RULESET_ID/versions/$RULESET_VERSION" \

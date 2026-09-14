@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Disruptive Maintenance
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/disruptive-maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/disruptive-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Scheduled maintenance windows
 
@@ -28,11 +28,17 @@ Status page notifications are delivered independently of Cloudflare infrastructu
 
 You can also receive maintenance updates through [Cloudflare Notifications](https://developers.cloudflare.com/notifications/), which delivers to the destinations configured on your account.
 
+<details>
+
+<summary>
+
 Maintenance Notification
+
+</summary>
 
 **Who is it for?**
 
-Customers interested in knowing about planned [Cloudflare maintenance](https://developers.cloudflare.com/support/troubleshooting/disruptive-maintenance/) for specific data centers. The notification lets you know when maintenance has been scheduled, changed, or canceled on an entire point of presence.
+Customers interested in knowing about planned <a href="https://developers.cloudflare.com/support/troubleshooting/disruptive-maintenance/">Cloudflare maintenance</a> for specific data centers. The notification lets you know when maintenance has been scheduled, changed, or canceled on an entire point of presence.
 
 **Other options / filters**
 
@@ -45,6 +51,8 @@ All Cloudflare plans.
 **What should you do if you receive one?**
 
 If the notification is announcing new scheduled maintenance, you may want to add the maintenance to your calendar. During these maintenance windows, you may experience a slight increase in latency to the edge location which is under maintenance.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 
@@ -62,9 +70,9 @@ In the Magic family of products, the routing is defined explicitly using [static
 
 ## Related resources
 
-* [Available RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) (for the [Cloudflare changelog](https://developers.cloudflare.com/changelog/))
-* [Subscribe to Cloudflare Status](https://developers.cloudflare.com/support/cloudflare-status/)
-* [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
+- [Available RSS feeds](https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/) (for the [Cloudflare changelog](https://developers.cloudflare.com/changelog/))
+- [Subscribe to Cloudflare Status](https://developers.cloudflare.com/support/cloudflare-status/)
+- [API deprecations](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/)
 
 Was this helpful?
 

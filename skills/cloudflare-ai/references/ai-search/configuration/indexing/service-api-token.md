@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Service API token
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/service-api-token/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A service API token grants AI Search permission to access [R2](https://developers.cloudflare.com/r2/) buckets in your account. This token is only required if you connect an R2 bucket as a data source. If you use a website or upload files directly through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/), you do not need a service API token.
 
@@ -30,20 +30,19 @@ Once created, the token is saved to your account and reused across all AI Search
 
 If you need to create a service API token programmatically, follow these steps.
 
-### 1\. Create an API token with token creation permissions
+### 1. Create an API token with token creation permissions
 
 You need an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with permission to create other tokens.
 
-1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+1. In the Cloudflare dashboard, go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `Token Creator`.
-5. Under **Permissions**, select **User** \> **API Tokens** \> **Edit**.
+5. Under **Permissions**, select **User** > **API Tokens** > **Edit**.
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `CREATOR_TOKEN`.
 
-### 2\. Create the service token
+### 2. Create the service token
 
 Use the [Create token API](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/create/) to create a service token with the AI Search Index Engine permission. Replace `<CREATOR_TOKEN>` with the token from step 1 and `<ACCOUNT_ID>` with your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
@@ -81,9 +80,9 @@ Save the `id` and `value` from the response:
 }
 ```
 
-### 3\. Register the token with AI Search
+### 3. Register the token with AI Search
 
-Use the [AI Search tokens API](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/tokens/methods/create/) to register the service token. Replace `<API_TOKEN>` with an API token that has AI Search Edit permissions.
+Use the [AI Search tokens API](https://developers.cloudflare.com/api/resources/ai_search/subresources/tokens/methods/create/) to register the service token. Replace `<API_TOKEN>` with an API token that has AI Search Edit permissions.
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-search/tokens" \
@@ -111,7 +110,7 @@ Save the `id` from the response. This is your `token_id` to pass when creating R
 }
 ```
 
-### 4\. Use the token when creating an instance
+### 4. Use the token when creating an instance
 
 Pass the `token_id` when creating an R2-backed instance:
 
@@ -139,8 +138,7 @@ Do not delete your service API token. If you revoke or delete the token, any R2-
 
 To create a new service API token from the dashboard:
 
-1. Go to an existing AI Search instance in the Cloudflare dashboard.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to an existing AI Search instance in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select **Settings**.
 3. Under **General**, find **Service API Token** and select the edit icon.
 4. Select **Create a new token**.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scan for PCI compliance
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/security/pci-scans/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/security/pci-scans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -37,10 +37,10 @@ However, customers can easily block all unwanted traffic to these ports by using
 
 You can find all our public compliance resources in the following pages:
 
-* [Certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/)
-* [Compliance documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
+- [Certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/)
+- [Compliance documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
 
-You can access Compliance documents in the Cloudflare dashboard by selecting your account where you are a Super Administrator and then navigating to **Support** \> **Compliance Documents**.
+You can access Compliance documents in the Cloudflare dashboard by selecting your account where you are a Super Administrator and then navigating to **Support** > **Compliance Documents**.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common errors
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/reference/common-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/common-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the information below for more details on common notification errors and how to troubleshoot them.
 
@@ -24,7 +24,7 @@ PagerDuty needs to be configured under [connected notification services](https:/
 
 ## Deleted users are still receiving notifications
 
-When you remove a user from your account via **Manage Account** \> **Members** in the Cloudflare dashboard, their email address is not removed from existing notifications.
+When you remove a user from your account via **Manage Account** > **Members** in the Cloudflare dashboard, their email address is not removed from existing notifications.
 
 You need to remove the email address from the configuration of the notifications by [editing the notification recipient](https://developers.cloudflare.com/notifications/get-started/#edit-a-notification).
 

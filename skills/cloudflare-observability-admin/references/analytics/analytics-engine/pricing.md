@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Workers Analytics Engine is priced based on two metrics — data points written, and read queries.
+Workers Analytics Engine is priced based on two metrics — data points written, and read queries.
 
-| Plan             | Data points written                                            | Read queries                                                 |
-| ---------------- | -------------------------------------------------------------- | ------------------------------------------------------------ |
-| **Workers Paid** | 10 million included per month  (+$0.25 per additional million) | 1 million included per month (+$1.00 per additional million) |
-| **Workers Free** | 100,000 included per day                                       | 10,000 included per day                                      |
+| Plan | Data points written | Read queries |
+| --- | --- | --- |
+| **Workers Paid** | 10 million included per month <br> (+$0.25 per additional million) | 1 million included per month (+$1.00 per additional million) |
+| **Workers Free** | 100,000 included per day | 10,000 included per day |
 
 Pricing availability
 
@@ -29,7 +29,7 @@ If you are an Enterprise customer, contact your account team for information abo
 
 ### Data points written
 
-Every time you call [writeDataPoint()](https://developers.cloudflare.com/analytics/analytics-engine/get-started/#2-write-data-points-from-your-worker) in a Worker, this counts as one data point written.
+Every time you call [`writeDataPoint()`](https://developers.cloudflare.com/analytics/analytics-engine/get-started/#2-write-data-points-from-your-worker) in a Worker, this counts as one data point written.
 
 Each data point written costs the same amount. There is no extra cost to add dimensions or cardinality, and no additional cost for writing more data in a single data point.
 

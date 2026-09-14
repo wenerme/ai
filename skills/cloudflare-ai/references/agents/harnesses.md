@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Harnesses
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A harness is the loop that makes an agent behave like an agent instead of a single model call.
 
@@ -24,8 +24,8 @@ You can build this loop yourself on top of the [Agents SDK runtime](https://deve
 
 Harnesses sit on top of the Agents SDK runtime:
 
-* **The runtime** gives the agent durable infrastructure: the [Agent class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
-* **The harness** gives the agent behavior: model calls, prompt construction, tool selection, stream handling, memory strategy, and lifecycle hooks.
+- **The runtime** gives the agent durable infrastructure: the [`Agent` class](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/), [state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/), [sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/), [routing](https://developers.cloudflare.com/agents/runtime/communication/routing/), [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/), [scheduling](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/), [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/), and [observability](https://developers.cloudflare.com/agents/runtime/operations/observability/).
+- **The harness** gives the agent behavior: model calls, prompt construction, tool selection, stream handling, memory strategy, and lifecycle hooks.
 
 The runtime answers “where does this agent live and how does it stay durable?” The harness answers “what does this agent do on each turn?”
 
@@ -45,12 +45,12 @@ An opinionated chat agent harness with built-in tools, persistent memory, lifecy
 
 A harness usually owns:
 
-* **Prompt construction** — system prompts, memory, retrieved context, and per-turn instructions.
-* **Model execution** — the call to Workers AI, OpenAI, Anthropic, Gemini, or another provider.
-* **Tool orchestration** — server tools, client tools, MCP tools, approval flows, and continuation after tool results.
-* **Message persistence** — how user, assistant, and tool messages are saved and replayed.
-* **Streaming and recovery** — how responses stream to clients and resume after disconnects or Durable Object eviction.
-* **Extension points** — hooks before and after turns, steps, tool calls, and recovery events.
+- **Prompt construction** — system prompts, memory, retrieved context, and per-turn instructions.
+- **Model execution** — the call to Workers AI, OpenAI, Anthropic, Gemini, or another provider.
+- **Tool orchestration** — server tools, client tools, MCP tools, approval flows, and continuation after tool results.
+- **Message persistence** — how user, assistant, and tool messages are saved and replayed.
+- **Streaming and recovery** — how responses stream to clients and resume after disconnects or Durable Object eviction.
+- **Extension points** — hooks before and after turns, steps, tool calls, and recovery events.
 
 ## Related resources
 

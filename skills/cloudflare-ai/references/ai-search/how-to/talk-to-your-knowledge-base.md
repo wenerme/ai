@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Talk to your knowledge base
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses the [Cloudflare Agents](https://developers.cloudflare.com/agents/) [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-channels/voice/) package for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
+This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses the [Cloudflare Agents](https://developers.cloudflare.com/agents/) [`@cloudflare/voice`](https://developers.cloudflare.com/agents/communication-channels/voice/) package for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
 
 **What you will build:** A voice agent that transcribes your speech, calls AI Search to retrieve relevant content from your indexed knowledge base, generates a grounded answer, and speaks it back.
 
@@ -30,7 +30,7 @@ BrowserMic
 
 Cloudflare AgentsonTurn(transcript)
 
-tool[AI Searchretrieval](https://developers.cloudflare.com/ai-search/)
+tool [AI Searchretrieval](https://developers.cloudflare.com/ai-search/)
 
 [Workers AIText-to-speech](https://developers.cloudflare.com/workers-ai/)
 
@@ -43,15 +43,23 @@ The voice pipeline uses [Workers AI](https://developers.cloudflare.com/workers-a
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You also need an AI Search instance that already contains indexed content. This is the knowledge base you will speak to. To create one and add content, refer to [Get started](https://developers.cloudflare.com/ai-search/get-started/).
 
-## 1\. Create the voice agent
+## 1. Create the voice agent
 
 Scaffold a Cloudflare Agents project with the voice starter template, which includes the Durable Object wiring and a React client:
 
@@ -80,9 +88,9 @@ pnpm add @cloudflare/voice
 bun add @cloudflare/voice
 ```
 
-The [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-channels/voice/) package provides the `withVoice` mixin and the Workers AI providers (`WorkersAIFluxSTT` and `WorkersAITTS`). For a full walkthrough of the voice agent itself, including the browser client, refer to the [Voice agent example](https://developers.cloudflare.com/agents/examples/voice-agent/).
+The [`@cloudflare/voice`](https://developers.cloudflare.com/agents/communication-channels/voice/) package provides the `withVoice` mixin and the Workers AI providers (`WorkersAIFluxSTT` and `WorkersAITTS`). For a full walkthrough of the voice agent itself, including the browser client, refer to the [Voice agent example](https://developers.cloudflare.com/agents/examples/voice-agent/).
 
-## 2\. Add the AI Search binding
+## 2. Add the AI Search binding
 
 Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), alongside the Workers AI binding and the agent's Durable Object. Replace `my-instance` with the name of your instance.
 
@@ -91,7 +99,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 	"name": "voice-knowledge-base",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -125,7 +133,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 name = "voice-knowledge-base"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -166,11 +174,13 @@ yarn wrangler types
 pnpm wrangler types
 ```
 
-## 3\. Answer from your knowledge base
+## 3. Answer from your knowledge base
 
 Update `src/server.ts`. Build the agent with the `withVoice` mixin, set the STT and TTS providers, and in `onTurn()` run a Workers AI model that calls AI Search as a retrieval tool.
 
 The model is given a `searchKnowledgeBase` tool that calls AI Search's `search()` for retrieval. It calls the tool when it needs facts from your knowledge base, grounds its answer in the returned chunks, and you return the generated text for the pipeline to speak. The agent stores conversation history automatically, so you can pass `context.messages` for follow-up questions.
+
+*src/server.jsjs*
 
 ```js
 import { Agent, routeAgentRequest } from "agents";
@@ -241,6 +251,8 @@ export default {
 	},
 };
 ```
+
+*src/server.tsts*
 
 ```ts
 import { Agent, routeAgentRequest } from "agents";
@@ -323,9 +335,11 @@ Note
 
 Use a Workers AI model that supports function calling so the model can call the tool. This example returns the resolved answer text from `onTurn()`.
 
-## 4\. Build the client
+## 4. Build the client
 
-Replace `src/client.tsx` with a React component that uses the [useVoiceAgent](https://developers.cloudflare.com/agents/communication-channels/voice/) hook. The hook manages the microphone, the WebSocket connection to your agent, audio playback, and interrupt detection, so the component only needs to render controls. Set `agent` to your agent class name, `TalkToDocs`.
+Replace `src/client.tsx` with a React component that uses the [`useVoiceAgent`](https://developers.cloudflare.com/agents/communication-channels/voice/) hook. The hook manages the microphone, the WebSocket connection to your agent, audio playback, and interrupt detection, so the component only needs to render controls. Set `agent` to your agent class name, `TalkToDocs`.
+
+*src/client.tsxtsx*
 
 ```tsx
 import { useVoiceAgent } from "@cloudflare/voice/react";
@@ -396,7 +410,7 @@ export default App;
 
 The hook handles the microphone and playback, so there is no push-to-talk button. The model detects when you finish speaking, runs `onTurn()`, and plays the spoken answer back automatically.
 
-## 5\. Run it locally
+## 5. Run it locally
 
 Start a local development server:
 
@@ -416,7 +430,7 @@ pnpm run dev
 
 Open the app in your browser, select **Start call** and allow microphone access, then ask a question that your content can answer. You will see your words transcribed in real time, and the agent speaks its answer from your knowledge base. The `status` value moves through `listening`, `thinking`, and `speaking` as it works.
 
-## 6\. Deploy
+## 6. Deploy
 
 Deploy your agent to make it available on the Internet:
 

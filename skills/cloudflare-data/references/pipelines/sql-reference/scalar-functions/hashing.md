@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hashing functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/hashing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/hashing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `digest`
 
@@ -26,16 +26,16 @@ digest(expression, algorithm)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
-* **algorithm**: String expression specifying algorithm to use. Must be one of:
-  * md5
-  * sha224
-  * sha256
-  * sha384
-  * sha512
-  * blake2s
-  * blake2b
-  * blake3
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **algorithm**: String expression specifying algorithm to use. Must be one of:
+  - md5
+  - sha224
+  - sha256
+  - sha384
+  - sha512
+  - blake2s
+  - blake2b
+  - blake3
 
 ## `md5`
 
@@ -47,7 +47,7 @@ md5(expression)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 ## `sha224`
 
@@ -59,7 +59,7 @@ sha224(expression)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 ## `sha256`
 
@@ -71,7 +71,7 @@ sha256(expression)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 ## `sha384`
 
@@ -83,7 +83,7 @@ sha384(expression)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 ## `sha512`
 
@@ -95,7 +95,7 @@ sha512(expression)
 
 **Arguments**
 
-* **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
 
 Was this helpful?
 

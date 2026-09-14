@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Send your first email using the Workers binding, the REST API, or SMTP.
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/get-started/send-emails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send emails from your applications using Cloudflare Email Service. You can use the **Workers binding** for applications built on Cloudflare Workers, the **REST API** from any platform, or **SMTP** from any SMTP-capable application or mail client.
 
@@ -26,15 +26,13 @@ You must be using Cloudflare DNS to use Email Service.
 
 Before using Email Sending, configure your domain.
 
-1. In the Cloudflare dashboard, go to **Compute** \> **Email Service** \> **Email Sending**.
-[Go to **Email Sending** ↗](https://dash.cloudflare.com/?to=/:account/email-service/sending)
+1. In the Cloudflare dashboard, go to **Compute** > **Email Service** > **Email Sending**. [Go to **Email Sending** ↗](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Onboard Domain**.
 3. Choose a domain from your Cloudflare account. Optionally review the DNS records that Cloudflare will add to the `cf-bounce` subdomain of your domain:
-
-  * MX records to route bounce emails to Cloudflare.
-  * TXT record for SPF to authorize sending emails.
-  * TXT record for DKIM to provide authentication for emails sent from your domain.
-  * TXT record for DMARC on `_dmarc.yourdomain.com`.
+   - MX records to route bounce emails to Cloudflare.
+   - TXT record for SPF to authorize sending emails.
+   - TXT record for DKIM to provide authentication for emails sent from your domain.
+   - TXT record for DMARC on `_dmarc.yourdomain.com`.
 4. Select **Done**.
 
 Note
@@ -49,64 +47,82 @@ You can send your first email using the Workers binding, the REST API, or SMTP.
 
 If you are building on Cloudflare Workers, you can use the Workers binding for native email sending. Start by creating a new Worker project.
 
-1. Create a new Worker project:
-npmyarnpnpm
-```
-npm create cloudflare@latest -- email-service-tutorial
-```
-```
-yarn create cloudflare email-service-tutorial
-```
-```
-pnpm create cloudflare@latest email-service-tutorial
-```
-When prompted, select **"Hello World" Worker** as the template.
+1. Create a new Worker project:npmyarnpnpm
+
+   ```
+   npm create cloudflare@latest -- email-service-tutorial
+   ```
+
+   ```
+   yarn create cloudflare email-service-tutorial
+   ```
+
+   ```
+   pnpm create cloudflare@latest email-service-tutorial
+   ```
+
+   When prompted, select **"Hello World" Worker** as the template.
 2. Add the email binding to your Wrangler configuration file:
-```jsonc
-{
-	"send_email": [
-		{
-			"name": "EMAIL",
-			"remote": true,
-		},
-	],
-}
-```
-```toml
-[[send_email]]
-name = "EMAIL"
-remote = true
-```
+
+   ```jsonc
+   {
+   	"send_email": [
+   		{
+   			"name": "EMAIL",
+   			"remote": true,
+   		},
+   	],
+   }
+   ```
+
+   ```toml
+   [[send_email]]
+   name = "EMAIL"
+   remote = true
+   ```
+
+
 3. Create your Worker code in `src/index.ts`:
-```ts
-// Configuration - Update these values
-const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domain
-const RECIPIENT_EMAIL = "recipient@example.com"; // Replace with your email to receive test emails
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		// Send a welcome email
-		const response = await env.EMAIL.send({
-			to: RECIPIENT_EMAIL,
-			from: `welcome@${YOUR_DOMAIN}`,
-			subject: "Welcome to our service!",
-			html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
-			text: "Welcome! Thanks for signing up.",
-		});
-		return new Response(`Email sent: ${response.messageId}`);
-	},
-} satisfies ExportedHandler<Env>;
-```
+
+   ```ts
+   // Configuration - Update these values
+   const YOUR_DOMAIN = "yourdomain.com"; // Replace with your verified domain
+   const RECIPIENT_EMAIL = "recipient@example.com"; // Replace with your email to receive test emails
+
+   export default {
+   	async fetch(request: Request, env: Env): Promise<Response> {
+   		// Send a welcome email
+   		const response = await env.EMAIL.send({
+   			to: RECIPIENT_EMAIL,
+   			from: `welcome@${YOUR_DOMAIN}`,
+   			subject: "Welcome to our service!",
+   			html: "<h1>Welcome!</h1><p>Thanks for signing up.</p>",
+   			text: "Welcome! Thanks for signing up.",
+   		});
+
+   		return new Response(`Email sent: ${response.messageId}`);
+   	},
+   } satisfies ExportedHandler<Env>;
+   ```
+
+
 4. Use `npx wrangler dev` to develop your Worker project and send emails. This runs your code locally while connecting to Cloudflare Email Service (using [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)).
-```sh
-npx wrangler dev
-# ⎔ Starting remote preview...
-# Total Upload: 24.96 KiB / gzip: 6.17 KiB
-# [wrangler:info] Ready on http://localhost:8787
-```
+
+   ```sh
+   npx wrangler dev
+   # ⎔ Starting remote preview...
+   # Total Upload: 24.96 KiB / gzip: 6.17 KiB
+   # [wrangler:info] Ready on http://localhost:8787
+   ```
+
+
 5. Deploy your Worker:
-```sh
-npm run deploy
-```
+
+   ```sh
+   npm run deploy
+   ```
+
+
 
 After deploying, test that your Worker can send emails:
 
@@ -173,9 +189,9 @@ For connection details, authentication, response codes, and language-specific ex
 
 Now that you can send emails, explore advanced features:
 
-* **[Route incoming emails](https://developers.cloudflare.com/email-service/get-started/route-emails/)** \- Process emails sent to your domain
-* **[API reference](https://developers.cloudflare.com/email-service/api/send-emails/)** \- Complete API documentation
-* **[Examples](https://developers.cloudflare.com/email-service/examples/)** \- Real-world implementation patterns
+- **[Route incoming emails](https://developers.cloudflare.com/email-service/get-started/route-emails/)** - Process emails sent to your domain
+- **[API reference](https://developers.cloudflare.com/email-service/api/send-emails/)** - Complete API documentation
+- **[Examples](https://developers.cloudflare.com/email-service/examples/)** - Real-world implementation patterns
 
 Was this helpful?
 

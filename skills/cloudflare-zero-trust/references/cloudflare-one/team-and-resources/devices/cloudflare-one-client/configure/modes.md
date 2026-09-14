@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client modes
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy the Cloudflare One Client (formerly WARP) in different modes to control the types of traffic sent to Cloudflare Gateway. The client mode determines which Zero Trust features are available on the device.
 
@@ -22,9 +22,9 @@ The Cloudflare One Client routes device traffic for all ports and protocols, and
 
 Use when you want full security coverage, including DNS filtering, HTTP inspection, network firewall policies, and device posture checks.
 
-| DNS filtering | Network filtering | HTTP filtering | Features enabled                                                                                                                                        |
-| ------------- | ----------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Yes           | Yes               | Yes            | DNS policies, network policies, HTTP policies, Browser Isolation, identity-based policies, device posture checks, AV scanning, and Data Loss Prevention |
+| DNS filtering | Network filtering | HTTP filtering | Features enabled |
+| --- | --- | --- | --- |
+| Yes | Yes | Yes | DNS policies, network policies, HTTP policies, Browser Isolation, identity-based policies, device posture checks, AV scanning, and Data Loss Prevention |
 
 ## DNS only mode
 
@@ -33,8 +33,8 @@ The Cloudflare One Client forwards DNS resolution to the Cloudflare account reso
 Use when you only want to apply DNS filtering to outbound traffic from your company devices.
 
 | DNS filtering | Network filtering | HTTP filtering | Features enabled |
-| ------------- | ----------------- | -------------- | ---------------- |
-| Yes           | No                | No             | DNS policies     |
+| --- | --- | --- | --- |
+| Yes | No | No | DNS policies |
 
 ## Traffic only mode
 
@@ -42,15 +42,15 @@ The Cloudflare One Client routes device traffic for all ports and protocols. DNS
 
 Use when you want to proxy network and HTTP traffic but keep your existing DNS filtering software.
 
-| DNS filtering | Network filtering | HTTP filtering | Features enabled                                                                                                                          |
-| ------------- | ----------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| No            | Yes               | Yes            | Network policies, HTTP policies, Browser Isolation, identity-based policies, device posture checks, AV scanning, and Data Loss Prevention |
+| DNS filtering | Network filtering | HTTP filtering | Features enabled |
+| --- | --- | --- | --- |
+| No | Yes | Yes | Network policies, HTTP policies, Browser Isolation, identity-based policies, device posture checks, AV scanning, and Data Loss Prevention |
 
 Note
 
-* Traffic only mode disables all features that rely on the Cloudflare One Client for DNS resolution, including [domain-based split tunneling](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels) and [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/).
-* Only available on Windows, Linux, and macOS.
-* Traffic only mode has a known limitation concerning [DNS servers with IPv6 addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#ipv6-dns-resolution-in-traffic-only-mode).
+- Traffic only mode disables all features that rely on the Cloudflare One Client for DNS resolution, including [domain-based split tunneling](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#domain-based-split-tunnels) and [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/).
+- Only available on Windows, Linux, and macOS.
+- Traffic only mode has a known limitation concerning [DNS servers with IPv6 addresses](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#ipv6-dns-resolution-in-traffic-only-mode).
 
 ## Local proxy mode
 
@@ -58,9 +58,9 @@ The Cloudflare One Client only forwards explicitly-directed local HTTP traffic.
 
 Use when you want to filter traffic directed to specific applications.
 
-| DNS filtering | Network filtering | HTTP filtering | Features enabled                                                                                                                          |
-| ------------- | ----------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| No            | No                | Yes            | HTTP policies, Browser Isolation, identity-based policies, AV scanning, and Data Loss Prevention for traffic sent through localhost proxy |
+| DNS filtering | Network filtering | HTTP filtering | Features enabled |
+| --- | --- | --- | --- |
+| No | No | Yes | HTTP policies, Browser Isolation, identity-based policies, AV scanning, and Data Loss Prevention for traffic sent through localhost proxy |
 
 ### Set up Local proxy mode
 
@@ -70,7 +70,7 @@ The default profile is used for all devices that are not assigned to a specific 
 
 To set up Local proxy mode:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Teams & Resources** \> **Device profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources** > **Device profiles**.
 2. Decide whether you would like to edit the default profile or create a new device profile.
 3. Select the device profile you want to configure > **Edit** (If you only see **View**, you lack the permissions required to modify profiles).
 4. Ensure the **Device tunnel protocol** is set to `MASQUE`.
@@ -79,7 +79,7 @@ To set up Local proxy mode:
 
 MDM deployment
 
-If you are deploying the Cloudflare One Client through MDM, the configuration file will override any device profile settings, including the client mode. Refer to the [service\_mode parameter](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#service%5Fmode) for more information.
+If you are deploying the Cloudflare One Client through MDM, the configuration file will override any device profile settings, including the client mode. Refer to the [`service_mode` parameter](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#service_mode) for more information.
 
 For devices using Local proxy mode, the Cloudflare One Client listens on the configured port at the address `127.0.0.1` (`localhost`). Cloudflare uses `40000` as the default port for the Cloudflare One Client in Local proxy mode, but you can modify this to any available port. You must explicitly configure individual applications or your system proxy settings to use this proxy.
 
@@ -89,10 +89,10 @@ To make more complex routing decisions (such as, routing traffic directly to the
 
 ### Limitations
 
-* Local proxy mode can only be used by applications/operating systems that support SOCKS5/HTTP proxy communication.
-* Requires the MASQUE [device tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol). Wireguard is not supported.
-* Only available on Windows, Linux, and macOS.
-* Local proxy mode has a timeout limit of 10 seconds for requests. If a request goes above the 10 second limit, Cloudflare will drop the connection.
+- Local proxy mode can only be used by applications/operating systems that support SOCKS5/HTTP proxy communication.
+- Requires the MASQUE [device tunnel protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol). Wireguard is not supported.
+- Only available on Windows, Linux, and macOS.
+- Local proxy mode has a timeout limit of 10 seconds for requests. If a request goes above the 10 second limit, Cloudflare will drop the connection.
 
 ## Posture only mode
 
@@ -100,25 +100,25 @@ The Cloudflare One Client collects device health and posture data, which you can
 
 Use when you only want to enforce [Cloudflare One Client device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/) for zones in your account. To set up Posture only mode, refer to the [dedicated page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/).
 
-| DNS filtering | Network filtering | HTTP filtering | Features enabled                                                                                                      |
-| ------------- | ----------------- | -------------- | --------------------------------------------------------------------------------------------------------------------- |
-| No            | No                | No             | Device posture rules in [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) |
+| DNS filtering | Network filtering | HTTP filtering | Features enabled |
+| --- | --- | --- | --- |
+| No | No | No | Device posture rules in [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) |
 
 ## Modes comparison
 
 Each client mode offers a different set of Zero Trust features.
 
-| Client mode                                                                                                                                                                           | Best for                                         | DNS Filtering | Network Filtering | HTTP Filtering | Service mode (displayed in warp-cli settings) |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ------------- | ----------------- | -------------- | --------------------------------------------- |
-| [**Traffic and DNS mode (default)**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) | Full security with all filtering capabilities    | ✅             | ✅                 | ✅              | WarpWithDnsOverHttps                          |
-| [**DNS only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode)                                 | DNS filtering without routing device traffic     | ✅             | ❌                 | ❌              | DnsOverHttps                                  |
-| [**Traffic only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode)                         | Traffic routing with existing DNS infrastructure | ❌             | ✅                 | ✅              | TunnelOnly                                    |
-| [**Local proxy mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode)                           | Filtering traffic to specific applications       | ❌             | ❌                 | ✅              | WarpProxy on port 40000                       |
-| [**Posture only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode)                         | Device posture checks without traffic routing    | ❌             | ❌                 | ❌              | PostureOnly                                   |
+| Client mode | Best for | DNS Filtering | Network Filtering | HTTP Filtering | Service mode (displayed in `warp-cli settings`) |
+| --- | --- | --- | --- | --- | --- |
+| [**Traffic and DNS mode (default)**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) | Full security with all filtering capabilities | ✅ | ✅ | ✅ | `WarpWithDnsOverHttps` |
+| [**DNS only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) | DNS filtering without routing device traffic | ✅ | ❌ | ❌ | `DnsOverHttps` |
+| [**Traffic only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode) | Traffic routing with existing DNS infrastructure | ❌ | ✅ | ✅ | `TunnelOnly` |
+| [**Local proxy mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) | Filtering traffic to specific applications | ❌ | ❌ | ✅ | `WarpProxy on port 40000` |
+| [**Posture only mode**](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#posture-only-mode) | Device posture checks without traffic routing | ❌ | ❌ | ❌ | `PostureOnly` |
 
 ## Related resources
 
-* [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) \- Learn about the status messages displayed by the Cloudflare One Client during its connection process, and understand each stage as the client establishes a secure tunnel to Cloudflare.
+- [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) - Learn about the status messages displayed by the Cloudflare One Client during its connection process, and understand each stage as the client establishes a secure tunnel to Cloudflare.
 
 Was this helpful?
 

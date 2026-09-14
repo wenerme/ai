@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network analytics
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different [packet ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) characteristics.
 
@@ -24,41 +24,45 @@ For details, refer to the [Network Analytics](https://developers.cloudflare.com/
 
 With Cloudflare WAN, you have increased insight into traffic flows across Cloudflare One products, including:
 
-* Traffic entering Cloudflare's network via the Cloudflare One Client
-* Traffic leaving Cloudflare's network via the Cloudflare One Client
-* Traffic leaving Cloudflare's network via Cloudflare Tunnel (`cloudflared`)
+- Traffic entering Cloudflare's network via the Cloudflare One Client
+- Traffic leaving Cloudflare's network via the Cloudflare One Client
+- Traffic leaving Cloudflare's network via Cloudflare Tunnel ( `cloudflared`)
 
 The complete list of filters includes:
 
-* A list of your top tunnels by traffic volume.
-* Traffic source and destination by traffic type, on-ramps and off-ramps, IP addresses, and ports.
-* Destination IP ranges and ASNs.
-* Protocols and packet sizes.
-* Samples of all GRE or IPsec tunnel traffic entering or leaving Cloudflare's network.
-* Mitigations applied (such as DDoS and Cloudflare Network Firewall) to traffic entering Cloudflare's network.
+- A list of your top tunnels by traffic volume.
+- Traffic source and destination by traffic type, on-ramps and off-ramps, IP addresses, and ports.
+- Destination IP ranges and ASNs.
+- Protocols and packet sizes.
+- Samples of all GRE or IPsec tunnel traffic entering or leaving Cloudflare's network.
+- Mitigations applied (such as DDoS and Cloudflare Network Firewall) to traffic entering Cloudflare's network.
 
 For instructions, refer to [Access tunnel traffic analytics](#access-tunnel-traffic-analytics).
 
 ## Access tunnel traffic analytics
 
 1. Go to the **Network Analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
-1. In the **All Traffic** tab, scroll to **Top Insights** to access network traffic filters. By default, the dashboard displays five items, but you can display up to 25 items at once. To change the number of items, select the drop-down menu.
-2. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
-3. To adjust the scope of information, scroll to **All traffic** \> **Add filter**.
-4. In the **New filter** popover, select the data type from the left drop-down menu, an operator from the middle drop-down menu, and an action from the right drop-down menu. For example:
-```txt
-<DESTINATION_TUNNELS> | _equals_ | <NAME_OF_YOUR_TUNNEL>
-```
-This lets you examine traffic from specific Source tunnels and/or Destination tunnels.
+
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+
+2. In the **All Traffic** tab, scroll to **Top Insights** to access network traffic filters. By default, the dashboard displays five items, but you can display up to 25 items at once. To change the number of items, select the drop-down menu.
+3. (Optional) Hover over a traffic type. You can then filter for that traffic or exclude it from the results.
+4. To adjust the scope of information, scroll to **All traffic** > **Add filter**.
+5. In the **New filter** popover, select the data type from the left drop-down menu, an operator from the middle drop-down menu, and an action from the right drop-down menu. For example:
+
+   ```txt
+   <DESTINATION_TUNNELS> | _equals_ | <NAME_OF_YOUR_TUNNEL>
+   ```
+
+   This lets you examine traffic from specific Source tunnels and/or Destination tunnels.
 
 ## Feature notes
 
-* For Cloudflare WAN, `Non-Tunnel traffic` refers to traffic outside GRE or IPsec tunnels. This can include traffic from:
-  * [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-  * [CNIs](https://developers.cloudflare.com/network-interconnect/)
-  * Traffic destined for the public Internet via [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-  * Traffic destined for applications behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+- For Cloudflare WAN, `Non-Tunnel traffic` refers to traffic outside GRE or IPsec tunnels. This can include traffic from:
+  - [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+  - [CNIs](https://developers.cloudflare.com/network-interconnect/)
+  - Traffic destined for the public Internet via [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+  - Traffic destined for applications behind [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 The label `Non-Tunnel traffic` is a placeholder, and Cloudflare will apply more specific labels to this category of traffic in the future.
 

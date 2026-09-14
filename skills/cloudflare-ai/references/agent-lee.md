@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agent Lee
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-lee/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-lee/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An AI co-pilot built into the Cloudflare dashboard. Ask questions about your account, take actions, and run diagnostics, all in plain language.
 
@@ -22,10 +22,10 @@ Agent Lee is currently in beta and only available to accounts on a Free plan. Fe
 
 With Agent Lee, you can:
 
-* Ask questions about your account configuration and get answers based on your actual data.
-* Make changes to DNS records, zone settings, and security rules, with your approval required before anything executes.
-* Run network diagnostics like DNS lookups and certificate checks.
-* Generate inline charts and visualizations from your account analytics.
+- Ask questions about your account configuration and get answers based on your actual data.
+- Make changes to DNS records, zone settings, and security rules, with your approval required before anything executes.
+- Run network diagnostics like DNS lookups and certificate checks.
+- Generate inline charts and visualizations from your account analytics.
 
 To get started, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select **Ask AI** in the upper-right corner of any dashboard page.
 
@@ -43,24 +43,24 @@ You can ask Agent Lee to create, update, or delete resources across your account
 
 Example requests:
 
-* "Add an A record for blog.example.com pointing to 192.0.2.10."
-* "Enable Always Use HTTPS on my zone."
-* "Set the SSL mode for example.com to Full (strict)."
+- "Add an A record for blog.example.com pointing to 192.0.2.10."
+- "Enable Always Use HTTPS on my zone."
+- "Set the SSL mode for example.com to Full (strict)."
 
 ### Network diagnostics
 
 Run diagnostic commands to troubleshoot connectivity and configuration issues:
 
-* **DNS lookups**: Query DNS records for any domain
-* **Certificate checks**: Inspect TLS/SSL certificates
-* **Domain information**: Look up WHOIS and RDAP registration data
+- **DNS lookups**: Query DNS records for any domain
+- **Certificate checks**: Inspect TLS/SSL certificates
+- **Domain information**: Look up WHOIS and RDAP registration data
 
 ### Generative UI
 
 Agent Lee renders inline charts and data visualizations directly in the chat panel based on your account analytics. Example requests:
 
-* "Show me a chart of my traffic over the last 7 days."
-* "What does my error rate look like for the past 24 hours?"
+- "Show me a chart of my traffic over the last 7 days."
+- "What does my error rate look like for the past 24 hours?"
 
 ---
 
@@ -68,19 +68,19 @@ Agent Lee renders inline charts and data visualizations directly in the chat pan
 
 ### What Agent Lee can access
 
-* Zone settings, DNS records, firewall and WAF rules
-* Workers scripts, routes, and bindings
-* R2 bucket names, Cloudflare Tunnel configuration, cache rules
-* Registrar domain data, account plan and usage metadata
+- Zone settings, DNS records, firewall and WAF rules
+- Workers scripts, routes, and bindings
+- R2 bucket names, Cloudflare Tunnel configuration, cache rules
+- Registrar domain data, account plan and usage metadata
 
 Agent Lee fetches this data on demand when your question requires it.
 
 ### What Agent Lee cannot access
 
-* Payment methods, billing history, or invoice details
-* Account passwords, login credentials, or API tokens
-* Raw log data or Logpush datasets
-* Data from other Cloudflare accounts
+- Payment methods, billing history, or invoice details
+- Account passwords, login credentials, or API tokens
+- Raw log data or Logpush datasets
+- Data from other Cloudflare accounts
 
 ### Conversation storage
 
@@ -96,13 +96,13 @@ Agent Lee does not currently use your conversations, prompts, or account data to
 
 Agent Lee cannot:
 
-* Write Workers scripts or generate application code
-* Replace [Cloudflare Support ↗](https://support.cloudflare.com) for billing issues, account recovery, or outages
-* Access payment methods, billing history, or API tokens
-* Operate across multiple accounts: sessions are scoped to your authenticated account
-* Remember previous conversations: each session starts fresh
-* Query raw log data or Logpush datasets
-* Execute write operations without your explicit approval
+- Write Workers scripts or generate application code
+- Replace [Cloudflare Support ↗](https://support.cloudflare.com) for billing issues, account recovery, or outages
+- Access payment methods, billing history, or API tokens
+- Operate across multiple accounts: sessions are scoped to your authenticated account
+- Remember previous conversations: each session starts fresh
+- Query raw log data or Logpush datasets
+- Execute write operations without your explicit approval
 
 Agent Lee is entirely optional. If you do not open the Ask AI panel, none of your data is sent to or processed by it.
 
@@ -112,21 +112,21 @@ Agent Lee is entirely optional. If you do not open the Ask AI panel, none of you
 
 Agent Lee is built on Cloudflare's own developer platform using the same primitives available to any Cloudflare developer.
 
-| Component                                                                                                | Role                                                  |
-| -------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [Agents SDK](https://developers.cloudflare.com/agents/)                                                  | Agent lifecycle, state management, and scheduling     |
-| [Durable Objects](https://developers.cloudflare.com/durable-objects/)                                    | Per-user conversation storage and write approval gate |
-| [Workers AI](https://developers.cloudflare.com/workers-ai/)                                              | LLM inference                                         |
-| [Cloudflare MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) | Tool definitions for Cloudflare API operations        |
+| Component | Role |
+| --- | --- |
+| [Agents SDK](https://developers.cloudflare.com/agents/) | Agent lifecycle, state management, and scheduling |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/) | Per-user conversation storage and write approval gate |
+| [Workers AI](https://developers.cloudflare.com/workers-ai/) | LLM inference |
+| [Cloudflare MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) | Tool definitions for Cloudflare API operations |
 
 ---
 
 ## Related resources
 
-* [Agents SDK](https://developers.cloudflare.com/agents/)
-* [Human in the Loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
-* [Workers AI](https://developers.cloudflare.com/workers-ai/)
-* [Blog post: Introducing Agent Lee ↗](https://blog.cloudflare.com/introducing-agent-lee)
+- [Agents SDK](https://developers.cloudflare.com/agents/)
+- [Human in the Loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+- [Workers AI](https://developers.cloudflare.com/workers-ai/)
+- [Blog post: Introducing Agent Lee ↗](https://blog.cloudflare.com/introducing-agent-lee)
 
 Was this helpful?
 

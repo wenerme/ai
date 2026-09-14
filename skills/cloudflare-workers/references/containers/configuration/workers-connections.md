@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to Workers and Bindings
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/configuration/workers-connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/workers-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Containers can access [Workers bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) — KV, R2, D1, Durable Objects, and others — through [outbound handlers](https://developers.cloudflare.com/containers/guides/outbound-traffic/#define-outbound-handlers). An outbound handler intercepts HTTP requests from the container and runs inside the Workers runtime, where all of your configured bindings are available.
 
@@ -63,9 +63,9 @@ The `ctx` argument exposes `containerId`, which lets you interact with the conta
 
 ## Related resources
 
-* [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/) — Block, allow, and intercept all outbound HTTP from a container
-* [Environment variables and secrets](https://developers.cloudflare.com/containers/configuration/environment-variables/) — Configure secrets and environment variables
-* [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
+- [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/) — Block, allow, and intercept all outbound HTTP from a container
+- [Environment variables and secrets](https://developers.cloudflare.com/containers/configuration/environment-variables/) — Configure secrets and environment variables
+- [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
 
 Was this helpful?
 

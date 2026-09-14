@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analytics
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime TURN service counts ingress and egress usage in bytes. You can access this real-time and historical data using the TURN analytics API. You can see TURN usage data in a time series or aggregate that shows traffic in bytes over time.
 
@@ -34,9 +34,9 @@ TURN analytics provides rich data that you can query and aggregate in various wa
 
 You can query the following metrics:
 
-* **egressBytes**: Total bytes sent from TURN servers to clients
-* **ingressBytes**: Total bytes received by TURN servers from clients
-* **concurrentConnections**: Average number of concurrent connections
+- **egressBytes**: Total bytes sent from TURN servers to clients
+- **ingressBytes**: Total bytes received by TURN servers from clients
+- **concurrentConnections**: Average number of concurrent connections
 
 These metrics support aggregations using `sum` and `avg` functions.
 
@@ -44,18 +44,18 @@ These metrics support aggregations using `sum` and `avg` functions.
 
 You can break down your data by the following dimensions:
 
-* **Time aggregations**: `datetime`, `datetimeMinute`, `datetimeFiveMinutes`, `datetimeFifteenMinutes`, `datetimeHour`
-* **Geographic**: `datacenterCity`, `datacenterCountry`, `datacenterRegion` (Cloudflare data center location)
-* **Identity**: `keyId`, `customIdentifier`, `username`
+- **Time aggregations**: `datetime`, `datetimeMinute`, `datetimeFiveMinutes`, `datetimeFifteenMinutes`, `datetimeHour`
+- **Geographic**: `datacenterCity`, `datacenterCountry`, `datacenterRegion` (Cloudflare data center location)
+- **Identity**: `keyId`, `customIdentifier`, `username`
 
 ### Filters
 
 You can filter the data in TURN analytics on:
 
-* Datetime range
-* TURN Key ID
-* TURN Username
-* Custom identifier
+- Datetime range
+- TURN Key ID
+- TURN Username
+- Custom identifier
 
 Note
 
@@ -65,9 +65,9 @@ Note
 
 GraphQL is a self-documenting protocol. You can use any GraphQL client to explore the schema and available fields. Popular options include:
 
-* **[Altair ↗](https://altairgraphql.dev/)**: A feature-rich GraphQL client with schema documentation explorer
-* **[GraphiQL ↗](https://github.com/graphql/graphiql)**: The original GraphQL IDE
-* **[Postman ↗](https://www.postman.com/)**: Supports GraphQL queries with schema introspection
+- **[Altair ↗](https://altairgraphql.dev/)**: A feature-rich GraphQL client with schema documentation explorer
+- **[GraphiQL ↗](https://github.com/graphql/graphiql)**: The original GraphQL IDE
+- **[Postman ↗](https://www.postman.com/)**: Supports GraphQL queries with schema introspection
 
 To explore the full schema, configure your client to connect to `https://api.cloudflare.com/client/v4/graphql` with your API credentials. Refer to [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/) for detailed instructions.
 
@@ -170,7 +170,6 @@ query egressByTurnKey{
     },
 		"errors": null
   }
-
 ```
 
 Example response:
@@ -510,10 +509,10 @@ Example response:
 
 You can choose different time aggregation intervals depending on your analysis needs:
 
-* **`datetimeMinute`**: 1-minute intervals (most granular)
-* **`datetimeFiveMinutes`**: 5-minute intervals (recommended for dashboards)
-* **`datetimeFifteenMinutes`**: 15-minute intervals
-* **`datetimeHour`**: Hourly intervals (best for long-term trends)
+- **`datetimeMinute`**: 1-minute intervals (most granular)
+- **`datetimeFiveMinutes`**: 5-minute intervals (recommended for dashboards)
+- **`datetimeFifteenMinutes`**: 15-minute intervals
+- **`datetimeHour`**: Hourly intervals (best for long-term trends)
 
 Example query with hourly aggregation:
 
@@ -730,8 +729,8 @@ The GraphQL Analytics API is self-documenting. You can use introspection to disc
 
 For more information on GraphQL introspection and schema exploration, refer to:
 
-* [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/)
-* [GraphQL introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/)
+- [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/)
+- [GraphQL introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/)
 
 Was this helpful?
 

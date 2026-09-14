@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # General DNS issues
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/dns-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/troubleshooting/dns-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In web browsers such as Safari or Chrome, there are several commonly observable DNS errors:
 
-* `This site can't be reached`
-* `This webpage is not available`
-* `err_name_not_resolved`
-* `Can't find the server`
-* [Error 1001 DNS resolution error](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1001/)
+- `This site can't be reached`
+- `This webpage is not available`
+- `err_name_not_resolved`
+- `Can't find the server`
+- [`Error 1001 DNS resolution error`](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1001/)
 
 ## Common causes and resolutions
 
@@ -34,12 +34,12 @@ Verify that the domain or subdomain was correctly spelled in the request URL.
 
 Ensure that you have the necessary DNS records for the domain or subdomain that is presenting the error.
 
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
 This includes having the following records:
 
-* The [zone apex](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/) (e.g., `example.com`) record.
-* Existing [subdomains](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/) (`www.example.com`, `blog.example.com`) records.
+- The [zone apex](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/) (e.g., `example.com`) record.
+- Existing [subdomains](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/) ( `www.example.com`, `blog.example.com`) records.
 
 Note
 
@@ -69,14 +69,14 @@ When a resolver is queried for a hostname that has no DNS records yet, it caches
 
 For newly created records:
 
-* The resolver might not have cached the new record yet. Instead, it is using a prior `NXDOMAIN` cache entry that says "this record does not exist," which was generated if the hostname was queried before you created the record.
-* The duration of this negative cache is determined by the `MINIMUM` field in your zone's SOA record (per [RFC 2308 ↗](https://datatracker.ietf.org/doc/html/rfc2308)), not the TTL of the record you just created. Different resolvers may cache for varying durations.
+- The resolver might not have cached the new record yet. Instead, it is using a prior `NXDOMAIN` cache entry that says "this record does not exist," which was generated if the hostname was queried before you created the record.
+- The duration of this negative cache is determined by the `MINIMUM` field in your zone's SOA record (per [RFC 2308 ↗](https://datatracker.ietf.org/doc/html/rfc2308)), not the TTL of the record you just created. Different resolvers may cache for varying durations.
 
 This means:
 
-* Lowering the TTL on your new record will not speed up resolution if a negative cache entry already exists; the resolver will only see your new TTL after the old negative entry expires.
-* Flushing your local DNS cache only affects your specific device; the upstream recursive resolver (for example, your ISP or a public provider) still holds the negative result.
-* Propagation appears uneven because different resolvers may have queried the name at different times, apply different negative cache TTLs, or have no negative cache entry at all.
+- Lowering the TTL on your new record will not speed up resolution if a negative cache entry already exists; the resolver will only see your new TTL after the old negative entry expires.
+- Flushing your local DNS cache only affects your specific device; the upstream recursive resolver (for example, your ISP or a public provider) still holds the negative result.
+- Propagation appears uneven because different resolvers may have queried the name at different times, apply different negative cache TTLs, or have no negative cache entry at all.
 
 The exact behavior differs per resolver, but to estimate how long you need to wait, query your zone's SOA record and look at the last value (the `MINIMUM` field). You must wait for that interval to pass since the last `NXDOMAIN` query before the new record will consistently resolve.
 
@@ -96,10 +96,10 @@ In this example, the negative cache response will continue for 256 more seconds.
 
 To verify the record resolves correctly, you can purge the cache for public resolvers and query the record. If this works, other resolvers will eventually start resolving as well:
 
-* [Purge 1.1.1.1 cache ↗](https://one.one.one.one/purge-cache/)
-* [Purge 8.8.8.8 cache ↗](https://dns.google/cache)
-* [Query 8.8.8.8 ↗](https://dns.google/)
-* [Query and refresh OpenDNS cache ↗](https://cachecheck.opendns.com/)
+- [Purge 1.1.1.1 cache ↗](https://one.one.one.one/purge-cache/)
+- [Purge 8.8.8.8 cache ↗](https://dns.google/cache)
+- [Query 8.8.8.8 ↗](https://dns.google/)
+- [Query and refresh OpenDNS cache ↗](https://cachecheck.opendns.com/)
 
 #### Further debugging
 

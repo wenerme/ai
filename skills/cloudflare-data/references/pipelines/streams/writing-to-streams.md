@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Writing to streams
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/streams/writing-to-streams/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/streams/writing-to-streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send events to streams using [Worker bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) or HTTP endpoints for client-side applications and external systems.
 
@@ -79,7 +79,7 @@ export default {
 
 ### Typed pipeline bindings
 
-When a stream has a defined schema, running `wrangler types` generates schema-specific TypeScript types for your pipeline bindings. Instead of the generic `Pipeline<PipelineRecord>`, your bindings get a named record type with full autocomplete and compile-time type checking. Refer to the [wrangler types documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) to learn more.
+When a stream has a defined schema, running `wrangler types` generates schema-specific TypeScript types for your pipeline bindings. Instead of the generic `Pipeline<PipelineRecord>`, your bindings get a named record type with full autocomplete and compile-time type checking. Refer to the [`wrangler types` documentation](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) to learn more.
 
 #### Generated types
 
@@ -105,9 +105,9 @@ declare namespace Cloudflare {
 
 `wrangler types` falls back to the generic `Pipeline<PipelineRecord>` type in the following scenarios:
 
-* **Not authenticated**: Run `wrangler login` to enable typed pipeline bindings.
-* **Stream not found**: The stream ID in your Wrangler configuration does not match an existing stream.
-* **Unstructured stream**: The stream was created without a schema.
+- **Not authenticated**: Run `wrangler login` to enable typed pipeline bindings.
+- **Stream not found**: The stream ID in your Wrangler configuration does not match an existing stream.
+- **Unstructured stream**: The stream was created without a schema.
 
 ## Send via HTTP
 
@@ -121,7 +121,7 @@ HTTP endpoints follow this format:
 https://{stream-id}.ingest.cloudflare.com
 ```
 
-Find your stream's endpoint URL in the Cloudflare dashboard under **Pipelines** \> **Streams** or using the Wrangler CLI with either the stream ID or stream name:
+Find your stream's endpoint URL in the Cloudflare dashboard under **Pipelines** > **Streams** or using the Wrangler CLI with either the stream ID or stream name:
 
 ```bash
 npx wrangler pipelines streams get <STREAM_NAME_OR_ID>
@@ -161,8 +161,8 @@ The API token must have **Workers Pipeline Send** permission. To learn more, ref
 
 Streams handle validation differently based on their configuration:
 
-* **Structured streams**: Events must match the defined schema fields and types.
-* **Unstructured streams**: Accept any valid JSON structure. Data is stored in a single `value` column.
+- **Structured streams**: Events must match the defined schema fields and types.
+- **Unstructured streams**: Accept any valid JSON structure. Data is stored in a single `value` column.
 
 For structured streams, ensure your events match the schema definition. Invalid events will be accepted but dropped, so validate your data before sending to avoid dropped events. When using Worker bindings, run `wrangler types` to generate [typed pipeline bindings](#typed-pipeline-bindings) that catch schema violations at compile time. You can also query the [user error metrics](https://developers.cloudflare.com/pipelines/observability/metrics/#user-error-metrics) to monitor dropped events and diagnose schema validation issues.
 

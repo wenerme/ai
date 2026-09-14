@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enhancing security posture with SentinelOne and Cloudflare One
 
-Last updated Mar 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
-The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution that combines endpoint protection with [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/). This integration enables organizations to make access decisions based on device security posture, ensuring that only healthy and compliant devices can access protected resources. This reference architecture describes how organizations can implement and leverage this integration to enhance their security posture. The integration can assist in advancing an organization's or agency's Zero Trust Architecture Maturity Model, with the goal of one's organization eventually achieving Advanced or Optimal across all [CISA's 5 Pillars of Zero Trust. ↗](https://www.cisa.gov/sites/default/files/2023-04/CISA%5FZero%5FTrust%5FMaturity%5FModel%5FVersion%5F2%5F508c.pdf)
+The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution that combines endpoint protection with [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/). This integration enables organizations to make access decisions based on device security posture, ensuring that only healthy and compliant devices can access protected resources. This reference architecture describes how organizations can implement and leverage this integration to enhance their security posture. The integration can assist in advancing an organization's or agency's Zero Trust Architecture Maturity Model, with the goal of one's organization eventually achieving Advanced or Optimal across all [CISA's 5 Pillars of Zero Trust. ↗](https://www.cisa.gov/sites/default/files/2023-04/CISA_Zero_Trust_Maturity_Model_Version_2_508c.pdf)
 
 ## Who is this document for and what will you learn?
 
@@ -24,7 +24,7 @@ This reference architecture is designed for IT and security professionals who ar
 
 Recommended resources for a stronger understanding of Cloudflare's SentinelOne integration:
 
-* [SentinelOne device posture integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/)
+- [SentinelOne device posture integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/)
 
 ## Integration overview
 
@@ -38,11 +38,11 @@ The SentinelOne platform provides critical endpoint security capabilities:
 
 The SentinelOne agent must be deployed on all managed devices and provides real-time security monitoring and threat detection. Key posture data points include:
 
-* Infection status of the device
-* Number of active threats detected
-* Agent activity status
-* Network connectivity status
-* Operational state of the agent
+- Infection status of the device
+- Number of active threats detected
+- Agent activity status
+- Network connectivity status
+- Operational state of the agent
 
 The SentinelOne Management Console provides centralized control and visibility, including the APIs necessary for integration with Cloudflare.
 
@@ -54,9 +54,9 @@ The Cloudflare One Client must be deployed alongside the SentinelOne agent on ma
 
 The Cloudflare dashboard provides the configuration interface for:
 
-* Service provider integration settings
-* Device posture policies
-* Access policies that incorporate device posture checks
+- Service provider integration settings
+- Device posture policies
+- Access policies that incorporate device posture checks
 
 ## Implementation architecture
 
@@ -64,7 +64,7 @@ The Cloudflare dashboard provides the configuration interface for:
 
 ![Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=915,height=546,format=svg/_astro/figure1.DqycNoJs.svg "Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.")
 
-Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.
+*Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.*
 
 When a user attempts to access a protected resource, the following sequence occurs:
 
@@ -82,9 +82,9 @@ First, a service account must be created in SentinelOne with appropriate permiss
 
 Next, SentinelOne must be configured as a service provider in the Cloudflare Zero Trust dashboard. This includes:
 
-* Providing the API token and REST API URL
-* Setting an appropriate polling frequency
-* Testing the connection to ensure proper communication
+- Providing the API token and REST API URL
+- Setting an appropriate polling frequency
+- Testing the connection to ensure proper communication
 
 Finally, device posture checks must be configured to define the security requirements for access. For detailed setup instructions, refer to [SentinelOne device posture integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/sentinelone/).
 
@@ -104,9 +104,9 @@ SentinelOne provides [endpoint detection and response (EDR) ↗](https://www.sen
 
 ![Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1619,height=1082,format=svg/_astro/figure2.BaY3MgFK.svg "Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.")
 
-Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.
+*Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.*
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 The integration architecture begins at the managed endpoint device level, where two critical components coexist. The SentinelOne agent serves as the primary security enforcer, continuously monitoring the device for threats, assessing device health, and providing real-time security status updates. Alongside it, the Cloudflare One Client establishes secure connectivity and manages the device's interaction with Cloudflare's Zero Trust infrastructure. These components work in tandem to ensure both endpoint security and secure network access.
 
@@ -154,9 +154,9 @@ The architecture also supports dynamic policy enforcement, where changes in devi
 
 Organizations should consider their network architecture when implementing this integration. Key factors include:
 
-* Distribution of endpoints across different networks
-* Bandwidth and latency requirements for posture checks
-* Integration with existing security tools and workflows
+- Distribution of endpoints across different networks
+- Bandwidth and latency requirements for posture checks
+- Integration with existing security tools and workflows
 
 The integration between Cloudflare One and SentinelOne requires thoughtful planning to ensure successful implementation. At its foundation, organizations need to prepare their environment by having the SentinelOne agent and Cloudflare One Client deployed on all devices that will be subject to posture checks. This foundational step ensures that both security monitoring and secure network connectivity are in place before building additional security controls.
 
@@ -166,9 +166,9 @@ When implementing the integration, organizations should approach it as a service
 
 Effective policy design is crucial for security and usability. Consider implementing policies that:
 
-* Start with basic hygiene requirements and gradually increase security requirements
-* Account for different user roles and access needs
-* Include fallback options for exceptional circumstances
+- Start with basic hygiene requirements and gradually increase security requirements
+- Account for different user roles and access needs
+- Include fallback options for exceptional circumstances
 
 Policy configuration represents another crucial aspect of the deployment. Organizations can leverage SentinelOne's detailed device posture information to create nuanced access policies. These policies can take into account multiple factors such as device infection status, active threats, and agent health. By monitoring these various attributes, organizations can ensure that only devices meeting their security requirements can access protected resources.
 
@@ -180,7 +180,7 @@ The integration between Cloudflare One and SentinelOne provides organizations wi
 
 ## Related resources
 
-* [Overview of SentinelOne and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
+- [Overview of SentinelOne and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
 
 Was this helpful?
 

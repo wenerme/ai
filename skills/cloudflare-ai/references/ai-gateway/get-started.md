@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to set up and use your first AI Gateway.
 
@@ -51,36 +51,44 @@ Note
 
 For third-party models, you do not need to specify a gateway — AI Gateway uses `default` as the gateway ID and automatically creates it on the first authenticated request. Workers AI requests always require the `cf-aig-gateway-id` header. For more details, refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway).
 
+<details>
+
+<summary>
+
 Create a gateway manually
+
+</summary>
 
 You can also create gateways manually with a custom name and configuration through the dashboard or API.
 
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+<a href="https://dash.cloudflare.com/?to=/:account/ai/ai-gateway">Go to **AI Gateway** ↗</a>
+
+1. Log into the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a> and select your account.
+2. Go to **AI** &gt; **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
 5. In **Workers AI Billing**, choose how Workers AI requests through this gateway are billed:
-  * **Standard billing** charges your Cloudflare account at the end of each billing cycle.
-  * **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
+   - **Standard billing** charges your Cloudflare account at the end of each billing cycle.
+   - **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
 6. Select **Create**.
 
 To set up an AI Gateway using the API:
 
-1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+1. <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/">Create an API token</a> with the following permissions:
+   - <code>AI Gateway - Read</code>
+   - <code>AI Gateway - Edit</code>
+2. Get your <a href="https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/">Account ID</a>.
+3. Using that API token and Account ID, send a <a href="https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/"><code>POST</code> request</a> to the Cloudflare API.
 
-  * `AI Gateway - Read`
-  * `AI Gateway - Edit`
-2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
+</details>
 
 ## Provider authentication
 
 Authenticate with your upstream AI provider using one of the following options:
 
-* **Unified Billing:** Use prepaid AI Gateway credits for Workers AI and supported third-party model providers. Refer to [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
-* **BYOK (Store Keys):** Store your own provider API Keys with Cloudflare, and AI Gateway will include them at runtime. Refer to [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
-* **Request headers:** Include your provider API Key in the request headers as you normally would (for example, `Authorization: Bearer <OPENAI_API_KEY>`).
+- **Unified Billing:** Use prepaid AI Gateway credits for Workers AI and supported third-party model providers. Refer to [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
+- **BYOK (Store Keys):** Store your own provider API Keys with Cloudflare, and AI Gateway will include them at runtime. Refer to [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
+- **Request headers:** Include your provider API Key in the request headers as you normally would (for example, `Authorization: Bearer <OPENAI_API_KEY>`).
 
 ## Integration options
 
@@ -112,19 +120,19 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/{provider}
 
 **Available providers:**
 
-* [OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/) \- GPT models and embeddings
-* [Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/) \- Claude models
-* [Google AI Studio](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/) \- Gemini models
-* [Workers AI](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) \- Cloudflare's inference platform
-* [AWS Bedrock](https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/) \- Amazon's managed AI service
-* [Azure OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/) \- Microsoft's OpenAI service
-* [and more...](https://developers.cloudflare.com/ai-gateway/usage/providers/)
+- [OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/) - GPT models and embeddings
+- [Anthropic](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/) - Claude models
+- [Google AI Studio](https://developers.cloudflare.com/ai-gateway/usage/providers/google-ai-studio/) - Gemini models
+- [Workers AI](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) - Cloudflare's inference platform
+- [AWS Bedrock](https://developers.cloudflare.com/ai-gateway/usage/providers/bedrock/) - Amazon's managed AI service
+- [Azure OpenAI](https://developers.cloudflare.com/ai-gateway/usage/providers/azureopenai/) - Microsoft's OpenAI service
+- [and more...](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 
 ## Next steps
 
-* Learn more about [caching](https://developers.cloudflare.com/ai-gateway/features/caching/) for faster requests and cost savings and [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) to control how your application scales.
-* Explore how to specify model or provider [fallbacks, ratelimits, A/B tests](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) for resiliency.
-* Learn how to use low-cost, open source models on [Workers AI](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) \- our AI inference service.
+- Learn more about [caching](https://developers.cloudflare.com/ai-gateway/features/caching/) for faster requests and cost savings and [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/) to control how your application scales.
+- Explore how to specify model or provider [fallbacks, ratelimits, A/B tests](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) for resiliency.
+- Learn how to use low-cost, open source models on [Workers AI](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/) - our AI inference service.
 
 Was this helpful?
 

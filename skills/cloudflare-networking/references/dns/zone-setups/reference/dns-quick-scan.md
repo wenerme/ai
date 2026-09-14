@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Records quick scan
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To help all customers get started when a new zone is created, Cloudflare offers a DNS records quick scan.
 
 Where to find the quick scan
 
-On the dashboard, quick scan is only available as you are onboarding a new domain. Via API, you can manually invoke quick scan with the [Trigger DNS Records Scan endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/scan%5Ftrigger/).
+On the dashboard, quick scan is only available as you are onboarding a new domain. Via API, you can manually invoke quick scan with the [Trigger DNS Records Scan endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/scan_trigger/).
 
 ## How quick scan works
 
@@ -26,27 +26,35 @@ The scan is built upon a list of recurring patterns of DNS records **Type** and 
 
 Since DNS record names are automatically appended with the domain that the records are set for, two completely different domains - `example.com` and `domain.test`, for example - would probably have a few matches if the lists of DNS records on their zones were compared side by side and the criterion was **Type**/**Name** combination.
 
+<details>
+
+<summary>
+
 Example
+
+</summary>
 
 DNS management for **example.com**:
 
-| Type      | Name           | Content                |
-| --------- | -------------- | ---------------------- |
-| **A**     | **@**          | 192.0.2.0              |
-| **CNAME** | **www**        | example.com            |
-| **A**     | **mail**       | 192.0.2.100            |
-| **MX**    | **@**          | mail.example.com       |
-| _CNAME_   | _my-store1900_ | example-shop.saas.test |
+| Type | Name | Content |
+| --- | --- | --- |
+| **A** | **@** | <code>192.0.2.0</code> |
+| **CNAME** | **www** | <code>example.com</code> |
+| **A** | **mail** | <code>192.0.2.100</code> |
+| **MX** | **@** | <code>mail.example.com</code> |
+| *CNAME* | *my-store1900* | <code>example-shop.saas.test</code> |
 
 DNS management for **domain.test**:
 
-| Type      | Name                     | Content           |
-| --------- | ------------------------ | ----------------- |
-| **A**     | **@**                    | 192.0.2.8         |
-| **CNAME** | **www**                  | domain.test       |
-| _CNAME_   | _specific-internal-name_ | services.test.dev |
-| **A**     | **mail**                 | 192.0.2.20        |
-| **MX**    | **@**                    | mail.domain.test  |
+| Type | Name | Content |
+| --- | --- | --- |
+| **A** | **@** | <code>192.0.2.8</code> |
+| **CNAME** | **www** | <code>domain.test</code> |
+| *CNAME* | *specific-internal-name* | <code>services.test.dev</code> |
+| **A** | **mail** | <code>192.0.2.20</code> |
+| **MX** | **@** | <code>mail.domain.test</code> |
+
+</details>
 
 The DNS records **Content** would be different for each zone but, based on record **Type** and **Name**, Cloudflare can identify recurring patterns and expect to find the same pairs when a new domain is added.
 
@@ -56,7 +64,7 @@ The [use cases section](#use-case-examples) below provides some examples of DNS 
 
 Since the DNS records quick scan is not tailored to the specific zone you are adding to Cloudflare, there can be cases where not all records are picked up.
 
-For example, if you have very specific hostnames - such as `my-store1900.example.com` instead of `store.example.com` \- or if you have set up a [DKIM record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) that uses a more custom name - `this._domainkey` instead of `default._domainkey` \- it is expected that the scan will not find the specific DNS records.
+For example, if you have very specific hostnames - such as `my-store1900.example.com` instead of `store.example.com` - or if you have set up a [DKIM record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) that uses a more custom name - `this._domainkey` instead of `default._domainkey` - it is expected that the scan will not find the specific DNS records.
 
 Important
 
@@ -66,9 +74,9 @@ You should always [review your DNS records](https://developers.cloudflare.com/dn
 
 ### Address records
 
-| Type | Name | Content | TTL   |
-| ---- | ---- | ------- | ----- |
-| A    | @    | <IPv4>  | <TTL> |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `A` | `@` | `<IPv4>` | `<TTL>` |
 
 The value `@` indicates the domain apex - in the example above, `domain.test` or `example.com`.
 
@@ -76,29 +84,29 @@ Virtually all zones on a [primary setup (full)](https://developers.cloudflare.co
 
 ### www records
 
-| Type  | Name | Content  | TTL   |
-| ----- | ---- | -------- | ----- |
-| CNAME | www  | <TARGET> | <TTL> |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `CNAME` | `www` | `<TARGET>` | `<TTL>` |
 
-| Type | Name | Content | TTL   |
-| ---- | ---- | ------- | ----- |
-| A    | www  | <IPv4>  | <TTL> |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `A` | `www` | `<IPv4>` | `<TTL>` |
 
 Since it is still common that visitors type `www.<DOMAIN>` in their browsers expecting to reach the domain, zones will usually have a [CNAME](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) or an [A](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#a-and-aaaa) record named `www`. This allows queries for `www.<DOMAIN>` to return the expected result.
 
 ### Email records
 
-| Type | Name | Mail server      | TTL   | Priority   |
-| ---- | ---- | ---------------- | ----- | ---------- |
-| MX   | @    | webmail.<DOMAIN> | <TTL> | <PRIORITY> |
+| Type | Name | Mail server | TTL | Priority |
+| --- | --- | --- | --- | --- |
+| `MX` | `@` | `webmail.<DOMAIN>` | `<TTL>` | `<PRIORITY>` |
 
-| Type  | Name | Content  | TTL   |
-| ----- | ---- | -------- | ----- |
-| CNAME | mail | <TARGET> | <TTL> |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `CNAME` | `mail` | `<TARGET>` | `<TTL>` |
 
-| Type | Name    | Content | TTL   |
-| ---- | ------- | ------- | ----- |
-| A    | webmail | <IPv4>  | <TTL> |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `A` | `webmail` | `<IPv4>` | `<TTL>` |
 
 Mail exchanger (`MX`) and other record types combined with names like `mail`, `webmail`, or `smtp`, are also commonly found. As explained in the [Set up email records page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/), there are several DNS records that can be used to make sure email reaches your mail server and to prevent other email senders from spoofing your domain.
 

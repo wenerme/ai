@@ -12,105 +12,107 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Explore the following examples for Workers.
+Explore the following examples
 
-[**Single Page App (SPA) shell with bootstrap data**Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.](https://developers.cloudflare.com/workers/examples/spa-shell/)
+ for Workers.
 
-[**Write to Analytics Engine**Write custom analytics events to Workers Analytics Engine for high-cardinality, time-series data.](https://developers.cloudflare.com/workers/examples/analytics-engine/)
+[**Single Page App (SPA) shell with bootstrap data** Use HTMLRewriter to inject prefetched bootstrap data into an SPA shell, eliminating client-side data fetching on initial load. Works with Workers Static Assets or an externally hosted SPA.](https://developers.cloudflare.com/workers/examples/spa-shell/)
 
-[**Stream large JSON**Parse and transform large JSON request and response bodies using streaming.](https://developers.cloudflare.com/workers/examples/streaming-json/)
+[**Write to Analytics Engine** Write custom analytics events to Workers Analytics Engine for high-cardinality, time-series data.](https://developers.cloudflare.com/workers/examples/analytics-engine/)
 
-[**HTTP Basic Authentication**Shows how to restrict access using the HTTP Basic schema.](https://developers.cloudflare.com/workers/examples/basic-auth/)
+[**Stream large JSON** Parse and transform large JSON request and response bodies using streaming.](https://developers.cloudflare.com/workers/examples/streaming-json/)
 
-[**Fetch HTML**Send a request to a remote server, read HTML from the response, and serve that HTML.](https://developers.cloudflare.com/workers/examples/fetch-html/)
+[**HTTP Basic Authentication** Shows how to restrict access using the HTTP Basic schema.](https://developers.cloudflare.com/workers/examples/basic-auth/)
 
-[**Return small HTML page**Deliver an HTML page from an HTML string directly inside the Worker script.](https://developers.cloudflare.com/workers/examples/return-html/)
+[**Fetch HTML** Send a request to a remote server, read HTML from the response, and serve that HTML.](https://developers.cloudflare.com/workers/examples/fetch-html/)
 
-[**Return JSON**Return JSON directly from a Worker script, useful for building APIs and middleware.](https://developers.cloudflare.com/workers/examples/return-json/)
+[**Return small HTML page** Deliver an HTML page from an HTML string directly inside the Worker script.](https://developers.cloudflare.com/workers/examples/return-html/)
 
-[**Sign requests**Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.](https://developers.cloudflare.com/workers/examples/signing-requests/)
+[**Return JSON** Return JSON directly from a Worker script, useful for building APIs and middleware.](https://developers.cloudflare.com/workers/examples/return-json/)
 
-[**Stream OpenAI API Responses**Use the OpenAI v4 SDK to stream responses from OpenAI.](https://developers.cloudflare.com/workers/examples/openai-sdk-streaming/)
+[**Sign requests** Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.](https://developers.cloudflare.com/workers/examples/signing-requests/)
 
-[**Using timingSafeEqual**Protect against timing attacks by safely comparing values using timingSafeEqual.](https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/)
+[**Stream OpenAI API Responses** Use the OpenAI v4 SDK to stream responses from OpenAI.](https://developers.cloudflare.com/workers/examples/openai-sdk-streaming/)
 
-[**Turnstile with Workers**Inject Turnstile implicitly into HTML elements using the HTMLRewriter runtime API.](https://developers.cloudflare.com/workers/examples/turnstile-html-rewriter/)
+[**Using timingSafeEqual** Protect against timing attacks by safely comparing values using `timingSafeEqual`.](https://developers.cloudflare.com/workers/examples/protect-against-timing-attacks/)
 
-[**Custom Domain with Images**Set up custom domain for Images using a Worker or serve images using a prefix path and Cloudflare registered domain.](https://developers.cloudflare.com/workers/examples/images-workers/)
+[**Turnstile with Workers** Inject Turnstile implicitly into HTML elements using the HTMLRewriter runtime API.](https://developers.cloudflare.com/workers/examples/turnstile-html-rewriter/)
 
-[**103 Early Hints**Allow a client to request static assets while waiting for the HTML response.](https://developers.cloudflare.com/workers/examples/103-early-hints/)
+[**Custom Domain with Images** Set up custom domain for Images using a Worker or serve images using a prefix path and Cloudflare registered domain.](https://developers.cloudflare.com/workers/examples/images-workers/)
 
-[**Cache Tags using Workers**Send Additional Cache Tags using Workers](https://developers.cloudflare.com/workers/examples/cache-tags/)
+[**103 Early Hints** Allow a client to request static assets while waiting for the HTML response.](https://developers.cloudflare.com/workers/examples/103-early-hints/)
 
-[**Accessing the Cloudflare Object**Access custom Cloudflare properties and control how Cloudflare features are applied to every request.](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/)
+[**Cache Tags using Workers** Send Additional Cache Tags using Workers](https://developers.cloudflare.com/workers/examples/cache-tags/)
 
-[**Aggregate requests**Send two GET request to two urls and aggregates the responses into one response.](https://developers.cloudflare.com/workers/examples/aggregate-requests/)
+[**Accessing the Cloudflare Object** Access custom Cloudflare properties and control how Cloudflare features are applied to every request.](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/)
 
-[**Block on TLS**Inspects the incoming request's TLS version and blocks if under TLSv1.2.](https://developers.cloudflare.com/workers/examples/block-on-tls/)
+[**Aggregate requests** Send two GET request to two urls and aggregates the responses into one response.](https://developers.cloudflare.com/workers/examples/aggregate-requests/)
 
-[**Bulk redirects**Redirect requests to certain URLs based on a mapped object to the request's URL.](https://developers.cloudflare.com/workers/examples/bulk-redirects/)
+[**Block on TLS** Inspects the incoming request's TLS version and blocks if under TLSv1.2.](https://developers.cloudflare.com/workers/examples/block-on-tls/)
 
-[**Cache POST requests**Cache POST requests using the Cache API.](https://developers.cloudflare.com/workers/examples/cache-post-request/)
+[**Bulk redirects** Redirect requests to certain URLs based on a mapped object to the request's URL.](https://developers.cloudflare.com/workers/examples/bulk-redirects/)
 
-[**Conditional response**Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.](https://developers.cloudflare.com/workers/examples/conditional-response/)
+[**Cache POST requests** Cache POST requests using the Cache API.](https://developers.cloudflare.com/workers/examples/cache-post-request/)
 
-[**Cookie parsing**Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.](https://developers.cloudflare.com/workers/examples/extract-cookie-value/)
+[**Conditional response** Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.](https://developers.cloudflare.com/workers/examples/conditional-response/)
 
-[**Fetch JSON**Send a GET request and read in JSON from the response. Use to fetch external data.](https://developers.cloudflare.com/workers/examples/fetch-json/)
+[**Cookie parsing** Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.](https://developers.cloudflare.com/workers/examples/extract-cookie-value/)
 
-[**Geolocation: Custom Styling**Personalize website styling based on localized user time.](https://developers.cloudflare.com/workers/examples/geolocation-custom-styling/)
+[**Fetch JSON** Send a GET request and read in JSON from the response. Use to fetch external data.](https://developers.cloudflare.com/workers/examples/fetch-json/)
 
-[**Geolocation: Hello World**Get all geolocation data fields and display them in HTML.](https://developers.cloudflare.com/workers/examples/geolocation-hello-world/)
+[**Geolocation: Custom Styling** Personalize website styling based on localized user time.](https://developers.cloudflare.com/workers/examples/geolocation-custom-styling/)
 
-[**Post JSON**Send a POST request with JSON data. Use to share data with external servers.](https://developers.cloudflare.com/workers/examples/post-json/)
+[**Geolocation: Hello World** Get all geolocation data fields and display them in HTML.](https://developers.cloudflare.com/workers/examples/geolocation-hello-world/)
 
-[**Redirect**Redirect requests from one URL to another or from one set of URLs to another set.](https://developers.cloudflare.com/workers/examples/redirect/)
+[**Post JSON** Send a POST request with JSON data. Use to share data with external servers.](https://developers.cloudflare.com/workers/examples/post-json/)
 
-[**Rewrite links**Rewrite URL links in HTML using the HTMLRewriter. This is useful for JAMstack websites.](https://developers.cloudflare.com/workers/examples/rewrite-links/)
+[**Redirect** Redirect requests from one URL to another or from one set of URLs to another set.](https://developers.cloudflare.com/workers/examples/redirect/)
 
-[**Set security headers**Set common security headers (X-XSS-Protection, X-Frame-Options, X-Content-Type-Options, Permissions-Policy, Referrer-Policy, Strict-Transport-Security, Content-Security-Policy).](https://developers.cloudflare.com/workers/examples/security-headers/)
+[**Rewrite links** Rewrite URL links in HTML using the HTMLRewriter. This is useful for JAMstack websites.](https://developers.cloudflare.com/workers/examples/rewrite-links/)
 
-[**Multiple Cron Triggers**Set multiple Cron Triggers on three different schedules.](https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/)
+[**Set security headers** Set common security headers (X-XSS-Protection, X-Frame-Options, X-Content-Type-Options, Permissions-Policy, Referrer-Policy, Strict-Transport-Security, Content-Security-Policy).](https://developers.cloudflare.com/workers/examples/security-headers/)
 
-[**Setting Cron Triggers**Set a Cron Trigger for your Worker.](https://developers.cloudflare.com/workers/examples/cron-trigger/)
+[**Multiple Cron Triggers** Set multiple Cron Triggers on three different schedules.](https://developers.cloudflare.com/workers/examples/multiple-cron-triggers/)
 
-[**Using the WebSockets API**Use the WebSockets API to communicate in real time with your Cloudflare Workers.](https://developers.cloudflare.com/workers/examples/websockets/)
+[**Setting Cron Triggers** Set a Cron Trigger for your Worker.](https://developers.cloudflare.com/workers/examples/cron-trigger/)
 
-[**Geolocation: Weather application**Fetch weather data from an API using the user's geolocation data.](https://developers.cloudflare.com/workers/examples/geolocation-app-weather/)
+[**Using the WebSockets API** Use the WebSockets API to communicate in real time with your Cloudflare Workers.](https://developers.cloudflare.com/workers/examples/websockets/)
 
-[**A/B testing with same-URL direct access**Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.](https://developers.cloudflare.com/workers/examples/ab-testing/)
+[**Geolocation: Weather application** Fetch weather data from an API using the user's geolocation data.](https://developers.cloudflare.com/workers/examples/geolocation-app-weather/)
 
-[**Alter headers**Example of how to add, change, or delete headers sent in a request or returned in a response.](https://developers.cloudflare.com/workers/examples/alter-headers/)
+[**A/B testing with same-URL direct access** Set up an A/B test by controlling what response is served based on cookies. This version supports passing the request through to test and control on the origin, bypassing random assignment.](https://developers.cloudflare.com/workers/examples/ab-testing/)
 
-[**Auth with headers**Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.](https://developers.cloudflare.com/workers/examples/auth-with-headers/)
+[**Alter headers** Example of how to add, change, or delete headers sent in a request or returned in a response.](https://developers.cloudflare.com/workers/examples/alter-headers/)
 
-[**Bulk origin override**Resolve requests to your domain to a set of proxy third-party origin URLs.](https://developers.cloudflare.com/workers/examples/bulk-origin-proxy/)
+[**Auth with headers** Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.](https://developers.cloudflare.com/workers/examples/auth-with-headers/)
 
-[**Using the Cache API**Use the Cache API to store responses in Cloudflare's cache.](https://developers.cloudflare.com/workers/examples/cache-api/)
+[**Bulk origin override** Resolve requests to your domain to a set of proxy third-party origin URLs.](https://developers.cloudflare.com/workers/examples/bulk-origin-proxy/)
 
-[**Cache using fetch**Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.](https://developers.cloudflare.com/workers/examples/cache-using-fetch/)
+[**Using the Cache API** Use the Cache API to store responses in Cloudflare's cache.](https://developers.cloudflare.com/workers/examples/cache-api/)
 
-[**CORS header proxy**Add the necessary CORS headers to a third party API response.](https://developers.cloudflare.com/workers/examples/cors-header-proxy/)
+[**Cache using fetch** Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.](https://developers.cloudflare.com/workers/examples/cache-using-fetch/)
 
-[**Country code redirect**Redirect a response based on the country code in the header of a visitor.](https://developers.cloudflare.com/workers/examples/country-code-redirect/)
+[**CORS header proxy** Add the necessary CORS headers to a third party API response.](https://developers.cloudflare.com/workers/examples/cors-header-proxy/)
 
-[**Data loss prevention**Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.](https://developers.cloudflare.com/workers/examples/data-loss-prevention/)
+[**Country code redirect** Redirect a response based on the country code in the header of a visitor.](https://developers.cloudflare.com/workers/examples/country-code-redirect/)
 
-[**Debugging logs**Send debugging information in an errored response to a logging service.](https://developers.cloudflare.com/workers/examples/debugging-logs/)
+[**Data loss prevention** Protect sensitive data to prevent data loss, and send alerts to a webhooks server in the event of a data breach.](https://developers.cloudflare.com/workers/examples/data-loss-prevention/)
 
-[**Hot-link protection**Block other websites from linking to your content. This is useful for protecting images.](https://developers.cloudflare.com/workers/examples/hot-link-protection/)
+[**Debugging logs** Send debugging information in an errored response to a logging service.](https://developers.cloudflare.com/workers/examples/debugging-logs/)
 
-[**Logging headers to console**Examine the contents of a Headers object by logging to console with a Map.](https://developers.cloudflare.com/workers/examples/logging-headers/)
+[**Hot-link protection** Block other websites from linking to your content. This is useful for protecting images.](https://developers.cloudflare.com/workers/examples/hot-link-protection/)
 
-[**Modify request property**Create a modified request with edited properties based off of an incoming request.](https://developers.cloudflare.com/workers/examples/modify-request-property/)
+[**Logging headers to console** Examine the contents of a Headers object by logging to console with a Map.](https://developers.cloudflare.com/workers/examples/logging-headers/)
 
-[**Modify response**Fetch and modify response properties which are immutable by creating a copy first.](https://developers.cloudflare.com/workers/examples/modify-response/)
+[**Modify request property** Create a modified request with edited properties based off of an incoming request.](https://developers.cloudflare.com/workers/examples/modify-request-property/)
 
-[**Read POST**Serve an HTML form, then read POST requests. Use also to read JSON or POST data from an incoming request.](https://developers.cloudflare.com/workers/examples/read-post/)
+[**Modify response** Fetch and modify response properties which are immutable by creating a copy first.](https://developers.cloudflare.com/workers/examples/modify-response/)
 
-[**Respond with another site**Respond to the Worker request with the response from another website (example.com in this example).](https://developers.cloudflare.com/workers/examples/respond-with-another-site/)
+[**Read POST** Serve an HTML form, then read POST requests. Use also to read JSON or POST data from an incoming request.](https://developers.cloudflare.com/workers/examples/read-post/)
+
+[**Respond with another site** Respond to the Worker request with the response from another website (example.com in this example).](https://developers.cloudflare.com/workers/examples/respond-with-another-site/)
 
 Was this helpful?
 

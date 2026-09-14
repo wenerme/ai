@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Collect PCAPs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-After a packet capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a `full` type packet capture, you must first follow instructions for [configuring a bucket](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/).
+After a packet
+
+ capture is requested and the capture is collected, the output is contained within one or more files in PCAP file format. Before starting a `full` type packet capture, you must first follow instructions for [configuring a bucket](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/).
 
 Note
 
@@ -32,16 +34,16 @@ For help determining which data center to select for a packet capture, visit [ht
 
 **Sample and full**
 
-* `packet_limit`: The minimum value is `1` packet and maximum value is `10000` packets.
+- `packet_limit`: The minimum value is `1` packet and maximum value is `10000` packets.
 
 **Sample**
 
-* `time_limit`: The minimum value is `1` seconds and maximum value is `300` seconds.
+- `time_limit`: The minimum value is `1` seconds and maximum value is `300` seconds.
 
 **Full**
 
-* `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
-* `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
+- `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
+- `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
@@ -54,13 +56,21 @@ The PCAPs API needs both `system` and `type` to be specified to start a capture.
 
 Currently, you can only send one collect request per minute for sample PCAPs, and you can only have one running or pending full PCAP at a time.
 
+<details>
+
+<summary>
+
 Full PCAP
 
-For full PCAP requests, refer to the required parameters listed at [Create full PCAP requests](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/). Note that full packet captures require two more parameters than sample packets.
+</summary>
 
-The full PCAP request endpoint also contains optional fields you can use to limit the amount of packets captured. Both full and sample packet requests contain an optional `filter_v1` parameter you can use to filter packets by IPv4 Source address, for example. For a full list of the filter options, refer to the parameter lists above.
+For full PCAP requests, refer to the required parameters listed at <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/pcaps/methods/create/">Create full PCAP requests</a>. Note that full packet captures require two more parameters than sample packets.
 
-Leave `filter_v1` empty to collect all packets without any filtering.
+The full PCAP request endpoint also contains optional fields you can use to limit the amount of packets captured. Both full and sample packet requests contain an optional <code>filter_v1</code> parameter you can use to filter packets by IPv4 Source address, for example. For a full list of the filter options, refer to the parameter lists above.
+
+Leave <code>filter_v1</code> empty to collect all packets without any filtering.
+
+*Full PCAP example requestbash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -79,7 +89,9 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 }'
 ```
 
-While the collection is in progress, the response returns the `status` field as `pending`. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to `success`.
+While the collection is in progress, the response returns the <code>status</code> field as <code>pending</code>. You must wait for the PCAP collection to complete before downloading the file. When the PCAP is ready to download, the status changes to <code>success</code>.
+
+*Full PCAP example responsejson*
 
 ```json
 {
@@ -102,11 +114,21 @@ While the collection is in progress, the response returns the `status` field as 
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Sample PCAP
 
-To create a sample PCAP request, send a JSON body with the required parameter listed at [Create sample PCAP request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/pcaps/methods/create/).
+</summary>
 
-Leave `filter_v1` to collect all packets without any filtering.
+To create a sample PCAP request, send a JSON body with the required parameter listed at <a href="https://developers.cloudflare.com/api/resources/magic_transit/subresources/pcaps/methods/create/">Create sample PCAP request</a>.
+
+Leave <code>filter_v1</code> to collect all packets without any filtering.
+
+*Sample PCAP example requestbash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -129,6 +151,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 ```
 
 The response is a JSON body that contains the details of the job running to build the packet capture. The response contains a unique identifier for the packet capture request along with the details sent in the request.
+
+*Sample PCAP example responsejson*
 
 ```json
 {
@@ -154,6 +178,8 @@ The response is a JSON body that contains the details of the job running to buil
 }
 ```
 
+</details>
+
 ## Check packet capture status
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
@@ -169,6 +195,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id} 
 ```
 
 The response will be similar to the one received when requesting a PCAP collection.
+
+*Sample PCAP example resultjson*
 
 ```json
 {
@@ -196,9 +224,9 @@ The response will be similar to the one received when requesting a PCAP collecti
 
 The capture status displays one of the following options:
 
-* **Complete:** The capture request is done and ready for download.
-* **In progress:** The capture request was captured but still processing.
-* **Failure:** The capture failed. If this occurs, verify your ownership information.
+- **Complete:** The capture request is done and ready for download.
+- **In progress:** The capture request was captured but still processing.
+- **Failure:** The capture failed. If this occurs, verify your ownership information.
 
 ## Download packet captures
 
@@ -230,11 +258,13 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 ## List packet captures
 
 1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
-2. Select **Diagnostics** \> **Network packet captures**.
+2. Select **Diagnostics** > **Network packet captures**.
 
 The list of packet captures associated with your account displays.
 
 To view a list of sent requests, use the following command:
+
+*List request examplebash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
@@ -243,6 +273,8 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps \
 ```
 
 The response returns an array that includes up to 50 sent requests, which includes completed and ongoing requests.
+
+*List response examplejson*
 
 ```json
 {
@@ -268,9 +300,9 @@ The response returns an array that includes up to 50 sent requests, which includ
 
 Due to the nature of Cloudflare network, your traffic may traverse various physical machines within a single Cloudflare location.
 
-* Multiple PCAP Files: A single full PCAP capture may produce many small PCAP files, as a capture is taken for each physical server your traffic traverses in a Cloudflare location.
-  * You can get more granular by applying packet-specific filters like protocol, port (and more) to target the traffic you need.
-* Merging for Analysis: To view the traffic as a single flow, you can use a tool like mergecap to combine the individual files into one larger file for analysis in Wireshark. Refer to the [Wireshark mergecap documentation ↗](https://www.wireshark.org/docs/wsug%5Fhtml%5Fchunked/AppToolsmergecap.html) for instructions.
+- Multiple PCAP Files: A single full PCAP capture may produce many small PCAP files, as a capture is taken for each physical server your traffic traverses in a Cloudflare location.
+  - You can get more granular by applying packet-specific filters like protocol, port (and more) to target the traffic you need.
+- Merging for Analysis: To view the traffic as a single flow, you can use a tool like mergecap to combine the individual files into one larger file for analysis in Wireshark. Refer to the [Wireshark mergecap documentation ↗](https://www.wireshark.org/docs/wsug_html_chunked/AppToolsmergecap.html) for instructions.
 
 Was this helpful?
 

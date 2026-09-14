@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Canvas Remoting
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/canvas-remoting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/canvas-remoting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Canvas Remoting is a Browser Isolation capability that optimizes performance for web applications using the HTML5 Canvas API (a browser feature that allows web applications to draw graphics directly on the page). It sends vector draw commands to the client instead of rasterized bitmaps (pixel images), reducing bandwidth consumption and improving frame rates for productivity applications.
 
@@ -31,22 +31,22 @@ Canvas Remoting extends NVR to Canvas-based applications by:
 
 Canvas Remoting improves performance for productivity applications that rely on the HTML5 Canvas API:
 
-| Application                          | Improvement                                |
-| ------------------------------------ | ------------------------------------------ |
-| Microsoft Word                       | 10x bandwidth reduction                    |
-| Microsoft Excel                      | Smooth scrolling and data entry            |
-| Microsoft PowerPoint                 | Fluid animations                           |
-| Google Sheets                        | Consistent 30fps rendering                 |
-| Google Maps                          | Smooth panning and zooming                 |
+| Application | Improvement |
+| --- | --- |
+| Microsoft Word | 10x bandwidth reduction |
+| Microsoft Excel | Smooth scrolling and data entry |
+| Microsoft PowerPoint | Fluid animations |
+| Google Sheets | Consistent 30fps rendering |
+| Google Maps | Smooth panning and zooming |
 | Web-based terminals and AI notebooks | Fast and responsive text input and display |
 
 ## Limitations
 
 Canvas Remoting supports 2D Canvas contexts only. The following are not supported:
 
-* WebGL and WebGPU contexts
-* 3D graphics applications
-* Advanced Canvas features requiring GPU acceleration
+- WebGL and WebGPU contexts
+- 3D graphics applications
+- Advanced Canvas features requiring GPU acceleration
 
 ## Enable or disable Canvas Remoting
 
@@ -66,7 +66,13 @@ Canvas Remoting is on by default for all Browser Isolation customers. No configu
 
 ## Troubleshooting
 
+<details>
+
+<summary>
+
 Canvas content renders slowly
+
+</summary>
 
 If Canvas-based applications appear choppy or consume excessive bandwidth:
 
@@ -74,13 +80,23 @@ If Canvas-based applications appear choppy or consume excessive bandwidth:
 2. Check that the context menu shows **Disable Canvas Remoting** (indicating it is active).
 3. If the issue persists, open a support case and provide the Ray ID from the error page.
 
+</details>
+
+<details>
+
+<summary>
+
 Graphical glitches or missing elements
+
+</summary>
 
 If Canvas content displays incorrectly after reconnecting from a network interruption:
 
 1. Refresh the isolated page.
 2. If the issue persists, select **Disable Canvas Remoting** from the right-click menu.
 3. Re-enable Canvas Remoting after the page reloads.
+
+</details>
 
 Was this helpful?
 

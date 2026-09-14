@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser Isolation with firewall
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/network-dependencies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/network-dependencies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your organization uses a firewall or other policies to restrict Internet traffic, you may need to make a few changes to allow Browser Isolation to connect.
 
@@ -24,13 +24,13 @@ Isolated pages are served by the remoting client — the software component in t
 
 The remoting client provides static assets and API endpoints. For Browser Isolation to function, you must allow:
 
-* HTTPS traffic to `*.browser.run` on port `443`
+- HTTPS traffic to `*.browser.run` on port `443`
 
 #### Clientless Web Isolation
 
 Users connecting through Clientless Web Isolation also require connectivity to Cloudflare Access. For users to connect to Access, you must allow:
 
-* HTTPS traffic to `https://<team-name>.cloudflareaccess.com` on port `443`
+- HTTPS traffic to `https://<team-name>.cloudflareaccess.com` on port `443`
 
 ### WebRTC channel
 
@@ -38,9 +38,9 @@ Browser Isolation uses WebRTC (a real-time communication protocol) for low-laten
 
 In order to pass WebRTC traffic, the remoting client must be able to connect to the following IP addresses:
 
-| IP range                                                                                           | Port range    | Protocol |
-| -------------------------------------------------------------------------------------------------- | ------------- | -------- |
-| IPv4: 162.159.201.10 - 162.159.201.255  IPv4: 172.64.73.0 - 172.64.73.255  IPv6: 2606:4700:f2::/48 | 10000 - 59999 | UDP      |
+| IP range | Port range | Protocol |
+| --- | --- | --- |
+| IPv4: `162.159.201.10 - 162.159.201.255` <br> IPv4: `172.64.73.0 - 172.64.73.255` <br> IPv6: `2606:4700:f2::/48` | 10000 - 59999 | UDP |
 
 Each remote browser instance is randomly assigned a port, and the port that a user is allocated to will change often and without notice.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare's own MCP servers
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude ↗](https://modelcontextprotocol.io/quickstart/user), [Windsurf ↗](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground ↗](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP ↗](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).
 
@@ -28,11 +28,11 @@ It uses [the search-and-execute Code Mode pattern](https://developers.cloudflare
 
 This approach uses approximately 1,000 tokens regardless of how many API endpoints exist. An equivalent MCP server that exposed every endpoint as a native tool would consume over 1 million tokens — more than the entire context window of most foundation models.
 
-| Approach                          | Tools | Token cost  |
-| --------------------------------- | ----- | ----------- |
-| Native MCP (full schemas)         | 2,594 | \~1,170,000 |
-| Native MCP (required params only) | 2,594 | \~244,000   |
-| Code Mode                         | 2     | \~1,000     |
+| Approach | Tools | Token cost |
+| --- | --- | --- |
+| Native MCP (full schemas) | 2,594 | \~1,170,000 |
+| Native MCP (required params only) | 2,594 | \~244,000 |
+| Code Mode | 2 | \~1,000 |
 
 ### Connect to the Cloudflare API MCP server
 
@@ -68,11 +68,11 @@ Install using the [plugin marketplace ↗](https://code.claude.com/docs/en/disco
 
 #### Cursor
 
-Install from the **Cursor Marketplace**, or add manually via **Settings** \> **Rules** \> **Add Rule** \> **Remote Rule (Github)** with `cloudflare/skills`.
+Install from the **Cursor Marketplace**, or add manually via **Settings** > **Rules** > **Add Rule** > **Remote Rule (Github)** with `cloudflare/skills`.
 
 #### npx skills
 
-Install using the [npx skills ↗](https://skills.sh) CLI:
+Install using the [`npx skills` ↗](https://skills.sh) CLI:
 
 ```sh
 npx skills add https://github.com/cloudflare/skills
@@ -82,36 +82,36 @@ npx skills add https://github.com/cloudflare/skills
 
 Clone the [cloudflare/skills ↗](https://github.com/cloudflare/skills) repository and copy the skill folders into the appropriate directory for your agent:
 
-| Agent        | Skill directory             | Docs                                                                                                   |
-| ------------ | --------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Claude Code  | \~/.claude/skills/          | [Claude Code skills ↗](https://code.claude.com/docs/en/skills)                                         |
-| Cursor       | \~/.cursor/skills/          | [Cursor skills ↗](https://cursor.com/docs/context/skills)                                              |
-| OpenCode     | \~/.config/opencode/skills/ | [OpenCode skills ↗](https://opencode.ai/docs/skills/)                                                  |
-| OpenAI Codex | \~/.codex/skills/           | [OpenAI Codex skills ↗](https://developers.openai.com/codex/skills/)                                   |
-| Pi           | \~/.pi/agent/skills/        | [Pi coding agent skills ↗](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#skills) |
+| Agent | Skill directory | Docs |
+| --- | --- | --- |
+| Claude Code | `~/.claude/skills/` | [Claude Code skills ↗](https://code.claude.com/docs/en/skills) |
+| Cursor | `~/.cursor/skills/` | [Cursor skills ↗](https://cursor.com/docs/context/skills) |
+| OpenCode | `~/.config/opencode/skills/` | [OpenCode skills ↗](https://opencode.ai/docs/skills/) |
+| OpenAI Codex | `~/.codex/skills/` | [OpenAI Codex skills ↗](https://developers.openai.com/codex/skills/) |
+| Pi | `~/.pi/agent/skills/` | [Pi coding agent skills ↗](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#skills) |
 
 ## Product-specific MCP servers
 
 In addition to the Cloudflare API MCP server, Cloudflare provides product-specific MCP servers for targeted use cases:
 
-| Server Name                                                                                                               | Description                                                                                     | Server URL                                   |
-| ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| [Documentation server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search)               | Get up to date reference information on Cloudflare                                              | https://docs.mcp.cloudflare.com/mcp          |
-| [Workers Bindings server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings)          | Build Workers applications with storage, AI, and compute primitives                             | https://bindings.mcp.cloudflare.com/mcp      |
-| [Workers Builds server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds)              | Get insights and manage your Cloudflare Workers Builds                                          | https://builds.mcp.cloudflare.com/mcp        |
-| [Observability server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability)        | Debug and get insight into your application's logs and analytics                                | https://observability.mcp.cloudflare.com/mcp |
-| [Radar server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar)                                | Get global Internet traffic insights, trends, URL scans, and other utilities                    | https://radar.mcp.cloudflare.com/mcp         |
-| [Container server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/sandbox-container)                | Spin up a sandbox development environment                                                       | https://containers.mcp.cloudflare.com/mcp    |
-| [Browser Run server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/browser-rendering)              | Fetch web pages, convert them to markdown and take screenshots                                  | https://browser.mcp.cloudflare.com/mcp       |
-| [Logpush server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/logpush)                            | Get quick summaries for Logpush job health                                                      | https://logs.mcp.cloudflare.com/mcp          |
-| [AI Gateway server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/ai-gateway)                      | Search your logs, get details about the prompts and responses                                   | https://ai-gateway.mcp.cloudflare.com/mcp    |
-| [AI Search server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/autorag)                          | List and search documents on your AI Searches                                                   | https://autorag.mcp.cloudflare.com/mcp       |
-| [Audit Logs server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/auditlogs)                       | Query audit logs and generate reports for review                                                | https://auditlogs.mcp.cloudflare.com/mcp     |
-| [DNS Analytics server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics)                | Optimize DNS performance and debug issues based on current set up                               | https://dns-analytics.mcp.cloudflare.com/mcp |
-| [Digital Experience Monitoring server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis) | Get quick insight on critical applications for your organization                                | https://dex.mcp.cloudflare.com/mcp           |
-| [Cloudflare One CASB server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/cloudflare-one-casb)    | Quickly identify any security misconfigurations for SaaS applications to safeguard users & data | https://casb.mcp.cloudflare.com/mcp          |
-| [GraphQL server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/graphql/)                           | Get analytics data using Cloudflare's GraphQL API                                               | https://graphql.mcp.cloudflare.com/mcp       |
-| [Agents SDK Documentation server ↗](https://github.com/cloudflare/agents/tree/main/site/agents)                           | Token-efficient search of the Cloudflare Agents SDK documentation                               | https://agents.cloudflare.com/mcp            |
+| Server Name | Description | Server URL |
+| --- | --- | --- |
+| [Documentation server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search) | Get up to date reference information on Cloudflare | `https://docs.mcp.cloudflare.com/mcp` |
+| [Workers Bindings server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings) | Build Workers applications with storage, AI, and compute primitives | `https://bindings.mcp.cloudflare.com/mcp` |
+| [Workers Builds server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds) | Get insights and manage your Cloudflare Workers Builds | `https://builds.mcp.cloudflare.com/mcp` |
+| [Observability server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability) | Debug and get insight into your application's logs and analytics | `https://observability.mcp.cloudflare.com/mcp` |
+| [Radar server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/radar) | Get global Internet traffic insights, trends, URL scans, and other utilities | `https://radar.mcp.cloudflare.com/mcp` |
+| [Container server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/sandbox-container) | Spin up a sandbox development environment | `https://containers.mcp.cloudflare.com/mcp` |
+| [Browser Run server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/browser-rendering) | Fetch web pages, convert them to markdown and take screenshots | `https://browser.mcp.cloudflare.com/mcp` |
+| [Logpush server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/logpush) | Get quick summaries for Logpush job health | `https://logs.mcp.cloudflare.com/mcp` |
+| [AI Gateway server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/ai-gateway) | Search your logs, get details about the prompts and responses | `https://ai-gateway.mcp.cloudflare.com/mcp` |
+| [AI Search server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/autorag) | List and search documents on your AI Searches | `https://autorag.mcp.cloudflare.com/mcp` |
+| [Audit Logs server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/auditlogs) | Query audit logs and generate reports for review | `https://auditlogs.mcp.cloudflare.com/mcp` |
+| [DNS Analytics server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics) | Optimize DNS performance and debug issues based on current set up | `https://dns-analytics.mcp.cloudflare.com/mcp` |
+| [Digital Experience Monitoring server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis) | Get quick insight on critical applications for your organization | `https://dex.mcp.cloudflare.com/mcp` |
+| [Cloudflare One CASB server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/cloudflare-one-casb) | Quickly identify any security misconfigurations for SaaS applications to safeguard users & data | `https://casb.mcp.cloudflare.com/mcp` |
+| [GraphQL server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/graphql/) | Get analytics data using Cloudflare's GraphQL API | `https://graphql.mcp.cloudflare.com/mcp` |
+| [Agents SDK Documentation server ↗](https://github.com/cloudflare/agents/tree/main/site/agents) | Token-efficient search of the Cloudflare Agents SDK documentation | `https://agents.cloudflare.com/mcp` |
 
 Check the [GitHub page ↗](https://github.com/cloudflare/mcp-server-cloudflare) to learn how to use Cloudflare's remote MCP servers with different MCP clients.
 

@@ -12,23 +12,31 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, your devices use a [DNS server ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.
 
 If your provider does not use Cloudflare, follow the instructions for your device or router below.
 
+<details>
+
+<summary>
+
 Device or router specific guides
 
-* [Android](https://developers.cloudflare.com/1.1.1.1/setup/android/)
-* [Azure](https://developers.cloudflare.com/1.1.1.1/setup/azure/)
-* [Gaming consoles](https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/)
-* [Google Cloud](https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/)
-* [iOS](https://developers.cloudflare.com/1.1.1.1/setup/ios/)
-* [Linux](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
-* [macOS](https://developers.cloudflare.com/1.1.1.1/setup/macos/)
-* [Router](https://developers.cloudflare.com/1.1.1.1/setup/router/)
-* [Windows](https://developers.cloudflare.com/1.1.1.1/setup/windows/)
+</summary>
+
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/android/">Android</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/azure/">Azure</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/">Gaming consoles</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/">Google Cloud</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/ios/">iOS</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/linux/">Linux</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/macos/">macOS</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/router/">Router</a>
+- <a href="https://developers.cloudflare.com/1.1.1.1/setup/windows/">Windows</a>
+
+</details>
 
 You can also set up [1.1.1.1 for Families](#1111-for-families) for additional protection against malware and adult content on your home network. 1.1.1.1 for Families uses the same [privacy commitments](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/) as the standard 1.1.1.1 resolver.
 
@@ -40,23 +48,39 @@ You can also set up [1.1.1.1 for Families](#1111-for-families) for additional pr
 
 1.1.1.1 for Families has two options:
 
+<details>
+
+<summary>
+
 Block malware
+
+</summary>
 
 Use the following DNS resolvers to block malicious content:
 
-* `1.1.1.2`
-* `1.0.0.2`
-* `2606:4700:4700::1112`
-* `2606:4700:4700::1002`
+- <code>1.1.1.2</code>
+- <code>1.0.0.2</code>
+- <code>2606:4700:4700::1112</code>
+- <code>2606:4700:4700::1002</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Block malware and adult content
 
+</summary>
+
 Use the following DNS resolvers to block malware and adult content:
 
-* `1.1.1.3`
-* `1.0.0.3`
-* `2606:4700:4700::1113`
-* `2606:4700:4700::1003`
+- <code>1.1.1.3</code>
+- <code>1.0.0.3</code>
+- <code>2606:4700:4700::1113</code>
+- <code>2606:4700:4700::1003</code>
+
+</details>
 
 When a queried domain is classified as malicious, Cloudflare returns the address `0.0.0.0` instead of the real address. This prevents your device from connecting to the blocked site.
 
@@ -68,8 +92,8 @@ If you are using 1.1.1.1 for Families and a domain is incorrectly blocked or all
 
 After configuring 1.1.1.1 for Families, verify that filtering is working with the following test URLs:
 
-* [https://malware.testcategory.com/ ↗](https://malware.testcategory.com/) — Tests whether known malware domains are blocked.
-* [https://nudity.testcategory.com/ ↗](https://nudity.testcategory.com/) — Tests whether adult content and malware domains are blocked.
+- [https://malware.testcategory.com/ ↗](https://malware.testcategory.com/) — Tests whether known malware domains are blocked.
+- [https://nudity.testcategory.com/ ↗](https://nudity.testcategory.com/) — Tests whether adult content and malware domains are blocked.
 
 ### DNS over HTTPS (DoH)
 
@@ -77,17 +101,33 @@ DNS over HTTPS (DoH) encrypts your DNS queries by sending them as HTTPS requests
 
 To configure an encrypted DoH connection to 1.1.1.1 for Families, enter one of the following URLs in your DoH-compatible client or router:
 
+<details>
+
+<summary>
+
 Block malware
+
+</summary>
 
 ```txt
 https://security.cloudflare-dns.com/dns-query
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Block malware and adult content
+
+</summary>
 
 ```txt
 https://family.cloudflare-dns.com/dns-query
 ```
+
+</details>
 
 ### DNS over TLS (DoT)
 
@@ -95,17 +135,33 @@ DNS over TLS (DoT) encrypts DNS queries using TLS on a dedicated port (`853`). L
 
 To configure an encrypted DoT connection to 1.1.1.1 for Families, enter one of the following hostnames in your DoT-compatible client or router:
 
+<details>
+
+<summary>
+
 Block malware
+
+</summary>
 
 ```txt
 security.cloudflare-dns.com
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Block malware and adult content
+
+</summary>
 
 ```txt
 family.cloudflare-dns.com
 ```
+
+</details>
 
 Was this helpful?
 

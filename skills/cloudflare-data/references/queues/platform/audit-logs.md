@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/platform/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to Queues. This functionality is always enabled.
 
@@ -20,7 +20,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 To view audit logs for your Queue in the Cloudflare dashboard, go to the **Audit logs** page.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 For more information on how to access and use audit logs, refer to [Review audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
@@ -28,13 +28,15 @@ For more information on how to access and use audit logs, refer to [Review audit
 
 The following configuration actions are logged:
 
-| Operation              | Description                                                         | |  CreateQueue | Creation of a new queue. |
-| ---------------------- | ------------------------------------------------------------------- | -------------- | ------------------------ |
-| DeleteQueue            | Deletion of an existing queue.                                      |                |                          |
-| UpdateQueue            | Updating the configuration of a queue.                              |                |                          |
-| AttachConsumer         | Attaching a consumer, including HTTP pull consumers, to the Queue.  |                |                          |
-| RemoveConsumer         | Removing a consumer, including HTTP pull consumers, from the Queue. |                |                          |
-| UpdateConsumerSettings | Changing Queues consumer settings.                                  |                |                          |
+Operation | | | | | Description | | | |
+
+| CreateQueue | | | | | Creation of a new queue. | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| DeleteQueue | | | | | Deletion of an existing queue. | | | | |
+| UpdateQueue | | | | | Updating the configuration of a queue. | | | | |
+| AttachConsumer | | | | | Attaching a consumer, including HTTP pull consumers, to the Queue. | | | | |
+| RemoveConsumer | | | | | Removing a consumer, including HTTP pull consumers, from the Queue. | | | | |
+| UpdateConsumerSettings | | | | | Changing Queues consumer settings. | | | | |
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Playground
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/playground/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/playground/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser support
 
@@ -60,7 +60,7 @@ Refer to the [Fetch handler documentation](https://developers.cloudflare.com/wor
 
 ## Use the Playground
 
-As you edit the default code, the Worker will auto-update such that the preview on the right shows your Worker running just as it would in a browser. If your Worker uses URL paths, you can enter those in the input field on the right to navigate to them. The Playground provides type-checking via JSDoc comments and [workers-types ↗](https://www.npmjs.com/package/@cloudflare/workers-types). The Playground also provides pretty error pages in the event of application errors.
+As you edit the default code, the Worker will auto-update such that the preview on the right shows your Worker running just as it would in a browser. If your Worker uses URL paths, you can enter those in the input field on the right to navigate to them. The Playground provides type-checking via JSDoc comments and [`workers-types` ↗](https://www.npmjs.com/package/@cloudflare/workers-types). The Playground also provides pretty error pages in the event of application errors.
 
 To test a raw HTTP request (for example, to test a `POST` request), go to the **HTTP** tab and select **Send**. You can add and edit headers via this panel, as well as edit the body of a request.
 
@@ -70,12 +70,12 @@ The Playground and the quick editor in the Workers dashboard include a lightweig
 
 The log viewer supports the following:
 
-* Logging primitive values, objects, and arrays.
-* Clearing the log output between runs.
+- Logging primitive values, objects, and arrays.
+- Clearing the log output between runs.
 
 At this time, the log viewer does not support logging class instances or their properties (for example, `request.url`).
 
-If you need a more complete development experience with full debugging capabilities, you can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) locally. To clone an existing Worker from your dashboard for local development, sign up and use the [wrangler init --from-dash](https://developers.cloudflare.com/workers/wrangler/commands/general/#init) command once your worker is deployed.
+If you need a more complete development experience with full debugging capabilities, you can use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) locally. To clone an existing Worker from your dashboard for local development, sign up and use the [`wrangler init --from-dash`](https://developers.cloudflare.com/workers/wrangler/commands/general/#init) command once your worker is deployed.
 
 ## Share
 

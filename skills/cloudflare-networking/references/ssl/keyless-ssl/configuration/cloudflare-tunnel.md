@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Tunnel
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Through an integration with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you can send traffic to a key server through a secure channel and avoid exposing your key server to the public Internet.
 
@@ -30,22 +30,22 @@ In addition to running on bare metal, the key server should run without issue in
 
 You will need to have a supported operating system (OS) to run Keyless. Supported operating systems include:
 
-* Ubuntu 20.04 LTS (Focal), 22.04 LTS (Jammy), 24.04 LTS (Noble)
-* Debian 11 (Bullseye), 12 (Bookworm), 13 (Trixie)
-* RHEL 8, 9, CentOS 8, and CentOS Stream 9
-* Amazon Linux 2, 2023
+- Ubuntu 20.04 LTS (Focal), 22.04 LTS (Jammy), 24.04 LTS (Noble)
+- Debian 11 (Bullseye), 12 (Bookworm), 13 (Trixie)
+- RHEL 8, 9, CentOS 8, and CentOS Stream 9
+- Amazon Linux 2, 2023
 
 We strongly recommend that you use an operating system still supported by the vendor (still receiving security updates) as your key server will have access to your private keys.
 
 ---
 
-## 1\. Install `cloudflared` on key server
+## 1. Install `cloudflared` on key server
 
 First, install `cloudflared` on your key server.
 
 This process differs depending on whether you are using the [command line](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/create-local-tunnel/) or the [Cloudflare dashboard](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/).
 
-## 2\. Create a tunnel and add a route
+## 2. Create a tunnel and add a route
 
 Then, create a Cloudflare Tunnel.
 
@@ -53,12 +53,12 @@ This process differs depending on whether you are using the [command line](https
 
 During tunnel creation, go to the **CIDR** tab and enter the private IP address of your key server. You can also [add a CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/#add-a-cidr-route) after creating the tunnel.
 
-After you create the tunnel, use the Cloudflare API to [List tunnel routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/), saving the following values for a future step:
+After you create the tunnel, use the Cloudflare API to [List tunnel routes](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/), saving the following values for a future step:
 
-* `"virtual_network_id"`
-* `"network"`
+- `"virtual_network_id"`
+- `"network"`
 
-## 3\. Upload Keyless SSL Certificates
+## 3. Upload Keyless SSL Certificates
 
 Before your key servers can be configured, you must next upload the corresponding SSL certificates to Cloudflare’s edge. During TLS termination, Cloudflare will present these certificates to connecting browsers and then (for non-resumed sessions) communicate with the specified key server to complete the handshake.
 
@@ -66,7 +66,7 @@ Upload certificates to Cloudflare with only SANs that you wish to use with Cloud
 
 You will have to upload each certificate used with Keyless SSL.
 
-To upload a Keyless certificate with the API, send a [POST](https://developers.cloudflare.com/api/resources/keyless%5Fcertificates/methods/create/) request that includes a `"tunnel"` object.
+To upload a Keyless certificate with the API, send a [`POST`](https://developers.cloudflare.com/api/resources/keyless_certificates/methods/create/) request that includes a `"tunnel"` object.
 
 ```json
 "tunnel": {
@@ -79,7 +79,7 @@ Note
 
 When you receive the `network` value from the Tunnel route API, it will include a subnet mask, such as `10.0.0.1/32`. Remove the subnet mask and use the IP address (`10.0.0.1`).
 
-## 4\. Set up and activate key server
+## 4. Set up and activate key server
 
 Finally, you need to install the key server on your infrastructure, populate it with the SSL keys of the certificates you wish to use to terminate TLS at Cloudflare’s edge, and activate the key server so it can be mutually authenticated.
 
@@ -180,13 +180,14 @@ Add your Cloudflare account details to the configuration file located at `/etc/k
 1. Set the hostname of the key server, for example, `keyserver.keyless.example.com`. This is also the value you entered when you uploaded your keyless certificate and is the hostname of your key server that holds the key for this certificate.
 2. Set the Zone ID (found on **Overview** tab of the Cloudflare dashboard).
 3. Set the authentication credential for server certificate enrollment. gokeyless supports two options:
+   - **API Token (recommended):** [Create an API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone > SSL and Certificates > Edit** permission. Set it in your configuration:
 
-  * **API Token (recommended):** [Create an API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone > SSL and Certificates > Edit** permission. Set it in your configuration:
-  ```yaml
-  api_token: "<YOUR_API_TOKEN>"
-  ```
-  Or use the environment variable `KEYLESS_API_TOKEN`.
-  * **Origin CA API key (deprecated):** [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/). This option will stop working on September 30, 2026.
+     ```yaml
+     api_token: "<YOUR_API_TOKEN>"
+     ```
+
+     Or use the environment variable `KEYLESS_API_TOKEN`.
+   - **Origin CA API key (deprecated):** [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/). This option will stop working on September 30, 2026.
 
 Origin CA Service Keys are removed September 30, 2026
 
@@ -214,8 +215,8 @@ When running multiple key servers, make sure all required keys are distributed t
 
 To activate, restart your keyless instance:
 
-* systemd: `sudo service gokeyless restart`
-* upstart/sysvinit: `sudo /etc/init.d/gokeyless restart`
+- systemd: `sudo service gokeyless restart`
+- upstart/sysvinit: `sudo /etc/init.d/gokeyless restart`
 
 Note
 

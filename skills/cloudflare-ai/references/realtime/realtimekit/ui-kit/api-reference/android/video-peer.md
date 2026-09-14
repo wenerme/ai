@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkVideoPeer
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/video-peer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/video-peer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A view that renders a participant's video stream with an avatar fallback when video is disabled.
 
 ## Methods
 
-| Method  | Parameters                                                 | Description                               |
-| ------- | ---------------------------------------------------------- | ----------------------------------------- |
-| refresh | participant: RtkMeetingParticipant, isScreenShare: Boolean | Update the view with the participant data |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `refresh` | `participant: RtkMeetingParticipant, isScreenShare: Boolean` | Update the view with the participant data |
 
 ## Usage Examples
 

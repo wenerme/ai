@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # In-memory state in a Durable Object
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/in-memory-state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In-memory state means that each Durable Object has one active instance at any particular time. All requests sent to that Durable Object are handled by that same instance. You can store some state in memory.
+In-memory state means that each Durable Object
+
+ has one active instance at any particular time. All requests sent to that Durable Object are handled by that same instance. You can store some state in memory.
 
 Variables in a Durable Object will maintain state as long as your Durable Object is not evicted from memory.
 

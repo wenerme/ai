@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Replacing existing TURN servers
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/replacing-existing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/replacing-existing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are an existing TURN provider but would like to switch to providing Cloudflare Realtime TURN for your customers, there are a few considerations.
 
@@ -20,12 +20,12 @@ If you are an existing TURN provider but would like to switch to providing Cloud
 
 Cloudflare Realtime TURN service can reduce tangible and untangible costs associated with TURN servers:
 
-* Server costs (AWS EC2 etc)
-* Bandwidth costs (Egress, load balancing etc)
-* Time and effort to set up a TURN process and maintenance of server
-* Scaling the servers up and down
-* Maintain the TURN server with security and feature updates
-* Maintain high availability
+- Server costs (AWS EC2 etc)
+- Bandwidth costs (Egress, load balancing etc)
+- Time and effort to set up a TURN process and maintenance of server
+- Scaling the servers up and down
+- Maintain the TURN server with security and feature updates
+- Maintain high availability
 
 ## Recommendations
 
@@ -62,8 +62,8 @@ When billing for TURN usage in your application, it's crucial to understand and 
 
 The sampling process in TURN analytics works on two levels:
 
-* At data collection: Usage data points may be sampled if they are generated too quickly.
-* At query time: Additional sampling may occur if the query is too complex or covers a large time range.
+- At data collection: Usage data points may be sampled if they are generated too quickly.
+- At query time: Additional sampling may occur if the query is too complex or covers a large time range.
 
 To ensure accurate billing, write a single query that sums TURN usage per customer per time period, returning a single value. Avoid using queries that list usage for multiple customers simultaneously.
 

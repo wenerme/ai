@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Legal
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-gateway/reference/legal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-gateway/reference/legal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Gateway is a managed gateway service deployed on Cloudflare’s global network that implements the Oblivious HTTP IETF standard to improve client privacy when connecting to an application backend.
 
@@ -30,8 +30,8 @@ Cloudflare retains the Privacy Gateway Logs information for the most recent quar
 
 ## What Privacy Gateway customers see
 
-* The application content of requests.
-* The IP address and associated metadata of the Cloudflare Privacy Gateway server the request came from.
+- The application content of requests.
+- The IP address and associated metadata of the Cloudflare Privacy Gateway server the request came from.
 
 Was this helpful?
 

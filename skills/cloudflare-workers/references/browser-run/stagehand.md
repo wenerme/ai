@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Stagehand
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/stagehand/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/stagehand/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Stagehand ↗](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
 
@@ -26,13 +26,21 @@ Browser Run currently supports `@browserbasehq/stagehand` `v2.5.x` only. Stageha
 
 In this example, you will use Stagehand to search for a movie on this [example movie directory ↗](https://demo.playwright.dev/movies), extract its details (title, year, rating, duration, and genre), and return the information along with a screenshot of the webpage.
 
+<details>
+
+<summary>
+
 See a video of this example
+
+</summary>
 
 ![Stagehand video](https://developers.cloudflare.com/images/browser-run/speedystagehand.gif)
 
 Output:
 
-![Stagehand example result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3426,height=1174,format=webp/_astro/stagehand-example.CsX-7-FC.png)
+![Stagehand example result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3426,height=1174,format=webp/_astro/stagehand-example.CsX-7-FC.png)</details>
+
+
 
 If instead you want to skip the steps and get started right away, select **Deploy to Cloudflare** below.
 
@@ -44,7 +52,7 @@ After you deploy, you can interact with the Worker using this URL pattern:
 https://<your-worker>.workers.dev
 ```
 
-### 1\. Set up your project
+### 1. Set up your project
 
 Install the necessary dependencies:
 
@@ -52,7 +60,7 @@ Install the necessary dependencies:
 npm ci
 ```
 
-### 2\. Configure your Worker
+### 2. Configure your Worker
 
 Update your Wrangler configuration file to include the bindings for Browser Run and [Workers AI](https://developers.cloudflare.com/workers-ai/):
 
@@ -66,7 +74,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"observability": {
 		"enabled": true
 	},
@@ -84,7 +92,7 @@ name = "stagehand-example"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [observability]
 enabled = true
@@ -120,11 +128,13 @@ If you are not using the Cloudflare Vite plugin, you need to include the followi
 }
 ```
 
-### 3\. Write the Worker code
+### 3. Write the Worker code
 
 Copy [workersAIClient.ts ↗](https://github.com/cloudflare/playwright/blob/main/packages/playwright-cloudflare/examples/stagehand/src/worker/workersAIClient.ts) to your project.
 
 Then, in your Worker code, import the `workersAIClient.ts` file and use it to configure a new `Stagehand` instance:
+
+*src/index.tsts*
 
 ```ts
 import { Stagehand } from "@browserbasehq/stagehand";
@@ -195,13 +205,13 @@ Ensure your `package.json` has the following dependencies:
 }
 ```
 
-### 4\. Build the project
+### 4. Build the project
 
 ```bash
 npm run build
 ```
 
-### 5\. Deploy to Cloudflare Workers
+### 5. Deploy to Cloudflare Workers
 
 After you deploy, you can interact with the Worker using this URL pattern:
 
@@ -219,7 +229,7 @@ npm run deploy
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we've named the gateway `stagehand-example-gateway`.
 
@@ -264,7 +274,7 @@ const stagehand = new Stagehand({
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we are using [OpenAI with AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/). Make sure to add the `baseURL` as shown below, with your own Account ID and Gateway ID.
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Pricing](https://developers.cloudflare.com/workflows/reference/pricing/)
-* [Limits](https://developers.cloudflare.com/workflows/reference/limits/)
-* [Event subscriptions](https://developers.cloudflare.com/workflows/reference/event-subscriptions/)
-* [Glossary](https://developers.cloudflare.com/workflows/reference/glossary/)
-* [Wrangler commands](https://developers.cloudflare.com/workflows/reference/wrangler-commands/)
-* [Release notes](https://developers.cloudflare.com/workflows/reference/changelog/)
+- [Pricing](https://developers.cloudflare.com/workflows/reference/pricing/)
+- [Limits](https://developers.cloudflare.com/workflows/reference/limits/)
+- [Event subscriptions](https://developers.cloudflare.com/workflows/reference/event-subscriptions/)
+- [Glossary](https://developers.cloudflare.com/workflows/reference/glossary/)
+- [Wrangler commands](https://developers.cloudflare.com/workflows/reference/wrangler-commands/)
+- [Release notes](https://developers.cloudflare.com/workflows/reference/changelog/)
 
 Was this helpful?
 

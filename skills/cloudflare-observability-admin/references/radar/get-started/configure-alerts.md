@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure alerts
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/get-started/configure-alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/configure-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure alerts to receive notifications when Radar detects changes impacting countries, regions, or autonomous systems.
 
+<details>
+
+<summary>
+
 Radar Alerts
+
+</summary>
 
 **Who is it for?**
 
@@ -26,9 +32,9 @@ Customers who want to receive a notification when traffic anomalies, outages, ro
 
 Filters include:
 
-* Notification type (anomaly, outage, route hijack, route leak)
-* Location (country or region)
-* Autonomous systems (ASNs)
+- Notification type (anomaly, outage, route hijack, route leak)
+- Location (country or region)
+- Autonomous systems (ASNs)
 
 You have the option to send the notification via email, webhook, or PagerDuty.
 
@@ -38,7 +44,9 @@ All Cloudflare plans.
 
 **What should you do if you receive one?**
 
-Further action will depend on your role. Refer to the [Radar documentation](https://developers.cloudflare.com/radar/) for more information.
+Further action will depend on your role. Refer to the <a href="https://developers.cloudflare.com/radar/">Radar documentation</a> for more information.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

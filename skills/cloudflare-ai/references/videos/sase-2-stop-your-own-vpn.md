@@ -8,28 +8,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to Corporate Network Security and Access Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction to Corporate Network Security and Access Challenges**0s
-* ![Cloudflare's SASE Approach to Securing Internal Applications](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=75s)
+- ![Introduction to Corporate Network Security and Access Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction to Corporate Network Security and Access Challenges**0s
+- ![Cloudflare's SASE Approach to Securing Internal Applications](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=75s)**Cloudflare's SASE Approach to Securing Internal Applications**01m15s
+- ![Connecting Internal Applications to Cloudflare with Secure Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=114s)**Connecting Internal Applications to Cloudflare with Secure Tunnels**01m54s
+- ![Implementing Identity-Based, Clientless Access Control Access Control](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=162s)**Implementing Identity-Based, Clientless Access Control Access Control**02m42s
+- ![Leveraging Anycast Networking for Faster and More Secure Application Access](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=336s)**Leveraging Anycast Networking for Faster and More Secure Application Access**05m36s
+- ![Enhancing Security with Micro-Segmentation and Cloudflare's Global Network](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=419s)**Enhancing Security with Micro-Segmentation and Cloudflare's Global Network**06m59s
 
-**Cloudflare's SASE Approach to Securing Internal Applications**01m15s
-* ![Connecting Internal Applications to Cloudflare with Secure Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=114s)
+</details>
 
-**Connecting Internal Applications to Cloudflare with Secure Tunnels**01m54s
-* ![Implementing Identity-Based, Clientless Access Control Access Control](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=162s)
+<details>
 
-**Implementing Identity-Based, Clientless Access Control Access Control**02m42s
-* ![Leveraging Anycast Networking for Faster and More Secure Application Access](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=336s)
-
-**Leveraging Anycast Networking for Faster and More Secure Application Access**05m36s
-* ![Enhancing Security with Micro-Segmentation and Cloudflare's Global Network](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=419s)
-
-**Enhancing Security with Micro-Segmentation and Cloudflare's Global Network**06m59s
+<summary>
 
 Transcript
+
+</summary>
 
 Corporate networks are often used to allowemployees to access sensitive information in
 
@@ -278,6 +280,8 @@ We also cover a wide variety of topicsincluding application security,
 corporate networking,and all the developer content the Internet
 
 can hold. Follow us online and thanks forwatching!
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/#page","headline":"SASE - Stop hosting your VPN service | Cloudflare Docs","description":"Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.","url":"https://developers.cloudflare.com/videos/sase-2-stop-your-own-vpn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

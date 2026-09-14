@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account Abuse Protection (Early Access)
 
-Last updated Aug 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/account-abuse-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Identify and mitigate attacks on your customer and user accounts.
 
@@ -32,11 +32,11 @@ Contact your Cloudflare account team to request access.
 
 User ID is a cryptographically hashed, per-zone identifier that customers can use in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/), [Security Rules](https://developers.cloudflare.com/waf/custom-rules/), and [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/reference/). Hashed User IDs are created by encrypting the primary credentials your users provide, converting them into opaque identifiers unique to your zone. This allows traffic analysis while protecting user privacy. With access to hashed User ID, website owners can:
 
-* Review which users have the most activity on your website.
-* Find the details on a specific user's characteristics and activity patterns.
-* Mitigate traffic based on the user, such as blocking a user with historically suspicious activity.
-* Combine fields to see when accounts are being targeted with leaked credentials.
-* Manage network patterns or signals associated with specific users.
+- Review which users have the most activity on your website.
+- Find the details on a specific user's characteristics and activity patterns.
+- Mitigate traffic based on the user, such as blocking a user with historically suspicious activity.
+- Combine fields to see when accounts are being targeted with leaked credentials.
+- Manage network patterns or signals associated with specific users.
 
 Data privacy
 
@@ -48,8 +48,7 @@ User ID is an opt-in feature that can be enabled in Security Settings.
 
 To enable, edit, or disable the setting:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Fraud**.
 3. Go to **User ID**.
 4. Turn **User ID** on or off.
@@ -80,14 +79,14 @@ Fraud detection requires the following configurations and settings to be enabled
 
 #### Security Settings
 
-* User ID: Cloudflare encrypts or hashes your user IDs to better understand typical user traffic patterns across your applications. Enabling Cloudflare to create hashed user ID mappings to your users will allow you to receive account takeover and bulk account creation detections.
+- User ID: Cloudflare encrypts or hashes your user IDs to better understand typical user traffic patterns across your applications. Enabling Cloudflare to create hashed user ID mappings to your users will allow you to receive account takeover and bulk account creation detections.
 
 #### Eligible traffic
 
 Cloudflare automatically identifies certain login and sign up traffic on your applications and runs these detections without any additional configurations.
 
-* Sign-ups: Cloudflare automatically monitors traffic on endpoints that match common sign up endpoints.
-* Login: Cloudflare automatically monitors traffic on endpoints that match common login endpoints.
+- Sign-ups: Cloudflare automatically monitors traffic on endpoints that match common sign up endpoints.
+- Login: Cloudflare automatically monitors traffic on endpoints that match common login endpoints.
 
 Verify that your endpoints are properly labeled to ensure Cloudflare can detect and monitor them correctly.
 
@@ -121,10 +120,10 @@ Cloudflare analyzes the components of an email used during sign up to help ident
 
 Cloudflare does not store email addresses during this analysis. All detections processed without any storage or caching.
 
-| Detection tag                         | Description                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.fraud\_detection.disposable\_email | Identifies emails with domains that are commonly found in lists of temporary or disposable email services.                                                                                                                                                                                                                                                                  |
-| cf.fraud.email\_risk                  | Analyzes the randomness (entropy) of characters in an email username and top level domain. For example, a8xk2m9p@example.com has high entropy (very random characters), while john.smith@example.com has low entropy (recognizable pattern). High risk emails indicate high entropy, while medium and low risk emails indicate less randomness in the string of characters. |
+| Detection tag | Description |
+| --- | --- |
+| `cf.fraud_detection.disposable_email` | Identifies emails with domains that are commonly found in lists of temporary or disposable email services. |
+| `cf.fraud.email_risk` | Analyzes the randomness (entropy) of characters in an email username and top level domain. For example, `a8xk2m9p@example.com` has high entropy (very random characters), while `john.smith@example.com` has low entropy (recognizable pattern). <br>High risk emails indicate high entropy, while medium and low risk emails indicate less randomness in the string of characters. |
 
 ---
 
@@ -136,10 +135,10 @@ The following Fraud detection fields can be used in Security Rules to help ident
 
 The following fields can be used in new and existing Security Rules.
 
-| Field                                  | Description                                                                                        | Values                                                                                                                                                                                                                                    |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.fraud\_detection.disposable\_domain | Flags whether a domain for a given email is included in a known list of temporary email providers. | True or False                                                                                                                                                                                                                             |
-| cf.fraud.email\_risk                   | Measures risk of email based on randomness of characters in the username and domain.               | Low represents low risk due to reduced randomness and simple emails. Medium represents medium risk based on larger strings with slightly more randomness. High represents high risk based on larger and random character strings. Unknown |
+| Field | Description | Values |
+| --- | --- | --- |
+| `cf.fraud_detection.disposable_domain` | Flags whether a domain for a given email is included in a known list of temporary email providers. | `True` or `False` |
+| `cf.fraud.email_risk` | Measures risk of email based on randomness of characters in the username and domain. | `Low` represents low risk due to reduced randomness and simple emails. <br>`Medium` represents medium risk based on larger strings with slightly more randomness. <br>`High` represents high risk based on larger and random character strings. <br>`Unknown` |
 
 #### Other rules
 
@@ -155,7 +154,7 @@ You can add Fraud detection fields to existing or new [LogPush](https://develope
 
 You can find Fraud data and detections in Security Analytics, where you can see top User IDs.
 
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 
 Fraud fields can be used as filters to identify suspicious patterns in your traffic.
 

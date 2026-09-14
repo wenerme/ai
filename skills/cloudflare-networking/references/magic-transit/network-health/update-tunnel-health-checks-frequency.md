@@ -12,19 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Update tunnel health checks frequency
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, Cloudflare servers send [health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Magic Transit.
+By default, Cloudflare servers send [health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/)
 
-You can configure the health check frequency through the dashboard or [the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/gre%5Ftunnels/methods/update/) to suit your use case. For example, if you are connecting a lower-traffic site that does not need immediate failover and you prefer a lower volume of health check traffic, set the frequency to `low`. On the other hand, if you are connecting a site that is extremely sensitive to any issues and you want proactive failover at the earliest sign of a potential problem, set this to `high`.
+ to each GRE, Cloudflare Network Interconnect (CNI), or IPsec tunnel endpoint you configure to receive traffic from Magic Transit.
+
+You can configure the health check frequency through the dashboard or [the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/gre_tunnels/methods/update/) to suit your use case. For example, if you are connecting a lower-traffic site that does not need immediate failover and you prefer a lower volume of health check traffic, set the frequency to `low`. On the other hand, if you are connecting a site that is extremely sensitive to any issues and you want proactive failover at the earliest sign of a potential problem, set this to `high`.
 
 Available options are `low`, `mid`, and `high`.
 
 1. To create or edit your tunnel, refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels).
-2. Change the **Health check rate** to your desired rate. For example, _Low_.
+2. Change the **Health check rate** to your desired rate. For example, *Low*.
 3. Save your changes.
 
-You can adjust the health check frequency by updating your [GRE](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/gre%5Ftunnels/methods/update/), [IPsec](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/ipsec%5Ftunnels/methods/update/), or [CNI](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/cf%5Finterconnects/methods/update/) tunnels.
+You can adjust the health check frequency by updating your [GRE](https://developers.cloudflare.com/api/resources/magic_transit/subresources/gre_tunnels/methods/update/), [IPsec](https://developers.cloudflare.com/api/resources/magic_transit/subresources/ipsec_tunnels/methods/update/), or [CNI](https://developers.cloudflare.com/api/resources/magic_transit/subresources/cf_interconnects/methods/update/) tunnels.
 
 The following example adjusts tunnel health check frequency to `low`. Note that this command applies to GRE, IPsec and CNI tunnels:
 

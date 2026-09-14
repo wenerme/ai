@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dynamic content and login issues
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Dynamic pages such as login forms, checkout flows, and authenticated application routes can break when they are cached too aggressively.
 
 Common symptoms include:
 
-* Users can load the login page, but the sign-in form fails after submission.
-* Sessions do not persist after a successful sign-in.
-* The origin sends a `Set-Cookie` header, but the browser never stores the cookie.
-* A challenge page appears, but after solving it the user returns to the login page or loses form state.
+- Users can load the login page, but the sign-in form fails after submission.
+- Sessions do not persist after a successful sign-in.
+- The origin sends a `Set-Cookie` header, but the browser never stores the cookie.
+- A challenge page appears, but after solving it the user returns to the login page or loses form state.
 
 ## Cached login page strips session cookies
 
@@ -29,10 +29,10 @@ One common cause is a [Cache Rule](https://developers.cloudflare.com/cache/how-t
 
 This usually happens when all of the following are true:
 
-* The page is configured as **Eligible for cache** or **Cache Everything**.
-* The response is dynamic HTML such as `/login` or `/account`.
-* The origin sends a `Set-Cookie` header.
-* An [Edge TTL](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) or status-code TTL overrides origin cache directives.
+- The page is configured as **Eligible for cache** or **Cache Everything**.
+- The response is dynamic HTML such as `/login` or `/account`.
+- The origin sends a `Set-Cookie` header.
+- An [Edge TTL](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) or status-code TTL overrides origin cache directives.
 
 In this configuration, Cloudflare can cache the response and remove the `Set-Cookie` header before the response is stored at the edge. As a result, the browser receives the login page but never gets the session cookie required for the next request.
 
@@ -42,15 +42,15 @@ Check the response for the login page or other dynamic route.
 
 If you see both of the following, the page is probably cached when it should not be:
 
-* `CF-Cache-Status: HIT` or `CF-Cache-Status: EXPIRED`
-* No `Set-Cookie` header in the response, even though your origin usually sets one
+- `CF-Cache-Status: HIT` or `CF-Cache-Status: EXPIRED`
+- No `Set-Cookie` header in the response, even though your origin usually sets one
 
 You may also see framework-specific failures after form submission, for example:
 
-* A redirect back to the login page
-* A `403` or `500` after sign-in
-* CSRF validation errors
-* Missing server-side session state
+- A redirect back to the login page
+- A `403` or `500` after sign-in
+- CSRF validation errors
+- Missing server-side session state
 
 This issue is common with frameworks that rely on a session or CSRF cookie on the first page load, including JavaServer Faces, ASP.NET, PHP session handlers, Django, Rails, and Laravel.
 
@@ -73,8 +73,8 @@ Security challenges can also interrupt dynamic flows.
 
 Two common patterns are:
 
-* A challenge is triggered on the initial `GET` request for the login page. The user solves the challenge, but the application loses the original session or CSRF context.
-* A challenge is triggered on the `POST` request that submits the login form or other sensitive action. The browser may have to repeat the request after the challenge, which can break the original form submission.
+- A challenge is triggered on the initial `GET` request for the login page. The user solves the challenge, but the application loses the original session or CSRF context.
+- A challenge is triggered on the `POST` request that submits the login form or other sensitive action. The browser may have to repeat the request after the challenge, which can break the original form submission.
 
 ### How to confirm
 

@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transform Rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/transform-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of creating [Transform Rules](https://developers.cloudflare.com/rules/transform/) in a zone using Terraform. The examples cover the following scenarios:
 
-* [Create a URL rewrite rule](#create-a-url-rewrite-rule)
-* [Create a request header transform rule](#create-a-request-header-transform-rule)
-* [Create a response header transform rule](#create-a-response-header-transform-rule)
-* [Configure Managed Transforms](#configure-managed-transforms)
+- [Create a URL rewrite rule](#create-a-url-rewrite-rule)
+- [Create a request header transform rule](#create-a-request-header-transform-rule)
+- [Create a response header transform rule](#create-a-response-header-transform-rule)
+- [Configure Managed Transforms](#configure-managed-transforms)
 
 If you are using the Cloudflare API, refer to the following resources:
 
-* [Create a URL rewrite rule via API](https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/)
-* [Create a request header transform rule via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/)
-* [Create a response header transform rule via API](https://developers.cloudflare.com/rules/transform/response-header-modification/create-api/)
-* [Configure Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/)
+- [Create a URL rewrite rule via API](https://developers.cloudflare.com/rules/transform/url-rewrite/create-api/)
+- [Create a request header transform rule via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/)
+- [Create a response header transform rule via API](https://developers.cloudflare.com/rules/transform/response-header-modification/create-api/)
+- [Configure Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/)
 
 ## Before you start
 
@@ -34,15 +34,15 @@ If you are using the Cloudflare API, refer to the following resources:
 
 The Terraform configurations provided in this page need the zone ID (or account ID) of the zone/account where you will deploy rulesets.
 
-* To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
-* To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
+- To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
+- To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
 
 ### Import or delete existing rulesets
 
 Terraform assumes that it has complete control over account and zone rulesets. If you already have rulesets configured in your account or zone, do one of the following:
 
-* [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
-* Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
+- [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
+- Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
 
 ---
 
@@ -50,14 +50,22 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example creates a URL rewrite rule that rewrites requests for `example.com/old-folder` to `example.com/new-folder`:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Zone Transform Rules Write`
-* `Account Rulesets Read`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone Transform Rules Write</code>
+- <code>Account Rulesets Read</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_url_rewrite" {
@@ -112,24 +120,33 @@ To create another URL rewrite rule, add a new `rules` object to the same `cloudf
 Use the `ref` field to get stable rule IDs across updates when using Terraform. Adding this field prevents Terraform from recreating the rule on changes. For more information, refer to [Troubleshooting](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications).
 
 
+
 For more information on rewriting URLs, refer to [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/).
 
 ## Create a request header transform rule
 
 The following configuration example performs the following adjustments to HTTP request headers:
 
-* Adds a `my-header-1` header to the request with a static value.
-* Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
-* Deletes the `existing-header` header from the request, if it exists.
+- Adds a `my-header-1` header to the request with a static value.
+- Adds a `my-header-2` header to the request with a dynamic value defined by an expression.
+- Deletes the `existing-header` header from the request, if it exists.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Zone Transform Rules Write`
-* `Account Rulesets Read`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone Transform Rules Write</code>
+- <code>Account Rulesets Read</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_modify_request_headers" {
@@ -206,18 +223,26 @@ For more information on modifying request headers, refer to [Request Header Tran
 
 The following configuration example performs the following adjustments to HTTP response headers:
 
-* Adds a `my-header-1` header to the response with a static value.
-* Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
-* Deletes the `existing-header` header from the response, if it exists.
+- Adds a `my-header-1` header to the response with a static value.
+- Adds a `my-header-2` header to the response with a dynamic value defined by an expression.
+- Deletes the `existing-header` header from the response, if it exists.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Zone Transform Rules Write`
-* `Account Rulesets Read`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone Transform Rules Write</code>
+- <code>Account Rulesets Read</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_modify_response_headers" {
@@ -292,14 +317,22 @@ For more information on modifying response headers, refer to [Response Header Tr
 
 ## Configure Managed Transforms
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Managed headers Write`
-* `Account Rulesets Read`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_managed\_transforms ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed%5Ftransforms) resource:
+- <code>Managed headers Write</code>
+- <code>Account Rulesets Read</code>
+
+</details>
+
+Configure the [`cloudflare_managed_transforms` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed_transforms) resource:
 
 ```tf
 resource "cloudflare_managed_transforms" "tf_example" {

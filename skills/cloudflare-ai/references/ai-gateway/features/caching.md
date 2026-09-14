@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Caching
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/caching/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When caching is enabled, AI Gateway can cache responses from your AI model providers, serving them directly from Cloudflare's cache for identical requests.
 
 ## Benefits of Using Caching
 
-* **Reduced Latency:** Serve responses faster to your users by avoiding a round trip to the origin AI provider for repeated requests.
-* **Cost Savings:** Minimize the number of paid requests made to your AI provider, especially for frequently accessed or non-dynamic content.
-* **Increased Throughput:** Offload repetitive requests from your AI provider, allowing it to handle unique requests more efficiently.
+- **Reduced Latency:** Serve responses faster to your users by avoiding a round trip to the origin AI provider for repeated requests.
+- **Cost Savings:** Minimize the number of paid requests made to your AI provider, especially for frequently accessed or non-dynamic content.
+- **Increased Throughput:** Offload repetitive requests from your AI provider, allowing it to handle unique requests more efficiently.
 
 Note
 
@@ -35,7 +35,7 @@ Caching is disabled by default. To enable caching globally, set the default cach
 To set the default caching configuration in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Select **AI** \> **AI Gateway**.
+2. Select **AI** > **AI Gateway**.
 3. Select **Settings**.
 4. Enable **Cache Responses**.
 5. Change the default caching to whatever value you prefer.
@@ -43,10 +43,12 @@ To set the default caching configuration in the dashboard:
 To set the default caching configuration using the API:
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-* `AI Gateway - Read`
-* `AI Gateway - Edit`
-1. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-2. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to create a new Gateway and include a value for the `cache_ttl`.
+
+- `AI Gateway - Read`
+- `AI Gateway - Edit`
+
+2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+3. Using that API token and Account ID, send a [`POST` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) to create a new Gateway and include a value for the `cache_ttl`.
 
 When caching is enabled globally, the default caching behavior applies to all requests that support caching. You can also opt individual requests into caching or override their cache settings with per-request headers.
 
@@ -56,11 +58,11 @@ To check whether a response comes from cache or not, **cf-aig-cache-status** wil
 
 By default, AI Gateway constructs the cache key by concatenating the following and hashing the result with SHA-256:
 
-* **Provider** (for example, `openai`, `anthropic`)
-* **Endpoint** (the API path)
-* **Model** (for example, `gpt-4o`)
-* **Provider authentication header** (for example, the `Authorization` bearer token)
-* **Full request body**
+- **Provider** (for example, `openai`, `anthropic`)
+- **Endpoint** (the API path)
+- **Model** (for example, `gpt-4o`)
+- **Provider authentication header** (for example, the `Authorization` bearer token)
+- **Full request body**
 
 This means caching is based on **exact match** of the entire request. Any difference in the body — including messages, tools, or model parameters — will result in a separate cache entry. To override this behavior, use the [custom cache key header](#custom-cache-key-cf-aig-cache-key).
 
@@ -88,6 +90,8 @@ You can use the header **cf-aig-skip-cache** to bypass the cached version of the
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
 
+*Request skipping the cachebash*
+
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
 # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
@@ -113,6 +117,8 @@ Cache TTL, or Time To Live, is the duration a cached request remains valid befor
 For example, if you set a TTL of one hour, it means that a request is kept in the cache for an hour. Within that hour, an identical request will be served from the cache instead of the original API. After an hour, the cache expires and the request will go to the original API for a fresh response, and that response will repopulate the cache for the next hour.
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
+
+*Request to be cached for an hourbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -141,6 +147,8 @@ The `cf-aig-cache-key` header lets you override the default cache key and opts t
 Choose a custom key that groups only requests with equivalent responses. Requests with the same custom key share a cached response. When you use the `cf-aig-cache-key` header for the first time, you will receive a response from the provider. Subsequent requests with the same custom key value will return the cached response. If you include `cf-aig-cache-ttl`, the request uses that value for its cache TTL. Otherwise, the request uses the default cache TTL configured for the gateway. For requests that include `cf-aig-cache-key`, the cache TTL is 5 minutes when neither `cf-aig-cache-ttl` nor a default gateway cache TTL is configured.
 
 As an example, when submitting a request to OpenAI, include the header in the following manner:
+
+*Request with custom cache keybash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,

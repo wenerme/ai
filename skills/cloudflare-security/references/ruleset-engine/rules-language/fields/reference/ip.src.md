@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src
 
-`ip.src` `IP address`
+`ip.src``IP address`
 
 The client TCP IP address, which may be adjusted to reflect the actual address of the client using HTTP headers such as `X-Forwarded-For` or `X-Real-IP`.
 
@@ -19,7 +19,7 @@ Example value:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom TURN domains
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime TURN service supports using custom domains for UDP, and TCP - but not TLS protocols. Custom domains do not affect any of the performance of Cloudflare Realtime TURN and is set up via a simple CNAME DNS record on your domain.
 
-| Protocol      | Custom domains | Primary port | Alternate port |
-| ------------- | -------------- | ------------ | -------------- |
-| STUN over UDP | ✅              | 3478/udp     |                |
-| TURN over UDP | ✅              | 3478/udp     |                |
-| TURN over TCP | ✅              | 3478/tcp     | 80/tcp         |
-| TURN over TLS | No             | 5349/tcp     | 443/tcp        |
+| Protocol | Custom domains | Primary port | Alternate port |
+| --- | --- | --- | --- |
+| STUN over UDP | ✅ | 3478/udp | |
+| TURN over UDP | ✅ | 3478/udp | |
+| TURN over TCP | ✅ | 3478/tcp | 80/tcp |
+| TURN over TLS | No | 5349/tcp | 443/tcp |
 
 ## Setting up a CNAME record
 

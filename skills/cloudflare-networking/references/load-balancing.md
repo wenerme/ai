@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Load Balancing
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Maximize application performance and availability
 
 Add-on feature
 
-Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/glossary/?term=endpoint), which reduces endpoint strain and latency and improves the experience for end users.
+Cloudflare Load Balancing distributes traffic across your [endpoints](https://developers.cloudflare.com/glossary/?term=endpoint)
+
+, which reduces endpoint strain and latency and improves the experience for end users.
 
 Note
 

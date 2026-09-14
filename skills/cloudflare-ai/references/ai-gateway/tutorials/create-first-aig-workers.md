@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create your first AI Gateway using Workers AI
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/create-first-aig-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial guides you through creating your first AI Gateway using Workers AI on the Cloudflare dashboard. The intended audience is beginners who are new to AI Gateway and Workers AI. Creating an AI Gateway enables the user to efficiently manage and secure AI requests, allowing them to utilize AI models for tasks such as content generation, data processing, or predictive analysis with enhanced control and performance.
 
@@ -25,24 +25,24 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 Then, create a new AI Gateway.
 
-[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
 5. In **Workers AI Billing**, choose how Workers AI requests through this gateway are billed:
-  * **Standard billing** charges your Cloudflare account at the end of each billing cycle.
-  * **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
+   - **Standard billing** charges your Cloudflare account at the end of each billing cycle.
+   - **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
 6. Select **Create**.
 
 To set up an AI Gateway using the API:
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-
-  * `AI Gateway - Read`
-  * `AI Gateway - Edit`
+   - `AI Gateway - Read`
+   - `AI Gateway - Edit`
 2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-3. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
+3. Using that API token and Account ID, send a [`POST` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) to the Cloudflare API.
 
 ## Connect Your AI Provider
 
@@ -51,21 +51,24 @@ To set up an AI Gateway using the API:
 
 ## Send your first request
 
-1. Go to **AI** \> **Workers AI** in the Cloudflare dashboard.
+1. Go to **AI** > **Workers AI** in the Cloudflare dashboard.
 2. Select **Use REST API** and follow the steps to create and copy the API token and Account ID.
 3. Send a request using the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/). Replace `$CLOUDFLARE_ACCOUNT_ID` and `$CLOUDFLARE_API_TOKEN` with your actual account ID and API token:
-```bash
-# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
-# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
-curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
-  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-  --header "cf-aig-gateway-id: default" \
-  --header "Content-Type: application/json" \
-  --data '{
-    "model": "@cf/moonshotai/kimi-k2.6",
-    "messages": [{"role": "user", "content": "What is Cloudflare?"}]
-  }'
-```
+
+   ```bash
+   # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+   # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+   curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/chat/completions" \
+     --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+     --header "cf-aig-gateway-id: default" \
+     --header "Content-Type: application/json" \
+     --data '{
+       "model": "@cf/moonshotai/kimi-k2.6",
+       "messages": [{"role": "user", "content": "What is Cloudflare?"}]
+     }'
+   ```
+
+
 
 The expected output would be similar to :
 
@@ -77,7 +80,7 @@ The expected output would be similar to :
 
 Monitor your AI Gateway to view usage metrics.
 
-1. Go to **AI** \> **AI Gateway** in the dashboard.
+1. Go to **AI** > **AI Gateway** in the dashboard.
 2. Select your gateway to view metrics such as request counts, token usage, caching efficiency, errors, and estimated costs. You can also turn on additional configurations like logging and rate limiting.
 
 ## Optional - Next steps

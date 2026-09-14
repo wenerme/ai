@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GraphQL Analytics API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy exposes metrics through Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). All metrics are queryable through a single endpoint:
 
@@ -22,8 +22,8 @@ POST https://api.cloudflare.com/client/v4/graphql
 
 Before you begin, you will need:
 
-* **API token** — Create a token with _Account Analytics_ read permissions. For more information, refer to our Analytics API token documentation: [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
-* **Account ID** — Your Cloudflare account ID, passed as `accountTag` in queries. For more information, refer to [Find account and zone IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- **API token** — Create a token with *Account Analytics* read permissions. For more information, refer to our Analytics API token documentation: [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
+- **Account ID** — Your Cloudflare account ID, passed as `accountTag` in queries. For more information, refer to [Find account and zone IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 ---
 
@@ -64,101 +64,201 @@ Requests are sampled.
 
 ## Schema
 
+<details>
+
+<summary>
+
 Metrics
+
+</summary>
+
+<details>
+
+<summary>
 
 Sum fields
 
-| Field                  | Type   | Description                                                   | Node               |
-| ---------------------- | ------ | ------------------------------------------------------------- | ------------------ |
-| bytesSentToClient      | uint64 | Total bytes sent from the proxy back to the client.           | Ingress connection |
-| bytesRecvdFromClient   | uint64 | Total bytes received by the proxy from the client.            | Ingress connection |
-| bytesSentToOrigin      | uint64 | Total bytes sent from the proxy to the upstream origin.       | Egress connection  |
-| bytesRecvdFromOrigin   | uint64 | Total bytes received by the proxy from the upstream origin.   | Egress connection  |
-| packetsSentToClient    | uint64 | Total packets sent from the proxy back to the client.         | Ingress connection |
-| packetsRecvdFromClient | uint64 | Total packets received by the proxy from the client.          | Ingress connection |
-| packetsSentToOrigin    | uint64 | Total packets sent from the proxy to the upstream origin.     | Egress connection  |
-| packetsRecvdFromOrigin | uint64 | Total packets received by the proxy from the upstream origin. | Egress connection  |
+</summary>
+
+| Field | Type | Description | Node |
+| --- | --- | --- | --- |
+| <code>bytesSentToClient</code> | <code>uint64</code> | Total bytes sent from the proxy back to the client. | Ingress connection |
+| <code>bytesRecvdFromClient</code> | <code>uint64</code> | Total bytes received by the proxy from the client. | Ingress connection |
+| <code>bytesSentToOrigin</code> | <code>uint64</code> | Total bytes sent from the proxy to the upstream origin. | Egress connection |
+| <code>bytesRecvdFromOrigin</code> | <code>uint64</code> | Total bytes received by the proxy from the upstream origin. | Egress connection |
+| <code>packetsSentToClient</code> | <code>uint64</code> | Total packets sent from the proxy back to the client. | Ingress connection |
+| <code>packetsRecvdFromClient</code> | <code>uint64</code> | Total packets received by the proxy from the client. | Ingress connection |
+| <code>packetsSentToOrigin</code> | <code>uint64</code> | Total packets sent from the proxy to the upstream origin. | Egress connection |
+| <code>packetsRecvdFromOrigin</code> | <code>uint64</code> | Total packets received by the proxy from the upstream origin. | Egress connection |
+
+</details>
+
+<details>
+
+<summary>
 
 Count fields
 
-All four nodes expose a `count` field that returns the total number of sampled events (requests, connections, or auth attempts) matching the query filter.
+</summary>
+
+All four nodes expose a <code>count</code> field that returns the total number of sampled events (requests, connections, or auth attempts) matching the query filter.
+
+</details>
+
+<details>
+
+<summary>
 
 Quantile fields
 
-| Field                               | Type    | Description                                                                                                | Node                          |
-| ----------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| durationMsP50                       | float64 | Median lifetime of a connection, in milliseconds.                                                          | Ingress and egress connection |
-| durationMsP95                       | float64 | 95th percentile connection lifetime, in milliseconds.                                                      | Ingress and egress connection |
-| durationMsP99                       | float64 | 99th percentile connection lifetime, in milliseconds.                                                      | Ingress and egress connection |
-| handshakeDurationUsP50              | float64 | Median TCP+TLS/QUIC handshake time, in microseconds.                                                       | Ingress and egress connection |
-| handshakeDurationUsP95              | float64 | 95th percentile handshake time, in microseconds.                                                           | Ingress and egress connection |
-| handshakeDurationUsP99              | float64 | 99th percentile handshake time, in microseconds.                                                           | Ingress and egress connection |
-| connectRequestHandlingDurationUsP50 | float64 | Median time to handle a CONNECT request, in microseconds. _Not yet available._                             | Request                       |
-| connectRequestHandlingDurationUsP95 | float64 | 95th percentile time to handle a CONNECT request, in microseconds. _Not yet available._                    | Request                       |
-| connectRequestHandlingDurationUsP99 | float64 | 99th percentile time to handle a CONNECT request, in microseconds. _Not yet available._                    | Request                       |
-| connectTunnelSetupDurationUsP50     | float64 | Median time to establish a tunnel after receiving a CONNECT request, in microseconds. _Not yet available._ | Request                       |
-| connectTunnelSetupDurationUsP95     | float64 | 95th percentile tunnel setup time, in microseconds. _Not yet available._                                   | Request                       |
-| connectTunnelSetupDurationUsP99     | float64 | 99th percentile tunnel setup time, in microseconds. _Not yet available._                                   | Request                       |
+</summary>
+
+| Field | Type | Description | Node |
+| --- | --- | --- | --- |
+| <code>durationMsP50</code> | <code>float64</code> | Median lifetime of a connection, in milliseconds. | Ingress and egress connection |
+| <code>durationMsP95</code> | <code>float64</code> | 95th percentile connection lifetime, in milliseconds. | Ingress and egress connection |
+| <code>durationMsP99</code> | <code>float64</code> | 99th percentile connection lifetime, in milliseconds. | Ingress and egress connection |
+| <code>handshakeDurationUsP50</code> | <code>float64</code> | Median TCP+TLS/QUIC handshake time, in microseconds. | Ingress and egress connection |
+| <code>handshakeDurationUsP95</code> | <code>float64</code> | 95th percentile handshake time, in microseconds. | Ingress and egress connection |
+| <code>handshakeDurationUsP99</code> | <code>float64</code> | 99th percentile handshake time, in microseconds. | Ingress and egress connection |
+| <code>connectRequestHandlingDurationUsP50</code> | <code>float64</code> | Median time to handle a CONNECT request, in microseconds. *Not yet available.* | Request |
+| <code>connectRequestHandlingDurationUsP95</code> | <code>float64</code> | 95th percentile time to handle a CONNECT request, in microseconds. *Not yet available.* | Request |
+| <code>connectRequestHandlingDurationUsP99</code> | <code>float64</code> | 99th percentile time to handle a CONNECT request, in microseconds. *Not yet available.* | Request |
+| <code>connectTunnelSetupDurationUsP50</code> | <code>float64</code> | Median time to establish a tunnel after receiving a CONNECT request, in microseconds. *Not yet available.* | Request |
+| <code>connectTunnelSetupDurationUsP95</code> | <code>float64</code> | 95th percentile tunnel setup time, in microseconds. *Not yet available.* | Request |
+| <code>connectTunnelSetupDurationUsP99</code> | <code>float64</code> | 99th percentile tunnel setup time, in microseconds. *Not yet available.* | Request |
+
+</details>
+
+</details>
+
+<details>
+
+<summary>
 
 Dimensions
 
+</summary>
+
+<details>
+
+<summary>
+
 All nodes
 
-| Field                  | Type   | Description                                      |
-| ---------------------- | ------ | ------------------------------------------------ |
-| date                   | Date   | Calendar date (day granularity).                 |
-| datetimeMinute         | Time   | Timestamp truncated to the minute.               |
-| datetimeFiveMinutes    | Time   | Timestamp truncated to five-minute intervals.    |
-| datetimeFifteenMinutes | Time   | Timestamp truncated to fifteen-minute intervals. |
-| datetimeHour           | Time   | Timestamp truncated to the hour.                 |
-| coloCode               | string | Cloudflare data center that handled the request. |
-| endpoint               | string | The appId that generated traffic.                |
+</summary>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>date</code> | <code>Date</code> | Calendar date (day granularity). |
+| <code>datetimeMinute</code> | <code>Time</code> | Timestamp truncated to the minute. |
+| <code>datetimeFiveMinutes</code> | <code>Time</code> | Timestamp truncated to five-minute intervals. |
+| <code>datetimeFifteenMinutes</code> | <code>Time</code> | Timestamp truncated to fifteen-minute intervals. |
+| <code>datetimeHour</code> | <code>Time</code> | Timestamp truncated to the hour. |
+| <code>coloCode</code> | <code>string</code> | Cloudflare data center that handled the request. |
+| <code>endpoint</code> | <code>string</code> | The appId that generated traffic. |
 
 All timestamp dimensions refer to the end of each connection or request, not the start.
 
+</details>
+
+<details>
+
+<summary>
+
 Request node only
 
-| Field       | Type   | Description                                                                                                                                                                                                |
-| ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| statusCode  | uint16 | HTTP status code returned by the proxy to the client.                                                                                                                                                      |
-| proxyStatus | string | Proxy-level error classification. null when no proxy-level error occurred. Refer to [proxy status reference](https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/) for possible values. |
-| tunnelType  | string | Tunnel protocol used (connect-tcp, connect-udp, connect-ip). _Not yet available._                                                                                                                          |
+</summary>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>statusCode</code> | <code>uint16</code> | HTTP status code returned by the proxy to the client. |
+| <code>proxyStatus</code> | <code>string</code> | Proxy-level error classification. <code>null</code> when no proxy-level error occurred. Refer to <a href="https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/">proxy status reference</a> for possible values. |
+| <code>tunnelType</code> | <code>string</code> | Tunnel protocol used (<code>connect-tcp</code>, <code>connect-udp</code>, <code>connect-ip</code>). *Not yet available.* |
+
+</details>
+
+<details>
+
+<summary>
 
 Ingress connection node only
 
-| Field      | Type   | Description                                                                    |
-| ---------- | ------ | ------------------------------------------------------------------------------ |
-| transport  | string | Transport protocol on the client-to-proxy connection (tcp, quic).              |
-| tlsVersion | string | TLS version negotiated on the client-to-proxy connection. _Not yet available._ |
+</summary>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>transport</code> | <code>string</code> | Transport protocol on the client-to-proxy connection (<code>tcp</code>, <code>quic</code>). |
+| <code>tlsVersion</code> | <code>string</code> | TLS version negotiated on the client-to-proxy connection. *Not yet available.* |
+
+</details>
+
+<details>
+
+<summary>
 
 Egress connection node only
 
-| Field     | Type   | Description                                                       |
-| --------- | ------ | ----------------------------------------------------------------- |
-| transport | string | Transport protocol on the proxy-to-origin connection (tcp, quic). |
+</summary>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>transport</code> | <code>string</code> | Transport protocol on the proxy-to-origin connection (<code>tcp</code>, <code>quic</code>). |
+
+</details>
+
+<details>
+
+<summary>
 
 Auth node only
 
-| Field      | Type   | Description                                           |
-| ---------- | ------ | ----------------------------------------------------- |
-| authMethod | string | Authentication method used (for example, Token, Psk). |
-| authResult | string | Authentication outcome (success, failure).            |
+</summary>
+
+| Field | Type | Description |
+| --- | --- | --- |
+| <code>authMethod</code> | <code>string</code> | Authentication method used (for example, <code>Token</code>, <code>Psk</code>). |
+| <code>authResult</code> | <code>string</code> | Authentication outcome (<code>success</code>, <code>failure</code>). |
+
+</details>
+
+</details>
+
+<details>
+
+<summary>
 
 Arguments
 
+</summary>
+
 All four nodes share the same argument signature.
 
-* `filter` required — Filters your data. `accountTag` is always required inside the filter.
-* `limit` optional — Maximum number of records to return.
-* `orderBy` optional — Sort order for results.
+- <code>filter</code> required — Filters your data. <code>accountTag</code> is always required inside the filter.
+- <code>limit</code> optional — Maximum number of records to return.
+- <code>orderBy</code> optional — Sort order for results.
+
+</details>
 
 ---
 
 ## Sample queries
 
+<details>
+
+<summary>
+
 privacyProxyRequestMetricsAdaptiveGroups node
 
+</summary>
+
+<details>
+
+<summary>
+
 Request volume overview
+
+</summary>
 
 Get a high-level view of daily request volume over a date range.
 
@@ -196,7 +296,15 @@ query DailyRequestVolume(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Error breakdown by status code and proxy status
+
+</summary>
 
 Identify which HTTP status codes and proxy-level errors are occurring to pinpoint the source of failures.
 
@@ -237,7 +345,15 @@ query ErrorBreakdown(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Top proxy errors by frequency
+
+</summary>
 
 Rank the most frequent proxy error types to prioritize investigation.
 
@@ -277,9 +393,17 @@ query TopProxyErrors(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Tunnel type distribution
 
-Monitor the mix of `connect-tcp`, `connect-udp`, and `connect-ip` over time to understand how clients are connecting.
+</summary>
+
+Monitor the mix of <code>connect-tcp</code>, <code>connect-udp</code>, and <code>connect-ip</code> over time to understand how clients are connecting.
 
 ```graphql
 query TunnelTypeDistribution(
@@ -316,9 +440,25 @@ query TunnelTypeDistribution(
 }
 ```
 
+</details>
+
+</details>
+
+<details>
+
+<summary>
+
 privacyProxyIngressConnMetricsAdaptiveGroups node
 
+</summary>
+
+<details>
+
+<summary>
+
 Connection volume and ingress bytes overview
+
+</summary>
 
 Get a high-level view of daily ingress connection count and bytes transferred.
 
@@ -360,7 +500,15 @@ query IngressTrafficOverview(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Connection duration by data center
+
+</summary>
 
 Compare client-to-proxy connection duration across data centers to identify regions with long-lived or stalled connections.
 
@@ -402,7 +550,15 @@ query IngressDurationByColo(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Protocol and TLS version distribution
+
+</summary>
 
 Understanding which transport protocols (QUIC versus TCP) and TLS versions your clients use helps you plan deprecations, detect misconfigured clients, and verify that traffic meets your security requirements.
 
@@ -442,9 +598,25 @@ query IngressProtocolDistribution(
 }
 ```
 
+</details>
+
+</details>
+
+<details>
+
+<summary>
+
 privacyProxyEgressConnMetricsAdaptiveGroups node
 
+</summary>
+
+<details>
+
+<summary>
+
 Egress bytes overview
+
+</summary>
 
 Get a high-level view of daily bytes flowing between the proxy and the upstream origin.
 
@@ -486,7 +658,15 @@ query EgressBytesOverview(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Proxy-to-origin latency by data center
+
+</summary>
 
 Compare proxy-to-origin handshake times across data centers to identify regions with degraded origin reachability.
 
@@ -528,7 +708,15 @@ query EgressLatencyByColo(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Egress performance trend
+
+</summary>
 
 Track proxy-to-origin handshake latency at fine granularity over a specific time window.
 
@@ -571,9 +759,25 @@ query EgressPerformanceTrend(
 }
 ```
 
+</details>
+
+</details>
+
+<details>
+
+<summary>
+
 privacyProxyAuthMetricsAdaptiveGroups node
 
+</summary>
+
+<details>
+
+<summary>
+
 Auth volume by method
+
+</summary>
 
 Track daily authentication volume per method to understand adoption and spot anomalies.
 
@@ -612,7 +816,15 @@ query AuthVolumeByMethod(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Auth failure spike detection
+
+</summary>
 
 Detect surges in authentication failures and identify which auth method is failing.
 
@@ -652,7 +864,15 @@ query AuthFailureSpike(
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Auth success rate
+
+</summary>
 
 Compare hourly success versus failure counts to compute auth success rate and spot degradation trends.
 
@@ -691,13 +911,17 @@ query AuthSuccessRate(
 }
 ```
 
+</details>
+
+</details>
+
 ---
 
 ## Related resources
 
-* [GraphQL Analytics API — getting started](https://developers.cloudflare.com/analytics/graphql-api/getting-started/)
-* [GraphQL Analytics API — filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)
-* [Proxy status reference](https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/) — All possible `proxyStatus` values and their meanings.
+- [GraphQL Analytics API — getting started](https://developers.cloudflare.com/analytics/graphql-api/getting-started/)
+- [GraphQL Analytics API — filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)
+- [Proxy status reference](https://developers.cloudflare.com/privacy-proxy/reference/proxy-status/) — All possible `proxyStatus` values and their meanings.
 
 Was this helpful?
 

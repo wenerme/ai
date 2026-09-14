@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # NSEC3 support
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-As explained in [our blog ↗](https://blog.cloudflare.com/black-lies/), Cloudflare's implementation of negative answers with NSEC is protected against zone walking[1](#user-content-fn-1). This implementation, also referred to as Compact Denial of Existence ([RFC 9824 ↗](https://www.rfc-editor.org/rfc/rfc9824.html)), removes the need for NSEC3 and is significantly more efficient.
+As explained in [our blog ↗](https://blog.cloudflare.com/black-lies/), Cloudflare's implementation of negative answers with NSEC is protected against zone walking<sup>[1](#user-content-fn-1)</sup>. This implementation, also referred to as Compact Denial of Existence ([RFC 9824 ↗](https://www.rfc-editor.org/rfc/rfc9824.html)), removes the need for NSEC3 and is significantly more efficient.
 
 However, if you must use NSEC3 for compliance reasons, you can enable it as explained below.
 
@@ -22,10 +22,21 @@ However, if you must use NSEC3 for compliance reasons, you can enable it as expl
 
 Use the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/), setting `status` to `active` and `dnssec_use_nsec3` to `true`. You should replace the values started by `$` with your zone ID and authentication credentials. To learn more about using the Cloudflare API, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/get-started/).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>DNS Write</code>
+
+</details>
+
+*Edit DNSSEC Statusbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
@@ -57,7 +68,7 @@ dig +dnssec doesnotexist.example.com
 
 ### Non-existent record type at an existing name
 
-If the name `www` exists but the type TXT does not, the example below would trigger a signed NODATA response using NSEC3\. Look for NSEC3 records under the `Authority Section` of the response.
+If the name `www` exists but the type TXT does not, the example below would trigger a signed NODATA response using NSEC3. Look for NSEC3 records under the `Authority Section` of the response.
 
 ```sh
 dig +dnssec www.example.com TXT

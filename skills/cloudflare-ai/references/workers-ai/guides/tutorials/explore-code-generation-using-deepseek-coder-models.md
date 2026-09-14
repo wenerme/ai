@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Explore Code Generation Using DeepSeek Coder Models
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
@@ -221,8 +221,8 @@ if __name__ == '__main__':
 
 In this test case, we have two tests:
 
-* `test_full_name` tests the `full_name` method when the user has both a first name and a last name.
-* `test_default_last_name` tests the `full_name` method when the user only has a first name and the last name is set to "Mc" + first name.
+- `test_full_name` tests the `full_name` method when the user has both a first name and a last name.
+- `test_default_last_name` tests the `full_name` method when the user only has a first name and the last name is set to "Mc" + first name.
 
 If all these tests pass, it means that the `full_name` method is working as expected. If any of these tests fail, it
 

@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Detection settings
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/)
-* [Blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/)
-* [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/)
-* [Trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/)
-* [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/)
-* [Additional detections](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/)
-* [Configure link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/)
-* [Configure text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/)
-* [Detection settings best practices](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/)
+- [Allow policies](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/)
+- [Blocked senders](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-senders/)
+- [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/)
+- [Trusted domains](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/trusted-domains/)
+- [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/)
+- [Additional detections](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/additional-detections/)
+- [Configure link actions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/)
+- [Configure text add-ons](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-text-add-ons/)
+- [Detection settings best practices](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/best-practices/)
 
 Was this helpful?
 

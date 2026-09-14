@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Exposed IP addresses
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/troubleshooting/exposed-ip-address/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When your DNS records are [proxied](https://developers.cloudflare.com/dns/proxy-status/), Cloudflare speeds up and protects your site.
+When your DNS records are [proxied](https://developers.cloudflare.com/dns/proxy-status/)
+
+, Cloudflare speeds up and protects your site.
 
 A `dig` query against your proxied apex domain returns a Cloudflare IP address. This way, your origin server's IP address remains concealed from the public. Proxy benefits only apply to HTTP traffic.
 
@@ -50,8 +52,8 @@ When a DNS-only record points to the same origin server as a proxied record, a `
 
 To mitigate this risk:
 
-* Analyze the impact of hosting multiple services on the same origin server in cases when you cannot avoid having DNS-only records.
-* Proxy all records that share the same origin IP address as your apex domain and can be safely proxied through Cloudflare.
+- Analyze the impact of hosting multiple services on the same origin server in cases when you cannot avoid having DNS-only records.
+- Proxy all records that share the same origin IP address as your apex domain and can be safely proxied through Cloudflare.
 
 Was this helpful?
 

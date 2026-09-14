@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Azure Dedicated HSM
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/) — a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a790.
 
@@ -22,12 +22,12 @@ This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/s
 
 Make sure you have:
 
-* Followed Microsoft's [tutorial ↗](https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell) for deploying HSMs into an existing virtual network using PowerShell
-* Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
+- Followed Microsoft's [tutorial ↗](https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell) for deploying HSMs into an existing virtual network using PowerShell
+- Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
 
 ---
 
-## 1\. Create, assign, and initialize a new partition
+## 1. Create, assign, and initialize a new partition
 
 The first step is creating an HSM partition, which can be thought of as an independent logical HSM within your Azure Dedicated HSM device.
 
@@ -106,7 +106,7 @@ Command Result : No Error
 
 ---
 
-## 2\. Generate a RSA key pair and certificate signing request (CSR)
+## 2. Generate a RSA key pair and certificate signing request (CSR)
 
 Before running the commands below, check with your information security and/or cryptography team to confirm the approved key creation procedures for your organization.
 
@@ -133,13 +133,13 @@ Using "CKM_SHA256_RSA_PKCS" Mechanism
 
 ---
 
-## 3\. Obtain and upload a signed certificate from your Certificate Authority (CA)
+## 3. Obtain and upload a signed certificate from your Certificate Authority (CA)
 
 Provide the CSR created in the previous step to your organization's preferred CA, demonstrate control of your domain as requested, and then download the signed SSL certificates. Follow the instructions provided in [Upload Keyless SSL Certificates](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/#3-upload-keyless-ssl-certificates).
 
 ---
 
-## 4\. Modify your gokeyless config file and restart the service
+## 4. Modify your gokeyless config file and restart the service
 
 Lastly, we need to modify the configuration file that the key server will read on startup. Be sure to change the `object=mykey` and `pin-value=username:password` values to match the key label you provided and CU user you created.
 

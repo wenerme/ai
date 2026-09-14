@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenRouter
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/openrouter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/openrouter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenRouter ↗](https://openrouter.ai/) is a platform that provides a unified interface for accessing and using large language models (LLMs).
 
@@ -30,14 +30,16 @@ When making requests to [OpenRouter ↗](https://openrouter.ai/), replace `https
 
 When making requests to OpenRouter, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active OpenRouter API token or a token from the original model provider.
-* The name of the OpenRouter model you want to use.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active OpenRouter API token or a token from the original model provider.
+- The name of the OpenRouter model you want to use.
 
 ## Examples
 
 ### cURL
+
+*Requestbash*
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openrouter/v1/chat/completions \
@@ -57,6 +59,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/open
 ### Use OpenAI SDK with JavaScript
 
 If you are using the OpenAI SDK with JavaScript, you can set your endpoint like this:
+
+*JavaScriptjs*
 
 ```js
 import OpenAI from "openai";

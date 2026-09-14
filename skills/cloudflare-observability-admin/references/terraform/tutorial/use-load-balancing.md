@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 4 – Improve performance
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/use-load-balancing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will add a second origin for some basic round robining, and then use the [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/) product to fail traffic over as needed. You will also enhance your load balancing configuration through the use of "geo steering" to serve results from an origin server that is geographically closest to your end users.
 
 ## Prerequisites
 
-* Completed [Tutorial 1](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/), [Tutorial 2](https://developers.cloudflare.com/terraform/tutorial/track-history/) and [Tutorial 3](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/)
-* [Load Balancing](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/) enabled on your Cloudflare account
+- Completed [Tutorial 1](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/), [Tutorial 2](https://developers.cloudflare.com/terraform/tutorial/track-history/) and [Tutorial 3](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/)
+- [Load Balancing](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/) enabled on your Cloudflare account
 
 Note
 
 Terraform code snippets below refer to the v5 SDK only.
 
-## 1\. Add another DNS record for www
+## 1. Add another DNS record for www
 
 Create a new branch and add a DNS record for your Asia server:
 
@@ -80,7 +80,7 @@ Hello, this is 203.0.113.10!
 
 You'll see random distribution between your two origin servers. This basic DNS-based load balancing has limitations - no health checks, no geographic steering, and unpredictable distribution patterns. For more advanced scenarios like origins in different geographies or automatic failover, you'll want to use [Cloudflare's Load Balancing](https://developers.cloudflare.com/load-balancing/).
 
-## 2\. Switch to using Cloudflare's Load Balancing product
+## 2. Switch to using Cloudflare's Load Balancing product
 
 As described in the [Load Balancing tutorial](https://developers.cloudflare.com/learning-paths/load-balancing/concepts/), you will need to complete three tasks:
 
@@ -92,8 +92,8 @@ We can monitor the origins by creating a basic health check that makes a GET req
 
 In this example, the pool will be called `www-origins` with two origins added to it:
 
-* `www-us` (`203.0.113.10`)
-* `www-asia` (`198.51.100.15`)
+- `www-us` ( `203.0.113.10`)
+- `www-asia` ( `198.51.100.15`)
 
 For now, skip any sort of [geo routing](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/geo-steering/).
 
@@ -203,11 +203,11 @@ git commit -m "Step 4 - Create load balancer (LB) monitor, LB pool, and LB"
 git push
 ```
 
-Verify the configuration is working by checking the Cloudflare dashboard under **Traffic** \> **Load Balancing**. You should see your monitor, pool, and load balancer with health status indicators. Your load balancer will now:
+Verify the configuration is working by checking the Cloudflare dashboard under **Traffic** > **Load Balancing**. You should see your monitor, pool, and load balancer with health status indicators. Your load balancer will now:
 
-* Distribute traffic intelligently between origins
-* Automatically route around unhealthy servers
-* Provide real-time health monitoring
+- Distribute traffic intelligently between origins
+- Automatically route around unhealthy servers
+- Provide real-time health monitoring
 
 Was this helpful?
 

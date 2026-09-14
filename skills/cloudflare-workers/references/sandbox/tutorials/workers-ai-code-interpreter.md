@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Code interpreter with Workers AI
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a powerful code interpreter that gives the [gpt-oss model](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) on Workers AI the ability to execute Python code using the Cloudflare Sandbox SDK.
 
@@ -25,17 +25,25 @@ A Cloudflare Worker that accepts natural language prompts, uses GPT-OSS to decid
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* [Docker ↗](https://www.docker.com/) running locally
+- [Docker ↗](https://www.docker.com/) running locally
 
-## 1\. Create your project
+## 1. Create your project
 
 Create a new Sandbox SDK project:
 
@@ -57,7 +65,7 @@ pnpm create cloudflare@latest workers-ai-interpreter --template=cloudflare/sandb
 cd workers-ai-interpreter
 ```
 
-## 2\. Review the implementation
+## 2. Review the implementation
 
 The template includes a complete implementation using the latest best practices. Let's examine the key components:
 
@@ -96,12 +104,12 @@ async function handleAIRequest(input: string, env: Env): Promise<string> {
 
 **Key improvements over direct REST API calls:**
 
-* **Official packages**: Uses `workers-ai-provider` instead of manual API calls
-* **Vercel AI SDK**: Leverages `generateText()` and `tool()` for clean function calling
-* **No API keys**: Uses native AI binding instead of environment variables
-* **Type safety**: Full TypeScript support with proper typing
+- **Official packages**: Uses `workers-ai-provider` instead of manual API calls
+- **Vercel AI SDK**: Leverages `generateText()` and `tool()` for clean function calling
+- **No API keys**: Uses native AI binding instead of environment variables
+- **Type safety**: Full TypeScript support with proper typing
 
-## 3\. Check your configuration
+## 3. Check your configuration
 
 The template includes the proper Wrangler configuration:
 
@@ -110,7 +118,7 @@ The template includes the proper Wrangler configuration:
   "name": "sandbox-code-interpreter-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "ai": {
     "binding": "AI"
   },
@@ -138,7 +146,7 @@ The template includes the proper Wrangler configuration:
 name = "sandbox-code-interpreter-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [ai]
 binding = "AI"
@@ -157,11 +165,11 @@ name = "Sandbox"
 
 **Configuration highlights:**
 
-* **AI binding**: Enables direct access to Workers AI models
-* **Container setup**: Configures sandbox container with Dockerfile
-* **Durable Objects**: Provides persistent sandboxes with state management
+- **AI binding**: Enables direct access to Workers AI models
+- **Container setup**: Configures sandbox container with Dockerfile
+- **Durable Objects**: Provides persistent sandboxes with state management
 
-## 4\. Test locally
+## 4. Test locally
 
 Start the development server:
 
@@ -192,7 +200,7 @@ curl -X POST http://localhost:8787/run \
   -d '{"input": "Create a list of the first 10 squares and calculate their sum"}'
 ```
 
-## 5\. Deploy
+## 5. Deploy
 
 Deploy your Worker:
 
@@ -204,7 +212,7 @@ Caution
 
 After first deployment, wait 2-3 minutes for container provisioning before making requests.
 
-## 6\. Test your deployment
+## 6. Test your deployment
 
 Try more complex queries:
 
@@ -237,24 +245,24 @@ curl -X POST https://workers-ai-interpreter.YOUR_SUBDOMAIN.workers.dev/run \
 
 You deployed a sophisticated code interpreter that:
 
-* **Native Workers AI integration**: Uses the official `workers-ai-provider` package for seamless integration
-* **Function calling**: Leverages Vercel AI SDK for clean tool definitions and execution
-* **Secure execution**: Runs Python code in isolated sandbox containers
-* **Intelligent responses**: Combines AI reasoning with code execution results
+- **Native Workers AI integration**: Uses the official `workers-ai-provider` package for seamless integration
+- **Function calling**: Leverages Vercel AI SDK for clean tool definitions and execution
+- **Secure execution**: Runs Python code in isolated sandbox containers
+- **Intelligent responses**: Combines AI reasoning with code execution results
 
 ## Next steps
 
-* [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) \- Add pandas and matplotlib for advanced data analysis
-* [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) \- Use the built-in code interpreter with structured outputs
-* [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Show real-time execution progress
-* [API reference](https://developers.cloudflare.com/sandbox/api/) \- Explore all available sandbox methods
+- [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) - Add pandas and matplotlib for advanced data analysis
+- [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) - Use the built-in code interpreter with structured outputs
+- [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Show real-time execution progress
+- [API reference](https://developers.cloudflare.com/sandbox/api/) - Explore all available sandbox methods
 
 ## Related resources
 
-* [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Learn about Cloudflare's AI platform
-* [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) \- Official Workers AI integration
-* [Vercel AI SDK ↗](https://sdk.vercel.ai/) \- Universal toolkit for AI applications
-* [GPT-OSS model documentation](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) \- Model details and capabilities
+- [Workers AI](https://developers.cloudflare.com/workers-ai/) - Learn about Cloudflare's AI platform
+- [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) - Official Workers AI integration
+- [Vercel AI SDK ↗](https://sdk.vercel.ai/) - Universal toolkit for AI applications
+- [GPT-OSS model documentation](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) - Model details and capabilities
 
 Was this helpful?
 

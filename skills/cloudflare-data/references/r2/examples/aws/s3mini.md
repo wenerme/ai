@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # s3mini
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/s3mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/aws/s3mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You must [generate an Access Key](https://developers.cloudflare.com/r2/api/tokens/) before getting started. All examples will utilize `access_key_id` and `access_key_secret` variables which represent the **Access Key ID** and **Secret Access Key** values you generated.
 
 
-[s3mini ↗](https://www.npmjs.com/package/s3mini) is a zero-dependency, lightweight (\~20 KB minified) TypeScript S3 client that uses AWS SigV4 signing. It runs natively on Node.js, Bun, and Cloudflare Workers without polyfills.
+
+[`s3mini` ↗](https://www.npmjs.com/package/s3mini) is a zero-dependency, lightweight (\~20 KB minified) TypeScript S3 client that uses AWS SigV4 signing. It runs natively on Node.js, Bun, and Cloudflare Workers without polyfills.
 
 Unlike the AWS SDKs, s3mini expects a **bucket-scoped endpoint** — the bucket name is part of the endpoint URL, so you do not pass a separate `bucket` parameter to each operation.
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkMeetingTitle
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkmeetingtitle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkmeetingtitle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Displays the meeting title from meeting metadata.
 
 ## Properties
 
-| Property | Type              | Required | Default | Description                      |
-| -------- | ----------------- | -------- | ------- | -------------------------------- |
-| meeting  | RealtimeKitClient | ✅        | \-      | The RealtimeKit meeting instance |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit meeting instance |
 
 ## Usage Examples
 

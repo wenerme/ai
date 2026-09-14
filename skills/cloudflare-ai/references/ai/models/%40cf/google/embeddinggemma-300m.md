@@ -16,18 +16,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Embeddings • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/google/embeddinggemma-300m/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/google/embeddinggemma-300m/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/google/embeddinggemma-300m`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -55,7 +54,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -79,7 +77,6 @@ print(response.json())
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/google/embeddinggemma-300m  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -96,19 +93,19 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 `one of`required
 
-▶shape\[\]
+▶shape\[]
 
 `array`
 
-▶data\[\]
+▶data\[]
 
 `array`Embeddings of the requested text values
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/google/embeddinggemma-300m/schema-output.json)
 
 Was this helpful?
 

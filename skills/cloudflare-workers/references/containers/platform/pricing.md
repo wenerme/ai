@@ -12,47 +12,47 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## vCPU, Memory and Disk
 
 Containers are billed for every 10ms that they are actively running at the following rates, with included monthly usage as part of the $5 USD per month [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/):
 
-|                  | Memory                                                             | CPU                                                            | Disk                                                      |
-| ---------------- | ------------------------------------------------------------------ | -------------------------------------------------------------- | --------------------------------------------------------- |
-| **Free**         | N/A                                                                | N/A                                                            |                                                           |
-| **Workers Paid** | 25 GiB-hours/month included  +$0.0000025 per additional GiB-second | 375 vCPU-minutes/month \+ $0.000020 per additional vCPU-second | 200 GB-hours/month  +$0.00000007 per additional GB-second |
+|  | Memory | CPU | Disk |
+| --- | --- | --- | --- |
+| **Free** | N/A | N/A | |
+| **Workers Paid** | 25 GiB-hours/month included <br> +$0.0000025 per additional GiB-second | 375 vCPU-minutes/month <br>+ $0.000020 per additional vCPU-second | 200 GB-hours/month <br> +$0.00000007 per additional GB-second |
 
 You only pay for what you use — charges start when a request is sent to the container or when it is manually started. Charges stop after the container instance goes to sleep, which can happen automatically after a timeout. This makes it easy to scale to zero, and allows you to get high utilization even with bursty traffic.
 
-Memory and disk usage are based on the _provisioned resources_ for the instance type you select, while CPU usage is based on _active usage_ only.
+Memory and disk usage are based on the *provisioned resources* for the instance type you select, while CPU usage is based on *active usage* only.
 
 #### Instance Types
 
 When you deploy a container, you specify an [instance type](https://developers.cloudflare.com/containers/platform/limits/#instance-types).
 
-The instance type you select will impact your bill — larger instances include more memory and disk, incurring additional costs, and higher CPU capacity, which allows you to incur higher CPU costs based on active usage.
+The instance type you select will impact your bill — larger instances include more memory and disk, incurring additional costs, and higher CPU capacity, which allows you to incur higher CPU costs based on active usage.
 
 The following instance types are currently available:
 
-| Instance Type | vCPU | Memory  | Disk  |
-| ------------- | ---- | ------- | ----- |
-| lite          | 1/16 | 256 MiB | 2 GB  |
-| basic         | 1/4  | 1 GiB   | 4 GB  |
-| standard-1    | 1/2  | 4 GiB   | 8 GB  |
-| standard-2    | 1    | 6 GiB   | 12 GB |
-| standard-3    | 2    | 8 GiB   | 16 GB |
-| standard-4    | 4    | 12 GiB  | 20 GB |
+| Instance Type | vCPU | Memory | Disk |
+| --- | --- | --- | --- |
+| lite | 1/16 | 256 MiB | 2 GB |
+| basic | 1/4 | 1 GiB | 4 GB |
+| standard-1 | 1/2 | 4 GiB | 8 GB |
+| standard-2 | 1 | 6 GiB | 12 GB |
+| standard-3 | 2 | 8 GiB | 16 GB |
+| standard-4 | 4 | 12 GiB | 20 GB |
 
 ## Network Egress
 
 Egress from Containers is priced at the following rates:
 
-| Region                 | Price per GB | Included Allotment per month |
-| ---------------------- | ------------ | ---------------------------- |
-| North America & Europe | $0.025       | 1 TB                         |
-| Oceania, Korea, Taiwan | $0.05        | 500 GB                       |
-| Everywhere Else        | $0.04        | 500 GB                       |
+| Region | Price per GB | Included Allotment per month |
+| --- | --- | --- |
+| North America & Europe | $0.025 | 1 TB |
+| Oceania, Korea, Taiwan | $0.05 | 500 GB |
+| Everywhere Else | $0.04 | 500 GB |
 
 ## Workers and Durable Objects Pricing
 

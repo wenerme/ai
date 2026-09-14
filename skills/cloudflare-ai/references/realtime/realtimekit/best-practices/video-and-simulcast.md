@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Video resolution and simulcast
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/best-practices/video-and-simulcast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure video resolution, simulcast, and frame rate in RealtimeKit to balance quality against bandwidth. The right settings depend on your grid layout, participant count, and use case.
 
@@ -36,10 +36,10 @@ In a 1:1 call, each participant uploads one stream and downloads one stream. Upl
 
 The following table shows per-participant bandwidth and hourly data transfer at 24 FPS for a 1:1 call:
 
-| Resolution        | Bitrate (upload = download) | Upload per hour | Download per hour |
-| ----------------- | --------------------------- | --------------- | ----------------- |
-| 1280×720 (720p)   | 1.5–6 Mbps                  | 675 MB–2.7 GB   | 675 MB–2.7 GB     |
-| 1920×1080 (1080p) | 3.5–14 Mbps                 | 1.6–6.3 GB      | 1.6–6.3 GB        |
+| Resolution | Bitrate (upload = download) | Upload per hour | Download per hour |
+| --- | --- | --- | --- |
+| `1280×720` (720p) | 1.5–6 Mbps | 675 MB–2.7 GB | 675 MB–2.7 GB |
+| `1920×1080` (1080p) | 3.5–14 Mbps | 1.6–6.3 GB | 1.6–6.3 GB |
 
 ### Podcast or broadcast (one to two speakers)
 
@@ -49,10 +49,10 @@ Turn on simulcast so that viewers on constrained networks automatically receive 
 
 The following table shows per-sender upload bandwidth and hourly data transfer at 24 FPS:
 
-| Resolution        | Sender upload bitrate | Sender upload per hour |
-| ----------------- | --------------------- | ---------------------- |
-| 1920×1080 (1080p) | 3.5–14 Mbps           | 1.6–6.3 GB             |
-| 3840×2160 (4K)    | 14–56 Mbps            | 6.3–25.2 GB            |
+| Resolution | Sender upload bitrate | Sender upload per hour |
+| --- | --- | --- |
+| `1920×1080` (1080p) | 3.5–14 Mbps | 1.6–6.3 GB |
+| `3840×2160` (4K) | 14–56 Mbps | 6.3–25.2 GB |
 
 Each viewer downloads one stream. The download bitrate matches the sender upload bitrate, or a lower simulcast layer if the viewer's network is constrained.
 
@@ -66,9 +66,9 @@ In a 3×3 grid, each tile is roughly one-third of the screen width. Turn on simu
 
 Each participant uploads one stream and downloads eight streams (one from each other participant). The following table shows per-participant bandwidth and hourly data transfer at 24 FPS:
 
-| Resolution     | Upload bitrate (one stream) | Upload per hour | Download bitrate (8 streams) | Download per hour |
-| -------------- | --------------------------- | --------------- | ---------------------------- | ----------------- |
-| 640×480 (480p) | 500 Kbps–2 Mbps             | 225–900 MB      | 4–16 Mbps                    | 1.8–7.2 GB        |
+| Resolution | Upload bitrate (one stream) | Upload per hour | Download bitrate (8 streams) | Download per hour |
+| --- | --- | --- | --- | --- |
+| `640×480` (480p) | 500 Kbps–2 Mbps | 225–900 MB | 4–16 Mbps | 1.8–7.2 GB |
 
 ### Large grids (4×4, 5×5, 6×4, or more)
 
@@ -76,12 +76,12 @@ With 16 or more visible tiles, each tile is small. Set the sending resolution to
 
 Each participant uploads one stream and downloads one stream from every other participant. The following table shows per-participant bandwidth for a 4×4 grid (16 participants, 15 incoming streams) at 24 FPS:
 
-| Resolution        | Upload bitrate (one stream) | Upload per hour | Download bitrate (15 streams) | Download per hour |
-| ----------------- | --------------------------- | --------------- | ----------------------------- | ----------------- |
-| 320×240 (240p)    | 130–520 Kbps                | 58–234 MB       | 1.9–7.8 Mbps                  | 870 MB–3.5 GB     |
-| 640×480 (480p)    | 500 Kbps–2 Mbps             | 225–900 MB      | 7.5–30 Mbps                   | 3.4–13.5 GB       |
-| 1280×720 (720p)   | 1.5–6 Mbps                  | 675 MB–2.7 GB   | 22.5–90 Mbps                  | 10.1–40.5 GB      |
-| 1920×1080 (1080p) | 3.5–14 Mbps                 | 1.6–6.3 GB      | 52.5–210 Mbps                 | 23.6–94.5 GB      |
+| Resolution | Upload bitrate (one stream) | Upload per hour | Download bitrate (15 streams) | Download per hour |
+| --- | --- | --- | --- | --- |
+| `320×240` (240p) | 130–520 Kbps | 58–234 MB | 1.9–7.8 Mbps | 870 MB–3.5 GB |
+| `640×480` (480p) | 500 Kbps–2 Mbps | 225–900 MB | 7.5–30 Mbps | 3.4–13.5 GB |
+| `1280×720` (720p) | 1.5–6 Mbps | 675 MB–2.7 GB | 22.5–90 Mbps | 10.1–40.5 GB |
+| `1920×1080` (1080p) | 3.5–14 Mbps | 1.6–6.3 GB | 52.5–210 Mbps | 23.6–94.5 GB |
 
 At `320×240`, each participant needs 2–8 Mbps download. The lower end is practical even on mobile networks. At `1920×1080`, the same grid requires 52–210 Mbps download, which exceeds most residential connections.
 
@@ -97,10 +97,10 @@ Set the speaker preset resolution to `1280×720` or `1920×1080` because the spe
 
 The following table shows bandwidth for a town hall with one speaker at 720p and 15 participants at 240p, all at 24 FPS. Every participant sends video:
 
-| Role                                                                               | Upload bitrate | Upload per hour | Download bitrate | Download per hour |
-| ---------------------------------------------------------------------------------- | -------------- | --------------- | ---------------- | ----------------- |
-| Speaker (one stream at 720p, receives 15 streams at 240p)                          | 1.5–6 Mbps     | 675 MB–2.7 GB   | 1.9–7.8 Mbps     | 870 MB–3.5 GB     |
-| Participant (one stream at 240p, receives one stream at 720p + 14 streams at 240p) | 130–520 Kbps   | 58–234 MB       | 3.3–13.3 Mbps    | 1.5–6 GB          |
+| Role | Upload bitrate | Upload per hour | Download bitrate | Download per hour |
+| --- | --- | --- | --- | --- |
+| Speaker (one stream at 720p, receives 15 streams at 240p) | 1.5–6 Mbps | 675 MB–2.7 GB | 1.9–7.8 Mbps | 870 MB–3.5 GB |
+| Participant (one stream at 240p, receives one stream at 720p + 14 streams at 240p) | 130–520 Kbps | 58–234 MB | 3.3–13.3 Mbps | 1.5–6 GB |
 
 ### Webinar (audience is view-only)
 
@@ -108,10 +108,10 @@ In a webinar, audience members do not send audio or video unless they are invite
 
 The following example shows a webinar with one speaker at 720p and 15 view-only audience members, all at 24 FPS:
 
-| Role                                                         | Upload bitrate | Upload per hour | Download bitrate | Download per hour |
-| ------------------------------------------------------------ | -------------- | --------------- | ---------------- | ----------------- |
-| Speaker (one stream at 720p, no other on-stage participants) | 1.5–6 Mbps     | 675 MB–2.7 GB   | 0                | 0                 |
-| Audience member (view-only, receives one stream at 720p)     | 0              | 0               | 1.5–6 Mbps       | 675 MB–2.7 GB     |
+| Role | Upload bitrate | Upload per hour | Download bitrate | Download per hour |
+| --- | --- | --- | --- | --- |
+| Speaker (one stream at 720p, no other on-stage participants) | 1.5–6 Mbps | 675 MB–2.7 GB | 0 | 0 |
+| Audience member (view-only, receives one stream at 720p) | 0 | 0 | 1.5–6 Mbps | 675 MB–2.7 GB |
 
 ## Turn on simulcast for multi-participant sessions
 
@@ -119,9 +119,9 @@ Simulcast encodes the sender's video at multiple resolutions simultaneously (for
 
 **Turn on simulcast when:**
 
-* The session has three or more participants
-* Participants have varying network conditions (mobile and desktop mix)
-* The session is a webinar or event with audience on constrained networks
+- The session has three or more participants
+- Participants have varying network conditions (mobile and desktop mix)
+- The session is a webinar or event with audience on constrained networks
 
 **Turn off simulcast** for 1:1 calls (one receiver, no benefit from multiple layers) and for audio-only sessions.
 
@@ -131,45 +131,45 @@ Simulcast increases CPU usage on the sender because the device encodes multiple 
 
 Frame rate (FPS) directly multiplies bandwidth. Doubling the frame rate roughly doubles the required bitrate at the same resolution. Choose the lowest frame rate that meets your use case.
 
-| FPS    | Bandwidth impact         | Best for                                                                 |
-| ------ | ------------------------ | ------------------------------------------------------------------------ |
-| 15 FPS | Lowest                   | Slide presentations, screen shares of static content, surveillance feeds |
-| 24 FPS | Moderate                 | Standard video calls, webinars, online classrooms, telemedicine          |
-| 30 FPS | Higher                   | Interactive workshops, live product demos, fitness classes               |
-| 60 FPS | Highest (\~2x of 30 FPS) | Live sports broadcasting, real-time music performances, esports          |
+| FPS | Bandwidth impact | Best for |
+| --- | --- | --- |
+| 15 FPS | Lowest | Slide presentations, screen shares of static content, surveillance feeds |
+| 24 FPS | Moderate | Standard video calls, webinars, online classrooms, telemedicine |
+| 30 FPS | Higher | Interactive workshops, live product demos, fitness classes |
+| 60 FPS | Highest (\~2x of 30 FPS) | Live sports broadcasting, real-time music performances, esports |
 
 ### Industry examples
 
-* **Education**: Use 15 FPS for lecture screen shares and 24 FPS for the instructor camera. Students on mobile networks benefit from lower bandwidth.
-* **Healthcare**: Use 24 FPS for telemedicine consultations. Higher frame rates provide minimal benefit for conversation-style video.
-* **Fitness and wellness**: Use 30 FPS for live workout classes. Participants need smooth motion to follow physical movements.
-* **Media and entertainment**: Use 60 FPS for live music performances or sports watch parties where motion clarity matters.
-* **Corporate meetings**: Use 24 FPS for all-hands and standups. Talking-head video does not benefit from higher frame rates.
-* **Customer support**: Use 15 FPS for support sessions that involve mostly screen sharing. Lower bandwidth reduces dropped frames on the customer end.
+- **Education**: Use 15 FPS for lecture screen shares and 24 FPS for the instructor camera. Students on mobile networks benefit from lower bandwidth.
+- **Healthcare**: Use 24 FPS for telemedicine consultations. Higher frame rates provide minimal benefit for conversation-style video.
+- **Fitness and wellness**: Use 30 FPS for live workout classes. Participants need smooth motion to follow physical movements.
+- **Media and entertainment**: Use 60 FPS for live music performances or sports watch parties where motion clarity matters.
+- **Corporate meetings**: Use 24 FPS for all-hands and standups. Talking-head video does not benefit from higher frame rates.
+- **Customer support**: Use 15 FPS for support sessions that involve mostly screen sharing. Lower bandwidth reduces dropped frames on the customer end.
 
 ### Combine resolution and frame rate
 
 Resolution and frame rate compound. The following table shows per-participant bandwidth for a 4×4 grid (15 incoming streams) at different combinations:
 
-| Configuration  | Upload bitrate  | Upload per hour | Download bitrate (15 streams) | Download per hour |
-| -------------- | --------------- | --------------- | ----------------------------- | ----------------- |
-| 720p at 30 FPS | 1.9–8 Mbps      | 855 MB–3.6 GB   | 29–116 Mbps                   | 13–52.2 GB        |
-| 480p at 24 FPS | 500 Kbps–2 Mbps | 225–900 MB      | 7.5–30 Mbps                   | 3.4–13.5 GB       |
-| 240p at 15 FPS | 80–320 Kbps     | 36–144 MB       | 1.2–4.8 Mbps                  | 540 MB–2.2 GB     |
+| Configuration | Upload bitrate | Upload per hour | Download bitrate (15 streams) | Download per hour |
+| --- | --- | --- | --- | --- |
+| 720p at 30 FPS | 1.9–8 Mbps | 855 MB–3.6 GB | 29–116 Mbps | 13–52.2 GB |
+| 480p at 24 FPS | 500 Kbps–2 Mbps | 225–900 MB | 7.5–30 Mbps | 3.4–13.5 GB |
+| 240p at 15 FPS | 80–320 Kbps | 36–144 MB | 1.2–4.8 Mbps | 540 MB–2.2 GB |
 
 For large-grid use cases like virtual classrooms or all-hands meetings, `320×240` at 15 FPS with simulcast keeps total download bandwidth under 5 Mbps per participant even for high-motion content.
 
 ## Summary
 
-| Use case                 | Resolution                                 | Simulcast | FPS   | Notes                                                      |
-| ------------------------ | ------------------------------------------ | --------- | ----- | ---------------------------------------------------------- |
-| 1:1 call                 | 720p–1080p                                 | Off       | 24–30 | Upload and download are equal (one stream each)            |
-| Podcast or broadcast     | 1080p–4K                                   | On        | 24–30 | Verify host upload supports 4K (14–56 Mbps)                |
-| 3×3 group call           | 480p                                       | On        | 24    | 500 Kbps–2 Mbps upload, 4–16 Mbps download per participant |
-| 4×4+ large grid          | 240p                                       | On        | 15–24 | 130–520 Kbps upload, 2–8 Mbps download per participant     |
-| Pinned speaker + gallery | 720p–1080p (speaker), 240p (participants)  | On        | 24    | All participants send video, use separate presets per role |
-| Webinar                  | 720p–1080p (speaker), view-only (audience) | On        | 24    | Audience does not upload unless invited on stage           |
-| Screen sharing           | Source resolution                          | Off       | 15    | Low FPS is sufficient for static content                   |
+| Use case | Resolution | Simulcast | FPS | Notes |
+| --- | --- | --- | --- | --- |
+| 1:1 call | 720p–1080p | Off | 24–30 | Upload and download are equal (one stream each) |
+| Podcast or broadcast | 1080p–4K | On | 24–30 | Verify host upload supports 4K (14–56 Mbps) |
+| 3×3 group call | 480p | On | 24 | 500 Kbps–2 Mbps upload, 4–16 Mbps download per participant |
+| 4×4+ large grid | 240p | On | 15–24 | 130–520 Kbps upload, 2–8 Mbps download per participant |
+| Pinned speaker + gallery | 720p–1080p (speaker), 240p (participants) | On | 24 | All participants send video, use separate presets per role |
+| Webinar | 720p–1080p (speaker), view-only (audience) | On | 24 | Audience does not upload unless invited on stage |
+| Screen sharing | Source resolution | Off | 15 | Low FPS is sufficient for static content |
 
 For more information on configuring presets, refer to [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/).
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoint steering policies
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/load-balancing/planning/origin-steering-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Endpoint steering customizes how each [pool](https://developers.cloudflare.com/load-balancing/pools/) distributes requests to its associated endpoints.
 
 These distributions are a combination of two properties:
 
-* The endpoint steering [policy](#policies) chosen for your pool.
-* The [weights](#weights) assigned to each endpoint.
+- The endpoint steering [policy](#policies) chosen for your pool.
+- The [weights](#weights) assigned to each endpoint.
 
 Note
 
@@ -47,15 +47,23 @@ To customize weights when you [create or edit a pool](https://developers.cloudfl
 % of traffic to endpoint = endpoint weight ÷ sum of all weights in the pool
 ```
 
+<details>
+
+<summary>
+
 Endpoint weight example
+
+</summary>
 
 Here’s an example applying weights to three endpoints with a **Random** endpoint steering policy:
 
-* **Weights:** Endpoint A = 0.25; Endpoint B = 0.25; Endpoint C = 0.50
-* **When all endpoints are healthy**, each endpoint will receive the following proportion of total traffic: A = 25%; B = 25%; C = 50%.
-* **When one endpoint is unhealthy** (such as endpoint C), each healthy endpoint will receive the following proportion of total traffic: A = 50%; B=50%.
+- **Weights:** Endpoint A = 0.25; Endpoint B = 0.25; Endpoint C = 0.50
+- **When all endpoints are healthy**, each endpoint will receive the following proportion of total traffic: A = 25%; B = 25%; C = 50%.
+- **When one endpoint is unhealthy** (such as endpoint C), each healthy endpoint will receive the following proportion of total traffic: A = 50%; B=50%.
 
 A significant amount of traffic is required for the distribution to converge on the expected values.
+
+</details>
 
 An endpoint with a weight of **0** should not receive any traffic sent to that pool (though the endpoint will still receive health monitor requests).
 

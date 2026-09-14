@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Private networks
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Zero Trust, you can connect private networks and the services running in those networks to Cloudflare's global network. This involves installing a [connector](#connectors) on the private network, and then [setting up routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#2b-connect-a-network) which define the IP addresses available in that environment. Unlike [published applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), private network routes can expose both HTTP and non-HTTP resources.
 
@@ -28,9 +28,9 @@ The restriction described in [Delivering videos with Cloudflare](https://develop
 
 Here are the different ways you can connect your private network to Cloudflare:
 
-* [**Cloudflare Mesh**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) creates a private network between mesh nodes, client devices, and the services behind them. Each participant is assigned a [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#device-ips) for direct connectivity. Mesh nodes install on a Linux server and act as subnet routers for site-to-site, bidirectional, and mesh networking. Client devices install the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) for device-to-device and device-to-network connectivity.
-* [**Cloudflare Tunnel (cloudflared)**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) installs on a server in your private network and creates a secure, outbound-only tunnel to Cloudflare. `cloudflared` only proxies traffic initiated from a user to a server. Any service or application running behind the tunnel will use the server's default routing table for server-initiated connectivity.
-* [**Cloudflare WAN**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) connects entire network locations to Cloudflare using anycast GRE or IPsec tunnels configured on your existing networking equipment.
+- [**Cloudflare Mesh**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) creates a private network between mesh nodes, client devices, and the services behind them. Each participant is assigned a [Mesh IP](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/#device-ips) for direct connectivity. Mesh nodes install on a Linux server and act as subnet routers for site-to-site, bidirectional, and mesh networking. Client devices install the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) for device-to-device and device-to-network connectivity.
+- [**Cloudflare Tunnel ( `cloudflared`)**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) installs on a server in your private network and creates a secure, outbound-only tunnel to Cloudflare. `cloudflared` only proxies traffic initiated from a user to a server. Any service or application running behind the tunnel will use the server's default routing table for server-initiated connectivity.
+- [**Cloudflare WAN**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) connects entire network locations to Cloudflare using anycast GRE or IPsec tunnels configured on your existing networking equipment.
 
 Was this helpful?
 

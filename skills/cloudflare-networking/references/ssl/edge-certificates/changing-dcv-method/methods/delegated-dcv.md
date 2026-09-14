@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delegated
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Delegated DCV allows zones with [partial DNS setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) \- meaning authoritative DNS is not provided by Cloudflare - to delegate the DCV process to Cloudflare.
+Delegated DCV allows zones with [partial DNS setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) - meaning authoritative DNS is not provided by Cloudflare - to delegate the DCV process to Cloudflare.
 
 DCV Delegation requires you to place a one-time record that allows Cloudflare to auto-renew all future certificate orders, so that there’s no manual intervention at the time of the renewal.
 
@@ -24,25 +24,25 @@ DCV Delegation will not work with Universal Certificates and requires the use of
 
 ## Availability
 
-|              | Free                                                                                                                                | Pro                                                                                                                                 | Business                                                                                                                            | Enterprise                                                                                                                          |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
 | Availability | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) | Included with [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) |
 
 ## When to use
 
 You should use Delegated DCV when all of the following conditions are true:
 
-* Your zone is using a [partial DNS setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
-* Cloudflare is not already [performing DCV automatically](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
-* Your zone is using an [Advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
-* The Certificate Authority is either Google Trust Services, SSL.com, or Let's Encrypt
+- Your zone is using a [partial DNS setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
+- Cloudflare is not already [performing DCV automatically](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
+- Your zone is using an [Advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/).
+- The Certificate Authority is either Google Trust Services, SSL.com, or Let's Encrypt
 
 ### Aspects to keep in mind
 
 As explained in the [announcement blog post ↗](https://blog.cloudflare.com/introducing-dcv-delegation/), currently, you can only delegate DCV to one provider at a time. This means:
 
-* If you also issue publicly trusted certificates for the same hostname for your [origin server](https://developers.cloudflare.com/ssl/concepts/#origin-certificate), this will no longer be possible. You can use [Cloudflare origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) instead.
-* If your zone is using multiple CDN providers, you might want to use an alternative [method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/). This is because, once the DCV delegation is configured for Cloudflare, only Cloudflare will be able to perform DCV on your behalf, blocking your external CDN providers from doing the same.
+- If you also issue publicly trusted certificates for the same hostname for your [origin server](https://developers.cloudflare.com/ssl/concepts/#origin-certificate), this will no longer be possible. You can use [Cloudflare origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) instead.
+- If your zone is using multiple CDN providers, you might want to use an alternative [method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/). This is because, once the DCV delegation is configured for Cloudflare, only Cloudflare will be able to perform DCV on your behalf, blocking your external CDN providers from doing the same.
 
 ## Setup
 
@@ -52,13 +52,14 @@ To set up Delegated DCV:
 2. On the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page, go to **DCV Delegation for Partial Zones**.
 3. Copy the Cloudflare validation URL.
 4. At your authoritative DNS provider, create `CNAME` record(s) considering the following:
-* If your certificate only covers the apex domain and a wildcard, you only need to create a single `CNAME` record for your apex domain. Any direct subdomains will be covered as well.
+
+- If your certificate only covers the apex domain and a wildcard, you only need to create a single `CNAME` record for your apex domain. Any direct subdomains will be covered as well.
 
 ```txt
 _acme-challenge.example.com CNAME example.com.<COPIED_VALIDATION_URL>.
 ```
 
-* If your certificate also covers subdomains specified by their name, you will need to add multiple `CNAME` records to your authoritative DNS provider, one for each specific subdomain.
+- If your certificate also covers subdomains specified by their name, you will need to add multiple `CNAME` records to your authoritative DNS provider, one for each specific subdomain.
 
 For example, a certificate covering `example.com`, `*.example.com`, and `sub.example.com` would require the following records.
 
@@ -85,7 +86,7 @@ dig _acme-challenge.example.com CNAME +short
 
 If this returns nothing, the delegation CNAME is not present — add it before proceeding.
 
-If the CNAME is in place but certificate validation is still stuck, a conflicting `_acme-challenge` TXT record may exist inside your customer's direct Cloudflare zone. Because resolvers follow the CNAME chain rather than exposing records at the source name, the only way to confirm this is to inspect the customer's zone directly: go to **DNS** \> **Records** in the Cloudflare dashboard for their zone and look for any `_acme-challenge` TXT entries. Refer to [Troubleshooting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#conflicting-%5Facme-challenge-txt-records) for remediation steps.
+If the CNAME is in place but certificate validation is still stuck, a conflicting `_acme-challenge` TXT record may exist inside your customer's direct Cloudflare zone. Because resolvers follow the CNAME chain rather than exposing records at the source name, the only way to confirm this is to inspect the customer's zone directly: go to **DNS** > **Records** in the Cloudflare dashboard for their zone and look for any `_acme-challenge` TXT entries. Refer to [Troubleshooting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#conflicting-_acme-challenge-txt-records) for remediation steps.
 
 Once the `CNAME` records are in place, Cloudflare will add TXT DCV tokens for every hostname on the Advanced certificate that has a DCV delegation record in place, as long as the zone is [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) on Cloudflare.
 

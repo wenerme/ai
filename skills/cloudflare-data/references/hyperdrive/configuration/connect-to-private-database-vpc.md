@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to a private database using Workers VPC (Recommended)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers VPC](https://developers.cloudflare.com/workers-vpc/) provides a way to connect Hyperdrive to a private database without configuring Cloudflare Access applications or service tokens. Instead, you create a TCP [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) that points to your database and pass its service ID to Hyperdrive.
 
@@ -22,13 +22,16 @@ For the Tunnel and Access approach, refer to [Connect to a private database usin
 
 When your database is isolated within a private network (such as a [virtual private cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
 
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish a secure outbound connection from your private network to Cloudflare.
-* A [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) is used to route traffic from your Worker through the tunnel to your database, without requiring Cloudflare Access applications or service tokens.
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish a secure outbound connection from your private network to Cloudflare.
+- A [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) is used to route traffic from your Worker through the tunnel to your database, without requiring Cloudflare Access applications or service tokens.
 
 A request from the Cloudflare Worker to the origin database goes through Hyperdrive, the VPC Service, and the Cloudflare Tunnel established by `cloudflared`. `cloudflared` must be running in the private network in which your database is accessible.
 
+```
 flowchart LR
     A[Cloudflare Worker] --> B[Hyperdrive] --> C[VPC Service] --> D[Cloudflare Tunnel] --> E[Private Database]
+
+```
 
 ## Before you start
 
@@ -36,11 +39,11 @@ All of the tutorials assume you have already completed the [Get started guide](h
 
 ## Prerequisites
 
-* A database in your private network, [configured to use TLS/SSL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/#supported-tls-ssl-modes).
-* A [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) running in a network that can reach your database.
-* The **Connectivity Directory Admin** role on your Cloudflare account to create VPC Services.
+- A database in your private network, [configured to use TLS/SSL](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/#supported-tls-ssl-modes).
+- A [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) running in a network that can reach your database.
+- The **Connectivity Directory Admin** role on your Cloudflare account to create VPC Services.
 
-## 1\. Set up a Cloudflare Tunnel
+## 1. Set up a Cloudflare Tunnel
 
 If you do not already have a tunnel running in the same network as your database, create one.
 
@@ -54,7 +57,7 @@ The tunnel must be able to reach your database host and port from within the pri
 
 For full tunnel documentation, refer to [Cloudflare Tunnel for Workers VPC](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/).
 
-## 2\. Create a TCP VPC Service
+## 2. Create a TCP VPC Service
 
 Create a VPC Service of type `tcp` that points to your database. Set the `--app-protocol` flag to `postgresql` or `mysql` so that Hyperdrive can optimize connections.
 
@@ -78,8 +81,8 @@ npx wrangler vpc service create my-mysql-db \
 
 Replace:
 
-* `<YOUR_TUNNEL_ID>` with the tunnel ID from step 1.
-* `<YOUR_DATABASE_IP>` with the private IP address of your database (for example, `10.0.0.5`). You can also use `--hostname` with a DNS name instead of `--ipv4`.
+- `<YOUR_TUNNEL_ID>` with the tunnel ID from step 1.
+- `<YOUR_DATABASE_IP>` with the private IP address of your database (for example, `10.0.0.5`). You can also use `--hostname` with a DNS name instead of `--ipv4`.
 
 The command will return a service ID. Save this value for the next step.
 
@@ -91,8 +94,8 @@ Unlike Hyperdrive, which does not verify the origin server certificate by defaul
 
 For databases with self-signed certificates, add `--cert-verification-mode` when creating the VPC Service:
 
-* `verify_ca` — Verifies the certificate chain but skips hostname verification. Use this when your database has a certificate signed by a CA you control but the hostname does not match the certificate.
-* `disabled` — Skips certificate verification entirely. Use this only for development or testing.
+- `verify_ca` — Verifies the certificate chain but skips hostname verification. Use this when your database has a certificate signed by a CA you control but the hostname does not match the certificate.
+- `disabled` — Skips certificate verification entirely. Use this only for development or testing.
 
 For example, to create a VPC Service for a PostgreSQL database with a self-signed certificate:
 
@@ -114,7 +117,7 @@ Workers VPC trusts publicly trusted certificates and [Cloudflare Origin CA certi
 
 For the full list of verification modes, refer to [TLS certificate verification mode](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#tls-certificate-verification-mode).
 
-## 3\. Create a Hyperdrive configuration
+## 3. Create a Hyperdrive configuration
 
 Use the `--service-id` flag to point Hyperdrive at the VPC Service you created. When you use `--service-id`, you do not provide `--origin-host`, `--origin-port`, or `--connection-string`. Hyperdrive routes traffic through the VPC Service instead.
 
@@ -138,9 +141,9 @@ npx wrangler hyperdrive create <YOUR_CONFIG_NAME> \
 
 Replace:
 
-* `<YOUR_VPC_SERVICE_ID>` with the service ID from step 2.
-* `<DATABASE_NAME>` with the name of your database.
-* `<DATABASE_USER>` and `<DATABASE_PASSWORD>` with your database credentials.
+- `<YOUR_VPC_SERVICE_ID>` with the service ID from step 2.
+- `<DATABASE_NAME>` with the name of your database.
+- `<DATABASE_USER>` and `<DATABASE_PASSWORD>` with your database credentials.
 
 If successful, the command will output a Hyperdrive configuration with an `id` field. Copy this ID for the next step.
 
@@ -148,7 +151,7 @@ Note
 
 The `--service-id` flag conflicts with `--origin-host`, `--origin-port`, `--connection-string`, `--access-client-id`, and `--access-client-secret`. You cannot combine these options. To update an existing Hyperdrive configuration to use a VPC Service, run `wrangler hyperdrive update` with the `--service-id` flag.
 
-## 4\. Bind Hyperdrive to a Worker
+## 4. Bind Hyperdrive to a Worker
 
 You must create a binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Worker to connect to your Hyperdrive configuration. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to access resources, like Hyperdrive, on the Cloudflare developer platform.
 
@@ -173,9 +176,9 @@ id = "<YOUR_DATABASE_ID>"
 
 Specifically:
 
-* The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-* The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
-* Your binding is available in your Worker at `env.<BINDING_NAME>`.
+- The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
+- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
@@ -202,7 +205,7 @@ Note
 
 Learn more about setting up [Hyperdrive for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/).
 
-## 5\. Query the database
+## 5. Query the database
 
 Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query.
 
@@ -259,7 +262,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -272,7 +275,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -360,7 +363,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -373,7 +376,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -432,11 +435,11 @@ If you receive a list of tables from your database when you access your deployed
 
 ## Next steps
 
-* Learn more about [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Configure [query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/) for Hyperdrive.
-* Review [VPC Service configuration options](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) including TLS certificate verification.
-* Set up [high availability tunnels](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/hardware-requirements/) for production workloads.
-* [Troubleshoot common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
+- Learn more about [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Configure [query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/) for Hyperdrive.
+- Review [VPC Service configuration options](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) including TLS certificate verification.
+- Set up [high availability tunnels](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/hardware-requirements/) for production workloads.
+- [Troubleshoot common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
 
 Was this helpful?
 

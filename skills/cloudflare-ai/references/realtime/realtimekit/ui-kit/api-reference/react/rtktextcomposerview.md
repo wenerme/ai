@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkTextComposerView
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtktextcomposerview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtktextcomposerview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which renders a text composer
 
 ## Properties
 
-| Property          | Type                            | Required | Default         | Description                                   |
-| ----------------- | ------------------------------- | -------- | --------------- | --------------------------------------------- |
-| disabled          | boolean                         | ✅        | \-              | Disable the text input (default = false)      |
-| iconPack          | IconPack1                       | ❌        | defaultIconPack | Icon pack                                     |
-| keyDownHandler    | (e: KeyboardEvent)              | ✅        | \-              | Keydown event handler function                |
-| maxLength         | number                          | ✅        | \-              | Max length for text input                     |
-| placeholder       | string                          | ✅        | \-              | Placeholder text                              |
-| rateLimitBreached | boolean                         | ✅        | \-              | Boolean to indicate if rate limit is breached |
-| setText           | (text: string, focus?: boolean) | ❌        | \-              | Sets value of the text input                  |
-| t                 | RtkI18n1                        | ❌        | useLanguage()   | Language                                      |
-| value             | string                          | ✅        | \-              | Default value for text input                  |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `disabled` | `boolean` | ✅ | - | Disable the text input (default = false) |
+| `iconPack` | `IconPack1` | ❌ | `defaultIconPack` | Icon pack |
+| `keyDownHandler` | `(e: KeyboardEvent)` | ✅ | - | Keydown event handler function |
+| `maxLength` | `number` | ✅ | - | Max length for text input |
+| `placeholder` | `string` | ✅ | - | Placeholder text |
+| `rateLimitBreached` | `boolean` | ✅ | - | Boolean to indicate if rate limit is breached |
+| `setText` | `(text: string, focus?: boolean)` | ❌ | - | Sets value of the text input |
+| `t` | `RtkI18n1` | ❌ | `useLanguage()` | Language |
+| `value` | `string` | ✅ | - | Default value for text input |
 
 ## Usage Examples
 

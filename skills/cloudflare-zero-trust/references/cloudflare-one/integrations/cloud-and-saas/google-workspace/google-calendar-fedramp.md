@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Calendar (FedRAMP)
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar-fedramp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/google-calendar-fedramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -22,8 +22,8 @@ The Google Calendar (FedRAMP) integration detects a variety of data loss prevent
 
 ## Integration prerequisites
 
-* A Google Workspace account with a Business Starter, Business Standard, Business Plus or Enterprise plan
-* A Google Workspace user with [Super Admin privileges ↗](https://support.google.com/a/answer/2405986) and [Owner permissions ↗](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
+- A Google Workspace account with a Business Starter, Business Standard, Business Plus or Enterprise plan
+- A Google Workspace user with [Super Admin privileges ↗](https://support.google.com/a/answer/2405986) and [Owner permissions ↗](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
 
 ## Integration permissions
 
@@ -37,9 +37,9 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 
 ### Calendar sharing
 
-| Finding type                                      | FindingTypeID                        | Severity | Description                                                                           |
-| ------------------------------------------------- | ------------------------------------ | -------- | ------------------------------------------------------------------------------------- |
-| Google Workspace: Calendar is publicly accessible | ec68bf68-b0c0-47b3-ad48-fcb3d7eaf8b6 | Medium   | A user's Google Calendar is publicly accessible on the Internet that anyone can read. |
+| Finding type | FindingTypeID | Severity | Description |
+| --- | --- | --- | --- |
+| Google Workspace: Calendar is publicly accessible | `ec68bf68-b0c0-47b3-ad48-fcb3d7eaf8b6` | Medium | A user's Google Calendar is publicly accessible on the Internet that anyone can read. |
 
 Was this helpful?
 

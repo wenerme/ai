@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Markdown for Agents
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What is Markdown for Agents
 
 Markdown has quickly become the lingua franca for agents and AI systems as a whole. The format’s explicit structure makes it ideal for AI processing, ultimately resulting in better results while minimizing token waste.
 
-Cloudflare's network supports real-time content conversion at the source, for enabled zones using [content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content%5Fnegotiation) headers. When AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for `text/markdown` in the request and our network will automatically and efficiently convert the HTML to Markdown, when possible, on the fly.
+Cloudflare's network supports real-time content conversion at the source, for enabled zones using [content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation) headers. When AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for `text/markdown` in the request and our network will automatically and efficiently convert the HTML to Markdown, when possible, on the fly.
 
 Read the [announcement ↗](https://blog.cloudflare.com/markdown-for-agents/) in our blog for more information.
 
@@ -95,10 +95,10 @@ Markdown for Agents preserves the headers from your origin response on the conve
 
 Because the body is replaced with converted Markdown, the following changes are applied:
 
-* `Content-Type` is set to `text/markdown; charset=utf-8`.
-* `Vary` includes `Accept` (any `Vary` dimensions your origin already declared are preserved) so that caches store separate variants for Markdown and HTML.
-* `Content-Length` is recalculated to match the size of the Markdown response.
-* Headers that describe the original body are removed, because they no longer match the converted response: `Content-Encoding`, `Content-Range`, `Transfer-Encoding`, `ETag`, and `Last-Modified`. `ETag` and `Last-Modified` are dropped because conditional requests (`If-None-Match`, `If-Modified-Since`) cannot be honored for converted responses.
+- `Content-Type` is set to `text/markdown; charset=utf-8`.
+- `Vary` includes `Accept` (any `Vary` dimensions your origin already declared are preserved) so that caches store separate variants for Markdown and HTML.
+- `Content-Length` is recalculated to match the size of the Markdown response.
+- Headers that describe the original body are removed, because they no longer match the converted response: `Content-Encoding`, `Content-Range`, `Transfer-Encoding`, `ETag`, and `Last-Modified`. `ETag` and `Last-Modified` are dropped because conditional requests ( `If-None-Match`, `If-Modified-Since`) cannot be honored for converted responses.
 
 Markdown for Agents also adds the token count headers described below.
 
@@ -126,11 +126,11 @@ Markdown for Agents returns a Markdown document with a consistent, predictable s
 
 When the source HTML contains supported `<meta>` tags, Markdown for Agents prepends a YAML frontmatter block to the response. The block uses the following fields:
 
-| Field       | Source <meta> tag                                                            |
-| ----------- | ---------------------------------------------------------------------------- |
-| title       | <meta name="title">, with fallback to <meta property="og:title">             |
-| description | <meta name="description">, with fallback to <meta property="og:description"> |
-| image       | <meta property="og:image">                                                   |
+| Field | Source `<meta>` tag |
+| --- | --- |
+| `title` | `<meta name="title">`, with fallback to `<meta property="og:title">` |
+| `description` | `<meta name="description">`, with fallback to `<meta property="og:description">` |
+| `image` | `<meta property="og:image">` |
 
 Only fields with a value are emitted. If the source HTML does not contain any of the supported meta tags, the frontmatter block is omitted entirely.
 
@@ -160,7 +160,7 @@ JSON-LD is the only `<script>` content preserved in the output — all other `<s
 
 Example output:
 
-```markdown
+````markdown
 ... main markdown content ...
 
 ```json
@@ -171,7 +171,7 @@ Example output:
 	"author": { "@type": "Person", "name": "Jane Doe" }
 }
 ```
-```
+````
 
 ## How to enable
 
@@ -188,9 +188,9 @@ To enable Markdown for Agents for specific subdomains or paths instead of your e
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Select the zone you want to configure.
-3. Go to **Rules** \> **Overview** and select **Create rule** \> **Configuration Rules**.
+3. Go to **Rules** > **Overview** and select **Create rule** > **Configuration Rules**.
 4. Under **When incoming requests match**, build an expression to match your subdomain (for example, `http.host eq "docs.example.com"`) or path.
-5. Under **Then the settings are**, select **Add setting** \> **Markdown for Agents** and set it to **On**.
+5. Under **Then the settings are**, select **Add setting** > **Markdown for Agents** and set it to **On**.
 6. Select **Deploy**.
 
 To enable Markdown for Agents for your zone using APIs, send a `PATCH` to `/client/v4/zones/{zone_tag}/settings/content_converter` with the payload `{"value": "on"}` to the Cloudflare API.
@@ -198,6 +198,8 @@ To enable Markdown for Agents for your zone using APIs, send a `PATCH` to `/clie
 You will need to create an API token with the Zone Settings edit permissions enabled.
 
 Example:
+
+*Enable Markdown for Agentsbash*
 
 ```bash
 curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/content_converter' \
@@ -208,6 +210,8 @@ curl -X PATCH 'https://api.cloudflare.com/client/v4/zones/{zone_tag}/settings/co
 ### Enable for specific subdomains or paths
 
 To enable Markdown for Agents for specific subdomains or paths instead of your entire zone, create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/create-api/):
+
+*Enable Markdown for Agents for a subdomainbash*
 
 ```bash
 curl --request PUT \
@@ -297,15 +301,15 @@ curl https://blog.cloudflare.com/markdown-for-agents/ \
 
 ## Limitations
 
-* We only convert from HTML, other types of documents may be included in the future.
-* The origin response cannot exceed 2 MB (2,097,152 bytes).
+- We only convert from HTML, other types of documents may be included in the future.
+- The origin response cannot exceed 2 MB (2,097,152 bytes).
 
 ## Other Markdown conversion APIs
 
 If you’re building AI systems that require arbitrary document conversion from outside Cloudflare or Markdown for Agents is not available from the content source, we provide other ways to convert documents to Markdown for your applications:
 
-* Workers AI [AI.toMarkdown()](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) supports multiple document types and summarization.
-* The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
+- Workers AI [AI.toMarkdown()](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) supports multiple document types and summarization.
+- The Browser Run [/markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/) endpoint supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.
 
 Was this helpful?
 

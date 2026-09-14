@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Wrangler's unstable\_startWorker()
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/unstable_startworker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
-`unstable_startWorker()` is deprecated. Cloudflare recommends using the [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
+`unstable_startWorker()` is deprecated. Cloudflare recommends using the [`createTestHarness()`](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
 
-The [unstable\_startWorker()](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fstartworker) API exposes the internals of the Wrangler dev server, and allows you to customize how it runs. Compared to using [Miniflare directly for testing](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/), you can pass in a Wrangler configuration file, and it will automatically load the configuration for you.
+The [`unstable_startWorker()`](https://developers.cloudflare.com/workers/wrangler/api/#unstable_startworker) API exposes the internals of the Wrangler dev server, and allows you to customize how it runs. Compared to using [Miniflare directly for testing](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/), you can pass in a Wrangler configuration file, and it will automatically load the configuration for you.
 
 This example uses `node:test`, but should apply to any testing framework:
 

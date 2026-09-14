@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkMenuList
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkmenulist/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkmenulist/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A horizontal list container for menu items.
 
 ## Properties
 
-| Property | Type      | Required | Default | Description       |
-| -------- | --------- | -------- | ------- | ----------------- |
-| children | ReactNode | ✅        | \-      | Menu list content |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | ✅ | - | Menu list content |
 
 ## Usage Examples
 

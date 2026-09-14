@@ -12,18 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API Discovery
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
 
 ## Process
 
-Cloudflare produces a map of API endpoints by grouping similar request paths together (path normalization).
+Cloudflare produces a map of API endpoints
+
+ by grouping similar request paths together (path normalization).
 
 For example, you might have thousands of APIs, but a lot of the calls look similar, such as:
 
-* `api.example.com/profile/238`
-* `api.example.com/profile/392`
+- `api.example.com/profile/238`
+- `api.example.com/profile/392`
 
 Both paths serve a similar purpose — retrieving user profiles — but they are not identical. To simplify your endpoints, these examples might both map to `api.example.com/profile/*`.
 
@@ -58,8 +60,7 @@ You do not need to promote every discovered operation. Promote an operation to m
 
 To promote a discovered operation:
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Operations** tab.
 3. Open the row actions for a candidate or shadow operation.
 4. Select **Learn profile**.
@@ -72,8 +73,7 @@ Your API endpoints are discovered with both session identifier-based discovery a
 
 To access machine learning-based discovery:
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Discovery** tab.
 3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each discovery method.
 
@@ -87,9 +87,9 @@ API Discovery requires an active API Shield subscription at both the account and
 
 For an endpoint to appear in Discovery results, every request must meet the following conditions:
 
-* The request must return a `2xx` response code from the Cloudflare edge.
-* The request must not originate directly from a Cloudflare Worker. Traffic sent through the Cloudflare traffic simulator or other Worker-based test harnesses will not be counted toward Discovery thresholds.
-* The endpoint must receive at least 500 requests within a continuous 10-day period.
+- The request must return a `2xx` response code from the Cloudflare edge.
+- The request must not originate directly from a Cloudflare Worker. Traffic sent through the Cloudflare traffic simulator or other Worker-based test harnesses will not be counted toward Discovery thresholds.
+- The endpoint must receive at least 500 requests within a continuous 10-day period.
 
 For more information, refer to [Discovery requirements](https://developers.cloudflare.com/security/web-assets/manage-operations/#discovery-requirements/).
 

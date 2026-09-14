@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNSLink gateways
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you set up a gateway with a DNSLink record, that gateway is restricted to a particular piece of content — either a specific Content Identifier (CID) or an Interplanetary Name Service (IPNS) hostname. This is called a restricted gateway.
 
@@ -38,9 +38,9 @@ By default, your DNSLink path is `/ipns/onboarding.ipfs.cloudflare.com`. If you 
 
 For example, the default DNSLink record for `www.example.com` would look like this:
 
-| Record type | Name                      | Content                                      |
-| ----------- | ------------------------- | -------------------------------------------- |
-| TXT         | \_dnslink.www.example.com | dnslink=/ipns/onboarding.ipfs.cloudflare.com |
+| Record type | Name | Content |
+| --- | --- | --- |
+| TXT | `_dnslink.www.example.com` | `dnslink=/ipns/onboarding.ipfs.cloudflare.com` |
 
 For more details about the DNS records created by the IPFS gateway, refer to [Gateway DNS records](https://developers.cloudflare.com/web3/reference/gateway-dns-records/).
 

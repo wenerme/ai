@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Features
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
 
@@ -26,10 +26,10 @@ Serve identical requests directly from Cloudflare's global cache, reducing laten
 
 **Key benefits:**
 
-* Reduced response times for repeated queries
-* Lower API costs through cache hits
-* Configurable TTL and per-request cache control
-* Works across all supported AI providers
+- Reduced response times for repeated queries
+- Lower API costs through cache hits
+- Configurable TTL and per-request cache control
+- Works across all supported AI providers
 
 Use Caching
 
@@ -39,10 +39,10 @@ Set cost-based budgets that track cumulative dollar spend across requests. Scope
 
 **Key benefits:**
 
-* Per-provider or per-model budgets
-* Per-user or per-team budgets using [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/)
-* Configurable time windows (daily, weekly, monthly)
-* Automatic request blocking when budget is exceeded
+- Per-provider or per-model budgets
+- Per-user or per-team budgets using [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/)
+- Configurable time windows (daily, weekly, monthly)
+- Automatic request blocking when budget is exceeded
 
 Use Spend Limits
 
@@ -52,10 +52,10 @@ Control application scaling and protect against abuse with flexible rate limitin
 
 **Key benefits:**
 
-* Prevent API quota exhaustion
-* Control costs and usage patterns
-* Configurable per gateway or per request
-* Multiple rate limiting techniques available
+- Prevent API quota exhaustion
+- Control costs and usage patterns
+- Configurable per gateway or per request
+- Multiple rate limiting techniques available
 
 Use Rate Limiting
 
@@ -65,11 +65,11 @@ Create sophisticated request routing flows without code changes. Route requests 
 
 **Key benefits:**
 
-* Visual flow-based configuration
-* User-based and geographic routing
-* A/B testing and fractional traffic splitting
-* Context-aware routing based on request content
-* Dynamic rate limiting with automatic fallbacks
+- Visual flow-based configuration
+- User-based and geographic routing
+- A/B testing and fractional traffic splitting
+- Context-aware routing based on request content
+- Dynamic rate limiting with automatic fallbacks
 
 Use Dynamic Routing
 
@@ -81,11 +81,11 @@ Deploy AI applications safely with real-time content moderation. Automatically d
 
 **Key benefits:**
 
-* Consistent moderation across all AI providers
-* Real-time prompt and response evaluation
-* Configurable content categories and actions
-* Compliance and audit capabilities
-* Enhanced user safety and trust
+- Consistent moderation across all AI providers
+- Real-time prompt and response evaluation
+- Configurable content categories and actions
+- Compliance and audit capabilities
+- Enhanced user safety and trust
 
 Use Guardrails
 
@@ -95,11 +95,11 @@ Protect your organization from inadvertent exposure of sensitive data through AI
 
 **Key benefits:**
 
-* Real-time scanning of AI prompts and responses
-* Detection of PII, financial, healthcare, and custom data patterns
-* Configurable actions: flag or block sensitive content
-* Integration with Cloudflare's enterprise DLP solution
-* Compliance support for GDPR, HIPAA, and PCI DSS
+- Real-time scanning of AI prompts and responses
+- Detection of PII, financial, healthcare, and custom data patterns
+- Configurable actions: flag or block sensitive content
+- Integration with Cloudflare's enterprise DLP solution
+- Compliance support for GDPR, HIPAA, and PCI DSS
 
 Use Data Loss Prevention (DLP)
 
@@ -109,10 +109,10 @@ Secure your AI Gateway with token-based authentication. Control access to your g
 
 **Key benefits:**
 
-* Token-based access control
-* Configurable per gateway
-* Integration with Cloudflare's security infrastructure
-* Audit trail for access attempts
+- Token-based access control
+- Configurable per gateway
+- Integration with Cloudflare's security infrastructure
+- Audit trail for access attempts
 
 Use Authentication
 
@@ -122,11 +122,11 @@ Securely store and manage AI provider API keys in Cloudflare's encrypted infrast
 
 **Key benefits:**
 
-* Encrypted key storage at rest and in transit
-* Centralized key management across providers
-* Easy key rotation without code changes
-* Support for 20+ AI providers
-* Enhanced security and compliance
+- Encrypted key storage at rest and in transit
+- Centralized key management across providers
+- Easy key rotation without code changes
+- Support for 20+ AI providers
+- Enhanced security and compliance
 
 Use Bring Your Own Keys (BYOK)
 
@@ -138,11 +138,11 @@ Gain deep insights into your AI application usage with comprehensive analytics. 
 
 **Key benefits:**
 
-* Real-time usage metrics and trends
-* Cost tracking and estimation across providers
-* Error monitoring and troubleshooting
-* Cache hit rates and performance insights
-* GraphQL API for custom dashboards
+- Real-time usage metrics and trends
+- Cost tracking and estimation across providers
+- Error monitoring and troubleshooting
+- Cache hit rates and performance insights
+- GraphQL API for custom dashboards
 
 Use Analytics
 
@@ -152,11 +152,11 @@ Capture detailed logs of all AI requests and responses for debugging, compliance
 
 **Key benefits:**
 
-* Complete request/response logging
-* Configurable log retention policies
-* Export capabilities via Logpush
-* Custom metadata support
-* Compliance and audit support
+- Complete request/response logging
+- Configurable log retention policies
+- Export capabilities via Logpush
+- Custom metadata support
+- Compliance and audit support
 
 Use Logging
 
@@ -166,10 +166,10 @@ Enrich your logs and analytics with custom metadata. Tag requests with user IDs,
 
 **Key benefits:**
 
-* Enhanced request tracking and filtering
-* User and team-based analytics
-* Custom business logic integration
-* Improved debugging and troubleshooting
+- Enhanced request tracking and filtering
+- User and team-based analytics
+- Custom business logic integration
+- Improved debugging and troubleshooting
 
 Use Custom Metadata
 
@@ -181,22 +181,22 @@ Override default pricing with your negotiated rates or custom cost models. Apply
 
 **Key benefits:**
 
-* Accurate cost tracking with negotiated rates
-* Per-request cost customization
-* Better budget planning and forecasting
-* Support for enterprise pricing agreements
+- Accurate cost tracking with negotiated rates
+- Per-request cost customization
+- Better budget planning and forecasting
+- Support for enterprise pricing agreements
 
 Use Custom Costs
 
 ## Feature Comparison by Use Case
 
-| Use Case                   | Recommended Features                               |
-| -------------------------- | -------------------------------------------------- |
-| **Cost Optimization**      | Caching, Spend Limits, Rate Limiting, Custom Costs |
-| **High Availability**      | Fallbacks using Dynamic Routing                    |
-| **Security & Compliance**  | Guardrails, DLP, Authentication, BYOK, Logging     |
-| **Performance Monitoring** | Analytics, Logging, Custom Metadata                |
-| **A/B Testing**            | Dynamic Routing, Custom Metadata, Analytics        |
+| Use Case | Recommended Features |
+| --- | --- |
+| **Cost Optimization** | Caching, Spend Limits, Rate Limiting, Custom Costs |
+| **High Availability** | Fallbacks using Dynamic Routing |
+| **Security & Compliance** | Guardrails, DLP, Authentication, BYOK, Logging |
+| **Performance Monitoring** | Analytics, Logging, Custom Metadata |
+| **A/B Testing** | Dynamic Routing, Custom Metadata, Analytics |
 
 ## Getting Started with Features
 
@@ -206,7 +206,7 @@ Use Custom Costs
 
 ---
 
-_All features work seamlessly together and across all 20+ supported AI providers. Get started with [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/) to begin using these features in your applications._
+*All features work seamlessly together and across all 20+ supported AI providers. Get started with [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/) to begin using these features in your applications.*
 
 Was this helpful?
 

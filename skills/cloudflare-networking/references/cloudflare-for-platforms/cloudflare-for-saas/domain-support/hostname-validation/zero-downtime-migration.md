@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero-downtime migration
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/zero-downtime-migration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When an end customer is already live on another CDN, switching their CNAME to your Cloudflare fallback origin causes a brief window where Cloudflare cannot yet proxy their traffic. Pre-validation lets you verify hostname ownership and optionally pre-issue the TLS certificate _before_ the DNS cutover, so the migration is seamless.
+When an end customer is already live on another CDN, switching their CNAME to your Cloudflare fallback origin causes a brief window where Cloudflare cannot yet proxy their traffic. Pre-validation lets you verify hostname ownership and optionally pre-issue the TLS certificate *before* the DNS cutover, so the migration is seamless.
 
 ## Migration sequence
 
@@ -28,7 +28,9 @@ When an end customer is already live on another CDN, switching their CNAME to yo
 
 ## Step 1: Create the custom hostname
 
-Call the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) endpoint. Note the `ownership_verification` and `ownership_verification_http` fields in the response - you will need them in the next step.
+Call the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/) endpoint. Note the `ownership_verification` and `ownership_verification_http` fields in the response - you will need them in the next step.
+
+*Create custom hostnamebash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames \
@@ -46,6 +48,8 @@ curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames \
     }
   }'
 ```
+
+*Example response (truncated)json*
 
 ```json
 {
@@ -82,14 +86,22 @@ Use this method when the end customer cannot update their authoritative DNS, or 
 
 1. Copy the `http_url` and `http_body` from the `ownership_verification_http` object in the Create Custom Hostname response.
 2. Have the end customer serve the `http_body` value at the `http_url` path on their origin server. For example, in nginx:
-```nginx
-location /.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630 {
-    return 200 "48b409f6-c886-406b-8cbc-0fbf59983555\n";
-}
-```
-Cloudflare crawls this URL using `User-Agent: Cloudflare Custom Hostname Verification`. The origin must respond with a `200` status and the exact token value in the body.
-Note
-If you can serve this token on behalf of your customers (for example, via a shared origin infrastructure), you can complete verification without any action from the end customer.
+
+   *nginx examplenginx*
+
+
+
+   ```nginx
+   location /.well-known/cf-custom-hostname-challenge/24c8c68e-bec2-49b6-868e-f06373780630 {
+       return 200 "48b409f6-c886-406b-8cbc-0fbf59983555\n";
+   }
+   ```
+
+   Cloudflare crawls this URL using `User-Agent: Cloudflare Custom Hostname Verification`. The origin must respond with a `200` status and the exact token value in the body.
+
+   Note
+
+   If you can serve this token on behalf of your customers (for example, via a shared origin infrastructure), you can complete verification without any action from the end customer.
 3. Wait a few minutes for Cloudflare to crawl the token. The hostname status will move from `pending` to `active` once ownership is confirmed.
 
 ### Option B: TXT record (end customer controls DNS)
@@ -99,9 +111,9 @@ Use this method when the end customer can add a DNS record at their authoritativ
 1. Copy the `name` and `value` from the `ownership_verification` object in the Create Custom Hostname response.
 2. Have the end customer add a `TXT` record at their DNS provider:
 
-| Type | Name                                 | Value                                |
-| ---- | ------------------------------------ | ------------------------------------ |
-| TXT  | \_cf-custom-hostname.app.example.com | 0e2d5a7f-1548-4f27-8c05-b577cb14f4ec |
+   | Type | Name | Value |
+   | --- | --- | --- |
+   | `TXT` | `_cf-custom-hostname.app.example.com` | `0e2d5a7f-1548-4f27-8c05-b577cb14f4ec` |
 3. Wait a few minutes for Cloudflare to detect the record. The hostname status will move to `active` once ownership is confirmed.
 4. Once the hostname is active, the end customer can remove the TXT record.
 
@@ -111,9 +123,9 @@ Use this method when the end customer can add a DNS record at their authoritativ
 
 Pre-issuing the certificate ensures there is no TLS error during cutover. Without this step, the certificate cannot issue until after the end customer's CNAME points to Cloudflare, which means `ssl.status` will remain `pending` through the DNS change. Choose one of these methods:
 
-* [**Delegated DCV**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/) \- A one-time CNAME record delegates `_acme-challenge` to your SaaS zone, letting Cloudflare handle all future renewals automatically. The end customer can place the delegation CNAME at their own authoritative DNS, or if you host DNS for your customers directly, you can place it at your own zone instead.
-* [**TXT validation**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) \- Have the end customer add a `TXT` record to their authoritative DNS. Required for wildcard custom hostnames.
-* [**Manual HTTP validation**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-manual) \- Serve a DCV token file at a `/.well-known/` path on the origin. No action required from the end customer.
+- [**Delegated DCV**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/delegated-dcv/) - A one-time CNAME record delegates `_acme-challenge` to your SaaS zone, letting Cloudflare handle all future renewals automatically. The end customer can place the delegation CNAME at their own authoritative DNS, or if you host DNS for your customers directly, you can place it at your own zone instead.
+- [**TXT validation**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/txt/) - Have the end customer add a `TXT` record to their authoritative DNS. Required for wildcard custom hostnames.
+- [**Manual HTTP validation**](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/http/#http-manual) - Serve a DCV token file at a `/.well-known/` path on the origin. No action required from the end customer.
 
 Note
 
@@ -125,10 +137,14 @@ Hostname validation (`ownership_verification`) and certificate validation (`ssl.
 
 Before updating DNS, verify that both the hostname and certificate are ready.
 
+*Get custom hostname detailsbash*
+
 ```bash
 curl https://api.cloudflare.com/client/v4/zones/{zone_id}/custom_hostnames/{custom_hostname_id} \
   --header "Authorization: Bearer <API_TOKEN>"
 ```
+
+*Example response (truncated)json*
 
 ```json
 {
@@ -155,9 +171,9 @@ If you skipped Step 3, `ssl.status` will remain `pending` until after DNS cutove
 
 Once `result.status` is `active` (and `ssl.status` is `active` too, if you pre-issued the certificate in Step 3), have the end customer update their CNAME to point to your fallback origin:
 
-| Type  | Name | Value                     |
-| ----- | ---- | ------------------------- |
-| CNAME | app  | fallback.yoursaaszone.com |
+| Type | Name | Value |
+| --- | --- | --- |
+| `CNAME` | `app` | `fallback.yoursaaszone.com` |
 
 Traffic will begin proxying through Cloudflare as soon as DNS propagates. Because the hostname was already validated and the certificate was already issued, there is no downtime or certificate error during the transition.
 
@@ -165,10 +181,10 @@ Traffic will begin proxying through Cloudflare as soon as DNS propagates. Becaus
 
 ## Related resources
 
-* [Pre-validation methods](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)
-* [Certificate validation methods](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/)
-* [Validation status](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/validation-status/)
-* [Getting started with Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/)
+- [Pre-validation methods](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/pre-validation/)
+- [Certificate validation methods](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/)
+- [Validation status](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/hostname-validation/validation-status/)
+- [Getting started with Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/)
 
 Was this helpful?
 

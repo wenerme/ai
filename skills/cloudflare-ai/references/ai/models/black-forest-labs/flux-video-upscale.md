@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 video-to-video • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `black-forest-labs/flux-video-upscale`
 
-* Third-party
+- Third-party
 
 FLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio.
 
-| Model Info        |                                                                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                                 |
-| More information  | [link ↗](https://docs.bfl.ml/flux%5Ftools/flux%5Fvideo%5Fupscale)                                                                      |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-video-upscale) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
+| More information | [link ↗](https://docs.bfl.ml/flux_tools/flux_video_upscale) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-video-upscale) |
 
 ## Usage
 
@@ -72,7 +72,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Creative Video Upscale** — Enhance fine detail in a source clip using creative mode.
+<details>
+
+<summary>**Creative Video Upscale** — Enhance fine detail in a source clip using creative mode.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -114,6 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 input\_video
@@ -138,13 +144,13 @@ safety\_tolerance
 
 video
 
-`string`format: uriSigned URL to the upscaled MP4\. Download promptly before it expires.
+`string`format: uriSigned URL to the upscaled MP4. Download promptly before it expires.
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/schema-output.json)
 
 Was this helpful?
 

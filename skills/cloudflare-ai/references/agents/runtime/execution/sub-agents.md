@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sub-agents
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spawn child agents as co-located Durable Objects with their own isolated SQLite storage. The parent gets a typed RPC stub for calling methods on the child — every public method on the child class is callable as a remote procedure call with Promise-wrapped return types.
 
@@ -66,7 +66,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -91,7 +91,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -122,10 +122,10 @@ class Agent {
 }
 ```
 
-| Parameter | Type             | Description                                                                                                      |
-| --------- | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| cls       | SubAgentClass<T> | The Agent subclass. Must be exported from the worker entry point, and the export name must match the class name. |
-| name      | string           | Unique name for this child instance. The same name always returns the same child.                                |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `cls` | `SubAgentClass<T>` | The Agent subclass. Must be exported from the worker entry point, and the export name must match the class name. |
+| `name` | `string` | Unique name for this child instance. The same name always returns the same child. |
 
 Returns a `SubAgentStub<T>` — a typed RPC stub where every user-defined method on `T` is available as a Promise-returning remote call.
 
@@ -167,13 +167,13 @@ class MyChild extends Agent {
 
 ### Requirements
 
-* The child class must extend `Agent`
-* The child class must be exported from the worker entry point (`export class MyChild extends Agent`)
-* The export name must match the class name — `export { Foo as Bar }` is not supported
-* The top-level parent class must be bound as a Durable Object namespace in `wrangler.jsonc`
-* A facet-only child class does not need to be registered under `new_sqlite_classes` unless the same class is also bound as a top-level Durable Object elsewhere
-* Nested facet parents do not need their own top-level Durable Object bindings; the runtime resolves nested children through the root parent namespace
-* The child class name cannot be `Sub`, because `/sub/` is reserved as the URL separator for nested routes
+- The child class must extend `Agent`
+- The child class must be exported from the worker entry point ( `export class MyChild extends Agent`)
+- The export name must match the class name — `export { Foo as Bar }` is not supported
+- The top-level parent class must be bound as a Durable Object namespace in `wrangler.jsonc`
+- A facet-only child class does not need to be registered under `new_sqlite_classes` unless the same class is also bound as a top-level Durable Object elsewhere
+- Nested facet parents do not need their own top-level Durable Object bindings; the runtime resolves nested children through the root parent namespace
+- The child class name cannot be `Sub`, because `/sub/` is reserved as the URL separator for nested routes
 
 ### Notes for testing
 
@@ -193,11 +193,11 @@ class Agent {
 }
 ```
 
-| Parameter | Type          | Description                                       |
-| --------- | ------------- | ------------------------------------------------- |
-| cls       | SubAgentClass | The Agent subclass used when creating the child   |
-| name      | string        | Name of the child to abort                        |
-| reason    | unknown       | Error thrown to any pending or future RPC callers |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `cls` | `SubAgentClass` | The Agent subclass used when creating the child |
+| `name` | `string` | Name of the child to abort |
+| `reason` | `unknown` | Error thrown to any pending or future RPC callers |
 
 Abort is transitive — if the child has its own sub-agents, they are also aborted.
 
@@ -215,10 +215,10 @@ class Agent {
 }
 ```
 
-| Parameter | Type          | Description                                     |
-| --------- | ------------- | ----------------------------------------------- |
-| cls       | SubAgentClass | The Agent subclass used when creating the child |
-| name      | string        | Name of the child to delete                     |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `cls` | `SubAgentClass` | The Agent subclass used when creating the child |
+| `name` | `string` | Name of the child to delete |
 
 Deletion is transitive — the child's own sub-agents are also deleted.
 
@@ -260,11 +260,11 @@ Override this middleware hook on the parent to gate, mutate, or short-circuit in
 
 The hook can return:
 
-| Return value | Effect                                    |
-| ------------ | ----------------------------------------- |
-| void         | Forward the original request to the child |
-| Request      | Forward a modified request                |
-| Response     | Short-circuit and do not wake the child   |
+| Return value | Effect |
+| --- | --- |
+| `void` | Forward the original request to the child |
+| `Request` | Forward a modified request |
+| `Response` | Short-circuit and do not wake the child |
 
 ```js
 export class Inbox extends Agent {
@@ -662,16 +662,16 @@ export class Streamer extends Agent {
 
 Sub-agents can schedule their own callbacks and run durable fibers:
 
-| Method                              | Behavior in sub-agent                                                      |
-| ----------------------------------- | -------------------------------------------------------------------------- |
-| schedule() / scheduleEvery()        | Work normally and run callbacks inside the sub-agent                       |
-| cancelSchedule()                    | Works for schedules owned by the calling sub-agent                         |
-| getScheduleById() / listSchedules() | Work and return schedules scoped to the calling sub-agent                  |
-| keepAlive() / keepAliveWhile()      | Work by delegating the heartbeat to the top-level parent                   |
-| runFiber()                          | Works, with fiber rows and snapshots stored in the child's SQLite database |
-| setState()                          | Works normally and writes to the child's own storage                       |
-| this.sql                            | Works normally and points at the child's own SQLite database               |
-| subAgent()                          | Works, so sub-agents can spawn their own children                          |
+| Method | Behavior in sub-agent |
+| --- | --- |
+| `schedule()` / `scheduleEvery()` | Work normally and run callbacks inside the sub-agent |
+| `cancelSchedule()` | Works for schedules owned by the calling sub-agent |
+| `getScheduleById()` / `listSchedules()` | Work and return schedules scoped to the calling sub-agent |
+| `keepAlive()` / `keepAliveWhile()` | Work by delegating the heartbeat to the top-level parent |
+| `runFiber()` | Works, with fiber rows and snapshots stored in the child's SQLite database |
+| `setState()` | Works normally and writes to the child's own storage |
+| `this.sql` | Works normally and points at the child's own SQLite database |
+| `subAgent()` | Works, so sub-agents can spawn their own children |
 
 The top-level parent still owns the physical Durable Object alarm because facets do not have independent alarm slots. The Agents SDK records which child owns each scheduled callback or recovery check, wakes the parent, and routes the work back into the child. The callback still runs with the sub-agent as `this`, so it uses the child's state, SQLite storage, and `getCurrentAgent()` context.
 
@@ -695,11 +695,11 @@ Build an inbox where each chat is an AIChatAgent sub-agent with isolated state a
 
 ## Related
 
-* [Think](https://developers.cloudflare.com/agents/harnesses/think/) — `chat()` method for streaming AI turns through sub-agents
-* [Long-running agents](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) — sub-agent delegation in the context of multi-week agent lifetimes
-* [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) — RPC via `@callable` and service bindings
-* [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) — run Think or `AIChatAgent` sub-agents as retained, streaming tools
-* [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — scheduling primitives for top-level agents and sub-agents
+- [Think](https://developers.cloudflare.com/agents/harnesses/think/) — `chat()` method for streaming AI turns through sub-agents
+- [Long-running agents](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) — sub-agent delegation in the context of multi-week agent lifetimes
+- [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) — RPC via `@callable` and service bindings
+- [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) — run Think or `AIChatAgent` sub-agents as retained, streaming tools
+- [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — scheduling primitives for top-level agents and sub-agents
 
 Was this helpful?
 

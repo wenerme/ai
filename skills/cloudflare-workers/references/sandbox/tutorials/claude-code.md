@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Claude Code on a Sandbox
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/claude-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/claude-code/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a Worker that takes a repository URL and a task description and uses Sandbox SDK to run Claude Code to implement your task.
 
@@ -21,18 +21,26 @@ Build a Worker that takes a repository URL and a task description and uses Sandb
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need:
 
-* An [Anthropic API key ↗](https://console.anthropic.com/) for Claude Code
-* [Docker ↗](https://www.docker.com/) running locally
+- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude Code
+- [Docker ↗](https://www.docker.com/) running locally
 
-## 1\. Create your project
+## 1. Create your project
 
 Create a new Sandbox SDK project:
 
@@ -54,7 +62,7 @@ pnpm create cloudflare@latest claude-code-sandbox --template=cloudflare/sandbox-
 cd claude-code-sandbox
 ```
 
-## 2\. Set up local environment variables
+## 2. Set up local environment variables
 
 Create a `.dev.vars` file in your project root for local development:
 
@@ -68,7 +76,7 @@ Note
 
 The `.dev.vars` file is automatically gitignored and only used during local development with `npm run dev`.
 
-## 3\. Test locally
+## 3. Test locally
 
 Start the development server:
 
@@ -99,7 +107,7 @@ Response:
 }
 ```
 
-## 4\. Deploy
+## 4. Deploy
 
 Deploy your Worker:
 
@@ -123,22 +131,22 @@ After first deployment, wait 2-3 minutes for container provisioning. Check statu
 
 You created an API that:
 
-* Accepts a repository URL and natural language task descriptions
-* Creates a Sandbox and clones the repository into it
-* Kicks off Claude Code to implement the given task
-* Returns Claude's output and changes
+- Accepts a repository URL and natural language task descriptions
+- Creates a Sandbox and clones the repository into it
+- Kicks off Claude Code to implement the given task
+- Returns Claude's output and changes
 
 ## Next steps
 
-* [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) \- Add pandas and matplotlib for data analysis
-* [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) \- Use the built-in code interpreter instead of exec
-* [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Show real-time execution progress
-* [API reference](https://developers.cloudflare.com/sandbox/api/) \- Explore all available methods
+- [Analyze data with AI](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/) - Add pandas and matplotlib for data analysis
+- [Code Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/) - Use the built-in code interpreter instead of exec
+- [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Show real-time execution progress
+- [API reference](https://developers.cloudflare.com/sandbox/api/) - Explore all available methods
 
 ## Related resources
 
-* [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
-* [Workers AI](https://developers.cloudflare.com/workers-ai/) \- Use Cloudflare's built-in models
+- [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
+- [Workers AI](https://developers.cloudflare.com/workers-ai/) - Use Cloudflare's built-in models
 
 Was this helpful?
 

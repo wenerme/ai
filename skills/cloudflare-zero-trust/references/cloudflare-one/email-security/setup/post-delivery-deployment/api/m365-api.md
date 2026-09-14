@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up with Microsoft 365
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up Microsoft 365 with Email security via the Cloudflare dashboard.
 
@@ -20,22 +20,23 @@ This guide will instruct you through setting up Microsoft 365 with Email securit
 
 To use Email security, you will need to have:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-* A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
-* A domain to protect
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
+- A domain to protect
 
 ## Enable Email security via the dashboard
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and select **Email security**..
 2. Select **Overview**. Select one of the following options depending on your use case:
-* If you have not purchased Email security, select **Contact sales**.
-* If you have not associated any integration:
-  * Select **Set up**.
-  * Choose **MS Graph API** \> **Authorize**.
-  * Refer to [Enable Microsoft integration](#enable-microsoft-integration) to continue the onboarding process.
-* If you have associated an integration, but have not connected a domain:
-  * Select **Connect a domain**.
-  * Choose **MS Graph API**. Refer to [Connect your domains](#connect-your-domains) to connect your domain(s).
+
+- If you have not purchased Email security, select **Contact sales**.
+- If you have not associated any integration:
+  - Select **Set up**.
+  - Choose **MS Graph API** > **Authorize**.
+  - Refer to [Enable Microsoft integration](#enable-microsoft-integration) to continue the onboarding process.
+- If you have associated an integration, but have not connected a domain:
+  - Select **Connect a domain**.
+  - Choose **MS Graph API**. Refer to [Connect your domains](#connect-your-domains) to connect your domain(s).
 
 ### Enable Microsoft integration
 
@@ -44,12 +45,12 @@ To enable Microsoft integration:
 1. **Configure policy**: Choose how [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) interacts with your data. Select **Read-only mode** or **Read-Write mode**. It is recommended that you choose **Read-Write mode**.
 2. **Name integration**: Add your integration name, then select **Continue**.
 3. **Authorize integration**:
-  * Select **Authorize**. Selecting **Authorize** will take you to the Microsoft Sign in page where you will have to enter your email address.
-  * Once you enter your email address, select **Next**.
-  * After selecting **Next**, the system will show a dialog box with a list of requested permissions. Select **Accept** to authorize Email security. Upon authorization, you will be redirected to a page where you can review details and enroll integration.
+   - Select **Authorize**. Selecting **Authorize** will take you to the Microsoft Sign in page where you will have to enter your email address.
+   - Once you enter your email address, select **Next**.
+   - After selecting **Next**, the system will show a dialog box with a list of requested permissions. Select **Accept** to authorize Email security. Upon authorization, you will be redirected to a page where you can review details and enroll integration.
 4. **Review details**: Review your integration details, then:
-  * Select **Complete Email security set up** where you will be able to connect your domains and configure auto-moves.
-  * Select **Continue to Email security**.
+   - Select **Complete Email security set up** where you will be able to connect your domains and configure auto-moves.
+   - Select **Continue to Email security**.
 
 Continue with [Connect your domains](#connect-your-domains) for the next steps.
 
@@ -69,21 +70,21 @@ Your domains are now connected successfully.
 To connect new domains:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Select **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Select **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Select **Add a domain**.
 4. Select a method for connecting your mail environment to Email security:
-  * If you select **MS Graph API**, refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration).
-  * If you select BCC/Journaling, choose how to connect your domains:
-    * If you select **Integrate with MS**, refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration).
-    * If you select **Integrate with Google**, refer to [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/).
-    * If you select **Manual add**, refer to [Enter domain manually](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/manual-add/#enter-domain-manually).
+   - If you select **MS Graph API**, refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration).
+   - If you select BCC/Journaling, choose how to connect your domains:
+     - If you select **Integrate with MS**, refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration).
+     - If you select **Integrate with Google**, refer to [Connect your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/).
+     - If you select **Manual add**, refer to [Enter domain manually](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/manual-add/#enter-domain-manually).
 
 ## Prevent Cloudflare from scanning a domain
 
 If you want to prevent Cloudflare from scanning a domain:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. On the **Domain management** page, select the domain you do not want to be scanned.
 4. Select the three dots > **Stop scanning**.
 
@@ -92,7 +93,7 @@ If you want to prevent Cloudflare from scanning a domain:
 To view the integration for each connected domain:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Select a domain.
 4. Select the three dots > **View integration**.
 
@@ -103,7 +104,7 @@ Once you have set up Email security to scan through your inbox, Email security w
 To verify that the deployment has been successful and that your emails are being scanned:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 
 ## Next steps

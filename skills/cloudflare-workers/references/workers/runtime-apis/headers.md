@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Headers
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -41,7 +41,7 @@ The Workers implementation of the `Headers` API differs from the web standard in
 
 TypeScript users
 
-Workers type definitions (from `@cloudflare/workers-types` or generated via [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types)) define a `Headers` type that includes Workers-specific methods like `getAll()`. This type is not directly compatible with the standard `Headers` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions.
+Workers type definitions (from `@cloudflare/workers-types` or generated via [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types)) define a `Headers` type that includes Workers-specific methods like `getAll()`. This type is not directly compatible with the standard `Headers` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions.
 
 ### `getAll()` method
 
@@ -65,7 +65,7 @@ console.log(headers.getAll("Set-Cookie"));
 
 ### `USVString` return type
 
-In Cloudflare Workers, the `Headers.get` method returns a [USVString ↗](https://mdn2.netlify.app/en-us/docs/web/api/usvstring/) instead of a [ByteString ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/String), which is specified by the web standard. For most scenarios, this should have no noticeable effect. To compare the differences between these two string classes, refer to this [Playground example ↗](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbMutvvsCMALAJx-cAzAHZeANkG8AHAAZOU7t2EBWAEy9eqsXNWdOALg5HjbHv34jxk2fMUr1m7Z12cAsACgAwuioQApr7YACJQAM4w6KFQ0D76JBhYeATEJFRwwH4MAERQNH4AHgB0AFahWaSoUGAB6Zk5eUWlWR7evgEQ2AAqdDB+cXAwMGBQAMYEUD7IxXAAbnChIwiwEADUwOi44H4eHgURSCS4fqhw4BAkAN7uAJDzdFQj8X4QIwAWABQIfgCOIH6hEAAlJcbtdqucxucGCQsoBeDcAXHtZUHgkggCCoKSeAgkaFUPwAdxInQKEAAog8Nn4EO9AYUAiNKe9IYDkc8SPTKbgsVCSABlCBLKgAc0KqAQ6GAnleiG8R3ehQVaIx3JZoIZVFC6GqhTA6CF7yynVeYRIJrgJAAqryAGr8wVCkj46KvEjmyH6LIAGhIzLVPk12t1+sNxtCprD5oAQnR-Hbcg6nRAXW7sT5LZ0AGLYKQe70co5cgiq67XZDIEgACT8cCOCAjXxIoRAg0iflwJAg6EdmAA1iQfGA6I7nSRo7GBfHQt6yGj+yAEKCy6bgEM-BlfOM0yBQv9LTa48LQoUiaHUiSSMM8cOwGASDBBec4Ivy-jEFR466KLOk2FCqzzq81a1mGuIEpWQFUqE7wXDC+ZttgkJZHEcGFucAC+xbXF8EDzlQZ6EgASv8EQan4BpSn4Ix9pQ5xJn4JAAAatAGfgMa6NAdoBJBEeE-r0YBNaQR2XY7vRdFzhAMCzgyK6IGE-qFF6lwkAJwEkBhNxoe4aEeCYelGGYAiWBI0hyAoShqBoWg6HoLQ+P4gQhLxUQxFQcQJDg+CEKQaQZNkGSEF5cDlPEVQ1H5WRkLqZDNF49ntF0PR9K6gzDJCExUFMmpUDs7gXFkwBwLkAD66ybNUSH1EcjRlDp7j6Q1rCGRYogmTY5n2FZTguMwHhAA).
+In Cloudflare Workers, the `Headers.get` method returns a [`USVString` ↗](https://mdn2.netlify.app/en-us/docs/web/api/usvstring/) instead of a [`ByteString` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), which is specified by the web standard. For most scenarios, this should have no noticeable effect. To compare the differences between these two string classes, refer to this [Playground example ↗](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbMutvvsCMALAJx-cAzAHZeANkG8AHAAZOU7t2EBWAEy9eqsXNWdOALg5HjbHv34jxk2fMUr1m7Z12cAsACgAwuioQApr7YACJQAM4w6KFQ0D76JBhYeATEJFRwwH4MAERQNH4AHgB0AFahWaSoUGAB6Zk5eUWlWR7evgEQ2AAqdDB+cXAwMGBQAMYEUD7IxXAAbnChIwiwEADUwOi44H4eHgURSCS4fqhw4BAkAN7uAJDzdFQj8X4QIwAWABQIfgCOIH6hEAAlJcbtdqucxucGCQsoBeDcAXHtZUHgkggCCoKSeAgkaFUPwAdxInQKEAAog8Nn4EO9AYUAiNKe9IYDkc8SPTKbgsVCSABlCBLKgAc0KqAQ6GAnleiG8R3ehQVaIx3JZoIZVFC6GqhTA6CF7yynVeYRIJrgJAAqryAGr8wVCkj46KvEjmyH6LIAGhIzLVPk12t1+sNxtCprD5oAQnR-Hbcg6nRAXW7sT5LZ0AGLYKQe70co5cgiq67XZDIEgACT8cCOCAjXxIoRAg0iflwJAg6EdmAA1iQfGA6I7nSRo7GBfHQt6yGj+yAEKCy6bgEM-BlfOM0yBQv9LTa48LQoUiaHUiSSMM8cOwGASDBBec4Ivy-jEFR466KLOk2FCqzzq81a1mGuIEpWQFUqE7wXDC+ZttgkJZHEcGFucAC+xbXF8EDzlQZ6EgASv8EQan4BpSn4Ix9pQ5xJn4JAAAatAGfgMa6NAdoBJBEeE-r0YBNaQR2XY7vRdFzhAMCzgyK6IGE-qFF6lwkAJwEkBhNxoe4aEeCYelGGYAiWBI0hyAoShqBoWg6HoLQ+P4gQhLxUQxFQcQJDg+CEKQaQZNkGSEF5cDlPEVQ1H5WRkLqZDNF49ntF0PR9K6gzDJCExUFMmpUDs7gXFkwBwLkAD66ybNUSH1EcjRlDp7j6Q1rCGRYogmTY5n2FZTguMwHhAA).
 
 ## Cloudflare headers
 
@@ -75,8 +75,8 @@ For a list of documented Cloudflare request headers, refer to [Cloudflare HTTP h
 
 ## Related resources
 
-* [Logging headers to console](https://developers.cloudflare.com/workers/examples/logging-headers/) \- Review how to log headers in the console.
-* [Cloudflare HTTP headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/) \- Contains a list of specific headers that Cloudflare adds.
+- [Logging headers to console](https://developers.cloudflare.com/workers/examples/logging-headers/) - Review how to log headers in the console.
+- [Cloudflare HTTP headers](https://developers.cloudflare.com/fundamentals/reference/http-headers/) - Contains a list of specific headers that Cloudflare adds.
 
 Was this helpful?
 

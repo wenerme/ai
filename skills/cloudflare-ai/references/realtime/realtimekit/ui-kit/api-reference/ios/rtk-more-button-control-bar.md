@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkMoreButtonControlBar
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-more-button-control-bar/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-more-button-control-bar/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A control bar button that opens a bottom sheet menu with meeting actions such as chat, polls, and participant list.
 
 ## Initializer parameters
 
-| Parameter                       | Type              | Required | Default | Description                                                |
-| ------------------------------- | ----------------- | -------- | ------- | ---------------------------------------------------------- |
-| meeting                         | RealtimeKitClient | ✅        | \-      | The RealtimeKit client instance                            |
-| presentingViewController        | UIViewController  | ✅        | \-      | View controller used to present the bottom sheet           |
-| settingViewControllerCompletion | (() -> Void)?     | ❌        | nil     | Closure called when the settings view controller dismisses |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance |
+| `presentingViewController` | `UIViewController` | ✅ | - | View controller used to present the bottom sheet |
+| `settingViewControllerCompletion` | `(() -> Void)?` | ❌ | `nil` | Closure called when the settings view controller dismisses |
 
 ## Methods
 
-| Method            | Return Type | Description                                      |
-| ----------------- | ----------- | ------------------------------------------------ |
-| hideBottomSheet() | Void        | Programmatically dismisses the bottom sheet menu |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `hideBottomSheet()` | `Void` | Programmatically dismisses the bottom sheet menu |
 
 ## Usage Examples
 

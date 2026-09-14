@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enterprise AI Vibe Coding Platform
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -26,20 +26,20 @@ This reference architecture extends the [AI Vibe Coding Platform](https://develo
 
 Enterprise vibe coding platforms must assume that AI-generated code is untrusted. The security model enforces protection at the platform level, not the code level.
 
-* **Untrusted code execution:** AI-generated code may contain bugs, vulnerabilities, or unintended behavior. Sandboxes and containers isolate it from production systems.
-* **Data exfiltration via prompts:** Employees may inadvertently include sensitive data in prompts. AI Gateway and DLP inspect and block before prompts reach LLM providers.
-* **Prompt injection:** Malicious prompts may attempt to manipulate the AI into generating harmful code. All interactions are logged and auditable.
-* **Credential exposure:** AI-generated code never handles real secrets. Outbound handlers or outbound workers inject credentials at the platform layer.
-* **Privilege escalation:** Misconfigured connection strings or network access could provision unauthorized access to higher-level resources. The binding model enforces allowlist-based connectivity.
-* **Unauthorized access:** Without identity controls, deployed applications could be accessed by anyone in the organization. Cloudflare Access enforces role-based policies on both the platform and deployed applications.
+- **Untrusted code execution:** AI-generated code may contain bugs, vulnerabilities, or unintended behavior. Sandboxes and containers isolate it from production systems.
+- **Data exfiltration via prompts:** Employees may inadvertently include sensitive data in prompts. AI Gateway and DLP inspect and block before prompts reach LLM providers.
+- **Prompt injection:** Malicious prompts may attempt to manipulate the AI into generating harmful code. All interactions are logged and auditable.
+- **Credential exposure:** AI-generated code never handles real secrets. Outbound handlers or outbound workers inject credentials at the platform layer.
+- **Privilege escalation:** Misconfigured connection strings or network access could provision unauthorized access to higher-level resources. The binding model enforces allowlist-based connectivity.
+- **Unauthorized access:** Without identity controls, deployed applications could be accessed by anyone in the organization. Cloudflare Access enforces role-based policies on both the platform and deployed applications.
 
 ## Core architecture
 
 An enterprise vibe coding platform consists of three systems where existing enterprise controls can be layered or extended as required:
 
-* **Development plane:** Where employees create and iterate on applications through AI, with controlled access to LLMs and enterprise data.
-* **Deployment pipeline:** The approval and validation workflow that promotes an application from development to production, including security checks, dependency scans, and human-in-the-loop review where required.
-* **Production plane:** Where approved applications run in isolated, multi-tenant environments with full observability, egress controls, and access policies.
+- **Development plane:** Where employees create and iterate on applications through AI, with controlled access to LLMs and enterprise data.
+- **Deployment pipeline:** The approval and validation workflow that promotes an application from development to production, including security checks, dependency scans, and human-in-the-loop review where required.
+- **Production plane:** Where approved applications run in isolated, multi-tenant environments with full observability, egress controls, and access policies.
 
 Observability, discoverability, and cost controls should be embedded across all three components. [Resource tagging](https://developers.cloudflare.com/resource-tagging/) applied across the lifecycle provides visibility, allowing platform administrators to track and manage all applications, users, and resources in one place.
 

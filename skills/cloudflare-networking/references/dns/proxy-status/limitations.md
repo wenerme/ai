@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Proxying limitations
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/proxy-status/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/proxy-status/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This page describes expected limitations when proxying DNS records. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
+This page describes expected limitations when proxying DNS records
+
+. For further information about proxying, refer to [How Cloudflare DNS works](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
 
 For guidance on when to proxy records and when to use DNS only, refer to [Use cases](https://developers.cloudflare.com/dns/proxy-status/use-cases/).
 
@@ -24,19 +26,27 @@ Only A, AAAA, and CNAME records that serve HTTP or HTTPS traffic can be proxied.
 
 If you encounter a [CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) that you cannot proxy — usually associated with another CDN provider — a proxied version of that record will cause connectivity errors. Cloudflare is purposely preventing that record from being proxied to protect you from a misconfiguration.
 
+<details>
+
+<summary>
+
 Non-proxiable targets
 
-* Exact match:
-  * `dkim2.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))
-  * `dkim3.mcsv.net` ([Mailchimp documentation ↗](https://mailchimp.com/help/set-up-email-domain-authentication/))
-  * `zmverify.zoho.com` ([Zoho documentation ↗](https://www.zoho.com/mail/help/adminconsole/domain-verification.html))
-  * `dkim.infusionmail.com` ([Keap documentation ↗](https://help.keap.com/help/dmarc))
-* Exact match or subdomain of:
-  * `dkim.amazonses.com` ([Amazon SES documentation ↗](https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc))
-* Subdomain of:
-  * `onmicrosoft.com` ([Microsoft documentation ↗](https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure))
-  * `dkim.intercom.io` ([Intercom documentation ↗](https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel))
-  * `acm-validations.aws` ([AWS certificate manager documentation ↗](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html))
+</summary>
+
+- Exact match:
+  - <code>dkim2.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗</a>)
+  - <code>dkim3.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗</a>)
+  - <code>zmverify.zoho.com</code> (<a href="https://www.zoho.com/mail/help/adminconsole/domain-verification.html">Zoho documentation ↗</a>)
+  - <code>dkim.infusionmail.com</code> (<a href="https://help.keap.com/help/dmarc">Keap documentation ↗</a>)
+- Exact match or subdomain of:
+  - <code>dkim.amazonses.com</code> (<a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc">Amazon SES documentation ↗</a>)
+- Subdomain of:
+  - <code>onmicrosoft.com</code> (<a href="https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure">Microsoft documentation ↗</a>)
+  - <code>dkim.intercom.io</code> (<a href="https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel">Intercom documentation ↗</a>)
+  - <code>acm-validations.aws</code> (<a href="https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html">AWS certificate manager documentation ↗</a>)
+
+</details>
 
 ### Pre-signed DNSSEC
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DigiCert Legacy Root (G1) distrust by major browsers
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/migration-guides/digicert-g1-distrust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browsers and operating systems are completing the removal of DigiCert's legacy G1 root certificates from their trust stores, effective **April 15, 2026**.
 
@@ -36,15 +36,15 @@ DigiCert recommends reissuing any affected certificates from a G2 intermediate. 
 
 Since Cloudflare does not use DigiCert roots, you can avoid this dependency entirely by switching to Cloudflare-managed certificates:
 
-* Use [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) for more control and flexibility with automatic renewals.
-* Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically issue certificates for your [proxied hostnames](https://developers.cloudflare.com/dns/proxy-status/).
-* Use [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) to reduce manual intervention when renewing certificates for [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) zones.
+- Use [Advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) for more control and flexibility with automatic renewals.
+- Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically issue certificates for your [proxied hostnames](https://developers.cloudflare.com/dns/proxy-status/).
+- Use [Delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/) to reduce manual intervention when renewing certificates for [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) zones.
 
 ## More resources
 
-* [DigiCert root and intermediate CA certificate updates ↗](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023)
-* [Custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)
-* [Certificate bundling methodologies](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/)
+- [DigiCert root and intermediate CA certificate updates ↗](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023)
+- [Custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)
+- [Certificate bundling methodologies](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/)
 
 Was this helpful?
 

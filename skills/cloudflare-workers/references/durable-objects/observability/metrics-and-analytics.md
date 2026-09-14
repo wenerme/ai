@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/observability/metrics-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
+Durable Objects
+
+ expose analytics for Durable Object namespace-level and request-level metrics.
 
 The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically via GraphQL](#query-via-the-graphql-api) or HTTP client.
 
@@ -26,8 +28,7 @@ A Durable Object namespace is a set of Durable Objects that can be addressed by 
 
 Per-namespace analytics for Durable Objects are available in the Cloudflare dashboard. To view current and historical metrics for a namespace:
 
-1. In the Cloudflare dashboard, go to the **Durable Objects** page.
-[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+1. In the Cloudflare dashboard, go to the **Durable Objects** page. [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 2. View account-level Durable Objects usage.
 3. Select an existing Durable Object namespace.
 4. Select the **Metrics** tab.
@@ -48,10 +49,10 @@ A single isolate can host multiple Durable Objects of the same class, along with
 
 What the chart shows depends on whether you filter:
 
-* **Without a filter (namespace view):** the percentiles are computed across the periodic memory samples of every Durable Object in the namespace, showing the distribution of isolate memory across the namespace.
-* **Filtered by [ID](https://developers.cloudflare.com/durable-objects/api/id/) or [name](https://developers.cloudflare.com/durable-objects/api/id/#name):** the percentiles are computed only from the periodic samples reported for that one Durable Object. Each sample is still the memory of the entire isolate hosting it — which may include other Durable Objects sharing that isolate — so this is not a measurement of that single object's memory in isolation.
+- **Without a filter (namespace view):** the percentiles are computed across the periodic memory samples of every Durable Object in the namespace, showing the distribution of isolate memory across the namespace.
+- **Filtered by [ID](https://developers.cloudflare.com/durable-objects/api/id/) or [name](https://developers.cloudflare.com/durable-objects/api/id/#name):** the percentiles are computed only from the periodic samples reported for that one Durable Object. Each sample is still the memory of the entire isolate hosting it — which may include other Durable Objects sharing that isolate — so this is not a measurement of that single object's memory in isolation.
 
-Memory usage is powered by the [durableObjectsPeriodicGroups](#query-via-the-graphql-api) GraphQL dataset, which exposes the `memoryUsageBytes` metric. Percentile values are available as `quantiles.memoryUsageBytesP50` through `quantiles.memoryUsageBytesP999`, in bytes.
+Memory usage is powered by the [`durableObjectsPeriodicGroups`](#query-via-the-graphql-api) GraphQL dataset, which exposes the `memoryUsageBytes` metric. Percentile values are available as `quantiles.memoryUsageBytesP50` through `quantiles.memoryUsageBytesP999`, in bytes.
 
 If you see memory usage trending upward over time, this may indicate a memory leak. Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to take heap snapshots and identify specific objects causing high memory consumption.
 
@@ -62,20 +63,23 @@ You can view Durable Object logs from the Cloudflare dashboard. Logs are aggrega
 To start using Durable Object logging:
 
 1. Enable Durable Object logging in the Wrangler configuration file of the Worker that defines your Durable Object class:
-```jsonc
-{
-    "observability": {
-        "enabled": true
-    }
-}
-```
-```toml
-[observability]
-enabled = true
-```
+
+   ```jsonc
+   {
+       "observability": {
+           "enabled": true
+       }
+   }
+   ```
+
+   ```toml
+   [observability]
+   enabled = true
+   ```
+
+
 2. Deploy the latest version of the Worker with the updated binding.
-3. Go to the **Durable Objects** page.
-[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+3. Go to the **Durable Objects** page. [Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 4. Select an existing Durable Object namespace.
 5. Select the **Logs** tab.
 
@@ -89,10 +93,10 @@ Durable Object metrics are powered by GraphQL.
 
 The datasets that include Durable Object metrics include:
 
-* `durableObjectsInvocationsAdaptiveGroups`
-* `durableObjectsPeriodicGroups`
-* `durableObjectsStorageGroups`
-* `durableObjectsSubrequestsAdaptiveGroups`
+- `durableObjectsInvocationsAdaptiveGroups`
+- `durableObjectsPeriodicGroups`
+- `durableObjectsStorageGroups`
+- `durableObjectsSubrequestsAdaptiveGroups`
 
 Use [GraphQL Introspection](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/introspection/) to get information on the fields exposed by each datasets.
 
@@ -100,8 +104,8 @@ Use [GraphQL Introspection](https://developers.cloudflare.com/analytics/graphql-
 
 Durable Objects using [WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) will see request metrics across several GraphQL datasets because WebSockets have different types of requests.
 
-* Metrics for a WebSocket connection itself is represented in `durableObjectsInvocationsAdaptiveGroups` once the connection closes. Since WebSocket connections are long-lived, connections often do not terminate until the Durable Object terminates.
-* Metrics for incoming and outgoing WebSocket messages on a WebSocket connection are available in `durableObjectsPeriodicGroups`. If a WebSocket connection uses [WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), incoming WebSocket messages are instead represented in `durableObjectsInvocationsAdaptiveGroups`.
+- Metrics for a WebSocket connection itself is represented in `durableObjectsInvocationsAdaptiveGroups` once the connection closes. Since WebSocket connections are long-lived, connections often do not terminate until the Durable Object terminates.
+- Metrics for incoming and outgoing WebSocket messages on a WebSocket connection are available in `durableObjectsPeriodicGroups`. If a WebSocket connection uses [WebSocket Hibernation](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), incoming WebSocket messages are instead represented in `durableObjectsInvocationsAdaptiveGroups`.
 
 ## Example GraphQL query for Durable Objects
 
@@ -138,7 +142,7 @@ Refer to the [Querying Workers Metrics with GraphQL](https://developers.cloudfla
 
 ## Additional resources
 
-* For instructions on setting up a Grafana dashboard to query Cloudflare's GraphQL Analytics API, refer to [Grafana Dashboard starter for Durable Object metrics ↗](https://github.com/TimoWilhelm/grafana-do-dashboard).
+- For instructions on setting up a Grafana dashboard to query Cloudflare's GraphQL Analytics API, refer to [Grafana Dashboard starter for Durable Object metrics ↗](https://github.com/TimoWilhelm/grafana-do-dashboard).
 
 ## FAQs
 

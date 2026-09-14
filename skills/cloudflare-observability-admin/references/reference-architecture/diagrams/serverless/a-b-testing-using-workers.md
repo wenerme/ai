@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # A/B-testing using Workers
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -32,12 +32,12 @@ Cloudflare's low-latency, fully serverless compute platform, [Workers](https://d
 
 ![Figure 1: A/B testing using Workers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/a-b-testing-workers.2TNh_6Un.svg "Figure 1: A/B testing using Workers")
 
-Figure 1: A/B testing using Workers
+*Figure 1: A/B testing using Workers*
 
 This architecture shows a same-URL A/B testing endpoint. The A/B testing logic and configuration is deployed on the server side, so that clients do not have to implement any changes to make use of A/B testing.
 
 1. **Client**: Sends requests to server. This could be through a desktop or mobile browser, or native or mobile app.
-2. **Configuration**: Process incoming request using Workers. Read current configuration by reading from [KV](https://developers.cloudflare.com/kv/) using the [get()](https://developers.cloudflare.com/kv/api/read-key-value-pairs/) method. This allows for flexible updates to the A/B services configuration fully decoupled from code-deployment.
+2. **Configuration**: Process incoming request using Workers. Read current configuration by reading from [KV](https://developers.cloudflare.com/kv/) using the [`get()`](https://developers.cloudflare.com/kv/api/read-key-value-pairs/) method. This allows for flexible updates to the A/B services configuration fully decoupled from code-deployment.
 3. **Origin requests**: Check for already existing cookies in the request headers. If no cookie for group assignment is set, randomly assign a group. If a cookie is set, extract assigned group from the cookie header. Send request to either the control endpoint (A) or variant endpoints (B) depending on the configuration and the assigned group.
 4. **Response**: Return the response from the origin. Additionally, if no cookie was previously set, set a cookie with the respective assigned group for session affinity.
 
@@ -45,10 +45,10 @@ For an example with code snippets on how to use Workers and Workers KV to route 
 
 ## Related resources
 
-* [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
-* [Workers KV: Get started](https://developers.cloudflare.com/kv/get-started/)
-* [Workers KV: Route requests to web servers with Workers and Workers KV](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/)
-* [Code Example: A/B testing with same-URL direct access](https://developers.cloudflare.com/workers/examples/ab-testing/)
+- [Workers: Get started](https://developers.cloudflare.com/workers/get-started/guide/)
+- [Workers KV: Get started](https://developers.cloudflare.com/kv/get-started/)
+- [Workers KV: Route requests to web servers with Workers and Workers KV](https://developers.cloudflare.com/kv/examples/routing-with-workers-kv/)
+- [Code Example: A/B testing with same-URL direct access](https://developers.cloudflare.com/workers/examples/ab-testing/)
 
 Was this helpful?
 

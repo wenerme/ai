@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scaling and Routing
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/configuration/scaling-and-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/scaling-and-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Scale container instances with explicit IDs
 
@@ -63,8 +63,8 @@ export default {
 
 Use `getRandom` to route to multiple stateless container instances. It randomly selects one of N instances for each request, which means:
 
-* It requires that the user set a fixed number of instances to route to.
-* It will randomly select each instance, regardless of location.
+- It requires that the user set a fixed number of instances to route to.
+- It will randomly select each instance, regardless of location.
 
 We plan to fix these issues with built-in autoscaling and routing features in the near future.
 

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pipelines](https://developers.cloudflare.com/pipelines/) SQL reference documentation:
 
-* [SQL data types](https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/)
-* [SELECT statements](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/)
-* [Scalar functions](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/)
+- [SQL data types](https://developers.cloudflare.com/pipelines/sql-reference/sql-data-types/)
+- [SELECT statements](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/)
+- [Scalar functions](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/)
 
 Was this helpful?
 

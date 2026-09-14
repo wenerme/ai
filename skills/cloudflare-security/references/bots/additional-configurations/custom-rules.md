@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom rules
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/custom-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bot protection on Cloudflare works through two complementary mechanisms: built-in settings configured through toggles in **Security Settings**, and [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) that you write using [bot management fields](https://developers.cloudflare.com/bots/reference/bot-management-variables/). Understanding when to use each approach helps you avoid creating duplicate rules and simplifies your security configuration.
 
 The following features are configured through toggles and dropdowns in [Security Settings](https://developers.cloudflare.com/security/settings/). They do not require you to write any rule expressions.
 
-| Feature                                                                                                                 | What it does                                                                                                     | Availability                  |
-| ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| [Block AI bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/)                        | Blocks AI crawlers (GPTBot, ClaudeBot, Bytespider, and others) using an auto-updating managed rule               | All plans                     |
-| [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/)                          | Feeds non-compliant AI crawlers into a maze of generated content                                                 | All plans                     |
-| [Managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/)              | Prepends AI crawler disallow directives to your robots.txt                                                       | All plans                     |
-| Super Bot Fight Mode > **Definitely automated**                                                                         | Blocks or challenges traffic with a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) of 1 | Pro, Business, Enterprise     |
-| Super Bot Fight Mode > **Likely automated**                                                                             | Blocks or challenges traffic with a bot score of 2-29                                                            | Business, Enterprise          |
-| [Verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/)                                     | Managed category of high-trust bots (Googlebot, Bingbot, and others)                                             | Pro, Business, Enterprise     |
-| [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/)        | Extends bot actions to cover static file types                                                                   | Pro, Business, Enterprise     |
-| [Optimize for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/)              | Allows WordPress loopback requests through bot protection                                                        | Pro, Business, Enterprise     |
-| [JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) | Injects a lightweight script to identify clients that cannot execute JavaScript                                  | All plans (automatic on Free) |
+| Feature | What it does | Availability |
+| --- | --- | --- |
+| [Block AI bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/) | Blocks AI crawlers (GPTBot, ClaudeBot, Bytespider, and others) using an auto-updating managed rule | All plans |
+| [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/) | Feeds non-compliant AI crawlers into a maze of generated content | All plans |
+| [Managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) | Prepends AI crawler disallow directives to your `robots.txt` | All plans |
+| Super Bot Fight Mode > **Definitely automated** | Blocks or challenges traffic with a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) of 1 | Pro, Business, Enterprise |
+| Super Bot Fight Mode > **Likely automated** | Blocks or challenges traffic with a bot score of 2-29 | Business, Enterprise |
+| [Verified bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) | Managed category of high-trust bots (Googlebot, Bingbot, and others) | Pro, Business, Enterprise |
+| [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/) | Extends bot actions to cover static file types | Pro, Business, Enterprise |
+| [Optimize for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/) | Allows WordPress loopback requests through bot protection | Pro, Business, Enterprise |
+| [JavaScript detections](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/) | Injects a lightweight script to identify clients that cannot execute JavaScript | All plans (automatic on Free) |
 
 Bot settings update automatically as Cloudflare identifies new bot signatures and AI crawlers, while custom rules require manual updates. They do not count toward your [custom rule limits](https://developers.cloudflare.com/waf/custom-rules/#availability), and apply uniformly across your domain without the risk of expression errors.
 
@@ -80,7 +80,9 @@ To send bot scores, verified bot status, or JA3/JA4 fingerprints to your origin 
 
 ## Execution order
 
-Custom rules execute before Super Bot Fight Mode managed rules. If a custom rule takes a terminating action (such as _Block_ or _Managed Challenge_), the request does not reach bot settings.
+Custom rules execute before Super Bot Fight Mode managed rules. If a custom rule takes a terminating action
+
+ (such as *Block* or *Managed Challenge*), the request does not reach bot settings.
 
 Refer to [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) for more information.
 

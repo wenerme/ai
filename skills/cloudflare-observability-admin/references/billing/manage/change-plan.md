@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Change domain plan
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/manage/change-plan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/change-plan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Occasionally, you may want to upgrade or downgrade the plan associated with a specific Cloudflare domain.
 
@@ -36,14 +36,13 @@ To change the Cloudflare plan for a domain in the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
-3. For Active Subscriptions, select **Change**.
-![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
+3. For Active Subscriptions, select **Change**.![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
 4. Choose the appropriate plan type, then select **Continue**.
 5. Select **Confirm**.
 
-To change the Cloudflare plan for a domain using the API, first send a [GET](https://developers.cloudflare.com/api/resources/zones/subresources/plans/methods/list/) request to review available subscriptions.
+To change the Cloudflare plan for a domain using the API, first send a [`GET`](https://developers.cloudflare.com/api/resources/zones/subresources/plans/methods/list/) request to review available subscriptions.
 
-Then, send a [PUT](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/update/) request with your desired plan type in the `rate_plan` object.
+Then, send a [`PUT`](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/update/) request with your desired plan type in the `rate_plan` object.
 
 Note
 
@@ -55,20 +54,18 @@ To change the duration of your Cloudflare plan in the dashboard:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
-3. For Active Subscriptions, select **Change**.
-![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
-4. Switch the toggle between **Monthly** or **Annual**.
-![Screenshot of the Plan choice with the annual or monthly toggle highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1856,height=1092,format=webp/_astro/plan-duration.BZ11r_rH.png)
+3. For Active Subscriptions, select **Change**.![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
+4. Switch the toggle between **Monthly** or **Annual**.![Screenshot of the Plan choice with the annual or monthly toggle highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1856,height=1092,format=webp/_astro/plan-duration.BZ11r_rH.png)
 5. Choose the appropriate plan type, then select **Continue**.
 6. Select **Confirm**.
 
-To change the duration of a Cloudflare plan for a domain using the API, send a [PUT](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/update/) request with an updated value for the `frequency` parameter.
+To change the duration of a Cloudflare plan for a domain using the API, send a [`PUT`](https://developers.cloudflare.com/api/resources/zones/subresources/subscriptions/methods/update/) request with an updated value for the `frequency` parameter.
 
 ## Related resources
 
-* [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel plans and add-ons
-* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When upgrades and downgrades take effect
+- [Cancel subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/) — Cancel plans and add-ons
+- [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When upgrades and downgrades take effect
 
 Was this helpful?
 

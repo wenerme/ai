@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Commands
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
-Complete list of all commands available for [wrangler ↗](https://github.com/cloudflare/wrangler-legacy), the Workers CLI.
+Complete list of all commands available for [`wrangler` ↗](https://github.com/cloudflare/wrangler-legacy), the Workers CLI.
 
 ---
 
@@ -32,18 +32,14 @@ wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
 
 Default values indicated by =value.
 
-* `$NAME` \=worker optional
-
-  * The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
-* `$TEMPLATE` \=[https://github.com/cloudflare/worker-template ↗](https://github.com/cloudflare/worker-template) optional
-
-  * The GitHub URL of the [repository to use as the template ↗](https://github.com/cloudflare/worker-template) for generating the project.
-* `--type=$TYPE` \=webpack optional
-
-  * The type of project; one of `webpack`, `javascript`, or `rust`.
-* `--site` optional
-
-  * When defined, the default `$TEMPLATE` value is changed to [cloudflare/workers-sdk/templates/worker-sites ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
+- `$NAME` =worker optional
+  - The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
+- `$TEMPLATE` = [https://github.com/cloudflare/worker-template ↗](https://github.com/cloudflare/worker-template) optional
+  - The GitHub URL of the [repository to use as the template ↗](https://github.com/cloudflare/worker-template) for generating the project.
+- `--type=$TYPE` =webpack optional
+  - The type of project; one of `webpack`, `javascript`, or `rust`.
+- `--site` optional
+  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
 
 ---
 
@@ -57,30 +53,27 @@ wrangler init [$NAME] [--type=$TYPE] [--site]
 
 Default values indicated by =value.
 
-* `$NAME` \=(Name of working directory) optional
-
-  * The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
-* `--type=$TYPE` \=webpack optional
-
-  * The type of project; one of `webpack`, `javascript`, or `rust`.
-* `--site` optional
-
-  * When defined, the default `$TEMPLATE` value is changed to [cloudflare/workers-sdk/templates/worker-sites ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
+- `$NAME` =(Name of working directory) optional
+  - The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
+- `--type=$TYPE` =webpack optional
+  - The type of project; one of `webpack`, `javascript`, or `rust`.
+- `--site` optional
+  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
 
 ---
 
 ## build
 
-Build your project (if applicable). This command looks at your Wrangler file and reacts to the ["type" value](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#keys) specified.
+Build your project (if applicable). This command looks at your Wrangler file and reacts to the [`"type"` value](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#keys) specified.
 
-When using `type = "webpack"`, Wrangler will build the Worker using its internal webpack installation. When using `type = "javascript"` , the [build.command](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#build-1), if defined, will run.
+When using `type = "webpack"`, Wrangler will build the Worker using its internal webpack installation. When using `type = "javascript"` , the [`build.command`](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#build-1), if defined, will run.
 
 ```sh
 wrangler build [--env $ENVIRONMENT_NAME]
 ```
 
-* `--env` optional
-  * If defined, Wrangler will load the matching environment's configuration before building. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--env` optional
+  - If defined, Wrangler will load the matching environment's configuration before building. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 ---
 
@@ -94,10 +87,10 @@ wrangler login [--scopes-list] [--scopes $SCOPES]
 
 All of the arguments and flags to this command are optional:
 
-* `--scopes-list` optional
-  * List all the available OAuth scopes with descriptions.
-* `--scopes $SCOPES` optional
-  * Allows to choose your set of OAuth scopes. The set of scopes must be entered in a whitespace-separated list, for example, `wrangler login --scopes account:read user:read`.
+- `--scopes-list` optional
+  - List all the available OAuth scopes with descriptions.
+- `--scopes $SCOPES` optional
+  - Allows to choose your set of OAuth scopes. The set of scopes must be entered in a whitespace-separated list, for example, `wrangler login --scopes account:read user:read`.
 
 `wrangler login` uses all the available scopes by default if no flags are provided.
 
@@ -115,9 +108,8 @@ This command only invalidates OAuth tokens acquired through the `wrangler login`
 
 To delete your API token:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. In the **Overview** \> **Get your API token** in the right side menu.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. In the **Overview** > **Get your API token** in the right side menu.
 3. Select the three-dot menu on your Wrangler token and select **Delete**.
 
 ---
@@ -130,8 +122,8 @@ Configure Wrangler so that it may acquire a Cloudflare API Token or Global API k
 wrangler config [--api-key]
 ```
 
-* `--api-key` optional
-  * To provide your email and global API key instead of a token. (This is not recommended for security reasons.)
+- `--api-key` optional
+  - To provide your email and global API key instead of a token. (This is not recommended for security reasons.)
 
 You can also use environment variables to authenticate, or `wrangler login` to authorize with OAuth tokens.
 
@@ -145,47 +137,41 @@ Publish your Worker to Cloudflare. Several keys in your Wrangler file determine 
 wrangler publish [--env $ENVIRONMENT_NAME]
 ```
 
-* `--env` optional
-  * If defined, Wrangler will load the matching environment's configuration before building and deploying. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--env` optional
+  - If defined, Wrangler will load the matching environment's configuration before building and deploying. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 To use this command, the following fields are required in your Wrangler file:
 
-* `name` string
+- `name` string
+  - The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
+- `type` string
+  - The type of project; one of `webpack`, `javascript`, or `rust`.
+- `account_id` string
+  - The Cloudflare account ID. This can be found in the Cloudflare dashboard, for example, `account_id = "a655bacaf2b4cad0e2b51c5236a6b974"`.
 
-  * The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
-* `type` string
-
-  * The type of project; one of `webpack`, `javascript`, or `rust`.
-* `account_id` string
-
-  * The Cloudflare account ID. This can be found in the Cloudflare dashboard, for example, `account_id = "a655bacaf2b4cad0e2b51c5236a6b974"`.
-
-You can publish to [<your-worker>.<your-subdomain>.workers.dev ↗](https://workers.dev) or to a custom domain.
+You can publish to [\<your-worker>.\<your-subdomain>.workers.dev ↗](https://workers.dev) or to a custom domain.
 
 When you publish changes to an existing Worker script, all new requests will automatically route to the updated version of the Worker without downtime. Any inflight requests will continue running on the previous version until completion. Once all inflight requests have finished complete, the previous Worker version will be purged and will no longer handle requests.
 
 ### Publishing to workers.dev
 
-To publish to [\*.workers.dev ↗](https://workers.dev), you will first need to have a subdomain registered. You can register a subdomain by executing the [wrangler subdomain](#subdomain) command.
+To publish to [`*.workers.dev` ↗](https://workers.dev), you will first need to have a subdomain registered. You can register a subdomain by executing the [`wrangler subdomain`](#subdomain) command.
 
 After you have registered a subdomain, add `workers_dev` to your Wrangler file.
 
-* `workers_dev` bool
-  * When `true`, indicates that the Worker should be deployed to a `*.workers.dev` domain.
+- `workers_dev` bool
+  - When `true`, indicates that the Worker should be deployed to a `*.workers.dev` domain.
 
 ### Publishing to your own domain
 
 To publish to your own domain, specify these three fields in your Wrangler file.
 
-* `zone_id` string
-
-  * The Cloudflare zone ID, for example, `zone_id = "b6558acaf2b4cad1f2b51c5236a6b972"`, which can be found in the Cloudflare dashboard.
-* `route` string
-
-  * The route you would like to publish to, for example, `route = "example.com/my-worker/*"`.
-* `routes` Array
-
-  * The routes you would like to publish to, for example, `routes = ["example.com/foo/*", example.com/bar/*]`.
+- `zone_id` string
+  - The Cloudflare zone ID, for example, `zone_id = "b6558acaf2b4cad1f2b51c5236a6b972"`, which can be found in the Cloudflare dashboard.
+- `route` string
+  - The route you would like to publish to, for example, `route = "example.com/my-worker/*"`.
+- `routes` Array
+  - The routes you would like to publish to, for example, `routes = ["example.com/foo/*", example.com/bar/*]`.
 
 Note
 
@@ -205,26 +191,20 @@ To publish your code to multiple domains, refer to the [documentation for enviro
 wrangler dev [--env $ENVIRONMENT_NAME] [--ip <ip>] [--port <port>] [--host <host>] [--local-protocol <http|https>] [--upstream-protocol <http|https>]
 ```
 
-* `--env` optional
+- `--env` optional
+  - If defined, Wrangler will load the matching environment's configuration. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--ip` optional
+  - The IP to listen on, defaults to `127.0.0.1`.
+- `--port` optional
+  - The port to listen on, defaults to `8787`.
+- `--host` optional
+  - The host to forward requests to, defaults to the zone of the project or to `tutorial.cloudflareworkers.com` if unauthenticated.
+- `--local-protocol` optional
+  - The protocol to listen to requests on, defaults to `http`.
+- `--upstream-protocol` optional
+  - The protocol to forward requests to host on, defaults to `https`.
 
-  * If defined, Wrangler will load the matching environment's configuration. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--ip` optional
-
-  * The IP to listen on, defaults to `127.0.0.1`.
-* `--port` optional
-
-  * The port to listen on, defaults to `8787`.
-* `--host` optional
-
-  * The host to forward requests to, defaults to the zone of the project or to `tutorial.cloudflareworkers.com` if unauthenticated.
-* `--local-protocol` optional
-
-  * The protocol to listen to requests on, defaults to `http`.
-* `--upstream-protocol` optional
-
-  * The protocol to forward requests to host on, defaults to `https`.
-
-These arguments can also be set in your Wrangler file. Refer to the [wrangler dev configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#dev) documentation for more information.
+These arguments can also be set in your Wrangler file. Refer to the [`wrangler dev` configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#dev) documentation for more information.
 
 ### Usage
 
@@ -252,18 +232,18 @@ Start a session to livestream logs from a deployed Worker.
 wrangler tail [--format $FORMAT] [--status $STATUS] [OPTIONS]
 ```
 
-* `--format $FORMAT` json|pretty
-  * The format of the log entries.
-* `--status $STATUS`
-  * Filter by invocation status \[possible values: `ok`, `error`, `canceled`\].
-* `--header $HEADER`
-  * Filter by HTTP header.
-* `--method $METHOD`
-  * Filter by HTTP method.
-* `--sampling-rate $RATE`
-  * Add a percentage of requests to log sampling rate.
-* `--search $SEARCH`
-  * Filter by a text match in `console.log` messages.
+- `--format $FORMAT` json|pretty
+  - The format of the log entries.
+- `--status $STATUS`
+  - Filter by invocation status \[possible values: `ok`, `error`, `canceled`].
+- `--header $HEADER`
+  - Filter by HTTP header.
+- `--method $METHOD`
+  - Filter by HTTP method.
+- `--sampling-rate $RATE`
+  - Add a percentage of requests to log sampling rate.
+- `--search $SEARCH`
+  - Filter by a text match in `console.log` messages.
 
 After starting `wrangler tail` in a directory with a project, you will receive a live feed of console and exception logs for each request your Worker receives.
 
@@ -285,22 +265,18 @@ wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$B
 
 Default values indicated by =value.
 
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, Wrangler will load the matching environment's configuration. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--watch` recommended
-
-  * When enabled, any changes to the Worker project will continually update the preview service with the newest version of your project. By default, `wrangler preview` will only bundle your project a single time.
-* `$METHOD` \="GET" optional
-
-  * The type of request to preview your Worker with (`GET`, `POST`).
-* `$BODY` \="Null" optional
-
-  * The body string to post to your preview Worker request. For example, `wrangler preview post hello=hello`.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, Wrangler will load the matching environment's configuration. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--watch` recommended
+  - When enabled, any changes to the Worker project will continually update the preview service with the newest version of your project. By default, `wrangler preview` will only bundle your project a single time.
+- `$METHOD` ="GET" optional
+  - The type of request to preview your Worker with ( `GET`, `POST`).
+- `$BODY` ="Null" optional
+  - The body string to post to your preview Worker request. For example, `wrangler preview post hello=hello`.
 
 ### kv\_namespaces
 
-If you are using [kv\_namespaces](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#kv%5Fnamespaces) with `wrangler preview`, you will need to specify a `preview_id` in your Wrangler file before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should ensure that you are not writing values to KV that would break your production Worker.
+If you are using [kv\_namespaces](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/#kv_namespaces) with `wrangler preview`, you will need to specify a `preview_id` in your Wrangler file before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should ensure that you are not writing values to KV that would break your production Worker.
 
 To create a `preview_id` run:
 
@@ -344,8 +320,8 @@ wrangler route list [--env $ENVIRONMENT_NAME]
 
 Default values indicated by =value.
 
-* `--env $ENVIRONMENT_NAME` optional
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 This command will forward the JSON response from the [List Routes API](https://developers.cloudflare.com/api/resources/workers/subresources/routes/methods/list/). Each object within the JSON list will include the route id, route pattern, and the assigned Worker name for the route. Piping this through a tool such as `jq` will render the output nicely.
 
@@ -355,18 +331,16 @@ wrangler route delete $ID [--env $ENVIRONMENT_NAME]
 
 Default values indicated by =value.
 
-* `$ID` required
-
-  * The hash of the route ID to delete.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `$ID` required
+  - The hash of the route ID to delete.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 ---
 
 ## subdomain
 
-Create or change your [\*.workers.dev ↗](https://workers.dev) subdomain.
+Create or change your [`*.workers.dev` ↗](https://workers.dev) subdomain.
 
 ```sh
 wrangler subdomain <name>
@@ -393,12 +367,10 @@ You will be prompted to input the secret's value. This command can receive piped
 echo "-----BEGIN PRIVATE KEY-----\nM...==\n-----END PRIVATE KEY-----\n" | wrangler secret put PRIVATE_KEY
 ```
 
-* `name`
-
-  * The variable name to be accessible in the script.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `name`
+  - The variable name to be accessible in the script.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 ### `delete`
 
@@ -408,12 +380,10 @@ Delete a secret from a specific script.
 wrangler secret delete <name> --env ENVIRONMENT_NAME
 ```
 
-* `name`
-
-  * The variable name to be accessible in the script.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `name`
+  - The variable name to be accessible in the script.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 ### `list`
 
@@ -423,8 +393,8 @@ List all the secret names bound to a specific script.
 wrangler secret list --env ENVIRONMENT_NAME
 ```
 
-* `--env $ENVIRONMENT_NAME` optional
-  * If defined, only the specified environment's secrets will be listed. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, only the specified environment's secrets will be listed. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
 
 ---
 
@@ -432,8 +402,8 @@ wrangler secret list --env ENVIRONMENT_NAME
 
 The `kv` subcommand allows you to store application data in the Cloudflare network to be accessed from Workers using [Workers KV ↗](https://www.cloudflare.com/products/workers-kv/). KV operations are scoped to your account, so in order to use any of these commands, you:
 
-* must configure an `account_id` in your project's Wrangler file.
-* run all `wrangler kv:<command>` operations in your terminal from the project's root directory.
+- must configure an `account_id` in your project's Wrangler file.
+- run all `wrangler kv:<command>` operations in your terminal from the project's root directory.
 
 ### Getting started
 
@@ -534,15 +504,20 @@ Since `--namespace-id` is always unique (unlike binding names), you do not need 
 Most `kv` commands require you to specify a namespace. A namespace can be specified in two ways:
 
 1. With a `--binding`:
-```sh
-wrangler kv:key get --binding=MY_KV "my key"
-```
 
-  * This can be combined with `--preview` flag to interact with a preview namespace instead of a production namespace.
+   ```sh
+   wrangler kv:key get --binding=MY_KV "my key"
+   ```
+
+
+   - This can be combined with `--preview` flag to interact with a preview namespace instead of a production namespace.
 2. With a `--namespace-id`:
-```sh
-wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
-```
+
+   ```sh
+   wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
+   ```
+
+
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish Workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your Wrangler file:
 
@@ -612,15 +587,12 @@ Create a new namespace.
 wrangler kv:namespace create $NAME [--env=$ENVIRONMENT_NAME] [--preview]
 ```
 
-* `$NAME`
-
-  * The name of the new namespace.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace (the `preview_id` value) instead of production.
+- `$NAME`
+  - The name of the new namespace.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace (the `preview_id` value) instead of production.
 
 ##### Usage
 
@@ -677,18 +649,14 @@ Delete a given namespace.
 wrangler kv:namespace delete --binding= [--namespace-id=]
 ```
 
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to delete.
-* `--namespace-id` required (if no `--binding`)
-
-  * The ID of the namespace to delete.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to delete.
+- `--namespace-id` required (if no `--binding`)
+  - The ID of the namespace to delete.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace instead of production.
 
 ##### Usage
 
@@ -719,33 +687,24 @@ wrangler kv:key put --binding= [--namespace-id=] $KEY $VALUE
 ✨  Success
 ```
 
-* `$KEY` required
-
-  * The key to write to.
-* `$VALUE` required
-
-  * The value to write.
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to write to.
-* `--namespace-id` required (if no `--binding`)
-
-  * The ID of the namespace to write to.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production. Pass this to the Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`.
-* `--ttl` optional
-
-  * The lifetime (in number of seconds) the document should exist before expiring. Must be at least `60` seconds. This option takes precedence over the `expiration` option.
-* `--expiration` optional
-
-  * The timestamp, in UNIX seconds, indicating when the key-value pair should expire.
-* `--path` optional
-
-  * When defined, Wrangler reads the `--path` file location to upload its contents as KV documents. This is ideal for security-sensitive operations because it avoids saving keys and values into your terminal history.
+- `$KEY` required
+  - The key to write to.
+- `$VALUE` required
+  - The value to write.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to write to.
+- `--namespace-id` required (if no `--binding`)
+  - The ID of the namespace to write to.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace instead of production. Pass this to the Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`.
+- `--ttl` optional
+  - The lifetime (in number of seconds) the document should exist before expiring. Must be at least `60` seconds. This option takes precedence over the `expiration` option.
+- `--expiration` optional
+  - The timestamp, in UNIX seconds, indicating when the key-value pair should expire.
+- `--path` optional
+  - When defined, Wrangler reads the `--path` file location to upload its contents as KV documents. This is ideal for security-sensitive operations because it avoids saving keys and values into your terminal history.
 
 ##### Usage
 
@@ -777,18 +736,14 @@ Output a list of all keys in a given namespace.
 wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
 ```
 
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to list.
-* `--namespace-id` required (if no `--binding`)
-
-  * The ID of the namespace to list.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--prefix` optional
-
-  * A prefix to filter listed keys.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to list.
+- `--namespace-id` required (if no `--binding`)
+  - The ID of the namespace to list.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--prefix` optional
+  - A prefix to filter listed keys.
 
 ##### Usage
 
@@ -815,21 +770,16 @@ Read a single value by key from the given namespace.
 wrangler kv:key get --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
 ```
 
-* `$KEY` required
-
-  * The key value to get.
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to get from.
-* `--namespace-id` required (if no `--binding`)
-
-  * The ID of the namespace to get from.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the operation will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+- `$KEY` required
+  - The key value to get.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to get from.
+- `--namespace-id` required (if no `--binding`)
+  - The ID of the namespace to get from.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the operation will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 ##### Usage
 
@@ -846,21 +796,16 @@ Removes a single key value pair from the given namespace.
 wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
 ```
 
-* `$KEY` required
-
-  * The key value to delete.
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to delete from.
-* `--namespace-id` required (if no `--binding`)
-
-  * The id of the namespace to delete from.
-* `--env` optional
-
-  * Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production. Pass this to use your Wrangler configuration file's `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+- `$KEY` required
+  - The key value to delete.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to delete from.
+- `--namespace-id` required (if no `--binding`)
+  - The id of the namespace to delete from.
+- `--env` optional
+  - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
+- `--preview` optional
+  - Interact with a preview namespace instead of production. Pass this to use your Wrangler configuration file's `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 ##### Usage
 
@@ -882,21 +827,16 @@ Write a file full of key-value pairs to the given namespace.
 wrangler kv:bulk put --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
 ```
 
-* `$FILENAME` required
-
-  * The file to write to the namespace
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to put to.
-* `--namespace-id` required (if no `--binding`)
-
-  * The id of the namespace to put to.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+- `$FILENAME` required
+  - The file to write to the namespace
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to put to.
+- `--namespace-id` required (if no `--binding`)
+  - The id of the namespace to put to.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 This command takes a JSON file as an argument with a list of key-value pairs to upload. An example of JSON input:
 
@@ -924,21 +864,16 @@ In order to save JSON data, cast `value` to a string:
 
 The schema below is the full schema for key-value entries uploaded via the bulk API:
 
-* `key` `string` required
-
-  * The key’s name. The name may be 512 bytes maximum. All printable, non-whitespace characters are valid.
-* `value` `string` required
-
-  * The UTF-8 encoded string to be stored, up to 25 MB in length.
-* `expiration` int optional
-
-  * The time, measured in number of seconds since the UNIX epoch, at which the key should expire.
-* `expiration_ttl` int optional
-
-  * The number of seconds the document should exist before expiring. Must be at least `60` seconds.
-* `base64` bool optional
-
-  * When true, the server will decode the value as base64 before storing it. This is useful for writing values that would otherwise be invalid JSON strings, such as images. Defaults to `false`.
+- `key` `string` required
+  - The key’s name. The name may be 512 bytes maximum. All printable, non-whitespace characters are valid.
+- `value` `string` required
+  - The UTF-8 encoded string to be stored, up to 25 MB in length.
+- `expiration` int optional
+  - The time, measured in number of seconds since the UNIX epoch, at which the key should expire.
+- `expiration_ttl` int optional
+  - The number of seconds the document should exist before expiring. Must be at least `60` seconds.
+- `base64` bool optional
+  - When true, the server will decode the value as base64 before storing it. This is useful for writing values that would otherwise be invalid JSON strings, such as images. Defaults to `false`.
 
 If both `expiration` and `expiration_ttl` are specified for a given key, the API will prefer `expiration_ttl`.
 
@@ -958,21 +893,16 @@ Delete all specified keys within a given namespace.
 wrangler kv:bulk delete --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
 ```
 
-* `$FILENAME` required
-
-  * The file with key-value pairs to delete.
-* `--binding` required (if no `--namespace-id`)
-
-  * The name of the namespace to delete from.
-* `--namespace-id` required (if no `--binding`)
-
-  * The ID of the namespace to delete from.
-* `--env $ENVIRONMENT_NAME` optional
-
-  * If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
-* `--preview` optional
-
-  * Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+- `$FILENAME` required
+  - The file with key-value pairs to delete.
+- `--binding` required (if no `--namespace-id`)
+  - The name of the namespace to delete from.
+- `--namespace-id` required (if no `--binding`)
+  - The ID of the namespace to delete from.
+- `--env $ENVIRONMENT_NAME` optional
+  - If defined, the changes will only apply to the specified environment. Refer to [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) for more information.
+- `--preview` optional
+  - Interact with a preview namespace instead of production. Pass this to use your Wrangler file’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 This command takes a JSON file as an argument with a list of key-value pairs to delete. An example of JSON input:
 
@@ -985,12 +915,10 @@ This command takes a JSON file as an argument with a list of key-value pairs to 
 ]
 ```
 
-* `key` `string` required
-
-  * The key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
-* `value` `string` required
-
-  * This field must be specified for deserialization purposes, but is unused because the provided keys are being deleted, not written.
+- `key` `string` required
+  - The key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
+- `value` `string` required
+  - This field must be specified for deserialization purposes, but is unused because the provided keys are being deleted, not written.
 
 ##### Usage
 
@@ -1009,13 +937,13 @@ y
 
 ## Environment variables
 
-Wrangler supports any [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) keys passed in as environment variables. This works by passing in `CF_` \+ any uppercased TOML key. For example:
+Wrangler supports any [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) keys passed in as environment variables. This works by passing in `CF_` + any uppercased TOML key. For example:
 
 `CF_NAME=my-worker CF_ACCOUNT_ID=1234 wrangler dev`
 
 ---
 
-## \--help
+## --help
 
 ```sh
 wrangler --help

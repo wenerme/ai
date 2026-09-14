@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Visualize Workflows
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/visualizer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/visualizer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 View a visual representation of your parsed Workflow code as a diagram on the Cloudflare dashboard.
 
@@ -26,29 +26,29 @@ Caution
 
 Note that this feature is currently in beta.
 
-* Workflows that use a non-default bundler may display unexpected behavior.
-* Python Workflows are not currently supported.
+- Workflows that use a non-default bundler may display unexpected behavior.
+- Python Workflows are not currently supported.
 
 ## Node types
 
 The diagrams consist of the following node types:
 
-| Node type        | Description                                                                   |
-| ---------------- | ----------------------------------------------------------------------------- |
-| StepSleep        | Pauses Workflow execution for a specified duration.                           |
-| StepDo           | Represents a named, retriable step that wraps a unit of work.                 |
-| StepWaitForEvent | Suspends execution until an external event is received.                       |
-| StepSleepUntil   | Pauses Workflow execution until a specific date and time.                     |
-| LoopNode         | Represents a loop construct (for, while, etc.) that repeats a block of logic. |
-| ParallelNode     | Groups steps that execute concurrently, such as those inside Promise.all().   |
-| TryNode          | Represents a try...catch block that handles errors within a Workflow.         |
-| BlockNode        | Groups a sequence of steps into a logical block for display purposes.         |
-| IfNode           | Represents a conditional branch based on an if/else expression.               |
-| SwitchNode       | Represents a switch statement that routes execution across multiple cases.    |
-| StartNode        | Marks the entry point of the Workflow or a function definition.               |
-| FunctionCall     | Represents a call to a named function within the Workflow code.               |
-| FunctionDef      | Represents the definition of a function used within the Workflow.             |
-| BreakNode        | Represents a break statement that exits a loop early.                         |
+| Node type | Description |
+| --- | --- |
+| `StepSleep` | Pauses Workflow execution for a specified duration. |
+| `StepDo` | Represents a named, retriable step that wraps a unit of work. |
+| `StepWaitForEvent` | Suspends execution until an external event is received. |
+| `StepSleepUntil` | Pauses Workflow execution until a specific date and time. |
+| `LoopNode` | Represents a loop construct (`for`, `while`, etc.) that repeats a block of logic. |
+| `ParallelNode` | Groups steps that execute concurrently, such as those inside `Promise.all()`. |
+| `TryNode` | Represents a `try...catch` block that handles errors within a Workflow. |
+| `BlockNode` | Groups a sequence of steps into a logical block for display purposes. |
+| `IfNode` | Represents a conditional branch based on an `if/else` expression. |
+| `SwitchNode` | Represents a `switch` statement that routes execution across multiple cases. |
+| `StartNode` | Marks the entry point of the Workflow or a function definition. |
+| `FunctionCall` | Represents a call to a named function within the Workflow code. |
+| `FunctionDef` | Represents the definition of a function used within the Workflow. |
+| `BreakNode` | Represents a `break` statement that exits a loop early. |
 
 ## Execution order
 

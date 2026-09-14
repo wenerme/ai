@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up advanced nameservers
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced nameservers included with [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/) are an opt-in configuration.
 
@@ -24,72 +24,96 @@ After enabling advanced nameservers, standard nameservers still respond to DNS q
 
 Before opting in for advanced nameservers, consider the following:
 
-* The advantages that come with Foundation DNS [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) are currently not available for [custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/). Make sure you only use one at a time.
+- The advantages that come with Foundation DNS [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) are currently not available for [custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/). Make sure you only use one at a time.
 
 ### Differences from standard nameservers
 
 Some behaviors are different from standard Cloudflare nameservers:
 
-* Wildcard records are still supported but, with advanced nameservers, a wildcard record (`*.example.com`) will not apply to a subdomain that is an empty non-terminal. An empty non-terminal is a node in the DNS tree that has no records associated with it but has descendants that do, as exemplified below. This behavior is in compliance with [RFC 4592 ↗](https://www.rfc-editor.org/rfc/rfc4592.html), which defines the role of empty non-terminals in wildcard resolution.
+- Wildcard records are still supported but, with advanced nameservers, a wildcard record ( `*.example.com`) will not apply to a subdomain that is an empty non-terminal. An empty non-terminal is a node in the DNS tree that has no records associated with it but has descendants that do, as exemplified below. This behavior is in compliance with [RFC 4592 ↗](https://www.rfc-editor.org/rfc/rfc4592.html), which defines the role of empty non-terminals in wildcard resolution.
+
+<details>
+
+<summary>
 
 Example
+
+</summary>
 
 DNS management for **example.com**
 
 | **Type** | **Name** | **Content** |
-| -------- | -------- | ----------- |
-| A        | \*       | 192.0.2.1   |
-| A        | a.b      | 192.0.2.5   |
+| --- | --- | --- |
+| A | \* | <code>192.0.2.1</code> |
+| A | a.b | <code>192.0.2.5</code> |
 
-In this example, `a.b.example.com` is a descendant of `b.example.com`, and `b.example.com` is an empty non-terminal. This means that the wildcard `*.example.com` will not apply to `b.example.com`.
+In this example, <code>a.b.example.com</code> is a descendant of <code>b.example.com</code>, and <code>b.example.com</code> is an empty non-terminal. This means that the wildcard <code>*.example.com</code> will not apply to <code>b.example.com</code>.
 
-* Subdomain delegation: once a subdomain is delegated via NS records, Cloudflare will not serve any other records (such as A, TXT, or CNAME) on that subdomain from the parent zone, even if those records exist.
+</details>
+
+- Subdomain delegation: once a subdomain is delegated via NS records, Cloudflare will not serve any other records (such as A, TXT, or CNAME) on that subdomain from the parent zone, even if those records exist.
+
+<details>
+
+<summary>
 
 Example
 
+</summary>
+
 DNS management for **example.com**
 
-| **Type** | **Name** | **Content**                        |
-| -------- | -------- | ---------------------------------- |
-| NS       | www      | ns1.externalhost.com               |
-| NS       | www      | ns2.externalhost.com               |
-| TXT      | www      | "5bb16e6b5a444eedb48ace40c471bcc9" |
-| A        | www      | 192.0.2.1                          |
+| **Type** | **Name** | **Content** |
+| --- | --- | --- |
+| NS | www | ns1.externalhost.com |
+| NS | www | ns2.externalhost.com |
+| TXT | www | "5bb16e6b5a444eedb48ace40c471bcc9" |
+| A | www | <code>192.0.2.1</code> |
 
-In this example, the TXT record and the A record for `www.example.com` will not be served.
+In this example, the TXT record and the A record for <code>www.example.com</code> will not be served.
+
+</details>
 
 ## Enable on a zone
 
 To enable advanced nameservers on an existing zone:
 
 1. Opt for advanced nameservers on your zone:
+   1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+   2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.
+   3. After you refresh the page, the card will display the values for your advanced nameservers `NS` records.
 
-  1. In the Cloudflare dashboard, go to the **DNS Records** page.
-  [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
-  2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.
-  3. After you refresh the page, the card will display the values for your advanced nameservers `NS` records.
-Use the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to send a PATCH request like the following:
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Zone DNS Settings Write`
-  * `DNS Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
-	--request PATCH \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"nameservers": {
-				"type": "cloudflare.advanced"
-		}
-	}'
-```
-The response body will contain your assigned nameservers in the `nameservers` object. You will use these nameservers in the next step.
+   Use the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to send a PATCH request like the following:<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Zone DNS Settings Write</code>
+   - <code>DNS Write</code></details>
+
+   *Update DNS Settingsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_settings" \
+   	--request PATCH \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"nameservers": {
+   				"type": "cloudflare.advanced"
+   		}
+   	}'
+   ```
+
+   The response body will contain your assigned nameservers in the `nameservers` object. You will use these nameservers in the next step.
 2. Update the authoritative nameservers at your registrar. This step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/):
+   - If you are using Cloudflare Registrar, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have your nameservers updated.
+   - If you are using a different registrar or if your zone is delegated, [manually update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).
 
-  * If you are using Cloudflare Registrar, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to have your nameservers updated.
-  * If you are using a different registrar or if your zone is delegated, [manually update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).
-  Caution
-  Make sure the values for your assigned nameservers are copied exactly.
+     Caution
+
+     Make sure the values for your assigned nameservers are copied exactly.
 
 Was this helpful?
 

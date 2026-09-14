@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Always Use HTTPS
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Always Use HTTPS redirects all your visitor requests from `http` to `https`, for all subdomains and hosts in your application.
 
@@ -24,9 +24,9 @@ Cloudflare recommends not performing redirects at your origin web server, as thi
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Encrypt all visitor traffic
 
@@ -38,8 +38,7 @@ If only some parts of your application can support HTTPS traffic, do not enable 
 
 To enable **Always Use HTTPS** in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) is not set to **Off**. When you set your encryption mode to **Off**, the **Always Use HTTPS** option will not be visible in your Cloudflare dashboard.
 3. Go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 4. Turn on **Always Use HTTPS**.
@@ -47,7 +46,7 @@ To enable **Always Use HTTPS** in the dashboard:
 To enable or disable **Always Use HTTPS** with the API:
 
 1. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) **is not** set to **Off**.
-2. Send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `always_use_https` as the setting name in the URI path, and the `value` parameter set to your desired setting (`"on"` or `"off"`).
+2. Send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `always_use_https` as the setting name in the URI path, and the `value` parameter set to your desired setting ( `"on"` or `"off"`).
 
 ## Limitations
 

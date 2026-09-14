@@ -12,30 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage advanced certificates
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Create a certificate
 
 If you are using an existing [Universal SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare will automatically replace this certificate once you finish ordering your advanced certificate.
 
-Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/list/).
+Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/list/).
 
 To create a new advanced certificate in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Order Advanced Certificate**.
 3. If Cloudflare does not have your billing information, you will need to enter that information.
 4. Enter the following information:
-
-  * Certificate authority
-  * Certificate hostnames
-    * For hostnames longer than 64 characters, use the API.
-  * Validation method
-  * Certificate validity period
+   - Certificate authority
+   - Certificate hostnames
+     - For hostnames longer than 64 characters, use the API.
+   - Validation method
+   - Certificate validity period
 5. Select **Save**.
 
-To create a new certificate using the API, send a [POST request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/) to the Cloudflare API.
+To create a new certificate using the API, send a [POST request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/) to the Cloudflare API.
 
 If you need certificates for hostnames longer than 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)), set the `cloudflare_branding` option to `true`. This will add `sni.cloudflaressl.com` in the Common Name (CN) field and will include the long hostname as a part of the Subject Alternative Name (SAN).
 
@@ -49,18 +47,17 @@ The available options for **Validation method** and **Certificate Validity Perio
 
 To delete an advanced certificate in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select a certificate.
 3. Select **Delete Certificate**.
 
-To delete a certificate using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/delete/) to the Cloudflare API.
+To delete a certificate using the API, send a [DELETE request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/delete/) to the Cloudflare API.
 
 ---
 
 ## Restart validation
 
-To restart validation for a certificate in a `validation_timed_out` status, send a [PATCH request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/edit/) to the API.
+To restart validation for a certificate in a `validation_timed_out` status, send a [PATCH request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/edit/) to the API.
 
 ---
 
@@ -77,6 +74,7 @@ For more details, refer to [Customize cipher suites](https://developers.cloudfla
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
 
+
 Normally, you only need to update DCV if you have your application on a partial setup (Cloudflare does not run your authoritative nameservers).
 
 For more information about DCV, refer to [DCV methods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
@@ -87,11 +85,17 @@ For more information about DCV, refer to [DCV methods](https://developers.cloudf
 
 You can configure alerts to receive notifications for changes in your certificates.
 
+<details>
+
+<summary>
+
 Advanced Certificate Alert
+
+</summary>
 
 **Who is it for?**
 
-Customers with [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) that want to be alerted on validation, issuance, renewal, and expiration of certificates.
+Customers with <a href="https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/">advanced certificates</a> that want to be alerted on validation, issuance, renewal, and expiration of certificates.
 
 **Other options / filters**
 
@@ -103,7 +107,9 @@ When an advanced certificate is validated, issued, renewed, or expired.
 
 **What should you do if you receive one?**
 
-Action only needed if notification is about a certificate that failed to be issued. Refer to [SSL expired or SSL mismatch errors](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/) for more information.
+Action only needed if notification is about a certificate that failed to be issued. Refer to <a href="https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/">SSL expired or SSL mismatch errors</a> for more information.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

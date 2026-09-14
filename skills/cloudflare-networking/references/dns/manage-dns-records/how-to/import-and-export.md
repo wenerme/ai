@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Import and export records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use import and export to have more control over your DNS records and make processes like migrating a domain or bulk editing [record comments](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) easier.
 
@@ -20,12 +20,12 @@ Use import and export to have more control over your DNS records and make proces
 
 ### Limits
 
-* The zone file size limit is 256 KiB (262144 bytes).
-* The API rate limit is three requests per minute per user.
+- The zone file size limit is 256 KiB (262144 bytes).
+- The API rate limit is three requests per minute per user.
 
 ### Format your zone file
 
-Create a [BIND zone file ↗](https://en.wikipedia.org/wiki/Zone%5Ffile) for your domain. If you need help, use a [third-party tool ↗](https://pgl.yoyo.org/as/bind-zone-file-creator.php).
+Create a [BIND zone file ↗](https://en.wikipedia.org/wiki/Zone_file) for your domain. If you need help, use a [third-party tool ↗](https://pgl.yoyo.org/as/bind-zone-file-creator.php).
 
 If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `NS`, `PTR`, or `SRV` records — make sure that the **content** of those records contains fully qualified domain names ending in a trailing period (as in `example.com.`). For more details, refer to [RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035#section-5.1) or this [post on Stack Exchange ↗](https://superuser.com/questions/348282/fqdn-format-in-bind-zone#348284).
 
@@ -33,18 +33,28 @@ If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `
 
 To import a zone file using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Import and Export**.
 3. For **Import DNS records**, select your [formatted file](#format-your-zone-file).
 4. If you do not want [applicable records](https://developers.cloudflare.com/dns/proxy-status/) proxied, unselect **Proxy imported DNS records**.
 
 To import records using the API, send a [POST request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/import/) with a properly [formatted file](#format-your-zone-file).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>DNS Write</code>
+
+</details>
+
+*Import DNS Recordsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/import" \
@@ -61,18 +71,28 @@ You can also bulk export records from Cloudflare.
 
 To export records using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Import and Export**.
 3. Select **Export**.
 
 To export records using the API, send a [GET request](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/export/).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `DNS Read`
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>DNS Read</code>
+- <code>DNS Write</code>
+
+</details>
+
+*Export DNS Recordsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
@@ -86,12 +106,14 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
 
 When exporting or importing a zone file, Cloudflare formats [comments and tags](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) using the following structure, appending the attributes as inline comment using the `;` character after each record in accordance with [RFC 1035 section 5 ↗](https://datatracker.ietf.org/doc/html/rfc1035#section-5-1):
 
-| Combination           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Only tags**         | Tag names contain a [small set](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#tags) of characters.Additionally, tag values must be contained by a double quote (") if they contain ", \=, ,, or \\. When enclosed within double quotes ("), tag values are represented as JSON strings, so other quotes within the value can be escaped as \\".A tag with an empty value can be represented either as my-tag-name:"", my-tag-name:, or my-tag-name. |
-| **Only a comment**    | Comments have [fewer limitations](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#comments) on characters, meaning that the comment is included verbatim.If the comment includes the string cf\_tags=, you need to include an additional  cf\_tags= at the end of the line.                                                                                                                                                                           |
-| **Comment and tags**  | The zone file comment would be of the form ; <comment> cf\_tags=<tags>, as described above. Note the added space character before cf\_tags=.                                                                                                                                                                                                                                                                                                                                                |
-| **Neither attribute** | The comment in the zone file may be empty or omitted entirely. Comments in the zone file that do not immediately follow a record are also ignored.                                                                                                                                                                                                                                                                                                                                          |
+| Combination | Description |
+| --- | --- |
+| **Only tags** | Tag names contain a [small set](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#tags) of characters.<br><br>Additionally, tag values must be contained by a double quote (`"`) if they contain `"`, `=`, `,`, or `\`. When enclosed within double quotes (`"`), tag values are represented as JSON strings, so other quotes within the value can be escaped as `\"`.<br><br>A tag with an empty value can be represented either as `my-tag-name:""`, `my-tag-name:`, or `my-tag-name`. |
+| **Only a comment** | Comments have [fewer limitations](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/#comments) on characters, meaning that the comment is included verbatim.<br><br>If the comment includes the string `cf_tags=`, you need to include an additional `cf_tags=` at the end of the line. |
+| **Comment and tags** | The zone file comment would be of the form ; `<comment>` cf\_tags=`<tags>`, as described above. Note the added space character before `cf_tags=`. |
+| **Neither attribute** | The comment in the zone file may be empty or omitted entirely. Comments in the zone file that do not immediately follow a record are also ignored. |
+
+*Example zone filetxt*
 
 ```txt
 ; Only tags
@@ -114,6 +136,8 @@ g.example.com.  60  IN  A   1.1.1.1
 
 When exporting and importing, special tags starting by `cf-` allow you to control specific Cloudflare configurations. On export, these tags are automatically added to reflect the current configuration for each record on your zone.
 
+*Records with cf- tags exampletxt*
+
 ```txt
 ;; CNAME Records
 a.cloudflaredocs.com.	1	IN	CNAME	example.com. ; cf_tags=test:1,cf-flatten-cname
@@ -127,8 +151,8 @@ On export, [proxied DNS records](https://developers.cloudflare.com/dns/proxy-sta
 
 When importing zone files, the value in the `cf-proxied` tag will take precedence in determining whether a record should be proxied. This means that:
 
-* If the tag is present, its value will be considered for the respective record regardless of the **Proxy imported DNS records** option being selected (via dashboard), or the `proxied` parameter being generally set to `true` or `false` (via API).
-* If the tag is absent, the proxied status will fall back to the general import option, meaning **Proxy imported DNS records** selected or not (via dashboard) or the `proxied` parameter set to `true` or `false` (via API).
+- If the tag is present, its value will be considered for the respective record regardless of the **Proxy imported DNS records** option being selected (via dashboard), or the `proxied` parameter being generally set to `true` or `false` (via API).
+- If the tag is absent, the proxied status will fall back to the general import option, meaning **Proxy imported DNS records** selected or not (via dashboard) or the `proxied` parameter set to `true` or `false` (via API).
 
 #### cf-flatten-cname
 

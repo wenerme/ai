@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Extensions
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/s3/extensions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/extensions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 implements some extensions on top of the basic S3 API. This page outlines these additional, available features. Some of the functionality described in this page requires setting a custom header. For examples on how to do so, refer to [Configure custom headers](https://developers.cloudflare.com/r2/examples/aws/custom-header).
 
 ## Extended metadata using Unicode
 
-The [Workers R2 API](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) supports Unicode in keys and values natively without requiring any additional encoding or decoding for the `customMetadata` field. These fields map to the `x-amz-meta-`\-prefixed headers used within the R2 S3-compatible API endpoint.
+The [Workers R2 API](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) supports Unicode in keys and values natively without requiring any additional encoding or decoding for the `customMetadata` field. These fields map to the `x-amz-meta-`-prefixed headers used within the R2 S3-compatible API endpoint.
 
 HTTP header names and values may only contain ASCII characters, which is a small subset of the Unicode character library. To easily accommodate users, R2 adheres to [RFC 2047 ↗](https://datatracker.ietf.org/doc/html/rfc2047) and automatically decodes all `x-amz-meta-*` header values before storage. On retrieval, any metadata values with unicode are RFC 2047-encoded before rendering the response. The length limit for metadata values is applied to the decoded Unicode value.
 
@@ -28,21 +28,21 @@ Be mindful when using both Workers and S3 API endpoints to access the same data.
 
 These headers map to the `httpMetadata` field in the [R2 bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/):
 
-| HTTP Header         | Property Name                   |
-| ------------------- | ------------------------------- |
-| Content-Encoding    | httpMetadata.contentEncoding    |
-| Content-Type        | httpMetadata.contentType        |
-| Content-Language    | httpMetadata.contentLanguage    |
-| Content-Disposition | httpMetadata.contentDisposition |
-| Cache-Control       | httpMetadata.cacheControl       |
-| Expires             | httpMetadata.expires            |
-|                     |                                 |
+| HTTP Header | Property Name |
+| --- | --- |
+| `Content-Encoding` | `httpMetadata.contentEncoding` |
+| `Content-Type` | `httpMetadata.contentType` |
+| `Content-Language` | `httpMetadata.contentLanguage` |
+| `Content-Disposition` | `httpMetadata.contentDisposition` |
+| `Cache-Control` | `httpMetadata.cacheControl` |
+| `Expires` | `httpMetadata.expires` |
+|  | |
 
 If using Unicode in object key names, refer to [Unicode Interoperability](https://developers.cloudflare.com/r2/reference/unicode-interoperability/).
 
 ## Auto-creating buckets on upload
 
-If you are creating buckets on demand, you might initiate an upload with the assumption that a target bucket exists. In this situation, if you received a `NoSuchBucket` error, you would probably issue a `CreateBucket` operation. However, following this approach can cause issues: if the body has already been partially consumed, the upload will need to be aborted. A common solution to this issue, followed by other object storage providers, is to use the [HTTP 100 ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/100) response to detect whether the body should be sent, or if the bucket must be created before retrying the upload. However, Cloudflare does not support the HTTP `100` response. Even if the HTTP `100` response was supported, you would still have additional latency due to the round trips involved.
+If you are creating buckets on demand, you might initiate an upload with the assumption that a target bucket exists. In this situation, if you received a `NoSuchBucket` error, you would probably issue a `CreateBucket` operation. However, following this approach can cause issues: if the body has already been partially consumed, the upload will need to be aborted. A common solution to this issue, followed by other object storage providers, is to use the [HTTP `100` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/100) response to detect whether the body should be sent, or if the bucket must be created before retrying the upload. However, Cloudflare does not support the HTTP `100` response. Even if the HTTP `100` response was supported, you would still have additional latency due to the round trips involved.
 
 To support sending an upload with a streaming body to a bucket that may not exist yet, upload operations such as `PutObject` or `CreateMultipartUpload` allow you to specify a header that will ensure the `NoSuchBucket` error is not returned. If the bucket does not exist at the time of upload, it is implicitly instantiated with the following `CreateBucket` request:
 
@@ -54,7 +54,7 @@ Host: bucket.account.r2.cloudflarestorage.com
 </CreateBucketConfiguration>
 ```
 
-This is only useful if you are creating buckets on demand because you do not know the name of the bucket or the preferred access location ahead of time. For example, you have one bucket per one of your customers and the bucket is created on first upload to the bucket and not during account registration. In these cases, the [ListBuckets extension](#listbuckets), which supports accounts with more than 1,000 buckets, may also be useful.
+This is only useful if you are creating buckets on demand because you do not know the name of the bucket or the preferred access location ahead of time. For example, you have one bucket per one of your customers and the bucket is created on first upload to the bucket and not during account registration. In these cases, the [`ListBuckets` extension](#listbuckets), which supports accounts with more than 1,000 buckets, may also be useful.
 
 ## PutObject and CreateMultipartUpload
 
@@ -72,25 +72,25 @@ The `x-amz-metadata-directive` allows a `MERGE` value, in addition to the standa
 
 `ListBuckets` supports all the same search parameters as `ListObjectsV2` in R2 because some customers may have more than 1,000 buckets. Because tooling, like existing S3 libraries, may not expose a way to set these search parameters, these values may also be sent in via headers. Values in headers take precedence over the search parameters.
 
-| Search parameter   | HTTP Header           | Meaning                                                           |
-| ------------------ | --------------------- | ----------------------------------------------------------------- |
-| prefix             | cf-prefix             | Show buckets with this prefix only.                               |
-| start-after        | cf-start-after        | Show buckets whose name appears lexicographically in the account. |
-| continuation-token | cf-continuation-token | Resume listing from a previously returned continuation token.     |
-| max-keys           | cf-max-keys           | Return this maximum number of buckets. Default and max is 1000.   |
-|                    |                       |                                                                   |
+| Search parameter | HTTP Header | Meaning |
+| --- | --- | --- |
+| `prefix` | `cf-prefix` | Show buckets with this prefix only. |
+| `start-after` | `cf-start-after` | Show buckets whose name appears lexicographically in the account. |
+| `continuation-token` | `cf-continuation-token` | Resume listing from a previously returned continuation token. |
+| `max-keys` | `cf-max-keys` | Return this maximum number of buckets. Default and max is `1000`. |
+|  |  | |
 
 The XML response contains a `NextContinuationToken` and `IsTruncated` elements as appropriate. Since these may not be accessible from existing S3 APIs, these are also available in response headers:
 
-| XML Response Element  | HTTP Response Header       | Meaning                                                                                      |
-| --------------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
-| IsTruncated           | cf-is-truncated            | This is set to true if the list of buckets returned is not all the buckets on the account.   |
-| NextContinuationToken | cf-next-continuation-token | This is set to continuation token to pass on a subsequent ListBuckets to resume the listing. |
-| StartAfter            |                            | This is the start-after value that was passed in on the request.                             |
-| KeyCount              |                            | The number of buckets returned.                                                              |
-| ContinuationToken     |                            | The continuation token that was supplied in the request.                                     |
-| MaxKeys               |                            | The max keys that were specified in the request.                                             |
-|                       |                            |                                                                                              |
+| XML Response Element | HTTP Response Header | Meaning |
+| --- | --- | --- |
+| `IsTruncated` | `cf-is-truncated` | This is set to `true` if the list of buckets returned is not all the buckets on the account. |
+| `NextContinuationToken` | `cf-next-continuation-token` | This is set to continuation token to pass on a subsequent `ListBuckets` to resume the listing. |
+| `StartAfter` |  | This is the start-after value that was passed in on the request. |
+| `KeyCount` |  | The number of buckets returned. |
+| `ContinuationToken` |  | The continuation token that was supplied in the request. |
+| `MaxKeys` |  | The max keys that were specified in the request. |
+|  |  | |
 
 ### Conditional operations in `CopyObject` for the destination object
 
@@ -100,10 +100,10 @@ This feature is currently in beta. If you have feedback, reach out to us on the 
 
 `CopyObject` already supports conditions that relate to the source object through the `x-amz-copy-source-if-...` headers as part of our compliance with the S3 API. In addition to this, R2 supports an R2 specific set of headers that allow the `CopyObject` operation to be conditional on the target object:
 
-* `cf-copy-destination-if-match`
-* `cf-copy-destination-if-none-match`
-* `cf-copy-destination-if-modified-since`
-* `cf-copy-destination-if-unmodified-since`
+- `cf-copy-destination-if-match`
+- `cf-copy-destination-if-none-match`
+- `cf-copy-destination-if-modified-since`
+- `cf-copy-destination-if-unmodified-since`
 
 These headers work akin to the similarly named conditional headers supported on `PutObject`. When the preceding state of the destination object to does not match the specified conditions the `CopyObject` operation will be rejected with a `412 PreconditionFailed` error code.
 

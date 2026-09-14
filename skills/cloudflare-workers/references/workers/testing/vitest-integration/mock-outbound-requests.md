@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mock outbound requests
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use [@msw/cloudflare ↗](https://github.com/mswjs/cloudflare) to mock outbound HTTP and WebSocket requests with `@cloudflare/vitest-plugin`. The integration supports unit tests that call your Worker's exported handler and integration tests that call `exports.default.fetch()`.
+Use [`@msw/cloudflare` ↗](https://github.com/mswjs/cloudflare) to mock outbound HTTP and WebSocket requests with `@cloudflare/vitest-plugin`. The integration supports unit tests that call your Worker's exported handler and integration tests that call `exports.default.fetch()`.
 
 ## Install dependencies
 
@@ -42,11 +42,15 @@ bun add -d msw@^2.14.0 @msw/cloudflare
 
 Create a shared network mock for your tests:
 
+*test/network.jsjs*
+
 ```js
 import { setupNetwork } from "@msw/cloudflare";
 
 export const network = setupNetwork();
 ```
+
+*test/network.tsts*
 
 ```ts
 import { setupNetwork } from "@msw/cloudflare";
@@ -56,6 +60,8 @@ export const network = setupNetwork();
 
 In a Vitest setup file, start the mock before tests, reset handlers after each test, and stop it after tests finish:
 
+*test/setup.jsjs*
+
 ```js
 import { afterAll, afterEach, beforeAll } from "vitest";
 import { network } from "./network";
@@ -64,6 +70,8 @@ beforeAll(() => network.enable());
 afterEach(() => network.resetHandlers());
 afterAll(() => network.disable());
 ```
+
+*test/setup.tsts*
 
 ```ts
 import { afterAll, afterEach, beforeAll } from "vitest";
@@ -80,6 +88,8 @@ Add the setup file to the `setupFiles` array in your Vitest configuration.
 
 Use `network.use()` and MSW request handlers to return a response for an outbound request. This example tests a Worker that requests a greeting from an external API:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch() {
@@ -88,6 +98,8 @@ export default {
 };
 ```
 
+*src/index.tsts*
+
 ```ts
 export default {
 	async fetch(): Promise<Response> {
@@ -95,6 +107,8 @@ export default {
 	},
 } satisfies ExportedHandler;
 ```
+
+*test/worker.test.jsjs*
 
 ```js
 import {
@@ -124,6 +138,8 @@ it("mocks an outbound request", async () => {
 	expect(await response.json()).toEqual({ message: "Hello" });
 });
 ```
+
+*test/worker.test.tsts*
 
 ```ts
 import { createExecutionContext, waitOnExecutionContext } from "cloudflare:test";

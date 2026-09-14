@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox lifecycle
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents sandbox lifecycle on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. For the current stable package, also refer to [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/). Platform placement and shutdown details live in [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/).
+This page documents sandbox lifecycle on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. For the current stable package, also refer to [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/). Platform placement and shutdown details live in [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/).
 
 Your app addresses a sandbox with a **sandbox ID**. The Linux environment that runs commands and holds local files is a **container**. The ID can outlive any one container.
 
@@ -34,13 +34,13 @@ const sandbox = getSandbox(env.Sandbox, "user-123");
 const sandbox = getSandbox(env.Sandbox, "user-123");
 ```
 
-|                         | Meaning                                                                                                                |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Sandbox ID**          | The string you pass to getSandbox (for example "user-123"). Use the same ID to reach the same sandbox later.           |
-| **Durable Object**      | The coordinator behind that ID. The same ID maps to the same Durable Object identity.                                  |
-| **Container**           | The current [Containers](https://developers.cloudflare.com/containers/) instance that runs Linux work for the sandbox. |
-| **Process or terminal** | A program or interactive PTY inside the **current** container.                                                         |
-| **Local files**         | Files on that container’s disk (for example under /workspace).                                                         |
+|  | Meaning |
+| --- | --- |
+| **Sandbox ID** | The string you pass to `getSandbox` (for example `"user-123"`). Use the same ID to reach the same sandbox later. |
+| **Durable Object** | The coordinator behind that ID. The same ID maps to the same Durable Object identity. |
+| **Container** | The current [Containers](https://developers.cloudflare.com/containers/) instance that runs Linux work for the sandbox. |
+| **Process or terminal** | A program or interactive PTY inside the **current** container. |
+| **Local files** | Files on that container’s disk (for example under `/workspace`). |
 
 **Same sandbox ID does not mean the same container.** After the container stops or is replaced, the next work for that ID may run in a new container.
 
@@ -54,9 +54,9 @@ The container starts when an operation needs it — for example `exec()`, `creat
 
 While a container is up for a sandbox ID:
 
-* Processes and terminals keep running until they exit or you stop them.
-* Local files stay available in that container.
-* Later Worker requests can call `getProcess` or `getTerminal` and continue, as long as **that** container still has the resource.
+- Processes and terminals keep running until they exit or you stop them.
+- Local files stay available in that container.
+- Later Worker requests can call `getProcess` or `getTerminal` and continue, as long as **that** container still has the resource.
 
 Process detail: [How long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives). Terminals: [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/).
 
@@ -66,21 +66,21 @@ A container is not permanent. Cloudflare may stop it after idle time. It can als
 
 When that happens:
 
-* Your app still uses the same sandbox ID.
-* Processes and terminals from the old container are gone, including their IDs and live log buffers.
-* Local files from the old container are gone unless your app restored them (for example with a [backup](https://developers.cloudflare.com/sandbox/guides/backup-restore/) or a mounted bucket).
-* The next real work may start a **new** container for the same sandbox ID.
-* Handles from the previous container fail closed. `getProcess` and `getTerminal` return `null` when the resource is not in the current container. Those lookups do not start a container only to answer the question.
+- Your app still uses the same sandbox ID.
+- Processes and terminals from the old container are gone, including their IDs and live log buffers.
+- Local files from the old container are gone unless your app restored them (for example with a [backup](https://developers.cloudflare.com/sandbox/guides/backup-restore/) or a mounted bucket).
+- The next real work may start a **new** container for the same sandbox ID.
+- Handles from the previous container fail closed. `getProcess` and `getTerminal` return `null` when the resource is not in the current container. Those lookups do not start a container only to answer the question.
 
 To continue work later, store the **job** (what to run, `cwd`, `env`, and any app checkpoint), not only a process or terminal ID.
 
 ## Idle stop, replace, and destroy
 
-| Event                                               | What stays                                    | What is gone                                                 |
-| --------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------ |
-| **Idle stop**                                       | Sandbox ID and Durable Object identity        | Processes, terminals, local files from the stopped container |
-| **Replace** (failure, deploy, or other replacement) | Sandbox ID and Durable Object identity        | Same as idle stop for the previous container                 |
-| **destroy()**                                       | The sandbox ID string can be used again later | Treat prior work for that generation as finished             |
+| Event | What stays | What is gone |
+| --- | --- | --- |
+| **Idle stop** | Sandbox ID and Durable Object identity | Processes, terminals, local files from the stopped container |
+| **Replace** (failure, deploy, or other replacement) | Sandbox ID and Durable Object identity | Same as idle stop for the previous container |
+| **`destroy()`** | The sandbox ID string can be used again later | Treat prior work for that generation as finished |
 
 After idle stop or replace, the next real work may start a **new** container for the same sandbox ID. Old process and terminal handles are invalid. Recovery procedures: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
@@ -90,20 +90,20 @@ After idle stop or replace, the next real work may start a **new** container for
 
 Only what **your app** keeps (or restores) survives a new container:
 
-| Need                             | What must live outside the container                                                                            |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Find the sandbox again           | The **sandbox ID**                                                                                              |
+| Need | What must live outside the container |
+| --- | --- |
+| Find the sandbox again | The **sandbox ID** |
 | Continue work on a later request | Resource ID **while** the current container still has it, plus enough job context to start again if it does not |
-| Survive stop or replace          | The **job**: command or terminal setup, cwd, env, checkpoint                                                    |
-| Keep files after a new container | Backup metadata, mount configuration, or another durable store                                                  |
+| Survive stop or replace | The **job**: command or terminal setup, `cwd`, `env`, checkpoint |
+| Keep files after a new container | Backup metadata, mount configuration, or another durable store |
 
 ## Related
 
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
-* Stable: [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/)
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
+- Stable: [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/)
 
 Was this helpful?
 

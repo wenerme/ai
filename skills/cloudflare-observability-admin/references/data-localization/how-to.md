@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration guides
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to configure Cloudflare products with the Data Localization Suite, including Regional Services (which controls where traffic is decrypted and processed) and Customer Metadata Boundary (which controls where logs are stored).
 
-* [Zero Trust](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)
-* [Pages](https://developers.cloudflare.com/data-localization/how-to/pages/)
-* [Cache](https://developers.cloudflare.com/data-localization/how-to/cache/)
-* [Load Balancing](https://developers.cloudflare.com/data-localization/how-to/load-balancing/)
-* [Cloudflare for SaaS](https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/)
-* [R2 Object Storage](https://developers.cloudflare.com/data-localization/how-to/r2/)
-* [Durable Objects](https://developers.cloudflare.com/data-localization/how-to/durable-objects/)
-* [Workers](https://developers.cloudflare.com/data-localization/how-to/workers/)
+- [Zero Trust](https://developers.cloudflare.com/data-localization/how-to/zero-trust/)
+- [Pages](https://developers.cloudflare.com/data-localization/how-to/pages/)
+- [Cache](https://developers.cloudflare.com/data-localization/how-to/cache/)
+- [Load Balancing](https://developers.cloudflare.com/data-localization/how-to/load-balancing/)
+- [Cloudflare for SaaS](https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/)
+- [R2 Object Storage](https://developers.cloudflare.com/data-localization/how-to/r2/)
+- [Durable Objects](https://developers.cloudflare.com/data-localization/how-to/durable-objects/)
+- [Workers](https://developers.cloudflare.com/data-localization/how-to/workers/)
 
 ## Verify Regional Services behavior
 

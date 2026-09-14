@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.response.1xxx\_code
 
-`cf.response.1xxx_code` `Integer`
+`cf.response.1xxx_code``Integer`
 
 Contains the specific code for 1XXX Cloudflare errors.
 
@@ -25,7 +25,7 @@ Example value:
 ```
 
 Categories:
-* Response
+- Response
 
 Was this helpful?
 

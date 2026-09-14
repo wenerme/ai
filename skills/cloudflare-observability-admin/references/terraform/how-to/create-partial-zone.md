@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a partial zone using Terraform
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
@@ -22,8 +22,8 @@ A partial zone cannot be created in the same Cloudflare account as the parent do
 
 ## Prerequisites
 
-* Terraform installed. Refer to [Get started](https://developers.cloudflare.com/terraform/installing/).
-* Your Cloudflare account ID and a configured provider block. Refer to [Initialize Terraform](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/).
+- Terraform installed. Refer to [Get started](https://developers.cloudflare.com/terraform/installing/).
+- Your Cloudflare account ID and a configured provider block. Refer to [Initialize Terraform](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/).
 
 ## Create the zone
 
@@ -71,9 +71,9 @@ Refer to the [cloudflare\_zone docs ↗](https://registry.terraform.io/providers
 
 ## Related resources
 
-* [Partial zone setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
-* [Convert a full zone to partial](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)
-* [cloudflare\_zone resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)
+- [Partial zone setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+- [Convert a full zone to partial](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)
+- [`cloudflare_zone` resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)
 
 Was this helpful?
 

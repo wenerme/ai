@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limitations
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
@@ -32,7 +32,7 @@ WebSocket upgrade requests (`GET` with `Upgrade: websocket`) bypass the cache an
 
 ### Custom RPC methods
 
-Only `fetch()` invocations on a [WorkerEntrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) go through Workers Caching. Custom RPC methods like `ctx.exports.Backend.getUser(id)` bypass the cache and always run the callee, regardless of the entrypoint's `cache.enabled` setting.
+Only `fetch()` invocations on a [`WorkerEntrypoint`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) go through Workers Caching. Custom RPC methods like `ctx.exports.Backend.getUser(id)` bypass the cache and always run the callee, regardless of the entrypoint's `cache.enabled` setting.
 
 To cache a piece of work that is currently exposed as an RPC method, refactor it to a `fetch` handler on its own entrypoint and call it with `fetch()`.
 
@@ -40,22 +40,22 @@ To cache a piece of work that is currently exposed as an RPC method, refactor it
 
 Workers Caching never stores the following responses, even with explicit `Cache-Control` directives:
 
-* **`520`–`526`** (Cloudflare failsafe responses) are treated as transient errors and always re-run the Worker.
-* **`206 Partial Content`** returned by your Worker is not stored — Workers Caching expects your Worker to return the full `200` response and does the range slicing itself. Refer to [Range requests](https://developers.cloudflare.com/workers/cache/configuration/#range-requests) for the supported pattern.
+- **`520`– `526`** (Cloudflare failsafe responses) are treated as transient errors and always re-run the Worker.
+- **`206 Partial Content`** returned by your Worker is not stored — Workers Caching expects your Worker to return the full `200` response and does the range slicing itself. Refer to [`Range` requests](https://developers.cloudflare.com/workers/cache/configuration/#range-requests) for the supported pattern.
 
 ### Other invocation types
 
 Workers Caching only applies to HTTP requests handled by a `fetch` handler on a [Worker entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints). The following invocation types always run without cache involvement:
 
-* [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) — scheduled invocations via the `scheduled` handler.
-* [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) — messages delivered via the `queue` handler.
-* [Workflows](https://developers.cloudflare.com/workflows/) — workflow step execution.
-* [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) — trace event handlers.
-* [Durable Objects](https://developers.cloudflare.com/durable-objects/) — Durable Object invocations are never cached, regardless of handler or method. To cache a Durable Object's HTTP responses, wrap it behind a Worker entrypoint with caching enabled. See [Cache Durable Object responses](https://developers.cloudflare.com/workers/cache/#cache-durable-object-responses).
+- [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) — scheduled invocations via the `scheduled` handler.
+- [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) — messages delivered via the `queue` handler.
+- [Workflows](https://developers.cloudflare.com/workflows/) — workflow step execution.
+- [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) — trace event handlers.
+- [Durable Objects](https://developers.cloudflare.com/durable-objects/) — Durable Object invocations are never cached, regardless of handler or method. To cache a Durable Object's HTTP responses, wrap it behind a Worker entrypoint with caching enabled. See [Cache Durable Object responses](https://developers.cloudflare.com/workers/cache/#cache-durable-object-responses).
 
 ### Purge by host
 
-There is no "purge by host" mode. The cache [belongs to the Worker, not to a domain](https://developers.cloudflare.com/workers/cache/cache-keys/#the-cache-belongs-to-the-worker-not-to-a-domain) — the host is not part of the cache key, so purging by host would not map onto anything the cache stores. Use [purge by tag](https://developers.cloudflare.com/workers/cache/purge/#purge-by-tag), [purge by path prefix](https://developers.cloudflare.com/workers/cache/purge/#purge-by-path-prefix), or [purgeEverything](https://developers.cloudflare.com/workers/cache/purge/#purge-everything) instead.
+There is no "purge by host" mode. The cache [belongs to the Worker, not to a domain](https://developers.cloudflare.com/workers/cache/cache-keys/#the-cache-belongs-to-the-worker-not-to-a-domain) — the host is not part of the cache key, so purging by host would not map onto anything the cache stores. Use [purge by tag](https://developers.cloudflare.com/workers/cache/purge/#purge-by-tag), [purge by path prefix](https://developers.cloudflare.com/workers/cache/purge/#purge-by-path-prefix), or [`purgeEverything`](https://developers.cloudflare.com/workers/cache/purge/#purge-everything) instead.
 
 ### Cache pre-warming
 
@@ -85,16 +85,16 @@ Limits on the number, length, and character set of `Cache-Tag` values are the sa
 
 Workers Caching is **your Worker's cache**, not your zone's cache. It uses your Worker itself as the configuration surface, so there is no separate layer of rules or settings to configure alongside it. None of the following applies to Workers Caching:
 
-| Zone-level feature                                                                                                                                                          | Equivalent in Workers Caching                                                                                                                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) | Set Cache-Control headers in your Worker, or branch on the request and return different headers per path.                                                                                                                                                                                   |
-| [Cache key customization in Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#cache-key)                                                    | Workers Caching has its own key composition; see [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/). Shape the key by shaping the request (for example, by rewriting the URL or setting ctx.props in a gateway Worker).                                              |
-| Zone-level cache level settings (bypass / standard / aggressive / ignore query string)                                                                                      | Cache-Control headers on the response express the same intent at a per-request level.                                                                                                                                                                                                       |
-| The zone's default cached-file-extensions list                                                                                                                              | Workers Caching caches any response whose headers say it is cacheable, regardless of file extension.                                                                                                                                                                                        |
-| Custom tiered cache topologies                                                                                                                                              | Workers Caching uses a generic tiered cache topology by default. Because a Worker can execute anywhere, a fixed custom topology does not apply — future integrations with [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) may tailor tiering further. |
-| [Rulesets](https://developers.cloudflare.com/ruleset-engine/) that modify request or response before cache                                                                  | Transform the request or response in your Worker's code before returning it.                                                                                                                                                                                                                |
+| Zone-level feature | Equivalent in Workers Caching |
+| --- | --- |
+| [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) | Set `Cache-Control` headers in your Worker, or branch on the request and return different headers per path. |
+| [Cache key customization in Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#cache-key) | Workers Caching has its own key composition; see [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/). Shape the key by shaping the request (for example, by rewriting the URL or setting `ctx.props` in a gateway Worker). |
+| Zone-level cache level settings (bypass / standard / aggressive / ignore query string) | `Cache-Control` headers on the response express the same intent at a per-request level. |
+| The zone's default cached-file-extensions list | Workers Caching caches any response whose headers say it is cacheable, regardless of file extension. |
+| Custom tiered cache topologies | Workers Caching uses a generic tiered cache topology by default. Because a Worker can execute anywhere, a fixed custom topology does not apply — future integrations with [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) may tailor tiering further. |
+| [Rulesets](https://developers.cloudflare.com/ruleset-engine/) that modify request or response before cache | Transform the request or response in your Worker's code before returning it. |
 
-To influence your Worker's cache, change your Worker. `Cache-Control` headers, `ctx.props`, service binding composition, and [ctx.cache.purge()](https://developers.cloudflare.com/workers/cache/purge/) cover the configuration surface.
+To influence your Worker's cache, change your Worker. `Cache-Control` headers, `ctx.props`, service binding composition, and [`ctx.cache.purge()`](https://developers.cloudflare.com/workers/cache/purge/) cover the configuration surface.
 
 ### Cache API (`caches.default`)
 
@@ -102,31 +102,31 @@ The [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) i
 
 For new Workers, prefer Workers Caching. The Cache API, by design, is a lower-level primitive:
 
-* It does not read through — responses are only cached when your Worker explicitly calls `put()`, and every request still executes your Worker on the way in.
-* It does not [collapse concurrent requests](https://developers.cloudflare.com/workers/cache/#request-collapsing) for the same resource. A burst of traffic to a fresh URL invokes your Worker once per request.
-* It does not participate in [tiered caching](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
+- It does not read through — responses are only cached when your Worker explicitly calls `put()`, and every request still executes your Worker on the way in.
+- It does not [collapse concurrent requests](https://developers.cloudflare.com/workers/cache/#request-collapsing) for the same resource. A burst of traffic to a fresh URL invokes your Worker once per request.
+- It does not participate in [tiered caching](https://developers.cloudflare.com/cache/how-to/tiered-cache/).
 
 Workers Caching provides all three automatically. The Cache API remains useful when you need fine-grained programmatic control.
 
 ### `fetch()` subrequest caching
 
-Workers Caching is a server-side cache **in front of** your Worker. It is a separate cache from the one that sits in front of outgoing [fetch()](https://developers.cloudflare.com/workers/runtime-apis/fetch/) subrequests your Worker makes to its own origins. The two operate independently: a `fetch()` subrequest hit saves a trip to your origin, while a Workers Caching hit saves your Worker from running at all.
+Workers Caching is a server-side cache **in front of** your Worker. It is a separate cache from the one that sits in front of outgoing [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/) subrequests your Worker makes to its own origins. The two operate independently: a `fetch()` subrequest hit saves a trip to your origin, while a Workers Caching hit saves your Worker from running at all.
 
 The `cf` properties on a `Request` behave differently across the two:
 
-| cf property        | On outgoing fetch() to your origin | On ctx.exports.<Entrypoint>.fetch()                                                                                                                                             |
-| ------------------ | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cf.cacheKey        | Supported                          | Supported — see [Custom cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/#custom-cache-keys)                                                              |
-| cf.cacheControl    | Supported                          | Supported — see [Override Cache-Control from the calling Worker](https://developers.cloudflare.com/workers/cache/configuration/#override-cache-control-from-the-calling-worker) |
-| cf.cacheTtl        | Supported                          | Not supported — set the TTL by returning Cache-Control: max-age=N (or s-maxage=N) from the callee, or by overriding it with cf.cacheControl from the caller                     |
-| cf.cacheEverything | Supported                          | Not supported — Workers Caching decides cacheability from the response's Cache-Control; there is no override to force-cache an otherwise uncacheable response                   |
+| `cf` property | On outgoing `fetch()` to your origin | On `ctx.exports.<Entrypoint>.fetch()` |
+| --- | --- | --- |
+| `cf.cacheKey` | Supported | Supported — see [Custom cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/#custom-cache-keys) |
+| `cf.cacheControl` | Supported | Supported — see [Override `Cache-Control` from the calling Worker](https://developers.cloudflare.com/workers/cache/configuration/#override-cache-control-from-the-calling-worker) |
+| `cf.cacheTtl` | Supported | Not supported — set the TTL by returning `Cache-Control: max-age=N` (or `s-maxage=N`) from the callee, or by overriding it with `cf.cacheControl` from the caller |
+| `cf.cacheEverything` | Supported | Not supported — Workers Caching decides cacheability from the response's `Cache-Control`; there is no override to force-cache an otherwise uncacheable response |
 
 ## Coming soon
 
 The following surfaces are in development:
 
-* **Dashboard UI** for enabling caching without Wrangler.
-* **Cache Analytics in Workers Observability**.
+- **Dashboard UI** for enabling caching without Wrangler.
+- **Cache Analytics in Workers Observability**.
 
 Was this helpful?
 

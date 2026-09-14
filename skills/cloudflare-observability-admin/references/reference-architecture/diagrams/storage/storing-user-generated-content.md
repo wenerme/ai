@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Storing user generated content
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -39,7 +39,7 @@ And because R2 is natively integrated with Cloudflare's global network, files st
 
 ![Use Case 1: Secure User Uploads to R2 via Signed URLs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=451,format=svg/_astro/uploads-to-r2-via-signed-urls.ko_gZGAm.svg "Use Case 1: Secure User Uploads to R2 via Signed URLs")
 
-Use Case 1: Secure User Uploads to R2 via Signed URLs
+*Use Case 1: Secure User Uploads to R2 via Signed URLs*
 
 **How it Works**
 
@@ -48,9 +48,9 @@ Use Case 1: Secure User Uploads to R2 via Signed URLs
 3. **Worker returns a signed PUT URL to R2:** A signed URL allows the frontend to upload directly to R2 for a limited time, under a specific key or namespace. There is no need for the Worker to handle large files directly.
 4. **Frontend uploads the file directly to R2:** The file is streamed directly from the client to R2.
 5. **(Optional) Trigger post-upload workflows:** R2 offers [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to send messages to a queue when data in your R2 bucket changes, like a new upload. Example post-processing:
-  * Scan, moderate, or transform the file.
-  * Write metadata (for example, `user_id`, `file_path`, `timestamp`) to [D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQL database.
-  * Notify the user or update a dashboard/UI.
+   - Scan, moderate, or transform the file.
+   - Write metadata (for example, `user_id`, `file_path`, `timestamp`) to [D1](https://developers.cloudflare.com/d1/), Cloudflare's serverless SQL database.
+   - Notify the user or update a dashboard/UI.
 
 For more information on uploading data directly from the client to R2, refer to the documentation on [presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/).
 
@@ -62,7 +62,7 @@ This architecture employs [Workers AI](https://developers.cloudflare.com/workers
 
 ![Use Case 2: AI-Generated Content Stored in R2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=451,format=svg/_astro/ai-generated-content-in-r2.KciiXeXA.svg "Use Case 2: AI-Generated Content Stored in R2")
 
-Use Case 2: AI-Generated Content Stored in R2
+*Use Case 2: AI-Generated Content Stored in R2*
 
 **How it Works**
 
@@ -78,21 +78,21 @@ Refer to [Use R2 from Workers](https://developers.cloudflare.com/r2/api/workers/
 
 By storing **user-generated content in Cloudflare R2**, applications gain:
 
-* A highly scalable storage backend
-* Fast access through Cloudflare's edge computing
-* Predictable costs with zero egress fees
-* Seamless AI + UGC workflows that maximize efficiency
+- A highly scalable storage backend
+- Fast access through Cloudflare's edge computing
+- Predictable costs with zero egress fees
+- Seamless AI + UGC workflows that maximize efficiency
 
 This architecture ensures that content is stored, processed, and delivered **fast, securely, and cost-effectively**.
 
 ## Related Links
 
-* [Cloudflare R2 Product Page](https://developers.cloudflare.com/r2/)
-* [R2 Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
-* [Use R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
-* [Migrating Data to R2](https://developers.cloudflare.com/r2/data-migration/)
-* [Event notifications for storage reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/)
-* [Why choose Cloudflare R2 vs Amazon S3 ↗](https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3/)
+- [Cloudflare R2 Product Page](https://developers.cloudflare.com/r2/)
+- [R2 Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/)
+- [Use R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
+- [Migrating Data to R2](https://developers.cloudflare.com/r2/data-migration/)
+- [Event notifications for storage reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/)
+- [Why choose Cloudflare R2 vs Amazon S3 ↗](https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3/)
 
 Was this helpful?
 

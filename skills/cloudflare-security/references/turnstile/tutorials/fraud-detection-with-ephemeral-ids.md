@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fraud detection with Ephemeral IDs
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 
@@ -22,8 +22,8 @@ Traditional IP-based detection fails because each request appears to come from a
 
 ## Before you begin
 
-* Ephemeral IDs require [Enterprise Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) with the [Enterprise Turnstile add-on](https://developers.cloudflare.com/turnstile/plans/), or [standalone Enterprise Turnstile](https://developers.cloudflare.com/turnstile/plans/). Contact your account team to enable this feature.
-* You must have basic familiarity with Turnstile integration. Refer to [Get started with Turnstile](https://developers.cloudflare.com/turnstile/get-started/) for more information.
+- Ephemeral IDs require [Enterprise Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) with the [Enterprise Turnstile add-on](https://developers.cloudflare.com/turnstile/plans/), or [standalone Enterprise Turnstile](https://developers.cloudflare.com/turnstile/plans/). Contact your account team to enable this feature.
+- You must have basic familiarity with Turnstile integration. Refer to [Get started with Turnstile](https://developers.cloudflare.com/turnstile/get-started/) for more information.
 
 Ephemeral IDs are not guaranteed to be unique
 
@@ -229,18 +229,18 @@ Privacy
 
 Ephemeral IDs are privacy-preserving. They are scoped to your account, short-lived, and cannot identify individuals across sites.
 
-* **Log immediately**: Capture the Ephemeral ID right when you call Siteverify.
-* **Silent rejection**: When blocking fraud, return generic errors. Never reveal that you detected the device.
-* **Tune thresholds**: Start conservative (for example, three sign ups per hour) with the query and adjust based on your traffic.
-* **Combine signals**: Use Ephemeral IDs alongside IP reputation and behavior analytics.
+- **Log immediately**: Capture the Ephemeral ID right when you call Siteverify.
+- **Silent rejection**: When blocking fraud, return generic errors. Never reveal that you detected the device.
+- **Tune thresholds**: Start conservative (for example, three sign ups per hour) with the query and adjust based on your traffic.
+- **Combine signals**: Use Ephemeral IDs alongside IP reputation and behavior analytics.
 
 ---
 
 ## Related resources
 
-* [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/)
-* [Server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
-* [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
+- [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/)
+- [Server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
+- [Integrate Turnstile, WAF, and Bot Management](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/)
 
 Was this helpful?
 

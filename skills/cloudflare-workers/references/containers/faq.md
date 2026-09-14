@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Frequently Asked Questions
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## How do Container logs work?
 
@@ -35,7 +35,7 @@ Logs are subject to the same [limits as Worker logs](https://developers.cloudfla
 
 See [Workers Logs Pricing](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing) for details on cost.
 
-If you are an Enterprise user, you are able to export container logs via [Logpush](https://developers.cloudflare.com/logs/logpush/)to your preferred destination.
+If you are an Enterprise user, you are able to export container logs via [Logpush](https://developers.cloudflare.com/logs/logpush/) to your preferred destination.
 
 ## How are container instance locations selected?
 
@@ -45,14 +45,14 @@ When a Container instance is requested with `this.ctx.container.start`, the near
 
 An Example:
 
-* A user deploys a Container. Cloudflare automatically readies instances across its Network.
-* A request is made from a client in Bariloche, Argentina. It reaches the Worker in Cloudflare's location in Neuquen, Argentina.
-* This Worker request calls `MY_CONTAINER.get("session-1337")` which brings up a Durable Object, which then calls `this.ctx.container.start`.
-* This requests the nearest free Container instance.
-* Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
-* A different user needs to route to the same container. This user's request reaches the Worker running in Cloudflare's location in San Diego.
-* The Worker again calls `MY_CONTAINER.get("session-1337")`.
-* If the initial container instance is still running, the request is routed to the location in Buenos Aires. If the initial container has gone to sleep, Cloudflare will once again try to find the nearest "free" instance of the Container, likely one in North America, and start an instance there.
+- A user deploys a Container. Cloudflare automatically readies instances across its Network.
+- A request is made from a client in Bariloche, Argentina. It reaches the Worker in Cloudflare's location in Neuquen, Argentina.
+- This Worker request calls `MY_CONTAINER.get("session-1337")` which brings up a Durable Object, which then calls `this.ctx.container.start`.
+- This requests the nearest free Container instance.
+- Cloudflare recognizes that an instance is free in Buenos Aires, Argentina, and starts it there.
+- A different user needs to route to the same container. This user's request reaches the Worker running in Cloudflare's location in San Diego.
+- The Worker again calls `MY_CONTAINER.get("session-1337")`.
+- If the initial container instance is still running, the request is routed to the location in Buenos Aires. If the initial container has gone to sleep, Cloudflare will once again try to find the nearest "free" instance of the Container, likely one in North America, and start an instance there.
 
 ## How do container updates and rollouts work?
 
@@ -104,7 +104,7 @@ Containers do not use swap memory.
 
 ## How long can instances run for? What happens when a host server is shut down?
 
-Cloudflare does not stop a container instance after a fixed maximum runtime. The Container class sets [sleepAfter](https://developers.cloudflare.com/containers/reference/container-class/#sleepafter) to 10 minutes by default, and its default [onActivityExpired()](https://developers.cloudflare.com/containers/reference/container-class/#onactivityexpired) implementation signals the container to stop after that period without activity. You can change the duration or override the hook. Even if your hook keeps the instance running, another platform event can stop it. One of those cases is a host server restart, which happens on an irregular cadence. Cloudflare does not guarantee that any container instance will run for any set period of time.
+Cloudflare does not stop a container instance after a fixed maximum runtime. The Container class sets [`sleepAfter`](https://developers.cloudflare.com/containers/reference/container-class/#sleepafter) to 10 minutes by default, and its default [`onActivityExpired()`](https://developers.cloudflare.com/containers/reference/container-class/#onactivityexpired) implementation signals the container to stop after that period without activity. You can change the duration or override the hook. Even if your hook keeps the instance running, another platform event can stop it. One of those cases is a host server restart, which happens on an irregular cadence. Cloudflare does not guarantee that any container instance will run for any set period of time.
 
 When the platform is about to stop a container instance (including before a host moves work off a server), it:
 
@@ -118,7 +118,7 @@ Image updates during a deploy use the same stop sequence. Refer to [Rollouts](ht
 
 ## How can I pass secrets to my container?
 
-You can use [Worker Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or the [Secrets Store](https://developers.cloudflare.com/secrets-store/integrations/workers/)to define secrets for your Workers.
+You can use [Worker Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) or the [Secrets Store](https://developers.cloudflare.com/secrets-store/integrations/workers/) to define secrets for your Workers.
 
 For implementation details, refer to [Environment variables and secrets](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/).
 
@@ -128,6 +128,8 @@ Yes. Use the `docker:dind-rootless` base image since Containers run without root
 
 You must disable iptables when starting the Docker daemon because Containers do not support iptables manipulation:
 
+*Dockerfiledockerfile*
+
 ```dockerfile
 FROM docker:dind-rootless
 
@@ -136,6 +138,8 @@ ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tab
 ```
 
 If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
+
+*entrypoint.shsh*
 
 ```sh
 #!/bin/sh

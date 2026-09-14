@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Network Firewall
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Filter and block unwanted traffic at Cloudflare's global network, before it reaches your infrastructure.
 
 Enterprise-only
 
-Cloudflare Network Firewall (formerly Magic Firewall) is a firewall-as-a-service (FWaaS) delivered from the Cloudflare global network to protect office networks and cloud infrastructure with advanced, scalable protection. With Cloudflare Network Firewall, you can apply filter rules on a variety of criteria, such as protocol and packet length, to filter unwanted traffic before it reaches your network.
+Cloudflare Network Firewall (formerly Magic Firewall) is a firewall-as-a-service (FWaaS)
+
+ delivered from the Cloudflare global network to protect office networks and cloud infrastructure with advanced, scalable protection. With Cloudflare Network Firewall, you can apply filter rules on a variety of criteria, such as protocol and packet length, to filter unwanted traffic before it reaches your network.
 
 Rules are written using the [Cloudflare Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), which is inspired by Wireshark syntax, a widely used packet analysis filter language and the same syntax used across our other products. With this syntax, you can craft powerful rules to precisely allow or deny any traffic in or out of your network.
 

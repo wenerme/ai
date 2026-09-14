@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page outlines the core concepts and key terminology used throughout RealtimeKit.
 
@@ -40,7 +40,7 @@ Example - A recurring “Weekly Standup” **meeting will generate a new session
 
 ### Participant
 
-A **Participant** is created when you add a user to a meeting via the [Add participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/). This API call returns a unique `authToken` that the client-side SDK uses to join the session and authenticate the user.
+A **Participant** is created when you add a user to a meeting via the [Add participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). This API call returns a unique `authToken` that the client-side SDK uses to join the session and authenticate the user.
 
 > **Note:** Please do not re-use auth tokens for participants.
 
@@ -54,9 +54,9 @@ Created at the App level, it can be applied to any participant across any meetin
 
 It also defines the meeting type a user joins—video call, audio call, or webinar. Participants in the same meeting can use different presets to create flexible roles. Example: In a large ed-tech class:
 
-* **Teacher** will join with a `webinar-host` preset, allowing them to share their media and providing host controls.
-* **Students** will join with a `webinar-participant` preset, which restricts them from sharing media but allows them to use features like chat.
-* **Teaching assistant** will join with a `group-call-host` preset, enabling them to share their media but not have full control.
+- **Teacher** will join with a `webinar-host` preset, allowing them to share their media and providing host controls.
+- **Students** will join with a `webinar-participant` preset, which restricts them from sharing media but allows them to use features like chat.
+- **Teaching assistant** will join with a `group-call-host` preset, enabling them to share their media but not have full control.
 
 It also lets you customize the UI’s look and feel, including colors and themes, so the experience matches your application's branding.
 

@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tunnels
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/tunnels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `sandbox.tunnels` namespace exposes a service running inside a sandbox on the public internet through a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). The SDK runs `cloudflared` inside the container and opens a persistent QUIC connection to Cloudflare's edge.
 
 Two flavors are available:
 
-* **Quick tunnels** (`sandbox.tunnels.get(port)`) — zero-config. Cloudflare assigns a random `*.trycloudflare.com` hostname for each new `cloudflared` process. No Cloudflare account, API token, DNS record, or custom domain required. URLs change on every container restart.
-* **Named tunnels** (`sandbox.tunnels.get(port, { name })`) — bind a stable hostname `<name>.<your-zone>` on a zone you control. The hostname survives container restarts and is shared across sandboxes that request the same `name`. Requires a Cloudflare API token, an account, and a zone.
+- **Quick tunnels** ( `sandbox.tunnels.get(port)`) — zero-config. Cloudflare assigns a random `*.trycloudflare.com` hostname for each new `cloudflared` process. No Cloudflare account, API token, DNS record, or custom domain required. URLs change on every container restart.
+- **Named tunnels** ( `sandbox.tunnels.get(port, { name })`) — bind a stable hostname `<name>.<your-zone>` on a zone you control. The hostname survives container restarts and is shared across sandboxes that request the same `name`. Requires a Cloudflare API token, an account, and a zone.
 
 When to use quick vs. named tunnels
 
-Use **quick tunnels** for local development, demos, and short-lived `.workers.dev` deployments where you do not need a stable URL. Use **named tunnels** for everything else — they are the recommended option for production traffic, webhook receivers, OAuth callbacks, and any URL that needs to be bookmarked. [exposePort()](https://developers.cloudflare.com/sandbox/api/ports/) remains an alternative when you want the Worker itself (rather than Cloudflare's edge) to front the request.
+Use **quick tunnels** for local development, demos, and short-lived `.workers.dev` deployments where you do not need a stable URL. Use **named tunnels** for everything else — they are the recommended option for production traffic, webhook receivers, OAuth callbacks, and any URL that needs to be bookmarked. [`exposePort()`](https://developers.cloudflare.com/sandbox/api/ports/) remains an alternative when you want the Worker itself (rather than Cloudflare's edge) to front the request.
 
 ## Requirements
 
 Both tunnel flavors require:
 
-* **RPC transport.** Calling `sandbox.tunnels` on HTTP/Websocket transports throws `"RPC transport required"`. See [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/).
+- **RPC transport.** Calling `sandbox.tunnels` on HTTP/Websocket transports throws `"RPC transport required"`. See [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
 Named tunnels additionally require a Cloudflare API token, account, and zone — refer to [Named tunnels: prerequisites](#prerequisites).
 
@@ -48,12 +48,12 @@ const tunnel = await sandbox.tunnels.get(
 
 **Parameters**:
 
-* `port` — Port number inside the sandbox to expose (1024-65535, excluding reserved ports). The service to tunnel to must already be listening on `0.0.0.0:<port>` inside the container.
-* `options.name` _(optional)_ — Single DNS label (lowercase letters, digits, internal hyphens; 1–63 chars; no dots). When set, provisions a [named tunnel](#named-tunnels) bound to `<name>.<your-zone>`. When omitted, provisions a quick tunnel.
+- `port` — Port number inside the sandbox to expose (1024-65535, excluding reserved ports). The service to tunnel to must already be listening on `0.0.0.0:<port>` inside the container.
+- `options.name` *(optional)* — Single DNS label (lowercase letters, digits, internal hyphens; 1–63 chars; no dots). When set, provisions a [named tunnel](#named-tunnels) bound to `<name>.<your-zone>`. When omitted, provisions a quick tunnel.
 
-**Returns**: `Promise<TunnelInfo>` — the tunnel record. See [TunnelInfo](#tunnelinfo).
+**Returns**: `Promise<TunnelInfo>` — the tunnel record. See [`TunnelInfo`](#tunnelinfo).
 
-Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [destroy(port)](#tunnelsdestroy) first.
+Calling `get(port)` with different `options` on a port that already has a tunnel throws. Call [`destroy(port)`](#tunnelsdestroy) first.
 
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
@@ -112,7 +112,7 @@ Return every tunnel currently tracked for this sandbox.
 const tunnels = await sandbox.tunnels.list(): Promise<TunnelInfo[]>
 ```
 
-**Returns**: `Promise<TunnelInfo[]>` — an array of [TunnelInfo](#tunnelinfo) records. Empty when no tunnels are active.
+**Returns**: `Promise<TunnelInfo[]>` — an array of [`TunnelInfo`](#tunnelinfo) records. Empty when no tunnels are active.
 
 ```js
 const tunnels = await sandbox.tunnels.list();
@@ -140,7 +140,7 @@ await sandbox.tunnels.destroy(portOrInfo: number | TunnelInfo): Promise<void>
 
 **Parameters**:
 
-* `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [get()](#tunnelsget).
+- `portOrInfo` — Either the port number or the `TunnelInfo` record returned by [`get()`](#tunnelsget).
 
 ```js
 const tunnel = await sandbox.tunnels.get(8080);
@@ -168,14 +168,14 @@ await sandbox.tunnels.destroy(tunnel);
 
 Quick tunnels omit `name`; named tunnels carry the label passed via `options.name`.
 
-| Field     | Type   | Description                                                                                        |
-| --------- | ------ | -------------------------------------------------------------------------------------------------- |
-| id        | string | Tunnel identifier. quick-<random> for quick tunnels, the Cloudflare Tunnel UUID for named tunnels. |
-| port      | number | Port number inside the sandbox that the tunnel proxies to.                                         |
-| url       | string | Public URL — https://<random>.trycloudflare.com (quick) or https://<name>.<your-zone> (named).     |
-| hostname  | string | Hostname component of url.                                                                         |
-| createdAt | string | ISO-8601 timestamp of when the tunnel was created.                                                 |
-| name      | string | **Named tunnels only.** The label passed via options.name. Absent on quick tunnels.                |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | Tunnel identifier. `quick-<random>` for quick tunnels, the Cloudflare Tunnel UUID for named tunnels. |
+| `port` | `number` | Port number inside the sandbox that the tunnel proxies to. |
+| `url` | `string` | Public URL — `https://<random>.trycloudflare.com` (quick) or `https://<name>.<your-zone>` (named). |
+| `hostname` | `string` | Hostname component of `url`. |
+| `createdAt` | `string` | ISO-8601 timestamp of when the tunnel was created. |
+| `name` | `string` | **Named tunnels only.** The label passed via `options.name`. Absent on quick tunnels. |
 
 ```ts
 type TunnelInfo = QuickTunnelInfo | NamedTunnelInfo;
@@ -205,15 +205,15 @@ Named tunnels bind a user-controlled hostname — `<name>.<your-zone>` — backe
 
 ### How they differ from quick tunnels
 
-| Aspect                    | Quick tunnel                                        | Named tunnel                                                                                                                              |
-| ------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Hostname                  | Random \*.trycloudflare.com, assigned by Cloudflare | <name>.<your-zone>, chosen by you                                                                                                         |
-| Stability                 | Changes on every container restart                  | Stable; persists across restarts and sandbox lifecycles                                                                                   |
-| Cloudflare account        | Not required                                        | Required (API token + zone)                                                                                                               |
-| Cloudflare-side resources | None                                                | Managed [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) \+ proxied DNS CNAME |
-| Uptime guarantee          | None (debug aid)                                    | Backed by your zone's standard Cloudflare SLA                                                                                             |
-| TLS certificate           | Cloudflare-owned wildcard                           | Universal SSL on <name>.<your-zone> (single DNS label only)                                                                               |
-| Server-Sent Events        | Not supported (edge buffers text/event-stream)      | Supported                                                                                                                                 |
+| Aspect | Quick tunnel | Named tunnel |
+| --- | --- | --- |
+| Hostname | Random `*.trycloudflare.com`, assigned by Cloudflare | `<name>.<your-zone>`, chosen by you |
+| Stability | Changes on every container restart | Stable; persists across restarts and sandbox lifecycles |
+| Cloudflare account | Not required | Required (API token + zone) |
+| Cloudflare-side resources | None | Managed [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) + proxied DNS `CNAME` |
+| Uptime guarantee | None (debug aid) | Backed by your zone's standard Cloudflare SLA |
+| TLS certificate | Cloudflare-owned wildcard | Universal SSL on `<name>.<your-zone>` (single DNS label only) |
+| Server-Sent Events | Not supported (edge buffers `text/event-stream`) | Supported |
 
 ### Prerequisites
 
@@ -225,14 +225,14 @@ To provision a named tunnel, you need:
 
 #### Create the API token
 
-Create a token from **My Profile** \> **API Tokens** \> **Create Token** \> **Custom token** with the following permissions:
+Create a token from **My Profile** > **API Tokens** > **Create Token** > **Custom token** with the following permissions:
 
-| Scope                                                      | Used for                                                                  |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Account** · **Cloudflare Tunnel** · **Edit**             | Create, look up, and delete tunnels.                                      |
-| **Zone** · **DNS** · **Edit**                              | Upsert and delete the proxied CNAME for <name>.<your-zone>.               |
-| **Zone** · **Zone** · **Read**                             | Look up the zone's name to derive <name>.<your-zone>.                     |
-| **Account** · **Account Settings** · **Read** _(optional)_ | Lets the SDK infer the account ID from the token when not set explicitly. |
+| Scope | Used for |
+| --- | --- |
+| **Account** · **Cloudflare Tunnel** · **Edit** | Create, look up, and delete tunnels. |
+| **Zone** · **DNS** · **Edit** | Upsert and delete the proxied `CNAME` for `<name>.<your-zone>`. |
+| **Zone** · **Zone** · **Read** | Look up the zone's name to derive `<name>.<your-zone>`. |
+| **Account** · **Account Settings** · **Read** *(optional)* | Lets the SDK infer the account ID from the token when not set explicitly. |
 
 Under **Account Resources**, scope the token to the account that will own the tunnel. Under **Zone Resources**, scope it to the specific zone you want to bind to.
 
@@ -240,7 +240,7 @@ Both [User API Tokens](https://developers.cloudflare.com/fundamentals/api/get-st
 
 #### Create the token with the REST API
 
-You can create the token without using the dashboard. The permission group IDs are stable; the snippet below uses placeholders — fetch the current IDs from [GET /user/tokens/permission\_groups](https://developers.cloudflare.com/api/operations/permission-groups-list-permission-groups/).
+You can create the token without using the dashboard. The permission group IDs are stable; the snippet below uses placeholders — fetch the current IDs from [`GET /user/tokens/permission_groups`](https://developers.cloudflare.com/api/operations/permission-groups-list-permission-groups/).
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
@@ -270,11 +270,11 @@ curl -X POST "https://api.cloudflare.com/client/v4/user/tokens" \
 
 The SDK reads `CLOUDFLARE_API_TOKEN` from the Worker environment and attempts to derive the account ID and zone ID from the token automatically. If the token is associated with multiple accounts or zones the SDK cannot pick one unambiguously, and you must set `CLOUDFLARE_ACCOUNT_ID` and/or `CLOUDFLARE_ZONE_ID` explicitly.
 
-| Variable                | Required?                                | Notes                                       |
-| ----------------------- | ---------------------------------------- | ------------------------------------------- |
-| CLOUDFLARE\_API\_TOKEN  | Yes                                      | Store as a secret with wrangler secret put. |
-| CLOUDFLARE\_ACCOUNT\_ID | Only if the token sees multiple accounts | Inferred from the token otherwise.          |
-| CLOUDFLARE\_ZONE\_ID    | Only if the token sees multiple zones    | Inferred from the token otherwise.          |
+| Variable | Required? | Notes |
+| --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Yes | Store as a secret with `wrangler secret put`. |
+| `CLOUDFLARE_ACCOUNT_ID` | Only if the token sees multiple accounts | Inferred from the token otherwise. |
+| `CLOUDFLARE_ZONE_ID` | Only if the token sees multiple zones | Inferred from the token otherwise. |
 
 ```bash
 npx wrangler secret put CLOUDFLARE_API_TOKEN
@@ -364,18 +364,18 @@ export default {
 Named tunnels are designed to outlive the container that provisioned them:
 
 1. **First call** to `sandbox.tunnels.get(port, { name })`:
-  * Resolves `<name>.<your-zone>` from the configured zone ID.
-  * Creates a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) resource named `sandbox-<sandbox-id>-<name>` tagged with the sandbox ID.
-  * Upserts a proxied `CNAME` from `<name>.<your-zone>` to `<tunnel-id>.cfargotunnel.com`.
-  * Spawns `cloudflared` inside the container with the tunnel's token.
+   - Resolves `<name>.<your-zone>` from the configured zone ID.
+   - Creates a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) resource named `sandbox-<sandbox-id>-<name>` tagged with the sandbox ID.
+   - Upserts a proxied `CNAME` from `<name>.<your-zone>` to `<tunnel-id>.cfargotunnel.com`.
+   - Spawns `cloudflared` inside the container with the tunnel's token.
 2. **Subsequent calls** with the same `(port, name)` return the cached record without contacting Cloudflare.
 3. **Container restart** (Durable Object eviction, deploy, crash):
-  * `cloudflared` dies with the container, but the Cloudflare Tunnel and DNS record are preserved.
-  * On the next `get(port, { name })`, the SDK rediscovers the tagged tunnel via the Cloudflare API and respawns `cloudflared`. The hostname is unchanged.
+   - `cloudflared` dies with the container, but the Cloudflare Tunnel and DNS record are preserved.
+   - On the next `get(port, { name })`, the SDK rediscovers the tagged tunnel via the Cloudflare API and respawns `cloudflared`. The hostname is unchanged.
 4. **Explicit teardown** with `sandbox.tunnels.destroy(port)`:
-  * Stops `cloudflared` inside the container.
-  * Deletes the Cloudflare Tunnel resource.
-  * Deletes the proxied `CNAME` record.
+   - Stops `cloudflared` inside the container.
+   - Deletes the Cloudflare Tunnel resource.
+   - Deletes the proxied `CNAME` record.
 5. **Sandbox destroy** with `sandbox.destroy()` tears down every tunnel the sandbox provisioned, including the Cloudflare-side resources, before stopping the container.
 
 If `destroy()` fails to reach the Cloudflare API (for example, the token was revoked between `get()` and `destroy()`), the SDK logs a warning naming the orphaned `tunnelId` and `dnsRecordId` so you can clean up manually from the dashboard.
@@ -386,16 +386,16 @@ Named tunnels create resources **on your Cloudflare account, outside the sandbox
 
 For each `(sandbox, name)` pair, the SDK creates:
 
-| Resource           | Name / location                   | Identifier                                         |
-| ------------------ | --------------------------------- | -------------------------------------------------- |
-| Cloudflare Tunnel  | **Networking** \> **Tunnels**     | sandbox-<sandbox-id>-<name>                        |
-| Proxied DNS record | Your zone, **DNS** \> **Records** | CNAME <name>.<zone> → <tunnel-id>.cfargotunnel.com |
+| Resource | Name / location | Identifier |
+| --- | --- | --- |
+| Cloudflare Tunnel | **Networking** > **Tunnels** | `sandbox-<sandbox-id>-<name>` |
+| Proxied DNS record | Your zone, **DNS** > **Records** | `CNAME <name>.<zone> → <tunnel-id>.cfargotunnel.com` |
 
 Both resources are tagged so you can audit, query, and bulk-clean them from the dashboard or API:
 
-* **Tunnel metadata**: `{ sandboxId, createdBy: 'sandbox-sdk', name, port }`
-* **DNS record comment**: `sandbox-<sandbox-id>`
-* **Resource tag** _(Enterprise plans only)_: `sandboxId:<sandbox-id>`
+- **Tunnel metadata**: `{ sandboxId, createdBy: 'sandbox-sdk', name, port }`
+- **DNS record comment**: `sandbox-<sandbox-id>`
+- **Resource tag** *(Enterprise plans only)*: `sandboxId:<sandbox-id>`
 
 On non-Enterprise plans, Cloudflare rejects resource tags; the SDK detects this and retries the request without tags. The DNS comment and tunnel metadata still apply, so you can always trace a resource back to its sandbox.
 
@@ -410,27 +410,27 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/cfd_t
 
 **Both tunnel flavors:**
 
-* **WARP / Zero Trust egress.** If your local machine runs Cloudflare WARP or another Zero Trust egress policy, outbound traffic to `api.trycloudflare.com` and the cloudflared edge can be blocked. When that happens, `tunnels.get()` hangs on the edge handshake and eventually times out. Disable WARP or add an egress exception for these destinations.
-* **Brief DNS warm-up.** The first request through a brand-new URL can take a couple of seconds while DNS propagates, even after `get()` resolves.
+- **WARP / Zero Trust egress.** If your local machine runs Cloudflare WARP or another Zero Trust egress policy, outbound traffic to `api.trycloudflare.com` and the cloudflared edge can be blocked. When that happens, `tunnels.get()` hangs on the edge handshake and eventually times out. Disable WARP or add an egress exception for these destinations.
+- **Brief DNS warm-up.** The first request through a brand-new URL can take a couple of seconds while DNS propagates, even after `get()` resolves.
 
 **Quick tunnels only:**
 
-* **URLs do not survive container restart.** Cloudflare assigns the hostname during `cloudflared`'s startup handshake, so every restart yields a new URL. The SDK clears its tunnel cache when the container starts, so the next `tunnels.get(port)` returns a fresh record. Use a [named tunnel](#named-tunnels) for a stable hostname.
-* **No uptime guarantee.** Cloudflare positions `trycloudflare.com` as a debug aid, not a production target.
-* **No Server-Sent Events.** The `trycloudflare.com` edge buffers `text/event-stream` responses, so SSE events never reach the client. WebSockets work normally. Use a [named tunnel](#named-tunnels) if your service streams SSE.
+- **URLs do not survive container restart.** Cloudflare assigns the hostname during `cloudflared`'s startup handshake, so every restart yields a new URL. The SDK clears its tunnel cache when the container starts, so the next `tunnels.get(port)` returns a fresh record. Use a [named tunnel](#named-tunnels) for a stable hostname.
+- **No uptime guarantee.** Cloudflare positions `trycloudflare.com` as a debug aid, not a production target.
+- **No Server-Sent Events.** The `trycloudflare.com` edge buffers `text/event-stream` responses, so SSE events never reach the client. WebSockets work normally. Use a [named tunnel](#named-tunnels) if your service streams SSE.
 
 **Named tunnels only:**
 
-* **Single DNS label.** `name` must not contain dots. Universal SSL only covers `<name>.<your-zone>`.
-* **Counts against your zone's quotas.** Each named tunnel creates a Cloudflare Tunnel and a DNS record on your account. See [Cloudflare Tunnel limits](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/).
-* **Cleanup requires the API token.** If `destroy()` runs after the token has been revoked, the Cloudflare-side resources are orphaned. The SDK logs the orphan IDs so you can remove them manually.
+- **Single DNS label.** `name` must not contain dots. Universal SSL only covers `<name>.<your-zone>`.
+- **Counts against your zone's quotas.** Each named tunnel creates a Cloudflare Tunnel and a DNS record on your account. See [Cloudflare Tunnel limits](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/).
+- **Cleanup requires the API token.** If `destroy()` runs after the token has been revoked, the Cloudflare-side resources are orphaned. The SDK logs the orphan IDs so you can remove them manually.
 
 ## Related resources
 
-* [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) — Worker-fronted preview URLs and how they differ from quick tunnels.
-* [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) — `exposePort()` and the Worker-fronted preview URL flow.
-* [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) — End-to-end walkthrough for exposing services in production.
-* [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/) — RPC vs. route-based transport.
+- [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) — Worker-fronted preview URLs and how they differ from quick tunnels.
+- [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) — `exposePort()` and the Worker-fronted preview URL flow.
+- [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) — End-to-end walkthrough for exposing services in production.
+- [Transport configuration](https://developers.cloudflare.com/sandbox/configuration/transport/) — RPC vs. route-based transport.
 
 Was this helpful?
 

@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Music Generation • MiniMax
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/music-2.6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/music-2.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `minimax/music-2.6`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 MiniMax's music generation model that creates full-length songs with vocals from text prompts and lyrics, or instrumental tracks. Supports BPM/key control and auto-generated lyrics.
 
-| Model Info          |                                                                                                                     |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                            |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                 |
-| Zero data retention | Yes                                                                                                                 |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
+| More information | [link ↗](https://www.minimaxi.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
 
 ## Usage
 
@@ -74,7 +74,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**With Lyrics** — Generate a song with custom lyrics
+<details>
+
+<summary>**With Lyrics** — Generate a song with custom lyrics</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -117,7 +121,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Instrumental** — Generate instrumental music without vocals
+</details>
+
+<details>
+
+<summary>**Instrumental** — Generate instrumental music without vocals</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -157,7 +167,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Quality Audio** — Specify audio format and sample rate
+</details>
+
+<details>
+
+<summary>**High Quality Audio** — Specify audio format and sample rate</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -201,7 +217,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Auto-Generated Lyrics** — Let the model generate lyrics from the prompt
+</details>
+
+<details>
+
+<summary>**Auto-Generated Lyrics** — Let the model generate lyrics from the prompt</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -241,6 +263,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -277,9 +301,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/minimax/music-2.6/schema-output.json)
 
 Was this helpful?
 

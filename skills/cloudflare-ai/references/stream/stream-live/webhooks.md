@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Receive Live Webhooks
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live offers webhooks to notify your service when an Input connects, disconnects, or encounters an error with Stream Live.
 
@@ -20,11 +20,17 @@ Note
 
 Webhooks works differently for uploaded / on-demand videos. For more information, refer to [Using Webhooks](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/).
 
+<details>
+
+<summary>
+
 Stream Live Notifications
+
+</summary>
 
 **Who is it for?**
 
-Customers who are using [Stream](https://developers.cloudflare.com/stream/) and want to receive webhooks with the status of their videos.
+Customers who are using <a href="https://developers.cloudflare.com/stream/">Stream</a> and want to receive webhooks with the status of their videos.
 
 **Other options / filters**
 
@@ -32,8 +38,9 @@ You can input Stream Live IDs to receive notifications only about those inputs. 
 
 The following input states will fire notifications. You can toggle them on or off:
 
-* `live_input.connected`
-* `live_input.disconnected`
+- <code>live_input.connected</code>
+- <code>live_input.disconnected</code>
+
 **Included with**
 
 Stream subscription.
@@ -42,10 +49,11 @@ Stream subscription.
 
 Stream notifications are entirely customizable by the customer. Action will depend on the customizations enabled.
 
+</details>
+
 ## Subscribe to Stream Live Webhooks
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select the **Destinations** tab.
 3. On the **Destinations** page under **Webhooks**, select **Create**.
 4. Enter the information for your webhook and select **Save and Test**.
@@ -57,6 +65,10 @@ Stream notifications are entirely customizable by the customer. Action will depe
 10. Select **Next**.
 11. By default, you will receive webhook notifications for all Live Inputs. If you only wish to receive webhooks for certain inputs, enter a comma-delimited list of Input IDs in the text field.
 12. When you are done, select **Create**.
+
+
+
+*Example webhook payloadjson*
 
 ```json
 {
@@ -78,12 +90,14 @@ If there are issues detected with the input, the `event_type` will be `live_inpu
 
 ## Error codes
 
-* `ERR_GOP_OUT_OF_RANGE` – The input GOP size or keyframe interval is out of range.
-* `ERR_UNSUPPORTED_VIDEO_CODEC` – The input video codec is unsupported for the protocol used.
-* `ERR_UNSUPPORTED_AUDIO_CODEC` – The input audio codec is unsupported for the protocol used.
-* `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
-* `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
-* `ERR_UNHEALTHY` – The active broadcast cannot be processed for an unknown reason that is most often due to encoder misconfiguration. Confirm the broadcast follows [required and recommended settings](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations), then disconnect and reconnect to try again.
+- `ERR_GOP_OUT_OF_RANGE` – The input GOP size or keyframe interval is out of range.
+- `ERR_UNSUPPORTED_VIDEO_CODEC` – The input video codec is unsupported for the protocol used.
+- `ERR_UNSUPPORTED_AUDIO_CODEC` – The input audio codec is unsupported for the protocol used.
+- `ERR_STORAGE_QUOTA_EXHAUSTED` – The account storage quota has been exceeded. Delete older content or purchase additional storage.
+- `ERR_MISSING_SUBSCRIPTION` – Unauthorized to start a live stream. Check subscription or log into Dash for details.
+- `ERR_UNHEALTHY` – The active broadcast cannot be processed for an unknown reason that is most often due to encoder misconfiguration. Confirm the broadcast follows [required and recommended settings](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations), then disconnect and reconnect to try again.
+
+*Example live\_input.errored webhook payloadjson*
 
 ```json
 {

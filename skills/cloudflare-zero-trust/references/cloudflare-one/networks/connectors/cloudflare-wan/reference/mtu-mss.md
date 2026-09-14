@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Maximum transmission unit and maximum segment size
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/mtu-mss/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Cloudflare WAN wraps your traffic in additional headers (encapsulation), the effective space available for your original data in each packet is reduced. If you do not account for this overhead, packets may be too large for the network path and will be dropped or fragmented — leading to performance loss or failed connections. This page explains the two key values you need to configure: maximum transmission unit (MTU) and maximum segment size (MSS).
 
@@ -56,9 +56,9 @@ So the question is: which of these fragments does Cloudflare drop and which does
 
 The following diagram shows how the three UDP fragments in the preceding example flow through Cloudflare and Cloudflare WAN. The main takeaways are:
 
-* **Cloudflare never sends incomplete packets to customers**: If Cloudflare does not see all parts of a packet required to fully reassemble that packet, Cloudflare will not send the partial data fragments to the customer.
-* **Cloudflare Network Firewall operates on fully reassembled packets, not individual fragments**: This means that filters that match on UDP/TCP header information, for example, apply to the fully reassembled packet, not just the initial fragment. Cloudflare will not leak non-initial fragments to customers.
-* **Customers can still see fragmented packets**: By default (without `clear_dont_fragment_bit` set), Cloudflare fragments packets to fit within the configured MTU of the tunnel before sending the data to the customer. If a packet is larger than 1,476 bytes, Cloudflare will fragment it and send those fragments to the customer for reassembly.
+- **Cloudflare never sends incomplete packets to customers**: If Cloudflare does not see all parts of a packet required to fully reassemble that packet, Cloudflare will not send the partial data fragments to the customer.
+- **Cloudflare Network Firewall operates on fully reassembled packets, not individual fragments**: This means that filters that match on UDP/TCP header information, for example, apply to the fully reassembled packet, not just the initial fragment. Cloudflare will not leak non-initial fragments to customers.
+- **Customers can still see fragmented packets**: By default (without `clear_dont_fragment_bit` set), Cloudflare fragments packets to fit within the configured MTU of the tunnel before sending the data to the customer. If a packet is larger than 1,476 bytes, Cloudflare will fragment it and send those fragments to the customer for reassembly.
 
 In all cases, Cloudflare sends all fragments to the customer.
 
@@ -86,13 +86,13 @@ Cloudflare only recommends applying a MSS clamp to adjust the size of TCP packet
 
 The MSS value depends on how your network is set up.
 
-* **On your edge router**: Apply the clamp to the GRE tunnel internal interface (meaning where the egress traffic will traverse). Set the MSS clamp to 1,436 bytes. Your devices may do this automatically once the tunnel is configured, but it depends on your devices.
+- **On your edge router**: Apply the clamp to the GRE tunnel internal interface (meaning where the egress traffic will traverse). Set the MSS clamp to 1,436 bytes. Your devices may do this automatically once the tunnel is configured, but it depends on your devices.
 
 ### IPsec tunnels
 
 For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted packets, not TCP packets, and MSS clamping does not apply to those.
 
-* **On your edge router**: Apply this on your IPsec tunnel internal interface (meaning where the egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
+- **On your edge router**: Apply this on your IPsec tunnel internal interface (meaning where the egress traffic will traverse). Your devices may do this automatically once the tunnel is configured, but it depends on your devices. Set the TCP MSS clamp to 1,360 bytes maximum.
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of sub 1s latency video playback using SRT and ffplay
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/examples/srt%5Fplayback/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/srt_playback/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,11 +22,12 @@ Before you can play live video, you must first be [actively streaming to a live 
 
 Copy the SRT Playback URL for your live input from either:
 
-* The **Live inputs** page of the Cloudflare dashboard.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-* The [Stream API](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api)
+- The **Live inputs** page of the Cloudflare dashboard. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+- The [Stream API](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api)
 
 Paste it into the URL below, replacing `<SRT_PLAYBACK_URL>`:
+
+*SRT playback with ffplaysh*
 
 ```sh
 ffplay -analyzeduration 1 -fflags -nobuffer -probesize 32 -sync ext '<SRT_PLAYBACK_URL>'

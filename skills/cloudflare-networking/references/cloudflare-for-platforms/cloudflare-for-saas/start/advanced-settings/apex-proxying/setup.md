@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To set up Cloudflare for SaaS for [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) \- as opposed to the [normal setup](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) \- perform the following steps.
+To set up Cloudflare for SaaS for [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) - as opposed to the [normal setup](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) - perform the following steps.
 
 ---
 
@@ -26,8 +26,9 @@ Before you start creating custom hostnames:
 2. [Enable](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/enable/) Cloudflare for SaaS for your zone.
 3. Review the [Hostname prioritization guidelines](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#hostname-priority). Wildcard custom hostnames behave differently than an exact hostname match.
 4. (optional) Review the following documentation:
-* [API documentation](https://developers.cloudflare.com/fundamentals/api/) (if you have not worked with the Cloudflare API before).
-* [Certificate validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).
+
+- [API documentation](https://developers.cloudflare.com/fundamentals/api/) (if you have not worked with the Cloudflare API before).
+- [Certificate validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).
 
 ---
 
@@ -36,7 +37,8 @@ Before you start creating custom hostnames:
 When you first [enable](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/enable/) Cloudflare for SaaS, you need to perform a few steps prior to creating any custom hostnames.
 
 
-### 1\. Get IP range
+
+### 1. Get IP range
 
 With apex proxying, you can either [bring your own IP range](https://developers.cloudflare.com/byoip/) or use a set of IP addresses provided by Cloudflare.
 
@@ -46,7 +48,7 @@ Caution
 
 These IP addresses are different than those associated with your Cloudflare zone.
 
-### 2\. Create fallback origin
+### 2. Create fallback origin
 
 The fallback origin is where Cloudflare will route traffic sent to your custom hostnames (must be proxied).
 
@@ -58,20 +60,19 @@ To create your fallback origin:
 
 1. [Create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a proxied `A`, `AAAA`, or `CNAME` record pointing to the IP address of your fallback origin (where Cloudflare will send custom hostname traffic).
 
-| **Type** | **Name**       | **IPv4 address** | **Proxy status** |
-| -------- | -------------- | ---------------- | ---------------- |
-| A        | proxy-fallback | 192.0.2.1        | Proxied          |
+| **Type** | **Name** | **IPv4 address** | **Proxy status** |
+| --- | --- | --- | --- |
+| `A` | `proxy-fallback` | `192.0.2.1` | Proxied |
 
-1. Designate that record as your fallback origin.
+2. Designate that record as your fallback origin.
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+1. In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. For **Fallback Origin**, enter the hostname for your fallback origin.
 3. Select **Add Fallback Origin**.
 
-Using the hostname of the record you just created, [update the fallback origin value](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/subresources/fallback%5Forigin/methods/update/).
+Using the hostname of the record you just created, [update the fallback origin value](https://developers.cloudflare.com/api/resources/custom_hostnames/subresources/fallback_origin/methods/update/).
 
-1. Once you have added the fallback origin, confirm that its status is **Active**.
+3. Once you have added the fallback origin, confirm that its status is **Active**.
 
 Note
 
@@ -85,7 +86,7 @@ You need to make sure your DNS record is sending traffic to the correct origin l
 
 You need to perform the following steps for each custom hostname.
 
-### 1\. Plan for validation
+### 1. Plan for validation
 
 Before you create a hostname, you need to plan for:
 
@@ -98,7 +99,7 @@ Note
 
 Depending on which method you select for each of these options, additional steps might be required for you and your customers.
 
-### 2\. Create custom hostname
+### 2. Create custom hostname
 
 After planning for certification and hostname validation, you can create the custom hostname.
 
@@ -108,29 +109,26 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 
 To create a custom hostname:
 
-1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+1. In the Cloudflare dashboard, go to the **Custom Hostnames** page. [Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Add Custom Hostname**.
 3. Add your customer's hostname `app.customer.com` and set the relevant options, including:
-
-  * Select the [minimum TLS version](https://developers.cloudflare.com/ssl/reference/protocols/).
-  * Select the [validation method](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).
-  * Define a [custom origin server](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/).
-  * Enterprise customers can also select the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), [upload a custom certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/), or enable wildcard, which adds a `*.<custom-hostname>` SAN to the custom hostname certificate. For more details, refer to [Hostname priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#hostname-priority) and [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
+   - Select the [minimum TLS version](https://developers.cloudflare.com/ssl/reference/protocols/).
+   - Select the [validation method](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/).
+   - Define a [custom origin server](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/).
+   - Enterprise customers can also select the [certificate authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), [upload a custom certificate](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/custom-certificates/uploading-certificates/), or enable wildcard, which adds a `*.<custom-hostname>` SAN to the custom hostname certificate. For more details, refer to [Hostname priority](https://developers.cloudflare.com/ssl/reference/certificate-and-hostname-priority/#hostname-priority) and [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
 4. Select **Add Custom Hostname**.
 
 Default behavior
 
 When you create a custom hostname:
 
-* If you issue a custom hostname certificate with wildcards enabled, you cannot customize TLS settings for these wildcard hostnames.
-* If you do not specify the **Minimum TLS Version**, it defaults to the zone's Minimum TLS Version. You can still [edit this setting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#minimum-tls-version) after creation.
+- If you issue a custom hostname certificate with wildcards enabled, you cannot customize TLS settings for these wildcard hostnames.
+- If you do not specify the **Minimum TLS Version**, it defaults to the zone's Minimum TLS Version. You can still [edit this setting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#minimum-tls-version) after creation.
 
-1. To create a custom hostname using the API, use the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/create/) endpoint.
-
-  * Only Enterprise customers can use the `certificate_authority` parameter to specify a CA, the `custom_certificate`/`custom_cert_bundle` to upload a custom certificate, or `wildcard` to create a wildcard certificate. Refer to [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
-  * You can leave the `certificate_authority` parameter empty to set it to "default CA". With this option, Cloudflare checks the CAA records before requesting the certificates, which helps ensure the certificates can be issued from the CA.
-2. For the newly created custom hostname, the `POST` response may not return the DCV validation token `validation_records`. It is recommended to make a second [GET command](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/list/) (with a delay) to retrieve these details.
+1. To create a custom hostname using the API, use the [Create Custom Hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/) endpoint.
+   - Only Enterprise customers can use the `certificate_authority` parameter to specify a CA, the `custom_certificate`/ `custom_cert_bundle` to upload a custom certificate, or `wildcard` to create a wildcard certificate. Refer to [Plans](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/plans/).
+   - You can leave the `certificate_authority` parameter empty to set it to "default CA". With this option, Cloudflare checks the CAA records before requesting the certificates, which helps ensure the certificates can be issued from the CA.
+2. For the newly created custom hostname, the `POST` response may not return the DCV validation token `validation_records`. It is recommended to make a second [`GET` command](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/list/) (with a delay) to retrieve these details.
 
 The response contains the complete definition of the new custom hostname.
 
@@ -138,8 +136,8 @@ Default behavior
 
 When you create a custom hostname:
 
-* If you issue a custom hostname certificate with wildcards enabled, you cannot customize TLS settings for these wildcard hostnames.
-* If you do not specify the **Minimum TLS Version**, it defaults to the zone's Minimum TLS Version. You can still [edit this setting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#minimum-tls-version) after creation.
+- If you issue a custom hostname certificate with wildcards enabled, you cannot customize TLS settings for these wildcard hostnames.
+- If you do not specify the **Minimum TLS Version**, it defaults to the zone's Minimum TLS Version. You can still [edit this setting](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/#minimum-tls-version) after creation.
 
 Note
 
@@ -147,7 +145,7 @@ For each custom hostname, Cloudflare issues two certificates bundled in chains t
 
 The primary certificate uses a `P-256` key, is `SHA-2/ECDSA` signed, and will be presented to browsers that support elliptic curve cryptography (ECC). The secondary or fallback certificate uses an `RSA 2048-bit` key, is `SHA-2/RSA` signed, and will be presented to browsers that do not support ECC.
 
-### 3\. Have customer create DNS record
+### 3. Have customer create DNS record
 
 To finish the custom hostname setup, your customer can set up either an A or CNAME record at their authoritative DNS provider.
 
@@ -175,7 +173,7 @@ example.com.  60  IN  A   192.0.2.1
 
 #### CNAME record
 
-If your customer uses a CNAME record at their authoritative DNS, they need to point their hostname to your [CNAME target](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#2-optional-create-cname-target) [1](#user-content-fn-1).
+If your customer uses a CNAME record at their authoritative DNS, they need to point their hostname to your [CNAME target](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/#2-optional-create-cname-target) <sup>[1](#user-content-fn-1)</sup>.
 
 Caution
 
@@ -199,8 +197,7 @@ For more details, refer to [Remove custom hostnames](https://developers.cloudfla
 
 ## Footnotes
 
-1. If you have [regional services](https://developers.cloudflare.com/data-localization/regional-services/) set up for your custom hostnames, Cloudflare always uses the processing region associated with your DNS target record (instead of the processing region of any [custom origins](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/)).
-[↩](#user-content-fnref-1)
+1. If you have [regional services](https://developers.cloudflare.com/data-localization/regional-services/) set up for your custom hostnames, Cloudflare always uses the processing region associated with your DNS target record (instead of the processing region of any [custom origins](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/custom-origin/)). [↩](#user-content-fnref-1)
 
 Was this helpful?
 

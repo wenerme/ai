@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remote R2 backend
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare R2](https://developers.cloudflare.com/r2/) and [Terraform remote backends ↗](https://developer.hashicorp.com/terraform/language/settings/backends/remote) can interact with each other to provide a seamless experience for Terraform state management.
 
@@ -54,7 +54,7 @@ After your token has been successfully created, review your **Secret Access Key*
 
 ## Define R2 backend
 
-Update your [cloudflare.tf](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) file to include a [backend ↗](https://developer.hashicorp.com/terraform/language/backend) for the `<YOUR_BUCKET_NAME>` bucket you created above.
+Update your [`cloudflare.tf`](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) file to include a [backend ↗](https://developer.hashicorp.com/terraform/language/backend) for the `<YOUR_BUCKET_NAME>` bucket you created above.
 
 Note
 

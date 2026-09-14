@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Verify a signed request using the HMAC and SHA-256 algorithms or return a 403.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/signing-requests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/signing-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -24,14 +24,14 @@ This creates a repository in your GitHub account and deploys the application to 
 
 Note
 
-This example Worker makes use of the [Node.js Buffer API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/buffer/), which is available as part of the Workers runtime [Node.js compatibility mode](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). To run this Worker, you will need to [enable the nodejs\_compat compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#get-started).
+This example Worker makes use of the [Node.js Buffer API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/buffer/), which is available as part of the Workers runtime [Node.js compatibility mode](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). To run this Worker, you will need to [enable the `nodejs_compat` compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#get-started).
 
 You can both verify and generate signed requests from within a Worker using the [Web Crypto APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle).
 
 The following Worker will:
 
-* For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
-* For all other request URLs, verify the signed URL and allow the request through.
+- For request URLs beginning with `/generate/`, replace `/generate/` with `/`, sign the resulting path with its timestamp, and return the full, signed URL in the response body.
+- For all other request URLs, verify the signed URL and allow the request through.
 
 ```js
 import { Buffer } from "node:buffer";
@@ -447,7 +447,7 @@ class Default(WorkerEntrypoint):
 
 ## Validate signed requests using the WAF
 
-The provided example code for signing requests is compatible with the [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) Rules language function. This means that you can verify requests signed by the Worker script using a [custom rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#option-2-configure-using-custom-rules).
+The provided example code for signing requests is compatible with the [`is_timed_hmac_valid_v0()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) Rules language function. This means that you can verify requests signed by the Worker script using a [custom rule](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/#option-2-configure-using-custom-rules).
 
 Was this helpful?
 

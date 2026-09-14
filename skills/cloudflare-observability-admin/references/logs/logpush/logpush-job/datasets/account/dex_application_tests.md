@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DEX Application Tests
 
-Last updated Mar 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `dex_application_tests`.
 
@@ -116,25 +116,25 @@ HTTP test client IP postal code, for example `90001`. HTTP tests only.
 
 Type: `int`
 
-HTTP test result connect end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result connect end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPConnectStartMs
 
 Type: `int`
 
-HTTP test result connect start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result connect start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPDomainLookupEndMs
 
 Type: `int`
 
-HTTP test result domain lookup end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result domain lookup end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPDomainLookupStartMs
 
 Type: `int`
 
-HTTP test result domain lookup start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result domain lookup start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPErrorMessage
 
@@ -152,19 +152,19 @@ HTTP test method. HTTP tests only.
 
 Type: `int`
 
-HTTP test redirect end timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test redirect end timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPRedirectStartMs
 
 Type: `int`
 
-HTTP test redirect start timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test redirect start timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPRequestStartMs
 
 Type: `int`
 
-HTTP test result request start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result request start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPResponseBody
 
@@ -182,7 +182,7 @@ Size of the HTTP response body. HTTP tests only.
 
 Type: `int`
 
-HTTP test result response end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result response end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPResponseHeaderBytes
 
@@ -200,13 +200,13 @@ HTTP response headers, for example `[{"name": "Content-Type", "value": "text/htm
 
 Type: `int`
 
-HTTP test result response start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result response start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPSecureConnectionStartMs
 
 Type: `int`
 
-HTTP test result secure connection start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource%5FTiming%5FAPI/Using%5Fthe%5FResource%5FTiming%5FAPI) for more details.
+HTTP test result secure connection start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPServerIPASN
 
@@ -481,5 +481,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/#page","headline":"DEX Application Tests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for dex_application_tests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-12","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/#page","headline":"DEX Application Tests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for dex_application_tests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

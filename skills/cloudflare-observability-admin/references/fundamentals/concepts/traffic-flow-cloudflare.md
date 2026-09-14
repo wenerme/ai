@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic flow through Cloudflare
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Internet traffic is made up of people, services, and agents requesting online resources from wherever they are hosted. Your resources may be publicly available, like a website or application that anyone on the Internet can access. Or your resources may be privately available, like an internal app or network that only your employees and partners should be able to access.
 
@@ -42,18 +42,18 @@ One example of on-ramping traffic to Cloudflare is updating your public website 
 
 However, maybe you need to protect a private application that is not directly available on the Internet. In this scenario, you can:
 
-* Connect your private application to Cloudflare using [secure tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), and use a [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to connect as a user.
-* For users already connected to a private company network, connect the entire network to Cloudflare using secure tunnels, and any request from a user device will access the private application through those tunnels.
+- Connect your private application to Cloudflare using [secure tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), and use a [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) to connect as a user.
+- For users already connected to a private company network, connect the entire network to Cloudflare using secure tunnels, and any request from a user device will access the private application through those tunnels.
 
 With these options, any request from a user device can access internal private applications via the secure private tunnels.
 
 Refer to the list below for products you can use to on-ramp traffic to Cloudflare.
 
-* [Anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and[ DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
-* [DNS-based](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) traffic resolves domains onboarded to [Cloudflare's CDN](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/). Cloudflare's DNS directs traffic to Cloudflare's global network of servers instead of a website's origin server.
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connects your resources to Cloudflare without a publicly routable IP address so that your origins can serve traffic through Cloudflare without being vulnerable to attacks that bypass Cloudflare.
-* [Magic Transit](https://developers.cloudflare.com/magic-transit/about/) offers DDoS protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks by accepting IP packets destined for your network, processing them, and outputting the packets to your origin infrastructure.
-* The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) securely and privately sends traffic from corporate devices to Cloudflare's global network while also applying advanced Zero Trust policies that check for a device's health before it connects to corporate applications.
+- [Anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and [ DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+- [DNS-based](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) traffic resolves domains onboarded to [Cloudflare's CDN](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/). Cloudflare's DNS directs traffic to Cloudflare's global network of servers instead of a website's origin server.
+- [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connects your resources to Cloudflare without a publicly routable IP address so that your origins can serve traffic through Cloudflare without being vulnerable to attacks that bypass Cloudflare.
+- [Magic Transit](https://developers.cloudflare.com/magic-transit/about/) offers DDoS protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks by accepting IP packets destined for your network, processing them, and outputting the packets to your origin infrastructure.
+- The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) securely and privately sends traffic from corporate devices to Cloudflare's global network while also applying advanced Zero Trust policies that check for a device's health before it connects to corporate applications.
 
 ### Off-ramp traffic from Cloudflare
 
@@ -67,9 +67,9 @@ You can also utilize [caching](https://developers.cloudflare.com/cache/) to help
 
 Refer to the list below for products you can use to off-ramp traffic from Cloudflare.
 
-* [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) detects real-time network issues and routes your web traffic across the most efficient network path, avoiding congestion.
-* [Cache](https://developers.cloudflare.com/cache/) works with cached content to avoid off-ramping to origin servers and instead serving directly from Cloudflare's global network.
-* [Regional services](https://developers.cloudflare.com/data-localization/regional-services/) lets you choose which subset of data centers decrypt and service HTTPS traffic, which can help customers who have to meet regional compliance or have preferences for maintaining regional control over their data.
+- [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) detects real-time network issues and routes your web traffic across the most efficient network path, avoiding congestion.
+- [Cache](https://developers.cloudflare.com/cache/) works with cached content to avoid off-ramping to origin servers and instead serving directly from Cloudflare's global network.
+- [Regional services](https://developers.cloudflare.com/data-localization/regional-services/) lets you choose which subset of data centers decrypt and service HTTPS traffic, which can help customers who have to meet regional compliance or have preferences for maintaining regional control over their data.
 
 Was this helpful?
 

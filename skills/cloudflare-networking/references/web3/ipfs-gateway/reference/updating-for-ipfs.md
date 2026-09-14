@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using IPFS with your website
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Though it is not required, it is strongly recommended that websites hosted on IPFS use only relative links, unless linking to a different domain. This is because data can be accessed in many different (but ultimately equivalent) ways:
 
-* From your custom domain: `https://ipfs.tech/index.html`
-* From a gateway: `https://cloudflare-ipfs.com/ipns/ipfs.tech/index.html`
-* By immutable hash: `https://cloudflare-ipfs.com/ipfs/QmNksJqvwHzNtAtYZVqFZFfdCVciY4ojTU2oFZQSFG9U7B/index.html`
+- From your custom domain: `https://ipfs.tech/index.html`
+- From a gateway: `https://cloudflare-ipfs.com/ipns/ipfs.tech/index.html`
+- By immutable hash: `https://cloudflare-ipfs.com/ipfs/QmNksJqvwHzNtAtYZVqFZFfdCVciY4ojTU2oFZQSFG9U7B/index.html`
 
 Using only relative links within a web application supports all of these at once, and gives the most flexibility to the user. The exact method for switching to relative links, if you do not use them already, depends on the framework you use.
 
@@ -49,7 +49,7 @@ This snippet computes the relative path back to the root of the website from the
 {%- include base.html -%}
 ```
 
-This snippet also prefixing any links with `{{base}}`. So for example, we would change `href="https://developers.cloudflare.com/css/main.css"` to be `href="https://developers.cloudflare.com/web3/ipfs-gateway/reference/updating-for-ipfs/%7B%7Bbase%7D%7D/css/main.css"`
+This snippet also prefixing any links with `{{base}}`. So for example, we would change `href="/css/main.css"` to be `href="{{base}}/css/main.css"`
 
 ## Generic
 

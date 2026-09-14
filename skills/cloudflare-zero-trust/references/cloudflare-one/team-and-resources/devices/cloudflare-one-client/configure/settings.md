@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Device client settings
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Device client settings (formerly WARP) allow you to customize the Cloudflare One Client modes and permissions available to end users.
 
-* [Global device client settings](#global-device-client-settings) are configurations which apply to all devices enrolled in your Zero Trust organization.
-* [Global disconnection settings](#global-disconnection-settings) allow administrators to force-disconnect all Cloudflare One Clients during an incident or outage.
-* [Device profile settings](#device-profile-settings) can vary across devices depending on which [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is applied.
+- [Global device client settings](#global-device-client-settings) are configurations which apply to all devices enrolled in your Zero Trust organization.
+- [Global disconnection settings](#global-disconnection-settings) allow administrators to force-disconnect all Cloudflare One Clients during an incident or outage.
+- [Device profile settings](#device-profile-settings) can vary across devices depending on which [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) is applied.
 
 Note
 
@@ -28,11 +28,19 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 
 ### Allow admin override codes
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 Note
 
@@ -42,8 +50,8 @@ When [**Lock device client switch**](#lock-device-client-switch) is enabled, use
 
 Example use cases for **Allow admin override codes** include:
 
-* Allowing users to momentarily disconnect the Cloudflare One Client to work around a temporary network issue such as an incompatible public Wi-Fi, or a firewall at a customer site blocking the connection.
-* Allowing test users to connect the Cloudflare One Client while a global disconnect is in effect.
+- Allowing users to momentarily disconnect the Cloudflare One Client to work around a temporary network issue such as an incompatible public Wi-Fi, or a firewall at a customer site blocking the connection.
+- Allowing test users to connect the Cloudflare One Client while a global disconnect is in effect.
 
 As admin, you can set a **Timeout** to define how long a user can toggle the client's connection toggle on or off after entering the override code. Cloudflare generates a new override code every hour that an admin can send to end users. The override code's validity adheres to fixed-hour time blocks and aims to be generous to the end user.
 
@@ -58,7 +66,7 @@ If [Auto connect](#auto-connect) is enabled, the Cloudflare One Client will auto
 To retrieve the one-time code for a user:
 
 1. Enable **Allow admin override codes**.
-2. Go to **Team & Resources** \> **Devices**.
+2. Go to **Team & Resources** > **Devices**.
 3. Select **View details** for a connected device.
 4. Scroll down to **User details** and select the user's name.
 5. Copy the 7-digit **Override code** shown in the side panel.
@@ -74,7 +82,7 @@ To activate the override code on a user device:
 2. In **Temporarily disconnect Cloudflare One Client**, select **Enter admin code**.
 3. Enter the override code and select **Disconnect**.
 
-1. In the Cloudflare One Client, go to **Settings** \> **Preferences** \> **Advanced**.
+1. In the Cloudflare One Client, go to **Settings** > **Preferences** > **Advanced**.
 2. Select **Enter code**.
 3. Enter the override code.
 
@@ -82,30 +90,46 @@ The user can now toggle the client's connection toggle or use the `warp-cli conn
 
 ### Install CA to system certificate store
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode, Local proxy mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2024.12.554.0          |
-| macOS    | ✅            | 2024.12.554.0          |
-| Linux    | ✅            | 2024.12.554.0          |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| Traffic and DNS mode, Local proxy mode | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.12.554.0 |
+| macOS | ✅ | 2024.12.554.0 |
+| Linux | ✅ | 2024.12.554.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 When `Enabled`, the Cloudflare One Client will [automatically install](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/automated-deployment/) your organization's root certificate on the device.
 
 ### Assign a unique IP address to each device
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems     | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Windows, macOS, Linux | Traffic and DNS mode, Traffic only mode                                                                                            | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| Windows, macOS, Linux | Traffic and DNS mode, Traffic only mode | All plans |
+
+</details>
 
 Overrides the default IP address of the Cloudflare One Client's [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic) such that each device has its own unique local interface IP.
 
@@ -113,18 +137,26 @@ This setting is primarily used as a prerequisite for [Cloudflare Mesh](https://d
 
 **Value:**
 
-* `Disabled`: (default) Sets the local interface IP to `172.16.0.2` on all devices. This configuration is only respected by devices using [WireGuard](#device-tunnel-protocol) and does not affect devices using [MASQUE](#device-tunnel-protocol).
-* `Enabled`: Sets the local interface IP on each device to its CGNAT IP or to a [custom device IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
+- `Disabled`: (default) Sets the local interface IP to `172.16.0.2` on all devices. This configuration is only respected by devices using [WireGuard](#device-tunnel-protocol) and does not affect devices using [MASQUE](#device-tunnel-protocol).
+- `Enabled`: Sets the local interface IP on each device to its CGNAT IP or to a [custom device IP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
 
 The IP assigned to a device is permanent until the device unregisters from your Zero Trust organization or switches to a different registration. Disconnects and reconnects do not change the IP address assignment.
 
 ### Allow all Cloudflare One traffic to reach enrolled devices
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Traffic and DNS mode                                                                                                               | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Traffic and DNS mode | All plans |
+
+</details>
 
 Allows traffic on-ramped using [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) or [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) to route to devices enrolled in your Zero Trust organization.
 
@@ -138,26 +170,34 @@ Ensure that traffic destined to your device IPs routes from your private network
 
 ### Disconnect the Cloudflare One Client on all devices
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.2.600.0           |
-| macOS    | ✅            | 2025.2.600.0           |
-| Linux    | ✅            | 2025.2.600.0           |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.2.600.0 |
+| macOS | ✅ | 2025.2.600.0 |
+| Linux | ✅ | 2025.2.600.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 Note
 
 Requires the [Super Administrator](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) role.
 
-**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. End users will receive a notification on their device and the Cloudflare One Client will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
+**Disconnect the Cloudflare One Client on all devices** allows administrators to fail open the Cloudflare One Client in case of an incident occurring in your environment, independent from incidents or outages affecting Cloudflare's services. When you turn on **Disconnect the Cloudflare One Client on all devices**, Cloudflare will disconnect all Windows, macOS, and Linux Cloudflare One Clients that are connected to your Zero Trust organization. This includes end user devices and [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) nodes. End users will receive a notification on their device and the Cloudflare One Client will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
 
 To resume normal operations, turn off **Disconnect the Cloudflare One Client on all devices**. The Cloudflare One Client will automatically reconnect.
 
@@ -165,20 +205,28 @@ For more information on how **Disconnect the Cloudflare One Client on all device
 
 ### Manage device connection using an external signal
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.10.186.0          |
-| macOS    | ✅            | 2025.10.186.0          |
-| Linux    | ✅            | 2025.10.186.0          |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.10.186.0 |
+| macOS | ✅ | 2025.10.186.0 |
+| Linux | ✅ | 2025.10.186.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 Allows administrators to disconnect and reconnect the Cloudflare One Client independently from any Cloudflare infrastructure. When `Enabled`, Cloudflare One Clients will periodically poll the configured HTTPS endpoint and disconnect when they receive a valid disconnect signal.
 
@@ -186,20 +234,28 @@ To set up the external HTTPS endpoint, refer to [Emergency Disconnect](https://d
 
 ### Manage device connection using a local file
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.5.0               |
-| macOS    | ✅            | 2026.5.0               |
-| Linux    | ✅            | 2026.5.0               |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ✅ | 2026.5.0 |
+| Linux | ✅ | 2026.5.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 Allows administrators to disconnect and reconnect the Cloudflare One Client using a local JSON file on the device, without requiring any network connectivity. When `Enabled`, the Cloudflare One Client monitors a fixed file path for a disconnect signal. This is useful for disaster recovery scenarios where both Cloudflare and your own infrastructure may be unreachable.
 
@@ -209,11 +265,19 @@ To set up the local signal file, refer to [Emergency Disconnect](https://develop
 
 ### Captive portal detection
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 When `Enabled`, the Cloudflare One Client will automatically disconnect when it detects a captive portal, and it will automatically reconnect after the **Timeout** duration.
 
@@ -221,88 +285,136 @@ Since captive portal implementations vary, the Cloudflare One Client may not det
 
 ### Mode switch
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 When `Enabled`, users have the option to switch between [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-and-dns-mode-default) and [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode). This feature does not support switching between any other modes.
 
 ### Device tunnel protocol
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2024.11.309.0          |
-| macOS    | ✅            | 2024.11.309.0          |
-| Linux    | ✅            | 2024.11.309.0          |
-| iOS      | ✅            | 1.7                    |
-| Android  | ✅            | 2.0                    |
-| ChromeOS | ✅            | 2.0                    |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.11.309.0 |
+| macOS | ✅ | 2024.11.309.0 |
+| Linux | ✅ | 2024.11.309.0 |
+| iOS | ✅ | 1.7 |
+| Android | ✅ | 2.0 |
+| ChromeOS | ✅ | 2.0 |
+
+</details>
 
 Configures the protocol used to route IP traffic from the device to Cloudflare Gateway. To check the active protocol on a device, open a terminal and run `warp-cli settings | grep protocol`.
 
 **Value**:
 
-* **WireGuard**: Establishes a [WireGuard ↗](https://www.wireguard.com/) connection to Cloudflare. The Cloudflare One Client will encrypt traffic using a non-FIPs compliant cipher suite, `TLS_CHACHA20_POLY1305_SHA256`. When switching from MASQUE to WireGuard, users may lose Internet connectivity if their Wi-Fi network blocks the [ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) required for WireGuard to function.
-* **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-3 ↗](https://csrc.nist.gov/pubs/fips/140-3/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
+- **WireGuard**: Establishes a [WireGuard ↗](https://www.wireguard.com/) connection to Cloudflare. The Cloudflare One Client will encrypt traffic using a non-FIPs compliant cipher suite, `TLS_CHACHA20_POLY1305_SHA256`. When switching from MASQUE to WireGuard, users may lose Internet connectivity if their Wi-Fi network blocks the [ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) required for WireGuard to function.
+- **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-3 ↗](https://csrc.nist.gov/pubs/fips/140-3/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
 
 For more details on WireGuard versus MASQUE, refer to our [blog post ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
 
 ### Lock device client switch
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 Allows the user to disconnect the Cloudflare One Client.
 
 **Value:**
 
-* `Disabled`: (default) The user is able to connect or disconnect the Cloudflare One Client at their discretion. When the client is disconnected, the user will not have the ability to reach sites protected by Access that leverage certain device posture checks.
-* `Enabled`: The user is prevented from disconnecting the Cloudflare One Client. The client will always start in the connected state.
+- `Disabled`: (default) The user is able to connect or disconnect the Cloudflare One Client at their discretion. When the client is disconnected, the user will not have the ability to reach sites protected by Access that leverage certain device posture checks.
+- `Enabled`: The user is prevented from disconnecting the Cloudflare One Client. The client will always start in the connected state.
 
 On MDM deployments, you must also include the `auto_connect` parameter with at least a value of `0`. This will prevent clients from being deployed in the off state without a way for users to manually enable them.
 
 ### Allow device to leave organization
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 When `Enabled`, users can log out from your Zero Trust organization by selecting **Logout from Zero Trust** in the Cloudflare One Client UI. The **Logout from Zero Trust** button is only available for devices that were [enrolled manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/). Devices that enrolled using an MDM file are always prevented from leaving your Zero Trust organization.
 
 ### Allow updates
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems     | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| macOS, Windows, Linux | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| macOS, Windows, Linux | Any mode | All plans |
+
+</details>
 
 When `Enabled`, users will receive update notifications when a new version of the client is available. Only turn this on if your users are local administrators with the ability to add or remove software from their device.
 
 Note
 
-When a [client version assignment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) targets a device, the client suppresses local update notifications on that device. This prevents end users from seeing a dashboard-managed install and a local update prompt at the same time. To turn off client version assignments on a device, set [allow\_managed\_deployments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#allow%5Fmanaged%5Fdeployments) to `false` in your MDM file.
+When a [client version assignment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/) targets a device, the client suppresses local update notifications on that device. This prevents end users from seeing a dashboard-managed install and a local update prompt at the same time. To turn off client version assignments on a device, set [`allow_managed_deployments`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#allow_managed_deployments) to `false` in your MDM file.
 
 ### Auto connect
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 When `Enabled`, the client will automatically reconnect if it has been disabled for the specified **Timeout** value. This setting is best used in conjunction with [Lock device client switch](#lock-device-client-switch) above.
 
@@ -310,59 +422,99 @@ We recommend keeping this set to a very low value — usually just enough time f
 
 **Value:**
 
-* `0`: Allow the switch to stay in the off position indefinitely until the user turns it back on.
-* `1` to `1440`: Turn switch back on automatically after the specified number of minutes.
+- `0`: Allow the switch to stay in the off position indefinitely until the user turns it back on.
+- `1` to `1440`: Turn switch back on automatically after the specified number of minutes.
 
 ### Support URL
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 When `Enabled`, the **Send Feedback** button in the Cloudflare One Client appears and will launch the URL specified. Example **Support URL** values are:
 
-* `https://support.example.com`: Use an https:// link to open your companies internal help site.
-* `mailto:yoursupport@example.com`: Use a `mailto:` link to open your default mail client.
+- `https://support.example.com`: Use an https:// link to open your companies internal help site.
+- `mailto:yoursupport@example.com`: Use a `mailto:` link to open your default mail client.
 
 ### Service mode
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 Allows you to choose the operational mode of the client. Refer to [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes) for a detailed description of each mode.
 
 ### Local Domain Fallback
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Traffic and DNS mode, DNS only mode                                                                                                | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Traffic and DNS mode, DNS only mode | All plans |
+
+</details>
 
 Configures the Cloudflare One Client to redirect DNS requests to a private DNS resolver. For more information, refer to our [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) documentation.
 
 ### Split Tunnels
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 Configures the Cloudflare One Client to exclude or include traffic to specific IP addresses or domains. For more information, refer to our [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) documentation.
 
 ### Directly route Microsoft 365 traffic
 
+<details>
+
+<summary>
+
 Feature availability
 
-| Operating Systems | [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All systems       | Any mode                                                                                                                           | All plans                                                       |
+</summary>
+
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- | --- |
+| All systems | Any mode | All plans |
+
+</details>
 
 Creates [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Exclude entries for all [Microsoft 365 IP addresses specified by Microsoft ↗](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service). To use this setting, **Split Tunnels** must be set to **Exclude IPs and domains**. Once enabled, all Microsoft 365 network traffic will bypass the Cloudflare One Client and Gateway.
 
@@ -370,25 +522,33 @@ Note
 
 Along with the IP addresses provided by Microsoft's [IP Address and URL web service ↗](https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service?view=o365-worldwide), enabling this option automatically adds the following Split Tunnel Exclude entries for Microsoft Teams:
 
-* `24.24.24.24/32`
-* `52.120.0.0/14`
+- `24.24.24.24/32`
+- `52.120.0.0/14`
 
 ### Allow users to enable local network exclusion
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version     |
-| -------- | ------------ | -------------------------- |
-| Windows  | ✅            | 2024.1.159.0               |
-| macOS    | ✅            | 2024.1.160.0               |
-| Linux    | ✅            | 2024.2.62.0                |
-| iOS      | ❌            | N/A[1](#user-content-fn-1) |
-| Android  | ✅            | 1.4                        |
-| ChromeOS | ✅            | 1.4                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.1.159.0 |
+| macOS | ✅ | 2024.1.160.0 |
+| Linux | ✅ | 2024.2.62.0 |
+| iOS | ❌ | N/A<sup><a href="#user-content-fn-1">1</a></sup> |
+| Android | ✅ | 1.4 |
+| ChromeOS | ✅ | 1.4 |
+
+</details>
 
 This setting is intended as a workaround for users whose home network uses the same set of IP addresses as your corporate private network. To use this setting, **Split Tunnels** must be set to **Exclude IPs and domains**.
 
@@ -398,8 +558,8 @@ Warning
 
 Enabling this setting comes with two major consequences:
 
-* **Device is exposed to security threats.** The user may be unaware that traffic to what used to be their company's private network is now actually being routed to their local network. This leaves the device vulnerable to [on-path attackers ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) and other security vulnerabilities. For example, imagine that a user's typical workflow involves logging into a remote desktop on the corporate network at `10.0.0.30`. A bad actor could set up a fake server on the local network at `10.0.0.30`. If the user goes to `10.0.0.30` while **Access local network** is enabled, the attacker can now steal their credentials.
-* **User loses access to corporate resources.** — While accessing their local network, the user will be unable to connect to corporate resources that fall within the same IP/CIDR range.
+- **Device is exposed to security threats.** The user may be unaware that traffic to what used to be their company's private network is now actually being routed to their local network. This leaves the device vulnerable to [on-path attackers ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) and other security vulnerabilities. For example, imagine that a user's typical workflow involves logging into a remote desktop on the corporate network at `10.0.0.30`. A bad actor could set up a fake server on the local network at `10.0.0.30`. If the user goes to `10.0.0.30` while **Access local network** is enabled, the attacker can now steal their credentials.
+- **User loses access to corporate resources.** — While accessing their local network, the user will be unable to connect to corporate resources that fall within the same IP/CIDR range.
 
 #### Access local network as a user
 
@@ -408,41 +568,57 @@ To turn on local network access in the Cloudflare One Client:
 1. Open the Cloudflare One Client and go to **Settings**.
 2. In **Temporarily access local network resources**, select **Access resources**.
 
+<details>
+
+<summary>
+
 Version 2026.1 and earlier
+
+</summary>
 
 1. Open the Cloudflare One Client.
 2. Select the gear icon.
 3. Select **Access Local Network**.
 
+</details>
+
 1. Open a terminal window.
 2. Run `warp-cli override local-network start`.
 
 1. Open the Cloudflare One Agent app.
-2. Go to **Settings** \> **Advanced** \> **Connection Options**.
+2. Go to **Settings** > **Advanced** > **Connection Options**.
 3. Select **Access Local Network**.
 
 #### Limitations
 
-* The Cloudflare One Client will only exclude local networks in the [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space. Other IP addresses such as CGNAT are not supported.
-* The maximum excluded subnet size is `/24`.
-* If a device has multiple network interfaces with distinct local IP ranges, the Cloudflare One Client will only exclude one of those networks. To access a specific local network, disable the other interfaces and disconnect/reconnect the Cloudflare One Client.
+- The Cloudflare One Client will only exclude local networks in the [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space. Other IP addresses such as CGNAT are not supported.
+- The maximum excluded subnet size is `/24`.
+- If a device has multiple network interfaces with distinct local IP ranges, the Cloudflare One Client will only exclude one of those networks. To access a specific local network, disable the other interfaces and disconnect/reconnect the Cloudflare One Client.
 
 ### Client interface IP DNS registration
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.2.600.0           |
-| macOS    | ❌            |                        |
-| Linux    | ❌            |                        |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.2.600.0 |
+| macOS | ❌ | |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 When `Enabled`, the operating system will register the Cloudflare One Client's [local interface IP](#assign-a-unique-ip-address-to-each-device) (CGNAT IP or `172.16.0.2`) with your on-premise DNS server when the DNS server is reachable.
 
@@ -450,92 +626,125 @@ If you use on-premise DNS infrastructure (such as Active Directory), we recommen
 
 ### SCCM VPN boundary support
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.5.735.1           |
-| macOS    | ❌            |                        |
-| Linux    | ❌            |                        |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.5.735.1 |
+| macOS | ❌ | |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 Microsoft's [System Center Configuration Manager ↗](https://learn.microsoft.com/en-us/intune/configmgr/) (SCCM) is used to manage software on Windows devices based on the [boundary group ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/define-site-boundaries-and-boundary-groups), or network location, to which they belong. You can assign Cloudflare One Clients to a SCCM boundary group based on their [managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) and other device profile attributes. When **SCCM VPN Boundary Support** is turned on, the Cloudflare One Client will modify the description field on its [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic). This allows you to define a VPN boundary group that matches on the network interface description.
 
 **Value:**
 
-* `Disabled`: (default) The client network interface description is `Cloudflare WARP Interface Tunnel`.
-* `Enabled`: The client network interface description is `(SCCM) Cloudflare WARP Interface Tunnel` for devices which have the [SCCM client ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/deploy/deploy-clients-to-windows-computers) installed. Devices without the SCCM client will still use the default `Cloudflare WARP Interface Tunnel` description. The Cloudflare One Client checks if the SCCM client is installed by looking for the SMS Agent Host (`ccmexec.exe`) Windows service.
+- `Disabled`: (default) The client network interface description is `Cloudflare WARP Interface Tunnel`.
+- `Enabled`: The client network interface description is `(SCCM) Cloudflare WARP Interface Tunnel` for devices which have the [SCCM client ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/deploy/deploy-clients-to-windows-computers) installed. Devices without the SCCM client will still use the default `Cloudflare WARP Interface Tunnel` description. The Cloudflare One Client checks if the SCCM client is installed by looking for the SMS Agent Host ( `ccmexec.exe`) Windows service.
 
 #### Example SCCM configuration
 
 Assume you want to push software updates from a cloud based [distribution point ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundary-groups-distribution-points) if the device is remote, but use on-prem servers if the device is on the office network. To set up these boundary groups:
 
 1. In Zero Trust:
-a. Turn on **SCCM VPN Boundary Support** for remote [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
-b. Turn off **SCCM VPN Boundary Support** for [on-prem device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/#4-configure-device-profile).
-c. (Optional) Verify device settings:
-Verify SCCM VPN Boundary Support
-To check if **SCCM VPN Boundary Support** is active on a device, run the following command:
-```cmd
-warp-cli settings | findstr "SCCM VPN Boundary"
-```
-```cmd
-(network policy) SCCM VPN Boundary Support: true
-```
-You can also verify network interface details for the `CloudflareWARP` adapter:
-```cmd
-ipconfig /all
-```
-```cmd
-Windows IP Configuration
-...
-Unknown adapter CloudflareWARP:
-	Connection-specific DNS Suffix  . :
-	Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel
-	Physical Address. . . . . . . . . :
-	DHCP Enabled. . . . . . . . . . . : No
-	Autoconfiguration Enabled . . . . : Yes
-	IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)
-	Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
-	IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
-	Subnet Mask . . . . . . . . . . . : 255.255.255.255
-	Default Gateway . . . . . . . . . :
-	DNS Servers . . . . . . . . . . . : 127.0.2.2
-																			127.0.2.3
-	NetBIOS over Tcpip. . . . . . . . : Disabled
-```
-2. In Microsoft SCCM:
-a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
 
-  * **Description**: `Remote Cloudflare One Clients`
-  * **Type**: _VPN_
-  * **Connection description**: `(SCCM) Cloudflare WARP Interface Tunnel`
-b. Assign this boundary to one or more boundary groups.
+   a. Turn on **SCCM VPN Boundary Support** for remote [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/).
+
+   b. Turn off **SCCM VPN Boundary Support** for [on-prem device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/#4-configure-device-profile).
+
+   c. (Optional) Verify device settings:<details><summary>
+
+   Verify SCCM VPN Boundary Support</summary>
+
+To check if **SCCM VPN Boundary Support** is active on a device, run the following command:
+
+   ```cmd
+   warp-cli settings | findstr "SCCM VPN Boundary"
+   ```
+
+   ```cmd
+   (network policy) SCCM VPN Boundary Support: true
+   ```
+
+   You can also verify network interface details for the <code>CloudflareWARP</code> adapter:
+
+   ```cmd
+   ipconfig /all
+   ```
+
+   ```cmd
+   Windows IP Configuration
+
+   ...
+
+   Unknown adapter CloudflareWARP:
+
+   	Connection-specific DNS Suffix  . :
+   	Description . . . . . . . . . . . : (SCCM) Cloudflare WARP Interface Tunnel
+   	Physical Address. . . . . . . . . :
+   	DHCP Enabled. . . . . . . . . . . : No
+   	Autoconfiguration Enabled . . . . : Yes
+   	IPv6 Address. . . . . . . . . . . : 2001:db8:110:8f79:145:f180:fc4:8106(Preferred)
+   	Link-local IPv6 Address . . . . . : fe80::83b:d647:4bed:d388%49(Preferred)
+   	IPv4 Address. . . . . . . . . . . : 172.16.0.2(Preferred)
+   	Subnet Mask . . . . . . . . . . . : 255.255.255.255
+   	Default Gateway . . . . . . . . . :
+   	DNS Servers . . . . . . . . . . . : 127.0.2.2
+   																			127.0.2.3
+   	NetBIOS over Tcpip. . . . . . . . : Disabled
+   ```
+
+   </details>
+
+2. In Microsoft SCCM:
+
+   a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
+   - **Description**: `Remote Cloudflare One Clients`
+   - **Type**: *VPN*
+   - **Connection description**: `(SCCM) Cloudflare WARP Interface Tunnel`
+
+   b. Assign this boundary to one or more boundary groups.
 
 When the device is remote, the client interface description changes to `(SCCM) Cloudflare WARP Interface Tunnel` and the SCCM server will determine that the device belongs to the VPN boundary group. The device can now download updates from the distribution point assigned to this boundary group. When a network change occurs and the Cloudflare One Client detects a managed network, it will revert the interface description to `Cloudflare WARP Interface Tunnel` and the boundary condition will no longer be satisfied. The device will match your local IP range and be considered as on-prem.
 
 ### NetBIOS over TCPIP
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.1.89.1            |
-| macOS    | ❌            |                        |
-| Linux    | ❌            |                        |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.1.89.1 |
+| macOS | ❌ | |
+| Linux | ❌ | |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 NetBIOS over TCP/IP (NetBT) is a legacy protocol used for name resolution and other features on Windows. NetBT has been deprecated for years, but Windows has not removed it. The Cloudflare One Client disables NetBT on the tunnel interface by default for security reasons and to align with modern best practices. This setting allows you to override the default behavior and enable NetBT over the WARP tunnel.
 
@@ -543,9 +752,9 @@ NetBIOS over TCP/IP (NetBT) is a legacy protocol used for name resolution and ot
 
 You should turn on **NetBIOS over TCPIP** only if devices need to access internal resources over NetBT. Example scenarios include:
 
-* **Legacy name resolution**: You rely on NetBIOS to resolve single-label names (such as `\\SERVER01`), instead of modern alternatives like mDNS for single-label names or standard DNS for Fully Qualified Domain Names (such as `\\server01.corp.internal`).
-* **SMBv1**: You are accessing very old file shares or printers that do not support modern SMB (v2/v3) and require NetBT for discovery.
-* **Legacy applications**: You use specialized internal software that hard-codes NetBIOS for node-to-node communication.
+- **Legacy name resolution**: You rely on NetBIOS to resolve single-label names (such as `\\SERVER01`), instead of modern alternatives like mDNS for single-label names or standard DNS for Fully Qualified Domain Names (such as `\\server01.corp.internal`).
+- **SMBv1**: You are accessing very old file shares or printers that do not support modern SMB (v2/v3) and require NetBT for discovery.
+- **Legacy applications**: You use specialized internal software that hard-codes NetBIOS for node-to-node communication.
 
 Otherwise, the recommendation is to always disable **NetBIOS over TCPIP**. You can choose a different setting for [remote devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) versus [on-prem devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/#4-configure-device-profile).
 
@@ -588,45 +797,61 @@ Unknown adapter CloudflareWARP:
 
 ### VNET availability Beta
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode Traffic only mode                                                                                             | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.5.0               |
-| macOS    | ✅            | 2026.5.0               |
-| Linux    | ✅            | 2026.5.0               |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
-By default, the Cloudflare One Client shows every [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) (VNET) in your account in the [VNET dropdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#connect-to-a-virtual-network). **VNET availability** restricts the dropdown to a subset of VNETs and chooses a default VNET on a per-[device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) basis. The active profile controls which VNETs devices can see and switch between.
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ✅ | 2026.5.0 |
+| Linux | ✅ | 2026.5.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
+
+By default, the Cloudflare One Client shows every [virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) (VNET) in your account in the [VNET dropdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#connect-to-a-virtual-network). **VNET availability** restricts the dropdown to a subset of VNETs and chooses a default VNET on a per- [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) basis. The active profile controls which VNETs devices can see and switch between.
 
 For example, if your QA team uses a `staging-vnet` and your sales team should never reach it, you can assign the sales device profile to only include `production-vnet`. Sales users will not see `staging-vnet` in the dropdown.
 
 ### DNS search suffixes Beta
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Traffic and DNS mode DNS only mode                                                                                                 | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.5.0               |
-| macOS    | ✅            | 2026.5.0               |
-| Linux    | ✅            | 2026.5.0               |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| <ul><li>Traffic and DNS mode</li><li>DNS only mode</li></ul> | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ✅ | 2026.5.0 |
+| Linux | ✅ | 2026.5.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 A DNS search suffix (also known as a search domain) automatically appends a domain to single-label names so that users can type `jira` into a browser and the operating system resolves `jira.internal.example`. Search suffixes are typically advertised by the local network over DHCP, but devices connected to the Cloudflare One Client use the WARP virtual interface instead, which does not inherit network-advertised suffixes.
 
-Use **DNS search suffixes** to deploy an ordered list of up to 25 suffixes to the Cloudflare One Client on a per-[device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) basis. The client appends each suffix in order to single-label name queries until one resolves successfully. This setting replaces the per-device manual configuration described in [Add a DNS suffix](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#add-a-dns-suffix).
+Use **DNS search suffixes** to deploy an ordered list of up to 25 suffixes to the Cloudflare One Client on a per- [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) basis. The client appends each suffix in order to single-label name queries until one resolves successfully. This setting replaces the per-device manual configuration described in [Add a DNS suffix](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#add-a-dns-suffix).
 
 ## Footnotes
 

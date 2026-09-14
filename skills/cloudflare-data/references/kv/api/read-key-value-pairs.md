@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Read key-value pairs
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
@@ -103,15 +103,15 @@ Note
 
 The following methods are provided to read from KV:
 
-* [get()](#request-a-single-key-with-getkey-string)
-* [getWithMetadata()](#request-multiple-keys-with-getkeys-string)
+- [get()](#request-a-single-key-with-getkey-string)
+- [getWithMetadata()](#request-multiple-keys-with-getkeys-string)
 
 ### `get()` method
 
 Use the `get()` method to get a single value, or multiple values if given multiple keys:
 
-* Read single keys with [get(key: string)](#request-a-single-key-with-getkey-string)
-* Read multiple keys with [get(keys: string\[\])](#request-multiple-keys-with-getkeys-string)
+- Read single keys with [get(key: string)](#request-a-single-key-with-getkey-string)
+- Read multiple keys with [get(keys: string\[\])](#request-multiple-keys-with-getkeys-string)
 
 #### Request a single key with `get(key: string)`
 
@@ -131,21 +131,21 @@ self.env.NAMESPACE.get(key, options)
 
 ##### Parameters
 
-* `key`: `string`
-  * The key of the KV pair.
-* `type`: `"text" | "json" | "arrayBuffer" | "stream"`
-  * Optional. The type of the value to be returned. `text` is the default.
-* `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`
-  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+- `key`: `string`
+  - The key of the KV pair.
+- `type`: `"text" | "json" | "arrayBuffer" | "stream"`
+  - Optional. The type of the value to be returned. `text` is the default.
+- `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`
+  - Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 ##### Response
 
-* `response`: `Promise<string | Object | ArrayBuffer | ReadableStream | null>`
-  * The value for the requested KV pair. The response type will depend on the `type` parameter provided for the `get()` command as follows:
-  * `text`: A `string` (default).
-  * `json`: An object decoded from a JSON string.
-  * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.
-  * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+- `response`: `Promise<string | Object | ArrayBuffer | ReadableStream | null>`
+  - The value for the requested KV pair. The response type will depend on the `type` parameter provided for the `get()` command as follows:
+  - `text`: A `string` (default).
+  - `json`: An object decoded from a JSON string.
+  - `arrayBuffer`: An [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
+  - `stream`: A [`ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 #### Request multiple keys with `get(keys: string[])`
 
@@ -165,12 +165,12 @@ self.env.NAMESPACE.get(keys, options)
 
 ##### Parameters
 
-* `keys`: `string[]`
-  * The keys of the KV pairs. Max: 100 keys
-* `type`: `"text" | "json"`
-  * Optional. The type of the value to be returned. `text` is the default.
-* `options`: `{ cacheTtl?: number, type?: "text" | "json" }`
-  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+- `keys`: `string[]`
+  - The keys of the KV pairs. Max: 100 keys
+- `type`: `"text" | "json"`
+  - Optional. The type of the value to be returned. `text` is the default.
+- `options`: `{ cacheTtl?: number, type?: "text" | "json" }`
+  - Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 Note
 
@@ -178,10 +178,10 @@ The `.get()` function to read multiple keys does not support `arrayBuffer` or `s
 
 ##### Response
 
-* `response`: `Promise<Map<string, string | Object | null>>`
-  * The value for the requested KV pair. If no key is found, `null` is returned for the key. The response type will depend on the `type` parameter provided for the `get()` command as follows:
-    * `text`: A `string` (default).
-    * `json`: An object decoded from a JSON string.
+- `response`: `Promise<Map<string, string | Object | null>>`
+  - The value for the requested KV pair. If no key is found, `null` is returned for the key. The response type will depend on the `type` parameter provided for the `get()` command as follows:
+    - `text`: A `string` (default).
+    - `json`: An object decoded from a JSON string.
 
 The limit of the response size is 25 MB. Responses above this size will fail with a `413 Error` error message.
 
@@ -189,8 +189,8 @@ The limit of the response size is 25 MB. Responses above this size will fail wit
 
 Use the `getWithMetadata()` method to get a single value along with its metadata, or multiple values with their metadata:
 
-* Read single keys with [getWithMetadata(key: string)](#request-a-single-key-with-getwithmetadatakey-string)
-* Read multiple keys with [getWithMetadata(keys: string\[\])](#request-multiple-keys-with-getwithmetadatakeys-string)
+- Read single keys with [getWithMetadata(key: string)](#request-a-single-key-with-getwithmetadatakey-string)
+- Read multiple keys with [getWithMetadata(keys: string\[\])](#request-multiple-keys-with-getwithmetadatakeys-string)
 
 #### Request a single key with `getWithMetadata(key: string)`
 
@@ -212,22 +212,21 @@ Metadata is a serializable value you append to each KV entry.
 
 ##### Parameters
 
-* `key`: `string`
-  * The key of the KV pair.
-* `type`: `"text" | "json" | "arrayBuffer" | "stream"`
-  * Optional. The type of the value to be returned. `text` is the default.
-* `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`
-  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+- `key`: `string`
+  - The key of the KV pair.
+- `type`: `"text" | "json" | "arrayBuffer" | "stream"`
+  - Optional. The type of the value to be returned. `text` is the default.
+- `options`: `{ cacheTtl?: number, type?: "text" | "json" | "arrayBuffer" | "stream" }`
+  - Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 ##### Response
 
-* `response`: `Promise<{ value: string | Object | ArrayBuffer | ReadableStream | null, metadata: string | null }>`
-
-  * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:
-    * `text`: A `string` (default).
-    * `json`: An object decoded from a JSON string.
-    * `arrayBuffer`: An [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) instance.
-    * `stream`: A [ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+- `response`: `Promise<{ value: string | Object | ArrayBuffer | ReadableStream | null, metadata: string | null }>`
+  - An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:
+    - `text`: A `string` (default).
+    - `json`: An object decoded from a JSON string.
+    - `arrayBuffer`: An [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
+    - `stream`: A [`ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 If there is no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
@@ -249,12 +248,12 @@ self.env.NAMESPACE.getWithMetadata(keys, options)
 
 ##### Parameters
 
-* `keys`: `string[]`
-  * The keys of the KV pairs. Max: 100 keys
-* `type`: `"text" | "json"`
-  * Optional. The type of the value to be returned. `text` is the default.
-* `options`: `{ cacheTtl?: number, type?: "text" | "json" }`
-  * Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
+- `keys`: `string[]`
+  - The keys of the KV pairs. Max: 100 keys
+- `type`: `"text" | "json"`
+  - Optional. The type of the value to be returned. `text` is the default.
+- `options`: `{ cacheTtl?: number, type?: "text" | "json" }`
+  - Optional. Object containing the optional `cacheTtl` and `type` properties. The `cacheTtl` property defines the length of time in seconds that a KV result is cached in the global network location it is accessed from (minimum: 30). The `type` property defines the type of the value to be returned.
 
 Note
 
@@ -262,12 +261,11 @@ The `.get()` function to read multiple keys does not support `arrayBuffer` or `s
 
 ##### Response
 
-* `response`: `Promise<Map<string, { value: string | Object | null, metadata: string | Object | null }>`
-
-  * An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:
-    * `text`: A `string` (default).
-    * `json`: An object decoded from a JSON string.
-  * The type of the metadata will just depend on what is stored, which can be either a string or an object.
+- `response`: `Promise<Map<string, { value: string | Object | null, metadata: string | Object | null }>`
+  - An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:
+    - `text`: A `string` (default).
+    - `json`: An object decoded from a JSON string.
+  - The type of the metadata will just depend on what is stored, which can be either a string or an object.
 
 If there is no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
@@ -293,7 +291,7 @@ A hot read means that the data is cached on Cloudflare's edge network using the 
 
 `cacheTtl` is not recommended if your data is updated often and you need to see updates shortly after they are written, because writes that happen from other global network locations will not be visible until the cached value expires.
 
-The `cacheTtl` parameter must be an integer greater than or equal to `30`. `60` is the default. The maximum value for `cacheTtl` is [Number.MAX\_SAFE\_INTEGER ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Number/MAX%5FSAFE%5FINTEGER).
+The `cacheTtl` parameter must be an integer greater than or equal to `30`. `60` is the default. The maximum value for `cacheTtl` is [`Number.MAX_SAFE_INTEGER` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER).
 
 Once a key has been read with a given `cacheTtl` in a region, it will remain cached in that region until the end of the `cacheTtl` or eviction. This affects regional and central tiers of KV's built-in caching layers. When writing to Workers KV, the regions in the regional and central caching layers internal to KV will get revalidated with the newly written result.
 
@@ -331,8 +329,8 @@ By coalescing the values, the cold keys benefit from being kept warm in the cach
 
 This works best if you are not expecting the need to update the values independently of each other, which can pose race conditions.
 
-* **Advantage**: Infrequently accessed keys are kept in the cache.
-* **Disadvantage**: Size of the resultant value can push your worker out of its memory limits. Safely updating the value requires a [locking mechanism](https://developers.cloudflare.com/kv/api/write-key-value-pairs/#concurrent-writes-to-the-same-key) of some kind.
+- **Advantage**: Infrequently accessed keys are kept in the cache.
+- **Disadvantage**: Size of the resultant value can push your worker out of its memory limits. Safely updating the value requires a [locking mechanism](https://developers.cloudflare.com/kv/api/write-key-value-pairs/#concurrent-writes-to-the-same-key) of some kind.
 
 ## Other methods to access KV
 

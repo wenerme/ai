@@ -12,20 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Crawl Control with Cloudflare WAF
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/configuration/ai-crawl-control-with-waf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). WAF checks incoming web and API requests, and filters undesired traffic based on rules. [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) allow you to perform certain actions such as enforcing `robots.txt`.
+AI Crawl Control works alongside other Cloudflare products, such as Cloudflare [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). WAF checks incoming web and API requests, and filters undesired traffic based on rules. [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) allow you to perform certain actions such as enforcing `robots.txt`
+
+.
 
 ## Order of precedence
 
-* AI Crawl Control uses WAF custom rules to block the selection of AI crawlers the site owner has decided to block.
-* AI Crawl Control's pay per crawl feature takes place after WAF.
+- AI Crawl Control uses WAF custom rules to block the selection of AI crawlers the site owner has decided to block.
+- AI Crawl Control's pay per crawl feature takes place after WAF.
 
+```
 graph LR
 A[Traffic] --> B[WAF custom rules<br>AI Crawl Control: Crawler blocks]
 B --> C[Cloudflare<br>Bot Solutions]
 C --> D[AI Crawl Control:<br>Pay Per Crawl]
 classDef highlight fill:#F6821F,color:white
+
+```
 
 For this reason, if you plan on using AI Crawl Control to manage AI crawlers, you may wish to modify your existing WAF custom rules such that it does not affect AI crawlers. This will allow you to manage AI crawlers only from AI Crawl Control, thereby streamlining your workflow.
 
@@ -45,8 +50,8 @@ Consider the following examples.
 
 You may have both of the following features enabled:
 
-* [WAF custom rule to block traffic from specific countries](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-traffic-from-specific-countries/)
-* AI Crawl Control's [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) to charge AI crawlers when they request access to your content
+- [WAF custom rule to block traffic from specific countries](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-traffic-from-specific-countries/)
+- AI Crawl Control's [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) to charge AI crawlers when they request access to your content
 
 Since WAF custom rules are enforced before pay per crawl, traffic (including AI crawlers) from your blocked countries will continue to be blocked, even if they provide the [required headers](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/crawl-pages/#1-identify-payment-requirements) for pay per crawl.
 
@@ -54,13 +59,13 @@ Since WAF custom rules are enforced before pay per crawl, traffic (including AI 
 
 You may have both of the following features enabled:
 
-* [WAF custom rule to allow search engine bots](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-verified-bots/)
-* AI Crawl Control's [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) to charge all AI crawlers when they request access to your content (including search engine bots).
+- [WAF custom rule to allow search engine bots](https://developers.cloudflare.com/waf/custom-rules/use-cases/allow-traffic-from-verified-bots/)
+- AI Crawl Control's [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) to charge all AI crawlers when they request access to your content (including search engine bots).
 
 Since custom rules are enforced before pay per crawl:
 
-* Only search engine bots will be able to access your site (enforced by custom rule).
-* The search engine bots will then be charged for access to your content (enforced by AI Crawl Control's pay per crawl).
+- Only search engine bots will be able to access your site (enforced by custom rule).
+- The search engine bots will then be charged for access to your content (enforced by AI Crawl Control's pay per crawl).
 
 Note
 
@@ -78,9 +83,9 @@ These upstream rules will affect traffic but may not be visible in AI Crawl Cont
 
 If you have set certain AI crawlers to **Block** in AI Crawl Control, but they are still accessing your content, check for upstream rules that may be bypassing the AI Crawl Control rule. Since the AI Crawl Control rule is added at the end of existing WAF custom rules, the following types of rules may allow bots to bypass the block:
 
-* **Skip rules** that bypass WAF custom rules
-* **Redirect rules** that change the request path
-* **Transform rules** that modify the request
+- **Skip rules** that bypass WAF custom rules
+- **Redirect rules** that change the request path
+- **Transform rules** that modify the request
 
 To ensure blocked bots are properly blocked, move the AI Crawl Control rule to the top of your WAF custom rules, so it executes before other rules.
 
@@ -88,14 +93,13 @@ To ensure blocked bots are properly blocked, move the AI Crawl Control rule to t
 
 You may have both of the following features enabled:
 
-* A WAF custom rule which blocks all bots.
-* AI Crawl Control selection which allows certain AI crawlers.
+- A WAF custom rule which blocks all bots.
+- AI Crawl Control selection which allows certain AI crawlers.
 
 In this scenario, you have two custom rules, each directing a different logic for handling AI crawlers. To resolve this issue:
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Filter by _Custom rules_.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Filter by *Custom rules*.
 3. Identify your custom rule and the AI Crawl Control rule.
 4. Drag the rule you wish to prioritize to the top, or modify your custom rule to ensure it does not conflict with your AI Crawl Control configurations.
 
@@ -103,13 +107,13 @@ In this scenario, you have two custom rules, each directing a different logic fo
 
 For most use cases, managing crawlers directly in AI Crawl Control is recommended. However, the underlying WAF rule supports additional customization for scenarios the dashboard does not cover.
 
-The AI Crawl Control rule is named **AI Crawl Control** and can be found under **Security** \> **Security rules**. Filter by **Custom rules** to find it.
+The AI Crawl Control rule is named **AI Crawl Control** and can be found under **Security** > **Security rules**. Filter by **Custom rules** to find it.
 
 Common additions include:
 
-* Path-based exceptions, such as allowing a blocked crawler to access specific sections of your site by adding an `AND` clause that excludes certain paths
-* Extra user agents or detection IDs for crawlers not listed in AI Crawl Control
-* Additional expression clauses to restrict blocking to specific hostnames or other request properties
+- Path-based exceptions, such as allowing a blocked crawler to access specific sections of your site by adding an `AND` clause that excludes certain paths
+- Extra user agents or detection IDs for crawlers not listed in AI Crawl Control
+- Additional expression clauses to restrict blocking to specific hostnames or other request properties
 
 Any additions you make are preserved when you subsequently update crawler actions in AI Crawl Control. If the expression has been modified in a way AI Crawl Control cannot parse, a warning banner will appear on the **Crawlers** page. Select **View rule in WAF** in the banner to inspect or correct the rule.
 

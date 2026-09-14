@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_cipher
 
-`cf.tls_cipher` `String`
+`cf.tls_cipher``String`
 
 The cipher for the connection to Cloudflare.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* SSL/TLS
+- Request
+- SSL/TLS
 
 Was this helpful?
 

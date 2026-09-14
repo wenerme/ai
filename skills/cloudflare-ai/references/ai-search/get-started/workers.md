@@ -12,18 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers binding
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/get-started/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through creating and querying an AI Search instance from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the Workers Binding. The Workers Binding uses a runtime [API](https://developers.cloudflare.com/ai-search/api/search/workers-binding/) that runs inside a Worker and calls AI Search without managing API tokens.
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
 
-## 1\. Create a Worker project
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
+
+## 1. Create a Worker project
 
 Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -45,11 +53,11 @@ pnpm create cloudflare@latest ai-search-tutorial
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -57,7 +65,7 @@ Go to your application directory:
 cd ai-search-tutorial
 ```
 
-## 2\. Connect your Worker to AI Search
+## 2. Connect your Worker to AI Search
 
 Create a binding between your Worker and your AI Search instance. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Worker to interact with resources on the Cloudflare Developer Platform.
 
@@ -85,9 +93,11 @@ remote = true
 
 This binds the `default` namespace to `env.AI_SEARCH`. Instances that you create without specifying a namespace belong to the `default` namespace. The `remote` option lets `wrangler dev` proxy requests to your deployed instance, since AI Search does not run locally. For all binding options, refer to the [Workers binding reference](https://developers.cloudflare.com/ai-search/api/search/workers-binding/).
 
-## 3\. Create and query AI Search from your Worker
+## 3. Create and query AI Search from your Worker
 
 Update the `src/index.ts` file in your `ai-search-tutorial` directory with the following code. It exposes two routes: `/setup` creates an instance named `my-instance` and indexes a sample document, and the default route queries it.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -118,6 +128,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -153,7 +165,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 4\. Develop locally
+## 4. Develop locally
 
 Start a local development server:
 
@@ -163,7 +175,7 @@ npx wrangler dev
 
 Wrangler gives you a URL (usually `localhost:8787`). Visit `/setup` once to create your instance and index the sample document, then query it at `/?q=your+search+terms`.
 
-## 5\. Deploy your Worker
+## 5. Deploy your Worker
 
 Log in with your Cloudflare account:
 

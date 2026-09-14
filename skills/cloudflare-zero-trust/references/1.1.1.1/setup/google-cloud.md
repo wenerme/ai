@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Cloud
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Google Cloud lets you configure custom DNS servers at the Virtual Private Cloud (VPC) network level using [outbound server policies ↗](https://cloud.google.com/dns/docs/server-policies-overview#dns-server-policy-out) in Cloud DNS. When you create an outbound server policy, all resources in that VPC network — including existing virtual machines — use the specified DNS servers.
 
@@ -23,14 +23,17 @@ If you are using [Cloudflare Zero Trust](https://developers.cloudflare.com/cloud
 To configure 1.1.1.1 for your Google Cloud VPC network:
 
 1. Open the [Google Cloud Console ↗](https://console.cloud.google.com).
-2. Go to **Network Services** \> **Cloud DNS** and select [**DNS Server Policies** ↗](https://console.cloud.google.com/net-services/dns/policies).
+2. Go to **Network Services** > **Cloud DNS** and select [**DNS Server Policies** ↗](https://console.cloud.google.com/net-services/dns/policies).
 3. Select **Create Policy**.
 4. Enter a name for your policy (for example, `cloudflare-1-1-1-1`) and select the VPC networks to apply it to.
 5. Under **Alternate DNS servers**, select **Add Item** and enter:
-```txt
-1.1.1.1
-1.0.0.1
-```
+
+   ```txt
+   1.1.1.1
+   1.0.0.1
+   ```
+
+
 6. Select **Create**.
 
 DNS requests within the configured VPC networks will now use 1.1.1.1.

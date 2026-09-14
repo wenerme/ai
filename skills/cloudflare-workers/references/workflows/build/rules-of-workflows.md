@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules of Workflows
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/rules-of-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Workflow contains one or more steps. Each step is a self-contained, individually retryable component of a Workflow. Steps may emit (optional) state that allows a Workflow to persist and continue from that step, even if a Workflow fails due to a network or infrastructure issue.
 
@@ -23,6 +23,8 @@ This is a small guidebook on how to build more resilient and correct Workflows.
 Because a step might be retried multiple times, your steps should (ideally) be idempotent. For context, idempotency is a logical property where the operation (in this case a step), can be applied multiple times without changing the result beyond the initial application.
 
 As an example, let us assume you have a Workflow that charges your customers, and you really do not want to charge them twice by accident. Before charging them, you should check if they were already charged:
+
+*index.jsjs*
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -59,6 +61,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -106,7 +110,9 @@ Steps should be as self-contained as possible. This allows your own logic to be 
 
 You can also think of it as a transaction, or a unit of work.
 
-* ✅ Minimize the number of API/binding calls per step (unless you need multiple calls to prove idempotency).
+- ✅ Minimize the number of API/binding calls per step (unless you need multiple calls to prove idempotency).
+
+*index.jsjs*
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -125,6 +131,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -146,10 +154,12 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Otherwise, your entire Workflow might not be as durable as you might think, and you may encounter some undefined behaviour. You can avoid them by following the rules below:
 
-* 🔴 Do not encapsulate your entire logic in one single step.
-* 🔴 Do not call separate services in the same step (unless you need it to prove idempotency).
-* 🔴 Do not make too many service calls in the same step (unless you need it to prove idempotency).
-* 🔴 Do not do too much CPU-intensive work inside a single step - sometimes the engine may have to restart, and it will start over from the beginning of that step.
+- 🔴 Do not encapsulate your entire logic in one single step.
+- 🔴 Do not call separate services in the same step (unless you need it to prove idempotency).
+- 🔴 Do not make too many service calls in the same step (unless you need it to prove idempotency).
+- 🔴 Do not do too much CPU-intensive work inside a single step - sometimes the engine may have to restart, and it will start over from the beginning of that step.
+
+*index.jsjs*
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -164,6 +174,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -184,6 +196,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 Workflows may hibernate and lose all in-memory state. This will happen when engine detects that there is no pending work and can hibernate until it needs to wake-up (because of a sleep, retry, or event).
 
 This means that you should not store state outside of a step:
+
+*index.jsjs*
 
 ```js
 function getRandomInt(min, max) {
@@ -225,6 +239,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 function getRandomInt(min, max) {
@@ -269,6 +285,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Instead, you should build top-level state exclusively comprised of `step.do` returns:
 
+*index.jsjs*
+
 ```js
 function getRandomInt(min, max) {
 	const minCeiled = Math.ceil(min);
@@ -306,6 +324,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 function getRandomInt(min, max) {
@@ -357,6 +377,8 @@ Note
 
 If you use [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) in a Workflow, create a new connection inside each `step.do()` and run your queries in that same step. Do not reuse a Hyperdrive-backed connection across steps.
 
+*index.jsjs*
+
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
@@ -406,6 +428,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -461,6 +485,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 The `event` passed to your Workflow's `run` method is immutable: changes you make to the event are not persisted across steps and/or Workflow restarts.
 
+*index.jsjs*
+
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
@@ -488,6 +514,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 interface MyEvent {
@@ -526,6 +554,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Steps should be named deterministically (that is, not using the current date/time, randomness, etc). This ensures that their state is cached, and prevents the step from being rerun unnecessarily. Step names act as the "cache key" in your Workflow.
 
+*index.jsjs*
+
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
@@ -561,6 +591,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -604,6 +636,8 @@ Workflows allows the usage steps within the `Promise.race()` or `Promise.any()` 
 
 Due to the nature of Workflows' instance lifecycle, and given that a step inside a Promise will run until it finishes, the step that is returned during the first passage may not be the actual cached step, as [steps are cached by their names](#name-steps-deterministically).
 
+*index.jsjs*
+
 ```js
 // helper sleep method
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -630,6 +664,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 // helper sleep method
@@ -660,6 +696,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 To ensure consistency, we suggest to surround the `Promise.race()` or `Promise.any()` within a `step.do()`, as this will ensure caching consistency across multiple passages.
 
+*index.jsjs*
+
 ```js
 // helper sleep method
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -688,6 +726,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 // helper sleep method
@@ -726,6 +766,8 @@ It would also present a problem if you wanted to run multiple different Workflow
 
 If you need to associate multiple instances with a specific user, merchant or other "customer" ID in your system, consider using a composite ID or using randomly generated IDs and storing the mapping in a database like [D1](https://developers.cloudflare.com/d1/).
 
+*index.jsjs*
+
 ```js
 // This is in the same file as your Workflow definition
 export default {
@@ -756,6 +798,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 // This is in the same file as your Workflow definition
@@ -796,6 +840,8 @@ If you don't call `await step.do` or `await step.sleep`, you create a dangling P
 
 This happens when you do not use the `await` keyword or fail to chain `.then()` methods to handle the result of a Promise. For example, calling `fetch(GITHUB_URL)` without awaiting its response will cause subsequent code to execute immediately, regardless of whether the fetch completed. This can cause issues like premature logging, exceptions being swallowed (and not terminating the Workflow), and lost return values (state).
 
+*index.jsjs*
+
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
 	async run(event, step) {
@@ -816,6 +862,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -841,6 +889,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 ### Use conditional logic carefully
 
 You can use `if` statements, loops, and other control flow outside of steps. However, conditions must be based on **deterministic values** — either values from `event.payload` or return values from previous steps. Non-deterministic conditions (such as `Math.random()` or `Date.now()`) outside of steps can cause unexpected behavior if the Workflow restarts.
+
+*index.jsjs*
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -879,6 +929,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -920,7 +972,9 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ### Batch multiple Workflow invocations
 
-When creating multiple Workflow instances, use the [createBatch](https://developers.cloudflare.com/workflows/build/workers-api/#createBatch) method to batch the invocations together. This allows you to create multiple Workflow instances in a single request, which will reduce the number of requests made to the Workflows API. However, each individual instance in the batch will still count towards the [creation rate limit](https://developers.cloudflare.com/workflows/reference/limits/). Unlike `create`, `createBatch` is idempotent: if an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
+When creating multiple Workflow instances, use the [`createBatch`](https://developers.cloudflare.com/workflows/build/workers-api/#createBatch) method to batch the invocations together. This allows you to create multiple Workflow instances in a single request, which will reduce the number of requests made to the Workflows API. However, each individual instance in the batch will still count towards the [creation rate limit](https://developers.cloudflare.com/workflows/reference/limits/). Unlike `create`, `createBatch` is idempotent: if an existing instance with the same ID is still within its [retention limit](https://developers.cloudflare.com/workflows/reference/limits/), it will be skipped and excluded from the returned array.
+
+*index.jsjs*
 
 ```js
 export default {
@@ -947,6 +1001,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 export default {
@@ -984,17 +1040,22 @@ A non-stream `step.do()` return value can persist up to 1 MiB (2^20 bytes). If y
 
 In JavaScript Workflows, `ReadableStream<Uint8Array>` is a supported serializable return type for larger binary output. When persisting this kind of output, you should:
 
-* Return a new stream from the step callback.
-* Keep individual chunks under 16 MB.
-* Do not return a locked stream or a stream that has already been read.
-* Rely only on streams returned from steps.
-Note
-Only byte streams are supported - use `ReadableStream<Uint8Array>`.
-BYOB streams and BYOB readers are not supported.
+- Return a new stream from the step callback.
+- Keep individual chunks under 16 MB.
+- Do not return a locked stream or a stream that has already been read.
+- Rely only on streams returned from steps.
+
+  Note
+
+  Only byte streams are supported - use `ReadableStream<Uint8Array>`.
+
+  BYOB streams and BYOB readers are not supported.
 
 Note that streamed outputs are still considered part of the Workflow instance storage limit.
 
 If these storage limits still do not work for you, consider storing your step outputs externally (for example, in [R2](https://developers.cloudflare.com/r2)) and saving a reference to it.
+
+*index.jsjs*
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -1022,6 +1083,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -1052,8 +1115,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 ## Related resources
 
-* [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/): code patterns for request handling, observability, and security that apply to the Workers triggering your Workflows.
-* [Rules of Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/): best practices for stateful, coordinated applications — useful when combining Durable Objects with Workflows.
+- [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/): code patterns for request handling, observability, and security that apply to the Workers triggering your Workflows.
+- [Rules of Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/): best practices for stateful, coordinated applications — useful when combining Durable Objects with Workflows.
 
 Was this helpful?
 

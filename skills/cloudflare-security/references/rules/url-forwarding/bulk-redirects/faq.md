@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bulk Redirects FAQ
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to the most commonly asked questions regarding Bulk Redirects.
 
 To troubleshoot errors related to Bulk Redirects:
 
-* Refer to [Troubleshooting Cloudflare 10XXX Errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-10xxx-errors/) for more information on runtime errors.
-* Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
+- Refer to [Troubleshooting Cloudflare 10XXX Errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-10xxx-errors/) for more information on runtime errors.
+- Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to determine if a rule is triggering for a specific URL.
 
 ## What happens if the same source URL appears in two different Bulk Redirect Lists?
 
@@ -39,7 +39,9 @@ Each account has a maximum number of URL redirects across all lists which depend
 
 ## How can I redirect based on the non-normalized version of a URL?
 
-Use the `raw.http.request.full_uri` field both in the rule expression and in the key, instead of the default field `http.request.full_uri`. This will take the raw version of the URL into account, that is, the URL received on the Cloudflare global network before applying normalization. Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information on using a custom rule expression and a custom key.
+Use the `raw.http.request.full_uri` field both in the rule expression and in the key, instead of the default field `http.request.full_uri`. This will take the raw version of the URL into account, that is, the URL received on the Cloudflare global network before applying normalization
+
+. Refer to [Bulk Redirects concepts](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/concepts/#bulk-redirect-rules) for more information on using a custom rule expression and a custom key.
 
 ## Do Bulk Redirects take precedence over Page Rules?
 

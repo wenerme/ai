@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 bills based on:
 
-* **Usage**: Queries you run against D1 will count as rows read, rows written, or both (for transactions or batches).
-* **Scale-to-zero**: You are not billed for hours or capacity units. If you are not running queries against your database, you are not billed for compute.
-* **Storage**: You are only billed for storage above the included [limits](https://developers.cloudflare.com/d1/platform/limits/) of your plan.
+- **Usage**: Queries you run against D1 will count as rows read, rows written, or both (for transactions or batches).
+- **Scale-to-zero**: You are not billed for hours or capacity units. If you are not running queries against your database, you are not billed for compute.
+- **Storage**: You are only billed for storage above the included [limits](https://developers.cloudflare.com/d1/platform/limits/) of your plan.
 
 ## Billing metrics
 
-|                         | [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |
-| ----------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Rows read               | 5 million / day                                                                     | First 25 billion / month included + $0.001 / million rows                           |
-| Rows written            | 100,000 / day                                                                       | First 50 million / month included + $1.00 / million rows                            |
-| Storage (per GB stored) | 5 GB (total)                                                                        | First 5 GB included + $0.75 / GB-mo                                                 |
+|  | [Workers Free](https://developers.cloudflare.com/workers/platform/pricing/#workers) | [Workers Paid](https://developers.cloudflare.com/workers/platform/pricing/#workers) |
+| --- | --- | --- |
+| Rows read | 5 million / day | First 25 billion / month included + $0.001 / million rows |
+| Rows written | 100,000 / day | First 50 million / month included + $1.00 / million rows |
+| Storage (per GB stored) | 5 GB (total) | First 5 GB included + $0.75 / GB-mo |
 
 Track your D1 usage
 
@@ -55,7 +55,7 @@ Yes, the [Workers Free plan](https://developers.cloudflare.com/workers/platform/
 
 ### What happens if I exceed the daily limits on reads and writes, or the total storage limit, on the Free plan?
 
-When your account hits the daily read and/or write limits, you will not be able to run queries against D1\. D1 API will return errors to your client indicating that your daily limits have been exceeded. Once you have reached your included storage limit, you will need to delete unused databases or clean up stale data before you can insert new data, create or alter tables or create indexes and triggers.
+When your account hits the daily read and/or write limits, you will not be able to run queries against D1. D1 API will return errors to your client indicating that your daily limits have been exceeded. Once you have reached your included storage limit, you will need to delete unused databases or clean up stale data before you can insert new data, create or alter tables or create indexes and triggers.
 
 Upgrading to the Workers Paid plan will remove these limits, typically within minutes.
 

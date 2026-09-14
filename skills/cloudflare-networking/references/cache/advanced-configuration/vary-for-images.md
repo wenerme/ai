@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vary for images
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/vary-for-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `Vary` HTTP response header tells Cloudflare that an origin can serve different versions of the same resource depending on the request headers. For images, this allows your origin to serve modern formats like WebP or AVIF to browsers that support them, while continuing to serve JPEG or PNG to others.
 
@@ -24,26 +24,34 @@ Vary for images is available for Pro, Business, and Enterprise customers.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | No   | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
 
 ## File extensions
 
 You can use vary for images on the file extensions below if the origin server sends the `Vary: Accept` response header. If the origin server sends `Vary: Accept` but does not serve the set variant, the response is not cached and displays `BYPASS` in the cache status in the response header. Additionally, the list of variant types the origin serves for each extension must be configured so that Cloudflare decides which variant to serve without contacting the origin server.
 
+<details>
+
+<summary>
+
 File extensions enabled for varying
 
-* .avif
-* .bmp
-* .gif
-* .jpg
-* .jpeg
-* .jp2
-* .png
-* .tif
-* .tiff
-* .webp
+</summary>
+
+- .avif
+- .bmp
+- .gif
+- .jpg
+- .jpeg
+- .jp2
+- .png
+- .tif
+- .tiff
+- .webp
+
+</details>
 
 ## Enable vary for images
 
@@ -51,11 +59,22 @@ Vary for Images is enabled through Cloudflare's API by creating a variants rule.
 
 ### Create a variants rule
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Change variants settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
@@ -77,11 +96,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 ### Modify to only allow WebP variants
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Change variants settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
@@ -101,11 +131,22 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 ### Delete the rule
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Delete variants settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
@@ -115,13 +156,24 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
 
 ### Get the rule
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Settings Read`
-* `Zone Read`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+- <code>Zone Read</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Get variants settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/variants" \
@@ -133,8 +185,8 @@ To learn more about purging varied images, refer to [Purge varied images](https:
 
 ## Limitations
 
-* For Vary for images to work, your image URLs must include the file extension in the path and not the query string. For example the URL `https://example.com/image.jpg` is compatible but `https://example.com/index.php?file=image.jpg` is not compatible.
-* Your origin must return an image type matching the file extension in the URL when a HTTP client sends no `Accept` header, or an `Accept: */*` header. Otherwise, you will see `CF-Cache-Status: BYPASS` in the HTTP response headers.
+- For Vary for images to work, your image URLs must include the file extension in the path and not the query string. For example the URL `https://example.com/image.jpg` is compatible but `https://example.com/index.php?file=image.jpg` is not compatible.
+- Your origin must return an image type matching the file extension in the URL when a HTTP client sends no `Accept` header, or an `Accept: */*` header. Otherwise, you will see `CF-Cache-Status: BYPASS` in the HTTP response headers.
 
 Was this helpful?
 

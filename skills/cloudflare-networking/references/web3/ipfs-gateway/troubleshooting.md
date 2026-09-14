@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare-specific
 
@@ -20,7 +20,7 @@ Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 If you get a `no link named "ipfs" under <<CID>>` error message when trying to access content through Cloudflare's IPFS gateway, that means you have created a gateway without a value for the [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink).
 
-Since Cloudflare currently only supports restricted gateways - and not [universal gateways](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/) \- these requests will continue to fail until you specify a DNSLink value.
+Since Cloudflare currently only supports restricted gateways - and not [universal gateways](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/) - these requests will continue to fail until you specify a DNSLink value.
 
 ### Check Cloudflare's status
 

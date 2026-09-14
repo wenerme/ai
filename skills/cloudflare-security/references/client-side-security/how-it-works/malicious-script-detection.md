@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Malicious script and connection detection
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -20,9 +20,9 @@ Domain-based threat intelligence is available to all customers. Malicious script
 
 Cloudflare uses three complementary mechanisms to determine if a script, or a connection made by a script, is malicious. Each mechanism checks at a different level — the script's code, the URL it is hosted at, or the domain it is served from:
 
-* **Malicious script detection** — Analyzes the actual JavaScript code for malicious behavior.
-* **Malicious URL checks** — Looks up script URLs against threat intelligence feeds.
-* **Malicious domain checks** — Looks up script domains against threat intelligence feeds.
+- **Malicious script detection** — Analyzes the actual JavaScript code for malicious behavior.
+- **Malicious URL checks** — Looks up script URLs against threat intelligence feeds.
+- **Malicious domain checks** — Looks up script domains against threat intelligence feeds.
 
 Any updates to the threat feeds will trigger new checks for previously detected scripts or connections so that the client-side resource monitoring dashboards always reflect the latest categorization.
 
@@ -36,13 +36,13 @@ Cloudflare uses open-source models for this analysis. Customer data is not used 
 
 The analysis assigns a JS integrity score between 1 and 99 to each script version. Lower scores indicate higher risk: a score of 1 means definitely malicious, and 99 means definitely not malicious.
 
-Cloudflare classifies a script as malicious when its score falls below the threshold, which is currently set to 10\. Scripts that score below this threshold appear as malicious in the monitoring dashboards.
+Cloudflare classifies a script as malicious when its score falls below the threshold, which is currently set to 10. Scripts that score below this threshold appear as malicious in the monitoring dashboards.
 
 In addition to the integrity score, Cloudflare will also provide individual scores for different malicious code detections (scores from 1 to 99):
 
-* **Magecart**
-* **Crypto mining**
-* **Malware**
+- **Magecart**
+- **Crypto mining**
+- **Malware**
 
 You can [configure Malicious Script Alerts](https://developers.cloudflare.com/client-side-security/alerts/configure/) to receive an alert notification as soon as Cloudflare detects JavaScript code classified as malicious in your domain.
 
@@ -76,14 +76,14 @@ You can [configure Malicious Domain Alerts](https://developers.cloudflare.com/cl
 
 Scripts and connections considered malicious are categorized based on data from threat intelligence feeds. The current categories are the following:
 
-* Security threats
-* Command-and-Control (C2) & Botnet
-* Crypto mining
-* Spyware
-* Phishing
-* Malware
-* Domain Generation Algorithm (DGA) domain
-* Typosquatting & Impersonation
+- Security threats
+- Command-and-Control (C2) & Botnet
+- Crypto mining
+- Spyware
+- Phishing
+- Malware
+- Domain Generation Algorithm (DGA) domain
+- Typosquatting & Impersonation
 
 Each script or connection considered malicious can belong to several categories.
 

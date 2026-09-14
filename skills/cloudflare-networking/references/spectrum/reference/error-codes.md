@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error codes
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/reference/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page documents error codes returned by the [Spectrum API](https://developers.cloudflare.com/api/resources/spectrum/subresources/apps/), along with recommended fixes to help with troubleshooting.
 
@@ -62,9 +62,9 @@ The request must provide exactly one of `origin_direct` or `origin_dns`. Providi
 
 The `origin_dns` configuration failed validation. Common causes:
 
-* The `origin_dns.name` is not a valid domain name.
-* A non-SRV `origin_dns.type` was provided without an `origin_port`.
-* The `origin_dns.ttl` is outside the allowed range.
+- The `origin_dns.name` is not a valid domain name.
+- A non-SRV `origin_dns.type` was provided without an `origin_port`.
+- The `origin_dns.ttl` is outside the allowed range.
 
 ### 11002 — Invalid origin address
 
@@ -72,8 +72,8 @@ One or more of the origin addresses provided are invalid.
 
 Common causes:
 
-* **IPv6 origin without brackets:** IPv6 addresses must be wrapped in brackets in `origin_direct`, for example `tcp://[2001:db8::1]:443`. Without brackets, the colons in the address make parsing ambiguous.
-* **Origin IP fails access control validation:** The origin IP may fail an internal access control check. Verify the IP is valid and belongs to an allowed range.
+- **IPv6 origin without brackets:** IPv6 addresses must be wrapped in brackets in `origin_direct`, for example `tcp://[2001:db8::1]:443`. Without brackets, the colons in the address make parsing ambiguous.
+- **Origin IP fails access control validation:** The origin IP may fail an internal access control check. Verify the IP is valid and belongs to an allowed range.
 
 ### 11004 — Invalid DNS configuration
 
@@ -97,8 +97,8 @@ The authenticated account is not authorized to use the provided `edge_ips`.
 
 Common causes:
 
-* **API token lacks IP prefix permissions:** API tokens scoped to Spectrum may not carry the IP prefix permissions required for BYOIP validation. Use a Global API Key, or add the **Account** \> **IP Prefixes** permission to the API token.
-* **BYOIP prefix not allocated to account:** Verify the BYOIP prefix is allocated to the requesting account before assigning it.
+- **API token lacks IP prefix permissions:** API tokens scoped to Spectrum may not carry the IP prefix permissions required for BYOIP validation. Use a Global API Key, or add the **Account** > **IP Prefixes** permission to the API token.
+- **BYOIP prefix not allocated to account:** Verify the BYOIP prefix is allocated to the requesting account before assigning it.
 
 ### 11026 — Argo Smart Routing not enabled
 
@@ -150,15 +150,15 @@ The combination of IP and `virtual_network_id` does not match any route in the s
 
 **Resolution:**
 
-* Confirm `virtual_network_id` matches a virtual network on your account. You can list virtual networks with the [List virtual networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/) endpoint.
-* Confirm the origin IP is within a route attached to that virtual network. You can list routes with the [List network routes](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/routes/methods/list/) endpoint.
-* If no matching route exists, add one by following [Connect an IP/CIDR](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
+- Confirm `virtual_network_id` matches a virtual network on your account. You can list virtual networks with the [List virtual networks](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/virtual_networks/methods/list/) endpoint.
+- Confirm the origin IP is within a route attached to that virtual network. You can list routes with the [List network routes](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/routes/methods/list/) endpoint.
+- If no matching route exists, add one by following [Connect an IP/CIDR](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/).
 
 ### 11045 — Virtual network invalid UUID
 
 `virtual_network_id` is not a valid UUID.
 
-**Resolution:** Provide a UUID. Virtual network IDs are returned by the [List virtual networks](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/networks/subresources/virtual%5Fnetworks/methods/list/) endpoint in the `id` field of each entry.
+**Resolution:** Provide a UUID. Virtual network IDs are returned by the [List virtual networks](https://developers.cloudflare.com/api/resources/zero_trust/subresources/networks/subresources/virtual_networks/methods/list/) endpoint in the `id` field of each entry.
 
 ## Addressing errors (12xxx)
 
@@ -182,10 +182,10 @@ A hostname with the same DNS name already exists but belongs to a different zone
 
 **Resolution:**
 
-* Verify you are using the correct zone ID in the API request URL.
-* Use a different DNS name for the application.
-* If the DNS name was previously used on another zone you control, delete the application on that zone first.
-* Contact Cloudflare support if none of these apply — the hostname may need to be cleaned up internally.
+- Verify you are using the correct zone ID in the API request URL.
+- Use a different DNS name for the application.
+- If the DNS name was previously used on another zone you control, delete the application on that zone first.
+- Contact Cloudflare support if none of these apply — the hostname may need to be cleaned up internally.
 
 Was this helpful?
 

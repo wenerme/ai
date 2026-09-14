@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Top Level Domains supported
 
-Last updated May 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/top-level-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/top-level-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports over 400 [top-level domains (TLDs) ↗](https://www.cloudflare.com/learning/dns/top-level-domain/) and is always evaluating adding new TLDs. We have no specific timeframes for TLDs not yet listed. You can find the full list of supported and coming soon TLDs on the [TLD policies page ↗](https://www.cloudflare.com/tld-policies/).
 
@@ -26,8 +26,8 @@ During your [TLD registration process](https://developers.cloudflare.com/registr
 
 Possible causes for the domain not being available include:
 
-* Someone else owns that domain.
-* It is an Internationalized Domain Name (IDN) which Cloudflare Registrar does not support. These domains include international characters (such as `á`, `ü`, among others), or their Punycode equivalents, such as domains beginning with 'xn--'.
+- Someone else owns that domain.
+- It is an Internationalized Domain Name (IDN) which Cloudflare Registrar does not support. These domains include international characters (such as `á`, `ü`, among others), or their Punycode equivalents, such as domains beginning with 'xn--'.
 
 ## Transfer a domain
 

@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.3-70b-instruct-fp8-fast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/meta/llama-3.3-70b-instruct-fp8-fast`
 
-* Cloudflare-hosted
-* Batch
-* Function calling
+- Cloudflare-hosted
+- Batch
+- Function calling
 
 Llama 3.3 70B quantized to fp8 precision, optimized to be faster.
 
-| Model Info                                                                            |                                                                                          |
-| ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 24,000 tokens                                                                            |
-| Terms and License                                                                     | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F3/LICENSE) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                      |
-| Batch                                                                                 | Yes                                                                                      |
-| Unit Pricing                                                                          | $0.29 per M input tokens, $2.25 per M output tokens                                      |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens |
+| Terms and License | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/LICENSE) |
+| Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
+| Batch | Yes |
+| Unit Pricing | $0.29 per M input tokens, $2.25 per M output tokens |
 
 ## Playground
 
@@ -43,7 +43,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -72,7 +71,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -95,7 +93,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -118,7 +115,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.3-70b-instruct-fp8-fast \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -131,169 +127,187 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 prompt
 
-`string`requiredminLength: 1The input text prompt for the model to generate a response.
+<code>string</code>requiredminLength: 1The input text prompt for the model to generate a response.
 
 lora
 
-`string`Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
+<code>string</code>Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
 
 ▶response\_format{}
 
-`object`
+<code>object</code>
 
 raw
 
-`boolean`default: falseIf true, a chat template is not applied and you must adhere to the specific model's expected formatting.
+<code>boolean</code>default: falseIf true, a chat template is not applied and you must adhere to the specific model's expected formatting.
 
 stream
 
-`boolean`default: falseIf true, the response will be streamed back incrementally using SSE, Server Sent Events.
+<code>boolean</code>default: falseIf true, the response will be streamed back incrementally using SSE, Server Sent Events.
 
 max\_tokens
 
-`integer`default: 256The maximum number of tokens to generate in the response.
+<code>integer</code>default: 256The maximum number of tokens to generate in the response.
 
 temperature
 
-`number`default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
+<code>number</code>default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
 
 top\_p
 
-`number`minimum: 0.001maximum: 1Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+<code>number</code>minimum: 0.001maximum: 1Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
 
 top\_k
 
-`integer`minimum: 1maximum: 50Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+<code>integer</code>minimum: 1maximum: 50Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
 
 seed
 
-`integer`minimum: 1maximum: 9999999999Random seed for reproducibility of the generation.
+<code>integer</code>minimum: 1maximum: 9999999999Random seed for reproducibility of the generation.
 
 repetition\_penalty
 
-`number`minimum: 0maximum: 2Penalty for repeated tokens; higher values discourage repetition.
+<code>number</code>minimum: 0maximum: 2Penalty for repeated tokens; higher values discourage repetition.
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+<code>number</code>minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+<code>number</code>minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 prompt
 
-`string`requiredminLength: 1The input text prompt for the model to generate a response.
+<code>string</code>requiredminLength: 1The input text prompt for the model to generate a response.
 
 lora
 
-`string`Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
+<code>string</code>Name of the LoRA (Low-Rank Adaptation) model to fine-tune the base model.
 
 ▶response\_format{}
 
-`object`
+<code>object</code>
 
 raw
 
-`boolean`default: falseIf true, a chat template is not applied and you must adhere to the specific model's expected formatting.
+<code>boolean</code>default: falseIf true, a chat template is not applied and you must adhere to the specific model's expected formatting.
 
 stream
 
-`boolean`default: falseIf true, the response will be streamed back incrementally using SSE, Server Sent Events.
+<code>boolean</code>default: falseIf true, the response will be streamed back incrementally using SSE, Server Sent Events.
 
 max\_tokens
 
-`integer`default: 256The maximum number of tokens to generate in the response.
+<code>integer</code>default: 256The maximum number of tokens to generate in the response.
 
 temperature
 
-`number`default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
+<code>number</code>default: 0.6minimum: 0maximum: 5Controls the randomness of the output; higher values produce more random results.
 
 top\_p
 
-`number`minimum: 0.001maximum: 1Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
+<code>number</code>minimum: 0.001maximum: 1Adjusts the creativity of the AI's responses by controlling how many possible words it considers. Lower values make outputs more predictable; higher values allow for more varied and creative responses.
 
 top\_k
 
-`integer`minimum: 1maximum: 50Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
+<code>integer</code>minimum: 1maximum: 50Limits the AI to choose from the top 'k' most probable words. Lower values make responses more focused; higher values introduce more variety and potential surprises.
 
 seed
 
-`integer`minimum: 1maximum: 9999999999Random seed for reproducibility of the generation.
+<code>integer</code>minimum: 1maximum: 9999999999Random seed for reproducibility of the generation.
 
 repetition\_penalty
 
-`number`minimum: 0maximum: 2Penalty for repeated tokens; higher values discourage repetition.
+<code>number</code>minimum: 0maximum: 2Penalty for repeated tokens; higher values discourage repetition.
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+<code>number</code>minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+<code>number</code>minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 type
 
-`string`
+<code>string</code>
 
 contentType
 
-`text/event-stream`
+<code>text/event-stream</code>
 
 format
 
-`binary`
+<code>binary</code>
 
-Batch — Send multiple requests in a single API call
+</details>
 
-▶requests\[\]
+<details>
 
-`array`
+<summary>Batch — Send multiple requests in a single API call</summary>
+
+
+
+▶requests\[]
+
+<code>array</code>
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/streaming-output.json)
 
-BatchInput
+BatchInput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-input.json)
 
-BatchOutput
+BatchOutput [Open](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.3-70b-instruct-fp8-fast/batch-output.json)
 
 Was this helpful?
 

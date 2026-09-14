@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported cloud providers in Cloud Connector
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/providers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/providers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloud Connector currently supports the following cloud providers and services:
 
-* Cloudflare R2
-* Amazon Web Services - S3
-* Google Cloud Platform - Cloud Storage
-* Microsoft Azure - Blob Storage
-* Oracle Cloud - Object Storage
+- Cloudflare R2
+- Amazon Web Services - S3
+- Google Cloud Platform - Cloud Storage
+- Microsoft Azure - Blob Storage
+- Oracle Cloud - Object Storage
 
 ## Cloudflare R2
 
@@ -32,22 +32,22 @@ Additionally, the custom domain must be defined in the same zone where you are c
 
 The hostname of your S3 bucket URL must have one of the following formats (where `*` is a wildcard character):
 
-* `*s3.amazonaws.com`
-* `*s3.<REGION>.amazonaws.com`
-* `*s3-website.<REGION>.amazonaws.com`
-* `*s3-website-<REGION>.amazonaws.com`
+- `*s3.amazonaws.com`
+- `*s3.<REGION>.amazonaws.com`
+- `*s3-website.<REGION>.amazonaws.com`
+- `*s3-website-<REGION>.amazonaws.com`
 
 Cloud Connector supports both subdomain and URI path-style URLs:
 
-* **Subdomain-style URLs**: Set the hostname to `<BUCKET_NAME>.s3.amazonaws.com`. In this case, your files are accessible directly under the root of the bucket. For example, `https://example.com/index.html` will map to `https://<BUCKET_NAME>.s3.amazonaws.com/index.html`. When using **Full (Strict)** SSL/TLS mode, the `<BUCKET_NAME>` cannot include dots (use dashes instead). Refer to [SSL connections to AWS S3 endpoints](#ssl-connections-to-aws-s3-endpoints) for details.
-* **URI path-style URLs**: Set the hostname to `s3.amazonaws.com`. Here, your bucket name must be part of the URI path in your requests. For example, if your bucket name is `<BUCKET_NAME>`, files will be available on paths like `https://example.com/<BUCKET_NAME>/index.html`, and your Cloud Connector rule should filter traffic based on the URI path starting with `/<BUCKET_NAME>`.
+- **Subdomain-style URLs**: Set the hostname to `<BUCKET_NAME>.s3.amazonaws.com`. In this case, your files are accessible directly under the root of the bucket. For example, `https://example.com/index.html` will map to `https://<BUCKET_NAME>.s3.amazonaws.com/index.html`. When using **Full (Strict)** SSL/TLS mode, the `<BUCKET_NAME>` cannot include dots (use dashes instead). Refer to [SSL connections to AWS S3 endpoints](#ssl-connections-to-aws-s3-endpoints) for details.
+- **URI path-style URLs**: Set the hostname to `s3.amazonaws.com`. Here, your bucket name must be part of the URI path in your requests. For example, if your bucket name is `<BUCKET_NAME>`, files will be available on paths like `https://example.com/<BUCKET_NAME>/index.html`, and your Cloud Connector rule should filter traffic based on the URI path starting with `/<BUCKET_NAME>`.
 
 ### SSL connections to AWS S3 endpoints
 
 The SSL setting applied to requests between Cloud Connector and AWS S3 depends on the type of S3 endpoint you use:
 
-* **HTTPS-supported endpoints**: For hostnames like `*s3.<REGION>.amazonaws.com` and `*s3.amazonaws.com`, Cloudflare will connect to AWS S3 over HTTPS if you set your zone's SSL/TLS mode to **Full** or **Full (Strict)**. When using **Full (Strict)**, the bucket name cannot include dots (use dashes instead).
-* **Non-HTTPS endpoints**: For website-style hostnames such as `*s3-website.<REGION>.amazonaws.com` or `*s3-website-<REGION>.amazonaws.com`, which do not support HTTPS, Cloudflare will default to **Flexible SSL**.
+- **HTTPS-supported endpoints**: For hostnames like `*s3.<REGION>.amazonaws.com` and `*s3.amazonaws.com`, Cloudflare will connect to AWS S3 over HTTPS if you set your zone's SSL/TLS mode to **Full** or **Full (Strict)**. When using **Full (Strict)**, the bucket name cannot include dots (use dashes instead).
+- **Non-HTTPS endpoints**: For website-style hostnames such as `*s3-website.<REGION>.amazonaws.com` or `*s3-website-<REGION>.amazonaws.com`, which do not support HTTPS, Cloudflare will default to **Flexible SSL**.
 
 ### Get the bucket URL
 
@@ -64,22 +64,24 @@ Once you configure Cloud Connector with your storage provider's public bucket, y
 
 The hostname of your Cloud Storage bucket URL must be the following (where `*` is a wildcard character):
 
-* `*storage.googleapis.com`
-* `*storage.cloud.google.com`
+- `*storage.googleapis.com`
+- `*storage.cloud.google.com`
 
 Cloud Connector supports both subdomain and URI path-style URLs:
 
-* **Subdomain-style URLs**: Set the hostname to `<BUCKET_NAME>.storage.googleapis.com`. In this case, your files are accessible directly under the root of the bucket. For example, `https://example.com/index.html` will map to `https://<BUCKET_NAME>.storage.googleapis.com/index.html`.
-* **URI path-style URLs**: Set the hostname to `storage.googleapis.com`. Here, your bucket name must be part of the URI path in your requests. For example, if your bucket name is `<BUCKET_NAME>`, files will be available on paths like `https://example.com/<BUCKET_NAME>/index.html`, and your Cloud Connector rule should filter traffic based on the URI path starting with `/<BUCKET_NAME>`.
+- **Subdomain-style URLs**: Set the hostname to `<BUCKET_NAME>.storage.googleapis.com`. In this case, your files are accessible directly under the root of the bucket. For example, `https://example.com/index.html` will map to `https://<BUCKET_NAME>.storage.googleapis.com/index.html`.
+- **URI path-style URLs**: Set the hostname to `storage.googleapis.com`. Here, your bucket name must be part of the URI path in your requests. For example, if your bucket name is `<BUCKET_NAME>`, files will be available on paths like `https://example.com/<BUCKET_NAME>/index.html`, and your Cloud Connector rule should filter traffic based on the URI path starting with `/<BUCKET_NAME>`.
 
 ### Get the bucket URL
 
 1. Go to the [Google Cloud console ↗](https://console.cloud.google.com/storage/browser) and select **Buckets**.
 2. Select the bucket name.
 3. For one of the files already in the bucket, select the link icon in the **Public** column to copy the file's public URL to the clipboard. The file URL will have the following format:
-`https://storage.googleapis.com/<BUCKET_NAME>/<OBJECT_NAME>`
-To obtain the subdomain bucket URL, refactor the file URL to `<BUCKET_NAME>.storage.googleapis.com` format.
-To obtain the URI path bucket URL, remove `https://` and `/<BUCKET_NAME>/<OBJECT_NAME>` from the file URL.
+
+   `https://storage.googleapis.com/<BUCKET_NAME>/<OBJECT_NAME>`
+
+   To obtain the subdomain bucket URL, refactor the file URL to `<BUCKET_NAME>.storage.googleapis.com` format.
+    To obtain the URI path bucket URL, remove `https://` and `/<BUCKET_NAME>/<OBJECT_NAME>` from the file URL.
 
 If the files in your bucket are not publicly accessible, you must change the bucket permissions. For details, refer to the [Google Cloud Storage documentation ↗](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
 
@@ -89,8 +91,8 @@ Once you configure Cloud Connector with your storage provider's public bucket, y
 
 The hostname of your Blob Storage bucket URL must have one of the following formats:
 
-* `<BUCKET_NAME>.blob.core.windows.net`
-* `<BUCKET_NAME>.web.core.windows.net`
+- `<BUCKET_NAME>.blob.core.windows.net`
+- `<BUCKET_NAME>.web.core.windows.net`
 
 For Azure Blog Storage, Cloud Connector supports only subdomain URLs like `<BUCKET_NAME>.blob.core.windows.net`. This means that your files will be accessible directly under the root of the bucket. For example, `https://example.com/index.html` will map to `https://<BUCKET_NAME>.blob.core.windows.net/index.html`.
 
@@ -114,17 +116,17 @@ Cloud Connector does not authenticate requests to OCI. Your bucket must allow an
 
 Enter an OCI hostname without a protocol, port, or path. Cloud Connector accepts the following formats:
 
-| Addressing style         | Hostname format                                                     | Request path                   |
-| ------------------------ | ------------------------------------------------------------------- | ------------------------------ |
-| Path style (traditional) | <NAMESPACE>.compat.objectstorage.<REGION>.oraclecloud.com           | /<BUCKET\_NAME>/<OBJECT\_NAME> |
-| Path style (dedicated)   | <NAMESPACE>.compat.objectstorage.<REGION>.oci.customer-oci.com      | /<BUCKET\_NAME>/<OBJECT\_NAME> |
-| Virtual-hosted style     | <BUCKET\_NAME>.vhcompat.objectstorage.<REGION>.oci.customer-oci.com | /<OBJECT\_NAME>                |
+| Addressing style | Hostname format | Request path |
+| --- | --- | --- |
+| Path style (traditional) | `<NAMESPACE>.compat.objectstorage.<REGION>.oraclecloud.com` | `/<BUCKET_NAME>/<OBJECT_NAME>` |
+| Path style (dedicated) | `<NAMESPACE>.compat.objectstorage.<REGION>.oci.customer-oci.com` | `/<BUCKET_NAME>/<OBJECT_NAME>` |
+| Virtual-hosted style | `<BUCKET_NAME>.vhcompat.objectstorage.<REGION>.oci.customer-oci.com` | `/<OBJECT_NAME>` |
 
 For path-style endpoints, include the bucket name in the incoming request path. For example, `https://example.com/<BUCKET_NAME>/index.html` maps to the same path on the OCI endpoint.
 
 For virtual-hosted endpoints, the bucket name is part of the hostname. An incoming request to `https://example.com/index.html` maps to `/index.html` on that bucket. OCI requires virtual-hosted bucket names to use a regional scope and a DNS-compatible name that is unique within the region.
 
-For more information, refer to [Object Storage Dedicated Endpoints ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/dedicatedendpoints.htm), [Amazon S3 Compatibility API Hosted Style Support in Object Storage ↗](https://docs.oracle.com/en-us/iaas/Content/Object/s3-virtual-style.htm), and [Changing an Object Storage Bucket's Visibility ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/managingbuckets%5Ftopic-To%5Fchange%5Fthe%5Fvisibility%5Fof%5Fa%5Fbucket.htm).
+For more information, refer to [Object Storage Dedicated Endpoints ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/dedicatedendpoints.htm), [Amazon S3 Compatibility API Hosted Style Support in Object Storage ↗](https://docs.oracle.com/en-us/iaas/Content/Object/s3-virtual-style.htm), and [Changing an Object Storage Bucket's Visibility ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/managingbuckets_topic-To_change_the_visibility_of_a_bucket.htm).
 
 Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
 

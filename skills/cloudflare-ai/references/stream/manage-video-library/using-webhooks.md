@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use webhooks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Webhooks notify your service when videos successfully finish processing and are ready to stream or if your video enters an error state.
 
@@ -24,7 +24,7 @@ Webhooks works differently for live broadcasting. For more information, refer to
 
 To subscribe to receive webhook notifications on your service or modify an existing subscription, generate an API token on the **Account API tokens** page of the Cloudflare dashboard.
 
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 
 The webhook notification URL must include the protocol. Only `http://` or `https://` is supported.
 
@@ -33,6 +33,8 @@ curl -X PUT --header 'Authorization: Bearer <API_TOKEN>' \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/webhook \
 --data '{"notificationUrl":"<WEBHOOK_NOTIFICATION_URL>"}'
 ```
+
+*Example responsejson*
 
 ```json
 {
@@ -50,6 +52,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/webhook \
 ## Notifications
 
 When a video on your account finishes processing, you will receive a `POST` request notification with information about the video.
+
+*Example POST request body sent in response to successful encodingjson*
 
 ```json
 {
@@ -94,29 +98,32 @@ When a video on your account finishes processing, you will receive a `POST` requ
 }
 ```
 
-* `uid` – The video's unique identifier.
-* `readytoStream` – Returns `true` when at least one quality level is encoded and ready to be streamed.
-* `status` – The processing status.
+- `uid` – The video's unique identifier.
+- `readytoStream` – Returns `true` when at least one quality level is encoded and ready to be streamed.
+- `status` – The processing status.
+  - `state` – Returns `ready` when a video is done processing and all quality levels are encoded.
+  - `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available.
 
-  * `state` – Returns `ready` when a video is done processing and all quality levels are encoded.
-  * `pctComplete` – The percentage of processing that is complete. When this reaches `100`, all quality levels are available.
-  Tip
-  If you want to ensure the highest picture quality, enable video playback only when `state` is `ready` and `pctComplete` is `100`.
-* `meta` – Metadata associated with the uploaded file.
-* `created` – Timestamp indicating when the video record was created.
+    Tip
+
+    If you want to ensure the highest picture quality, enable video playback only when `state` is `ready` and `pctComplete` is `100`.
+- `meta` – Metadata associated with the uploaded file.
+- `created` – Timestamp indicating when the video record was created.
 
 ## Error codes
 
 If a video could not process successfully, the `state` field returns `error`, and the `errReasonCode` returns one of the values listed below.
 
-* `ERR_NON_VIDEO` – The upload is not a video.
-* `ERR_DURATION_EXCEED_CONSTRAINT` – The video duration exceeds the constraints defined in the direct creator upload.
-* `ERR_FETCH_ORIGIN_ERROR` – The video failed to download from the URL.
-* `ERR_MALFORMED_VIDEO` – The video is a valid file but contains corrupt data that cannot be recovered.
-* `ERR_DURATION_TOO_SHORT` – The video's duration is shorter than 0.1 seconds.
-* `ERR_UNKNOWN` – If Stream cannot automatically determine why the video returned an error, the `ERR_UNKNOWN` code will be used.
+- `ERR_NON_VIDEO` – The upload is not a video.
+- `ERR_DURATION_EXCEED_CONSTRAINT` – The video duration exceeds the constraints defined in the direct creator upload.
+- `ERR_FETCH_ORIGIN_ERROR` – The video failed to download from the URL.
+- `ERR_MALFORMED_VIDEO` – The video is a valid file but contains corrupt data that cannot be recovered.
+- `ERR_DURATION_TOO_SHORT` – The video's duration is shorter than 0.1 seconds.
+- `ERR_UNKNOWN` – If Stream cannot automatically determine why the video returned an error, the `ERR_UNKNOWN` code will be used.
 
 In addition to the `state` field, a video's `readyToStream` field must also be `true` for a video to play.
+
+*Example error responsebash*
 
 ```bash
 {
@@ -141,33 +148,33 @@ To verify the signature, get the value of the `Webhook-Signature` header, which 
 
 `Webhook-Signature: time=1230811200,sig1=60493ec9388b44585a29543bcf0de62e377d4da393246a8b1c901d0e3e672404`
 
-### 1\. Parse the signature
+### 1. Parse the signature
 
 Retrieve the `Webhook-Signature` header from the webhook request and split the string using the `,` character.
 
 Split each value again using the `=` character.
 
-The value for `time` is the current [UNIX time ↗](https://en.wikipedia.org/wiki/Unix%5Ftime) when the server sent the request. `sig1` is the signature of the request body.
+The value for `time` is the current [UNIX time ↗](https://en.wikipedia.org/wiki/Unix_time) when the server sent the request. `sig1` is the signature of the request body.
 
 At this point, you should discard requests with timestamps that are too old for your application.
 
-### 2\. Create the signature source string
+### 2. Create the signature source string
 
 Prepare the signature source string and concatenate the following strings:
 
-* Value of the `time` field for example `1230811200`
-* Character `.`
-* Webhook request body (complete with newline characters, if applicable)
+- Value of the `time` field for example `1230811200`
+- Character `.`
+- Webhook request body (complete with newline characters, if applicable)
 
 Every byte in the request body must remain unaltered for successful signature verification.
 
-### 3\. Create the expected signature
+### 3. Create the expected signature
 
-Compute an HMAC with the SHA256 function (HMAC-SHA256) using your webhook secret and the source string from step 2\. This step depends on the programming language used by your application.
+Compute an HMAC with the SHA256 function (HMAC-SHA256) using your webhook secret and the source string from step 2. This step depends on the programming language used by your application.
 
 Cloudflare's signature will be encoded to hex.
 
-### 4\. Compare expected and actual signatures
+### 4. Compare expected and actual signatures
 
 Compare the signature in the request header to the expected signature. Preferably, use a constant-time comparison function to compare the signatures.
 
@@ -175,9 +182,9 @@ If the signatures match, you can trust that Cloudflare sent the webhook.
 
 ## Limitations
 
-* Webhooks will only be sent after video processing is complete, and the body will indicate whether the video processing succeeded or failed.
-* Only one webhook subscription is allowed per-account.
-* Cloudflare cannot send webhooks to `localhost` or local IP addresses. A publicly accessible URL is required. For local testing, use a [Quick Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) to expose your local server to the Internet. For a step-by-step walkthrough, refer to [Test webhooks locally](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/).
+- Webhooks will only be sent after video processing is complete, and the body will indicate whether the video processing succeeded or failed.
+- Only one webhook subscription is allowed per-account.
+- Cloudflare cannot send webhooks to `localhost` or local IP addresses. A publicly accessible URL is required. For local testing, use a [Quick Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) to expose your local server to the Internet. For a step-by-step walkthrough, refer to [Test webhooks locally](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/).
 
 ## Examples
 

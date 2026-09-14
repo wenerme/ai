@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/search/mcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Model Context Protocol (MCP) endpoint allows AI agents to discover and interact with your AI Search content. This endpoint follows the [MCP specification ↗](https://modelcontextprotocol.io/) and provides tools for querying your indexed content.
 
@@ -20,9 +20,9 @@ The Model Context Protocol (MCP) endpoint allows AI agents to discover and inter
 
 Enable public endpoints for your AI Search instance:
 
-1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance.
-3. Go to **Settings** \> **Public Endpoint**.
+3. Go to **Settings** > **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
 5. Copy the public endpoint URL.
 
@@ -40,9 +40,9 @@ The tools and request format are the same for both. The examples on this page us
 
 The AI Search MCP endpoint exposes a `search` tool that queries your indexed content.
 
-| Tool   | Description                           |
-| ------ | ------------------------------------- |
-| search | Finds exactly what you're looking for |
+| Tool | Description |
+| --- | --- |
+| `search` | Finds exactly what you're looking for |
 
 You can customize this in your AI Search instance settings. For more details, refer to [Public endpoint configuration](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/).
 
@@ -71,7 +71,7 @@ curl https://<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com/mcp \
 
 You can serve the MCP endpoint from a hostname that you own, such as `https://search.example.com/mcp`, instead of the generated one. The hostname must belong to a zone on the same Cloudflare account. To attach a custom domain:
 
-1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to **AI Search** in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your instance or namespace.
 3. Go to **Public Endpoints** and enable the public endpoint. A custom domain requires an active public endpoint.
 4. Go to **Custom Domains** and attach your hostname.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health Checks
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -34,8 +34,8 @@ The Internet is not the same everywhere around the world and your users may not 
 
 Analytics are presented at two levels:
 
-* Regional Aggregates: Combined results from the three data centers within a specific region.
-* Global Aggregates: Total results across all configured regions and data centers.
+- Regional Aggregates: Combined results from the three data centers within a specific region.
+- Global Aggregates: Total results across all configured regions and data centers.
 
 In the event log, entries are labeled by region or as **Global**. We do not provide granular data for individual data centers.
 
@@ -43,9 +43,9 @@ If you select multiple regions or choose **All Regions** (Business and Enterpris
 
 ## Further reading
 
-* [Manage Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/setup/)
-* [Health Checks analytics](https://developers.cloudflare.com/smart-shield/configuration/health-checks/analytics/)
-* [Zone Lockdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/zone-lockdown/)
+- [Manage Health Checks](https://developers.cloudflare.com/smart-shield/configuration/health-checks/setup/)
+- [Health Checks analytics](https://developers.cloudflare.com/smart-shield/configuration/health-checks/analytics/)
+- [Zone Lockdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/zone-lockdown/)
 
 Was this helpful?
 

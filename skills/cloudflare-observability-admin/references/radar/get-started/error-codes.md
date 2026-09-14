@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Radar API error codes
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/get-started/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Error Code | HTTP Status Code | Description             |
-| ---------- | ---------------- | ----------------------- |
-| 2000       | 500              | Internal Error          |
-| 2001       | 400              | Input Validation Error  |
-| 2002       | 422              | Query is above max cost |
-| 1015       | 429              | Too many requests       |
-| 7003       | 404              | Not found               |
+| Error Code | HTTP Status Code | Description |
+| --- | --- | --- |
+| `2000` | 500 | Internal Error |
+| `2001` | 400 | Input Validation Error |
+| `2002` | 422 | Query is above max cost |
+| `1015` | 429 | Too many requests |
+| `7003` | 404 | Not found |
 
 Was this helpful?
 

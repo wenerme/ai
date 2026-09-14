@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Permissions
 
-Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/permissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below is a description of the available permissions for tokens and roles as they relate to Logs. For information about how to create an API token, refer to [Creating API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
 ## Tokens
 
-* **Logs: Read** \- Grants read access to logs using Logpull or Instant Logs.
-* **Logs: Write** \- Grants read and write access to Logpull and Logpush, and read access to Instant Logs. Note that all Logpush API operations require **Logs: Write** permission because Logpush jobs contain sensitive information.
+- **Logs: Read** - Grants read access to logs using Logpull or Instant Logs.
+- **Logs: Write** - Grants read and write access to Logpull and Logpush, and read access to Instant Logs. Note that all Logpush API operations require **Logs: Write** permission because Logpush jobs contain sensitive information.
 
 Note
 
-* **Zone-scoped datasets** require a **zone-scoped token**.
-* **Account-scoped datasets** require an **account-scoped token**.
+- **Zone-scoped datasets** require a **zone-scoped token**.
+- **Account-scoped datasets** require an **account-scoped token**.
 
 Permissions must be explicitly configured at the appropriate level (zone or account) to ensure access to the desired API endpoints.
 
@@ -53,7 +53,7 @@ For more details, refer to the [Logpush Permission Update for Zero Trust Dataset
 To check the list of members in your account, or to manage roles and permissions:
 
 1. Navigate to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
-2. From your Account Home, go to **Manage Account** \> **Members**.
+2. From your Account Home, go to **Manage Account** > **Members**.
 3. Enter a member’s email address to add them to your account, and select **Invite**.
 4. Alternatively, scroll down to the **Members** card to find a list of members with their status and role.
 

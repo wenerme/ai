@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bind to Workers API
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -20,17 +20,17 @@ You can bind the Media Transformations API to your Worker to transform, resize, 
 
 For example, when you use Media Transformations within Workers, you can:
 
-* Transform a video stored in a private R2 bucket or other protected source
-* Optimize videos and store the output directly back in R2 without serving it to the browser
-* Extract still frames and spritesheets for videos and use them for classification or description with [Workers AI](https://developers.cloudflare.com/workers-ai/)
-* Extract audio tracks from video files for dynamic transcription using Workers AI
+- Transform a video stored in a private R2 bucket or other protected source
+- Optimize videos and store the output directly back in R2 without serving it to the browser
+- Extract still frames and spritesheets for videos and use them for classification or description with [Workers AI](https://developers.cloudflare.com/workers-ai/)
+- Extract audio tracks from video files for dynamic transcription using Workers AI
 
 Beta restrictions
 
 The binding for Media Transformations is currently in public open beta. During this period:
 
-* Transformation operations via the binding will not be billed.
-* Certain operations may incur higher latency.
+- Transformation operations via the binding will not be billed.
+- Certain operations may incur higher latency.
 
 ## Setup
 
@@ -64,44 +64,44 @@ The Media Transformations binding is similar to the [Images binding](https://dev
 
 The starting point for the Media binding, which accepts raw content.
 
-* Accepts a `ReadableStream<Uint8Array>` containing the video bytes.
+- Accepts a `ReadableStream<Uint8Array>` containing the video bytes.
 
 ### `.transform()` (optional)
 
 Defines how the video input should be transformed by resizing or cropping. This method is optional — if you do not need to resize or crop, you can call `.output()` directly on the result of `.input()`.
 
-* Accepts the following parameters (all optional):
-  * `width`: Target width in pixels (10-2000).
-  * `height`: Target height in pixels (10-2000).
-  * `fit`: How to resize the video to fit the specified dimensions.
-    * `contain`: Scales the video to fit entirely within the output dimensions while respecting aspect ratio.
-    * `cover`: Scales the video to entirely cover the output dimensions with a center-weighted crop.
-    * `scale-down`: Same as `contain`, but only scales down. Does not upscale.
-* Refer to [Transform videos options](https://developers.cloudflare.com/stream/transform-videos/#options) for more details.
+- Accepts the following parameters (all optional):
+  - `width`: Target width in pixels (10-2000).
+  - `height`: Target height in pixels (10-2000).
+  - `fit`: How to resize the video to fit the specified dimensions.
+    - `contain`: Scales the video to fit entirely within the output dimensions while respecting aspect ratio.
+    - `cover`: Scales the video to entirely cover the output dimensions with a center-weighted crop.
+    - `scale-down`: Same as `contain`, but only scales down. Does not upscale.
+- Refer to [Transform videos options](https://developers.cloudflare.com/stream/transform-videos/#options) for more details.
 
 ### `.output()`
 
 Defines what to extract from the video and how the output will be formatted. Refer to [source video requirements](https://developers.cloudflare.com/stream/transform-videos/#source-video-requirements) and [limitations](https://developers.cloudflare.com/stream/transform-videos/#limitations) for input and output constraints.
 
-* Accepts the following parameters:
-  * `mode`: The type of output to generate.
-    * `video`: Outputs an H.264/AAC optimized MP4 file.
-    * `frame`: Outputs a still image (JPEG or PNG).
-    * `spritesheet`: Outputs a JPEG containing multiple frames.
-    * `audio`: Outputs an AAC encoded M4A file.
-  * `time`: Start timestamp for extraction (for example, `"2s"`, `"1m"`). Default: `"0s"`.
-  * `duration`: Duration of the output for `video`, `audio`, or `spritesheet` modes (for example, `"5s"`).
-  * `imageCount`: Number of frames to include in a spritesheet.
-  * `format`: Output format for `frame` mode (`jpg`, `png`) or `audio` mode (`m4a`).
-  * `audio`: Boolean to include or exclude audio in `video` mode. Default: `true`.
+- Accepts the following parameters:
+  - `mode`: The type of output to generate.
+    - `video`: Outputs an H.264/AAC optimized MP4 file.
+    - `frame`: Outputs a still image (JPEG or PNG).
+    - `spritesheet`: Outputs a JPEG containing multiple frames.
+    - `audio`: Outputs an AAC encoded M4A file.
+  - `time`: Start timestamp for extraction (for example, `"2s"`, `"1m"`). Default: `"0s"`.
+  - `duration`: Duration of the output for `video`, `audio`, or `spritesheet` modes (for example, `"5s"`).
+  - `imageCount`: Number of frames to include in a spritesheet.
+  - `format`: Output format for `frame` mode ( `jpg`, `png`) or `audio` mode ( `m4a`).
+  - `audio`: Boolean to include or exclude audio in `video` mode. Default: `true`.
 
 ### Result methods
 
 Finally, after configuring the output, three methods are available to receive results. These methods return Promises and must be awaited:
 
-* `.response()`: Returns a `Promise<Response>` — the transformed media as an HTTP Response object, ready to return to the client or store in cache.
-* `.media()`: Returns a `Promise<ReadableStream<Uint8Array>>` — the transformed media as a byte stream.
-* `.contentType()`: Returns a `Promise<string>` — the MIME type of the output (for example, `video/mp4`, `image/jpeg`, `audio/mp4`).
+- `.response()`: Returns a `Promise<Response>` — the transformed media as an HTTP Response object, ready to return to the client or store in cache.
+- `.media()`: Returns a `Promise<ReadableStream<Uint8Array>>` — the transformed media as a byte stream.
+- `.contentType()`: Returns a `Promise<string>` — the MIME type of the output (for example, `video/mp4`, `image/jpeg`, `audio/mp4`).
 
 ## Examples
 
@@ -270,14 +270,14 @@ export default {
 
 Errors can be thrown at different points in the method chain:
 
-* `.input()` can throw errors related to account limits (free tier or subscription) or service disruptions.
-* `.output()` can throw errors related to the transformation operation itself, such as invalid parameters or unsupported input formats.
+- `.input()` can throw errors related to account limits (free tier or subscription) or service disruptions.
+- `.output()` can throw errors related to the transformation operation itself, such as invalid parameters or unsupported input formats.
 
 Errors throw a `MediaError`, which extends the standard `Error` interface with additional information:
 
-* `code`: A numeric error code.
-* `message`: A description of the error.
-* `stack`: Optional stack trace.
+- `code`: A numeric error code.
+- `message`: A description of the error.
+- `stack`: Optional stack trace.
 
 Use a `try...catch` block to handle errors:
 
@@ -307,7 +307,7 @@ export default {
 
 ## Caching
 
-Unlike transformations via URL, responses from the Media binding are _not_ automatically cached. Workers lets you interact directly with the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) to customize cache behavior. You can implement logic in your script to store transformations in Cloudflare's cache or R2 storage.
+Unlike transformations via URL, responses from the Media binding are *not* automatically cached. Workers lets you interact directly with the [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) to customize cache behavior. You can implement logic in your script to store transformations in Cloudflare's cache or R2 storage.
 
 ## Billing
 
@@ -315,7 +315,7 @@ Refer to Stream's [Pricing](https://developers.cloudflare.com/stream/pricing/) i
 
 ## Local development
 
-The Media Transformations API is available _in remote mode_ for local development through [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Transformations operations will be performed using a remote resource and are subject to usage charges beyond the included free tier.
+The Media Transformations API is available *in remote mode* for local development through [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Transformations operations will be performed using a remote resource and are subject to usage charges beyond the included free tier.
 
 To enable usage in local development, add `remote` to the binding configuration:
 

@@ -16,22 +16,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen3.5-397b-a17b`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.
 
-| Model Info          |                                                                                                                             |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                        |
-| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                      |
-| Zero data retention | Yes                                                                                                                         |
-| Request formats     | Chat Completions, Responses                                                                                                 |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions, Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
 
 ## Usage
 
@@ -58,6 +58,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics describe how energy, heat, and entropy behave in physical systems. Here they are, explained simply:
 
 ### 1. The First Law: Conservation of Energy
@@ -87,6 +88,7 @@ Physicist C.P. Snow famously summarized the laws using a gambling analogy:
 1.  **First Law:** You can't win (you can't get more energy out than you put in).
 2.  **Second Law:** You can't break even (you will always lose some energy to heat/friction).
 3.  **Third Law:** You can't leave the table (you can never reach absolute zero to stop entropy).
+```
 
 ```json
 {
@@ -127,7 +129,11 @@ Physicist C.P. Snow famously summarized the laws using a gambling analogy:
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -161,6 +167,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading JSON Files in Python
 
 Python's built-in `json` module makes it easy to read and work with JSON data. Here's a comprehensive guide:
@@ -268,6 +275,7 @@ for user in users:
 - ✅ Handle exceptions for robust code
 
 This covers the most common scenarios for reading JSON in Python. Let me know if you'd like to learn about writing JSON files too!
+````
 
 ```json
 {
@@ -306,7 +314,13 @@ This covers the most common scenarios for reading JSON in Python. Let me know if
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -354,6 +368,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The best stops depend heavily on which route you choose. There are two main options:
 
 1.  **Highway 1 (Pacific Coast Highway):** The scenic, iconic route. It takes longer (8–10+ hours driving time) but is much more beautiful.
@@ -393,6 +408,7 @@ Here are the best stops for both routes, ordered from North to South:
 *   **Traffic:** Avoid leaving SF on Friday afternoon or entering LA during rush hour (3 PM–7 PM) if possible.
 
 Do you think you'll prefer the scenic route or the faster one? I can help you plan a schedule based on that!
+```
 
 ```json
 {
@@ -431,7 +447,13 @@ Do you think you'll prefer the scenic route or the faster one? I can help you pl
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -465,6 +487,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain didn't fall so much as it hovered, a wet gray mist that clung to Detective Silas Vane's trench coat like a second skin. He ducked under the yellow tape, the flashing blue and red lights of the cruisers painting the puddles in fractured neon. Inside the apartment, the air was still, smelling faintly of copper and old paper.
 
 The victim lay sprawled across the Persian rug, a man of means who had died in a place of solitude. The uniformed officers had already tagged the obvious: the empty pistol on the desk, the shattered whiskey glass, the note that screamed suicide but felt too practiced to be real.
@@ -486,6 +509,7 @@ Standard dice have six. This one had a flat, polished surface where a corner sho
 He glanced at the sealed windows, then back at the die. It was warm. Not body heat warm, but vibrating with a low, humless energy that tickled the tips of his fingers. Someone hadn't just dropped this; someone had placed it here after the heart stopped beating.
 
 "Change of plans," Vane said, standing up and pocketing the evidence bag without sealing it. "Don't bag the body yet. I think he was waiting for someone to roll again."
+```
 
 ```json
 {
@@ -524,7 +548,13 @@ He glanced at the sealed windows, then back at the die. It was warm. Not body he
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -557,6 +587,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Understanding Recursion
 
 **Recursion** is a programming technique where a function calls itself to solve a problem. It's like solving a big problem by breaking it down into smaller versions of the same problem.
@@ -636,6 +667,7 @@ countdown(3)
 ## Key Takeaway
 
 Think of recursion like Russian nesting dolls – you keep opening smaller dolls until you reach the smallest one (base case), then work your way back out!
+````
 
 ```json
 [
@@ -4349,7 +4381,13 @@ Think of recursion like Russian nesting dolls – you keep opening smaller dolls
 ]
 ```
 
-**Web Search** — Letting Qwen use DashScope's built-in web search via enable\_search
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Qwen use DashScope's built-in web search via enable_search</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -4386,11 +4424,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Based on the provided knowledge base (current context June 2026), here are the top recent news stories about Cloudflare:
 
 *   **Acquisition of VoidZero:** On June 4, 2026, Cloudflare announced the acquisition of VoidZero to build the future of the AI-native web, marking its latest strategic move in the AI sector.
 *   **Secure Sandboxes for Claude Agents:** On May 19, 2026, Cloudflare introduced secure, scalable sandboxes for Claude managed agents, enhancing security for AI agent lifecycles.
 *   **Q1 2026 Financial Results:** Cloudflare announced its first-quarter 2026 financial results on May 7, 2026, alongside being named a leader in edge development platforms by an independent research firm.
+```
 
 ```json
 {
@@ -4429,13 +4469,15 @@ Based on the provided knowledge base (current context June 2026), here are the t
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -4457,11 +4499,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -4471,19 +4513,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -4515,13 +4553,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -4547,7 +4583,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -4571,7 +4607,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -4589,9 +4625,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json)
 
 Was this helpful?
 

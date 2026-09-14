@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a locally-managed tunnel
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/create-local-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/create-local-tunnel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Follow this step-by-step guide to get your first tunnel up and running using the CLI.
 
@@ -20,17 +20,20 @@ Follow this step-by-step guide to get your first tunnel up and running using the
 
 Before you start, make sure you:
 
-* [Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
-* [Change your domain nameservers to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/).
+- [Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
+- [Change your domain nameservers to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/).
 
-## 1\. Download and install `cloudflared`
+## 1. Download and install `cloudflared`
 
 1. Download `cloudflared` on your machine. Visit the [downloads](https://developers.cloudflare.com/tunnel/downloads/) page to find the right package for your OS.
 2. Rename the executable to `cloudflared.exe`
 3. In PowerShell, change directory to your Downloads folder and run `.\cloudflared.exe --version`. It should output the version of `cloudflared`. Note that `cloudflared.exe` could be `cloudflared-windows-amd64.exe` or `cloudflared-windows-386.exe` if you have not renamed it.
-```powershell
-PS C:\Users\Administrator\Downloads\cloudflared-stable-windows-amd64> .\cloudflared.exe --version
-```
+
+   ```powershell
+   PS C:\Users\Administrator\Downloads\cloudflared-stable-windows-amd64> .\cloudflared.exe --version
+   ```
+
+
 
 To download and install `cloudflared`:
 
@@ -51,13 +54,13 @@ sudo mkdir -p --mode=0755 /usr/share/keyrings
 curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
 ```
 
-1. Add Cloudflare's apt repo to your apt repositories:
+2. Add Cloudflare's apt repo to your apt repositories:
 
 ```sh
 echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
 ```
 
-1. Update repositories and install cloudflared:
+3. Update repositories and install cloudflared:
 
 ```sh
 sudo apt-get update && sudo apt-get install cloudflared
@@ -68,17 +71,23 @@ sudo apt-get update && sudo apt-get install cloudflared
 Use the rpm package manager to install `cloudflared` on compatible machines.
 
 1. Add Cloudflare's repository:
-```sh
-curl -fsSl https://pkg.cloudflare.com/cloudflared.repo | sudo tee /etc/yum.repos.d/cloudflared.repo
-```
+
+   ```sh
+   curl -fsSl https://pkg.cloudflare.com/cloudflared.repo | sudo tee /etc/yum.repos.d/cloudflared.repo
+   ```
+
+
 2. Update repositories and install cloudflared:
-```sh
-sudo yum update && sudo yum install cloudflared
-```
+
+   ```sh
+   sudo yum update && sudo yum install cloudflared
+   ```
+
+
 
 **Arch Linux**
 
-`cloudflared` is in the Arch Linux [community repository ↗](https://wiki.archlinux.org/title/official%5Frepositories#community). Use `pacman` to install `cloudflared` on compatible machines.
+`cloudflared` is in the Arch Linux [`community` repository ↗](https://wiki.archlinux.org/title/official_repositories#community). Use `pacman` to install `cloudflared` on compatible machines.
 
 ```sh
 pacman -Syu cloudflared
@@ -103,7 +112,7 @@ Depending on where you installed `cloudflared`, you can move it to a known path 
 mv /root/cloudflared/cloudflared /usr/bin/cloudflared
 ```
 
-## 2\. Authenticate `cloudflared`
+## 2. Authenticate `cloudflared`
 
 ```sh
 cloudflared tunnel login
@@ -111,10 +120,10 @@ cloudflared tunnel login
 
 Running this command will:
 
-* Open a browser window and prompt you to log in to your Cloudflare account. After logging in to your account, select your hostname.
-* Generate an account certificate, the [cert.pem file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#certpem), in the [default cloudflared directory](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#default-cloudflared-directory).
+- Open a browser window and prompt you to log in to your Cloudflare account. After logging in to your account, select your hostname.
+- Generate an account certificate, the [cert.pem file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#certpem), in the [default `cloudflared` directory](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#default-cloudflared-directory).
 
-## 3\. Create a tunnel and give it a name
+## 3. Create a tunnel and give it a name
 
 ```sh
 cloudflared tunnel create <NAME>
@@ -122,9 +131,9 @@ cloudflared tunnel create <NAME>
 
 Running this command will:
 
-* Create a tunnel by establishing a persistent relationship between the name you provide and a UUID for your tunnel. At this point, no connection is active within the tunnel yet.
-* Generate a [tunnel credentials file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#credentials-file) in the [default cloudflared directory](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#default-cloudflared-directory).
-* Create a subdomain of `.cfargotunnel.com`.
+- Create a tunnel by establishing a persistent relationship between the name you provide and a UUID for your tunnel. At this point, no connection is active within the tunnel yet.
+- Generate a [tunnel credentials file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#credentials-file) in the [default `cloudflared` directory](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/local-tunnel-terms/#default-cloudflared-directory).
+- Create a subdomain of `.cfargotunnel.com`.
 
 From the output of the command, take note of the tunnel's UUID and the path to your tunnel's credentials file.
 
@@ -134,21 +143,27 @@ Confirm that the tunnel has been successfully created by running:
 cloudflared tunnel list
 ```
 
-## 4\. Create a configuration file
+## 4. Create a configuration file
 
-1. In your `.cloudflared` directory, create a [config.yml file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/) using any text editor. This file will configure the tunnel to route traffic from a given origin to the hostname of your choice.
+1. In your `.cloudflared` directory, create a [`config.yml` file](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/configuration-file/) using any text editor. This file will configure the tunnel to route traffic from a given origin to the hostname of your choice.
 2. Add the following fields to the file:
-```yml
-url: http://localhost:8000
-tunnel: <Tunnel-UUID>
-credentials-file: /root/.cloudflared/<Tunnel-UUID>.json
-```
-3. Confirm that the configuration file has been successfully created by running:
-```sh
-cat config.yml
-```
 
-## 5\. Start routing traffic
+   ```yml
+   url: http://localhost:8000
+   tunnel: <Tunnel-UUID>
+   credentials-file: /root/.cloudflared/<Tunnel-UUID>.json
+   ```
+
+
+3. Confirm that the configuration file has been successfully created by running:
+
+   ```sh
+   cat config.yml
+   ```
+
+
+
+## 5. Start routing traffic
 
 To route a [published application](https://developers.cloudflare.com/tunnel/concepts/routing/) through the tunnel:
 
@@ -158,7 +173,7 @@ cloudflared tunnel route dns <UUID or NAME> <hostname>
 
 This command will create a `CNAME` record pointing to `<UUID>.cfargotunnel.com`.
 
-## 6\. Run the tunnel
+## 6. Run the tunnel
 
 Run the tunnel to proxy incoming traffic from the tunnel to any number of services running locally on your origin.
 
@@ -176,7 +191,7 @@ Note
 
 Cloudflare Tunnel can install itself as a system service on Linux and Windows and as a launch agent on macOS. For more information, refer to [run as a service](https://developers.cloudflare.com/tunnel/features/locally-managed-tunnels/as-a-service/).
 
-## 7\. Check the tunnel
+## 7. Check the tunnel
 
 To get information on the tunnel you just created, run:
 

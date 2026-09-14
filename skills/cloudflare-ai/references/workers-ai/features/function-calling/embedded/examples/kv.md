@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use KV API
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/kv/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/examples/kv/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Interact with persistent storage to retrieve or store information enables for powerful use cases.
 
@@ -20,11 +20,13 @@ In this example we show how embedded function calling can interact with other re
 
 ## Pre-Requisites
 
-For this example to work, you need to provision a [KV](https://developers.cloudflare.com/kv/) namespace first. To do so, follow the [KV - Get started ](https://developers.cloudflare.com/kv/get-started/) guide.
+For this example to work, you need to provision a [KV](https://developers.cloudflare.com/kv/) namespace first. To do so, follow the [KV - Get started](https://developers.cloudflare.com/kv/get-started/) guide.
 
 Importantly, your Wrangler file must be updated to include the `KV` binding definition to your respective namespace.
 
 ## Worker code
+
+*Embedded function calling example with KV APIts*
 
 ```ts
 import { runWithTools } from "@cloudflare/ai-utils";

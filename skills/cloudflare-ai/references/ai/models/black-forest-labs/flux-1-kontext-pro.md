@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-# FLUX.1 Kontext \[pro\]
+# FLUX.1 Kontext \[pro]
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `black-forest-labs/flux-1-kontext-pro`
 
-* Third-party
+- Third-party
 
-FLUX.1 Kontext \[pro\] creates and edits images from text prompts with strong character and style consistency.
+FLUX.1 Kontext \[pro] creates and edits images from text prompts with strong character and style consistency.
 
-| Model Info        |                                                                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                                 |
-| More information  | [link ↗](https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[pro])                                    |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-1-kontext-pro) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
+| More information | [link ↗](https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[pro]) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-1-kontext-pro) |
 
 ## Usage
 
@@ -68,7 +68,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Wide Cinematic Image** — Generate a cinematic landscape using a wide aspect ratio.
+<details>
+
+<summary>**Wide Cinematic Image** — Generate a cinematic landscape using a wide aspect ratio.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -114,6 +118,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -126,7 +132,7 @@ input\_image
 
 aspect\_ratio
 
-`string | null`Output aspect ratio, from 3:7 to 7:3\. Defaults to 1:1.
+`string | null`Output aspect ratio, from 3:7 to 7:3. Defaults to 1:1.
 
 seed
 
@@ -150,9 +156,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-1-kontext-pro/schema-output.json)
 
 Was this helpful?
 

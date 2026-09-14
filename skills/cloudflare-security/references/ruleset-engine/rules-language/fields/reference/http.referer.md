@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.referer
 
-`http.referer` `String`
+`http.referer``String`
 
 The HTTP `Referer` request header, which contains the address of the web page that linked to the currently requested page.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

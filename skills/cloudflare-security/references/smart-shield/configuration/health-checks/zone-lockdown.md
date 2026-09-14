@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Lockdown
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/zone-lockdown/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/health-checks/zone-lockdown/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Currently, any Cloudflare customer on a paid plan can configure Health Checks against any host or IP. [Zone Lockdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/) specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. It allows multiple destinations in a single rule as well as IPv4 and IPv6 addresses. IP addresses not specified in the Zone Lockdown rule are denied access to the specified resources.
 
@@ -24,9 +24,11 @@ To bypass zone lockdown using a WAF custom rule:
 
 1. Follow the steps to [create a custom rule in the dashboard](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/).
 2. Create a custom rule matching on **user agent**.
-Cloudflare Health Checks have a user agent of the following format: `Mozilla/5.0 (compatible;Cloudflare-Healthchecks/1.0;+https://www.cloudflare.com/; healthcheck-id: XXX)` where `XXX` is replaced with the first 16 characters of the Health Check ID.
-To allow a specific Health Check, verify if the user agent contains the first 16 characters of the Health Check ID.
-3. Set the action to _Skip_ and the corresponding feature to **Zone Lockdown** under **More components to skip**.
+
+   Cloudflare Health Checks have a user agent of the following format: `Mozilla/5.0 (compatible;Cloudflare-Healthchecks/1.0;+https://www.cloudflare.com/; healthcheck-id: XXX)` where `XXX` is replaced with the first 16 characters of the Health Check ID.
+
+   To allow a specific Health Check, verify if the user agent contains the first 16 characters of the Health Check ID.
+3. Set the action to *Skip* and the corresponding feature to **Zone Lockdown** under **More components to skip**.
 
 ### Via the API
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Spectrum
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure [Spectrum](https://developers.cloudflare.com/spectrum/) with Load Balancing to bring resiliency to your TCP or UDP based applications.
 
@@ -24,41 +24,39 @@ The exact settings will vary depending on your use case. Refer to the following 
 
 ## Set up
 
-### 1\. Configure your load balancer
+### 1. Configure your load balancer
 
-1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
+1. In the Cloudflare dashboard, go to the **Load Balancing** page. [Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select an account where the Load Balancing add-on is [enabled](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/).
 3. Go to **Load Balancing** and select **Create load balancer**.
 4. On the **Load Balancer Setup**, select **Public load balancer**
 5. Choose the website to which you want to add this load balancer.
 6. On the **Hostname** page, define the settings presented and select **Next**.
+   - Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
 
-  * Enter a **Hostname**, which is the DNS name at which the load balancer is available. For more details on record priority, refer to [DNS records for load balancing](https://developers.cloudflare.com/load-balancing/load-balancers/dns-records/).
-  Caution
-  To prevent issues with DNS resolution, the load balancer hostname should be different from the hostname (or domain) you intend to define for your Spectrum application.
-  * Keep the orange cloud icon enabled, meaning the load balancer is proxied. This refers to the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) and, with Spectrum, traffic is always proxied.
-  * Keep **Session Affinity** and **Failover across pools** disabled as these features are not supported with Spectrum.
+     Caution
+
+     To prevent issues with DNS resolution, the load balancer hostname should be different from the hostname (or domain) you intend to define for your Spectrum application.
+   - Keep the orange cloud icon enabled, meaning the load balancer is proxied. This refers to the [proxy mode](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/) and, with Spectrum, traffic is always proxied.
+   - Keep **Session Affinity** and **Failover across pools** disabled as these features are not supported with Spectrum.
 7. On the **Add a Pool** page, define the settings presented and select **Next**.
-
-  * Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) [1](#user-content-fn-1).
-  * If needed, update the [fallback pool](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools) [2](#user-content-fn-2).
+   - Select one or more existing pools or [create a new pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/#create-a-pool) <sup>[1](#user-content-fn-1)</sup>.
+   - If needed, update the [fallback pool](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#fallback-pools) <sup>[2](#user-content-fn-2)</sup>.
 8. On the **Monitors** page, define the settings presented and select **Next**.
-
-  * Review the monitors attached to your pools.
-  * If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
+   - Review the monitors attached to your pools.
+   - If needed, you can attach an existing monitor or [create a new monitor](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#create-a-monitor).
 9. On the **Traffic Steering** page, choose an option for [Traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/) and select **Next**.
 10. Keep **Custom Rules** page empty as this feature is not supported with Spectrum.
 11. On the **Review** page:
-* Review your configuration and make any changes.
-  * If you set traffic steering to **Off**, re-order the pools in your load balancer to adjust the fallback order.
-  * If you chose to set traffic steering to Random, you can [set weights to your pools](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the [API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/)) to determine the percentage of traffic sent to each pool.
-* Choose whether to **Save as Draft** or **Save and Deploy**.
 
-### 2\. Configure your Spectrum application
+- Review your configuration and make any changes.
+  - If you set traffic steering to **Off**, re-order the pools in your load balancer to adjust the fallback order.
+  - If you chose to set traffic steering to Random, you can [set weights to your pools](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#random-steering) (via the [API](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/)) to determine the percentage of traffic sent to each pool.
+- Choose whether to **Save as Draft** or **Save and Deploy**.
 
-1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+### 2. Configure your Spectrum application
+
+1. In the Cloudflare dashboard, go to the **Spectrum** page. [Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -71,8 +69,8 @@ The exact settings will vary depending on your use case. Refer to the following 
 
 ## Limitations
 
-* Load Balancing [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), [failover across pools](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/#failover-across-pools), and [custom rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) are not supported by Spectrum.
-* UDP health checks are only available with public monitoring. TCP can be used with both public and private monitoring.
+- Load Balancing [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/), [failover across pools](https://developers.cloudflare.com/load-balancing/understand-basics/adaptive-routing/#failover-across-pools), and [custom rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) are not supported by Spectrum.
+- UDP health checks are only available with public monitoring. TCP can be used with both public and private monitoring.
 
 ## Footnotes
 

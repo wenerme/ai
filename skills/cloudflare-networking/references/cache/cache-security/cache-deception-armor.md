@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cache Deception Armor
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Web Cache Deception attacks
 
@@ -28,16 +28,15 @@ In the newsfeed example above, if `http://www.example.com/newsfeed` is a script 
 
 ### Exceptions
 
-* If the returned `Content-Type` is `application/octet-stream`, the extension does not matter because that is typically a signal to instruct the browser to save the asset instead of to display it.
-* Cloudflare allows `.jpg` to be served as `image/webp` or `.gif` as `video/webm` and other cases that are unlikely to be attacks.
-* Keep in mind that Cache Deception Armor depends upon [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/). A `Cache-Control` header from the origin, or an [Edge Cache TTL Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) may override the protection.
+- If the returned `Content-Type` is `application/octet-stream`, the extension does not matter because that is typically a signal to instruct the browser to save the asset instead of to display it.
+- Cloudflare allows `.jpg` to be served as `image/webp` or `.gif` as `video/webm` and other cases that are unlikely to be attacks.
+- Keep in mind that Cache Deception Armor depends upon [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/). A `Cache-Control` header from the origin, or an [Edge Cache TTL Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl) may override the protection.
 
 ## Enable Cache Deception Armor
 
 To enable Cache Deception Armor, you need to start by creating a [cache rule](https://developers.cloudflare.com/cache/how-to/cache-rules/). Follow the steps below for guidance:
 
-1. In the Cloudflare dashboard, go to the **Cache Rules** page.
-[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+1. In the Cloudflare dashboard, go to the **Cache Rules** page. [Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. Under **When incoming requests match**, define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder).
 4. Under **Then**, in the **Cache eligibility** section, select **Eligible for cache**.

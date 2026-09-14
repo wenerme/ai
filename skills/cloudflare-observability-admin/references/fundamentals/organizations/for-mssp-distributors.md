@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Organizations for MSSP and Distributors
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,9 +24,9 @@ Organizations provides a multi-tier structure for MSSP (Managed Security Service
 
 Organizations for MSSP and Distributors is designed for:
 
-* **Distributors** managing multiple MSSP partner Organizations
-* **MSSPs** managing multiple end-customer accounts
-* **Channel partners** providing managed Cloudflare services
+- **Distributors** managing multiple MSSP partner Organizations
+- **MSSPs** managing multiple end-customer accounts
+- **Channel partners** providing managed Cloudflare services
 
 Looking for Enterprise documentation? Refer to [Organizations for Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/).
 
@@ -58,19 +58,19 @@ Distributor Organization
 
 **Key characteristics:**
 
-* Distributors create and manage child MSSP Organizations
-* MSSP Organizations can create up to 5 levels of nested sub-organizations
-* Each MSSP Organization manages its own customer accounts
-* MSSP Organization members have [implicit access](#implicit-access) to their customer accounts
-* Accounts can be moved between MSSP Organizations
-* Maximum: **500 accounts** and **5,000 zones** per Organization
+- Distributors create and manage child MSSP Organizations
+- MSSP Organizations can create up to 5 levels of nested sub-organizations
+- Each MSSP Organization manages its own customer accounts
+- MSSP Organization members have [implicit access](#implicit-access) to their customer accounts
+- Accounts can be moved between MSSP Organizations
+- Maximum: **500 accounts** and **5,000 zones** per Organization
 
 ## Example: Distributor A
 
 **Distributor A** is a Cloudflare channel partner with 15 MSSP partners:
 
-* Each MSSP partner manages 5-50 end-customer accounts
-* Total: 15 MSSP Organizations, 300+ customer accounts
+- Each MSSP partner manages 5-50 end-customer accounts
+- Total: 15 MSSP Organizations, 300+ customer accounts
 
 **Distributor A's structure:**
 
@@ -88,19 +88,19 @@ Distributor A Organization
 
 **What Distributor A can do:**
 
-* Create new MSSP Organizations for new partners
-* Create customer accounts within each MSSP Organization
-* Move customer accounts between MSSP Organizations if ownership changes
-* View aggregate analytics across all MSSP Organizations
-* Share security policies across MSSP Organizations
+- Create new MSSP Organizations for new partners
+- Create customer accounts within each MSSP Organization
+- Move customer accounts between MSSP Organizations if ownership changes
+- View aggregate analytics across all MSSP Organizations
+- Share security policies across MSSP Organizations
 
 **What each MSSP can do:**
 
-* Manage their own customer accounts
-* Create new customer accounts for new clients
-* Invite MSSP team members with implicit access to all customer accounts
-* Share WAF and Gateway policies across their customer accounts
-* View aggregate analytics across their customer accounts
+- Manage their own customer accounts
+- Create new customer accounts for new clients
+- Invite MSSP team members with implicit access to all customer accounts
+- Share WAF and Gateway policies across their customer accounts
+- View aggregate analytics across their customer accounts
 
 ## Set up your Organization
 
@@ -147,11 +147,11 @@ Any Organization Super Administrator can add or remove other Organization Super 
 
 Organization members receive **implicit access** to all accounts in the Organization. Implicit access means:
 
-* You do not need explicit membership on each individual account.
-* When you go to any account within your Organization, you automatically have Super Administrator permissions on that account.
-* Implicit access is granted at the Organization level — you cannot grant implicit access to a subset of accounts.
-* Implicit access is equivalent to Super Administrator. There is no read-only implicit access today.
-* For Distributor Organizations, implicit access applies within each tier — Distributor admins access all child MSSP Organizations and their accounts.
+- You do not need explicit membership on each individual account.
+- When you go to any account within your Organization, you automatically have Super Administrator permissions on that account.
+- Implicit access is granted at the Organization level — you cannot grant implicit access to a subset of accounts.
+- Implicit access is equivalent to Super Administrator. There is no read-only implicit access today.
+- For Distributor Organizations, implicit access applies within each tier — Distributor admins access all child MSSP Organizations and their accounts.
 
 Implicit access is separate from any existing per-account membership. If a user was already an explicit member of an account before it was added to the Organization, that existing membership is unaffected.
 
@@ -170,10 +170,10 @@ The user receives an email invitation. After accepting, they have implicit acces
 
 All users who will be Organization members must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on their Cloudflare user account **before** they can accept an Organization invitation. This is a per-user requirement, not an account-level setting.
 
-* If a user does not have 2FA or SSO enabled, they will not be able to accept the invitation.
-* Ask the user to enable 2FA or SSO first, then resend the invitation.
-* For instructions on enabling 2FA, refer to [Set up 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
-* For SSO configuration, refer to [Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
+- If a user does not have 2FA or SSO enabled, they will not be able to accept the invitation.
+- Ask the user to enable 2FA or SSO first, then resend the invitation.
+- For instructions on enabling 2FA, refer to [Set up 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
+- For SSO configuration, refer to [Dashboard SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/).
 
 ## Share policies
 
@@ -203,14 +203,14 @@ The data includes traffic for proxied hostnames and may be based on a sample. Th
 
 ### Rename your Organization
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Next to **Organization name**, select **Rename**.
 3. Enter the new name.
 4. Select **Rename**.
 
 ### Edit customer identification data
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Next to **Customer identification data**, select **Edit**.
 3. Update the information.
 4. Select **Save**.
@@ -221,7 +221,7 @@ Organization audit logs capture user-initiated actions performed by Organization
 
 To view Organization audit logs in the dashboard:
 
-1. Go to **Organizations** \> **Manage Organization**.
+1. Go to **Organizations** > **Manage Organization**.
 2. Select **Audit Logs**.
 
 You can also retrieve Organization audit logs via the API:

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom lists
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/lists/custom-lists/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/lists/custom-lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A custom list contains one or more items of the same type (for example, IP addresses, hostnames, or ASNs) that you can reference collectively, by name, in rule expressions.
 
 Cloudflare supports the following custom list types:
 
-* [Lists with IP addresses](#ip-lists) (also known as IP lists)
-* [Lists with hostnames](#lists-with-hostnames)
-* [Lists with ASNs](#lists-with-asns) ([autonomous system ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) numbers)
+- [Lists with IP addresses](#ip-lists) (also known as IP lists)
+- [Lists with hostnames](#lists-with-hostnames)
+- [Lists with ASNs](#lists-with-asns) ([autonomous system ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) numbers)
 
 Note
 
@@ -44,11 +44,11 @@ Use custom lists in rule [expressions](https://developers.cloudflare.com/ruleset
 
 The fields you can use vary according to the list item type:
 
-| List item type | Available fields                                                                                                                                |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| IP address     | Fields with type IP address listed in the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) |
-| Hostname       | http.host                                                                                                                                       |
-| ASN            | ip.src.asnum                                                                                                                                    |
+| List item type | Available fields |
+| --- | --- |
+| IP address | Fields with type `IP address` listed in the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) |
+| Hostname | `http.host` |
+| ASN | `ip.src.asnum` |
 
 For more information and examples, refer to [Use lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/).
 
@@ -60,16 +60,22 @@ For more information and examples, refer to [Use lists in expressions](https://d
 
 List items in custom lists with IP addresses must be in one of the following formats:
 
-* Individual IPv4 addresses
-* Individual IPv6 addresses
-* IPv4 CIDR ranges with a prefix from `/8` to `/32`
-* IPv6 CIDR ranges with a prefix from `/12` to `/128`
+- Individual IPv4 addresses
+- Individual IPv6 addresses
+- IPv4 CIDR ranges with a prefix from `/8` to `/32`
+- IPv6 CIDR ranges with a prefix from `/12` to `/128`
 
 The same list can contain both individual addresses and CIDR ranges.
 
 You can use uppercase or lowercase characters for IPv6 addresses in lists. However, when you save the list, uppercase characters are converted to lowercase.
 
+<details>
+
+<summary>
+
 CSV file format
+
+</summary>
 
 When uploading items to a custom list with IP addresses via CSV file, use the following file format (enter one item per line):
 
@@ -78,7 +84,9 @@ When uploading items to a custom list with IP addresses via CSV file, use the fo
 <IP_ADDRESS_2>
 ```
 
-The `<DESCRIPTION>` field is optional.
+The <code>&lt;DESCRIPTION&gt;</code> field is optional.
+
+</details>
 
 ### Lists with hostnames
 
@@ -90,15 +98,21 @@ List items in custom lists with hostnames must be Fully Qualified Domain Names (
 
 For example, the following entries would be valid for a custom list with hostnames:
 
-* `example.com`
-* `api.example.com`
-* `*.example.com`
+- `example.com`
+- `api.example.com`
+- `*.example.com`
 
 However, `example.com/path/subfolder` would not be a valid entry.
 
 You can add any valid hostname (a valid FQDN) to a custom list with hostnames. The hostnames do not need to belong to the current Cloudflare account.
 
+<details>
+
+<summary>
+
 CSV file format
+
+</summary>
 
 When uploading items to a custom list with hostnames via CSV file, use the following file format:
 
@@ -107,7 +121,9 @@ When uploading items to a custom list with hostnames via CSV file, use the follo
 <HOSTNAME_2>
 ```
 
-The `<DESCRIPTION>` field is optional.
+The <code>&lt;DESCRIPTION&gt;</code> field is optional.
+
+</details>
 
 ### Lists with ASNs
 
@@ -119,11 +135,17 @@ List items in custom lists with autonomous system numbers (ASNs) must be integer
 
 For example, the following entries would be valid for a list with ASNs:
 
-* `1`
-* `13335`
-* `64512`
+- `1`
+- `13335`
+- `64512`
+
+<details>
+
+<summary>
 
 CSV file format
+
+</summary>
 
 When uploading items to a custom list with ASNs via CSV file, use the following file format:
 
@@ -132,7 +154,9 @@ When uploading items to a custom list with ASNs via CSV file, use the following 
 <ASN_2>
 ```
 
-The `<DESCRIPTION>` field is optional.
+The <code>&lt;DESCRIPTION&gt;</code> field is optional.
+
+</details>
 
 Was this helpful?
 

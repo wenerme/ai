@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # POST example
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/post/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/post/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example creates several filters using a single API call.
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/filters" \
@@ -43,6 +45,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/filters" \
   }
 ]'
 ```
+
+*Responsejson*
 
 ```json
 {

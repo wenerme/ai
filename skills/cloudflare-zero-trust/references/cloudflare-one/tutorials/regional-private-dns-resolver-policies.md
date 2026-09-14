@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Implement regional private DNS servers with Gateway resolver policies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway resolver policies allow you to route DNS queries to custom DNS resolvers based on various criteria. This tutorial demonstrates how to configure region-specific private DNS servers to ensure your users are directed to the closest internal resources based on their geographic location.
 
@@ -26,12 +26,12 @@ This tutorial uses US and EU region servers as example private DNS servers.
 
 Before you begin, make sure you have:
 
-* An Enterprise Zero Trust account
-* Private DNS servers deployed in multiple regions (for example, US, EU, and APAC)
-* A [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connecting your private DNS servers to Cloudflare
-* Internal domains that need to be resolved (for example, `internal.example.com`)
+- An Enterprise Zero Trust account
+- Private DNS servers deployed in multiple regions (for example, US, EU, and APAC)
+- A [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connecting your private DNS servers to Cloudflare
+- Internal domains that need to be resolved (for example, `internal.example.com`)
 
-## 1\. Connect private DNS servers with Cloudflare Tunnel
+## 1. Connect private DNS servers with Cloudflare Tunnel
 
 First, connect your regional private DNS servers to Cloudflare using Cloudflare Tunnel.
 
@@ -39,7 +39,7 @@ For each region where you have a private DNS server, [create a tunnel](https://d
 
 Repeat this process for all regional DNS servers.
 
-## 2\. Create Gateway resolver policies for each region
+## 2. Create Gateway resolver policies for each region
 
 Once your private DNS servers are connected to Cloudflare, configure Gateway resolver policies to route DNS queries to the appropriate regional DNS server based on user location.
 
@@ -47,55 +47,55 @@ Once your private DNS servers are connected to Cloudflare, configure Gateway res
 
 For each region where you have a private DNS server:
 
-1. Go to **Traffic policies** \> **Resolver policies**.
+1. Go to **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
 3. Name your policy based on the region (for example, `US Internal DNS`).
 4. Create an expression to match internal domains and users in that region. For example, to match users in the United States:
 
-| Selector                      | Operator | Value                | Logic |
-| ----------------------------- | -------- | -------------------- | ----- |
-| Domain                        | in       | internal.example.com | And   |
-| Source Country IP Geolocation | in       | _United States_      |       |
-5. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
+   | Selector | Operator | Value | Logic |
+   | --- | --- | --- | --- |
+   | Domain | in | `internal.example.com` | And |
+   | Source Country IP Geolocation | in | *United States* |  |
+5. In **Select DNS resolver**, select *Configure custom DNS resolvers*.
 6. Enter the private IP address of your regional DNS server (for example, `10.0.1.53` for US or `10.1.1.53` for EU).
-7. In the dropdown menu, choose _`<IP-address> - Private`_.
+7. In the dropdown menu, choose *`<IP-address> - Private`*.
 8. (Optional) Select **Add DNS resolver** and enter a secondary IP address to add a backup DNS resolver.
 9. Select **Create policy**.
 10. Repeat steps 1-9 for each region where you have a private DNS server. For example, to create a policy to match users in the EU region:
 
-| Selector                      | Operator | Value                                                    | Logic |
-| ----------------------------- | -------- | -------------------------------------------------------- | ----- |
-| Domain                        | in       | internal.example.com                                     | And   |
-| Source Country IP Geolocation | in       | _Austria_, _Belgium_, _France_, _Germany_, _Netherlands_ |       |
+| Selector | Operator | Value | Logic |
+| --- | --- | --- | --- |
+| Domain | in | `internal.example.com` | And |
+| Source Country IP Geolocation | in | *Austria*, *Belgium*, *France*, *Germany*, *Netherlands* | |
 
 ### Create a fallback resolver policy
 
 Create a catch-all policy for users in regions without a dedicated DNS server, or if no policies match your traffic:
 
-1. Go to **Traffic policies** \> **Resolver policies**.
+1. Go to **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
 3. Name your policy (for example, `Internal DNS Fallback`).
 4. Create an expression to match internal domains:
 
-| Selector | Operator | Value                |
-| -------- | -------- | -------------------- |
-| Domain   | in       | internal.example.com |
-5. In **Select DNS resolver**, select _Configure custom DNS resolvers_.
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Domain | in | `internal.example.com` |
+5. In **Select DNS resolver**, select *Configure custom DNS resolvers*.
 6. Enter the private IP address of your primary DNS server.
 7. Select **Create policy**.
 
-## 3\. Configure policy order
+## 3. Configure policy order
 
 Gateway will apply resolver policies based on [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence). Ensure your policies are ordered from most specific to least specific:
 
-1. Go to **Traffic policies** \> **Resolver policies**.
+1. Go to **Traffic policies** > **Resolver policies**.
 2. Use the drag handle to reorder policies:
-  * Resolver policies with regional coverage first
-  * Your fallback resolver policy last
+   - Resolver policies with regional coverage first
+   - Your fallback resolver policy last
 
 Gateway will apply the first matching policy. If no policies match your traffic, Gateway will apply the fallback resolver policy. The order between resolver policies with regional coverage does not matter.
 
-## 4\. Test your configuration
+## 4. Test your configuration
 
 ### Test from different regions
 
@@ -103,32 +103,35 @@ To test your configuration, deploy the Cloudflare One Client on a device in each
 
 1. [Deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) on a device in the US region.
 2. From the device, open a terminal and run:
-```sh
-nslookup internal.example.com
-```
+
+   ```sh
+   nslookup internal.example.com
+   ```
+
+
 3. Verify that the DNS query returns the expected IP address for your internal resource. The response should show the IP address that your US DNS server is configured to return for `internal.example.com`.
 4. Repeat the test from devices in other regions to confirm they receive responses from their respective regional DNS servers. Each region may return different IP addresses based on your DNS server configuration.
 
 ### Verify in Gateway logs
 
-1. Go to **Insights** \> **Logs** \> **DNS query logs**.
+1. Go to **Insights** > **Logs** > **DNS query logs**.
 2. Filter for queries to `internal.example.com`.
 3. Check the **Resolver IP** field to confirm queries are being routed to the correct regional DNS servers based on user location.
 
 ## Best practices
 
-* **Use backup resolvers**: Configure secondary DNS resolvers for each region to ensure high availability.
-* **Monitor DNS performance**: Use [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/) to track DNS query performance and identify any issues with regional routing.
-* **Implement network policies**: Combine resolver policies with [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control access to internal resources based on user identity and device posture.
-* **Consider virtual networks**: If you have overlapping IP address spaces across regions, use [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to isolate traffic.
-* **Test failover scenarios**: Regularly test what happens when a regional DNS server becomes unavailable to ensure your backup resolvers work as expected.
+- **Use backup resolvers**: Configure secondary DNS resolvers for each region to ensure high availability.
+- **Monitor DNS performance**: Use [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/) to track DNS query performance and identify any issues with regional routing.
+- **Implement network policies**: Combine resolver policies with [network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control access to internal resources based on user identity and device posture.
+- **Consider virtual networks**: If you have overlapping IP address spaces across regions, use [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) to isolate traffic.
+- **Test failover scenarios**: Regularly test what happens when a regional DNS server becomes unavailable to ensure your backup resolvers work as expected.
 
 ## Related resources
 
-* [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/)
-* [Connect private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
-* [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/)
-* [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
+- [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/)
+- [Connect private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
+- [Gateway Analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/)
+- [Virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/)
 
 Was this helpful?
 

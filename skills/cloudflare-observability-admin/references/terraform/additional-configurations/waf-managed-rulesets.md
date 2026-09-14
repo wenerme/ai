@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WAF Managed Rules configuration using Terraform
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of deploying and configuring [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) in your zone or account using Terraform. It covers the following configurations:
 
-* [Deploy managed rulesets at the zone level](#deploy-managed-rulesets-at-the-zone-level)
-* [Deploy managed rulesets at the account level](#deploy-managed-rulesets-at-the-account-level)
-* [Configure exceptions](#configure-exceptions)
-* [Configure payload logging](#configure-payload-logging)
-* [Configure overrides](#configure-overrides)
-* [Configure the OWASP paranoia level, score threshold, and action](#configure-the-owasp-paranoia-level-score-threshold-and-action)
+- [Deploy managed rulesets at the zone level](#deploy-managed-rulesets-at-the-zone-level)
+- [Deploy managed rulesets at the account level](#deploy-managed-rulesets-at-the-account-level)
+- [Configure exceptions](#configure-exceptions)
+- [Configure payload logging](#configure-payload-logging)
+- [Configure overrides](#configure-overrides)
+- [Configure the OWASP paranoia level, score threshold, and action](#configure-the-owasp-paranoia-level-score-threshold-and-action)
 
 If you are using the Cloudflare API, refer to the following resources:
 
-* [Deploy a WAF managed ruleset via API](https://developers.cloudflare.com/waf/managed-rules/deploy-api/)
-* [Deploy a WAF managed ruleset via API (account)](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/)
+- [Deploy a WAF managed ruleset via API](https://developers.cloudflare.com/waf/managed-rules/deploy-api/)
+- [Deploy a WAF managed ruleset via API (account)](https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-api/)
 
 For more information on deploying and configuring managed rulesets using the Rulesets API, refer to [Work with managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/) in the Ruleset Engine documentation.
 
@@ -36,8 +36,8 @@ For more information on deploying and configuring managed rulesets using the Rul
 
 The Terraform configurations provided in this page need the zone ID (or account ID) of the zone/account where you will deploy the managed rulesets.
 
-* To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
-* To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
+- To retrieve the list of accounts you have access to, including their IDs, use the [List accounts](https://developers.cloudflare.com/api/resources/accounts/methods/list/) operation.
+- To retrieve the list of zones you have access to, including their IDs, use the [List zones](https://developers.cloudflare.com/api/resources/zones/methods/list/) operation.
 
 The deployment of managed rulesets via Terraform requires that you use the ruleset IDs. To find the IDs of managed rulesets, use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation. The response will include the description and IDs of existing managed rulesets.
 
@@ -47,8 +47,8 @@ The IDs of WAF managed rulesets are also available in the [WAF Managed Rules](ht
 
 Terraform assumes that it has complete control over account and zone rulesets. If you already have rulesets configured in your account or zone, do one of the following:
 
-* [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
-* Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
+- [Import existing rulesets to Terraform](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/) using the `cf-terraforming` tool. Recent versions of the tool can generate resource definitions for existing rulesets and import their configuration to Terraform state.
+- Start from scratch by [deleting existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) (account and zone rulesets with `"kind": "root"` and `"kind": "zone"`, respectively) and then defining your rulesets configuration in Terraform.
 
 ---
 
@@ -56,13 +56,21 @@ Terraform assumes that it has complete control over account and zone rulesets. I
 
 The following example deploys two managed rulesets to the zone with ID `<ZONE_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+</summary>
 
-* `Zone WAF Write`
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Zone WAF Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 # Configure a ruleset at the zone level for the "http_request_firewall_managed" phase
@@ -135,19 +143,27 @@ resource "cloudflare_ruleset" "zone_level_managed_waf" {
 
 Notes
 
-* [Account-level WAF configuration](https://developers.cloudflare.com/waf/account/) requires an Enterprise plan with a paid add-on.
-* Managed rulesets deployed at the account level will only apply to incoming traffic of zones on an Enterprise plan. The expression of your `execute` rule must end with `and cf.zone.plan eq "ENT"`.
+- [Account-level WAF configuration](https://developers.cloudflare.com/waf/account/) requires an Enterprise plan with a paid add-on.
+- Managed rulesets deployed at the account level will only apply to incoming traffic of zones on an Enterprise plan. The expression of your `execute` rule must end with `and cf.zone.plan eq "ENT"`.
 
 The following example deploys two managed rulesets to the account with ID `<ACCOUNT_ID>` using Terraform, using a `cloudflare_ruleset` resource with two rules that execute the managed rulesets for two hostnames belonging to Enterprise zones.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-All of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) are required:
+</summary>
 
-* `Account WAF Write`
-* `Account Rulesets Write`
+All of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> are required:
 
-Configure the [cloudflare\_ruleset ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+- <code>Account WAF Write</code>
+- <code>Account Rulesets Write</code>
+
+</details>
+
+Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_level_managed_waf" {
@@ -218,8 +234,8 @@ resource "cloudflare_ruleset" "account_level_managed_waf" {
 
 The following example adds two [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) for the Cloudflare Managed Ruleset:
 
-* The first rule will skip the execution of the entire Cloudflare Managed Ruleset (with ID ...376e9aee) for specific URLs, according to the rule expression.
-* The second rule will skip the execution of two rules belonging to the Cloudflare Managed Ruleset for specific URLs, according to the rule expression.
+- The first rule will skip the execution of the entire Cloudflare Managed Ruleset (with ID ...376e9aee) for specific URLs, according to the rule expression.
+- The second rule will skip the execution of two rules belonging to the Cloudflare Managed Ruleset for specific URLs, according to the rule expression.
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
 
@@ -318,13 +334,13 @@ Ensure that you place the exceptions **before** the rule that executes the manag
 
 The following example adds three [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) for the Cloudflare Managed Ruleset:
 
-* A rule override for rule with ID `5de7edfa648c4d6891dc3e7f84534ffa` setting the action to `log`.
-* A rule override for rule with ID `75a0060762034a6cb663fd51a02344cb` disabling the rule.
-* A tag override for the `wordpress` tag, setting the action of all the rules with this tag to `js_challenge`.
+- A rule override for rule with ID `5de7edfa648c4d6891dc3e7f84534ffa` setting the action to `log`.
+- A rule override for rule with ID `75a0060762034a6cb663fd51a02344cb` disabling the rule.
+- A tag override for the `wordpress` tag, setting the action of all the rules with this tag to `js_challenge`.
 
 Important
 
-Ruleset overrides and tag overrides apply to both existing and _future_ rules in the managed ruleset. If you want to override existing rules only, you must use rule overrides.
+Ruleset overrides and tag overrides apply to both existing and *future* rules in the managed ruleset. If you want to override existing rules only, you must use rule overrides.
 
 The following configuration includes the three overrides in the rule that executes the Cloudflare Managed Ruleset:
 
@@ -446,18 +462,18 @@ Building upon the rule that deploys the Cloudflare Managed Ruleset, the followin
 
 The OWASP managed ruleset supports the following configurations:
 
-* Enable all the rules up to a specific paranoia level by creating tag overrides that disable all the rules associated with higher paranoia levels.
-* Set the action to perform when the calculated threat score is greater than the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `action` property.
-* Set the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `score_threshold` property.
+- Enable all the rules up to a specific paranoia level by creating tag overrides that disable all the rules associated with higher paranoia levels.
+- Set the action to perform when the calculated threat score is greater than the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `action` property.
+- Set the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `score_threshold` property.
 
 For more information on the available configuration values, refer to the [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) page in the WAF documentation.
 
 The following example rule of a `cloudflare_ruleset` Terraform resource performs the following configuration:
 
-* Deploys the OWASP managed ruleset.
-* Sets the OWASP paranoia level to _PL2_.
-* Sets the score threshold to `60` (_Low_).
-* Sets the ruleset action to `log`.
+- Deploys the OWASP managed ruleset.
+- Sets the OWASP paranoia level to *PL2*.
+- Sets the score threshold to `60` (*Low*).
+- Sets the ruleset action to `log`.
 
 ```tf
   # (...)

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run background processes
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/background-processes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/background-processes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to start, monitor, and manage long-running background processes in the sandbox.
 
@@ -26,11 +26,11 @@ In the **1.0 preview** (`@next`), long-running work uses the same `exec(argv)` p
 
 Use `startProcess()` instead of `exec()` when:
 
-* **Running web servers** \- HTTP servers, APIs, WebSocket servers
-* **Long-running services** \- Database servers, caches, message queues
-* **Development servers** \- Hot-reloading dev servers, watch modes
-* **Continuous monitoring** \- Log watchers, health checkers
-* **Parallel execution** \- Multiple services running simultaneously
+- **Running web servers** - HTTP servers, APIs, WebSocket servers
+- **Long-running services** - Database servers, caches, message queues
+- **Development servers** - Hot-reloading dev servers, watch modes
+- **Continuous monitoring** - Log watchers, health checkers
+- **Parallel execution** - Multiple services running simultaneously
 
 Note
 
@@ -308,7 +308,7 @@ console.log('All services running');
 
 ## Keep containers alive for long-running processes
 
-By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [keepAlive option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
+By default, containers automatically shut down after 10 minutes of inactivity. For long-running processes that may have idle periods (like CI/CD pipelines, batch jobs, or monitoring tasks), use the [`keepAlive` option](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/#keepalive):
 
 ```js
 import { getSandbox, parseSSEStream } from "@cloudflare/sandbox";
@@ -388,11 +388,11 @@ When using `keepAlive: true`, containers will not automatically timeout. You **m
 
 ## Best practices
 
-* **Wait for readiness** \- Use `waitForPort()` or `waitForLog()` to detect when services are ready
-* **Clean up** \- Always stop processes when done
-* **Handle failures** \- Monitor logs for errors and restart if needed
-* **Use try/finally** \- Ensure cleanup happens even on errors
-* **Use `keepAlive` for long-running tasks** \- Prevent container shutdown during processes with idle periods
+- **Wait for readiness** - Use `waitForPort()` or `waitForLog()` to detect when services are ready
+- **Clean up** - Always stop processes when done
+- **Handle failures** - Monitor logs for errors and restart if needed
+- **Use try/finally** - Ensure cleanup happens even on errors
+- **Use `keepAlive` for long-running tasks** - Prevent container shutdown during processes with idle periods
 
 ## Troubleshooting
 
@@ -438,13 +438,13 @@ const server = await sandbox.startProcess('node server.js');
 
 ## Related resources
 
-* [Commands API reference](https://developers.cloudflare.com/sandbox/api/commands/) \- Complete process management API
-* [Sandbox options configuration](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) \- Configure `keepAlive` and other options
-* [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) \- Create and manage sandboxes
-* [Sessions API reference](https://developers.cloudflare.com/sandbox/api/sessions/) \- Create isolated execution contexts
-* [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- One-time command execution
-* [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Make processes accessible
-* [Streaming output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Monitor process output
+- [Commands API reference](https://developers.cloudflare.com/sandbox/api/commands/) - Complete process management API
+- [Sandbox options configuration](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/) - Configure `keepAlive` and other options
+- [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) - Create and manage sandboxes
+- [Sessions API reference](https://developers.cloudflare.com/sandbox/api/sessions/) - Create isolated execution contexts
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - One-time command execution
+- [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) - Make processes accessible
+- [Streaming output guide](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Monitor process output
 
 Was this helpful?
 

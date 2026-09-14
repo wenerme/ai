@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedream-5-pro`
 
-* Third-party
+- Third-party
 
 Seedream 5 Pro is ByteDance's high-quality image generation and editing model with text prompts, up to 10 reference images, and 1K, 2K, or explicit pixel-size output controls.
 
-| Model Info       |                                                                                                                            |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://ark.ap-southeast.bytepluses.com/api/v3/images/generations)                                                |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-pro) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://ark.ap-southeast.bytepluses.com/api/v3/images/generations) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-pro) |
 
 ## Usage
 
@@ -72,7 +72,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Red Panda Bakery** — Whimsical illustrated scene with a very different visual style.
+<details>
+
+<summary>**Red Panda Bakery** — Whimsical illustrated scene with a very different visual style.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -115,7 +119,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Claymation Reference** — Use a reference image for a claymation-style transformation.
+</details>
+
+<details>
+
+<summary>**Claymation Reference** — Use a reference image for a claymation-style transformation.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -160,6 +170,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -174,15 +186,15 @@ size
 
 `string`
 
-▶images\[\]
+▶images\[]
 
 `array`minItems: 1format: uri
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/schema-output.json)
 
 Was this helpful?
 

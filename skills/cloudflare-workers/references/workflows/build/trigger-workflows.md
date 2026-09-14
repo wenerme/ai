@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Trigger Workflows
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/trigger-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can trigger Workflows both programmatically and via the Workflows APIs, including:
 
@@ -27,11 +27,11 @@ You can interact with Workflows programmatically from any Worker script by creat
 
 You can trigger a Workflow:
 
-* Directly over HTTP via the [fetch](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) handler
-* From a [Queue consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) inside a `queue` handler
-* On a recurring schedule by defining `schedules` on the Workflow binding in `wrangler.jsonc`
-* From a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) inside a `scheduled` handler
-* Within a [Durable Object](https://developers.cloudflare.com/durable-objects/)
+- Directly over HTTP via the [`fetch`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) handler
+- From a [Queue consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) inside a `queue` handler
+- On a recurring schedule by defining `schedules` on the Workflow binding in `wrangler.jsonc`
+- From a [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) inside a `scheduled` handler
+- Within a [Durable Object](https://developers.cloudflare.com/durable-objects/)
 
 Note
 
@@ -45,7 +45,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 	"name": "workflows-tutorial",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"workflows": [
 		{
 			// The name of the Workflow
@@ -66,7 +66,7 @@ To bind to a Workflow from your Workers code, you need to define a [binding](htt
 name = "workflows-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -86,7 +86,7 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 	"name": "workflows-tutorial",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"workflows": [
 		{
 			"name": "workflows-tutorial",
@@ -103,7 +103,7 @@ If you want to create Workflow instances on a recurring interval, add a `schedul
 name = "workflows-tutorial"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[workflows]]
 name = "workflows-tutorial"
@@ -133,9 +133,11 @@ Use the latest Wrangler release when configuring Workflow schedules. If your loc
 
 The following example shows how you can manage Workflows from within a Worker, including:
 
-* Retrieving the status of an existing Workflow instance by its ID
-* Creating (triggering) a new Workflow instance
-* Returning the status of a given instance ID
+- Retrieving the status of an existing Workflow instance by its ID
+- Creating (triggering) a new Workflow instance
+- Returning the status of a given instance ID
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -256,7 +258,7 @@ npx wrangler workflows instances terminate <WORKFLOW_NAME> <INSTANCE_ID> --rollb
 npx wrangler workflows instances terminate <WORKFLOW_NAME> <INSTANCE_ID> --local --rollback
 ```
 
-Once stopped/terminated, the Workflow instance _cannot_ be resumed.
+Once stopped/terminated, the Workflow instance *cannot* be resumed.
 
 ### Restart a Workflow
 
@@ -267,7 +269,7 @@ await instance.restart(); // Returns Promise<void>
 
 Restarting an instance will immediately cancel any in-progress steps, erase any intermediate state, and treat the Workflow as if it was run for the first time.
 
-To restart an instance from a specific step instead of the beginning, refer to [restart](https://developers.cloudflare.com/workflows/build/workers-api/#restart) in the Workers API reference.
+To restart an instance from a specific step instead of the beginning, refer to [`restart`](https://developers.cloudflare.com/workflows/build/workers-api/#restart) in the Workers API reference.
 
 ### Trigger a Workflow from another Workflow
 

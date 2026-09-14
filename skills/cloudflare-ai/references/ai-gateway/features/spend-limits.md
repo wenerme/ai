@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Spend limits
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/spend-limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/spend-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spend limits let you set cost-based budgets on your AI Gateway. When cumulative spend reaches the limit within a time window, AI Gateway blocks further requests with a `429` response until the window resets.
 
@@ -34,16 +34,16 @@ Spend limits are eventually consistent. The current request's cost is recorded a
 
 Each rule can be scoped by one or more dimensions:
 
-* **Limit by provider** — the provider used for the request.
-* **Limit by model** — the model used for the request.
-* **Limit by metadata** — a [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) key you attach to requests. Enter the metadata key name (for example, `agent_id` or `environment`).
+- **Limit by provider** — the provider used for the request.
+- **Limit by model** — the model used for the request.
+- **Limit by metadata** — a [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) key you attach to requests. Enter the metadata key name (for example, `agent_id` or `environment`).
 
 Each dimension can be configured in one of two modes:
 
-| Mode                | Behavior                                                          | Example                                                                                                    |
-| ------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **Split by value**  | Each distinct value gets its own independent budget bucket.       | For example, if you pass in agent\_id, splitting by agent\_id gives every agent its own budget.            |
-| **Filter by value** | The rule applies only when the dimension equals a specific value. | For example, if you pass in agent\_id, filtering agent\_id to agent\_42 limits only that agent's requests. |
+| Mode | Behavior | Example |
+| --- | --- | --- |
+| **Split by value** | Each distinct value gets its own independent budget bucket. | For example, if you pass in `agent_id`, splitting by `agent_id` gives every agent its own budget. |
+| **Filter by value** | The rule applies only when the dimension equals a specific value. | For example, if you pass in `agent_id`, filtering `agent_id` to `agent_42` limits only that agent's requests. |
 
 If a dimension is not configured on a rule, all values share one budget bucket. For example, a rule without a `provider` dimension tracks spend across all providers together.
 
@@ -51,17 +51,17 @@ If a dimension is not configured on a rule, all values share one budget bucket. 
 
 Given a request with model `openai/gpt-5.5` and an `agent_id` metadata value of `agent_42`:
 
-| Scenario                   | Dimensions                                                   | Budget bucket                                  |
-| -------------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
-| Global budget for everyone | None                                                         | One shared bucket                              |
-| Per-agent budget           | agent\_id metadata: split by value                           | Separate bucket per agent                      |
-| Per-provider, per-agent    | agent\_id metadata: split by value, provider: split by value | Separate bucket per agent+provider combination |
-| Specific model only        | model: filter by value openai/gpt-5.5                        | Only applies to openai/gpt-5.5 requests        |
-| Per-agent, per-model       | agent\_id metadata: split by value, model: split by value    | Separate bucket per agent+model combination    |
+| Scenario | Dimensions | Budget bucket |
+| --- | --- | --- |
+| Global budget for everyone | None | One shared bucket |
+| Per-agent budget | `agent_id` metadata: split by value | Separate bucket per agent |
+| Per-provider, per-agent | `agent_id` metadata: split by value, `provider`: split by value | Separate bucket per agent+provider combination |
+| Specific model only | `model`: filter by value `openai/gpt-5.5` | Only applies to `openai/gpt-5.5` requests |
+| Per-agent, per-model | `agent_id` metadata: split by value, `model`: split by value | Separate bucket per agent+model combination |
 
 ## Configure spend limits
 
-Spend limits are configured for each gateway through the dashboard or the API. In the dashboard, select your gateway, then go to **Settings** \> **Spend limits**. You can define up to 20 rules per gateway.
+Spend limits are configured for each gateway through the dashboard or the API. In the dashboard, select your gateway, then go to **Settings** > **Spend limits**. You can define up to 20 rules per gateway.
 
 ![Add spend limit rule form](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1350,height=1316,format=webp/_astro/spend-limits-add-rule.BnBR5VIn.png)
 
@@ -73,12 +73,12 @@ You can give every user their own budget by scoping a rule to a user identifier.
 
 #### With Cloudflare Access
 
-If your gateway is protected by [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/), AI Gateway automatically adds the authenticated Access user ID to each request as the reserved [cf.user\_id](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata) metadata key. You do not need to pass user IDs from your client application.
+If your gateway is protected by [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/), AI Gateway automatically adds the authenticated Access user ID to each request as the reserved [`cf.user_id`](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata) metadata key. You do not need to pass user IDs from your client application.
 
 To set a per-user budget:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** \> **AI Gateway** and select your gateway.
-2. Go to **Settings** \> **Spend limits** and add a rule.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** > **AI Gateway** and select your gateway.
+2. Go to **Settings** > **Spend limits** and add a rule.
 3. Under **Limit by metadata**, select **Add metadata dimension** and enter `cf.user_id` as the key.
 4. Set the dimension to **Split by value**.
 5. Set the budget amount and time window, then save.
@@ -97,8 +97,8 @@ If your gateway is not behind Access, pass your own user identifier as [custom m
 
 When a spend limit is exceeded, AI Gateway returns a `429 Too Many Requests` response. You have two options:
 
-* **Block requests** (default) - The request is rejected until the budget window resets.
-* **Fall back to a cheaper model** \- Create a [Dynamic Route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) with a primary model and a fallback (for example, `anthropic/claude-opus-4.7` with a fallback to `@cf/moonshotai/kimi-k2.6`). Then set a spend limit on the primary model using this feature. When the primary model's budget is exceeded, AI Gateway automatically routes requests to the fallback model instead of blocking them.
+- **Block requests** (default) - The request is rejected until the budget window resets.
+- **Fall back to a cheaper model** - Create a [Dynamic Route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/) with a primary model and a fallback (for example, `anthropic/claude-opus-4.7` with a fallback to `@cf/moonshotai/kimi-k2.6`). Then set a spend limit on the primary model using this feature. When the primary model's budget is exceeded, AI Gateway automatically routes requests to the fallback model instead of blocking them.
 
 ## Monitoring spend
 
@@ -106,8 +106,8 @@ You can track your spend per model, provider, or any custom metadata attribute o
 
 ## Limitations
 
-* Cost tracking is a best-effort estimation based on token counts and model pricing. Refer to your provider's dashboard for exact billing amounts.
-* A maximum of 20 spend limit rules can be configured per gateway.
+- Cost tracking is a best-effort estimation based on token counts and model pricing. Refer to your provider's dashboard for exact billing amounts.
+- A maximum of 20 spend limit rules can be configured per gateway.
 
 Was this helpful?
 

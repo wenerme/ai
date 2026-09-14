@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Access
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare Access, you can restrict who is authorized to access your application. You decide who is approved, and every request is checked before your Worker runs. Approved visitors are let through, while everyone else is shown a login page or blocked.
 
 You can protect:
 
-* **A single application**: require sign-in on its preview URLs, production URLs, or both.
-* **All Workers in your account**: protect every existing and newly created Worker by default.
-* **Specific custom domains and hostnames**: restrict access at the hostname or route level.
+- **A single application**: require sign-in on its preview URLs, production URLs, or both.
+- **All Workers in your account**: protect every existing and newly created Worker by default.
+- **Specific custom domains and hostnames**: restrict access at the hostname or route level.
 
 ## Before you start
 
 To use Access with Workers, you need:
 
-* Zero Trust enabled on your account. If Zero Trust is not turned on, complete [Zero Trust setup](https://developers.cloudflare.com/cloudflare-one/setup/) first, then return to the Workers dashboard.
-* Permission to manage Workers and Access applications.
+- Zero Trust enabled on your account. If Zero Trust is not turned on, complete [Zero Trust setup](https://developers.cloudflare.com/cloudflare-one/setup/) first, then return to the Workers dashboard.
+- Permission to manage Workers and Access applications.
 
 ## Choose what to protect
 
-| I want to protect...                                                 | Section                                                                                                   | API destination type           |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| Preview deployments for **all Workers**                              | [Protect all Workers](#protect-all-workers)                                                               | all\_preview\_workers          |
-| Production and preview deployments for **all Workers**               | [Protect all Workers](#protect-all-workers)                                                               | all\_workers                   |
-| Preview deployments for **one Worker**                               | [Protect one Worker](#protect-one-worker)                                                                 | preview\_worker                |
-| Production and preview deployments for **one Worker**                | [Protect one Worker](#protect-one-worker)                                                                 | worker                         |
-| A specific hostname — can be workers.dev, a Custom Domain, or a path | [Protect a specific hostname, Custom Domain, or path](#protect-a-specific-hostname-custom-domain-or-path) | Self-hosted application domain |
+| I want to protect... | Section | API destination type |
+| --- | --- | --- |
+| Preview deployments for **all Workers** | [Protect all Workers](#protect-all-workers) | `all_preview_workers` |
+| Production and preview deployments for **all Workers** | [Protect all Workers](#protect-all-workers) | `all_workers` |
+| Preview deployments for **one Worker** | [Protect one Worker](#protect-one-worker) | `preview_worker` |
+| Production and preview deployments for **one Worker** | [Protect one Worker](#protect-one-worker) | `worker` |
+| A specific hostname — can be `workers.dev`, a Custom Domain, or a path | [Protect a specific hostname, Custom Domain, or path](#protect-a-specific-hostname-custom-domain-or-path) | Self-hosted application domain |
 
 ## Protect all Workers
 
@@ -45,17 +45,15 @@ Require sign-in on every Worker in your account, including Workers you deploy in
 
 Dashboard path: **Workers & Pages** overview page > **Protect all Workers**.
 
-![Workers & Pages overview showing the Protect all Workers card and the Workers application list.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2436,height=1432,format=webp/_astro/protect-all-workers._AWy-S-E.png)
+![Workers \& Pages overview showing the Protect all Workers card and the Workers application list.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2436,height=1432,format=webp/_astro/protect-all-workers._AWy-S-E.png)
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Find the **Protect all Workers** card.
 3. If the card says **Not enabled**, select **Enable Access**.
 4. Choose **Previews only** or **All traffic**.
 5. Under **Authentication policy**, select an existing policy or configure one of the [policy options](#policy-options).
 6. Select **Enable Access**.
-7. (Optional) Review the session duration.
-![Manage Access for all Workers dialog showing traffic scope and policy options.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1276,height=1220,format=webp/_astro/choose-who-can-sign-in.DKf3kWAK.png)
+7. (Optional) Review the session duration.![Manage Access for all Workers dialog showing traffic scope and policy options.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1276,height=1220,format=webp/_astro/choose-who-can-sign-in.DKf3kWAK.png)
 8. Select **Apply Access**.
 
 To protect only preview deployments for every Worker, create a self-hosted Access application with an `all_preview_workers` destination:
@@ -78,7 +76,7 @@ To protect every Worker's production and preview deployments, use `all_workers` 
 ]
 ```
 
-Send these `destinations` in a `POST /accounts/{account_id}/access/apps` request. For the full request schema, including [policy options](#policy-options), session settings, and advanced Access options, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/).
+Send these `destinations` in a `POST /accounts/{account_id}/access/apps` request. For the full request schema, including [policy options](#policy-options), session settings, and advanced Access options, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/).
 
 ## Protect one Worker
 
@@ -90,19 +88,17 @@ Worker-level Access policies do not currently support WebSocket connections. Web
 
 If your Worker uses WebSockets (including Durable Objects, real-time applications, or RDP-over-WebSocket), protect it with a [hostname-based Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/) instead.
 
-Dashboard path: **Workers & Pages** \> select your Worker > **Access**.
+Dashboard path: **Workers & Pages** > select your Worker > **Access**.
 
 ![Worker Access tab showing an unprotected Worker and the Protect this Worker behind Access button.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1476,height=689,format=webp/_astro/protect-one-worker.BSpeeOry.png)
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker from the application list.
 3. Select the **Access** tab.
 4. Select **Protect this Worker behind Access**.
 5. Choose **Previews only** or **All traffic**.
 6. Under **Authentication policy**, select an existing policy or configure one of the [policy options](#policy-options).
-7. (Optional) Review the session duration.
-![Enable Access on one Worker dialog showing traffic scope and policy options.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1234,height=1176,format=webp/_astro/enable-access-one-worker.DSDwcTbH.png)
+7. (Optional) Review the session duration.![Enable Access on one Worker dialog showing traffic scope and policy options.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1234,height=1176,format=webp/_astro/enable-access-one-worker.DSDwcTbH.png)
 8. Select **Apply Access**.
 
 To protect only preview deployments for one Worker, create a self-hosted Access application with a `preview_worker` destination. Set `worker_id` to your Worker's ID:
@@ -146,7 +142,7 @@ To protect the Worker's production and preview deployments, use `worker` instead
 ]
 ```
 
-For the full request schema, including [policy options](#policy-options) and session settings, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/).
+For the full request schema, including [policy options](#policy-options) and session settings, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/).
 
 ## Protect a specific hostname, Custom Domain, or path
 
@@ -154,9 +150,9 @@ Use hostname-based Access when only a specific URL that routes to your Worker sh
 
 In both the dashboard and the API, you protect a hostname or path by creating a [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) and using the hostname or path as the application domain.
 
-Create the self-hosted application in **Zero Trust** \> **Access** \> **Applications**. To match subdomains, multiple paths, or wildcards, refer to [Application paths](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/).
+Create the self-hosted application in **Zero Trust** > **Access** > **Applications**. To match subdomains, multiple paths, or wildcards, refer to [Application paths](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/).
 
-Create the self-hosted application with a `POST /accounts/{account_id}/access/apps` request, setting the application domain to the hostname or path. For the full request schema, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/).
+Create the self-hosted application with a `POST /accounts/{account_id}/access/apps` request, setting the application domain to the hostname or path. For the full request schema, refer to the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/).
 
 ## Make a Worker public when all Workers are protected
 
@@ -166,12 +162,11 @@ Note
 
 This is only useful when account-level Access already protects the Worker. If there is no account-level Access policy, a public Worker does not need a bypass.
 
-Dashboard path: **Workers & Pages** \> select your Worker > **Access**.
+Dashboard path: **Workers & Pages** > select your Worker > **Access**.
 
 ![Manage Worker access dialog showing a Make this Worker public bypass policy.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1228,height=756,format=webp/_astro/make-worker-public.D3yjPjtf.png)
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker from the application list.
 3. Select the **Access** tab.
 4. Select the option to make the Worker public or bypass account-level Access.
@@ -196,10 +191,10 @@ Create a Worker-level Access application with a bypass policy. Use the `worker` 
 
 When you turn on Access, choose who can sign in. The same policy options are available whether you protect all Workers or one Worker.
 
-| Policy option      | Result                                                                                                                                                                                                                               |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Cloudflare account | Allows members of this Cloudflare account to sign in. Use this option when access should be limited to people who already belong to the account.                                                                                     |
-| Email domain       | Allows anyone with a verified email address at the domain you enter, such as example.com. Use this option when access should be available to people from a company or organization, even if they are not Cloudflare account members. |
+| Policy option | Result |
+| --- | --- |
+| Cloudflare account | Allows members of this Cloudflare account to sign in. Use this option when access should be limited to people who already belong to the account. |
+| Email domain | Allows anyone with a verified email address at the domain you enter, such as `example.com`. Use this option when access should be available to people from a company or organization, even if they are not Cloudflare account members. |
 
 You can add one or more policies. Visitors who match any selected policy can sign in.
 
@@ -249,7 +244,7 @@ Note
 
 `ctx.access` applies only to the Worker invocation authenticated by Access. Cloudflare Access does not propagate `ctx.access` through [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) HTTP requests or remote procedure call (RPC) invocations. The downstream Worker does not receive the caller's Access context.
 
-If the caller instead sends a `fetch()` subrequest to an Access-protected hostname with valid [service token headers](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) or a valid [CF\_Authorization cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/), Access evaluates the new request and creates a `ctx.access` object for the downstream Worker. This is a newly authenticated context, not context propagated from the caller.
+If the caller instead sends a `fetch()` subrequest to an Access-protected hostname with valid [service token headers](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) or a valid [`CF_Authorization` cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/), Access evaluates the new request and creates a `ctx.access` object for the downstream Worker. This is a newly authenticated context, not context propagated from the caller.
 
 Workers with [Static Assets](https://developers.cloudflare.com/workers/static-assets/) execute behind an internal router Worker. Access still protects the application and its assets. However, the router does not pass `ctx.access` to the user Worker.
 
@@ -280,8 +275,8 @@ aud = "my-app"
   email = "admin@example.com"
 ```
 
-* `aud` (required) — your Access application's audience tag, available as `ctx.access.aud`. Wrangler will not start without it.
-* `identity` (optional) — simulates the authenticated user's identity claims (email, name, groups, and so on) returned by `ctx.access.getIdentity()`. Include it if your Worker reads user identity. Omit it if your Worker only checks whether Access is enabled.
+- `aud` (required) — your Access application's audience tag, available as `ctx.access.aud`. Wrangler will not start without it.
+- `identity` (optional) — simulates the authenticated user's identity claims (email, name, groups, and so on) returned by `ctx.access.getIdentity()`. Include it if your Worker reads user identity. Omit it if your Worker only checks whether Access is enabled.
 
 To test as a different user, change the identity fields and restart. To test unauthenticated requests, remove the `dev` block — `ctx.access` will be `undefined`, just as it would be for a request that did not go through Access in production.
 
@@ -343,11 +338,11 @@ If you remove a more specific rule, a broader rule may still protect the Worker.
 
 ## Related resources
 
-* [Access applications API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/applications/methods/create/)
-* [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
-* [Self-hosted Access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
-* [Routes and domains](https://developers.cloudflare.com/workers/configuration/routing/)
-* [Preview URLs](https://developers.cloudflare.com/workers/configuration/previews/)
+- [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/)
+- [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+- [Self-hosted Access applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/)
+- [Routes and domains](https://developers.cloudflare.com/workers/configuration/routing/)
+- [Preview URLs](https://developers.cloudflare.com/workers/configuration/previews/)
 
 Was this helpful?
 

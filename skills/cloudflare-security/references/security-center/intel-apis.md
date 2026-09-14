@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Threat Intelligence APIs
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/intel-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/intel-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides a series of endpoints covering various areas of internet security and insights. Based on your Cloudflare plan type, the [limit](https://developers.cloudflare.com/security-center/intel-apis/limits/) of API calls will vary per month.
 
-| Intelligence Endpoint                                                                                                                                              | Definition                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [ASN Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/asn/methods/get/)                                                            | Provides an overview of the Autonomous System Number (ASN) and a list of subnets for it.                                                                         |
-| [Custom Indicator Feed Download](https://developers.cloudflare.com/api/resources/intel/subresources/indicator%5Ffeeds/subresources/downloads/)                     | Provides the ability to download any custom indicator feeds that users create.                                                                                   |
-| [Domain Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/domains/methods/get/)                                                     | Provides security details and statistics about a domain.                                                                                                         |
-| [Domain History](https://developers.cloudflare.com/api/resources/intel/subresources/domain%5Fhistory/methods/get/)                                                 | Provides historical security threat and content categories that are currently and previously assigned to a domain.                                               |
-| [IP Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/ips/methods/get/)                                                             | Provides the geolocation, ASN, infrastructure type of the ASN, and any security threat categories of an IP address.                                              |
-| [Passive DNS by IP](https://developers.cloudflare.com/api/resources/intel/subresources/dns/methods/list/)                                                          | Provides a list of all the domains, including first seen and last seen dates, that have resolved to a specific IP address.                                       |
-| [Phishing Intelligence](https://developers.cloudflare.com/api/resources/brand%5Fprotection/methods/url%5Finfo/)                                                    | Provides phishing details about a URL.                                                                                                                           |
-| [Miscategorization Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/)                            | Enables users to submit requests for modifying a domain's category, subsequently undergoing review by the Cloudflare Intelligence team.                          |
-| [Priority Intelligence Requirements](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/requests/subresources/priority/methods/create/) | Provides a structured approach to identifying intelligence gaps, formulating precise requirements, and organizing them into categories.                          |
-| [Request for Information](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/requests/methods/create/)                                  | Creates a targeted inquiry for specific intelligence insights to help organizations understand and respond to imminent security threats and vulnerabilities.     |
-| [Threat Events](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/threat%5Fevents)                                                     | Allows customers to look into the Cloudflare telemetry and threat actor activity on the Cloudflare network.                                                      |
-| [WHOIS](https://developers.cloudflare.com/api/resources/intel/subresources/whois/methods/get/)                                                                     | Provides the WHOIS registration information for a specific domain.                                                                                               |
-| [DDoS Botnet Threat Feed](https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/)(early access)                                                     | Provides information to service providers about their own IP addresses that have participated in HTTP DDoS attacks as observed from Cloudflare's global network. |
-| [Cloudforce One](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/requests/subresources/assets/methods/create/)                       | Enable users to list, delete, get, or update a request asset.                                                                                                    |
-| [Brand Protection API](https://developers.cloudflare.com/api/resources/brand%5Fprotection/)                                                                        | Provides the ability to create and delete queries, download matches for logo and string queries, read matches for logo and string queries.                       |
+| Intelligence Endpoint | Definition |
+| --- | --- |
+| [ASN Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/asn/methods/get/) | Provides an overview of the Autonomous System Number (ASN) and a list of subnets for it. |
+| [Custom Indicator Feed Download](https://developers.cloudflare.com/api/resources/intel/subresources/indicator_feeds/subresources/downloads/) | Provides the ability to download any custom indicator feeds that users create. |
+| [Domain Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/domains/methods/get/) | Provides security details and statistics about a domain. |
+| [Domain History](https://developers.cloudflare.com/api/resources/intel/subresources/domain_history/methods/get/) | Provides historical security threat and content categories that are currently and previously assigned to a domain. |
+| [IP Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/ips/methods/get/) | Provides the geolocation, ASN, infrastructure type of the ASN, and any security threat categories of an IP address. |
+| [Passive DNS by IP](https://developers.cloudflare.com/api/resources/intel/subresources/dns/methods/list/) | Provides a list of all the domains, including first seen and last seen dates, that have resolved to a specific IP address. |
+| [Phishing Intelligence](https://developers.cloudflare.com/api/resources/brand_protection/methods/url_info/) | Provides phishing details about a URL. |
+| [Miscategorization Intelligence](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/) | Enables users to submit requests for modifying a domain's category, subsequently undergoing review by the Cloudflare Intelligence team. |
+| [Priority Intelligence Requirements](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/requests/subresources/priority/methods/create/) | Provides a structured approach to identifying intelligence gaps, formulating precise requirements, and organizing them into categories. |
+| [Request for Information](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/requests/methods/create/) | Creates a targeted inquiry for specific intelligence insights to help organizations understand and respond to imminent security threats and vulnerabilities. |
+| [Threat Events](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events) | Allows customers to look into the Cloudflare telemetry and threat actor activity on the Cloudflare network. |
+| [WHOIS](https://developers.cloudflare.com/api/resources/intel/subresources/whois/methods/get/) | Provides the WHOIS registration information for a specific domain. |
+| [DDoS Botnet Threat Feed](https://developers.cloudflare.com/ddos-protection/botnet-threat-feed/)<br>(early access) | Provides information to service providers about their own IP addresses that have participated in HTTP DDoS attacks as observed from Cloudflare's global network. |
+| [Cloudforce One](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/requests/subresources/assets/methods/create/) | Enable users to list, delete, get, or update a request asset. |
+| [Brand Protection API](https://developers.cloudflare.com/api/resources/brand_protection/) | Provides the ability to create and delete queries, download matches for logo and string queries, read matches for logo and string queries. |
 
 ## API Examples
 
@@ -40,7 +40,13 @@ Below you can find examples of Threat Intelligence API calls. Make sure you are 
 
 ### ASN Intelligence
 
+<details>
+
+<summary>
+
 Get ASN Overview
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/asn/13335" \
@@ -60,9 +66,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/asn/13335
 }
 ```
 
+</details>
+
 ### Custom Indicator Feed Download
 
+<details>
+
+<summary>
+
 Download Custom Indicator Feed
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/10d79d097895ae7ed7942a2b3832186c/intel/indicator-feeds/31/download" \
@@ -105,9 +119,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/10d79d097895ae7ed7942a2b3832
 }
 ```
 
+</details>
+
 ### Domain Intelligence
 
+<details>
+
+<summary>
+
 Get Domain Details
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain?domain=cloudflare.com" \
@@ -157,9 +179,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain?do
 }
 ```
 
+</details>
+
 ### Domain History
 
+<details>
+
+<summary>
+
 Get Domain History
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain-history?domain=cloudflare.com" \
@@ -202,9 +232,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/domain-hi
 }
 ```
 
+</details>
+
 ### IP Intelligence
 
+<details>
+
+<summary>
+
 Get IP Overview
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/ip?ipv4=1.1.1.1" \
@@ -238,9 +276,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/ip?ipv4=1
 }
 ```
 
+</details>
+
 ### Passive DNS by IP
 
+<details>
+
+<summary>
+
 Get Passive DNS by IP
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/dns?ipv4=1.1.1.1&start=2023-07-15&end=2023-07-18&per_page=5" \
@@ -286,9 +332,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/dns?ipv4=
 }
 ```
 
+</details>
+
 ### Phishing Intelligence
 
+<details>
+
+<summary>
+
 Get results for a URL scan
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/brand-protection/url-info?url=http://worcester-realistic-ellen-portland.trycloudflare.com/login.html" \
@@ -326,9 +380,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/brand-protectio
 }
 ```
 
+</details>
+
 ### Miscategorization Intelligence
 
+<details>
+
+<summary>
+
 Create Miscategorization
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscategorization" \
@@ -362,9 +424,17 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/miscatego
 }
 ```
 
+</details>
+
 ### WHOIS
 
+<details>
+
+<summary>
+
 Get WHOIS Record
+
+</summary>
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?domain=cloudflare.com" \
@@ -394,6 +464,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/intel/whois?dom
     "messages": []
 }
 ```
+
+</details>
 
 Was this helpful?
 

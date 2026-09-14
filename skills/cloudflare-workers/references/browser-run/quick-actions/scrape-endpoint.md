@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /scrape - Scrape HTML elements
 
-Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/scrape` endpoint extracts structured data from specific elements on a webpage, returning details such as element dimensions and inner HTML.
 
 You can use this endpoint in two ways:
 
-* **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
-* **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
+- **REST API**: [Create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
+- **Workers Bindings**: Call the endpoint directly from a [Cloudflare Worker](https://developers.cloudflare.com/workers/) using the [Workers Bindings](https://developers.cloudflare.com/browser-run/reference/wrangler/#bindings). No API token is needed.
 
 For more information, refer to [Quick Actions: Before you begin](https://developers.cloudflare.com/browser-run/quick-actions/#before-you-begin).
 
@@ -33,14 +33,14 @@ https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/scra
 
 You must provide `elements` and exactly one of `url` or `html`:
 
-* `url` (string)
-* `html` (string)
-* `elements` (array of objects) — each object must include `selector` (string)
+- `url` (string)
+- `html` (string)
+- `elements` (array of objects) — each object must include `selector` (string)
 
 ## Common use cases
 
-* Extract headings, links, prices, or other repeated content with CSS selectors
-* Collect metadata (for example, titles, descriptions, canonical links)
+- Extract headings, links, prices, or other repeated content with CSS selectors
+- Collect metadata (for example, titles, descriptions, canonical links)
 
 ## Basic usage
 
@@ -132,23 +132,23 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters.
+Many more options exist, like setting HTTP credentials using `authenticate`, setting `cookies`, and using `gotoOptions` to control page load behaviour - check the endpoint [reference](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/scrape/methods/create/) for all available parameters.
 
 ### Response fields
 
-* `results` _(array of objects)_ \- Contains extracted data for each selector.
-  * `selector` _(string)_ \- The CSS selector used.
-  * `results` _(array of objects)_ \- List of extracted elements matching the selector.
-    * `text` _(string)_ \- Inner text of the element.
-    * `html` _(string)_ \- Inner HTML of the element.
-    * `attributes` _(array of objects)_ \- List of extracted attributes such as `href` for links.
-    * `height`, `width`, `top`, `left` _(number)_ \- Position and dimensions of the element.
+- `results` *(array of objects)* - Contains extracted data for each selector.
+  - `selector` *(string)* - The CSS selector used.
+  - `results` *(array of objects)* - List of extracted elements matching the selector.
+    - `text` *(string)* - Inner text of the element.
+    - `html` *(string)* - Inner HTML of the element.
+    - `attributes` *(array of objects)* - List of extracted attributes such as `href` for links.
+    - `height`, `width`, `top`, `left` *(number)* - Position and dimensions of the element.
 
 ## Advanced usage
 
 Looking for more parameters?
 
-Visit the [Browser Run API reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/scrape/methods/create/) for all available parameters, such as setting HTTP credentials using `authenticate`, setting `cookies`, and customizing load behavior using `gotoOptions`.
+Visit the [Browser Run API reference](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/scrape/methods/create/) for all available parameters, such as setting HTTP credentials using `authenticate`, setting `cookies`, and customizing load behavior using `gotoOptions`.
 
 ### Handling JavaScript-heavy pages
 

@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Single sign-on front door controls
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/secure-saas-applications/sso-front-door/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) functions as an identity proxy to add an additional authentication layer to your SaaS apps.
 
 Access for SaaS integrates directly with your SaaS app using standard protocols (such as SAML) to become the primary enforcement point for user access. Access calls your identity provider (IdP) of choice and uses additional security signals about your users and devices to make policy decisions. Benefits of Access for SaaS include:
 
-* A streamlined experience for users on both managed and unmanaged devices.
-* Application of baseline policies requiring specific concepts such as device posture and endpoint control.
-* Distinct access methodology for contractors.
-* Flexibility to configure multiple SSO vendors simultaneously, freely switch between SSO vendors, and reduce reliance on a single vendor.
+- A streamlined experience for users on both managed and unmanaged devices.
+- Application of baseline policies requiring specific concepts such as device posture and endpoint control.
+- Distinct access methodology for contractors.
+- Flexibility to configure multiple SSO vendors simultaneously, freely switch between SSO vendors, and reduce reliance on a single vendor.
 
 ### SSO integrations
 

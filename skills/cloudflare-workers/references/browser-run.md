@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser Run
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run headless Chrome on [Cloudflare's global network](https://developers.cloudflare.com/workers/) for browser automation, web scraping, testing, and content generation.
 
@@ -24,40 +24,40 @@ Browser Run, formerly known as Browser Rendering, enables developers to programm
 
 Programmatically load and fully render dynamic webpages or raw HTML and capture specific outputs such as:
 
-* [Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
-* [Screenshots](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
-* [PDFs](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
-* [Snapshots](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
-* [Links](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
-* [HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
-* [Structured data](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
-* [Crawled web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
+- [Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
+- [Screenshots](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
+- [PDFs](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
+- [Snapshots](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+- [Links](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
+- [HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
+- [Structured data](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
+- [Crawled web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
 
 ## Integration methods
 
 Browser Run offers two categories of integration methods:
 
-* **[Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)**: Simple, stateless browser tasks like screenshots, PDFs, and scraping. No code deployment needed.
-* **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers or connect from any environment via CDP.
+- **[Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)**: Simple, stateless browser tasks like screenshots, PDFs, and scraping. No code deployment needed.
+- **Browser Sessions**: Direct browser control via [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [CDP](https://developers.cloudflare.com/browser-run/cdp/), or [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/). Deploy within Cloudflare Workers or connect from any environment via CDP.
 
-| Use case                                    | Recommended                                                                                                                                                                                                  | Why                                                              |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| Simple screenshot, PDF, or scrape           | [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/)                                                                                                                                | No code deployment; single HTTP request                          |
-| Browser automation                          | [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Full browser control with scripting                              |
-| Porting existing scripts                    | [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Minimal code changes from standard libraries                     |
-| AI-powered data extraction                  | [JSON endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)                                                                                                                  | Structured data via natural language prompts                     |
-| Site-wide crawling                          | [Crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)                                                                                                                | Multi-page content extraction with async results                 |
-| AI agent browsing                           | [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/) or [CDP with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/)                         | LLMs control browsers via MCP                                    |
-| Resilient scraping                          | [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/)                                                                                                                                        | AI finds elements by intent, not selectors                       |
-| Direct browser control from any environment | [CDP](https://developers.cloudflare.com/browser-run/cdp/)                                                                                                                                                    | WebSocket access from local machines, CI/CD, or external servers |
+| Use case | Recommended | Why |
+| --- | --- | --- |
+| Simple screenshot, PDF, or scrape | [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) | No code deployment; single HTTP request |
+| Browser automation | [Playwright](https://developers.cloudflare.com/browser-run/playwright/), [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Full browser control with scripting |
+| Porting existing scripts | [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) | Minimal code changes from standard libraries |
+| AI-powered data extraction | [JSON endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) | Structured data via natural language prompts |
+| Site-wide crawling | [Crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) | Multi-page content extraction with async results |
+| AI agent browsing | [Playwright MCP](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/) or [CDP with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/) | LLMs control browsers via MCP |
+| Resilient scraping | [Stagehand](https://developers.cloudflare.com/browser-run/stagehand/) | AI finds elements by intent, not selectors |
+| Direct browser control from any environment | [CDP](https://developers.cloudflare.com/browser-run/cdp/) | WebSocket access from local machines, CI/CD, or external servers |
 
 ## Key features
 
-* **Scale to thousands of browsers**: Instant access to a global pool of browsers with low cold-start time, ideal for high-volume screenshot generation, data extraction, or automation at scale
-* **Global by default**: Browser sessions run on Cloudflare's edge network, opening close to your users for better speed and availability worldwide
-* **Easy to integrate**: [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) for common tasks, [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and [Playwright](https://developers.cloudflare.com/browser-run/playwright/) for complex workflows, and [CDP](https://developers.cloudflare.com/browser-run/cdp/) for direct browser control from any environment
-* **Session management**: [Reuse browser sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) across requests to improve performance and reduce cold-start overhead
-* **Flexible pricing**: Pay only for browser time used with generous free tier ([view pricing](https://developers.cloudflare.com/browser-run/pricing/))
+- **Scale to thousands of browsers**: Instant access to a global pool of browsers with low cold-start time, ideal for high-volume screenshot generation, data extraction, or automation at scale
+- **Global by default**: Browser sessions run on Cloudflare's edge network, opening close to your users for better speed and availability worldwide
+- **Easy to integrate**: [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) for common tasks, [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and [Playwright](https://developers.cloudflare.com/browser-run/playwright/) for complex workflows, and [CDP](https://developers.cloudflare.com/browser-run/cdp/) for direct browser control from any environment
+- **Session management**: [Reuse browser sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/) across requests to improve performance and reduce cold-start overhead
+- **Flexible pricing**: Pay only for browser time used with generous free tier ([view pricing](https://developers.cloudflare.com/browser-run/pricing/))
 
 ## Related products
 

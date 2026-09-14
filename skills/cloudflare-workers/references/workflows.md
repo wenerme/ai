@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Workflows
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build durable multi-step applications on Cloudflare Workers with Workflows.
 
@@ -24,10 +24,10 @@ Use Workflows to build reliable AI applications, process data pipelines, manage 
 
 **Workflows give you:**
 
-* Durable multi-step execution without timeouts
-* The ability to pause for external events or approvals
-* Automatic retries and error handling
-* Built-in observability and debugging
+- Durable multi-step execution without timeouts
+- The ability to pause for external events or approvals
+- Automatic retries and error handling
+- Built-in observability and debugging
 
 ## Example
 

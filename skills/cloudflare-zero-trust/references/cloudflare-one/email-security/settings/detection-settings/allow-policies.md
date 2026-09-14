@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Allow policies
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to configure allow policies. An allow policy exempts messages that match certain patterns from normal detection scanning.
 
@@ -40,95 +40,152 @@ It is recommended to choose this option, as it is the safest option to protect y
 
 When a marketing email does not follow the correct template, it may be marked as malicious or spam. It may not be possible to change the template. However, in this scenario, the marketing email is legitimate.
 
-To make sure that users still receive the marketing email, you will have to select **Accept sender** and add the marketing domain in **Rule Type** \> **Domains**.
+To make sure that users still receive the marketing email, you will have to select **Accept sender** and add the marketing domain in **Rule Type** > **Domains**.
 
 **Accept sender** and **Domains** combined exempt marketing emails that may not follow the correct template.
 
+<details>
+
+<summary>
+
 Regular expressions and emails to add as Accept sender
 
-Below you can find a list of known services you can add when configuring an Accept sender. We recommend you use [RegExr Validation ↗](https://regexr.com/) to validate your regular expressions.
+</summary>
 
-* Google
-`drive-shares-noreply@google.com`
-`.*@docs\.google\.com`
-`.*@docos\.bounces\.google\.com`
-`.*@calendar-server\.bounces\.google\.com`
-`.*@alerts\.bounces\.google\.com`
-`calendar-notification@google.com`
-`.*\+bnc.*@<gsuited-company-domain>`
-`noreply-cloud@google.com`
-`<groupname>@<gsuite-company-domain>`
-`.*@doclist\.bounces\.google\.com`
-* DocuSign
-`.*@docusign\.net`
-* Twitter - Mentions/Retweets
-`notify@twitter.com`
-* GitHub (mentions and notifications)
-`noreply@(github|git)\.<github-enterprise-hosting-domain>`
-`notifications@github.com`
-* Apache Foundations (Developers)
-`.*@.*\.apache\.org` `jira@apache.org`
-* Atlassian
-`jira@<company-hosted-jira-domain>`
-`jira@<team-name>.atlassian.net`
-`confluence@<company-hosted-jira-domain>`
-`confluence@<team-name>.atlassian.net`
-* Intercom
-`notifications@intercom-mail.com`
-`notifications@mail.intercom.io`
-* SharePoint
-`no-reply@sharepointonline.com`
-* Box and Dropbox
-`.*@dropbox\.com` `noreply@box.com`
-* Salesforce
-`.*@chatter\.salesforce\.com`
-`.*@.*\.(apex|bnc)\.salesforce\.com`
-`.*@.*\.bnc(\.sandbox)?\.salesforce\.com`
-* Webex - Invites/Mentions
-`messenger@webex.com`
-* Bulk mailers
-`.*@.*mailchimp\.com`
-`.*@mandrillapp\.com`
-`.*mailspike\.org`
-* LinkedIn
-`invitations@linkedin.com`
-* FBWork
-`.*@fbworkmail\.com`
-* Asana
-`.*@mail\.asana\.com`
-* EchoSign
-`.*@mail\.echosign\.com`
-* HelloSign
-`noreply@(email|mail)\.hellosign\.com`
-* Podio
-`noreply@podio.com`
-* Quip
-`noreply.*@quip\.com`
-* Zeplin
-`no-reply@zeplin.io`
-* DataHug
-`notifications@datahug.com`
-* Paperless
-`.*@paperlesspost\.com`
-* NetSuite
-`.*@.*\.na\d\.netsuite\.com`
-* FS-ISAC
-`cyberintel@lists.fsisac.com`
-* Expensify
-`replies\+[0-9]+@expensify\.com`
-* KnowBe4
-`.*@[a-z]+\.knowbe4\.com`
-`147\.160\.167\.([1-5][0-9]|6[0-2]|[1-9])`
-* FreshDesk
-`.*@.*\.freshdesk\.com`
-* Webroot
-`167.89.85.54` `49.72.237.117`
-* Wombat Egress IPs
+Below you can find a list of known services you can add when configuring an Accept sender. We recommend you use <a href="https://regexr.com/">RegExr Validation ↗</a> to validate your regular expressions.
 
-**Training Platform**
-`107.20.210.250` `52.1.14.157`
-* Phishing Assessment
-`107.23.16.222` `54.173.83.138`
+- Google
+
+  <code>drive-shares-noreply@google.com</code>
+
+  <code>.*@docs\.google\.com</code>
+
+  <code>.*@docos\.bounces\.google\.com</code>
+
+  <code>.*@calendar-server\.bounces\.google\.com</code>
+
+  <code>.*@alerts\.bounces\.google\.com</code>
+
+  <code>calendar-notification@google.com</code>
+
+  <code>.*\+bnc.*@&lt;gsuited-company-domain&gt;</code>
+
+  <code>noreply-cloud@google.com</code>
+
+  <code>&lt;groupname&gt;@&lt;gsuite-company-domain&gt;</code>
+
+  <code>.*@doclist\.bounces\.google\.com</code>
+- DocuSign
+
+  <code>.*@docusign\.net</code>
+- Twitter - Mentions/Retweets
+
+  <code>notify@twitter.com</code>
+- GitHub (mentions and notifications)
+
+  <code>noreply@(github|git)\.&lt;github-enterprise-hosting-domain&gt;</code>
+
+  <code>notifications@github.com</code>
+- Apache Foundations (Developers)
+
+  <code>.*@.*\.apache\.org</code> <code>jira@apache.org</code>
+- Atlassian
+
+  <code>jira@&lt;company-hosted-jira-domain&gt;</code>
+
+  <code>jira@&lt;team-name&gt;.atlassian.net</code>
+
+  <code>confluence@&lt;company-hosted-jira-domain&gt;</code>
+
+  <code>confluence@&lt;team-name&gt;.atlassian.net</code>
+- Intercom
+
+  <code>notifications@intercom-mail.com</code>
+
+  <code>notifications@mail.intercom.io</code>
+- SharePoint
+
+  <code>no-reply@sharepointonline.com</code>
+- Box and Dropbox
+
+  <code>.*@dropbox\.com</code> <code>noreply@box.com</code>
+- Salesforce
+
+  <code>.*@chatter\.salesforce\.com</code>
+
+  <code>.*@.*\.(apex|bnc)\.salesforce\.com</code>
+
+  <code>.*@.*\.bnc(\.sandbox)?\.salesforce\.com</code>
+- Webex - Invites/Mentions
+
+  <code>messenger@webex.com</code>
+- Bulk mailers
+
+  <code>.*@.*mailchimp\.com</code>
+
+  <code>.*@mandrillapp\.com</code>
+
+  <code>.*mailspike\.org</code>
+- LinkedIn
+
+  <code>invitations@linkedin.com</code>
+- FBWork
+
+  <code>.*@fbworkmail\.com</code>
+- Asana
+
+  <code>.*@mail\.asana\.com</code>
+- EchoSign
+
+  <code>.*@mail\.echosign\.com</code>
+- HelloSign
+
+  <code>noreply@(email|mail)\.hellosign\.com</code>
+- Podio
+
+  <code>noreply@podio.com</code>
+- Quip
+
+  <code>noreply.*@quip\.com</code>
+- Zeplin
+
+  <code>no-reply@zeplin.io</code>
+- DataHug
+
+  <code>notifications@datahug.com</code>
+- Paperless
+
+  <code>.*@paperlesspost\.com</code>
+- NetSuite
+
+  <code>.*@.*\.na\d\.netsuite\.com</code>
+- FS-ISAC
+
+  <code>cyberintel@lists.fsisac.com</code>
+- Expensify
+
+  <code>replies\+[0-9]+@expensify\.com</code>
+- KnowBe4
+
+  <code>.*@[a-z]+\.knowbe4\.com</code>
+
+  <code>147\.160\.167\.([1-5][0-9]|6[0-2]|[1-9])</code>
+- FreshDesk
+
+  <code>.*@.*\.freshdesk\.com</code>
+- Webroot
+
+  <code>167.89.85.54</code> <code>49.72.237.117</code>
+- Wombat Egress IPs
+
+  **Training Platform**
+
+  <code>107.20.210.250</code> <code>52.1.14.157</code>
+- Phishing Assessment
+
+  <code>107.23.16.222</code> <code>54.173.83.138</code>
+
+</details>
 
 ## Configure allow policies
 
@@ -136,30 +193,38 @@ To configure allow policies:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
-3. Select **Settings**, then go to **Detection settings** \> **Allow policies**.
+3. Select **Settings**, then go to **Detection settings** > **Allow policies**.
 4. On the **Detection settings** page, select **Add a policy**.
 5. On the **Add an allow policy** page, enter the policy information:
-  * **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:
-    * **Manual input**:
-      * **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:
-        * **Trust sender**: Messages will bypass all detections and link following.
-        * **Exempt recipient**: Message to this recipient will bypass all detections.
-        * **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions. Refer to [Allow policy configuration use cases](#use-case-1) for use case examples on how to configure allow policies for accept sender.
-    * **Rule type**: Specify the scope of your policy. Choose one of the following:
-      * **Email addresses**: Must be a valid email. Enter an email address whose emails are going to be exempted.
-      * **IP addresses**: This is the IP address of the email server. Any email address sent from this email server is going to be allowed. The IP address can only be IPv4\. IPv6 and CIDR are invalid entries.
-      * **Domains**: Must be a valid domain.
-      * **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email. For example, you can enter `.*@domain\.com` to exempt any email address that ends with `domain.com`.
-    * **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.
-      * **Notes**: Provide additional information about your allow policy.
-  * **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Pattern Type`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, `Acceptable Sender`, `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#csv-uploads) for an example file.
+   - **Input method**: Choose between **Manual input**, and **Uploading an allow policy**:
+     - **Manual input**:
+       - **Action**: Select one of the following to choose how Email security will handle messages that match your criteria:
+         - **Trust sender**: Messages will bypass all detections and link following.
+         - **Exempt recipient**: Message to this recipient will bypass all detections.
+         - **Accept sender**: Messages from this sender will be exempted from Spam, Spoof, and Bulk dispositions. Refer to [Allow policy configuration use cases](#use-case-1) for use case examples on how to configure allow policies for accept sender.
+     - **Rule type**: Specify the scope of your policy. Choose one of the following:
+       - **Email addresses**: Must be a valid email. Enter an email address whose emails are going to be exempted.
+       - **IP addresses**: This is the IP address of the email server. Any email address sent from this email server is going to be allowed. The IP address can only be IPv4. IPv6 and CIDR are invalid entries.
+       - **Domains**: Must be a valid domain.
+       - **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email. For example, you can enter `.*@domain\.com` to exempt any email address that ends with `domain.com`.
+     - **(Recommended) Sender verification**: This option enforces DMARC, SPF, or DKIM authentication. If you choose to enable this option, Email security will only honor policies that pass authentication.
+       - **Notes**: Provide additional information about your allow policy.
+   - **Uploading an allow policy**: Upload a file no larger than 150 KB. The file can only contain `Pattern`, `Pattern Type`, `Verify Email`, `Trusted Sender`, `Exempt Recipient`, `Acceptable Sender`, `Notes` fields. The first row must be a header row. Refer to [CSV uploads](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/#csv-uploads) for an example file.
 6. Select **Save**.
 
+<details>
+
+<summary>
+
 Allow policy configuration use cases
+
+</summary>
 
 The following use cases show how you could configure allow policies for accept sender.
 
 ### Use case 1
+
+<a href="#use-case-1"></a>
 
 ### Company receives emails from third-party providers not used internally. These emails are sent from the service provider, and Email security gives these emails an incorrect disposition.
 
@@ -167,11 +232,13 @@ This use case can affect companies such as Shopify, PayPal, and Docusign.
 
 To solve this:
 
-1. Create a [team submission](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/team-submissions/).
+1. Create a <a href="https://developers.cloudflare.com/cloudflare-one/email-security/submissions/team-submissions/">team submission</a>.
 2. Inform your Cloudflare contact about the escalation.
 3. Do not set up allow policies or blocked senders. In this use case, configuring allow policies will create a security gap. Setting up blocked senders will block legitimate emails from providers such as Shopify, PayPal, and Docusign.
 
 ### Use case 2
+
+<a href="#use-case-2"></a>
 
 ### Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof.
 
@@ -183,6 +250,8 @@ To solve this, when you add an allow policy in the Cloudflare One dashboard:
 2. Verify that **Sender verification (recommended)** is turned on.
 
 ### Use case 3
+
+<a href="#use-case-3"></a>
 
 ### Company receives emails via third-party providers that are used internally. These emails are sent from the company's custom domain, but Email security marks these emails as bulk, spam, or spoof. The custom email domain does not support DMARC, SPF, or DKIM, and would fail Sender Verification.
 
@@ -196,6 +265,8 @@ To solve this, when you add an allow policy in the Cloudflare One dashboard:
 Caution
 
 Do not use email addresses or email domains for this policy as they can be easily spoofed without **Sender Verification (Recommended)** enabled.
+
+</details>
 
 ### CSV uploads
 

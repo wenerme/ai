@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.4-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5.4 mini is a smaller, faster, and more cost-efficient version of GPT-5.4 for lightweight tasks.
 
-| Model Info                                                                          |                                                                                                                       |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                        |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                                 | Yes                                                                                                                   |
-| Request formats                                                                     | Responses, Chat Completions                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are:
 
 1. **First Law: Conservation of energy**
@@ -76,6 +77,7 @@ The three laws of thermodynamics are:
    In practice, it’s impossible to reach exactly 0 K in a finite number of steps.
 
 If you want, I can also give you a **very simple everyday analogy** for each law.
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ If you want, I can also give you a **very simple everyday analogy** for each law
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Use Python’s built-in `json` module.
 
 ```python
@@ -187,6 +194,7 @@ If you want, I can also show how to:
 - read JSON into a pandas DataFrame
 - handle invalid JSON errors
 - write JSON back to a file
+````
 
 ```json
 {
@@ -229,7 +237,13 @@ If you want, I can also show how to:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -277,6 +291,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Absolutely — the San Francisco to Los Angeles drive has a lot of great stop options depending on whether you want the **fastest route** or the **most scenic one**.
 
 ## Best stops if you take Highway 1 / Pacific Coast Highway
@@ -348,6 +363,7 @@ If you want, I can also make you:
 - a **1-day itinerary**
 - a **2-day scenic itinerary**
 - or a route with **food, beaches, and hiking stops**.
+```
 
 ```json
 {
@@ -390,7 +406,13 @@ If you want, I can also make you:
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -424,6 +446,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The rain had been falling since midnight, soft and persistent, turning the city into a blur of sodium light and reflected secrets. Detective Mara Venn stood in the doorway of apartment 4B, one gloved hand resting against the frame, and looked down at the object gleaming on the floorboards.
 
 It wasn’t a weapon. It wasn’t jewelry, either.
@@ -445,6 +468,7 @@ She slipped the bird into an evidence bag and stared at the cold line of the vic
 Someone had planned this very carefully.
 
 And somehow, they had expected her to come.
+```
 
 ```json
 {
@@ -487,7 +511,13 @@ And somehow, they had expected her to come.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -520,6 +550,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem.
 
 ### Simple idea
@@ -558,6 +589,7 @@ Done!
 
 ### In short
 Recursion is like solving a big problem by breaking it into smaller versions of the same problem until you reach a stopping point.
+````
 
 ```json
 [
@@ -5339,7 +5371,13 @@ Recursion is like solving a big problem by breaking it into smaller versions of 
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -5369,6 +5407,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are the top Cloudflare stories from **this week** I found, in three bullets:
 
 - **Cloudflare had a service degradation/outage today, June 22, 2026**, with widespread user reports of 500 errors and impacted services; discussion online suggests it affected a broad set of Cloudflare-dependent sites. ([reddit.com](https://www.reddit.com/r/sysadmin/comments/1ucm4f2/cloudflare_na_service_degraded_6222026/?utm_source=openai))
@@ -5378,6 +5417,7 @@ Here are the top Cloudflare stories from **this week** I found, in three bullets
 - **Cloudflare’s June product/news cycle was dominated by AI and platform expansion**, including the launch of “Application Services for Private Origins” on **June 10**, the company’s acquisition of **VoidZero** on **June 4**, and new AI security/budgeting features on **June 5**. ([blog.cloudflare.com](https://blog.cloudflare.com/?utm_source=openai))
 
 If you want, I can turn this into a **more newsroom-style summary** or a **“most important + why it matters”** version.
+```
 
 ```json
 {
@@ -5524,6 +5564,8 @@ If you want, I can turn this into a **more newsroom-style summary** or a **“mo
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -5554,13 +5596,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -5570,7 +5610,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -5592,11 +5632,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -5606,19 +5646,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -5642,7 +5678,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -5674,7 +5710,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -5684,9 +5720,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-mini/schema-output.json)
 
 Was this helpful?
 

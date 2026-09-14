@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/getting-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are two self-serve ways to see Privacy Pass in action:
 
-* **Get a real token with the demo tool:** the fastest way to obtain a real, issuer-signed token, using a browser tool and a Cloudflare-provided demo issuer.
-* **See a local example:** run the complete issuance and redemption flow on your own machine in a few minutes, using real Blind RSA cryptography.
+- **Get a real token with the demo tool:** the fastest way to obtain a real, issuer-signed token, using a browser tool and a Cloudflare-provided demo issuer.
+- **See a local example:** run the complete issuance and redemption flow on your own machine in a few minutes, using real Blind RSA cryptography.
 
 To understand the protocol itself, refer to [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/). When you are ready to validate a real, Cloudflare-operated deployment, refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) and [contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to begin setting up the necessary infrastructure.
 
@@ -29,7 +29,7 @@ The quickest way to see what an issuer-signed token looks like is with Cloudflar
 
 ### Prerequisites
 
-* Our **demo issuer directory URL**, provided here: [https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory ↗](https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory).
+- Our **demo issuer directory URL**, provided here: [https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory ↗](https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory).
 
 ### How to get a token
 
@@ -59,7 +59,7 @@ You can run the issuance and redemption flow on your machine in a few minutes, w
 
 ### Prerequisites
 
-* [Node.js ↗](https://nodejs.org/) and [git ↗](https://git-scm.com/).
+- [Node.js ↗](https://nodejs.org/) and [git ↗](https://git-scm.com/).
 
 ### Run the example
 
@@ -71,7 +71,7 @@ cd privacypass-ts
 npm ci
 ```
 
-The publicly-verifiable example ([pub\_verif.example.ts ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub%5Fverif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
+The publicly-verifiable example ([`pub_verif.example.ts` ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub_verif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
 
 ```ts
 import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
@@ -135,9 +135,9 @@ This demonstrates the protocol and the cryptography. It does **not** reflect a r
 
 ## Next steps
 
-* [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) — when you are ready to go beyond these self-serve demos, this is the in-depth guide to validating a real, Cloudflare-operated deployment, with your Attester, Issuer, and Origin working together.
-* [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/) — the four roles, the issuance and redemption flow, and the blinded signatures that produce tokens.
-* [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/) — who operates each role and the deployment models.
+- [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) — when you are ready to go beyond these self-serve demos, this is the in-depth guide to validating a real, Cloudflare-operated deployment, with your Attester, Issuer, and Origin working together.
+- [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/) — the four roles, the issuance and redemption flow, and the blinded signatures that produce tokens.
+- [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/) — who operates each role and the deployment models.
 
 Was this helpful?
 

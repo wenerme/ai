@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Adjust the displayed data
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Select the appropriate tab
 
@@ -26,7 +26,7 @@ To toggle your view of the data, select the **Total packets** or **Total bytes**
 
 ![Network Analytics side panels allowing you to use packets or bits/bytes as the base unit for the dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1440,height=602,format=webp/_astro/high-level-metrics.DFUDKbKH.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 The selected metric will determine the base units (packets or bits/bytes) used in the several dashboard analytics panels.
 
@@ -48,9 +48,9 @@ Notes about filtering
 
 When applying filters, observe these guidelines:
 
-* Wildcards are not supported.
-* You do not need to wrap values in quotes.
-* When specifying an ASN number, leave out the `AS` prefix. For example, enter `1423` instead of `AS1423`.
+- Wildcards are not supported.
+- You do not need to wrap values in quotes.
+- When specifying an ASN number, leave out the `AS` prefix. For example, enter `1423` instead of `AS1423`.
 
 ### Select a stat filter
 
@@ -78,13 +78,11 @@ Enable the **Show annotations** toggle to show or hide annotations for advertise
 
 To filter for these traffic events:
 
-1. In the Cloudflare dashboard, go to the **Network Analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+1. In the Cloudflare dashboard, go to the **Network Analytics** page. [Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Go to **DDoS managed rules** tab.
 3. Select **Add filter**.
-
-  * Set `Verdict equals drop`.
-  * Set `Action equals pass`.
+   - Set `Verdict equals drop`.
+   - Set `Action equals pass`.
 4. Select **Apply**.
 
 By setting `verdict` to `drop` and `outcome` as `pass`, we are filtering for traffic that was marked as a detection (that is, verdict was `drop`) but was not dropped (for example, outcome was `pass`).

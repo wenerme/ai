@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage IRR entries
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
+You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/)
+
+ entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
 
 ## Configure an IRR entry
 
@@ -22,13 +24,13 @@ You can add or update an IRR entry by following the directions of your routing r
 
 The recommended registries are AFRINIC, APNIC, ARIN, LACNIC, and RIPE. Refer to the table below for more information.
 
-| Route registry | URL                                                                                                                                                                                        |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AFRINIC        | [https://afrinic.net/internet-routing-registry#guide ↗](https://afrinic.net/internet-routing-registry#guide)                                                                               |
-| APNIC          | [https://www.apnic.net/manage-ip/apnic-services/routing-registry/ ↗](https://www.apnic.net/manage-ip/apnic-services/routing-registry/)                                                     |
-| ARIN           | [https://www.arin.net/resources/manage/irr/quickstart/ ↗](https://www.arin.net/resources/manage/irr/quickstart/)                                                                           |
-| LACNIC         | [https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects ↗](https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects) |
-| RIPE           | [https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr ↗](https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr)           |
+| Route registry | URL |
+| --- | --- |
+| AFRINIC | [https://afrinic.net/internet-routing-registry#guide ↗](https://afrinic.net/internet-routing-registry#guide) |
+| APNIC | [https://www.apnic.net/manage-ip/apnic-services/routing-registry/ ↗](https://www.apnic.net/manage-ip/apnic-services/routing-registry/) |
+| ARIN | [https://www.arin.net/resources/manage/irr/quickstart/ ↗](https://www.arin.net/resources/manage/irr/quickstart/) |
+| LACNIC | [https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects ↗](https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects) |
+| RIPE | [https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr ↗](https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr) |
 
 ## Verify an IRR entry
 
@@ -36,15 +38,15 @@ Verify your Internet Routing Registry (IRR) entries to ensure that the IP prefix
 
 Each IRR entry record must include the following information:
 
-* **Route**: Each IP prefix Cloudflare advertises for you.
-* **Origin ASN**: The Cloudflare ASN (AS13335) or your own ASN.
-* **Source**: The name of the routing registry (for example, ARIN).
+- **Route**: Each IP prefix Cloudflare advertises for you.
+- **Origin ASN**: The Cloudflare ASN (AS13335) or your own ASN.
+- **Source**: The name of the routing registry (for example, ARIN).
 
 Add or update IRR entries when they meet any of these criteria:
 
-* The entry is missing.
-* The entry is incomplete or inaccurate — for example, when the route object does not show the correct origin.
-* The entry is complete but requires updating — for example, when they correspond to supernets but need to correspond to subnets used in Magic Transit.
+- The entry is missing.
+- The entry is incomplete or inaccurate — for example, when the route object does not show the correct origin.
+- The entry is complete but requires updating — for example, when they correspond to supernets but need to correspond to subnets used in Magic Transit.
 
 ### Subnet prefix verification
 
@@ -74,9 +76,17 @@ whois -h rr.ntt.net <NETWORK_PREFIX>
 
 **Output:** IRR route, origin, and source information.
 
+<details>
+
+<summary>
+
 WHOIS output example
 
-The `<IRR entry section>` in the WHOIS output shows the correct IRR entry information for the specified network. In this example, the network prefix is `1.1.1.0/24`, and the output includes the route, origin ASN, and route registry, which in this example is APNIC:
+</summary>
+
+The <code>&lt;IRR entry section&gt;</code> in the WHOIS output shows the correct IRR entry information for the specified network. In this example, the network prefix is <code>1.1.1.0/24</code>, and the output includes the route, origin ASN, and route registry, which in this example is APNIC:
+
+*Exampletxt*
 
 ```txt
 user@xxt32z conduit-qs-config % whois -h rr.ntt.net 1.1.1.0/24
@@ -101,6 +111,8 @@ mnt-by:         MAINT-AU-APNIC-GM85-AP
 last-modified:  2018-03-16T16:58:06Z
 source:         APNIC
 ```
+
+</details>
 
 Note
 

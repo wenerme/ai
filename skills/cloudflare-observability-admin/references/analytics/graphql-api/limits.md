@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare GraphQL API exposes more than 70 datasets representing products with different configurations and data availability for different zones and accounts plans.
 
 To support this variety of products, Cloudflare GraphQL API has three layers of limits:
 
-* global limits
-* user limits
-* node (dataset) limits
+- global limits
+- user limits
+- node (dataset) limits
 
 ## Global limits
 
 These limits are applied to every query for every plan:
 
-* A zone-scoped query can include up to **10 zones**
-* An account-scoped query can include only **1 account**
+- A zone-scoped query can include up to **10 zones**
+- An account-scoped query can include only **1 account**
 
 Additionally, there is a limited number of queries you can make per request. The total number of queries in a request is equal to the number of zone/account scopes, multiplied by the number of nodes to which they are applied.
 
@@ -47,10 +47,10 @@ To learn how to enable it and the query requirements, refer to [Account-based ra
 
 Each data node has its limits, such as:
 
-* how far back in time can data be requested,
-* the maximum time period (in seconds) that can be requested in one query,
-* the maximum number of fields that can be requested in one query,
-* the maximum number of records that can be returned in one query.
+- how far back in time can data be requested,
+- the maximum time period (in seconds) that can be requested in one query,
+- the maximum number of fields that can be requested in one query,
+- the maximum number of records that can be returned in one query.
 
 Node limits are tied to requested `zoneTag` or `accountTag`. Higher plans have access to a greater selection of datasets or fields, and can query over broader historical intervals.
 

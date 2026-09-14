@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticate against R2 API using auth tokens
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-auth-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example shows how to authenticate against R2 using the S3 API and an API token.
 
@@ -55,6 +55,8 @@ Run the following Node.js script with `node index.js`. Ensure you change `Bucket
 
 Note, tutorial below should function for TypeScript as well.
 
+*index.jsjavascript*
+
 ```javascript
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 
@@ -88,6 +90,8 @@ pip install boto3
 ```
 
 Run the following Python script with `python3 get_r2_object.py`. Ensure you change `bucket` to the name of your bucket, and `object_key` to point to an existing file in your R2 bucket.
+
+*get\_r2\_object.pypython*
 
 ```python
 import boto3

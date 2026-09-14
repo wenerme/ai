@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Meeting
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Meeting is a **re-usable virtual room** that you can join and interact in, in real-time.
+Meeting is a **re-usable virtual room** that you can join and interact in, in real-time.
 
 You can assign a title and feature configuration to it, then add participants who are authorised to join. The Meeting itself doesn't "start" or "end"; it just exists.
 
@@ -22,6 +22,7 @@ Because Meetings do not have a specific date or time, you can create them well i
 
 The following diagram shows the blueprint of a Meeting:
 
+```
 ---
 title: Meeting
 ---
@@ -65,9 +66,11 @@ flowchart TB
   style participants-row2 fill:none,stroke:none
   style details fill:none,stroke:none
 
+```
+
 ### Session
 
-A **Session** is a live instance of a Meeting. It starts automatically when the first participant joins the meeting and ends shortly after the last participant leaves. A Session inherits all settings (like features and title) from its parent Meeting.
+A **Session** is a live instance of a Meeting. It starts automatically when the first participant joins the meeting and ends shortly after the last participant leaves. A Session inherits all settings (like features and title) from its parent Meeting.
 
 Because the Meeting is persistent, it can have many different Sessions over time.
 
@@ -79,7 +82,7 @@ Each week, when participants join for that week’s standup, a **new Session** i
 
 > **Note**: This distinction is important for billing. You are charged on a per-participant basis only for the duration of an active Session, not for an idle Meeting.
 
-You can get the details of your sessions from the [RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit) or using the [Sessions API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/) endpoints.
+You can get the details of your sessions from the [RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit) or using the [Sessions API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/) endpoints.
 
 ![Sessions in RealtimeKit Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3024,height=1616,format=webp/_astro/dashboard-sessions.dvN7oDwZ.png)
 
@@ -91,9 +94,9 @@ A **waiting room** lets participants join a meeting without immediately entering
 
 Hosts can also configure specific behaviours for how users move from the waiting room into the meeting.
 
-* **Join when accepted by someone**Participants stay in the waiting room until a host or another authorized user explicitly admits them. Ideal for highly controlled or private meetings.
-* **Join when a privileged user joins**Participants remain in the waiting room initially, but are automatically admitted once a host or other privileged user enters the meeting. Useful for scheduled events where attendees should only join after the moderator is present.
-* **Accept users into waiting room**Hosts can see the list of waiting users, admit them individually or in bulk, or remove them. This mode provides maximum visibility and control over incoming participants.
+- **Join when accepted by someone** Participants stay in the waiting room until a host or another authorized user explicitly admits them. Ideal for highly controlled or private meetings.
+- **Join when a privileged user joins** Participants remain in the waiting room initially, but are automatically admitted once a host or other privileged user enters the meeting. Useful for scheduled events where attendees should only join after the moderator is present.
+- **Accept users into waiting room** Hosts can see the list of waiting users, admit them individually or in bulk, or remove them. This mode provides maximum visibility and control over incoming participants.
 
 These options allow you to tailor how access is managed—whether you need strict admission control, a smoother flow once a host arrives, or a combination of both.
 
@@ -113,23 +116,31 @@ Connected Meetings let you create linked meeting spaces, that participants can s
 
 You can control how participants move between these connected spaces using the following permissions:
 
-* **Full Access:** Allows participants to create, update, and delete connected meetings.
-* **Switch Connected Meeting:** Lets participants move freely between the available connected (child) meetings.
-* **Switch to Parent Meeting:** Allows participants to return to the main (parent) meeting at any time.
+- **Full Access:** Allows participants to create, update, and delete connected meetings.
+- **Switch Connected Meeting:** Lets participants move freely between the available connected (child) meetings.
+- **Switch to Parent Meeting:** Allows participants to return to the main (parent) meeting at any time.
 
 ### Create a meeting
 
-You create and manage RealtimeKit meetings, typically from your backend, using the [Meetings API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/). To create a meeting, send a `POST` request to the [Create Meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/) endpoint.
+You create and manage RealtimeKit meetings, typically from your backend, using the [Meetings API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/). To create a meeting, send a `POST` request to the [Create Meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/) endpoint.
+
+<details>
+
+<summary>
 
 API Prerequisites
 
+</summary>
+
 Make sure you have the following values for this API request:
 
-* Your Cloudflare `ACCOUNT_ID`
-* RealtimeKit `APP_ID`
-* Your `CLOUDFLARE_API_TOKEN` (with Realtime permissions)
+- Your Cloudflare <code>ACCOUNT_ID</code>
+- RealtimeKit <code>APP_ID</code>
+- Your <code>CLOUDFLARE_API_TOKEN</code> (with Realtime permissions)
 
-If you do not have them yet, refer to the [Getting Started](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) guide.
+If you do not have them yet, refer to the <a href="https://developers.cloudflare.com/realtime/realtimekit/quickstart/">Getting Started</a> guide.
+
+</details>
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{APP_ID}/meetings \
@@ -143,15 +154,15 @@ curl https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/realtime/kit/{AP
 
 A successful response includes a unique `id` for the created meeting. Save this ID, as it is required for all future operations on this specific meeting, such as adding participants or disabling it.
 
-For a complete list of all available configuration parameters, refer to the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/).
+For a complete list of all available configuration parameters, refer to the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/).
 
 ### Where to Go Next
 
 After learning about Meetings and Sessions, you can explore the following next steps:
 
-* Configure [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) for your App – Set up default permissions, media settings, and behavior for all Sessions created from a Meeting.
-* Add [Participants](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/) to a Meeting – Manage who can join, their roles, and the access controls they inherit.
-* Get started with [RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) – Integrate RealtimeKit into your web or mobile app with just a few lines of code.
+- Configure [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/) for your App – Set up default permissions, media settings, and behavior for all Sessions created from a Meeting.
+- Add [Participants](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/) to a Meeting – Manage who can join, their roles, and the access controls they inherit.
+- Get started with [RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) – Integrate RealtimeKit into your web or mobile app with just a few lines of code.
 
 Was this helpful?
 

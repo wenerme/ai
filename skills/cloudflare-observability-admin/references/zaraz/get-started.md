@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before being able to use Zaraz, it is recommended that you proxy your website through Cloudflare. Refer to [Set up Cloudflare](https://developers.cloudflare.com/fundamentals/account/) for more information. If you do not want to proxy your website through Cloudflare, refer to [Use Zaraz on domains not proxied by Cloudflare](https://developers.cloudflare.com/zaraz/advanced/domains-not-proxied/).
 
@@ -20,12 +20,11 @@ Before being able to use Zaraz, it is recommended that you proxy your website th
 
 You can add new third-party tools and load them into your website through the Cloudflare dashboard.
 
-1. In the Cloudflare dashboard, go to the **Tag Setup** page.
-[Go to **Tag setup** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+1. In the Cloudflare dashboard, go to the **Tag Setup** page. [Go to **Tag setup** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
 2. If you have already added a tool before, select **Third-party tools** and click on **Add new tool**.
 3. Choose a tool from the tools catalog. Select **Continue** to confirm your selection.
 4. In **Set up**, configure the settings for your new tool. The information you need to enter will depend on the tool you choose. If you want to use any dynamic properties or variables, select the `+` sign in the drop-down menu next to the relevant field.
-5. In **Actions** setup the actions for your new tool. You should be able to select Pageviews, Events or E-Commerce [1](#user-content-fn-1).
+5. In **Actions** setup the actions for your new tool. You should be able to select Pageviews, Events or E-Commerce <sup>[1](#user-content-fn-1)</sup>.
 6. Select **Save**.
 
 ## Events, triggers and actions
@@ -34,9 +33,9 @@ Zaraz relies on events, triggers and actions to determine when to load the tools
 
 When using Automatic Actions, the available actions are as follows:
 
-* **Pageviews** \- for tracking every pageview on your website
-* **Events** \- For tracking calls using the [zaraz.track Web API](https://developers.cloudflare.com/zaraz/web-api/track)
-* **E-commerce** \- For tracking calls to [zaraz.ecommerce Web API](https://developers.cloudflare.com/zaraz/web-api/ecommerce)
+- **Pageviews** - for tracking every pageview on your website
+- **Events** - For tracking calls using the [`zaraz.track` Web API](https://developers.cloudflare.com/zaraz/web-api/track)
+- **E-commerce** - For tracking calls to [`zaraz.ecommerce` Web API](https://developers.cloudflare.com/zaraz/web-api/ecommerce)
 
 ## Web API
 
@@ -54,7 +53,7 @@ Users and companies have developed plugins that make using Zaraz easier on speci
 
 ### WooCommerce
 
-* [Beetle Tracking ↗](https://beetle-tracking.com/) \- Integrate Zaraz with your WordPress WooCommerce website to track e-commerce events with zero configuration. Beetle Tracking also supports consent management and other advanced features.
+- [Beetle Tracking ↗](https://beetle-tracking.com/) - Integrate Zaraz with your WordPress WooCommerce website to track e-commerce events with zero configuration. Beetle Tracking also supports consent management and other advanced features.
 
 ## Footnotes
 

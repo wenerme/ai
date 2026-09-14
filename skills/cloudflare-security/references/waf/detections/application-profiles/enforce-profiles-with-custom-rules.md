@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enforce profiles with Custom Rules
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/enforce-profiles-with-custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Application Profiles separate detection from mitigation. Cloudflare runs an **always-on detection** after a profile becomes available.
 
@@ -68,11 +68,11 @@ Review production traffic and sampled violation reasons first. Then [create a Cu
 
 Follow these rollout practices:
 
-* Start with monitoring in Security Analytics.
-* Limit the first rule to one operation.
-* Review the effect before expanding scope.
-* Recheck profiles after application releases.
-* Recheck violations after client changes.
+- Start with monitoring in Security Analytics.
+- Limit the first rule to one operation.
+- Review the effect before expanding scope.
+- Recheck profiles after application releases.
+- Recheck violations after client changes.
 
 For field details, refer to [Application Profile fields](https://developers.cloudflare.com/waf/detections/application-profiles/fields/).
 

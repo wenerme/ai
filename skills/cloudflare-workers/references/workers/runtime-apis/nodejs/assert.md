@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # assert
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/assert/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/assert/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-The [node:assert ↗](https://nodejs.org/docs/latest/api/assert.html) module in Node.js provides a number of useful assertions that are useful when building tests.
+The [`node:assert` ↗](https://nodejs.org/docs/latest/api/assert.html) module in Node.js provides a number of useful assertions that are useful when building tests.
 
 ```js
 import { strictEqual, deepStrictEqual, ok, doesNotReject } from "node:assert";
@@ -42,7 +42,7 @@ Note
 
 In the Workers implementation of `assert`, all assertions run in, what Node.js calls, the strict assertion mode. In strict assertion mode, non-strict methods behave like their corresponding strict methods. For example, `deepEqual()` will behave like `deepStrictEqual()`.
 
-Refer to the [Node.js documentation for assert ↗](https://nodejs.org/dist/latest-v19.x/docs/api/assert.html) for more information.
+Refer to the [Node.js documentation for `assert` ↗](https://nodejs.org/dist/latest-v19.x/docs/api/assert.html) for more information.
 
 Was this helpful?
 

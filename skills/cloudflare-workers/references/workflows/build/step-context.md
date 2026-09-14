@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Step context
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/step-context/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/step-context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every `step.do` callback receives a **context object** (`WorkflowStepContext`) as its first argument. The context gives your step code runtime information about the step itself, the current retry attempt, and the resolved configuration for that step.
 
@@ -31,12 +31,12 @@ type WorkflowStepContext = {
 
 ### Properties
 
-| Property   | Type                                                                                                    | Description                                                                                                                                 |
-| ---------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| step.name  | string                                                                                                  | The name you passed to step.do.                                                                                                             |
-| step.count | number                                                                                                  | How many times step.do has been called with this name so far in the current Workflow run. Starts at 1 for the first call with a given name. |
-| attempt    | number                                                                                                  | The current attempt number (1-indexed). 1 on the first try, 2 on the first retry, and so on.                                                |
-| config     | [WorkflowStepConfig](https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig) | The resolved retry and timeout configuration for this step, including any defaults applied by the runtime.                                  |
+| Property | Type | Description |
+| --- | --- | --- |
+| `step.name` | `string` | The name you passed to `step.do`. |
+| `step.count` | `number` | How many times `step.do` has been called with this name so far in the current Workflow run. Starts at `1` for the first call with a given name. |
+| `attempt` | `number` | The current attempt number (1-indexed). `1` on the first try, `2` on the first retry, and so on. |
+| `config` | [`WorkflowStepConfig`](https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig) | The resolved retry and timeout configuration for this step, including any defaults applied by the runtime. |
 
 If a step config's `retries.delay` is a function, the dynamic delay is not exposed on `ctx.config.retries.delay`. The delay function receives its own context object with the current step context and the error that caused the retry.
 

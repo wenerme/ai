@@ -10,11 +10,11 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# 2\. Update to Wrangler v2
+# 2. Update to Wrangler v2
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This document describes the steps to migrate a project from Wrangler v1 to Wrangler v2\. Before updating your Wrangler version, review and complete [Migrate webpack projects from Wrangler version 1](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/) if it applies to your project.
+This document describes the steps to migrate a project from Wrangler v1 to Wrangler v2. Before updating your Wrangler version, review and complete [Migrate webpack projects from Wrangler version 1](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/) if it applies to your project.
 
 Wrangler v2 ships with new features and improvements that may require some changes to your configuration.
 
@@ -26,7 +26,7 @@ To learn more about the improvements to Wrangler, refer to [Wrangler v1 and v2 c
 
 ## Update Wrangler version
 
-### 1\. Uninstall Wrangler v1
+### 1. Uninstall Wrangler v1
 
 If you had previously installed Wrangler v1 globally using npm, you can uninstall it with:
 
@@ -40,7 +40,7 @@ If you used Cargo to install Wrangler v1, you can uninstall it with:
 cargo uninstall wrangler
 ```
 
-### 2\. Install Wrangler
+### 2. Install Wrangler
 
 Now, install the latest version of Wrangler.
 
@@ -48,7 +48,7 @@ Now, install the latest version of Wrangler.
 npm install -g wrangler
 ```
 
-### 3\. Verify your install
+### 3. Verify your install
 
 To check that you have installed the correct Wrangler version, run:
 
@@ -68,8 +68,8 @@ Run the `wrangler dev` command. This will show any warnings or errors that shoul
 npx wrangler dev
 ```
 
-* Errors need to be fixed before Wrangler can build your Worker.
-* In most cases, you will only see warnings. These do not stop Wrangler from building your Worker, but consider updating the configuration to remove them.
+- Errors need to be fixed before Wrangler can build your Worker.
+- In most cases, you will only see warnings. These do not stop Wrangler from building your Worker, but consider updating the configuration to remove them.
 
 Here is an example of some warnings and errors:
 

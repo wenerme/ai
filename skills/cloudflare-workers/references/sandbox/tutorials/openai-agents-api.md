@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Codex with Cloudflare Containers using the OpenAI Agents API
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [OpenAI Agents API ↗](https://developers.openai.com/api/docs/guides/agents-api/overview) gives your application access to the Codex harness through an OpenAI-managed API. OpenAI manages sessions, orchestration, context compaction, and recovery while your application provides tools and Cloudflare Containers can provide the execution environment.
 
@@ -24,18 +24,18 @@ The [Cloudflare executor template ↗](https://github.com/cloudflare/sandbox-sdk
 
 ## How it works
 
-* **Cloudflare Worker:** Receives signed OpenAI webhooks and manages one container for each agent session.
-* **Cloudflare Container:** Runs `codex exec-server` and agent-generated code against files in `/workspace`.
-* **Codex executor:** Connects outbound to OpenAI with a restricted API key while the workspace remains in your Cloudflare account.
+- **Cloudflare Worker:** Receives signed OpenAI webhooks and manages one container for each agent session.
+- **Cloudflare Container:** Runs `codex exec-server` and agent-generated code against files in `/workspace`.
+- **Codex executor:** Connects outbound to OpenAI with a restricted API key while the workspace remains in your Cloudflare account.
 
 ## Prerequisites
 
 You need:
 
-* A Cloudflare account with Containers access
-* OpenAI Agents API access and an OpenAI API key
-* curl
-* For manual deployment, Node.js 24 or newer, npm, [Docker ↗](https://www.docker.com/), and Wrangler
+- A Cloudflare account with Containers access
+- OpenAI Agents API access and an OpenAI API key
+- curl
+- For manual deployment, Node.js 24 or newer, npm, [Docker ↗](https://www.docker.com/), and Wrangler
 
 Create a restricted OpenAI API key, referred to in this guide as the "executor key", for use by `codex exec-server`. It requires `api.model.read` and `api.agents.environments.connect`. The application key used by the Worker requires `api.agents.read`. Both keys must belong to the same organization, project, and user or service-account owner.
 
@@ -66,44 +66,56 @@ Copy the `id` field from the response and save it as the agent ID:
 export OPENAI_AGENT_ID="agent_..."
 ```
 
-1. **Deploy the worker and container.** Generate and save a shared secret for the container cleanup endpoint:
-```bash
-openssl rand -hex 32
-```
-Select **Deploy to Cloudflare**:
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
-Enter these values when prompted:
+2. **Deploy the worker and container.** Generate and save a shared secret for the container cleanup endpoint:
 
-| Variable                   | Value                                                 |
-| -------------------------- | ----------------------------------------------------- |
-| OPENAI\_API\_KEY           | The OpenAI key used to retrieve session state         |
-| OPENAI\_EXECUTOR\_API\_KEY | The restricted executor key                           |
-| OPENAI\_AGENT\_ID          | The agent ID created above                            |
-| OPENAI\_WEBHOOK\_SECRET    | pending-webhook-registration for the first deployment |
-| EXECUTOR\_CLIENT\_SECRET   | The shared secret generated above                     |
-Save the deployed Worker URL:
-```bash
-export WORKER_URL="https://<YOUR_WORKER>.workers.dev"
-```
-The container stays available for 30 seconds (configurable via `EXECUTOR_KEEP_ALIVE_SECONDS`). Prewarming and idle snapshots are enabled by default.
-2. **Register the webhook.** In [OpenAI project webhook settings ↗](https://platform.openai.com/settings/project/webhooks), register the publicly reachable endpoint `https://<YOUR_WORKER>.workers.dev/webhook`.
-Subscribe to these events:
+   ```bash
+   openssl rand -hex 32
+   ```
 
-  * `agent.session.created`
-  * `agent.session.action_required`
-  * `agent.session.in_progress`
-  * `agent.session.idle`
-  * `agent.session.failed`
-Copy the signing secret returned by OpenAI. Replace `OPENAI_WEBHOOK_SECRET` in the Worker's **Settings** \> **Variables and Secrets**, then select **Deploy**. If you used manual deployment, set it with Wrangler from the Cloudflare template directory:
-```bash
-npx wrangler secret put OPENAI_WEBHOOK_SECRET
-```
-Verify the setup:
-```bash
-curl --fail-with-body "$WORKER_URL/health"
-```
-The Worker is ready for this guide when the response contains both `"configured": true` and `"webhook_configured": true`.
-3. **Run a test task.** Create a self-hosted session:
+   Select **Deploy to Cloudflare**:
+
+   [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
+
+   Enter these values when prompted:
+
+   | Variable | Value |
+   | --- | --- |
+   | `OPENAI_API_KEY` | The OpenAI key used to retrieve session state |
+   | `OPENAI_EXECUTOR_API_KEY` | The restricted executor key |
+   | `OPENAI_AGENT_ID` | The agent ID created above |
+   | `OPENAI_WEBHOOK_SECRET` | `pending-webhook-registration` for the first deployment |
+   | `EXECUTOR_CLIENT_SECRET` | The shared secret generated above |
+
+   Save the deployed Worker URL:
+
+   ```bash
+   export WORKER_URL="https://<YOUR_WORKER>.workers.dev"
+   ```
+
+   The container stays available for 30 seconds (configurable via `EXECUTOR_KEEP_ALIVE_SECONDS`). Prewarming and idle snapshots are enabled by default.
+3. **Register the webhook.** In [OpenAI project webhook settings ↗](https://platform.openai.com/settings/project/webhooks), register the publicly reachable endpoint `https://<YOUR_WORKER>.workers.dev/webhook`.
+
+   Subscribe to these events:
+   - `agent.session.created`
+   - `agent.session.action_required`
+   - `agent.session.in_progress`
+   - `agent.session.idle`
+   - `agent.session.failed`
+
+   Copy the signing secret returned by OpenAI. Replace `OPENAI_WEBHOOK_SECRET` in the Worker's **Settings** > **Variables and Secrets**, then select **Deploy**. If you used manual deployment, set it with Wrangler from the Cloudflare template directory:
+
+   ```bash
+   npx wrangler secret put OPENAI_WEBHOOK_SECRET
+   ```
+
+   Verify the setup:
+
+   ```bash
+   curl --fail-with-body "$WORKER_URL/health"
+   ```
+
+   The Worker is ready for this guide when the response contains both `"configured": true` and `"webhook_configured": true`.
+4. **Run a test task.** Create a self-hosted session:
 
 ```bash
 curl "https://api.openai.com/v1/agents/sessions" \
@@ -164,39 +176,65 @@ curl "https://api.openai.com/v1/agents/sessions/$SESSION_ID/events" \
 
 The event stream shows the agent's progress and response.
 
+<details>
+
+<summary>
+
 Deploy manually
+
+</summary>
 
 Instead of using the deploy button in step 2 above:
 
 1. Clone the Cloudflare template repository, install dependencies, and log in to Cloudflare:
-```bash
-git clone https://github.com/cloudflare/sandbox-sdk.git
-cd sandbox-sdk
-npm install
-cd openai/agents-api
-npx wrangler login
-```
-2. Generate and save a shared secret for the container cleanup endpoint:
-```bash
-openssl rand -hex 32
-```
-3. Store the Worker secrets. Enter your OpenAI key, restricted executor key, agent ID, and shared secret when prompted:
-```bash
-npx wrangler secret put OPENAI_API_KEY
-npx wrangler secret put OPENAI_EXECUTOR_API_KEY
-npx wrangler secret put OPENAI_AGENT_ID
-npx wrangler secret put EXECUTOR_CLIENT_SECRET
-```
-4. Deploy the worker and container:
-```bash
-npm run deploy
-```
 
-`EXECUTOR_KEEP_ALIVE_SECONDS`, `EXECUTOR_PREWARM_ENABLED`, and `EXECUTOR_SNAPSHOTS_ENABLED` are non-secret settings in `wrangler.jsonc`.
+   ```bash
+   git clone https://github.com/cloudflare/sandbox-sdk.git
+   cd sandbox-sdk
+   npm install
+   cd openai/agents-api
+   npx wrangler login
+   ```
+
+
+2. Generate and save a shared secret for the container cleanup endpoint:
+
+   ```bash
+   openssl rand -hex 32
+   ```
+
+
+3. Store the Worker secrets. Enter your OpenAI key, restricted executor key, agent ID, and shared secret when prompted:
+
+   ```bash
+   npx wrangler secret put OPENAI_API_KEY
+   npx wrangler secret put OPENAI_EXECUTOR_API_KEY
+   npx wrangler secret put OPENAI_AGENT_ID
+   npx wrangler secret put EXECUTOR_CLIENT_SECRET
+   ```
+
+
+4. Deploy the worker and container:
+
+   ```bash
+   npm run deploy
+   ```
+
+
+
+<code>EXECUTOR_KEEP_ALIVE_SECONDS</code>, <code>EXECUTOR_PREWARM_ENABLED</code>, and <code>EXECUTOR_SNAPSHOTS_ENABLED</code> are non-secret settings in <code>wrangler.jsonc</code>.
 
 Save the deployed Worker URL, then complete step 3 above. Return to the selected OpenAI example repository root before running step 4.
 
+</details>
+
+<details>
+
+<summary>
+
 Reconnect an existing session
+
+</summary>
 
 Open the session event stream again, then submit follow-up input:
 
@@ -224,6 +262,8 @@ curl "https://api.openai.com/v1/agents/sessions/$SESSION_ID/events" \
 		]
 	}'
 ```
+
+</details>
 
 ## Agents API on Cloudflare Workers
 
@@ -304,20 +344,20 @@ Run `npm run deploy` from `openai/agents-api` to build and deploy the updated im
 
 The runnable example is intentionally minimal. Review these defaults before adapting it for production:
 
-* **Secrets:** The controller key, webhook secret, and `EXECUTOR_CLIENT_SECRET` remain Worker secrets. The restricted executor key is passed into the container as `CODEX_API_KEY`, where processes inside the container can read it. Refer to [Container environment variables and secrets](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) for other ways to configure container instances.
-* **Network access:** The example enables outbound Internet access so `codex exec-server` can reach OpenAI. Use [Container outbound traffic controls](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/) to restrict destinations or inject credentials for other services.
-* **Files:** `/workspace` uses ephemeral container storage. Use a [read-only R2 FUSE mount](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#mounting-buckets-as-read-only) when an agent needs durable source files that it should not modify.
-* **Worker access:** OpenAI must be able to reach `/webhook` without an interactive Access login. The Worker verifies OpenAI's webhook signature, and the manual cleanup endpoint requires `EXECUTOR_CLIENT_SECRET`. If you protect other routes with Cloudflare Access, use [path-specific policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) that leave `/webhook` reachable.
+- **Secrets:** The controller key, webhook secret, and `EXECUTOR_CLIENT_SECRET` remain Worker secrets. The restricted executor key is passed into the container as `CODEX_API_KEY`, where processes inside the container can read it. Refer to [Container environment variables and secrets](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) for other ways to configure container instances.
+- **Network access:** The example enables outbound Internet access so `codex exec-server` can reach OpenAI. Use [Container outbound traffic controls](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/) to restrict destinations or inject credentials for other services.
+- **Files:** `/workspace` uses ephemeral container storage. Use a [read-only R2 FUSE mount](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/#mounting-buckets-as-read-only) when an agent needs durable source files that it should not modify.
+- **Worker access:** OpenAI must be able to reach `/webhook` without an interactive Access login. The Worker verifies OpenAI's webhook signature, and the manual cleanup endpoint requires `EXECUTOR_CLIENT_SECRET`. If you protect other routes with Cloudflare Access, use [path-specific policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/) that leave `/webhook` reachable.
 
 For more information, refer to [Containers architecture](https://developers.cloudflare.com/containers/platform-details/architecture/).
 
 ## Related resources
 
-* [Cloudflare reference worker ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
-* [OpenAI Agents API documentation ↗](https://developers.openai.com/api/docs/guides/agents-api/overview)
-* [OpenAI Python Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-python-preview/tree/main/examples/self%5Fhosted%5Fsandbox/webhook%5Fmanaged/cloudflare)
-* [OpenAI TypeScript Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-typescript-preview/tree/main/examples/self%5Fhosted%5Fsandbox/webhook%5Fmanaged/cloudflare)
-* [Cloudflare Containers](https://developers.cloudflare.com/containers/)
+- [Cloudflare reference worker ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
+- [OpenAI Agents API documentation ↗](https://developers.openai.com/api/docs/guides/agents-api/overview)
+- [OpenAI Python Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-python-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
+- [OpenAI TypeScript Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-typescript-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
+- [Cloudflare Containers](https://developers.cloudflare.com/containers/)
 
 Was this helpful?
 

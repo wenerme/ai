@@ -1,7 +1,5 @@
 ---
-description: Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in [0,1] by sigmoid function.
-
-
+description: "Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in [0,1] by sigmoid function.\n\n"
 title: bge-reranker-base
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -18,22 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Classification • BAAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/baai/bge-reranker-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/baai/bge-reranker-base`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
-Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \[0,1\] by sigmoid function.
+Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \[0,1] by sigmoid function.
 
-| Model Info   |                            |
-| ------------ | -------------------------- |
+| Model Info | |
+| --- | --- |
 | Unit Pricing | $0.0031 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
 	AI: Ai;
 }
@@ -55,11 +52,9 @@ export default {
 		return Response.json(response);
 	},
 } satisfies ExportedHandler<Env>;
-
 ```
 
 ```py
-
 import os
 import requests
 
@@ -82,7 +77,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/baai/bge-reranker-base \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -99,19 +93,19 @@ top\_k
 
 `integer`minimum: 1Number of returned results starting with the best score.
 
-▶contexts\[\]
+▶contexts\[]
 
 `array`requiredList of provided contexts. Note that the index in this array is important, as the response will refer to it.
 
-▶response\[\]
+▶response\[]
 
 `array`
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-reranker-base/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-reranker-base/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/@cf/baai/bge-reranker-base/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/baai/bge-reranker-base/schema-output.json)
 
 Was this helpful?
 

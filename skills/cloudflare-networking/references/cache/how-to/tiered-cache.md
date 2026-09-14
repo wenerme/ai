@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tiered Cache
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/tiered-cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/tiered-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Tiered Cache uses the size of the Cloudflare network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
 
@@ -68,13 +68,13 @@ Custom Tiered cache allows Enterprise customers to work with their account team 
 
 ## Availability
 
-|                         | Free | Pro | Business | Enterprise |
-| ----------------------- | ---- | --- | -------- | ---------- |
-| Tiered Cache            | Yes  | Yes | Yes      | Yes        |
-| Smart Topology          | Yes  | Yes | Yes      | Yes        |
-| Generic Global Topology | No   | No  | No       | Yes        |
-| Regional Tiered Cache   | No   | No  | No       | Yes        |
-| Custom Topology         | No   | No  | No       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Tiered Cache | Yes | Yes | Yes | Yes |
+| Smart Topology | Yes | Yes | Yes | Yes |
+| Generic Global Topology | No | No | No | Yes |
+| Regional Tiered Cache | No | No | No | Yes |
+| Custom Topology | No | No | No | Yes |
 
 ## Bandwidth Alliance
 
@@ -86,20 +86,21 @@ You can enable Tiered Cache in the dashboard or via API.
 
 ### Enable Tiered Cache in the dashboard
 
-1. In the Cloudflare dashboard, go to the **Tiered Cache** page.
-[Go to **Tiered Cache** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
+1. In the Cloudflare dashboard, go to the **Tiered Cache** page. [Go to **Tiered Cache** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
 2. From **Tiered Cache**, toggle the button to **enabled**.
 3. In **Tiered Cache Topology**, you can control how your origin connects to Cloudflare’s data centers. You can select:
+   - **Upper Tier Cache** - You have the option to choose between Smart or Generic Global Tiered Cache Topology.
+   - **Middle Tier Cache** - If you have selected Smart or Custom Tiered Cache Topology, you can now enable Regional Tiered Cache.
+   - **Custom Tiered Cache** - Allows you to work with Cloudflare’s support team to set a custom topology that fits your specific needs.
+   - **Disable Tiered Cache**.
 
-  * **Upper Tier Cache** \- You have the option to choose between Smart or Generic Global Tiered Cache Topology.
-  * **Middle Tier Cache** \- If you have selected Smart or Custom Tiered Cache Topology, you can now enable Regional Tiered Cache.
-  * **Custom Tiered Cache** \- Allows you to work with Cloudflare’s support team to set a custom topology that fits your specific needs.
-  * **Disable Tiered Cache**.
 ![Tiered Cache Topology dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1188,height=870,format=webp/_astro/tiered_cache_topology.sy3gfwwc.png)
 
 ### Enable Tiered Cache via API
 
 To enable Tiered Cache via API use the following cURL example:
+
+*Patch Tiered Caching settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \
@@ -112,13 +113,30 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/argo/tiered_caching" \
 
 You can also configure Tiered Cache Topology via API, for instance:
 
+<details>
+
+<summary>
+
 Enable Smart Tiered Cache
+
+</summary>
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Patch Smart Tiered Cache settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/tiered_cache_smart_topology_enable" \
@@ -129,13 +147,32 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/tiered_cache_sma
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Enable Regional Tiered Cache
+
+</summary>
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+- <code>Zone Write</code>
+
+</details>
+
+*Change Regional Tiered Cache settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_cache" \
@@ -146,7 +183,9 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/regional_tiered_
 	}'
 ```
 
-For more API examples and configuration options for Tiered Cache, refer to the [API documentation](https://developers.cloudflare.com/api/resources/argo/subresources/tiered%5Fcaching/methods/get/).
+</details>
+
+For more API examples and configuration options for Tiered Cache, refer to the [API documentation](https://developers.cloudflare.com/api/resources/argo/subresources/tiered_caching/methods/get/).
 
 ### Set a cloud region hint
 
@@ -156,14 +195,15 @@ Cloud region hints are available on all plan types (Free, Pro, Business, and Ent
 
 #### Set a cloud region hint in the dashboard
 
-1. Go to **Caching** \> **Tiered Cache** \> **Origin Configuration**.
-[Go to **Tiered Cache** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
+1. Go to **Caching** > **Tiered Cache** > **Origin Configuration**. [Go to **Tiered Cache** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
 2. Find your origin IP or hostname and select **Set Region Hint**.
 3. Select your cloud provider and region (for example, `aws:us-east-1` or `gcp:europe-west1`).
 
 #### List supported cloud regions via API
 
 To see all available cloud providers and regions, use the supported regions endpoint:
+
+*List supported cloud vendors and regionsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions/supported_regions" \
@@ -172,6 +212,8 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_reg
 ```
 
 #### Set a cloud region hint via API
+
+*Create or update an origin cloud region mappingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_cloud_regions" \
@@ -190,7 +232,7 @@ Custom Tiered Cache settings take precedence over cloud region hint mappings. If
 
 Note
 
-To confirm that Tiered Cache is working, make sure you have the value of [CacheTieredFill](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/#cachetieredfill) in your http\_requests logs, this will indicate if Tiered Cache was used to serve the request.
+To confirm that Tiered Cache is working, make sure you have the value of [CacheTieredFill](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#cachetieredfill) in your http\_requests logs, this will indicate if Tiered Cache was used to serve the request.
 
 Was this helpful?
 

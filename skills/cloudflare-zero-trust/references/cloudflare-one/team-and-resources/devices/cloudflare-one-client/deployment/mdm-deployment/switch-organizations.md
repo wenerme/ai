@@ -12,28 +12,36 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Switch between Zero Trust organizations
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+<details>
+
+<summary>
 
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum WARP version |
-| -------- | ------------ | -------------------- |
-| Windows  | ✅            | 2024.1.159.0         |
-| macOS    | ✅            | 2024.1.160.0         |
-| Linux    | ✅            | 2024.2.62.0          |
-| iOS      | ✅            | 1.7                  |
-| Android  | ✅            | 1.4                  |
-| ChromeOS | ✅            | 1.4                  |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum WARP version |
+| --- | --- | --- |
+| Windows | ✅ | 2024.1.159.0 |
+| macOS | ✅ | 2024.1.160.0 |
+| Linux | ✅ | 2024.2.62.0 |
+| iOS | ✅ | 1.7 |
+| Android | ✅ | 1.4 |
+| ChromeOS | ✅ | 1.4 |
+
+</details>
 
 In the Cloudflare One Client (formerly WARP), users can switch between multiple Zero Trust organizations (or other [MDM parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/)) that administrators specify in an MDM file. Common use cases include:
 
-* Allow IT security staff to switch between test and production environments.
-* Allow Managed Service Providers to support multiple customer accounts.
-* Allow users to switch between the default Cloudflare One Client ingress IPs and the [Cloudflare China ingress IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#override%5Fwarp%5Fendpoint).
+- Allow IT security staff to switch between test and production environments.
+- Allow Managed Service Providers to support multiple customer accounts.
+- Allow users to switch between the default Cloudflare One Client ingress IPs and the [Cloudflare China ingress IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#override_warp_endpoint).
 
 ## MDM file format
 
@@ -42,6 +50,8 @@ To enable multiple organizations, administrators need to modify their [MDM file]
 An MDM file supports a maximum of 25 configurations. The following example includes three configurations.
 
 ### XML
+
+*mdm.xmlxml*
 
 ```xml
 <dict>
@@ -90,27 +100,35 @@ To switch to a different organization as a user:
 1. Open the Cloudflare One Client on your device.
 2. Go to **Home**. The **Configuration** dropdown will show the organizations that the admin has configured for your device.
 
+<details>
+
+<summary>
+
 Version 2026.1 and earlier
 
-In the Cloudflare One Client, select the gear icon > **Switch configurations**.
+</summary>
+
+In the Cloudflare One Client, select the gear icon &gt; **Switch configurations**.
+
+</details>
 
 1. Open the Cloudflare One Agent app on your device.
-2. Go to **Settings** \> **Advanced** \> **Switch configurations**. The menu will show the organizations that the admin has configured for your device.
+2. Go to **Settings** > **Advanced** > **Switch configurations**. The menu will show the organizations that the admin has configured for your device.
 
-1. Select the configuration that you want to connect to.
-2. If prompted, complete the authentication steps required for the new organization. Your authentication information will be saved and you will be able to switch back and forth between configurations.
+3. Select the configuration that you want to connect to.
+4. If prompted, complete the authentication steps required for the new organization. Your authentication information will be saved and you will be able to switch back and forth between configurations.
 
 Note
 
-Only admins can [add additional organizations](#mdm-file-format) to the client GUI. To connect to an organization that is not displayed in the GUI, manually log out[1](#user-content-fn-1) of the old organization and [enroll](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) in the new organization.
+Only admins can [add additional organizations](#mdm-file-format) to the client GUI. To connect to an organization that is not displayed in the GUI, manually log out<sup>[1](#user-content-fn-1)</sup> of the old organization and [enroll](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) in the new organization.
 
 ### Troubleshooting
 
 When switching organizations or connecting for the first time, keep the following in mind:
 
-* If this is the first time connecting to an organization, web browsers like Chrome may require a full restart to correctly recognize and trust the organization's root certificate. Cloudflare recommends closing all browser windows after the initial connection. All subsequent switches should not require a restart.
-* On macOS, ensure the specific CA certificate for the new organization is properly trusted by verifying its status in Keychain Access.
-* Switching configurations may sometimes momentarily disconnect the Cloudflare One Client. If this occurs, simply re-enable the Cloudflare One Client to restore the connection.
+- If this is the first time connecting to an organization, web browsers like Chrome may require a full restart to correctly recognize and trust the organization's root certificate. Cloudflare recommends closing all browser windows after the initial connection. All subsequent switches should not require a restart.
+- On macOS, ensure the specific CA certificate for the new organization is properly trusted by verifying its status in Keychain Access.
+- Switching configurations may sometimes momentarily disconnect the Cloudflare One Client. If this occurs, simply re-enable the Cloudflare One Client to restore the connection.
 
 ## Footnotes
 

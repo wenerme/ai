@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Release notes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/release-notes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/release-notes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/durable-objects/release-notes/index.xml)
 
@@ -20,7 +20,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Declarative class lifecycle with \`exports\`**
 
-A new declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field in your Wrangler configuration file replaces the imperative `migrations` array for creating, deleting, renaming, and transferring Durable Object classes. Each `wrangler deploy` now prints a structured reconciliation report. Existing Workers on `migrations` continue to work unchanged.
+A new declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field in your Wrangler configuration file replaces the imperative `migrations` array for creating, deleting, renaming, and transferring Durable Object classes. Each `wrangler deploy` now prints a structured reconciliation report. Existing Workers on `migrations` continue to work unchanged.
 
 ## 2026-01-07
 
@@ -30,7 +30,7 @@ Storage billing for SQLite-backed Durable Objects will be enabled in January 202
 
 ## 2025-10-25
 
-* The maximum WebSocket message size limit has been increased from 1 MiB to 32 MiB.
+- The maximum WebSocket message size limit has been increased from 1 MiB to 32 MiB.
 
 ## 2025-10-16
 
@@ -42,7 +42,7 @@ Durable Objects stored data can be viewed and written using [Data Studio](https:
 
 **Durable Objects stubs can now be directly constructed by name**
 
-A [DurableObjectStub](https://developers.cloudflare.com/durable-objects/api/stub) can now be directly constructed by created directly with [DurableObjectNamespace::getByName](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname).
+A [`DurableObjectStub`](https://developers.cloudflare.com/durable-objects/api/stub) can now be directly constructed by created directly with [`DurableObjectNamespace::getByName`](https://developers.cloudflare.com/durable-objects/api/namespace/#getbyname).
 
 ## 2025-04-07
 
@@ -60,7 +60,7 @@ SQLite storage per Durable Object has increased to 10GB for all existing and new
 
 ## 2025-02-19
 
-SQLite-backed Durable Objects now support `PRAGMA optimize` command, which can improve database query performance. It is recommended to run this command after a schema change (for example, after creating an index). Refer to [PRAGMA optimize](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-optimize) for more information.
+SQLite-backed Durable Objects now support `PRAGMA optimize` command, which can improve database query performance. It is recommended to run this command after a schema change (for example, after creating an index). Refer to [`PRAGMA optimize`](https://developers.cloudflare.com/d1/sql-api/sql-statements/#pragma-optimize) for more information.
 
 ## 2025-02-11
 

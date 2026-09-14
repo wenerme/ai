@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Observability
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Proxy provides two methods for accessing metrics and monitoring your proxy deployment. We recommend getting started with GraphQL as the default method for observability.
 
-* [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/)
-* [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/)
+- [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/)
+- [OpenTelemetry](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/)
 
 ## Data privacy
 
 Regardless of whether you use the GraphQL Analytics API or OpenTelemetry, Privacy Proxy observability data does not include:
 
-* User IP addresses
-* Request content or headers (beyond what is needed for metrics)
-* Destination URLs or hostnames (aggregated only)
-* Authentication tokens or credentials
+- User IP addresses
+- Request content or headers (beyond what is needed for metrics)
+- Destination URLs or hostnames (aggregated only)
+- Authentication tokens or credentials
 
 Both methods export only operational metrics that help you monitor service health without compromising user privacy.
 

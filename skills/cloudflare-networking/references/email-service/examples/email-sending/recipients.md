@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Specify multiple recipients, CC and BCC, and named addresses when sending with Email Service.
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/recipients/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Email Service lets you specify recipients in several ways — multiple recipients, CC and BCC, and named addresses — using the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/). The combined number of addresses across `to`, `cc`, and `bcc` must not exceed 50\. See [Limits](https://developers.cloudflare.com/email-service/platform/limits/).
+Email Service lets you specify recipients in several ways — multiple recipients, CC and BCC, and named addresses — using the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), or [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/). The combined number of addresses across `to`, `cc`, and `bcc` must not exceed 50. See [Limits](https://developers.cloudflare.com/email-service/platform/limits/).
 
 ## Multiple recipients
 
@@ -213,10 +213,10 @@ curl --ssl-reqd \
 
 ## Next steps
 
-* [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — full `send()` reference.
-* [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) — send over HTTPS.
-* [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) — send from any SMTP-capable client.
-* [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/) — send PDFs, inline images, and uploads.
+- [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — full `send()` reference.
+- [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) — send over HTTPS.
+- [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) — send from any SMTP-capable client.
+- [Email attachments](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/) — send PDFs, inline images, and uploads.
 
 Was this helpful?
 

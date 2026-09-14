@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules of Durable Objects
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects provide a powerful primitive for building stateful, coordinated applications. Each Durable Object is a single-threaded, globally-unique instance with its own persistent storage. Understanding how to design around these properties is essential for building effective applications.
 
@@ -26,17 +26,19 @@ Workers are stateless functions: each request may run on a different instance, i
 
 Use Durable Objects when you need:
 
-* **Coordination** — Multiple clients need to interact with shared state (chat rooms, multiplayer games, collaborative documents)
-* **Strong consistency** — Operations must be serialized to avoid race conditions (inventory management, booking systems, turn-based games)
-* **Per-entity storage** — Each user, tenant, or resource needs its own isolated database (multi-tenant SaaS, per-user data)
-* **Persistent connections** — Long-lived WebSocket connections that survive across requests (real-time notifications, live updates)
-* **Scheduled work per entity** — Each entity needs its own timer or scheduled task (subscription renewals, game timeouts)
+- **Coordination** — Multiple clients need to interact with shared state (chat rooms, multiplayer games, collaborative documents)
+- **Strong consistency** — Operations must be serialized to avoid race conditions (inventory management, booking systems, turn-based games)
+- **Per-entity storage** — Each user, tenant, or resource needs its own isolated database (multi-tenant SaaS, per-user data)
+- **Persistent connections** — Long-lived WebSocket connections that survive across requests (real-time notifications, live updates)
+- **Scheduled work per entity** — Each entity needs its own timer or scheduled task (subscription renewals, game timeouts)
 
 Use plain Workers when you need:
 
-* **Stateless request handling** — API endpoints, proxies, or transformations with no shared state
-* **Maximum global distribution** — Requests should be handled at the nearest edge location
-* **High fan-out** — Each request is independent and can be processed in parallel
+- **Stateless request handling** — API endpoints, proxies, or transformations with no shared state
+- **Maximum global distribution** — Requests should be handled at the nearest edge location
+- **High fan-out** — Each request is independent and can be processed in parallel
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -85,6 +87,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -157,6 +161,8 @@ The most important design decision is choosing what each Durable Object represen
 
 This is the key insight that makes Durable Objects powerful. Instead of a shared database with locks, each "atom" of your application gets its own single-threaded execution environment with private storage.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -188,6 +194,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -231,6 +239,8 @@ If you have global application or user configuration that you need to access fre
 
 Do not create a single "global" Durable Object that handles all requests:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -259,6 +269,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -297,10 +309,10 @@ export default {
 
 A single Durable Object can handle approximately **500-1,000 requests per second** for simple operations. This limit varies based on the work performed per request:
 
-| Operation type                                      | Throughput        |
-| --------------------------------------------------- | ----------------- |
-| Simple pass-through (minimal parsing)               | \~1,000 req/sec   |
-| Moderate processing (JSON parsing, validation)      | \~500-750 req/sec |
+| Operation type | Throughput |
+| --- | --- |
+| Simple pass-through (minimal parsing) | \~1,000 req/sec |
+| Moderate processing (JSON parsing, validation) | \~500-750 req/sec |
 | Complex operations (transformation, storage writes) | \~200-500 req/sec |
 
 When modeling your "atom," factor in the expected request rate. If your use case exceeds these limits, shard your workload across multiple Durable Objects.
@@ -310,13 +322,14 @@ For example, consider a real-time game with 50,000 concurrent players sending 10
 Calculate your sharding requirements:
 
 ```plaintext
-
 Required DOs = (Total requests/second) / (Requests per DO capacity)
 ```
 
 ### Use deterministic IDs for predictable routing
 
 Use `getByName()` with meaningful, deterministic strings for consistent routing. The same input always produces the same Durable Object ID, ensuring requests for the same logical entity always reach the same instance.
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -345,6 +358,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -382,6 +397,8 @@ Creating a stub does not instantiate or wake up the Durable Object. The Durable 
 
 Use `newUniqueId()` only when you need a new, random instance and will store the mapping externally:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -405,6 +422,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -439,6 +458,8 @@ export default {
 Do not put all your data in a single Durable Object. When you have hierarchical data (workspaces containing projects, game servers managing matches), create separate child Durable Objects for each entity. The parent coordinates and tracks children, while children handle their own state independently.
 
 This enables parallelism: operations on different children can happen concurrently, while each child maintains its own single-threaded consistency ([read more about this pattern](https://developers.cloudflare.com/reference-architecture/diagrams/storage/durable-object-control-data-plane-pattern/)).
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -504,6 +525,8 @@ export class GameMatch extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -577,13 +600,15 @@ export class GameMatch extends DurableObject<Env> {
 
 With this pattern:
 
-* Listing matches only queries the parent (children stay hibernated)
-* Different matches process player actions in parallel
-* Each match has its own SQLite database for player data
+- Listing matches only queries the parent (children stay hibernated)
+- Different matches process player actions in parallel
+- Each match has its own SQLite database for player data
 
 ### Consider location hints for latency-sensitive applications
 
 By default, a Durable Object is created near the location of the first request it receives. For most applications, this works well. However, you can provide a location hint to influence where the Durable Object is created.
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -606,6 +631,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -659,6 +686,8 @@ new_sqlite_classes = [ "ChatRoom" ]
 
 Then use the SQL API in your Durable Object:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -696,6 +725,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -758,10 +789,12 @@ Note
 
 For production applications, use a migration library that handles version tracking and execution automatically:
 
-* [durable-utils ↗](https://github.com/lambrospetrou/durable-utils#sqlite-schema-migrations) — provides a `SQLSchemaMigrations` class that tracks executed migrations both in memory and in storage.
-* [@cloudflare/actors storage utilities ↗](https://github.com/cloudflare/actors/blob/main/packages/storage/src/sql-schema-migrations.ts) — a reference implementation of the same pattern used by the Cloudflare Actors framework.
+- [`durable-utils` ↗](https://github.com/lambrospetrou/durable-utils#sqlite-schema-migrations) — provides a `SQLSchemaMigrations` class that tracks executed migrations both in memory and in storage.
+- [`@cloudflare/actors` storage utilities ↗](https://github.com/cloudflare/actors/blob/main/packages/storage/src/sql-schema-migrations.ts) — a reference implementation of the same pattern used by the Cloudflare Actors framework.
 
 If you prefer not to use a library, you can track schema versions manually using a `_sql_schema_migrations` table. The following example demonstrates this approach:
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -815,6 +848,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -878,13 +913,15 @@ export class ChatRoom extends DurableObject<Env> {
 
 Durable Objects provide multiple state management layers, each with different characteristics:
 
-| Type                         | Speed    | Persistence                  | Use Case                    |
-| ---------------------------- | -------- | ---------------------------- | --------------------------- |
-| In-memory (class properties) | Fastest  | Lost on eviction or crash    | Caching, active connections |
-| SQLite storage               | Fast     | Durable across restarts      | Primary data storage        |
-| External (R2, D1)            | Variable | Durable, cross-DO accessible | Large files, shared data    |
+| Type | Speed | Persistence | Use Case |
+| --- | --- | --- | --- |
+| In-memory (class properties) | Fastest | Lost on eviction or crash | Caching, active connections |
+| SQLite storage | Fast | Durable across restarts | Primary data storage |
+| External (R2, D1) | Variable | Durable, cross-DO accessible | Large files, shared data |
 
 In-memory state is **not preserved** if the Durable Object is evicted from memory due to inactivity, or if it crashes from an uncaught exception. Always persist important state to SQLite storage.
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -922,6 +959,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -979,6 +1018,8 @@ If an uncaught exception occurs in your Durable Object, the runtime may terminat
 
 Just like any database, indexes dramatically improve read performance for frequently-filtered columns. The cost is slightly more storage and marginally slower writes.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1019,6 +1060,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1071,6 +1114,8 @@ While Durable Objects are single-threaded, JavaScript's `async`/`await` can allo
 
 **Input gates** block new events (incoming requests, fetch responses) while synchronous JavaScript execution is in progress. Awaiting async operations like `fetch()` or KV storage methods opens the input gate, allowing other requests to interleave. However, storage operations provide special protection:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1085,6 +1130,8 @@ export class Counter extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1107,6 +1154,8 @@ export class Counter extends DurableObject<Env> {
 
 **Output gates** hold outgoing network messages (responses, fetch requests) until pending storage writes complete. This ensures clients never see confirmation of data that has not been persisted:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1126,6 +1175,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1152,6 +1203,8 @@ export class ChatRoom extends DurableObject<Env> {
 ```
 
 **Write coalescing:** Multiple storage writes without intervening `await` calls are automatically batched into a single atomic implicit transaction:
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -1189,6 +1242,8 @@ export class Account extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1237,6 +1292,8 @@ For more details, see [Durable Objects: Easy, Fast, Correct — Choose three ↗
 
 Input gates only protect during storage operations. Non-storage I/O like `fetch()` or writing to R2 allows other requests to interleave, which can cause race conditions:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1255,6 +1312,8 @@ export class Processor extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1283,11 +1342,13 @@ To handle this, use optimistic locking (check-and-set) patterns: read a version 
 
 Note
 
-With the legacy KV storage backend, use the [transaction()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) method for atomic read-modify-write operations across async boundaries.
+With the legacy KV storage backend, use the [`transaction()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) method for atomic read-modify-write operations across async boundaries.
 
 ### Use `blockConcurrencyWhile()` sparingly
 
-The [blockConcurrencyWhile()](https://developers.cloudflare.com/durable-objects/api/state/#blockconcurrencywhile) method guarantees that no other events are processed until the provided callback completes, even if the callback performs asynchronous I/O. This is useful for operations that must be atomic, such as state initialization from storage in the constructor:
+The [`blockConcurrencyWhile()`](https://developers.cloudflare.com/durable-objects/api/state/#blockconcurrencywhile) method guarantees that no other events are processed until the provided callback completes, even if the callback performs asynchronous I/O. This is useful for operations that must be atomic, such as state initialization from storage in the constructor:
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -1329,6 +1390,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1375,9 +1438,9 @@ export class ChatRoom extends DurableObject<Env> {
 }
 ```
 
-Because `blockConcurrencyWhile()` blocks _all_ concurrency unconditionally, it significantly reduces throughput. If each call takes \~5ms, that individual Durable Object is limited to approximately 200 requests/second. Reserve it for initialization and migrations, not regular request handling. For normal operations, rely on input/output gates and write coalescing instead.
+Because `blockConcurrencyWhile()` blocks *all* concurrency unconditionally, it significantly reduces throughput. If each call takes \~5ms, that individual Durable Object is limited to approximately 200 requests/second. Reserve it for initialization and migrations, not regular request handling. For normal operations, rely on input/output gates and write coalescing instead.
 
-For atomic read-modify-write operations during request handling, prefer [transaction()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) over `blockConcurrencyWhile()`. Transactions provide atomicity for storage operations without blocking unrelated concurrent requests.
+For atomic read-modify-write operations during request handling, prefer [`transaction()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) over `blockConcurrencyWhile()`. Transactions provide atomicity for storage operations without blocking unrelated concurrent requests.
 
 Caution
 
@@ -1390,6 +1453,8 @@ Using `blockConcurrencyWhile()` across I/O operations (such as `fetch()`, KV, R2
 Projects with a [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-flags/) of `2024-04-03` or later should use RPC methods. RPC is more ergonomic, provides better type safety, and eliminates manual request/response parsing.
 
 Define public methods on your Durable Object class, and call them directly from stubs with full TypeScript support:
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -1445,6 +1510,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1524,6 +1591,8 @@ Refer to [Invoke methods](https://developers.cloudflare.com/durable-objects/best
 
 Durable Objects do not know their own name or ID from within. If your Durable Object needs to know its identity (for example, to store a reference to itself or to communicate with related objects), you must explicitly initialize it.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1577,6 +1646,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1640,6 +1711,8 @@ export default {
 
 When calling methods on a Durable Object stub, always use `await`. Unawaited calls create dangling promises, causing errors to be swallowed and return values to be lost.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1671,6 +1744,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1714,6 +1789,8 @@ export default {
 
 Uncaught exceptions in a Durable Object can leave it in an unknown state and may cause the runtime to terminate the instance. Wrap risky operations in `try...catch` blocks, and handle errors appropriately.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1754,6 +1831,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1810,6 +1889,8 @@ Refer to [Error handling](https://developers.cloudflare.com/durable-objects/best
 
 The Hibernatable WebSockets API allows Durable Objects to sleep while maintaining WebSocket connections. This significantly reduces costs for applications with many idle connections.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -1861,6 +1942,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -1927,14 +2010,16 @@ With the Hibernation API, your Durable Object can go to sleep when there is no a
 
 Best practices:
 
-* The [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api) exposes `webSocketError`, `webSocketMessage`, and `webSocketClose` handlers for their respective WebSocket events.
-* With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the close handshake. Calling `ws.close()` in `webSocketClose` is still safe but no longer required. On older compatibility dates, you **must** call `ws.close()` to avoid `1006` abnormal closure errors.
+- The [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api) exposes `webSocketError`, `webSocketMessage`, and `webSocketClose` handlers for their respective WebSocket events.
+- With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the close handshake. Calling `ws.close()` in `webSocketClose` is still safe but no longer required. On older compatibility dates, you **must** call `ws.close()` to avoid `1006` abnormal closure errors.
 
 Refer to [WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/) for more details.
 
 ### Use `serializeAttachment()` to persist per-connection state
 
 WebSocket attachments let you store metadata for each connection that survives hibernation. Use this for user IDs, session tokens, or other per-connection data.
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -2004,6 +2089,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -2092,9 +2179,11 @@ Each Durable Object can schedule its own future work using the [Alarms API](http
 
 Key points about alarms:
 
-* **`setAlarm(timestamp)`** schedules the `alarm()` handler to run at any time in the future (millisecond precision)
-* **Alarms do not repeat automatically** — you must call `setAlarm()` again to schedule the next execution
-* **Only schedule alarms when there is work to do** — avoid waking up every Durable Object on short intervals (seconds), as each alarm invocation incurs costs
+- **`setAlarm(timestamp)`** schedules the `alarm()` handler to run at any time in the future (millisecond precision)
+- **Alarms do not repeat automatically** — you must call `setAlarm()` again to schedule the next execution
+- **Only schedule alarms when there is work to do** — avoid waking up every Durable Object on short intervals (seconds), as each alarm invocation incurs costs
+
+*index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -2143,6 +2232,8 @@ export class GameMatch extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -2200,6 +2291,8 @@ export class GameMatch extends DurableObject<Env> {
 
 In rare cases, alarms may fire more than once. Your `alarm()` handler should be safe to run multiple times without causing issues.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -2236,6 +2329,8 @@ export class Subscription extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -2282,6 +2377,8 @@ export class Subscription extends DurableObject<Env> {
 
 To fully clear a Durable Object's storage, call `deleteAll()`. Simply deleting individual keys or dropping tables is not sufficient, as some internal metadata may remain. Workers with a compatibility date before [2026-02-24](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-deleteall-deletes-alarms) and an alarm set should delete the alarm first with `deleteAlarm()`.
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -2295,6 +2392,8 @@ export class ChatRoom extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -2348,6 +2447,8 @@ A single Durable Object handling all traffic becomes a bottleneck. While async o
 
 A common mistake is using a Durable Object for global rate limiting or global counters. This funnels all traffic through a single instance:
 
+*index.jsjs*
+
 ```js
 import { DurableObject } from "cloudflare:workers";
 
@@ -2378,6 +2479,8 @@ export default {
 	},
 };
 ```
+
+*index.tsts*
 
 ```ts
 import { DurableObject } from "cloudflare:workers";
@@ -2424,6 +2527,8 @@ This pattern does not scale. As traffic increases, the single Durable Object bec
 
 Use `@cloudflare/vitest-plugin` for testing Durable Objects. The integration provides utilities for direct instance access.
 
+*test/chat-room.test.jsjs*
+
 ```js
 import { env } from "cloudflare:workers";
 import { runInDurableObject, runDurableObjectAlarm } from "cloudflare:test";
@@ -2460,6 +2565,8 @@ describe("ChatRoom", () => {
 	});
 });
 ```
+
+*test/chat-room.test.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -2517,7 +2624,7 @@ export default defineConfig({
 });
 ```
 
-For data-schema changes, run schema migrations in the constructor using `blockConcurrencyWhile()`. For class renames or deletions, change the class entry in the [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field of your Wrangler configuration file:
+For data-schema changes, run schema migrations in the constructor using `blockConcurrencyWhile()`. For class renames or deletions, change the class entry in the [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field of your Wrangler configuration file:
 
 ```jsonc
 {
@@ -2550,8 +2657,8 @@ Refer to [Durable Object class exports](https://developers.cloudflare.com/durabl
 
 ## Related resources
 
-* [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/): code patterns for request handling, observability, and security that apply to the Workers calling your Durable Objects.
-* [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/): best practices for durable, multi-step Workflows — useful when combining Workflows with Durable Objects for long-running orchestration.
+- [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/): code patterns for request handling, observability, and security that apply to the Workers calling your Durable Objects.
+- [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/): best practices for durable, multi-step Workflows — useful when combining Workflows with Durable Objects for long-running orchestration.
 
 Was this helpful?
 

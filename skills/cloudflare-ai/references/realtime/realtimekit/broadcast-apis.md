@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Message Broadcast APIs
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The broadcast APIs allow a user to send custom messages to all other users in a meeting.
 
@@ -24,16 +24,16 @@ ReactWeb ComponentsAngular
 
 The Participants module on the meeting object allows you to broadcast messages to all other users in a meeting (or to other meetings in case of connected meetings) over the signaling channel.
 
-| Param   | Type                         | Description                                                                          | Required |
-| ------- | ---------------------------- | ------------------------------------------------------------------------------------ | -------- |
-| type    | Exclude<string, 'spotlight'> | Message type identifier used to distinguish different kinds of broadcasts.           | Yes      |
-| payload | BroadcastMessagePayload      | Data sent with the message. Keys map to boolean, number, string, Date, or ActiveTab. | Yes      |
-| target  | BroadcastMessageTarget       | Optional target filter for which participants or meetings receive the message.       | No       |
+| Param | Type | Description | Required |
+| --- | --- | --- | --- |
+| `type` | `Exclude<string, 'spotlight'>` | Message type identifier used to distinguish different kinds of broadcasts. | Yes |
+| `payload` | `BroadcastMessagePayload` | Data sent with the message. Keys map to boolean, number, string, Date, or `ActiveTab`. | Yes |
+| `target` | `BroadcastMessageTarget` | Optional target filter for which participants or meetings receive the message. | No |
 
-* If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
-* If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
-* If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
-* If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
+- If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
+- If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
+- If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
+- If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
 ```ts
 const participants = useRealtimeKitSelector((m) => m.participants);
@@ -55,16 +55,16 @@ type BroadcastMessageTarget =
 	| { meetingIds: string[] };
 ```
 
-| Param   | Type                         | Description                                                                          | Required |
-| ------- | ---------------------------- | ------------------------------------------------------------------------------------ | -------- |
-| type    | Exclude<string, 'spotlight'> | Message type identifier used to distinguish different kinds of broadcasts.           | Yes      |
-| payload | BroadcastMessagePayload      | Data sent with the message. Keys map to boolean, number, string, Date, or ActiveTab. | Yes      |
-| target  | BroadcastMessageTarget       | Optional target filter for which participants or meetings receive the message.       | No       |
+| Param | Type | Description | Required |
+| --- | --- | --- | --- |
+| `type` | `Exclude<string, 'spotlight'>` | Message type identifier used to distinguish different kinds of broadcasts. | Yes |
+| `payload` | `BroadcastMessagePayload` | Data sent with the message. Keys map to boolean, number, string, Date, or `ActiveTab`. | Yes |
+| `target` | `BroadcastMessageTarget` | Optional target filter for which participants or meetings receive the message. | No |
 
-* If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
-* If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
-* If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
-* If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
+- If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
+- If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
+- If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
+- If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
 ```ts
 meeting.participants.broadcastMessage(
@@ -85,16 +85,16 @@ type BroadcastMessageTarget =
 	| { meetingIds: string[] };
 ```
 
-| Param   | Type                         | Description                                                                          | Required |
-| ------- | ---------------------------- | ------------------------------------------------------------------------------------ | -------- |
-| type    | Exclude<string, 'spotlight'> | Message type identifier used to distinguish different kinds of broadcasts.           | Yes      |
-| payload | BroadcastMessagePayload      | Data sent with the message. Keys map to boolean, number, string, Date, or ActiveTab. | Yes      |
-| target  | BroadcastMessageTarget       | Optional target filter for which participants or meetings receive the message.       | No       |
+| Param | Type | Description | Required |
+| --- | --- | --- | --- |
+| `type` | `Exclude<string, 'spotlight'>` | Message type identifier used to distinguish different kinds of broadcasts. | Yes |
+| `payload` | `BroadcastMessagePayload` | Data sent with the message. Keys map to boolean, number, string, Date, or `ActiveTab`. | Yes |
+| `target` | `BroadcastMessageTarget` | Optional target filter for which participants or meetings receive the message. | No |
 
-* If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
-* If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
-* If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
-* If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
+- If target is omitted, the message is broadcast to all participants in the current meeting, including the local participant.
+- If `target.participantIds` is provided, the message is sent only to those participants in the current meeting.
+- If `target.presetNames` is provided, the message is sent to all participants whose preset name is in the list.
+- If `target.meetingIds` is provided, the message is broadcast to all specified meetings (multi‑meeting broadcast).
 
 ```ts
 meeting.participants.broadcastMessage(
@@ -146,10 +146,10 @@ meeting.participants.on(
 
 ### Rate Limiting & Constraints
 
-* The method is rate‑limited (server‑side + client‑side) to prevent abuse.
-* Default client‑side config in the deprecated module: maxInvocations = 5 per period = 1s.
-* The Participants module exposes a `rateLimitConfig` and `updateRateLimits(maxInvocations, period)` for tuning on the client, but server‑side limits may still apply.
-* The event type cannot be `spotlight`. This is reserved for internal use by the SDK.
+- The method is rate‑limited (server‑side + client‑side) to prevent abuse.
+- Default client‑side config in the deprecated module: maxInvocations = 5 per period = 1s.
+- The Participants module exposes a `rateLimitConfig` and `updateRateLimits(maxInvocations, period)` for tuning on the client, but server‑side limits may still apply.
+- The event type cannot be `spotlight`. This is reserved for internal use by the SDK.
 
 ### Examples
 

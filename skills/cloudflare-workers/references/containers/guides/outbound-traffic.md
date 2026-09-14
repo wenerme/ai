@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Handle outbound traffic
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/guides/outbound-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
 Use them to:
 
-* Allow or deny specific origin destinations
-* Safely inject authorization headers or tokens
-* Transparently reroute traffic
-* Add custom policy on outbound traffic (such as denying specific HTTP requests)
-* [Connect to Workers bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/) like KV, R2, and Durable Objects
+- Allow or deny specific origin destinations
+- Safely inject authorization headers or tokens
+- Transparently reroute traffic
+- Add custom policy on outbound traffic (such as denying specific HTTP requests)
+- [Connect to Workers bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/) like KV, R2, and Durable Objects
 
 ## Block outbound traffic
 
@@ -155,9 +155,9 @@ MyContainer.outboundByHost = {
 
 This is especially useful for agentic workloads where you cannot fully trust the code running inside the container. With this pattern:
 
-* **No token is exposed to the container.** The secret lives in the Worker's environment and is never passed into the sandbox.
-* **No token rotation inside the container.** Rotate the secret in your Worker's environment and every request picks it up immediately.
-* **Per-host and per-instance rules.** Combine `outboundByHost` with `ctx.containerId` to scope credentials or permissions to a specific container instance.
+- **No token is exposed to the container.** The secret lives in the Worker's environment and is never passed into the sandbox.
+- **No token rotation inside the container.** Rotate the secret in your Worker's environment and every request picks it up immediately.
+- **Per-host and per-instance rules.** Combine `outboundByHost` with `ctx.containerId` to scope credentials or permissions to a specific container instance.
 
 Here, `ctx.containerId` looks up a per-instance key from KV:
 
@@ -396,10 +396,10 @@ The `Container` class calls these methods automatically when you use the functio
 
 ## Related resources
 
-* [Connect to Workers bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/) — Access KV, R2, Durable Objects, and other bindings from a container
-* [Control outbound traffic (Sandboxes)](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) — Sandbox SDK API for outbound handlers
-* [Environment variables and secrets](https://developers.cloudflare.com/containers/configuration/environment-variables/) — Configure secrets and environment variables
-* [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
+- [Connect to Workers bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/) — Access KV, R2, Durable Objects, and other bindings from a container
+- [Control outbound traffic (Sandboxes)](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) — Sandbox SDK API for outbound handlers
+- [Environment variables and secrets](https://developers.cloudflare.com/containers/configuration/environment-variables/) — Configure secrets and environment variables
+- [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
 
 Was this helpful?
 

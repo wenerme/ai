@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Bindings
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Workers
 
@@ -55,14 +55,12 @@ const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
 
 **Parameters**
 
-* `model` `string` required
+- `model` `string` required
+  - The model to run.
 
-  * The model to run.
-
-**Supported options**
-
-  * `stream` `boolean` optional
-    * Returns a stream of results as they are available.
+  **Supported options**
+  - `stream` `boolean` optional
+    - Returns a stream of results as they are available.
 
 ```javascript
 const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {

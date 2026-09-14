@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream Live WebRTC is going GA:
 
 Billing for WebRTC delivery will begin on October 15th, 2026.
 
-* [Upload your first video](https://developers.cloudflare.com/stream/get-started#upload-your-first-video)
-* [Start your first live stream](https://developers.cloudflare.com/stream/get-started#start-your-first-live-stream)
+- [Upload your first video](https://developers.cloudflare.com/stream/get-started#upload-your-first-video)
+- [Start your first live stream](https://developers.cloudflare.com/stream/get-started#start-your-first-live-stream)
 
 ## Upload your first video
 
@@ -27,7 +27,7 @@ Billing for WebRTC delivery will begin on October 15th, 2026.
 
 You can upload videos using the API or directly on the **Stream** page of the Cloudflare dashboard.
 
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 For a list of accepted file types, refer to [Supported video formats](https://developers.cloudflare.com/stream/uploading-videos/#supported-video-formats).
 
@@ -91,11 +91,15 @@ Because Stream must download and process the video, the video might not be avail
 
 Use the video UID from the first step to poll the video:
 
+*Requestbash*
+
 ```bash
 curl \
 -H "Authorization: Bearer <API_TOKEN>" \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -140,12 +144,12 @@ To play video on your website with the [Stream Player](https://developers.cloudf
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.
 
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 ### Next steps
 
-* [Edit your video](https://developers.cloudflare.com/stream/edit-videos/) and add captions or watermarks
-* [Customize the Stream player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/)
+- [Edit your video](https://developers.cloudflare.com/stream/edit-videos/) and add captions or watermarks
+- [Customize the Stream player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/)
 
 ## Start your first live stream
 
@@ -153,7 +157,7 @@ The embed code above can also be found on the **Stream** page of the Cloudflare 
 
 You can create a live input using the API or the **Live inputs** page of the Cloudflare dashboard.
 
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 
 To use the API, replace the `API_TOKEN` and `ACCOUNT_ID` values with your credentials in the example below.
 
@@ -176,6 +180,8 @@ const liveInput = await client.stream.liveInputs.create({
 	recording: { mode: 'automatic' },
 });
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -223,12 +229,12 @@ To play the live stream you just started on your website with the [Stream Player
 
 The embed code above can also be found on the **Stream** page of the Cloudflare dashboard.
 
-[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 ### Next steps
 
-* [Secure your stream](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)
-* [View live viewer counts](https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/)
+- [Secure your stream](https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/)
+- [View live viewer counts](https://developers.cloudflare.com/stream/getting-analytics/live-viewer-count/)
 
 ## Accessibility considerations
 

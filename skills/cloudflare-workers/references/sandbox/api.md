@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API reference
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -48,7 +48,7 @@ Expose services running in the sandbox via preview URLs. Access web servers and 
 
 ### [Tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/)
 
-Expose services on zero-config `*.trycloudflare.com` URLs via `sandbox.tunnels.get(port)`. Best for quick development and `.workers.dev`deployments.
+Expose services on zero-config `*.trycloudflare.com` URLs via `sandbox.tunnels.get(port)`. Best for quick development and `.workers.dev` deployments.
 
 ### [Storage](https://developers.cloudflare.com/sandbox/api/storage/)
 

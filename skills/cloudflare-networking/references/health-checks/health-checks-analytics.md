@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health Checks Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/health-checks-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/health-checks-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -22,17 +22,16 @@ Once you have set up a standalone Health Check including notification emails, us
 
 To access health check analytics:
 
-1. In the Cloudflare dashboard, go to the **Health Check Analytics** page.
-[Go to **Health Check Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
+1. In the Cloudflare dashboard, go to the **Health Check Analytics** page. [Go to **Health Check Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/health-check-analytics)
 
 You can evaluate origin uptime, latency, failure reason, and specific event logs:
 
-* **Health Checks By Uptime**: Shows the percentage of uptime for individual origins over time.
-* **Health Checks By Failure Reason**: Shows a breakdown of failures by the specific reason. Refer to [common error code causes and solutions below](#common-error-codes).
-* **Health Checks By Latency**: Shows average latency – measured in round trip time — for individual origins over time.
-* **Event Log**: Shows individual health check data.
-  * Select each record for additional details on **Round trip time**, the **Failure Reason**, the **Average Waterfall** (showing chronological data about request stages), **Response status code**, and more.
-  * Note that **Global** is not a configured region; it represents the aggregated data from all enabled regions.
+- **Health Checks By Uptime**: Shows the percentage of uptime for individual origins over time.
+- **Health Checks By Failure Reason**: Shows a breakdown of failures by the specific reason. Refer to [common error code causes and solutions below](#common-error-codes).
+- **Health Checks By Latency**: Shows average latency – measured in round trip time — for individual origins over time.
+- **Event Log**: Shows individual health check data.
+  - Select each record for additional details on **Round trip time**, the **Failure Reason**, the **Average Waterfall** (showing chronological data about request stages), **Response status code**, and more.
+  - Note that **Global** is not a configured region; it represents the aggregated data from all enabled regions.
 
 ## Common error codes
 
@@ -222,25 +221,34 @@ Contact [Cloudflare support](https://developers.cloudflare.com/support/contactin
 
 You can configure alerts to notify you of any changes in your health check status.
 
+<details>
+
+<summary>
+
 Health Checks status notification
+
+</summary>
 
 **Who is it for?**
 
-Customers who want to be warned about changes to server health as determined by [health checks](https://developers.cloudflare.com/health-checks/).
+Customers who want to be warned about changes to server health as determined by <a href="https://developers.cloudflare.com/health-checks/">health checks</a>.
 
 **Other options / filters**
 
 Available filters include:
 
-* You can search for and add health checks from your list of health checks.
-* You can choose a trigger to fire the notification when your server becomes **unhealthy**, **healthy**, or **either healthy or unhealthy**.
+- You can search for and add health checks from your list of health checks.
+- You can choose a trigger to fire the notification when your server becomes **unhealthy**, **healthy**, or **either healthy or unhealthy**.
+
 **Included with**
 
 Professional plans or higher.
 
 **What should you do if you receive one?**
 
-Review your [health check analytics](https://developers.cloudflare.com/health-checks/health-checks-analytics/#common-error-codes).
+Review your <a href="https://developers.cloudflare.com/health-checks/health-checks-analytics/#common-error-codes">health check analytics</a>.
+
+</details>
 
 Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notifications/get-started/) for more information on how to set up an alert.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrations
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/reference/migrations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/migrations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Database migrations are a way of versioning your database. Each migration is stored as an `.sql` file in your `migrations` folder. The `migrations` folder is created in your project directory when you create your first migration. This enables you to store and track changes throughout database development.
 
@@ -20,9 +20,9 @@ Database migrations are a way of versioning your database. Each migration is sto
 
 Currently, the migrations system aims to be simple yet effective. With the current implementation, you can:
 
-* [Create](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-create) an empty migration file.
-* [List](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-list) unapplied migrations.
-* [Apply](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-apply) remaining migrations.
+- [Create](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-create) an empty migration file.
+- [List](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-list) unapplied migrations.
+- [Apply](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-migrations-apply) remaining migrations.
 
 Every migration file in the `migrations` folder has a specified version number in the filename. Files are listed in sequential order. Every migration file is an SQL file where you can specify queries to be run.
 
@@ -94,9 +94,9 @@ migrations_pattern = "migrations/*/migration.sql"
 
 Rules for `migrations_pattern`:
 
-* When set, `migrations_dir` must also be set.
-* The pattern must start with whatever `migrations_dir` is set to.
-* Each migration's name is recorded in the migrations table as the path relative to `migrations_dir` (for example, `0001_init/migration.sql`). This keeps the table portable across machines.
+- When set, `migrations_dir` must also be set.
+- The pattern must start with whatever `migrations_dir` is set to.
+- Each migration's name is recorded in the migrations table as the path relative to `migrations_dir` (for example, `0001_init/migration.sql`). This keeps the table portable across machines.
 
 The pattern is a standard glob — `*` matches one path segment, `**` matches any number of segments. `migrations/**/*.sql` will pick up arbitrarily deep `.sql` files.
 

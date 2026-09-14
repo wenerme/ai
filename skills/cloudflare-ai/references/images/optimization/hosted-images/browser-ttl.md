@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser TTL
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser TTL controls how long an image stays in a browser's cache and specifically configures the `cache-control` response header.
 
@@ -28,6 +28,8 @@ You can use two custom settings to control the Browser TTL, an account or a name
 
 Setting the Browser TTL per account overrides the default TTL.
 
+*Examplebash*
+
 ```bash
 curl --request PATCH 'https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/config' \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -42,6 +44,8 @@ When the Browser TTL is set to one year for all images, the response for the `ca
 ### Browser TTL for a named variant
 
 Setting the Browser TTL for a named variant is a more granular option that overrides all of the above when creating or updating an image variant, specifically the `browser_ttl` option in seconds.
+
+*Examplebash*
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_TAG>/images/v1/variants' \

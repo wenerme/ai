@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkParticipantAudioIndicator
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/participant-audio-indicator/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/participant-audio-indicator/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An audio visualizer component which visualizes a participant's audio.
 
 ## Methods
 
-| Method   | Parameters                         | Description                                  |
-| -------- | ---------------------------------- | -------------------------------------------- |
-| activate | participant: RtkMeetingParticipant | Bind the indicator to a participant          |
-| refresh  | \-                                 | Force a refresh of the audio indicator state |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `activate` | `participant: RtkMeetingParticipant` | Bind the indicator to a participant |
+| `refresh` | - | Force a refresh of the audio indicator state |
 
 ## Usage Examples
 

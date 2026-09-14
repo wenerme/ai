@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create different resources using Pulumi and Wrangler
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example creates a zone and other resources using two different strategies:
 
-* Use Pulumi for some resources supported by the Cloudflare Pulumi provider.
-* Use Wrangler to create other types of resources.
+- Use Pulumi for some resources supported by the Cloudflare Pulumi provider.
+- Use Wrangler to create other types of resources.
 
 The example code covers the creation of resources such as Workers, Zero Trust Applications, Zero Trust Policies, and D1 databases.
 

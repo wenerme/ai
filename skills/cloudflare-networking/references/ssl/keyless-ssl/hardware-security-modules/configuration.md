@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Important
 
@@ -45,9 +45,9 @@ The URI path component contains attributes that identify a resource. The query c
 
 Keyless requires the following three attributes be specified:
 
-* **Module**: use `module-path` to locate the PKCS#11 module library.
-* **Token**: use `serial`, `slot-id`, or `token` to specify the PKCS#11 token.
-* **Slot**: use `id` or `object` to specify the PKCS#11 key pair.
+- **Module**: use `module-path` to locate the PKCS#11 module library.
+- **Token**: use `serial`, `slot-id`, or `token` to specify the PKCS#11 token.
+- **Slot**: use `id` or `object` to specify the PKCS#11 key pair.
 
 For certain modules, a query attribute `max-sessions` is required in order to prevent opening too many sessions to the module. Certain additional attributes, such as `pin-value`, may be necessary depending on the situation. Refer to the documentation for your PKCS#11 module for more details.
 

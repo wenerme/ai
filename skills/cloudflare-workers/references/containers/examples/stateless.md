@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Run multiple instances across Cloudflare's network
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/examples/stateless/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/stateless/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To simply proxy requests to one of multiple instances of a container, you can use the `getRandom` function:
 

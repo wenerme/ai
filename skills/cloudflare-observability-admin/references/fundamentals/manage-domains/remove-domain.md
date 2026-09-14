@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remove a domain
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/remove-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following sections on how you can remove domains from Cloudflare. Removing your domain cancels all active subscriptions on that domain, which will not be refunded per our [billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/). If you add this domain back to Cloudflare later, you will need to re-purchase all subscriptions. Removing your domain from Cloudflare does not change your domain registration.
 
@@ -30,31 +30,30 @@ If you have just added a domain and have not configured its plan yet, the domain
 
 ### Actions outside of Cloudflare
 
-* When you remove a domain from Cloudflare, it also prevents your domain from using Cloudflare for DNS resolution. To avoid DNS errors, update your nameservers at your domain registrar to use nameservers not owned by Cloudflare.
-
-  * Refer to [Check if your nameservers are pointing to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes) to confirm that your nameservers no longer point to Cloudflare.
-* At your registrar, make sure you do not have a **DS** DNS record. This record enables [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) and could prevent your DNS records from being changed.
+- When you remove a domain from Cloudflare, it also prevents your domain from using Cloudflare for DNS resolution. To avoid DNS errors, update your nameservers at your domain registrar to use nameservers not owned by Cloudflare.
+  - Refer to [Check if your nameservers are pointing to Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#35-verify-changes) to confirm that your nameservers no longer point to Cloudflare.
+- At your registrar, make sure you do not have a **DS** DNS record. This record enables [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) and could prevent your DNS records from being changed.
 
 ### Actions within Cloudflare
 
-* [Cancel active add-on subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
-* [Delete all the Logpush jobs for that domain](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#optional---delete-a-job)
-* If you use Cloudflare Registrar:
-
-  * [Disable domain auto-renewal](https://developers.cloudflare.com/registrar/account-options/renew-domains/) or [transfer your domain out of Cloudflare](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/).
-  * If the domain has already expired, it will be automatically removed from your account. Refer to [What happens when a domain expires?](https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires)
-  * If the domain has not yet expired you can likely request deletion. Refer to [Delete a domain registration](https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration)
-  * If enabled, disable DNSSEC. In your domain dashboard, go to **DNS** \> **Settings**. Within **DNSSEC**, select **Disable DNSSEC**. Select **Confirm**.
+- [Cancel active add-on subscriptions](https://developers.cloudflare.com/billing/manage/cancel-subscription/).
+- [Delete all the Logpush jobs for that domain](https://developers.cloudflare.com/logs/logpush/examples/example-logpush-curl/#optional---delete-a-job)
+- If you use Cloudflare Registrar:
+  - [Disable domain auto-renewal](https://developers.cloudflare.com/registrar/account-options/renew-domains/) or [transfer your domain out of Cloudflare](https://developers.cloudflare.com/registrar/account-options/transfer-out-from-cloudflare/).
+  - If the domain has already expired, it will be automatically removed from your account. Refer to [What happens when a domain expires?](https://developers.cloudflare.com/registrar/faq/#what-happens-when-a-domain-expires)
+  - If the domain has not yet expired you can likely request deletion. Refer to [Delete a domain registration](https://developers.cloudflare.com/registrar/account-options/domain-management/#delete-a-domain-registration)
+  - If enabled, disable DNSSEC. In your domain dashboard, go to **DNS** > **Settings**. Within **DNSSEC**, select **Disable DNSSEC**. Select **Confirm**.
 
 ## Remove a domain activated in Cloudflare
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your domain.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your domain. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 2. On the domain **Overview** page, find **Advanced Actions** and then select **Remove from Cloudflare**.
-Note
-If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove from Cloudflare**.
 
-If this does not work, contact your account team.
+   Note
+
+   If you are using an Enterprise domain, [change your domain plan](https://developers.cloudflare.com/billing/manage/change-plan/#change-plan-type) to **Free**, which will give you access to **Remove from Cloudflare**.
+
+   If this does not work, contact your account team.
 3. Select **Confirm**.
 
 Was this helpful?

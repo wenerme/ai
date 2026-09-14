@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Automatic pull requests
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds can automatically create pull requests in your repository to configure your project or resolve deployment issues.
 
@@ -34,21 +34,21 @@ Without the configuration in your repository, every build has to run autoconfig 
 
 The configuration PR may contain changes to the following files, depending on your framework:
 
-* **`wrangler.jsonc`** \- Wrangler configuration file with your Worker settings
-* **Framework adapter** \- Any required Cloudflare adapter for your framework (for example, `@astrojs/cloudflare` for Astro)
-* **Framework configuration** \- Updates to framework config files (for example, `astro.config.mjs` for Astro or `svelte.config.js` for SvelteKit)
-* **`package.json`** \- New scripts like `deploy`, `preview`, and `cf-typegen`, plus required dependencies
-* **`package-lock.json`** / **`yarn.lock`** / **`pnpm-lock.yaml`** \- Updated lock file with new dependencies
-* **`.gitignore`** \- Entries for `.wrangler` and `.dev.vars*` files
-* **`.assetsignore`** \- For frameworks that generate worker files in the output directory
+- **`wrangler.jsonc`** - Wrangler configuration file with your Worker settings
+- **Framework adapter** - Any required Cloudflare adapter for your framework (for example, `@astrojs/cloudflare` for Astro)
+- **Framework configuration** - Updates to framework config files (for example, `astro.config.mjs` for Astro or `svelte.config.js` for SvelteKit)
+- **`package.json`** - New scripts like `deploy`, `preview`, and `cf-typegen`, plus required dependencies
+- **`package-lock.json`** / **`yarn.lock`** / **`pnpm-lock.yaml`** - Updated lock file with new dependencies
+- **`.gitignore`** - Entries for `.wrangler` and `.dev.vars*` files
+- **`.assetsignore`** - For frameworks that generate worker files in the output directory
 
 ### PR description
 
 The PR description includes:
 
-* **Detected settings** \- Framework, build command, deploy command, and version command
-* **Preview link** \- A working preview generated using the detected settings
-* **Next steps** \- Links to documentation for adding bindings, custom domains, and more
+- **Detected settings** - Framework, build command, deploy command, and version command
+- **Preview link** - A working preview generated using the detected settings
+- **Next steps** - Links to documentation for adding bindings, custom domains, and more
 
 Note
 
@@ -60,9 +60,9 @@ If Workers Builds detects a mismatch between your Worker name in the Cloudflare 
 
 This can happen when:
 
-* You rename your Worker in the dashboard but not in your config file
-* You connect a repository that was previously used with a different Worker
-* The `name` field in your config does not match the connected Worker
+- You rename your Worker in the dashboard but not in your config file
+- You connect a repository that was previously used with a different Worker
+- The `name` field in your config does not match the connected Worker
 
 The PR will update the `name` field in your Wrangler configuration to match the Worker name in the dashboard.
 
@@ -72,9 +72,9 @@ For more details, refer to the [name conflict changelog](https://developers.clou
 
 When you receive a PR from Workers Builds:
 
-1. **Review the changes** \- Check that the configuration matches your project requirements
-2. **Test the preview** \- Use the preview link in the PR description to verify everything works
-3. **Merge when ready** \- Once satisfied, merge the PR to enable faster deployments
+1. **Review the changes** - Check that the configuration matches your project requirements
+2. **Test the preview** - Use the preview link in the PR description to verify everything works
+3. **Merge when ready** - Once satisfied, merge the PR to enable faster deployments
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Zaraz
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Offload third-party tools and services to the cloud and improve the speed and security of your website.
 

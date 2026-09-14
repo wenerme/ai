@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Useful terms
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review terminology for Cloudflare Tunnels.
 
@@ -40,9 +40,9 @@ A replica is an additional instance of `cloudflared` running the same tunnel on 
 
 ## Remotely-managed tunnel
 
-A remotely-managed tunnel is a [tunnel](#tunnel) that was created in the Cloudflare dashboard under **Networking** \> **Tunnels**. Tunnel configuration is stored in Cloudflare, which allows you to manage the tunnel from the dashboard or using the [API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/tunnels/subresources/cloudflared/subresources/configurations/methods/get/).
+A remotely-managed tunnel is a [tunnel](#tunnel) that was created in the Cloudflare dashboard under **Networking** > **Tunnels**. Tunnel configuration is stored in Cloudflare, which allows you to manage the tunnel from the dashboard or using the [API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/cloudflared/subresources/configurations/methods/get/).
 
-[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
 ## Locally-managed tunnel
 

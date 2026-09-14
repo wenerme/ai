@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)
-* [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
-* [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
+- [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/)
+- [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/)
+- [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/)
 
 Was this helpful?
 

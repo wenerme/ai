@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Role scopes
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/scope/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/scope/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Scopes are one of three constituent parts of a policy that allows granting of access to users.
 
 To allow for flexible combinations of access to users, Cloudflare currently has account-level scopes, domain scopes, and resource-specific scopes. Each scope is associated with a different set of [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/).
 
-* **Account scope:** Use when the member needs access across the entire account, for example, billing or account-level settings.
-* **Specific domains:** Use when the member should only manage certain domains, for example, a developer who works on staging domains but should not modify production.
-* **Domain groups:** Use when you have related domains that share the same access needs, for example, all production domains.
-* **Specific resources:** Use when access should be limited to individual resources.
+- **Account scope:** Use when the member needs access across the entire account, for example, billing or account-level settings.
+- **Specific domains:** Use when the member should only manage certain domains, for example, a developer who works on staging domains but should not modify production.
+- **Domain groups:** Use when you have related domains that share the same access needs, for example, all production domains.
+- **Specific resources:** Use when access should be limited to individual resources.
 
 ---
 
@@ -35,10 +35,10 @@ You can choose the scope of a policy when you [add a member](https://developers.
 
 If you want the member to have a policy that applies across your account, use the following combination of fields.
 
-| Field    | Value         |
-| -------- | ------------- |
-| Operator | _Include_     |
-| Type     | _All domains_ |
+| Field | Value |
+| --- | --- |
+| Operator | *Include* |
+| Type | *All domains* |
 
 Note
 
@@ -48,11 +48,11 @@ You can only assign [account-scoped roles](https://developers.cloudflare.com/fun
 
 If you want the member to have a policy that applies to a specific domain, use the following combination of fields. When applying these roles to this policy, only domain-scoped roles can be used.
 
-| Field    | Value               |
-| -------- | ------------------- |
-| Operator | _Include_           |
-| Type     | _A specific domain_ |
-| Name     | _A specific domain_ |
+| Field | Value |
+| --- | --- |
+| Operator | *Include* |
+| Type | *A specific domain* |
+| Name | *A specific domain* |
 
 ### Domain groups
 
@@ -62,14 +62,12 @@ If you have a set of domains that are all categorized similarly (e.g. all of you
 
 To create a domain group:
 
-1. In the Cloudflare dashboard, go to the **Settings** \> **Lists** page. (You must be logged in as a **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/)).
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to the **Settings** > **Lists** page. (You must be logged in as a **Super Administrator** and have a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/)). [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. For **Domain Group Manager**, select **Create**.
 3. Create your domain group:
-
-  1. Select the domains to include.
-  2. Add a **Name**.
-  3. Select **Create**.
+   1. Select the domains to include.
+   2. Add a **Name**.
+   3. Select **Create**.
 
 You can also edit and delete these groups as needed.
 
@@ -77,11 +75,11 @@ You can also edit and delete these groups as needed.
 
 To assign a member permissions to a domain group, use the following combination of fields:
 
-| Field    | Value           |
-| -------- | --------------- |
-| Operator | _Include_       |
-| Type     | _Domain Group_  |
-| Name     | _Example Group_ |
+| Field | Value |
+| --- | --- |
+| Operator | *Include* |
+| Type | *Domain Group* |
+| Name | *Example Group* |
 
 Note
 
@@ -91,26 +89,26 @@ With Domain Groups, you can only assign [domain-scoped roles](https://developers
 
 If you want the member to have a policy that applies to a specific resource, use the following combination of fields.
 
-| Field    | Value               |
-| -------- | ------------------- |
-| Operator | _Include_           |
-| Type     | _Granular_          |
-| Product  | _Product Name_      |
-| Resource | _Specific Resource_ |
+| Field | Value |
+| --- | --- |
+| Operator | *Include* |
+| Type | *Granular* |
+| Product | *Product Name* |
+| Resource | *Specific Resource* |
 
 #### Available scopes
 
 You can assign the following resource-specific scopes to members:
 
-| Scope                                       | Description                                                                                                                                                                        |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Individual Access applications              | Grant access to manage a specific [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/).                                            |
-| Individual Access identity providers (IdPs) | Grant access to manage a specific [Cloudflare One identity provider (IdP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).                     |
-| Individual Access policies                  | Grant access to manage a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).                                                     |
-| Individual Access service tokens            | Grant access to manage a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).                    |
-| Individual Access infrastructure targets    | Grant access to manage a specific [Access for Infrastructure target](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/). |
-| Individual Cloudflare Tunnel instances      | Grant access to manage a specific [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instance.                                                                         |
-| Individual Cloudflare Mesh nodes            | Grant access to manage a specific [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node.                                   |
+| Scope | Description |
+| --- | --- |
+| Individual Access applications | Grant access to manage a specific [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/). |
+| Individual Access identity providers (IdPs) | Grant access to manage a specific [Cloudflare One identity provider (IdP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/). |
+| Individual Access policies | Grant access to manage a specific [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). |
+| Individual Access service tokens | Grant access to manage a specific [Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/). |
+| Individual Access infrastructure targets | Grant access to manage a specific [Access for Infrastructure target](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/). |
+| Individual Cloudflare Tunnel instances | Grant access to manage a specific [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) instance. |
+| Individual Cloudflare Mesh nodes | Grant access to manage a specific [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node. |
 
 Note
 

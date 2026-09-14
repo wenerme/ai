@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced TCP Protection
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's Advanced TCP Protection, powered by [flowtrackd ↗](https://blog.cloudflare.com/announcing-flowtrackd/), is a stateful TCP inspection engine used to detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods or SYN and SYN-ACK floods.
+Cloudflare's Advanced TCP Protection, powered by [`flowtrackd` ↗](https://blog.cloudflare.com/announcing-flowtrackd/), is a stateful TCP inspection engine used to detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods or SYN and SYN-ACK floods.
 
 Note
 
@@ -26,15 +26,15 @@ Magic Transit customers can also enable the Advanced DDoS systems when the prefi
 
 Advanced TCP Protection can simultaneously protect against different kinds of attacks:
 
-* Pinpointed attacks targeting a specific destination IP/port combination.
-* Broad attacks targeting multiple IP addresses of an IP prefix at the same time.
+- Pinpointed attacks targeting a specific destination IP/port combination.
+- Broad attacks targeting multiple IP addresses of an IP prefix at the same time.
 
 Advanced TCP Protection can track TCP connections even when they move between Cloudflare data centers.
 
 The feature offers two types of protection:
 
-* [SYN Flood Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#syn-flood-protection): Protects against attacks such as fully randomized SYN and SYN-ACK floods.
-* [Out-of-state TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#out-of-state-tcp-protection): Protects against out-of-state TCP DDoS attacks such as fully randomized ACK floods and RST floods.
+- [SYN Flood Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#syn-flood-protection): Protects against attacks such as fully randomized SYN and SYN-ACK floods.
+- [Out-of-state TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/#out-of-state-tcp-protection): Protects against out-of-state TCP DDoS attacks such as fully randomized ACK floods and RST floods.
 
 Each protection type is configured independently using rules and (optionally) filters. You should configure at least one rule for each type of protection before enabling Advanced TCP Protection.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WAF changelog overview
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/change-log/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [WAF changelog](https://developers.cloudflare.com/waf/change-log/changelog/) provides information about changes to [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/) and general updates to WAF protection.
 
@@ -26,9 +26,9 @@ Cloudflare regularly releases updates and adds new rules to WAF [managed ruleset
 
 New and updated rules follow a seven-day release cycle, typically on Monday or Tuesday (adjusted for public holidays).
 
-**Week 1 — Logging only:** Cloudflare deploys new or updated rules in logging-only mode with the _Log_ action. Rules in this mode record matching requests but do not block traffic. Most newly created rules carry both the `beta` and `new` tags. Use this period to review your security events for unexpected matches that could be false positives.
+**Week 1 — Logging only:** Cloudflare deploys new or updated rules in logging-only mode with the *Log* action. Rules in this mode record matching requests but do not block traffic. Most newly created rules carry both the `beta` and `new` tags. Use this period to review your security events for unexpected matches that could be false positives.
 
-**Week 2 — Default action:** On the following release day, the rules change from the _Log_ action to their intended default action (shown in the **New Action** column of the changelog table). The `beta` and `new` tags are removed.
+**Week 2 — Default action:** On the following release day, the rules change from the *Log* action to their intended default action (shown in the **New Action** column of the changelog table). The `beta` and `new` tags are removed.
 
 Note
 

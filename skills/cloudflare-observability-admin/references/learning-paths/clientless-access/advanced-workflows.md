@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced workflows
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/advanced-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure advanced Access policies to meet the specific requirements of your application or organization.
 
@@ -20,10 +20,10 @@ Configure advanced Access policies to meet the specific requirements of your app
 
 By the end of this module, you will be able to:
 
-* Check identity-based attributes that are not directly supported by the Access policy builder.
-* Deliver sensitive web applications in an isolated browser.
-* Apply Gateway HTTP policies without a device client.
-* Connect to applications using their private hostnames without a device client.
+- Check identity-based attributes that are not directly supported by the Access policy builder.
+- Deliver sensitive web applications in an isolated browser.
+- Apply Gateway HTTP policies without a device client.
+- Connect to applications using their private hostnames without a device client.
 
 Was this helpful?
 

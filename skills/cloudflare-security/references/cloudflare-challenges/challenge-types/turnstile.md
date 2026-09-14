@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Turnstile
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/turnstile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Turnstile](https://developers.cloudflare.com/turnstile/) is Cloudflare's CAPTCHA-alternative solution. You can embed Turnstile as a widget on your website or application, where it runs a client-side challenge directly in the background of the visitor's browser.
 
@@ -32,11 +32,13 @@ You **must** call Siteverify to complete your Turnstile configuration. Otherwise
 
 While there are three types of widgets that you can choose to implement on your website or application, the challenge logic behind them remains the same.
 
-* **Managed (recommended)**: Functions similar to a Managed Challenge Page. It selects a challenge based on the signals gathered from the visitor's browser and presents an interaction only if it detects potentially automated traffic.
-* **Non-Interactive**: The widget is displayed, but the visitor does not need to interact with it to verify their identity.
-* **Invisible**: The widget is completely invisible to the visitor, but the challenge still runs in the background.
-Link to Cloudflare's Turnstile Privacy Policy
-As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
+- **Managed (recommended)**: Functions similar to a Managed Challenge Page. It selects a challenge based on the signals gathered from the visitor's browser and presents an interaction only if it detects potentially automated traffic.
+- **Non-Interactive**: The widget is displayed, but the visitor does not need to interact with it to verify their identity.
+- **Invisible**: The widget is completely invisible to the visitor, but the challenge still runs in the background.
+
+  Link to Cloudflare's Turnstile Privacy Policy
+
+  As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
 
 ## Implementation
 

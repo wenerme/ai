@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dedicated Egress IP for Logpush
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) and Logpush configuration and testing instructions to enable log delivery with a fixed, dedicated egress IP.
 
@@ -28,24 +28,36 @@ It is recommended to use a separate, dedicated zone as a proxy to avoid impactin
 
 The following example shows how to set up logpush and Dedicated CDN Egress IPs to proxy an HTTPS destination, but the proxying should work for any supported Logpush destination as all destinations use the HTTP protocol underneath.
 
-## 1\. Provision dedicated egress IP Pool
+## 1. Provision dedicated egress IP Pool
 
 1. Work with your Cloudflare account team to purchase [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) for your zone.
 2. (Optional but recommended) Request two IPs — one in PDX-B and one in SJC-A — to ensure coverage across regions.
 3. Confirm Pool ID once provisioned.
 
-## 2\. Configure a zone
+## 2. Configure a zone
 
 1. Register or use an existing zone for the dedicated egress IPs pool.
 2. Contact your account team to get the ID for your dedicated egress IPs pool.
 3. Make a `PATCH` request to the [Edit Zone Setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint:
-* Specify `aegis` as the setting ID in the URL.
-* In the request body, set `enabled` to `true` and use the ID from the previous step as `pool_id`.
+
+- Specify `aegis` as the setting ID in the URL.
+- In the request body, set `enabled` to `true` and use the ID from the previous step as `pool_id`.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Edit zone settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
@@ -60,22 +72,28 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 	}'
 ```
 
-## 3\. Proxy zone setup
+## 3. Proxy zone setup
 
 1. In your zone, add a DNS record (CNAME or A/AAAA) with **Target** as HTTP destination endpoint.
-![Create a DNS record in the Cloudflare dashboard to define the HTTP destination endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1592,height=268,format=webp/_astro/endpoint.DmFFJC-j.png)
-1. If needed, configure [origin rules](https://developers.cloudflare.com/rules/origin-rules/) to specify a custom port. This is useful if your destination only accepts traffic on a non standard port, for example `12345`. You can configure `logpush.yourdestinationendpoint.com` (without specifying a port, as Cloudflare by default only proxies traffic on HTTP/HTTPS ports) to proxy to `yourdestinationendpoint.com:12345`.
 
-## 4\. Configure Logpush
+![Create a DNS record in the Cloudflare dashboard to define the HTTP destination endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1592,height=268,format=webp/_astro/endpoint.DmFFJC-j.png)
+
+2. If needed, configure [origin rules](https://developers.cloudflare.com/rules/origin-rules/) to specify a custom port. This is useful if your destination only accepts traffic on a non standard port, for example `12345`. You can configure `logpush.yourdestinationendpoint.com` (without specifying a port, as Cloudflare by default only proxies traffic on HTTP/HTTPS ports) to proxy to `yourdestinationendpoint.com:12345`.
+
+## 4. Configure Logpush
 
 1. Create a Logpush job with the following details:
-* Destination: HTTP
-* Endpoint: Use the domain/path set up (the Cloudflare dashboard will auto-validate the destination). Use the server name specified in the **Name** section in the DNS record. In this case, `logpush.yourdestionationendpoint.com`.
-![Enter destination details when creating a Logpush job in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1522,height=342,format=webp/_astro/destination-details.imLwZlEZ.png)
-* Configuration: Select dataset, job name, filters, and fields. Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more details.
-1. Check destination to confirm if the logs are received.
 
-## 5\. Secure your proxy zone endpoint
+- Destination: HTTP
+- Endpoint: Use the domain/path set up (the Cloudflare dashboard will auto-validate the destination). Use the server name specified in the **Name** section in the DNS record. In this case, `logpush.yourdestionationendpoint.com`.
+
+![Enter destination details when creating a Logpush job in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1522,height=342,format=webp/_astro/destination-details.imLwZlEZ.png)
+
+- Configuration: Select dataset, job name, filters, and fields. Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more details.
+
+2. Check destination to confirm if the logs are received.
+
+## 5. Secure your proxy zone endpoint
 
 The proxy zone hostname is publicly resolvable, but traffic passes through Cloudflare's edge where you can apply security controls. Use the following best practices to protect your endpoint.
 
@@ -95,23 +113,25 @@ Generate a strong random token using `openssl rand -hex 32`.
 
 **Create a WAF custom rule**
 
-In the proxy zone, go to **Security** \> **WAF** \> **Custom rules** and create a rule to block requests without the correct secret header.
+In the proxy zone, go to **Security** > **WAF** > **Custom rules** and create a rule to block requests without the correct secret header.
 
-* **Expression:**
-```txt
-(http.host eq "logpush.yourdestinationendpoint.com" and all(http.request.headers["x-logpush-secret"][*] ne "YOUR_RANDOM_SECRET_TOKEN"))
-```
-* **Action:** Block
+- **Expression:**
+
+  ```txt
+  (http.host eq "logpush.yourdestinationendpoint.com" and all(http.request.headers["x-logpush-secret"][*] ne "YOUR_RANDOM_SECRET_TOKEN"))
+  ```
+- **Action:** Block
 
 ### Add ASN-based filtering
 
 For defense in depth, add a rule to only allow traffic from Cloudflare's ASNs. Logpush traffic originates from Cloudflare's network (ASN 13335, 132892, or 202623).
 
-* **Expression:**
-```txt
-(http.host eq "logpush.yourdestinationendpoint.com" and not ip.geoip.asnum in {13335 132892 202623})
-```
-* **Action:** Block
+- **Expression:**
+
+  ```txt
+  (http.host eq "logpush.yourdestinationendpoint.com" and not ip.geoip.asnum in {13335 132892 202623})
+  ```
+- **Action:** Block
 
 Note
 

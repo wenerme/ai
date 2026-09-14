@@ -8,17 +8,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.version
 
-`http.request.version` `String`
+`http.request.version``String`
 
 The version of the HTTP protocol used. Use this field when different checks are needed for different versions.
 
 Example values:
 
-* `"HTTP/1.1"`
-* `"HTTP/3"`
+- `"HTTP/1.1"`
+- `"HTTP/3"`
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

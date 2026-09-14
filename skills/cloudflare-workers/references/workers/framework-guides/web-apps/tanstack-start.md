@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TanStack Start
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [TanStack Start ↗](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
 
@@ -98,83 +98,114 @@ pnpm run dev
 
 If you have an existing TanStack Start application, configure it to run on Cloudflare Workers:
 
-1. Install `@cloudflare/vite-plugin` and `wrangler`:
-npmyarnpnpmbun
-```
-npm i @cloudflare/vite-plugin wrangler -- -D
-```
-```
-yarn add @cloudflare/vite-plugin wrangler -D
-```
-```
-pnpm add @cloudflare/vite-plugin wrangler -D
-```
-```
-bun add @cloudflare/vite-plugin wrangler -D
-```
+1. Install `@cloudflare/vite-plugin` and `wrangler`:npmyarnpnpmbun
+
+   ```
+   npm i @cloudflare/vite-plugin wrangler -- -D
+   ```
+
+   ```
+   yarn add @cloudflare/vite-plugin wrangler -D
+   ```
+
+   ```
+   pnpm add @cloudflare/vite-plugin wrangler -D
+   ```
+
+   ```
+   bun add @cloudflare/vite-plugin wrangler -D
+   ```
+
+
 2. Add the Cloudflare plugin to your Vite configuration:
-```js
-import { defineConfig } from "vite";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
-import react from "@vitejs/plugin-react";
-export default defineConfig({
-	plugins: [
-		cloudflare({ viteEnvironment: { name: "ssr" } }),
-		tanstackStart(),
-		react(),
-	],
-});
-```
-```ts
-import { defineConfig } from "vite";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
-import react from "@vitejs/plugin-react";
-export default defineConfig({
-	plugins: [
-		cloudflare({ viteEnvironment: { name: "ssr" } }),
-		tanstackStart(),
-		react(),
-	],
-});
-```
+
+   *vite.config.jsjs*
+
+
+
+   ```js
+   import { defineConfig } from "vite";
+   import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+   import { cloudflare } from "@cloudflare/vite-plugin";
+   import react from "@vitejs/plugin-react";
+
+   export default defineConfig({
+   	plugins: [
+   		cloudflare({ viteEnvironment: { name: "ssr" } }),
+   		tanstackStart(),
+   		react(),
+   	],
+   });
+   ```
+
+   *vite.config.tsts*
+
+
+
+   ```ts
+   import { defineConfig } from "vite";
+   import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+   import { cloudflare } from "@cloudflare/vite-plugin";
+   import react from "@vitejs/plugin-react";
+
+   export default defineConfig({
+   	plugins: [
+   		cloudflare({ viteEnvironment: { name: "ssr" } }),
+   		tanstackStart(),
+   		react(),
+   	],
+   });
+   ```
+
+
 3. Add a `wrangler.jsonc` configuration file:
-```jsonc
-{
-	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "<YOUR_PROJECT_NAME>",
-	// Set this to today's date
-	"compatibility_date": "2026-09-05",
-	"compatibility_flags": ["nodejs_compat"],
-	"main": "@tanstack/react-start/server-entry",
-	"observability": {
-		"enabled": true,
-	},
-}
-```
-```toml
-"$schema" = "node_modules/wrangler/config-schema.json"
-name = "<YOUR_PROJECT_NAME>"
-# Set this to today's date
-compatibility_date = "2026-09-05"
-compatibility_flags = [ "nodejs_compat" ]
-main = "@tanstack/react-start/server-entry"
-[observability]
-enabled = true
-```
+
+   ```jsonc
+   {
+   	"$schema": "node_modules/wrangler/config-schema.json",
+   	"name": "<YOUR_PROJECT_NAME>",
+   	// Set this to today's date
+   	"compatibility_date": "2026-09-14",
+   	"compatibility_flags": ["nodejs_compat"],
+   	"main": "@tanstack/react-start/server-entry",
+   	"observability": {
+   		"enabled": true,
+   	},
+   }
+   ```
+
+   ```toml
+   "$schema" = "node_modules/wrangler/config-schema.json"
+   name = "<YOUR_PROJECT_NAME>"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+   compatibility_flags = [ "nodejs_compat" ]
+   main = "@tanstack/react-start/server-entry"
+
+   [observability]
+   enabled = true
+   ```
+
+
 4. Update the `scripts` section in `package.json`:
-```json
-{
-	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"deploy": "npm run build && wrangler deploy",
-		"cf-typegen": "wrangler types"
-	}
-}
-```
+
+   *package.jsonjson*
+
+
+
+   ```json
+   {
+   	"scripts": {
+   		"dev": "vite dev",
+   		"build": "vite build",
+   		"preview": "vite preview",
+   		"deploy": "npm run build && wrangler deploy",
+   		"cf-typegen": "wrangler types"
+   	}
+   }
+   ```
+
+
 
 ## Deploy
 
@@ -217,53 +248,77 @@ pnpm run preview
 TanStack Start uses `@tanstack/react-start/server-entry` as your default entrypoint. Create a custom server entrypoint to add additional Workers handlers such as [Queues](https://developers.cloudflare.com/queues/) and [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/). This is also where you can add additional exports such as [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workflows](https://developers.cloudflare.com/workflows/).
 
 1. Create a custom server entrypoint file:
-```js
-import handler from "@tanstack/react-start/server-entry";
-// Export Durable Objects as named exports
-export { MyDurableObject } from "./my-durable-object";
-export default {
-	fetch: handler.fetch,
-	// Handle Queue messages
-	async queue(batch, env, ctx) {
-		for (const message of batch.messages) {
-			console.log("Processing message:", message.body);
-			message.ack();
-		}
-	},
-	// Handle Cron Triggers
-	async scheduled(event, env, ctx) {
-		console.log("Cron triggered:", event.cron);
-	},
-};
-```
-```ts
-import handler from "@tanstack/react-start/server-entry";
-// Export Durable Objects as named exports
-export { MyDurableObject } from "./my-durable-object";
-export default {
-	fetch: handler.fetch,
-	// Handle Queue messages
-	async queue(batch, env, ctx) {
-		for (const message of batch.messages) {
-			console.log("Processing message:", message.body);
-			message.ack();
-		}
-	},
-	// Handle Cron Triggers
-	async scheduled(event, env, ctx) {
-		console.log("Cron triggered:", event.cron);
-	},
-};
-```
+
+   *src/server.jsjs*
+
+
+
+   ```js
+   import handler from "@tanstack/react-start/server-entry";
+
+   // Export Durable Objects as named exports
+   export { MyDurableObject } from "./my-durable-object";
+
+   export default {
+   	fetch: handler.fetch,
+
+   	// Handle Queue messages
+   	async queue(batch, env, ctx) {
+   		for (const message of batch.messages) {
+   			console.log("Processing message:", message.body);
+   			message.ack();
+   		}
+   	},
+
+   	// Handle Cron Triggers
+   	async scheduled(event, env, ctx) {
+   		console.log("Cron triggered:", event.cron);
+   	},
+   };
+   ```
+
+   *src/server.tsts*
+
+
+
+   ```ts
+   import handler from "@tanstack/react-start/server-entry";
+
+   // Export Durable Objects as named exports
+   export { MyDurableObject } from "./my-durable-object";
+
+   export default {
+   	fetch: handler.fetch,
+
+   	// Handle Queue messages
+   	async queue(batch, env, ctx) {
+   		for (const message of batch.messages) {
+   			console.log("Processing message:", message.body);
+   			message.ack();
+   		}
+   	},
+
+   	// Handle Cron Triggers
+   	async scheduled(event, env, ctx) {
+   		console.log("Cron triggered:", event.cron);
+   	},
+   };
+   ```
+
+
 2. Update your Wrangler configuration to point to your custom entrypoint:
-```jsonc
-{
-	"main": "src/server.ts",
-}
-```
-```toml
-main = "src/server.ts"
-```
+
+   ```jsonc
+   {
+   	"main": "src/server.ts",
+   }
+   ```
+
+   ```toml
+   main = "src/server.ts"
+   ```
+
+
 
 ### Test scheduled handlers locally
 
@@ -273,9 +328,17 @@ Test your scheduled handler locally using the `/cdn-cgi/local/scheduled` endpoin
 curl "http://localhost:3000/cdn-cgi/local/scheduled?cron=*+*+*+*+*"
 ```
 
+<details>
+
+<summary>
+
 Example: Using Workflows
 
+</summary>
+
 Export a Workflow class from your custom entrypoint to run durable, multi-step tasks:
+
+*app/server.jsjs*
 
 ```js
 import {
@@ -298,6 +361,8 @@ export class MyWorkflow extends WorkflowEntrypoint {
 	}
 }
 ```
+
+*app/server.tsts*
 
 ```ts
 import {
@@ -342,7 +407,15 @@ binding = "MY_WORKFLOW"
 class_name = "MyWorkflow"
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Using Service Bindings
+
+</summary>
 
 Add a service binding to call another Worker's RPC methods from your TanStack Start application:
 
@@ -365,6 +438,8 @@ service = "auth-worker"
 
 Call the bound Worker's methods from a server function:
 
+*app/routes/index.jsxjs*
+
 ```js
 import { createServerFn } from "@tanstack/react-start";
 import { env } from "cloudflare:workers";
@@ -376,6 +451,8 @@ const verifyUser = createServerFn()
 		return result;
 	});
 ```
+
+*app/routes/index.tsxts*
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -389,11 +466,15 @@ const verifyUser = createServerFn()
 	});
 ```
 
+</details>
+
 ## Bindings
 
 Your TanStack Start application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
 
-Access bindings by [importing the env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) in your server-side code:
+Access bindings by [importing the `env` object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#importing-env-as-a-global) in your server-side code:
+
+*app/routes/index.jsxjs*
 
 ```js
 import { createFileRoute } from "@tanstack/react-router";
@@ -414,6 +495,8 @@ function RouteComponent() {
 	// ...
 }
 ```
+
+*app/routes/index.tsxts*
 
 ```ts
 import { createFileRoute } from "@tanstack/react-router";
@@ -480,6 +563,8 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 Access the bucket in a server function:
 
+*app/routes/index.jsxjs*
+
 ```js
 import { createServerFn } from "@tanstack/react-start";
 import { env } from "cloudflare:workers";
@@ -498,6 +583,8 @@ const getFile = createServerFn()
 		return object ? await object.text() : null;
 	});
 ```
+
+*app/routes/index.tsxts*
 
 ```ts
 import { createServerFn } from "@tanstack/react-start";
@@ -522,6 +609,8 @@ const getFile = createServerFn()
 
 Prerender your application to static HTML at build time and serve as [static assets](https://developers.cloudflare.com/workers/static-assets/).
 
+*vite.config.jsjs*
+
 ```js
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -540,6 +629,8 @@ export default defineConfig({
 	],
 });
 ```
+
+*vite.config.tsts*
 
 ```ts
 import { defineConfig } from "vite";
@@ -576,8 +667,8 @@ To prerender with production data, use [remote bindings](https://developers.clou
 
 In CI environments, environment variables or secrets may not be available during the build. To make them accessible:
 
-* Set `CLOUDFLARE_INCLUDE_PROCESS_ENV=true` in your CI environment and provide the required values as environment variables.
-* If using [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), update your [build settings](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings).
+- Set `CLOUDFLARE_INCLUDE_PROCESS_ENV=true` in your CI environment and provide the required values as environment variables.
+- If using [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), update your [build settings](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings).
 
 Was this helpful?
 

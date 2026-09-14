@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Account plan limits
 
-| Feature                                                                                                      | Workers Free | Workers Paid               |
-| ------------------------------------------------------------------------------------------------------------ | ------------ | -------------------------- |
-| [Requests](#daily-requests)                                                                                  | 100,000/day  | No limit                   |
-| [CPU time](#cpu-time)                                                                                        | 10 ms        | 5 min                      |
-| [Memory](#memory)                                                                                            | 128 MB       | 128 MB                     |
-| [Subrequests](#subrequests)                                                                                  | 50/request   | 10,000/request             |
-| [Simultaneous outgoing connections/request](#simultaneous-open-connections)                                  | 6            | 6                          |
-| [Environment variables](#environment-variables)                                                              | 64/Worker    | 128/Worker                 |
-| [Environment variable size](#environment-variables)                                                          | 5 KB         | 5 KB                       |
-| [Worker size](#worker-size)                                                                                  | 64 MiB       | 64 MiB                     |
-| [Worker startup time](#worker-startup-time)                                                                  | 1 second     | 1 second                   |
-| [Number of Workers](#number-of-workers)                                                                      | 100          | 500[1](#user-content-fn-1) |
-| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)per account | 5            | 250                        |
-| Number of [Static Asset](#static-assets) files per Worker version                                            | 20,000       | 100,000                    |
-| Individual [Static Asset](#static-assets) file size                                                          | 25 MiB       | 25 MiB                     |
+| Feature | Workers Free | Workers Paid |
+| --- | --- | --- |
+| [Requests](#daily-requests) | 100,000/day | No limit |
+| [CPU time](#cpu-time) | 10 ms | 5 min |
+| [Memory](#memory) | 128 MB | 128 MB |
+| [Subrequests](#subrequests) | 50/request | 10,000/request |
+| [Simultaneous outgoing<br>connections/request](#simultaneous-open-connections) | 6 | 6 |
+| [Environment variables](#environment-variables) | 64/Worker | 128/Worker |
+| [Environment variable<br>size](#environment-variables) | 5 KB | 5 KB |
+| [Worker size](#worker-size) | 64 MiB | 64 MiB |
+| [Worker startup time](#worker-startup-time) | 1 second | 1 second |
+| [Number of Workers](#number-of-workers) | 100 | 500<sup>[1](#user-content-fn-1)</sup> |
+| Number of [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)<br>per account | 5 | 250 |
+| Number of [Static Asset](#static-assets) files per Worker version | 20,000 | 100,000 |
+| Individual [Static Asset](#static-assets) file size | 25 MiB | 25 MiB |
 
 Need a higher limit?
 
@@ -40,21 +40,21 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 ## Request and response limits
 
-| Limit                | Value             |
-| -------------------- | ----------------- |
-| URL size             | 16 KB             |
-| Request header size  | 128 KB (total)    |
-| Response header size | 128 KB (total)    |
-| Response body size   | No enforced limit |
+| Limit | Value |
+| --- | --- |
+| URL size | 16 KB |
+| Request header size | 128 KB (total) |
+| Response header size | 128 KB (total) |
+| Response body size | No enforced limit |
 
-Request body size limits depend on your Cloudflare account plan, not your Workers plan. Requests exceeding these limits return a [413 Request entity too large](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/#cloudflare-specific-information) error.
+Request body size limits depend on your Cloudflare account plan, not your Workers plan. Requests exceeding these limits return a [`413 Request entity too large`](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-413/#cloudflare-specific-information) error.
 
 | Cloudflare Plan | Maximum request body size |
-| --------------- | ------------------------- |
-| Free            | 100 MB                    |
-| Pro             | 100 MB                    |
-| Business        | 200 MB                    |
-| Enterprise      | Up to 5 GB (self-serve)   |
+| --- | --- |
+| Free | 100 MB |
+| Pro | 100 MB |
+| Business | 200 MB |
+| Enterprise | Up to 5 GB (self-serve) |
 
 Enterprise customers can adjust the maximum request body size up to 5 GB themselves from the zone's **Network** page (**Maximum Upload Size**). For limits above 5 GB, contact your account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
@@ -66,10 +66,10 @@ Cloudflare does not enforce response body size limits. [CDN cache limits](https:
 
 CPU time measures how long the CPU spends executing your Worker code. Waiting on network requests (such as `fetch()` calls, KV reads, or database queries) does **not** count toward CPU time.
 
-| Limit                     | Workers Free | Workers Paid                                                |
-| ------------------------- | ------------ | ----------------------------------------------------------- |
-| CPU time per HTTP request | 10 ms        | 5 min (default: 30 seconds)                                 |
-| CPU time per Cron Trigger | 10 ms        | 30 seconds (< 1 hour interval)  15 min (>= 1 hour interval) |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| CPU time per HTTP request | 10 ms | 5 min (default: 30 seconds) |
+| CPU time per Cron Trigger | 10 ms | 30 seconds (< 1 hour interval) <br> 15 min (>= 1 hour interval) |
 
 Most Workers consume very little CPU time. The average Worker uses approximately 2.2 ms per request. Heavier workloads that handle authentication, server-side rendering, or parse large payloads typically use 10-20 ms.
 
@@ -77,7 +77,7 @@ Each [isolate](https://developers.cloudflare.com/workers/reference/how-workers-w
 
 #### Error: exceeded CPU time limit
 
-When a Worker exceeds its CPU time limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded CPU Time Limits` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededCpu`.
+When a Worker exceeds its CPU time limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded CPU Time Limits` under **Metrics** > **Errors** > **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededCpu`.
 
 To resolve a CPU time limit error:
 
@@ -104,20 +104,20 @@ On the Workers Paid plan, you can increase the maximum CPU time from the default
 cpu_ms = 300_000
 ```
 
-You can also change this in the dashboard: go to **Workers & Pages** \> select your Worker > **Settings** \> adjust the CPU time limit.
+You can also change this in the dashboard: go to **Workers & Pages** > select your Worker > **Settings** > adjust the CPU time limit.
 
 #### Monitoring CPU usage
 
-* **Workers Logs** — CPU time and wall time appear in the [invocation log](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs).
-* **Tail Workers / Logpush** — CPU time and wall time appear at the top level of the [Workers Trace Events object](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/).
-* **DevTools** — Use [CPU profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/) locally to identify CPU-intensive sections of your code.
+- **Workers Logs** — CPU time and wall time appear in the [invocation log](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#invocation-logs).
+- **Tail Workers / Logpush** — CPU time and wall time appear at the top level of the [Workers Trace Events object](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers_trace_events/).
+- **DevTools** — Use [CPU profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/) locally to identify CPU-intensive sections of your code.
 
 ---
 
 ## Memory
 
-| Limit              | Value  |
-| ------------------ | ------ |
+| Limit | Value |
+| --- | --- |
 | Memory per isolate | 128 MB |
 
 Each [isolate](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates) can consume up to 128 MB of memory, including the JavaScript heap and [WebAssembly](https://developers.cloudflare.com/workers/runtime-apis/webassembly/) allocations. This limit is per-isolate, not per-invocation. A single isolate can handle many concurrent requests.
@@ -126,23 +126,22 @@ When an isolate exceeds 128 MB, the Workers runtime lets in-flight requests comp
 
 #### Error: exceeded memory limit
 
-When a Worker exceeds its memory limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded Memory` under **Metrics** \> **Errors** \> **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededMemory`.
+When a Worker exceeds its memory limit, Cloudflare returns [Error 1102](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1102/#error-1102-worker-exceeded-resource-limits) to the client with the message `Worker exceeded resource limits`. In the dashboard, this appears as `Exceeded Memory` under **Metrics** > **Errors** > **Invocation Statuses**. In analytics and Logpush, the invocation outcome is `exceededMemory`.
 
 You may also see the runtime error `Memory limit would be exceeded before EOF` when attempting to buffer a response body that exceeds the limit.
 
 To resolve a memory limit error:
 
-1. **Stream request and response bodies** — Use [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) or [node:stream](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) instead of buffering entire payloads in memory.
+1. **Stream request and response bodies** — Use [`TransformStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) or [`node:stream`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) instead of buffering entire payloads in memory.
 2. **Avoid large in-memory objects** — Store large data in [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [D1](https://developers.cloudflare.com/d1/) instead of holding it in Worker memory.
 3. **Update Zod** — If your Worker uses Zod, use [version 4.5.0 or later ↗](https://github.com/colinhacks/zod/releases/tag/v4.5.0). Earlier versions use substantially more memory per schema.
 4. **Profile memory usage** — Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to identify leaks and high-memory allocations.
 
 To view memory errors in the dashboard:
 
-1. Go to **Workers & Pages**.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. Go to **Workers & Pages**. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to investigate.
-3. Under **Metrics**, select **Errors** \> **Invocation Statuses** and examine **Exceeded Memory**.
+3. Under **Metrics**, select **Errors** > **Invocation Statuses** and examine **Exceeded Memory**.
 
 ---
 
@@ -150,14 +149,14 @@ To view memory errors in the dashboard:
 
 Duration measures wall-clock time from start to end of a Worker invocation.
 
-| Trigger type                                                                                       | Duration limit |
-| -------------------------------------------------------------------------------------------------- | -------------- |
-| HTTP request                                                                                       | No limit       |
-| [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/)             | 15 min         |
-| [Durable Object Alarm](https://developers.cloudflare.com/durable-objects/api/alarms/)              | 15 min         |
-| [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 min         |
+| Trigger type | Duration limit |
+| --- | --- |
+| HTTP request | No limit |
+| [Cron Trigger](https://developers.cloudflare.com/workers/configuration/cron-triggers/) | 15 min |
+| [Durable Object Alarm](https://developers.cloudflare.com/durable-objects/api/alarms/) | 15 min |
+| [Queue Consumer](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 min |
 
-There is no hard limit on duration for HTTP-triggered Workers. As long as the client remains connected, the Worker can continue processing, making subrequests, and streaming a response body. When the client disconnects or the response is complete, tasks associated with that request may be canceled. Use [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to perform work after returning a response. `waitUntil()` can extend execution for up to 30 seconds after the response is sent or the client disconnects.
+There is no hard limit on duration for HTTP-triggered Workers. As long as the client remains connected, the Worker can continue processing, making subrequests, and streaming a response body. When the client disconnects or the response is complete, tasks associated with that request may be canceled. Use [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) to perform work after returning a response. `waitUntil()` can extend execution for up to 30 seconds after the response is sent or the client disconnects.
 
 Note
 
@@ -171,10 +170,10 @@ Workers scale automatically across the Cloudflare global network. There is no ge
 
 Accounts on the Workers Free plan have a daily request limit of 100,000 requests, resetting at midnight UTC. When a Worker exceeds this limit, Cloudflare returns **Error 1027**.
 
-| Route mode  | Behavior                                                                      |
-| ----------- | ----------------------------------------------------------------------------- |
-| Fail open   | Bypasses the Worker. Requests behave as if no Worker is configured.           |
-| Fail closed | Returns a Cloudflare 1027 error page. Use this for security-critical Workers. |
+| Route mode | Behavior |
+| --- | --- |
+| Fail open | Bypasses the Worker. Requests behave as if no Worker is configured. |
+| Fail closed | Returns a Cloudflare `1027` error page. Use this for security-critical Workers. |
 
 You can configure the fail mode by toggling the corresponding [route](https://developers.cloudflare.com/workers/configuration/routing/routes/).
 
@@ -184,20 +183,20 @@ You can configure the fail mode by toggling the corresponding [route](https://de
 
 A subrequest is any request a Worker makes using the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/) or to Cloudflare services like [R2](https://developers.cloudflare.com/r2/), [KV](https://developers.cloudflare.com/kv/), or [D1](https://developers.cloudflare.com/d1/).
 
-| Limit                            | Workers Free | Workers Paid                              |
-| -------------------------------- | ------------ | ----------------------------------------- |
-| Subrequests per invocation       | 50           | 10,000 (up to 10M)                        |
-| Subrequests to internal services | 1,000        | Matches configured limit (default 10,000) |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Subrequests per invocation | 50 | 10,000 (up to 10M) |
+| Subrequests to internal services | 1,000 | Matches configured limit (default 10,000) |
 
-Each subrequest in a redirect chain counts against this limit. The total number of subrequests may exceed the number of `fetch()` calls in your code. You can change the subrequest limit per Worker using the [limits configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#limits) in your Wrangler configuration file.
+Each subrequest in a redirect chain counts against this limit. The total number of subrequests may exceed the number of `fetch()` calls in your code. You can change the subrequest limit per Worker using the [`limits` configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#limits) in your Wrangler configuration file.
 
-There is no set time limit on individual subrequests. As long as the client remains connected, the Worker can continue making subrequests. When the client disconnects or the response is complete, outstanding work may be canceled unless it is passed to [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil), which can extend execution for up to 30 seconds.
+There is no set time limit on individual subrequests. As long as the client remains connected, the Worker can continue making subrequests. When the client disconnects or the response is complete, outstanding work may be canceled unless it is passed to [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil), which can extend execution for up to 30 seconds.
 
 ### Worker-to-Worker subrequests
 
 Use [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to send requests from one Worker to another on your account without going over the Internet.
 
-Using global [fetch()](https://developers.cloudflare.com/workers/runtime-apis/fetch/) to call another Worker on the same [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) without service bindings fails. Workers accept requests sent to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#worker-to-worker-communication).
+Using global [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/) to call another Worker on the same [zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones) without service bindings fails. Workers accept requests sent to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#worker-to-worker-communication).
 
 ---
 
@@ -205,18 +204,20 @@ Using global [fetch()](https://developers.cloudflare.com/workers/runtime-apis/fe
 
 Each Worker invocation can have up to six connections simultaneously waiting for response headers. The following API calls count toward this limit while the initial connection is being established and the server has not yet responded:
 
-* `fetch()` method of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)
-* `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](https://developers.cloudflare.com/kv/api/)
-* `put()`, `match()`, and `delete()` methods of [Cache objects](https://developers.cloudflare.com/workers/runtime-apis/cache/)
-* `list()`, `get()`, `put()`, `delete()`, and `head()` methods of [R2](https://developers.cloudflare.com/r2/)
-* `send()` and `sendBatch()` methods of [Queues](https://developers.cloudflare.com/queues/)
-* Opening a TCP socket using the [connect()](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) API
+- `fetch()` method of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)
+- `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](https://developers.cloudflare.com/kv/api/)
+- `put()`, `match()`, and `delete()` methods of [Cache objects](https://developers.cloudflare.com/workers/runtime-apis/cache/)
+- `list()`, `get()`, `put()`, `delete()`, and `head()` methods of [R2](https://developers.cloudflare.com/r2/)
+- `send()` and `sendBatch()` methods of [Queues](https://developers.cloudflare.com/queues/)
+- Opening a TCP socket using the [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) API
 
 Outbound WebSocket connections also count toward this limit.
 
 Once response headers arrive for a connection, it no longer counts toward the six-connection limit. This means a Worker can have many connections open simultaneously, as long as no more than six are in the initial "waiting for headers" phase at the same time. If a seventh connection is attempted while six are already waiting for headers, it is queued until one of the existing connections receives its response headers.
 
 If you use `fetch()` but do not need the response body, calling `response.body.cancel()` is still good practice to free memory:
+
+*src/index.jsjs*
 
 ```js
 const response = await fetch(url);
@@ -229,6 +230,8 @@ if (response.status <= 299) {
 	response.body.cancel();
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 const response = await fetch(url);
@@ -250,19 +253,19 @@ The runtime measures simultaneous open connections from the top-level request. W
 
 ## Environment variables
 
-| Limit                                 | Workers Free | Workers Paid |
-| ------------------------------------- | ------------ | ------------ |
-| Variables per Worker (secrets + text) | 64           | 128          |
-| Variable size                         | 5 KB         | 5 KB         |
-| Variables per account                 | No limit     | No limit     |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Variables per Worker (secrets + text) | 64 | 128 |
+| Variable size | 5 KB | 5 KB |
+| Variables per account | No limit | No limit |
 
 ---
 
 ## Worker size
 
-| Limit                      | Workers Free | Workers Paid |
-| -------------------------- | ------------ | ------------ |
-| Worker size (uncompressed) | 64 MiB       | 64 MiB       |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Worker size (uncompressed) | 64 MiB | 64 MiB |
 
 There is no compressed size limit. Only the uncompressed bundle size counts.
 
@@ -280,21 +283,21 @@ The `Total Upload` value is your uncompressed bundle size. The `gzip` value is s
 
 To reduce Worker size:
 
-* Remove unnecessary dependencies and packages.
-* Store configuration files, static assets, and binary data in [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), [D1](https://developers.cloudflare.com/d1/), or [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) instead of bundling them.
-* Split functionality across multiple Workers using [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
+- Remove unnecessary dependencies and packages.
+- Store configuration files, static assets, and binary data in [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), [D1](https://developers.cloudflare.com/d1/), or [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) instead of bundling them.
+- Split functionality across multiple Workers using [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/).
 
 ---
 
 ## Worker startup time
 
-| Limit        | Value    |
-| ------------ | -------- |
+| Limit | Value |
+| --- | --- |
 | Startup time | 1 second |
 
 A Worker must parse and execute its global scope (top-level code outside of handlers) within 1 second. Larger bundles and expensive initialization code in global scope increase startup time.
 
-When the platform rejects a deployment because the Worker exceeds the startup time limit, the validation returns the error `Script startup exceeded CPU time limit` (error code `10021`). Wrangler automatically generates a CPU profile that you can import into Chrome DevTools or open in VS Code. Refer to [wrangler check startup](https://developers.cloudflare.com/workers/wrangler/commands/workers/#startup) for more details.
+When the platform rejects a deployment because the Worker exceeds the startup time limit, the validation returns the error `Script startup exceeded CPU time limit` (error code `10021`). Wrangler automatically generates a CPU profile that you can import into Chrome DevTools or open in VS Code. Refer to [`wrangler check startup`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#startup) for more details.
 
 To measure startup time, run `npx wrangler@latest deploy` or `npx wrangler@latest versions upload`. Wrangler reports `startup_time_ms` in the output.
 
@@ -308,20 +311,20 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 ## Number of Workers
 
-| Limit               | Workers Free | Workers Paid               |
-| ------------------- | ------------ | -------------------------- |
-| Workers per account | 100          | 500[1](#user-content-fn-1) |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Workers per account | 100 | 500<sup>[1](#user-content-fn-1)</sup> |
 
 ---
 
 ## Routes and domains
 
-| Limit                                                                                                      | Value |
-| ---------------------------------------------------------------------------------------------------------- | ----- |
-| [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone                 | 1,000 |
-| Routes per zone ([wrangler dev --remote](#routes-remote-dev))                                              | 50    |
-| [Custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) per zone | 100   |
-| Routed zones per Worker                                                                                    | 1,000 |
+| Limit | Value |
+| --- | --- |
+| [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone | 1,000 |
+| Routes per zone ([`wrangler dev --remote`](#routes-remote-dev)) | 50 |
+| [Custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) per zone | 100 |
+| Routed zones per Worker | 1,000 |
 
 ### Routes with `wrangler dev --remote`
 
@@ -335,10 +338,10 @@ If you require more than 1,000 routes or 1,000 routed zones per Worker, consider
 
 ## Cache API limits
 
-| Feature             | Workers Free | Workers Paid |
-| ------------------- | ------------ | ------------ |
-| Maximum object size | 512 MB       | 512 MB       |
-| Calls per request   | 50           | 1,000        |
+| Feature | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Maximum object size | 512 MB | 512 MB |
+| Calls per request | 50 | 1,000 |
 
 Calls per request is the number of `put()`, `match()`, or `delete()` Cache API calls per request. This shares the same quota as subrequests (`fetch()`).
 
@@ -350,8 +353,8 @@ The size of chunked response bodies (`Transfer-Encoding: chunked`) is not known 
 
 ## Log size
 
-| Limit                | Value  |
-| -------------------- | ------ |
+| Limit | Value |
+| --- | --- |
 | Log data per request | 256 KB |
 
 This limit covers all data emitted via `console.log()` statements, exceptions, request metadata, and headers for a single request. After exceeding this limit, the system does not record additional context for that request in logs, tail logs, or [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
@@ -368,16 +371,16 @@ Refer to the [Image Resizing documentation](https://developers.cloudflare.com/im
 
 ## Static Assets
 
-| Limit                           | Workers Free | Workers Paid |
-| ------------------------------- | ------------ | ------------ |
-| Files per Worker version        | 20,000       | 100,000      |
-| Individual file size            | 25 MiB       | 25 MiB       |
-| \_headers rules                 | 100          | 100          |
-| \_headers characters per line   | 2,000        | 2,000        |
-| \_redirects static redirects    | 2,000        | 2,000        |
-| \_redirects dynamic redirects   | 100          | 100          |
-| \_redirects total               | 2,100        | 2,100        |
-| \_redirects characters per rule | 1,000        | 1,000        |
+| Limit | Workers Free | Workers Paid |
+| --- | --- | --- |
+| Files per Worker version | 20,000 | 100,000 |
+| Individual file size | 25 MiB | 25 MiB |
+| `_headers` rules | 100 | 100 |
+| `_headers` characters per line | 2,000 | 2,000 |
+| `_redirects` static redirects | 2,000 | 2,000 |
+| `_redirects` dynamic redirects | 100 | 100 |
+| `_redirects` total | 2,100 | 2,100 |
+| `_redirects` characters per rule | 1,000 | 1,000 |
 
 Note
 
@@ -395,12 +398,12 @@ If your Worker is on an Unbound plan, limits match the Workers Paid plan.
 
 If your Worker is on a Bundled plan, limits match the Workers Paid plan with these exceptions:
 
-| Feature                  | Bundled plan limit |
-| ------------------------ | ------------------ |
-| Subrequests              | 50/request         |
-| CPU time (HTTP requests) | 50 ms              |
-| CPU time (Cron Triggers) | 50 ms              |
-| Cache API calls/request  | 50                 |
+| Feature | Bundled plan limit |
+| --- | --- |
+| Subrequests | 50/request |
+| CPU time (HTTP requests) | 50 ms |
+| CPU time (Cron Triggers) | 50 ms |
+| Cache API calls/request | 50 |
 
 Bundled plan Workers have no duration limits for [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/), [Durable Object Alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), or [Queue Consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
 
@@ -412,27 +415,27 @@ Wall time (also called wall-clock time) is the total elapsed time from the start
 
 The following table summarizes the wall time limits for different types of Worker invocations across the developer platform:
 
-| Invocation type                                                                                     | Wall time limit | Details                                                                                                                                                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Incoming HTTP request                                                                               | Unlimited       | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
-| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)             | 15 minutes      | Scheduled Workers have a maximum wall time of 15 minutes per invocation.                                                                                                                                                                                                             |
-| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes      | Each consumer invocation has a maximum wall time of 15 minutes.                                                                                                                                                                                                                      |
-| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/)      | 15 minutes      | Alarm handler invocations have a maximum wall time of 15 minutes.                                                                                                                                                                                                                    |
-| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP)                  | Unlimited       | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight.                                                                                              |
-| [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                  |
+| Invocation type | Wall time limit | Details |
+| --- | --- | --- |
+| Incoming HTTP request | Unlimited | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [`waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
+| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) | 15 minutes | Scheduled Workers have a maximum wall time of 15 minutes per invocation. |
+| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes | Each consumer invocation has a maximum wall time of 15 minutes. |
+| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/) | 15 minutes | Alarm handler invocations have a maximum wall time of 15 minutes. |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP) | Unlimited | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight. |
+| [Workflows](https://developers.cloudflare.com/workflows/) (per step) | Unlimited | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time). |
 
 ---
 
 ## Related resources
 
-* [KV limits](https://developers.cloudflare.com/kv/platform/limits/)
-* [Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/)
-* [Queues limits](https://developers.cloudflare.com/queues/platform/limits/)
-* [Workers errors reference](https://developers.cloudflare.com/workers/observability/errors/)
+- [KV limits](https://developers.cloudflare.com/kv/platform/limits/)
+- [Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/)
+- [Queues limits](https://developers.cloudflare.com/queues/platform/limits/)
+- [Workers errors reference](https://developers.cloudflare.com/workers/observability/errors/)
 
 ## Footnotes
 
-1. If you need a higher Worker limit, use [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
+1. If you need a higher Worker limit, use [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
 
 Was this helpful?
 

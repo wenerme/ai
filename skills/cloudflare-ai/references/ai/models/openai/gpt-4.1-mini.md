@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-4.1-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Fast, affordable version of GPT-4.1 with a million-token context window.
 
-| Model Info                                                                          |                                                                                                                       |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,047,576 tokens                                                                                                      |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                                    | [link ↗](https://openai.com/index/gpt-4-1/)                                                                           |
-| Zero data retention                                                                 | Yes                                                                                                                   |
-| Request formats                                                                     | Responses, Chat Completions                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,047,576 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/index/gpt-4-1/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe how energy behaves in physical systems:
 
 1. **First Law of Thermodynamics (Law of Energy Conservation):**
@@ -75,6 +76,7 @@ The three laws of thermodynamics are fundamental principles that describe how en
    As the temperature of a system approaches absolute zero (0 Kelvin), the entropy of a perfect crystal approaches a constant minimum, which can be taken as zero. This means it is impossible to reach absolute zero temperature through any finite series of processes.
 
 If you need, I can also explain the Zeroth Law, which is foundational and often included when discussing thermodynamics.
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ If you need, I can also explain the Zeroth Law, which is foundational and often 
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -154,6 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you can use the built-in `json` module. Here's a simple example:
 
 ```python
@@ -175,6 +182,7 @@ print(data)
 Make sure your JSON file is properly formatted. If you want to handle errors, you can add a try-except block as well.
 
 Let me know if you need help with that!
+````
 
 ```json
 {
@@ -218,7 +226,13 @@ Let me know if you need help with that!
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -266,6 +280,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great! Here are some popular and scenic stops along the drive from San Francisco to Los Angeles:
 
 1. **Half Moon Bay** – Just south of San Francisco, it’s a charming coastal town with beautiful beaches and great spots for breakfast or coffee.
@@ -278,6 +293,7 @@ Great! Here are some popular and scenic stops along the drive from San Francisco
 8. **Santa Barbara** – Often called the “American Riviera” for its Mediterranean climate, with beaches, shopping, and wine tasting.
 
 Would you like recommendations for dining, accommodations, or activities at any of these stops?
+```
 
 ```json
 {
@@ -321,7 +337,13 @@ Would you like recommendations for dining, accommodations, or activities at any 
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -355,7 +377,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Elena Marsh crouched beside the shattered window, the cold wind tugging at her coat. Amid the splintered glass and upturned furniture, something caught her eye—a single, iridescent feather resting delicately on the floor. It shimmered with colors she couldn’t place, almost otherworldly. She reached down, careful not to disturb the scene further, and traced the feather’s fragile quill between her fingers. This wasn’t just a clue. It was a message. And Elena had a feeling it was about to rewrite everything she thought she knew about the case.
+```
 
 ```json
 {
@@ -399,7 +423,13 @@ Detective Elena Marsh crouched beside the shattered window, the cold wind tuggin
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -432,6 +462,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming concept where a function calls itself in order to solve a problem. A recursive function typically has two main parts:
 
 1. **Base Case:** The condition under which the function stops calling itself. This prevents infinite recursion.
@@ -464,6 +495,7 @@ print(factorial(5))  # Output: 120
 - The results are then combined back up to give the final answer.
 
 This shows how recursion breaks down a problem into smaller identical problems until reaching the simplest one.
+````
 
 ```json
 [
@@ -6975,7 +7007,13 @@ This shows how recursion breaks down a problem into smaller identical problems u
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -7005,6 +7043,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are the top news stories about Cloudflare from June 15 to June 22, 2026:
 
 - **Cloudflare Launches Partner Program for SASE and AI Security Deployment**: On June 17, 2026, Cloudflare introduced the Cloudflare One Design Partner Designation, a channel program providing select global partners with technical resources and financial support to deploy its Secure Access Service Edge (SASE) platform. The initial partners include Arctiq, Consortium, CMT, Presidio, and The Missing Link. Additionally, Cloudflare unveiled the Cloudflare One Stack, a library of AI tools designed to assist security teams in evaluating, deploying, and managing the Cloudflare One platform. ([streetinsider.com](https://www.streetinsider.com/Corporate%2BNews/Cloudflare%2Blaunches%2Bpartner%2Bprogram%2Bfor%2BSASE%2Band%2BAI%2Bsecurity%2Bdeployment/26657730.html?utm_source=openai))
@@ -7012,6 +7051,7 @@ Here are the top news stories about Cloudflare from June 15 to June 22, 2026:
 - **Cloudflare Expands AI Security with Ping Identity Partnership at the Edge**: On June 17, 2026, Cloudflare announced a partnership with Ping Identity to enhance AI security by extending enterprise-scale identity enforcement to the edge. This collaboration focuses on real-time authorization, monitoring, and policy enforcement for AI agents running on Cloudflare’s global network, expanding Zero Trust controls to AI-powered edge workloads outside traditional cloud environments. ([simplywall.st](https://simplywall.st/stocks/us/software/nyse-net/cloudflare/news/cloudflare-net-expands-ai-security-with-ping-identity-partne?utm_source=openai))
 
 - **Cloudflare Network Disruption Triggers Widespread Internet Outages**: On June 22, 2026, a significant global network disruption at Cloudflare caused widespread outages for millions of internet users, affecting major platforms like X, Reddit, and Zoom. The incident began around 10 a.m. EST, with users reporting persistent API authorization errors and dashboard issues. Cloudflare identified the technical issue and implemented a fix across the network. ([harianbasis.co](https://www.harianbasis.co/en/cloudflare-network-disruption-internet-outage?utm_source=openai))
+```
 
 ```json
 {
@@ -7141,6 +7181,8 @@ Here are the top news stories about Cloudflare from June 15 to June 22, 2026:
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -7171,13 +7213,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -7187,7 +7227,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -7209,11 +7249,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -7223,19 +7263,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -7259,7 +7295,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -7291,7 +7327,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7301,9 +7337,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-mini/schema-output.json)
 
 Was this helpful?
 

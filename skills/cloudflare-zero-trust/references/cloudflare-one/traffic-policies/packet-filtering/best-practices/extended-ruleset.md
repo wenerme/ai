@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Extended ruleset
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The extended ruleset builds on the [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/minimal-ruleset/) by creating targeted rules for different types of systems on your network. Before creating these rules, you must [create IP lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) for each category.
 
 If you are unable to export your current perimeter firewall rules, consider identifying categories of systems or user groups that reside on your Magic Transit prefixes. For example:
 
-* [Endpoints (user devices)](#endpoints-user-devices)
-* [Internal routers](#internal-routerfirewall-ip-addresses)
-* [Web servers](#web-servers)
-* [Non-web servers](#non-web-servers)
+- [Endpoints (user devices)](#endpoints-user-devices)
+- [Internal routers](#internal-routerfirewall-ip-addresses)
+- [Web servers](#web-servers)
+- [Non-web servers](#non-web-servers)
 
 For each item above, consider the requirements in terms of their permitted Internet access. For example, permit what is required for legitimate traffic and block the rest.
 
@@ -29,15 +29,15 @@ For each item above, consider the requirements in terms of their permitted Inter
 
 For more information on lists, refer to [Use rule lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/use-rules-list/).
 
-You can also create a list from the dashboard from **Configurations** \> **Lists** on your **Account Home**.
+You can also create a list from the dashboard from **Configurations** > **Lists** on your **Account Home**.
 
 ## Endpoints (User devices)
 
 Endpoint devices do not operate as servers, which means:
 
-* They receive traffic from standard common ports — for example `80` or `443` — towards their ephemeral ports (temporary ports assigned by the OS for outbound connections, typically above `32768` in modern operating systems).
-* Connections flow outwards, not inwards, and therefore do not receive unsolicited inbound TCP connections.
-* They typically only need client TCP and UDP, with no requirement for ingress ICMP.
+- They receive traffic from standard common ports — for example `80` or `443` — towards their ephemeral ports (temporary ports assigned by the OS for outbound connections, typically above `32768` in modern operating systems).
+- Connections flow outwards, not inwards, and therefore do not receive unsolicited inbound TCP connections.
+- They typically only need client TCP and UDP, with no requirement for ingress ICMP.
 
 For example, you can create a list for the combination of generic client TCP and client UDP that allows external pings or traceroutes and a catchall rule for all other protocols and traffic.
 
@@ -55,9 +55,9 @@ Rule 10 in the example ruleset below is a catch-all (a final rule that matches a
 
 **Rule ID**: 3 **Description**: Permits ICMP traffic to destination IP addresses in `$endpoints` list with ICMP Types:
 
-* Type 0 = Echo Reply
-* Type 3 = Destination Unreachable
-* Type 11 = Time Exceeded
+- Type 0 = Echo Reply
+- Type 3 = Destination Unreachable
+- Type 11 = Time Exceeded
 
 **Match**: `ip.proto eq "icmp" and ip.dst in $endpoints and (icmp.type eq 0 or icmp.type eq 3 or icmp.type eq 11)` **Action**: Allow
 
@@ -75,10 +75,10 @@ Follow the best practices for internal routers or firewall interface IP addresse
 
 **Rule ID**: 1 **Description**: Permit limited ICMP traffic inbound, including:
 
-* Type 0 - Echo Reply
-* Type 3 - Destination Unreachable
-* Type 8 - Echo
-* Type 11 - Time Exceeded
+- Type 0 - Echo Reply
+- Type 3 - Destination Unreachable
+- Type 8 - Echo
+- Type 11 - Time Exceeded
 
 **Match**: `ip.proto eq "icmp" and ip.dst in $internal_routers and ( (icmp.type eq 0 or icmp.type eq 3) or (icmp.type eq 11) or (icmp.type eq 8) )` **Action**: Allow
 
@@ -125,9 +125,9 @@ Restrict the source based on whether the server is expecting traffic from the ge
 
 ### Suggested rules
 
-* `IP Destination Address { non-web server } and TCP dst port in \<valid ports> — Permit`
-* `IP Destination Address { non-web server } and UDP dst port in \<valid ports> — Permit`
-* `IP Destination Address { web server } — Block`
+- `IP Destination Address { non-web server } and TCP dst port in \<valid ports> — Permit`
+- `IP Destination Address { non-web server } and UDP dst port in \<valid ports> — Permit`
+- `IP Destination Address { web server } — Block`
 
 Was this helpful?
 

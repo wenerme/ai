@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Quick Tunnels
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -40,20 +40,20 @@ TryCloudflare quick tunnels are currently not supported if a `config.yaml` confi
 
 ### What are some example use cases for TryCloudflare?
 
-* Create a web server for a project on your laptop that you want to share with others on different networks
-* Test browser compatibility for a new site by creating a free Tunnel and testing the link in different browsers
-* Run speed tests from different regions by using a tool like Pingdom or WebPageTest to connect to the randomly-generated subdomain created by TryCloudflare
+- Create a web server for a project on your laptop that you want to share with others on different networks
+- Test browser compatibility for a new site by creating a free Tunnel and testing the link in different browsers
+- Run speed tests from different regions by using a tool like Pingdom or WebPageTest to connect to the randomly-generated subdomain created by TryCloudflare
 
 ### Why does Cloudflare provide this service for free?
 
-* We want more users to experience the speed and security improvements of Cloudflare Tunnel. We hope you test it with TryCloudflare and decide to add it to your production sites.
-* Cloudflare's features historically require you to own a domain, set that domain's DNS to Cloudflare's nameservers, and configure its DNS records before you can begin to use any services. We hope to make more and more of our products available to trial without that burden.
-* We don't guarantee any SLA or uptime of TryCloudflare - we plan to test new Cloudflare Tunnel features and improvements on these free tunnels. This provides us with a group of connections to test before we deploy to production customers. Free tunnels are meant to be used for testing and development, not for deploying a production website.
+- We want more users to experience the speed and security improvements of Cloudflare Tunnel. We hope you test it with TryCloudflare and decide to add it to your production sites.
+- Cloudflare's features historically require you to own a domain, set that domain's DNS to Cloudflare's nameservers, and configure its DNS records before you can begin to use any services. We hope to make more and more of our products available to trial without that burden.
+- We don't guarantee any SLA or uptime of TryCloudflare - we plan to test new Cloudflare Tunnel features and improvements on these free tunnels. This provides us with a group of connections to test before we deploy to production customers. Free tunnels are meant to be used for testing and development, not for deploying a production website.
 
 ### Limitations
 
-* Quick Tunnels are subject to a hard limit on the number of concurrent requests that can be proxied at any point in time. Currently, this limit is 200 in-flight requests. If a Quick Tunnel hits this limit, the HTTP response will return a `429` status code.
-* Quick Tunnels do not support Server-Sent Events (SSE).
+- Quick Tunnels are subject to a hard limit on the number of concurrent requests that can be proxied at any point in time. Currently, this limit is 200 in-flight requests. If a Quick Tunnel hits this limit, the HTTP response will return a `429` status code.
+- Quick Tunnels do not support Server-Sent Events (SSE).
 
 These limitations only apply to Quick Tunnels. To avoid these limitations, [sign up ↗](https://dash.cloudflare.com/sign-up) for a Cloudflare account and [create a Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/).
 

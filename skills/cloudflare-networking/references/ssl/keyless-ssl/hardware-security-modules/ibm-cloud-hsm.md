@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IBM Cloud HSM
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The example below was tested using [IBM Cloud HSM 7.0 ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/about.html#about-ibm-cloud-hsm), a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a750.
 
@@ -22,12 +22,12 @@ The example below was tested using [IBM Cloud HSM 7.0 ↗](https://console.bluem
 
 Make sure that you have:
 
-* Initialized [your device ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/initialize%5Fhsm.html#initializing-the-ibm-cloud-hsm)
-* Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
+- Initialized [your device ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/initialize_hsm.html#initializing-the-ibm-cloud-hsm)
+- Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
 
 ---
 
-## 1\. Create, assign, and initialize a new partition
+## 1. Create, assign, and initialize a new partition
 
 The first step is creating an HSM partition, which can be thought of as an independent logical HSM within your IBM Cloud HSM device.
 
@@ -95,7 +95,7 @@ Command Result : No Error
 
 ---
 
-## 2\. Generate RSA and ECDSA key pairs and certificate signing requests (CSRs)
+## 2. Generate RSA and ECDSA key pairs and certificate signing requests (CSRs)
 
 Before running the commands below, check with your information security and/or cryptography team to confirm the approved key creation procedures for your organization.
 
@@ -130,13 +130,13 @@ Using "CKM_ECDSA_SHA256" Mechanism
 
 ---
 
-## 3\. Obtain and upload signed certificates from your Certificate Authority (CA)
+## 3. Obtain and upload signed certificates from your Certificate Authority (CA)
 
 Provide the CSRs created in the previous step to your organization's preferred CA, demonstrate control of your domain as requested, and then download the signed SSL certificates. Follow the instructions provided in [Upload Keyless SSL Certificates](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/#3-upload-keyless-ssl-certificates).
 
 ---
 
-## 4\. Modify your gokeyless config file and restart the service
+## 4. Modify your gokeyless config file and restart the service
 
 Lastly, we need to modify the configuration file that the key server will read on startup. Change the `object=mykey` and `pin-value=username:password` values to match the key label you provided and CU user you created.
 

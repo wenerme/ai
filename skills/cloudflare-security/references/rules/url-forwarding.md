@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Redirects
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 URL forwarding, also known as URL redirection, navigates the user from a source URL to a target URL with a specific HTTP status code.
 
 Use the following Cloudflare products to perform URL redirects, according to your use case:
 
-* [**Single Redirects**](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/): Allow you to create static or dynamic redirects at the zone level (a single domain or subdomain). A [wildcard-based](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) interface allows you to define source and target URL patterns without complex functions or regular expressions, efficiently covering thousands of URLs with a single rule.
-* [**Bulk Redirects**](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/): Allow you to define a large number of redirects at the account level, which can apply across domains in your account. These URL redirects are essentially static — they do not support string replacement operations or regular expressions. However, you can configure parameters that affect how source URLs are matched and how the redirect is performed.
-* [**Snippets**](https://developers.cloudflare.com/rules/snippets/): Use short pieces of JavaScript code for a more flexible way to define complex redirect functionality. Consider a few [examples](https://developers.cloudflare.com/rules/snippets/examples/?operation=Redirect) to get started.
+- [**Single Redirects**](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/): Allow you to create static or dynamic redirects at the zone level (a single domain or subdomain). A [wildcard-based](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) interface allows you to define source and target URL patterns without complex functions or regular expressions, efficiently covering thousands of URLs with a single rule.
+- [**Bulk Redirects**](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/): Allow you to define a large number of redirects at the account level, which can apply across domains in your account. These URL redirects are essentially static — they do not support string replacement operations or regular expressions. However, you can configure parameters that affect how source URLs are matched and how the redirect is performed.
+- [**Snippets**](https://developers.cloudflare.com/rules/snippets/): Use short pieces of JavaScript code for a more flexible way to define complex redirect functionality. Consider a few [examples](https://developers.cloudflare.com/rules/snippets/examples/?operation=Redirect) to get started.
 
 Note
 
@@ -30,8 +30,7 @@ Single Redirects and Bulk Redirects require that you [proxy the DNS records](htt
 
 Cloudflare provides you with rules templates for common use cases.
 
-1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+1. In the Cloudflare dashboard, go to the Rules **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Templates**, and then select one of the available templates.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
@@ -42,25 +41,25 @@ Single Redirects and Bulk Redirects are available on all Cloudflare plans. The e
 
 ### Bulk redirects
 
-|                            | Free   | Pro    | Business | Enterprise |
-| -------------------------- | ------ | ------ | -------- | ---------- |
-| Availability               | Yes    | Yes    | Yes      | Yes        |
-| Bulk Redirect Rules        | 15     | 15     | 15       | 50         |
-| Bulk Redirect Lists        | 5      | 5      | 5        | 25         |
-| URL redirects across lists | 10,000 | 25,000 | 50,000   | 1,000,000  |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Bulk Redirect Rules | 15 | 15 | 15 | 50 |
+| Bulk Redirect Lists | 5 | 5 | 5 | 25 |
+| URL redirects across lists | 10,000 | 25,000 | 50,000 | 1,000,000 |
 
-For _URL redirects across lists_, this table provides the default quota for the Enterprise plan. Bulk Redirects supports several million URL redirects — to get more redirects, contact your account team.
+For *URL redirects across lists*, this table provides the default quota for the Enterprise plan. Bulk Redirects supports several million URL redirects — to get more redirects, contact your account team.
 
 Bulk Redirects features and quotas are per account and they depend on the highest Cloudflare plan on your account.
 
 ### Single Redirects
 
-|                  | Free | Pro | Business | Enterprise |
-| ---------------- | ---- | --- | -------- | ---------- |
-| Availability     | Yes  | Yes | Yes      | Yes        |
-| Number of rules  | 10   | 25  | 50       | 300        |
-| Wildcard support | Yes  | Yes | Yes      | Yes        |
-| Regex support    | No   | No  | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Number of rules | 10 | 25 | 50 | 300 |
+| Wildcard support | Yes | Yes | Yes | Yes |
+| Regex support | No | No | Yes | Yes |
 
 Single Redirects features and quotas are per zone and depend on the zone plan.
 
@@ -68,22 +67,22 @@ Single Redirects features and quotas are per zone and depend on the zone plan.
 
 The execution order of Rules features is the following:
 
-* [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
-* [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
-* [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
-* [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
-* [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
-* [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
-* [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
-* [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
-* [Snippets](https://developers.cloudflare.com/rules/snippets/)
-* [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
+- [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/)
+- [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/)
+- [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/)
+- [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/)
+- [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/)
+- [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/)
+- [Request Header Transform Rules](https://developers.cloudflare.com/rules/transform/request-header-modification/)
+- [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+- [Snippets](https://developers.cloudflare.com/rules/snippets/)
+- [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/)
 
 The different types of rules listed above will take precedence over [Page Rules](https://developers.cloudflare.com/rules/page-rules/). This means that Page Rules will be overridden if there is a match for both Page Rules and the Rules products listed above.
 
-Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (_Block_, _Redirect_, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
+Generally speaking, for [non-terminating actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) the last change made by rules in the same [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) will win (later rules can overwrite changes done by previous rules). However, for terminating actions (*Block*, *Redirect*, or one of the challenge actions), rule evaluation will stop and the action will be executed immediately.
 
-For example, if multiple rules with the _Redirect_ action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
+For example, if multiple rules with the *Redirect* action match, Cloudflare will always use the URL redirect of the first rule that matches. Also, if you configure URL redirects using different Cloudflare products (Single Redirects and Bulk Redirects), the product executed first will apply, if there is a rule match (in this case, Single Redirects).
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.timings.worker\_msec
 
-`cf.timings.worker_msec` `Integer`
+`cf.timings.worker_msec``Integer`
 
 The time spent executing a Cloudflare Worker in milliseconds.
 
@@ -32,7 +32,7 @@ cf.timings.worker_msec > 500
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

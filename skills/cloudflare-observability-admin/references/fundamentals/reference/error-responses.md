@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error responses
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/error-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/error-responses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare cannot complete a request, it generates an error response. The format depends on what the client requests via the `Accept` header and on the zone's [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/) configuration.
 
@@ -26,19 +26,19 @@ This page covers the format of Cloudflare-generated error responses. For convert
 
 ## Content negotiation
 
-Cloudflare selects the response format based on the client's `Accept` header, following standard [HTTP content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content%5Fnegotiation). When multiple formats are acceptable, quality factors (`q` values) determine precedence. At the same quality value, the first-listed type wins.
+Cloudflare selects the response format based on the client's `Accept` header, following standard [HTTP content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation). When multiple formats are acceptable, quality factors (`q` values) determine precedence. At the same quality value, the first-listed type wins.
 
-| Accept header sent                    | Response format                                |
-| ------------------------------------- | ---------------------------------------------- |
-| application/json                      | JSON (application/json; charset=utf-8)         |
-| application/problem+json              | JSON (application/problem+json; charset=utf-8) |
-| application/json, text/markdown;q=0.9 | JSON (higher quality factor)                   |
-| text/markdown                         | Markdown (text/markdown; charset=utf-8)        |
-| text/markdown, application/json       | Markdown (equal quality, first-listed wins)    |
-| text/\*                               | Markdown                                       |
-| text/html                             | HTML                                           |
-| \*/\*                                 | HTML                                           |
-| Not set                               | HTML                                           |
+| `Accept` header sent | Response format |
+| --- | --- |
+| `application/json` | JSON (`application/json; charset=utf-8`) |
+| `application/problem+json` | JSON (`application/problem+json; charset=utf-8`) |
+| `application/json, text/markdown;q=0.9` | JSON (higher quality factor) |
+| `text/markdown` | Markdown (`text/markdown; charset=utf-8`) |
+| `text/markdown, application/json` | Markdown (equal quality, first-listed wins) |
+| `text/*` | Markdown |
+| `text/html` | HTML |
+| `*/*` | HTML |
+| Not set | HTML |
 
 Structured error responses are available on all plans, including the Free plan. [Custom Error Rules](https://developers.cloudflare.com/rules/custom-errors/#custom-error-rules) for overriding these responses require a Cloudflare paid plan.
 
@@ -54,23 +54,23 @@ What a client receives depends on which custom error features your zone has conf
 
 This is the default for most zones. Cloudflare serves its default error response in the format the client requests.
 
-| Client sends             | Response                                        |
-| ------------------------ | ----------------------------------------------- |
-| Accept: application/json | Default Cloudflare structured JSON response     |
-| Accept: text/markdown    | Default Cloudflare structured Markdown response |
-| Accept: text/html        | Default Cloudflare HTML error page              |
-| No Accept header         | Default Cloudflare HTML error page              |
+| Client sends | Response |
+| --- | --- |
+| `Accept: application/json` | Default Cloudflare structured JSON response |
+| `Accept: text/markdown` | Default Cloudflare structured Markdown response |
+| `Accept: text/html` | Default Cloudflare HTML error page |
+| No `Accept` header | Default Cloudflare HTML error page |
 
 ### Error Page configured, no custom error rules
 
 The zone has an Error Page uploaded via the Cloudflare dashboard. No Custom Error Rules are configured. The Error Page is served to all clients regardless of `Accept` header — Error Pages do not perform content negotiation.
 
-| Client sends             | Response                    |
-| ------------------------ | --------------------------- |
-| Accept: application/json | Your custom HTML error page |
-| Accept: text/markdown    | Your custom HTML error page |
-| Accept: text/html        | Your custom HTML error page |
-| No Accept header         | Your custom HTML error page |
+| Client sends | Response |
+| --- | --- |
+| `Accept: application/json` | Your custom HTML error page |
+| `Accept: text/markdown` | Your custom HTML error page |
+| `Accept: text/html` | Your custom HTML error page |
+| No `Accept` header | Your custom HTML error page |
 
 If you want agents to receive structured responses while keeping your custom HTML for browsers, add a Custom Error Rule that matches on the `Accept` header. Refer to the next section for details.
 
@@ -78,30 +78,46 @@ If you want agents to receive structured responses while keeping your custom HTM
 
 The zone has one or more [Custom Error Rules](https://developers.cloudflare.com/rules/custom-errors/#custom-error-rules) (available on paid plans). These take priority over Error Pages. You control what gets served, to whom, and under what conditions.
 
-| Client sends             | Response                                                                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accept: application/json | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page (if configured) or the structured JSON response.     |
-| Accept: text/markdown    | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page (if configured) or the structured Markdown response. |
-| Accept: text/html        | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page or the default HTML.                                 |
-| No Accept header         | Same fallback chain                                                                                                                                                 |
+| Client sends | Response |
+| --- | --- |
+| `Accept: application/json` | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page (if configured) or the structured JSON response. |
+| `Accept: text/markdown` | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page (if configured) or the structured Markdown response. |
+| `Accept: text/html` | If a Custom Error Rule matches, the rule's content is served. If no rule matches, falls back to the Error Page or the default HTML. |
+| No `Accept` header | Same fallback chain |
 
 Custom Error Rules can match on any request header including `Accept`, and can target specific error codes. You can serve JSON to API clients, Markdown to agents, and HTML to browsers, all from the same zone.
 
+<details>
+
+<summary>
+
 Example: Serve custom JSON to API clients on a 522 error
+
+</summary>
 
 This Custom Error Rule matches 522 errors where the client requests JSON:
 
-**Expression:** `(http.response.code eq 522) and (any(http.request.headers["accept"][*] contains "application/json"))`
+**Expression:** <code>(http.response.code eq 522) and (any(http.request.headers["accept"][*] contains "application/json"))</code>
 
 **Action:** Serve a custom JSON response with your own error format.
 
 This rule takes priority over both the default structured JSON response and any configured Error Page. Clients that do not match the rule (for example, browsers requesting HTML) fall through to the Error Page or the default Cloudflare response.
 
+</details>
+
+<details>
+
+<summary>
+
 Example: Serve structured responses to agents and a custom HTML page to browsers
 
-If your zone has an Error Page configured, it is served to all clients, including agents requesting JSON or Markdown. To let agents receive Cloudflare's default structured responses instead, remove the Error Page. Without an Error Page, Cloudflare respects the `Accept` header automatically: agents get structured JSON or Markdown and browsers get HTML.
+</summary>
 
-If you need to keep the Error Page for browsers but want to serve custom structured content to agents, create Custom Error Rules that match on the `Accept` header and serve your own JSON or Markdown content. Browsers that do not match either rule continue to receive your custom HTML Error Page.
+If your zone has an Error Page configured, it is served to all clients, including agents requesting JSON or Markdown. To let agents receive Cloudflare's default structured responses instead, remove the Error Page. Without an Error Page, Cloudflare respects the <code>Accept</code> header automatically: agents get structured JSON or Markdown and browsers get HTML.
+
+If you need to keep the Error Page for browsers but want to serve custom structured content to agents, create Custom Error Rules that match on the <code>Accept</code> header and serve your own JSON or Markdown content. Browsers that do not match either rule continue to receive your custom HTML Error Page.
+
+</details>
 
 ### Priority order
 
@@ -212,38 +228,38 @@ JSON responses follow [RFC 9457 (Problem Details for HTTP APIs) ↗](https://www
 
 ### RFC 9457 standard members
 
-| Field    | Type    | Description                                                               |
-| -------- | ------- | ------------------------------------------------------------------------- |
-| type     | string  | URI pointing to Cloudflare documentation for this error code.             |
-| title    | string  | Short summary, for example, "Error 522: Connection timed out".            |
-| status   | integer | HTTP status code of the response.                                         |
-| detail   | string  | Plain-text explanation of what went wrong and which party is responsible. |
-| instance | string  | Ray ID identifying this specific error occurrence.                        |
+| Field | Type | Description |
+| --- | --- | --- |
+| `type` | string | URI pointing to Cloudflare documentation for this error code. |
+| `title` | string | Short summary, for example, `"Error 522: Connection timed out"`. |
+| `status` | integer | HTTP status code of the response. |
+| `detail` | string | Plain-text explanation of what went wrong and which party is responsible. |
+| `instance` | string | Ray ID identifying this specific error occurrence. |
 
 ### Cloudflare extension members
 
-| Field                   | Type            | Description                                                                                                                          |
-| ----------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| error\_code             | integer         | Cloudflare error code (for example, 522, 1015).                                                                                      |
-| error\_name             | string          | Machine-readable name in snake\_case (for example, connection\_timeout, rate\_limited). Stable — suitable for programmatic matching. |
-| error\_category         | string          | Fault classification. Refer to [Error categories](#error-categories). Stable — suitable for programmatic matching.                   |
-| ray\_id                 | string          | Same value as instance. Included for compatibility with existing Cloudflare tooling.                                                 |
-| timestamp               | string          | ISO 8601 timestamp of when the error was generated.                                                                                  |
-| zone                    | string          | The requested hostname.                                                                                                              |
-| cloudflare\_error       | boolean         | Always true. Confirms this error was generated by Cloudflare, not the origin.                                                        |
-| retryable               | boolean         | Whether the error is transient and the request can be retried.                                                                       |
-| retry\_after            | integer or null | Seconds to wait before retrying. Present only when retryable is true. Matches the Retry-After HTTP header value.                     |
-| owner\_action\_required | boolean         | Whether the site operator needs to take action to resolve the error.                                                                 |
-| what\_you\_should\_do   | string          | Actionable guidance for the client: what to do next, whether to retry, and who can fix the problem.                                  |
-| footer                  | string          | Attribution line.                                                                                                                    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `error_code` | integer | Cloudflare error code (for example, `522`, `1015`). |
+| `error_name` | string | Machine-readable name in `snake_case` (for example, `connection_timeout`, `rate_limited`). Stable — suitable for programmatic matching. |
+| `error_category` | string | Fault classification. Refer to [Error categories](#error-categories). Stable — suitable for programmatic matching. |
+| `ray_id` | string | Same value as `instance`. Included for compatibility with existing Cloudflare tooling. |
+| `timestamp` | string | ISO 8601 timestamp of when the error was generated. |
+| `zone` | string | The requested hostname. |
+| `cloudflare_error` | boolean | Always `true`. Confirms this error was generated by Cloudflare, not the origin. |
+| `retryable` | boolean | Whether the error is transient and the request can be retried. |
+| `retry_after` | integer or null | Seconds to wait before retrying. Present only when `retryable` is `true`. Matches the `Retry-After` HTTP header value. |
+| `owner_action_required` | boolean | Whether the site operator needs to take action to resolve the error. |
+| `what_you_should_do` | string | Actionable guidance for the client: what to do next, whether to retry, and who can fix the problem. |
+| `footer` | string | Attribution line. |
 
 ### Markdown-specific structure
 
 Markdown responses place these fields in YAML frontmatter (between `---` delimiters), followed by three prose sections:
 
-* **`# Error {code}: {description}`** — heading with the error code and short description.
-* **`## What Happened`** — corresponds to the `detail` field.
-* **`## What You Should Do`** — corresponds to the `what_you_should_do` field.
+- **`# Error {code}: {description}`** — heading with the error code and short description.
+- **`## What Happened`** — corresponds to the `detail` field.
+- **`## What You Should Do`** — corresponds to the `what_you_should_do` field.
 
 The frontmatter omits the RFC 9457 standard members (`type`, `title`, `instance`) and the `footer` field since these are either redundant with the prose or not applicable to the Markdown format.
 
@@ -255,47 +271,47 @@ The `error_category` field classifies the fault so that clients can route retry 
 
 ### 5xx error categories
 
-| Category   | Codes             | Meaning                                                                              | Retry?                                                                     |
-| ---------- | ----------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
-| origin     | 502, 504, 520-524 | The origin server is responsible. Transient infrastructure failure.                  | Yes. Back off using retry\_after.                                          |
-| cloudflare | 500               | Cloudflare encountered an internal error. The origin was not necessarily involved.   | Yes. Short retry (30s).                                                    |
-| ssl        | 525, 526          | The origin's TLS configuration is broken (handshake failure or invalid certificate). | No. Retrying will not help until the operator fixes the TLS configuration. |
+| Category | Codes | Meaning | Retry? |
+| --- | --- | --- | --- |
+| `origin` | 502, 504, 520-524 | The origin server is responsible. Transient infrastructure failure. | Yes. Back off using `retry_after`. |
+| `cloudflare` | 500 | Cloudflare encountered an internal error. The origin was not necessarily involved. | Yes. Short retry (30s). |
+| `ssl` | 525, 526 | The origin's TLS configuration is broken (handshake failure or invalid certificate). | No. Retrying will not help until the operator fixes the TLS configuration. |
 
 ### 1xxx error categories
 
-| Category       | Meaning                                          | Example codes                                 |
-| -------------- | ------------------------------------------------ | --------------------------------------------- |
-| access\_denied | IP blocks, country blocks, firewall rules        | 1005, 1006, 1007, 1008, 1010, 1012, 1106-1109 |
-| rate\_limit    | Rate limiting                                    | 1015, 1025, 1027, 1200                        |
-| dns            | DNS resolution errors                            | 1001, 1016                                    |
-| config         | Zone or origin configuration errors              | 1004, 1014, 1033, 1043, 1047, 1049            |
-| tls            | Client TLS errors (version, cipher, certificate) | 1017, 1028, 1029, 1044                        |
-| legal          | Legal restrictions (DMCA, country blocks)        | 1026, 1039                                    |
-| worker         | Worker script errors                             | 1042, 1100, 1101, 1102, 1103, 1104, 1105      |
-| rewrite        | URL rewrite rule errors                          | 1036, 1037                                    |
-| snippet        | Snippet configuration errors                     | 1201, 1202, 1203, 1204, 1205, 1206            |
-| unsupported    | Unsupported features or protocols                | 1045                                          |
+| Category | Meaning | Example codes |
+| --- | --- | --- |
+| `access_denied` | IP blocks, country blocks, firewall rules | 1005, 1006, 1007, 1008, 1010, 1012, 1106-1109 |
+| `rate_limit` | Rate limiting | 1015, 1025, 1027, 1200 |
+| `dns` | DNS resolution errors | 1001, 1016 |
+| `config` | Zone or origin configuration errors | 1004, 1014, 1033, 1043, 1047, 1049 |
+| `tls` | Client TLS errors (version, cipher, certificate) | 1017, 1028, 1029, 1044 |
+| `legal` | Legal restrictions (DMCA, country blocks) | 1026, 1039 |
+| `worker` | Worker script errors | 1042, 1100, 1101, 1102, 1103, 1104, 1105 |
+| `rewrite` | URL rewrite rule errors | 1036, 1037 |
+| `snippet` | Snippet configuration errors | 1201, 1202, 1203, 1204, 1205, 1206 |
+| `unsupported` | Unsupported features or protocols | 1045 |
 
 ---
 
 ## Retry-After header
 
-Retryable error codes include a standard [Retry-After ↗](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3) HTTP response header. The header value in seconds matches the `retry_after` field in the response body.
+Retryable error codes include a standard [`Retry-After` ↗](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3) HTTP response header. The header value in seconds matches the `retry_after` field in the response body.
 
 ### 5xx Retry-After values
 
-| Code | retry\_after (in seconds) |
-| ---- | ------------------------- |
-| 500  | 30                        |
-| 502  | 60                        |
-| 504  | 120                       |
-| 520  | 60                        |
-| 521  | 120                       |
-| 522  | 120                       |
-| 523  | 120                       |
-| 524  | 120                       |
-| 525  | N/A (not retryable)       |
-| 526  | N/A (not retryable)       |
+| Code | `retry_after` (in seconds) |
+| --- | --- |
+| 500 | 30 |
+| 502 | 60 |
+| 504 | 120 |
+| 520 | 60 |
+| 521 | 120 |
+| 522 | 120 |
+| 523 | 120 |
+| 524 | 120 |
+| 525 | N/A (not retryable) |
+| 526 | N/A (not retryable) |
 
 Non-retryable codes (525, 526) do not include the `Retry-After` header.
 
@@ -303,14 +319,14 @@ Non-retryable codes (525, 526) do not include the `Retry-After` header.
 
 Six retryable 1xxx error codes emit `Retry-After`:
 
-| Code | retry\_after (in seconds) | Error name                  |
-| ---- | ------------------------- | --------------------------- |
-| 1004 | 120                       | DNS resolution error        |
-| 1015 | 30                        | Rate limited                |
-| 1033 | 120                       | Argo Tunnel error           |
-| 1038 | 60                        | HTTP headers limit exceeded |
-| 1200 | 60                        | Cache connection limit      |
-| 1205 | 5                         | Too many redirects          |
+| Code | `retry_after` (in seconds) | Error name |
+| --- | --- | --- |
+| 1004 | 120 | DNS resolution error |
+| 1015 | 30 | Rate limited |
+| 1033 | 120 | Argo Tunnel error |
+| 1038 | 60 | HTTP headers limit exceeded |
+| 1200 | 60 | Cache connection limit |
+| 1205 | 5 | Too many redirects |
 
 All other 1xxx error codes are non-retryable and do not include the `Retry-After` header.
 
@@ -320,12 +336,12 @@ If a WAF rate limiting rule has already set a dynamic `Retry-After` value on the
 
 ## More resources
 
-* [Cloudflare 1xxx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/)
-* [Cloudflare 5xx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/)
-* [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
-* [Connection limits](https://developers.cloudflare.com/fundamentals/reference/connection-limits/)
-* [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) (content conversion)
-* [RFC 9457 — Problem Details for HTTP APIs ↗](https://www.rfc-editor.org/rfc/rfc9457)
+- [Cloudflare 1xxx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/)
+- [Cloudflare 5xx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/)
+- [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
+- [Connection limits](https://developers.cloudflare.com/fundamentals/reference/connection-limits/)
+- [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) (content conversion)
+- [RFC 9457 — Problem Details for HTTP APIs ↗](https://www.rfc-editor.org/rfc/rfc9457)
 
 Was this helpful?
 

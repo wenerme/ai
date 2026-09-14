@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-| Feature                                                                                                                          | Limit                                                     |
-| -------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| Databases per account                                                                                                            | 50,000 (Workers Paid) [1](#user-content-fn-1) / 10 (Free) |
-| Maximum database size                                                                                                            | 10 GB (Workers Paid) / 500 MB (Free)                      |
-| Maximum storage per account                                                                                                      | 1 TB (Workers Paid) [2](#user-content-fn-2) / 5 GB (Free) |
-| [Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/) duration (point-in-time recovery)                     | 30 days (Workers Paid) / 7 days (Free)                    |
-| Maximum Time Travel restore operations                                                                                           | 10 restores per 10 minutes (per database)                 |
-| Queries per Worker invocation (read [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests)) | 1000 (Workers Paid) / 50 (Free)                           |
-| Maximum number of columns per table                                                                                              | 100                                                       |
-| Maximum number of rows per table                                                                                                 | Unlimited (excluding per-database storage limits)         |
-| Maximum string, BLOB or table row size                                                                                           | 2,000,000 bytes (2 MB)                                    |
-| Maximum SQL statement length                                                                                                     | 100,000 bytes (100 KB)                                    |
-| Maximum bound parameters per query                                                                                               | 100                                                       |
-| Maximum arguments per SQL function                                                                                               | 32                                                        |
-| Maximum characters (bytes) in a LIKE or GLOB pattern                                                                             | 50 bytes                                                  |
-| Maximum bindings per Workers script                                                                                              | Approximately 5,000 [3](#user-content-fn-3)               |
-| Maximum SQL query duration                                                                                                       | 30 seconds [4](#user-content-fn-4)                        |
-| Maximum file import (d1 execute) size                                                                                            | 5 GB [5](#user-content-fn-5)                              |
+| Feature | Limit |
+| --- | --- |
+| Databases per account | 50,000 (Workers Paid) <sup>[1](#user-content-fn-1)</sup> / 10 (Free) |
+| Maximum database size | 10 GB (Workers Paid) / 500 MB (Free) |
+| Maximum storage per account | 1 TB (Workers Paid) <sup>[2](#user-content-fn-2)</sup> / 5 GB (Free) |
+| [Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/) duration (point-in-time recovery) | 30 days (Workers Paid) / 7 days (Free) |
+| Maximum Time Travel restore operations | 10 restores per 10 minutes (per database) |
+| Queries per Worker invocation (read [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests)) | 1000 (Workers Paid) / 50 (Free) |
+| Maximum number of columns per table | 100 |
+| Maximum number of rows per table | Unlimited (excluding per-database storage limits) |
+| Maximum string, `BLOB` or table row size | 2,000,000 bytes (2 MB) |
+| Maximum SQL statement length | 100,000 bytes (100 KB) |
+| Maximum bound parameters per query | 100 |
+| Maximum arguments per SQL function | 32 |
+| Maximum characters (bytes) in a `LIKE` or `GLOB` pattern | 50 bytes |
+| Maximum bindings per Workers script | Approximately 5,000 <sup>[3](#user-content-fn-3)</sup> |
+| Maximum SQL query duration | 30 seconds <sup>[4](#user-content-fn-4)</sup> |
+| Maximum file import (`d1 execute`) size | 5 GB <sup>[5](#user-content-fn-5)</sup> |
 
 Batch limits
 
@@ -65,8 +65,8 @@ Each individual D1 database is inherently single-threaded, and processes queries
 
 Your maximum throughput is directly related to the duration of your queries.
 
-* If your average query takes 1 ms, you can run approximately 1,000 queries per second.
-* If your average query takes 100 ms, you can run 10 queries per second.
+- If your average query takes 1 ms, you can run approximately 1,000 queries per second.
+- If your average query takes 100 ms, you can run 10 queries per second.
 
 A database that receives too many concurrent requests will first attempt to queue them. If the queue becomes full, the database will return an ["overloaded" error](https://developers.cloudflare.com/d1/observability/debug-d1/#error-list).
 
@@ -76,9 +76,9 @@ Each individual D1 database is backed by a single [Durable Object](https://devel
 
 Query performance is the most important factor for throughput. As a rough guideline:
 
-* Read queries like `SELECT name FROM users WHERE id = ?` with an appropriate index on `id` will take less than a millisecond for SQL duration.
-* Write queries like `INSERT` or `UPDATE` can take several milliseconds for SQL duration, and depend on the number of rows written. Writes need to be durably persisted across several locations - learn more on [how D1 persists data under the hood ↗](https://blog.cloudflare.com/d1-read-replication-beta/#under-the-hood-how-d1-read-replication-is-implemented).
-* Data migrations like a large `UPDATE` or `DELETE` affecting millions of rows must be run in batches. A single query that attempts to modify hundreds of thousands of rows or hundreds of MBs of data at once will exceed execution limits. Break the work into smaller chunks (e.g., processing 1,000 rows at a time) to stay within platform limits.
+- Read queries like `SELECT name FROM users WHERE id = ?` with an appropriate index on `id` will take less than a millisecond for SQL duration.
+- Write queries like `INSERT` or `UPDATE` can take several milliseconds for SQL duration, and depend on the number of rows written. Writes need to be durably persisted across several locations - learn more on [how D1 persists data under the hood ↗](https://blog.cloudflare.com/d1-read-replication-beta/#under-the-hood-how-d1-read-replication-is-implemented).
+- Data migrations like a large `UPDATE` or `DELETE` affecting millions of rows must be run in batches. A single query that attempts to modify hundreds of thousands of rows or hundreds of MBs of data at once will exceed execution limits. Break the work into smaller chunks (e.g., processing 1,000 rows at a time) to stay within platform limits.
 
 To ensure your queries are fast and efficient, [use appropriate indexes in your SQL schema](https://developers.cloudflare.com/d1/best-practices/use-indexes/).
 
@@ -100,7 +100,7 @@ For more information on a Worker's simultaneous connections, refer to [Simultane
 2. The maximum storage per account can be increased by request on Workers Paid and Enterprise plans. Refer to the guidance on limit increases on this page to request an increase. [↩](#user-content-fnref-2)
 3. A single Worker script can have up to 1 MB of script metadata. A binding is defined as a binding to a resource, such as a D1 database, KV namespace, [environmental variable](https://developers.cloudflare.com/workers/configuration/environment-variables/), or secret. Each resource binding is approximately 150-bytes, however environmental variables and secrets are controlled by the size of the value you provide. Excluding environmental variables, you can bind up to \~5,000 D1 databases to a single Worker script. [↩](#user-content-fnref-3)
 4. Requests to Cloudflare API must resolve in 30 seconds. Therefore, this duration limit also applies to the entire batch call. [↩](#user-content-fnref-4)
-5. The imported file is uploaded to R2\. Refer to [R2 upload limit](https://developers.cloudflare.com/r2/platform/limits). [↩](#user-content-fnref-5)
+5. The imported file is uploaded to R2. Refer to [R2 upload limit](https://developers.cloudflare.com/r2/platform/limits). [↩](#user-content-fnref-5)
 
 Was this helpful?
 

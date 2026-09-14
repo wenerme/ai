@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Linux
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/linux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/linux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you begin, take note of any DNS addresses you might have set up, and save them in a safe place in case you need to use them later.
 
@@ -48,7 +48,7 @@ If your system uses `systemd-resolved` to manage DNS, edit the configuration fil
 sudo <EDITOR> /etc/systemd/resolved.conf
 ```
 
-1. In the editor, add or edit the following lines:
+2. In the editor, add or edit the following lines:
 
 ```txt
 [Resolve]
@@ -67,84 +67,152 @@ DNSOverTLS=yes
 
 ### GNOME
 
-1. Go to **Show Applications** \> **Settings** \> **Network**.
+1. Go to **Show Applications** > **Settings** > **Network**.
 2. Select the adapter you want to configure — such as your Ethernet adapter or Wi-Fi card — and select the **Settings** button.
 3. On the **IPv4** tab > **DNS** section, disable the **Automatic** toggle.
-4. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
-Use 1.1.1.1 resolver
-```txt
-1.1.1.1
-1.0.0.1
-```
-Block malware with 1.1.1.1 for Families
-```txt
-1.1.1.2
-1.0.0.2
-```
-Block malware and adult content with 1.1.1.1 for Families
-```txt
-1.1.1.3
-1.0.0.3
-```
+4. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:<details><summary>
+
+   Use 1.1.1.1 resolver</summary>
+
+   ```txt
+   1.1.1.1
+   1.0.0.1
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware with 1.1.1.1 for Families</summary>
+
+   ```txt
+   1.1.1.2
+   1.0.0.2
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware and adult content with 1.1.1.1 for Families</summary>
+
+   ```txt
+   1.1.1.3
+   1.0.0.3
+   ```
+
+   </details>
+
 5. Go to **IPv6**.
-6. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
-Use 1.1.1.1 resolver
-```txt
-2606:4700:4700::1111
-2606:4700:4700::1001
-```
-Block malware with 1.1.1.1 for Families
-```txt
-2606:4700:4700::1112
-2606:4700:4700::1002
-```
-Block malware and adult content with 1.1.1.1 for Families
-```txt
-2606:4700:4700::1113
-2606:4700:4700::1003
-```
+6. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:<details><summary>
+
+   Use 1.1.1.1 resolver</summary>
+
+   ```txt
+   2606:4700:4700::1111
+   2606:4700:4700::1001
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware with 1.1.1.1 for Families</summary>
+
+   ```txt
+   2606:4700:4700::1112
+   2606:4700:4700::1002
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware and adult content with 1.1.1.1 for Families</summary>
+
+   ```txt
+   2606:4700:4700::1113
+   2606:4700:4700::1003
+   ```
+
+   </details>
+
 7. Select **Apply**.
 
 ### KDE Plasma
 
-1. Go to **System Settings** \> **Wi-Fi & Internet** \> **Wi-Fi & Networking**. (or **Connections**, if on Plasma 5)
+1. Go to **System Settings** > **Wi-Fi & Internet** > **Wi-Fi & Networking**. (or **Connections**, if on Plasma 5)
 2. Select the connection you want to configure - like your current connected network.
-3. On the **IPv4** tab, select the **Method** drop-down menu > _Automatic (Only addresses)_.
+3. On the **IPv4** tab, select the **Method** drop-down menu > *Automatic (Only addresses)*.
 4. Select the text box next to **DNS servers**.
-5. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:
-Use 1.1.1.1 resolver
-```txt
-1.1.1.1
-1.0.0.1
-```
-Block malware with 1.1.1.1 for Families
-```txt
-1.1.1.2
-1.0.0.2
-```
-Block malware and adult content with 1.1.1.1 for Families
-```txt
-1.1.1.3
-1.0.0.3
-```
-6. On the **IPv6** tab, select the **Method** drop-down menu > _Automatic (Only addresses)_.
+5. Depending on what you want to configure, choose one of the following DNS addresses for IPv4:<details><summary>
+
+   Use 1.1.1.1 resolver</summary>
+
+   ```txt
+   1.1.1.1
+   1.0.0.1
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware with 1.1.1.1 for Families</summary>
+
+   ```txt
+   1.1.1.2
+   1.0.0.2
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware and adult content with 1.1.1.1 for Families</summary>
+
+   ```txt
+   1.1.1.3
+   1.0.0.3
+   ```
+
+   </details>
+
+6. On the **IPv6** tab, select the **Method** drop-down menu > *Automatic (Only addresses)*.
 7. Select the text box next to **DNS servers**.
-8. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:
-Use 1.1.1.1 resolver
-```txt
-2606:4700:4700::1111
-2606:4700:4700::1001
-```
-Block malware with 1.1.1.1 for Families
-```txt
-2606:4700:4700::1112
-2606:4700:4700::1002
-```
-Block malware and adult content with 1.1.1.1 for Families
-```txt
-2606:4700:4700::1113
-2606:4700:4700::1003
-```
+8. Depending on what you want to configure, choose one of the following DNS addresses for IPv6:<details><summary>
+
+   Use 1.1.1.1 resolver</summary>
+
+   ```txt
+   2606:4700:4700::1111
+   2606:4700:4700::1001
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware with 1.1.1.1 for Families</summary>
+
+   ```txt
+   2606:4700:4700::1112
+   2606:4700:4700::1002
+   ```
+
+   </details>
+
+<details><summary>
+
+   Block malware and adult content with 1.1.1.1 for Families</summary>
+
+   ```txt
+   2606:4700:4700::1113
+   2606:4700:4700::1003
+   ```
+
+   </details>
+
 9. Select **Apply**.
 
 Note

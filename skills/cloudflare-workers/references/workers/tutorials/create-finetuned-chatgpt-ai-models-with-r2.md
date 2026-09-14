@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a fine-tuned OpenAI model with R2
 
-Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use the [OpenAI ↗](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗](https://platform.openai.com/docs/guides/fine-tuning).
 
@@ -23,6 +23,7 @@ In order to use this feature, you will do the following tasks:
 1. Upload a fine-tune document to R2.
 2. Read the R2 file and upload it to OpenAI.
 3. Create a new fine-tuned model based on the document.
+
 ![Demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2978,height=1744,format=webp/_astro/finetune-example.Df8cOHyQ.png)
 
 To review the completed code for this application, refer to the [GitHub repository for this tutorial ↗](https://github.com/kristianfreeman/openai-finetune-r2-example).
@@ -31,11 +32,11 @@ To review the completed code for this application, refer to the [GitHub reposito
 
 Before you start, make sure you have:
 
-* A Cloudflare account with access to R2\. If you do not have a Cloudflare account, [sign up ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) before continuing. Then purchase R2 from your Cloudflare dashboard.
-* An OpenAI API key.
-* A fine-tune document, structured as [JSON Lines ↗](https://jsonlines.org/). Use the [example document ↗](https://github.com/kristianfreeman/openai-finetune-r2-example/blob/16ca53ca9c8589834abe317487eeedb8a24c7643/example%5Fdata.jsonl) in the source code.
+- A Cloudflare account with access to R2. If you do not have a Cloudflare account, [sign up ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) before continuing. Then purchase R2 from your Cloudflare dashboard.
+- An OpenAI API key.
+- A fine-tune document, structured as [JSON Lines ↗](https://jsonlines.org/). Use the [example document ↗](https://github.com/kristianfreeman/openai-finetune-r2-example/blob/16ca53ca9c8589834abe317487eeedb8a24c7643/example_data.jsonl) in the source code.
 
-## 1\. Create a Worker application
+## 1. Create a Worker application
 
 First, use the `c3` CLI to create a new Cloudflare Workers project.
 
@@ -55,11 +56,11 @@ pnpm create cloudflare@latest finetune-chatgpt-model
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 The above options will create the "Hello World" TypeScript project.
 
@@ -69,11 +70,11 @@ Move into your newly created directory:
 cd finetune-chatgpt-model
 ```
 
-## 2\. Upload a fine-tune document to R2
+## 2. Upload a fine-tune document to R2
 
-Next, upload the fine-tune document to R2\. R2 is a key-value store that allows you to store and retrieve files from within your Workers application. You will use [Wrangler](https://developers.cloudflare.com/workers/wrangler) to create a new R2 bucket.
+Next, upload the fine-tune document to R2. R2 is a key-value store that allows you to store and retrieve files from within your Workers application. You will use [Wrangler](https://developers.cloudflare.com/workers/wrangler) to create a new R2 bucket.
 
-To create a new R2 bucket use the [wrangler r2 bucket create](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command. Note that you are logged in with your Cloudflare account. If not logged in via Wrangler, use the [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) command.
+To create a new R2 bucket use the [`wrangler r2 bucket create`](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-create) command. Note that you are logged in with your Cloudflare account. If not logged in via Wrangler, use the [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) command.
 
 ```sh
 npx wrangler r2 bucket create <BUCKET_NAME>
@@ -81,7 +82,7 @@ npx wrangler r2 bucket create <BUCKET_NAME>
 
 Replace `<BUCKET_NAME>` with your desired bucket name. Note that bucket names must be lowercase and can only contain dashes.
 
-Next, upload a file using the [wrangler r2 object put](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put) command.
+Next, upload a file using the [`wrangler r2 object put`](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put) command.
 
 ```sh
 npx wrangler r2 object put <PATH> -f <FILE_NAME>
@@ -89,7 +90,7 @@ npx wrangler r2 object put <PATH> -f <FILE_NAME>
 
 `<PATH>` is the combined bucket and file path of the file you want to upload -- for example, `fine-tune-ai/finetune.jsonl`, where `fine-tune-ai` is the bucket name. Replace `<FILE_NAME>` with the local filename of your fine-tune document.
 
-## 3\. Bind your bucket to the Worker
+## 3. Bind your bucket to the Worker
 
 A binding is how your Worker interacts with external resources such as the R2 bucket.
 
@@ -112,7 +113,7 @@ binding = "MY_BUCKET"
 bucket_name = "<YOUR_BUCKET_NAME>"
 ```
 
-## 4\. Initialize your Worker application
+## 4. Initialize your Worker application
 
 You will use [Hono ↗](https://hono.dev/), a lightweight framework for building Cloudflare Workers applications. Hono provides an interface for defining routes and middleware functions. Inside your project directory, run the following command to install Hono:
 
@@ -188,13 +189,13 @@ export default app;
 
 In the above code, you first import the required packages and define the types. Then, you initialize `app` as a new Hono instance. Using the `use` middleware function, you add the OpenAI API client to the context of all routes. This middleware function allows you to access the client from within any route handler. `onError()` defines an error handler to return any errors as a JSON response.
 
-## 5\. Read R2 files and upload them to OpenAI
+## 5. Read R2 files and upload them to OpenAI
 
 In this section, you will define the route and function responsible for handling file uploads.
 
 In `createFile`, your Worker reads the file from R2 and converts it to a `File` object. Your Worker then uses the OpenAI API to upload the file and return the response.
 
-The `GET /files` route listens for `GET` requests with a query parameter `file`, representing a filename of an uploaded fine-tune document in R2\. The function uses the `createFile` function to manage the file upload process.
+The `GET /files` route listens for `GET` requests with a query parameter `file`, representing a filename of an uploaded fine-tune document in R2. The function uses the `createFile` function to manage the file upload process.
 
 Replace `<MY_BUCKET>` with the binding name you set in Wrangler file.
 
@@ -228,7 +229,7 @@ app.get('/files', async c => {
 })
 ```
 
-## 6\. Create fine-tuned models
+## 6. Create fine-tuned models
 
 This section includes the `GET /models` route and the `createModel` function. The function `createModel` takes care of specifying the details and initiating the fine-tuning process with OpenAI. The route handles incoming requests for creating a new fine-tuned model.
 
@@ -253,7 +254,7 @@ app.get("/models", async (c) => {
 });
 ```
 
-## 7\. List all fine-tune jobs
+## 7. List all fine-tune jobs
 
 This section describes the `GET /jobs` route and the corresponding `getJobs` function. The function interacts with OpenAI's API to fetch a list of all fine-tuning jobs. The route provides an interface for retrieving this information.
 
@@ -270,11 +271,11 @@ app.get("/jobs", async (c) => {
 });
 ```
 
-## 8\. Deploy your application
+## 8. Deploy your application
 
 After you have created your Worker application and added the required functions, deploy the application.
 
-Before you deploy, you must set the `OPENAI_API_KEY` [secret](https://developers.cloudflare.com/workers/configuration/secrets/) for your application. Do this by running the [wrangler secret put](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) command:
+Before you deploy, you must set the `OPENAI_API_KEY` [secret](https://developers.cloudflare.com/workers/configuration/secrets/) for your application. Do this by running the [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put) command:
 
 ```sh
 npx wrangler secret put OPENAI_API_KEY
@@ -282,16 +283,16 @@ npx wrangler secret put OPENAI_API_KEY
 
 To deploy your Worker application to the Cloudflare global network:
 
-1. Make sure you are in your Worker project's directory, then run the [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
+1. Make sure you are in your Worker project's directory, then run the [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
 
 ```sh
 npx wrangler deploy
 ```
 
-1. Wrangler will package and upload your code.
-2. After your application is deployed, Wrangler will provide you with your Worker's URL.
+2. Wrangler will package and upload your code.
+3. After your application is deployed, Wrangler will provide you with your Worker's URL.
 
-## 9\. View the fine-tune job status and use the model
+## 9. View the fine-tune job status and use the model
 
 To use your application, create a new fine-tune job by making a request to the `/files` with a `file` query param matching the filename you uploaded earlier:
 
@@ -337,5 +338,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}
 ```

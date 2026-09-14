@@ -8,12 +8,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.schema\_validation.learned.violated
 
-`cf.schema_validation.learned.violated` `Boolean`
+`cf.schema_validation.learned.violated``Boolean`
 
 Returns `true` when an evaluated request [violates the learned profile](https://developers.cloudflare.com/waf/detections/application-profiles/fields/).
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

@@ -8,19 +8,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.response.headers.values
 
-`http.response.headers.values` `Array<String>`
+`http.response.headers.values``Array<String>`
 
 The values of the headers in the HTTP response.
 
 The values are not pre-processed and retain the original case used in the response.
 
-The order of header values is not guaranteed but will match [http.response.headers.names](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.names/).
+The order of header values is not guaranteed but will match [`http.response.headers.names`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.names/).
 
 Duplicate headers are listed multiple times.
 
-* **Decoding**: No decoding performed
-* **Whitespace**: Preserved
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Whitespace**: Preserved
+- **Non-ASCII**: Preserved
 
 **Note**: The availability of HTTP response fields depends on the exact Cloudflare feature and your Cloudflare plan.
 
@@ -42,8 +42,8 @@ any(len(http.response.headers.values[*])[*] gt 10)
 ```
 
 Categories:
-* Response
-* Headers
+- Response
+- Headers
 
 Was this helpful?
 

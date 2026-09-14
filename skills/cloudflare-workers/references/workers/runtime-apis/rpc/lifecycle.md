@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Lifecycle
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Lifetimes, Memory and Resource Management
 
@@ -30,12 +30,12 @@ In many cases (described below), the system will automatically realize when a st
 
 ## Explicit Resource Management
 
-To ensure resources are properly disposed of, you should use [Explicit Resource Management ↗](https://github.com/tc39/proposal-explicit-resource-management), a new JavaScript language feature that allows you to explicitly signal when resources can be disposed of. Explicit Resource Management is a Stage 3 TC39 proposal — it is [coming to V8 soon ↗](https://bugs.chromium.org/p/v8/issues/detail?id=13559).
+To ensure resources are properly disposed of, you should use [Explicit Resource Management ↗](https://github.com/tc39/proposal-explicit-resource-management), a new JavaScript language feature that allows you to explicitly signal when resources can be disposed of. Explicit Resource Management is a Stage 3 TC39 proposal — it is [coming to V8 soon ↗](https://bugs.chromium.org/p/v8/issues/detail?id=13559).
 
 Explicit Resource Management adds the following language features:
 
-* The [using declaration ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#using-declarations)
-* [Symbol.dispose and Symbol.asyncDispose ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#additions-to-symbol)
+- The [`using` declaration ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#using-declarations)
+- [`Symbol.dispose` and `Symbol.asyncDispose` ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#additions-to-symbol)
 
 If a variable is declared with `using`, when the variable is no longer in scope, the variable's disposer will be invoked. For example:
 
@@ -86,9 +86,9 @@ The RPC system automatically disposes of stubs in the following cases:
 
 When an event handler is "done", any stubs created as part of the event are automatically disposed.
 
-For example, consider a [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming HTTP events. The handler may make outgoing RPCs as part of handling the event, and those may return stubs. When the final HTTP response is sent, the handler is "done", and all stubs are immediately disposed.
+For example, consider a [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) which handles incoming HTTP events. The handler may make outgoing RPCs as part of handling the event, and those may return stubs. When the final HTTP response is sent, the handler is "done", and all stubs are immediately disposed.
 
-More precisely, the event has an "execution context", which begins when the handler is first invoked, and ends when the HTTP response is sent. The execution context may also end early if the client disconnects before receiving a response, or it can be extended past its normal end point by calling [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context).
+More precisely, the event has an "execution context", which begins when the handler is first invoked, and ends when the HTTP response is sent. The execution context may also end early if the client disconnects before receiving a response, or it can be extended past its normal end point by calling [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context).
 
 For example, the Worker below does not make use of the `using` declaration, but stubs will be disposed of once the `fetch()` handler returns a response:
 
@@ -108,7 +108,7 @@ export default {
 };
 ```
 
-A Worker invoked via RPC also has an execution context. The context begins when an RPC method on a `WorkerEntrypoint` is invoked. If no stubs are passed in the parameters or results of this RPC, the context ends (the event is "done") when the RPC returns. However, if any stubs are passed, then the execution context is implicitly extended until all such stubs are disposed (and all calls made through them have returned). As with HTTP, if the client disconnects, the server's execution context is canceled immediately, regardless of whether stubs still exist. A client that is itself another Worker is considered to have disconnected when its own execution context ends. Again, the context can be extended with [ctx.waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context).
+A Worker invoked via RPC also has an execution context. The context begins when an RPC method on a `WorkerEntrypoint` is invoked. If no stubs are passed in the parameters or results of this RPC, the context ends (the event is "done") when the RPC returns. However, if any stubs are passed, then the execution context is implicitly extended until all such stubs are disposed (and all calls made through them have returned). As with HTTP, if the client disconnects, the server's execution context is canceled immediately, regardless of whether stubs still exist. A client that is itself another Worker is considered to have disconnected when its own execution context ends. Again, the context can be extended with [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context).
 
 ### Stubs received as parameters in an RPC call
 
@@ -130,7 +130,7 @@ If you decide you want to keep a returned stub beyond the scope of the `using` d
 
 ## Disposers and `RpcTarget` classes
 
-A class that extends [RpcTarget](https://developers.cloudflare.com/workers/runtime-apis/rpc/) can optionally implement a disposer:
+A class that extends [`RpcTarget`](https://developers.cloudflare.com/workers/runtime-apis/rpc/) can optionally implement a disposer:
 
 ```js
 class Foo extends RpcTarget {
@@ -160,7 +160,7 @@ await func(stub);
 
 You can think of `dup()` like the [Unix system call of the same name ↗](https://man7.org/linux/man-pages/man2/dup.2.html): it creates a new handle pointing at the same target, which must be independently closed (disposed).
 
-If the instance of the [RpcTarget class](https://developers.cloudflare.com/workers/runtime-apis/rpc/) that the stubs point to has a disposer, the disposer will only be invoked when all duplicates have been disposed. However, this only applies to duplicates that originate from the same stub. If the same instance of `RpcTarget` is passed over RPC multiple times, a new stub is created each time, and these are not considered duplicates of each other. Thus, the disposer will be invoked once for each time the `RpcTarget` was sent.
+If the instance of the [`RpcTarget` class](https://developers.cloudflare.com/workers/runtime-apis/rpc/) that the stubs point to has a disposer, the disposer will only be invoked when all duplicates have been disposed. However, this only applies to duplicates that originate from the same stub. If the same instance of `RpcTarget` is passed over RPC multiple times, a new stub is created each time, and these are not considered duplicates of each other. Thus, the disposer will be invoked once for each time the `RpcTarget` was sent.
 
 In order to avoid this situation, you can manually create a stub locally, and then pass the stub across RPC multiple times. When passing a stub over RPC, ownership of the stub transfers to the recipient, so you must make a `dup()` for each time you send it:
 

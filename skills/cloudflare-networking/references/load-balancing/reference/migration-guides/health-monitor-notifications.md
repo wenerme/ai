@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health monitor notifications
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/reference/migration-guides/health-monitor-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is migrating the notifications used by load balancing [health monitors](https://developers.cloudflare.com/load-balancing/monitors/) to use Cloudflare's centralized [Notifications Service](https://developers.cloudflare.com/notifications/).
 
@@ -30,15 +30,25 @@ You should use this guide to migrate over **all** your existing health monitor n
 
 First you should determine which pools are using notifications. It's often easier if you use the Cloudflare API to list all your pools and look for the `notification_email` parameter.
 
+<details>
+
+<summary>
+
 With code
 
-Use the [Cloudflare API](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/list/) to list all your pools and then look for whether each pool has a value for the `notification_email` parameter.
+</summary>
+
+Use the <a href="https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/list/">Cloudflare API</a> to list all your pools and then look for whether each pool has a value for the <code>notification_email</code> parameter.
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/pools" \
 --header "Authorization: Bearer <API_TOKEN>" \
 | jq '[.result[] | select(.notification_email != "") | {name, notification_email}]'
 ```
+
+*Responsejson*
 
 ```json
 [
@@ -61,23 +71,39 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/load_balancers/
 ]
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 No code
+
+</summary>
 
 To find pools with existing notifications in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log into the <a href="https://dash.cloudflare.com">Cloudflare dashboard ↗</a> and select your account and domain.
 2. Go to **Load Balancing**.
 3. Select the **Pools** tab.
 4. On a pool, select **Edit**.
 5. For **Health Check Notifications**, check the value is toggled to **On** and an email address is present in the **Notification email address** field.
 
+</details>
+
 ### Step 2 - Create new notifications
 
 In this step, you should create new notifications to replace all of your existing legacy notifications.
 
+<details>
+
+<summary>
+
 With code
 
-If using the Cloudflare API, [re-create all your existing notifications](https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/) with the following parameters specified:
+</summary>
+
+If using the Cloudflare API, <a href="https://developers.cloudflare.com/api/resources/alerting/subresources/policies/methods/create/">re-create all your existing notifications</a> with the following parameters specified:
 
 ```json
 "alert_type": "load_balancing_health_alert",
@@ -88,9 +114,19 @@ If using the Cloudflare API, [re-create all your existing notifications](https:/
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 No code
 
-On the pool you located in [Step 1](#step-1---find-existing-notifications), look for **Pool Notifications**. Click **Create a Health Alert** to start [creating a notification](https://developers.cloudflare.com/notifications/get-started/#create-a-notification).
+</summary>
+
+On the pool you located in <a href="#step-1---find-existing-notifications">Step 1</a>, look for **Pool Notifications**. Click **Create a Health Alert** to start <a href="https://developers.cloudflare.com/notifications/get-started/#create-a-notification">creating a notification</a>.
+
+</details>
 
 ### Step 3 - Remove deprecated notifications
 
@@ -98,14 +134,31 @@ As the final step in the migration process, you need to remove all emails from y
 
 Though you can perform these steps in the dashboard, Cloudflare recommends you use our new API endpoint for added convenience.
 
+<details>
+
+<summary>
+
 With code
 
-If using the Cloudflare API, we recently added a [PATCH](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/pools/methods/bulk%5Fedit/) endpoint so you can easily remove email notifications from multiple pools at the same time.
+</summary>
+
+If using the Cloudflare API, we recently added a <a href="https://developers.cloudflare.com/api/resources/load_balancers/subresources/pools/methods/bulk_edit/"><code>PATCH</code></a> endpoint so you can easily remove email notifications from multiple pools at the same time.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Load Balancing: Monitors and Pools Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Load Balancing: Monitors and Pools Write</code>
+
+</details>
+
+*Patch Poolsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/pools" \
@@ -116,13 +169,23 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 	}'
 ```
 
-This API call supports the standard pagination query parameters, either `limit/offset` or `per_page/page`, so by default it only updates the first 25 pools listed. To make sure you update all your pools, you may want to adjust your API call so it loops through various pages or includes a larger number of pools with each request.
+This API call supports the standard pagination query parameters, either <code>limit/offset</code> or <code>per_page/page</code>, so by default it only updates the first 25 pools listed. To make sure you update all your pools, you may want to adjust your API call so it loops through various pages or includes a larger number of pools with each request.
+
+</details>
 
 If needed, you can remove legacy notifications by using the dashboard.
 
+<details>
+
+<summary>
+
 No code
 
-Once you created your new notification in [Step 2](#step-2---create-new-notifications), you will return to the pool you were editing previously. To disable the deprecated notifications, you must remove all notification email addresses from the field.
+</summary>
+
+Once you created your new notification in <a href="#step-2---create-new-notifications">Step 2</a>, you will return to the pool you were editing previously. To disable the deprecated notifications, you must remove all notification email addresses from the field.
+
+</details>
 
 If you do not complete this step (removing all notification emails from all pools), your migration will not be considered complete and you will continue to receive additional emails about this deprecation.
 

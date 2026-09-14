@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SFP+ port information
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The hardware version of Cloudflare One Appliance (formerly Magic WAN Connector) includes two [SFP+ ports ↗](https://en.wikipedia.org/wiki/Small%5FForm-factor%5FPluggable) that support 10G throughput. These ports can be configured as either a WAN or a LAN port, like all of the 1G RJ45 ports in the machine. Because a 10G WAN uplink will often be bottlenecked by IPsec tunnel speeds, the SFP+ ports are most useful for configuring high speed LANs, and for using fiber connections.
+The hardware version of Cloudflare One Appliance (formerly Magic WAN Connector) includes two [SFP+ ports ↗](https://en.wikipedia.org/wiki/Small_Form-factor_Pluggable) that support 10G throughput. These ports can be configured as either a WAN or a LAN port, like all of the 1G RJ45 ports in the machine. Because a 10G WAN uplink will often be bottlenecked by IPsec tunnel speeds, the SFP+ ports are most useful for configuring high speed LANs, and for using fiber connections.
 
 Virtual Appliance and SFP+ ports
 
@@ -24,11 +24,12 @@ Since you decide and set up the hardware where Virtual Appliance runs, you can i
 
 SFP+ ports are next to the regular LAN ports. They are represented as follows in the dashboard:
 
-* SFP+ **port 1** is represented by **port 7** in the dashboard
-* SFP+ **port 2** is represented by **port 8** in the dashboard
+- SFP+ **port 1** is represented by **port 7** in the dashboard
+- SFP+ **port 2** is represented by **port 8** in the dashboard
+
 ![The left port, SFP+ 1, is port 7. The right port, SFP+ 2, is port 8.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1671,height=744,format=webp/_astro/sfp-ports.B7f8iPPa.png)
 
-_The left port, SFP+ 1, is port 7\. The right port, SFP+ 2, is port 8._
+*The left port, SFP+ 1, is port 7. The right port, SFP+ 2, is port 8.*
 
 ## SFP+ module compatibility
 
@@ -36,14 +37,14 @@ Cloudflare One Appliance only supports 10Gbps SFP+ modules, including RJ45, DAC,
 
 Cloudflare supports the following SFP+ inputs:
 
-* 10 Gbps Intel-compatible optics using 10GBase-SR, LR, ER. This includes Intel-compatible active optical cables (AOC) cables at 10 Gbps.
-* 10 Gbps DAC Twinax cables, compatible with SFF-8431 v4.1 and SFF-8472 v10.4
-* 10GBASE-T RJ45 converter modules
+- 10 Gbps Intel-compatible optics using 10GBase-SR, LR, ER. This includes Intel-compatible active optical cables (AOC) cables at 10 Gbps.
+- 10 Gbps DAC Twinax cables, compatible with SFF-8431 v4.1 and SFF-8472 v10.4
+- 10GBASE-T RJ45 converter modules
 
 Cloudflare successfully deployed commonly available 10G modules that are also compatible across many vendors:
 
-* StarTech Dell EMC Twinax SFP+ DAC
-* Ubiquiti multi-mode, duplex, 10 Gbps fiber transceiver modules
+- StarTech Dell EMC Twinax SFP+ DAC
+- Ubiquiti multi-mode, duplex, 10 Gbps fiber transceiver modules
 
 Keep in mind that SFP+ modules/cables have to be compatible at both ends, that is, both sides of the connection should be 10 Gbps, and it should really be the same module/cable that is compatible with both hardware stacks. The choice of module/optic/cable ultimately depends on your specific interoperability needs, and it is much less of a "plug and play" situation as one expects from RJ45.
 

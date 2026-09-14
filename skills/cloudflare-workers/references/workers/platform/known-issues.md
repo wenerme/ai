@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known issues
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/known-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below are some known bugs and issues to be aware of when using Cloudflare Workers.
 
 ## Route specificity
 
-* When defining route specificity, a trailing `/*` in your pattern may not act as expected.
+- When defining route specificity, a trailing `/*` in your pattern may not act as expected.
 
 Consider two different Workers, each deployed to the same zone. Worker A is assigned the `example.com/images/*` route and Worker B is given the `example.com/images*` route pattern. With these in place, here are how the following URLs will be resolved:
 
@@ -48,7 +48,7 @@ When adding a wildcard on a subdomain, here are how the following URLs will be r
 
 ## wrangler dev
 
-* When running `wrangler dev --remote`, all outgoing requests are given the `cf-workers-preview-token` header, which Cloudflare recognizes as a preview request. This applies to the entire Cloudflare network, so making HTTP requests to other Cloudflare zones is currently discarded for security reasons. To enable a workaround, insert the following code into your Worker script:
+- When running `wrangler dev --remote`, all outgoing requests are given the `cf-workers-preview-token` header, which Cloudflare recognizes as a preview request. This applies to the entire Cloudflare network, so making HTTP requests to other Cloudflare zones is currently discarded for security reasons. To enable a workaround, insert the following code into your Worker script:
 
 ```js
 const request = new Request(url, incomingRequest);
@@ -58,7 +58,7 @@ return await fetch(request);
 
 ## Fetch API in CNAME setup
 
-When you make a subrequest using [fetch()](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from a Worker, the Cloudflare DNS resolver is used. When a zone has a [Partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), all hostnames that the Worker needs to be able to resolve require a dedicated DNS entry in Cloudflare's DNS setup. Otherwise the Fetch API call will fail with status code [530 (1016)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/).
+When you make a subrequest using [`fetch()`](https://developers.cloudflare.com/workers/runtime-apis/fetch/) from a Worker, the Cloudflare DNS resolver is used. When a zone has a [Partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), all hostnames that the Worker needs to be able to resolve require a dedicated DNS entry in Cloudflare's DNS setup. Otherwise the Fetch API call will fail with status code [530 (1016)](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1016/).
 
 Setup with missing DNS records in Cloudflare DNS
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # List keys
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/api/list-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/list-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To list all the keys in your KV namespace, call the `list()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
@@ -65,7 +65,7 @@ class Default(WorkerEntrypoint):
 
 The following method is provided to list the keys of KV:
 
-* [list()](#list-method)
+- [list()](#list-method)
 
 ### `list()` method
 
@@ -81,19 +81,19 @@ self.env.NAMESPACE.list(options)
 
 #### Parameters
 
-* `options`: `{ prefix?: string, limit?: string, cursor?: string }`
-  * An object with attributes `prefix` (optional), `limit` (optional), or `cursor` (optional).
-    * `prefix` is a `string` that represents a prefix you can use to filter all keys.
-    * `limit` is the maximum number of keys returned. The default is 1,000 keys, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.
-    * `cursor` is a `string` used for paginating responses.
+- `options`: `{ prefix?: string, limit?: string, cursor?: string }`
+  - An object with attributes `prefix` (optional), `limit` (optional), or `cursor` (optional).
+    - `prefix` is a `string` that represents a prefix you can use to filter all keys.
+    - `limit` is the maximum number of keys returned. The default is 1,000 keys, which is the maximum. It is unlikely that you will want to change this default but it is included for completeness.
+    - `cursor` is a `string` used for paginating responses.
 
 #### Response
 
-* `response`: `Promise<{ keys: { name: string, expiration?: number, metadata?: object }[], list_complete: boolean, cursor: string }>`
-  * A `Promise` that resolves to an object containing `keys`, `list_complete`, and `cursor` attributes.
-    * `keys` is an array that contains an object for each key listed. Each object has attributes `name`, `expiration` (optional), and `metadata` (optional). If the key-value pair has an expiration set, the expiration will be present and in absolute value form (even if it was set in TTL form). If the key-value pair has non-null metadata set, the metadata will be present.
-    * `list_complete` is a boolean, which will be `false` if there are more keys to fetch, even if the `keys` array is empty.
-    * `cursor` is a `string` used for paginating responses.
+- `response`: `Promise<{ keys: { name: string, expiration?: number, metadata?: object }[], list_complete: boolean, cursor: string }>`
+  - A `Promise` that resolves to an object containing `keys`, `list_complete`, and `cursor` attributes.
+    - `keys` is an array that contains an object for each key listed. Each object has attributes `name`, `expiration` (optional), and `metadata` (optional). If the key-value pair has an expiration set, the expiration will be present and in absolute value form (even if it was set in TTL form). If the key-value pair has non-null metadata set, the metadata will be present.
+    - `list_complete` is a boolean, which will be `false` if there are more keys to fetch, even if the `keys` array is empty.
+    - `cursor` is a `string` used for paginating responses.
 
 The `list()` method returns a promise which resolves with an object that looks like the following:
 
@@ -185,7 +185,7 @@ next_value = await self.env.NAMESPACE.list(cursor=cursor)
 
 Checking for an empty array in `keys` is not sufficient to determine whether there are more keys to fetch. Instead, use `list_complete`.
 
-It is possible to have an empty array in `keys`, but still have more keys to fetch, because [recently expired or deleted keys ↗](https://en.wikipedia.org/wiki/Tombstone%5F%28data%5Fstore%29) must be iterated through but will not be included in the returned `keys`.
+It is possible to have an empty array in `keys`, but still have more keys to fetch, because [recently expired or deleted keys ↗](https://en.wikipedia.org/wiki/Tombstone_%28data_store%29) must be iterated through but will not be included in the returned `keys`.
 
 When de-paginating a large result set while also providing a `prefix` argument, the `prefix` argument must be provided in all subsequent calls along with the initial arguments.
 

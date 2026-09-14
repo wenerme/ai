@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers binding (legacy)
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `env.AI.autorag()` binding is the legacy API for AI Search. It will continue to work, but new projects should use the new AI Search bindings instead. For a step-by-step upgrade guide, refer to [Workers binding migration](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/).
 
@@ -73,19 +73,17 @@ The maximum number of results that can be returned from the Vectorize database. 
 
 Configurations for customizing result ranking. Defaults to `{}`.
 
-* `score_threshold` `number` optional
-  * The minimum match score required for a result to be considered a match. Defaults to `0`. Must be between `0` and `1`.
+- `score_threshold` `number` optional
+  - The minimum match score required for a result to be considered a match. Defaults to `0`. Must be between `0` and `1`.
 
 `reranking` `object` optional
 
 Configurations for customizing reranking. Defaults to `{}`.
 
-* `enabled` `boolean` optional
-
-  * Enables or disables reranking, which reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
-* `model` `string` optional
-
-  * The reranking model to use when reranking is enabled.
+- `enabled` `boolean` optional
+  - Enables or disables reranking, which reorders retrieved results based on semantic relevance using a reranking model. Defaults to `false`.
+- `model` `string` optional
+  - The reranking model to use when reranking is enabled.
 
 `stream` `boolean` optional
 
@@ -168,8 +166,8 @@ const answer = await env.AI.autorag("my-autorag").search({
 
 An array of message objects. Each message has:
 
-* `content` `string` \- The search query content.
-* `role` `string` \- The role: `user`, `system`, or `assistant`.
+- `content` `string` - The search query content.
+- `role` `string` - The role: `user`, `system`, or `assistant`.
 
 ---
 
@@ -177,16 +175,16 @@ An array of message objects. Each message has:
 
 Per-request overrides for retrieval and model behavior. Supports the following nested options:
 
-* `retrieval.filters` `object` \- Narrow down search results based on metadata. Refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) for syntax and examples.
-* `retrieval.max_num_results` `number` \- Maximum number of chunks to return. Defaults to `10`, maximum `50`.
-* `retrieval.retrieval_type` `string` \- One of `vector`, `keyword`, or `hybrid`.
-* `retrieval.match_threshold` `number` \- Minimum similarity score (0-1). Defaults to `0.4`.
-* `cache.enabled` `boolean` \- Override the instance-level cache setting for this request.
-* `reranking.enabled` `boolean` \- Override the instance-level reranking setting for this request.
+- `retrieval.filters` `object` - Narrow down search results based on metadata. Refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) for syntax and examples.
+- `retrieval.max_num_results` `number` - Maximum number of chunks to return. Defaults to `10`, maximum `50`.
+- `retrieval.retrieval_type` `string` - One of `vector`, `keyword`, or `hybrid`.
+- `retrieval.match_threshold` `number` - Minimum similarity score (0-1). Defaults to `0.4`.
+- `cache.enabled` `boolean` - Override the instance-level cache setting for this request.
+- `reranking.enabled` `boolean` - Override the instance-level reranking setting for this request.
 
 ---
 
-For the full list of optional parameters, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/).
+For the full list of optional parameters, refer to the [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/).
 
 #### Response
 

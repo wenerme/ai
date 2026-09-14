@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkMeetingNameTag
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-name-tag/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-meeting-name-tag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A name tag view that displays the participant name and a microphone status icon. Automatically updates when the participant's audio state changes.
 
 ## Initializer parameters
 
-| Parameter   | Type                  | Required | Default | Description                                          |
-| ----------- | --------------------- | -------- | ------- | ---------------------------------------------------- |
-| meeting     | RealtimeKitClient     | ✅        | \-      | The RealtimeKit client instance                      |
-| participant | RtkMeetingParticipant | ✅        | \-      | The participant whose name and mic status to display |
-| appearance  | RtkNameTagAppearance  | ❌        | \-      | Appearance configuration for the name tag            |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance |
+| `participant` | `RtkMeetingParticipant` | ✅ | - | The participant whose name and mic status to display |
+| `appearance` | `RtkNameTagAppearance` | ❌ | - | Appearance configuration for the name tag |
 
 ## Methods
 
-| Method            | Return Type | Description                                             |
-| ----------------- | ----------- | ------------------------------------------------------- |
-| set(participant:) | Void        | Updates the name tag to display a different participant |
-| refresh()         | Void        | Refreshes the name and microphone status display        |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `set(participant:)` | `Void` | Updates the name tag to display a different participant |
+| `refresh()` | `Void` | Refreshes the name and microphone status display |
 
 ## Usage Examples
 

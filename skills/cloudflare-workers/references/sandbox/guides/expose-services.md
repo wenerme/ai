@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Expose services
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/expose-services/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/expose-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -26,7 +26,7 @@ Preview URLs require a custom domain with wildcard DNS routing in production. Se
 
 Prefer \`sandbox.tunnels\` for public URLs
 
-[sandbox.tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) is the recommended option for most public-URL use cases, including production. Quick tunnels give you a zero-config `*.trycloudflare.com` URL; named tunnels bind a stable `<name>.<your-zone>` hostname. Follow this guide when you specifically want the Worker itself to front the request (for example, to inject authentication or rewrite responses).
+[`sandbox.tunnels`](https://developers.cloudflare.com/sandbox/api/tunnels/) is the recommended option for most public-URL use cases, including production. Quick tunnels give you a zero-config `*.trycloudflare.com` URL; named tunnels bind a stable `<name>.<your-zone>` hostname. Follow this guide when you specifically want the Worker itself to front the request (for example, to inject authentication or rewrite responses).
 
 This guide shows you how to expose services running in your sandbox to the internet via preview URLs.
 
@@ -34,11 +34,11 @@ This guide shows you how to expose services running in your sandbox to the inter
 
 Expose ports when you need to:
 
-* **Test web applications** \- Preview frontend or backend apps
-* **Share demos** \- Give others access to running applications
-* **Develop APIs** \- Test endpoints from external tools
-* **Debug services** \- Access internal services for troubleshooting
-* **Build dev environments** \- Create shareable development workspaces
+- **Test web applications** - Preview frontend or backend apps
+- **Share demos** - Give others access to running applications
+- **Develop APIs** - Test endpoints from external tools
+- **Debug services** - Access internal services for troubleshooting
+- **Build dev environments** - Create shareable development workspaces
 
 ## Basic port exposure
 
@@ -186,16 +186,16 @@ return Response.json({
 
 **Token requirements:**
 
-* 1-16 characters long
-* Lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_) only
-* Must be unique within each sandbox
+- 1-16 characters long
+- Lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_) only
+- Must be unique within each sandbox
 
 **Use cases:**
 
-* Production APIs with stable endpoints
-* Sharing demo URLs with external users
-* Integration testing with predictable URLs
-* Documentation with consistent examples
+- Production APIs with stable endpoints
+- Sharing demo URLs with external users
+- Integration testing with predictable URLs
+- Documentation with consistent examples
 
 ## Name your exposed ports
 
@@ -441,14 +441,16 @@ for (const port of [3000, 5173, 8080]) {
 
 ## Best practices
 
-* **Wait for readiness** \- Don't expose ports immediately after starting processes
-* **Use named ports** \- Easier to track when exposing multiple ports
-* **Clean up** \- Unexpose ports when done to prevent abandoned URLs
-* **Add authentication** \- Preview URLs are public; protect sensitive services
+- **Wait for readiness** - Don't expose ports immediately after starting processes
+- **Use named ports** - Easier to track when exposing multiple ports
+- **Clean up** - Unexpose ports when done to prevent abandoned URLs
+- **Add authentication** - Preview URLs are public; protect sensitive services
 
 ## Local development
 
 When developing locally with `wrangler dev`, you must expose ports in your Dockerfile:
+
+*Dockerfiledockerfile*
 
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
@@ -460,6 +462,8 @@ EXPOSE 5173
 ```
 
 Update `wrangler.jsonc` to use your Dockerfile:
+
+*wrangler.jsoncjsonc*
 
 ```jsonc
 {
@@ -578,8 +582,8 @@ See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/co
 
 **Production**: `https://{port}-{sandbox-id}-{token}.yourdomain.com`
 
-* Auto-generated token: `https://8080-abc123-random16chars12.yourdomain.com`
-* Custom token: `https://8080-abc123-my-api-v1.yourdomain.com`
+- Auto-generated token: `https://8080-abc123-random16chars12.yourdomain.com`
+- Custom token: `https://8080-abc123-my-api-v1.yourdomain.com`
 
 **Local development**: `http://localhost:8787/...`
 
@@ -587,10 +591,10 @@ See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/co
 
 ## Related resources
 
-* [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete port exposure API
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing services
-* [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Starting services
-* [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Recommended alternative for most public-URL use cases (quick or named tunnels)
+- [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) - Complete port exposure API
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Managing services
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Starting services
+- [Tunnels API reference](https://developers.cloudflare.com/sandbox/api/tunnels/) - Recommended alternative for most public-URL use cases (quick or named tunnels)
 
 Was this helpful?
 

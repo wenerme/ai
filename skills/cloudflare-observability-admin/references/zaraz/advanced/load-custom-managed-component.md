@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Managed Components
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/load-custom-managed-component/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zaraz supports loading custom third-party tools using [Managed Components ↗](https://managedcomponents.dev/). These can be Managed Components that you have developed yourself or that were developed by others. Using Custom Managed Components with Zaraz is done by converting them into a Cloudflare Worker running in your account.
 
@@ -60,9 +60,8 @@ Note
 
 As with regular tools, it is recommended that you [create the triggers](https://developers.cloudflare.com/zaraz/custom-actions/create-trigger/) you need first, if the Custom Managed Component you are adding needs to start actions using firing triggers different from the default `Pageview` trigger.
 
-1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[Go to **Tag setup** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
-2. Select **Tools Configuration** \> [**Third-party tools** ↗](https://dash.cloudflare.com/?to=/:account/:zone/zaraz/tools-config/tools/catalog).
+1. In the Cloudflare dashboard, go to the **Tag setup** page. [Go to **Tag setup** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz)
+2. Select **Tools Configuration** > [**Third-party tools** ↗](https://dash.cloudflare.com/?to=/:account/:zone/zaraz/tools-config/tools/catalog).
 3. Select **Add new tool** and choose **Custom Managed Component** from the tools library page. Select **Continue** to confirm your selection.
 4. In **Select Custom MC**, choose a Custom Managed Component that you have deployed to your account, such as `custom-mc-my-new-counter-mc`. Select **Continue**.
 5. In **Permissions**, select the permissions you want to grant the Custom Managed Component. If you run an untrusted Managed Component, pay close attention to what permissions you are granting. Select **Continue**.
@@ -77,10 +76,10 @@ If your Managed Component listens to `ecommerce` events, toggle **E-commerce tra
 
 As of now, Custom Managed Components do not support the use of the following methods yet:
 
-* `manager.registerEmbed`
-* `manager.registerWidget`
-* `manager.proxy`
-* `manager.serve`
+- `manager.registerEmbed`
+- `manager.registerWidget`
+- `manager.proxy`
+- `manager.serve`
 
 Was this helpful?
 

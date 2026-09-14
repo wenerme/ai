@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkEndMeetingControlBarButton
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-end-meeting-control-bar-button/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/rtk-end-meeting-control-bar-button/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A control bar button that ends or leaves the meeting. Optionally displays a confirmation dialog before ending the meeting.
 
 ## Initializer parameters
 
-| Parameter           | Type                                                                                     | Required | Default | Description                                                                                                             |
-| ------------------- | ---------------------------------------------------------------------------------------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
-| meeting             | RealtimeKitClient                                                                        | ✅        | \-      | The RealtimeKit client instance                                                                                         |
-| alertViewController | UIViewController                                                                         | ✅        | \-      | View controller used to present the confirmation alert                                                                  |
-| onClick             | ((RtkEndMeetingControlBarButton, RtkLeaveDialog.RtkLeaveDialogAlertButtonType) -> Void)? | ❌        | nil     | Closure called after the user confirms leaving or ending the meeting, receiving the button and the selected action type |
-| appearance          | RtkControlBarButtonAppearance                                                            | ❌        | \-      | Appearance configuration for the button                                                                                 |
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `meeting` | `RealtimeKitClient` | ✅ | - | The RealtimeKit client instance |
+| `alertViewController` | `UIViewController` | ✅ | - | View controller used to present the confirmation alert |
+| `onClick` | `((RtkEndMeetingControlBarButton, RtkLeaveDialog.RtkLeaveDialogAlertButtonType) -> Void)?` | ❌ | `nil` | Closure called after the user confirms leaving or ending the meeting, receiving the button and the selected action type |
+| `appearance` | `RtkControlBarButtonAppearance` | ❌ | - | Appearance configuration for the button |
 
 ## Properties
 
-| Property               | Type | Required | Default | Description                                                    |
-| ---------------------- | ---- | -------- | ------- | -------------------------------------------------------------- |
-| shouldShowAlertOnClick | Bool | ❌        | true    | Whether to show a confirmation alert before ending the meeting |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `shouldShowAlertOnClick` | `Bool` | ❌ | `true` | Whether to show a confirmation alert before ending the meeting |
 
 ## Usage Examples
 

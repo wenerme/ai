@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transport
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Model Context Protocol (MCP) specification defines two standard [transport mechanisms ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) for communication between clients and servers:
 
 1. **stdio** — Communication over standard in and standard out, designed for local MCP connections.
-2. **Streamable HTTP** — The standard transport method for remote MCP connections, [introduced ↗](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http) in March 2025\. It uses a single HTTP endpoint for bidirectional messaging.
+2. **Streamable HTTP** — The standard transport method for remote MCP connections, [introduced ↗](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http) in March 2025. It uses a single HTTP endpoint for bidirectional messaging.
 
 Note
 
 Server-Sent Events (SSE) was previously used for remote MCP connections but has been deprecated in favor of Streamable HTTP. Existing `McpAgent` deployments can retain SSE temporarily while they migrate, but new servers should use the stateless Streamable HTTP handler.
 
-MCP servers built with the [Agents SDK](https://developers.cloudflare.com/agents) use [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) to handle Streamable HTTP transport.
+MCP servers built with the [Agents SDK](https://developers.cloudflare.com/agents) use [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) to handle Streamable HTTP transport.
 
 ## Implementing remote MCP transport
 
-Use [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) to create an MCP server that handles Streamable HTTP transport. This is the recommended approach for new MCP servers.
+Use [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) to create an MCP server that handles Streamable HTTP transport. This is the recommended approach for new MCP servers.
 
 #### Get started quickly
 
@@ -133,15 +133,15 @@ MCP has no protocol-level session on the stateless path. Applications can store 
 
 While migrating legacy sessions, existing servers can keep a temporary `createLegacyMcpHandler` with `WorkerTransport` or `McpAgent` route beside the new stateless route. These APIs support transport state, event replay, pushed elicitation, sampling, and roots requests. `McpAgent` is deprecated and feature-frozen.
 
-Add the stateless route before moving clients, and keep both lanes until existing sessions drain. Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the staged migration. Refer to [McpAgent: Stream resumability](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#stream-resumability) for existing stream behavior.
+Add the stateless route before moving clients, and keep both lanes until existing sessions drain. Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the staged migration. Refer to [`McpAgent`: Stream resumability](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#stream-resumability) for existing stream behavior.
 
 ## RPC transport
 
 The **RPC transport** is designed for internal applications where your MCP server and agent are both running on Cloudflare — they can even run in the same Worker. It sends JSON-RPC messages directly over Cloudflare's [RPC bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) without going over the public internet.
 
-* **Faster** — no network overhead, direct function calls between Durable Objects
-* **Simpler** — no HTTP endpoints, no connection management
-* **Internal only** — perfect for agents calling MCP servers within the same Worker
+- **Faster** — no network overhead, direct function calls between Durable Objects
+- **Simpler** — no HTTP endpoints, no connection management
+- **Internal only** — perfect for agents calling MCP servers within the same Worker
 
 RPC transport does not support authentication. Use Streamable HTTP for external connections that require OAuth.
 
@@ -151,7 +151,7 @@ Deprecated server path
 
 This section applies only to existing `McpAgent` deployments during migration. Do not create a new `McpAgent` server. Use a stateless `createMcpHandler` server instead.
 
-#### 1\. Define your MCP server
+#### 1. Define your MCP server
 
 Create your `McpAgent` with the tools you want to expose:
 
@@ -217,7 +217,7 @@ export class MyMCP extends McpAgent<Env, State> {
 }
 ```
 
-#### 2\. Connect your Agent to the MCP server
+#### 2. Connect your Agent to the MCP server
 
 In your `Agent`, call `addMcpServer()` with the Durable Object binding in `onStart()`:
 
@@ -271,7 +271,7 @@ RPC connections are automatically restored after Durable Object hibernation, jus
 
 For RPC transport, if `addMcpServer` is called with a name that already has an active connection, the existing connection is returned instead of creating a duplicate. For HTTP transport, deduplication matches on both server name and URL (refer to [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) for details). This makes it safe to call in `onStart()`.
 
-#### 3\. Configure Durable Object bindings
+#### 3. Configure Durable Object bindings
 
 In your `wrangler.jsonc`, define bindings for both Durable Objects:
 
@@ -292,7 +292,7 @@ In your `wrangler.jsonc`, define bindings for both Durable Objects:
 }
 ```
 
-#### 4\. Set up your Worker fetch handler
+#### 4. Set up your Worker fetch handler
 
 Route requests to your Chat agent:
 
@@ -444,11 +444,11 @@ export class MyMCP extends McpAgent<Env, State> {
 
 ## Choosing a transport
 
-| Transport           | Use when                              | Pros                                     | Cons                                  |
-| ------------------- | ------------------------------------- | ---------------------------------------- | ------------------------------------- |
-| **Streamable HTTP** | External MCP servers, production apps | Standard protocol, secure, supports auth | Slight network overhead               |
-| **RPC**             | Internal agents on Cloudflare         | Fastest, simplest setup                  | No auth, Durable Object bindings only |
-| **SSE**             | Compatibility with older clients      | Backwards compatible                     | Deprecated, use Streamable HTTP       |
+| Transport | Use when | Pros | Cons |
+| --- | --- | --- | --- |
+| **Streamable HTTP** | External MCP servers, production apps | Standard protocol, secure, supports auth | Slight network overhead |
+| **RPC** | Internal agents on Cloudflare | Fastest, simplest setup | No auth, Durable Object bindings only |
+| **SSE** | Compatibility with older clients | Backwards compatible | Deprecated, use Streamable HTTP |
 
 ### Migrate from McpAgent
 
@@ -460,7 +460,7 @@ Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-
 
 ### Testing with MCP clients
 
-You can test your MCP server using an MCP client that supports remote connections, or use [mcp-remote ↗](https://www.npmjs.com/package/mcp-remote), an adapter that lets MCP clients that only support local connections work with remote MCP servers.
+You can test your MCP server using an MCP client that supports remote connections, or use [`mcp-remote` ↗](https://www.npmjs.com/package/mcp-remote), an adapter that lets MCP clients that only support local connections work with remote MCP servers.
 
 Follow [this guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/) for instructions on how to connect to your remote MCP server to Claude Desktop, Cursor, Windsurf, and other MCP clients.
 

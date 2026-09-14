@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkLivestreamViewerCount
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/livestream-viewer-count/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/android/livestream-viewer-count/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Displays the current viewer count for a livestream.
 
 ## Methods
 
-| Method  | Parameters                 | Description                                                |
-| ------- | -------------------------- | ---------------------------------------------------------- |
-| refresh | meeting: RealtimeKitClient | Update the viewer count based on the current meeting state |
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `refresh` | `meeting: RealtimeKitClient` | Update the viewer count based on the current meeting state |
 
 ## Usage Examples
 

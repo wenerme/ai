@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers integration
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.
 
@@ -24,16 +24,15 @@ This is different from Workers [Variables and Secrets](https://developers.cloudf
 
 ## Before you begin
 
-* If [using the Dashboard](#via-dashboard), make sure you already have a Workers application. Refer to the [Workers get started](https://developers.cloudflare.com/workers/get-started/dashboard/) for guidance.
-* You should also have a store created under the **Secrets Store** tab on the Dashboard. The first store in your account is created automatically when a user with [Super Administrator or Secrets Store Admin role](https://developers.cloudflare.com/secrets-store/access-control/) interacts with it.
-
-  * If no store exists in your account yet and you have the necessary permissions, you can use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store) `secrets-store store create <name> --remote` to create your first store.
+- If [using the Dashboard](#via-dashboard), make sure you already have a Workers application. Refer to the [Workers get started](https://developers.cloudflare.com/workers/get-started/dashboard/) for guidance.
+- You should also have a store created under the **Secrets Store** tab on the Dashboard. The first store in your account is created automatically when a user with [Super Administrator or Secrets Store Admin role](https://developers.cloudflare.com/secrets-store/access-control/) interacts with it.
+  - If no store exists in your account yet and you have the necessary permissions, you can use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store) `secrets-store store create <name> --remote` to create your first store.
 
 Local development mode
 
 This guide assumes you are working in production. To use Secrets Store locally, you must use `secrets-store secret` [Wrangler commands](https://developers.cloudflare.com/workers/wrangler/commands/) without the `--remote` flag.
 
-## 1\. Set up account secrets in Secrets Store
+## 1. Set up account secrets in Secrets Store
 
 Follow the steps below to create secrets. You must have a [Super Administrator or a Secrets Store Admin role](https://developers.cloudflare.com/secrets-store/access-control/) within your Cloudflare account.
 
@@ -59,21 +58,31 @@ npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scop
 ✅ Created secret! (ID: 13bc7498c6374a4e9d13be091c3c65f1)
 ```
 
-1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
+1. In the Cloudflare dashboard, go to the **Secrets Store** page. [Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Select **Create secret**.
-3. Fill in the required fields, choosing _Workers_ as the **Permission scope**. Once the secret is saved, the secret value will no longer be available for viewing.
+3. Fill in the required fields, choosing *Workers* as the **Permission scope**. Once the secret is saved, the secret value will no longer be available for viewing.
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
 5. Select **Save** to confirm.
 
 You can find and copy the store ID from the [Secrets Store tab ↗](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store). Also, make sure your secret `name` does not contain spaces.
 
-Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/secrets%5Fstore/) for the full API documentation.
+Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/secrets_store/) for the full API documentation.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Secrets Store Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Secrets Store Write</code>
+
+</details>
+
+*Create a secretbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$STORE_ID/secrets" \
@@ -102,21 +111,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 
 Refer to [manage account secrets](https://developers.cloudflare.com/secrets-store/manage-secrets/) for further options.
 
-## 2\. Bind an account secret to your Worker
+## 2. Bind an account secret to your Worker
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Worker to interact with resources on your Cloudflare account.
 
 To bind an account secret to your Worker, you must have one of the following [roles within your Cloudflare account](https://developers.cloudflare.com/secrets-store/access-control/):
 
-* Super Administrator
-* Secrets Store Deployer
+- Super Administrator
+- Secrets Store Deployer
 
 ### Via Wrangler
 
 1. Add a Secrets Store binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
-  * `binding`: a descriptive name for your binding. This will be used in the Workers application when [accessing your secret on the env object](https://developers.cloudflare.com/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object).
-  * `store_id`: the corresponding Secrets Store ID where your account secret was created.
-  * `secret_name`: the unique secret name, defined when your account secret was created.
+   - `binding`: a descriptive name for your binding. This will be used in the Workers application when [accessing your secret on the `env` object](https://developers.cloudflare.com/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object).
+   - `store_id`: the corresponding Secrets Store ID where your account secret was created.
+   - `secret_name`: the unique secret name, defined when your account secret was created.
 
 ```jsonc
 {
@@ -142,22 +151,19 @@ secret_name = "<MY_SECRET_NAME>"
 
 ### Via Dashboard
 
-1. In the Cloudflare dashboard, go to **Workers & Pages**.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to **Workers & Pages**. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select a Workers application.
-3. Go to **Settings** \> **Bindings** and select **Add**.
+3. Go to **Settings** > **Bindings** and select **Add**.
 4. On the **Add a resource binding** side panel, choose **Secrets Store**.
 5. Fill in the required fields:
-
-  * **Variable name**: a name for the binding. This will be used for your Worker to access the secret ([step 3](#3-access-the-secret-on-the-env-object) below).
-  * **Secret name**: select from the list of available account secrets created in [step 1](#1-set-up-account-secrets-in-secrets-store).
-  * (Optional - Admins only) If the secret you need does not exist yet, select **Create secret**. This will add an account level secret in the same way as if you had [created it on the Secrets Store](https://developers.cloudflare.com/secrets-store/manage-secrets/).
+   - **Variable name**: a name for the binding. This will be used for your Worker to access the secret ([step 3](#3-access-the-secret-on-the-env-object) below).
+   - **Secret name**: select from the list of available account secrets created in [step 1](#1-set-up-account-secrets-in-secrets-store).
+   - (Optional - Admins only) If the secret you need does not exist yet, select **Create secret**. This will add an account level secret in the same way as if you had [created it on the Secrets Store](https://developers.cloudflare.com/secrets-store/manage-secrets/).
 6. Select **Deploy** to deploy your binding. When deploying, there are two options:
+   - **Deploy:** Immediately deploy the binding to 100% of your audience.
+   - **Save version:** Save a version of the binding which you can deploy in the future.
 
-  * **Deploy:** Immediately deploy the binding to 100% of your audience.
-  * **Save version:** Save a version of the binding which you can deploy in the future.
-
-## 3\. Access the secret on the `env` object
+## 3. Access the secret on the `env` object
 
 [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) are located on the `env` object. To access the secret you first need an asynchronous call.
 

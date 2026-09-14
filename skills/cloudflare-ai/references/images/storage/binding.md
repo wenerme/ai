@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage hosted images with Workers
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -49,40 +49,40 @@ The `env.IMAGES.hosted` namespace lets you upload and list images across your ac
 
 ### `.upload(image, options)`
 
-Uploads a new image to your account. You can pass image bytes as a stream or an `ArrayBuffer`. Returns [ImageMetadata](#imagemetadata).
+Uploads a new image to your account. You can pass image bytes as a stream or an `ArrayBuffer`. Returns [`ImageMetadata`](#imagemetadata).
 
 Accepts the following options as an `ImageUploadOptions` object:
 
-* `id` `string` — A custom ID to assign to the image. If omitted, Cloudflare generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
-* `filename` `string` — The filename to associate with the image.
-* `requireSignedURLs` `boolean` — Sets whether the image should require a signed URL to view. Defaults to `false`.
-* `metadata` `Record<string, unknown>` — Arbitrary metadata to store alongside the image.
-* `creator` `string` — A user-defined identifier for the image creator.
-* `encoding` `'base64'` — Set to `base64` if the provided bytes are base64-encoded. The binding will decode them before upload.
+- `id` `string` — A custom ID to assign to the image. If omitted, Cloudflare generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
+- `filename` `string` — The filename to associate with the image.
+- `requireSignedURLs` `boolean` — Sets whether the image should require a signed URL to view. Defaults to `false`.
+- `metadata` `Record<string, unknown>` — Arbitrary metadata to store alongside the image.
+- `creator` `string` — A user-defined identifier for the image creator.
+- `encoding` `'base64'` — Set to `base64` if the provided bytes are base64-encoded. The binding will decode them before upload.
 
 ### `.createDirectUpload(options)`
 
-Creates a [Direct Creator Upload](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/) URL that a client can upload an image to directly without exposing an API token. Returns [DirectUploadResult](#directuploadresult).
+Creates a [Direct Creator Upload](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/) URL that a client can upload an image to directly without exposing an API token. Returns [`DirectUploadResult`](#directuploadresult).
 
 Accepts the following options as a `DirectUploadOptions` object:
 
-* `id` `string` optional — A custom ID to assign to the image. If omitted, then Cloudflare automatically generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
-* `metadata` `Record<string, unknown>` optional — Arbitrary metadata to store alongside the image once it is uploaded.
-* `requireSignedURLs` `boolean` optional — Sets whether the uploaded image should require a signed URL to view. Defaults to `false`.
-* `creator` `string` optional — A user-defined identifier for the image creator.
-* `expiresIn` `number` optional — How long the upload URL stays valid, in seconds. Must be between `120` and `21600`. Defaults to `1800`.
+- `id` `string` optional — A custom ID to assign to the image. If omitted, then Cloudflare automatically generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
+- `metadata` `Record<string, unknown>` optional — Arbitrary metadata to store alongside the image once it is uploaded.
+- `requireSignedURLs` `boolean` optional — Sets whether the uploaded image should require a signed URL to view. Defaults to `false`.
+- `creator` `string` optional — A user-defined identifier for the image creator.
+- `expiresIn` `number` optional — How long the upload URL stays valid, in seconds. Must be between `120` and `21600`. Defaults to `1800`.
 
 ### `.list(options)`
 
-Lists images in your account with pagination. Returns [ImageList](#imagelist).
+Lists images in your account with pagination. Returns [`ImageList`](#imagelist).
 
 Accepts the following options as an `ImageListOptions` object:
 
-* `limit` `number` — The maximum number of images to return in a page.
-* `cursor` `string` — The continuation token returned by the previous `list()` call. Omit on the first page.
-* `sortOrder` `'asc' | 'desc'` — The order to sort results in by `uploaded` timestamp. Defaults to `asc`.
-* `creator` `string` — Filter results to images uploaded with this creator identifier.
-* `filter` `ImageListFilter` — Filter results by image properties. Accepts a `metadata` field to filter by custom metadata.
+- `limit` `number` — The maximum number of images to return in a page.
+- `cursor` `string` — The continuation token returned by the previous `list()` call. Omit on the first page.
+- `sortOrder` `'asc' | 'desc'` — The order to sort results in by `uploaded` timestamp. Defaults to `asc`.
+- `creator` `string` — Filter results to images uploaded with this creator identifier.
+- `filter` `ImageListFilter` — Filter results by image properties. Accepts a `metadata` field to filter by custom metadata.
 
 #### Filter by custom metadata
 
@@ -96,12 +96,12 @@ To filter on a nested field, separate the levels with dot notation, for example,
 
 Accepts the following operators as an `ImageMetadataFilterOperators` object:
 
-* `eq` `string | number | boolean` — Matches a field exactly.
-* `in` `Array<string> | Array<number>` — Matches a field against any value in an array. An array accepts up to 10 values, and a string value cannot contain the pipe character (`|`).
-* `gt` `number` — Matches a field that is greater than the value.
-* `gte` `number` — Matches a field that is greater than or equal to the value.
-* `lt` `number` — Matches a field that is less than the value.
-* `lte` `number` — Matches a field that is less than or equal to the value.
+- `eq` `string | number | boolean` — Matches a field exactly.
+- `in` `Array<string> | Array<number>` — Matches a field against any value in an array. An array accepts up to 10 values, and a string value cannot contain the pipe character ( `|`).
+- `gt` `number` — Matches a field that is greater than the value.
+- `gte` `number` — Matches a field that is greater than or equal to the value.
+- `lt` `number` — Matches a field that is less than the value.
+- `lte` `number` — Matches a field that is less than or equal to the value.
 
 A plain value is shorthand for an exact match, so `{ status: "active" }` is equivalent to `{ status: { eq: "active" } }`.
 
@@ -153,21 +153,21 @@ The handle itself does not make a network request, so it is cheap to construct.
 
 ### `.image(imageId).details()`
 
-Gets the metadata for an image. Returns [ImageMetadata](#imagemetadata) or `null` if no image with the given ID exists.
+Gets the metadata for an image. Returns [`ImageMetadata`](#imagemetadata) or `null` if no image with the given ID exists.
 
 ### `.image(imageId).bytes()`
 
-Gets the raw bytes of an image. Returns `ReadableStream<Uint8Array>` or `null` if no image with the given ID exists. This streams the original uploaded file. Pass the image bytes to [.input()](https://developers.cloudflare.com/images/optimization/binding/) to optimize before serving, or use the URLs returned in [ImageMetadata.variants](#imagemetadata) or the [image delivery URL](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/) to serve a predefined variant.
+Gets the raw bytes of an image. Returns `ReadableStream<Uint8Array>` or `null` if no image with the given ID exists. This streams the original uploaded file. Pass the image bytes to [`.input()`](https://developers.cloudflare.com/images/optimization/binding/) to optimize before serving, or use the URLs returned in [`ImageMetadata.variants`](#imagemetadata) or the [image delivery URL](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/) to serve a predefined variant.
 
 ### `.image(imageId).update(options)`
 
-Updates the metadata or access controls for an image. All fields are optional; only the specified fields will be changed. Returns [ImageMetadata](#imagemetadata) with the updated values.
+Updates the metadata or access controls for an image. All fields are optional; only the specified fields will be changed. Returns [`ImageMetadata`](#imagemetadata) with the updated values.
 
 Accepts the following options as an `ImageUpdateOptions` object:
 
-* `requireSignedURLs` `boolean` — Whether signed URLs should be required to view the image. Cannot be set to `true` on an image that was uploaded with a [custom ID](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
-* `metadata` `Record<string, unknown>` — Replacement metadata for the image. This replaces the existing metadata rather than merging into it.
-* `creator` `string` — A user-defined identifier for the image creator.
+- `requireSignedURLs` `boolean` — Whether signed URLs should be required to view the image. Cannot be set to `true` on an image that was uploaded with a [custom ID](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
+- `metadata` `Record<string, unknown>` — Replacement metadata for the image. This replaces the existing metadata rather than merging into it.
+- `creator` `string` — A user-defined identifier for the image creator.
 
 ### `.image(imageId).delete()`
 
@@ -181,9 +181,9 @@ Returning a signed URL lets a browser fetch a private image directly without pro
 
 Accepts the following options as an `ImageSignedUrlOptions` object:
 
-* `variant` `string` — The [variant](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/) to serve.
-* `expiresIn` `number` optional — How long the URL stays valid, in seconds. If omitted, then the URL does not expire.
-* `keyName` `string` optional — The name of the [signing key](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/) to use. Defaults to `default`.
+- `variant` `string` — The [variant](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/) to serve.
+- `expiresIn` `number` optional — How long the URL stays valid, in seconds. If omitted, then the URL does not expire.
+- `keyName` `string` optional — The name of the [signing key](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/) to use. Defaults to `default`.
 
 ## Examples
 
@@ -513,53 +513,53 @@ export default {
 
 Returned by operations that retrieve, create, or update an image.
 
-* `id` `string`
-  * The unique identifier for the image.
-* `filename` `string` optional
-  * The original filename supplied at upload time.
-* `uploaded` `string` optional
-  * The date and time the image was uploaded, as an ISO 8601 string.
-* `requireSignedURLs` `boolean`
-  * Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
-* `meta` `Record<string, unknown>` optional
-  * User-supplied metadata associated with the image.
-* `variants` `Array<string>`
-  * Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
-* `draft` `boolean` optional
-  * Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
-* `creator` `string` optional
-  * A user-defined identifier for the image creator.
+- `id` `string`
+  - The unique identifier for the image.
+- `filename` `string` optional
+  - The original filename supplied at upload time.
+- `uploaded` `string` optional
+  - The date and time the image was uploaded, as an ISO 8601 string.
+- `requireSignedURLs` `boolean`
+  - Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
+- `meta` `Record<string, unknown>` optional
+  - User-supplied metadata associated with the image.
+- `variants` `Array<string>`
+  - Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
+- `draft` `boolean` optional
+  - Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
+- `creator` `string` optional
+  - A user-defined identifier for the image creator.
 
 ### ImageList
 
-Returned by [list()](#listoptions).
+Returned by [`list()`](#listoptions).
 
-* `images` `Array<ImageMetadata>`
-  * The images in this page of results.
-* `cursor` `string` optional
-  * A continuation token to pass to the next `list()` call. Only present when there are more results.
-* `listComplete` `boolean`
-  * `true` when there are no further pages, `false` otherwise.
+- `images` `Array<ImageMetadata>`
+  - The images in this page of results.
+- `cursor` `string` optional
+  - A continuation token to pass to the next `list()` call. Only present when there are more results.
+- `listComplete` `boolean`
+  - `true` when there are no further pages, `false` otherwise.
 
 ### DirectUploadResult
 
-Returned by [createDirectUpload()](#createdirectuploadoptions).
+Returned by [`createDirectUpload()`](#createdirectuploadoptions).
 
-* `id` `string`
-  * The ID that the uploaded image will have.
-* `uploadURL` `string`
-  * The one-time URL that a client uploads the image bytes to.
+- `id` `string`
+  - The ID that the uploaded image will have.
+- `uploadURL` `string`
+  - The one-time URL that a client uploads the image bytes to.
 
 ## Error handling
 
 Methods that fail throw an `ImagesError` — `.upload()`, `.list()`, `.createDirectUpload()`, `.update()`, and `.signedUrl()` — with the following properties:
 
-* `code` `number`
-  * A numeric error code that identifies the failure mode.
-* `message` `string`
-  * A human-readable description of the error.
+- `code` `number`
+  - A numeric error code that identifies the failure mode.
+- `message` `string`
+  - A human-readable description of the error.
 
-Methods that fetch a single image — [.details()](#imageimageiddetails), [.bytes()](#imageimageidbytes), and [.delete()](#imageimageiddelete) — return `null` or `false` for "not found" rather than throwing.
+Methods that fetch a single image — [`.details()`](#imageimageiddetails), [`.bytes()`](#imageimageidbytes), and [`.delete()`](#imageimageiddelete) — return `null` or `false` for "not found" rather than throwing.
 
 You may want to wrap operations that can throw in a `try...catch` block.
 
@@ -571,9 +571,9 @@ The mock is only suitable for local development. To exercise the real Images ser
 
 ## Related resources
 
-* [Optimize with Workers](https://developers.cloudflare.com/images/optimization/binding/) — Use the binding to optimize images from a Worker.
-* [Upload via the REST API](https://developers.cloudflare.com/images/storage/upload-images/methods/) — The equivalent HTTP API.
-* [Manage hosted images](https://developers.cloudflare.com/images/storage/manage-images/) — Dashboard and API workflows for managing stored images.
+- [Optimize with Workers](https://developers.cloudflare.com/images/optimization/binding/) — Use the binding to optimize images from a Worker.
+- [Upload via the REST API](https://developers.cloudflare.com/images/storage/upload-images/methods/) — The equivalent HTTP API.
+- [Manage hosted images](https://developers.cloudflare.com/images/storage/manage-images/) — Dashboard and API workflows for managing stored images.
 
 Was this helpful?
 

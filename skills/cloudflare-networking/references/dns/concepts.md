@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Domain Name System (DNS) translates human-readable domain names (like `example.com`) into IP addresses that computers use to locate each other on the Internet. This page covers key DNS concepts used throughout the Cloudflare DNS documentation. For more concepts and broader descriptions, refer to the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/dns/what-is-dns/).
 
@@ -66,57 +66,83 @@ Different Cloudflare products and features are configurable at the zone level. R
 
 ### Zone apex
 
-The zone apex is the highest-level domain within a zone — the starting point from which all DNS records in that zone are managed.
+The zone apex
+
+ is the highest-level domain within a zone — the starting point from which all DNS records in that zone are managed.
 
 In most cases, the zone apex is the same as the apex domain (for example, `example.com`). However, with [subdomain delegation](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) (available on Enterprise plans), a subdomain like `sub.example.com` can be its own zone, making that subdomain the zone apex.
 
+<details>
+
+<summary>
+
 Example 1
+
+</summary>
 
 DNS management for **example.com**:
 
-| Type | Name | Content   | Proxy status | TTL  |
-| ---- | ---- | --------- | ------------ | ---- |
-| A    | blog | 192.0.2.1 | Proxied      | Auto |
+| Type | Name | Content | Proxy status | TTL |
+| --- | --- | --- | --- | --- |
+| A | <code>blog</code> | <code>192.0.2.1</code> | Proxied | Auto |
 
-Zone apex: `example.com`
+Zone apex: <code>example.com</code>
 
-Full record name: `blog.example.com`
+Full record name: <code>blog.example.com</code>
+
+</details>
+
+<details>
+
+<summary>
 
 Example 2
 
+</summary>
+
 DNS management for **sub.example.com**:
 
-| Type | Name | Content   | Proxy status | TTL  |
-| ---- | ---- | --------- | ------------ | ---- |
-| A    | blog | 192.0.2.1 | Proxied      | Auto |
+| Type | Name | Content | Proxy status | TTL |
+| --- | --- | --- | --- | --- |
+| A | <code>blog</code> | <code>192.0.2.1</code> | Proxied | Auto |
 
-Zone apex: `sub.example.com`
+Zone apex: <code>sub.example.com</code>
 
-Full record name: `blog.sub.example.com`
+Full record name: <code>blog.sub.example.com</code>
+
+</details>
 
 To create a DNS record at the zone apex, use `@` for the record **Name**. The `@` symbol is a DNS convention that represents the zone apex itself. For details, refer to [Create zone apex record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/).
 
+<details>
+
+<summary>
+
 Record at the zone apex
+
+</summary>
 
 DNS management for **example.com**:
 
-| Type | Name | Content   | Proxy status | TTL  |
-| ---- | ---- | --------- | ------------ | ---- |
-| A    | @    | 192.0.2.1 | Proxied      | Auto |
+| Type | Name | Content | Proxy status | TTL |
+| --- | --- | --- | --- | --- |
+| A | <code>@</code> | <code>192.0.2.1</code> | Proxied | Auto |
 
-Zone apex: `example.com`
+Zone apex: <code>example.com</code>
 
-Full record name: `example.com`
+Full record name: <code>example.com</code>
 
 DNS management for **sub.example.com**:
 
-| Type | Name | Content   | Proxy status | TTL  |
-| ---- | ---- | --------- | ------------ | ---- |
-| A    | @    | 192.0.2.1 | Proxied      | Auto |
+| Type | Name | Content | Proxy status | TTL |
+| --- | --- | --- | --- | --- |
+| A | <code>@</code> | <code>192.0.2.1</code> | Proxied | Auto |
 
-Zone apex: `sub.example.com`
+Zone apex: <code>sub.example.com</code>
 
-Full record name: `sub.example.com`
+Full record name: <code>sub.example.com</code>
+
+</details>
 
 ## DNSSEC
 

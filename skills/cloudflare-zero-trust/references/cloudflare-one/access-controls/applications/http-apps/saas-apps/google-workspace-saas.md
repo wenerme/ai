@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Workspace
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-workspace-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-workspace-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Google Workspace ↗](https://support.google.com/a/topic/7579248?ref%5Ftopic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
+This guide covers how to configure [Google Workspace ↗](https://support.google.com/a/topic/7579248?ref_topic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
 
 Note
 
@@ -22,55 +22,57 @@ The integration of Access as a single sign-on provider for your Google Workspace
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to a Google Workspace account
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to a Google Workspace account
 
-## 1\. Create an application in Cloudflare One
+## 1. Create an application in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Fill in the following information:
-
-  * **Application**: _Google_.
-  * **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML%5FDocs/How-to-Enable-SAML-2.0-in-Google-Apps.html).
-  * **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`, where `<your_domain.com>` is your Google Workspace domain.
-  * **Name ID Format**: _Email_.
+   - **Application**: *Google*.
+   - **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML_Docs/How-to-Enable-SAML-2.0-in-Google-Apps.html).
+   - **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`, where `<your_domain.com>` is your Google Workspace domain.
+   - **Name ID Format**: *Email*.
 
 Caution
 
 When you put your Google Workspace behind Access, users will not be able to log in using [Google](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/) or [Google Workspace](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/) as an identity provider. To secure Google Workspace behind Access and avoid an [authentication loop](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#google-workspace-redirect-loop), you must configure a different identity provider (not Google or Google Workspace) for authentication.
 
-1. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for your application. For example, you could allow users with an `@your_domain.com` email address.
-2. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**. These values will be used to configure Google Workspace.
-3. Save the application.
+5. [Create an Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for your application. For example, you could allow users with an `@your_domain.com` email address.
+6. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**. These values will be used to configure Google Workspace.
+7. Save the application.
 
-## 2\. Create a certificate from your public key
+## 2. Create a certificate from your public key
 
 1. Copy and then paste your **Public key** into a text editor.
 2. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`. For example,
-```txt
------BEGIN CERTIFICATE-----
-<PUBLIC_KEY>
------END CERTIFICATE-----
-```
+
+   ```txt
+   -----BEGIN CERTIFICATE-----
+   <PUBLIC_KEY>
+   -----END CERTIFICATE-----
+   ```
+
+
 3. Set the file extension as `.crt` and save.
 
-## 3\. Create an SSO provider in Google Workspace
+## 3. Create an SSO provider in Google Workspace
 
 1. Log in to your [Google Admin console ↗](https://admin.google.com/).
-2. Go to **Security** \> **Authentication** \> **SSO with third party IdP**.
+2. Go to **Security** > **Authentication** > **SSO with third party IdP**.
 3. Select **Third-party SSO profile for your organization**.
 4. Enable **Set up SSO with third-party identity provider**.
 5. Fill in the following information:
-  * **Sign-in page URL**: Copy and then paste your **SSO endpoint** from Cloudflare One.
-  * **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.
-  * **Verification certificate**: Upload the certificate file containing your public key.
-6. (Optional) Enable **Use a domain specific issuer**. If you select this option, Google will send an issuer specific to your Google Workspace domain (`google.com/a/<your_domain.com>` instead of the standard `google.com`).
+   - **Sign-in page URL**: Copy and then paste your **SSO endpoint** from Cloudflare One.
+   - **Sign-out page URL**: `https://<team-name>.cloudflareaccess.com/cdn-cgi/access/logout`, where `<team-name>` is your Cloudflare One team name.
+   - **Verification certificate**: Upload the certificate file containing your public key.
+6. (Optional) Enable **Use a domain specific issuer**. If you select this option, Google will send an issuer specific to your Google Workspace domain ( `google.com/a/<your_domain.com>` instead of the standard `google.com`).
 
-## 4\. Test the integration
+## 4. Test the integration
 
-1. In your [Google Admin console ↗](https://admin.google.com/), go to **Apps** \> **Google Workspace** \> **Gmail** \> **Setup**.
+1. In your [Google Admin console ↗](https://admin.google.com/), go to **Apps** > **Google Workspace** > **Gmail** > **Setup**.
 2. Copy your Gmail **Web address**.
 3. Open an incognito browser window and go to your Gmail web address (for example, `https://mail.google.com/a/<your_domain.com>`).
 

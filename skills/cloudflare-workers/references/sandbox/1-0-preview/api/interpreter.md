@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Interpreter
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/interpreter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/interpreter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
@@ -30,22 +30,22 @@ createCodeContext(options?: CreateContextOptions): Promise<CodeContext>
 
 `createCodeContext` accepts the following options:
 
-| Field    | Type                     | Description                             |                                        |
-| -------- | ------------------------ | --------------------------------------- | -------------------------------------- |
-| language | "python" \| "javascript" | "typescript"                            | Interpreter language. Default: python. |
-| cwd      | string                   | Working directory. Default: /workspace. |                                        |
+| Field | Type | Description |
+| --- | --- | --- |
+| `language` | `"python" \| "javascript" \| "typescript"` | Interpreter language. Default: `python`. |
+| `cwd` | `string` | Working directory. Default: `/workspace`. |
 
 ### `CodeContext`
 
 A created context has the following fields:
 
-| Field     | Type   | Description                         |
-| --------- | ------ | ----------------------------------- |
-| id        | string | Context id in the current container |
-| language  | string | Language of the context             |
-| cwd       | string | Working directory                   |
-| createdAt | Date   | Created time                        |
-| lastUsed  | Date   | Last used time                      |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` | Context id in the current container |
+| `language` | `string` | Language of the context |
+| `cwd` | `string` | Working directory |
+| `createdAt` | `Date` | Created time |
+| `lastUsed` | `Date` | Last used time |
 
 ## `runCode()`
 
@@ -57,14 +57,14 @@ runCode(code: string, options?: RunCodeOptions): Promise<ExecutionResult>
 
 `runCode` accepts the following options. The callback fields apply to `runCode` only.
 
-| Field    | Type                                             | Description                                                         |                                                                     |
-| -------- | ------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| context  | CodeContext                                      | Context to use. If omitted, a default context for language is used. |                                                                     |
-| language | "python" \| "javascript"                         | "typescript"                                                        | Used when creating or selecting a default context. Default: python. |
-| onStdout | (output: OutputMessage) => void \| Promise<void> | Called for stdout chunks while running                              |                                                                     |
-| onStderr | (output: OutputMessage) => void \| Promise<void> | Called for stderr chunks while running                              |                                                                     |
-| onResult | (result: ResultData) => void \| Promise<void>    | Called for rich results (plain data)                                |                                                                     |
-| onError  | (error: ExecutionError) => void \| Promise<void> | Called when the run reports an execution error                      |                                                                     |
+| Field | Type | Description |
+| --- | --- | --- |
+| `context` | `CodeContext` | Context to use. If omitted, a default context for `language` is used. |
+| `language` | `"python" \| "javascript" \| "typescript"` | Used when creating or selecting a default context. Default: `python`. |
+| `onStdout` | `(output: OutputMessage) => void \| Promise<void>` | Called for stdout chunks while running |
+| `onStderr` | `(output: OutputMessage) => void \| Promise<void>` | Called for stderr chunks while running |
+| `onResult` | `(result: ResultData) => void \| Promise<void>` | Called for rich results (plain data) |
+| `onError` | `(error: ExecutionError) => void \| Promise<void>` | Called when the run reports an execution error |
 
 ### `OutputMessage`
 
@@ -134,10 +134,10 @@ Python requires the **`-python`** container image variant. Deploy the Worker pac
 
 ## Related
 
-* [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/)
-* [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* Stable: [Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/)
+- [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/)
+- [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- Stable: [Interpreter API](https://developers.cloudflare.com/sandbox/api/interpreter/)
 
 Was this helpful?
 

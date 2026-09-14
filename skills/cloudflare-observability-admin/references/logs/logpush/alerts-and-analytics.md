@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logpush alerts and analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/alerts-and-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush jobs may fail for a few reasons, for instance because the destination is unreachable, because of a change in permissions at the customers’ origin, or because a Logpush job did not complete at least one successful push in the last 24 hour.
 
@@ -20,17 +20,23 @@ With analytics and alerting, you can monitor your Logpush job health and find ou
 
 Alerts are sent via the [Cloudflare Notifications](https://developers.cloudflare.com/notifications/) system. They can be sent via email or webhook. When subscribed to job disablement notification, you will receive at most one alert per job per 24 hours. The notification email contains the job ID and destination configuration.
 
+<details>
+
+<summary>
+
 Failing Logpush Job Disabled
+
+</summary>
 
 **Who is it for?**
 
-Enterprise customers who use [Logpush](https://developers.cloudflare.com/logs/) and want to monitor their job health.
+Enterprise customers who use <a href="https://developers.cloudflare.com/logs/">Logpush</a> and want to monitor their job health.
 
 **Other options / filters**
 
-* Notification Name: A custom name for the notification.
-* Description (optional): A custom description for the notification.
-* Notification Email (can be multiple emails): The email address of the recipient for the notification.
+- Notification Name: A custom name for the notification.
+- Description (optional): A custom description for the notification.
+- Notification Email (can be multiple emails): The email address of the recipient for the notification.
 
 **Included with**
 
@@ -38,14 +44,15 @@ Enterprise plans.
 
 **What should you do if you receive one?**
 
-In the email for the notification, you can find the destination name for the failing Logpush job. With this destination name, you should be able to figure out which zone this relates to. There can be multiple reasons why a job fails, but it is best to test that the destination endpoint is healthy, and that necessary credentials are still working. You can also check that the destination has allowlisted [Cloudflare IPs](https://www.cloudflare.com/ips/).
+In the email for the notification, you can find the destination name for the failing Logpush job. With this destination name, you should be able to figure out which zone this relates to. There can be multiple reasons why a job fails, but it is best to test that the destination endpoint is healthy, and that necessary credentials are still working. You can also check that the destination has allowlisted <a href="https://www.cloudflare.com/ips/">Cloudflare IPs</a>.
+
+</details>
 
 ## Enable alerts
 
 You can add an alert for **Failing Logpush Job Disabled** via the **Notifications** section of the dashboard. Note that alerts can be configured at the account level and apply to all jobs within an account.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Next, select **Add**.
 3. Select the alert **Failing Logpush Job Disabled**.
 4. Configure the alert: choose a name, add a description (optional), select the notification services, Webhooks and enter the email where you want to be notified.

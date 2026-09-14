@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.edge.l4.delivery\_rate
 
-`cf.edge.l4.delivery_rate` `Integer`
+`cf.edge.l4.delivery_rate``Integer`
 
 The most recent data delivery rate estimate for the client connection, in bytes per second.
 
@@ -30,7 +30,7 @@ cf.edge.l4.delivery_rate < 100000
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

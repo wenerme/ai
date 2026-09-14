@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Round-robin DNS
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To randomly distribute traffic across multiple servers, set up multiple DNS `A` or `AAAA` records for the same hostname.
 
@@ -25,10 +25,10 @@ The following example illustrates how you would distribute traffic intended for 
 After [creating an account](https://developers.cloudflare.com/fundamentals/account/create-account/) and [updating your nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) for `example.com`, you might [create multiple subdomain DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for `www`:
 
 | Type | Name | IPv4 address |
-| ---- | ---- | ------------ |
-| A    | www  | 192.0.2.1    |
-| A    | www  | 192.0.2.2    |
-| A    | www  | 192.0.2.3    |
+| --- | --- | --- |
+| A | `www` | `192.0.2.1` |
+| A | `www` | `192.0.2.2` |
+| A | `www` | `192.0.2.3` |
 
 The exact behavior of your DNS routing would depend on the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) of each record.
 

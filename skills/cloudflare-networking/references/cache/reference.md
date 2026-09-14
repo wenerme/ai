@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the reference content to learn more about specific caching functionality.
 
-* [CDN Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/cdn/)
-* [CSAM Scanning Tool](https://developers.cloudflare.com/cache/reference/csam-scanning/)
-* [Development Mode](https://developers.cloudflare.com/cache/reference/development-mode/)
-* [Using ETag Headers with Cloudflare](https://developers.cloudflare.com/cache/reference/etag-headers/)
+- [CDN Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/cdn/)
+- [CSAM Scanning Tool](https://developers.cloudflare.com/cache/reference/csam-scanning/)
+- [Development Mode](https://developers.cloudflare.com/cache/reference/development-mode/)
+- [Using ETag Headers with Cloudflare](https://developers.cloudflare.com/cache/reference/etag-headers/)
 
 Was this helpful?
 

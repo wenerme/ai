@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account-based rate limiting
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/account-based-rate-limiting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/account-based-rate-limiting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, the GraphQL Analytics API applies rate limits per user or per API token. As you grow — adding more zones and accounts — all of your analytics traffic competes for that single per-credential quota.
 
@@ -20,9 +20,9 @@ By default, the GraphQL Analytics API applies rate limits per user or per API to
 
 ## Benefits
 
-* **Scales with your footprint.** Throughput grows with the number of accounts and zones you query, instead of being capped by a single per-credential limit.
-* **Higher quotas for Enterprise.** Enterprise customers receive higher default per-account (15 rps) and per-zone (10 rps) quotas.
-* **Easy limit increases.** Need more headroom? Get in touch, we can accommodate needed increases to your limits.
+- **Scales with your footprint.** Throughput grows with the number of accounts and zones you query, instead of being capped by a single per-credential limit.
+- **Higher quotas for Enterprise.** Enterprise customers receive higher default per-account (15 rps) and per-zone (10 rps) quotas.
+- **Easy limit increases.** Need more headroom? Get in touch, we can accommodate needed increases to your limits.
 
 ## Enable account-based rate limiting
 
@@ -36,10 +36,10 @@ Your endpoint URL and credentials stay the same. Requests without this header co
 
 ## Limits
 
-| Scope        | Default limit                                           |
-| ------------ | ------------------------------------------------------- |
+| Scope | Default limit |
+| --- | --- |
 | Each account | 1 request per second (300 requests per 5-minute window) |
-| Each zone    | 1 request per second (300 requests per 5-minute window) |
+| Each zone | 1 request per second (300 requests per 5-minute window) |
 
 A single `accounts` block counts one request against the referenced account. A single `zones` block counts one request against the referenced zone; if the `zones` block is nested inside an `accounts` block, it counts against that account instead.
 

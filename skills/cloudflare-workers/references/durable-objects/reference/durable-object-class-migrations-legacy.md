@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object class migrations (legacy)
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prefer declarative exports for new Workers
 
-For new Workers, use the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field instead of the `migrations` array described on this page. The `migrations` array remains fully supported for existing Workers and continues to work as documented here.
+For new Workers, use the declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field instead of the `migrations` array described on this page. The `migrations` array remains fully supported for existing Workers and continues to work as documented here.
 
-You cannot use both `exports` and `migrations` in the same Worker configuration — they are mutually exclusive. To move an existing Worker from `migrations` to `exports`, refer to [Migrate from migrations to exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow).
+You cannot use both `exports` and `migrations` in the same Worker configuration — they are mutually exclusive. To move an existing Worker from `migrations` to `exports`, refer to [Migrate from `migrations` to `exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow).
 
 A migration is a mapping process from a class name to a runtime state. This process communicates the changes to the Workers runtime and provides the runtime with instructions on how to deal with those changes.
 
@@ -29,14 +29,14 @@ To apply a migration, you need to:
 
 You must initiate a migration process when you:
 
-* Create a new Durable Object class.
-* Rename a Durable Object class.
-* Delete a Durable Object class.
-* Transfer an existing Durable Objects class.
+- Create a new Durable Object class.
+- Rename a Durable Object class.
+- Delete a Durable Object class.
+- Transfer an existing Durable Objects class.
 
 Note
 
-Updating the code for an existing Durable Object class does not require a migration. To update the code for an existing Durable Object class, run [npx wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy). This is true even for changes to how the code interacts with persistent storage. Because of [global uniqueness](https://developers.cloudflare.com/durable-objects/platform/known-issues/#global-uniqueness), you do not have to be concerned about old and new code interacting with the same storage simultaneously. However, it is your responsibility to ensure that the new code is backwards compatible with existing stored data.
+Updating the code for an existing Durable Object class does not require a migration. To update the code for an existing Durable Object class, run [`npx wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy). This is true even for changes to how the code interacts with persistent storage. Because of [global uniqueness](https://developers.cloudflare.com/durable-objects/platform/known-issues/#global-uniqueness), you do not have to be concerned about old and new code interacting with the same storage simultaneously. However, it is your responsibility to ensure that the new code is backwards compatible with existing stored data.
 
 ## Create migration
 
@@ -45,33 +45,41 @@ The most common migration performed is a new class migration, which informs the 
 To apply a Create migration:
 
 1. Add the following lines to your Wrangler configuration file:
-```jsonc
-{
-  "migrations": [
-    {
-      "tag": "<v1>", // Migration identifier. This should be unique for each migration entry
-      "new_sqlite_classes": [ // Array of new classes
-        "<NewDurableObjectClass>"
-      ]
-    }
-  ]
-}
-```
-```toml
-[[migrations]]
-tag = "<v1>"
-new_sqlite_classes = [ "<NewDurableObjectClass>" ]
-```
-The Create migration contains:
 
-  * A `tag` to identify the migration.
-  * The array `new_sqlite_classes`, which contains the new Durable Object class.
+   ```jsonc
+   {
+     "migrations": [
+       {
+         "tag": "<v1>", // Migration identifier. This should be unique for each migration entry
+         "new_sqlite_classes": [ // Array of new classes
+           "<NewDurableObjectClass>"
+         ]
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[migrations]]
+   tag = "<v1>"
+   new_sqlite_classes = [ "<NewDurableObjectClass>" ]
+   ```
+
+   The Create migration contains:
+   - A `tag` to identify the migration.
+   - The array `new_sqlite_classes`, which contains the new Durable Object class.
 2. Ensure you reference the correct name of the Durable Object class in your Worker code.
 3. Deploy the Worker.
 
+<details>
+
+<summary>
+
 Create migration example
 
-To create a new Durable Object binding `DURABLE_OBJECT_A`, your Wrangler configuration file should look like the following:
+</summary>
+
+To create a new Durable Object binding <code>DURABLE_OBJECT_A</code>, your Wrangler configuration file should look like the following:
 
 ```jsonc
 {
@@ -105,6 +113,8 @@ class_name = "DurableObjectAClass"
 tag = "v1"
 new_sqlite_classes = [ "DurableObjectAClass" ]
 ```
+
+</details>
 
 ### Create Durable Object class with key-value storage
 
@@ -142,8 +152,8 @@ Note
 
 Durable Objects are available both on Workers Free and Workers Paid plans.
 
-* **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) are available.
-* **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is only available to accounts that already have a key-value-backed namespace.
+- **Workers Free plan**: Only Durable Objects with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) are available.
+- **Workers Paid plan**: Durable Objects with the SQLite storage backend are available. The [key-value storage backend](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#storage-backends) is only available to accounts that already have a key-value-backed namespace.
 
 If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you must first ensure that you have deleted all Durable Object namespaces with the key-value storage backend.
 
@@ -151,41 +161,49 @@ If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you mu
 
 Running a Delete migration will delete all Durable Objects associated with the deleted class, including all of their stored data.
 
-* Do not run a Delete migration on a class without first ensuring that you are not relying on the Durable Objects within that Worker anymore, that is, first remove the binding from the Worker.
-* Copy any important data to some other location before deleting.
-* You do not have to run a Delete migration on a class that was renamed or transferred.
+- Do not run a Delete migration on a class without first ensuring that you are not relying on the Durable Objects within that Worker anymore, that is, first remove the binding from the Worker.
+- Copy any important data to some other location before deleting.
+- You do not have to run a Delete migration on a class that was renamed or transferred.
 
 To apply a Delete migration:
 
 1. Remove the binding for the class you wish to delete from the Wrangler configuration file.
 2. Remove references for the class you wish to delete from your Worker code.
 3. Add the following lines to your Wrangler configuration file.
-```jsonc
-{
-  "migrations": [
-    {
-      "tag": "<v2>", // Migration identifier. This should be unique for each migration entry
-      "deleted_classes": [ // Array of deleted class names
-        "<ClassToDelete>"
-      ]
-    }
-  ]
-}
-```
-```toml
-[[migrations]]
-tag = "<v2>"
-deleted_classes = [ "<ClassToDelete>" ]
-```
-The Delete migration contains:
 
-  * A `tag` to identify the migration.
-  * The array `deleted_classes`, which contains the deleted Durable Object classes.
+   ```jsonc
+   {
+     "migrations": [
+       {
+         "tag": "<v2>", // Migration identifier. This should be unique for each migration entry
+         "deleted_classes": [ // Array of deleted class names
+           "<ClassToDelete>"
+         ]
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[migrations]]
+   tag = "<v2>"
+   deleted_classes = [ "<ClassToDelete>" ]
+   ```
+
+   The Delete migration contains:
+   - A `tag` to identify the migration.
+   - The array `deleted_classes`, which contains the deleted Durable Object classes.
 4. Deploy the Worker.
+
+<details>
+
+<summary>
 
 Delete migration example
 
-To delete a Durable Object binding `DEPRECATED_OBJECT`, your Wrangler configuration file should look like the following:
+</summary>
+
+To delete a Durable Object binding <code>DEPRECATED_OBJECT</code>, your Wrangler configuration file should look like the following:
 
 ```jsonc
 {
@@ -213,6 +231,8 @@ tag = "v3"
 deleted_classes = [ "DeprecatedObjectClass" ]
 ```
 
+</details>
+
 ## Rename migration
 
 Rename migrations are used to transfer stored Durable Objects between two Durable Object classes in the same Worker code file.
@@ -220,51 +240,61 @@ Rename migrations are used to transfer stored Durable Objects between two Durabl
 To apply a Rename migration:
 
 1. Update the previous class name to the new class name by editing your Wrangler configuration file in the following way:
-```jsonc
-{
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "<MY_DURABLE_OBJECT>",
-        "class_name": "<UpdatedDurableObject>" // Update the class name to the new class name
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "<v3>", // Migration identifier. This should be unique for each migration entry
-      "renamed_classes": [ // Array of rename directives
-        {
-          "from": "<OldDurableObject>",
-          "to": "<UpdatedDurableObject>"
-        }
-      ]
-    }
-  ]
-}
-```
-```toml
-[[durable_objects.bindings]]
-name = "<MY_DURABLE_OBJECT>"
-class_name = "<UpdatedDurableObject>"
-[[migrations]]
-tag = "<v3>"
-  [[migrations.renamed_classes]]
-  from = "<OldDurableObject>"
-  to = "<UpdatedDurableObject>"
-```
-The Rename migration contains:
 
-  * A `tag` to identify the migration.
-  * The `renamed_classes` array, which contains objects with `from` and `to` properties.
-  * `from` property is the old Durable Object class name.
-  * `to` property is the renamed Durable Object class name.
+   ```jsonc
+   {
+     "durable_objects": {
+       "bindings": [
+         {
+           "name": "<MY_DURABLE_OBJECT>",
+           "class_name": "<UpdatedDurableObject>" // Update the class name to the new class name
+         }
+       ]
+     },
+     "migrations": [
+       {
+         "tag": "<v3>", // Migration identifier. This should be unique for each migration entry
+         "renamed_classes": [ // Array of rename directives
+           {
+             "from": "<OldDurableObject>",
+             "to": "<UpdatedDurableObject>"
+           }
+         ]
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[durable_objects.bindings]]
+   name = "<MY_DURABLE_OBJECT>"
+   class_name = "<UpdatedDurableObject>"
+
+   [[migrations]]
+   tag = "<v3>"
+
+     [[migrations.renamed_classes]]
+     from = "<OldDurableObject>"
+     to = "<UpdatedDurableObject>"
+   ```
+
+   The Rename migration contains:
+   - A `tag` to identify the migration.
+   - The `renamed_classes` array, which contains objects with `from` and `to` properties.
+   - `from` property is the old Durable Object class name.
+   - `to` property is the renamed Durable Object class name.
 2. Reference the new Durable Object class name in your Worker code.
 3. Deploy the Worker.
 
+<details>
+
+<summary>
+
 Rename migration example
 
-To rename a Durable Object class, from `OldName` to `UpdatedName`, your Wrangler configuration file should look like the following:
+</summary>
+
+To rename a Durable Object class, from <code>OldName</code> to <code>UpdatedName</code>, your Wrangler configuration file should look like the following:
 
 ```jsonc
 {
@@ -305,6 +335,8 @@ tag = "v3"
   to = "UpdatedName"
 ```
 
+</details>
+
 ## Transfer migration
 
 Transfer migrations are used to transfer stored Durable Objects between two Durable Object classes in different Worker code files.
@@ -318,54 +350,64 @@ Do not run a [Create migration](#create-migration) for the destination class bef
 To apply a Transfer migration:
 
 1. Edit your Wrangler configuration file in the following way:
-```jsonc
-{
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "<MY_DURABLE_OBJECT>",
-        "class_name": "<DestinationDurableObjectClass>"
-      }
-    ]
-  },
-  "migrations": [
-    {
-      "tag": "<v4>", // Migration identifier. This should be unique for each migration entry
-      "transferred_classes": [
-        {
-          "from": "<SourceDurableObjectClass>",
-          "from_script": "<SourceWorkerScript>",
-          "to": "<DestinationDurableObjectClass>"
-        }
-      ]
-    }
-  ]
-}
-```
-```toml
-[[durable_objects.bindings]]
-name = "<MY_DURABLE_OBJECT>"
-class_name = "<DestinationDurableObjectClass>"
-[[migrations]]
-tag = "<v4>"
-  [[migrations.transferred_classes]]
-  from = "<SourceDurableObjectClass>"
-  from_script = "<SourceWorkerScript>"
-  to = "<DestinationDurableObjectClass>"
-```
-The Transfer migration contains:
 
-  * A `tag` to identify the migration.
-  * The `transferred_classes` array, which contains objects with `from`, `from_script`, and `to` properties.
-    * `from` property is the name of the source Durable Object class.
-    * `from_script` property is the name of the source Worker script.
-    * `to` property is the name of the destination Durable Object class.
+   ```jsonc
+   {
+     "durable_objects": {
+       "bindings": [
+         {
+           "name": "<MY_DURABLE_OBJECT>",
+           "class_name": "<DestinationDurableObjectClass>"
+         }
+       ]
+     },
+     "migrations": [
+       {
+         "tag": "<v4>", // Migration identifier. This should be unique for each migration entry
+         "transferred_classes": [
+           {
+             "from": "<SourceDurableObjectClass>",
+             "from_script": "<SourceWorkerScript>",
+             "to": "<DestinationDurableObjectClass>"
+           }
+         ]
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   [[durable_objects.bindings]]
+   name = "<MY_DURABLE_OBJECT>"
+   class_name = "<DestinationDurableObjectClass>"
+
+   [[migrations]]
+   tag = "<v4>"
+
+     [[migrations.transferred_classes]]
+     from = "<SourceDurableObjectClass>"
+     from_script = "<SourceWorkerScript>"
+     to = "<DestinationDurableObjectClass>"
+   ```
+
+   The Transfer migration contains:
+   - A `tag` to identify the migration.
+   - The `transferred_classes` array, which contains objects with `from`, `from_script`, and `to` properties.
+     - `from` property is the name of the source Durable Object class.
+     - `from_script` property is the name of the source Worker script.
+     - `to` property is the name of the destination Durable Object class.
 2. Ensure you reference the name of the new, destination Durable Object class in your Worker code.
 3. Deploy the Worker.
 
+<details>
+
+<summary>
+
 Transfer migration example
 
-You can transfer stored Durable Objects from `DurableObjectExample` to `TransferredClass` from a Worker script named `OldWorkerScript`. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
+</summary>
+
+You can transfer stored Durable Objects from <code>DurableObjectExample</code> to <code>TransferredClass</code> from a Worker script named <code>OldWorkerScript</code>. The configuration of the Wrangler configuration file for your new Worker code (destination Worker code) would look like this:
 
 ```jsonc
 {
@@ -408,44 +450,50 @@ tag = "v4"
   to = "TransferredClass"
 ```
 
+</details>
+
 ## Migration Wrangler configuration
 
-* Migrations are performed through the `[[migrations]]` configurations key in your `wrangler.toml` file or `migrations` key in your `wrangler.jsonc` file.
-* Migrations require a migration tag, which is defined by the `tag` property in each migration entry.
-* Migration tags are treated like unique names and are used to determine which migrations have already been applied. Once a given Worker code has a migration tag set on it, all future Worker code deployments must include a migration tag.
-* The migration list is an ordered array of tables, specified as a key in your Wrangler configuration file.
-* You can define the migration for each environment, as well as at the top level.
+- Migrations are performed through the `[[migrations]]` configurations key in your `wrangler.toml` file or `migrations` key in your `wrangler.jsonc` file.
+- Migrations require a migration tag, which is defined by the `tag` property in each migration entry.
+- Migration tags are treated like unique names and are used to determine which migrations have already been applied. Once a given Worker code has a migration tag set on it, all future Worker code deployments must include a migration tag.
+- The migration list is an ordered array of tables, specified as a key in your Wrangler configuration file.
+- You can define the migration for each environment, as well as at the top level.
+  - Top-level migration is specified at the top-level `migrations` key in the Wrangler configuration file.
+  - Environment-level migration is specified by a `migrations` key inside the `env` key of the Wrangler configuration file ( `[env.<environment_name>.migrations]`).
+    - Example Wrangler file:
 
-  * Top-level migration is specified at the top-level `migrations` key in the Wrangler configuration file.
-  * Environment-level migration is specified by a `migrations` key inside the `env` key of the Wrangler configuration file (`[env.<environment_name>.migrations]`).
-    * Example Wrangler file:
-  ```jsonc
-  {
-    // top-level default migrations
-    "migrations": [
-      { "tag": "v1", "new_sqlite_classes": ["MyDurableObject"] },
-    ],
-    "env": {
-      "staging": {
-        // migration override for staging
-        "migrations": [
-          { "tag": "v1-staging", "new_sqlite_classes": ["MyDurableObject"] },
-        ],
+    *wrangler.jsoncjsonc*
+
+
+
+    ```jsonc
+    {
+      // top-level default migrations
+      "migrations": [
+        { "tag": "v1", "new_sqlite_classes": ["MyDurableObject"] },
+      ],
+      "env": {
+        "staging": {
+          // migration override for staging
+          "migrations": [
+            { "tag": "v1-staging", "new_sqlite_classes": ["MyDurableObject"] },
+          ],
+        },
       },
-    },
-  }
-  ```
-  * If a migration is only specified at the top-level, but not at the environment-level, the environment will inherit the top-level migration.
-  * Migrations at the environment-level override migrations at the top level.
-* All migrations are applied at deployment. Each migration can only be applied once per [environment](https://developers.cloudflare.com/durable-objects/reference/environments/).
-* Each migration in the list can have multiple directives, and multiple migrations can be specified as your project grows in complexity.
+    }
+    ```
+  - If a migration is only specified at the top-level, but not at the environment-level, the environment will inherit the top-level migration.
+  - Migrations at the environment-level override migrations at the top level.
+- All migrations are applied at deployment. Each migration can only be applied once per [environment](https://developers.cloudflare.com/durable-objects/reference/environments/).
+- Each migration in the list can have multiple directives, and multiple migrations can be specified as your project grows in complexity.
 
 Important
 
-* The destination class (the class that stored Durable Objects are being transferred to) for a Rename or Transfer migration must be exported by the deployed Worker.
-* You should not create the destination Durable Object class before running a Rename or Transfer migration. The migration will create the destination class for you.
-* After a Rename or Transfer migration, requests to the destination Durable Object class will have access to the source Durable Object's stored data.
-* After a migration, any existing bindings to the original Durable Object class (for example, from other Workers) will automatically forward to the updated destination class. However, any Workers bound to the updated Durable Object class must update their Durable Object binding configuration in the `wrangler` configuration file for their next deployment.
+- The destination class (the class that stored Durable Objects are being transferred to) for a Rename or Transfer migration must be exported by the deployed Worker.
+- You should not create the destination Durable Object class before running a Rename or Transfer migration. The migration will create the destination class for you.
+- After a Rename or Transfer migration, requests to the destination Durable Object class will have access to the source Durable Object's stored data.
+- After a migration, any existing bindings to the original Durable Object class (for example, from other Workers) will automatically forward to the updated destination class. However, any Workers bound to the updated Durable Object class must update their Durable Object binding configuration in the `wrangler` configuration file for their next deployment.
 
 Note
 

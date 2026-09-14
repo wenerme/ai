@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SELECT statements
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/select-statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 SELECT statements are used to transform data in Cloudflare Pipelines. The general form is:
 
@@ -120,8 +120,8 @@ The UNNEST operator converts arrays into multiple rows. This is useful for proce
 
 UNNEST restrictions:
 
-* May only appear in the SELECT clause
-* Only one array may be unnested per SELECT statement
+- May only appear in the SELECT clause
+- Only one array may be unnested per SELECT statement
 
 Example:
 

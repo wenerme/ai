@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Aggregate functions
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/aggregate-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Aggregate functions collapse multiple rows into a single result. They are used with `GROUP BY` to compute summaries per group, or without `GROUP BY` to compute a single result across all rows.
 
@@ -96,7 +96,7 @@ GROUP BY department
 
 ### MEDIAN
 
-Returns the exact median value. For large datasets, use [approx\_median](#approx%5Fmedian) instead.
+Returns the exact median value. For large datasets, use [`approx_median`](#approx_median) instead.
 
 ```sql
 SELECT MEDIAN(total_amount) AS median_amount
@@ -109,7 +109,7 @@ GROUP BY department
 
 ### PERCENTILE\_CONT
 
-Returns the exact value at a given percentile using `WITHIN GROUP (ORDER BY ...)`. The percentile parameter must be between `0.0` and `1.0` inclusive. For large datasets, use [approx\_percentile\_cont](#approx%5Fpercentile%5Fcont) instead.
+Returns the exact value at a given percentile using `WITHIN GROUP (ORDER BY ...)`. The percentile parameter must be between `0.0` and `1.0` inclusive. For large datasets, use [`approx_percentile_cont`](#approx_percentile_cont) instead.
 
 ```sql
 SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY total_amount) AS median,
@@ -119,7 +119,7 @@ FROM my_namespace.sales_data
 
 Note
 
-`PERCENTILE_DISC` is not supported. Use `PERCENTILE_CONT` or [approx\_percentile\_cont](#approx%5Fpercentile%5Fcont).
+`PERCENTILE_DISC` is not supported. Use `PERCENTILE_CONT` or [`approx_percentile_cont`](#approx_percentile_cont).
 
 ---
 
@@ -181,7 +181,7 @@ GROUP BY department
 
 ### approx\_top\_k
 
-Returns the _k_ most frequent values with their approximate counts.
+Returns the *k* most frequent values with their approximate counts.
 
 ```sql
 SELECT approx_top_k(department, 5) AS top_departments

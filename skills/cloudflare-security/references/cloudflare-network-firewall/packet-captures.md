@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Packet captures
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports two types of packet captures (PCAPs): **full** and **sample**. A packet capture records raw network traffic data so you can inspect it offline in tools like Wireshark. Full packet captures are the default.
 
@@ -36,8 +36,8 @@ Full captures include the complete packet data, not just headers. The matching p
 
 Before starting a full packet capture, make sure you have a cloud storage bucket set up and configured. Refer to the articles in this section for setup instructions.
 
-* [PCAPs bucket setup](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/)
-* [Collect PCAPs](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/)
+- [PCAPs bucket setup](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/pcaps-bucket-setup/)
+- [Collect PCAPs](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/collect-pcaps/)
 
 Was this helpful?
 

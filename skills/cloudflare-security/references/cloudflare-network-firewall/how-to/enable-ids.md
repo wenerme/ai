@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable IDS
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's IDS takes advantage of the threat intelligence powered by our global network and extends the capabilities of the Cloudflare Firewall to monitor and protect your network from malicious actors.
 
@@ -22,7 +22,7 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. Select **IDS** and turn on **IDS**.
 
 To start using IDS via the API, first create a new ruleset in the `magic-transit-ids-managed` phase with a rule which is enabled.
@@ -55,9 +55,9 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 With this ruleset added, IDS will start inspecting packets and report any anomalous traffic. Next, you can [configure Logpush](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/use-logpush-with-ids/) to start receiving details about the anomalous traffic.
 
-1. Use the rule created in the previous step to enable or disable IDS. The Rulesets API documentation describes [how to patch a rule](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/).
+3. Use the rule created in the previous step to enable or disable IDS. The Rulesets API documentation describes [how to patch a rule](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/).
 
- For example, the following patch request to set the `enabled` field to `false` will disable IDS. The ruleset and rule ID from the ruleset created in the previous step are used below.
+    For example, the following patch request to set the `enabled` field to `false` will disable IDS. The ruleset and rule ID from the ruleset created in the previous step are used below.
 
 ```bash
 curl --request PATCH \
@@ -80,9 +80,9 @@ Similarly, sending a patch request with the `enabled` field set to `true` will e
 
 IDS rules are run on a subset of packets. IDS also supports the current flows:
 
-* Cloudflare WAN to Cloudflare WAN.
-* Magic Transit ingress traffic (when egress traffic is handled through direct server return).
-* Magic Transit ingress and egress traffic when Magic Transit has the [Egress option enabled](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#magic-transit-with-egress-option-enabled).
+- Cloudflare WAN to Cloudflare WAN.
+- Magic Transit ingress traffic (when egress traffic is handled through direct server return).
+- Magic Transit ingress and egress traffic when Magic Transit has the [Egress option enabled](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#magic-transit-with-egress-option-enabled).
 
 ## Next steps
 

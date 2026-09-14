@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Restrict tokens
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API tokens can be restricted at runtime in two ways:
 
-* [Client IP address range filtering](#client-ip-address-range-filtering)
-* [Time To Live (TTL) constraints](#time-to-live-ttl-constraints)
+- [Client IP address range filtering](#client-ip-address-range-filtering)
+- [Time To Live (TTL) constraints](#time-to-live-ttl-constraints)
 
 ## Client IP address range filtering
 
-Client IP address restrictions control which IP addresses can make API requests with this token. By default, if no filtering is applied, all IP addresses can use the token. Once an `Is in` rule is applied, the token can only be used from the defined IP addresses. Define ranges with [CIDR notation ↗](https://en.wikipedia.org/wiki/Classless%5FInter-Domain%5FRouting#CIDR%5Fnotation). To allow an IP range with exceptions, define `Is not in` to exempt specific IPs or smaller ranges.
+Client IP address restrictions control which IP addresses can make API requests with this token. By default, if no filtering is applied, all IP addresses can use the token. Once an `Is in` rule is applied, the token can only be used from the defined IP addresses. Define ranges with [CIDR notation ↗](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation). To allow an IP range with exceptions, define `Is not in` to exempt specific IPs or smaller ranges.
 
 ![IP Address filtering options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1802,height=442,format=webp/_astro/ip-filter.DbEuurVj.png)
 

@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare for SaaS
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare for SaaS allows you to extend the security and performance benefits of Cloudflare's network to your customers via their own custom or vanity domains.
+
 
 
 As a SaaS provider, you may want to support subdomains under your own zone in addition to letting your customers use their own domain names with your services. For example, a customer may want to use their vanity domain `app.customer.com` to point to an application hosted on your Cloudflare zone `service.saas.com`. Cloudflare for SaaS allows you to increase security, performance, and reliability of your customers' domains.
@@ -27,21 +28,21 @@ Eligible enterprise customers can preview this product as a [non-contract servic
 
 When you use Cloudflare for SaaS, it helps you to:
 
-* Provide custom domain support.
-* Keep your customers' traffic encrypted.
-* Keep your customers online.
-* Facilitate fast load times of your customers' domains.
-* Gain insight through traffic analytics.
+- Provide custom domain support.
+- Keep your customers' traffic encrypted.
+- Keep your customers online.
+- Facilitate fast load times of your customers' domains.
+- Gain insight through traffic analytics.
 
 ## Limitations
 
 If your customers already have their applications on Cloudflare, they cannot control some Cloudflare features for hostnames managed by your Custom Hostnames configuration, including:
 
-* Argo
-* Early Hints
-* Client-side security (formerly known as Page Shield)
-* Spectrum
-* Wildcard DNS
+- Argo
+- Early Hints
+- Client-side security (formerly known as Page Shield)
+- Spectrum
+- Wildcard DNS
 
 ## How it works
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Routes and domains
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To allow a Worker to receive inbound HTTP requests, you must connect it to an external endpoint such that it can be accessed by the Internet.
 
 There are three types of routes:
 
-* [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains): Routes to a domain or subdomain (such as `example.com` or `shop.example.com`) within a Cloudflare zone where the Worker is the origin.
-* [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/): Routes that are set within a Cloudflare zone where your origin server, if you have one, is behind a Worker that the Worker can communicate with.
-* [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/): A `workers.dev` subdomain route is automatically created for each Worker to help you getting started quickly. You may choose to [disable](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) your `workers.dev` subdomain.
+- [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains): Routes to a domain or subdomain (such as `example.com` or `shop.example.com`) within a Cloudflare zone where the Worker is the origin.
+- [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/): Routes that are set within a Cloudflare zone where your origin server, if you have one, is behind a Worker that the Worker can communicate with.
+- [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/): A `workers.dev` subdomain route is automatically created for each Worker to help you getting started quickly. You may choose to [disable](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) your `workers.dev` subdomain.
 
 ## What is best for me?
 

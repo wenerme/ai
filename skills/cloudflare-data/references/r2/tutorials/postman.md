@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Learn how to configure Postman to interact with R2.
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/tutorials/postman/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/postman/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Postman is an API platform that makes interacting with APIs easier. This guide will explain how to use Postman to make authenticated R2 requests to create a bucket, upload a new object, and then retrieve the object. The R2 [Postman collection ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290) includes a complete list of operations supported by the platform.
 
-## 1\. Purchase R2
+## 1. Purchase R2
 
 This guide assumes that you have made a Cloudflare account and purchased R2.
 
-## 2\. Explore R2 in Postman
+## 2. Explore R2 in Postman
 
 Explore R2's publicly available [Postman collection ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290). The collection is organized into a `Buckets` folder for bucket-level operations and an `Objects` folder for object-level operations. Operations in the `Objects > Upload` folder allow for adding new objects to R2.
 
-## 3\. Configure your R2 credentials
+## 3. Configure your R2 credentials
 
 In the [Postman dashboard ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290&ctx=documentation), select the **Cloudflare R2** collection and navigate to the **Variables** tab. In **Variables**, you can set variables within the R2 collection. They will be used to authenticate and interact with the R2 platform. Remember to always select **Save** after updating a variable.
 
@@ -34,16 +34,14 @@ To execute basic operations, you must set the `account-id`, `r2-access-key-id`, 
 
 To do this:
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. In **R2**, under **Manage R2 API Tokens** on the right side of the dashboard, copy your Cloudflare account ID.
 3. Go back to the [Postman dashboard ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290&ctx=documentation).
 4. Set the **CURRENT VALUE** of `account-id` to your Cloudflare account ID and select **Save**.
 
 Next, generate an R2 API token:
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. On the right hand sidebar, select **Manage R2 API Tokens**.
 3. Select **Create API token**.
 4. Name your token **Postman** by selecting the pencil icon next to the API name and grant it the **Edit** permission.
@@ -52,7 +50,7 @@ Guard this token and the **Access Key ID** and **Secret Access Key** closely. Yo
 
 After you have created your API token in the Cloudflare dashboard:
 
-1. Go to the [Postman dashboard ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290&ctx=documentation) \> **Variables**.
+1. Go to the [Postman dashboard ↗](https://www.postman.com/cloudflare-r2/workspace/cloudflare-r2/collection/20913290-14ddd8d8-3212-490d-8647-88c9dc557659?action=share&creator=20913290&ctx=documentation) > **Variables**.
 2. Copy `Access Key ID` value from the Cloudflare dashboard and paste it into Postman’s `r2-access-key-id` variable value and select **Save**.
 3. Copy the `Secret Access Key` value from the Cloudflare dashboard and paste it into Postman’s `r2-secret-access-key` variable value and select **Save**.
 
@@ -67,7 +65,7 @@ The Postman collection uses AWS SigV4 authentication to complete the handshake.
 
 You should see a `200 OK` response with a list of existing buckets. If you receive an error, ensure your R2 subscription is active and Postman variables are saved correctly.
 
-## 4\. Create a bucket
+## 4. Create a bucket
 
 In the Postman dashboard:
 
@@ -77,7 +75,7 @@ In the Postman dashboard:
 
 You should see a `200 OK` response. If you run the `ListBuckets` request again, your bucket will appear in the list of results.
 
-## 5\. Add an object
+## 5. Add an object
 
 You will now add an object to your bucket:
 
@@ -89,7 +87,7 @@ You will now add an object to your bucket:
 
 After a few seconds, you should receive a `200 OK` response.
 
-## 6\. Get an object
+## 6. Get an object
 
 It only takes a few more more clicks to download our cat friend using the `GetObject` request.
 

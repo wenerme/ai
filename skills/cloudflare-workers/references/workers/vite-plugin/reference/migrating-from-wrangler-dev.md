@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating from wrangler dev
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In most cases, migrating from [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) is straightforward and you can follow the instructions in [Get started](https://developers.cloudflare.com/workers/vite-plugin/get-started/). There are a few key differences to highlight:
+In most cases, migrating from [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) is straightforward and you can follow the instructions in [Get started](https://developers.cloudflare.com/workers/vite-plugin/get-started/). There are a few key differences to highlight:
 
 ## Input and output Worker config files
 
@@ -32,28 +32,28 @@ There are various options in the [Worker config file](https://developers.cloudfl
 
 The following build-related options are handled by Vite and are not applicable when using the Cloudflare Vite plugin:
 
-* `tsconfig`
-* `rules`
-* `build`
-* `no_bundle`
-* `find_additional_modules`
-* `base_dir`
-* `preserve_file_names`
+- `tsconfig`
+- `rules`
+- `build`
+- `no_bundle`
+- `find_additional_modules`
+- `base_dir`
+- `preserve_file_names`
 
 ### Not supported
 
-* `site` — Use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) instead.
+- `site` — Use [Workers Assets](https://developers.cloudflare.com/workers/static-assets/) instead.
 
 ### Replaced by Vite equivalents
 
 The following options have Vite equivalents that should be used instead:
 
-| Wrangler option                                      | Vite equivalent                                                              |
-| ---------------------------------------------------- | ---------------------------------------------------------------------------- |
-| define                                               | [define ↗](https://vite.dev/config/shared-options.html#define)               |
-| alias                                                | [resolve.alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) |
-| minify                                               | [build.minify ↗](https://vite.dev/config/build-options.html#build-minify)    |
-| Local dev settings (ip, port, local\_protocol, etc.) | [Server options ↗](https://vite.dev/config/server-options.html)              |
+| Wrangler option | Vite equivalent |
+| --- | --- |
+| `define` | [`define` ↗](https://vite.dev/config/shared-options.html#define) |
+| `alias` | [`resolve.alias` ↗](https://vite.dev/config/shared-options.html#resolve-alias) |
+| `minify` | [`build.minify` ↗](https://vite.dev/config/build-options.html#build-minify) |
+| Local dev settings (`ip`, `port`, `local_protocol`, etc.) | [Server options ↗](https://vite.dev/config/server-options.html) |
 
 See [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information about configuring your Worker environments in Vite.
 

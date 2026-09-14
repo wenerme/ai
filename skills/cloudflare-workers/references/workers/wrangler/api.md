@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
-* [createTestHarness](#createtestharness) \- Start one or more Workers for integration tests in any Node.js test runner.
-* [experimental\_generateTypes](#experimental%5Fgeneratetypes) \- Generate TypeScript type definitions from your Worker configuration.
-* [unstable\_startWorker](#unstable%5Fstartworker) \- Start a server for running integration tests against your Worker.
-* [unstable\_dev](#unstable%5Fdev) \- Start a server for running either end-to-end (e2e) or integration tests against your Worker.
-* [getPlatformProxy](#getplatformproxy) \- Get proxies and values for emulating the Cloudflare Workers platform in a Node.js process.
+- [`createTestHarness`](#createtestharness) - Start one or more Workers for integration tests in any Node.js test runner.
+- [`experimental_generateTypes`](#experimental_generatetypes) - Generate TypeScript type definitions from your Worker configuration.
+- [`unstable_startWorker`](#unstable_startworker) - Start a server for running integration tests against your Worker.
+- [`unstable_dev`](#unstable_dev) - Start a server for running either end-to-end (e2e) or integration tests against your Worker.
+- [`getPlatformProxy`](#getplatformproxy) - Get proxies and values for emulating the Cloudflare Workers platform in a Node.js process.
 
 ## `createTestHarness`
 
@@ -44,13 +44,13 @@ const server = createTestHarness(options);
 
 ### Parameters
 
-* `options` `object` optional
+- `options` `object` optional
+  - Test harness options. If you call `createTestHarness()` without options, call `server.update(options)` before `server.listen()`.
+    - `root` `string` optional
 
-  * Test harness options. If you call `createTestHarness()` without options, call `server.update(options)` before `server.listen()`.
-
-    * `root` `string` optional
       Base directory used to resolve relative Worker configuration paths. Defaults to `process.cwd()`.
-    * `workers` `WorkerInput[]`
+    - `workers` `WorkerInput[]`
+
       Workers to run in the test server. The first Worker is the primary Worker.
 
 Each `WorkerInput` can load a Worker from a Wrangler configuration file:
@@ -75,16 +75,16 @@ const server = createTestHarness({
 
 Configuration file inputs support these fields:
 
-* `configPath` `string | URL`
-  * Path to a Wrangler configuration file. Relative paths resolve from `root`.
-* `env` `string` optional
-  * Wrangler environment to load from the configuration file.
-* `vars` `Record<string, Json>` optional
-  * Test-only variables that override variables from the Wrangler configuration file.
-* `secrets` `Record<string, string>` optional
-  * Test-only secrets that override values loaded from `.dev.vars` and `.env` files.
-* `bindingOverrides` `Record<string, string>` optional
-  * Test-only service binding overrides. Keys are binding names in this Worker's environment. Values are Worker names in this test harness.
+- `configPath` `string | URL`
+  - Path to a Wrangler configuration file. Relative paths resolve from `root`.
+- `env` `string` optional
+  - Wrangler environment to load from the configuration file.
+- `vars` `Record<string, Json>` optional
+  - Test-only variables that override variables from the Wrangler configuration file.
+- `secrets` `Record<string, string>` optional
+  - Test-only secrets that override values loaded from `.dev.vars` and `.env` files.
+- `bindingOverrides` `Record<string, string>` optional
+  - Test-only service binding overrides. Keys are binding names in this Worker's environment. Values are Worker names in this test harness.
 
 Each `WorkerInput` can also use `config` to provide an inline Wrangler configuration object:
 
@@ -120,43 +120,43 @@ const server = createTestHarness({
 
 `createTestHarness()` returns a `TestHarness` object with these methods:
 
-* `listen()` `Promise<{ url: URL }>`
-  * Starts the server and returns its current URL. Repeated calls return the same session until the server is closed or reset.
-* `fetch(input, init)` `Promise<Response>`
-  * Dispatches a fetch request through the server. Relative URLs resolve against the current server URL. Absolute URLs follow the configured Worker routes and fall back to the primary Worker.
-* `getWorker(name?)` `WorkerHandle`
-  * Returns a handle for dispatching events directly to a Worker. When no name is provided, this returns the primary Worker.
-* `getLogs()` `WorkerdStructuredLog[]`
-  * Returns captured Workers runtime logs since the current server session started or `clearLogs()` was last called.
-* `clearLogs()` `void`
-  * Clears captured Workers runtime logs.
-* `debug()` `void`
-  * Prints a diagnostic timeline for this test server, including server events and captured Workers runtime logs. This is useful in a test runner failure or cleanup hook.
-* `update(optionsOrUpdater)` `Promise<void>`
-  * Updates the server configuration with a `TestHarnessOptions` object or a function that receives the current options and returns the next options. If the server has not started yet, this configures the options used by `listen()`. If the server is running, this reloads the running Workers. Updating the number of Workers in a running server is not supported.
-* `reset()` `Promise<void>`
-  * Restores the server to the options used when the current session first started. Storage is recreated, and the server URL may change after reset.
-* `close()` `Promise<void>`
-  * Stops the server and releases all runtime resources.
+- `listen()` `Promise<{ url: URL }>`
+  - Starts the server and returns its current URL. Repeated calls return the same session until the server is closed or reset.
+- `fetch(input, init)` `Promise<Response>`
+  - Dispatches a fetch request through the server. Relative URLs resolve against the current server URL. Absolute URLs follow the configured Worker routes and fall back to the primary Worker.
+- `getWorker(name?)` `WorkerHandle`
+  - Returns a handle for dispatching events directly to a Worker. When no name is provided, this returns the primary Worker.
+- `getLogs()` `WorkerdStructuredLog[]`
+  - Returns captured Workers runtime logs since the current server session started or `clearLogs()` was last called.
+- `clearLogs()` `void`
+  - Clears captured Workers runtime logs.
+- `debug()` `void`
+  - Prints a diagnostic timeline for this test server, including server events and captured Workers runtime logs. This is useful in a test runner failure or cleanup hook.
+- `update(optionsOrUpdater)` `Promise<void>`
+  - Updates the server configuration with a `TestHarnessOptions` object or a function that receives the current options and returns the next options. If the server has not started yet, this configures the options used by `listen()`. If the server is running, this reloads the running Workers. Updating the number of Workers in a running server is not supported.
+- `reset()` `Promise<void>`
+  - Restores the server to the options used when the current session first started. Storage is recreated, and the server URL may change after reset.
+- `close()` `Promise<void>`
+  - Stops the server and releases all runtime resources.
 
 `getWorker(name?)` returns a `WorkerHandle` object with these methods:
 
-* `fetch(input, init)` `Promise<Response>`
-  * Dispatches a fetch event directly to this Worker.
-* `scheduled(options)` `Promise<{ outcome: "ok" | "canceled" | "exception"; noRetry: boolean }>`
-  * Dispatches a scheduled event directly to this Worker.
-* `getEnv()` `Promise<Env>`
-  * Returns the full environment object configured for this Worker, including variables, secrets, and bindings.
-* `getExport()` `Promise<Service<Module['default']>>`
-  * Returns the default Worker export, including RPC methods.
-* `applyD1Migrations(bindingName)` `Promise<void>`
-  * Applies local D1 migration files that have not already run to a D1 binding on this Worker.
-* `getDurableObjectStorage(classNameOrBindingName, options)` `Promise<DurableObjectStorageHandle>`
-  * Returns SQL storage access for a Durable Object instance.
-* `introspectWorkflow(bindingName)` `Promise<WorkflowIntrospector>`
-  * Creates an introspector for Workflow instances created after this method is called.
-* `introspectWorkflowInstance(bindingName, instanceId)` `Promise<WorkflowInstanceIntrospector>`
-  * Creates an introspector for a specific Workflow instance.
+- `fetch(input, init)` `Promise<Response>`
+  - Dispatches a fetch event directly to this Worker.
+- `scheduled(options)` `Promise<{ outcome: "ok" | "canceled" | "exception"; noRetry: boolean }>`
+  - Dispatches a scheduled event directly to this Worker.
+- `getEnv()` `Promise<Env>`
+  - Returns the full environment object configured for this Worker, including variables, secrets, and bindings.
+- `getExport()` `Promise<Service<Module['default']>>`
+  - Returns the default Worker export, including RPC methods.
+- `applyD1Migrations(bindingName)` `Promise<void>`
+  - Applies local D1 migration files that have not already run to a D1 binding on this Worker.
+- `getDurableObjectStorage(classNameOrBindingName, options)` `Promise<DurableObjectStorageHandle>`
+  - Returns SQL storage access for a Durable Object instance.
+- `introspectWorkflow(bindingName)` `Promise<WorkflowIntrospector>`
+  - Creates an introspector for Workflow instances created after this method is called.
+- `introspectWorkflowInstance(bindingName, instanceId)` `Promise<WorkflowInstanceIntrospector>`
+  - Creates an introspector for a specific Workflow instance.
 
 ### Usage
 
@@ -280,43 +280,45 @@ const result = await experimental_generateTypes(options);
 
 ### Parameters
 
-* `options` `object` optional
+- `options` `object` optional
+  - Optional options object mirroring the `wrangler types` CLI flags:
+    - `config` `string | string[]`
 
-  * Optional options object mirroring the `wrangler types` CLI flags:
-
-    * `config` `string | string[]`
       Path to the Wrangler configuration file to use. Can be an array for multi-config type resolution.
-    * `env` `string`
+    - `env` `string`
+
       Name of the Wrangler environment to generate types for.
-    * `envFile` `string[]`
+    - `envFile` `string[]`
+
       Paths to `.env` files to load when inferring local variables and secrets.
-    * `envInterface` `string`
+    - `envInterface` `string`
+
       Name of the generated environment interface. Defaults to `Env`.
-    * `includeEnv` `boolean`
+    - `includeEnv` `boolean`
+
       Whether to include environment and bindings types in the output. Defaults to `true`.
-    * `includeRuntime` `boolean`
+    - `includeRuntime` `boolean`
+
       Whether to include runtime types in the output. Defaults to `true`.
-    * `path` `string`
+    - `path` `string`
+
       Path to the declaration file for generated types. Defaults to `worker-configuration.d.ts`.
-    * `strictVars` `boolean`
+    - `strictVars` `boolean`
+
       Whether to generate strict literal and union types for variables. Defaults to `true`.
 
 ### Return Type
 
 `experimental_generateTypes()` returns a `Promise` resolving to an object containing the following fields:
 
-* `content` `string`
-
-  * Combined formatted output containing all generated sections, including headers and both env and runtime types.
-* `env` `string | null`
-
-  * Generated environment and bindings types, or `null` when env types are excluded.
-* `path` `string`
-
-  * Target declaration file path associated with this generation run.
-* `runtime` `string | null`
-
-  * Generated runtime types, or `null` when runtime types are excluded.
+- `content` `string`
+  - Combined formatted output containing all generated sections, including headers and both env and runtime types.
+- `env` `string | null`
+  - Generated environment and bindings types, or `null` when env types are excluded.
+- `path` `string`
+  - Target declaration file path associated with this generation run.
+- `runtime` `string | null`
+  - Generated runtime types, or `null` when runtime types are excluded.
 
 ### Usage
 
@@ -358,7 +360,7 @@ const result = await experimental_generateTypes({
 
 Caution
 
-`unstable_startWorker()` is deprecated. Cloudflare recommends [createTestHarness()](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [createServer() ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+`unstable_startWorker()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. For example, you could use `unstable_startWorker()` to run integration tests against your Worker. This example uses `node:test`, but should apply to any testing framework:
 
@@ -391,7 +393,7 @@ describe("worker", () => {
 
 Caution
 
-`unstable_dev()` is deprecated. Cloudflare recommends [createTestHarness()](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [createServer() ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+`unstable_dev()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 Start an HTTP server for testing your Worker.
 
@@ -407,26 +409,22 @@ const worker = await unstable_dev(script, options);
 
 ### Parameters
 
-* `script` `string`
-
-  * A string containing a path to your Worker script, relative to your Worker project's root directory.
-* `options` `object` optional
-
-  * Optional options object containing `wrangler dev` configuration settings.
-  * Include an `experimental` object inside `options` to access experimental features such as `disableExperimentalWarning`.
-    * Set `disableExperimentalWarning` to `true` to disable Wrangler's warning about using `unstable_` prefixed APIs.
+- `script` `string`
+  - A string containing a path to your Worker script, relative to your Worker project's root directory.
+- `options` `object` optional
+  - Optional options object containing `wrangler dev` configuration settings.
+  - Include an `experimental` object inside `options` to access experimental features such as `disableExperimentalWarning`.
+    - Set `disableExperimentalWarning` to `true` to disable Wrangler's warning about using `unstable_` prefixed APIs.
 
 ### Return Type
 
 `unstable_dev()` returns an object containing the following methods:
 
-* `fetch()` `Promise<Response>`
-
-  * Send a request to your Worker. Returns a Promise that resolves with a [Response](https://developers.cloudflare.com/workers/runtime-apis/response) object.
-  * Refer to [Fetch](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
-* `stop()` `Promise<void>`
-
-  * Shuts down the dev server.
+- `fetch()` `Promise<Response>`
+  - Send a request to your Worker. Returns a Promise that resolves with a [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response) object.
+  - Refer to [`Fetch`](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
+- `stop()` `Promise<void>`
+  - Shuts down the dev server.
 
 ### Usage
 
@@ -590,44 +588,44 @@ const platform = await getPlatformProxy(options);
 
 ### Parameters
 
-* `options` `object` optional
-  * Optional options object containing preferences for the bindings:
-    * `environment` string
+- `options` `object` optional
+  - Optional options object containing preferences for the bindings:
+    - `environment` string
+
       The environment to use.
-    * `configPath` string
+    - `configPath` string
+
       The path to the config file to use.
+
       If no path is specified, the default behavior is to search from the current directory up the filesystem for a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to use.
 
-**Note:** this field is optional but if a path is specified it must point to a valid file on the filesystem.
-    * `persist` boolean | `{ path: string }`
+      **Note:** this field is optional but if a path is specified it must point to a valid file on the filesystem.
+    - `persist` boolean | `{ path: string }`
+
       Indicates if and where to persist the bindings data. If `true` or `undefined`, defaults to the same location used by Wrangler, so data can be shared between it and the caller. If `false`, no data is persisted to or read from the filesystem.
 
-**Note:** If you use `wrangler`'s `--persist-to` option, note that this option adds a subdirectory called `v3` under the hood while `getPlatformProxy`'s `persist` does not. For example, if you run `wrangler dev --persist-to ./my-directory`, to reuse the same location using `getPlatformProxy`, you will have to specify: `persist: { path: "./my-directory/v3" }`.
-    * `remoteBindings` boolean optional (default: \`true\`)
+      **Note:** If you use `wrangler`'s `--persist-to` option, note that this option adds a subdirectory called `v3` under the hood while `getPlatformProxy`'s `persist` does not. For example, if you run `wrangler dev --persist-to ./my-directory`, to reuse the same location using `getPlatformProxy`, you will have to specify: `persist: { path: "./my-directory/v3" }`.
+    - `remoteBindings` boolean optional (default: \`true\`)
+
       Whether or not [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) should be enabled.
 
 ### Return Type
 
 `getPlatformProxy()` returns a `Promise` resolving to an object containing the following fields.
 
-* `env` `Record<string, unknown>`
-
-  * Object containing proxies to bindings that can be used in the same way as production bindings. This matches the shape of the `env` object passed as the second argument to modules-format workers. These proxy to binding implementations run inside `workerd`.
-  * TypeScript Tip: `getPlatformProxy<Env>()` is a generic function. You can pass the shape of the bindings record as a type argument to get proper types without `unknown` values.
-* `cf` IncomingRequestCfProperties read-only
-
-  * Mock of the `Request`'s `cf` property, containing data similar to what you would see in production.
-* `ctx` object
-
-  * Mock object containing implementations of the [waitUntil](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) and [passThroughOnException](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception) functions that do nothing.
-* `caches` object
-
-  * Emulation of the [Workers caches runtime API](https://developers.cloudflare.com/workers/runtime-apis/cache/).
-  * For the time being, all cache operations do nothing. A more accurate emulation will be made available soon.
-* `dispose()` () => `Promise<void>`
-
-  * Terminates the underlying `workerd` process.
-  * Call this after the platform proxy is no longer required by the program. If you are running a long running process (such as a dev server) that can indefinitely make use of the proxy, you do not need to call this function.
+- `env` `Record<string, unknown>`
+  - Object containing proxies to bindings that can be used in the same way as production bindings. This matches the shape of the `env` object passed as the second argument to modules-format workers. These proxy to binding implementations run inside `workerd`.
+  - TypeScript Tip: `getPlatformProxy<Env>()` is a generic function. You can pass the shape of the bindings record as a type argument to get proper types without `unknown` values.
+- `cf` IncomingRequestCfProperties read-only
+  - Mock of the `Request`'s `cf` property, containing data similar to what you would see in production.
+- `ctx` object
+  - Mock object containing implementations of the [`waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) and [`passThroughOnException`](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception) functions that do nothing.
+- `caches` object
+  - Emulation of the [Workers `caches` runtime API](https://developers.cloudflare.com/workers/runtime-apis/cache/).
+  - For the time being, all cache operations do nothing. A more accurate emulation will be made available soon.
+- `dispose()` () => `Promise<void>`
+  - Terminates the underlying `workerd` process.
+  - Call this after the platform proxy is no longer required by the program. If you are running a long running process (such as a dev server) that can indefinitely make use of the proxy, you do not need to call this function.
 
 ### Usage
 
@@ -668,90 +666,116 @@ All supported bindings found in your [Wrangler configuration file](https://devel
 
 The bindings supported by `getPlatformProxy` are:
 
-* [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)
-* [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
-* [KV namespace bindings](https://developers.cloudflare.com/kv/api/)
-* [R2 bucket bindings](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
-* [Queue bindings](https://developers.cloudflare.com/queues/configuration/javascript-apis/)
-* [D1 database bindings](https://developers.cloudflare.com/d1/worker-api/)
-* [Hyperdrive bindings](https://developers.cloudflare.com/hyperdrive)
-Hyperdrive values are simple passthrough ones
-Values provided by hyperdrive bindings such as `connectionString` and `host` do not have a valid meaning outside of a `workerd` process. This means that Hyperdrive proxies return passthrough values, which are values corresponding to the database connection provided by the user. Otherwise, it would return values which would be unusable from within node.js.
-* [Workers AI bindings](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
-Workers AI local development usage charges
-Using Workers AI always accesses your Cloudflare account in order to run AI models and will incur usage charges even in local development.
-* [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)
+- [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/)
+- [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/)
+- [KV namespace bindings](https://developers.cloudflare.com/kv/api/)
+- [R2 bucket bindings](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/)
+- [Queue bindings](https://developers.cloudflare.com/queues/configuration/javascript-apis/)
+- [D1 database bindings](https://developers.cloudflare.com/d1/worker-api/)
+- [Hyperdrive bindings](https://developers.cloudflare.com/hyperdrive)
 
-  * To use a Durable Object binding with `getPlatformProxy`, always specify a [script\_name](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).
-  For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.
-  ```jsonc
-  {
-    "durable_objects": {
-      "bindings": [
-        {
-          "name": "MyDurableObject",
-          "class_name": "MyDurableObject",
-          "script_name": "external-do-worker"
-        }
-      ]
+  Hyperdrive values are simple passthrough ones
+
+  Values provided by hyperdrive bindings such as `connectionString` and `host` do not have a valid meaning outside of a `workerd` process. This means that Hyperdrive proxies return passthrough values, which are values corresponding to the database connection provided by the user. Otherwise, it would return values which would be unusable from within node.js.
+- [Workers AI bindings](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
+
+  Workers AI local development usage charges
+
+  Using Workers AI always accesses your Cloudflare account in order to run AI models and will incur usage charges even in local development.
+- [Durable Object bindings](https://developers.cloudflare.com/durable-objects/api/)
+  - To use a Durable Object binding with `getPlatformProxy`, always specify a [`script_name`](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects).
+
+    For example, you might have the following binding in a Wrangler configuration file read by `getPlatformProxy`.
+
+    ```jsonc
+    {
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "MyDurableObject",
+            "class_name": "MyDurableObject",
+            "script_name": "external-do-worker"
+          }
+        ]
+      }
     }
-  }
-  ```
-  ```toml
-  [[durable_objects.bindings]]
-  name = "MyDurableObject"
-  class_name = "MyDurableObject"
-  script_name = "external-do-worker"
-  ```
-  You will need to declare your Durable Object `"MyDurableObject"` in another Worker, called `external-do-worker` in this example.
-  ```ts
-  export class MyDurableObject extends DurableObject {
-  	// Your DO code goes here
-  }
-  export default {
-  	fetch() {
-  		// Doesn't have to do anything, but a DO cannot be the default export
-  		return new Response("Hello, world!");
-  	},
-  };
-  ```
-  That Worker also needs a Wrangler configuration file that looks like this:
-  ```jsonc
-  {
-  	"name": "external-do-worker",
-  	"main": "src/index.ts",
-  	"compatibility_date": "XXXX-XX-XX"
-  }
-  ```
-  ```toml
-  name = "external-do-worker"
-  main = "src/index.ts"
-  compatibility_date = "XXXX-XX-XX"
-  ```
-  If you are not using RPC with your Durable Object, you can run a separate Wrangler dev session alongside your framework development server.
-  Otherwise, you can build your application and run both Workers in the same Wrangler dev session.
-  If you are using Pages run:
-  npmyarnpnpm
-  ```
-  npx wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
-  ```
-  yarn wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
-  ```
-  pnpm wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
-  If you are using Workers with Assets run:
-  npmyarnpnpm
-  ```
-  npx wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
-  ```
-  yarn wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
-  ```
-  pnpm wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
-  ```
+    ```
+
+    ```toml
+    [[durable_objects.bindings]]
+    name = "MyDurableObject"
+    class_name = "MyDurableObject"
+    script_name = "external-do-worker"
+    ```
+
+    You will need to declare your Durable Object `"MyDurableObject"` in another Worker, called `external-do-worker` in this example.
+
+    *./external-do-worker/src/index.tsts*
+
+
+
+    ```ts
+    export class MyDurableObject extends DurableObject {
+    	// Your DO code goes here
+    }
+
+    export default {
+    	fetch() {
+    		// Doesn't have to do anything, but a DO cannot be the default export
+    		return new Response("Hello, world!");
+    	},
+    };
+    ```
+
+    That Worker also needs a Wrangler configuration file that looks like this:
+
+    ```jsonc
+    {
+    	"name": "external-do-worker",
+    	"main": "src/index.ts",
+    	"compatibility_date": "XXXX-XX-XX"
+    }
+    ```
+
+    ```toml
+    name = "external-do-worker"
+    main = "src/index.ts"
+    compatibility_date = "XXXX-XX-XX"
+    ```
+
+    If you are not using RPC with your Durable Object, you can run a separate Wrangler dev session alongside your framework development server.
+
+    Otherwise, you can build your application and run both Workers in the same Wrangler dev session.
+
+    If you are using Pages run:npmyarnpnpm
+
+    ```
+    npx wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+    ```
+    yarn wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+    ```
+    pnpm wrangler pages dev -c path/to/pages/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+    If you are using Workers with Assets run:npmyarnpnpm
+
+    ```
+    npx wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+    ```
+    yarn wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+    ```
+    pnpm wrangler dev -c path/to/workers-assets/wrangler.jsonc -c path/to/external-do-worker/wrangler.jsonc
+    ```
+
+
 
 Was this helpful?
 

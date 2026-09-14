@@ -12,74 +12,104 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Flask
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Flask ↗](https://flask.palletsprojects.com/) is supported in Python Workers.
 
 Flask applications rely on a protocol called the Web Server Gateway Interface (WSGI). This means that Flask never directly reads or writes to a socket, instead relying on the WSGI server to communicate.
 
-Python Workers include a [WSGI server ↗](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/wsgi.py)which you can use with Flask applications.
+Python Workers include a [WSGI server ↗](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/wsgi.py) which you can use with Flask applications.
 
 ## Create a Flask Worker
 
 Use this quick start to run a minimal Flask application.
 
 1. Create `src/worker.py` with your flask application:
-```python
-from flask import Flask
-from workers import wsgi
-app = Flask(__name__)
-@app.get("/")
-def index():
-    return {"message": "Hello from Flask"}
-Default = wsgi.entrypoint(app)
-```
+
+   *src/worker.pypython*
+
+
+
+   ```python
+   from flask import Flask
+   from workers import wsgi
+
+   app = Flask(__name__)
+
+   @app.get("/")
+   def index():
+       return {"message": "Hello from Flask"}
+
+   Default = wsgi.entrypoint(app)
+   ```
+
+
 2. In the project root, create `wrangler.jsonc`:
-```jsonc
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "my-flask-worker",
-  "main": "src/worker.py",
-  // Set this to today's date
-  "compatibility_date": "2026-08-28",
-  "compatibility_flags": ["python_workers"]
-}
-```
-```toml
-"$schema" = "node_modules/wrangler/config-schema.json"
-name = "my-flask-worker"
-main = "src/worker.py"
-# Set this to today's date
-compatibility_date = "2026-08-28"
-compatibility_flags = [ "python_workers" ]
-```
+
+   ```jsonc
+   {
+     "$schema": "node_modules/wrangler/config-schema.json",
+     "name": "my-flask-worker",
+     "main": "src/worker.py",
+     // Set this to today's date
+     "compatibility_date": "2026-09-14",
+     "compatibility_flags": ["python_workers"]
+   }
+   ```
+
+   ```toml
+   "$schema" = "node_modules/wrangler/config-schema.json"
+   name = "my-flask-worker"
+   main = "src/worker.py"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+   compatibility_flags = [ "python_workers" ]
+   ```
+
+
 3. Create a `pyproject.toml` to declare dependencies:
-```toml
-[project]
-name = "flask-worker"
-version = "0.1.0"
-requires-python = ">=3.12"
-dependencies = [
-    "flask",
-]
-[dependency-groups]
-dev = [
-    "workers-py",
-    "workers-runtime-sdk",
-]
-```
+
+   *pyproject.tomltoml*
+
+
+
+   ```toml
+   [project]
+   name = "flask-worker"
+   version = "0.1.0"
+   requires-python = ">=3.12"
+   dependencies = [
+       "flask",
+   ]
+
+   [dependency-groups]
+   dev = [
+       "workers-py",
+       "workers-runtime-sdk",
+   ]
+   ```
+
+
 4. Start the local development server:
-```sh
-uv run pywrangler dev
-```
+
+   ```sh
+   uv run pywrangler dev
+   ```
+
+
 5. In another terminal, send a request to the Worker:
-```sh
-curl http://localhost:8787/
-```
-The Worker returns:
-```json
-{"message":"Hello from Flask"}
-```
+
+   ```sh
+   curl http://localhost:8787/
+   ```
+
+   The Worker returns:
+
+   ```json
+   {"message":"Hello from Flask"}
+   ```
+
+
 
 ## Serve a frontend
 
@@ -93,7 +123,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-08-28",
+  "compatibility_date": "2026-09-14",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -108,7 +138,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-08-28"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "python_workers" ]
 
 [assets]
@@ -118,6 +148,8 @@ run_worker_first = true
 ```
 
 The following Worker handles an API route before forwarding other requests. The catch-all handlers return each asset's body, status, and headers:
+
+*src/worker.pypython*
 
 ```python
 from flask import Flask, Response, request

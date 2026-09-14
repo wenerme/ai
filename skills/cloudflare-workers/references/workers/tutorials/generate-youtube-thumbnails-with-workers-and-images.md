@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
-This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/),[Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).
+This tutorial will help you understand how to work with [Images](https://developers.cloudflare.com/images/), [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) and [Cloudflare Workers](https://developers.cloudflare.com/workers/).
 
 ## Before you start
 
@@ -28,9 +28,9 @@ To follow this tutorial, make sure you have Node, Cargo, and [Wrangler](https://
 
 In this tutorial, you will learn how to:
 
-* Upload Images to Cloudflare with the Cloudflare dashboard or API.
-* Set up a Worker project with Wrangler.
-* Manipulate images with image transformations in your Worker.
+- Upload Images to Cloudflare with the Cloudflare dashboard or API.
+- Set up a Worker project with Wrangler.
+- Manipulate images with image transformations in your Worker.
 
 ## Upload your image
 
@@ -42,8 +42,7 @@ Cloudflare Images allows you to store, resize, optimize and deliver images in a 
 
 To upload an image using the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Transformations** page.
-[Go to **Transformations** ↗](https://dash.cloudflare.com/?to=/:account/images/transformations)
+1. In the Cloudflare dashboard, go to the **Transformations** page. [Go to **Transformations** ↗](https://dash.cloudflare.com/?to=/:account/images/transformations)
 2. Use **Quick Upload** to either drag and drop an image or click to browse and choose a file from your local files.
 3. After the image is uploaded, view it using the generated URL.
 
@@ -60,9 +59,9 @@ curl --request POST \
  --form 'requireSignedURLs=false'
 ```
 
-* `ACCOUNT_ID`: The current user's account id which can be found in your account settings.
-* `API_TOKEN`: Needs to be generated to scoping Images permission.
-* `PATH_TO_IMAGE`: Indicates the URL for the image you want to upload.
+- `ACCOUNT_ID`: The current user's account id which can be found in your account settings.
+- `API_TOKEN`: Needs to be generated to scoping Images permission.
+- `PATH_TO_IMAGE`: Indicates the URL for the image you want to upload.
 
 You will then receive a response similar to this:
 
@@ -95,11 +94,14 @@ After uploading your image, create a Worker that will enable you to transform te
 
 You will need the following before you begin:
 
-* A recent version of [Rust ↗](https://rustup.rs/).
-* Access to the `cargo-generate` subcommand:
-```sh
-cargo install cargo-generate
-```
+- A recent version of [Rust ↗](https://rustup.rs/).
+- Access to the `cargo-generate` subcommand:
+
+  ```sh
+  cargo install cargo-generate
+  ```
+
+
 
 Create a new Worker project using the `worker-rust` template:
 
@@ -128,13 +130,13 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 }
 ```
 
-1. Update the `Cargo.toml` file in your `worker-to-text` project directory to use [text-to-png ↗](https://github.com/RookAndPawn/text-to-png), a Rust package for rendering text to PNG. Add the package as a dependency by running:
+2. Update the `Cargo.toml` file in your `worker-to-text` project directory to use [text-to-png ↗](https://github.com/RookAndPawn/text-to-png), a Rust package for rendering text to PNG. Add the package as a dependency by running:
 
 ```sh
 cargo add text-to-png@0.2.0
 ```
 
-1. Import the `text_to_png` library into your `worker-to-text` project's `lib.rs` file.
+3. Import the `text_to_png` library into your `worker-to-text` project's `lib.rs` file.
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};
@@ -154,7 +156,7 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 }
 ```
 
-1. Update `lib.rs` to create a `handle-slash` function that will activate the image transformation based on the text passed to the URL as a query parameter.
+4. Update `lib.rs` to create a `handle-slash` function that will activate the image transformation based on the text passed to the URL as a query parameter.
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};
@@ -176,7 +178,7 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 async fn handle_slash(text: String) -> Result<Response> {}
 ```
 
-1. In the `handle-slash` function, call the `TextRenderer` by assigning it to a renderer value, specifying that you want to use a custom font. Then, use the `render_text_to_png_data` method to transform the text into image format. In this example, the custom font (`Inter-Bold.ttf`) is located in an `/assets` folder at the root of the project which will be used for generating the thumbnail. You must update this portion of the code to point to your custom font file.
+5. In the `handle-slash` function, call the `TextRenderer` by assigning it to a renderer value, specifying that you want to use a custom font. Then, use the `render_text_to_png_data` method to transform the text into image format. In this example, the custom font ( `Inter-Bold.ttf`) is located in an `/assets` folder at the root of the project which will be used for generating the thumbnail. You must update this portion of the code to point to your custom font file.
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};
@@ -203,7 +205,7 @@ async fn handle_slash(text: String) -> Result<Response> {
 }
 ```
 
-1. Rewrite the `Router` function to call `handle_slash` when a query is passed in the URL, otherwise return the `"Hello Worker!"` as the response.
+6. Rewrite the `Router` function to call `handle_slash` when a query is passed in the URL, otherwise return the `"Hello Worker!"` as the response.
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};
@@ -236,7 +238,7 @@ async fn handle_slash(text: String) -> Result<Response> {
 }
 ```
 
-1. In your `lib.rs` file, set the headers to `content-type: image/png` so that the response is correctly rendered as a PNG image.
+7. In your `lib.rs` file, set the headers to `content-type: image/png` so that the response is correctly rendered as a PNG image.
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};
@@ -378,11 +380,11 @@ pnpm create cloudflare@latest thumbnail-image
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 To start developing your Worker, `cd` into your new project directory:
 

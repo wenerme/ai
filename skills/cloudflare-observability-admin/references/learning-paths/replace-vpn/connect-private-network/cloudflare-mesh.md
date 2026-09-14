@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect with Cloudflare Mesh
 
-Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your private networks to Cloudflare using the Cloudflare One Client (`warp-cli`) running in headless mode on a Linux server. Every enrolled device and node receives a private Mesh IP and can communicate with any other participant over TCP, UDP, or ICMP.
 
@@ -26,18 +26,18 @@ The setup wizard in the dashboard configures enrollment, device profiles, and co
 
 ## When to use Mesh
 
-* Replacing a VPN for remote access to private networks
-* Bidirectional connectivity (VoIP, SIP, Active Directory, SCCM, DevOps pipelines)
-* Long-lived TCP connections sensitive to interruptions (SAP, database replication, ERP systems, RDP sessions)
-* Site-to-site networking between offices, data centers, or cloud VPCs
-* Client-to-client connectivity (two laptops reaching each other by private IP)
-* Any L3/L4 workload where source IP preservation matters
+- Replacing a VPN for remote access to private networks
+- Bidirectional connectivity (VoIP, SIP, Active Directory, SCCM, DevOps pipelines)
+- Long-lived TCP connections sensitive to interruptions (SAP, database replication, ERP systems, RDP sessions)
+- Site-to-site networking between offices, data centers, or cloud VPCs
+- Client-to-client connectivity (two laptops reaching each other by private IP)
+- Any L3/L4 workload where source IP preservation matters
 
 ## Best practices
 
-* Enable [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for production nodes with CIDR routes.
-* Use [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control which users and devices can reach specific resources.
-* Refer to [Tips and best practices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/) for cloud VPC configuration and running alongside Cloudflare Tunnel.
+- Enable [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) for production nodes with CIDR routes.
+- Use [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) to control which users and devices can reach specific resources.
+- Refer to [Tips and best practices](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/tips/) for cloud VPC configuration and running alongside Cloudflare Tunnel.
 
 Was this helpful?
 

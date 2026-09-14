@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom rulesets (zone level)
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom rulesets are collections of custom rules that you can deploy at the zone or [account level](https://developers.cloudflare.com/waf/account/custom-rulesets/).
 
@@ -39,14 +39,25 @@ To deploy a custom ruleset for a zone:
 1. Create a custom ruleset at the zone level with one or more rules. Alternatively, identify the existing custom ruleset you want to deploy using the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) API operation.
 2. Add a rule with the `execute` action to the `http_request_firewall_custom` phase entry point ruleset, referencing the custom ruleset ID. This rule tells Cloudflare to run the custom ruleset when the rule expression matches.
 
-### 1\. Create custom ruleset
+### 1. Create custom ruleset
 
 The following request creates a new custom ruleset at the zone level with two rules. The response will include the ID of the new custom ruleset in the `id` field.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+
+</details>
+
+*Create a zone rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
@@ -105,125 +116,154 @@ Note
 
 Currently, zone-level custom rulesets are only available in the `http_request_firewall_custom` phase.
 
-### 2\. Deploy custom ruleset
+### 2. Deploy custom ruleset
 
 Deploy the custom ruleset by adding a rule with `"action": "execute"` to the `http_request_firewall_custom` phase entry point ruleset.
 
-1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_custom` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Zone WAF Write`
-  * `Zone WAF Read`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-{
-	"result": {
-		"description": "Zone-level phase entry point",
-		"id": "<ENTRY_POINT_RULESET_ID>",
-		"kind": "zone",
-		"last_updated": "2025-11-16T15:40:08.202335Z",
-		"name": "zone",
-		"phase": "http_request_firewall_custom",
-		"rules": [
-			// ...
-		],
-		"version": "10"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+1. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the definition of the entry point ruleset for the `http_request_firewall_custom` phase. You will need the [zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for this task.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Zone WAF Write</code>
+   - <code>Zone WAF Read</code></details>
+
+   *Get a zone entry point rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_custom/entrypoint" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"description": "Zone-level phase entry point",
+   		"id": "<ENTRY_POINT_RULESET_ID>",
+   		"kind": "zone",
+   		"last_updated": "2025-11-16T15:40:08.202335Z",
+   		"name": "zone",
+   		"phase": "http_request_firewall_custom",
+   		"rules": [
+   			// ...
+   		],
+   		"version": "10"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 2. If the entry point ruleset already exists (that is, if you received a `200 OK` status code and the ruleset definition), take note of the ruleset ID in the response. Then, invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation to add an `execute` rule to the existing ruleset deploying the custom ruleset you created in Step 1 (replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID).
-Since the expression is `true`, the custom ruleset will run for all incoming requests. By default, the rule will be added at the end of the list of rules already in the ruleset.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Zone WAF Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"action": "execute",
-		"expression": "true",
-		"action_parameters": {
-				"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-		},
-		"description": "Execute custom ruleset"
-	}'
-```
-```json
-{
-	"result": {
-		"id": "<ENTRY_POINT_RULESET_ID>",
-		"name": "zone",
-		"description": "Zone-level phase entry point",
-		"kind": "zone",
-		"version": "11",
-		"rules": [
-			// ... any existing rules
-			{
-				"id": "<RULE_ID>",
-				"version": "1",
-				"action": "execute",
-				"action_parameters": {
-					"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-				},
-				"expression": "true",
-				"description": "Execute custom ruleset",
-				"last_updated": "2025-11-18T18:08:14.003361Z",
-				"ref": "<RULE_REF>",
-				"enabled": true
-			}
-		],
-		"last_updated": "2025-11-18T18:08:14.003361Z",
-		"phase": "http_request_firewall_custom"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
-3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests in the zone. Replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Zone WAF Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"name": "zone",
-		"description": "Zone-level phase entry point",
-		"kind": "zone",
-		"phase": "http_request_firewall_custom",
-		"rules": [
-				{
-						"action": "execute",
-						"action_parameters": {
-								"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
-						},
-						"expression": "true",
-						"description": "Execute custom ruleset"
-				}
-		]
-	}'
-```
+   Since the expression is `true`, the custom ruleset will run for all incoming requests. By default, the rule will be added at the end of the list of rules already in the ruleset.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Zone WAF Write</code></details>
+
+   *Create a zone ruleset rulebash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"action": "execute",
+   		"expression": "true",
+   		"action_parameters": {
+   				"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+   		},
+   		"description": "Execute custom ruleset"
+   	}'
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"id": "<ENTRY_POINT_RULESET_ID>",
+   		"name": "zone",
+   		"description": "Zone-level phase entry point",
+   		"kind": "zone",
+   		"version": "11",
+   		"rules": [
+   			// ... any existing rules
+   			{
+   				"id": "<RULE_ID>",
+   				"version": "1",
+   				"action": "execute",
+   				"action_parameters": {
+   					"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+   				},
+   				"expression": "true",
+   				"description": "Execute custom ruleset",
+   				"last_updated": "2025-11-18T18:08:14.003361Z",
+   				"ref": "<RULE_REF>",
+   				"enabled": true
+   			}
+   		],
+   		"last_updated": "2025-11-18T18:08:14.003361Z",
+   		"phase": "http_request_firewall_custom"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
+3. If the entry point ruleset does not exist (that is, if you received a `404 Not Found` status code in step 1), create it using the [Create a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/create/) operation. Include a single rule in the `rules` array that executes the custom ruleset for all incoming requests in the zone. Replace `f82ccda3d21f4a02825d3fe45b5e1c10` with your custom ruleset ID.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Zone WAF Write</code></details>
+
+   *Create a zone rulesetbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"name": "zone",
+   		"description": "Zone-level phase entry point",
+   		"kind": "zone",
+   		"phase": "http_request_firewall_custom",
+   		"rules": [
+   				{
+   						"action": "execute",
+   						"action_parameters": {
+   								"id": "f82ccda3d21f4a02825d3fe45b5e1c10"
+   						},
+   						"expression": "true",
+   						"description": "Execute custom ruleset"
+   				}
+   		]
+   	}'
+   ```
+
+
 
 ## Next steps
 
 Use the different operations in the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to work with the custom ruleset you created and deployed. The following table has a list of common tasks for working with custom rulesets at the zone level:
 
-| Task                               | Procedure                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Get list of custom rulesets        | Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation and search for rulesets with "kind": "custom" and "phase": "http\_request\_firewall\_custom". The response will include the ruleset IDs.For more information, refer to [List existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-existing-rulesets). |
-| List all rules in a custom ruleset | Use the [Get a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) operation with the custom ruleset ID to obtain the list of configured rules and their IDs.For more information, refer to [View a specific ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-ruleset).                                                        |
-| Update a custom rule               | Use the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/edit/) operation. You will need to provide the custom ruleset ID and the rule ID.For more information, refer to [Update a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/).                                                          |
-| Delete a custom rule               | Use the [Delete a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/) operation. You will need to provide the custom ruleset ID and the rule ID.For more information, refer to [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/).                                                        |
+| Task | Procedure |
+| --- | --- |
+| Get list of custom rulesets | Use the [List zone rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation and search for rulesets with `"kind": "custom"` and `"phase": "http_request_firewall_custom"`. The response will include the ruleset IDs. For more information, refer to [List existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-existing-rulesets). |
+| List all rules in a custom ruleset | Use the [Get a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) operation with the custom ruleset ID to obtain the list of configured rules and their IDs. For more information, refer to [View a specific ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-ruleset). |
+| Update a custom rule | Use the [Update a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/edit/) operation. You will need to provide the custom ruleset ID and the rule ID. For more information, refer to [Update a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/). |
+| Delete a custom rule | Use the [Delete a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/delete/) operation. You will need to provide the custom ruleset ID and the rule ID. For more information, refer to [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/). |
 
 ## More resources
 
@@ -238,5 +278,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level) · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/#page","headline":"Custom rulesets (zone level) · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage zone-level custom rulesets for WAF rules.","url":"https://developers.cloudflare.com/waf/custom-rules/custom-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

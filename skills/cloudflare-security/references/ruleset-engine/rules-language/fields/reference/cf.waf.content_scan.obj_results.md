@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.content\_scan.obj\_results
 
-`cf.waf.content_scan.obj_results` `Array<String>`
+`cf.waf.content_scan.obj_results``Array<String>`
 
 An array of scan results in the order the content objects were detected in the request.
 
@@ -24,7 +24,7 @@ any(cf.waf.content_scan.obj_results[*] in {"suspicious" "infected"}) and http.re
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

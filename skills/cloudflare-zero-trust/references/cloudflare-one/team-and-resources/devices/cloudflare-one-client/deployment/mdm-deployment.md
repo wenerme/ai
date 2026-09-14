@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Managed deployment
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Organizations can deploy and manage the Cloudflare One Client (formerly WARP) across their fleet of devices in two complementary ways:
 
-* **Through a mobility management solution (MDM)** — Push the client installer and its deployment parameters using a tool such as [Intune, JAMF, Kandji, or JumpCloud](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/), or by executing an `.msi` file on desktop machines. This page covers the MDM-driven workflow.
-* **From the Cloudflare dashboard** — Manage client versions for groups of devices directly from the Zero Trust dashboard, without relying on a third-party MDM solution. For more information, refer to [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/).
+- **Through a mobility management solution (MDM)** — Push the client installer and its deployment parameters using a tool such as [Intune, JAMF, Kandji, or JumpCloud](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/), or by executing an `.msi` file on desktop machines. This page covers the MDM-driven workflow.
+- **From the Cloudflare dashboard** — Manage client versions for groups of devices directly from the Zero Trust dashboard, without relying on a third-party MDM solution. For more information, refer to [Client version assignments](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/client-version-assignments/).
 
 This page provides generic instructions for an automated deployment. If you want to deploy the Cloudflare One Client manually, refer to the [instructions for manual deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/).
 
@@ -27,8 +27,8 @@ Caution
 
 ## Prerequisites
 
-* Refer to the [Download page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#windows) to review system requirements and download the installer for your operating system.
-* After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
+- Refer to the [Download page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#windows) to review system requirements and download the installer for your operating system.
+- After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
 ## Windows
 
@@ -46,17 +46,17 @@ msiexec /i "Cloudflare_WARP_<VERSION>.msi" /qn ORGANIZATION="your-team-name" SUP
 
 The Cloudflare One Client MSI installer supports the following [public properties ↗](https://learn.microsoft.com/en-us/windows/win32/msi/public-properties):
 
-* `ORGANIZATION`
-* `GATEWAY_UNIQUE_ID`
-* `AUTH_CLIENT_ID`
-* `AUTH_CLIENT_SECRET`
-* `ONBOARDING`
-* `OVERRIDE_API_ENDPOINT`
-* `OVERRIDE_DOH_ENDPOINT`
-* `OVERRIDE_WARP_ENDPOINT`
-* `SERVICE_MODE`
-* `SUPPORT_URL`
-* `SWITCH_LOCKED`
+- `ORGANIZATION`
+- `GATEWAY_UNIQUE_ID`
+- `AUTH_CLIENT_ID`
+- `AUTH_CLIENT_SECRET`
+- `ONBOARDING`
+- `OVERRIDE_API_ENDPOINT`
+- `OVERRIDE_DOH_ENDPOINT`
+- `OVERRIDE_WARP_ENDPOINT`
+- `SERVICE_MODE`
+- `SUPPORT_URL`
+- `SWITCH_LOCKED`
 
 Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/) for a description of each property.
 
@@ -76,7 +76,7 @@ IdentifyingNumber                      Name                  LocalPackage
 {9949770E-B807-4610-9A96-8CD4997A736A} Cloudflare One Client C:\WINDOWS\Installer\cd8edd0.msi
 ```
 
-1. You can then use the LocalPackage output in the uninstall command. For example,
+2. You can then use the LocalPackage output in the uninstall command. For example,
 
 ```powershell
 msiexec /x C:\WINDOWS\Installer\<WARP_RELEASE>.msi /quiet
@@ -105,9 +105,10 @@ To use an embedded browser:
 
 1. Download and install WebView2 by following the [Microsoft instructions ↗](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
 2. Add a registry key with the following command:
-```txt
-REG ADD HKLM\SOFTWARE\Cloudflare\CloudflareWARP /f /v UseWebView2 /t REG_SZ /d y
-```
+
+   ```txt
+   REG ADD HKLM\SOFTWARE\Cloudflare\CloudflareWARP /f /v UseWebView2 /t REG_SZ /d y
+   ```
 
 The Cloudflare One Client will now launch WebView2 when the user is registering their device with Zero Trust.
 
@@ -117,7 +118,7 @@ The Cloudflare One Client for macOS allows for an automated install via tools li
 
 Caution
 
-Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's .pkg deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
+Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
 
 If you do not wish to use a management tool, you can manually place an `mdm.xml` file in `/Library/Application Support/Cloudflare`.
 

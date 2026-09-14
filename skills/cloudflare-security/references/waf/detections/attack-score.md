@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WAF attack score
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/attack-score/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-score/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The attack score [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) classifies each request using a machine learning algorithm, assigning a score from 1 to 99 based on the likelihood that the request is malicious. This detection complements [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -30,18 +30,18 @@ The full feature is available to Enterprise customers. Business plans only have 
 
 The Cloudflare WAF provides the following attack score fields:
 
-| Field                                                                                                                                                    | Description                                                                                                                                                                        | Required plan     |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| WAF Attack Score [cf.waf.score](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score/) Number                   | A global score from 1–99 that combines the score of each WAF attack vector into a single score.                                                                                    | Enterprise        |
-| WAF SQLi Attack Score [cf.waf.score.sqli](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.sqli/) Number    | A score from 1–99 classifying the [SQL injection ↗](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi) attack vector.                                     | Enterprise        |
-| WAF XSS Attack Score [cf.waf.score.xss](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.xss/) Number       | A score from 1–99 classifying the [cross-site scripting ↗](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS) attack vector.                        | Enterprise        |
-| WAF RCE Attack Score [cf.waf.score.rce](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.rce/) Number       | A score from 1–99 classifying the command injection or [remote code execution ↗](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attack vector. | Enterprise        |
-| WAF Attack Score Class [cf.waf.score.class](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.class/) String | The attack score class of the current request, based on the WAF attack score.  Possible values: attack, likely\_attack, likely\_clean, and clean.                                  | Business or above |
+| Field | Description | Required plan |
+| --- | --- | --- |
+| WAF Attack Score <br> [`cf.waf.score`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score/) <br> `Number` | A global score from 1–99 that combines the score of each WAF attack vector into a single score. | Enterprise |
+| WAF SQLi Attack Score <br> [`cf.waf.score.sqli`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.sqli/) <br> `Number` | A score from 1–99 classifying the [SQL injection ↗](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi) attack vector. | Enterprise |
+| WAF XSS Attack Score <br> [`cf.waf.score.xss`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.xss/) <br> `Number` | A score from 1–99 classifying the [cross-site scripting ↗](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS) attack vector. | Enterprise |
+| WAF RCE Attack Score <br> [`cf.waf.score.rce`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.rce/) <br> `Number` | A score from 1–99 classifying the command injection or [remote code execution ↗](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attack vector. | Enterprise |
+| WAF Attack Score Class <br> [`cf.waf.score.class`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.class/) <br> `String` | The attack score class of the current request, based on the WAF attack score. <br> Possible values: `attack`, `likely_attack`, `likely_clean`, and `clean`. | Business or above |
 
 You can use these fields in expressions of [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/). Numeric score fields range from `1` to `99`:
 
-* A score of `1` indicates that the request is almost certainly malicious.
-* A score of `99` indicates that the request is likely clean.
+- A score of `1` indicates that the request is almost certainly malicious.
+- A score of `99` indicates that the request is likely clean.
 
 A score of `100` means the request reached the WAF attack score system, but the system decided not to score it.
 
@@ -51,55 +51,55 @@ The global WAF Attack Score is mathematically derived from individual attack sco
 
 The WAF Attack Score Class field can have one of the following values, depending on the calculated request attack score:
 
-| Dashboard label | Field value    | Description                     |
-| --------------- | -------------- | ------------------------------- |
-| _Attack_        | attack         | Attack score between 1 and 20.  |
-| _Likely attack_ | likely\_attack | Attack score between 21 and 50. |
-| _Likely clean_  | likely\_clean  | Attack score between 51 and 80. |
-| _Clean_         | clean          | Attack score between 81 and 99. |
+| Dashboard label | Field value | Description |
+| --- | --- | --- |
+| *Attack* | `attack` | Attack score between `1` and `20`. |
+| *Likely attack* | `likely_attack` | Attack score between `21` and `50`. |
+| *Likely clean* | `likely_clean` | Attack score between `51` and `80`. |
+| *Clean* | `clean` | Attack score between `81` and `99`. |
 
-Requests with the special attack score `100` will show a WAF Attack Score Class of _Unscored_ in the Cloudflare dashboard, but you cannot use this class value in rule expressions.
+Requests with the special attack score `100` will show a WAF Attack Score Class of *Unscored* in the Cloudflare dashboard, but you cannot use this class value in rule expressions.
 
 Attack score automatically detects and decodes Base64, JavaScript (Unicode escape sequences), and URL encoded content anywhere in the request: URL, headers, and body.
 
 ## Rule recommendations
 
-Blocking traffic solely based on attack score for all values below `50` is not recommended. The _Likely attack_ range (scores `21`–`50`) can include legitimate requests incorrectly flagged as malicious (false positives). If you want to block traffic based on attack score, do one of the following:
+Blocking traffic solely based on attack score for all values below `50` is not recommended. The *Likely attack* range (scores `21`–`50`) can include legitimate requests incorrectly flagged as malicious (false positives). If you want to block traffic based on attack score, do one of the following:
 
-* Use a more strict WAF Attack Score value in your expression. For example, block traffic with a WAF attack score below `20` or below `15` (you may need to adjust the exact threshold).
-* Combine a higher WAF Attack Score threshold with additional filters when blocking incoming traffic. For example, include a check for a specific URI path in your expression or use bot score as part of your criteria.
+- Use a more strict WAF Attack Score value in your expression. For example, block traffic with a WAF attack score below `20` or below `15` (you may need to adjust the exact threshold).
+- Combine a higher WAF Attack Score threshold with additional filters when blocking incoming traffic. For example, include a check for a specific URI path in your expression or use bot score as part of your criteria.
 
 ---
 
 ## Start using WAF attack score
 
-### 1\. Create a custom rule
+### 1. Create a custom rule
 
 Enterprise customers can [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that blocks requests with a **WAF Attack Score** less than or equal to `20` (recommended initial threshold). For example:
 
-| Field            | Operator              | Value |
-| ---------------- | --------------------- | ----- |
-| WAF Attack Score | less than or equal to | 20    |
+| Field | Operator | Value |
+| --- | --- | --- |
+| WAF Attack Score | less than or equal to | `20` |
 
-* Equivalent rule expression: `cf.waf.score le 20`
-* Action: _Block_
+- Equivalent rule expression: `cf.waf.score le 20`
+- Action: *Block*
 
-Business customers must create a custom rule with the **WAF Attack Score Class** field instead. For example, use this field to block incoming requests with a score class of _Attack_:
+Business customers must create a custom rule with the **WAF Attack Score Class** field instead. For example, use this field to block incoming requests with a score class of *Attack*:
 
-| Field                  | Operator | Value  |
-| ---------------------- | -------- | ------ |
-| WAF Attack Score Class | equals   | Attack |
+| Field | Operator | Value |
+| --- | --- | --- |
+| WAF Attack Score Class | equals | `Attack` |
 
-* Equivalent rule expression: `cf.waf.score.class eq "attack"`
-* Action: _Block_
+- Equivalent rule expression: `cf.waf.score.class eq "attack"`
+- Action: *Block*
 
-### 2\. Monitor domain traffic
+### 2. Monitor domain traffic
 
 Monitor the rule you created, especially in the first few days, to make sure you entered an appropriate threshold (or class) for your traffic. Update the rule if required.
 
-### 3\. Update the rule action
+### 3. Update the rule action
 
-If you are an Enterprise customer and you created a rule with _Log_ action, change the rule action to a more severe one, like _Managed Challenge_ or _Block_.
+If you are an Enterprise customer and you created a rule with *Log* action, change the rule action to a more severe one, like *Managed Challenge* or *Block*.
 
 ---
 

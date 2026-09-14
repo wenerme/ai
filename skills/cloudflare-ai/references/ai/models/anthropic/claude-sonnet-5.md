@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-sonnet-5`
 
-* Third-party
+- Third-party
 
 Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.
 
-| Model Info                                                                          |                                                                                                                             |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                           |
-| Request formats                                                                     | Anthropic Messages                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/sonnet) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-5) |
 
 ## Usage
 
@@ -61,6 +61,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Three (Four) Laws of Thermodynamics
 
 Here are the fundamental laws, typically numbered 1-3 (with a "Zeroth Law" often included as foundational):
@@ -92,6 +93,7 @@ Here are the fundamental laws, typically numbered 1-3 (with a "Zeroth Law" often
 1. You can't win (can't get more energy out than you put in)
 2. You can't break even (some energy is always lost as unusable heat)
 3. You can't get out of the game (can't reach absolute zero)
+```
 
 ```json
 {
@@ -120,7 +122,11 @@ Here are the fundamental laws, typically numbered 1-3 (with a "Zeroth Law" often
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -151,6 +157,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading a JSON File in Python
 
 Python's built-in `json` module makes this straightforward.
@@ -235,6 +242,7 @@ print(data['name'])  # Bob
 | null      | None        |
 
 That covers the essentials — let me know if you need help with nested data, writing JSON, or working with large files.
+````
 
 ```json
 {
@@ -261,7 +269,13 @@ That covers the essentials — let me know if you need help with nested data, wr
 }
 ```
 
-**Creative Writing with High Effort** — Use adaptive thinking with high effort for deeper reasoning.
+</details>
+
+<details>
+
+<summary>**Creative Writing with High Effort** — Use adaptive thinking with high effort for deeper reasoning.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -303,6 +317,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Mara Voss crouched beside the overturned chair, careful not to let her coat brush the chalk outline still drying on the hardwood floor. The apartment smelled of lavender and something underneath it—copper, sharp and unmistakable.
 
 "You seeing this?" she called to her partner, Reyes, who was photographing the bookshelf.
@@ -318,6 +333,7 @@ He crossed the room, careful of the evidence markers scattered like yellow teeth
 She blinked, realized she'd been staring. "This isn't our first body with this signature," she said quietly. "I just didn't know there'd be a second."
 
 Outside, rain began to tap against the window, and somewhere in the building, a door clicked shut—soft, deliberate, like someone had been listening.
+```
 
 ```json
 {
@@ -344,7 +360,13 @@ Outside, rain began to tap against the window, and somewhere in the building, a 
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -375,6 +397,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Recursion
 
 **Recursion** is a programming technique where a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
@@ -434,6 +457,7 @@ The function keeps calling itself with smaller values until it hits the **base c
 
 ## Caution ⚠️
 Without a proper base case, recursion leads to **infinite recursion** and a stack overflow error!
+````
 
 ```json
 [
@@ -636,9 +660,11 @@ Without a proper base case, recursion leads to **infinite recursion** and a stac
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -670,7 +696,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -688,9 +714,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5/schema-output.json)
 
 Was this helpful?
 

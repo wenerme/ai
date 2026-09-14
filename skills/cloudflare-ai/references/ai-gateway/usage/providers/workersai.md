@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers AI
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/workersai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use AI Gateway as a unified control layer for [Workers AI](https://developers.cloudflare.com/workers-ai/) requests, with analytics, logging, caching, security, and prepaid billing. To use prepaid [AI Gateway credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), set the gateway's [Workers AI billing setting](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#configure-workers-ai-billing) to **Unified billing**. Requests to frontier models billed with prepaid credits receive [higher rate limits](https://developers.cloudflare.com/workers-ai/platform/limits/#frontier-models).
 
 ## REST API
 
 Use the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/) to call Workers AI models. Workers AI models use the `@cf/` prefix in the model name and require the `cf-aig-gateway-id` header to specify which gateway to route through.
+
+*Request to Workers AI Kimi modelbash*
 
 ```bash
 # Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
@@ -92,12 +94,12 @@ For a detailed step-by-step guide on integrating Workers AI with AI Gateway usin
 
 Workers AI supports the following parameters for AI gateways:
 
-* `id` string
-  * Name of your existing [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker.
-* `skipCache` boolean(default: false)
-  * Controls whether the request should [skip the cache](https://developers.cloudflare.com/ai-gateway/features/caching/#skip-cache-cf-aig-skip-cache).
-* `cacheTtl` number
-  * Controls the [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/#cache-ttl-cf-aig-cache-ttl).
+- `id` string
+  - Name of your existing [AI Gateway](https://developers.cloudflare.com/ai-gateway/get-started/). Must be in the same account as your Worker.
+- `skipCache` boolean(default: false)
+  - Controls whether the request should [skip the cache](https://developers.cloudflare.com/ai-gateway/features/caching/#skip-cache-cf-aig-skip-cache).
+- `cacheTtl` number
+  - Controls the [Cache TTL](https://developers.cloudflare.com/ai-gateway/features/caching/#cache-ttl-cf-aig-cache-ttl).
 
 Was this helpful?
 

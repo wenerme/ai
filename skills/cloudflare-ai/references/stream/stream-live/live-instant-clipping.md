@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Live Instant Clipping
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Stream supports generating clips of live streams and recordings so creators and viewers alike can highlight short, engaging pieces of a longer broadcast or recording. Live instant clips can be created by end users and do not result in additional storage fees or new entries in the video library.
 
@@ -32,22 +32,24 @@ Live instant clips are generated dynamically from the recording of a live stream
 
 To help users replay and seek recent content, request a preview manifest by adding a `duration` parameter to the HLS manifest URL:
 
+*Preview Manifesttxt*
+
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID||INPUT_ID>/manifest/video.m3u8?duration=5m
 ```
 
-* `duration` string duration of the preview, up to 5 minutes as either a number of seconds ("30s") or minutes ("3m")
+- `duration` string duration of the preview, up to 5 minutes as either a number of seconds ("30s") or minutes ("3m")
 
 When the preview manifest is delivered, inspect the headers for two properties:
 
-* `preview-start-seconds` float seconds into the start of the live stream or recording that the preview manifest starts. Useful in applications that allow a user to select a range from the preview because the clip will need to reference its offset from the _broadcast_ start time, not the _preview_ start time.
-* `stream-media-id` string the video ID of the live stream or recording. Useful in applications that render the player using an _input_ ID because the clip URL should reference the _video_ ID.
+- `preview-start-seconds` float seconds into the start of the live stream or recording that the preview manifest starts. Useful in applications that allow a user to select a range from the preview because the clip will need to reference its offset from the *broadcast* start time, not the *preview* start time.
+- `stream-media-id` string the video ID of the live stream or recording. Useful in applications that render the player using an *input* ID because the clip URL should reference the *video* ID.
 
 This manifest can be played and seeked using any HLS-compatible player.
 
 ### Reading headers
 
-Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗](https://github.com/video-dev/hls.js)and the default loader, override the `pLoader` (playlist loader) class:
+Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗](https://github.com/video-dev/hls.js) and the default loader, override the `pLoader` (playlist loader) class:
 
 ```js
 let currentPreviewStart;
@@ -94,12 +96,14 @@ const hls = new Hls({
 
 To play a clip of a live stream or recording, request a clip manifest with a duration and a start time, relative to the start of the live stream.
 
+*Clip Manifesttxt*
+
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/manifest/clip.m3u8?time=600s&duration=30s
 ```
 
-* `time` string start time of the clip in seconds, from the start of the live stream or recording
-* `duration` string duration of the clip in seconds, up to 60 seconds max
+- `time` string start time of the clip in seconds, from the start of the live stream or recording
+- `duration` string duration of the clip in seconds, up to 60 seconds max
 
 This manifest can be played and seeked using any HLS-compatible player.
 
@@ -107,13 +111,15 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 An MP4 of the clip can also be generated dynamically to be saved and shared on other platforms.
 
+*Clip MP4 Downloadtxt*
+
 ```txt
 https://customer-<CODE>.cloudflarestream.com/<VIDEO_ID>/clip.mp4?time=600s&duration=30s&filename=clip.mp4
 ```
 
-* `time` string start time of the clip in seconds, from the start of the live stream or recording (example: "500s")
-* `duration` string duration of the clip in seconds, up to 60 seconds max (example: "60s")
-* `filename` string _(optional)_ a filename for the clip
+- `time` string start time of the clip in seconds, from the start of the live stream or recording (example: "500s")
+- `duration` string duration of the clip in seconds, up to 60 seconds max (example: "60s")
+- `filename` string *(optional)* a filename for the clip
 
 Was this helpful?
 

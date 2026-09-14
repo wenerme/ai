@@ -12,11 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Origin Trust Store
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, Cloudflare's global network maintains [a list of publicly trusted certificate authorities ↗](https://github.com/cloudflare/cfssl%5Ftrust). This means that when using [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/), Cloudflare will only trust origin server certificates issued by a CA included in this trust store.
+By default, Cloudflare's global network maintains [a list of publicly trusted certificate authorities ↗](https://github.com/cloudflare/cfssl_trust). This means that when using [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/), Cloudflare will only trust origin server certificates issued by a CA included in this trust store.
 
 Custom Origin Trust Store allows you to upload certificate authorities (CAs) that Cloudflare will use to authenticate connections to your origin server. Use this feature to override the default trust store with your preferred CA or CAs.
+
 
 
 When a CA has been uploaded to Custom Origin Trust Store, Cloudflare will ignore all default publicly trusted CAs and exclusively use the CA or CAs that have been uploaded to authenticate the origin server.
@@ -33,8 +34,7 @@ Custom Origin Trust Store accepts ML-DSA (FIPS 204) post-quantum certificate aut
 
 To manage origin trust stores in the dashboard:
 
-1. Go to the **Origin Server** page.
-[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+1. Go to the **Origin Server** page. [Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. Select the **Custom Origin Trust Store** tab.
 3. Select **Upload trust store** to add a CA certificate, or use the table to manage existing trust stores.
 
@@ -48,31 +48,35 @@ With [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origi
 
 #### List Custom Origin Trust Store Details
 
-* API documentation: [List Custom Origin Trust Store Details](https://developers.cloudflare.com/api/resources/acm/subresources/custom%5Ftrust%5Fstore/methods/list/)
-* Method: `GET`
-* Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store`
+- API documentation: [List Custom Origin Trust Store Details](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/list/)
+- Method: `GET`
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store`
 
 #### Custom Origin Trust Store Details
 
-* API documentation: [Custom Origin Trust Store Details](https://developers.cloudflare.com/api/resources/acm/subresources/custom%5Ftrust%5Fstore/methods/get/)
-* Method: `GET`
-* Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
-Note
-The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
+- API documentation: [Custom Origin Trust Store Details](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/get/)
+- Method: `GET`
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
+
+  Note
+
+  The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
 
 #### Upload Custom Origin Trust Store
 
-* API documentation: [Upload Custom Origin Trust Store](https://developers.cloudflare.com/api/resources/acm/subresources/custom%5Ftrust%5Fstore/methods/create/)
-* Method: `POST`
-* Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store`
+- API documentation: [Upload Custom Origin Trust Store](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/create/)
+- Method: `POST`
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store`
 
 #### Delete Custom Origin Trust Store
 
-* API documentation: [Delete Custom Origin Trust Store](https://developers.cloudflare.com/api/resources/acm/subresources/custom%5Ftrust%5Fstore/methods/delete/)
-* Method: `DELETE`
-* Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
-Note
-The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
+- API documentation: [Delete Custom Origin Trust Store](https://developers.cloudflare.com/api/resources/acm/subresources/custom_trust_store/methods/delete/)
+- Method: `DELETE`
+- Endpoint: `/zones/$ZONE_ID/acm/custom_trust_store/$CUSTOM_ORIGIN_TRUST_STORE_ID`
+
+  Note
+
+  The `$CUSTOM_ORIGIN_TRUST_STORE_ID` can be found via the [List command](#list-custom-origin-trust-store-details).
 
 Was this helpful?
 

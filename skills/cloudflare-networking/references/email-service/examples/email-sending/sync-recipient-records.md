@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Synchronize application recipient records with Email Sending lifecycle events.
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/sync-recipient-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [Email Sending event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) to update application records after delivery problems. This example uses [Cloudflare Queues](https://developers.cloudflare.com/queues/) and [Workers KV](https://developers.cloudflare.com/kv/) to remove recipients from transactional notifications.
 
@@ -28,9 +28,9 @@ Workers KV is eventually consistent. Deletions can take 60 seconds or longer to 
 
 Before you begin:
 
-* Enable an [Email Sending domain](https://developers.cloudflare.com/email-service/configuration/domains/).
-* Create a [Worker project](https://developers.cloudflare.com/workers/get-started/guide/).
-* Create a [Workers KV namespace](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace).
+- Enable an [Email Sending domain](https://developers.cloudflare.com/email-service/configuration/domains/).
+- Create a [Worker project](https://developers.cloudflare.com/workers/get-started/guide/).
+- Create a [Workers KV namespace](https://developers.cloudflare.com/kv/get-started/#2-create-a-kv-namespace).
 
 Store each eligible recipient address as a key in KV. The value can contain notification preferences or related metadata.
 
@@ -52,9 +52,8 @@ For payload details, refer to [Available Email Sending events](https://developer
 
 Create a queue and subscribe it to your sending domain:
 
-1. In the Cloudflare dashboard, go to the **Queues** page. Create a queue named `email-events`.
-[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
-2. Select `email-events`, then select **Subscriptions** \> **Subscribe to events**.
+1. In the Cloudflare dashboard, go to the **Queues** page. Create a queue named `email-events`. [Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
+2. Select `email-events`, then select **Subscriptions** > **Subscribe to events**.
 3. Enter a subscription name and select **Email Sending** as the source.
 4. Select your sending domain and the `message.bounced` and `message.complained` events.
 5. Select **Subscribe**.
@@ -69,7 +68,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
   "name": "recipient-record-sync",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "kv_namespaces": [
     {
       "binding": "RECIPIENTS",
@@ -93,7 +92,7 @@ Bind the KV namespace and register the Worker as the queue consumer:
 name = "recipient-record-sync"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[kv_namespaces]]
 binding = "RECIPIENTS"
@@ -110,7 +109,9 @@ The configuration creates `email-events-dlq` during deployment. Queues moves eve
 
 ## Add the queue consumer
 
-The [queue() handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) processes each event independently. It deletes applicable recipient records and retries failed KV operations.
+The [`queue()` handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) processes each event independently. It deletes applicable recipient records and retries failed KV operations.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -154,6 +155,8 @@ async function removeRecipient(env, event) {
 	});
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 interface Env {
@@ -244,10 +247,10 @@ Monitor the dead letter queue for failed events. Reprocess them after fixing the
 
 ## Explore related resources
 
-* [Event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) — review event schemas.
-* [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/) — understand automatic suppressions.
-* [Queues retries](https://developers.cloudflare.com/queues/configuration/batching-retries/) — control message retries.
-* [Workers KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) — account for propagation delays.
+- [Event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/) — review event schemas.
+- [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/) — understand automatic suppressions.
+- [Queues retries](https://developers.cloudflare.com/queues/configuration/batching-retries/) — control message retries.
+- [Workers KV consistency](https://developers.cloudflare.com/kv/concepts/how-kv-works/#consistency) — account for propagation delays.
 
 Was this helpful?
 

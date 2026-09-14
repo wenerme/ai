@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multipart upload metadata
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -48,32 +48,25 @@ Note
 
 At a minimum, the `main_module` key is required to upload a Worker.
 
-* `main_module` `string` required
-
-  * The part name that contains the module entry point of the Worker that will be executed. For example, `main.js`.
-* `assets` `object` optional
-
-  * [Asset](https://developers.cloudflare.com/workers/static-assets/) configuration for a Worker.
-  * `config` `object` optional
-    * [html\_handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/) determines the redirects and rewrites of requests for HTML content.
-    * [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) determines the response when a request does not match a static asset.
-  * `jwt` field provides a token authorizing assets to be attached to a Worker.
-* `keep_assets` `boolean` optional
-
-  * Specifies whether assets should be retained from a previously uploaded Worker version; used in lieu of providing a completion token.
-* `bindings` array\[object\] optional
-
-  * [Bindings](#bindings) to expose in the Worker.
-* `placement` `object` optional
-
-  * [Smart placement](https://developers.cloudflare.com/workers/configuration/placement/) object for the Worker.
-  * `mode` field only supports `smart` for automatic placement.
-* `compatibility_date` `string` optional
-
-  * [Compatibility Date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/#setting-compatibility-date) indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. Highly recommended to set a `compatibility_date`, otherwise if on upload via the API, it defaults to the oldest compatibility date before any flags took effect (2021-11-02).
-* `compatibility_flags` array\[string\] optional
-
-  * [Compatibility Flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#setting-compatibility-flags) that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+- `main_module` `string` required
+  - The part name that contains the module entry point of the Worker that will be executed. For example, `main.js`.
+- `assets` `object` optional
+  - [Asset](https://developers.cloudflare.com/workers/static-assets/) configuration for a Worker.
+  - `config` `object` optional
+    - [html\_handling](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/) determines the redirects and rewrites of requests for HTML content.
+    - [not\_found\_handling](https://developers.cloudflare.com/workers/static-assets/#routing-behavior) determines the response when a request does not match a static asset.
+  - `jwt` field provides a token authorizing assets to be attached to a Worker.
+- `keep_assets` `boolean` optional
+  - Specifies whether assets should be retained from a previously uploaded Worker version; used in lieu of providing a completion token.
+- `bindings` array\[object] optional
+  - [Bindings](#bindings) to expose in the Worker.
+- `placement` `object` optional
+  - [Smart placement](https://developers.cloudflare.com/workers/configuration/placement/) object for the Worker.
+  - `mode` field only supports `smart` for automatic placement.
+- `compatibility_date` `string` optional
+  - [Compatibility Date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/#setting-compatibility-date) indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker. Highly recommended to set a `compatibility_date`, otherwise if on upload via the API, it defaults to the oldest compatibility date before any flags took effect (2021-11-02).
+- `compatibility_flags` array\[string] optional
+  - [Compatibility Flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#setting-compatibility-flags) that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
 
 ## Additional attributes: [Workers Script Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/methods/update/)
 
@@ -83,33 +76,28 @@ Note
 
 Except for `annotations`, these attributes are **not available** for version uploads.
 
-* `migrations` array\[object\] optional
-
-  * [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to apply.
-* `logpush` `boolean` optional
-
-  * Whether [Logpush](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/hostname-analytics/#logpush) is turned on for the Worker.
-* `tail_consumers` array\[object\] optional
-
-  * [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) that will consume logs from the attached Worker.
-* `tags` array\[string\] optional
-
-  * List of strings to use as tags for this Worker.
-* `annotations` `object` optional
-
-  * Annotations object for the Worker version created by this upload. Also available on the [Version Upload API](#additional-attributes-version-upload-api).
-  * `workers/message` specifies a custom message for the version.
-  * `workers/tag` specifies a custom identifier for the version.
+- `migrations` array\[object] optional
+  - [Durable Objects migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) to apply.
+- `logpush` `boolean` optional
+  - Whether [Logpush](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/hostname-analytics/#logpush) is turned on for the Worker.
+- `tail_consumers` array\[object] optional
+  - [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/) that will consume logs from the attached Worker.
+- `tags` array\[string] optional
+  - List of strings to use as tags for this Worker.
+- `annotations` `object` optional
+  - Annotations object for the Worker version created by this upload. Also available on the [Version Upload API](#additional-attributes-version-upload-api).
+  - `workers/message` specifies a custom message for the version.
+  - `workers/tag` specifies a custom identifier for the version.
 
 ## Additional attributes: [Version Upload API](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/versions/methods/create/)
 
 For [version uploads](https://developers.cloudflare.com/workers/versions-and-deployments/#upload-a-new-version-to-be-gradually-deployed-or-deployed-at-a-later-time), the following **additional** attributes are configurable at the top-level.
 
-* `annotations` `object` optional
-  * Annotations object specific to the Worker version.
-  * `workers/message` specifies a custom message for the version.
-  * `workers/tag` specifies a custom identifier for the version.
-  * `workers/alias` specifies a custom alias for this version.
+- `annotations` `object` optional
+  - Annotations object specific to the Worker version.
+  - `workers/message` specifies a custom message for the version.
+  - `workers/tag` specifies a custom identifier for the version.
+  - `workers/alias` specifies a custom alias for this version.
 
 ## Bindings
 

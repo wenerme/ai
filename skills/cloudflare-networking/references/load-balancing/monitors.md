@@ -12,12 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitors
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
+```
     flowchart RL
       accTitle: Load balancing monitor flow
       accDescr: Monitors issue health monitor requests, which validate the current status of servers within each pool.
@@ -27,6 +28,8 @@ When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing
       Endpoint1((Endpoint 1))
       Endpoint2((Endpoint 2))
       end
+
+```
 
 Health monitor requests that result in a status change for an endpoint are recorded as events in the Load Balancing event logs.
 
@@ -38,7 +41,7 @@ Health monitors associated with load balancers are different from standalone [He
 
 ## Properties
 
-For an up-to-date list of monitor properties, refer to [Monitor properties](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/list/) in our API documentation.
+For an up-to-date list of monitor properties, refer to [Monitor properties](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/list/) in our API documentation.
 
 ---
 
@@ -108,27 +111,27 @@ For more details, refer to [Override HTTP Host headers](https://developers.cloud
 
 The Cloudflare API supports the following commands for monitors. Examples are given for user-level endpoint but apply to the account-level endpoint as well.
 
-| Command                                                                                                                                         | Method | Endpoint                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---------------------------------------------------------- |
-| [Create Monitor](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/create/)                        | POST   | accounts/:account\_id/load\_balancers/monitors             |
-| [Delete Monitor](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/delete/)                        | DELETE | accounts/:account\_id/load\_balancers/monitors/:id         |
-| [List Monitors](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/list/)                           | GET    | accounts/:account\_id/load\_balancers/monitors             |
-| [Monitor Details](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/get/)                          | GET    | accounts/:account\_id/load\_balancers/monitors/:id         |
-| [Overwrite specific properties](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/edit/)           | PATCH  | accounts/:account\_id/load\_balancers/monitors/:id         |
-| [Overwrite existing monitor](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/methods/update/)            | PUT    | accounts/:account\_id/load\_balancers/monitors/:id         |
-| [Preview Monitor](https://developers.cloudflare.com/api/resources/load%5Fbalancers/subresources/monitors/subresources/previews/methods/create/) | POST   | accounts/:account\_id/load\_balancers/monitors/:id/preview |
+| Command | Method | Endpoint |
+| --- | --- | --- |
+| [Create Monitor](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/create/) | `POST` | `accounts/:account_id/load_balancers/monitors` |
+| [Delete Monitor](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/delete/) | `DELETE` | `accounts/:account_id/load_balancers/monitors/:id` |
+| [List Monitors](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/list/) | `GET` | `accounts/:account_id/load_balancers/monitors` |
+| [Monitor Details](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/get/) | `GET` | `accounts/:account_id/load_balancers/monitors/:id` |
+| [Overwrite specific properties](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/edit/) | `PATCH` | `accounts/:account_id/load_balancers/monitors/:id` |
+| [Overwrite existing monitor](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/methods/update/) | `PUT` | `accounts/:account_id/load_balancers/monitors/:id` |
+| [Preview Monitor](https://developers.cloudflare.com/api/resources/load_balancers/subresources/monitors/subresources/previews/methods/create/) | `POST` | `accounts/:account_id/load_balancers/monitors/:id/preview` |
 
 ## Supported protocols
 
 The following table summarizes the different types of monitors available in Cloudflare Load Balancing, their monitoring types, and how each health check process evaluates the success criteria to determine endpoint health:
 
-| Monitor type | Monitoring type    | Description                                                                                                                                                                                | Health check process                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Success criteria                                                                                                                                   |
-| ------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HTTP/HTTPS   | Public and private | Used for HTTP and HTTPS endpoints with specific protocol attributes.                                                                                                                       | The probe is configured with settings and success criteria such as Method, Simulate Zone, Follow Redirects, Request Headers, and Response Body. The probe then evaluates the configured success criteria using the HTTP protocol. Throughout the configured timeout period, the TCP connection is kept active using [keep-alives](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#tcp-connections-and-keep-alives), even if no response is received. | Success is based on meeting the configured HTTP success criteria. No response within the configured timeout and retries is considered unhealthy.   |
-| TCP          | Public and private | Checks TCP connectivity by attempting to open a connection to the endpoint.                                                                                                                | The monitor sends a TCP SYN message to the specified port. A successful health check requires receiving a SYN/ACK message to establish the connection. The connection is closed by sending a FIN or RST packet, or by receiving a FIN packet from the endpoint.                                                                                                                                                                                                                | Failure to establish a TCP connection within the configured timeout and retries is considered unhealthy.                                           |
-| ICMP Ping    | Public and Tunnel  | Confirms basic Layer 3 (L3) connectivity to the endpoint using ICMP. The endpoints need to be allowed to reply to ICMP packets and any intervening networking equipment must support ICMP. | The monitor sends an ICMP/ICMPv6 echo request (ping) and expects an ICMP/ICMPv6 echo reply from the endpoint.                                                                                                                                                                                                                                                                                                                                                                  | The endpoint must reply to the ICMP ping within the configured timeout and retries to be considered healthy.                                       |
-| UDP-ICMP     | Public and Tunnel  | UDP-ICMP monitor works by sending a UDP probe packet after ICMP Ping monitor completes as healthy.                                                                                         | After receiving a successful ICMP reply, the monitor sends a UDP probe packet to the endpoint. If no ICMP Port Unreachable message is received, the endpoint is considered healthy.                                                                                                                                                                                                                                                                                            | If the monitor receives an ICMP Port Unreachable message within the configured timeout and retries, the endpoint is considered unhealthy.          |
-| SMTP         | Public             | Verifies SMTP availability at the application layer.                                                                                                                                       | The monitor establishes a TCP connection and sends an SMTP HELO command. It expects a reply with code 250\. The monitor then sends an SMTP QUIT command, expecting a reply with code 221\. At the end of each interval, the TCP connection is closed by sending a TCP FIN packet.                                                                                                                                                                                              | The endpoint must respond with correct SMTP codes (250 for HELO, 221 for QUIT) within the configured timeout and retries to be considered healthy. |
+| Monitor type | Monitoring type | Description | Health check process | Success criteria |
+| --- | --- | --- | --- | --- |
+| HTTP/HTTPS | Public and private | Used for HTTP and HTTPS endpoints with specific protocol attributes. | The probe is configured with settings and success criteria such as Method, Simulate Zone, Follow Redirects, Request Headers, and Response Body. The probe then evaluates the configured success criteria using the HTTP protocol. Throughout the configured timeout period, the TCP connection is kept active using [keep-alives](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/#tcp-connections-and-keep-alives), even if no response is received. | Success is based on meeting the configured HTTP success criteria. No response within the configured timeout and retries is considered unhealthy. |
+| TCP | Public and private | Checks TCP connectivity by attempting to open a connection to the endpoint. | The monitor sends a TCP SYN message to the specified port. A successful health check requires receiving a SYN/ACK message to establish the connection. The connection is closed by sending a FIN or RST packet, or by receiving a FIN packet from the endpoint. | Failure to establish a TCP connection within the configured timeout and retries is considered unhealthy. |
+| ICMP Ping | Public and Tunnel | Confirms basic Layer 3 (L3) connectivity to the endpoint using ICMP. The endpoints need to be allowed to reply to ICMP packets and any intervening networking equipment must support ICMP. | The monitor sends an ICMP/ICMPv6 echo request (ping) and expects an ICMP/ICMPv6 echo reply from the endpoint. | The endpoint must reply to the ICMP ping within the configured timeout and retries to be considered healthy. |
+| UDP-ICMP | Public and Tunnel | UDP-ICMP monitor works by sending a UDP probe packet after ICMP Ping monitor completes as healthy. | After receiving a successful ICMP reply, the monitor sends a UDP probe packet to the endpoint. If no ICMP Port Unreachable message is received, the endpoint is considered healthy. | If the monitor receives an ICMP Port Unreachable message within the configured timeout and retries, the endpoint is considered unhealthy. |
+| SMTP | Public | Verifies SMTP availability at the application layer. | The monitor establishes a TCP connection and sends an SMTP HELO command. It expects a reply with code 250. The monitor then sends an SMTP QUIT command, expecting a reply with code 221. At the end of each interval, the TCP connection is closed by sending a TCP FIN packet. | The endpoint must respond with correct SMTP codes (250 for HELO, 221 for QUIT) within the configured timeout and retries to be considered healthy. |
 
 Was this helpful?
 

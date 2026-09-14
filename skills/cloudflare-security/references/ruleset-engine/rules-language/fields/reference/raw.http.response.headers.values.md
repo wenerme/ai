@@ -8,11 +8,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # raw.http.response.headers.values
 
-`raw.http.response.headers.values` `Array<String>`
+`raw.http.response.headers.values``Array<String>`
 
 The values of the headers in the HTTP response without any transformation.
 
-This is the raw field version of the [http.response.headers.values](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.values/) field. Raw fields, prefixed with `raw.`, preserve original response values for later evaluations. These fields are immutable during the entire request evaluation workflow, and they are not affected by the actions of previously matched rules.
+This is the raw field version of the [`http.response.headers.values`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.values/) field. Raw fields, prefixed with `raw.`, preserve original response values for later evaluations. These fields are immutable during the entire request evaluation workflow, and they are not affected by the actions of previously matched rules.
 
 Example value:
 
@@ -32,9 +32,9 @@ any(len(raw.http.response.headers.values[*])[*] gt 10)
 ```
 
 Categories:
-* Response
-* Headers
-* Raw fields
+- Response
+- Headers
+- Raw fields
 
 Was this helpful?
 

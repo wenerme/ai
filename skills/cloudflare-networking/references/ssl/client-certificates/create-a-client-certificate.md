@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a client certificate
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Cloudflare's public key infrastructure (PKI) to create client certificates issued from a Cloudflare-managed CA. You can then complete your mTLS configuration, as explained in [How mTLS works](https://developers.cloudflare.com/ssl/client-certificates/#how-it-works).
 
@@ -24,9 +24,9 @@ The following process only refers to certificates issued from the Cloudflare-man
 
 By default, each zone allows up to **100 active client certificates** issued by the Cloudflare-managed CA. Only active certificates count toward this limit — revoking a certificate frees its slot immediately.
 
-| Plan                         | Default limit    | Increase available    |
-| ---------------------------- | ---------------- | --------------------- |
-| Free, Pro, Business          | 100 per zone     | No                    |
+| Plan | Default limit | Increase available |
+| --- | --- | --- |
+| Free, Pro, Business | 100 per zone | No |
 | Enterprise (with API Shield) | 100,000 per zone | Yes, via account team |
 
 If you reach the limit, the API returns error `1445` with the message `Hit maximum certificate allocation: 100 certificates per zone are allowed`. To request an increase, contact your account team. Increases require an Enterprise plan with API Shield.
@@ -39,22 +39,29 @@ Revoke certificates immediately when a device or session ends — revoking frees
 
 To create a client certificate on the Cloudflare dashboard:
 
-1. Go to the **Client Certificates** page.
-[Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
+1. Go to the **Client Certificates** page. [Go to **Client Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates)
 2. Select **Add Certificate**. The Cloudflare-managed CA is the default **Certificate Authority**.
 3. Fill in the required fields. You can choose one of the following options:
-* Generate a private key and Certificate Signing Request (CSR) with Cloudflare.
-* Use your own private key and CSR. This option allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).
-Example OpenSSL command
+
+- Generate a private key and Certificate Signing Request (CSR) with Cloudflare.
+- Use your own private key and CSR. This option allows you to also [label client certificates](https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/).<details><summary>
+
+  Example OpenSSL command</summary>
+
 To generate and use your own CSR, you can run a command like the following:
-```sh
-openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
-```
-1. Select a value for **Certificate Validity**, and choose **Continue**.
-2. Make sure to copy the certificate and private key as they will no longer be displayed after creation.
-3. (Optional) Specify hostnames where you wish to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/).
-When associating hostnames via this form, they should be in fully qualified domain name (FQDN) format and correspond to a hostname that exists in the zone you are in. For example, if you are in zone `example.com`, you can specify `host.example.com` but not `host.example.net`.
-4. Select **Save** to confirm.
+
+  ```sh
+  openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
+  ```
+
+  </details>
+
+3. Select a value for **Certificate Validity**, and choose **Continue**.
+4. Make sure to copy the certificate and private key as they will no longer be displayed after creation.
+5. (Optional) Specify hostnames where you wish to [enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/).
+
+   When associating hostnames via this form, they should be in fully qualified domain name (FQDN) format and correspond to a hostname that exists in the zone you are in. For example, if you are in zone `example.com`, you can specify `host.example.com` but not `host.example.net`.
+6. Select **Save** to confirm.
 
 ## Next steps
 

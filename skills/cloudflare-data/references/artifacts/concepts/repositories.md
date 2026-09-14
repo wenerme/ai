@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Repositories
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/repositories/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/repositories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts stores work in repositories. A repository is one isolated Git service with its own history, refs, remote URL, tokens, and durable state.
 
@@ -24,9 +24,9 @@ The namespace groups related repositories, and the repository name identifies on
 
 A repository has three identifiers:
 
-* a namespace name
-* a repository name
-* a repository ID returned by the APIs
+- a namespace name
+- a repository name
+- a repository ID returned by the APIs
 
 The namespace and repository name form the stable address that you use in the Workers binding, the REST API, and the Git remote. The repository ID is useful when you need an opaque identifier in API responses or logs.
 
@@ -36,11 +36,11 @@ Each repository is isolated from other repositories. Tokens, lifecycle, refs, an
 
 Artifacts exposes the same repository through three interfaces:
 
-| Interface       | What you use it for                                                                | What it returns                                                        |
-| --------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Workers binding | Create, list, import, inspect, fork, delete, and mint tokens from a Worker         | Repository metadata, repository handles, and repo-scoped token results |
-| REST API        | Create, list, import, inspect, fork, delete, and mint tokens from external systems | Cloudflare API responses with repository metadata and token results    |
-| Git protocol    | Clone, fetch, pull, and push repository contents                                   | Standard Git behavior over HTTPS                                       |
+| Interface | What you use it for | What it returns |
+| --- | --- | --- |
+| Workers binding | Create, list, import, inspect, fork, delete, and mint tokens from a Worker | Repository metadata, repository handles, and repo-scoped token results |
+| REST API | Create, list, import, inspect, fork, delete, and mint tokens from external systems | Cloudflare API responses with repository metadata and token results |
+| Git protocol | Clone, fetch, pull, and push repository contents | Standard Git behavior over HTTPS |
 
 These interfaces point to the same repository.
 

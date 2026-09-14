@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schema Profiles
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/schema-profiles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Schema Profile models expected request fields and their constraints. You can learn one from traffic or supply an uploaded schema.
 
@@ -22,7 +22,7 @@ After a profile becomes available, Cloudflare runs an **always-on detection**. D
 
 An operation is Cloudflare's term for an endpoint. Its identity combines an HTTP method, hostname pattern, and path pattern.
 
-[Web Assets](https://developers.cloudflare.com/security/web-assets/) continuously discovers operations under **Web Assets** \> **Operations**. You can also add an operation manually.
+[Web Assets](https://developers.cloudflare.com/security/web-assets/) continuously discovers operations under **Web Assets** > **Operations**. You can also add an operation manually.
 
 Both methods only add operations to the inventory. To start profiling, select **Learn profile** from the operation overflow menu.
 
@@ -42,11 +42,11 @@ From the operation overflow menu, select **View details**. The learned schema ap
 
 Profiles can learn these request components where supported:
 
-* Path variables
-* Query parameters
-* Headers and cookies
-* JSON request bodies
-* Form-encoded request bodies
+- Path variables
+- Query parameters
+- Headers and cookies
+- JSON request bodies
+- Form-encoded request bodies
 
 Profiles can validate integers, strings, universally unique identifiers (UUIDs), and arrays. Supported constraints include numeric ranges, string lengths, character classes, and enumerations containing up to three values.
 
@@ -58,11 +58,11 @@ Each weekly run can update a profile as qualifying traffic changes. For a fixed 
 
 Learned Schema Profiles have these limitations:
 
-* Multipart forms, GraphQL, and XML are unsupported.
-* Repeated parameters have each value validated, without uniqueness enforcement.
-* Required parameter presence is not enforced.
-* New parameters alone do not produce violations.
-* Constraints apply to learned fields, not a complete allowlist.
+- Multipart forms, GraphQL, and XML are unsupported.
+- Repeated parameters have each value validated, without uniqueness enforcement.
+- Required parameter presence is not enforced.
+- New parameters alone do not produce violations.
+- Constraints apply to learned fields, not a complete allowlist.
 
 ## Use an uploaded schema
 

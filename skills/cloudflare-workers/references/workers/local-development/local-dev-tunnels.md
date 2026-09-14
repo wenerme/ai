@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Share a local dev server
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-dev-tunnels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can expose your local dev server over a [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) when you need to share a preview, test a webhook, or access your app from another device.
 
@@ -64,6 +64,8 @@ Run `vite dev`, then press `t + Enter` to start or close the tunnel. Add `tunnel
 
 To use a named tunnel with stable hostnames:
 
+*vite.config.jsjs*
+
 ```js
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -76,6 +78,8 @@ export default defineConfig({
 	],
 });
 ```
+
+*vite.config.tsts*
 
 ```ts
 import { defineConfig } from "vite";
@@ -94,10 +98,12 @@ If you want the tunnel to open automatically when Vite starts, set `tunnel.autoS
 
 When using `vite preview`, Vite's preview host validation still applies:
 
-* For Quick tunnel, add `.trycloudflare.com` to `preview.allowedHosts`.
-* For named tunnel, add the resolved hostnames or a matching domain suffix such as `.my-domain.com` to `preview.allowedHosts`.
+- For Quick tunnel, add `.trycloudflare.com` to `preview.allowedHosts`.
+- For named tunnel, add the resolved hostnames or a matching domain suffix such as `.my-domain.com` to `preview.allowedHosts`.
 
 For example:
+
+*vite.config.jsjs*
 
 ```js
 import { defineConfig } from "vite";
@@ -119,6 +125,8 @@ export default defineConfig({
 	],
 });
 ```
+
+*vite.config.tsts*
 
 ```ts
 import { defineConfig } from "vite";
@@ -145,16 +153,16 @@ export default defineConfig({
 
 Anyone with the tunnel URL can reach your dev server, so review what your app exposes before enabling a tunnel.
 
-* Pay special attention to ungated preview or admin endpoints.
-* Review any [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) connected to real resources.
-* Review any code that proxies requests to private or internal services.
-* If you are using the Cloudflare Vite plugin with `vite dev`, HMR and module serving may expose source files, file paths, or project structure over the tunnel. If you only need to share a built preview, prefer `vite preview` for public sharing.
-* Local dev-related routes, such as `/cdn-cgi/*`, remain restricted and are not exposed over the tunnel.
-* If you need a stable hostname or stricter access control, use a named tunnel protected by Cloudflare Access.
+- Pay special attention to ungated preview or admin endpoints.
+- Review any [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) connected to real resources.
+- Review any code that proxies requests to private or internal services.
+- If you are using the Cloudflare Vite plugin with `vite dev`, HMR and module serving may expose source files, file paths, or project structure over the tunnel. If you only need to share a built preview, prefer `vite preview` for public sharing.
+- Local dev-related routes, such as `/cdn-cgi/*`, remain restricted and are not exposed over the tunnel.
+- If you need a stable hostname or stricter access control, use a named tunnel protected by Cloudflare Access.
 
 ## Related docs
 
-* [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)
+- [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/)
 
 Was this helpful?
 

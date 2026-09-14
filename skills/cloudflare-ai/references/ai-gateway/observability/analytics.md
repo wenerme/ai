@@ -12,25 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analytics
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your AI Gateway dashboard shows metrics on requests, tokens, caching, errors, and cost. You can filter these metrics by time. These analytics help you understand traffic patterns, token consumption, and potential issues across AI providers. You can view the following analytics:
 
-* **Requests**: Track the total number of requests processed by AI Gateway.
-* **Token Usage**: Analyze token consumption across requests, giving insight into usage patterns.
-* **Costs**: Gain visibility into the costs associated with using different AI providers, allowing you to track spending, manage budgets, and optimize resources.
-* **Errors**: Monitor the number of errors across the gateway, helping to identify and troubleshoot issues.
-* **Cached Responses**: View the percentage of responses served from cache, which can help reduce costs and improve speed.
+- **Requests**: Track the total number of requests processed by AI Gateway.
+- **Token Usage**: Analyze token consumption across requests, giving insight into usage patterns.
+- **Costs**: Gain visibility into the costs associated with using different AI providers, allowing you to track spending, manage budgets, and optimize resources.
+- **Errors**: Monitor the number of errors across the gateway, helping to identify and troubleshoot issues.
+- **Cached Responses**: View the percentage of responses served from cache, which can help reduce costs and improve speed.
 
 ## View analytics
 
 To view analytics in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Make sure you have your gateway selected.
 
 You can use GraphQL to query your usage data outside of the AI Gateway dashboard. See the example query below. You will need to use your Cloudflare token when making the request, and change `{account_id}` to match your account tag.
+
+*Requestbash*
 
 ```bash
 curl https://api.cloudflare.com/client/v4/graphql \

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Track recording
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/track-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Track recording lets you record participant audio as separate WebM files instead of one composite meeting recording. Use it when you need speaker-level control over what you store, process, or review.
 
@@ -20,10 +20,10 @@ With track recording, you can record specific participant tracks by passing `use
 
 To pass `user_ids` for specific participant track recording, use the following minimum SDK versions:
 
-* Web Core: `@cloudflare/realtimekit` version `1.4.0` or later
-* Web UI Kit: `@cloudflare/realtimekit-ui`, `@cloudflare/realtimekit-react-ui`, or `@cloudflare/realtimekit-angular-ui` version `1.1.2` or later
-* Android Core or iOS Core: version `2.0.0` or later
-* Android UI Kit or iOS UI Kit: version `1.1.0` or later
+- Web Core: `@cloudflare/realtimekit` version `1.4.0` or later
+- Web UI Kit: `@cloudflare/realtimekit-ui`, `@cloudflare/realtimekit-react-ui`, or `@cloudflare/realtimekit-angular-ui` version `1.1.2` or later
+- Android Core or iOS Core: version `2.0.0` or later
+- Android UI Kit or iOS UI Kit: version `1.1.0` or later
 
 Track recording creates one file per recorded participant.
 
@@ -35,19 +35,19 @@ Track recording currently supports audio tracks only. Video track recording is i
 
 Track recording has the following requirements and limits:
 
-| Limit                 | Description                                                                  |
-| --------------------- | ---------------------------------------------------------------------------- |
-| Active meeting        | The meeting must have an active live session.                                |
-| Media kind            | Only audio layers are recorded.                                              |
-| Participant selection | Pass up to 100 values in user\_ids.                                          |
-| Storage               | Files are uploaded to RealtimeKit's managed R2 bucket with zero-egress fees. |
-| File retention        | RealtimeKit bucket download URLs expire after seven days.                    |
+| Limit | Description |
+| --- | --- |
+| Active meeting | The meeting must have an active live session. |
+| Media kind | Only `audio` layers are recorded. |
+| Participant selection | Pass up to 100 values in `user_ids`. |
+| Storage | Files are uploaded to RealtimeKit's managed R2 bucket with zero-egress fees. |
+| File retention | RealtimeKit bucket download URLs expire after seven days. |
 
 ## Start track recording
 
 ### Record specific participants
 
-To record separate audio tracks for specific participants, call [POST /recordings/track](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Ftrack%5Frecording/) with the meeting ID and the participant `user_ids`.
+To record separate audio tracks for specific participants, call [`POST /recordings/track`](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_track_recording/) with the meeting ID and the participant `user_ids`.
 
 ```bash
 curl --request POST \
@@ -113,7 +113,7 @@ If you omit `layers`, RealtimeKit uses `default` as the file name prefix.
 
 ## Stop track recording
 
-Use the [recording update endpoint](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/pause%5Fresume%5Fstop%5Frecording/) to stop a track recording.
+Use the [recording update endpoint](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/pause_resume_stop_recording/) to stop a track recording.
 
 ```bash
 curl --request PUT \

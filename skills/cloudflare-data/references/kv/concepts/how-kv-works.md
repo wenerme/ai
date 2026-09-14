@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How KV works
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/concepts/how-kv-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/how-kv-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 KV is a global, low-latency, key-value data store. It stores data in a small number of centralized data centers, then caches that data in Cloudflare's data centers after access.
 
@@ -42,7 +42,7 @@ KV is optimized for high-read applications. It stores data centrally and uses a 
 
 ## Performance
 
-To improve KV performance, increase the [cacheTtl parameter](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) up from its default 60 seconds.
+To improve KV performance, increase the [`cacheTtl` parameter](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) up from its default 60 seconds.
 
 KV achieves high performance by [caching ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-caching/) which makes reads eventually-consistent with writes.
 
@@ -66,15 +66,15 @@ An approach to achieve write-after-write consistency is to send all of your writ
 
 Workers KV is an eventually-consistent edge key-value store. That makes it ideal for **read-heavy**, highly cacheable workloads such as:
 
-* Serving static assets
-* Storing application configuration
-* Storing user preferences
-* Implementing allow-lists/deny-lists
-* Caching
+- Serving static assets
+- Storing application configuration
+- Storing user preferences
+- Implementing allow-lists/deny-lists
+- Caching
 
 In these scenarios, Workers are invoked in a data center closest to the user and Workers KV data will be cached in that region for subsequent requests to minimize latency.
 
-If you have a **write-heavy** [Redis ↗](https://redis.io)\-type workload where you are updating the same key tens or hundreds of times per second, KV will not be an ideal fit. If you can revisit how your application writes to single key-value pairs and spread your writes across several discrete keys, Workers KV can suit your needs. Alternatively, [Durable Objects](https://developers.cloudflare.com/durable-objects/) provides a key-value API with higher writes per key rate limits.
+If you have a **write-heavy** [Redis ↗](https://redis.io)-type workload where you are updating the same key tens or hundreds of times per second, KV will not be an ideal fit. If you can revisit how your application writes to single key-value pairs and spread your writes across several discrete keys, Workers KV can suit your needs. Alternatively, [Durable Objects](https://developers.cloudflare.com/durable-objects/) provides a key-value API with higher writes per key rate limits.
 
 ## Security
 

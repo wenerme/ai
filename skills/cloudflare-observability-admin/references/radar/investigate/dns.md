@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access aggregated and anonymized DNS queries to Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) public resolver service.
 
@@ -92,7 +92,7 @@ As expected, most queries come from Russia.
 
 Note
 
-Note that these examples return the total number of DNS queries from a location to a hostname, _out_ of the total DNS queries to a given hostname. In this sense, it is expected that locations with higher population numbers — like the United States — frequently appear in the top spots, even if the actual percentage is low.
+Note that these examples return the total number of DNS queries from a location to a hostname, *out* of the total DNS queries to a given hostname. In this sense, it is expected that locations with higher population numbers — like the United States — frequently appear in the top spots, even if the actual percentage is low.
 
 You can also provide multiple hostnames. Refer to [Get DNS top locations](https://developers.cloudflare.com/api/resources/radar/subresources/dns/subresources/top/methods/locations/) for more information. This is useful when the application you want to explore uses several hostnames to serve its content (like a hostname for the main website, another hostname dedicated to its API, etc.).
 

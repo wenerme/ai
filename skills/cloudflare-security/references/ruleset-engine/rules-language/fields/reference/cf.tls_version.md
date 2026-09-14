@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_version
 
-`cf.tls_version` `String`
+`cf.tls_version``String`
 
 The TLS version of the connection to Cloudflare.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* SSL/TLS
+- Request
+- SSL/TLS
 
 Was this helpful?
 

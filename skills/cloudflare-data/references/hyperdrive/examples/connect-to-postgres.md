@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to PostgreSQL
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive supports PostgreSQL and PostgreSQL-compatible databases, [popular drivers](#supported-drivers) and Object Relational Mapper (ORM) libraries that use those drivers.
 
@@ -40,7 +40,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -68,15 +68,15 @@ Refer to the [Examples documentation](https://developers.cloudflare.com/hyperdri
 
 Hyperdrive uses Workers [TCP socket support](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) to support TCP connections to databases. The following table lists the supported database drivers and the minimum version that works with Hyperdrive:
 
-| Driver                                                       | Documentation                                                              | Minimum Version Required | Notes                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------ | -------------------------------------------------------------------------- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| node-postgres - pg (recommended)                             | [node-postgres - pg documentation ↗](https://node-postgres.com/)           | pg@8.13.0                | 8.11.4 introduced a bug with URL parsing and will not work. 8.11.5 fixes this. Requires compatibility\_flags = \["nodejs\_compat"\] and compatibility\_date = "2024-09-23" \- refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler 3.78.7 or later. |
-| Postgres.js                                                  | [Postgres.js documentation ↗](https://github.com/porsager/postgres)        | postgres@3.4.4           | Supported in both Workers & Pages.                                                                                                                                                                                                                                                                                |
-| Drizzle                                                      | [Drizzle documentation ↗](https://orm.drizzle.team/)                       | 0.26.2^                  |                                                                                                                                                                                                                                                                                                                   |
-| Kysely                                                       | [Kysely documentation ↗](https://kysely.dev/)                              | 0.26.3^                  |                                                                                                                                                                                                                                                                                                                   |
-| [rust-postgres ↗](https://github.com/sfackler/rust-postgres) | [rust-postgres documentation ↗](https://docs.rs/postgres/latest/postgres/) | v0.19.8                  | Use the [query\_typed ↗](https://docs.rs/postgres/latest/postgres/struct.Client.html#method.query%5Ftyped) method for best performance.                                                                                                                                                                           |
+| Driver | Documentation | Minimum Version Required | Notes |
+| --- | --- | --- | --- |
+| node-postgres - `pg` (recommended) | [node-postgres - `pg` documentation ↗](https://node-postgres.com/) | `pg@8.13.0` | `8.11.4` introduced a bug with URL parsing and will not work. `8.11.5` fixes this. Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
+| Postgres.js | [Postgres.js documentation ↗](https://github.com/porsager/postgres) | `postgres@3.4.4` | Supported in both Workers & Pages. |
+| Drizzle | [Drizzle documentation ↗](https://orm.drizzle.team/) | `0.26.2`^ | |
+| Kysely | [Kysely documentation ↗](https://kysely.dev/) | `0.26.3`^ | |
+| [rust-postgres ↗](https://github.com/sfackler/rust-postgres) | [rust-postgres documentation ↗](https://docs.rs/postgres/latest/postgres/) | `v0.19.8` | Use the [`query_typed` ↗](https://docs.rs/postgres/latest/postgres/struct.Client.html#method.query_typed) method for best performance. |
 
-^ _The marked libraries use `node-postgres` as a dependency._
+^ *The marked libraries use `node-postgres` as a dependency.*
 
 Other drivers and ORMs not listed may also be supported: this list is not exhaustive.
 
@@ -90,7 +90,7 @@ Recommended driver
 
 For compatibility dates of `2026-08-04` or later, Workers and Pages projects enable both `nodejs_compat` and `nodejs_compat_v2` by default. Built-in runtime APIs and polyfills are available without additional configuration. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date.
 
-If your compatibility date is before `2026-08-04`, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
+If your compatibility date is before `2026-08-04`, add the [`nodejs_compat`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
 
 ```jsonc
 {
@@ -169,7 +169,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -182,7 +182,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -262,7 +262,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -275,7 +275,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -326,14 +326,14 @@ export default {
 
 To identify active connections to your Postgres database server from Hyperdrive:
 
-* Hyperdrive's connections to your database will show up with `Cloudflare Hyperdrive` as the `application_name` in the `pg_stat_activity` table.
-* Run `SELECT DISTINCT usename, application_name FROM pg_stat_activity WHERE application_name = 'Cloudflare Hyperdrive'` to show whether Hyperdrive is currently holding a connection (or connections) open to your database.
+- Hyperdrive's connections to your database will show up with `Cloudflare Hyperdrive` as the `application_name` in the `pg_stat_activity` table.
+- Run `SELECT DISTINCT usename, application_name FROM pg_stat_activity WHERE application_name = 'Cloudflare Hyperdrive'` to show whether Hyperdrive is currently holding a connection (or connections) open to your database.
 
 ## Next steps
 
-* Refer to the list of [supported database integrations](https://developers.cloudflare.com/workers/databases/connecting-to-databases/) to understand other ways to connect to existing databases.
-* Learn more about how to use the [Socket API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets) in a Worker.
-* Understand the [protocols supported by Workers](https://developers.cloudflare.com/workers/reference/protocols/).
+- Refer to the list of [supported database integrations](https://developers.cloudflare.com/workers/databases/connecting-to-databases/) to understand other ways to connect to existing databases.
+- Learn more about how to use the [Socket API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets) in a Worker.
+- Understand the [protocols supported by Workers](https://developers.cloudflare.com/workers/reference/protocols/).
 
 Was this helpful?
 

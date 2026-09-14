@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Any Hostname (Enterprise only)
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/additional-configuration/hostname-management/any-hostname/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Any Hostname feature removes the requirement to specify hostnames during widget creation, allowing widgets to function on any domain.
 
@@ -25,6 +25,8 @@ When enabled, widgets can be created without the required hostname specification
 To reduce security risks when using Any Hostname, monitor widget usage through [Turnstile Analytics](https://developers.cloudflare.com/turnstile/turnstile-analytics/) to identify unexpected patterns, implement server-side validation with hostname checking in your application code, and use `action` and `cData` parameters to track widget usage sources and identify where widgets are being deployed.
 
 When using the Any Hostname feature, it is essential to implement additional validation in your server-side code to maintain security controls. Always validate the `hostname` field in Siteverify responses.
+
+*Example responsejs*
 
 ```js
 async function validateTurnstileWithHostname(token, expectedHostnames = []) {
@@ -74,10 +76,10 @@ Use `action` and `cData` parameters to track widget usage sources.
 
 The Any Hostname feature is particularly valuable for customers with:
 
-* Large domain portfolios with many domains to manage individually.
-* Dynamic subdomain creation and frequently create subdomains or customer-specific domains.
-* Multi-tenant applications such as SaaS platforms serving multiple customer domains.
-* Development environments that test across various staging and development domains.
+- Large domain portfolios with many domains to manage individually.
+- Dynamic subdomain creation and frequently create subdomains or customer-specific domains.
+- Multi-tenant applications such as SaaS platforms serving multiple customer domains.
+- Development environments that test across various staging and development domains.
 
 Was this helpful?
 

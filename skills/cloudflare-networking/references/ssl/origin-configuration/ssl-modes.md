@@ -12,13 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Encryption modes
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Your zone's **SSL/TLS Encryption Mode** controls how Cloudflare manages two connections: one between your visitors and Cloudflare, and the other between Cloudflare and your origin server.
 
+```
 flowchart LR
     accTitle: SSL/TLS Encryption mode
     A[Visitor] <--Connection 1--> B((Cloudflare))<--Connection 2--> C[(Origin server)]
+
+```
+
 
 
 If possible, Cloudflare strongly recommends using [**Full**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) or [**Full (strict)**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) modes to prevent malicious connections to your origin.
@@ -51,21 +55,31 @@ Flexible → Full/Strict transitions are handled with extra caution since the or
 
 #### Additional details
 
-* **Scan frequency**: Automatic scans currently occur approximately once per month, though they may happen more frequently in some cases (for example, configuration changes or upgrades). Scans stop when:
-
-  * The site is already using the most secure mode (for example, **Full (strict)**), or
-  * You switch from auto mode to **Custom SSL/TLS**.
-* **Error checking before upgrades**: To prevent disruptions, Cloudflare checks for `5XX` errors (like `502` or `503`) and evaluates whether the HTTP and HTTPS content is consistent before upgrading a zone's encryption mode.
-* **Upgrade notifications**: Cloudflare sends weekly digest emails listing which zones have been upgraded. These emails are currently sent to Super Admins only.
+- **Scan frequency**: Automatic scans currently occur approximately once per month, though they may happen more frequently in some cases (for example, configuration changes or upgrades). Scans stop when:
+  - The site is already using the most secure mode (for example, **Full (strict)**), or
+  - You switch from auto mode to **Custom SSL/TLS**.
+- **Error checking before upgrades**: To prevent disruptions, Cloudflare checks for `5XX` errors (like `502` or `503`) and evaluates whether the HTTP and HTTPS content is consistent before upgrading a zone's encryption mode.
+- **Upgrade notifications**: Cloudflare sends weekly digest emails listing which zones have been upgraded. These emails are currently sent to Super Admins only.
 
 #### Opt out single zone
 
 If you want to opt a zone out via the API, you can make this API call on or before the grace period expiration date.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Edit zone settingbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic_mode" \
@@ -81,53 +95,66 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/ssl_automatic
 If you wanted to opt out multiple zones:
 
 1. Create an API token with the following permissions:
+   - `Zone - Zone - Read`
+   - `Zone - Zone Settings - Read`
+   - `Zone - Zone Settings - Edit`
+2. Make a [`GET` request](https://developers.cloudflare.com/api/resources/zones/methods/list/) to get a list of zones (you can filter this list by `account.id`).
 
-  * `Zone - Zone - Read`
-  * `Zone - Zone Settings - Read`
-  * `Zone - Zone Settings - Edit`
-2. Make a [GET request](https://developers.cloudflare.com/api/resources/zones/methods/list/) to get a list of zones (you can filter this list by `account.id`).
-```bash
-curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \
---header 'Authorization: Bearer <CF_API_TOKEN>' \
---header 'Content-Type: application/json'
-```
+   ```bash
+   curl 'https://api.cloudflare.com/client/v4/zones?account.id=<ACCOUNT_ID>' \
+   --header 'Authorization: Bearer <CF_API_TOKEN>' \
+   --header 'Content-Type: application/json'
+   ```
+
+
 3. Create a list of zone IDs you want to opt-out with each zone ID on a separate line (newline separate), stored in a file such as `zones.txt`.
 4. Create a bash script for `opt-out-multiple-zones.sh` and add the following. Add `zones.txt` to the same directory or update the path accordingly.
-```bash
-for zoneID in $(cat zone.txt); do
-  printf "Opting out ${zoneID}:\n"
-  curl --request PATCH \
-		--url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \
-		--header 'Authorization: Bearer <CF_API_TOKEN>' \
-		--header 'Content-Type: application/json' \
-		--data '{"value":"custom"}'
-  printf "\n\n"
-done
-```
+
+   *opt-out-multiple-zones.shbash*
+
+
+
+   ```bash
+   for zoneID in $(cat zone.txt); do
+     printf "Opting out ${zoneID}:\n"
+
+     curl --request PATCH \
+   		--url https://api.cloudflare.com/client/v4/zones/$zoneID/settings/ssl_automatic_mode \
+   		--header 'Authorization: Bearer <CF_API_TOKEN>' \
+   		--header 'Content-Type: application/json' \
+   		--data '{"value":"custom"}'
+
+     printf "\n\n"
+   done
+   ```
+
+
 5. Open your command line and run:
-```bash
-bash opt-out-multiple-zones.sh
-```
+
+   ```bash
+   bash opt-out-multiple-zones.sh
+   ```
+
+
 
 ### Custom SSL/TLS
 
 To use Custom SSL/TLS, select the custom option (if you prefer to manually set the encryption mode instead of using [Automatic SSL/TLS](#automatic-ssltls-default)):
 
-* [Off (no encryption)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/): No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
-* [Flexible](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/): Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
-* [Full](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/): Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
-* [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/): Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
-* [Strict (SSL-Only Origin Pull)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/): Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
+- [Off (no encryption)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/): No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.
+- [Flexible](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/): Traffic from visitors to Cloudflare can be encrypted via HTTPS, but traffic from Cloudflare to the origin server is not. This mode is common for origins that do not support TLS, though upgrading the origin configuration is recommended whenever possible.
+- [Full](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/): Cloudflare matches the visitor request protocol when connecting to the origin. If the visitor uses HTTP, Cloudflare connects to the origin via HTTP; if HTTPS, Cloudflare uses HTTPS without validating the origin’s certificate. This mode is common for origins that use self-signed or otherwise invalid certificates.
+- [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/): Similar to Full Mode, but with added validation of the origin server’s certificate, which can be issued by a public CA like Let’s Encrypt or by Cloudflare Origin CA.
+- [Strict (SSL-Only Origin Pull)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/ssl-only-origin-pull/): Regardless of whether the visitor-to-Cloudflare connection uses HTTP or HTTPS, Cloudflare always connects to the origin over HTTPS with certificate validation.
 
 ## Update your encryption mode
 
 To change your encryption mode in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
-To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
+To adjust your encryption mode with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
 
 Note
 

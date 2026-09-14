@@ -12,8 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Crawl pages
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/crawl-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/crawl-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+```
 graph LR
 A[Set up your<br>Cloudflare Account] --> B[Verify your<br>AI crawler]
 B --> C[Discover<br>payable content]
@@ -21,9 +22,11 @@ C --> D[Connect to<br>Stripe]
 D --> E[Crawl pages]:::highlight
 classDef highlight fill:#F6821F,color:white
 
+```
+
 Once your AI crawler complies with Web Bot Auth, you can begin to crawl webpages. For more information on how pay per crawl works, refer to [What is Pay Per Crawl?](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/)
 
-## 1\. Identify payment requirements
+## 1. Identify payment requirements
 
 When an AI crawler makes a request to a page protected by pay per crawl, the server will respond with `HTTP/2 402 Payment Required`. This response will also include the `crawler-price` header which specifies the cost to access the content. For example, a response may look like the following:
 
@@ -35,16 +38,16 @@ crawler-price: USD 0.01
 
 To access this content, the AI crawler must provide headers for paid access.
 
-## 2\. Access paid content
+## 2. Access paid content
 
-### 2.1\. Include payment headers
+### 2.1. Include payment headers
 
 Your AI crawler can specify the price it is willing to pay by providing one of two headers:
 
-* `crawler-exact-price`: This is the exact price the AI crawler is configured to pay for access. This value should exactly match the price set in the response header `crawler-price`. Include this header in your second request if your AI crawler first received a HTTP status code 402, and you wish to access the content by paying the `crawler-price`.
-* `crawler-max-price`: This is the maximum price the AI crawler is configured to pay for access on any content. Use this option if you wish to access any pay per crawl content with a crawl price equal or lower than the maximum price. If a page's `crawler-price` is higher than your `crawler-max-price`, your AI crawler will receive a HTTP 402 response.
+- `crawler-exact-price`: This is the exact price the AI crawler is configured to pay for access. This value should exactly match the price set in the response header `crawler-price`. Include this header in your second request if your AI crawler first received a HTTP status code 402, and you wish to access the content by paying the `crawler-price`.
+- `crawler-max-price`: This is the maximum price the AI crawler is configured to pay for access on any content. Use this option if you wish to access any pay per crawl content with a crawl price equal or lower than the maximum price. If a page's `crawler-price` is higher than your `crawler-max-price`, your AI crawler will receive a HTTP 402 response.
 
-### 2.2\. Sign your request with Web Bot Auth
+### 2.2. Sign your request with Web Bot Auth
 
 Include Web Bot Auth headers by following the steps in [Sign your requests](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#4-after-verification-sign-your-requests).
 
@@ -52,7 +55,7 @@ Important
 
 Payment headers (`crawler-exact-price` or `crawler-max-price`) **must be included in the `signature-input` header components**. When [choosing components to sign](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#41-choose-a-set-of-components-to-sign), add your payment header to the list of signed components for successful payment processing.
 
-### 2.3\. Review response headers
+### 2.3. Review response headers
 
 When you specify a header to indicate payment, you may receive one of two responses:
 
@@ -80,7 +83,7 @@ crawler-error: InvalidCrawlerExactPrice
 
 Refer to [Pay Per Crawl error codes](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/) for a complete list of error codes and troubleshooting guidance.
 
-## 3\. Track your spending
+## 3. Track your spending
 
 When you successfully access pay per crawl content (response with HTTP status code 200), the response will include `crawler-charged`. For example:
 
@@ -94,9 +97,9 @@ Cloudflare strongly recommends tracking and saving these values to keep an accur
 
 You may wish to refer to the following resources.
 
-* [Discover payable content](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/discover-payable-content/)
-* [Pay Per Crawl error codes](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/)
-* [Pay Per Crawl FAQs](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/)
+- [Discover payable content](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/discover-payable-content/)
+- [Pay Per Crawl error codes](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-ai-owner/error-codes/)
+- [Pay Per Crawl FAQs](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq/)
 
 Was this helpful?
 

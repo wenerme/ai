@@ -10,7 +10,7 @@
 
 ## OpenAPI
 
-````yaml /openapi/openapi.yaml get /workspaces/{id}/budgets
+````yaml /openapi/openapi.yaml get /workspaces/{workspace_ref}/budgets
 openapi: 3.1.0
 info:
   contact:
@@ -82,7 +82,13 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
-  - description: SCIM endpoints
+  - description: >-
+      Management endpoints for SCIM group-to-workspace mappings, authenticated
+      with a management key. These are not the SCIM 2.0 connector endpoints for
+      your identity provider. In your identity provider, enter the SCIM endpoint
+      URL shown when you enable provisioning under Settings > Members > SCIM
+      Mappings. See
+      https://openrouter.ai/docs/guides/features/scim-mappings#set-up-provisioning.
     name: SCIM
   - description: Speech-to-text endpoints
     name: STT
@@ -98,7 +104,7 @@ externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
 paths:
-  /workspaces/{id}/budgets:
+  /workspaces/{workspace_ref}/budgets:
     get:
       tags:
         - Workspaces
@@ -110,7 +116,7 @@ paths:
       parameters:
         - description: The workspace ID (UUID) or slug
           in: path
-          name: id
+          name: workspace_ref
           required: true
           schema:
             description: The workspace ID (UUID) or slug

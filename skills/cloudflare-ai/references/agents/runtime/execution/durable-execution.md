@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable execution with fibers
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run work that survives Durable Object eviction. `runFiber()` registers a task in SQLite, keeps the agent alive during execution, lets you checkpoint intermediate state with `stash()`, and calls `onFiberRecovered()` on the next activation if the agent was evicted mid-task.
 
@@ -112,17 +112,17 @@ class MyAgent extends Agent {
 
 ### When to use keepAlive vs runFiber
 
-`keepAlive` prevents eviction but does nothing about recovery. If the agent _is_ evicted despite the heartbeat (code update, alarm timeout, resource limit), any in-progress work is lost.
+`keepAlive` prevents eviction but does nothing about recovery. If the agent *is* evicted despite the heartbeat (code update, alarm timeout, resource limit), any in-progress work is lost.
 
-`runFiber` calls `keepAlive` internally _and_ persists the work in SQLite so it can be recovered. Use `keepAlive` alone when the work is cheap to redo or does not need checkpointing. Use `runFiber` when the work is expensive and you need to resume from where you left off.
+`runFiber` calls `keepAlive` internally *and* persists the work in SQLite so it can be recovered. Use `keepAlive` alone when the work is cheap to redo or does not need checkpointing. Use `runFiber` when the work is expensive and you need to resume from where you left off.
 
-| Scenario                                         | Use                     |
-| ------------------------------------------------ | ----------------------- |
-| Waiting on a slow API call                       | keepAlive()             |
-| Streaming an LLM response (via AIChatAgent)      | Automatic (built in)    |
-| Multi-step computation with intermediate results | runFiber()              |
-| Background research loop that takes 10+ minutes  | runFiber() with stash() |
-| Webhook job that must be accepted exactly once   | startFiber()            |
+| Scenario | Use |
+| --- | --- |
+| Waiting on a slow API call | `keepAlive()` |
+| Streaming an LLM response (via `AIChatAgent`) | Automatic (built in) |
+| Multi-step computation with intermediate results | `runFiber()` |
+| Background research loop that takes 10+ minutes | `runFiber()` with `stash()` |
+| Webhook job that must be accepted exactly once | `startFiber()` |
 
 ## runFiber
 
@@ -395,11 +395,11 @@ class ResearchAgent extends Agent {
 
 Key points:
 
-* **The original lambda is gone.** On recovery, you only have the `name` and `snapshot`. The lambda cannot be serialized — recovery logic must be in the hook.
-* **Unmanaged `runFiber()` rows are deleted after the hook returns successfully.** If you want to continue unmanaged work, call `runFiber()` again inside the hook — this creates a new row.
-* **Managed `startFiber()` rows are retained.** Return a `FiberRecoveryResult` to mark an interrupted managed fiber as `completed`, `error`, `aborted`, or still `interrupted`.
-* **You control what recovery means.** Retry from the beginning, resume from a checkpoint, skip and notify the user, or do nothing. The framework does not impose a strategy.
-* **If the hook throws, the row is kept (up to a bound).** A later startup or alarm scan retries recovery, which protects against transient storage or scheduling failures. Catch application-level errors yourself when you want to mark the work terminal instead of retrying. A hook that always throws is retried on a backing-off schedule (the recovery alarm uses an exponential delay capped at 5 minutes, so it is not a busy-loop) until the row exceeds `fiberRecoveryMaxAgeMs` (default 24 h), after which it is discarded with a `fiber:recovery:skipped` (`reason: "max_age_exceeded"`) event. Setting `fiberRecoveryMaxAgeMs: 0` retains such rows indefinitely — recovery keeps retrying on the capped backoff, and the Durable Object never idle-evicts while an un-recoverable row exists, so prefer a finite age unless you intend to inspect or clear those rows yourself. For managed work, the retained row stays `interrupted` and records the recovery error for inspection.
+- **The original lambda is gone.** On recovery, you only have the `name` and `snapshot`. The lambda cannot be serialized — recovery logic must be in the hook.
+- **Unmanaged `runFiber()` rows are deleted after the hook returns successfully.** If you want to continue unmanaged work, call `runFiber()` again inside the hook — this creates a new row.
+- **Managed `startFiber()` rows are retained.** Return a `FiberRecoveryResult` to mark an interrupted managed fiber as `completed`, `error`, `aborted`, or still `interrupted`.
+- **You control what recovery means.** Retry from the beginning, resume from a checkpoint, skip and notify the user, or do nothing. The framework does not impose a strategy.
+- **If the hook throws, the row is kept (up to a bound).** A later startup or alarm scan retries recovery, which protects against transient storage or scheduling failures. Catch application-level errors yourself when you want to mark the work terminal instead of retrying. A hook that always throws is retried on a backing-off schedule (the recovery alarm uses an exponential delay capped at 5 minutes, so it is not a busy-loop) until the row exceeds `fiberRecoveryMaxAgeMs` (default 24 h), after which it is discarded with a `fiber:recovery:skipped` ( `reason: "max_age_exceeded"`) event. Setting `fiberRecoveryMaxAgeMs: 0` retains such rows indefinitely — recovery keeps retrying on the capped backoff, and the Durable Object never idle-evicts while an un-recoverable row exists, so prefer a finite age unless you intend to inspect or clear those rows yourself. For managed work, the retained row stays `interrupted` and records the recovery error for inspection.
 
 ### Chat recovery
 
@@ -424,7 +424,7 @@ On recovery, all orphaned rows are iterated and `onFiberRecovered` is called for
 
 In `wrangler dev`, fiber recovery works identically to production. SQLite and alarm state persist to disk between restarts.
 
-1. Start your agent and trigger a fiber (`runFiber`)
+1. Start your agent and trigger a fiber ( `runFiber`)
 2. Kill the wrangler process (Ctrl-C or SIGKILL)
 3. Restart wrangler
 4. Recovery fires automatically — via `onStart()` if a request arrives, or via the persisted alarm if no clients connect
@@ -435,19 +435,19 @@ In `wrangler dev`, fiber recovery works identically to production. SQLite and al
 
 Execute a durable fiber. The fiber is registered in SQLite before `fn` runs and deleted after it completes (or throws). `keepAlive()` is held for the duration.
 
-* **`name`** — identifier for the fiber, used in `onFiberRecovered` to distinguish fiber types. Not unique — multiple fibers can share a name.
-* **`fn`** — async function receiving a `FiberContext`. Closures work naturally (`this` and local variables are captured).
-* **Returns** — the value returned by `fn`. If the DO is evicted before completion, the return value is lost; recovery happens through the hook.
+- **`name`** — identifier for the fiber, used in `onFiberRecovered` to distinguish fiber types. Not unique — multiple fibers can share a name.
+- **`fn`** — async function receiving a `FiberContext`. Closures work naturally ( `this` and local variables are captured).
+- **Returns** — the value returned by `fn`. If the DO is evicted before completion, the return value is lost; recovery happens through the hook.
 
 ### startFiber(name, fn, options)
 
 Durably accept a retained background fiber. The returned `StartFiberResult` includes a generated `fiberId`, current `status`, optional `metadata`, and `accepted`, which is `false` when an existing fiber matched the same idempotency key.
 
-* **`name`** — identifier for the managed fiber, used in inspection and recovery.
-* **`fn`** — async function receiving a `FiberContext`. The function result is not stored.
-* **`options.idempotencyKey`** — stable external key used to dedupe retries.
-* **`options.metadata`** — JSON-serializable data stored with the retained row.
-* **`options.waitForCompletion`** — wait for terminal status before returning.
+- **`name`** — identifier for the managed fiber, used in inspection and recovery.
+- **`fn`** — async function receiving a `FiberContext`. The function result is not stored.
+- **`options.idempotencyKey`** — stable external key used to dedupe retries.
+- **`options.metadata`** — JSON-serializable data stored with the retained row.
+- **`options.waitForCompletion`** — wait for terminal status before returning.
 
 ### inspectFiber(fiberId) / inspectFiberByKey(idempotencyKey)
 
@@ -477,14 +477,14 @@ Checkpoint the current fiber's state. Writes synchronously to SQLite. Each call 
 
 Called once per orphaned fiber row on agent restart. Override to implement recovery. Unmanaged `runFiber()` rows are deleted after this hook returns successfully; if recovery throws, the row is left for a later scan so transient failures do not lose the recovery handle. Managed `startFiber()` rows stay retained and can be resolved by returning a `FiberRecoveryResult`.
 
-* **`ctx.id`** — unique fiber ID
-* **`ctx.name`** — the name passed to `runFiber()`
-* **`ctx.status`** — retained status for managed fibers
-* **`ctx.idempotencyKey`** — idempotency key for managed fibers, if supplied
-* **`ctx.metadata`** — metadata for managed fibers, if supplied
-* **`ctx.snapshot`** — the last `stash()` data, or `null` if `stash()` was never called
-* **`ctx.createdAt`** — epoch milliseconds when `runFiber()` started. Compare against `Date.now()` to skip recoveries that are too old to replay safely.
-* **`ctx.recoveryReason`** — why recovery is running. Currently always `"interrupted"` for eviction or restart recovery.
+- **`ctx.id`** — unique fiber ID
+- **`ctx.name`** — the name passed to `runFiber()`
+- **`ctx.status`** — retained status for managed fibers
+- **`ctx.idempotencyKey`** — idempotency key for managed fibers, if supplied
+- **`ctx.metadata`** — metadata for managed fibers, if supplied
+- **`ctx.snapshot`** — the last `stash()` data, or `null` if `stash()` was never called
+- **`ctx.createdAt`** — epoch milliseconds when `runFiber()` started. Compare against `Date.now()` to skip recoveries that are too old to replay safely.
+- **`ctx.recoveryReason`** — why recovery is running. Currently always `"interrupted"` for eviction or restart recovery.
 
 ### keepAlive()
 
@@ -496,11 +496,11 @@ Run an async function while keeping the DO alive. Heartbeat starts before `fn` a
 
 ## Related
 
-* [Long-running agents](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) — how fibers compose with schedules, plans, and async operations
-* [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — `keepAlive` details and the alarm system
-* [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/) — durable execution and schedules inside sub-agents
-* [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step execution outside the agent
-* [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `chatRecovery` and `onChatRecovery`
+- [Long-running agents](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/) — how fibers compose with schedules, plans, and async operations
+- [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — `keepAlive` details and the alarm system
+- [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/) — durable execution and schedules inside sub-agents
+- [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step execution outside the agent
+- [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) — `chatRecovery` and `onChatRecovery`
 
 Was this helpful?
 

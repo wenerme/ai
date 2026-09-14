@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/observability/metrics-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/observability/metrics-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 KV exposes analytics that allow you to inspect requests and storage across all namespaces in your account.
 
@@ -22,10 +22,10 @@ The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.
 
 KV currently exposes the below metrics:
 
-| Dataset    | GraphQL Dataset Name       | Description                                                         |
-| ---------- | -------------------------- | ------------------------------------------------------------------- |
-| Operations | kvOperationsAdaptiveGroups | This dataset consists of the operations made to your KV namespaces. |
-| Storage    | kvStorageAdaptiveGroups    | This dataset consists of the storage details of your KV namespaces. |
+| Dataset | GraphQL Dataset Name | Description |
+| --- | --- | --- |
+| Operations | `kvOperationsAdaptiveGroups` | This dataset consists of the operations made to your KV namespaces. |
+| Storage | `kvStorageAdaptiveGroups` | This dataset consists of the storage details of your KV namespaces. |
 
 Metrics can be queried (and are retained) for the past 31 days.
 
@@ -33,8 +33,7 @@ Metrics can be queried (and are retained) for the past 31 days.
 
 Per-namespace analytics for KV are available in the Cloudflare dashboard. To view current and historical metrics for a database:
 
-1. In the Cloudflare dashboard, go to the **Workers KV** page.
-[Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
+1. In the Cloudflare dashboard, go to the **Workers KV** page. [Go to **Workers KV** ↗](https://dash.cloudflare.com/?to=/:account/workers/kv/namespaces)
 2. Select an existing namespace.
 3. Select the **Metrics** tab.
 
@@ -48,8 +47,8 @@ To get started using the [GraphQL Analytics API](https://developers.cloudflare.c
 
 To use the GraphQL API to retrieve KV's datasets, you must provide the `accountTag` filter with your Cloudflare Account ID. The GraphQL datasets for KV include:
 
-* `kvOperationsAdaptiveGroups`
-* `kvStorageAdaptiveGroups`
+- `kvOperationsAdaptiveGroups`
+- `kvStorageAdaptiveGroups`
 
 ### Examples
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticate without integrated SSO
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/migrate-applications/consume-jwt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A common goal for many security organizations is to implement continuous authentication and authorization. With Cloudflare Access JWT validation, you can achieve this goal without introducing significant user interruption or requiring behavioral changes for your end users.
 

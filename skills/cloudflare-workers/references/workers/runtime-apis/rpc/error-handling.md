@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error handling
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Exceptions
 
-An error thrown by an RPC method, or used to reject the method's returned Promise, propagates to the caller as a new error object. With enhanced error serialization, Workers preserves the effective `name` and `message` and serializable own properties, including non-enumerable properties such as [cause ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Error/cause).
+An error thrown by an RPC method, or used to reject the method's returned Promise, propagates to the caller as a new error object. With enhanced error serialization, Workers preserves the effective `name` and `message` and serializable own properties, including non-enumerable properties such as [`cause` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause).
 
 [Enhanced error serialization](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enhanced-error-serialization) uses the `enhanced_error_serialization` compatibility flag. It is on by default for compatibility dates on or after `2026-04-21`. For earlier compatibility dates, add the flag to both the RPC provider and consumer. A Worker can opt out with `legacy_error_serialization`. Without enhanced error serialization, RPC uses legacy error reconstruction and does not preserve custom own properties.
 
@@ -24,11 +24,11 @@ The provider must be able to serialize the error and its own property values. Ke
 
 On the consumer, treat the error's serializable fields as the RPC contract. Workers does not preserve or guarantee:
 
-* The source object's identity, custom prototype, or constructor.
-* The results of `instanceof` checks, especially for custom error classes.
-* Prototype methods or property descriptors.
-* The provider's original stack trace. The consumer may see a new stack from error reconstruction instead.
-* Non-serializable property values.
+- The source object's identity, custom prototype, or constructor.
+- The results of `instanceof` checks, especially for custom error classes.
+- Prototype methods or property descriptors.
+- The provider's original stack trace. The consumer may see a new stack from error reconstruction instead.
+- Non-serializable property values.
 
 For example, an instance of `ProviderError extends Error` can arrive with `name` set to `"ProviderError"` and with serializable own fields such as `code`, but it is not an instance of a consumer-side `ProviderError` class. Check documented fields such as `name` and `code` instead of relying on class identity.
 

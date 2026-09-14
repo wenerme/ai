@@ -12,26 +12,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up MX/Inline deployment
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
 To use Email security, you will need to have:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-* A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
-* A domain to protect
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
+- A domain to protect
 
 ## Initiate MX/Inline configuration
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Overview**. Select one of the following options:
-* If you have not purchased Email security, select **Contact sales**.
-* If you have not associated any integration, [associate an integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#associate-an-integration), then select **Set up**.
-* If you have associated an integration, but have not connected a domain, select [**Connect a domain**](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#connect-a-domain).
-1. Select **MX/Inline**.
-2. To start the MX/Inline configuration, you will need to have completed the prerequisite setup on your email provider's platform. Once you have completed this step, select **I confirm that I have completed all the necessary requirements**. Then, select **Start configuration**.
+
+- If you have not purchased Email security, select **Contact sales**.
+- If you have not associated any integration, [associate an integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#associate-an-integration), then select **Set up**.
+- If you have associated an integration, but have not connected a domain, select [**Connect a domain**](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#connect-a-domain).
+
+4. Select **MX/Inline**.
+5. To start the MX/Inline configuration, you will need to have completed the prerequisite setup on your email provider's platform. Once you have completed this step, select **I confirm that I have completed all the necessary requirements**. Then, select **Start configuration**.
 
 Note
 
@@ -43,12 +45,12 @@ MX/Inline does not require an integration for protection to be effective. Howeve
 
 To associate an integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS Integrations** \> **Integrations**
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS Integrations** > **Integrations**
 2. Select **Connect an integration**.
 3. Select an application: Choose between **Google Workspace CASB + EMAIL**, or **Microsoft CASB + EMAIL**.
-  * Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) if you select **Google Workspace CASB + EMAIL**.
-  * Refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) if you select **Microsoft CASB + EMAIL**.
-4. After you have associated an integration, go to **Email security** \> **Set up**.
+   - Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) if you select **Google Workspace CASB + EMAIL**.
+   - Refer to [Enable Microsoft integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/m365-api/#enable-microsoft-integration) if you select **Microsoft CASB + EMAIL**.
+4. After you have associated an integration, go to **Email security** > **Set up**.
 5. Follow the instructions to [connect a domain](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#connect-a-domain).
 
 ## Connect a domain
@@ -57,28 +59,28 @@ If you have verified zones on Cloudflare, continue with the following steps:
 
 1. **Connect a domain**: Select your domain. Then, select **Continue**.
 2. **Select position**: This step allows you to choose where Email security fits into your mail flow and configure position settings:
-  * **Select position**: Choose between:
-    * **Sit first (hop count = 1)**: Email security is the first server that receives the email. There are no other email scanners or services between the Internet and Cloudflare.
-    * **Sit in the middle (hop count > 1)**: Email security sits anywhere other than the first position. Other servers receive emails _before_ Email security. There are other email scanners or email services in between.
-  * **Position settings**: Refine how Email security receives and forwards emails:
-    * **Forwarding address**: This is your mail flow next hop after Email security. This value is auto-filled, but you can still change it.
-    * **Outbound TLS**: Choose between:
-      1. **Forward all messages over TLS** (recommended).
-      2. **Forward all messages using opportunistic TLS**.
-  * Select **Continue**.
+   - **Select position**: Choose between:
+     - **Sit first (hop count = 1)**: Email security is the first server that receives the email. There are no other email scanners or services between the Internet and Cloudflare.
+     - **Sit in the middle (hop count > 1)**: Email security sits anywhere other than the first position. Other servers receive emails *before* Email security. There are other email scanners or email services in between.
+   - **Position settings**: Refine how Email security receives and forwards emails:
+     - **Forwarding address**: This is your mail flow next hop after Email security. This value is auto-filled, but you can still change it.
+     - **Outbound TLS**: Choose between:
+       1. **Forward all messages over TLS** (recommended).
+       2. **Forward all messages using opportunistic TLS**.
+   - Select **Continue**.
 3. (**Optional**, select **Skip for now** to skip this step) **Configure quarantine policy**: Select dispositions to automatically prevent certain types of incoming messages from reaching a recipient's inbox.
 4. (Optional) **Update MX records**:
-  * Email security can automatically update MX records for domains that proxy traffic through Cloudflare. Under **Your mail processing location**, select your mail processing location. You can refer to [Regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) for more information.
-  * You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**. When Email security updates MX records, we replace your original MX records with Email security MX records.
-  * Select **Continue**.
+   - Email security can automatically update MX records for domains that proxy traffic through Cloudflare. Under **Your mail processing location**, select your mail processing location. You can refer to [Regional processing](https://developers.cloudflare.com/cloudflare-one/email-security/reference/regional-processing/) for more information.
+   - You can also choose to allow Cloudflare to update MX records by selecting **I confirm that I allow Cloudflare to update to the new MX records**. When Email security updates MX records, we replace your original MX records with Email security MX records.
+   - Select **Continue**.
 5. **Review details**: Review your domain, then select **Go to domains**.
 
 ## Users who do not have domains with Cloudflare
 
 If you do not have domains with Cloudflare, the dashboard will display two options:
 
-* [Enter domain manually](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#enter-domain-manually).
-* [Add a domain to Cloudflare](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#add-a-domain-to-cloudflare).
+- [Enter domain manually](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#enter-domain-manually).
+- [Add a domain to Cloudflare](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/#add-a-domain-to-cloudflare).
 
 ## Enter domain manually
 
@@ -100,7 +102,7 @@ Then, follow the steps to [Set up MX/Inline](https://developers.cloudflare.com/c
 To verify that the deployment has been successful and that your emails are being scanned:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 
 Was this helpful?

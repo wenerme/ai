@@ -11,11 +11,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Supported resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/)
-* [Limits and validation](https://developers.cloudflare.com/resource-tagging/reference/limits/)
-* [Error codes](https://developers.cloudflare.com/resource-tagging/reference/error-codes/)
+- [Supported resource types](https://developers.cloudflare.com/resource-tagging/reference/resource-types/)
+- [Limits and validation](https://developers.cloudflare.com/resource-tagging/reference/limits/)
+- [Error codes](https://developers.cloudflare.com/resource-tagging/reference/error-codes/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TLS 1.3
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TLS 1.3 enables the latest version of the TLS protocol (when supported) for improved security and performance.
 
@@ -24,9 +24,9 @@ By turning on the TLS 1.3 feature, traffic to and from your website will be serv
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Enable TLS 1.3
 
@@ -34,20 +34,19 @@ TLS 1.3 can be activated in the Cloudflare dashboard or through the API:
 
 To enable TLS 1.3 in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **TLS 1.3**, switch the toggle to **On**.
 
-To adjust your TLS 1.3 settings with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `tls_1_3` as the setting name in the URI path, and set the `value` parameter to your desired setting (`"on"`, `"zrt"` or `"off"`). `zrt` refers to [Zero Round Trip Time Resumption (0-RTT) ↗](https://blog.cloudflare.com/introducing-0-rtt/).
+To adjust your TLS 1.3 settings with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `tls_1_3` as the setting name in the URI path, and set the `value` parameter to your desired setting (`"on"`, `"zrt"` or `"off"`). `zrt` refers to [Zero Round Trip Time Resumption (0-RTT) ↗](https://blog.cloudflare.com/introducing-0-rtt/).
 
 ### Troubleshooting
 
 Since TLS 1.3 implementations are relatively new, some failures may occur. If you experience errors, submit a Cloudflare Support ticket with the following information:
 
-* Steps to replicate the issue (if possible)
-* Client build version
-* Client diagnostic information
-* Packet captures
+- Steps to replicate the issue (if possible)
+- Client build version
+- Client diagnostic information
+- Packet captures
 
 Chrome users should submit a [net-internals trace ↗](https://dev.chromium.org/for-testers/providing-network-details) to Google. Firefox users should [report bugs to Mozilla ↗](https://bugzilla.mozilla.org/home).
 

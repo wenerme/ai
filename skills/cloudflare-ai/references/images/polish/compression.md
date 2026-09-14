@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Polish compression
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/polish/compression/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/polish/compression/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Lossless and Lossy modes, Cloudflare attempts to strip as much metadata as possible. However, Cloudflare cannot guarantee stripping all metadata because other factors, such as caching status, might affect which metadata is finally sent in the response.
 
@@ -50,7 +50,7 @@ The WebP version is served only when the `Accept` header from the browser includ
 Accept: image/avif,image/webp,image/*,*/*;q=0.8
 ```
 
-Polish only converts standard image formats _to_ the WebP format. If the origin server serves WebP images, Polish will not convert them, and will not optimize them.
+Polish only converts standard image formats *to* the WebP format. If the origin server serves WebP images, Polish will not convert them, and will not optimize them.
 
 #### File size, image quality, and WebP
 

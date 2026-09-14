@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metadata filter (legacy)
 
-Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/autorag-filter-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page documents the filter format used by the legacy AutoRAG REST API. For the new AI Search REST API filter syntax, refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -30,14 +30,14 @@ filters: {
 
 ### Operators
 
-| Operator | Description              |
-| -------- | ------------------------ |
-| eq       | Equals                   |
-| ne       | Not equals               |
-| gt       | Greater than             |
-| gte      | Greater than or equal to |
-| lt       | Less than                |
-| lte      | Less than or equal to    |
+| Operator | Description |
+| --- | --- |
+| `eq` | Equals |
+| `ne` | Not equals |
+| `gt` | Greater than |
+| `gte` | Greater than or equal to |
+| `lt` | Less than |
+| `lte` | Less than or equal to |
 
 ## Compound filter
 
@@ -57,8 +57,8 @@ The available compound operators are `and` and `or`.
 
 ### Limitations
 
-* No nested combinations of `and` and `or`. You can only use one compound operator at a time.
-* When using `or`, only the `eq` operator is allowed and all conditions must filter on the same key.
+- No nested combinations of `and` and `or`. You can only use one compound operator at a time.
+- When using `or`, only the `eq` operator is allowed and all conditions must filter on the same key.
 
 ## "Starts with" filter for folders
 
@@ -66,7 +66,7 @@ To filter for all files within a folder and its subfolders, use a compound filte
 
 For example, consider this file structure:
 
-* customer-a - profile.md - contracts - property - contract-1.pdf
+- customer-a - profile.md - contracts - property - contract-1.pdf
 
 Using `{ type: "eq", key: "folder", value: "customer-a/" }` only matches files directly in that folder (like `profile.md`), not files in subfolders.
 
@@ -84,13 +84,13 @@ filters: {
 
 This filter matches all paths starting with `customer-a/` by using:
 
-* `gt` with `customer-a//` to include paths greater than the `/` ASCII character
-* `lte` with `customer-a/z` to include paths up to and including the lowercase `z` ASCII character
+- `gt` with `customer-a//` to include paths greater than the `/` ASCII character
+- `lte` with `customer-a/z` to include paths up to and including the lowercase `z` ASCII character
 
 ## Related
 
-* [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) \- New AI Search REST API filter format
-* [Migrate from AutoRAG Search API](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) \- Migration guide with before/after examples
+- [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) - New AI Search REST API filter format
+- [Migrate from AutoRAG Search API](https://developers.cloudflare.com/ai-search/api/migration/rest-api/) - Migration guide with before/after examples
 
 Was this helpful?
 

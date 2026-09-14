@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust and Virtual Desktop Infrastructure
 
-Last updated Nov 21, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 21, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -20,17 +20,17 @@ Virtual Desktop Infrastructure (VDI) is old, costly, and clunky for a number of 
 
 In other cases, a full virtualized desktop may be necessary for legacy apps, yet organizations still need help securing remote access to their VDI or securing the virtualized desktops themselves once users are interacting with them. This document provides a reference and guidance for using Cloudflare's Zero Trust services and is split into two main sections.
 
-* Replacing your VDI for secure remote access to web-based applications. Accessing a full blown desktop environment to just use a web browser isn't the best experience for users. Cloudflare offers a vast improvement over remote access to web applications and can do so with greater security.
-* Securing your VDI desktops...
-  * From unauthorized access.
-  * From risky public Internet destinations.
+- Replacing your VDI for secure remote access to web-based applications. Accessing a full blown desktop environment to just use a web browser isn't the best experience for users. Cloudflare offers a vast improvement over remote access to web applications and can do so with greater security.
+- Securing your VDI desktops...
+  - From unauthorized access.
+  - From risky public Internet destinations.
 
 ### Who is this document for and what will you learn?
 
 This reference architecture is designed for IT or security professionals who are looking at using Cloudflare to replace or secure their Virtual Desktop Infrastructure. To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-* [Decommissioning your VDI Blog Post ↗](https://blog.cloudflare.com/decommissioning-virtual-desktop/)
-* [Leveraging Cloudflare's Secure Web Gateway with PAC files for VDI](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
+- [Decommissioning your VDI Blog Post ↗](https://blog.cloudflare.com/decommissioning-virtual-desktop/)
+- [Leveraging Cloudflare's Secure Web Gateway with PAC files for VDI](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
 
 ## Replacing Your VDI
 
@@ -38,26 +38,26 @@ In today's IT landscape, most applications and services that companies rely on a
 
 ![Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=924,height=404,format=svg/_astro/figure1.DA3CfHpk.svg "Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.")
 
-Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.
+*Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.*
 
 The diagram above shows the general flow of how user traffic goes from their local browser to Cloudflare's remote browser and then to applications hosted on their infrastructure over a secure tunnel. Figure 2 below shows how users can access applications using remote browser isolation either directly in a browser or, if you require greater privacy and security for the traffic, using our device agent to create a tunnel from the device to Cloudflare. Both methods provide secure access to internal and external resources.
 
-![Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1378,height=1136,format=svg/_astro/figure2.BTMnNCIU.svg "Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.")
+![Figure 2: Two different traffic flow options: clientless RBI \& RBI using the device agent.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1378,height=1136,format=svg/_astro/figure2.BTMnNCIU.svg "Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.")
 
-Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.
+*Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.*
 
 **Option 1: Clientless RBI**
 
-* Device agent not required
-* RBI URL can be protected by an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) with authentication
-* A simpler way to begin rolling out Cloudflare Zero trust while transitioning away from VDI
-* A great option for third party contractor access who cannot install software on their device
+- Device agent not required
+- RBI URL can be protected by an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) with authentication
+- A simpler way to begin rolling out Cloudflare Zero trust while transitioning away from VDI
+- A great option for third party contractor access who cannot install software on their device
 
 **Option 2: RBI via the device agent**
 
-* Provides full security capabilities including device posture checks, split tunneling and the ability to use the Secure Web Gateway service to filter Internet-bound traffic.
-* More robust end state to transition to once workflows and confidence is built with users and internal teams
-* Gather end user metrics around user experience, reliability and performance
+- Provides full security capabilities including device posture checks, split tunneling and the ability to use the Secure Web Gateway service to filter Internet-bound traffic.
+- More robust end state to transition to once workflows and confidence is built with users and internal teams
+- Gather end user metrics around user experience, reliability and performance
 
 ## Securing Your VDI
 
@@ -67,7 +67,7 @@ When replacing your VDI is not an option and a fully virtualized desktop is requ
 
 ![Figure 3: Using Cloudflare Access ZTNA to secure VDI.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1476,height=932,format=svg/_astro/figure3.CQN_cSLv.svg "Figure 3: Using Cloudflare Access ZTNA to secure VDI.")
 
-Figure 3: Using Cloudflare Access ZTNA to secure VDI.
+*Figure 3: Using Cloudflare Access ZTNA to secure VDI.*
 
 The diagram above displays a general Zero Trust deployment using best practices for authenticating your remote users to the VDI infrastructure
 
@@ -83,10 +83,11 @@ Cloudflare's SASE platform is capable of much more than replacing VPNs and bolst
 
 ![Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=880,height=1114,format=svg/_astro/figure4.DPa0cH6R.svg "Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.")
 
-Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.
+*Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.*
 
 1. **DNS configurations** (Resolver IPs, DoH, DoT) or **PAC files** for **Non-persistent virtual desktop infrastructure (VDI) environments** can be configured within the infrastructure or directly on the VDI hosts
-a. DNS configurations allow for DNS policies to be enforced while PAC files allow for all gateway policy types (DNS, Network and HTTP).
+
+   a. DNS configurations allow for DNS policies to be enforced while PAC files allow for all gateway policy types (DNS, Network and HTTP).
 2. Traffic is sent from the VDI to the secure web gateway where it is filtered by DNS, network or HTTP policies.
 3. Traffic is sent to the Internet if it is allowed past Gateway policies
 
@@ -96,13 +97,13 @@ As shown, we have seen several ways to incorporate Cloudflare's Zero Trust servi
 
 For more thorough background, explanation and action steps to a smooth migration be sure to read the following resources:
 
-* [Decommissioning your VDI Blog Post ↗](https://blog.cloudflare.com/decommissioning-virtual-desktop/)
-* [Leveraging Cloudflare's Secure Web Gateway with PAC files for VDI](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
-* [Connect to private network services with Browser Isolation ↗](https://blog.cloudflare.com/browser-isolation-private-network/)
-* [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation)
-* [Determine When to use PAC Files](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
-* [Agentless DNS Configurations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/)
-* [PAC Files for Agentless HTTP Filtering](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)
+- [Decommissioning your VDI Blog Post ↗](https://blog.cloudflare.com/decommissioning-virtual-desktop/)
+- [Leveraging Cloudflare's Secure Web Gateway with PAC files for VDI](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
+- [Connect to private network services with Browser Isolation ↗](https://blog.cloudflare.com/browser-isolation-private-network/)
+- [Clientless Web Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation)
+- [Determine When to use PAC Files](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/pac-files/#use-cases)
+- [Agentless DNS Configurations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/)
+- [PAC Files for Agentless HTTP Filtering](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/)
 
 As always, if you have any questions on these services, be sure to reach out to your Cloudflare team or contact us to [talk to an expert ↗](https://www.cloudflare.com/products/zero-trust/plans/enterprise/).
 

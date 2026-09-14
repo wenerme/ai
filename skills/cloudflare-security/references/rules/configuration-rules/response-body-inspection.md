@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Response body inspection
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When no enabled feature needs response content, Cloudflare can send data to the client as it arrives. Some features inspect or change response content at the edge.
 
@@ -24,18 +24,18 @@ Cloudflare features primarily inspect responses with a `Content-Type` of `text/h
 
 The following features can change HTML response bodies when turned on and applicable:
 
-| Feature                                                                                                                                                                                           | Body change                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/)                                                                                                    | Adds invisible links for unauthorized AI crawlers      |
-| [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/)                                                                                                                    | Adds a banner to archived pages                        |
-| [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)                                                                  | Rewrites eligible HTTP links to HTTPS                  |
-| [Cloudflare challenge features](https://developers.cloudflare.com/cloudflare-challenges/)                                                                                                         | Injects challenge scripts or returns challenge content |
-| [Cloudflare Fonts](https://developers.cloudflare.com/speed/optimization/content/fonts/) and [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization/) | Rewrites Google Fonts references                       |
-| [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/)                                                                                 | Obfuscates email addresses in page content             |
-| [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/)                                                                                              | Converts HTML to Markdown for eligible requests        |
-| [Replace insecure JavaScript libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/)                                                                               | Rewrites supported insecure library URLs               |
-| [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/)                                                                                                      | Changes script loading behavior                        |
-| [Web Analytics](https://developers.cloudflare.com/web-analytics/)                                                                                                                                 | Injects the Real User Monitoring beacon                |
+| Feature | Body change |
+| --- | --- |
+| [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/) | Adds invisible links for unauthorized AI crawlers |
+| [Always Online](https://developers.cloudflare.com/cache/how-to/always-online/) | Adds a banner to archived pages |
+| [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/) | Rewrites eligible HTTP links to HTTPS |
+| [Cloudflare challenge features](https://developers.cloudflare.com/cloudflare-challenges/) | Injects challenge scripts or returns challenge content |
+| [Cloudflare Fonts](https://developers.cloudflare.com/speed/optimization/content/fonts/) and [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization/) | Rewrites Google Fonts references |
+| [Email Address Obfuscation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/) | Obfuscates email addresses in page content |
+| [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) | Converts HTML to Markdown for eligible requests |
+| [Replace insecure JavaScript libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/) | Rewrites supported insecure library URLs |
+| [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/) | Changes script loading behavior |
+| [Web Analytics](https://developers.cloudflare.com/web-analytics/) | Injects the Real User Monitoring beacon |
 
 Security and AI features may also read HTML without changing it. [Prefetch URLs](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/) reads URL manifests served as `text/plain`.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rate limiting
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/rate-limiting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Rate limiting controls the traffic that reaches your application, which prevents expensive bills and suspicious activity.
 
@@ -22,7 +22,7 @@ You can define rate limits as the number of requests that get sent in a specific
 
 You can also select if you would like a **fixed** or **sliding** rate limiting technique. With rate limiting, we allow a certain number of requests within a window of time. For example, if it is a fixed rate, the window is based on time, so there would be no more than `x` requests in a ten minute window. If it is a sliding rate, there would be no more than `x` requests in the last ten minutes.
 
-To illustrate this, let us say you had a limit of ten requests per ten minutes, starting at 12:00\. So the fixed window is 12:00-12:10, 12:10-12:20, and so on. If you sent ten requests at 12:09 and ten requests at 12:11, all 20 requests would be successful in a fixed window strategy. However, they would fail in a sliding window strategy since there were more than ten requests in the last ten minutes.
+To illustrate this, let us say you had a limit of ten requests per ten minutes, starting at 12:00. So the fixed window is 12:00-12:10, 12:10-12:20, and so on. If you sent ten requests at 12:09 and ten requests at 12:11, all 20 requests would be successful in a fixed window strategy. However, they would fail in a sliding window strategy since there were more than ten requests in the last ten minutes.
 
 ## Handling rate limits
 
@@ -33,7 +33,7 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 To set the default rate limiting configuration in the dashboard:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **AI** \> **AI Gateway**.
+2. Go to **AI** > **AI Gateway**.
 3. Go to **Settings**.
 4. Enable **Rate-limiting**.
 5. Adjust the rate, time period, and rate limiting method as desired.
@@ -41,10 +41,12 @@ To set the default rate limiting configuration in the dashboard:
 To set the default rate limiting configuration using the API:
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-* `AI Gateway - Read`
-* `AI Gateway - Edit`
-1. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-2. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to create a new Gateway and include a value for the `rate_limiting_interval`, `rate_limiting_limit`, and `rate_limiting_technique`.
+
+- `AI Gateway - Read`
+- `AI Gateway - Edit`
+
+2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+3. Using that API token and Account ID, send a [`POST` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) to create a new Gateway and include a value for the `rate_limiting_interval`, `rate_limiting_limit`, and `rate_limiting_technique`.
 
 This rate limiting behavior will be uniformly applied to all requests for that gateway.
 

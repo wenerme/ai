@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Log Explorer
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Store and explore your Cloudflare logs directly within the Cloudflare dashboard or API.
 
@@ -20,10 +20,10 @@ Log Explorer is Cloudflare's native observability and forensics product that ena
 
 Log Explorer provides access to Cloudflare logs with all the context available within the Cloudflare platform. You can monitor security and performance issues with custom dashboards or investigate and troubleshoot issues with log search. Benefits include:
 
-* **Reduced cost and complexity**: Drastically reduce the expense and operational overhead associated with forwarding, storing, and analyzing terabytes of log data in external tools.
-* **Faster detection and triage**: Access Cloudflare-native logs directly, eliminating cumbersome data pipelines and the ingest lags that delay critical security insights.
-* **Accelerated investigations with full context**: Investigate incidents with Cloudflare's unparalleled contextual data, accelerating your analysis and understanding of "What exactly happened?" and "How did it happen?"
-* **Minimal recovery time**: Seamlessly transition from investigation to action with direct mitigation capabilities via the Cloudflare platform.
+- **Reduced cost and complexity**: Drastically reduce the expense and operational overhead associated with forwarding, storing, and analyzing terabytes of log data in external tools.
+- **Faster detection and triage**: Access Cloudflare-native logs directly, eliminating cumbersome data pipelines and the ingest lags that delay critical security insights.
+- **Accelerated investigations with full context**: Investigate incidents with Cloudflare's unparalleled contextual data, accelerating your analysis and understanding of "What exactly happened?" and "How did it happen?"
+- **Minimal recovery time**: Seamlessly transition from investigation to action with direct mitigation capabilities via the Cloudflare platform.
 
 Contract customers can choose to store their logs in Log Explorer for up to two years, at an additional cost of $0.10 per GB per month. Customers interested in this feature can contact their account team to have it added to their contract.
 
@@ -31,12 +31,12 @@ Contract customers can choose to store their logs in Log Explorer for up to two 
 
 Access to Log Explorer features is controlled through specific permissions. Each permission grants users the ability to perform certain actions, such as querying logs, managing datasets, or creating dashboards.
 
-| Feature                     | Required Permission | Description                             |
-| --------------------------- | ------------------- | --------------------------------------- |
-| **Manage datasets**         | Logs Edit           | Add, enable, or disable datasets.       |
-| **Log Search**              | Logs Read           | Query logs in the dashboard or via API. |
-| **Log Search (save query)** | Logs Write          | Save log search queries.                |
-| **Custom dashboards**       | Analytics Read      | Create and view custom dashboards.      |
+| Feature | Required Permission | Description |
+| --- | --- | --- |
+| **Manage datasets** | `Logs Edit` | Add, enable, or disable datasets. |
+| **Log Search** | `Logs Read` | Query logs in the dashboard or via API. |
+| **Log Search (save query)** | `Logs Write` | Save log search queries. |
+| **Custom dashboards** | `Analytics Read` | Create and view custom dashboards. |
 
 These permissions apply across both the dashboard and the API, and must be granted at either the account or zone level depending on which datasets you need to access.
 

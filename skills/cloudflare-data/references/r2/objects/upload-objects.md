@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Upload objects
 
-Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/objects/upload-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/upload-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-There are several ways to upload objects to R2\. Which approach you choose depends on the size of your objects and your performance requirements.
+There are several ways to upload objects to R2. Which approach you choose depends on the size of your objects and your performance requirements.
 
 ## Choose an upload method
 
-|                         | Single upload (PUT)                    | Multipart upload                                                |
-| ----------------------- | -------------------------------------- | --------------------------------------------------------------- |
-| **Best for**            | Small to medium files (under \~100 MB) | Large files, or when you need parallelism and resumability      |
-| **Maximum object size** | 5 GiB                                  | 5 TiB (up to 10,000 parts)                                      |
-| **Part size**           | N/A                                    | 5 MiB – 5 GiB per part                                          |
-| **Resumable**           | No — must restart the entire upload    | Yes — only failed parts need to be retried                      |
-| **Parallel upload**     | No                                     | Yes — parts can be uploaded concurrently                        |
-| **When to use**         | Quick, simple uploads of small objects | Video, backups, datasets, or any file where reliability matters |
+|  | Single upload (`PUT`) | Multipart upload |
+| --- | --- | --- |
+| **Best for** | Small to medium files (under \~100 MB) | Large files, or when you need parallelism and resumability |
+| **Maximum object size** | 5 GiB | 5 TiB (up to 10,000 parts) |
+| **Part size** | N/A | 5 MiB – 5 GiB per part |
+| **Resumable** | No — must restart the entire upload | Yes — only failed parts need to be retried |
+| **Parallel upload** | No | Yes — parts can be uploaded concurrently |
+| **When to use** | Quick, simple uploads of small objects | Video, backups, datasets, or any file where reliability matters |
 
 Note
 
@@ -35,8 +35,7 @@ Most S3-compatible SDKs and tools (such as `rclone`) automatically choose multip
 
 To upload objects to your bucket from the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Select **Upload**.
 4. Drag and drop your file into the upload area or **select from computer**.
@@ -909,7 +908,7 @@ Note
 
 Wrangler supports uploading files up to 315 MB and only allows one object at a time. For large files or bulk uploads, use [rclone](https://developers.cloudflare.com/r2/examples/rclone/) or another [S3-compatible](https://developers.cloudflare.com/r2/api/s3/) tool.
 
-Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to upload objects. Run the [r2 object put command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put):
+Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to upload objects. Run the [`r2 object put` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-put):
 
 ```sh
 wrangler r2 object put test-bucket/image.png --file=image.png
@@ -921,10 +920,10 @@ You can set the `Content-Type` (MIME type), `Content-Disposition`, `Cache-Contro
 
 ### Part size limits
 
-* Minimum part size: 5 MiB (except for the last part)
-* Maximum part size: 5 GiB
-* Maximum number of parts: 10,000
-* All parts except the last must be the same size
+- Minimum part size: 5 MiB (except for the last part)
+- Maximum part size: 5 GiB
+- Maximum number of parts: 10,000
+- All parts except the last must be the same size
 
 ### Incomplete upload lifecycles
 

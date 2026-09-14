@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Autonomous responses
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/autonomous-responses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send messages and trigger LLM responses from the server without a human action. Use this for scheduled follow-ups, queue processing, email-triggered responses, and autonomous agent workflows.
 
@@ -22,14 +22,14 @@ In a typical chat flow, the user sends a message and the agent responds. But age
 
 The key primitives:
 
-| Primitive         | Role                                                                             |
-| ----------------- | -------------------------------------------------------------------------------- |
-| saveMessages      | Inject a message and trigger the LLM — the server-side equivalent of sendMessage |
-| submitMessages    | Durably accept a Think turn for async execution and inspect it later             |
-| startFiber        | Durably accept application-owned side effects around a turn                      |
-| persistMessages   | Store messages without triggering a response — for injecting context silently    |
-| onChatResponse    | React when any response completes, including ones you did not initiate           |
-| isServerStreaming | Client-side flag: true when a server-initiated stream is active                  |
+| Primitive | Role |
+| --- | --- |
+| `saveMessages` | Inject a message and trigger the LLM — the server-side equivalent of `sendMessage` |
+| `submitMessages` | Durably accept a Think turn for async execution and inspect it later |
+| `startFiber` | Durably accept application-owned side effects around a turn |
+| `persistMessages` | Store messages without triggering a response — for injecting context silently |
+| `onChatResponse` | React when any response completes, including ones you did not initiate |
+| `isServerStreaming` | Client-side flag: `true` when a server-initiated stream is active |
 
 ### `saveMessages` vs `persistMessages`
 
@@ -87,9 +87,9 @@ return Response.json({
 
 `submitMessages()` stores pending work first and appends the messages to the conversation Session only when the submission starts executing. It accepts serializable `UIMessage[]` values, not the function form supported by `saveMessages((messages) => ...)`.
 
-Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) outside Think when the durable unit is a surrounding application job, such as accepting a webhook once, restoring provider state, posting a visible reply, and recording recovery policy. `submitMessages()` owns Think's conversation admission; managed fibers own external side effects around that turn.
+Use [`startFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) outside Think when the durable unit is a surrounding application job, such as accepting a webhook once, restoring provider state, posting a visible reply, and recording recovery policy. `submitMessages()` owns Think's conversation admission; managed fibers own external side effects around that turn.
 
-For the full Think API, refer to [submitMessages()](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#submitmessages).
+For the full Think API, refer to [`submitMessages()`](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/#submitmessages).
 
 ### When to use `saveMessages` vs `onChatResponse`
 
@@ -103,9 +103,9 @@ Always call `waitUntilStable()` before reading `this.messages` or calling `saveM
 
 `waitUntilStable()` waits until the conversation is fully stable:
 
-* No active LLM stream in progress
-* No pending client-tool interactions (tool results or approvals the user has not yet provided)
-* No queued continuation turns
+- No active LLM stream in progress
+- No pending client-tool interactions (tool results or approvals the user has not yet provided)
+- No queued continuation turns
 
 It returns `true` when stable, or `false` if the timeout expires before a pending interaction resolves. If nothing is pending, it returns immediately.
 
@@ -475,23 +475,23 @@ protected async onChatResponse(result: ChatResponseResult) {
 
 ### `ChatResponseResult` fields
 
-| Field        | Type                   | Description                           |                    |
-| ------------ | ---------------------- | ------------------------------------- | ------------------ |
-| message      | UIMessage              | The finalized assistant message       |                    |
-| requestId    | string                 | Unique ID for this turn               |                    |
-| continuation | boolean                | true if this was an auto-continuation |                    |
-| status       | "completed" \| "error" | "aborted"                             | How the turn ended |
-| error        | string \| undefined    | Error details when status is "error"  |                    |
+| Field | Type | Description |
+| --- | --- | --- |
+| `message` | `UIMessage` | The finalized assistant message |
+| `requestId` | `string` | Unique ID for this turn |
+| `continuation` | `boolean` | `true` if this was an auto-continuation |
+| `status` | `"completed" \| "error" \| "aborted"` | How the turn ended |
+| `error` | `string \| undefined` | Error details when status is `"error"` |
 
 ## Client-side: detecting server-initiated streams
 
 When the server triggers a stream via `saveMessages`, the AI SDK's `status` stays `"ready"` because the client did not initiate the request. The `useAgentChat` hook provides two additional flags to handle this:
 
-| Flag              | What it tracks                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------- |
-| status            | AI SDK lifecycle: "submitted", "streaming", "ready", "error" — only for client-initiated requests |
-| isServerStreaming | true when a server-initiated stream is active                                                     |
-| isStreaming       | true when either client or server streaming is active — use this for a universal indicator        |
+| Flag | What it tracks |
+| --- | --- |
+| `status` | AI SDK lifecycle: `"submitted"`, `"streaming"`, `"ready"`, `"error"` — only for client-initiated requests |
+| `isServerStreaming` | `true` when a server-initiated stream is active |
+| `isStreaming` | `true` when either client or server streaming is active — use this for a universal indicator |
 
 Use `isStreaming` for most UI concerns (disabling the send button, showing a loading indicator). Use `isServerStreaming` only when you need to distinguish between user-initiated and server-initiated streams (for example, to show a different indicator like "Agent is working in the background...").
 
@@ -543,15 +543,15 @@ The `messageConcurrency` setting on `AIChatAgent` controls how overlapping user 
 
 ## Combining with other Agent primitives
 
-| Primitive        | How to combine                                                                                              |
-| ---------------- | ----------------------------------------------------------------------------------------------------------- |
-| schedule()       | Schedule a callback that calls saveMessages — see the cron example above                                    |
-| queue()          | Queue a method that calls saveMessages for deferred processing                                              |
-| startFiber()     | Durably accept and inspect application-owned work around a message turn                                     |
-| runWorkflow()    | Start a Workflow; use AgentWorkflow.agent RPC to call a method that triggers saveMessages or submitMessages |
-| onEmail()        | Convert email content to a chat message and call saveMessages                                               |
-| onRequest()      | Handle webhooks and call saveMessages or submitMessages                                                     |
-| this.broadcast() | Broadcast custom state from onChatResponse                                                                  |
+| Primitive | How to combine |
+| --- | --- |
+| `schedule()` | Schedule a callback that calls `saveMessages` — see the cron example above |
+| `queue()` | Queue a method that calls `saveMessages` for deferred processing |
+| `startFiber()` | Durably accept and inspect application-owned work around a message turn |
+| `runWorkflow()` | Start a Workflow; use `AgentWorkflow.agent` RPC to call a method that triggers `saveMessages` or `submitMessages` |
+| `onEmail()` | Convert email content to a chat message and call `saveMessages` |
+| `onRequest()` | Handle webhooks and call `saveMessages` or `submitMessages` |
+| `this.broadcast()` | Broadcast custom state from `onChatResponse` |
 
 ## Cancelling a server-driven turn
 
@@ -603,15 +603,15 @@ Use `cancelFiber(fiberId)` when the durable unit was accepted with `startFiber()
 
 ## Important notes
 
-* **`saveMessages` is awaitable.** After it returns, the LLM has responded and the message is persisted. Use this when you control the trigger.
-* **Use the function form of `saveMessages`.** `saveMessages((messages) => [...messages, newMsg])` reads the latest persisted messages at execution time, avoiding stale baselines when multiple calls queue up.
-* **`persistMessages` does not trigger a response.** Use it to inject context or system messages silently.
-* **`onChatResponse` is for reacting to turns you did not initiate.** Use it for user-initiated messages, auto-continuations, or any turn where you did not call `saveMessages` yourself.
-* **`onChatResponse` does not nest.** When `saveMessages` is called from inside `onChatResponse`, the inner turn completes and `onChatResponse` fires again sequentially — not recursively.
-* **Messages are persisted before `onChatResponse` fires.** If the Durable Object evicts during the hook, the conversation is safe in SQLite — only the hook callback is lost.
-* **`waitUntilStable()` before injecting.** Always call this from schedule callbacks, webhooks, or other non-chat entry points to avoid overlapping with an in-flight stream or pending tool interaction.
-* **The client sees the completed response before `onChatResponse` runs.** The server-side hook does not delay the client.
-* **`messageConcurrency` does not affect `saveMessages`.** Server-driven messages always queue and execute in order.
+- **`saveMessages` is awaitable.** After it returns, the LLM has responded and the message is persisted. Use this when you control the trigger.
+- **Use the function form of `saveMessages`.** `saveMessages((messages) => [...messages, newMsg])` reads the latest persisted messages at execution time, avoiding stale baselines when multiple calls queue up.
+- **`persistMessages` does not trigger a response.** Use it to inject context or system messages silently.
+- **`onChatResponse` is for reacting to turns you did not initiate.** Use it for user-initiated messages, auto-continuations, or any turn where you did not call `saveMessages` yourself.
+- **`onChatResponse` does not nest.** When `saveMessages` is called from inside `onChatResponse`, the inner turn completes and `onChatResponse` fires again sequentially — not recursively.
+- **Messages are persisted before `onChatResponse` fires.** If the Durable Object evicts during the hook, the conversation is safe in SQLite — only the hook callback is lost.
+- **`waitUntilStable()` before injecting.** Always call this from schedule callbacks, webhooks, or other non-chat entry points to avoid overlapping with an in-flight stream or pending tool interaction.
+- **The client sees the completed response before `onChatResponse` runs.** The server-side hook does not delay the client.
+- **`messageConcurrency` does not affect `saveMessages`.** Server-driven messages always queue and execute in order.
 
 ## Next steps
 

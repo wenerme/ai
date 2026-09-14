@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environments
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/configuration/environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/configuration/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Environments](https://developers.cloudflare.com/workers/wrangler/environments/) are different contexts that your code runs in. Cloudflare Developer Platform allows you to create and manage different environments. Through environments, you can deploy the same project to multiple places under multiple names.
 
@@ -86,8 +86,8 @@ database_id = "DATABASE_ID"
 
 In the above configuration:
 
-* `[[production.d1_databases]]` creates an object `production` with a property `d1_databases`, where `d1_databases` is an array of objects, since you can create multiple D1 bindings in case you have more than one database.
-* Any property below the line in the form `<key> = <value>` is a property of an object within the `d1_databases` array.
+- `[[production.d1_databases]]` creates an object `production` with a property `d1_databases`, where `d1_databases` is an array of objects, since you can create multiple D1 bindings in case you have more than one database.
+- Any property below the line in the form `<key> = <value>` is a property of an object within the `d1_databases` array.
 
 Therefore, the above binding is equivalent to:
 

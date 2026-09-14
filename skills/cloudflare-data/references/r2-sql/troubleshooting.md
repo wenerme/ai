@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting guide
 
-Last updated May 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers potential errors and limitations you may encounter when using R2 SQL. R2 SQL is in open beta, and supported functionality will evolve and change over time.
 
@@ -55,10 +55,10 @@ INNER JOIN my_namespace.firewall_events f ON h.zone_id = f.zone_id
 
 **Solution**:
 
-* Add `WHERE` filters to reduce intermediate result sizes.
-* Join through dimension tables instead of directly joining fact tables.
-* Use `approx_distinct()` instead of `COUNT(DISTINCT)` for approximate counts.
-* Break complex multi-way joins into smaller queries using CTEs or sequential queries.
+- Add `WHERE` filters to reduce intermediate result sizes.
+- Join through dimension tables instead of directly joining fact tables.
+- Use `approx_distinct()` instead of `COUNT(DISTINCT)` for approximate counts.
+- Break complex multi-way joins into smaller queries using CTEs or sequential queries.
 
 ```sql
 -- Better: filter both sides and use approx_distinct
@@ -121,9 +121,9 @@ LIMIT 20
 
 **Solution**:
 
-* Simplify correlated conditions where possible.
-* Consider rewriting as a `JOIN` with `GROUP BY` instead of `EXISTS`.
-* Use an `IN` subquery with pre-aggregated results instead of `EXISTS`.
+- Simplify correlated conditions where possible.
+- Consider rewriting as a `JOIN` with `GROUP BY` instead of `EXISTS`.
+- Use an `IN` subquery with pre-aggregated results instead of `EXISTS`.
 
 ---
 
@@ -145,8 +145,8 @@ SELECT * FROM my_namespace.logs WHERE json_data IS NOT NULL LIMIT 100
 
 **Solution**:
 
-* Denormalize frequently queried JSON fields into separate columns.
-* Filter on the entire JSON field, and handle parsing in your application.
+- Denormalize frequently queried JSON fields into separate columns.
+- Filter on the entire JSON field, and handle parsing in your application.
 
 Note
 
@@ -231,33 +231,45 @@ DROP TABLE my_namespace.events
 If your queries are running slowly:
 
 1. **Always include partition (timestamp) filters**: This is the most important optimization.
-```sql
--- Good - Narrows data scan to one day
-SELECT * FROM my_namespace.events
-WHERE timestamp BETWEEN '2024-01-01' AND '2024-01-02'
-LIMIT 100
-```
+
+   ```sql
+   -- Good - Narrows data scan to one day
+   SELECT * FROM my_namespace.events
+   WHERE timestamp BETWEEN '2024-01-01' AND '2024-01-02'
+   LIMIT 100
+   ```
+
+
 2. **Use selective filtering**: Include specific conditions to reduce result sets.
-```sql
--- Good - Multiple filters reduce scanned data
-SELECT * FROM my_namespace.events
-WHERE status = 200 AND region = 'US' AND timestamp > '2024-01-01'
-LIMIT 100
-```
+
+   ```sql
+   -- Good - Multiple filters reduce scanned data
+   SELECT * FROM my_namespace.events
+   WHERE status = 200 AND region = 'US' AND timestamp > '2024-01-01'
+   LIMIT 100
+   ```
+
+
 3. **Select specific columns**: Avoid `SELECT *` when you only need a few fields.
-```sql
--- Good - Only reads the columns you need
-SELECT user_id, status, timestamp
-FROM my_namespace.events
-WHERE timestamp > '2024-01-01'
-LIMIT 100
-```
+
+   ```sql
+   -- Good - Only reads the columns you need
+   SELECT user_id, status, timestamp
+   FROM my_namespace.events
+   WHERE timestamp > '2024-01-01'
+   LIMIT 100
+   ```
+
+
 4. **Use EXPLAIN to inspect the execution plan**: Verify that predicate pushdown and file pruning are working.
-```sql
-EXPLAIN SELECT user_id, status
-FROM my_namespace.events
-WHERE timestamp > '2024-01-01' AND status = 200
-```
+
+   ```sql
+   EXPLAIN SELECT user_id, status
+   FROM my_namespace.events
+   WHERE timestamp > '2024-01-01' AND status = 200
+   ```
+
+
 5. **Enable compaction**: Enable compaction in R2 Data Catalog to reduce the number of small files scanned per query.
 
 Was this helpful?

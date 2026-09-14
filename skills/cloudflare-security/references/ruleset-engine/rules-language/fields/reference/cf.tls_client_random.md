@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_random
 
-`cf.tls_client_random` `String`
+`cf.tls_client_random``String`
 
 The value of the 32-byte random value provided by the client in a [TLS handshake](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake), encoded in Base64.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* SSL/TLS
+- Request
+- SSL/TLS
 
 Was this helpful?
 

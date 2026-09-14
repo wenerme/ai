@@ -16,20 +16,20 @@ t
 
 Text Generation • thinkingmachines
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `thinkingmachines/inkling`
 
-* Third-party
+- Third-party
 
 Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.
 
-| Model Info                                                                          |                                                                                                                            |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 64,000 tokens                                                                                                              |
-| More information                                                                    | [link ↗](https://huggingface.co/thinkingmachines/Inkling)                                                                  |
-| Request formats                                                                     | Anthropic Messages                                                                                                         |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 64,000 tokens |
+| More information | [link ↗](https://huggingface.co/thinkingmachines/Inkling) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling) |
 
 ## Usage
 
@@ -57,7 +57,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Paris.
+```
 
 ```json
 {
@@ -88,7 +90,11 @@ Paris.
 
 ## Examples
 
-**Tool Use** — Tool use round-trip: the model requests a tool call, then answers using the tool\_result supplied in a follow-up user message
+<details>
+
+<summary>**Tool Use** — Tool use round-trip: the model requests a tool call, then answers using the tool_result supplied in a follow-up user message</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -191,7 +197,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The weather in Paris is sunny with a temperature of 22°C. Enjoy the nice weather!
+```
 
 ```json
 {
@@ -220,7 +228,13 @@ The weather in Paris is sunny with a temperature of 22°C. Enjoy the nice weathe
 }
 ```
 
-**Extended Thinking Effort** — Controlling reasoning effort via Tinker's output\_config.effort extension. The model's chain-of-thought is returned as a leading thinking content block before the answer.
+</details>
+
+<details>
+
+<summary>**Extended Thinking Effort** — Controlling reasoning effort via Tinker's output_config.effort extension. The model's chain-of-thought is returned as a leading thinking content block before the answer.</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -253,9 +267,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 17 × 23 = **391**
 
 (Breakdown: 17 × 20 = 340, plus 17 × 3 = 51; 340 + 51 = 391)
+```
 
 ```json
 {
@@ -284,9 +300,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -330,7 +348,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -348,9 +366,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/schema-output.json)
 
 Was this helpful?
 

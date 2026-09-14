@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Measurement
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/measurement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/measurement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enable measurement to track your traffic in a privacy-first manner, optimizing your site's speed tools. To access this feature, you need to enable [Web Analytics](https://developers.cloudflare.com/web-analytics/) on your website. This analytics tool leverages [Real User Measurement](https://developers.cloudflare.com/speed/observatory/run-speed-test/#enable-real-user-monitoring-rum) (RUM) data, providing insights based on actual user interactions to enhance site performance effectively.
 

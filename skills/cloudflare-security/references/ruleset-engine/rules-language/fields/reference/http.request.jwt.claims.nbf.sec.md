@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.jwt.claims.nbf.sec
 
-`http.request.jwt.claims.nbf.sec` `Map<Array<Integer>>`
+`http.request.jwt.claims.nbf.sec``Map<Array<Integer>>`
 
 The `nbf` (not before) claim identifies the time (number of seconds) before which the JWT must not be accepted for processing.
 
@@ -19,8 +19,8 @@ Requires a Cloudflare Enterprise plan with a paid add-on.
 For more information on validating JSON Web Tokens, refer to [JSON Web Tokens Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) in the API Shield documentation.
 
 Categories:
-* Request
-* JWT validation
+- Request
+- JWT validation
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Registrar offers several advantages over other [registrars ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/), such as domain name registration renewal [without markups fees ↗](https://www.cloudflare.com/products/registrar/). You only pay what is charged by registries and [ICANN ↗](https://www.icann.org/). Cloudflare Registrar also offers additional security features, such as free, one-click activation for [Domain Name System Security Extensions (DNSSEC)](https://developers.cloudflare.com/registrar/get-started/enable-dnssec/), [custom domain protection](https://developers.cloudflare.com/registrar/custom-domain-protection/), and [WHOIS redaction](https://developers.cloudflare.com/registrar/account-options/whois-redaction/).
 

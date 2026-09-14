@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Automated testing pipeline
 
-Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.
 
@@ -21,15 +21,23 @@ Build a testing pipeline that clones Git repositories, installs dependencies, ru
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You'll also need a GitHub repository with tests (public or private with access token).
 
-## 1\. Create your project
+## 1. Create your project
 
 npmyarnpnpm
 
@@ -49,7 +57,7 @@ pnpm create cloudflare@latest test-pipeline --template=cloudflare/sandbox-sdk/ex
 cd test-pipeline
 ```
 
-## 2\. Build the pipeline
+## 2. Build the pipeline
 
 Replace `src/index.ts`:
 
@@ -196,7 +204,7 @@ function getTestCommand(projectType: string): string {
 }
 ```
 
-## 3\. Test locally
+## 3. Test locally
 
 Start the dev server:
 
@@ -225,7 +233,7 @@ You will see progress logs in the wrangler console, and receive a JSON response:
 }
 ```
 
-## 4\. Deploy
+## 4. Deploy
 
 ```sh
 npx wrangler deploy
@@ -241,16 +249,16 @@ npx wrangler secret put GITHUB_TOKEN
 
 An automated testing pipeline that:
 
-* Clones Git repositories
-* Detects project type (Node.js, Python, Go)
-* Installs dependencies automatically
-* Runs tests and reports results
+- Clones Git repositories
+- Detects project type (Node.js, Python, Go)
+- Installs dependencies automatically
+- Runs tests and reports results
 
 ## Next steps
 
-* [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) \- Add real-time test output
-* [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Handle long-running tests
-* [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Cache dependencies between runs
+- [Streaming output](https://developers.cloudflare.com/sandbox/guides/streaming-output/) - Add real-time test output
+- [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Handle long-running tests
+- [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Cache dependencies between runs
 
 Was this helpful?
 

@@ -12,9 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced certificates
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use advanced certificates when you want something more customizable than [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) but still want the convenience of SSL certificate issuance and renewal.
+
 
 
 To order advanced certificates, you must purchase the Advanced Certificate Manager add-on. This add-on also unlocks the features listed below.
@@ -23,16 +24,16 @@ To order advanced certificates, you must purchase the Advanced Certificate Manag
 
 Advanced Certificate Manager allows you to:
 
-* Order advanced certificates that can:
-  * Include up to 50 hosts as covered hostnames (the zone apex must be one of these 50).
-  * Cover more than one level of subdomain.
-  * Be issued by the certificate authority (CA) you choose.
-  * Use your preferred validation method.
-  * Have the validity period you choose.
-* Automate domain control validation (DCV) for zones on a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) using [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/).
-* Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically protect proxied hostnames.
-* Select a [custom trust store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) for origin authentication.
-* Control [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) and [per-hostname minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#per-hostname).
+- Order advanced certificates that can:
+  - Include up to 50 hosts as covered hostnames (the zone apex must be one of these 50).
+  - Cover more than one level of subdomain.
+  - Be issued by the certificate authority (CA) you choose.
+  - Use your preferred validation method.
+  - Have the validity period you choose.
+- Automate domain control validation (DCV) for zones on a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) using [delegated DCV](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/).
+- Enable [Total TLS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/) to automatically protect proxied hostnames.
+- Select a [custom trust store](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/) for origin authentication.
+- Control [cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) and [per-hostname minimum TLS version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/#per-hostname).
 
 Note
 
@@ -44,8 +45,8 @@ On Partial zones, Universal SSL is provisioned per proxied hostname regardless o
 
 ## Availability
 
-|              | Free        | Pro         | Business    | Enterprise  |
-| ------------ | ----------- | ----------- | ----------- | ----------- |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
 | Availability | Paid add-on | Paid add-on | Paid add-on | Paid add-on |
 
 Note
@@ -76,16 +77,16 @@ If you want to automatically issue certificates for all proxied hostnames withou
 
 These limits are defined by internet standards ([RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035) and [RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280)) and apply to all certificates, regardless of the certificate authority:
 
-* **Total domain length**: The entire domain name cannot exceed 253 characters.
-* **Label length**: Each individual level (the text between dots) cannot exceed 63 characters.
-* **Common Name (CN) length**: The Common Name field of a certificate cannot exceed 64 characters. If a hostname on your certificate exceeds 64 characters, you must order the certificate via the [API](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/) and set the `cloudflare_branding` option to `true`. This places `sni.cloudflaressl.com` in the CN field and your long hostname in the SAN field. The dashboard does not support ordering certificates with hostnames longer than 64 characters.
+- **Total domain length**: The entire domain name cannot exceed 253 characters.
+- **Label length**: Each individual level (the text between dots) cannot exceed 63 characters.
+- **Common Name (CN) length**: The Common Name field of a certificate cannot exceed 64 characters. If a hostname on your certificate exceeds 64 characters, you must order the certificate via the [API](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/) and set the `cloudflare_branding` option to `true`. This places `sni.cloudflaressl.com` in the CN field and your long hostname in the SAN field. The dashboard does not support ordering certificates with hostnames longer than 64 characters.
 
 ### Wildcard coverage
 
 Wildcard certificates only cover **one subdomain level**:
 
-* A certificate for `*.example.com` covers `www.example.com` and `api.example.com` but **not** `api.staging.example.com`.
-* To cover multiple levels, you must explicitly add a wildcard for each level to your certificate (for example, `*.example.com`, `*.staging.example.com`).
+- A certificate for `*.example.com` covers `www.example.com` and `api.example.com` but **not** `api.staging.example.com`.
+- To cover multiple levels, you must explicitly add a wildcard for each level to your certificate (for example, `*.example.com`, `*.staging.example.com`).
 
 ### Hostnames per certificate
 
@@ -97,8 +98,8 @@ The character-length limits above (253-character total, 63-character label, 64-c
 
 ## Related resources
 
-* [Manage advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/)
-* [API commands](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/api-commands/)
+- [Manage advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/)
+- [API commands](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/api-commands/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure webhooks
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,8 +22,7 @@ There are a variety of services you can connect to Cloudflare using webhooks to 
 
 ## Configure webhooks
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Webhooks** card, select **Create**.
 4. Give your webhook a name to use for identification later.
@@ -37,8 +36,7 @@ The new webhook will appear in the **Webhooks** card.
 
 You can only edit the name of webhooks and/or delete them.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Webhooks** card, select **Edit** on the webhook that you want to edit.
 4. Update the webhook's name and select **Save**.
@@ -49,7 +47,7 @@ You can delete a webhook after selecting **Edit** or by selecting **Delete** in 
 
 Webhook notifications are sent from [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/). If your webhook endpoint is protected by a firewall, you must allowlist these IP addresses to receive notifications.
 
-To programmatically retrieve the current list of Cloudflare IP addresses, use the [Cloudflare API](https://developers.cloudflare.com/api/resources/cloudflare%5Fips/methods/list/).
+To programmatically retrieve the current list of Cloudflare IP addresses, use the [Cloudflare API](https://developers.cloudflare.com/api/resources/cloudflare_ips/methods/list/).
 
 Note
 
@@ -64,6 +62,8 @@ It is always recommended to use a secret for generic webhooks. Cloudflare will s
 After selecting **Save and Test**, your webhook should now be configured as a destination that you can use to attach to policies.
 
 When Cloudflare sends you a webhook, it will have the following schema:
+
+*Example schemajson*
 
 ```json
 {
@@ -91,45 +91,45 @@ Cloudflare has an [example tool ↗](https://github.com/cloudflare/cf-webhook-re
 
 For [Google Chat ↗](https://developers.google.com/chat/how-tos/webhooks):
 
-* **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
-* **URL**: URL varies depending on the Google Chat channel's address.
+- **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
+- **URL**: URL varies depending on the Google Chat channel's address.
 
 ### Slack
 
 For [Slack ↗](https://api.slack.com/messaging/webhooks):
 
-* **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
-* **URL**: URL varies depending on the Slack channel's address.
+- **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
+- **URL**: URL varies depending on the Slack channel's address.
 
 ### DataDog
 
 For [DataDog ↗](https://docs.datadoghq.com/api/latest/events/#post-an-event):
 
-* **Secret**: The secret is required and has to be entered by the user. This is what DataDog refers to as [API Key ↗](https://app.datadoghq.com/account/settings#api)
-* **URL**: `https://api.datadoghq.com/api/v1/events`
+- **Secret**: The secret is required and has to be entered by the user. This is what DataDog refers to as [API Key ↗](https://app.datadoghq.com/account/settings#api)
+- **URL**: `https://api.datadoghq.com/api/v1/events`
 
 ### Discord
 
 For [Discord ↗](https://discord.com/developers/docs/resources/webhook#execute-webhook):
 
-* **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
-* **URL**: URL varies depending on the Discord channel's address.
+- **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
+- **URL**: URL varies depending on the Discord channel's address.
 
 ### OpsGenie
 
 For [OpsGenie ↗](https://support.atlassian.com/opsgenie/docs/create-a-default-api-integration):
 
-* **Secret**: The secret is the `API Key` for OpsGenie's REST API.
-* **URL**: `https://api.opsgenie.com/v2/alerts`
+- **Secret**: The secret is the `API Key` for OpsGenie's REST API.
+- **URL**: `https://api.opsgenie.com/v2/alerts`
 
 ### Splunk
 
 For [Splunk ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector):
 
-* **Secret**: The secret is required and has to be entered by the user. This is what Splunk refers to as `token`. Refer to [Splunk’s documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#How%5Fthe%5FSplunk%5Fplatform%5Fuses%5FHTTP%5FEvent%5FCollector%5Ftokens%5Fto%5Fget%5Fdata%5Fin) for details.
-* **URL**:
+- **Secret**: The secret is required and has to be entered by the user. This is what Splunk refers to as `token`. Refer to [Splunk’s documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector#How_the_Splunk_platform_uses_HTTP_Event_Collector_tokens_to_get_data_in) for details.
+- **URL**:
   1. We only support three Splunk endpoints: services/collector, services/collector/raw, and services/collector/event.
-  2. If SSL is enabled on the token, the port must be 443\. If SSL is not enabled on the token, the port must be 8088.
+  2. If SSL is enabled on the token, the port must be 443. If SSL is not enabled on the token, the port must be 8088.
   3. SSL must be enabled on the server.
   4. **Enable indexer acknowledgement** must be disabled on the Splunk HTTP Event Collector.
 
@@ -137,35 +137,37 @@ For [Splunk ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/Usethe
 
 For [Feishu ↗](https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot):
 
-* **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
-* **URL**: The URL varies depending on the Custom Robot.
+- **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
+- **URL**: The URL varies depending on the Custom Robot.
 
 ### Teams
 
 For [Teams ↗](https://docs.microsoft.com/en-us/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook):
 
-* **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
-* **URL**: URL is provided by Teams when the Incoming Webhook connector is created.
+- **Secret**: The secret is part of the URL. Cloudflare parses this information automatically and there is no input needed from the user.
+- **URL**: URL is provided by Teams when the Incoming Webhook connector is created.
 
 ### ServiceNow
 
 For [ServiceNow ↗](https://docs.servicenow.com/bundle/tokyo-application-development/page/administer/integrationhub-store-spokes/task/govnotify-wbhk.html):
 
-* **Secret**: User decides. Ensure that the secret entered in Cloudflare Notifications matches with ServiceNow. Refer to [ServiceNow's documentation ↗](https://docs.servicenow.com/bundle/washingtondc-integrate-applications/page/administer/integrationhub/concept/rest-trigger.html) for details.
-* **URL**: `https://{servicenow_instance}.com/{base_api_path}`
+- **Secret**: User decides. Ensure that the secret entered in Cloudflare Notifications matches with ServiceNow. Refer to [ServiceNow's documentation ↗](https://docs.servicenow.com/bundle/washingtondc-integrate-applications/page/administer/integrationhub/concept/rest-trigger.html) for details.
+- **URL**: `https://{servicenow_instance}.com/{base_api_path}`
 
 ### Generic webhook
 
 For a Generic webhook:
 
-* **Secret**: User decides.
-* **URL**: User decides.
+- **Secret**: User decides.
+- **URL**: User decides.
 
 ### Configuration of secrets
 
 When creating a Google Chat, Slack, Discord, or Feishu webhook, the secret is part of the URL. You can choose to remove the secret from the URL and explicitly set the value of `secret` rather than letting Cloudflare automatically extract it.
 
 This can be useful when defining your webhook infrastructure as code using Terraform since the URL will not be modified by Cloudflare.
+
+*Terraform exampletf*
 
 ```tf
 resource "cloudflare_notification_policy_webhooks" "example" {

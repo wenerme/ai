@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Version affinity
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 During a [gradual deployment](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/), each request has a random chance of routing to either version based on the specified percentages. This means the same user can be served content from a different version every time a request is made, which can cause **version skew** issues.
 
@@ -38,8 +38,8 @@ Version affinity is particularly important when your Worker serves [static asset
 
 During a gradual rollout, different versions of your application will have different asset filenames:
 
-* Version A's HTML references `assets/index-a1b2c3d4.js`
-* Version B's HTML references `assets/index-m3n4o5p6.js`
+- Version A's HTML references `assets/index-a1b2c3d4.js`
+- Version B's HTML references `assets/index-m3n4o5p6.js`
 
 Without version affinity, a user can receive HTML from version A, but when their browser requests `index-a1b2c3d4.js`, that request may be routed to version B - which does not have that file - resulting in a 404 error and a broken page.
 
@@ -63,7 +63,7 @@ Text in **Expression Editor**:
 http.cookie contains "user_id"
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Cloudflare-Workers-Version-Key`
 
@@ -79,7 +79,7 @@ Text in **Expression Editor**:
 http.cookie contains "session_id"
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Cloudflare-Workers-Version-Key`
 
@@ -97,7 +97,7 @@ Text in **Expression Editor**:
 true
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Cloudflare-Workers-Version-Key`
 
@@ -161,7 +161,7 @@ Text in **Expression Editor**:
 http.cookie contains "version-key"
 ```
 
-Selected operation under **Modify request header**: _Set dynamic_
+Selected operation under **Modify request header**: *Set dynamic*
 
 **Header name**: `Cloudflare-Workers-Version-Key`
 
@@ -187,9 +187,9 @@ During gradual rollouts, monitor your Worker's analytics for increased 404 respo
 
 ## Related resources
 
-* [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) \- How percentage-based traffic splitting works
-* [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) \- Send a request to a specific version by ID (for smoke testing and debugging, not for end-user routing)
-* [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) \- Access version ID and tag from within your Worker
+- [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) - How percentage-based traffic splitting works
+- [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) - Send a request to a specific version by ID (for smoke testing and debugging, not for end-user routing)
+- [Version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) - Access version ID and tag from within your Worker
 
 Was this helpful?
 

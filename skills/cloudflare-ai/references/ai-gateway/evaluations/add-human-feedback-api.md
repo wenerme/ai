@@ -12,21 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add Human Feedback using API
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through the steps of adding human feedback to an AI Gateway request using the Cloudflare API. You will learn how to retrieve the relevant request logs, and submit feedback using the API.
 
 If you prefer to add human feedback via the dashboard, refer to [Add Human Feedback](https://developers.cloudflare.com/ai-gateway/evaluations/add-human-feedback/).
 
-## 1\. Create an API Token
+## 1. Create an API Token
 
 1. [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-* `AI Gateway - Read`
-* `AI Gateway - Edit`
-1. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-2. Using that API token and Account ID, send a [POST request](https://developers.cloudflare.com/api/resources/ai%5Fgateway/methods/create/) to the Cloudflare API.
 
-## 2\. Retrieve the `cf-aig-log-id`
+- `AI Gateway - Read`
+- `AI Gateway - Edit`
+
+2. Get your [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+3. Using that API token and Account ID, send a [`POST` request](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) to the Cloudflare API.
+
+## 2. Retrieve the `cf-aig-log-id`
 
 The `cf-aig-log-id` is a unique identifier for the specific log entry to which you want to add feedback. Below are two methods to obtain this identifier.
 
@@ -55,15 +57,26 @@ In the example below, the `cf-aig-log-id` is `01JADMCQQQBWH3NXZ5GCRN98DP`.
 
 ### Method 2: Retrieve the `cf-aig-log-id` via API (GET request)
 
-If you do not have the `cf-aig-log-id` in the response body or you need to access it after the fact, you are able to retrieve it by querying the logs using the [Cloudflare API](https://developers.cloudflare.com/api/resources/ai%5Fgateway/subresources/logs/methods/list/).
+If you do not have the `cf-aig-log-id` in the response body or you need to access it after the fact, you are able to retrieve it by querying the logs using the [Cloudflare API](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/list/).
 
 Send a `GET` request to get a list of logs and then find a specific ID
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `AI Gateway Write`
-* `AI Gateway Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>AI Gateway Write</code>
+- <code>AI Gateway Read</code>
+
+</details>
+
+*List Gateway Logsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs" \
@@ -123,14 +136,25 @@ Note:
 
 The `aiGatewayLogId` property, will only hold the last inference call log id.
 
-## 3\. Submit feedback via PATCH request
+## 3. Submit feedback via PATCH request
 
 Once you have both the API token and the `cf-aig-log-id`, you can send a PATCH request to submit feedback.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `AI Gateway Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>AI Gateway Write</code>
+
+</details>
+
+*Patch Gateway Logbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$GATEWAY_ID/logs/$ID" \
@@ -149,12 +173,12 @@ If you had negative feedback, adjust the body of the request to be `-1`.
 }
 ```
 
-## 4\. Verify the feedback submission
+## 4. Verify the feedback submission
 
 You can verify the feedback submission in two ways:
 
-* **Through the [Cloudflare dashboard  ↗](https://dash.cloudflare.com)**: check the updated feedback on the AI Gateway interface.
-* **Through the API**: Send another GET request to retrieve the updated log entry and confirm the feedback has been recorded.
+- **Through the [Cloudflare dashboard ↗](https://dash.cloudflare.com)**: check the updated feedback on the AI Gateway interface.
+- **Through the API**: Send another GET request to retrieve the updated log entry and confirm the feedback has been recorded.
 
 Was this helpful?
 

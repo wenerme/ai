@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fine Tune Models With AutoTrain from HuggingFace
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/fine-tune-models-with-autotrain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Fine tuning an AI model gives you the opportunity to add additional training data to the model. Workers AI allows for [Low-Rank Adaptation, LoRA, adapters](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/) that will allow you to finetune our models.
 
-In this tutorial, we will explore how to create our own LoRAs. We will focus on [LLM Finetuning using AutoTrain ↗](https://huggingface.co/docs/autotrain/llm%5Ffinetuning).
+In this tutorial, we will explore how to create our own LoRAs. We will focus on [LLM Finetuning using AutoTrain ↗](https://huggingface.co/docs/autotrain/llm_finetuning).
 
-## 1\. Create a CSV file with your training data
+## 1. Create a CSV file with your training data
 
 Start by creating a CSV, Comma Separated Values, file. This file will only have one column named `text`. Set the header by adding the word `text` on a line by itself.
 
@@ -42,9 +42,9 @@ Different models, like Mistral, will provide a specific [chat template/instructi
 <s>[INST] What is the meaning of life? [/INST] 42</s>
 ```
 
-## 2\. Configure the HuggingFace Autotrain Advanced Notebook
+## 2. Configure the HuggingFace Autotrain Advanced Notebook
 
-Open the [HuggingFace Autotrain Advanced Notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain%5FLLM.ipynb)
+Open the [HuggingFace Autotrain Advanced Notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb)
 
 In order to give your AutoTrain ample memory, you will need to need to choose a different Runtime. From the menu at the top of the Notebook choose Runtime > Change Runtime Type. Choose A100.
 
@@ -58,12 +58,12 @@ The notebook contains a few interactive sections that we will need to change.
 
 Modify the following fields
 
-* **project\_name**: Choose a descriptive name for you to remember later
-* **model\_name**: Choose from the one of the official HuggingFace base models that we support:
-  * `mistralai/Mistral-7B-Instruct-v0.2`
-  * `google/gemma-2b-it`
-  * `google/gemma-7b-it`
-  * `meta-llama/llama-2-7b-chat-hf`
+- **project\_name**: Choose a descriptive name for you to remember later
+- **model\_name**: Choose from the one of the official HuggingFace base models that we support:
+  - `mistralai/Mistral-7B-Instruct-v0.2`
+  - `google/gemma-2b-it`
+  - `google/gemma-7b-it`
+  - `meta-llama/llama-2-7b-chat-hf`
 
 ### Optional Section: Push to Hub
 
@@ -71,14 +71,14 @@ Although not required to use AutoTrain, creating a [HuggingFace account ↗](htt
 
 If you do not perform the HuggingFace setup you can still download your files from the Notebook.
 
-Follow the instructions [in the notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain%5FLLM.ipynb) to create an account and token if necessary.
+Follow the instructions [in the notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb) to create an account and token if necessary.
 
 ### Section: Hyperparameters
 
 We only need to change a few of these fields to ensure things work on Cloudflare Workers AI.
 
-* **quantization**: Change the drop down to `none`
-* **lora-r**: Change the value to `8`
+- **quantization**: Change the drop down to `none`
+- **lora-r**: Change the value to `8`
 
 Caution
 
@@ -86,7 +86,7 @@ At the time of this writing, changing the quantization field breaks the code gen
 
 Change the line that says `quantization = none` to `quantization = "none"`.
 
-## 3\. Upload your CSV file to the Notebook
+## 3. Upload your CSV file to the Notebook
 
 Notebooks have a folder structure which you can access by clicking the folder icon on the left hand navigation bar.
 
@@ -96,7 +96,7 @@ You can drag your CSV file into the notebook.
 
 Ensure that it is named **train.csv**
 
-## 4\. Execute the Notebook
+## 4. Execute the Notebook
 
 In the Notebook menu, choose Runtime > Run All.
 
@@ -110,7 +110,7 @@ If you encounter the following error, it is caused by an Out of Memory error. Yo
 subprocess.CalledProcessError: Command '['/usr/bin/python3', '-m', 'autotrain.trainers.clm', '--training_config', 'blog-instruct/training_params.json']' died with <Signals.SIGKILL: 9>.
 ```
 
-## 5\. Download The LoRA
+## 5. Download The LoRA
 
 ### Optional: HuggingFace
 
@@ -122,10 +122,10 @@ In your Notebook you can also find the needed files. A new folder that matches y
 
 Download the following files:
 
-* `adapter_model.safetensors`
-* `adapter_config.json`
+- `adapter_model.safetensors`
+- `adapter_config.json`
 
-## 6\. Update Adapter Config
+## 6. Update Adapter Config
 
 You need to add one line to your `adapter_config.json` that you downloaded.
 
@@ -133,13 +133,13 @@ You need to add one line to your `adapter_config.json` that you downloaded.
 
 Where `model_type` is the architecture. Current valid values are `mistral`, `gemma`, and `llama`.
 
-## 7\. Upload the Fine Tune to your Cloudflare Account
+## 7. Upload the Fine Tune to your Cloudflare Account
 
 Now that you have your files, you can add them to your account.
 
 You can either use the [REST API or Wrangler](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/).
 
-## 8\. Use your Fine Tune in your Generations
+## 8. Use your Fine Tune in your Generations
 
 After you have your new fine tune all set up, you are ready to [put it to use in your inference requests](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/#running-inference-with-loras).
 

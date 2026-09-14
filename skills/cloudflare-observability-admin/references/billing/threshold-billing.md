@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Threshold billing
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/threshold-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/threshold-billing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Threshold billing is an automatic payment collection mechanism for Cloudflare's usage-based products. When your combined usage charges across all usage-based products reach a certain level during a billing cycle, Cloudflare generates a mid-cycle invoice and charges your payment method on file.
 
 ## How threshold billing works
 
-1. **Usage accumulates** \- As you use Cloudflare's usage-based products, charges accrue throughout your billing cycle across all these products combined.
-2. **Threshold reached** \- When your total accumulated usage charges reach the threshold, Cloudflare automatically generates a mid-cycle invoice.
-3. **Payment collected** \- Your payment method on file is charged for the threshold invoice amount.
-4. **One-time trigger** \- The threshold fires once per account. After a threshold invoice is generated, your account returns to standard end-of-cycle billing.
-5. **End-of-cycle invoice** \- At the end of your billing cycle, you receive your regular invoice which includes only the remaining usage charges not already covered by the threshold invoice.
+1. **Usage accumulates** - As you use Cloudflare's usage-based products, charges accrue throughout your billing cycle across all these products combined.
+2. **Threshold reached** - When your total accumulated usage charges reach the threshold, Cloudflare automatically generates a mid-cycle invoice.
+3. **Payment collected** - Your payment method on file is charged for the threshold invoice amount.
+4. **One-time trigger** - The threshold fires once per account. After a threshold invoice is generated, your account returns to standard end-of-cycle billing.
+5. **End-of-cycle invoice** - At the end of your billing cycle, you receive your regular invoice which includes only the remaining usage charges not already covered by the threshold invoice.
 
 Note
 
@@ -30,11 +30,11 @@ You will never be double-charged. The threshold invoice and end-of-cycle invoice
 
 ### Example
 
-| Event                                       | Charge                                             |
-| ------------------------------------------- | -------------------------------------------------- |
-| Combined usage reaches threshold mid-cycle  | Threshold invoice charged (for example, $127.50)   |
+| Event | Charge |
+| --- | --- |
+| Combined usage reaches threshold mid-cycle | Threshold invoice charged (for example, $127.50) |
 | End of billing cycle (total usage was $180) | End-of-cycle invoice charged (for example, $52.50) |
-| **Total charged**                           | **$180**                                           |
+| **Total charged** | **$180** |
 
 ## Products subject to threshold billing
 
@@ -54,11 +54,10 @@ Enterprise accounts and startup program participants are not subject to threshol
 
 If the payment for a threshold invoice fails:
 
-1. **Automatic retries** \- Cloudflare will automatically retry the payment over a 5-day period.
-2. **Email notification** \- You will receive an email notifying you of the failed payment with a link to pay the invoice or update your payment method.
-3. **Manual payment** \- You can pay the invoice directly at any time during the retry period through your Cloudflare dashboard.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
-4. **After retries exhausted** \- If all payment retries fail, the invoice is marked as uncollectable and your account may be restricted.
+1. **Automatic retries** - Cloudflare will automatically retry the payment over a 5-day period.
+2. **Email notification** - You will receive an email notifying you of the failed payment with a link to pay the invoice or update your payment method.
+3. **Manual payment** - You can pay the invoice directly at any time during the retry period through your Cloudflare dashboard. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+4. **After retries exhausted** - If all payment retries fail, the invoice is marked as uncollectable and your account may be restricted.
 
 To avoid service interruption, ensure your payment method on file is current and has sufficient funds.
 
@@ -67,8 +66,7 @@ To avoid service interruption, ensure your payment method on file is current and
 All threshold invoices appear in your billing history alongside your regular invoices.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
-2. Go to **Manage Account** \> **Billing**.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices** to view your invoice history.
 
 Threshold invoices are labeled to distinguish them from regular end-of-cycle invoices.

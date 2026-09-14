@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multi-signer DNSSEC
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [About](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/)
-* [Set up multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/)
+- [About](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/)
+- [Set up multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/setup/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Gateway
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), our comprehensive Secure Web Gateway, allows you to set up policies to inspect DNS, network, HTTP, and egress traffic.
 
@@ -34,19 +34,19 @@ Because Gateway cannot discern Cloudflare WAN traffic, you must use [Cloudflare 
 
 For example, if your organization onboards devices to Cloudflare WAN using the Cloudflare One Client, you can exempt devices not running the Cloudflare One Client using [OS version checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/):
 
-| Selector                     | Operator | Value                | Logic | Action         |
-| ---------------------------- | -------- | -------------------- | ----- | -------------- |
-| Passed Device Posture Checks | not in   | Windows (OS version) | Or    | Do Not Inspect |
-| Passed Device Posture Checks | not in   | macOS (OS version)   | Or    | Do Not Inspect |
-| Passed Device Posture Checks | not in   | Linux (OS version)   | Or    | Do Not Inspect |
-| Passed Device Posture Checks | not in   | iOS (OS version)     | Or    | Do Not Inspect |
-| Passed Device Posture Checks | not in   | Android (OS version) |       | Do Not Inspect |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Passed Device Posture Checks | not in | Windows (OS version) | Or | Do Not Inspect |
+| Passed Device Posture Checks | not in | macOS (OS version) | Or | Do Not Inspect |
+| Passed Device Posture Checks | not in | Linux (OS version) | Or | Do Not Inspect |
+| Passed Device Posture Checks | not in | iOS (OS version) | Or | Do Not Inspect |
+| Passed Device Posture Checks | not in | Android (OS version) |  | Do Not Inspect |
 
 If your organization onboards users to Cloudflare WAN using an [on-ramp other than the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-wan/on-ramps/), you can exempt devices from inspection using the IP addresses for your IPsec tunnels:
 
-| Selector  | Operator | Value          | Action         |
-| --------- | -------- | -------------- | -------------- |
-| Source IP | in       | 203.0.113.0/24 | Do Not Inspect |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Source IP | in | `203.0.113.0/24` | Do Not Inspect |
 
 ## DNS filtering
 
@@ -56,7 +56,7 @@ When you resolve DNS queries from Cloudflare WAN through Gateway, Gateway will l
 
 The following diagram illustrates how DNS queries from Cloudflare WAN and Cloudflare Mesh flow through Gateway to your internal DNS:
 
-
+```
 flowchart LR
 accTitle: DNS query flow
 accDescr: Shows how DNS queries from Cloudflare WAN and Cloudflare Mesh flow through Gateway to internal DNS.
@@ -75,12 +75,14 @@ end
   WarpConnector@{ shape: in-out}
   CloudflareWAN@{ shape: in-out}
 
+```
+
 ## Outbound Internet traffic
 
 By default, the following traffic routed through IPsec/GRE tunnels and destined to public IP addresses is proxied/filtered through Cloudflare Gateway:
 
-* TCP, UDP, and ICMP traffic sourced from [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) IPs or devices.
-* TCP and UDP traffic sourced from [BYOIP](https://developers.cloudflare.com/byoip/) or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) and destined to a well-known port (`0`\-`1023`).
+- TCP, UDP, and ICMP traffic sourced from [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) IPs or devices.
+- TCP and UDP traffic sourced from [BYOIP](https://developers.cloudflare.com/byoip/) or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) and destined to a well-known port ( `0`- `1023`).
 
 By default, traffic destined to public IPs will be routed over the public Internet. If you want to configure specific public IP ranges to be routed through your IPsec/GRE tunnels instead of over the public Internet after filtering, contact your account team.
 
@@ -96,27 +98,27 @@ Contact your account team to enable Gateway filtering for traffic destined to ro
 
 When enabled, TCP/UDP traffic meeting **all** the following criteria will be proxied and filtered by Cloudflare Gateway:
 
-* **Source and destination IPs**: Both must be part of [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) space, [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/), [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
-* **Source port**: Must be a client port strictly higher than `1023`.
-* **Destination port**: Must be a well-known port (lower than `1024`).
+- **Source and destination IPs**: Both must be part of [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) space, [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/), [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
+- **Source port**: Must be a client port strictly higher than `1023`.
+- **Destination port**: Must be a well-known port (lower than `1024`).
 
 ### Custom filtering criteria
 
 You can specify more specific matches to override the default criteria:
 
-* **Source IP prefix**: A subset of RFC1918 space, [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
-* **Destination IP prefix**: A subset of RFC1918 space, [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
-* **Destination port**: Any port from `0` to `65535`.
+- **Source IP prefix**: A subset of RFC1918 space, [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
+- **Destination IP prefix**: A subset of RFC1918 space, [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
+- **Destination port**: Any port from `0` to `65535`.
 
 Note
 
-Source ports are fixed to `1024`\-`65535` and cannot be overridden.
+Source ports are fixed to `1024`-`65535` and cannot be overridden.
 
-Run <code>traceroute</code>
+Run \<code>traceroute\</code>
 
 If you connect through [GRE](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [IPsec](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/), [CNI](https://developers.cloudflare.com/network-interconnect/), or [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/) and want to run `traceroute` to an endpoint behind a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/), you need to change some settings.
 
-Refer to [Run traceroute](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
+Refer to [Run `traceroute`](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/traceroute/) for more information.
 
 ## Test Gateway integration
 
@@ -128,15 +130,15 @@ Confirm there is an entry for the test in [HTTP Gateway Activity Logs](https://d
 
 Verify the following details:
 
-* **Destination IP**: Should be the public IP address of `ifconfig.me`.
-* **Source IP**: Should be the private (WAN) address of the host with the browser.
-* **Outbound connection**: Should be sourced from a Cloudflare WAN IP address, not any public IP address that Cloudflare might be advertising on your behalf.
+- **Destination IP**: Should be the public IP address of `ifconfig.me`.
+- **Source IP**: Should be the private (WAN) address of the host with the browser.
+- **Outbound connection**: Should be sourced from a Cloudflare WAN IP address, not any public IP address that Cloudflare might be advertising on your behalf.
 
 This applies when using [Magic Transit With Egress Option](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#magic-transit-with-egress-option-enabled) as well.
 
 Additionally, test both `http://ifconfig.me` (non-TLS) and `https://ifconfig.me` (TLS) to ensure that your [TCP maximum segment size (MSS Clamping)](https://developers.cloudflare.com/cloudflare-wan/get-started/#set-maximum-segment-size) has been set properly.
 
-If the HTTPS query hangs or fails but HTTP works, the MSS value may be too high or not set. Reduce this value on your customer premise equipment to match the overhead introduced by your [IKE](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters) and [ESP ↗](https://en.wikipedia.org/wiki/IPsec#Encapsulating%5FSecurity%5FPayload) settings.
+If the HTTPS query hangs or fails but HTTP works, the MSS value may be too high or not set. Reduce this value on your customer premise equipment to match the overhead introduced by your [IKE](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters) and [ESP ↗](https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload) settings.
 
 Was this helpful?
 

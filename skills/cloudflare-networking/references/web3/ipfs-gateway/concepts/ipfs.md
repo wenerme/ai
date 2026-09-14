@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Interplanetary File System (IPFS)
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Interplanetary File System (IPFS) is a peer-to-peer file storage network. Instead of storing files on a single server (the way traditional web hosting works), IPFS distributes files across many computers around the world.
 
@@ -30,11 +30,11 @@ IPFS uses [SHA-256 ↗](https://en.wikipedia.org/wiki/SHA-2) by default, and enc
 
 A CID typically looks like: `QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco`
 
-IPFS also supports other encodings ([Base32 ↗](https://en.wikipedia.org/wiki/Base32)) and hash algorithms ([SHA-3 ↗](https://en.wikipedia.org/wiki/SHA-3), [BLAKE2 ↗](https://en.wikipedia.org/wiki/BLAKE%5F%28hash%5Ffunction%29)).
+IPFS also supports other encodings ([Base32 ↗](https://en.wikipedia.org/wiki/Base32)) and hash algorithms ([SHA-3 ↗](https://en.wikipedia.org/wiki/SHA-3), [BLAKE2 ↗](<https://en.wikipedia.org/wiki/BLAKE_(hash_function)>)).
 
 ## Uploading to IPFS
 
-IPFS tracks which computers have which files using a [Distributed Hash Table (DHT) ↗](https://en.wikipedia.org/wiki/Distributed%5Fhash%5Ftable) — a lookup system that maps CIDs to the network addresses of computers hosting that content. No single computer holds the entire lookup table. Instead, each computer in the network stores a portion of it and knows where to find the rest.
+IPFS tracks which computers have which files using a [Distributed Hash Table (DHT) ↗](https://en.wikipedia.org/wiki/Distributed_hash_table) — a lookup system that maps CIDs to the network addresses of computers hosting that content. No single computer holds the entire lookup table. Instead, each computer in the network stores a portion of it and knows where to find the rest.
 
 "Uploading" content to IPFS does not mean sending your file to a central server. It means announcing to the network that you have the content by adding an entry to the DHT that maps your file's CID to your network address. When someone else wants to download that file, they look up the CID in the DHT, find your address, and download the data directly from you.
 
@@ -48,10 +48,10 @@ If that folder were uploaded with the command `ipfs add -r ./example`, both the 
 
 You could then access the file in two ways:
 
-* Requesting the file directly:
-`https://cloudflare-ipfs.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy`
-* Requesting the file by name, from the directory:
-`https://cloudflare-ipfs.com/ipfs/QmdbaSQbGU6Wo9i5LyWWVLuU8g6WrYpWh2K4Li4QuuE8Fr/example_text.txt`
+- Requesting the file directly:
+  `https://cloudflare-ipfs.com/ipfs/QmXnnyufdzAWL5CqZ2RnSNgPbvCc1ALT73s6epPrRnZ1Xy`
+- Requesting the file by name, from the directory:
+  `https://cloudflare-ipfs.com/ipfs/QmdbaSQbGU6Wo9i5LyWWVLuU8g6WrYpWh2K4Li4QuuE8Fr/example_text.txt`
 
 While the CID of a file will only change if the file itself changes, the CID of a directory changes any time **any** of the files in it change, or if any files are added/removed.
 

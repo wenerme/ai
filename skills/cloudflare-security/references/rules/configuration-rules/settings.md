@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration Rules settings
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can change the configuration settings described below in a configuration rule.
 
@@ -22,9 +22,17 @@ You can change the configuration settings described below in a configuration rul
 
 Use this setting to turn on or off Automatic HTTPS Rewrites for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"automatic_https_rewrites"` (boolean).
+</summary>
+
+API configuration property name: <code>"automatic_https_rewrites"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -32,7 +40,9 @@ API configuration property name: `"automatic_https_rewrites"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Browser Integrity Check
 
@@ -40,9 +50,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Browser Integrity Check for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"bic"` (boolean).
+</summary>
+
+API configuration property name: <code>"bic"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -50,7 +68,9 @@ API configuration property name: `"bic"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Disable Real User Monitoring (RUM)
 
@@ -62,9 +82,17 @@ Warning
 
 Configuration rules have precedence over any Web Analytics rules. If a Web Analytics rule turns on analytics measurements for an incoming request and the same request matches a configuration rule turning off Web Analytics, the configuration rule will win.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"disable_rum"` (boolean).
+</summary>
+
+API configuration property name: <code>"disable_rum"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -72,7 +100,9 @@ API configuration property name: `"disable_rum"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Disable Zaraz
 
@@ -80,9 +110,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn off Zaraz for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"disable_zaraz"` (boolean).
+</summary>
+
+API configuration property name: <code>"disable_zaraz"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -90,7 +128,9 @@ API configuration property name: `"disable_zaraz"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Email Obfuscation
 
@@ -98,9 +138,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Email Obfuscation for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"email_obfuscation"` (boolean).
+</summary>
+
+API configuration property name: <code>"email_obfuscation"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -108,7 +156,9 @@ API configuration property name: `"email_obfuscation"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Fonts
 
@@ -116,9 +166,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Cloudflare Fonts for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"fonts"` (boolean).
+</summary>
+
+API configuration property name: <code>"fonts"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -126,7 +184,9 @@ API configuration property name: `"fonts"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Hotlink Protection
 
@@ -134,9 +194,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Hotlink Protection for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"hotlink_protection"` (boolean).
+</summary>
+
+API configuration property name: <code>"hotlink_protection"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -144,7 +212,9 @@ API configuration property name: `"hotlink_protection"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## I'm Under Attack
 
@@ -152,11 +222,19 @@ When enabled, [Under Attack mode](https://developers.cloudflare.com/fundamentals
 
 Use this setting to turn on or off Under Attack mode for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"security_level"` (string).
+</summary>
 
-API values: `"off"`, `"essentially_off"`, `"under_attack"`.
+API configuration property name: <code>"security_level"</code> (string).
+
+API values: <code>"off"</code>, <code>"essentially_off"</code>, <code>"under_attack"</code>.
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -164,7 +242,9 @@ API values: `"off"`, `"essentially_off"`, `"under_attack"`.
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Markdown for Agents
 
@@ -172,9 +252,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Markdown for Agents for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"content_converter"` (boolean).
+</summary>
+
+API configuration property name: <code>"content_converter"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -182,7 +270,9 @@ API configuration property name: `"content_converter"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Opportunistic Encryption
 
@@ -190,9 +280,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Opportunistic Encryption for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"opportunistic_encryption"` (boolean).
+</summary>
+
+API configuration property name: <code>"opportunistic_encryption"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -200,7 +298,9 @@ API configuration property name: `"opportunistic_encryption"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Polish
 
@@ -208,18 +308,26 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to configure Polish for matching requests:
 
-* Off
-* Lossless
-* Lossy
-* WebP
+- Off
+- Lossless
+- Lossy
+- WebP
 
 Refer to [Compression options](https://developers.cloudflare.com/images/polish/compression/#compression-options) for more information on these values.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"polish"` (string).
+</summary>
 
-API values: `"off"`, `"lossless"`, `"lossy"`, `"webp"`.
+API configuration property name: <code>"polish"</code> (string).
+
+API values: <code>"off"</code>, <code>"lossless"</code>, <code>"lossy"</code>, <code>"webp"</code>.
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -227,25 +335,35 @@ API values: `"off"`, `"lossless"`, `"lossy"`, `"webp"`.
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Request Body Buffering
 
 Use the Request Body Buffering setting to configure the request body buffering mode for matching requests:
 
-* **Standard** (default): Allows Cloudflare products to inspect a prefix of the request body when necessary for enabled functionality on your zone.
-* **Full**: Buffers the entire request body before sending the request to your origin server.
-* **None**: Strictly no buffering. The request body is streamed directly to the origin server without inspection.
+- **Standard** (default): Allows Cloudflare products to inspect a prefix of the request body when necessary for enabled functionality on your zone.
+- **Full**: Buffers the entire request body before sending the request to your origin server.
+- **None**: Strictly no buffering. The request body is streamed directly to the origin server without inspection.
 
 Caution
 
 Setting request body buffering to **None** may break functionality that requires body inspection. In particular, this can impact the effectiveness of the Web Application Firewall (WAF) and other security features that rely on analyzing request bodies to detect and block threats.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"request_body_buffering"` (string).
+</summary>
 
-API values: `"standard"`, `"full"`, `"none"`.
+API configuration property name: <code>"request_body_buffering"</code> (string).
+
+API values: <code>"standard"</code>, <code>"full"</code>, <code>"none"</code>.
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -253,14 +371,16 @@ API values: `"standard"`, `"full"`, `"none"`.
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Response Body Buffering
 
 Use the Response Body Buffering setting to configure the response body buffering mode for matching requests:
 
-* **Standard** (default): Allows Cloudflare products to inspect a prefix of the response body when necessary for enabled functionality on your zone.
-* **None**: Strictly no buffering. The response body is streamed directly to the client without inspection.
+- **Standard** (default): Allows Cloudflare products to inspect a prefix of the response body when necessary for enabled functionality on your zone.
+- **None**: Strictly no buffering. The response body is streamed directly to the client without inspection.
 
 For features that inspect response content and troubleshooting guidance, refer to [Response body inspection](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/).
 
@@ -268,11 +388,19 @@ Caution
 
 Setting response body buffering to **None** may break functionality that requires body inspection. In particular, this can impact the effectiveness of the Web Application Firewall (WAF) and other security features that rely on analyzing response bodies to detect and block threats.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"response_body_buffering"` (string).
+</summary>
 
-API values: `"standard"`, `"none"`.
+API configuration property name: <code>"response_body_buffering"</code> (string).
+
+API values: <code>"standard"</code>, <code>"none"</code>.
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -280,7 +408,9 @@ API values: `"standard"`, `"none"`.
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## Rocket Loader
 
@@ -288,9 +418,17 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to turn on or off Rocket Loader for matching requests.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"rocket_loader"` (boolean).
+</summary>
+
+API configuration property name: <code>"rocket_loader"</code> (boolean).
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -298,7 +436,9 @@ API configuration property name: `"rocket_loader"` (boolean).
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 ## SSL
 
@@ -306,19 +446,27 @@ Refer to [Create a configuration rule via API](https://developers.cloudflare.com
 
 Use this setting to configure the SSL/TLS encryption mode for matching requests:
 
-* Off
-* Flexible
-* Full
-* Strict
-* Origin Pull
+- Off
+- Flexible
+- Full
+- Strict
+- Origin Pull
 
 Refer to [Available encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/#available-encryption-modes) for more information on these values.
 
+<details>
+
+<summary>
+
 API information
 
-API configuration property name: `"ssl"` (string).
+</summary>
 
-API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
+API configuration property name: <code>"ssl"</code> (string).
+
+API values: <code>"off"</code>, <code>"flexible"</code>, <code>"full"</code>, <code>"strict"</code>, <code>"origin_pull"</code>.
+
+*API configuration examplejson*
 
 ```json
 "action_parameters": {
@@ -326,7 +474,9 @@ API values: `"off"`, `"flexible"`, `"full"`, `"strict"`, `"origin_pull"`.
 }
 ```
 
-Refer to [Create a configuration rule via API](https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests) for complete API examples.
+Refer to <a href="https://developers.cloudflare.com/rules/configuration-rules/create-api/#example-requests">Create a configuration rule via API</a> for complete API examples.
+
+</details>
 
 Was this helpful?
 

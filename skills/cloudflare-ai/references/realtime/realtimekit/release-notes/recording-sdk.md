@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Recording SDK
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/recording-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/recording-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/recording-sdk/index.xml)
 
@@ -22,7 +22,7 @@ Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Enhancements**
 
-* Improved debug mode.
+- Improved debug mode.
 
 ## 2026-07-02
 
@@ -30,7 +30,7 @@ Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Compatibility**
 
-* Added support for RealtimeKit Web Core 2.x, which uses `meeting.join()` instead of the removed `meeting.joinRoom()` method.
+- Added support for RealtimeKit Web Core 2.x, which uses `meeting.join()` instead of the removed `meeting.joinRoom()` method.
 
 ## 2025-07-14
 
@@ -38,7 +38,7 @@ Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Features**
 
-* Initial release of the RealtimeKit Recording SDK. Supports RealtimeKit Web Core versions through 1.5.1.
+- Initial release of the RealtimeKit Recording SDK. Supports RealtimeKit Web Core versions through 1.5.1.
 
 Was this helpful?
 

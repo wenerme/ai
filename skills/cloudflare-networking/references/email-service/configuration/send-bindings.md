@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure send bindings
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/configuration/send-bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/send-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you add a `send_email` binding to a Worker, you can restrict which addresses it may send from and to. Configure these restrictions in your Wrangler configuration file. For the binding API itself, refer to the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/).
 
@@ -20,10 +20,10 @@ When you add a `send_email` binding to a Worker, you can restrict which addresse
 
 Each entry in `send_email` can be configured to restrict what the binding can do. The sender address must always belong to a domain you have onboarded to Email Service.
 
-* **No restriction attribute**: The binding can send to any verified destination address in your account.
-* **`destination_address`**: The binding can only send to the single destination address configured here. If you call `send()` with `to` set to `null` or `undefined`, the configured address is used.
-* **`allowed_destination_addresses`**: The binding can only send to addresses listed in this allowlist.
-* **`allowed_sender_addresses`**: The binding can only send from the addresses listed in this allowlist.
+- **No restriction attribute**: The binding can send to any verified destination address in your account.
+- **`destination_address`**: The binding can only send to the single destination address configured here. If you call `send()` with `to` set to `null` or `undefined`, the configured address is used.
+- **`allowed_destination_addresses`**: The binding can only send to addresses listed in this allowlist.
+- **`allowed_sender_addresses`**: The binding can only send from the addresses listed in this allowlist.
 
 ```jsonc
 {
@@ -74,8 +74,8 @@ allowed_sender_addresses = [ "noreply@yourdomain.com", "support@yourdomain.com" 
 
 ## Next steps
 
-* [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — send emails from a Worker using the binding.
-* [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — onboard the domains you send from.
+- [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — send emails from a Worker using the binding.
+- [Domain configuration](https://developers.cloudflare.com/email-service/configuration/domains/) — onboard the domains you send from.
 
 Was this helpful?
 

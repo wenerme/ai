@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Anti-replay protection
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/anti-replay-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you use Magic Transit and anycast IPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
+If you use Magic Transit and anycast
+
+IPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
 
 Refer to [Add tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#add-tunnels) to learn how to set up replay protection. This page explains replay attacks, why Cloudflare recommends disabling IPsec anti-replay, and related considerations.
 
@@ -48,11 +50,11 @@ IPsec anti-replay protection is extremely important for transport mode - host-to
 
 There are several reasons that make replay attacks difficult with tunnel mode:
 
-* IPsec encrypts the entire inner packet, which means the attacker would know almost nothing about the user packet they capture and perform correlation for replay attack. The only information an attacker would know is the outer site network that encrypted the packet, the outer site network that receives it, and the approximate size of the packet. However, this information is not enough to identify specific inner user packet flows to correlate and replay.
-* Replay attacks only work when attackers use the same encryption keys. After rekeying, the router drops old replayed packets.
-* Most protocols are not susceptible to replay at the packet level. The Internet can duplicate packets, which means TCP and many protocols built on UDP already include sequence numbers or similar to handle duplicate packets coming off the wire. For those, the replay traffic just looks like a duplicate packet and is handled by the end host correctly.
-* Anti-replay protection is available in a higher Open Systems Interconnection (OSI) layer. Many modern day applications use secure communication protocols such as Secure Sockets Layer/Transport Layer Security (SSL/TLS), Secure Shell (SSH), or SSH File Transfer Protocol (SFTP) to transport application data. These secure communication protocols (at a higher OSI layer than network layer) natively support anti-replay protection.
-* The reduced attack surface lowers the probability for packet interception. IPsec tunnels are site-to-site VPN tunnels between a user's site router and Cloudflare's global network, through dedicated Internet Service Provider (ISP) network connections, which are typically very secure. Additionally, the anycast nature of Cloudflare's IPsec implementation terminates the IPsec tunnel to one of the more than 300 Cloudflare data centers closest to the customer's edge router, which minimizes the physical distance and footprint the encrypted packets have to traverse.
+- IPsec encrypts the entire inner packet, which means the attacker would know almost nothing about the user packet they capture and perform correlation for replay attack. The only information an attacker would know is the outer site network that encrypted the packet, the outer site network that receives it, and the approximate size of the packet. However, this information is not enough to identify specific inner user packet flows to correlate and replay.
+- Replay attacks only work when attackers use the same encryption keys. After rekeying, the router drops old replayed packets.
+- Most protocols are not susceptible to replay at the packet level. The Internet can duplicate packets, which means TCP and many protocols built on UDP already include sequence numbers or similar to handle duplicate packets coming off the wire. For those, the replay traffic just looks like a duplicate packet and is handled by the end host correctly.
+- Anti-replay protection is available in a higher Open Systems Interconnection (OSI) layer. Many modern day applications use secure communication protocols such as Secure Sockets Layer/Transport Layer Security (SSL/TLS), Secure Shell (SSH), or SSH File Transfer Protocol (SFTP) to transport application data. These secure communication protocols (at a higher OSI layer than network layer) natively support anti-replay protection.
+- The reduced attack surface lowers the probability for packet interception. IPsec tunnels are site-to-site VPN tunnels between a user's site router and Cloudflare's global network, through dedicated Internet Service Provider (ISP) network connections, which are typically very secure. Additionally, the anycast nature of Cloudflare's IPsec implementation terminates the IPsec tunnel to one of the more than 300 Cloudflare data centers closest to the customer's edge router, which minimizes the physical distance and footprint the encrypted packets have to traverse.
 
 ## Troubleshooting
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Parse types
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The parse type controls how AI Search finds the pages to index on a [website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/). AI Search supports two parse types.
 
-| Parse type        | Page discovery                                                                                                   | Use when                                                                     |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| sitemap (default) | Reads the XML sitemaps declared in robots.txt, or the sitemap URLs you configure. Does not follow links.         | Your site publishes a complete and current sitemap.                          |
-| discover          | Starts at the source URL and, by default, uses both your sitemaps and the links it finds on the pages it crawls. | Your site has no sitemap, or its sitemap does not cover every page you need. |
+| Parse type | Page discovery | Use when |
+| --- | --- | --- |
+| `sitemap` (default) | Reads the XML sitemaps declared in `robots.txt`, or the sitemap URLs you configure. Does not follow links. | Your site publishes a complete and current sitemap. |
+| `discover` | Starts at the source URL and, by default, uses both your sitemaps and the links it finds on the pages it crawls. | Your site has no sitemap, or its sitemap does not cover every page you need. |
 
 Set the parse type in `source_params.web_crawler.parse_type`. If you do not set it, AI Search uses `sitemap`.
 
@@ -31,10 +31,10 @@ Both parse types can read your sitemaps, so the choice is not simply "sitemap or
 
 If your site publishes a sitemap that covers the pages you want indexed, prefer `sitemap`. It is the more reliable of the two, because:
 
-* **Updates are driven by your sitemap.** `sitemap` re-crawls a page when its `<lastmod>` date changes, so edits are picked up on the next sync. `discover` ignores `<lastmod>` and `<changefreq>` entirely and re-fetches on a fixed [cache age](#cache-age) instead.
-* **Nothing is cut off.** `discover` stops at the configured [page limit and depth](#page-limit-and-depth), so pages that sit deep in your link graph, or past the limit, can be skipped. `sitemap` indexes everything the sitemap lists.
-* **You control the order.** `sitemap` indexes pages by their `<priority>` value, so your most important pages are indexed first if you hit an instance limit.
-* **You can narrow the crawl.** [Specific sitemap](#specific-sitemap) is not supported with `discover`.
+- **Updates are driven by your sitemap.** `sitemap` re-crawls a page when its `<lastmod>` date changes, so edits are picked up on the next sync. `discover` ignores `<lastmod>` and `<changefreq>` entirely and re-fetches on a fixed [cache age](#cache-age) instead.
+- **Nothing is cut off.** `discover` stops at the configured [page limit and depth](#page-limit-and-depth), so pages that sit deep in your link graph, or past the limit, can be skipped. `sitemap` indexes everything the sitemap lists.
+- **You control the order.** `sitemap` indexes pages by their `<priority>` value, so your most important pages are indexed first if you hit an instance limit.
+- **You can narrow the crawl.** [Specific sitemap](#specific-sitemap) is not supported with `discover`.
 
 Choose `discover` when a sitemap is missing, incomplete, or stale.
 
@@ -50,10 +50,10 @@ The `sitemap` parse type is the default. AI Search reads the XML sitemaps your s
 
 When you connect a domain, the crawler looks for your website's sitemap to determine which pages to visit:
 
-1. If you configure one or more custom sitemap URLs in the dashboard under **Parser options** \> **Specific sitemap**, AI Search crawls only those sitemap URLs.
+1. If you configure one or more custom sitemap URLs in the dashboard under **Parser options** > **Specific sitemap**, AI Search crawls only those sitemap URLs.
 2. Otherwise, the crawler checks `robots.txt` for listed sitemaps.
 3. If no `robots.txt` is found, the crawler checks for a sitemap at `/sitemap.xml`.
-4. If no sitemap is available, the domain cannot be crawled with the `sitemap` parse type. Use [discover](#discover) instead.
+4. If no sitemap is available, the domain cannot be crawled with the `sitemap` parse type. Use [`discover`](#discover) instead.
 
 ### Indexing order
 
@@ -71,13 +71,15 @@ If the `<lastmod>` attribute is not defined, AI Search uses the `<changefreq>` a
 
 ### Specific sitemap
 
-By default, AI Search crawls all sitemaps listed in your `robots.txt` in the order they appear (top to bottom). If you do not want the crawler to index everything, or if your sitemap is hosted at a non-standard path, you can configure custom sitemap URLs in the dashboard under **Parser options** \> **Specific sitemap**.
+By default, AI Search crawls all sitemaps listed in your `robots.txt` in the order they appear (top to bottom). If you do not want the crawler to index everything, or if your sitemap is hosted at a non-standard path, you can configure custom sitemap URLs in the dashboard under **Parser options** > **Specific sitemap**.
 
 When custom sitemap URLs are configured, AI Search uses those sitemap URLs instead of auto-discovering sitemaps from `robots.txt` or `/sitemap.xml`. You can add up to five sitemap URLs.
 
 ### robots.txt
 
 The AI Search crawler uses the user agent `Cloudflare-AI-Search`. Your `robots.txt` file should reference your sitemap and allow the crawler:
+
+*robots.txttxt*
 
 ```txt
 User-agent: *
@@ -87,6 +89,8 @@ Sitemap: https://example.com/sitemap.xml
 ```
 
 You can list multiple sitemaps or use a sitemap index file:
+
+*robots.txttxt*
 
 ```txt
 User-agent: *
@@ -98,6 +102,8 @@ Sitemap: https://example.com/sitemap.xml.gz
 ```
 
 To block all other crawlers but allow only AI Search:
+
+*robots.txttxt*
 
 ```txt
 User-agent: *
@@ -112,6 +118,8 @@ Sitemap: https://example.com/sitemap.xml
 ### Sitemap structure
 
 Structure your sitemap to give AI Search the information it needs to crawl efficiently:
+
+*sitemap.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -133,14 +141,16 @@ Structure your sitemap to give AI Search the information it needs to crawl effic
 
 Use these attributes to control crawling behavior:
 
-| Attribute    | Purpose                       | Recommendation                                                                                      |
-| ------------ | ----------------------------- | --------------------------------------------------------------------------------------------------- |
-| <loc>        | URL of the page               | Required. Use full or partial URLs.                                                                 |
-| <lastmod>    | Last modification date        | Include to enable change detection. AI Search re-crawls pages when this date changes.               |
-| <changefreq> | Expected change frequency     | Use when <lastmod> is not available. Values: always, hourly, daily, weekly, monthly, yearly, never. |
-| <priority>   | Relative importance (0.0-1.0) | Set higher values for important pages. AI Search indexes pages in priority order.                   |
+| Attribute | Purpose | Recommendation |
+| --- | --- | --- |
+| `<loc>` | URL of the page | Required. Use full or partial URLs. |
+| `<lastmod>` | Last modification date | Include to enable change detection. AI Search re-crawls pages when this date changes. |
+| `<changefreq>` | Expected change frequency | Use when `<lastmod>` is not available. Values: `always`, `hourly`, `daily`, `weekly`, `monthly`, `yearly`, `never`. |
+| `<priority>` | Relative importance (0.0-1.0) | Set higher values for important pages. AI Search indexes pages in priority order. |
 
 You can also use a Sitemap Index to bundle other domain-specific sitemaps:
+
+*sitemap-index.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -160,16 +170,16 @@ When parsing a Sitemap Index, AI Search collects all child sitemaps and then cra
 
 ### Sitemap recommendations
 
-* Include `<lastmod>` on all URLs to enable efficient change detection during syncs.
-* Set `<priority>` to control indexing order. Pages with higher priority are indexed first.
-* Use `<changefreq>` as a fallback when `<lastmod>` is not available.
-* Use sitemap index files for large sites with multiple sitemaps.
-* Compress large sitemaps using `.gz` format to reduce bandwidth.
-* Keep sitemaps under 50MB and 50,000 URLs per file (standard sitemap limits).
+- Include `<lastmod>` on all URLs to enable efficient change detection during syncs.
+- Set `<priority>` to control indexing order. Pages with higher priority are indexed first.
+- Use `<changefreq>` as a fallback when `<lastmod>` is not available.
+- Use sitemap index files for large sites with multiple sitemaps.
+- Compress large sitemaps using `.gz` format to reduce bandwidth.
+- Keep sitemaps under 50MB and 50,000 URLs per file (standard sitemap limits).
 
 ## Discover
 
-The `discover` parse type delegates page discovery to the Browser Run [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/). AI Search starts a crawl job at your source URL and stores every page it fetches in [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/).
+The `discover` parse type delegates page discovery to the Browser Run [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/). AI Search starts a crawl job at your source URL and stores every page it fetches in [built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/).
 
 By default, `discover` collects candidate URLs from both your sitemaps and the links on the pages it crawls. Use the [discovery source](#discovery-source) option to restrict it to one or the other.
 
@@ -190,8 +200,7 @@ The crawler declares the `search` and `ai-input` crawl purposes. A site that set
 
 ### Configure in the dashboard
 
-1. In the Cloudflare dashboard, go to the **AI Search** page.
-[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. In the Cloudflare dashboard, go to the **AI Search** page. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select **Create**, then select **Website** as your data source.
 3. Under **Crawl target**, enter the website URL.
 4. Under **Parse type**, select **Discover**.
@@ -231,22 +240,22 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-sear
 
 The following options apply only when `parse_type` is `discover`. All of them are optional.
 
-| Option                   | Type    | Default | Range or values      | Description                                                           |
-| ------------------------ | ------- | ------- | -------------------- | --------------------------------------------------------------------- |
-| source                   | string  | all     | all, sitemaps, links | Where the crawler looks for candidate URLs.                           |
-| limit                    | number  | 100000  | 1 to 100,000         | Maximum number of pages to crawl.                                     |
-| depth                    | number  | 5       | 1 to 100,000         | Maximum number of link hops to follow from the source URL.            |
-| max\_age                 | number  | 86400   | 0 to 604,800 seconds | How long the crawler reuses cached page content before it re-fetches. |
-| include\_external\_links | boolean | false   | true, false          | Whether to follow links that point to other domains.                  |
-| include\_subdomains      | boolean | false   | true, false          | Whether to follow links that point to subdomains of the source URL.   |
+| Option | Type | Default | Range or values | Description |
+| --- | --- | --- | --- | --- |
+| `source` | string | `all` | `all`, `sitemaps`, `links` | Where the crawler looks for candidate URLs. |
+| `limit` | number | `100000` | 1 to 100,000 | Maximum number of pages to crawl. |
+| `depth` | number | `5` | 1 to 100,000 | Maximum number of link hops to follow from the source URL. |
+| `max_age` | number | `86400` | 0 to 604,800 seconds | How long the crawler reuses cached page content before it re-fetches. |
+| `include_external_links` | boolean | `false` | `true`, `false` | Whether to follow links that point to other domains. |
+| `include_subdomains` | boolean | `false` | `true`, `false` | Whether to follow links that point to subdomains of the source URL. |
 
 #### Discovery source
 
 The `source` option selects where candidate URLs come from:
 
-* `all`: Uses both sitemaps and links found on crawled pages.
-* `sitemaps`: Uses only URLs listed in sitemaps.
-* `links`: Uses only links found on crawled pages.
+- `all`: Uses both sitemaps and links found on crawled pages.
+- `sitemaps`: Uses only URLs listed in sitemaps.
+- `links`: Uses only links found on crawled pages.
 
 Use `links` when your sitemap is missing or unreliable. Use `sitemaps` when you want sitemap coverage without following in-page links.
 
@@ -286,15 +295,15 @@ If a crawl does not finish, or if it stops at the page limit, AI Search keeps th
 
 The following website settings apply whichever parse type you choose:
 
-* [Path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/): Include and exclude URL patterns. Excluded pages are never fetched.
-* [Content selectors](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/): Restrict indexing to the elements a CSS selector matches.
-* [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/): Custom HTTP headers sent with each request.
-* [Custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/): Metadata extracted from `<meta>` tags.
-* [Rendering mode](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#rendering-mode): Whether pages load in a headless browser.
+- [Path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/): Include and exclude URL patterns. Excluded pages are never fetched.
+- [Content selectors](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/): Restrict indexing to the elements a CSS selector matches.
+- [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/): Custom HTTP headers sent with each request.
+- [Custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/): Metadata extracted from `<meta>` tags.
+- [Rendering mode](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#rendering-mode): Whether pages load in a headless browser.
 
 ## Limits
 
-A `discover` crawl indexes at most 100,000 pages and follows at most 100,000 link hops from the source URL, set with [limit and depth](#page-limit-and-depth).
+A `discover` crawl indexes at most 100,000 pages and follows at most 100,000 link hops from the source URL, set with [`limit` and `depth`](#page-limit-and-depth).
 
 The [files per instance](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) limit also applies, so the effective cap is whichever value is lower. For every limit that applies to website data sources, refer to [Website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#limits).
 

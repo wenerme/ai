@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Recraft
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `recraft/recraftv4-pro-vector`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Generate detailed, production-ready SVG vector graphics from text prompts with fine geometry, scalable to any size for print and design work.
 
-| Model Info          |                                                                                                                                |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                                         |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                              |
-| Zero data retention | Yes                                                                                                                            |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.recraft.ai/terms) |
+| More information | [link ↗](https://www.recraft.ai/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Icon Set** — Generate a vector icon
+<details>
+
+<summary>**Icon Set** — Generate a vector icon</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -110,7 +114,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Print-Ready Vector** — High-resolution vector for large-format print
+</details>
+
+<details>
+
+<summary>**Print-Ready Vector** — High-resolution vector for large-format print</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -151,7 +161,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Brand Illustration** — Vector illustration with brand colors
+</details>
+
+<details>
+
+<summary>**Brand Illustration** — Vector illustration with brand colors</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -215,6 +231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -243,9 +261,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/recraft/recraftv4-pro-vector/schema-output.json)
 
 Was this helpful?
 

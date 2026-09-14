@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Script limits
 
@@ -20,7 +20,7 @@ Cloudflare provides an unlimited number of scripts for Workers for Platforms cus
 
 ## `cf` object
 
-The [cf object](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) contains Cloudflare-specific properties of a request. This field is not accessible in [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) by default because some fields in this object are sensitive and can be used to manipulate Cloudflare features (for example, `cacheKey`, `resolveOverride`, `scrapeShield`.)
+The [`cf` object](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) contains Cloudflare-specific properties of a request. This field is not accessible in [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) by default because some fields in this object are sensitive and can be used to manipulate Cloudflare features (for example, `cacheKey`, `resolveOverride`, `scrapeShield`.)
 
 To access the `cf` object, you need to enable [trusted mode](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/worker-isolation/#trusted-mode) for your namespace. Only enable this if you control all Worker code in the namespace.
 
@@ -46,13 +46,13 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form â
 
 ## API Rate Limits
 
-| Type                              | Limit                               |
-| --------------------------------- | ----------------------------------- |
-| Client API per user/account token | 1200/5 minutes                      |
-| Client API per IP                 | 200/second                          |
-| GraphQL                           | Varies by query cost. Max 320/5 min |
-| User API token quota              | 50                                  |
-| Account API token quota           | 500                                 |
+| Type | Limit |
+| --- | --- |
+| Client API per user/account token | 1200/5 minutes |
+| Client API per IP | 200/second |
+| GraphQL | Varies by query cost. Max 320/5 min |
+| User API token quota | 50 |
+| Account API token quota | 500 |
 
 Note
 
@@ -62,11 +62,11 @@ If you exceed this limit, all API calls for the next five minutes will be blocke
 
 Some specific API calls have their own limits and are documented separately, such as the following:
 
-* [Cache Purge APIs](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits)
-* [GraphQL APIs](https://developers.cloudflare.com/analytics/graphql-api/limits/)
-* [Rulesets APIs](https://developers.cloudflare.com/ruleset-engine/rulesets-api/#limits)
-* [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/#rate-limiting-for-lists-api-requests)
-* [Gateway Lists API](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#api-rate-limit)
+- [Cache Purge APIs](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits)
+- [GraphQL APIs](https://developers.cloudflare.com/analytics/graphql-api/limits/)
+- [Rulesets APIs](https://developers.cloudflare.com/ruleset-engine/rulesets-api/#limits)
+- [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/#rate-limiting-for-lists-api-requests)
+- [Gateway Lists API](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#api-rate-limit)
 
 Enterprise customers can also [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to raise the Client API per user, GraphQL, or API token limits to a higher value.
 

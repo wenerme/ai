@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pipelines
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/pipelines/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/pipelines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pipelines connect [streams](https://developers.cloudflare.com/pipelines/streams/) and [sinks](https://developers.cloudflare.com/pipelines/sinks/) via SQL transformations, which can modify events before writing them to storage. This enables you to shift left, pushing validation, schematization, and processing to your ingestion layer to make your queries easy, fast, and correct.
 

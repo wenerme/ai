@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CORS
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cross-Origin Resource Sharing ([CORS ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
 For a CORS request to reach a site protected by Access, the request must include a valid `CF-Authorization` cookie. This may require additional configuration depending on the type of request:
 
-* [Simple requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple%5Frequests) are sent directly to the origin, without triggering a preflight request. For configuration instructions, refer to [Allow simple requests](#allow-simple-requests).
-* [Preflighted requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted%5Frequests) cause the browser to send an OPTIONS request before sending the actual request. The OPTIONS request checks which methods and headers are allowed by the origin. For configuration instructions, refer to [Allow preflighted requests](#allow-preflighted-requests).
+- [Simple requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) are sent directly to the origin, without triggering a preflight request. For configuration instructions, refer to [Allow simple requests](#allow-simple-requests).
+- [Preflighted requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) cause the browser to send an OPTIONS request before sending the actual request. The OPTIONS request checks which methods and headers are allowed by the origin. For configuration instructions, refer to [Allow preflighted requests](#allow-preflighted-requests).
 
 Important
 
-* Do not troubleshoot CORS in Incognito mode, as this will cause disruptions with Access due to `CF-Authorization` being blocked as a third-party cookie on cross origin requests.
-* Safari, in particular Safari 13.1, handles cookies in a unique format. In some cases, this can cause CORS to fail. This will be dependent on Apple releasing a patch for handling cookies. This is known to impact macOS 10.15.4 when running Safari 13.1 (15609.1.20.111.8).
+- Do not troubleshoot CORS in Incognito mode, as this will cause disruptions with Access due to `CF-Authorization` being blocked as a third-party cookie on cross origin requests.
+- Safari, in particular Safari 13.1, handles cookies in a unique format. In some cases, this can cause CORS to fail. This will be dependent on Apple releasing a patch for handling cookies. This is known to impact macOS 10.15.4 when running Safari 13.1 (15609.1.20.111.8).
 
 ## Allow simple requests
 
 If you make a simple CORS request to an Access-protected domain and have not yet logged in, the request will return a `CORS error`. There are two ways you can resolve this error:
 
-* **Option 1** — [Log in and refresh the page](#authenticate-manually).
-* **Option 2** — [Create a Cloudflare Worker which automatically sends an authentication token](#send-authentication-token-with-cloudflare-worker). This method only works if both sites involved in the CORS exchange are behind Access.
+- **Option 1** — [Log in and refresh the page](#authenticate-manually).
+- **Option 2** — [Create a Cloudflare Worker which automatically sends an authentication token](#send-authentication-token-with-cloudflare-worker). This method only works if both sites involved in the CORS exchange are behind Access.
 
 ### Authenticate manually
 
@@ -45,17 +45,17 @@ If you make a preflighted cross-origin request to an Access-protected domain, th
 
 There are three ways you can resolve this error:
 
-* **Option 1** — [Bypass OPTIONS requests to origin](#bypass-options-requests-to-origin).
-* **Option 2** — [Configure Cloudflare to respond to the OPTIONS request](#configure-response-to-preflight-requests).
-* **Option 3** — [Create a Cloudflare Worker which automatically sends an authentication token](#send-authentication-token-with-cloudflare-worker). This method only works if both sites involved in the CORS exchange are behind Access.
+- **Option 1** — [Bypass OPTIONS requests to origin](#bypass-options-requests-to-origin).
+- **Option 2** — [Configure Cloudflare to respond to the OPTIONS request](#configure-response-to-preflight-requests).
+- **Option 3** — [Create a Cloudflare Worker which automatically sends an authentication token](#send-authentication-token-with-cloudflare-worker). This method only works if both sites involved in the CORS exchange are behind Access.
 
 ### Bypass OPTIONS requests to origin
 
 You can configure Cloudflare to send OPTIONS requests directly to your origin server. To bypass Access for OPTIONS requests:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
-3. Go to **Advanced settings** \> **Cross-Origin Resource Sharing (CORS) settings**.
+3. Go to **Advanced settings** > **Cross-Origin Resource Sharing (CORS) settings**.
 4. Turn on **Bypass options requests to origin**. This will remove all existing CORS settings for this application.
 
 It is still important to enforce CORS for the Access JWT -- this option should only be used if you have CORS enforcement established in your origin server.
@@ -66,42 +66,50 @@ You can configure Cloudflare to respond to the OPTIONS request on your behalf. T
 
 To configure how Cloudflare responds to preflight requests:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
-3. Go to **Advanced settings** \> **Cross-Origin Resource Sharing (CORS) settings**.
-4. Configure these [CORS settings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the%5Fhttp%5Fresponse%5Fheaders) to match the response headers sent by your origin.
-For example, if you have configured `api.mysite.com`to return the following headers:
-```txt
-headers: {
-  'Access-Control-Allow-Origin': 'https://example.com',
-  'Access-Control-Allow-Credentials' : true,
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'office',
-  'Content-Type': 'application/json',
-}
-```
-then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**. ![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2224,height=1032,format=webp/_astro/CORS-settings.C9-43Ja_.png)
+3. Go to **Advanced settings** > **Cross-Origin Resource Sharing (CORS) settings**.
+4. Configure these [CORS settings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the_http_response_headers) to match the response headers sent by your origin.
+
+   For example, if you have configured `api.mysite.com`to return the following headers:
+
+   ```txt
+   headers: {
+     'Access-Control-Allow-Origin': 'https://example.com',
+     'Access-Control-Allow-Credentials' : true,
+     'Access-Control-Allow-Methods': 'GET, OPTIONS',
+     'Access-Control-Allow-Headers': 'office',
+     'Content-Type': 'application/json',
+   }
+   ```
+
+   then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**. ![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2224,height=1032,format=webp/_astro/CORS-settings.C9-43Ja_.png)
 5. Select **Save**.
 6. (Optional) You can check your configuration by sending an OPTIONS request to the origin with `curl`. For example,
-```bash
-curl --head --request OPTIONS https://api.mysite.com \
---header 'origin: https://example.com' \
---header 'access-control-request-method: GET'
-```
-should return a response similar to:
-```txt
-HTTP/2 200
-date: Tue, 24 May 2022 21:51:21 GMT
-vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
-access-control-allow-origin: https://example.com
-access-control-allow-methods: GET
-access-control-allow-credentials: true
-expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A%2FbOOWJio%2B%2FjuJv5NC%2FE3%2Bo1zBl2UdjzJssw8gJLC4lE1lzIUPQKqJoLRTaVtFd21JK1d4g%2BnlEGNpx0mGtsR6jerNfr2H5mlQdO6u2RdOaJ6n%2F%2BS%2BF9%2Fa12UromVLcHsSA5Y%2Fj72tM%3D"}],"group":"cf-nel","max_age":604800}
-nel: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}
-server: cloudflare
-cf-ray: 7109408e6b84efe4-EWR
-```
+
+   ```bash
+   curl --head --request OPTIONS https://api.mysite.com \
+   --header 'origin: https://example.com' \
+   --header 'access-control-request-method: GET'
+   ```
+
+   should return a response similar to:
+
+   ```txt
+   HTTP/2 200
+   date: Tue, 24 May 2022 21:51:21 GMT
+   vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+   access-control-allow-origin: https://example.com
+   access-control-allow-methods: GET
+   access-control-allow-credentials: true
+   expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+   report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=A%2FbOOWJio%2B%2FjuJv5NC%2FE3%2Bo1zBl2UdjzJssw8gJLC4lE1lzIUPQKqJoLRTaVtFd21JK1d4g%2BnlEGNpx0mGtsR6jerNfr2H5mlQdO6u2RdOaJ6n%2F%2BS%2BF9%2Fa12UromVLcHsSA5Y%2Fj72tM%3D"}],"group":"cf-nel","max_age":604800}
+   nel: {"success_fraction":0.01,"report_to":"cf-nel","max_age":604800}
+   server: cloudflare
+   cf-ray: 7109408e6b84efe4-EWR
+   ```
+
+
 
 ## Send authentication token with Cloudflare Worker
 
@@ -111,26 +119,26 @@ To avoid having to log in twice, you can create a Cloudflare Worker that automat
 
 ### Prerequisites
 
-* [Workers account](https://developers.cloudflare.com/workers/get-started/guide/)
-* `wrangler` installation
-* `example.com` and `api.mysite.com` domains [protected by Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)
+- [Workers account](https://developers.cloudflare.com/workers/get-started/guide/)
+- `wrangler` installation
+- `example.com` and `api.mysite.com` domains [protected by Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/)
 
-### 1\. Generate a service token
+### 1. Generate a service token
 
 Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) to generate a new Access service token. Copy the `Client ID` and `Client Secret` to a safe place, as you will use them in a later step.
 
-### 2\. Add a Service Auth policy
+### 2. Add a Service Auth policy
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find your `api.mysite.com` application and select **Configure**.
 3. Select the **Policies** tab.
 4. Add the following policy:
 
-| Action       | Rule type | Selector      |
-| ------------ | --------- | ------------- |
-| Service Auth | Include   | Service Token |
+   | Action | Rule type | Selector |
+   | --- | --- | --- |
+   | Service Auth | Include | Service Token |
 
-### 3\. Create a new Worker
+### 3. Create a new Worker
 
 Open a terminal and run the following command:
 
@@ -148,15 +156,15 @@ yarn create cloudflare authentication-worker
 pnpm create cloudflare@latest authentication-worker
 ```
 
-This will prompt you to install the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through setup.
+This will prompt you to install the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through setup.
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `JavaScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `JavaScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your project directory.
 
@@ -213,23 +221,21 @@ Then, deploy the Worker to your Cloudflare account:
 npx wrangler deploy
 ```
 
-### 4\. Configure the Worker
+### 4. Configure the Worker
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your newly created Worker.
 3. In the **Triggers** tab, go to **Routes** and add `example.com/api/*`. The Worker is placed on a subpath of `example.com` to avoid making a cross-origin request.
 4. In the **Settings** tab, select **Variables**.
 5. Under **Environment Variables**, add the following [secret variables](https://developers.cloudflare.com/workers/configuration/environment-variables/#add-environment-variables-via-the-dashboard):
-
-  * `CF_ACCESS_CLIENT_ID` \= `<service token Client ID>`
-  * `CF_ACCESS_CLIENT_SECRET` \= `<service token Client Secret>`
+   - `CF_ACCESS_CLIENT_ID` = `<service token Client ID>`
+   - `CF_ACCESS_CLIENT_SECRET` = `<service token Client Secret>`
 
 The Client ID and Client Secret are copied from your [service token](#1-generate-a-service-token).
 
-1. Enable the **Encrypt** option for each variable and select **Save**.
+6. Enable the **Encrypt** option for each variable and select **Save**.
 
-### 5\. Update HTTP request URLs
+### 5. Update HTTP request URLs
 
 Modify your `example.com` application to send all requests to `example.com/api/` instead of `api.mysite.com`.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terms of use
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/terms-of-use/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/terms-of-use/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By using 1.1.1.1 Public DNS Resolver or 1.1.1.1 for Families, you agree to the [Cloudflare Website and Online Services Terms of Use ↗](https://www.cloudflare.com/website-terms/).
 

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Applications and app types
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway allows you to create DNS, Network, and HTTP policies based on applications and application types. Because a single application often spans multiple hostnames, selecting an application by name is easier than writing separate rules for each hostname. You can select individual applications or application types to filter specific traffic on your network.
 
 ## Applications
 
-When you choose the _Application_ selector in a Gateway policy builder, the **Value** field will include all supported applications and their respective app types. Alternatively, you can use the [Gateway API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/app%5Ftypes/methods/list/) to fetch a list of applications, app types, and ID numbers.
+When you choose the *Application* selector in a Gateway policy builder, the **Value** field will include all supported applications and their respective app types. Alternatively, you can use the [Gateway API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/app_types/methods/list/) to fetch a list of applications, app types, and ID numbers.
 
 To manage a consolidated list of applications across Cloudflare One, you can use the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/).
 
@@ -26,41 +26,41 @@ To manage a consolidated list of applications across Cloudflare One, you can use
 
 Gateway sorts applications into the following app type groups:
 
-| Value                                          | Definition                                                                                                                                                   |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Artificial Intelligence                        | AI assistance applications                                                                                                                                   |
-| Business                                       | Applications used for general business purposes                                                                                                              |
-| Collaboration & Online Meetings                | Business communication and collaboration applications                                                                                                        |
-| Dating                                         | Online dating applications                                                                                                                                   |
-| Development                                    | Software development and development operations applications                                                                                                 |
-| Education                                      | Applications used for educational purposes and e-learning                                                                                                    |
-| Email                                          | Email applications                                                                                                                                           |
-| Entertainment & Events                         | Applications used for entertainment content and event information                                                                                            |
-| Encrypted DNS                                  | DNS encryption applications                                                                                                                                  |
-| File Sharing                                   | File sharing applications                                                                                                                                    |
-| Finance & Accounting                           | Financial and accounting applications                                                                                                                        |
-| Food & Drink                                   | Applications related to food delivery and recipe services                                                                                                    |
-| Gaming                                         | Games and gaming applications                                                                                                                                |
-| Health & Fitness                               | Applications used for health monitoring and fitness tracking                                                                                                 |
-| Human Resources                                | Employee management applications and workforce tools                                                                                                         |
-| Instant Messaging                              | Instant messaging applications                                                                                                                               |
-| IT Management                                  | IT deployment management applications                                                                                                                        |
-| Legal                                          | Legal tools and applications                                                                                                                                 |
-| Lifestyle                                      | Applications related to lifestyle and personal interests                                                                                                     |
-| Music & Audio Streaming                        | Applications used for streaming music and audio                                                                                                              |
-| Navigation                                     | Applications used for maps and navigation services                                                                                                           |
-| News, Books, & Magazines                       | Applications delivering news, books, and magazine content                                                                                                    |
-| Photography & Graphic Design                   | Applications used for photography and graphic design                                                                                                         |
-| Productivity                                   | Business and productivity applications                                                                                                                       |
-| Public Cloud                                   | Public cloud infrastructure management applications                                                                                                          |
-| Sales & Marketing                              | Sales and marketing applications                                                                                                                             |
-| Search Engines                                 | Web search engines and applications                                                                                                                          |
-| Security                                       | Information security applications, including shadow IT                                                                                                       |
-| Shopping                                       | Online shopping applications                                                                                                                                 |
-| Social Networking                              | Social networking applications                                                                                                                               |
-| Sports                                         | Sports streaming and news applications                                                                                                                       |
-| Travel                                         | Travel related applications                                                                                                                                  |
-| Video Streaming & Editing                      | Applications used for streaming and editing video                                                                                                            |
+| Value | Definition |
+| --- | --- |
+| Artificial Intelligence | AI assistance applications |
+| Business | Applications used for general business purposes |
+| Collaboration & Online Meetings | Business communication and collaboration applications |
+| Dating | Online dating applications |
+| Development | Software development and development operations applications |
+| Education | Applications used for educational purposes and e-learning |
+| Email | Email applications |
+| Entertainment & Events | Applications used for entertainment content and event information |
+| Encrypted DNS | DNS encryption applications |
+| File Sharing | File sharing applications |
+| Finance & Accounting | Financial and accounting applications |
+| Food & Drink | Applications related to food delivery and recipe services |
+| Gaming | Games and gaming applications |
+| Health & Fitness | Applications used for health monitoring and fitness tracking |
+| Human Resources | Employee management applications and workforce tools |
+| Instant Messaging | Instant messaging applications |
+| IT Management | IT deployment management applications |
+| Legal | Legal tools and applications |
+| Lifestyle | Applications related to lifestyle and personal interests |
+| Music & Audio Streaming | Applications used for streaming music and audio |
+| Navigation | Applications used for maps and navigation services |
+| News, Books, & Magazines | Applications delivering news, books, and magazine content |
+| Photography & Graphic Design | Applications used for photography and graphic design |
+| Productivity | Business and productivity applications |
+| Public Cloud | Public cloud infrastructure management applications |
+| Sales & Marketing | Sales and marketing applications |
+| Search Engines | Web search engines and applications |
+| Security | Information security applications, including shadow IT |
+| Shopping | Online shopping applications |
+| Social Networking | Social networking applications |
+| Sports | Sports streaming and news applications |
+| Travel | Travel related applications |
+| Video Streaming & Editing | Applications used for streaming and editing video |
 | [Do Not Inspect](#do-not-inspect-applications) | Applications incompatible with the TLS certificate required by the [Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/) |
 
 ## Application hostnames
@@ -81,24 +81,40 @@ To prevent this, Gateway only uses support hostnames in Allow policies — it wi
 
 ## Application controls
 
-When you use the [_Application_ selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) in an HTTP policy with the _is_ operator, you can choose specific actions and operations to match application traffic. Supported applications and operations include:
+When you use the [*Application* selector](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) in an HTTP policy with the *is* operator, you can choose specific actions and operations to match application traffic. Supported applications and operations include:
+
+<details>
+
+<summary>
 
 Artificial Intelligence
 
-* ChatGPT
-* Google Gemini
-* Perplexity
-* Claude
+</summary>
+
+- ChatGPT
+- Google Gemini
+- Perplexity
+- Claude
+
+</details>
+
+<details>
+
+<summary>
 
 File Sharing
 
-* Box
-* Dropbox
-* Google Drive
-* WeTransfer
-* Hightail
-* ShareFile
-* Smash
+</summary>
+
+- Box
+- Dropbox
+- Google Drive
+- WeTransfer
+- Hightail
+- ShareFile
+- Smash
+
+</details>
 
 For more information, refer to [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/granular-controls/).
 
@@ -112,9 +128,9 @@ To ensure Gateway evaluates traffic with your desired precedence, order your mos
 
 ### Do Not Inspect applications
 
-Gateway automatically groups applications incompatible with TLS decryption into the _Do Not Inspect_ app type. As Cloudflare identifies incompatible applications, Gateway will periodically update this app type to add new applications. To ensure Gateway does not intercept any current or future incompatible traffic, you can [create a Do Not Inspect HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) with the entire _Do Not Inspect_ app type selected.
+Gateway automatically groups applications incompatible with TLS decryption into the *Do Not Inspect* app type. As Cloudflare identifies incompatible applications, Gateway will periodically update this app type to add new applications. To ensure Gateway does not intercept any current or future incompatible traffic, you can [create a Do Not Inspect HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) with the entire *Do Not Inspect* app type selected.
 
-When managing applications with the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/), Do Not Inspect applications will appear under the corresponding application. For example, the App Library will group _Google Drive (Do Not Inspect)_ under **Google Drive**.
+When managing applications with the [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/), Do Not Inspect applications will appear under the corresponding application. For example, the App Library will group *Google Drive (Do Not Inspect)* under **Google Drive**.
 
 Install Cloudflare certificate manually to allow TLS decryption
 
@@ -124,8 +140,8 @@ Instead of creating a Do Not Inspect policy for an application, you may be able 
 
 Applications can be incompatible with [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) for various reasons:
 
-* **Certificate pinning**: Certificate pinning is a security mechanism used to prevent on-path attacks on the Internet by hardcoding information about the certificate that the application expects to receive. If the wrong certificate is received, even if it is trusted by the system, the application will refuse to connect.
-* **Non-web traffic**: Some applications send non-web traffic over TLS, such as Session Initiation Protocol (SIP) for voice and video calls and Extensible Messaging and Presence Protocol (XMPP) for chat. Gateway cannot inspect these protocols.
+- **Certificate pinning**: Certificate pinning is a security mechanism used to prevent on-path attacks on the Internet by hardcoding information about the certificate that the application expects to receive. If the wrong certificate is received, even if it is trusted by the system, the application will refuse to connect.
+- **Non-web traffic**: Some applications send non-web traffic over TLS, such as Session Initiation Protocol (SIP) for voice and video calls and Extensible Messaging and Presence Protocol (XMPP) for chat. Gateway cannot inspect these protocols.
 
 #### Microsoft 365 integration
 
@@ -133,9 +149,9 @@ To optimize performance for Microsoft 365 applications and services, you can byp
 
 To turn on the Microsoft 365 integration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings** \> **Policy settings**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Policy settings**.
 2. In **Bypass decryption of Microsoft 365 traffic**, select **Create policy**.
-3. To verify the policy was created, select **View policy**. Alternatively, go to **Traffic policies** \> **HTTP policies**. A policy named Microsoft 365 Auto Generated will be enabled in your list.
+3. To verify the policy was created, select **View policy**. Alternatively, go to **Traffic policies** > **HTTP policies**. A policy named Microsoft 365 Auto Generated will be enabled in your list.
 
 All future Microsoft 365 traffic will bypass Gateway logging and filtering. To disable this behavior, turn off or delete the policy.
 

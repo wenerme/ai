@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting builds
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your git integration is experiencing issues, you may find the following banners in the Deployment page of your Pages project.
 
@@ -42,8 +42,8 @@ To resolve this issue, follow the steps provided above in the [Reinstalling a Gi
 
 Go to your GitHub installation settings:
 
-* `https://github.com/settings/installations` for individual accounts
-* `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` for organizational accounts
+- `https://github.com/settings/installations` for individual accounts
+- `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` for organizational accounts
 
 Click **Configure** on the Cloudflare Pages application. Scroll down to the bottom of the page and click **Unsuspend** to allow Cloudflare Pages to make future deployments.
 
@@ -55,8 +55,8 @@ You may have deleted or transferred the repository associated with this Cloudfla
 
 You may have excluded this repository from your installation's repository access settings. Go to your GitHub installation settings:
 
-* `https://github.com/settings/installations` for individual accounts
-* `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` for organizational accounts
+- `https://github.com/settings/installations` for individual accounts
+- `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` for organizational accounts
 
 Click **Configure** on the Cloudflare Pages application. Under **Repository access**, ensure that the repository associated with your Cloudflare Pages project is included in the list.
 

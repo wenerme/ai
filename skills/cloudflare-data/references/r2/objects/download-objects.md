@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Download objects
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/objects/download-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/objects/download-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can download objects from R2 using the dashboard, Workers API, S3 API, or command-line tools.
 
 ## Download via dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. Locate the object you want to download.
 4. Select **...** for the object and click **Download**.
@@ -99,7 +98,7 @@ For details on generating and using presigned URLs, refer to [Presigned URLs](ht
 
 ## Download via Wrangler
 
-Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to download objects. Run the [r2 object get command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-get):
+Use [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) to download objects. Run the [`r2 object get` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object-get):
 
 ```sh
 wrangler r2 object get test-bucket/image.png

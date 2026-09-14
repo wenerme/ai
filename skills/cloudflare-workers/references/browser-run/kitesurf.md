@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Kitesurf
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Kitesurf ↗](https://blog.cloudflare.com/kitesurf) is Cloudflare's stateless, highly scalable browser that runs entirely on top of [Workers](https://developers.cloudflare.com/workers/) and is designed for AI agents. Instead of shipping a full desktop browser engine like Chromium, Kitesurf focuses on what matters to an agent — token count, context windows, scalability, performance, and cost — while trading away features that only humans need, such as tabs, themes, extensions, and pixel-perfect rendering.
 
@@ -26,9 +26,9 @@ Kitesurf is in beta and available for free, behind per-account [limits](https://
 
 Kitesurf is a good fit for:
 
-* AI agents that need to render pages but can accept the trade-offs of not using a full-featured, pixel-perfect Chromium browser.
-* Automations and applications that rely on one-shot [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), such as extracting content from a page or generating PDFs and screenshots for compatible sites.
-* Bursty, AI-driven workloads that benefit from an ephemeral, fully-isolated, stateless engine designed to exist only for the duration of a task.
+- AI agents that need to render pages but can accept the trade-offs of not using a full-featured, pixel-perfect Chromium browser.
+- Automations and applications that rely on one-shot [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/), such as extracting content from a page or generating PDFs and screenshots for compatible sites.
+- Bursty, AI-driven workloads that benefit from an ephemeral, fully-isolated, stateless engine designed to exist only for the duration of a task.
 
 Kitesurf correctly renders pages such as [TodoMVC ↗](https://todomvc.com/) (vanilla, React, Vue, Angular, Preact), Wikipedia, Hacker News, the Cloudflare Blog, and much of the Cloudflare dashboard.
 
@@ -36,9 +36,9 @@ Kitesurf correctly renders pages such as [TodoMVC ↗](https://todomvc.com/) (va
 
 Kitesurf is not yet the right option if you need to:
 
-* Play video or render WebGL.
-* Negotiate a bot-challenge handshake with real TLS fingerprints.
-* Start a long-running, authenticated session that requires persistent state.
+- Play video or render WebGL.
+- Negotiate a bot-challenge handshake with real TLS fingerprints.
+- Start a long-running, authenticated session that requires persistent state.
 
 For these cases, use Browser Run's default browser, which is powered by Chromium.
 
@@ -106,16 +106,16 @@ Kitesurf is tested against the [Web Platform Tests (WPT) ↗](https://github.com
 
 The parts of a browser that matter most to agents have strong coverage:
 
-| Area      | Subtest coverage |
-| --------- | ---------------- |
-| DOM       | 97%              |
-| HTML      | 96%              |
-| Selection | 99%              |
-| SVG       | 97%              |
-| Encoding  | 99%              |
-| CORS      | 95%              |
-| XHR       | 95%              |
-| URL       | 83%              |
+| Area | Subtest coverage |
+| --- | --- |
+| DOM | 97% |
+| HTML | 96% |
+| Selection | 99% |
+| SVG | 97% |
+| Encoding | 99% |
+| CORS | 95% |
+| XHR | 95% |
+| URL | 83% |
 
 Note
 
@@ -127,14 +127,14 @@ Kitesurf is designed to be lightweight and efficient. It uses less CPU and memor
 
 The table below shows the medians of five Browser Run [Quick Action](https://developers.cloudflare.com/browser-run/quick-actions/) runs across a [14-URL corpus ↗](https://kitesurf.cloudflare.app/corpus.txt), comparing Chromium (warm pool) with Kitesurf:
 
-| Metric                     | Kitesurf | Chromium (warm pool) | Kitesurf, relative          |
-| -------------------------- | -------- | -------------------- | --------------------------- |
-| CPU: screenshot            | 380 ms   | 1,173 ms             | 3.1× less CPU than Chromium |
-| CPU: HTML extraction       | 229 ms   | 877 ms               | 3.8× less than Chromium     |
-| Memory: screenshot         | 57.8 MiB | 271.0 MiB            | 4.7× less than Chromium     |
-| Memory: HTML extraction    | 39.4 MiB | 273.7 MiB            | 7.0× less than Chromium     |
-| Wall time: screenshot      | 1,148 ms | 637 ms               | 1.8× slower than Chromium   |
-| Wall time: HTML extraction | 820 ms   | 472 ms               | 1.7× slower than Chromium   |
+| Metric | Kitesurf | Chromium (warm pool) | Kitesurf, relative |
+| --- | --- | --- | --- |
+| CPU: screenshot | 380 ms | 1,173 ms | 3.1× less CPU than Chromium |
+| CPU: HTML extraction | 229 ms | 877 ms | 3.8× less than Chromium |
+| Memory: screenshot | 57.8 MiB | 271.0 MiB | 4.7× less than Chromium |
+| Memory: HTML extraction | 39.4 MiB | 273.7 MiB | 7.0× less than Chromium |
+| Wall time: screenshot | 1,148 ms | 637 ms | 1.8× slower than Chromium |
+| Wall time: HTML extraction | 820 ms | 472 ms | 1.7× slower than Chromium |
 
 Kitesurf wins on the memory and CPU that drive your bill (by 3–7×), while Chromium wins wall time because a warm just-in-time compiler beats a cold software renderer.
 

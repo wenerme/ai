@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
+Workers Caching is configured per Worker, in your Wrangler configuration file. When enabled, caching applies to every `fetch()` invocation — eyeball requests, service binding `fetch()` calls, and loopback `fetch()` calls between entrypoints via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) — unless you [disable it for a specific entrypoint](#per-entrypoint-caching). Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) bypass the cache.
 
 This is **your Worker's cache** — configured through your Worker's code and Wrangler file. Your Worker controls its cache entirely through:
 
-* The `cache.enabled` flag in your Wrangler configuration, which turns caching on or off. You can override it [per entrypoint](#per-entrypoint-caching) and control [cross-version behavior](#cross-version-caching).
-* The `Cache-Control` (and `cdn-cache-control`, `cloudflare-cdn-cache-control`) headers your Worker sets on its responses, per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111).
-* The optional `Cache-Tag` response header for bulk purging, and [ctx.cache.purge()](https://developers.cloudflare.com/workers/cache/purge/) for programmatic invalidation.
+- The `cache.enabled` flag in your Wrangler configuration, which turns caching on or off. You can override it [per entrypoint](#per-entrypoint-caching) and control [cross-version behavior](#cross-version-caching).
+- The `Cache-Control` (and `cdn-cache-control`, `cloudflare-cdn-cache-control`) headers your Worker sets on its responses, per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111).
+- The optional `Cache-Tag` response header for bulk purging, and [`ctx.cache.purge()`](https://developers.cloudflare.com/workers/cache/purge/) for programmatic invalidation.
 
 That is the entire configuration surface.
 
@@ -37,7 +37,7 @@ Add a `cache` block to your Wrangler configuration:
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": {
 		"enabled": true,
 	},
@@ -48,15 +48,15 @@ Add a `cache` block to your Wrangler configuration:
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = true
 ```
 
-Setting `cache.enabled` to `true` causes Cloudflare to check the cache before invoking your Worker on every HTTP request. This is the default for every entrypoint; you can override it per entrypoint with [exports](#per-entrypoint-caching).
+Setting `cache.enabled` to `true` causes Cloudflare to check the cache before invoking your Worker on every HTTP request. This is the default for every entrypoint; you can override it per entrypoint with [`exports`](#per-entrypoint-caching).
 
-The `cache` block accepts two fields: `enabled` (required) and [cross\_version\_cache](#cross-version-caching) (optional). Any other fields are reserved for future use and may cause validation errors in future versions of Wrangler.
+The `cache` block accepts two fields: `enabled` (required) and [`cross_version_cache`](#cross-version-caching) (optional). Any other fields are reserved for future use and may cause validation errors in future versions of Wrangler.
 
 ## Disable caching
 
@@ -67,7 +67,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": {
 		"enabled": false,
 	},
@@ -78,7 +78,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = false
@@ -99,7 +99,7 @@ Requires Wrangler 4.107.0 or above.
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": {
 		"enabled": true,
 	},
@@ -116,7 +116,7 @@ Requires Wrangler 4.107.0 or above.
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = true
@@ -138,8 +138,8 @@ Each entry is `{ "type": "worker", "cache": { "enabled": <boolean> } }`. A per-e
 
 This lets you **opt specific entrypoints in and out** without changing your Worker code:
 
-* **Opt an entrypoint out** to keep it running on every request — the natural fit for a gateway or router entrypoint that authenticates, normalizes, or dispatches, and should never itself be served from cache. This is the recommended way to build the [gateway pattern](https://developers.cloudflare.com/workers/cache/examples/): disable caching on the gateway entrypoint and enable it on the inner entrypoint the gateway calls through `ctx.exports`.
-* **Opt an entrypoint in** to cache only the specific entrypoints that return reusable responses, leaving the rest of the Worker uncached.
+- **Opt an entrypoint out** to keep it running on every request — the natural fit for a gateway or router entrypoint that authenticates, normalizes, or dispatches, and should never itself be served from cache. This is the recommended way to build the [gateway pattern](https://developers.cloudflare.com/workers/cache/examples/): disable caching on the gateway entrypoint and enable it on the inner entrypoint the gateway calls through `ctx.exports`.
+- **Opt an entrypoint in** to cache only the specific entrypoints that return reusable responses, leaving the rest of the Worker uncached.
 
 For lowest latency, disable cache for an entrypoint instead of returning \`Cache-Control: no-store\` for all responses
 
@@ -149,9 +149,9 @@ Do not enable caching on a gateway entrypoint and then return `Cache-Control: no
 
 The `cache` configuration is part of your Worker version:
 
-* Each version uploaded with [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/#deploy) or [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/#versions-upload) captures whatever `cache.enabled` value is in its Wrangler configuration.
-* Rolling back to a previous version also rolls back the `cache` setting attached to that version.
-* You can use [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) to turn caching on for a percentage of traffic before applying it to 100%. During a gradual rollout from a version with caching disabled to a version with caching enabled, traffic routed to the old version runs uncached as it did before, and traffic routed to the new version consults and populates the cache. By default, the Worker version is part of the cache key, so the two versions populate independent cache entries and do not serve each other's responses — see [Cross-version caching](#cross-version-caching).
+- Each version uploaded with [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/#deploy) or [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/#versions-upload) captures whatever `cache.enabled` value is in its Wrangler configuration.
+- Rolling back to a previous version also rolls back the `cache` setting attached to that version.
+- You can use [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) to turn caching on for a percentage of traffic before applying it to 100%. During a gradual rollout from a version with caching disabled to a version with caching enabled, traffic routed to the old version runs uncached as it did before, and traffic routed to the new version consults and populates the cache. By default, the Worker version is part of the cache key, so the two versions populate independent cache entries and do not serve each other's responses — see [Cross-version caching](#cross-version-caching).
 
 ## Cross-version caching
 
@@ -170,7 +170,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -182,7 +182,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = true
@@ -202,7 +202,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"cache": {
 		"enabled": false,
 	},
@@ -220,7 +220,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [cache]
 enabled = false
@@ -237,18 +237,18 @@ Responses with no \`Cache-Control\` header are still cached
 
 If your Worker returns a response with **no** `Cache-Control` header (and no `Expires` header), Cloudflare applies [RFC 9111 heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) with the per-status default TTLs in the following table. Responses whose status is not in the table are not cached by default.
 
-| Status code | Description                   | Default TTL               |
-| ----------- | ----------------------------- | ------------------------- |
-| 200         | OK                            | 7200 seconds (2 hours)    |
-| 203         | Non-Authoritative Information | 7200 seconds (2 hours)    |
-| 204         | No Content                    | 7200 seconds (2 hours)    |
-| 300         | Multiple Choices              | 1200 seconds (20 minutes) |
-| 301         | Moved Permanently             | 1200 seconds (20 minutes) |
-| 404         | Not Found                     | 180 seconds (3 minutes)   |
-| 405         | Method Not Allowed            | 60 seconds (1 minute)     |
-| 410         | Gone                          | 180 seconds (3 minutes)   |
-| 414         | URI Too Long                  | 60 seconds (1 minute)     |
-| 501         | Not Implemented               | 60 seconds (1 minute)     |
+| Status code | Description | Default TTL |
+| --- | --- | --- |
+| `200` | OK | 7200 seconds (2 hours) |
+| `203` | Non-Authoritative Information | 7200 seconds (2 hours) |
+| `204` | No Content | 7200 seconds (2 hours) |
+| `300` | Multiple Choices | 1200 seconds (20 minutes) |
+| `301` | Moved Permanently | 1200 seconds (20 minutes) |
+| `404` | Not Found | 180 seconds (3 minutes) |
+| `405` | Method Not Allowed | 60 seconds (1 minute) |
+| `410` | Gone | 180 seconds (3 minutes) |
+| `414` | URI Too Long | 60 seconds (1 minute) |
+| `501` | Not Implemented | 60 seconds (1 minute) |
 
 For example, a `200` response that does not set `Cache-Control` is cached for 2 hours. A `404` is cached for 3 minutes.
 
@@ -258,7 +258,7 @@ If you set `Cache-Control` (or `Expires`) on the response, these defaults do not
 
 Cache Deception Armor
 
-When a response falls back to heuristic freshness (no `Cache-Control` set), Workers Caching also runs [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/) to defend against [cache deception attacks ↗](https://owasp.org/www-community/attacks/Cache%5FPoisoning).
+When a response falls back to heuristic freshness (no `Cache-Control` set), Workers Caching also runs [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/) to defend against [cache deception attacks ↗](https://owasp.org/www-community/attacks/Cache_Poisoning).
 
 Cache Deception Armor only inspects responses whose `Content-Type` starts with `text/` or `application/` — the high-risk types for accidentally caching generated, user-specific content under a static-looking URL. For those responses, if the request URI has a file extension that maps to a known MIME type (for example, `.css` → `text/css`) and the actual `Content-Type` does not match, the response is not cached and `Cf-Cache-Status` is `BYPASS`. For example, a Worker that serves `/style.css` with `Content-Type: text/html` will hit this.
 
@@ -269,6 +269,8 @@ Setting any explicit `Cache-Control` directive skips the check entirely — Cach
 ### Set the freshness window with `max-age`
 
 Use `max-age` to control how long the response is treated as fresh:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -290,6 +292,8 @@ async function renderPage(request) {
 	return `<!doctype html><title>Home</title><h1>Hello</h1>`;
 }
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -318,6 +322,8 @@ If you need browsers and the edge to cache for different durations, use `cdn-cac
 
 When a cached response becomes stale, `stale-while-revalidate` lets Cloudflare return the stale response immediately and refresh it in the background:
 
+*src/index.jsjs*
+
 ```js
 export default {
 	async fetch(request) {
@@ -334,6 +340,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -356,7 +364,7 @@ export default {
 
 If your response includes any of `s-maxage`, `must-revalidate`, or `proxy-revalidate`, the stale-serving behavior is disabled and Cloudflare will block on a fresh revalidation when the response expires. The same is true for `stale-if-error`. This follows [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4): those three directives forbid serving stale content.
 
-When you want `stale-while-revalidate` to take effect at the edge, use `max-age` for the freshness window — not `s-maxage`. If you need a longer edge TTL than browsers should honor while still using `stale-while-revalidate`, use [cdn-cache-control](#header-precedence) for the edge directive.
+When you want `stale-while-revalidate` to take effect at the edge, use `max-age` for the freshness window — not `s-maxage`. If you need a longer edge TTL than browsers should honor while still using `stale-while-revalidate`, use [`cdn-cache-control`](#header-precedence) for the edge directive.
 
 ### Choose TTL and stale-while-revalidate values
 
@@ -364,8 +372,8 @@ High cache hit rate and high freshness are in tension. Background revalidation h
 
 Two common patterns:
 
-* **Mostly static content with a small tolerance for staleness.** Use a short `max-age` (for example, 60 seconds) and a longer `stale-while-revalidate` window (for example, 3600 seconds). Most requests are `HIT`s; occasional requests trigger a background refresh.
-* **"Always serve from cache" for high-traffic endpoints.** Use `max-age=0, stale-while-revalidate=<large>`. Every request returns the previously cached response immediately and triggers a background refresh. Your Worker runs once per request to revalidate, so CPU costs are close to running the Worker every time. Freshness drops as request volume drops — if no request arrives for a long time, the next request will see stale content.
+- **Mostly static content with a small tolerance for staleness.** Use a short `max-age` (for example, 60 seconds) and a longer `stale-while-revalidate` window (for example, 3600 seconds). Most requests are `HIT`s; occasional requests trigger a background refresh.
+- **"Always serve from cache" for high-traffic endpoints.** Use `max-age=0, stale-while-revalidate=<large>`. Every request returns the previously cached response immediately and triggers a background refresh. Your Worker runs once per request to revalidate, so CPU costs are close to running the Worker every time. Freshness drops as request volume drops — if no request arrives for a long time, the next request will see stale content.
 
 ### Serve stale on error with `stale-if-error`
 
@@ -395,9 +403,11 @@ Use `cloudflare-cdn-cache-control` when you want a longer edge TTL than you expo
 
 ### Override `Cache-Control` from the calling Worker
 
-Normally the callee decides how its responses are cached by setting `Cache-Control` on them. When one entrypoint invokes another cached entrypoint through a [ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) loopback, the **calling** entrypoint can instead supply the `Cache-Control` directive for that call by setting `cf.cacheControl` on the request.
+Normally the callee decides how its responses are cached by setting `Cache-Control` on them. When one entrypoint invokes another cached entrypoint through a [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/) loopback, the **calling** entrypoint can instead supply the `Cache-Control` directive for that call by setting `cf.cacheControl` on the request.
 
 Here the `Backend` entrypoint returns no `Cache-Control` of its own; the default entrypoint decides the caching policy when it calls `Backend` through `ctx.exports`:
+
+*src/index.jsjs*
 
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -421,6 +431,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -457,7 +469,9 @@ Every response carries a `Cf-Cache-Status` header indicating what happened for t
 
 ### `Cache-Tag`
 
-The [Cache-Tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) response header attaches tags to a cached response so you can purge it later in bulk. Cloudflare consumes this header and strips it before the response reaches the client.
+The [`Cache-Tag`](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) response header attaches tags to a cached response so you can purge it later in bulk. Cloudflare consumes this header and strips it before the response reaches the client.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -474,6 +488,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -493,10 +509,10 @@ export default {
 
 The `Cache-Tag` header value is a comma-separated list of tags. The same limits as the zone cache apply — refer to [Cache tag limits](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#a-few-things-to-remember) for the full list. The most common constraints to keep in mind:
 
-* Tag values must be **printable ASCII** (`0x21`–`0x7E`) — no spaces, no Unicode, no control characters.
-* Each tag is at most **1024 characters** long.
-* A response can carry up to **1000 tags** for purge purposes.
-* Tag matching at purge time is **case-insensitive**. `Foo` and `foo` purge the same set of responses.
+- Tag values must be **printable ASCII** ( `0x21`– `0x7E`) — no spaces, no Unicode, no control characters.
+- Each tag is at most **1024 characters** long.
+- A response can carry up to **1000 tags** for purge purposes.
+- Tag matching at purge time is **case-insensitive**. `Foo` and `foo` purge the same set of responses.
 
 Invalid tags (over-length, containing spaces, or containing non-ASCII characters) are silently dropped during cache storage — the response is still cached with the remaining valid tags, but you have no way to detect which tags were dropped. Validate tags in your Worker before returning them if this matters.
 
@@ -504,9 +520,9 @@ Invalid tags (over-length, containing spaces, or containing non-ASCII characters
 
 Workers Caching inherits Cloudflare's standard [cache bypass rules](https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass). The most common triggers:
 
-* The response includes a `Set-Cookie` header (unless `Cache-Control` includes `private="set-cookie"` or `no-cache="set-cookie"`, in which case the `Set-Cookie` is stripped from the cached copy).
-* The request includes an `Authorization` header. The response is only stored if `Cache-Control` includes `public`, `must-revalidate`, or `s-maxage`, per [RFC 9111 §3.5 ↗](https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-to-authen).
-* The response `Cache-Control` header includes `private` or `no-store`.
+- The response includes a `Set-Cookie` header (unless `Cache-Control` includes `private="set-cookie"` or `no-cache="set-cookie"`, in which case the `Set-Cookie` is stripped from the cached copy).
+- The request includes an `Authorization` header. The response is only stored if `Cache-Control` includes `public`, `must-revalidate`, or `s-maxage`, per [RFC 9111 §3.5 ↗](https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-to-authen).
+- The response `Cache-Control` header includes `private` or `no-store`.
 
 When any of these apply, `Cf-Cache-Status` is `BYPASS` and your Worker runs on every request.
 
@@ -514,18 +530,18 @@ When any of these apply, `Cf-Cache-Status` is `BYPASS` and your Worker runs on e
 
 `Cache-Control: no-cache` does not bypass the cache. The response is stored, but the cached entry is treated as stale immediately — so the next request always needs to consult your Worker before serving. The exact behavior depends on what other directives accompany `no-cache`:
 
-* **`no-cache` alone** — every subsequent request is revalidated **inline** with your Worker before any bytes are served. If your Worker returns `304 Not Modified` for a conditional request, `Cf-Cache-Status` is `REVALIDATED` and the cached body is served. If your Worker returns a fresh `200`, `Cf-Cache-Status` is `EXPIRED` and the cached body is replaced. Either way, the Worker runs and CPU time is billed.
-* **`no-cache, stale-while-revalidate=N`** — Cloudflare serves the cached body immediately and refreshes it in the background by invoking your Worker. `Cf-Cache-Status` is `UPDATING` for the duration of `N` seconds after the entry was last refreshed. After the SWR window elapses, behavior reverts to inline revalidation.
+- **`no-cache` alone** — every subsequent request is revalidated **inline** with your Worker before any bytes are served. If your Worker returns `304 Not Modified` for a conditional request, `Cf-Cache-Status` is `REVALIDATED` and the cached body is served. If your Worker returns a fresh `200`, `Cf-Cache-Status` is `EXPIRED` and the cached body is replaced. Either way, the Worker runs and CPU time is billed.
+- **`no-cache, stale-while-revalidate=N`** — Cloudflare serves the cached body immediately and refreshes it in the background by invoking your Worker. `Cf-Cache-Status` is `UPDATING` for the duration of `N` seconds after the entry was last refreshed. After the SWR window elapses, behavior reverts to inline revalidation.
 
 In both cases, your Worker is invoked on every request, so CPU time is billed each time. The cached body is preserved across revalidations.
 
-Refer to [Understand no-store and no-cache directives](https://developers.cloudflare.com/cache/concepts/cache-control/#understand-no-store-and-no-cache-directives) for the full distinction between these directives.
+Refer to [Understand `no-store` and `no-cache` directives](https://developers.cloudflare.com/cache/concepts/cache-control/#understand-no-store-and-no-cache-directives) for the full distinction between these directives.
 
 ### Status codes that are never cached
 
 A few status codes are never stored, even with explicit `Cache-Control` directives:
 
-* **`520`–`526`** (Cloudflare failsafe responses) are treated as transient errors and never cached.
+- **`520`– `526`** (Cloudflare failsafe responses) are treated as transient errors and never cached.
 
 ### `Range` requests
 
@@ -539,15 +555,15 @@ If your Worker returns a `206` response of its own — for example, because you 
 
 ### `Vary`
 
-When your Worker returns a `Vary` response header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a variant whose stored values match the incoming request. This implements [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) and the cache-key calculation in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). For an introduction with example code, refer to [Content negotiation with Vary](https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary).
+When your Worker returns a `Vary` response header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a variant whose stored values match the incoming request. This implements [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) and the cache-key calculation in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). For an introduction with example code, refer to [Content negotiation with `Vary`](https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary).
 
 How `Vary` is processed for Workers Caching:
 
-* **All header names are honored.** Any header name your Worker lists in `Vary` participates in the variant key. There is no allowlist.
-* **Values are compared verbatim.** Cloudflare does not normalize the listed request headers before keying. `Accept-Encoding: gzip, br` and `Accept-Encoding: br, gzip` produce two separate variants even though they are semantically identical. If you need to fold equivalent values onto the same variant, normalize the headers your Worker sees in a gateway Worker before passing the request on, or canonicalize them inside the Worker that sets `Vary`.
-* **`Vary: *` disables caching.** A wildcard variance cannot be satisfied deterministically from request headers, so the response is treated as uncacheable and `Cf-Cache-Status` is `BYPASS`.
-* **Variants share a single purge identity.** [Purging](https://developers.cloudflare.com/workers/cache/purge/) by tag or path prefix invalidates every variant of a URL together. All variants must therefore use the same `Cache-Tag` values — assigning different tags to different variants results in inconsistent purges.
-* **Image transformation features take precedence.** Responses produced by Polish or Image Resizing already generate their own variants, and `Vary` on those responses is ignored.
+- **All header names are honored.** Any header name your Worker lists in `Vary` participates in the variant key. There is no allowlist.
+- **Values are compared verbatim.** Cloudflare does not normalize the listed request headers before keying. `Accept-Encoding: gzip, br` and `Accept-Encoding: br, gzip` produce two separate variants even though they are semantically identical. If you need to fold equivalent values onto the same variant, normalize the headers your Worker sees in a gateway Worker before passing the request on, or canonicalize them inside the Worker that sets `Vary`.
+- **`Vary: *` disables caching.** A wildcard variance cannot be satisfied deterministically from request headers, so the response is treated as uncacheable and `Cf-Cache-Status` is `BYPASS`.
+- **Variants share a single purge identity.** [Purging](https://developers.cloudflare.com/workers/cache/purge/) by tag or path prefix invalidates every variant of a URL together. All variants must therefore use the same `Cache-Tag` values — assigning different tags to different variants results in inconsistent purges.
+- **Image transformation features take precedence.** Responses produced by Polish or Image Resizing already generate their own variants, and `Vary` on those responses is ignored.
 
 ### `Accept-Encoding` and `Content-Encoding`
 
@@ -555,8 +571,8 @@ Your Worker controls its own content negotiation. Whatever `Content-Encoding` yo
 
 If your Worker needs to return different encodings to different clients, you have two options:
 
-* **Pick one canonical encoding inside your Worker.** Decide based on the `Accept-Encoding` request header, encode the body once, and return a single representation. Subsequent requests for that URL hit the same cached entry regardless of what they accept. This produces the highest cache hit rate but requires you to decide which clients you serve which encoding to.
-* **Vary on `Accept-Encoding`.** Return a different `Content-Encoding` per request and set `Vary: Accept-Encoding`. Cloudflare stores one variant per distinct `Accept-Encoding` value the Worker has seen. Because comparison is verbatim, clients that send semantically equivalent values in different orders or with different quality factors produce separate variants — keep cache fan-out under control by normalizing `Accept-Encoding` (for example, in a gateway Worker) before the response is generated.
+- **Pick one canonical encoding inside your Worker.** Decide based on the `Accept-Encoding` request header, encode the body once, and return a single representation. Subsequent requests for that URL hit the same cached entry regardless of what they accept. This produces the highest cache hit rate but requires you to decide which clients you serve which encoding to.
+- **Vary on `Accept-Encoding`.** Return a different `Content-Encoding` per request and set `Vary: Accept-Encoding`. Cloudflare stores one variant per distinct `Accept-Encoding` value the Worker has seen. Because comparison is verbatim, clients that send semantically equivalent values in different orders or with different quality factors produce separate variants — keep cache fan-out under control by normalizing `Accept-Encoding` (for example, in a gateway Worker) before the response is generated.
 
 Was this helpful?
 

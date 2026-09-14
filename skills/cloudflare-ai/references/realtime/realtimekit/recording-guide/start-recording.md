@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Start Recording
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/start-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This topic explains how to use RealtimeKit to implement composite recording.
 
 Before getting started with this guide, we recommend that you read [Get Started with RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/quickstart/) to familiarize yourself with RealtimeKit.
 
-To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring the [RealtimeKit REST API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/).
+To familiarize yourself with the RealtimeKit REST APIs, we recommend exploring the [RealtimeKit REST API](https://developers.cloudflare.com/api/resources/realtime_kit/).
 
 There are three ways to start recording a RealtimeKit meeting:
 
-* Using the `record_on_start` flag when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/)
-* Using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/)
-* Client side start recording methods on the SDK
+- Using the `record_on_start` flag when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/)
+- Using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/)
+- Client side start recording methods on the SDK
 
 RealtimeKit stores recordings for a period of 7 days, after which they will expire and no longer be accessible. It is important to either download a copy of your recording or [set up storage](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/) before the link expires.
 
@@ -33,12 +33,12 @@ Note
 1. Our system does not currently support recordings of brief durations that are less than five seconds. In such cases, it is possible that the recording APIs may experience occasional failures. Due to limitations in encoding recordings of short duration, these failures may result in an ERRORED state.
 2. Recording will stop if there are no participants in a meeting for 60 seconds.
 3. The average file size for one hour of recording is approximately 300MB.
-4. There can only be one active recording of a meeting at any given time, unless the `allow_multiple_recording` field is set in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
-5. Maximum recording time is 24 hours. Recording will automatically stop after 24 hours have elapsed since the recording's start time. This option can be configured to any value up to 24 hours by passing the `max_seconds` parameter in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) request.
+4. There can only be one active recording of a meeting at any given time, unless the `allow_multiple_recording` field is set in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
+5. Maximum recording time is 24 hours. Recording will automatically stop after 24 hours have elapsed since the recording's start time. This option can be configured to any value up to 24 hours by passing the `max_seconds` parameter in the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) request.
 
 ## Using the `record_on_start` parameter
 
-When [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/), you can specify the `record_on_start` parameter to start the recording as soon as someone joins the meeting.
+When [creating a meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/), you can specify the `record_on_start` parameter to start the recording as soon as someone joins the meeting.
 
 Specify storage config
 
@@ -74,13 +74,15 @@ curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/real
 
 ## Using the Start Recording API
 
-You can also start a recording using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/).
+You can also start a recording using the [Start Recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/).
 
 Specify the `meeting ID` of the meeting that you want to record.
 
-Use the [List meetings API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/get/) for an app or [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/) to get the meeting ID. The API returns a parameter called `id`, which is your meeting ID.
+Use the [List meetings API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/get/) for an app or [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/) to get the meeting ID. The API returns a parameter called `id`, which is your meeting ID.
 
 ### Request
+
+*Calling Start Recording APIbash*
 
 ```bash
 curl --location 'https://api.cloudflare.com/client/v4/accounts/<account_id>/realtime/kit/<app_id>/recordings' \

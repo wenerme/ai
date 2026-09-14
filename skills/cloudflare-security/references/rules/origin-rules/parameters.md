@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Origin Rules API parameter reference
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/origin-rules/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create [different overrides](https://developers.cloudflare.com/rules/origin-rules/features/) by including different action parameters in the `action_parameters` field:
 
-| Override type                                   | What to include                                                                |
-| ----------------------------------------------- | ------------------------------------------------------------------------------ |
-| Host header override                            | [host\_header parameter](#host-header-override-parameters)                     |
-| SNI override                                    | [sni object](#sni-override-parameters)                                         |
-| DNS record override / Destination port override | [origin object](#dns-record-override-and-destination-port-override-parameters) |
+| Override type | What to include |
+| --- | --- |
+| Host header override | [`host_header` parameter](#host-header-override-parameters) |
+| SNI override | [`sni` object](#sni-override-parameters) |
+| DNS record override / Destination port override | [`origin` object](#dns-record-override-and-destination-port-override-parameters) |
 
 Note
 

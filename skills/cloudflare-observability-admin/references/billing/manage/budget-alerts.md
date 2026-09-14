@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Budget alerts
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/manage/budget-alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/budget-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold you define. Use budget alerts to manage costs proactively instead of discovering unexpected charges at the end of a billing cycle.
 
@@ -23,51 +23,50 @@ Budget alerts are available to Pay-as-you-go accounts only. Enterprise contract 
 ## Create a budget alert
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **Manage Account** \> **Billing**.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Billable Usage**.
 4. Select **Create budget alert**.
 5. Configure the alert:
 
-| Field                      | Description                                                                                                                                                           |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Alert name**             | A descriptive name for the alert (for example, "R2 spend warning").                                                                                                   |
-| **Description**            | _(Optional)_ A note about when this alert should fire.                                                                                                                |
-| **Budget threshold (USD)** | The dollar amount that triggers the alert. When your cumulative usage-based spend for the current billing period crosses this value, Cloudflare sends a notification. |
-| **Email recipients**       | One or more email addresses to notify. Select **Add email** to add additional recipients.                                                                             |
+   | Field | Description |
+   | --- | --- |
+   | **Alert name** | A descriptive name for the alert (for example, "R2 spend warning"). |
+   | **Description** | *(Optional)* A note about when this alert should fire. |
+   | **Budget threshold (USD)** | The dollar amount that triggers the alert. When your cumulative usage-based spend for the current billing period crosses this value, Cloudflare sends a notification. |
+   | **Email recipients** | One or more email addresses to notify. Select **Add email** to add additional recipients. |
 6. Select **Save**.
 
 ## View and manage budget alerts
 
-To view your existing budget alerts, go to **Manage Account** \> **Billing** \> **Billable Usage** and select **Budget alerts**. The count next to the button shows how many alerts you have configured.
+To view your existing budget alerts, go to **Manage Account** > **Billing** > **Billable Usage** and select **Budget alerts**. The count next to the button shows how many alerts you have configured.
 
 From there you can edit or delete existing alerts.
 
 ## How budget alerts work
 
-* Budget alerts evaluate your cumulative usage-based spend for the current billing period.
-* When spend crosses the threshold, Cloudflare sends a single email notification to all configured recipients.
-* The alert resets at the start of each new billing period.
-* Budget alerts are informational only. They do not pause or cap usage. Your monthly invoice remains the authoritative source for billing.
+- Budget alerts evaluate your cumulative usage-based spend for the current billing period.
+- When spend crosses the threshold, Cloudflare sends a single email notification to all configured recipients.
+- The alert resets at the start of each new billing period.
+- Budget alerts are informational only. They do not pause or cap usage. Your monthly invoice remains the authoritative source for billing.
 
 ## Budget alerts compared to usage notifications
 
 Cloudflare offers two types of spend monitoring:
 
-| Feature            | Budget alerts                                   | Usage notifications                                       |
-| ------------------ | ----------------------------------------------- | --------------------------------------------------------- |
-| **Scope**          | Account-wide, all usage-based products combined | Per-product (for example, Argo bytes or Workers requests) |
-| **Threshold**      | Dollar amount                                   | Product-specific metric (bytes, requests, minutes)        |
-| **Setup location** | **Billing** \> **Billable Usage**               | **Notifications**                                         |
-| **Best for**       | Overall cost management                         | Monitoring a single product                               |
+| Feature | Budget alerts | Usage notifications |
+| --- | --- | --- |
+| **Scope** | Account-wide, all usage-based products combined | Per-product (for example, Argo bytes or Workers requests) |
+| **Threshold** | Dollar amount | Product-specific metric (bytes, requests, minutes) |
+| **Setup location** | **Billing** > **Billable Usage** | **Notifications** |
+| **Best for** | Overall cost management | Monitoring a single product |
 
 For per-product usage notifications, refer to [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/#usage-based-billing-notifications).
 
 ## Related resources
 
-* [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
-* [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
+- [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) — Track daily usage-based costs
+- [Usage-based billing](https://developers.cloudflare.com/billing/understand/usage-based-billing/) — Which products use metered billing
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — Billing lifecycle and charge types
 
 Was this helpful?
 

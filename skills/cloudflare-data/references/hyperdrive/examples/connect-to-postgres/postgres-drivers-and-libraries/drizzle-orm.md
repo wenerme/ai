@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Drizzle ORM
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/drizzle-orm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/drizzle-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
 
-* A Cloudflare account with Workers access
-* A PostgreSQL database
-* A [Hyperdrive configuration to your PostgreSQL database](https://developers.cloudflare.com/hyperdrive/get-started/#3-connect-hyperdrive-to-a-database)
+- A Cloudflare account with Workers access
+- A PostgreSQL database
+- A [Hyperdrive configuration to your PostgreSQL database](https://developers.cloudflare.com/hyperdrive/get-started/#3-connect-hyperdrive-to-a-database)
 
-## 1\. Install Drizzle
+## 1. Install Drizzle
 
 Install the Drizzle ORM and its dependencies such as the [node-postgres ↗](https://node-postgres.com/) (`pg`) driver:
 
@@ -40,7 +40,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,38 +53,48 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
 id = "<your-hyperdrive-id-here>"
 ```
 
-## 2\. Configure Drizzle
+## 2. Configure Drizzle
 
-### 2.1\. Define a schema
+### 2.1. Define a schema
 
 With Drizzle ORM, we define the schema in TypeScript rather than writing raw SQL.
 
 1. Create a folder `/db/` in `/src/`.
 2. Create a `schema.ts` file.
 3. In `schema.ts`, define a `users` table as shown below.
-```ts
-// src/db/schema.ts
-import { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";
-export const users = pgTable("users", {
-	id: serial("id").primaryKey(),
-	name: varchar("name", { length: 255 }).notNull(),
-	email: varchar("email", { length: 255 }).notNull().unique(),
-	createdAt: timestamp("created_at").defaultNow(),
-});
-```
 
-### 2.2\. Connect Drizzle ORM to the database with Hyperdrive
+   *src/db/schema.tsts*
+
+
+
+   ```ts
+   // src/db/schema.ts
+   import { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";
+
+   export const users = pgTable("users", {
+   	id: serial("id").primaryKey(),
+   	name: varchar("name", { length: 255 }).notNull(),
+   	email: varchar("email", { length: 255 }).notNull().unique(),
+   	createdAt: timestamp("created_at").defaultNow(),
+   });
+   ```
+
+
+
+### 2.2. Connect Drizzle ORM to the database with Hyperdrive
 
 Use your Hyperdrive configuration for your database when using the Drizzle ORM.
 
 Populate your `index.ts` file as shown below.
+
+*src/index.tsts*
 
 ```ts
 // src/index.ts
@@ -119,9 +129,9 @@ export default {
 
 Note
 
-You may use [node-postgres ↗](https://orm.drizzle.team/docs/get-started-postgresql#node-postgres) or [Postgres.js ↗](https://orm.drizzle.team/docs/get-started-postgresql#postgresjs)when using Drizzle ORM. Both are supported and compatible.
+You may use [node-postgres ↗](https://orm.drizzle.team/docs/get-started-postgresql#node-postgres) or [Postgres.js ↗](https://orm.drizzle.team/docs/get-started-postgresql#postgresjs) when using Drizzle ORM. Both are supported and compatible.
 
-### 2.3\. Configure Drizzle-Kit for migrations (optional)
+### 2.3. Configure Drizzle-Kit for migrations (optional)
 
 Note
 
@@ -132,47 +142,69 @@ If you have already set it up (for example, if another user has applied the sche
 You can generate and run SQL migrations on your database based on your schema using Drizzle Kit CLI. Refer to [Drizzle ORM docs ↗](https://orm.drizzle.team/docs/get-started/postgresql-new) for additional guidance.
 
 1. Create a `.env` file the root folder of your project, and add your database connection string. The Drizzle Kit CLI will use this connection string to create and apply the migrations.
-```toml
-# .env
-# Replace with your direct database connection string
-DATABASE_URL='postgres://user:password@db-host.cloud/database-name'
-```
-2. Create a `drizzle.config.ts` file in the root folder of your project to configure Drizzle Kit and add the following content:
-```ts
-// drizzle.config.ts
-import "dotenv/config";
-import { defineConfig } from "drizzle-kit";
-export default defineConfig({
-	out: "./drizzle",
-	schema: "./src/db/schema.ts",
-	dialect: "postgresql",
-	dbCredentials: {
-		url: process.env.DATABASE_URL!,
-	},
-});
-```
-3. Generate the migration file for your database according to your schema files and apply the migrations to your database.
-Run the following two commands:
-```bash
-npx drizzle-kit generate
-```
-```bash
-No config path provided, using default 'drizzle.config.ts'
-Reading config file 'drizzle.config.ts'
-1 tables
-users 4 columns 0 indexes 0 fks
-[✓] Your SQL migration file ➜ drizzle/0000_mysterious_queen_noir.sql 🚀
-```
-```bash
-npx drizzle-kit migrate
-```
-```bash
-No config path provided, using default 'drizzle.config.ts'
-Reading config file 'drizzle.config.ts'
-Using 'postgres' driver for database querying
-```
 
-## 3\. Deploy your Worker
+   *.envtoml*
+
+
+
+   ```toml
+   # .env
+   # Replace with your direct database connection string
+   DATABASE_URL='postgres://user:password@db-host.cloud/database-name'
+   ```
+
+
+2. Create a `drizzle.config.ts` file in the root folder of your project to configure Drizzle Kit and add the following content:
+
+   *drizzle.config.tsts*
+
+
+
+   ```ts
+   // drizzle.config.ts
+   import "dotenv/config";
+   import { defineConfig } from "drizzle-kit";
+   export default defineConfig({
+   	out: "./drizzle",
+   	schema: "./src/db/schema.ts",
+   	dialect: "postgresql",
+   	dbCredentials: {
+   		url: process.env.DATABASE_URL!,
+   	},
+   });
+   ```
+
+
+3. Generate the migration file for your database according to your schema files and apply the migrations to your database.
+
+   Run the following two commands:
+
+   ```bash
+   npx drizzle-kit generate
+   ```
+
+   ```bash
+   No config path provided, using default 'drizzle.config.ts'
+   Reading config file 'drizzle.config.ts'
+   1 tables
+   users 4 columns 0 indexes 0 fks
+
+   [✓] Your SQL migration file ➜ drizzle/0000_mysterious_queen_noir.sql 🚀
+   ```
+
+   ```bash
+   npx drizzle-kit migrate
+   ```
+
+   ```bash
+   No config path provided, using default 'drizzle.config.ts'
+   Reading config file 'drizzle.config.ts'
+   Using 'postgres' driver for database querying
+   ```
+
+
+
+## 3. Deploy your Worker
 
 Deploy your Worker.
 
@@ -182,9 +214,9 @@ npx wrangler deploy
 
 ## Next steps
 
-* Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
-* Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
+- Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
+- Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 Was this helpful?
 

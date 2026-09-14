@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Release note
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/platform/release-note/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/release-note/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
@@ -152,7 +152,7 @@ You can now specify a single sitemap URL in **Parser options** to limit which pa
 
 **Sync individual files**
 
-You can now trigger a sync for a specific file from the dashboard. Go to **Overview** \> **Indexed Items** and select the sync icon next to the file you want to reindex.
+You can now trigger a sync for a specific file from the dashboard. Go to **Overview** > **Indexed Items** and select the sync icon next to the file you want to reindex.
 
 ## 2026-01-22
 
@@ -264,9 +264,9 @@ AI Search now returns custom metadata in search responses. You can also add a `c
 
 ## 2025-06-16
 
-**Rich format file size limit increased to 4 MB**
+**Rich format file size limit increased to 4 MB**
 
-You can now index rich format files (e.g., PDF) up to 4 MB in size, up from the previous 1 MB limit.
+You can now index rich format files (e.g., PDF) up to 4 MB in size, up from the previous 1 MB limit.
 
 ## 2025-06-12
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitoring API
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The **Zaraz Monitoring API** allows users to retrieve detailed data on Zaraz events through the **GraphQL Analytics API**. Using this API, you can monitor events, pageviews, triggers, actions, and server-side request statuses, including any errors and successes. The data available through the API mirrors what is shown on the Zaraz Monitoring page in the dashboard, but with the API, you can query it programmatically to create alerts and notifications for unexpected deviations.
 
@@ -22,10 +22,10 @@ To get started, you'll need to generate an Analytics API token by following the 
 
 The Monitoring API includes the following core entities, which each provide distinct insights:
 
-* **zarazTrackAdaptiveGroups**: Contains data on Zaraz events, such as event counts and timestamps.
-* **zarazActionsAdaptiveGroups**: Provides information on Zaraz Actions.
-* **zarazTriggersAdaptiveGroups**: Tracks data on Zaraz Triggers.
-* **zarazFetchAdaptiveGroups**: Captures server-side request data, including URLs and returning status codes for third-party requests made by Zaraz.
+- **zarazTrackAdaptiveGroups**: Contains data on Zaraz events, such as event counts and timestamps.
+- **zarazActionsAdaptiveGroups**: Provides information on Zaraz Actions.
+- **zarazTriggersAdaptiveGroups**: Tracks data on Zaraz Triggers.
+- **zarazFetchAdaptiveGroups**: Captures server-side request data, including URLs and returning status codes for third-party requests made by Zaraz.
 
 ## Example GraphQL Queries
 
@@ -160,10 +160,10 @@ Be sure to customize the zoneTag to match your specific zone, along with setting
 
 ### Explanation of Parameters
 
-* **zoneTag**: Unique identifier of your Cloudflare zone.
-* **limit**: Maximum number of results to return.
-* **start** and **end**: Define the date range for the query in ISO 8601 format.
-* **orderBy**: Determines the sorting order, such as by ascending or descending datetime.
+- **zoneTag**: Unique identifier of your Cloudflare zone.
+- **limit**: Maximum number of results to return.
+- **start** and **end**: Define the date range for the query in ISO 8601 format.
+- **orderBy**: Determines the sorting order, such as by ascending or descending datetime.
 
 ## Example `curl` Request
 
@@ -187,9 +187,9 @@ curl -X POST https://api.cloudflare.com/client/v4/graphql \
 
 ### Explanation of the `curl` Components
 
-* **Authorization**: The `Authorization` header requires a Bearer token. Replace `$TOKEN` with your actual API token.
-* **Content-Type**: Set `application/json` to indicate a JSON payload.
-* **Data Payload**: This payload includes the GraphQL query and variable parameters, such as `zoneTag`, `start`, `end`, `limit`, and `orderBy`.
+- **Authorization**: The `Authorization` header requires a Bearer token. Replace `$TOKEN` with your actual API token.
+- **Content-Type**: Set `application/json` to indicate a JSON payload.
+- **Data Payload**: This payload includes the GraphQL query and variable parameters, such as `zoneTag`, `start`, `end`, `limit`, and `orderBy`.
 
 This `curl` example will return a JSON response containing event counts and timestamps within the specified date range. Modify the `variables` values as needed for your use case.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Test speed
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/performance/test-speed/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/performance/test-speed/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers several tools to test the speed of your website, as well as the speed of your Internet connection.
 
@@ -32,18 +32,18 @@ If you experience any issues, make sure you are not blocking specific [user agen
 
 If your domain is not yet active on Cloudflare or you want to measure the before and after improvements of using Cloudflare, Cloudflare recommends using the following third-party tools:
 
-* [PageGym ↗](https://pagegym.com/)
-* [GTmetrix ↗](https://gtmetrix.com/)
-* [DebugBear ↗](https://www.debugbear.com/test/website-speed)
-* [Lighthouse ↗](https://developer.chrome.com/docs/lighthouse/)
-* [WebPageTest ↗](https://www.webpagetest.org/)
+- [PageGym ↗](https://pagegym.com/)
+- [GTmetrix ↗](https://gtmetrix.com/)
+- [DebugBear ↗](https://www.debugbear.com/test/website-speed)
+- [Lighthouse ↗](https://developer.chrome.com/docs/lighthouse/)
+- [WebPageTest ↗](https://www.webpagetest.org/)
 
 If you use these third-party tools, you should do the following to test website speed:
 
 1. [Pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) to remove performance and caching benefits.
 2. Run a speed test.
 3. Unpause Cloudflare.
-4. Run a speed test[1](#user-content-fn-1).
+4. Run a speed test<sup>[1](#user-content-fn-1)</sup>.
 5. Run a second speed test to get your baseline performance with Cloudflare.
 
 ### Improve speed
@@ -64,7 +64,7 @@ To test the speed of your home network connection (download, update, packet loss
 
 1. The results of your first speed test with Cloudflare will likely contain uncached results, which will provide inaccurate results.
 
-One of the key ways Cloudflare speeds up your site is through [caching](https://developers.cloudflare.com/cache/), which will appear in the results of the second test. [↩](#user-content-fnref-1)
+   One of the key ways Cloudflare speeds up your site is through [caching](https://developers.cloudflare.com/cache/), which will appear in the results of the second test. [↩](#user-content-fnref-1)
 
 Was this helpful?
 

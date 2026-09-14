@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Event notifications
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/event-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Event notifications send messages to your [queue](https://developers.cloudflare.com/queues/) when data in your R2 bucket changes. You can consume these messages with a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [pull over HTTP](https://developers.cloudflare.com/queues/configuration/pull-consumers/) from outside of Cloudflare Workers.
 
@@ -22,14 +22,13 @@ Event notifications send messages to your [queue](https://developers.cloudflare.
 
 Before getting started, you will need:
 
-* An existing R2 bucket. If you do not already have an existing R2 bucket, refer to [Create buckets](https://developers.cloudflare.com/r2/buckets/create-buckets/).
-* An existing queue. If you do not already have a queue, refer to [Create a queue](https://developers.cloudflare.com/queues/get-started/#2-create-a-queue).
-* A [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [HTTP pull](https://developers.cloudflare.com/queues/configuration/pull-consumers/) enabled on your Queue.
+- An existing R2 bucket. If you do not already have an existing R2 bucket, refer to [Create buckets](https://developers.cloudflare.com/r2/buckets/create-buckets/).
+- An existing queue. If you do not already have a queue, refer to [Create a queue](https://developers.cloudflare.com/queues/get-started/#2-create-a-queue).
+- A [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) or [HTTP pull](https://developers.cloudflare.com/queues/configuration/pull-consumers/) enabled on your Queue.
 
 ### Enable event notifications via Dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you'd like to add an event notification rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Event notifications** card.
 4. Select **Add notification** and choose the queue you'd like to receive notifications and the [type of events](https://developers.cloudflare.com/r2/buckets/event-notifications/#event-types) that will trigger them.
@@ -39,11 +38,11 @@ Before getting started, you will need:
 
 #### Set up Wrangler
 
-To begin, install [npm ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+To begin, install [`npm` ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 #### Enable event notifications on your R2 bucket
 
-Log in to Wrangler with the [wrangler login command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Then add an [event notification rule](https://developers.cloudflare.com/r2/buckets/event-notifications/#event-notification-rules) to your bucket by running the [r2 bucket notification create command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-notification-create).
+Log in to Wrangler with the [`wrangler login` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Then add an [event notification rule](https://developers.cloudflare.com/r2/buckets/event-notifications/#event-notification-rules) to your bucket by running the [`r2 bucket notification create` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-notification-create).
 
 ```sh
 npx wrangler r2 bucket notification create <BUCKET_NAME> --event-type <EVENT_TYPE> --queue <QUEUE_NAME>
@@ -70,10 +69,10 @@ Event notification rules determine the [event types](https://developers.cloudfla
 
 ## Event types
 
-| Event type    | Description                                                                 | Trigger actions                            |
-| ------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
-| object-create | Triggered when new objects are created or existing objects are overwritten. | PutObjectCopyObjectCompleteMultipartUpload |
-| object-delete | Triggered when an object is explicitly removed from the bucket.             | DeleteObjectLifecycleDeletion              |
+| Event type | Description | Trigger actions |
+| --- | --- | --- |
+| `object-create` | Triggered when new objects are created or existing objects are overwritten. | <ul><li>`PutObject`</li><li>`CopyObject`</li><li>`CompleteMultipartUpload`</li></ul> |
+| `object-delete` | Triggered when an object is explicitly removed from the bucket. | <ul><li>`DeleteObject`</li><li>`LifecycleDeletion`</li></ul> |
 
 ## Message format
 
@@ -99,25 +98,25 @@ Queue consumers receive notifications as [Messages](https://developers.cloudflar
 
 ### Properties
 
-| Property          | Type   | Description                                                                                                                                      |
-| ----------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| account           | String | The Cloudflare account ID that the event is associated with.                                                                                     |
-| action            | String | The type of action that triggered the event notification. Example actions include: PutObject, CopyObject, CompleteMultipartUpload, DeleteObject. |
-| bucket            | String | The name of the bucket where the event occurred.                                                                                                 |
-| object            | Object | A nested object containing details about the object involved in the event.                                                                       |
-| object.key        | String | The key (or name) of the object within the bucket.                                                                                               |
-| object.size       | Number | The size of the object in bytes. Note: not present for object-delete events.                                                                     |
-| object.eTag       | String | The entity tag (eTag) of the object. Note: not present for object-delete events.                                                                 |
-| eventTime         | String | The time when the action that triggered the event occurred.                                                                                      |
-| copySource        | Object | A nested object containing details about the source of a copied object. Note: only present for events triggered by CopyObject.                   |
-| copySource.bucket | String | The bucket that contained the source object.                                                                                                     |
-| copySource.object | String | The name of the source object.                                                                                                                   |
+| Property | Type | Description |
+| --- | --- | --- |
+| `account` | String | The Cloudflare account ID that the event is associated with. |
+| `action` | String | The type of action that triggered the event notification. Example actions include: `PutObject`, `CopyObject`, `CompleteMultipartUpload`, `DeleteObject`. |
+| `bucket` | String | The name of the bucket where the event occurred. |
+| `object` | Object | A nested object containing details about the object involved in the event. |
+| `object.key` | String | The key (or name) of the object within the bucket. |
+| `object.size` | Number | The size of the object in bytes. Note: not present for object-delete events. |
+| `object.eTag` | String | The entity tag (eTag) of the object. Note: not present for object-delete events. |
+| `eventTime` | String | The time when the action that triggered the event occurred. |
+| `copySource` | Object | A nested object containing details about the source of a copied object. Note: only present for events triggered by `CopyObject`. |
+| `copySource.bucket` | String | The bucket that contained the source object. |
+| `copySource.object` | String | The name of the source object. |
 
 ## Notes
 
-* Queues [per-queue message throughput](https://developers.cloudflare.com/queues/platform/limits/) is currently 5,000 messages per second. If your workload produces more than 5,000 notifications per second, we recommend splitting notification rules across multiple queues.
-* Rules without prefix/suffix apply to all objects in the bucket.
-* Overlapping or conflicting rules that could trigger multiple notifications for the same event are not allowed. For example, if you have an `object-create` (or `PutObject` action) rule without a prefix and suffix, then adding another `object-create` (or `PutObject` action) rule with a prefix like `images/` could trigger more than one notification for a single upload, which is invalid.
+- Queues [per-queue message throughput](https://developers.cloudflare.com/queues/platform/limits/) is currently 5,000 messages per second. If your workload produces more than 5,000 notifications per second, we recommend splitting notification rules across multiple queues.
+- Rules without prefix/suffix apply to all objects in the bucket.
+- Overlapping or conflicting rules that could trigger multiple notifications for the same event are not allowed. For example, if you have an `object-create` (or `PutObject` action) rule without a prefix and suffix, then adding another `object-create` (or `PutObject` action) rule with a prefix like `images/` could trigger more than one notification for a single upload, which is invalid.
 
 Was this helpful?
 

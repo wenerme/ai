@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mistral AI
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/mistral/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/mistral/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Mistral AI ↗](https://mistral.ai) helps you build quickly with Mistral's advanced AI models.
 
@@ -26,10 +26,10 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral
 
 When making requests to the Mistral AI, you will need:
 
-* AI Gateway Account ID
-* AI Gateway gateway name
-* Mistral AI API token
-* Mistral AI model name
+- AI Gateway Account ID
+- AI Gateway gateway name
+- Mistral AI API token
+- Mistral AI model name
 
 ## URL structure
 
@@ -42,6 +42,8 @@ So your final URL will come together as: `https://gateway.ai.cloudflare.com/v1/{
 ## Examples
 
 ### cURL
+
+*Example fetch requestbash*
 
 ```bash
 curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mistral/v1/chat/completions \
@@ -61,6 +63,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/mist
 ### Use `@mistralai/mistralai` package with JavaScript
 
 If you are using the `@mistralai/mistralai` package, you can set your endpoint like this:
+
+*JavaScript examplejs*
 
 ```js
 import { Mistral } from "@mistralai/mistralai";
@@ -92,7 +96,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 "model": "mistral/{model}"
 }

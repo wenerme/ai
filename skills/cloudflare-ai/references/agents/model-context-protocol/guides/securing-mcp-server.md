@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Securing MCP servers
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 MCP servers, like any web application, need to be secured so they can be used by trusted users without abuse. The MCP specification uses OAuth 2.1 for authentication between MCP clients and servers.
 
@@ -20,7 +20,7 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 ## OAuth protection with workers-oauth-provider
 
-Cloudflare's [workers-oauth-provider ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
+Cloudflare's [`workers-oauth-provider` ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
 ```js
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
@@ -342,9 +342,9 @@ async function validateOAuthState(request: Request, kv: KVNamespace) {
 
 The `__Host-` prefix prevents subdomain attacks, which is especially important on `*.workers.dev` domains:
 
-* Must be set with `Secure` flag (HTTPS only)
-* Must have `Path=/`
-* Must not have a `Domain` attribute
+- Must be set with `Secure` flag (HTTPS only)
+- Must have `Path=/`
+- Must not have a `Domain` attribute
 
 Without `__Host-`, an attacker controlling `evil.workers.dev` could set cookies for your `mcp-server.workers.dev` domain.
 
@@ -399,14 +399,14 @@ When reading the cookie, verify the HMAC signature before trusting the data. If 
 
 ## Security checklist
 
-| Protection         | Purpose                          |
-| ------------------ | -------------------------------- |
-| CSRF tokens        | Prevent forged consent approvals |
-| Input sanitization | Prevent XSS in consent dialogs   |
-| CSP headers        | Block injected scripts           |
-| State binding      | Prevent session fixation         |
-| \_\_Host- cookies  | Prevent subdomain attacks        |
-| HMAC signatures    | Verify cookie integrity          |
+| Protection | Purpose |
+| --- | --- |
+| CSRF tokens | Prevent forged consent approvals |
+| Input sanitization | Prevent XSS in consent dialogs |
+| CSP headers | Block injected scripts |
+| State binding | Prevent session fixation |
+| `__Host-` cookies | Prevent subdomain attacks |
+| HMAC signatures | Verify cookie integrity |
 
 ## Next steps
 
@@ -418,7 +418,7 @@ OAuth and authentication for MCP servers.
 
 Deploy MCP servers on Cloudflare.
 
-### [MCP security best practices](https://modelcontextprotocol.io/specification/draft/basic/security%5Fbest%5Fpractices)
+### [MCP security best practices](https://modelcontextprotocol.io/specification/draft/basic/security_best_practices)
 
 Official MCP specification security guide.
 

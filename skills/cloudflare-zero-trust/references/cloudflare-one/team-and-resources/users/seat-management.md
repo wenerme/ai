@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Seat management
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One subscriptions consist of seats that active users in your account consume. Active users are added to Cloudflare One through any [authentication event](#authentication-events).
 
@@ -38,7 +38,7 @@ Removing a user will delete all device registrations associated with the user. F
 
 ### Check number of seats used
 
-To check the number of seats consumed by active users in your organization, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust**. **Cloudflare One overview** will display the amount of seats consumed and the remaining amount available. For more details on your users, go to **Team & Resources** \> **Users**.
+To check the number of seats consumed by active users in your organization, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust**. **Cloudflare One overview** will display the amount of seats consumed and the remaining amount available. For more details on your users, go to **Team & Resources** > **Users**.
 
 ### Revoke a user
 
@@ -46,9 +46,9 @@ When you revoke a user, this action will terminate active sessions, but will not
 
 To revoke a user from your Zero Trust Organization:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 2. Select the checkbox next to a user with an **Active** status in the **Seat usage** column.
-3. Select **Action** \> **Revoke**.
+3. Select **Action** > **Revoke**.
 4. Select **Revoke sessions**.
 
 Revoked users can still log in if your policies allow them. To prevent a user from authenticating, you must remove them from your [device enrollment policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) or from your Identity Provider (IdP).
@@ -59,9 +59,9 @@ Removing a user from your Zero Trust Organization will free up the seat the user
 
 To remove a user from your Zero Trust Organization:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Users**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 2. Select the checkbox next to a user with an **Active** status in the **Seat usage** column.
-3. Select **Action** \> **Remove users**.
+3. Select **Action** > **Remove users**.
 4. Select **Remove**.
 
 The user will now show as **Inactive** and will no longer occupy a seat. If a user is removed but authenticates later, they will consume a seat again. To prevent a user from authenticating, you must remove them from your [device enrollment policies](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) or from your Identity Provider (IdP).
@@ -78,7 +78,7 @@ Cloudflare One can automatically remove any user who does not log in to an Acces
 
 To enable user seat expiration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Settings** \> **Admin controls**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **Admin controls**.
 2. In **Remove inactive users from seats**, select **Edit**.
 3. Select an inactivity time from the dropdown menu.
 4. Select **Save**.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/changelog/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/changelog/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
@@ -29,7 +29,7 @@ Resource History uses the audit log entries you already have. There is no additi
 
 **Dashboard:**
 
-1. Go to **Manage Account** \> **Audit Logs**.
+1. Go to **Manage Account** > **Audit Logs**.
 2. Open any audit log entry.
 3. Select the **History** tab to see the full history for that resource.
 4. Select any earlier entry to see a side-by-side diff of the fields that changed between it and the current entry.
@@ -63,7 +63,7 @@ If you are viewing account-level audit logs and the account belongs to an organi
 
 ![View Organization Audit Logs button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3456,height=510,format=webp/_astro/Audit_logs_v2_view_organization_button.Ch7CaBB-.png)
 
-To get started, go to **Organizations**, select your organization, then go to **Manage Organization** \> **Audit Logs**.
+To get started, go to **Organizations**, select your organization, then go to **Manage Organization** > **Audit Logs**.
 
 For more information, refer to the [Audit Logs documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
@@ -101,25 +101,25 @@ Audit Logs v2 provides a unified and standardized system for tracking and record
 
 **What's available at GA:**
 
-* **Standardized logging** — Audit logs follow a consistent format across all Cloudflare products, making it easier to search, filter, and investigate activity.
-* **Expanded product coverage** — \~95% of Cloudflare products covered, up from \~75% in v1.
-* **Granular filtering** — Filter by actor, action type, action result, resource, raw HTTP method, zone, and more. Over 20 filter parameters available via the API.
-* **Enhanced context** — Each log entry includes authentication method, interface (API or dashboard), Cloudflare Ray ID, and actor token details.
-* **18-month retention** — Logs are retained for 18 months. Full history is accessible via the API or Logpush.
+- **Standardized logging** — Audit logs follow a consistent format across all Cloudflare products, making it easier to search, filter, and investigate activity.
+- **Expanded product coverage** — \~95% of Cloudflare products covered, up from \~75% in v1.
+- **Granular filtering** — Filter by actor, action type, action result, resource, raw HTTP method, zone, and more. Over 20 filter parameters available via the API.
+- **Enhanced context** — Each log entry includes authentication method, interface (API or dashboard), Cloudflare Ray ID, and actor token details.
+- **18-month retention** — Logs are retained for 18 months. Full history is accessible via the API or Logpush.
 
 **Access:**
 
-* **Dashboard**: Go to **Manage Account** \> **Audit Logs**. Audit Logs v2 is shown by default.
-* **API**: `GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit`
-* **Logpush**: Available via the `audit_logs_v2` account-scoped dataset.
+- **Dashboard**: Go to **Manage Account** > **Audit Logs**. Audit Logs v2 is shown by default.
+- **API**: `GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit`
+- **Logpush**: Available via the `audit_logs_v2` account-scoped dataset.
 
 **Important notes:**
 
-* Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) are available at GA. These Beta logs will expire on \~April 9, 2026\. Logs generated after GA will be retained for the full 18 months. Older logs remain available in Audit Logs v1.
-* The UI query window is limited to 90 days for performance reasons. Use the API or Logpush for access to the full 18-month history.
-* `GET` requests (view actions) and `4xx` error responses are not logged at GA. `GET` logging will be selectively re-enabled for sensitive read operations in a future release.
-* Audit Logs v1 continues to run in parallel. A deprecation timeline will be communicated separately.
-* Before and after values — the ability to see what a value changed from and to — is a highly requested feature and is on our roadmap for a post-GA release. In the meantime, we recommend using Audit Logs v1 for before and after values. Audit Logs v1 will continue to run in parallel until this feature is available in v2.
+- Approximately 30 days of logs from the Beta period (back to \~February 8, 2026) are available at GA. These Beta logs will expire on \~April 9, 2026. Logs generated after GA will be retained for the full 18 months. Older logs remain available in Audit Logs v1.
+- The UI query window is limited to 90 days for performance reasons. Use the API or Logpush for access to the full 18-month history.
+- `GET` requests (view actions) and `4xx` error responses are not logged at GA. `GET` logging will be selectively re-enabled for sensitive read operations in a future release.
+- Audit Logs v1 continues to run in parallel. A deprecation timeline will be communicated separately.
+- Before and after values — the ability to see what a value changed from and to — is a highly requested feature and is on our roadmap for a post-GA release. In the meantime, we recommend using Audit Logs v1 for before and after values. Audit Logs v1 will continue to run in parallel until this feature is available in v2.
 
 For more details, refer to the [Audit Logs v2 documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
@@ -128,7 +128,7 @@ For more details, refer to the [Audit Logs v2 documentation](https://developers.
 
 **Audit logs (version 2) - Logpush Beta Release**
 
-[Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/) is now available via Logpush.
+[Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit_logs_v2/) is now available via Logpush.
 
 This expands on earlier releases of Audit Logs v2 in the [API](https://developers.cloudflare.com/changelog/2025-03-27-automatic-audit-logs-beta-release/) and [Dashboard UI](https://developers.cloudflare.com/changelog/2025-07-29-audit-logs-v2-ui-beta/).
 
@@ -151,20 +151,21 @@ To try the new user interface, go to **Manage Account > Audit Logs**. The previo
 
 **New Features:**
 
-* **Advanced Filtering**: Filter logs by actor, resource, method, and more for faster insights.
-* **On-hover filter controls**: Easily include or exclude values in queries by hovering over fields within a log entry.
-* **Detailed Log Sidebar**: View rich context for each log entry without leaving the main view.
-* **JSON Log View**: Inspect the raw log data in a structured JSON format.
-* **Custom Time Ranges**: Define your own time windows to view historical activity.
-* **Infinite Scroll**: Seamlessly browse logs without clicking through pages.
+- **Advanced Filtering**: Filter logs by actor, resource, method, and more for faster insights.
+- **On-hover filter controls**: Easily include or exclude values in queries by hovering over fields within a log entry.
+- **Detailed Log Sidebar**: View rich context for each log entry without leaving the main view.
+- **JSON Log View**: Inspect the raw log data in a structured JSON format.
+- **Custom Time Ranges**: Define your own time windows to view historical activity.
+- **Infinite Scroll**: Seamlessly browse logs without clicking through pages.
+
 ![Audit Logs v2 new UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1300,height=686,format=webp/_astro/Audit_logs_v2_filters.Bacd1IHg.png)
 
 For more details on Audit Logs v2, see the [Audit Logs documentation ↗](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
 **Known issues**
 
-* A small number of audit logs may currently be unavailable in Audit Logs v2\. In some cases, certain fields such as actor information may be missing in certain audit logs. We are actively working to improve coverage and completeness for General Availability.
-* Export to CSV is not supported in the new UI.
+- A small number of audit logs may currently be unavailable in Audit Logs v2. In some cases, certain fields such as actor information may be missing in certain audit logs. We are actively working to improve coverage and completeness for General Availability.
+- Export to CSV is not supported in the new UI.
 
 We are actively refining the Audit Logs v2 experience and welcome your feedback. You can share overall feedback by clicking the thumbs up or thumbs down icons at the top of the page, or provide feedback on specific audit log entries using the thumbs icons next to each audit log line or by filling out our [feedback form ↗](https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing).
 
@@ -187,18 +188,18 @@ You can access detailed documentation for audit logs (version 2) Beta API releas
 
 **Key Improvements in the Beta Release:**
 
-* **Automated & standardized logging**: Logs are now generated automatically using a standardized system, replacing manual, team-dependent logging. This ensures consistency across all Cloudflare services.
-* **Expanded product coverage**: Increased audit log coverage from 75% to 95%. Key API endpoints such as `/accounts`, `/zones`, and `/organizations` are now included.
-* **Granular filtering**: Logs now follow a uniform format, enabling precise filtering by actions, users, methods, and resources—allowing for faster and more efficient investigations.
-* **Enhanced context and traceability**: Each log entry now includes detailed context, such as the authentication method used, the interface (API or Dashboard) through which the action was performed, and mappings to Cloudflare Ray IDs for better traceability.
-* **Comprehensive activity capture**: Expanded logging to include GET requests and failed attempts, ensuring that all critical activities are recorded.
+- **Automated & standardized logging**: Logs are now generated automatically using a standardized system, replacing manual, team-dependent logging. This ensures consistency across all Cloudflare services.
+- **Expanded product coverage**: Increased audit log coverage from 75% to 95%. Key API endpoints such as `/accounts`, `/zones`, and `/organizations` are now included.
+- **Granular filtering**: Logs now follow a uniform format, enabling precise filtering by actions, users, methods, and resources—allowing for faster and more efficient investigations.
+- **Enhanced context and traceability**: Each log entry now includes detailed context, such as the authentication method used, the interface (API or Dashboard) through which the action was performed, and mappings to Cloudflare Ray IDs for better traceability.
+- **Comprehensive activity capture**: Expanded logging to include GET requests and failed attempts, ensuring that all critical activities are recorded.
 
 **Known Limitations in Beta**
 
-* Error handling for the API is not implemented.
-* There may be gaps or missing entries in the available audit logs.
-* UI is unavailable in this Beta release.
-* System-level logs and User-Activity logs are not included.
+- Error handling for the API is not implemented.
+- There may be gaps or missing entries in the available audit logs.
+- UI is unavailable in this Beta release.
+- System-level logs and User-Activity logs are not included.
 
 Support for these features is coming as part of the GA release later this year. For more details, including a sample audit log, check out our blog post: [Introducing Automatic Audit Logs ↗](https://blog.cloudflare.com/introducing-automatic-audit-logs/)
 

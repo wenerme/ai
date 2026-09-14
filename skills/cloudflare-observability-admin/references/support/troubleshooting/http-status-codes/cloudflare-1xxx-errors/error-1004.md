@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 1004
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1004/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1004/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 1004: Host Not Configured to Serve Web Traffic
 
@@ -20,8 +20,8 @@ This error indicates that the host is not configured to serve web traffic.
 
 ### Common causes
 
-* Cloudflare staff disabled proxying for the domain due to abuse or terms of service violations.
-* DNS changes have not yet propagated or the site owner's DNS A records point to [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
+- Cloudflare staff disabled proxying for the domain due to abuse or terms of service violations.
+- DNS changes have not yet propagated or the site owner's DNS A records point to [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
 
 ### Resolution
 

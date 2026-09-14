@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Linux
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/get-started/linux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/get-started/linux/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Looking for Zero Trust?
 
@@ -20,10 +20,10 @@ This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If y
 
 You have two ways of installing WARP on Linux, depending on the distro you are using:
 
-* Find the latest WARP client in the [package repository ↗](https://pkg.cloudflareclient.com/).
-* Install the `cloudflare-warp` package that suits your distro:
-  * **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.
-  * **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
+- Find the latest WARP client in the [package repository ↗](https://pkg.cloudflareclient.com/).
+- Install the `cloudflare-warp` package that suits your distro:
+  - **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.
+  - **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
 
 Note
 
@@ -45,15 +45,15 @@ To connect for the very first time:
 
 You can use `warp-cli mode --help` to get a list of modes to switch between. For example:
 
-* **DNS only mode via DoH:** `warp-cli mode doh`
-* **WARP with DoH:** `warp-cli mode warp+doh`
+- **DNS only mode via DoH:** `warp-cli mode doh`
+- **WARP with DoH:** `warp-cli mode warp+doh`
 
 ### Switch tunnel protocol
 
 You can switch the protocol that WARP uses to route traffic from the device to Cloudflare.
 
-* **WireGuard:** `warp-cli tunnel protocol set WireGuard`
-* **MASQUE:** (default) `warp-cli tunnel protocol set MASQUE`
+- **WireGuard:** `warp-cli tunnel protocol set WireGuard`
+- **MASQUE:** (default) `warp-cli tunnel protocol set MASQUE`
 
 Note
 
@@ -65,28 +65,35 @@ For information on WireGuard versus MASQUE, refer to our [blog post ↗](https:/
 
 The Linux client supports all 1.1.1.1 for Families modes, in either WARP on DNS-only mode:
 
-* **Families mode off:** `warp-cli dns families off`
-* **Malware protection:** `warp-cli dns families malware`
-* **Malware and adult content:** `warp-cli dns families full`
+- **Families mode off:** `warp-cli dns families off`
+- **Malware protection:** `warp-cli dns families malware`
+- **Malware and adult content:** `warp-cli dns families full`
 
 ### Enable WARP+ Unlimited
 
 To enable [WARP+ Unlimited](https://developers.cloudflare.com/warp-client/warp-modes/#warp-unlimited) on Linux, you will need an iOS or Android device that has an existing WARP+ Unlimited subscription.
 
 1. On your iOS or Android device, launch the **1.1.1.1 Faster Internet** app.
-2. Go to **Settings** \> **Account** and copy the **Key** value.
+2. Go to **Settings** > **Account** and copy the **Key** value.
 3. On your Linux device, run the following command:
-```sh
-warp-cli registration license <KEY>
-```
+
+   ```sh
+   warp-cli registration license <KEY>
+   ```
+
+
 4. Verify the new registration:
-```sh
-warp-cli registration show
-```
-```sh
-Account type: Unlimited
-...
-```
+
+   ```sh
+   warp-cli registration show
+   ```
+
+   ```sh
+   Account type: Unlimited
+   ...
+   ```
+
+
 
 Your WARP+ Unlimited subscription is now active on this device.
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/reference/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Interaction between redirects and other Cloudflare products
 
-Your redirects may interfere with Cloudflare products and features such as challenges. Consider excluding the [/cdn-cgi/\* URI path](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/) in your rule expression to avoid issues. Alternatively, you may exclude only a sub-path such as `/cdn-cgi/challenge-platform/*` to avoid issues with specific features (in this example, [Cloudflare challenges](#interaction-between-cloudflare-challenges-and-rules-features)).
+Your redirects may interfere with Cloudflare products and features such as challenges. Consider excluding the [`/cdn-cgi/*` URI path](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/) in your rule expression to avoid issues. Alternatively, you may exclude only a sub-path such as `/cdn-cgi/challenge-platform/*` to avoid issues with specific features (in this example, [Cloudflare challenges](#interaction-between-cloudflare-challenges-and-rules-features)).
 
 You may also want to exclude the `/.well-known/*` URL path used by several validation services. Refer to [Interaction between redirects and verification procedures like HTTP DCV](#interaction-between-redirects-and-verification-procedures-like-http-dcv) for more information.
 
@@ -24,7 +24,7 @@ You may also want to exclude the `/.well-known/*` URL path used by several valid
 
 If you are issuing a [challenge](https://developers.cloudflare.com/cloudflare-challenges/) for a given URI path that has one or more Rules features enabled, you should exclude URI paths starting with `/cdn-cgi/challenge-platform/` in your rule expressions to avoid challenge loops.
 
-For example, define a compound expression for your rule using the `and` operator and the [starts\_with()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts%5Fwith) function:
+For example, define a compound expression for your rule using the `and` operator and the [`starts_with()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#starts_with) function:
 
 ```txt
 <OTHER_RULE_CONDITIONS> and not starts_with(http.request.uri, "/cdn-cgi/challenge-platform/")
@@ -44,8 +44,8 @@ Cloudflare may remove the `Content-Length` header from responses delivered to we
 
 If your rule expression is matching a hostname for which you have neither created a DNS record nor enabled proxying traffic through Cloudflare, you will get a pop-up window with a couple of options:
 
-* **If no DNS record exists for the hostname**: Whether to proceed with the rule creation or to create a new proxied DNS record for that hostname.
-* **If there is a DNS record for the hostname, but traffic is not being proxied**: Whether to proceed with the rule creation or to enable proxying for the existing DNS record.
+- **If no DNS record exists for the hostname**: Whether to proceed with the rule creation or to create a new proxied DNS record for that hostname.
+- **If there is a DNS record for the hostname, but traffic is not being proxied**: Whether to proceed with the rule creation or to enable proxying for the existing DNS record.
 
 If you choose to create a new DNS record, the new record will have a `rules` tag and the following associated comment:
 
@@ -59,13 +59,13 @@ If you rewrite a URI path using a [URL rewrite](https://developers.cloudflare.co
 
 Consider the following origin rule configuration:
 
-* Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
-* **Host header** \> **Rewrite to**: `assets.example.com`
+- Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
+- **Host header** > **Rewrite to**: `assets.example.com`
 
 If you configure a new URL rewrite with the following configuration:
 
-* Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
-* **Path** \> **Rewrite to** \> **Dynamic**: `regex_replace(http.request.uri.path, "^/downloads/", "/")`
+- Rule expression: `http.host == "example.com" and starts_with(http.request.uri.path, "/downloads/")`
+- **Path** > **Rewrite to** > **Dynamic**: `regex_replace(http.request.uri.path, "^/downloads/", "/")`
 
 The origin rule will no longer match `/downloads/*` paths, since URL rewrites run before Origin Rules and the URI path will be rewritten from `"/downloads/"` to `"/"`.
 
@@ -77,13 +77,13 @@ In the current example, you could use the `raw.http.request.uri.path` field in b
 
 **URL rewrite**
 
-* Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
-* **Path** \> **Rewrite to** \> **Dynamic**: `regex_replace(raw.http.request.uri.path, "^/downloads/", "/")`
+- Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
+- **Path** > **Rewrite to** > **Dynamic**: `regex_replace(raw.http.request.uri.path, "^/downloads/", "/")`
 
 **Origin rule**
 
-* Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
-* **Host header** \> **Rewrite to**: `assets.example.com`
+- Rule expression: `http.host == "example.com" and starts_with(raw.http.request.uri.path, "/downloads/")`
+- **Host header** > **Rewrite to**: `assets.example.com`
 
 This way, the two rules will work as intended. Additionally, this allows you to use the same expression in the two rules, even when the first rule is updating the URI path value.
 

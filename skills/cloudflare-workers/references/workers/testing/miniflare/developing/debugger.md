@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Attaching a Debugger
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -48,7 +48,7 @@ filename: .vscode/launch.json
 }
 ```
 
-From the **Run and Debug** menu in the activity bar, select the `Miniflare`configuration, and click the green play button to start debugging.
+From the **Run and Debug** menu in the activity bar, select the `Miniflare` configuration, and click the green play button to start debugging.
 
 ## WebStorm
 
@@ -66,7 +66,7 @@ With the new configuration selected, click the green debug button to start debug
 
 ## DevTools
 
-Breakpoints can also be added via the Workers DevTools. For more information, [read the guide](https://developers.cloudflare.com/workers/observability/dev-tools)in the Cloudflare Workers docs.
+Breakpoints can also be added via the Workers DevTools. For more information, [read the guide](https://developers.cloudflare.com/workers/observability/dev-tools) in the Cloudflare Workers docs.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with Cloudflare's DNS Resolver. Before proceeding with manual troubleshooting steps, [verify your connection](https://developers.cloudflare.com/1.1.1.1/check/) to automatically gather relevant information.
 
@@ -141,15 +141,15 @@ curl -H 'accept: application/dns-json' 'https://cloudflare-dns.com/dns-query?nam
 
 If your traceroute fails at the first hop (the first network device after your computer, usually your router), the issue is likely hardware-related. Your router may have a hardcoded route for `1.1.1.1` that conflicts with using it as a DNS resolver. When reporting this issue, include:
 
-* Router make and model
-* ISP name
-* Any relevant router configuration details
+- Router make and model
+- ISP name
+- Any relevant router configuration details
 
 ## Additional resources
 
-* [1.1.1.1 DNS Resolver homepage ↗](https://1.1.1.1)
-* [DNS over TLS documentation](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/)
-* [Diagnostic tool ↗](https://one.one.one.one/help/)
+- [1.1.1.1 DNS Resolver homepage ↗](https://1.1.1.1)
+- [DNS over TLS documentation](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/)
+- [Diagnostic tool ↗](https://one.one.one.one/help/)
 
 Was this helpful?
 

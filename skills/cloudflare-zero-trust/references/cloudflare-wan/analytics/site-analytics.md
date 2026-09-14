@@ -12,35 +12,59 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network overview
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/site-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After adding your sites, the Network overview section of the dashboard provides a summary of the connectivity status and traffic analytics for all your sites. This is a great place to start if you receive a Cloudflare WAN alert, need to begin the troubleshooting process, or are performing routine monitoring. Refer to [Set up a site](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/sites/) for more information on how to set up a site.
 
 Network overview has the following data types available:
 
+<details>
+
+<summary>
+
 Geographic map summary
 
-* [Aggregate Cloudflare WAN site health](#site-health)
-* [Cloudflare WAN availability status for sites](#no-status-available)
-* [Cloudflare WAN site geographic location](#no-location-set)
+</summary>
+
+- <a href="#site-health">Aggregate Cloudflare WAN site health</a>
+- <a href="#no-status-available">Cloudflare WAN availability status for sites</a>
+- <a href="#no-location-set">Cloudflare WAN site geographic location</a>
+
+</details>
+
+<details>
+
+<summary>
 
 Cloudflare WAN site data table
 
-* Site Name
-* Site Health
-* Site Tunnel Names
-* Site Tunnel Statuses
-* Site Traffic Sent
-* Site Traffic Received
+</summary>
+
+- Site Name
+- Site Health
+- Site Tunnel Names
+- Site Tunnel Statuses
+- Site Traffic Sent
+- Site Traffic Received
+
+</details>
+
+<details>
+
+<summary>
 
 Cloudflare WAN site data
 
-* Traffic Sent by Tunnel
-* Traffic Received by Tunnel
+</summary>
+
+- Traffic Sent by Tunnel
+- Traffic Received by Tunnel
+
+</details>
 
 To start using network overview:
 
-[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 
 You will have access to an overview map with all your active sites, and any alerts for sites that are unhealthy or have no status available to them.
 
@@ -50,11 +74,11 @@ Review the following topics to learn more about the options available to you.
 
 The network map section shows all the sites configured with Cloudflare WAN. At a glance, you can check:
 
-* How many active sites you have
-* Location for sites in a map (if you set up their geographic location)
-* Sites that are healthy or unhealthy
-* Sites that have no status available
-* Sites that have no location set
+- How many active sites you have
+- Location for sites in a map (if you set up their geographic location)
+- Sites that are healthy or unhealthy
+- Sites that have no status available
+- Sites that have no location set
 
 The Traffic overview section displays a more granular list of your sites and their status.
 
@@ -74,8 +98,8 @@ The dashboard displays the number of sites with no location set, meaning sites f
 
 Traffic overview aggregates all Cloudflare WAN sites configured in your account. Here, you can check summary information about each site like:
 
-* Site status
-* Traffic sent and received
+- Site status
+- Traffic sent and received
 
 Select one of your sites to have access to a more detailed view of its traffic, including traffic by tunnel.
 

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Arbitrary TCP
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/arbitrary-tcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/arbitrary-tcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access provides a mechanism for end users to authenticate with their single sign-on (SSO) provider and connect to resources over arbitrary TCP without being on a virtual private network (VPN).
 
 ## Requirements
 
-* A Cloudflare account
-* A site active on Cloudflare
-* The `cloudflared` daemon installed on the host and client machines
+- A Cloudflare account
+- A site active on Cloudflare
+- The `cloudflared` daemon installed on the host and client machines
 
 > Cloudflare Access requires you to first [add a site ↗](https://dash.cloudflare.com/sign-up) to Cloudflare. You can use any site you have registered; the site does not need to be the same one you use for customer traffic and it does not need to match sites in your internal DNS.
 >
@@ -28,13 +28,13 @@ Cloudflare Access provides a mechanism for end users to authenticate with their 
 
 ## **Connect the host to Cloudflare**
 
-### 1\. Install the Cloudflare daemon on the host machine
+### 1. Install the Cloudflare daemon on the host machine
 
 The Cloudflare daemon, `cloudflared`, will maintain a secure, persistent, outbound-only connection from the machine to Cloudflare. Arbitrary TCP traffic will be proxied over this connection using [Cloudflare Tunnel ↗](https://www.cloudflare.com/products/tunnel/).
 
 Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) to download and install `cloudflared` on the machine hosting the resource.
 
-### 2\. Authenticate the Cloudflare daemon
+### 2. Authenticate the Cloudflare daemon
 
 Run the following command to authenticate `cloudflared` into your Cloudflare account.
 
@@ -48,13 +48,13 @@ Once you login, Cloudflare will display the sites that you added to your account
 
 Once selected, `cloudflared` will download a wildcard certificate for the site. This certificate will allow `cloudflared` to create a DNS record for a subdomain of the site.
 
-### 3\. Secure the subdomain with Cloudflare Access
+### 3. Secure the subdomain with Cloudflare Access
 
 Next, protect the subdomain you plan to register with a Cloudflare Access policy. Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to build a new policy to control who can connect to the resource.
 
 For example, if you share the resource at `tcp.site.com`, build a policy to only allow your team members to connect to that subdomain.
 
-### 4\. Connect the resource to Cloudflare
+### 4. Connect the resource to Cloudflare
 
 `cloudflared` can proxy connections to nonstandard ports.
 
@@ -68,11 +68,11 @@ cloudflared tunnel --hostname tcp.site.com --url tcp://localhost:7870
 
 ## **Connect from a client machine**
 
-### 1\. Install the Cloudflare daemon on the client machine
+### 1. Install the Cloudflare daemon on the client machine
 
 Follow the same steps above to download and install `cloudflared` on the client desktop that will connect to the resource. `cloudflared` will need to be installed on each user device that will connect.
 
-### 2\. Connect to the resource
+### 2. Connect to the resource
 
 Run the following command to create a connection from the device to Cloudflare. Any available port can be specified.
 
@@ -88,7 +88,7 @@ When the client launches, `cloudflared` will launch a browser window and prompt 
 
 **Common issues**
 
-* Ensure that the machine's firewall permits egress on ports 80 and 443, otherwise `cloudflared` will return an error.
+- Ensure that the machine's firewall permits egress on ports 80 and 443, otherwise `cloudflared` will return an error.
 
 Was this helpful?
 

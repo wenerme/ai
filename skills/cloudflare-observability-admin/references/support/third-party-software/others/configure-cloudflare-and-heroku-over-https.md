@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Cloudflare and Heroku over HTTPS
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/third-party-software/others/configure-cloudflare-and-heroku-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -24,37 +24,37 @@ This article describes how to configure Heroku with Cloudflare to serve your tra
 
 ## Step 1 - Add a custom domain to your Heroku app
 
-Follow Heroku's instructions: [Custom Domain Names for Apps ↗](https://devcenter.heroku.com/articles/custom-domains).
+Follow Heroku's instructions:  [Custom Domain Names for Apps ↗](https://devcenter.heroku.com/articles/custom-domains).
 
 ---
 
 ## Step 2 - Add a subdomain in Cloudflare DNS
 
-Below, you will need to add DNS records for a subdomain and the apex domain (also known as "root domain"). Learn how to [Managing DNS records in Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+Below, you will need to add DNS records for a subdomain and the apex domain (also known as "root domain"). Learn how to  [Managing DNS records in Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 ### Step 2a - Add a subdomain
 
 In the Cloudflare dashboard, go to the **DNS Records** page.
 
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
-Add a 'www' _CNAME_ record that points to the custom domain (also known as _DNS target_) that you obtained in Step 1 above for your subdomain.
+Add a 'www' *CNAME* record that points to the custom domain (also known as *DNS target*) that you obtained in Step 1 above for your subdomain.
 
-| Type  | Name | Target                         | Proxy status |
-| ----- | ---- | ------------------------------ | ------------ |
-| CNAME | www  | {example-domain}.herokudns.com | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `www` | `{example-domain}.herokudns.com` | Proxied |
 
 ### Step 2b - Add your root domain
 
 Adding a root or apex domain on Heroku also requires using a CNAME record pointed from your root. You cannot use A records on Heroku because no IP addresses are exposed for Heroku users to use.
 
-Fortunately, Cloudflare offers [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) to resolve requests for your root domain.
+Fortunately, Cloudflare offers  [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) to resolve requests for your root domain.
 
 Add a CNAME record for your root and point it to DNS target you obtained in Step 1 above for your domain.
 
-| Type  | Name | Target                         | Proxy status |
-| ----- | ---- | ------------------------------ | ------------ |
-| CNAME | @    | {example-domain}.herokudns.com | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `@` | `{example-domain}.herokudns.com` | Proxied |
 
 ---
 
@@ -78,7 +78,7 @@ Server: cloudflare
 CF-RAY: 3e1cf1d936f28c52-SFO-DOG
 ```
 
-You can identify Cloudflare-proxied requests by the _CF-Ray_ response header. If either of these two are present, your requests are being proxied by Cloudflare accordingly.
+You can identify Cloudflare-proxied requests by the *CF-Ray* response header. If either of these two are present, your requests are being proxied by Cloudflare accordingly.
 
 You can repeat the above cURL command for any of the subdomains that you have configured within your DNS settings.
 
@@ -88,15 +88,15 @@ You can repeat the above cURL command for any of the subdomains that you have co
 
 ### Step 4a - Enable SSL
 
-Cloudflare provides a SANs wildcard certificate with all paid plans, and a SNI wildcard certificate with the Free plan. Full details on SSL [can be found here ↗](https://www.cloudflare.com/ssl).
+Cloudflare provides a SANs wildcard certificate with all paid plans, and a SNI wildcard certificate with the Free plan. Full details on SSL  [can be found here ↗](https://www.cloudflare.com/ssl).
 
-If you don't know what this means, navigate to the **Overview** tab of the **SSL/TLS** app in your Cloudflare dashboard. Select _Flexible_ mode to serve your site over HTTPS to all public visitors.
+If you don't know what this means, navigate to the **Overview** tab of the **SSL/TLS** app in your Cloudflare dashboard. Select *Flexible* mode to serve your site over HTTPS to all public visitors.
 
-Once the certificate status changes to **• Active Certificate**, incoming traffic will be served to your site over HTTPS. Visitors will see HTTPS prefixed to your domain name in the browser bar.
+Once the certificate status changes to **• Active Certificate**, incoming traffic will be served to your site over HTTPS. Visitors will see HTTPS prefixed to your domain name in the browser bar.
 
 ### Step 4b - Force all traffic over HTTPS
 
-To ensure all traffic to your site is encrypted, Cloudflare lets you force an automatic HTTPS redirect. To configure this, refer to [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).
+To ensure all traffic to your site is encrypted, Cloudflare lets you force an automatic HTTPS redirect. To configure this, refer to [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/).
 
 You can then use a cURL command to verify that all requests are being forced over HTTPS.
 

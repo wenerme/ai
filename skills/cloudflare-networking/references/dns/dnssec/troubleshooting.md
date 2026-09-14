@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn more about how to troubleshoot issues with DNSSEC.
 
@@ -62,8 +62,8 @@ A domain's DNS records are all signed with the same public key. Therefore, query
 
 The DNS response includes two records:
 
-* `DNSKEY` record **256** is the public key called zone signing key (ZSK). ZSKs are used to verify the DNS record signatures for `A`, `MX`, `CNAME`, `SRV`, etc.
-* `DNSKEY` record **257** is called the key signing key (KSK). KSKs are used to verify the signatures of the `DNSKEY`, `CDS`, and `CDNSKEY` records.
+- `DNSKEY` record **256** is the public key called zone signing key (ZSK). ZSKs are used to verify the DNS record signatures for `A`, `MX`, `CNAME`, `SRV`, etc.
+- `DNSKEY` record **257** is called the key signing key (KSK). KSKs are used to verify the signatures of the `DNSKEY`, `CDS`, and `CDNSKEY` records.
 
 Note
 
@@ -192,10 +192,21 @@ Removing DNSKEY records while DNSSEC is still enabled will break DNS resolution.
 
 Use the [Delete DNSSEC API](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/delete/) to transition the zone to the `deleted` state. This stops all zone signing and removes all DNSSEC record types (RRSIG, NSEC, DNSKEY, CDS, and CDNSKEY):
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `DNS Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>DNS Write</code>
+
+</details>
+
+*Delete DNSSEC recordsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \

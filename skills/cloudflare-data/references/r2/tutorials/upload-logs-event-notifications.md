@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Log and store upload events in R2 with event notifications
 
-Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example provides a step-by-step guide on using [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to capture and store R2 upload logs in a separate bucket.
 
 ![Push-Based R2 Event Notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=912,height=472,format=svg/_astro/pushed-based-event-notification.NdMYExDK.svg)
 
-## 1\. Install Wrangler
+## 1. Install Wrangler
 
 To begin, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler) to install Wrangler, the Cloudflare Developer Platform CLI.
 
-## 2\. Create R2 buckets
+## 2. Create R2 buckets
 
 You will need to create two R2 buckets:
 
-* `example-upload-bucket`: When new objects are uploaded to this bucket, your [consumer Worker](https://developers.cloudflare.com/queues/get-started/#4-create-your-consumer-worker) will write logs.
-* `example-log-sink-bucket`: Upload logs from `example-upload-bucket` will be written to this bucket.
+- `example-upload-bucket`: When new objects are uploaded to this bucket, your [consumer Worker](https://developers.cloudflare.com/queues/get-started/#4-create-your-consumer-worker) will write logs.
+- `example-log-sink-bucket`: Upload logs from `example-upload-bucket` will be written to this bucket.
 
 To create the buckets, run the following Wrangler commands:
 
@@ -36,7 +36,7 @@ npx wrangler r2 bucket create example-upload-bucket
 npx wrangler r2 bucket create example-log-sink-bucket
 ```
 
-## 3\. Create a queue
+## 3. Create a queue
 
 Event notifications capture changes to data in `example-upload-bucket`. You will need to create a new queue to receive notifications:
 
@@ -44,7 +44,7 @@ Event notifications capture changes to data in `example-upload-bucket`. You will
 npx wrangler queues create example-event-notification-queue
 ```
 
-## 4\. Create a Worker
+## 4. Create a Worker
 
 Before you enable event notifications for `example-upload-bucket`, you need to create a [consumer Worker](https://developers.cloudflare.com/queues/reference/how-queues-works/#create-a-consumer-worker) to receive the notifications.
 
@@ -66,11 +66,11 @@ pnpm create cloudflare@latest consumer-worker
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Then, move into your newly created directory:
 
@@ -78,9 +78,9 @@ Then, move into your newly created directory:
 cd consumer-worker
 ```
 
-## 5\. Configure your Worker
+## 5. Configure your Worker
 
-In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)\](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
+In your Worker project's \[[Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)](/workers/wrangler/configuration/), add a [queue consumer](https://developers.cloudflare.com/workers/wrangler/configuration/#queues) and [R2 bucket binding](https://developers.cloudflare.com/workers/wrangler/configuration/#r2-buckets). The queues consumer bindings will register your Worker as a consumer of your future event notifications and the R2 bucket bindings will allow your Worker to access your R2 bucket.
 
 ```jsonc
 {
@@ -88,7 +88,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 	"name": "event-notification-writer",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -115,7 +115,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 name = "event-notification-writer"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.consumers]]
@@ -128,9 +128,9 @@ binding = "LOG_SINK"
 bucket_name = "example-log-sink-bucket"
 ```
 
-## 6\. Write event notification messages to R2
+## 6. Write event notification messages to R2
 
-Add a [queue handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) to `src/index.ts` to handle writing batches of notifications to our log sink bucket (you do not need a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)):
+Add a [`queue` handler](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) to `src/index.ts` to handle writing batches of notifications to our log sink bucket (you do not need a [fetch handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)):
 
 ```ts
 export interface Env {
@@ -157,23 +157,23 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 7\. Deploy your Worker
+## 7. Deploy your Worker
 
-To deploy your consumer Worker, run the [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
+To deploy your consumer Worker, run the [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command:
 
 ```sh
 npx wrangler deploy
 ```
 
-## 8\. Enable event notifications
+## 8. Enable event notifications
 
-Now that you have your consumer Worker ready to handle incoming event notification messages, you need to enable event notifications with the [wrangler r2 bucket notification create command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-notification-create) for `example-upload-bucket`:
+Now that you have your consumer Worker ready to handle incoming event notification messages, you need to enable event notifications with the [`wrangler r2 bucket notification create` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-notification-create) for `example-upload-bucket`:
 
 ```sh
 npx wrangler r2 bucket notification create example-upload-bucket --event-type object-create --queue example-event-notification-queue
 ```
 
-## 9\. Test
+## 9. Test
 
 Now you can test the full end-to-end flow by uploading an object to `example-upload-bucket` in the Cloudflare dashboard. After you have uploaded an object, logs will appear in `example-log-sink-bucket` in a few seconds.
 
@@ -186,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

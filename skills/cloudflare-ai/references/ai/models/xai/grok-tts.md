@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-tts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-tts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-tts`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expressive voices (eve, ara, rex, sal, leo) with 20+ supported languages. Supports inline speech tags for laughter, whispers, and pauses.
 
-| Model Info          |                                                                                                                |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
-| More information    | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/text-to-speech)                                 |
-| Zero data retention | Yes                                                                                                            |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-tts) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/text-to-speech) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-tts) |
 
 ## Usage
 
@@ -69,7 +69,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Different Voice** — Use the warm, conversational \`ara\` voice
+<details>
+
+<summary>**Different Voice** — Use the warm, conversational `ara` voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -105,7 +109,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High-Fidelity MP3** — 44.1 kHz / 192 kbps MP3 for production use
+</details>
+
+<details>
+
+<summary>**High-Fidelity MP3** — 44.1 kHz / 192 kbps MP3 for production use</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -151,7 +161,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Telephony (mulaw)** — G.711 μ-law at 8 kHz for SIP / PSTN integration
+</details>
+
+<details>
+
+<summary>**Telephony (mulaw)** — G.711 μ-law at 8 kHz for SIP / PSTN integration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -196,7 +212,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Expressive Delivery** — Inline speech tags for laughter, pauses, and whispers
+</details>
+
+<details>
+
+<summary>**Expressive Delivery** — Inline speech tags for laughter, pauses, and whispers</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -236,7 +258,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Text Normalization** — Convert written numbers and abbreviations to spoken form
+</details>
+
+<details>
+
+<summary>**Text Normalization** — Convert written numbers and abbreviations to spoken form</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -278,11 +306,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
 
-`string`minLength: 1maxLength: 15000Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: \[pause\], \[laugh\], <whisper>…</whisper>, etc. Required for REST mode, mutually exclusive with websocket.
+`string`minLength: 1maxLength: 15000Text to convert to speech. Maximum 15,000 characters. Supports inline speech tags: \[pause], \[laugh], \<whisper>…\</whisper>, etc. Required for REST mode, mutually exclusive with websocket.
 
 language
 
@@ -310,7 +340,7 @@ text\_normalization
 
 speed
 
-`number`minimum: 0.7maximum: 1.5Speech speed multiplier. 1.0 is normal speed. Range: 0.7 to 1.5\. Defaults to 1.0\. Only used in WebSocket mode.
+`number`minimum: 0.7maximum: 1.5Speech speed multiplier. 1.0 is normal speed. Range: 0.7 to 1.5. Defaults to 1.0. Only used in WebSocket mode.
 
 audio
 
@@ -318,9 +348,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-tts/schema-output.json)
 
 Was this helpful?
 

@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-2.5-flash`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.
 
-| Model Info                                                                          |                                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                          |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
-| Zero data retention                                                                 | Yes                                                                                                                       |
-| Request formats                                                                     | Chat Completions                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that govern how energy is transferred and transformed in physical systems. They are:
 
 1.  **The First Law of Thermodynamics (Law of Conservation of Energy)**
@@ -80,6 +81,7 @@ The three laws of thermodynamics are fundamental principles that govern how ener
     *   **Explanation:** This law provides a fundamental reference point for the measurement of entropy. It means that at absolute zero, all molecular motion would cease, and the system would be in its most ordered possible state (a perfect crystal with no defects). In practice, reaching absolute zero is impossible, as doing so would require an infinite number of steps, each becoming progressively harder.
 
 These three laws are cornerstones of physics and chemistry, explaining a vast range of phenomena from the operation of engines to the direction of chemical reactions and the very evolution of the universe.
+```
 
 ```json
 {
@@ -127,7 +129,11 @@ These three laws are cornerstones of physics and chemistry, explaining a vast ra
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -174,6 +180,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 Reading a JSON (JavaScript Object Notation) file in Python is straightforward, thanks to the built-in `json` module.
 
 Here's a step-by-step guide with examples:
@@ -314,6 +321,7 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 *   **Include `encoding='utf-8'`**: This prevents issues with character encoding, especially for international data.
 *   **Implement Error Handling**: Use `try...except` blocks to gracefully handle `FileNotFoundError` and `json.JSONDecodeError`.
 *   **Understand `load` vs. `loads`**: Use `load` for file objects and `loads` for strings.
+````
 
 ```json
 {
@@ -359,7 +367,13 @@ When `json.load()` or `json.loads()` parses JSON, it converts JSON data types to
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -426,7 +440,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Okay, you've got two main routes, each with its own character and fantastic stops
+```
 
 ```json
 {
@@ -472,7 +488,13 @@ Okay, you've got two main routes, each with its own character and fantastic stop
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -515,7 +537,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The rain had been a relentless drumbeat against
+```
 
 ```json
 {
@@ -561,13 +585,15 @@ The rain had been a relentless drumbeat against
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -579,19 +605,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -613,11 +637,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -627,19 +651,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -647,7 +667,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -675,7 +695,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -685,9 +705,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/schema-output.json)
 
 Was this helpful?
 

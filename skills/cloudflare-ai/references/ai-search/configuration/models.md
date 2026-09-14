@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Models
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search uses models at multiple stages. You can configure which models are used, or let AI Search automatically select a smart default for you.
 
@@ -20,11 +20,11 @@ AI Search uses models at multiple stages. You can configure which models are use
 
 AI Search leverages Workers AI models in the following stages:
 
-* Image to markdown conversion (if images are in data source): Converts image content to Markdown using object detection and captioning models.
-* Embedding: Transforms your documents and queries into vector representations for semantic search.
-* Query rewriting (optional): Reformulates the user’s query to improve retrieval accuracy.
-* Reranking (optional): Reorders retrieved results by semantic relevance using a cross-encoder model.
-* Generation: Produces the final response from retrieved context.
+- Image to markdown conversion (if images are in data source): Converts image content to Markdown using object detection and captioning models.
+- Embedding: Transforms your documents and queries into vector representations for semantic search.
+- Query rewriting (optional): Reformulates the user’s query to improve retrieval accuracy.
+- Reranking (optional): Reorders retrieved results by semantic relevance using a cross-encoder model.
+- Generation: Produces the final response from retrieved context.
 
 ## Model providers
 
@@ -34,13 +34,11 @@ To use AI Search with other model providers:
 
 1. Add provider keys to [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 2. Connect the gateway to AI Search.
-
-  * When creating a new AI Search, select the AI Gateway with your provider keys.
-  * For an existing AI Search, go to **Settings** and switch to a gateway that has your keys under **Resources**.
+   - When creating a new AI Search, select the AI Gateway with your provider keys.
+   - For an existing AI Search, go to **Settings** and switch to a gateway that has your keys under **Resources**.
 3. Select models
-
-  * Embedding model: Only available to be changed when creating a new AI Search.
-  * Generation model: Can be selected when creating a new AI Search and can be changed at any time in **Settings**.
+   - Embedding model: Only available to be changed when creating a new AI Search.
+   - Generation model: Can be selected when creating a new AI Search and can be changed at any time in **Settings**.
 
 AI Search supports a subset of models that have been selected to provide the best experience. Refer to the list of [supported models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/).
 
@@ -69,9 +67,9 @@ Learn more about models and their lifecycle status in [supported models](https:/
 
 ### Best practices
 
-* Regularly check the [release note](https://developers.cloudflare.com/ai-search/platform/release-note/) for updates.
-* Plan migration efforts according to the communicated end-of-life date.
-* Migrate and test the recommended replacement models before the end-of-life date.
+- Regularly check the [release note](https://developers.cloudflare.com/ai-search/platform/release-note/) for updates.
+- Plan migration efforts according to the communicated end-of-life date.
+- Migrate and test the recommended replacement models before the end-of-life date.
 
 Was this helpful?
 

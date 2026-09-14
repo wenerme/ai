@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client-side security and PCI DSS compliance
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/reference/pci-dss/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/pci-dss/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Cloudflare's client-side security for PCI DSS v4's client-side security requirements (items 6.4.3 and 11.6.1).
 

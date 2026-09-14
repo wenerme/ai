@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environment Variables
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Runtime environment variables
 
 The container runtime automatically sets the following variables:
 
-* `CLOUDFLARE_APPLICATION_ID` \- the ID of the Containers application
-* `CLOUDFLARE_COUNTRY_A2` \- the [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) of a country the container is placed in
-* `CLOUDFLARE_LOCATION` \- a name of a location the container is placed in
-* `CLOUDFLARE_REGION` \- a region name
-* `CLOUDFLARE_DURABLE_OBJECT_ID` \- the ID of the Durable Object instance that the container is bound to. You can use this to identify particular container instances on the dashboard.
+- `CLOUDFLARE_APPLICATION_ID` - the ID of the Containers application
+- `CLOUDFLARE_COUNTRY_A2` - the [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) of a country the container is placed in
+- `CLOUDFLARE_LOCATION` - a name of a location the container is placed in
+- `CLOUDFLARE_REGION` - a region name
+- `CLOUDFLARE_DURABLE_OBJECT_ID` - the ID of the Durable Object instance that the container is bound to. You can use this to identify particular container instances on the dashboard.
 
 ## User-defined environment variables
 

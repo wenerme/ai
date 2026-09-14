@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Requesting logs
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpull/requesting-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpull/requesting-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
 The three endpoints supported by the Logpull API are:
 
-* `GET /logs/received` \- returns HTTP request log data based on the parameters specified
-* `GET /logs/received/fields` \- returns the list of all available log fields
-* `GET /logs/rayids/{ray_id}` \- returns HTTP request log data matching `{ray_id}`
+- `GET /logs/received` - returns HTTP request log data based on the parameters specified
+- `GET /logs/received/fields` - returns the list of all available log fields
+- `GET /logs/rayids/{ray_id}` - returns HTTP request log data matching `{ray_id}`
 
 ## Required authentication headers
 
 The following headers are required for all endpoint calls:
 
-* `X-Auth-Email` \- the Cloudflare account email address associated with the domain
-* `X-Auth-Key` \- the Cloudflare API key
+- `X-Auth-Email` - the Cloudflare account email address associated with the domain
+- `X-Auth-Key` - the Cloudflare API key
 
 Alternatively, API tokens with Logs Read permissions can also be used for authentication:
 
-* `Authorization: Bearer <API_TOKEN>`
+- `Authorization: Bearer <API_TOKEN>`
 
 ## Parameters
 
@@ -51,15 +51,15 @@ https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/rayids/{ray_id}?[&fiel
 
 The following table describes the parameters available:
 
-| Parameter      | Description                                                                                                                                                                                                                                                                                             | Applies to                  | Required |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------- |
-| start          | \- Inclusive \- Timestamp formatted as UNIX (UTC by definition), UNIX Nano, or rfc3339. To specify rfc3339 time zone in URL query parameters, the URL needs to be encoded, like this start=2024-08-07T07:00:00%2B08:00&end=2024-08-07T07:01:00%2B08:00. \- Must be no more than 7 days earlier than now | /logs/received              | Yes      |
-| end            | \- Exclusive \- Same format as _start_ \- Must be at least 1 minute earlier than now and later than _start_                                                                                                                                                                                             | /logs/received              | Yes      |
-| count          | \- Return up to that many records \- Do not include if returning all records \- Results are not sorted; therefore, different data for repeated requests is likely \- Applies to number of total records returned, not number of sampled records                                                         | /logs/received              | No       |
-| sample         | \- Return only a sample of records \- Do not include if returning all records \- Value can range from 0.0 (exclusive) to 1.0 (inclusive) \- sample=0.1 means return 10% (1 in 10) of all records \- Results are random; therefore, different numbers of results for repeated requests are likely        | /logs/received              | No       |
-| fields         | \- Comma-separated list of fields to return \- If empty, the default list is returned                                                                                                                                                                                                                   | /logs/received /logs/rayids | No       |
-| timestamps     | \- Format in which timestamp fields will be returned \- Value options are: unixnano (default), unix, rfc3339 \- Timestamps returned as integers for unix and unixnano and as strings for rfc3339                                                                                                        | /logs/received /logs/rayids | No       |
-| CVE-2021-44228 | \- Optional redaction for [CVE-2021-44228 ↗](https://www.cve.org/CVERecord?id=CVE-2021-44228). This option will replace every occurrence of the string ${ with x{.  For example: CVE-2021-44228=true                                                                                                    | /logs/received              | No       |
+| Parameter | Description | Applies to | Required |
+| --- | --- | --- | --- |
+| start | - Inclusive - Timestamp formatted as `UNIX` (UTC by definition), `UNIX Nano`, or `rfc3339`. To specify `rfc3339` time zone in URL query parameters, the URL needs to be encoded, like this `start=2024-08-07T07:00:00%2B08:00&end=2024-08-07T07:01:00%2B08:00`. - Must be no more than 7 days earlier than now | /logs/received | Yes |
+| end | - Exclusive - Same format as *start* - Must be at least 1 minute earlier than now and later than *start* | /logs/received | Yes |
+| count | - Return up to that many records - Do not include if returning all records - Results are not sorted; therefore, different data for repeated requests is likely - Applies to number of total records returned, not number of sampled records | /logs/received | No |
+| sample | - Return only a sample of records - Do not include if returning all records - Value can range from `0.0` (exclusive) to `1.0` (inclusive) - `sample=0.1` means return 10% (1 in 10) of all records - Results are random; therefore, different numbers of results for repeated requests are likely | /logs/received | No |
+| fields | - Comma-separated list of fields to return - If empty, the default list is returned | /logs/received /logs/rayids | No |
+| timestamps | - Format in which timestamp fields will be returned - Value options are: `unixnano` (default), `unix`, `rfc3339` - Timestamps returned as integers for `unix` and `unixnano` and as strings for `rfc3339` | /logs/received /logs/rayids | No |
+| CVE-2021-44228 | - Optional redaction for [CVE-2021-44228 ↗](https://www.cve.org/CVERecord?id=CVE-2021-44228). This option will replace every occurrence of the string `${` with `x{`. For example: `CVE-2021-44228=true` | /logs/received | No |
 
 Note
 
@@ -114,7 +114,7 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2
 
 Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
 
-Refer to [HTTP request fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests) for the currently available fields.
+Refer to [HTTP request fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests) for the currently available fields.
 
 Was this helpful?
 

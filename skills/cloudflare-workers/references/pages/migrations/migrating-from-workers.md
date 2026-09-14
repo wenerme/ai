@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrating from Workers Sites to Pages
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-from-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate an existing [Cloudflare Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/) application to Cloudflare Pages.
 
@@ -48,7 +48,7 @@ A project is limited to 2,000 static redirects and 100 dynamic redirects, for a 
 
 Make sure that static redirects are before dynamic redirects in your `_redirects` file.
 
-In addition to a `_redirects` file, Cloudflare also offers [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-%5Fredirects-limits), which handles redirects that surpasses the 2,100 redirect rules limit set by Pages.
+In addition to a `_redirects` file, Cloudflare also offers [Bulk Redirects](https://developers.cloudflare.com/pages/configuration/redirects/#surpass-_redirects-limits), which handles redirects that surpasses the 2,100 redirect rules limit set by Pages.
 
 Your custom headers can also be moved into a `_headers` file in your output directory. It is important to note that custom headers defined in the `_headers` file are not currently applied to responses from Functions, even if the Function route matches the URL pattern. To learn more about handling headers, refer to [Headers](https://developers.cloudflare.com/pages/configuration/headers/).
 
@@ -74,10 +74,9 @@ These options allow you to create and name a new project from the CLI or dashboa
 
 After you have deployed your Pages application, to delete your Worker:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
-3. Go to **Manage** \> **Delete Worker**.
+3. Go to **Manage** > **Delete Worker**.
 
 With your Workers application removed, requests will go to your Pages application. You have successfully migrated your Workers Sites project to Cloudflare Pages by completing this guide.
 

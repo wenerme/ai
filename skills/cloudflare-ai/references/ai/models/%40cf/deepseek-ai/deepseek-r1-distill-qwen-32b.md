@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • DeepSeek
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepseek-ai/deepseek-r1-distill-qwen-32b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/deepseek-ai/deepseek-r1-distill-qwen-32b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/deepseek-ai/deepseek-r1-distill-qwen-32b`
 
-* Cloudflare-hosted
-* Reasoning
+- Cloudflare-hosted
+- Reasoning
 
-DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5\. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.
+DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.
 
-| Model Info                                                                          |                                                                        |
-| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens                                                          |
-| Terms and License                                                                   | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
-| Reasoning                                                                           | Yes                                                                    |
-| Unit Pricing                                                                        | $0.50 per M input tokens, $4.88 per M output tokens                    |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens |
+| Terms and License | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
+| Reasoning | Yes |
+| Unit Pricing | $0.50 per M input tokens, $4.88 per M output tokens |
 
 ## Playground
 
@@ -41,7 +41,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -70,7 +69,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -93,7 +91,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -116,7 +113,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -177,47 +173,59 @@ repetition\_penalty
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
+`number`minimum: -2maximum: 2Decreases the likelihood of the model repeating the same lines verbatim.
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2Increases the likelihood of the model introducing new topics.
+`number`minimum: -2maximum: 2Increases the likelihood of the model introducing new topics.
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/streaming-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/streaming-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/streaming-output.json)
 
 Was this helpful?
 

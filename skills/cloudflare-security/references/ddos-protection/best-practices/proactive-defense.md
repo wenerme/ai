@@ -12,20 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Proactive DDoS defense
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's network automatically mitigates large [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), but these attacks can still affect your application.
+Cloudflare's network automatically mitigates large  [DDoS attacks](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/)
+
+, but these attacks can still affect your application.
 
 ## All customers
 
 All customers should perform the following steps to better secure their application:
 
-1. Make sure all [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) are set to default settings (_High_ sensitivity level and mitigation actions) for optimal DDoS activation.
+1. Make sure all [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) are set to default settings (*High* sensitivity level and mitigation actions) for optimal DDoS activation.
 2. Deploy [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to enforce a combined positive and negative security model. Reduce the traffic allowed to your website based on your known usage.
 3. Make sure your origin is not exposed to the public Internet, meaning that access is only possible from [Cloudflare IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/). As an extra security precaution, we recommend contacting your hosting provider and requesting new origin server IPs if they have been targeted directly in the past.
 4. If you have [Managed IP Lists](https://developers.cloudflare.com/waf/tools/lists/managed-lists/#managed-ip-lists) or [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/), consider using these in WAF custom rules.
 5. Enable [caching](https://developers.cloudflare.com/cache/) as much as possible to reduce the strain on your origin servers, and when using [Workers](https://developers.cloudflare.com/workers/), avoid overwhelming your origin server with more subrequests than necessary.
-To help counter attack randomization, Cloudflare recommends to update your cache settings to exclude the query string as a cache key. When the query string is excluded as a cache key, Cloudflare's cache will take in unmitigated attack requests instead of forwarding them to the origin. The cache can be a useful mechanism as part of a multilayered security posture.
+
+   To help counter attack randomization, Cloudflare recommends to update your cache settings to exclude the query string as a cache key. When the query string is excluded as a cache key, Cloudflare's cache will take in unmitigated attack requests instead of forwarding them to the origin. The cache can be a useful mechanism as part of a multilayered security posture.
 
 ## Enterprise customers
 

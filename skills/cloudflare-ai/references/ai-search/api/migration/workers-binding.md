@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers binding migration
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [env.AI.autorag() binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
+The [`env.AI.autorag()` binding](https://developers.cloudflare.com/ai-search/api/migration/workers-binding-legacy/) is the legacy API for AI Search. It will continue to work, but all new features and improvements are only available through the new AI Search bindings.
 
 ## What changed
 
 Here is a summary of the key differences between the legacy and new bindings:
 
-|                     | Legacy                 | New                                            |
-| ------------------- | ---------------------- | ---------------------------------------------- |
-| **Wrangler config** | ai binding             | ai\_search or ai\_search\_namespaces binding   |
-| **Access pattern**  | env.AI.autorag("name") | env.MY\_INSTANCE or env.AI\_SEARCH.get("name") |
-| **Search format**   | query string           | messages array or query string                 |
-| **Response format** | data array             | chunks array                                   |
+|  | Legacy | New |
+| --- | --- | --- |
+| **Wrangler config** | `ai` binding | `ai_search` or `ai_search_namespaces` binding |
+| **Access pattern** | `env.AI.autorag("name")` | `env.MY_INSTANCE` or `env.AI_SEARCH.get("name")` |
+| **Search format** | `query` string | `messages` array or `query` string |
+| **Response format** | `data` array | `chunks` array |
 
 ## AI Search bindings
 
@@ -65,10 +65,10 @@ For more details on the difference, refer to [Namespaces](https://developers.clo
 
 The new bindings require the following minimum package versions for TypeScript types and local development support.
 
-| Package                   | Minimum version |
-| ------------------------- | --------------- |
-| @cloudflare/workers-types | 4.20260304.0    |
-| wrangler                  | 4.68.1          |
+| Package | Minimum version |
+| --- | --- |
+| `@cloudflare/workers-types` | `4.20260304.0` |
+| `wrangler` | `4.68.1` |
 
 ## Step 1: Update Wrangler configuration
 
@@ -159,14 +159,14 @@ The response shape changed from a `data` array to a `chunks` array.
 
 ### Field mapping
 
-| Old field                          | New field                 |
-| ---------------------------------- | ------------------------- |
-| data\[\]                           | chunks\[\]                |
-| data\[\].file\_id                  | chunks\[\].id             |
-| data\[\].filename                  | chunks\[\].item.key       |
-| data\[\].score                     | chunks\[\].score          |
-| data\[\].content\[\].text          | chunks\[\].text           |
-| data\[\].attributes.modified\_date | chunks\[\].item.timestamp |
+| Old field | New field |
+| --- | --- |
+| `data[]` | `chunks[]` |
+| `data[].file_id` | `chunks[].id` |
+| `data[].filename` | `chunks[].item.key` |
+| `data[].score` | `chunks[].score` |
+| `data[].content[].text` | `chunks[].text` |
+| `data[].attributes.modified_date` | `chunks[].item.timestamp` |
 
 ## Streaming behavior changes
 
@@ -178,16 +178,16 @@ The new binding sends the retrieved chunks first as a `chunks` event, followed b
 
 The new binding uses Vectorize-style metadata filtering. Filters are now passed inside `ai_search_options.retrieval.filters`.
 
-| Old format | New format        |
-| ---------- | ----------------- |
-| eq         | $eq (or implicit) |
-| ne         | $ne               |
-| gt         | $gt               |
-| gte        | $gte              |
-| lt         | $lt               |
-| lte        | $lte              |
-|            | $in (new)         |
-|            | $nin (new)        |
+| Old format | New format |
+| --- | --- |
+| `eq` | `$eq` (or implicit) |
+| `ne` | `$ne` |
+| `gt` | `$gt` |
+| `gte` | `$gte` |
+| `lt` | `$lt` |
+| `lte` | `$lte` |
+|  | `$in` (new) |
+|  | `$nin` (new) |
 
 ### Examples
 

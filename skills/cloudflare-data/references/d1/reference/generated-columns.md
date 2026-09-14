@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Generated columns
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/reference/generated-columns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/reference/generated-columns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to define generated columns based on the values of one or more other columns, SQL functions, or even [extracted JSON values](https://developers.cloudflare.com/d1/sql-api/query-json/).
 
@@ -24,8 +24,8 @@ Generated columns can also have [indexes defined](https://developers.cloudflare.
 
 There are two types of generated columns:
 
-* `VIRTUAL` (default): the column is generated when read. This has the benefit of not consuming storage, but can increase compute time (and thus reduce query performance), especially for larger queries.
-* `STORED`: the column is generated when the row is written. The column takes up storage space just as a regular column would, but the column does not need to be generated on every read, which can improve read query performance.
+- `VIRTUAL` (default): the column is generated when read. This has the benefit of not consuming storage, but can increase compute time (and thus reduce query performance), especially for larger queries.
+- `STORED`: the column is generated when the row is written. The column takes up storage space just as a regular column would, but the column does not need to be generated on every read, which can improve read query performance.
 
 When omitted from a generated column expression, generated columns default to the `VIRTUAL` type. The `STORED` type is recommended when the generated column is compute intensive. For example, when parsing large JSON structures.
 
@@ -56,7 +56,7 @@ As a concrete example, to automatically extract the `location` value from the fo
 }
 ```
 
-To define a generated column with the value of `$.measurement.location`, you can use the [json\_extract](https://developers.cloudflare.com/d1/sql-api/query-json/#extract-values) function to extract the value from the `raw_data` column each time you write to that row:
+To define a generated column with the value of `$.measurement.location`, you can use the [`json_extract`](https://developers.cloudflare.com/d1/sql-api/query-json/#extract-values) function to extract the value from the `raw_data` column each time you write to that row:
 
 ```sql
 CREATE TABLE sensor_readings (
@@ -106,9 +106,9 @@ ADD COLUMN expires_at AS (date(timestamp, '+30 days'));
 
 ## Additional considerations
 
-* Tables must have at least one non-generated column. You cannot define a table with only generated column(s).
-* Expressions can only reference other columns in the same table and row, and must only use [deterministic functions ↗](https://www.sqlite.org/deterministic.html). Functions like `random()`, sub-queries or aggregation functions cannot be used to define a generated column.
-* Columns added to an existing table via `ALTER TABLE ... ADD COLUMN` must be `VIRTUAL`. You cannot add a `STORED` column to an existing table.
+- Tables must have at least one non-generated column. You cannot define a table with only generated column(s).
+- Expressions can only reference other columns in the same table and row, and must only use [deterministic functions ↗](https://www.sqlite.org/deterministic.html). Functions like `random()`, sub-queries or aggregation functions cannot be used to define a generated column.
+- Columns added to an existing table via `ALTER TABLE ... ADD COLUMN` must be `VIRTUAL`. You cannot add a `STORED` column to an existing table.
 
 Was this helpful?
 

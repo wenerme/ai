@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Oblivious DNS over HTTPS
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With standard [DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/), your DNS queries are encrypted, but the resolver still sees both your IP address and the domain you are looking up. Oblivious DNS over HTTPS (ODoH) adds a privacy layer so that no single entity can see both pieces of information at the same time.
 
@@ -24,14 +24,14 @@ ODoH is defined in [RFC 9230 ↗](https://www.rfc-editor.org/rfc/rfc9230.html). 
 
 ODoH introduces two roles between your device and the DNS resolver:
 
-* **Proxy** — Forwards your encrypted DNS query to the target. The proxy can see your IP address but cannot read the query because it is encrypted.
-* **Target** — Receives and decrypts the DNS query, then sends it to the upstream resolver. The target can read the query but only sees the proxy's IP address, not yours.
+- **Proxy** — Forwards your encrypted DNS query to the target. The proxy can see your IP address but cannot read the query because it is encrypted.
+- **Target** — Receives and decrypts the DNS query, then sends it to the upstream resolver. The target can read the query but only sees the proxy's IP address, not yours.
 
 Because the query is encrypted before it reaches the proxy, and the target never learns your IP address:
 
-* The proxy has no visibility into the DNS messages, with no ability to identify, read, or modify either the query being sent by the client or the answer being returned by the target.
-* The target only has access to the encrypted query and the proxy's IP address, while not having visibility over the client's IP address.
-* Only the intended target can read the content of the query and produce a response, which is also encrypted.
+- The proxy has no visibility into the DNS messages, with no ability to identify, read, or modify either the query being sent by the client or the answer being returned by the target.
+- The target only has access to the encrypted query and the proxy's IP address, while not having visibility over the client's IP address.
+- Only the intended target can read the content of the query and produce a response, which is also encrypted.
 
 This means that, as long as the proxy and the target do not collude, no single entity can have access to both the DNS messages and the client IP address at the same time. Clients are in complete control of proxy and target selection, so you can choose a proxy and target operated by different organizations to reduce collusion risk.
 
@@ -47,8 +47,8 @@ To make ODoH queries you can use open source clients such as [dnscrypt-proxy ↗
 
 ## Related resources
 
-* [HPKE: Standardizing public-key encryption ↗](https://blog.cloudflare.com/hybrid-public-key-encryption/) blog post
-* [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
+- [HPKE: Standardizing public-key encryption ↗](https://blog.cloudflare.com/hybrid-public-key-encryption/) blog post
+- [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
 
 Was this helpful?
 

@@ -8,15 +8,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.response.headers
 
-`http.response.headers` `Map<Array<String>>`
+`http.response.headers``Map<Array<String>>`
 
 The HTTP response headers represented as a Map (or associative array).
 
 When there are repeating headers, the array includes them in the order they appear in the response. The keys convert to lowercase.
 
-* **Decoding**: No decoding performed
-* **Whitespace**: Preserved
-* **Non-ASCII**: Preserved
+- **Decoding**: No decoding performed
+- **Whitespace**: Preserved
+- **Non-ASCII**: Preserved
 
 **Note**: The availability of HTTP response fields depends on the exact Cloudflare feature and your Cloudflare plan.
 
@@ -33,8 +33,8 @@ any(http.response.headers["server"][*] == "nginx")
 ```
 
 Categories:
-* Response
-* Headers
+- Response
+- Headers
 
 Was this helpful?
 

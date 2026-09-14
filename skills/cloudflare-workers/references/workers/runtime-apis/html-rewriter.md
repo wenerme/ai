@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTMLRewriter
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -36,12 +36,10 @@ new HTMLRewriter()
 
 Throughout the `HTMLRewriter` API, there are a few consistent types that many properties and methods use:
 
-* `Content` string | Response | ReadableStream
-
-  * Content inserted in the output stream should be a string, [Response](https://developers.cloudflare.com/workers/runtime-apis/response/), or [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/).
-* `ContentOptions` Object
-
-  * `{ html: Boolean }` Controls the way the HTMLRewriter treats inserted content. If the `html` boolean is set to true, content is treated as raw HTML. If the `html` boolean is set to false or not provided, content will be treated as text and proper HTML escaping will be applied to it.
+- `Content` string | Response | ReadableStream
+  - Content inserted in the output stream should be a string, [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/), or [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/).
+- `ContentOptions` Object
+  - `{ html: Boolean }` Controls the way the HTMLRewriter treats inserted content. If the `html` boolean is set to true, content is treated as raw HTML. If the `html` boolean is set to false or not provided, content will be treated as text and proper HTML escaping will be applied to it.
 
 ---
 
@@ -129,62 +127,47 @@ The `element` argument, used only in element handlers, is a representation of a 
 
 #### Properties
 
-* `tagName` string
-
-  * The name of the tag, such as `"h1"` or `"div"`. This property can be assigned different values, to modify an element’s tag.
-* `attributes` Iterator read-only
-
-  * A `[name, value]` pair of the tag’s attributes.
-* `removed` boolean
-
-  * Indicates whether the element has been removed or replaced by one of the previous handlers.
-* `namespaceURI` string
-
-  * Represents the [namespace URI ↗](https://infra.spec.whatwg.org/#namespaces) of an element.
+- `tagName` string
+  - The name of the tag, such as `"h1"` or `"div"`. This property can be assigned different values, to modify an element’s tag.
+- `attributes` Iterator read-only
+  - A `[name, value]` pair of the tag’s attributes.
+- `removed` boolean
+  - Indicates whether the element has been removed or replaced by one of the previous handlers.
+- `namespaceURI` string
+  - Represents the [namespace URI ↗](https://infra.spec.whatwg.org/#namespaces) of an element.
 
 #### Methods
 
-* `` getAttribute(name `string`) `` : `string | null`
+- ``getAttribute(name `string`)`` : `string | null`
+  - Returns the value for a given attribute name on the element, or `null` if it is not found.
+- ``hasAttribute(name `string`)`` : `boolean`
+  - Returns a boolean indicating whether an attribute exists on the element.
+- ``setAttribute(name `string`, value `string`)`` : `Element`
+  - Sets an attribute to a provided value, creating the attribute if it does not exist.
+- ``removeAttribute(name `string`)`` : `Element`
+  - Removes the attribute.
+- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content before the element.
 
-  * Returns the value for a given attribute name on the element, or `null` if it is not found.
-* `` hasAttribute(name `string`) `` : `boolean`
+  Content and ContentOptions
 
-  * Returns a boolean indicating whether an attribute exists on the element.
-* `` setAttribute(name `string`, value `string`) `` : `Element`
-
-  * Sets an attribute to a provided value, creating the attribute if it does not exist.
-* `` removeAttribute(name `string`) `` : `Element`
-
-  * Removes the attribute.
-* `` before(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Inserts content before the element.
-Content and ContentOptions
-Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-* `` after(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Inserts content right after the element.
-* `` prepend(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Inserts content right after the start tag of the element.
-* `` append(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Inserts content right before the end tag of the element.
-* `` replace(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Removes the element and inserts content in place of it.
-* `` setInnerContent(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Replaces content of the element.
-* `remove()` : `Element`
-
-  * Removes the element with all its content.
-* `removeAndKeepContent()` : `Element`
-
-  * Removes the start tag and end tag of the element but keeps its inner content intact.
-* `` onEndTag(handler `Function<void>`) `` : `void`
-
-  * Registers a handler that is invoked when the end tag of the element is reached.
+  Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
+- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content right after the element.
+- ``prepend(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content right after the start tag of the element.
+- ``append(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content right before the end tag of the element.
+- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Removes the element and inserts content in place of it.
+- ``setInnerContent(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Replaces content of the element.
+- `remove()` : `Element`
+  - Removes the element with all its content.
+- `removeAndKeepContent()` : `Element`
+  - Removes the start tag and end tag of the element but keeps its inner content intact.
+- ``onEndTag(handler `Function<void>`)`` : `void`
+  - Registers a handler that is invoked when the end tag of the element is reached.
 
 ### EndTag
 
@@ -192,22 +175,21 @@ The `endTag` argument, used only in handlers registered with `element.onEndTag`,
 
 #### Properties
 
-* `name` string
-  * The name of the tag, such as `"h1"` or `"div"`. This property can be assigned different values, to modify an element's tag.
+- `name` string
+  - The name of the tag, such as `"h1"` or `"div"`. This property can be assigned different values, to modify an element's tag.
 
 #### Methods
 
-* `` before(content `Content`, contentOptions `ContentOptions` optional) `` : `EndTag`
+- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `EndTag`
+  - Inserts content right before the end tag.
+- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `EndTag`
+  - Inserts content right after the end tag.
 
-  * Inserts content right before the end tag.
-* `` after(content `Content`, contentOptions `ContentOptions` optional) `` : `EndTag`
+  Content and ContentOptions
 
-  * Inserts content right after the end tag.
-Content and ContentOptions
-Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-* `remove()` : `EndTag`
-
-  * Removes the element with all its content.
+  Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
+- `remove()` : `EndTag`
+  - Removes the element with all its content.
 
 ### Text chunks
 
@@ -217,32 +199,27 @@ Consider the following markup: `<div>Hey. How are you?</div>`. It is possible th
 
 #### Properties
 
-* `removed` boolean
-
-  * Indicates whether the element has been removed or replaced by one of the previous handlers.
-* `text` string read-only
-
-  * The text content of the chunk. Could be empty if the chunk is the last chunk of the text node.
-* `lastInTextNode` boolean read-only
-
-  * Specifies whether the chunk is the last chunk of the text node.
+- `removed` boolean
+  - Indicates whether the element has been removed or replaced by one of the previous handlers.
+- `text` string read-only
+  - The text content of the chunk. Could be empty if the chunk is the last chunk of the text node.
+- `lastInTextNode` boolean read-only
+  - Specifies whether the chunk is the last chunk of the text node.
 
 #### Methods
 
-* `` before(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
+- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content before the element.
 
-  * Inserts content before the element.
-Content and ContentOptions
-Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-* `` after(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
+  Content and ContentOptions
 
-  * Inserts content right after the element.
-* `` replace(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Removes the element and inserts content in place of it.
-* `remove()` : `Element`
-
-  * Removes the element with all its content.
+  Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
+- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content right after the element.
+- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Removes the element and inserts content in place of it.
+- `remove()` : `Element`
+  - Removes the element with all its content.
 
 ### Comments
 
@@ -258,29 +235,25 @@ class ElementHandler {
 
 #### Properties
 
-* `comment.removed` boolean
-
-  * Indicates whether the element has been removed or replaced by one of the previous handlers.
-* `comment.text` string
-
-  * The text of the comment. This property can be assigned different values, to modify comment's text.
+- `comment.removed` boolean
+  - Indicates whether the element has been removed or replaced by one of the previous handlers.
+- `comment.text` string
+  - The text of the comment. This property can be assigned different values, to modify comment's text.
 
 #### Methods
 
-* `` before(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
+- ``before(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content before the element.
 
-  * Inserts content before the element.
-Content and ContentOptions
-Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
-* `` after(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
+  Content and ContentOptions
 
-  * Inserts content right after the element.
-* `` replace(content `Content`, contentOptions `ContentOptions` optional) `` : `Element`
-
-  * Removes the element and inserts content in place of it.
-* `remove()` : `Element`
-
-  * Removes the element with all its content.
+  Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
+- ``after(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Inserts content right after the element.
+- ``replace(content `Content`, contentOptions `ContentOptions` optional)`` : `Element`
+  - Removes the element and inserts content in place of it.
+- `remove()` : `Element`
+  - Removes the element with all its content.
 
 ### Doctype
 
@@ -297,15 +270,12 @@ class DocumentHandler {
 
 #### Properties
 
-* `doctype.name` string | null read-only
-
-  * The doctype name.
-* `doctype.publicId` string | null read-only
-
-  * The quoted string in the doctype after the PUBLIC atom.
-* `doctype.systemId` string | null read-only
-
-  * The quoted string in the doctype after the SYSTEM atom or immediately after the `publicId`.
+- `doctype.name` string | null read-only
+  - The doctype name.
+- `doctype.publicId` string | null read-only
+  - The quoted string in the doctype after the PUBLIC atom.
+- `doctype.systemId` string | null read-only
+  - The quoted string in the doctype after the SYSTEM atom or immediately after the `publicId`.
 
 ### End
 
@@ -321,11 +291,12 @@ class DocumentHandler {
 
 #### Methods
 
-* `` append(content `Content`, contentOptions `ContentOptions` optional) `` : `DocumentEnd`
+- ``append(content `Content`, contentOptions `ContentOptions` optional)`` : `DocumentEnd`
+  - Inserts content after the end of the document.
 
-  * Inserts content after the end of the document.
-Content and ContentOptions
-Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
+  Content and ContentOptions
+
+  Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/#global-types) for more information on `Content` and `ContentOptions`.
 
 ---
 
@@ -333,66 +304,46 @@ Refer to [Global types](https://developers.cloudflare.com/workers/runtime-apis/h
 
 This is what selectors are and what they are used for.
 
-* `*`
-
-  * Any element.
-* `E`
-
-  * Any element of type E.
-* `E:nth-child(n)`
-
-  * An E element, the n-th child of its parent.
-* `E:first-child`
-
-  * An E element, first child of its parent.
-* `E:nth-of-type(n)`
-
-  * An E element, the n-th sibling of its type.
-* `E:first-of-type`
-
-  * An E element, first sibling of its type.
-* `E:not(s)`
-
-  * An E element that does not match either compound selectors.
-* `E.warning`
-
-  * An E element belonging to the class warning.
-* `E#myid`
-
-  * An E element with ID equal to myid.
-* `E[foo]`
-
-  * An E element with a foo attribute.
-* `E[foo="bar"]`
-
-  * An E element whose foo attribute value is exactly equal to bar.
-* `E[foo="bar" i]`
-
-  * An E element whose foo attribute value is exactly equal to any (ASCII-range) case-permutation of bar.
-* `E[foo="bar" s]`
-
-  * An E element whose foo attribute value is exactly and case-sensitively equal to bar.
-* `E[foo~="bar"]`
-
-  * An E element whose foo attribute value is a list of whitespace-separated values, one of which is exactly equal to bar.
-* `E[foo^="bar"]`
-
-  * An E element whose foo attribute value begins exactly with the string bar.
-* `E[foo$="bar"]`
-
-  * An E element whose foo attribute value ends exactly with the string bar.
-* `E[foo*="bar"]`
-
-  * An E element whose foo attribute value contains the substring bar.
-* `E[foo|="en"]`
-
-  * An E element whose foo attribute value is a hyphen-separated list of values beginning with en.
-* `E F`
-
-  * An F element descendant of an E element.
-* `E > F`
-
-  * An F element child of an E element.
+- `*`
+  - Any element.
+- `E`
+  - Any element of type E.
+- `E:nth-child(n)`
+  - An E element, the n-th child of its parent.
+- `E:first-child`
+  - An E element, first child of its parent.
+- `E:nth-of-type(n)`
+  - An E element, the n-th sibling of its type.
+- `E:first-of-type`
+  - An E element, first sibling of its type.
+- `E:not(s)`
+  - An E element that does not match either compound selectors.
+- `E.warning`
+  - An E element belonging to the class warning.
+- `E#myid`
+  - An E element with ID equal to myid.
+- `E[foo]`
+  - An E element with a foo attribute.
+- `E[foo="bar"]`
+  - An E element whose foo attribute value is exactly equal to bar.
+- `E[foo="bar" i]`
+  - An E element whose foo attribute value is exactly equal to any (ASCII-range) case-permutation of bar.
+- `E[foo="bar" s]`
+  - An E element whose foo attribute value is exactly and case-sensitively equal to bar.
+- `E[foo~="bar"]`
+  - An E element whose foo attribute value is a list of whitespace-separated values, one of which is exactly equal to bar.
+- `E[foo^="bar"]`
+  - An E element whose foo attribute value begins exactly with the string bar.
+- `E[foo$="bar"]`
+  - An E element whose foo attribute value ends exactly with the string bar.
+- `E[foo*="bar"]`
+  - An E element whose foo attribute value contains the substring bar.
+- `E[foo|="en"]`
+  - An E element whose foo attribute value is a hyphen-separated list of values beginning with en.
+- `E F`
+  - An F element descendant of an E element.
+- `E > F`
+  - An F element child of an E element.
 
 ---
 
@@ -425,11 +376,11 @@ async function handle(request) {
 
 ## Related resources
 
-* [Introducing HTMLRewriter ↗](https://blog.cloudflare.com/introducing-htmlrewriter/)
-* [Tutorial: Localize a Website](https://developers.cloudflare.com/pages/tutorials/localize-a-website/)
-* [Example: rewrite links](https://developers.cloudflare.com/workers/examples/rewrite-links/)
-* [Example: Inject Turnstile](https://developers.cloudflare.com/workers/examples/turnstile-html-rewriter/)
-* [Example: SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/)
+- [Introducing `HTMLRewriter` ↗](https://blog.cloudflare.com/introducing-htmlrewriter/)
+- [Tutorial: Localize a Website](https://developers.cloudflare.com/pages/tutorials/localize-a-website/)
+- [Example: rewrite links](https://developers.cloudflare.com/workers/examples/rewrite-links/)
+- [Example: Inject Turnstile](https://developers.cloudflare.com/workers/examples/turnstile-html-rewriter/)
+- [Example: SPA shell with bootstrap data](https://developers.cloudflare.com/workers/examples/spa-shell/)
 
 Was this helpful?
 

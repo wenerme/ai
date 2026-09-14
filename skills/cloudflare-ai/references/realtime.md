@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Realtime
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build live audio, video, and data applications with managed Realtime products.
 
@@ -38,14 +38,14 @@ The [TURN service](https://developers.cloudflare.com/realtime/turn/) is a manage
 
 Use this comparison table to quickly find the right Realtime product for your needs:
 
-|                              | **RealtimeKit**                                                                  | **Realtime SFU**                                                                                        | **TURN Service**                                                            |
-| ---------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **Choose it when**           | You want meeting SDKs, participant management, and pre-built UI components.      | You want to compose WebRTC media and data into a custom application topology.                           | You need a relay for peer-to-peer or self-hosted WebRTC connections.        |
-| **Provides**                 | Meetings, participants, presets, stage management, and UI components.            | Sessions, media tracks, DataChannels, and programmable publish and subscribe operations.                | TURN allocations and relayed UDP, TCP, or TLS transport.                    |
-| **Your application manages** | Product integration, branding, and application-specific behavior.                | Authentication, authorization, signaling, presence, state, and track discovery.                         | Peer connections, signaling, media routing, and application state.          |
-| **Example outcomes**         | Meetings, classrooms, webinars, and social video.                                | Custom calls, interactive broadcasts, AI pipelines, cloud gaming, device control, and media processing. | Connectivity through restrictive firewalls and network address translation. |
-| **Pricing**                  | Pricing by minute [view details ↗](https://workers.cloudflare.com/pricing#media) | $0.05/GB egress                                                                                         | Free when used with Realtime SFU, otherwise $0.05/GB egress                 |
-| **Free tier**                | None                                                                             | First 1,000 GB free each month                                                                          | First 1,000 GB free each month                                              |
+|  | **RealtimeKit** | **Realtime SFU** | **TURN Service** |
+| --- | --- | --- | --- |
+| **Choose it when** | You want meeting SDKs, participant management, and pre-built UI components. | You want to compose WebRTC media and data into a custom application topology. | You need a relay for peer-to-peer or self-hosted WebRTC connections. |
+| **Provides** | Meetings, participants, presets, stage management, and UI components. | Sessions, media tracks, DataChannels, and programmable publish and subscribe operations. | TURN allocations and relayed UDP, TCP, or TLS transport. |
+| **Your application manages** | Product integration, branding, and application-specific behavior. | Authentication, authorization, signaling, presence, state, and track discovery. | Peer connections, signaling, media routing, and application state. |
+| **Example outcomes** | Meetings, classrooms, webinars, and social video. | Custom calls, interactive broadcasts, AI pipelines, cloud gaming, device control, and media processing. | Connectivity through restrictive firewalls and network address translation. |
+| **Pricing** | Pricing by minute [view details ↗](https://workers.cloudflare.com/pricing#media) | $0.05/GB egress | Free when used with Realtime SFU, otherwise $0.05/GB egress |
+| **Free tier** | None | First 1,000 GB free each month | First 1,000 GB free each month |
 
 ## Related products
 

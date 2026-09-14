@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox options
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/configuration/sandbox-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure sandbox behavior by passing options when creating a sandbox instance with `getSandbox()`.
 
@@ -84,7 +84,7 @@ const statelessResult = await statelessSandbox.exec('pwd');
 
 Keep the container alive indefinitely by preventing automatic shutdown. When `true`, the container automatically sends heartbeat pings every 30 seconds to prevent eviction and will never auto-timeout.
 
-**How it works**: The sandbox automatically schedules lightweight ping requests to the container every 30 seconds. This prevents the container from being evicted due to inactivity while minimizing resource overhead. You can also enable/disable keepAlive dynamically using [setKeepAlive()](https://developers.cloudflare.com/sandbox/api/lifecycle/#setkeepalive).
+**How it works**: The sandbox automatically schedules lightweight ping requests to the container every 30 seconds. This prevents the container from being evicted due to inactivity while minimizing resource overhead. You can also enable/disable keepAlive dynamically using [`setKeepAlive()`](https://developers.cloudflare.com/sandbox/api/lifecycle/#setkeepalive).
 
 The `keepAlive` flag persists across Durable Object hibernation and wakeup cycles. Once enabled, you do not need to re-set it after the sandbox wakes from hibernation.
 
@@ -206,15 +206,15 @@ const sandbox2 = getSandbox(env.Sandbox, 'user-env', {
 
 **Available timeout options**:
 
-* `instanceGetTimeoutMS` \- How long to wait for Cloudflare to provision a new container instance. Increase during traffic spikes when many containers provision simultaneously. **Default**: `30000` (30 seconds)
-* `portReadyTimeoutMS` \- How long to wait for the sandbox API to become ready. Increase if you extend the base Dockerfile with custom startup work (installing packages, starting services). **Default**: `90000` (90 seconds)
+- `instanceGetTimeoutMS` - How long to wait for Cloudflare to provision a new container instance. Increase during traffic spikes when many containers provision simultaneously. **Default**: `30000` (30 seconds)
+- `portReadyTimeoutMS` - How long to wait for the sandbox API to become ready. Increase if you extend the base Dockerfile with custom startup work (installing packages, starting services). **Default**: `90000` (90 seconds)
 
 **Environment variable overrides**:
 
-* `SANDBOX_INSTANCE_TIMEOUT_MS` \- Override `instanceGetTimeoutMS`
-* `SANDBOX_PORT_TIMEOUT_MS` \- Override `portReadyTimeoutMS`
+- `SANDBOX_INSTANCE_TIMEOUT_MS` - Override `instanceGetTimeoutMS`
+- `SANDBOX_PORT_TIMEOUT_MS` - Override `portReadyTimeoutMS`
 
-Precedence: `options` \> `env vars` \> SDK defaults
+Precedence: `options` > `env vars` > SDK defaults
 
 ### Logging
 
@@ -224,8 +224,8 @@ Control SDK logging for debugging and monitoring. Set these in your Worker's `wr
 
 **Available options**:
 
-* `SANDBOX_LOG_LEVEL` \- Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
-* `SANDBOX_LOG_FORMAT` \- Output format: `json`, `pretty`. **Default**: `json`
+- `SANDBOX_LOG_LEVEL` - Minimum log level: `debug`, `info`, `warn`, `error`. **Default**: `info`
+- `SANDBOX_LOG_FORMAT` - Output format: `json`, `pretty`. **Default**: `json`
 
 ```jsonc
 {
@@ -246,7 +246,7 @@ Read at startup
 
 Logging configuration is read when your Worker starts and cannot be changed at runtime. Changes require redeploying your Worker.
 
-Use `debug` \+ `pretty` for local development. Use `info` or `warn` \+ `json` for production (structured logging).
+Use `debug` + `pretty` for local development. Use `info` or `warn` + `json` for production (structured logging).
 
 ### normalizeId
 
@@ -300,9 +300,9 @@ In a future SDK version, `normalizeId` will default to `true`. All sandbox IDs w
 
 Use `normalizeId: true` when:
 
-* **Using preview URLs** \- Required for port exposure if your IDs contain uppercase letters
-* **New projects** \- Either enable this option OR use lowercase IDs from the start (both work)
-* **Migrating existing code** \- Create new sandboxes with this enabled; old uppercase sandboxes will eventually be destroyed (explicitly or after timeout)
+- **Using preview URLs** - Required for port exposure if your IDs contain uppercase letters
+- **New projects** - Either enable this option OR use lowercase IDs from the start (both work)
+- **Migrating existing code** - Create new sandboxes with this enabled; old uppercase sandboxes will eventually be destroyed (explicitly or after timeout)
 
 **Best practice**: Use lowercase IDs from the start (`'my-project-123'` instead of `'MyProject-123'`).
 
@@ -310,9 +310,9 @@ Use `normalizeId: true` when:
 
 Use custom `sleepAfter` values to:
 
-* **Reduce costs** \- Shorter timeouts (e.g., `"1m"`) for infrequent workloads
-* **Extend availability** \- Longer timeouts (e.g., `"30m"`) for interactive workflows
-* **Balance performance** \- Fine-tune based on your application's usage patterns
+- **Reduce costs** - Shorter timeouts (e.g., `"1m"`) for infrequent workloads
+- **Extend availability** - Longer timeouts (e.g., `"30m"`) for interactive workflows
+- **Balance performance** - Fine-tune based on your application's usage patterns
 
 The default 10-minute timeout works well for most applications. Adjust based on your needs.
 
@@ -320,20 +320,20 @@ The default 10-minute timeout works well for most applications. Adjust based on 
 
 Use `keepAlive: true` for:
 
-* **Long-running builds** \- CI/CD pipelines that may have idle periods between steps
-* **Batch processing** \- Jobs that process data in waves with gaps between batches
-* **Monitoring tasks** \- Processes that periodically check external services
-* **Interactive sessions** \- User-driven workflows where the container should remain available
+- **Long-running builds** - CI/CD pipelines that may have idle periods between steps
+- **Batch processing** - Jobs that process data in waves with gaps between batches
+- **Monitoring tasks** - Processes that periodically check external services
+- **Interactive sessions** - User-driven workflows where the container should remain available
 
 With `keepAlive`, containers send automatic heartbeat pings every 30 seconds to prevent eviction and never sleep automatically. Use for scenarios where you control the lifecycle explicitly.
 
 ## Related resources
 
-* [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Using `normalizeId` with preview URLs
-* [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- Understanding DNS case-insensitivity
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Using `keepAlive` with long-running processes
-* [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) \- Create and manage sandboxes with `setKeepAlive()`
-* [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Understanding sandbox lifecycle
+- [Expose services guide](https://developers.cloudflare.com/sandbox/guides/expose-services/) - Using `normalizeId` with preview URLs
+- [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) - Understanding DNS case-insensitivity
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Using `keepAlive` with long-running processes
+- [Lifecycle API](https://developers.cloudflare.com/sandbox/api/lifecycle/) - Create and manage sandboxes with `setKeepAlive()`
+- [Sandboxes concept](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - Understanding sandbox lifecycle
 
 Was this helpful?
 

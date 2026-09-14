@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Consent API
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/consent-management/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/consent-management/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -50,15 +50,12 @@ document.addEventListener("zarazConsentChoicesUpdated", () => {
 
 The following are properties of the `zaraz.consent` object.
 
-* `modal` boolean
-
-  * Get or set the current visibility status of the consent modal dialog.
-* `purposes` object read-only
-
-  * An object containing all configured purposes, with their ID, name, description, and order.
-* `APIReady` boolean read-only
-
-  * Indicates whether the Consent API is currently available on the page.
+- `modal` boolean
+  - Get or set the current visibility status of the consent modal dialog.
+- `purposes` object read-only
+  - An object containing all configured purposes, with their ID, name, description, and order.
+- `APIReady` boolean read-only
+  - Indicates whether the Consent API is currently available on the page.
 
 ---
 
@@ -70,19 +67,18 @@ The following are properties of the `zaraz.consent` object.
 zaraz.consent.get(purposeId);
 ```
 
-* `get(purposeId)` : `boolean | undefined`
+- `get(purposeId)` : `boolean | undefined`
 
 Get the current consent status for a purpose using the purpose ID.
 
-* `true`: The consent was granted.
-* `false`: The consent was not granted.
-* `undefined`: The purpose does not exist.
+- `true`: The consent was granted.
+- `false`: The consent was not granted.
+- `undefined`: The purpose does not exist.
 
 #### Parameters
 
-* `purposeId` string
-
-  * The ID representing the Purpose.
+- `purposeId` string
+  - The ID representing the Purpose.
 
 ### `Set`
 
@@ -90,15 +86,14 @@ Get the current consent status for a purpose using the purpose ID.
 zaraz.consent.set(consentPreferences);
 ```
 
-* `set(consentPreferences)` : `undefined`
+- `set(consentPreferences)` : `undefined`
 
 Set the consent status for some purposes using the purpose ID.
 
 #### Parameters
 
-* `consentPreferences` object
-
-  * a `{ purposeId: boolean }` object describing the purposes you want to set and their respective consent status.
+- `consentPreferences` object
+  - a `{ purposeId: boolean }` object describing the purposes you want to set and their respective consent status.
 
 ### `Get All`
 
@@ -106,7 +101,7 @@ Set the consent status for some purposes using the purpose ID.
 zaraz.consent.getAll();
 ```
 
-* `getAll()` : `{ purposeId: boolean }`
+- `getAll()` : `{ purposeId: boolean }`
 
 Returns an object with the consent status of all purposes.
 
@@ -116,15 +111,14 @@ Returns an object with the consent status of all purposes.
 zaraz.consent.setAll(consentStatus);
 ```
 
-* `setAll(consentStatus)` : `undefined`
+- `setAll(consentStatus)` : `undefined`
 
 Set the consent status for all purposes at once.
 
 #### Parameters
 
-* `consentStatus` boolean
-
-  * Indicates whether the consent was granted or not.
+- `consentStatus` boolean
+  - Indicates whether the consent was granted or not.
 
 ### `Get All Checkboxes`
 
@@ -132,7 +126,7 @@ Set the consent status for all purposes at once.
 zaraz.consent.getAllCheckboxes();
 ```
 
-* `getAllCheckboxes()` : `{ purposeId: boolean }`
+- `getAllCheckboxes()` : `{ purposeId: boolean }`
 
 Returns an object with the checkbox status of all purposes.
 
@@ -142,15 +136,14 @@ Returns an object with the checkbox status of all purposes.
 zaraz.consent.setCheckboxes(checkboxesStatus);
 ```
 
-* `setCheckboxes(checkboxesStatus)` : `undefined`
+- `setCheckboxes(checkboxesStatus)` : `undefined`
 
 Set the consent status for some purposes using the purpose ID.
 
 #### Parameters
 
-* `checkboxesStatus` object
-
-  * a `{ purposeId: boolean }` object describing the checkboxes you want to set and their respective checked status.
+- `checkboxesStatus` object
+  - a `{ purposeId: boolean }` object describing the checkboxes you want to set and their respective checked status.
 
 ### `Set All Checkboxes`
 
@@ -158,15 +151,14 @@ Set the consent status for some purposes using the purpose ID.
 zaraz.consent.setAllCheckboxes(checkboxStatus);
 ```
 
-* `setAllCheckboxes(checkboxStatus)` : `undefined`
+- `setAllCheckboxes(checkboxStatus)` : `undefined`
 
 Set the `checkboxStatus` status for all purposes in the consent modal at once.
 
 #### Parameters
 
-* `checkboxStatus` boolean
-
-  * Indicates whether the purposes should be marked as checked or not.
+- `checkboxStatus` boolean
+  - Indicates whether the purposes should be marked as checked or not.
 
 ### `Send queued events`
 
@@ -174,7 +166,7 @@ Set the `checkboxStatus` status for all purposes in the consent modal at once.
 zaraz.consent.sendQueuedEvents();
 ```
 
-* `sendQueuedEvents()` : `undefined`
+- `sendQueuedEvents()` : `undefined`
 
 If some Pageview-based events were not sent due to a lack of consent, they can be sent using this method after consent was granted.
 

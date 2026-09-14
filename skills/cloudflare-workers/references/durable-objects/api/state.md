@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object State
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
-The `DurableObjectState` interface is accessible as an instance property on the Durable Object class. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.
+The `DurableObjectState` interface is accessible as an instance property on the Durable Object class
 
-The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [DurableObjectStorage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [DurableObjectState::storage](https://developers.cloudflare.com/durable-objects/api/state/#storage).
+. This interface encapsulates methods that modify the state of a Durable Object, for example which WebSockets are attached to a Durable Object or how the runtime should handle concurrent Durable Object requests.
+
+The `DurableObjectState` interface is different from the Storage API in that it does not have top-level methods which manipulate persistent application data. These methods are instead encapsulated in the [`DurableObjectStorage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) interface and accessed by [`DurableObjectState::storage`](https://developers.cloudflare.com/durable-objects/api/state/#storage).
 
 ```js
 import { DurableObject } from "cloudflare:workers";
@@ -65,7 +67,7 @@ class MyDurableObject(DurableObject):
 
 ### `exports`
 
-Contains loopback bindings to the Worker's own top-level exports. This has exactly the same meaning as [ExecutionContext's ctx.exports](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
+Contains loopback bindings to the Worker's own top-level exports. This has exactly the same meaning as [`ExecutionContext`'s `ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/context/#exports).
 
 ### `waitUntil`
 
@@ -79,20 +81,20 @@ Durable Objects automatically remain active as long as there is ongoing work or 
 
 #### Parameters
 
-* A required promise of any type.
+- A required promise of any type.
 
 #### Return values
 
-* None.
+- None.
 
 ### `blockConcurrencyWhile`
 
 `blockConcurrencyWhile` executes an async callback while blocking any other events from being delivered to the Durable Object until the callback completes. This method guarantees ordering and prevents concurrent requests. All events that were not explicitly initiated as part of the callback itself will be blocked. Once the callback completes, all other events will be delivered.
 
-* `blockConcurrencyWhile` is commonly used within the constructor of the Durable Object class to enforce initialization to occur before any requests are delivered.
-* Another use case is executing `async` operations based on the current state of the Durable Object and using `blockConcurrencyWhile` to prevent that state from changing while yielding the event loop.
-* If the callback throws an exception, the object will be terminated and reset. This ensures that the object cannot be left stuck in an uninitialized state if something fails unexpectedly.
-* To avoid this behavior, enclose the body of your callback in a `try...catch` block to ensure it cannot throw an exception.
+- `blockConcurrencyWhile` is commonly used within the constructor of the Durable Object class to enforce initialization to occur before any requests are delivered.
+- Another use case is executing `async` operations based on the current state of the Durable Object and using `blockConcurrencyWhile` to prevent that state from changing while yielding the event loop.
+- If the callback throws an exception, the object will be terminated and reset. This ensures that the object cannot be left stuck in an uninitialized state if something fails unexpectedly.
+- To avoid this behavior, enclose the body of your callback in a `try...catch` block to ensure it cannot throw an exception.
 
 To help mitigate deadlocks there is a 30 second timeout applied when executing the callback. If this timeout is exceeded, the Durable Object will be reset. It is best practice to have the callback do as little work as possible to improve overall request throughput to the Durable Object.
 
@@ -137,11 +139,11 @@ class MyDurableObject(DurableObject):
 
 #### Parameters
 
-* A required callback which returns a `Promise<T>`.
+- A required callback which returns a `Promise<T>`.
 
 #### Return values
 
-* A `Promise<T>` returned by the callback.
+- A `Promise<T>` returned by the callback.
 
 ### `acceptWebSocket`
 
@@ -155,32 +157,32 @@ The WebSocket Hibernation API permits a maximum of 32,768 WebSocket connections 
 
 #### Parameters
 
-* A required `WebSocket` with name `ws`.
-* An optional `Array<string>` of associated tags. Tags can be used to retrieve WebSockets via [DurableObjectState::getWebSockets](https://developers.cloudflare.com/durable-objects/api/state/#getwebsockets). Each tag is a maximum of 256 characters and there can be at most 10 tags associated with a WebSocket.
+- A required `WebSocket` with name `ws`.
+- An optional `Array<string>` of associated tags. Tags can be used to retrieve WebSockets via [`DurableObjectState::getWebSockets`](https://developers.cloudflare.com/durable-objects/api/state/#getwebsockets). Each tag is a maximum of 256 characters and there can be at most 10 tags associated with a WebSocket.
 
 #### Return values
 
-* None.
+- None.
 
 ### `getWebSockets`
 
 `getWebSockets` is part of the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), which allows a Durable Object to be removed from memory to save costs while keeping its WebSockets connected.
 
-`getWebSockets` returns an `Array<WebSocket>` which is the set of WebSockets attached to the Durable Object. An optional tag argument can be used to filter the list according to tags supplied when calling [DurableObjectState::acceptWebSocket](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket).
+`getWebSockets` returns an `Array<WebSocket>` which is the set of WebSockets attached to the Durable Object. An optional tag argument can be used to filter the list according to tags supplied when calling [`DurableObjectState::acceptWebSocket`](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket).
 
 \`waitUntil\` is not necessary
 
 Disconnected WebSockets are not returned by this method, but `getWebSockets` may still return WebSockets even after `ws.close` has been called. For example, if the server-side WebSocket sends a close, but does not receive one back (and has not detected a disconnect from the client), then the connection is in the `CLOSING` readyState. The client might send more messages, so the WebSocket is technically not disconnected.
 
-With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the close handshake, so WebSockets transition from `CLOSING` to `CLOSED` much faster and are less likely to be observed in the `CLOSING` state.
+With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the runtime automatically completes the close handshake, so WebSockets transition from `CLOSING` to `CLOSED` much faster and are less likely to be observed in the `CLOSING` state.
 
 #### Parameters
 
-* An optional tag of type `string`.
+- An optional tag of type `string`.
 
 #### Return values
 
-* An `Array<WebSocket>`.
+- An `Array<WebSocket>`.
 
 ### `setWebSocketAutoResponse`
 
@@ -192,15 +194,15 @@ With the [web\_socket\_auto\_reply\_to\_close](https://developers.cloudflare.com
 
 #### Parameters
 
-* An optional `WebSocketRequestResponsePair(request string, response string)` enabling any WebSocket accepted via [DurableObjectState::acceptWebSocket](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket) to automatically reply to the provided response when it receives the provided request. Both request and response are limited to 2,048 characters each. If the parameter is omitted, any previously set auto-response configuration will be removed. [DurableObjectState::getWebSocketAutoResponseTimestamp](https://developers.cloudflare.com/durable-objects/api/state/#getwebsocketautoresponsetimestamp) will still reflect the last timestamp that an auto-response was sent.
+- An optional `WebSocketRequestResponsePair(request string, response string)` enabling any WebSocket accepted via [`DurableObjectState::acceptWebSocket`](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket) to automatically reply to the provided response when it receives the provided request. Both request and response are limited to 2,048 characters each. If the parameter is omitted, any previously set auto-response configuration will be removed. [`DurableObjectState::getWebSocketAutoResponseTimestamp`](https://developers.cloudflare.com/durable-objects/api/state/#getwebsocketautoresponsetimestamp) will still reflect the last timestamp that an auto-response was sent.
 
 #### Return values
 
-* None.
+- None.
 
 ### `getWebSocketAutoResponse`
 
-`getWebSocketAutoResponse` returns the `WebSocketRequestResponsePair` object last set by [DurableObjectState::setWebSocketAutoResponse](https://developers.cloudflare.com/durable-objects/api/state/#setwebsocketautoresponse), or null if not auto-response has been set.
+`getWebSocketAutoResponse` returns the `WebSocketRequestResponsePair` object last set by [`DurableObjectState::setWebSocketAutoResponse`](https://developers.cloudflare.com/durable-objects/api/state/#setwebsocketautoresponse), or null if not auto-response has been set.
 
 inspect \`WebSocketRequestResponsePair\`
 
@@ -208,11 +210,11 @@ inspect \`WebSocketRequestResponsePair\`
 
 #### Parameters
 
-* None.
+- None.
 
 #### Return values
 
-* A `WebSocketRequestResponsePair` or null.
+- A `WebSocketRequestResponsePair` or null.
 
 ### `getWebSocketAutoResponseTimestamp`
 
@@ -222,11 +224,11 @@ inspect \`WebSocketRequestResponsePair\`
 
 #### Parameters
 
-* A required `WebSocket`.
+- A required `WebSocket`.
 
 #### Return values
 
-* A `Date` or null.
+- A `Date` or null.
 
 ### `setHibernatableWebSocketEventTimeout`
 
@@ -238,39 +240,39 @@ If no parameter or a parameter of `0` is provided and a timeout has been previou
 
 #### Parameters
 
-* An optional `number`.
+- An optional `number`.
 
 #### Return values
 
-* None.
+- None.
 
 ### `getHibernatableWebSocketEventTimeout`
 
 `getHibernatableWebSocketEventTimeout` is part of the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), which allows a Durable Object to be removed from memory to save costs while keeping its WebSockets connected.
 
-`getHibernatableWebSocketEventTimeout` gets the currently set hibernatable WebSocket event timeout if one has been set via [DurableObjectState::setHibernatableWebSocketEventTimeout](https://developers.cloudflare.com/durable-objects/api/state/#sethibernatablewebsocketeventtimeout).
+`getHibernatableWebSocketEventTimeout` gets the currently set hibernatable WebSocket event timeout if one has been set via [`DurableObjectState::setHibernatableWebSocketEventTimeout`](https://developers.cloudflare.com/durable-objects/api/state/#sethibernatablewebsocketeventtimeout).
 
 #### Parameters
 
-* None.
+- None.
 
 #### Return values
 
-* A number, or null if the timeout has not been set.
+- A number, or null if the timeout has not been set.
 
 ### `getTags`
 
 `getTags` is part of the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/#durable-objects-hibernation-websocket-api), which allows a Durable Object to be removed from memory to save costs while keeping its WebSockets connected.
 
-`getTags` returns tags associated with a given WebSocket. This method throws an exception if the WebSocket has not been associated with the Durable Object via [DurableObjectState::acceptWebSocket](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket).
+`getTags` returns tags associated with a given WebSocket. This method throws an exception if the WebSocket has not been associated with the Durable Object via [`DurableObjectState::acceptWebSocket`](https://developers.cloudflare.com/durable-objects/api/state/#acceptwebsocket).
 
 #### Parameters
 
-* A required `WebSocket`.
+- A required `WebSocket`.
 
 #### Return values
 
-* An `Array<string>` of tags.
+- An `Array<string>` of tags.
 
 ### `abort`
 
@@ -312,19 +314,19 @@ class MyDurableObject(DurableObject):
 
 #### Parameters
 
-* An optional `string` containing the error message to log.
-* An optional `DurableObjectAbortOptions` object:
-  * `retryAlarm` `boolean`: Controls whether an alarm interrupted by this abort retries. It defaults to `true`.
+- An optional `string` containing the error message to log.
+- An optional `DurableObjectAbortOptions` object:
+  - `retryAlarm` `boolean`: Controls whether an alarm interrupted by this abort retries. It defaults to `true`.
 
 #### Return values
 
-* None.
+- None.
 
 ## Properties
 
 ### `id`
 
-`id` is a readonly property of type `DurableObjectId` corresponding to the [DurableObjectId](https://developers.cloudflare.com/durable-objects/api/id) of the Durable Object.
+`id` is a readonly property of type `DurableObjectId` corresponding to the [`DurableObjectId`](https://developers.cloudflare.com/durable-objects/api/id) of the Durable Object.
 
 ### `storage`
 
@@ -332,7 +334,7 @@ class MyDurableObject(DurableObject):
 
 ## Related resources
 
-* [Durable Objects: Easy, Fast, Correct - Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Durable Objects: Easy, Fast, Correct - Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

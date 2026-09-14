@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Onboarding Cloudflare Gateway
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Now that your Cloudflare environment is ready and you have established a foundation of the technical concepts behind Project Cybersafe Schools, you are ready to test and onboard your DNS traffic.
 
@@ -20,12 +20,12 @@ Now that your Cloudflare environment is ready and you have established a foundat
 
 By the end of this module, you will be able to:
 
-* Explain the different methods to proxy your traffic to Gateway.
-* Create a Gateway location and understand its purpose.
-* Verify your Gateway environment by proxing local DNS traffic.
-* Create a test policy to validate functionality.
-* Deploy Cloudflare's recommended CIPA rule.
-* Customize the block page to ensure a seamless look and feel.
+- Explain the different methods to proxy your traffic to Gateway.
+- Create a Gateway location and understand its purpose.
+- Verify your Gateway environment by proxing local DNS traffic.
+- Create a test policy to validate functionality.
+- Deploy Cloudflare's recommended CIPA rule.
+- Customize the block page to ensure a seamless look and feel.
 
 Was this helpful?
 

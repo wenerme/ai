@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Manage email suppression lists to prevent emails from being sent to addresses that shouldn't receive them, protecting your sender reputation with automatic and manual suppression management.
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Suppression lists prevent emails from being sent to addresses that should not receive them, protecting your sender reputation and ensuring compliance with anti-spam regulations.
 
@@ -24,9 +24,9 @@ Cloudflare automatically manages suppressions for your account to preserve your 
 
 Cloudflare will automatically add email addresses to your account suppression list for the following reasons:
 
-* **Hard bounces**: Invalid or non-existent email addresses are immediately suppressed.
-* **Repeated soft bounces**: Addresses that repeatedly fail delivery are temporarily or permanently suppressed based on the frequency and pattern of failures.
-* **Spam complaints**: Recipients who marked emails as spam. Cloudflare integrates with Postmasters to receive spam complaints and automatically updates your account suppression list to prevent you from sending emails to this email address and preserve your email sending reputation.
+- **Hard bounces**: Invalid or non-existent email addresses are immediately suppressed.
+- **Repeated soft bounces**: Addresses that repeatedly fail delivery are temporarily or permanently suppressed based on the frequency and pattern of failures.
+- **Spam complaints**: Recipients who marked emails as spam. Cloudflare integrates with Postmasters to receive spam complaints and automatically updates your account suppression list to prevent you from sending emails to this email address and preserve your email sending reputation.
 
 You may also manually add or remove email addresses from your suppression list as needed. The removal of email addresses that have been automatically added to your suppression list as a result of a spam complaint is limited to avoid abuse.
 
@@ -36,10 +36,10 @@ You may also manually add or remove email addresses from your suppression list a
 
 Maintaining clean suppression lists is essential for optimal email delivery performance and sender reputation. Regular maintenance helps identify delivery issues early and ensures legitimate recipients can receive your emails.
 
-* Review suppression lists monthly
-* Remove temporary suppressions that have expired
-* Identify patterns in suppressed addresses
-* Update email validation rules based on common issues
+- Review suppression lists monthly
+- Remove temporary suppressions that have expired
+- Identify patterns in suppressed addresses
+- Update email validation rules based on common issues
 
 Was this helpful?
 

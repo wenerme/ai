@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Blocked content
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email security allows you to configure blocked content rules that match against the content of incoming messages. When a message matches a rule, Email security marks it with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/), preventing it from reaching users' inboxes.
 
@@ -24,9 +24,9 @@ Blocked content rules let you define your own content-based blocking criteria. E
 
 You can scan the following fields:
 
-* **Subject**: Match the pattern against the message subject line.
-* **Body**: Match the pattern against the message body.
-* **Subject and body**: Match the pattern against both the subject and the body.
+- **Subject**: Match the pattern against the message subject line.
+- **Body**: Match the pattern against the message body.
+- **Subject and body**: Match the pattern against both the subject and the body.
 
 If the pattern matches, Email security marks the message as malicious. Blocked content rules only support the block action.
 
@@ -40,19 +40,19 @@ To create a blocked content rule:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
-3. Go to **Policies & rules** \> **Blocked content**.
+3. Go to **Policies & rules** > **Blocked content**.
 4. Select **Add a rule**.
 5. Enter the rule information:
-  * **Name**: A descriptive name for the rule.
-  * **Match type**: Choose between:
-    * **Plaintext**: Email security matches the exact string you enter.
-    * **Regular expression**: Email security evaluates the pattern as a regular expression. Regular expressions must be valid Java expressions.
-  * **Pattern**: The plaintext string or regular expression to match against.
-  * **Search location**: Choose which parts of the message to scan:
-    * **Subject**
-    * **Body**
-    * **Subject and body**
-  * **Notes** (optional): Provide additional information about the rule.
+   - **Name**: A descriptive name for the rule.
+   - **Match type**: Choose between:
+     - **Plaintext**: Email security matches the exact string you enter.
+     - **Regular expression**: Email security evaluates the pattern as a regular expression. Regular expressions must be valid Java expressions.
+   - **Pattern**: The plaintext string or regular expression to match against.
+   - **Search location**: Choose which parts of the message to scan:
+     - **Subject**
+     - **Body**
+     - **Subject and body**
+   - **Notes** (optional): Provide additional information about the rule.
 6. (Optional) Use the built-in **Regular expression checker** to validate your pattern before saving. The checker lets you test your pattern against sample text to confirm it matches as expected.
 7. Select **Save**.
 

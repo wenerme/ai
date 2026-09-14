@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy a real-time chat application
 
-Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will deploy a serverless, real-time chat application that runs using [Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
@@ -48,7 +48,7 @@ npx wrangler deploy
 
 Your application will be deployed to your `*.workers.dev` subdomain.
 
-To deploy your application to a custom domain within the Cloudflare dashboard, go to your Worker > **Triggers** \> **Add Custom Domain**.
+To deploy your application to a custom domain within the Cloudflare dashboard, go to your Worker > **Triggers** > **Add Custom Domain**.
 
 To deploy your application to a custom domain using Wrangler, open your project's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
@@ -94,9 +94,8 @@ custom_domain = true
 
 To test your live application:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select your Worker > **Triggers** \> **Routes** \> Select the `edge-chat-demo.<SUBDOMAIN>.workers.dev` route.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select your Worker > **Triggers** > **Routes** > Select the `edge-chat-demo.<SUBDOMAIN>.workers.dev` route.
 3. Enter a name in the **your name** field.
 4. Choose whether to enter a public room or create a private room.
 5. Send the link to other participants. You will be able to view room participants on the right side of the screen.
@@ -147,10 +146,9 @@ Then run `npx wrangler deploy`.
 
 To delete your Worker:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
-3. Select **Manage Service** \> **Delete**. For complete instructions on set up and deletion, refer to the `README.md` in your cloned repository.
+3. Select **Manage Service** > **Delete**. For complete instructions on set up and deletion, refer to the `README.md` in your cloned repository.
 
 By completing this tutorial, you have deployed a real-time chat application with Durable Objects and Cloudflare Workers.
 
@@ -158,9 +156,9 @@ By completing this tutorial, you have deployed a real-time chat application with
 
 Continue building with other Cloudflare Workers tutorials below.
 
-* [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/)
-* [Create SMS notifications for your GitHub repository using Twilio](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/)
-* [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
+- [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/)
+- [Create SMS notifications for your GitHub repository using Twilio](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/)
+- [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)
 
 Was this helpful?
 

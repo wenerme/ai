@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Examine the contents of a Headers object by logging to console with a Map.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/logging-headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/logging-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -132,7 +132,7 @@ The reason this happens is because [Headers ↗](https://developer.mozilla.org/e
 
 ### Pass headers through a Map
 
-The first common idiom for making Headers `console.log()`\-friendly is to construct a `Map` object from the `Headers` object and log the `Map` object.
+The first common idiom for making Headers `console.log()`-friendly is to construct a `Map` object from the `Headers` object and log the `Map` object.
 
 ```js
 console.log(new Map(request.headers));
@@ -140,16 +140,16 @@ console.log(new Map(request.headers));
 
 This works because:
 
-* `Map` objects can be constructed from iterables, like `Headers`.
-* The `Map` object does store its entries in enumerable JavaScript properties, so the developer console can see into it.
+- `Map` objects can be constructed from iterables, like `Headers`.
+- The `Map` object does store its entries in enumerable JavaScript properties, so the developer console can see into it.
 
 ### Spread headers into an array
 
 The `Map` approach works for calls to `console.log()`. If you need to stringify your headers, you will discover that stringifying a `Map` yields nothing more than `[object Map]`.
 
-Even though a `Map` stores its data in enumerable properties, those properties are [Symbol ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Symbol)\-keyed. Because of this, `JSON.stringify()` will [ignore Symbol-keyed properties ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Symbol#symbols%5Fand%5Fjson.stringify) and you will receive an empty `{}`.
+Even though a `Map` stores its data in enumerable properties, those properties are [Symbol ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)-keyed. Because of this, `JSON.stringify()` will [ignore Symbol-keyed properties ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#symbols_and_json.stringify) and you will receive an empty `{}`.
 
-Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread%5Fsyntax) (`...`) to it.
+Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) (`...`) to it.
 
 ```js
 let requestHeaders = JSON.stringify([...request.headers], null, 2);
@@ -158,7 +158,7 @@ console.log(`Request headers: ${requestHeaders}`);
 
 ### Convert headers into an object with Object.fromEntries (ES2019)
 
-ES2019 provides [Object.fromEntries ↗](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
+ES2019 provides [`Object.fromEntries` ↗](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
 
 ```js
 let headersObject = Object.fromEntries(request.headers);

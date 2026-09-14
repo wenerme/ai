@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Free
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/plans/free/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/plans/free/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To learn more about features and functionality, select a plan.
 
 [Free](https://developers.cloudflare.com/bots/plans/free/) [Pro](https://developers.cloudflare.com/bots/plans/pro/) [Business](https://developers.cloudflare.com/bots/plans/biz-and-ent/) [Bot Management for Enterprise](https://developers.cloudflare.com/bots/plans/bm-subscription/)
 
-|                           |                                                                                                                                                                                                                                                                                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Plan name**             | Bot Fight Mode                                                                                                                                                                                                                                                                                                                    |
-| **Availability**          | All Free customers                                                                                                                                                                                                                                                                                                                |
-| **Type of bots detected** | Simple bots from cloud hosting providers and headless browsers                                                                                                                                                                                                                                                                    |
-| **Actions**               | Cloudflare issues a computationally expensive challenge                                                                                                                                                                                                                                                                           |
-| **Control**               | Applied to all traffic across a domain                                                                                                                                                                                                                                                                                            |
-| **Additional features**   | [Block AI bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/), [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/), [Instruct AI bot traffic with robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) |
+|  | |
+| --- | --- |
+| **Plan name** | Bot Fight Mode |
+| **Availability** | All Free customers |
+| **Type of bots detected** | Simple bots from cloud hosting providers and headless browsers |
+| **Actions** | Cloudflare issues a computationally expensive challenge |
+| **Control** | Applied to all traffic across a domain |
+| **Additional features** | [Block AI bots](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/), <br> [AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/), <br> [Instruct AI bot traffic with `robots.txt`](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) |
 
 ## How do I get started?
 

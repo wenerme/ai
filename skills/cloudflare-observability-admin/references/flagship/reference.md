@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Limits](https://developers.cloudflare.com/flagship/reference/limits/)
-* [Evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/)
-* [API reference](https://developers.cloudflare.com/api/resources/flagship/)
-* [Wrangler commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/)
+- [Limits](https://developers.cloudflare.com/flagship/reference/limits/)
+- [Evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/)
+- [API reference](https://developers.cloudflare.com/api/resources/flagship/)
+- [Wrangler commands](https://developers.cloudflare.com/flagship/reference/wrangler-commands/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/magic-transit.xml)
 
@@ -62,15 +62,15 @@ Previously, devices behind NAT had to be configured to initiate IKE on UDP port 
 
 What changed:
 
-* Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
-* Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
-* No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
+- Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
+- Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
+- No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
 
 This change does not affect existing tunnels:
 
-* Tunnels using UDP port `500` with no NAT detected continue to operate as before.
-* Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
-* NAT detection logic is unchanged.
+- Tunnels using UDP port `500` with no NAT detected continue to operate as before.
+- Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
+- NAT detection logic is unchanged.
 
 For configuration details, refer to [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/).
 
@@ -96,19 +96,19 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
-* [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-15
 
@@ -123,17 +123,17 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 
 **Summary of changes:**
 
-* A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
-* Product names have been removed from top-level navigation.
-* Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
-* Magic Firewall policies are now called **Firewall Policies.**
-* Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
-* Network analytics, network health, and real-time analytics are now available under **Insights.**
-* Packet Captures are found under **Insights > Diagnostics.**
-* You can manage your Sites from **Insights > Network health.**
-* You can find Magic Network Monitoring under **Insights > Network flow**.
+- A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
+- Product names have been removed from top-level navigation.
+- Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
+- Magic Firewall policies are now called **Firewall Policies.**
+- Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
+- Network analytics, network health, and real-time analytics are now available under **Insights.**
+- Packet Captures are found under **Insights > Diagnostics.**
+- You can manage your Sites from **Insights > Network health.**
+- You can find Magic Network Monitoring under **Insights > Network flow**.
 
-If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI\] Upcoming Network Services Dashboard Navigation Update**.
+If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
 
 Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 
@@ -148,8 +148,8 @@ This ensures that all Magic Transit and Magic WAN customers with CMB EU enabled 
 
 Specifically, these two GraphQL endpoints are now compatible with CMB EU:
 
-* `magicTransitTunnelHealthChecksAdaptiveGroups`
-* `magicTransitTunnelTrafficAdaptiveGroups`
+- `magicTransitTunnelHealthChecksAdaptiveGroups`
+- `magicTransitTunnelTrafficAdaptiveGroups`
 
 ## 2025-06-30
 
@@ -171,14 +171,14 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 

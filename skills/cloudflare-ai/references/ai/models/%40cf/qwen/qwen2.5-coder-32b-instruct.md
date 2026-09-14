@@ -1,5 +1,5 @@
 ---
-description: Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:
+description: "Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:"
 title: qwen2.5-coder-32b-instruct
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Qwen
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/qwen/qwen2.5-coder-32b-instruct/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/qwen/qwen2.5-coder-32b-instruct`
 
-* Cloudflare-hosted
-* LoRA
+- Cloudflare-hosted
+- LoRA
 
 Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:
 
-| Model Info                                                                          |                                                     |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens                                       |
-| LoRA                                                                                | Yes                                                 |
-| Unit Pricing                                                                        | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens |
+| LoRA | Yes |
+| Unit Pricing | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 
@@ -40,7 +40,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -69,7 +68,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -92,7 +90,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -115,7 +112,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/qwen/qwen2.5-coder-32b-instruct \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -184,39 +180,51 @@ presence\_penalty
 
 ### Output
 
-Synchronous — Send a request and receive a complete response
+<details>
+
+<summary>Synchronous — Send a request and receive a complete response</summary>
+
+
 
 response
 
-`string`The generated text response from the model
+<code>string</code>The generated text response from the model
 
 ▶usage{}
 
-`object`Usage statistics for the inference request
+<code>object</code>Usage statistics for the inference request
 
-▶tool\_calls\[\]
+▶tool\_calls\[]
 
-`array`An array of tool calls requests made during the response generation
+<code>array</code>An array of tool calls requests made during the response generation
 
-Streaming — Send a request with \`stream: true\` and receive server-sent events
+</details>
+
+<details>
+
+<summary>Streaming — Send a request with `stream: true` and receive server-sent events</summary>
+
+
 
 type
 
-`string`
+<code>string</code>
 
 format
 
-`binary`
+<code>binary</code>
+
+</details>
 
 ## API Schemas (Raw)
 
-SynchronousInput
+SynchronousInput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-input.json)
 
-SynchronousOutput
+SynchronousOutput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/sync-output.json)
 
-StreamingInput
+StreamingInput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-input.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-input.json)
 
-StreamingOutput
+StreamingOutput [Open](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-output.json) [Download](https://developers.cloudflare.com/ai/models/@cf/qwen/qwen2.5-coder-32b-instruct/streaming-output.json)
 
 Was this helpful?
 

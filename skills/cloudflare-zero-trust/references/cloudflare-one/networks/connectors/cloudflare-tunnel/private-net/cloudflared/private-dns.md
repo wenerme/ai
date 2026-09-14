@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Private DNS
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/private-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, all DNS requests on the user device are resolved by Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/) except for common top level domains used for local resolution (such as `localhost`). You can connect an internal DNS resolver to Cloudflare and use it to resolve non-publicly routed domains.
 
@@ -21,15 +21,12 @@ By default, all DNS requests on the user device are resolved by Cloudflare's [pu
 To resolve private DNS queries:
 
 1. [Connect your private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/) with Cloudflare Tunnel.
-2. Under **Networking** \> **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel.
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
-Note
-Ensure that **Split Tunnels** are configured to [include traffic to private IPs and hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client).
-3. Route specific DNS queries to your internal DNS resolver using one of the following options:
+2. Under **Networking** > **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes) Note
 
-  * [Create a Local Domain Fallback entry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) that points to the internal DNS resolver. For example, you can instruct the Cloudflare One Client to resolve all requests for `myorg.privatecorp` through an internal resolver at `10.0.0.25` rather than attempting to resolve this publicly.
-  * Alternatively, [create a resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#create-a-resolver-policy) that points to the internal DNS resolver.
-  [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to private DNS traffic.
+   Ensure that **Split Tunnels** are configured to [include traffic to private IPs and hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client).
+3. Route specific DNS queries to your internal DNS resolver using one of the following options:
+   - [Create a Local Domain Fallback entry](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) that points to the internal DNS resolver. For example, you can instruct the Cloudflare One Client to resolve all requests for `myorg.privatecorp` through an internal resolver at `10.0.0.25` rather than attempting to resolve this publicly.
+   - Alternatively, [create a resolver policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#create-a-resolver-policy) that points to the internal DNS resolver. [Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) provide similar functionality to Local Domain Fallback but occur in Cloudflare Gateway rather than on the local device. This option is recommended if you want more granular control over private DNS resolution. For example, you can ensure that all users in a specific geography use the private DNS server closest to them, ensure that specific conditions are met before resolving private DNS traffic, and apply [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) to private DNS traffic.
 4. [Enable the Gateway proxy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy) for TCP and UDP.
 5. Finally, ensure that your tunnel uses QUIC as the default [transport protocol](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#protocol). This will enable `cloudflared` to proxy UDP-based traffic which is required in most cases to resolve DNS queries.
 
@@ -55,14 +52,14 @@ Both `dig` commands will fail if the Cloudflare One Client is disabled on your e
 
 Use the following troubleshooting strategies if you are running into issues while configuring private DNS with Cloudflare Tunnel.
 
-* Ensure that `cloudflared` is connected to Cloudflare by visiting **Networking** \> **Tunnels** in the Cloudflare dashboard.
-* Ensure that `cloudflared` is running with the `quic` protocol (search for `Initial protocol quic` in its logs).
-* Ensure that the machine where `cloudflared` is running is allowed to egress via UDP to port 7844 to talk out to Cloudflare.
-* Ensure that end-user devices are enrolled into the Cloudflare One Client by visiting [https://help.teams.cloudflare.com ↗](https://help.teams.cloudflare.com).
-* Double-check the [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) for your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). Ensure that a more global Block or Allow policy will not supersede application-specific policies.
-* Check your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) to see whether your UDP DNS resolutions are being allowed or blocked.
-* Ensure that your internal DNS resolver is available over a routable private IP address. You can check that by trying the `dig` command on your machine running `cloudflared`.
-* Check your set up by using `dig ... +tcp` to force the DNS resolution to use TCP instead of UDP.
+- Ensure that `cloudflared` is connected to Cloudflare by visiting **Networking** > **Tunnels** in the Cloudflare dashboard.
+- Ensure that `cloudflared` is running with the `quic` protocol (search for `Initial protocol quic` in its logs).
+- Ensure that the machine where `cloudflared` is running is allowed to egress via UDP to port 7844 to talk out to Cloudflare.
+- Ensure that end-user devices are enrolled into the Cloudflare One Client by visiting [https://help.teams.cloudflare.com ↗](https://help.teams.cloudflare.com).
+- Double-check the [order of precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) for your [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). Ensure that a more global Block or Allow policy will not supersede application-specific policies.
+- Check your [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) to see whether your UDP DNS resolutions are being allowed or blocked.
+- Ensure that your internal DNS resolver is available over a routable private IP address. You can check that by trying the `dig` command on your machine running `cloudflared`.
+- Check your set up by using `dig ... +tcp` to force the DNS resolution to use TCP instead of UDP.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Disable Universal SSL certificates
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/disable-universal-ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some customers may need to manage their own SSL certificates or rely on specific Certificate Authorities.
 
@@ -28,15 +28,13 @@ To avoid errors with your domain, either [upload a custom certificate](https://d
 
 If you disable Universal SSL, you may experience errors with the following scenarios:
 
-* **Enabled features**:
-
-  * [HTTP Strict Transport Security (HSTS)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/)
-  * [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
-  * [Opportunistic Encryption](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/)
-* **Other setups**:
-
-  * [Page Rules](https://developers.cloudflare.com/rules/page-rules/) that redirect traffic to HTTPS
-  * HTTP to HTTPS redirects at your origin web server
+- **Enabled features**:
+  - [HTTP Strict Transport Security (HSTS)](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/http-strict-transport-security/)
+  - [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/)
+  - [Opportunistic Encryption](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/)
+- **Other setups**:
+  - [Page Rules](https://developers.cloudflare.com/rules/page-rules/) that redirect traffic to HTTPS
+  - HTTP to HTTPS redirects at your origin web server
 
 ## Disable Universal SSL certificate
 
@@ -44,23 +42,21 @@ Before you disable Universal SSL/TLS, make sure you have [uploaded a custom cert
 
 To disable Universal SSL in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Disable Universal SSL**, select **Disable Universal SSL**.
 3. Read the warnings in the **Acknowledgement**.
 4. Select **I Understand** and select **Confirm**.
 
-To disable Universal SSL with the Cloudflare API, send a [PATCH](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": false` parameter.
+To disable Universal SSL with the Cloudflare API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": false` parameter.
 
 ## Re-enable Universal SSL
 
 To re-enable Universal SSL in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Disable Universal SSL**, select **Enable Universal SSL**.
 
-To re-enable Universal SSL with the Cloudflare API, send a [PATCH](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": true` parameter.
+To re-enable Universal SSL with the Cloudflare API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/ssl/subresources/universal/subresources/settings/methods/edit/) request and include the `"enabled": true` parameter.
 
 Was this helpful?
 

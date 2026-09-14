@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GraphQL malicious query protection
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 GraphQL is a query language for APIs. In addition to protecting RESTful APIs, Cloudflare can also protect GraphQL APIs.
 
@@ -26,10 +26,10 @@ GraphQL malicious query protection is available for all API Shield customers. En
 
 The following limitations apply:
 
-* Parsing is limited to GraphQL `POST` bodies smaller than 20 KB. This limit will be raised in a future release.
-* Only `POST` requests with content types of `application/json` or `application/graphql` are inspected.
-* Queries containing fragments or multiple operations are not supported.
-* Parsing and rules are limited to paths ending in `/graphql`.
+- Parsing is limited to GraphQL `POST` bodies smaller than 20 KB. This limit will be raised in a future release.
+- Only `POST` requests with content types of `application/json` or `application/graphql` are inspected.
+- Queries containing fragments or multiple operations are not supported.
+- Parsing and rules are limited to paths ending in `/graphql`.
 
 Was this helpful?
 

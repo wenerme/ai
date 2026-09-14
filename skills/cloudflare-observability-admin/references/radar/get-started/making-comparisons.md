@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Make comparisons
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/get-started/making-comparisons/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/making-comparisons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When comparing time series, across locations/time ranges/etc., in endpoints that normalize values using [min-max](https://developers.cloudflare.com/radar/concepts/normalization), you must do so in the same request. This is done by asking for multiple series. All values will then be normalized using the same minimum and maximum value and can safely be compared against each other.
 
@@ -20,7 +20,7 @@ When comparing time series, across locations/time ranges/etc., in endpoints that
 
 ## Compare locations
 
-In the following example, we will compare the traffic change across two different locations — United States and Portugal. The example will use [alpha-2 codes ↗](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2#Officially%5Fassigned%5Fcode%5Felements) for the last seven days:
+In the following example, we will compare the traffic change across two different locations — United States and Portugal. The example will use [alpha-2 codes ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) for the last seven days:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=us_data&dateRange=7d&location=US&name=pt_data&dateRange=7d&location=PT&format=json" \

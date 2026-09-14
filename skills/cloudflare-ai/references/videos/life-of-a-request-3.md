@@ -1,6 +1,6 @@
 ---
 description: Once a request is routed to the nearest Cloudflare data center and then intelligently sped along its way, it moves to the final leg of the journey and how we serve content faster than ever.
-title: Life of a Request: The Finish Line - Serving the Content
+title: "Life of a Request: The Finish Line - Serving the Content"
 image: https://developers.cloudflare.com/og-docs.png
 ---
 

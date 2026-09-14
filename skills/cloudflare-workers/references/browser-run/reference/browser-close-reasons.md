@@ -12,27 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser close reasons
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A browser session may close for a variety of reasons, including normal completion, inactivity, connection errors, or errors in the headless browser instance. As a best practice, wrap `puppeteer.connect` or `puppeteer.launch` in a [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to handle unexpected closures gracefully.
+A browser session may close for a variety of reasons, including normal completion, inactivity, connection errors, or errors in the headless browser instance. As a best practice, wrap `puppeteer.connect` or `puppeteer.launch` in a [`try...catch` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to handle unexpected closures gracefully.
 
 To find the reason that a browser closed:
 
-1. In the Cloudflare dashboard, go to the **Browser Run** page.
-[Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+1. In the Cloudflare dashboard, go to the **Browser Run** page. [Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 2. Select the **Runs** tab.
 
 Browser Run sessions are billed based on [usage](https://developers.cloudflare.com/browser-run/pricing/). We do not charge for sessions that error due to underlying Browser Run infrastructure.
 
 ## Close reasons
 
-| Reason               | Description                                                                                                                                                                                                                                                                                                       |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Normal closure**   | Your code called browser.close() and the session ended normally. No action needed.                                                                                                                                                                                                                                |
-| **Browser idle**     | The session received no commands for the configured inactivity timeout (60 seconds by default, up to 10 minutes with [keep\_alive](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive)). To prevent idle closures, send commands within the inactivity window or increase the keep\_alive value. |
-| **Chromium crashed** | The Chromium instance inside the session crashed, often because the page consumed too much memory (large DOMs, heavy JavaScript, or many concurrent pages). Try reducing page complexity, closing unused pages, or breaking work into smaller tasks.                                                              |
-| **Connection error** | The connection between the client and Browser Run was interrupted. This can be caused by network issues, your Worker reaching its CPU time limit, or a WebSocket disconnection. Retry the operation with a try...catch block.                                                                                     |
-| **Session evicted**  | Browser Run recycled the session due to infrastructure maintenance or a new release deployment. This is not caused by your code. Retry the operation with a try...catch block and reconnection logic.                                                                                                             |
+| Reason | Description |
+| --- | --- |
+| **Normal closure** | Your code called `browser.close()` and the session ended normally. No action needed. |
+| **Browser idle** | The session received no commands for the configured inactivity timeout (60 seconds by default, up to 10 minutes with [`keep_alive`](https://developers.cloudflare.com/browser-run/puppeteer/#keep-alive)). To prevent idle closures, send commands within the inactivity window or increase the `keep_alive` value. |
+| **Chromium crashed** | The Chromium instance inside the session crashed, often because the page consumed too much memory (large DOMs, heavy JavaScript, or many concurrent pages). Try reducing page complexity, closing unused pages, or breaking work into smaller tasks. |
+| **Connection error** | The connection between the client and Browser Run was interrupted. This can be caused by network issues, your Worker reaching its CPU time limit, or a WebSocket disconnection. Retry the operation with a `try...catch` block. |
+| **Session evicted** | Browser Run recycled the session due to infrastructure maintenance or a new release deployment. This is not caused by your code. Retry the operation with a `try...catch` block and reconnection logic. |
 
 ## Handling unexpected closures
 

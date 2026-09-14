@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CSP HTTP header format
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/reference/csp-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/reference/csp-header/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The format of the Content Security Policy (CSP) report-only HTTP header added by Cloudflare is the following:
+The format of the Content Security Policy (CSP)
+
+ report-only HTTP header added by Cloudflare is the following:
 
 ```txt
 content-security-policy-report-only: script-src 'unsafe-inline' 'unsafe-eval'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?<QUERY_STRING>
@@ -34,7 +36,7 @@ Configuring [log rules](https://developers.cloudflare.com/client-side-security/r
 
 ## Related resources
 
-* [Mozilla Developer Network's (MDN) documentation on Content-Security-Policy-Report-Only ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy-Report-Only)
+- [Mozilla Developer Network's (MDN) documentation on Content-Security-Policy-Report-Only ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy-Report-Only)
 
 Was this helpful?
 

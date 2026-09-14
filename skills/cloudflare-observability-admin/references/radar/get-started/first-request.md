@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Make your first API request
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/get-started/first-request/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/get-started/first-request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To make your first request to Cloudflare's Radar API, you must obtain your [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) first. Create a Custom Token, with _Account_ \> _Radar_ in the **Permissions** group, and select _Read_ as the access level.
+To make your first request to Cloudflare's Radar API, you must obtain your [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) first. Create a Custom Token, with *Account* > *Radar* in the **Permissions** group, and select *Read* as the access level.
 
 Once you have the token, you are ready to make your first request to Radar's API at `https://api.cloudflare.com/client/v4/radar/`.
 
 ## Example using cURL
 
-In the following example, we will access the global percentage distribution of device types (like mobile and desktop traffic) for the last seven days. For more information, refer to [Get device types summary](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/device%5Ftype/) endpoint:
+In the following example, we will access the global percentage distribution of device types (like mobile and desktop traffic) for the last seven days. For more information, refer to [Get device types summary](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/device_type/) endpoint:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&format=json" \
@@ -66,7 +66,7 @@ curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRa
 
 Running the above, can you find any differences between both in the distribution of mobile versus desktop traffic?
 
-The <code>result.meta</code> property
+The \<code>result.meta\</code> property
 
 The `result.meta` property in the response includes metadata about the current request. In the example above, `meta.dateRange` returns the date range specified in the query, while `meta.normalization` returns the type of normalization applied to the data (refer to [Normalization methods](https://developers.cloudflare.com/radar/concepts/normalization) for more information).
 

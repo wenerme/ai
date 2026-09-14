@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenFeature SDK
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Evaluate Flagship feature flags using OpenFeature.
 
@@ -20,20 +20,20 @@ Evaluate Flagship feature flags using OpenFeature.
 
 Flagship provides official OpenFeature-compatible SDKs for TypeScript, Python, and Go. The source code is available on [GitHub ↗](https://github.com/cloudflare/flagship).
 
-| SDK        | Package                                                                                               | Runtime                    | Evaluation modes                              |
-| ---------- | ----------------------------------------------------------------------------------------------------- | -------------------------- | --------------------------------------------- |
-| TypeScript | [@cloudflare/flagship ↗](https://www.npmjs.com/package/@cloudflare/flagship)                          | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
-| Python     | [cloudflare-flagship ↗](https://pypi.org/project/cloudflare-flagship/)                                | Python server applications | HTTP                                          |
-| Go         | [github.com/cloudflare/flagship/sdks/go ↗](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications     | HTTP                                          |
+| SDK | Package | Runtime | Evaluation modes |
+| --- | --- | --- | --- |
+| TypeScript | [`@cloudflare/flagship` ↗](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
+| Python | [`cloudflare-flagship` ↗](https://pypi.org/project/cloudflare-flagship/) | Python server applications | HTTP |
+| Go | [`github.com/cloudflare/flagship/sdks/go` ↗](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications | HTTP |
 
 ## SDKs
 
 Flagship SDKs are organized by language. The TypeScript SDK has separate setup guides for server-side and browser usage because they use different OpenFeature packages and runtime behavior.
 
-* [TypeScript Server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) — For Workers, Node.js, and other server-side JavaScript runtimes.
-* [TypeScript Client SDK](https://developers.cloudflare.com/flagship/sdk/client-provider/) — For browser applications that need synchronous OpenFeature web SDK evaluation.
-* [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) — For Python server applications.
-* [Go SDK](https://developers.cloudflare.com/flagship/sdk/go/) — For Go server applications.
+- [TypeScript Server SDK](https://developers.cloudflare.com/flagship/sdk/server-provider/) — For Workers, Node.js, and other server-side JavaScript runtimes.
+- [TypeScript Client SDK](https://developers.cloudflare.com/flagship/sdk/client-provider/) — For browser applications that need synchronous OpenFeature web SDK evaluation.
+- [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) — For Python server applications.
+- [Go SDK](https://developers.cloudflare.com/flagship/sdk/go/) — For Go server applications.
 
 Note
 
@@ -95,10 +95,10 @@ go get github.com/cloudflare/flagship/sdks/go
 
 ## Next steps
 
-* Set up the [server provider](https://developers.cloudflare.com/flagship/sdk/server-provider/) for Workers, Node.js, or other server-side runtimes.
-* Set up the [client provider](https://developers.cloudflare.com/flagship/sdk/client-provider/) for browser applications.
-* Set up the [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) for Python server applications.
-* Set up the [Go SDK](https://developers.cloudflare.com/flagship/sdk/go/) for Go server applications.
+- Set up the [server provider](https://developers.cloudflare.com/flagship/sdk/server-provider/) for Workers, Node.js, or other server-side runtimes.
+- Set up the [client provider](https://developers.cloudflare.com/flagship/sdk/client-provider/) for browser applications.
+- Set up the [Python SDK](https://developers.cloudflare.com/flagship/sdk/python/) for Python server applications.
+- Set up the [Go SDK](https://developers.cloudflare.com/flagship/sdk/go/) for Go server applications.
 
 Was this helpful?
 

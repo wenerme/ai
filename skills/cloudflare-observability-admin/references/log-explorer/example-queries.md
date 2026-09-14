@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Example SQL queries
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/example-queries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/example-queries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples show practical SQL queries you can use with the `http_requests` dataset in Log Explorer. For the full list of supported SQL syntax, refer to [SQL queries supported](https://developers.cloudflare.com/log-explorer/sql-queries/).
 

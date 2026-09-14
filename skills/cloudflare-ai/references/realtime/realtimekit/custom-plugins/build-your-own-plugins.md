@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build your own plugins
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to build a custom plugin and run it inside a meeting using the Cloudflare RealtimeKit Core SDK.
 
@@ -34,16 +34,18 @@ The examples assume you have already imported the necessary packages and initial
 
 A plugin has two parts:
 
-* A **component**: a DOM element (`HTMLElement`) that holds your plugin's UI and logic.
-* A **registration**: a configuration object you pass to the SDK so it can list, activate, and render the component.
+- A **component**: a DOM element ( `HTMLElement`) that holds your plugin's UI and logic.
+- A **registration**: a configuration object you pass to the SDK so it can list, activate, and render the component.
 
 RealtimeKit synchronizes activation state across the session. To share plugin data between participants, use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/).
 
-## 1\. Build the plugin component
+## 1. Build the plugin component
 
 A plugin component must be an `HTMLElement`. Build it directly as a custom element, or create a container element and mount your framework component tree into it.
 
 Define your plugin as a custom element, then create an instance to pass as the `component`.
+
+*my-counter-plugin.tsts*
 
 ```ts
 class MyCounterPlugin extends HTMLElement {
@@ -64,6 +66,8 @@ const pluginElement = document.createElement("my-counter-plugin");
 
 Create a container element and mount your component tree into it. Pass the container as the `component`.
 
+*counter-plugin.tsxtsx*
+
 ```tsx
 import { createRoot } from "react-dom/client";
 
@@ -76,6 +80,8 @@ createRoot(pluginElement).render(<CounterPlugin />);
 ```
 
 Create a container element and mount your component tree into it. Pass the container as the `component`.
+
+*counter-plugin.tsts*
 
 ```ts
 import {
@@ -95,7 +101,7 @@ const componentRef = createComponent(CounterPluginComponent, {
 this.appRef.attachView(componentRef.hostView);
 ```
 
-## 2\. Register and render the plugin
+## 2. Register and render the plugin
 
 Register the plugins available in a session when you initialize the SDK. Pass an array of plugin configurations as `defaults.plugins`, using the `pluginElement` you created in step 1 as the `component`.
 
@@ -138,7 +144,7 @@ Note
 
 If you use the UI Kit, the plugin components handle activation and rendering for you.
 
-## 3\. Respond to plugin events
+## 3. Respond to plugin events
 
 A `Plugin` object emits events as its state changes. Use them to set up or tear down your component when it is activated or deactivated.
 
@@ -156,12 +162,12 @@ plugin.on("closed", () => {
 
 For the full list of plugin events, refer to [Listen to plugin events](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/#listen-to-plugin-events).
 
-## 4\. Sync data across participants
+## 4. Sync data across participants
 
 Each participant runs their own copy of the plugin component, so you need a way to share state between them. RealtimeKit offers two built-in options for real-time communication:
 
-* [Collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) — a shared key-value store that syncs state across the session.
-* [Message broadcasts](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/) — send custom events to every participant in a meeting.
+- [Collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) — a shared key-value store that syncs state across the session.
+- [Message broadcasts](https://developers.cloudflare.com/realtime/realtimekit/broadcast-apis/) — send custom events to every participant in a meeting.
 
 For plugins with simple requirements, these built-in APIs are enough to handle your collaborative logic.
 
@@ -180,16 +186,16 @@ store.subscribe("value", ({ value }) => {
 
 For richer, full-featured collaboration, you can pair your plugin with a dedicated third-party framework:
 
-| Framework                                        | Description                                                  | Notes       |
-| ------------------------------------------------ | ------------------------------------------------------------ | ----------- |
-| **[Collab-Kit ↗](https://docs.collab-kit.com/)** | Full-featured SDK for building collaborative apps.           | Beta        |
-| **[Party-Kit ↗](https://docs.partykit.io/)**     | Low-level framework for building collaborative applications. | Open source |
+| Framework | Description | Notes |
+| --- | --- | --- |
+| **[Collab-Kit ↗](https://docs.collab-kit.com/)** | Full-featured SDK for building collaborative apps. | Beta |
+| **[Party-Kit ↗](https://docs.partykit.io/)** | Low-level framework for building collaborative applications. | Open source |
 
 ## Next steps
 
-* Review the [Plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) API for the complete `Plugin` and `Plugins` reference.
-* Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to build richer shared experiences.
-* Get started with the [RealtimeKit plugins example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
+- Review the [Plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) API for the complete `Plugin` and `Plugins` reference.
+- Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to build richer shared experiences.
+- Get started with the [RealtimeKit plugins example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
 
 Was this helpful?
 

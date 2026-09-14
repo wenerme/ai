@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Flagship organizes feature flags into apps. You define flags with variants and targeting rules, then evaluate them within Cloudflare's global network.
 
@@ -46,12 +46,12 @@ Variants are the possible values a flag can return. Each flag must have at least
 
 Flagship supports four variant types:
 
-| Type    | Example                                                               |
-| ------- | --------------------------------------------------------------------- |
-| Boolean | on: true, off: false                                                  |
-| String  | v1: "old-checkout", v2: "new-checkout"                                |
-| Number  | low: 100, high: 1000                                                  |
-| JSON    | premium: { "tier": "premium", "features": \["analytics", "export"\] } |
+| Type | Example |
+| --- | --- |
+| Boolean | `on: true`, `off: false` |
+| String | `v1: "old-checkout"`, `v2: "new-checkout"` |
+| Number | `low: 100`, `high: 1000` |
+| JSON | `premium: { "tier": "premium", "features": ["analytics", "export"] }` |
 
 Use boolean flags for simple on/off toggles. Use string, number, or JSON flags when you need to deliver configuration values or structured data. JSON variants can contain objects or arrays.
 
@@ -61,9 +61,9 @@ Targeting rules control which variant a flag returns for a given request. Rules 
 
 Each rule contains:
 
-* **Conditions** that compare an attribute from the [evaluation context](#evaluation-context) against a value using an operator.
-* An optional **percentage rollout** that splits traffic across variants.
-* A **variant** to serve when the rule matches.
+- **Conditions** that compare an attribute from the [evaluation context](#evaluation-context) against a value using an operator.
+- An optional **percentage rollout** that splits traffic across variants.
+- A **variant** to serve when the rule matches.
 
 Conditions within a rule can be grouped with `AND`/`OR` operators.
 

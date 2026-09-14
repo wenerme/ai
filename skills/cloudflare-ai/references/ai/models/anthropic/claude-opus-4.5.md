@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-opus-4.5`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.
 
-| Model Info                                                                          |                                                                                                                             |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                              |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                                 | Yes                                                                                                                         |
-| Request formats                                                                     | Anthropic Messages                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/opus) |
+| Zero data retention | Yes |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics are:
 
 **First Law (Conservation of Energy):** Energy cannot be created or destroyed, only transferred or converted from one form to another. In a closed system, the change in internal energy equals heat added minus work done by the system.
@@ -72,6 +73,7 @@ The three laws of thermodynamics are:
 **Third Law (Absolute Zero):** As temperature approaches absolute zero (0 Kelvin), the entropy of a perfect crystal approaches zero. It's impossible to reach absolute zero in a finite number of steps.
 
 There's also sometimes a **Zeroth Law** mentioned, which states that if two systems are each in thermal equilibrium with a third system, they are in thermal equilibrium with each other—essentially establishing temperature as a transitive property.
+```
 
 ```json
 {
@@ -100,7 +102,11 @@ There's also sometimes a **Zeroth Law** mentioned, which states that if two syst
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -133,6 +139,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading JSON Files in Python
 
 Python's built-in `json` module makes it easy to read JSON files.
@@ -193,6 +200,7 @@ with open('data.json', 'r', encoding='utf-8') as file:
 | `json.loads(string)` | Parse a JSON string |
 
 The result is typically a Python dictionary or list that you can work with normally.
+````
 
 ```json
 {
@@ -219,7 +227,13 @@ The result is typically a Python dictionary or list that you can work with norma
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -267,6 +281,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some great stops depending on your route:
 
 **Coastal Route (Highway 1) - longer but stunning:**
@@ -289,6 +304,7 @@ Here are some great stops depending on your route:
 **My suggestion:** If you have time, take Highway 1 down and I-5 back (or vice versa).
 
 How much time do you have for the trip? That'll help me narrow down recommendations.
+```
 
 ```json
 {
@@ -315,7 +331,13 @@ How much time do you have for the trip? That'll help me narrow down recommendati
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -351,6 +373,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Cartographer's Last Note
 
 Detective Sarah Chen had seen her share of strange crime scenes in fifteen years on the force, but this was the first time she'd found a victim clutching a map to a place that didn't exist.
@@ -368,6 +391,7 @@ Sarah photographed the map, then noticed something that made her breath catch. I
 Tomorrow's date.
 
 And below it, in handwriting that definitely wasn't the victim's: *You're early. We expected the other detective.*
+```
 
 ```json
 {
@@ -394,7 +418,13 @@ And below it, in handwriting that definitely wasn't the victim's: *You're early.
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -425,6 +455,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Understanding Recursion
 
 **Recursion** is when a function calls itself to solve a problem by breaking it down into smaller, similar subproblems.
@@ -473,6 +504,7 @@ Think of Russian nesting dolls 🪆 — you keep opening smaller dolls until you
 ---
 
 **Remember:** Always have a base case, or your function will call itself forever (stack overflow)!
+````
 
 ```json
 [
@@ -632,7 +664,13 @@ Think of Russian nesting dolls 🪆 — you keep opening smaller dolls until you
 ]
 ```
 
-**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -675,9 +713,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Based on the search results, here are the top Cloudflare news stories from this week:
 
 • **Major outage caused by fiber cut (Today, June 22):**
+```
 
 ```json
 {
@@ -882,9 +922,11 @@ Based on the search results, here are the top Cloudflare news stories from this 
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -928,7 +970,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -946,9 +988,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json)
 
 Was this helpful?
 

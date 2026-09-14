@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON objects
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/tcp-protection/json-objects/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page contains an example of the TCP protection rule JSON object used in the API.
 
@@ -76,10 +76,10 @@ The `rate_sensitivity` and `burst_sensitivity` field values must be one of `low`
 
 The `expression` field is a [Rules language expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/) up to 8,192 characters that can include the following fields:
 
-* `ip.src`
-* `ip.dst`
-* `tcp.srcport`
-* `tcp.dstport`
+- `ip.src`
+- `ip.dst`
+- `tcp.srcport`
+- `tcp.dstport`
 
 Note
 

@@ -1,5 +1,5 @@
 ---
-description: When APO is working, three headers are present:  CF-Cache-Status, cf-apo-via,cf-edge-cache. APO works correctly when the headers exactly match the headers below.
+description: "When APO is working, three headers are present:  CF-Cache-Status, cf-apo-via,cf-edge-cache. APO works correctly when the headers exactly match the headers below."
 title: Verify APO works
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Verify APO works
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/verify-apo-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/verify-apo-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can check whether or not APO is working by verifying APO headers are present. When APO is working, three headers are present: `CF-Cache-Status`, `cf-apo-via`, `cf-edge-cache`.
 
@@ -20,12 +20,13 @@ You can check whether or not APO is working by verifying APO headers are present
 2. In the text field, enter the URL for your WordPress homepage including the `https://www.`.
 3. Select **Start test**. The **Response Headers** table displays.
 4. Locate the three header responses and their description. APO is working correctly when the headers exactly match the headers below.
-* `CF-Cache-Status` | `HIT`
-  * The `cf-cache-status` header displays if the asset is served from the cache or was considered dynamic and served from the origin.
-* `cf-apo-via` | `tcache`
-  * The `cf-apo-via` header returns the APO status for the given request.
-* `cf-edge-cache` | `cache, platform=wordpress`
-  * The `cf-edge-cache` headers confirms the WordPress plugin is installed and enabled.
+
+- `CF-Cache-Status` | `HIT`
+  - The `cf-cache-status` header displays if the asset is served from the cache or was considered dynamic and served from the origin.
+- `cf-apo-via` | `tcache`
+  - The `cf-apo-via` header returns the APO status for the given request.
+- `cf-edge-cache` | `cache, platform=wordpress`
+  - The `cf-edge-cache` headers confirms the WordPress plugin is installed and enabled.
 
 In a terminal, use the following cURL. The header `'accept: text/html'` is important.
 
@@ -41,10 +42,10 @@ curl -svo /dev/null -A "CF" 'https://example.com/' -H 'accept: text/html' 2>&1 |
 
 As always, `cf-cache-status` displays if the asset hit the cache or was considered dynamic and served from the origin.
 
-* `cf-apo-via` | `tcache`
-  * The `cf-apo-via` header returns the APO status for the given request.
-* `cf-edge-cache` | `cache, platform=wordpress`
-  * The `cf-edge-cache` headers confirms the WordPress plugin is installed and enabled.
+- `cf-apo-via` | `tcache`
+  - The `cf-apo-via` header returns the APO status for the given request.
+- `cf-edge-cache` | `cache, platform=wordpress`
+  - The `cf-edge-cache` headers confirms the WordPress plugin is installed and enabled.
 
 ## Verify the APO integration and WordPress integration work
 

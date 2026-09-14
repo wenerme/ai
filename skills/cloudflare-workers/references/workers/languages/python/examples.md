@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Examples
 
-Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/python/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has a wide range of Python examples in the [Workers Example gallery](https://developers.cloudflare.com/workers/examples/?languages=Python).
 

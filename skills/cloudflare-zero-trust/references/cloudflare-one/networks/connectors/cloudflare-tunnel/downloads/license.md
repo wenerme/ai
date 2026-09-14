@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # License
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/license/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/license/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
 

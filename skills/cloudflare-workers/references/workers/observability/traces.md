@@ -12,24 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traces
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/traces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### What is Workers tracing?
 
 Tracing gives you end-to-end visibility into the life of a request as it travels through your Workers application and connected services. This helps you identify performance bottlenecks, debug issues, and understand complex request flows. With tracing you can answer questions such as:
 
-* What is the cause of a long-running request?
-* How long do subrequests from my Worker take?
-* How long are my calls to my KV Namespace or R2 bucket taking?
+- What is the cause of a long-running request?
+- How long do subrequests from my Worker take?
+- How long are my calls to my KV Namespace or R2 bucket taking?
+
 ![Example trace showing a POST request to a cake shop with multiple spans including fetch requests and durable object operations](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1348,height=414,format=webp/_astro/wobs_waterfall_trace_122.BveqL__z.png)
 
 ### Automatic instrumentation
 
 Cloudflare Workers provides tracing instrumentation **out of the box** — no code changes or SDK are required. Simply enable tracing on your Worker and Cloudflare automatically captures telemetry data for:
 
-* **Fetch calls** — All outbound HTTP requests, capturing timing, status codes, and request metadata. This enables you to quickly identify how external dependencies affect your application's performance.
-* **Binding calls** — Interactions with various Worker bindings such as KV reads and writes, R2 object storage operations and Durable Object invocations.
-* **Handler calls** — The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
+- **Fetch calls** — All outbound HTTP requests, capturing timing, status codes, and request metadata. This enables you to quickly identify how external dependencies affect your application's performance.
+- **Binding calls** — Interactions with various Worker bindings such as KV reads and writes, R2 object storage operations and Durable Object invocations.
+- **Handler calls** — The complete lifecycle of each Worker invocation, including triggers such as [fetch handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/), [scheduled handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/), and [queue handlers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer).
 
 For a full list of instrumented operations, refer to the [spans and attributes documentation](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/).
 
@@ -67,7 +68,7 @@ In the future, Cloudflare plans to enable automatic tracing in addition to logs 
 
 While automatic tracing is in early beta, this setting will not enable tracing by default, and will only enable logs.
 
-An updated [compatibility\_date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) will be required for this change to take effect.
+An updated [`compatibility_date`](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) will be required for this change to take effect.
 
 ### Exporting OpenTelemetry traces to a 3rd party destination
 
@@ -126,10 +127,10 @@ Workers tracing is currently **free** during the initial beta period. This inclu
 
 Starting on October 1, 2026, tracing will be billed as part of your usage on the Workers Free Paid and Enterprise plans. Each span in a trace represents one observability event, sharing the same monthly quota and pricing as [Workers logs](https://developers.cloudflare.com/workers/platform/pricing/#workers-logs):
 
-|                  | Events (trace spans or log events)                                 | Retention |
-| ---------------- | ------------------------------------------------------------------ | --------- |
-| **Workers Free** | 200,000 per day                                                    | 3 Days    |
-| **Workers Paid** | 20 million included per month +$0.60 per additional million events | 7 Days    |
+|  | Events (trace spans or log events) | Retention |
+| --- | --- | --- |
+| **Workers Free** | 200,000 per day | 3 Days |
+| **Workers Paid** | 20 million included per month +$0.60 per additional million events | 7 Days |
 
 Was this helpful?
 

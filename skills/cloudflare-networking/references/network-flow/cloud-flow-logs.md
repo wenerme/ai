@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloud flow logs (beta)
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/cloud-flow-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/cloud-flow-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Flow (formerly Magic Network Monitoring) lets you monitor cloud traffic alongside your on-premise network data. Export virtual private cloud (VPC) flow logs from your cloud environment to Cloudflare, where they are processed and displayed as analytics in the dashboard. You can also query cloud traffic data through the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/).
 

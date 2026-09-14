@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Log Search
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/log-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/log-explorer/log-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer enables you to store and explore your Cloudflare logs directly within the Cloudflare dashboard or API, giving you visibility into your logs without the need to forward them to third-party services. Logs are stored on Cloudflare's global network using the R2 object storage platform and can be queried via the dashboard or SQL API.
 
@@ -20,18 +20,18 @@ Log Explorer enables you to store and explore your Cloudflare logs directly with
 
 Use Log Explorer when you need to investigate what actually happened with real production traffic:
 
-* Analyzing historical data and trends
-* Investigating security incidents after they occur
-* Searching for patterns across thousands of requests
-* Monitoring application performance over time
-* Providing forensic evidence to support teams
+- Analyzing historical data and trends
+- Investigating security incidents after they occur
+- Searching for patterns across thousands of requests
+- Monitoring application performance over time
+- Providing forensic evidence to support teams
 
 Use [Trace](https://developers.cloudflare.com/rules/trace-request/) when you need to test what would happen with a simulated request:
 
-* Understanding why a rule did not trigger as expected
-* Testing how your rules handle different request scenarios
-* Seeing the evaluation order of your rules
-* Simulating requests from different geolocations or conditions
+- Understanding why a rule did not trigger as expected
+- Testing how your rules handle different request scenarios
+- Seeing the evaluation order of your rules
+- Simulating requests from different geolocations or conditions
 
 The key difference is that Log Explorer shows actual traffic, while Trace shows simulated "what-if" scenarios.
 
@@ -39,8 +39,7 @@ The key difference is that Log Explorer shows actual traffic, while Trace shows 
 
 You can filter and view your logs via the Cloudflare dashboard or the API.
 
-1. In the Cloudflare dashboard, go to the **Log Explorer** \> **Log Search** page.
-[Go to **Log search** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
+1. In the Cloudflare dashboard, go to the **Log Explorer** > **Log Search** page. [Go to **Log search** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
 2. Select the **Dataset** you want to use and in **Columns** select the dataset fields. If you selected a zone scoped dataset, select the zone you would like to use.
 3. Enter a **Limit**. A limit is the maximum number of results to return, for example, 50.
 4. Select the **Time period** from which you want to query, for example, the previous 12 hours.
@@ -110,7 +109,7 @@ You can also access the Log Explorer dashboard directly from the [Security Analy
 All the tables supported by Log Explorer contain a special column called `date`, which helps to narrow down the amount of data that is scanned to respond to your query, resulting in faster query response times. The value of `date` must be in the form of `YYYY-MM-DD`. For example, to query logs that occurred on October 12, 2023, add the following to your `WHERE` clause: `date = '2023-10-12'`. The column supports the standard operators of `<`, `>`, and `=`.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
-2. Go to **Log Explorer** \> **Log Search** \> **Custom SQL**.
+2. Go to **Log Explorer** > **Log Search** > **Custom SQL**.
 3. Enter the following SQL query:
 
 ```sql
@@ -135,9 +134,9 @@ WHERE
 
 ### Additional query optimization tips
 
-* Narrow your query time frame. Focus on a smaller time window to reduce the volume of data processed. This helps avoid querying excessive amounts of data and speeds up response times.
-* Omit `ORDER BY` and `LIMIT` clauses. These clauses can slow down queries, especially when dealing with large datasets. For queries that return a large number of records, reduce the time frame instead of limiting to the newest `N` records from a broader time frame.
-* Select only necessary columns. For example, replace `SELECT *` with the list of specific columns you need. You can also use `SELECT RayId` as a first iteration and follow up with a query that filters by the Ray IDs to retrieve additional columns. Additionally, you can use `SELECT COUNT(*)` to probe for time frames with matching records without retrieving the full dataset.
+- Narrow your query time frame. Focus on a smaller time window to reduce the volume of data processed. This helps avoid querying excessive amounts of data and speeds up response times.
+- Omit `ORDER BY` and `LIMIT` clauses. These clauses can slow down queries, especially when dealing with large datasets. For queries that return a large number of records, reduce the time frame instead of limiting to the newest `N` records from a broader time frame.
+- Select only necessary columns. For example, replace `SELECT *` with the list of specific columns you need. You can also use `SELECT RayId` as a first iteration and follow up with a query that filters by the Ray IDs to retrieve additional columns. Additionally, you can use `SELECT COUNT(*)` to probe for time frames with matching records without retrieving the full dataset.
 
 Was this helpful?
 
@@ -148,5 +147,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/log-search/#page","headline":"Log Search · Cloudflare Log Explorer docs","description":"Search and explore stored logs via dashboard or API.","url":"https://developers.cloudflare.com/log-explorer/log-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/log-search/#page","headline":"Log Search · Cloudflare Log Explorer docs","description":"Search and explore stored logs via dashboard or API.","url":"https://developers.cloudflare.com/log-explorer/log-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

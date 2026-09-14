@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fields
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/fields/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schema Profile detections populate these fields after an applicable profile becomes available:
 
-| Field                                   | Type    | Source                 | Meaning                                                      | Available in                        |
-| --------------------------------------- | ------- | ---------------------- | ------------------------------------------------------------ | ----------------------------------- |
-| cf.schema\_validation.learned.violated  | Boolean | Learned Schema Profile | true when an evaluated request violates the learned profile. | Security Analytics and Custom Rules |
-| cf.schema\_validation.uploaded.violated | Boolean | Uploaded schema        | true when an evaluated request violates the supplied schema. | Security Analytics and Custom Rules |
+| Field | Type | Source | Meaning | Available in |
+| --- | --- | --- | --- | --- |
+| `cf.schema_validation.learned.violated` | `Boolean` | Learned Schema Profile | `true` when an evaluated request violates the learned profile. | Security Analytics and Custom Rules |
+| `cf.schema_validation.uploaded.violated` | `Boolean` | Uploaded schema | `true` when an evaluated request violates the supplied schema. | Security Analytics and Custom Rules |
 
 ## Availability
 

@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 3xx Redirection
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/3xx-redirection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 3xx codes are a class of responses which indicate that the HTTP client must take another course of action to obtain the complete requested resource.
 
 The redirect location should be specified in one of the following ways:
 
-* In the `Location` header field of the response, which is useful for automatic redirection.
-* In the payload of the response, optionally including a hyperlink to the correct location.
+- In the `Location` header field of the response, which is useful for automatic redirection.
+- In the payload of the response, optionally including a hyperlink to the correct location.
 
 ## 300 Multiple Choices
 
@@ -31,9 +31,9 @@ For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc723
 
 The status is typically used when a resource is available in multiple representations or formats. For instance:
 
-* Offering multiple versions of a video in different formats (for example, MP4, AVI).
-* Providing a list of files with different [extensions ↗](https://en.wikipedia.org/wiki/File%5Fextensions) or compression types.
-* Presenting [word sense disambiguation ↗](https://en.wikipedia.org/wiki/Word%5Fsense%5Fdisambiguation) options for a term with multiple meanings.
+- Offering multiple versions of a video in different formats (for example, MP4, AVI).
+- Providing a list of files with different [extensions ↗](https://en.wikipedia.org/wiki/File_extensions) or compression types.
+- Presenting [word sense disambiguation ↗](https://en.wikipedia.org/wiki/Word_sense_disambiguation) options for a term with multiple meanings.
 
 The response may include a `Location` header pointing to a preferred option or provide a payload with hyperlinks to the available choices, allowing the client to decide.
 
@@ -51,9 +51,9 @@ For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc723
 
 This status is commonly used to inform clients that:
 
-* A resource has been permanently relocated to a new URI.
-* Search engines should update their indexes to reflect the new URI.
-* Bookmarks or other saved references should be updated.
+- A resource has been permanently relocated to a new URI.
+- Search engines should update their indexes to reflect the new URI.
+- Bookmarks or other saved references should be updated.
 
 The response typically includes a `Location` header specifying the new URI. This enables automatic redirection by most User-Agents.
 
@@ -73,9 +73,9 @@ For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc723
 
 This status is typically used to:
 
-* Temporarily redirect traffic during maintenance or upgrades.
-* Direct users to an alternate resource without altering saved references.
-* A/B test different versions of a resource without making permanent changes.
+- Temporarily redirect traffic during maintenance or upgrades.
+- Direct users to an alternate resource without altering saved references.
+- A/B test different versions of a resource without making permanent changes.
 
 ### Cloudflare-specific information
 
@@ -109,8 +109,8 @@ A 304 Not Modified response is used when the client sends a conditional `GET` or
 
 A 304 response contains:
 
-* No message body: The 304 response itself does not include the actual resource (like an image or webpage content). Instead, it just confirms that the cached version is valid.
-* Required headers: The response includes important metadata (such as `Cache-Control`, `Content-Location`, `Date`, `ETag`, `Expires`, or `Vary`) that tells the client how to manage the cached resource. These headers are the same ones that would accompany the resource if it were sent with a 200 OK response.
+- No message body: The 304 response itself does not include the actual resource (like an image or webpage content). Instead, it just confirms that the cached version is valid.
+- Required headers: The response includes important metadata (such as `Cache-Control`, `Content-Location`, `Date`, `ETag`, `Expires`, or `Vary`) that tells the client how to manage the cached resource. These headers are the same ones that would accompany the resource if it were sent with a 200 OK response.
 
 ### Cloudflare-specific information
 

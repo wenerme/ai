@@ -12,18 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Google Vertex AI
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Google Vertex AI ↗](https://cloud.google.com/vertex-ai) enables developers to easily build and deploy enterprise ready generative AI experiences.
 
 Below is a quick guide on how to set your Google Cloud Account:
 
 1. Google Cloud Platform (GCP) Account
-
-  * Sign up for a [GCP account ↗](https://cloud.google.com/vertex-ai). New users may be eligible for credits (valid for 90 days).
+   - Sign up for a [GCP account ↗](https://cloud.google.com/vertex-ai). New users may be eligible for credits (valid for 90 days).
 2. Enable the Vertex AI API
-
-  * Go to [Enable Vertex AI API ↗](https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com) and activate the API for your project.
+   - Go to [Enable Vertex AI API ↗](https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com) and activate the API for your project.
 3. Apply for access to desired models.
 
 ## Endpoint
@@ -36,12 +34,12 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vertex-ai
 
 When making requests to Google Vertex AI, you will need:
 
-* AI Gateway account tag
-* AI Gateway gateway name
-* Google Vertex AI credentials (service account JSON or access token)
-* Google Vertex AI Project Name
-* Google Vertex AI Region (for example, `us-central1`)
-* Google Vertex AI model
+- AI Gateway account tag
+- AI Gateway gateway name
+- Google Vertex AI credentials (service account JSON or access token)
+- Google Vertex AI Project Name
+- Google Vertex AI Region (for example, `us-central1`)
+- Google Vertex AI model
 
 ## URL structure
 
@@ -61,11 +59,11 @@ Authenticating with Vertex AI normally requires generating short-term credential
 
 ### Authentication methods comparison
 
-| Method                             | cf-aig-authorization header | Authorization header                | Region handling              |
-| ---------------------------------- | --------------------------- | ----------------------------------- | ---------------------------- |
-| **BYOK (Recommended)**             | Bearer {CF\_AIG\_TOKEN}     | Not needed                          | Select in dashboard dropdown |
-| **Service account JSON in header** | Bearer {CF\_AIG\_TOKEN}     | Base64-encoded JSON with region key | Include region key in JSON   |
-| **Direct access token**            | Bearer {CF\_AIG\_TOKEN}     | Bearer {gcloud\_access\_token}      | Included in URL path         |
+| Method | `cf-aig-authorization` header | `Authorization` header | Region handling |
+| --- | --- | --- | --- |
+| **BYOK (Recommended)** | `Bearer {CF_AIG_TOKEN}` | Not needed | Select in dashboard dropdown |
+| **Service account JSON in header** | `Bearer {CF_AIG_TOKEN}` | Base64-encoded JSON with `region` key | Include `region` key in JSON |
+| **Direct access token** | `Bearer {CF_AIG_TOKEN}` | `Bearer {gcloud_access_token}` | Included in URL path |
 
 Do not confuse the headers
 
@@ -76,7 +74,7 @@ Do not confuse the headers
 The recommended approach is to store your Google service account credentials using AI Gateway's [Bring Your Own Keys (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) feature. This keeps your credentials secure and out of your application code.
 
 1. [Create a service account key ↗](https://cloud.google.com/iam/docs/keys-create-delete) in the Google Cloud Console. Ensure that the service account has the required permissions for the Vertex AI endpoints and models you plan to use.
-2. In the Cloudflare dashboard, go to **AI** \> **AI Gateway** \> your gateway > **Provider Keys**.
+2. In the Cloudflare dashboard, go to **AI** > **AI Gateway** > your gateway > **Provider Keys**.
 3. Select **Add API Key** and choose **Google Vertex AI** as the provider.
 4. Paste your service account JSON and select your region from the dropdown. AI Gateway automatically applies this selected region to your stored credentials, so you do not need to manually add a `region` field to the JSON.
 5. Select **Save**.
@@ -311,9 +309,8 @@ If you receive a `CREDENTIALS_MISSING` or `UNAUTHENTICATED` error from Google, c
 
 1. **Check your region**: Use a specific regional endpoint (like `us-central1`) in your URL, not `global`. The `global` endpoint has limited model support.
 2. **Verify BYOK configuration**: If using BYOK, confirm in the dashboard that:
-
-  * Your service account JSON was saved correctly
-  * A region was selected from the dropdown
+   - Your service account JSON was saved correctly
+   - A region was selected from the dropdown
 3. **Check service account permissions**: Ensure your service account has the `Vertex AI User` role or equivalent permissions in Google Cloud.
 4. **Verify the region key** (non-BYOK only): If passing service account JSON directly in the `Authorization` header, make sure the JSON includes the `region` key.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Complex types
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/complex-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 SQL supports querying struct, array, and map column types stored in Iceberg tables. This page covers access patterns, supported functions, and examples for each type.
 
@@ -353,7 +353,7 @@ LIMIT 1
 
 #### array\_remove\_n
 
-Removes the first _n_ occurrences of a value from an array.
+Removes the first *n* occurrences of a value from an array.
 
 ```sql
 SELECT array_remove_n(make_array(1, 2, 2, 2, 3), 2, 2) AS result
@@ -373,7 +373,7 @@ LIMIT 1
 
 #### array\_replace\_n
 
-Replaces the first _n_ occurrences of a value in an array.
+Replaces the first *n* occurrences of a value in an array.
 
 ```sql
 SELECT array_replace_n(make_array(1, 2, 2, 2, 3), 2, 99, 2) AS result
@@ -568,66 +568,66 @@ LIMIT 1
 
 ### Struct functions
 
-| Function                    | Description                          |
-| --------------------------- | ------------------------------------ |
-| struct\_col\['field'\]      | Bracket notation field access        |
-| get\_field(struct, 'field') | Function-based field access          |
-| named\_struct(k1, v1, ...)  | Create struct with named fields      |
-| struct(v1, v2, ...)         | Create struct with positional fields |
+| Function | Description |
+| --- | --- |
+| `struct_col['field']` | Bracket notation field access |
+| `get_field(struct, 'field')` | Function-based field access |
+| `named_struct(k1, v1, ...)` | Create struct with named fields |
+| `struct(v1, v2, ...)` | Create struct with positional fields |
 
 ### Array functions
 
-| Function                            | Description                              |
-| ----------------------------------- | ---------------------------------------- |
-| make\_array(v1, v2, ...)            | Create array from values                 |
-| string\_to\_array(str, delim)       | Split string into array                  |
-| range(start, stop)                  | Generate integer range (exclusive stop)  |
-| generate\_series(start, stop)       | Generate integer series (inclusive stop) |
-| array\_length(arr)                  | Number of elements                       |
-| cardinality(arr)                    | Number of elements                       |
-| empty(arr)                          | True if empty                            |
-| array\_ndims(arr)                   | Number of dimensions                     |
-| array\_dims(arr)                    | Dimension information                    |
-| array\_has(arr, val)                | Contains check                           |
-| array\_has\_all(arr, arr2)          | Contains all check                       |
-| array\_has\_any(arr, arr2)          | Contains any check                       |
-| array\_position(arr, val)           | First position of value                  |
-| array\_positions(arr, val)          | All positions of value                   |
-| array\_sort(arr)                    | Sort elements                            |
-| array\_reverse(arr)                 | Reverse order                            |
-| array\_distinct(arr)                | Remove duplicates                        |
-| flatten(arr)                        | Flatten one level                        |
-| array\_slice(arr, start, end)       | Extract sub-array                        |
-| array\_append(arr, val)             | Append to end                            |
-| array\_prepend(val, arr)            | Prepend to start                         |
-| array\_concat(arr1, arr2)           | Concatenate arrays                       |
-| array\_remove(arr, val)             | Remove first occurrence                  |
-| array\_remove\_all(arr, val)        | Remove all occurrences                   |
-| array\_remove\_n(arr, val, n)       | Remove first _n_ occurrences             |
-| array\_replace(arr, old, new)       | Replace first occurrence                 |
-| array\_replace\_n(arr, old, new, n) | Replace first _n_ occurrences            |
-| array\_replace\_all(arr, old, new)  | Replace all occurrences                  |
-| array\_pop\_back(arr)               | Remove last element                      |
-| array\_pop\_front(arr)              | Remove first element                     |
-| array\_repeat(val, n)               | Repeat value _n_ times                   |
-| array\_resize(arr, size, default)   | Resize with default fill                 |
-| array\_intersect(arr1, arr2)        | Common elements                          |
-| array\_union(arr1, arr2)            | Union of elements                        |
-| array\_except(arr1, arr2)           | Difference of elements                   |
-| array\_max(arr)                     | Maximum value                            |
-| array\_min(arr)                     | Minimum value                            |
-| array\_any\_value(arr)              | First non-NULL value                     |
-| array\_to\_string(arr, delim)       | Join elements as string                  |
-| array\_element(arr, idx)            | Element at index                         |
+| Function | Description |
+| --- | --- |
+| `make_array(v1, v2, ...)` | Create array from values |
+| `string_to_array(str, delim)` | Split string into array |
+| `range(start, stop)` | Generate integer range (exclusive stop) |
+| `generate_series(start, stop)` | Generate integer series (inclusive stop) |
+| `array_length(arr)` | Number of elements |
+| `cardinality(arr)` | Number of elements |
+| `empty(arr)` | True if empty |
+| `array_ndims(arr)` | Number of dimensions |
+| `array_dims(arr)` | Dimension information |
+| `array_has(arr, val)` | Contains check |
+| `array_has_all(arr, arr2)` | Contains all check |
+| `array_has_any(arr, arr2)` | Contains any check |
+| `array_position(arr, val)` | First position of value |
+| `array_positions(arr, val)` | All positions of value |
+| `array_sort(arr)` | Sort elements |
+| `array_reverse(arr)` | Reverse order |
+| `array_distinct(arr)` | Remove duplicates |
+| `flatten(arr)` | Flatten one level |
+| `array_slice(arr, start, end)` | Extract sub-array |
+| `array_append(arr, val)` | Append to end |
+| `array_prepend(val, arr)` | Prepend to start |
+| `array_concat(arr1, arr2)` | Concatenate arrays |
+| `array_remove(arr, val)` | Remove first occurrence |
+| `array_remove_all(arr, val)` | Remove all occurrences |
+| `array_remove_n(arr, val, n)` | Remove first *n* occurrences |
+| `array_replace(arr, old, new)` | Replace first occurrence |
+| `array_replace_n(arr, old, new, n)` | Replace first *n* occurrences |
+| `array_replace_all(arr, old, new)` | Replace all occurrences |
+| `array_pop_back(arr)` | Remove last element |
+| `array_pop_front(arr)` | Remove first element |
+| `array_repeat(val, n)` | Repeat value *n* times |
+| `array_resize(arr, size, default)` | Resize with default fill |
+| `array_intersect(arr1, arr2)` | Common elements |
+| `array_union(arr1, arr2)` | Union of elements |
+| `array_except(arr1, arr2)` | Difference of elements |
+| `array_max(arr)` | Maximum value |
+| `array_min(arr)` | Minimum value |
+| `array_any_value(arr)` | First non-NULL value |
+| `array_to_string(arr, delim)` | Join elements as string |
+| `array_element(arr, idx)` | Element at index |
 
 ### Map functions
 
-| Function                  | Description                          |
-| ------------------------- | ------------------------------------ |
-| map(keys\_arr, vals\_arr) | Create map from key and value arrays |
-| map\_keys(map)            | All keys as array                    |
-| map\_values(map)          | All values as array                  |
-| map\_extract(map, key)    | Value for a specific key             |
+| Function | Description |
+| --- | --- |
+| `map(keys_arr, vals_arr)` | Create map from key and value arrays |
+| `map_keys(map)` | All keys as array |
+| `map_values(map)` | All values as array |
+| `map_extract(map, key)` | Value for a specific key |
 
 Was this helpful?
 

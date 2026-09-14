@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect your domains
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To connect your domains, you will need to [enable your Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#enable-gmail-bcc-integration). Once you have enabled your Gmail BCC integration, the Cloudflare dashboard will redirect you to the **Set up Email security** page.
 
@@ -35,15 +35,16 @@ Under **Source**, the dashboard will display **Google integration**, along with 
 
 To add additional domains:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** \> **Settings**.
-2. Select **Connect an integration** \> **BCC/Journaling** \> **Integrate with Google** \> **Authorize**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+2. Select **Connect an integration** > **BCC/Journaling** > **Integrate with Google** > **Authorize**.
 3. **Connect domains**: Select the domains you want to add, then select **Next**.
 4. (Optional) Select **Add manual domains**: Enter additional domains manually, then select **Next**.
 5. (Optional) Select **Adjust hop count**: Enter the number of hops.
 6. **Review details**: Review your selected domains, then use the following email to configure the service address with your third-party email provider:
-```txt
-<account tag>@CF-emailsecurity.com
-```
+
+   ```txt
+   <account tag>@CF-emailsecurity.com
+   ```
 7. Select **Save**.
 
 ## Verify successful deployment
@@ -51,7 +52,7 @@ To add additional domains:
 To verify that the deployment has been successful and that your emails are being scanned:
 
 1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
-2. Go to **Settings** \> **Domain management** \> **Domains**, then select **View**.
+2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 
 Was this helpful?

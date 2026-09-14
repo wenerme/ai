@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health Checks regions
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/health-checks/concepts/health-checks-regions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare has data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/). Health checks do not run from every single of these data centers as this would result in numerous requests to your servers. Instead, you are able to choose between one and thirteen regions from which to run health checks. Cloudflare will run Health Checks from three data centers in each region that you select.
 
@@ -24,8 +24,8 @@ The Internet is not the same everywhere around the world and your users may not 
 
 Analytics are presented at two levels:
 
-* Regional Aggregates: Combined results from the three data centers within a specific region.
-* Global Aggregates: Total results across all configured regions and data centers.
+- Regional Aggregates: Combined results from the three data centers within a specific region.
+- Global Aggregates: Total results across all configured regions and data centers.
 
 In the event log, entries are labeled by region or as **Global**. We do not provide granular data for individual data centers.
 

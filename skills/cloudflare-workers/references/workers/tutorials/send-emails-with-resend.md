@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Send Emails With Resend
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to send transactional emails from Workers using [Resend ↗](https://resend.com/). At the end of this tutorial, you’ll be able to:
 
-* Create a Worker to send emails.
-* Sign up and add a Cloudflare domain to Resend.
-* Send emails from your Worker using Resend.
-* Store API keys securely with secrets.
+- Create a Worker to send emails.
+- Sign up and add a Cloudflare domain to Resend.
+- Send emails from your Worker using Resend.
+- Store API keys securely with secrets.
 
 ## Prerequisites
 
 To continue with this tutorial, you’ll need:
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
-* A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
-* Installed [npm ↗](https://docs.npmjs.com/getting-started).
-* A [Resend account ↗](https://resend.com/signup).
+- A  [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
+- A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
+- Installed [npm ↗](https://docs.npmjs.com/getting-started).
+- A [Resend account ↗](https://resend.com/signup).
 
 ## Create a Worker project
 
-Start by using [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
+Start by using  [C3](https://developers.cloudflare.com/pages/get-started/c3/) to create a Worker project in the command line, then, answer the prompts:
 
 ```sh
 npm create cloudflare@latest
@@ -58,7 +58,7 @@ export default {
 
 If you don’t already have a Resend account, you can sign up for a [free account here ↗](https://resend.com/signup). After signing up, go to `Domains` using the side menu, and click the button to add a new domain. On the modal, enter the domain you want to add and then select a region.
 
-Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` \> `Records`. Copy/paste the DNS records (DKIM, SPF, and DMARC records) from Resend to your Cloudflare domain.
+Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` > `Records`. Copy/paste the DNS records (DKIM, SPF, and DMARC records) from Resend to your Cloudflare domain.
 
 ![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2012,height=936,format=webp/_astro/add_dns_records.Brij3X2H.png)
 
@@ -121,6 +121,8 @@ RESEND_API_KEY=your_resend_api_key
 
 Also ensure the secret is added to your deployed worker by running:
 
+*Add secret to deployed Workersh*
+
 ```sh
 npx wrangler secret put RESEND_API_KEY
 ```
@@ -150,9 +152,9 @@ And finally, deploy this update with `npm run deploy`.
 
 ## Related resources
 
-* [Storing API keys and tokens with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
-* [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
-* [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
+- [Storing API keys and tokens with Secrets](https://developers.cloudflare.com/workers/configuration/secrets/).
+- [Transferring your domain to Cloudflare](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/).
+- [Send emails from Workers](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cookies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A waiting room only uses the `__cfwaitingroom` cookie when a visitor requests access to a host and path combination with an enabled and associated waiting room. When the waiting room is suspended, traffic goes to the origin and the `__cfwaitingroom` cookie is not created. The `__cfwaitingroom` cookie is encrypted to prevent modification by users. You may append a [custom suffix](#customize-cookie-name) to your waiting room cookie to customize the name of your waiting room cookie.
 
@@ -24,14 +24,14 @@ Cloudflare Waiting Room requires the `__cfwaitingroom` cookie. When a waiting ro
 
 The `__cfwaitingroom` cookie is used to:
 
-* Track a user's position in the waiting room queue and serve them in the correct order.
-* Monitor each visitor's duration in the application to provide an [accurate entry time](#estimated-wait-time-fifo-queueing-method) to visitors queueing in the waiting room.
-* To allow re-entry for a period of time (specified by [session\_duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration)) without going back in the waiting room.
+- Track a user's position in the waiting room queue and serve them in the correct order.
+- Monitor each visitor's duration in the application to provide an [accurate entry time](#estimated-wait-time-fifo-queueing-method) to visitors queueing in the waiting room.
+- To allow re-entry for a period of time (specified by [session\_duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration)) without going back in the waiting room.
 
 ## Cookie expiration time
 
-* While a visitor stays in a waiting room, `__cfwaitingroom` cookie expiration is always set to five minutes, but renews every 20 seconds automatically as long as the visitor does not close the tab or leaves your application.
-* When the visitor accesses the application, the `__cfwaitingroom` cookie expires after an interval (specified by [session\_duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration)).
+- While a visitor stays in a waiting room, `__cfwaitingroom` cookie expiration is always set to five minutes, but renews every 20 seconds automatically as long as the visitor does not close the tab or leaves your application.
+- When the visitor accesses the application, the `__cfwaitingroom` cookie expires after an interval (specified by [session\_duration](https://developers.cloudflare.com/waiting-room/reference/configuration-settings/#session-duration)).
 
 ## Customize cookie name
 

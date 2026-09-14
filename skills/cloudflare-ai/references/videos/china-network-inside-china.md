@@ -8,22 +8,28 @@ image: https://developers.cloudflare.com/og-docs.png
 
 In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction**0s
-* ![How does it work?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=50s)
+- ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction**0s
+- ![How does it work?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=50s)**How does it work?**50s
+- ![ICP Regulations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=95s)**ICP Regulations**1m35s
+- ![China Express](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=120s)**China Express**2m
 
-**How does it work?**50s
-* ![ICP Regulations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=95s)
+</details>
 
-**ICP Regulations**1m35s
-* ![China Express](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/b7933a5b3636ca29f834128ca92665b3/thumbnails/thumbnail.jpg?fit=crop&time=120s)
+<details>
 
-**China Express**2m
+<summary>
 
 Transcript
+
+</summary>
 
 Do you have users in mainland China who are experiencing high latency accessing your
 
@@ -86,6 +92,8 @@ Watch our video on China Express to learn more.
 Thus, the China network solutions sound like something that will help you reach out to our
 
 sales team to learn more.
+
+</details>
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/videos/china-network-inside-china/#page","headline":"China network - How to speed up your web traffic inside mainland China | Cloudflare Docs","description":"In this video, Jess Liu walks us through the main features of Cloudflares China Network. They cover how the China Network works, including integrated caching, in-country China name servers, and compliance with ICP regulations. They also briefly discuss Cloudflare's CDN Global Acceleration (formerly China Express), an option for accelerating dynamic content that cannot be cached.","url":"https://developers.cloudflare.com/videos/china-network-inside-china/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

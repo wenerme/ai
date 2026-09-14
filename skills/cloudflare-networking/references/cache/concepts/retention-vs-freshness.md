@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Retention vs Freshness (TTL)
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/retention-vs-freshness/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/retention-vs-freshness/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the context of Cloudflare CDN (Content Delivery Network), retention and freshness refer to two separate but related concepts. For an object in cache, freshness is how long it should be considered valid without consulting its source, while retention refers to how long it stays in cache before being removed.
 
@@ -26,10 +26,10 @@ Cloudflare uses a Least Recently Used (LRU) algorithm to decide which objects to
 
 Freshness, also known as Time to Live (TTL), determines how long a cache can use an object without checking with the origin again. For example, if an object has a TTL of five minutes, the cache serves it directly for five minutes after first receiving it. After five minutes, Cloudflare must check with the origin to confirm the object is still valid before serving it again. There are a few ways to configure TTLs for resources served through Cloudflare's CDN:
 
-* Include [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) or [CDN Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) directives, like `max-age` or `s-maxage`, in the origin cache-control response header.
-* Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) or [Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/).
+- Include [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) or [CDN Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/) directives, like `max-age` or `s-maxage`, in the origin cache-control response header.
+- Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) or [Workers](https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/).
 
-If an object in cache is no longer fresh, Cloudflare revalidates it with the origin. When [stale-while-revalidate](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) is set, revalidation happens asynchronously at expiry — visitors continue to be served from cache while Cloudflare fetches a fresh copy in the background. Without this directive, incoming requests wait for the origin to respond before receiving content. The origin can either confirm the cached object is still valid (refreshing its TTL) or return a new version to replace it. Refer to [Revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/) for details.
+If an object in cache is no longer fresh, Cloudflare revalidates it with the origin. When [`stale-while-revalidate`](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) is set, revalidation happens asynchronously at expiry — visitors continue to be served from cache while Cloudflare fetches a fresh copy in the background. Without this directive, incoming requests wait for the origin to respond before receiving content. The origin can either confirm the cached object is still valid (refreshing its TTL) or return a new version to replace it. Refer to [Revalidation](https://developers.cloudflare.com/cache/concepts/revalidation/) for details.
 
 Was this helpful?
 

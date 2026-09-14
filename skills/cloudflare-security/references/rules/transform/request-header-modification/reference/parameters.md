@@ -12,19 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API parameter reference
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To set an HTTP request header via API, set the following parameters in the `action_parameters` field:
 
-* **operation**: `set`
-* Include one of the following parameters to define a static or dynamic value:
-
-  * **value**: Specifies a static value for the HTTP request header.
-  * **expression**: Specifies the expression that defines a value for the HTTP request header.
+- **operation**: `set`
+- Include one of the following parameters to define a static or dynamic value:
+  - **value**: Specifies a static value for the HTTP request header.
+  - **expression**: Specifies the expression that defines a value for the HTTP request header.
 
 To remove an HTTP request header via API, set the following parameter in the `action_parameters` field:
 
-* **operation**: `remove`
+- **operation**: `remove`
 
 For step-by-step instructions, refer to [Create a request header transform rule via API](https://developers.cloudflare.com/rules/transform/request-header-modification/create-api/).
 

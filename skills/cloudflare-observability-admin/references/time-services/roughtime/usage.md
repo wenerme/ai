@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get the Roughtime
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/time-services/roughtime/usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The "Hello, world!" of Roughtime is very simple: the client sends a request over UDP to the server and the server responds with a signed timestamp.
 
 You just need the server's address and public key to run the protocol:
 
-* **Server address**: `roughtime.cloudflare.com:2003` (resolves to an IP address in our [anycast IP range ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/)). You can use either IPv4 or IPv6.
-* **Public key**: `0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg=`
+- **Server address**: `roughtime.cloudflare.com:2003` (resolves to an IP address in our [anycast IP range ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/)). You can use either IPv4 or IPv6.
+- **Public key**: `0GD7c3yP8xEc4Zl2zeuN2SlLvDVVocjsPSL8/Rl/7zg=`
 
 To get started, download and run Cloudflare's [Go client ↗](https://github.com/cloudflare/roughtime):
 

@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AWS integration
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will walk you through how to set up [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls to securely connect to an AWS Application Load Balancer using [mutual TLS verify ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).
 
 ## Before you begin
 
-* You should already have your AWS account and [EC2 ↗](https://docs.aws.amazon.com/ec2/?icmpid=docs%5Fhomepage%5Ffeaturedsvcs) configured.
-* Note that this tutorial uses command-line interface (CLI) to generate a custom certificate, and [API calls](https://developers.cloudflare.com/fundamentals/api/get-started/) to configure Cloudflare Authenticated Origin Pulls.
-* For the most up-to-date documentation on how to set up AWS, refer to the [AWS documentation ↗](https://docs.aws.amazon.com/).
+- You should already have your AWS account and [EC2 ↗](https://docs.aws.amazon.com/ec2/?icmpid=docs_homepage_featuredsvcs) configured.
+- Note that this tutorial uses command-line interface (CLI) to generate a custom certificate, and [API calls](https://developers.cloudflare.com/fundamentals/api/get-started/) to configure Cloudflare Authenticated Origin Pulls.
+- For the most up-to-date documentation on how to set up AWS, refer to the [AWS documentation ↗](https://docs.aws.amazon.com/).
 
-## 1\. Generate a custom certificate
+## 1. Generate a custom certificate
 
 1. Run the following command to generate a 4096-bit RSA private key, using AES-256 encryption. Enter a passphrase when prompted.
 
@@ -30,31 +30,31 @@ This guide will walk you through how to set up [per-hostname](https://developers
 openssl genrsa -aes256 -out rootca.key 4096
 ```
 
-1. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
+2. Create the CA root certificate. When prompted, fill in the information to be included in the certificate. For the `Common Name` field, use the domain name as value, not the hostname.
 
 ```bash
 openssl req -x509 -new -nodes -key rootca.key -sha256 -days 1826 -out rootca.crt
 ```
 
-1. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
+3. Create a Certificate Signing Request (CSR). When prompted, fill in the information to be included in the request. For the `Common Name` field, use the hostname as value.
 
 ```bash
 openssl req -new -nodes -out cert.csr -newkey rsa:4096 -keyout cert.key
 ```
 
-1. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
+4. Sign the certificate using the `rootca.key` and `rootca.crt` created in previous steps.
 
 ```bash
 openssl x509 -req -in cert.csr -CA rootca.crt -CAkey rootca.key -CAcreateserial -out cert.crt -days 730 -sha256 -extfile ./cert.v3.ext
 ```
 
-1. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
+5. Make sure the certificate extensions file `cert.v3.ext` specifies the following:
 
 ```plaintext
 basicConstraints=CA:FALSE
 ```
 
-## 2\. Configure AWS Application Load Balancer
+## 2. Configure AWS Application Load Balancer
 
 1. Upload the `rootca.cert` to an [S3 bucket ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html).
 2. [Create a trust store ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html#create-trust-store) at your EC2 console, indicating the **S3 URI** where you uploaded the certificate.
@@ -65,17 +65,17 @@ sudo yum install -y httpd
 sudo systemctl start httpd
 ```
 
-1. Create a [target group ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-target-group) for your Application Load Balancer.
-  * Choose **Instances** as target type.
-  * Specify port `HTTP/80`.
-2. After you finish configuring the target group, confirm that the target group is [healthy ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html).
-3. [Configure a load balancer and a listener ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-load-balancer).
-  * Choose the **Internet-facing** scheme.
-  * Switch the listener to port `443` so that the **mTLS** option is available, and select the target group created in previous steps.
-  * For **Default SSL/TLS server certificate**, choose **Import certificate** \> **Import to ACM**, and add the certificate private key and body.
-  * Under **Client certificate handling**, select **Verify with trust store**.
-4. Save your settings.
-5. (Optional) Run the following commands to confirm that the Application Load Balancing is asking for the client certificate.
+4. Create a [target group ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-target-group) for your Application Load Balancer.
+   - Choose **Instances** as target type.
+   - Specify port `HTTP/80`.
+5. After you finish configuring the target group, confirm that the target group is [healthy ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html).
+6. [Configure a load balancer and a listener ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-load-balancer).
+   - Choose the **Internet-facing** scheme.
+   - Switch the listener to port `443` so that the **mTLS** option is available, and select the target group created in previous steps.
+   - For **Default SSL/TLS server certificate**, choose **Import certificate** > **Import to ACM**, and add the certificate private key and body.
+   - Under **Client certificate handling**, select **Verify with trust store**.
+7. Save your settings.
+8. (Optional) Run the following commands to confirm that the Application Load Balancing is asking for the client certificate.
 
 ```bash
 openssl s_client -verify 5 -connect <your-application-load-balancer>:443 -quiet -state
@@ -92,9 +92,9 @@ curl --verbose https://<your-application-load-balancer>
 ...
 ```
 
-## 3\. Configure Cloudflare
+## 3. Configure Cloudflare
 
-1. [Upload the certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/create/) you created in [Step 1](#1-generate-a-custom-certificate) to Cloudflare. You should use the leaf certificate, not the root CA.
+1. [Upload the certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/create/) you created in [Step 1](#1-generate-a-custom-certificate) to Cloudflare. You should use the leaf certificate, not the root CA.
 
 ```bash
 MYCERT="$(cat cert.crt|perl -pe 's/\r?\n/\\n/'|sed -e 's/..$//')"
@@ -119,12 +119,23 @@ curl --silent \
 --data "$request_body"
 ```
 
-1. [Associate the certificate with the hostname](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/) that should use it.
+2. [Associate the certificate with the hostname](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostnames/methods/update/) that should use it.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `SSL and Certificates Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>SSL and Certificates Write</code>
+
+</details>
+
+*Enable or Disable a Hostname for Client Authenticationbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
@@ -149,43 +160,70 @@ Make sure your [encryption mode](https://developers.cloudflare.com/ssl/origin-co
 
 ## Roll back the Cloudflare configuration
 
-1. Use a [PUT request](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostnames/methods/update/) to disable Authenticated Origin Pulls on the hostname.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `SSL and Certificates Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
-	--request PUT \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"config": [
-				{
-						"enabled": false,
-						"cert_id": "<CERT_ID>",
-						"hostname": "<YOUR_HOSTNAME>"
-				}
-		]
-	}'
-```
-2. (Optional) Use a [GET request](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `SSL and Certificates Write`
-  * `SSL and Certificates Read`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-3. Use the [Delete hostname client certificate](https://developers.cloudflare.com/api/resources/origin%5Ftls%5Fclient%5Fauth/subresources/hostname%5Fcertificates/methods/delete/) endpoint to remove the certificate you had uploaded.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `SSL and Certificates Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates/$CERTIFICATE_ID" \
-	--request DELETE \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
+1. Use a [`PUT` request](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostnames/methods/update/) to disable Authenticated Origin Pulls on the hostname.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>SSL and Certificates Write</code></details>
+
+   *Enable or Disable a Hostname for Client Authenticationbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames" \
+   	--request PUT \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"config": [
+   				{
+   						"enabled": false,
+   						"cert_id": "<CERT_ID>",
+   						"hostname": "<YOUR_HOSTNAME>"
+   				}
+   		]
+   	}'
+   ```
+
+
+2. (Optional) Use a [`GET` request](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/list/) to obtain a list of the client certificate IDs. You will need the ID of the certificate you want to remove for the following step.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>SSL and Certificates Write</code>
+   - <code>SSL and Certificates Read</code></details>
+
+   *List Certificatesbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+
+3. Use the [Delete hostname client certificate](https://developers.cloudflare.com/api/resources/origin_tls_client_auth/subresources/hostname_certificates/methods/delete/) endpoint to remove the certificate you had uploaded.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>SSL and Certificates Write</code></details>
+
+   *Delete Hostname Client Certificatebash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/origin_tls_client_auth/hostnames/certificates/$CERTIFICATE_ID" \
+   	--request DELETE \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+
 
 Was this helpful?
 

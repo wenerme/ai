@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNSSEC keys
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/dnssec-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/), you can request that the ZSK/KSK pair that is used for [DNSSEC](https://developers.cloudflare.com/dns/dnssec/) is unique to your Cloudflare account. To opt in to this feature, contact your account team.
 
-All zones within your Cloudflare account - regardless of using [standard](https://developers.cloudflare.com/dns/nameservers/#standard-nameservers) or [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) \- will use the dedicated Zone Signing Key (ZSK) and Key Signing Key (KSK) for DNSSEC. These keys are set at the account level.
+All zones within your Cloudflare account - regardless of using [standard](https://developers.cloudflare.com/dns/nameservers/#standard-nameservers) or [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/) - will use the dedicated Zone Signing Key (ZSK) and Key Signing Key (KSK) for DNSSEC. These keys are set at the account level.
 
 ## Further reading
 

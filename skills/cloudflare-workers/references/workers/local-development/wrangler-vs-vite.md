@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Choosing between Wrangler & Vite
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler and the Cloudflare Vite plugin both provide local development environments for Workers. Both support backend Workers, local and remote bindings, and multi-Worker applications.
 
@@ -20,22 +20,22 @@ Choose based on the build tools your project uses. You can also use the Vite plu
 
 ## Compare Wrangler and Vite
 
-| Capability or workflow                                                                                  | Wrangler                                                                                          | Cloudflare Vite plugin                                         |
-| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Standalone JavaScript or TypeScript Workers                                                             | Supported                                                                                         | Supported                                                      |
-| Full-stack and backend Workers                                                                          | Supported                                                                                         | Supported                                                      |
-| Local binding simulations via [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) | Supported                                                                                         | Supported                                                      |
-| [Remote bindings](https://developers.cloudflare.com/workers/local-development/)                         | Supported                                                                                         | Supported                                                      |
-| Multi-Worker development                                                                                | Supported                                                                                         | Supported                                                      |
-| Frontend and server-side rendering frameworks                                                           | Use the framework build output                                                                    | Integrates with Vite-powered frameworks                        |
-| Build pipeline                                                                                          | Uses Wrangler's bundler or a custom build                                                         | Uses Vite transformations, Hot Module Replacement, and plugins |
-| Deployment and resource management                                                                      | Supported                                                                                         | Use Wrangler after vite build                                  |
-| [Rust Workers](https://developers.cloudflare.com/workers/languages/rust/)                               | Supported                                                                                         | Not supported                                                  |
-| [Python Workers](https://developers.cloudflare.com/workers/languages/python/)                           | Use [pywrangler](https://developers.cloudflare.com/workers/languages/python/) instead of wrangler | Not supported                                                  |
+| Capability or workflow | Wrangler | Cloudflare Vite plugin |
+| --- | --- | --- |
+| Standalone JavaScript or TypeScript Workers | Supported | Supported |
+| Full-stack and backend Workers | Supported | Supported |
+| Local binding simulations via [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) | Supported | Supported |
+| [Remote bindings](https://developers.cloudflare.com/workers/local-development/) | Supported | Supported |
+| Multi-Worker development | Supported | Supported |
+| Frontend and server-side rendering frameworks | Use the framework build output | Integrates with Vite-powered frameworks |
+| Build pipeline | Uses Wrangler's bundler or a custom build | Uses Vite transformations, Hot Module Replacement, and plugins |
+| Deployment and resource management | Supported | Use Wrangler after `vite build` |
+| [Rust Workers](https://developers.cloudflare.com/workers/languages/rust/) | Supported | Not supported |
+| [Python Workers](https://developers.cloudflare.com/workers/languages/python/) | Use [`pywrangler`](https://developers.cloudflare.com/workers/languages/python/) instead of `wrangler` | Not supported |
 
 Use the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) when your project already uses Vite or would benefit from its build pipeline. Vite is valid for standalone backend Workers, not only frontend applications.
 
-Use [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) when your project does not use Vite or you want a direct command-line workflow. Wrangler also provides deployment and resource management commands.
+Use [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) when your project does not use Vite or you want a direct command-line workflow. Wrangler also provides deployment and resource management commands.
 
 For local development that requires deployed resources, both tools support [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings). Your Worker runs locally while selected bindings connect to deployed Cloudflare resources.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Concepts
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/understand/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Adaptive Bit Rate sampling
 
@@ -26,9 +26,9 @@ Network Analytics can provide accurate data due to the sample rate and to Edge S
 
 Sample rates vary depending on the mitigation service. For example:
 
-* The sample rate for `dosd` changes dynamically from 1/100 to 1/10,000 packets based on the volume of packets.
-* The sample rate for Network Firewall events changes dynamically from 1/100 to 1/1,000,000 packets based on the number of packets.
-* The sample rate for `flowtrackd` is 1/10,000 packets.
+- The sample rate for `dosd` changes dynamically from 1/100 to 1/10,000 packets based on the volume of packets.
+- The sample rate for Network Firewall events changes dynamically from 1/100 to 1/1,000,000 packets based on the number of packets.
+- The sample rate for `flowtrackd` is 1/10,000 packets.
 
 NA uses a data logging pipeline that relies on Edge Sample Enrichment. By delegating the packet sample enrichment and cross-referencing to the global data centers, the data pipeline’s resilience and tolerance against congestion are improved. Using this method, enriched packet samples are immediately stored in Cloudflare's core data centers as soon as they arrive.
 

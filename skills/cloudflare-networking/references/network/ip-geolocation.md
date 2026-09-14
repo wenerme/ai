@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IP geolocation
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/ip-geolocation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network/ip-geolocation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-IP geolocation adds the [CF-IPCountry header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry) to all requests to your origin server.
+IP geolocation adds the [`CF-IPCountry` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry) to all requests to your origin server.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ## Add IP geolocation information
 
@@ -34,11 +34,11 @@ To enable **IP Geolocation** in the dashboard:
 2. Go to **Network**.
 3. For **IP Geolocation**, switch the toggle to **On**.
 
-To enable **IP Geolocation** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ip_geolocation` as the setting name in the URI path, and the `value` parameter set to `"on"`.
+To enable **IP Geolocation** with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ip_geolocation` as the setting name in the URI path, and the `value` parameter set to `"on"`.
 
 Note
 
-In order to use this data, you will need to then retrieve it from the [CF-IPCountry header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry).
+In order to use this data, you will need to then retrieve it from the [`CF-IPCountry` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-ipcountry).
 
 ---
 
@@ -52,9 +52,9 @@ For use cases where location must be highly precise or compliance-critical, such
 
 Here is what you can expect regarding data accuracy and updates:
 
-* **Update frequency**: Cloudflare automatically updates its IP geolocation database multiple times per week.
-* **Processing time**: Cloudflare reviews correction requests, which may or may not result in a change. Confirmed changes generally take effect within a few business days.
-* **Accuracy**: Due to the dynamic nature of IP address allocation, Cloudflare cannot guarantee that its IP geolocation will align with other providers. Cloudflare does not provide SLAs for IP geolocation accuracy or the timing of updates.
+- **Update frequency**: Cloudflare automatically updates its IP geolocation database multiple times per week.
+- **Processing time**: Cloudflare reviews correction requests, which may or may not result in a change. Confirmed changes generally take effect within a few business days.
+- **Accuracy**: Due to the dynamic nature of IP address allocation, Cloudflare cannot guarantee that its IP geolocation will align with other providers. Cloudflare does not provide SLAs for IP geolocation accuracy or the timing of updates.
 
 ---
 

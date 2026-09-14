@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create an Email security account
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/account-creation/create-email-security-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/account-creation/create-email-security-account/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To create your Email security account, you will need the alphanumeric string on the URL when logged in to the Cloudflare dashboard.
 
@@ -20,10 +20,10 @@ Once you have created your [Cloudflare account](https://developers.cloudflare.co
 
 To establish your tenant, you will need the following information:
 
-* Average monthly inbound message volume
-* Number of active email users
-* At least one domain
-* Admin email address
+- Average monthly inbound message volume
+- Number of active email users
+- At least one domain
+- Admin email address
 
 Was this helpful?
 

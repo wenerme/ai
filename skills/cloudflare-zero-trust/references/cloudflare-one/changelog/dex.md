@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Digital Experience Monitoring
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/dex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dex.xml)
 
@@ -29,10 +29,11 @@ The **Device Monitoring** page now analyzes hardware and network data between a 
 
 A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
 
-* **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
-* **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
-* **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
-* **Device health** — hardware metrics such as CPU, memory, and disk
+- **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
+- **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
+- **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
+- **Device health** — hardware metrics such as CPU, memory, and disk
+
 ![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1666,height=732,format=webp/_astro/dex-device-monitoring-wifi-network.CoEBznAm.png)
 
 You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
@@ -50,9 +51,10 @@ To learn more, refer to the [DEX monitoring documentation](https://developers.cl
 
 Digital experience tests also have enhanced configuration options including:
 
-* New HTTP methods (DELETE, PATCH, POST, PUT)
-* Secret Store headers, custom plain text headers, and custom request bodies
-* Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
+- New HTTP methods (DELETE, PATCH, POST, PUT)
+- Secret Store headers, custom plain text headers, and custom request bodies
+- Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
+
 ![Digital experience test configuration for Cloudflare Access applications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1374,format=webp/_astro/dex_test_auth_config.CD3G3zb_.png)![Digital experience enhanced test configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1496,format=webp/_astro/dex_test_enhanced_config.Nsv7Vcob.png)
 
 ## 2026-04-28
@@ -75,11 +77,11 @@ IT teams can now remotely run speed tests from the [Cloudflare One Client](https
 
 Each speed test includes the following metrics:
 
-* Internet speed: download and upload throughput
-* Latency: download, upload, unloaded latency, and jitter
-* Network quality score: video streaming, webchat/real-time communication (RTC)
+- Internet speed: download and upload throughput
+- Latency: download, upload, unloaded latency, and jitter
+- Network quality score: video streaming, webchat/real-time communication (RTC)
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Digital experience** \> **Diagnostics** and select **Run diagnostics** to use the feature today.
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Digital experience** > **Diagnostics** and select **Run diagnostics** to use the feature today.
 
 ![Cloudflare One client speed test result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2906,height=1730,format=webp/_astro/dex_speed_test.DukupcRs.png)
 
@@ -114,10 +116,10 @@ If a customer enables CMB in their account, they will see the following message 
 
 We've released four new WARP and DEX device data sets that can be exported via [Cloudflare Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/). These Logpush data sets can be exported to R2, a cloud bucket, or a SIEM to build a customized logging and analytics experience.
 
-1. [DEX Application Tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fapplication%5Ftests/)
-2. [DEX Device State Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex%5Fdevice%5Fstate%5Fevents/)
-3. [WARP Config Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Fconfig%5Fchanges/)
-4. [WARP Toggle Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp%5Ftoggle%5Fchanges/)
+1. [DEX Application Tests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_application_tests/)
+2. [DEX Device State Events](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/dex_device_state_events/)
+3. [WARP Config Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp_config_changes/)
+4. [WARP Toggle Changes](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/warp_toggle_changes/)
 
 To create a new DEX or WARP Logpush job, customers can go to the account level of the Cloudflare dashboard > Analytics & Logs > Logpush to get started.
 
@@ -147,9 +149,10 @@ Customers can test the new DEX MCP server in less than one minute. To learn more
 
 Device health metrics are now automatically collected, allowing administrators to:
 
-* View the last network a user was connected to
-* Monitor CPU and RAM utilization on devices
-* Identify resource-intensive processes running on endpoints
+- View the last network a user was connected to
+- Monitor CPU and RAM utilization on devices
+- Identify resource-intensive processes running on endpoints
+
 ![Device endpoint monitoring dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=675,format=webp/_astro/cloudflare-one-agent-health-monitoring.XXtiRuOp.gif)
 
 This feature complements existing DEX features like [synthetic application monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [network path visualization](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/), creating a comprehensive troubleshooting workflow that connects application performance with device state.
@@ -172,7 +175,7 @@ Admins can now collect packet captures (PCAPs) and WARP diagnostic logs from end
 
 **Last seen ISP**
 
-Admins can view the last ISP seen for a device by going to **My Team** \> **Devices**. Requires setting up a [traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/).
+Admins can view the last ISP seen for a device by going to **My Team** > **Devices**. Requires setting up a [traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/).
 
 ## 2024-05-13
 
@@ -180,9 +183,9 @@ Admins can view the last ISP seen for a device by going to **My Team** \> **Devi
 
 Admins can now set [DEX alerts](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/) using [Cloudflare Notifications](https://developers.cloudflare.com/notifications/). Three new DEX alert types:
 
-* Device connectivity anomaly
-* Test latency
-* Test low availability
+- Device connectivity anomaly
+- Test latency
+- Test low availability
 
 Was this helpful?
 

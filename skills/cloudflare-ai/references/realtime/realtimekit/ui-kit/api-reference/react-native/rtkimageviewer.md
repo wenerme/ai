@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkImageViewer
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkimageviewer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react-native/rtkimageviewer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Image viewer with fullscreen toggle and download functionality for chat images.
 
 ## Properties
 
-| Property    | Type             | Required | Default         | Description                                         |    |              |
-| ----------- | ---------------- | -------- | --------------- | --------------------------------------------------- | -- | ------------ |
-| image       | any              | ✅        | \-              | The image message object                            |    |              |
-| size        | 'lg' \| 'md'     | 'sm'     | 'xl'            | ❌                                                   | \- | Size variant |
-| iconPack    | IconPack         | ❌        | defaultIconPack | Custom icon pack                                    |    |              |
-| t           | RtkI18n          | ❌        | \-              | i18n translation function                           |    |              |
-| isContinued | boolean          | ❌        | false           | Whether this message continues from the same sender |    |              |
-| \_id        | string \| number | ❌        | \-              | Unique identifier for fullscreen tracking           |    |              |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `image` | `any` | ✅ | - | The image message object |
+| `size` | `'lg' \| 'md' \| 'sm' \| 'xl'` | ❌ | - | Size variant |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Custom icon pack |
+| `t` | `RtkI18n` | ❌ | - | i18n translation function |
+| `isContinued` | `boolean` | ❌ | `false` | Whether this message continues from the same sender |
+| `_id` | `string \| number` | ❌ | - | Unique identifier for fullscreen tracking |
 
 ## Usage Examples
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON Mode
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/json-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/json-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When we want text-generation AI models to interact with databases, services, and external systems programmatically, typically when using tool calling or building AI agents, we must have structured response formats rather than natural language.
 
@@ -116,15 +116,15 @@ As you can see, the model is complying with the JSON schema definition in the re
 
 This is the list of models that now support JSON Mode:
 
-* [@cf/meta/llama-3.1-8b-instruct-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/)
-* [@cf/meta/llama-3.1-70b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct/)
-* [@cf/meta/llama-3.3-70b-instruct-fp8-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/)
-* [@cf/meta/llama-3-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/)
-* [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/)
-* [@cf/meta/llama-3.2-11b-vision-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/)
-* [@hf/nousresearch/hermes-2-pro-mistral-7b](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/)
-* [@hf/thebloke/deepseek-coder-6.7b-instruct-awq](https://developers.cloudflare.com/workers-ai/models/deepseek-coder-6.7b-instruct-awq/)
-* [@cf/deepseek-ai/deepseek-r1-distill-qwen-32b](https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b/)
+- [@cf/meta/llama-3.1-8b-instruct-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct-fast/)
+- [@cf/meta/llama-3.1-70b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-70b-instruct/)
+- [@cf/meta/llama-3.3-70b-instruct-fp8-fast](https://developers.cloudflare.com/workers-ai/models/llama-3.3-70b-instruct-fp8-fast/)
+- [@cf/meta/llama-3-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3-8b-instruct/)
+- [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/)
+- [@cf/meta/llama-3.2-11b-vision-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/)
+- [@hf/nousresearch/hermes-2-pro-mistral-7b](https://developers.cloudflare.com/workers-ai/models/hermes-2-pro-mistral-7b/)
+- [@hf/thebloke/deepseek-coder-6.7b-instruct-awq](https://developers.cloudflare.com/workers-ai/models/deepseek-coder-6.7b-instruct-awq/)
+- [@cf/deepseek-ai/deepseek-r1-distill-qwen-32b](https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b/)
 
 We will continue extending this list to keep up with new, and requested models.
 

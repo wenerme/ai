@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom domains
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A custom domain serves your [public endpoint](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) from a hostname that you own, such as `search.example.com`, instead of the default `<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com` hostname.
 
@@ -28,11 +28,11 @@ Custom domains are also the foundation for [restricting access with Cloudflare A
 
 ## Requirements
 
-* The public endpoint must already be enabled on the instance or namespace. Adding a custom domain to an instance without an active public endpoint returns error `7093`.
-* The hostname must belong to a zone that is [added to the same Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and in an active state. A hostname on another account returns error `7090`.
-* Each instance or namespace supports one custom domain.
-* A hostname can only be attached to one public endpoint at a time. Reusing a hostname returns error `7091`.
-* The hostname must be a fully qualified domain name of up to 253 characters, such as `search.example.com`. Wildcards are not supported. Hostnames are stored in lowercase.
+- The public endpoint must already be enabled on the instance or namespace. Adding a custom domain to an instance without an active public endpoint returns error `7093`.
+- The hostname must belong to a zone that is [added to the same Cloudflare account](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) and in an active state. A hostname on another account returns error `7090`.
+- Each instance or namespace supports one custom domain.
+- A hostname can only be attached to one public endpoint at a time. Reusing a hostname returns error `7091`.
+- The hostname must be a fully qualified domain name of up to 253 characters, such as `search.example.com`. Wildcards are not supported. Hostnames are stored in lowercase.
 
 ## Add a custom domain
 
@@ -66,9 +66,9 @@ When you omit `custom_domains` from an update, the response echoes it back as `n
 
 Create a **proxied** `CNAME` record in the zone that owns your custom domain. The target is the default hostname of the public endpoint, which is `<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com`.
 
-| Type  | Name   | Target                                          | Proxy status |
-| ----- | ------ | ----------------------------------------------- | ------------ |
-| CNAME | search | <PUBLIC\_ENDPOINT\_ID>.search.ai.cloudflare.com | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `search` | `<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com` | Proxied |
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/zones/<ZONE_ID>/dns_records" \
@@ -109,9 +109,9 @@ Turn this off whenever you put security controls in front of the custom domain. 
 
 Three rules apply:
 
-* You cannot turn off the default hostname without at least one custom domain. The request returns error `7096`.
-* Because `public_endpoint_params` is replaced in full, omitting `default_domain_enabled` on a later update resets it to `true` and makes the default hostname reachable again.
-* Leave the `CNAME` record pointing at the default hostname. AI Search routes on the hostname the client requested, not the `CNAME` target, so the record keeps working after you turn the default hostname off.
+- You cannot turn off the default hostname without at least one custom domain. The request returns error `7096`.
+- Because `public_endpoint_params` is replaced in full, omitting `default_domain_enabled` on a later update resets it to `true` and makes the default hostname reachable again.
+- Leave the `CNAME` record pointing at the default hostname. AI Search routes on the hostname the client requested, not the `CNAME` target, so the record keeps working after you turn the default hostname off.
 
 ## Remove a custom domain
 
@@ -135,14 +135,14 @@ Deleting the instance or namespace removes its custom domains and certificates.
 
 ## Errors
 
-| Code  | Message                                                                   | Cause                                                            |
-| ----- | ------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| 7090  | custom\_domain\_not\_a\_verified\_zone\_on\_this\_account                 | The hostname does not belong to an active zone on this account.  |
-| 7091  | custom\_domain\_already\_in\_use                                          | The hostname is already attached to another public endpoint.     |
-| 7092  | custom\_domain\_provisioning\_failed                                      | Certificate provisioning failed. Retry the request.              |
-| 7093  | custom\_domains\_require\_an\_active\_public\_endpoint                    | The instance or namespace has no active public endpoint.         |
-| 7096  | disabling\_the\_default\_domain\_requires\_at\_least\_one\_custom\_domain | default\_domain\_enabled was set to false with no custom domain. |
-| 60018 | default domain disabled                                                   | A request reached the default hostname while it is turned off.   |
+| Code | Message | Cause |
+| --- | --- | --- |
+| `7090` | `custom_domain_not_a_verified_zone_on_this_account` | The hostname does not belong to an active zone on this account. |
+| `7091` | `custom_domain_already_in_use` | The hostname is already attached to another public endpoint. |
+| `7092` | `custom_domain_provisioning_failed` | Certificate provisioning failed. Retry the request. |
+| `7093` | `custom_domains_require_an_active_public_endpoint` | The instance or namespace has no active public endpoint. |
+| `7096` | `disabling_the_default_domain_requires_at_least_one_custom_domain` | `default_domain_enabled` was set to `false` with no custom domain. |
+| `60018` | `default domain disabled` | A request reached the default hostname while it is turned off. |
 
 ## Next steps
 

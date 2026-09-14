@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 410
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-410/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-410/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 410 Gone
 
 When a resource is intentionally and permanently removed, servers use the `410 Gone` status code to inform clients that the resource is no longer available. In this case:
 
-* The server suggests that links referencing the resource should be removed.
-* The server is not obligated to use this status code instead of a `404` response, nor is it required to maintain this response for any specific period of time.
+- The server suggests that links referencing the resource should be removed.
+- The server is not obligated to use this status code instead of a `404` response, nor is it required to maintain this response for any specific period of time.
 
 For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
 

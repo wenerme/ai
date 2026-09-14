@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Universal Endpoint (Deprecated)
 
-Last updated May 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/universal/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deprecated
 
@@ -26,12 +26,14 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}
 
 The payload expects an array of messages. Each message is an object with the following parameters:
 
-* `provider`: the name of the provider you would like to direct this message to. Can be OpenAI, workers-ai, or any of our supported providers.
-* `endpoint`: the pathname of the provider API you are trying to reach. For example, on OpenAI it can be `chat/completions`, and for Workers AI this might be [@cf/meta/llama-3.1-8b-instruct](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/). Refer to the sections that are specific to [each provider](https://developers.cloudflare.com/ai-gateway/usage/providers/).
-* `authorization`: the content of the Authorization HTTP Header that should be used when contacting this provider. This usually starts with `Token` or `Bearer`.
-* `query`: the payload as the provider expects it in their official API.
+- `provider`: the name of the provider you would like to direct this message to. Can be OpenAI, workers-ai, or any of our supported providers.
+- `endpoint`: the pathname of the provider API you are trying to reach. For example, on OpenAI it can be `chat/completions`, and for Workers AI this might be [`@cf/meta/llama-3.1-8b-instruct`](https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct/). Refer to the sections that are specific to [each provider](https://developers.cloudflare.com/ai-gateway/usage/providers/).
+- `authorization`: the content of the Authorization HTTP Header that should be used when contacting this provider. This usually starts with `Token` or `Bearer`.
+- `query`: the payload as the provider expects it in their official API.
 
 ## cURL example
+
+*Requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id} \
@@ -90,10 +92,10 @@ By default, Cloudflare triggers your fallback if a model request returns an erro
 
 When using fallbacks, the response header `cf-aig-step` indicates which model successfully processed the request by returning the step number:
 
-* `cf-aig-step:0` — The first (primary) model was used successfully.
-* `cf-aig-step:1` — The request fell back to the second model.
-* `cf-aig-step:2` — The request fell back to the third model.
-* Subsequent steps — Each fallback increments the step number by 1.
+- `cf-aig-step:0` — The first (primary) model was used successfully.
+- `cf-aig-step:1` — The request fell back to the second model.
+- `cf-aig-step:2` — The request fell back to the third model.
+- Subsequent steps — Each fallback increments the step number by 1.
 
 ## Request timeouts
 
@@ -102,6 +104,8 @@ A request timeout triggers a fallback if a provider takes too long to respond.
 Configure the timeout by setting a `requestTimeout` property (in milliseconds) within the provider-specific `config` object. Each provider can have a different `requestTimeout` value.
 
 The timeout is based on when the first part of the response comes back. As long as the first part of the response returns within the specified timeframe — such as when streaming a response — your gateway will wait for the response.
+
+*Request timeout examplebash*
 
 ```bash
 curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
@@ -170,11 +174,13 @@ config:{
 }
 ```
 
-* `maxAttempts`: Maximum number of retry attempts (up to 5).
-* `retryDelay`: Delay before retrying, in milliseconds (maximum of 5 seconds).
-* `backoff`: Backoff method — `constant`, `linear`, or `exponential`.
+- `maxAttempts`: Maximum number of retry attempts (up to 5).
+- `retryDelay`: Delay before retrying, in milliseconds (maximum of 5 seconds).
+- `backoff`: Backoff method — `constant`, `linear`, or `exponential`.
 
 On the final retry attempt, your gateway will wait until the request completes, regardless of how long it takes. Each provider can have different retry settings.
+
+*Request retry examplebash*
 
 ```bash
 curl 'https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}' \
@@ -288,6 +294,8 @@ ws.on("message", function incoming(message) {
 binding = "AI"
 ```
 
+*src/index.tstypescript*
+
 ```typescript
 type Env = {
 	AI: Ai;
@@ -319,9 +327,9 @@ The Universal Endpoint allows you to set fallback models or providers and custom
 
 Since the same settings can be configured in multiple locations, AI Gateway applies a hierarchy to determine which configuration takes precedence:
 
-* **Provider-level headers** override all other configurations.
-* **Request-level headers** are used if no provider-level headers are set.
-* **Gateway-level settings** are used only if no headers are configured at the provider or request levels.
+- **Provider-level headers** override all other configurations.
+- **Request-level headers** are used if no provider-level headers are set.
+- **Gateway-level settings** are used only if no headers are configured at the provider or request levels.
 
 This hierarchy ensures consistent behavior, prioritizing the most specific configurations. Use provider-level and request-level headers for fine-tuned control, and gateway settings for general defaults.
 
@@ -329,8 +337,8 @@ This hierarchy ensures consistent behavior, prioritizing the most specific confi
 
 This example demonstrates how headers set at different levels impact caching behavior:
 
-* **Request-level header**: The `cf-aig-cache-ttl` is set to `3600` seconds, applying this caching duration to the request by default.
-* **Provider-level header**: For the fallback provider (OpenAI), `cf-aig-cache-ttl` is explicitly set to `0` seconds, overriding the request-level header and disabling caching for responses when OpenAI is used as the provider.
+- **Request-level header**: The `cf-aig-cache-ttl` is set to `3600` seconds, applying this caching duration to the request by default.
+- **Provider-level header**: For the fallback provider (OpenAI), `cf-aig-cache-ttl` is explicitly set to `0` seconds, overriding the request-level header and disabling caching for responses when OpenAI is used as the provider.
 
 This shows how provider-level headers take precedence over request-level headers, allowing for granular control of caching behavior.
 

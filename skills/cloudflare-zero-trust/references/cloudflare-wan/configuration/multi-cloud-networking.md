@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure cloud on-ramps
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) allows you to create on-ramps from your cloud networks to Cloudflare WAN (formerly Magic WAN). Cloudflare will create virtual private network (VPN) tunnels between Cloudflare WAN and your cloud provider, configuring both sides of the connection on your behalf. Cloudflare orchestrates the cloud provider's native VPN functionality, without requiring deployment of any additional compute virtual machines (VMs).
 
@@ -22,17 +22,17 @@ There are two types of on-ramps: single virtual private cloud (VPC) and hubs.
 
 Before creating on-ramps from your cloud networks to Cloudflare WAN, make sure you:
 
-* Have a Multi-Cloud Networking account. Contact your account team to learn more.
-* Went through the process of [setting up your cloud provider](https://developers.cloudflare.com/multi-cloud-networking/get-started/).
-* Have the correct cloud resources. Refer to [Reference](https://developers.cloudflare.com/multi-cloud-networking/reference/) to check resources by cloud provider.
+- Have a Multi-Cloud Networking account. Contact your account team to learn more.
+- Went through the process of [setting up your cloud provider](https://developers.cloudflare.com/multi-cloud-networking/get-started/).
+- Have the correct cloud resources. Refer to [Reference](https://developers.cloudflare.com/multi-cloud-networking/reference/) to check resources by cloud provider.
 
 ## Available on-ramps
 
 Multi-Cloud Networking has the following cloud on-ramps integrations:
 
-* AWS (single VPC and hubs)
-* Azure (single VPC)
-* GCP (single VPC)
+- AWS (single VPC and hubs)
+- Azure (single VPC)
+- GCP (single VPC)
 
 Refer to [Reference](https://developers.cloudflare.com/multi-cloud-networking/reference/) to learn more about how Cloudflare orchestrates VPN connectivity to your cloud networks.
 
@@ -44,20 +44,20 @@ Refer to [Reference](https://developers.cloudflare.com/multi-cloud-networking/re
 
 Choose this option if you have a single VPC in your cloud to connect to Cloudflare WAN. To set up a single-VPC on-ramp:
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
-4. Go to **Connect an existing VPC to Cloudflare** \> **Select**.
+4. Go to **Connect an existing VPC to Cloudflare** > **Select**.
 5. Give your new on-ramp a name and a description (optional), then select **Continue**.
 6. From the drop-down menu, choose your cloud provider. You can choose between AWS, GCP, and Azure. Then, select **Continue**.
 7. Select the network that you want to connect to. This list comes from the [cloud integrations](https://developers.cloudflare.com/multi-cloud-networking/get-started/) you have already set up. When you are done, select **Continue**.
 8. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
+   - **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
 
-  * **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-  Warning
-  Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
-  * **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
+     Warning
+
+     Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
+   - **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
 9. Select **Continue**. Applying your settings might take a few seconds to complete.
 10. Review the changes in your cloud environment, and select **Approve changes**.
 
@@ -69,40 +69,38 @@ If you want to connect multiple VPCs to Cloudflare WAN, the best way to connect 
 
 Depending on how you have set up your cloud provider, you can:
 
-* **Connect to an existing hub**: Choose this option if you already have a VPN hub in your cloud and you want to connect it to Cloudflare WAN.
-* **Create a new hub**: Choose this option if you want to create a new hub and connect it to Cloudflare WAN.
+- **Connect to an existing hub**: Choose this option if you already have a VPN hub in your cloud and you want to connect it to Cloudflare WAN.
+- **Create a new hub**: Choose this option if you want to create a new hub and connect it to Cloudflare WAN.
 
 When you configure a hub on-ramp, Cloudflare always manages the VPN tunnel between Cloudflare WAN and the hub. Optionally, you can also choose to have Cloudflare manage peering with VPCs and/or with other hubs:
 
-* **Manage VPC peering:** If you enable this option, Cloudflare will attach your chosen VPCs to the hub.
-* **Manage hub peering:** Hubs are regional, so in order to connect VPCs attached to hubs in different regions, those hubs need to be peered. If you enable this option, Cloudflare will peer your chosen hubs to this hub.
+- **Manage VPC peering:** If you enable this option, Cloudflare will attach your chosen VPCs to the hub.
+- **Manage hub peering:** Hubs are regional, so in order to connect VPCs attached to hubs in different regions, those hubs need to be peered. If you enable this option, Cloudflare will peer your chosen hubs to this hub.
 
 #### Connect to an existing hub
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
-4. Go to **Connect an existing hub to Cloudflare** \> **Select**.
+4. Go to **Connect an existing hub to Cloudflare** > **Select**.
 5. Give your new on-ramp a name and a description (optional), then select **Continue**.
 6. From the drop-down menu, choose your cloud provider. You can choose between AWS, GCP, and Azure. Then, select **Continue**.
 7. Choose an existing hub. This list comes from the [cloud integrations](https://developers.cloudflare.com/multi-cloud-networking/get-started/) you have already set up. When you are done, select **Continue**.
-8. (_Optional_) In **VPC peering configuration**, you can enable **Manage VPC peering**. This allows Cloudflare to attach your chosen VPCs to the hub:
-
-  1. Select **Manage VPC peering** to enable this feature.
-  2. Choose the VPCs you want Cloudflare to attach to the hub.
+8. (*Optional*) In **VPC peering configuration**, you can enable **Manage VPC peering**. This allows Cloudflare to attach your chosen VPCs to the hub:
+   1. Select **Manage VPC peering** to enable this feature.
+   2. Choose the VPCs you want Cloudflare to attach to the hub.
 9. Select **Continue**.
-10. (_Optional_) In **Configure hub peering**, you can enable **Manage hub peering**. Enabling this option allows Cloudflare to attach remote hubs you have chosen to this hub (establishing connectivity between VPCs attached to any of the peered hubs):
-
-  1. Select **Manage hub peering** to enable this feature.
-  2. Select the remote hubs you want Cloudflare to attach to this hub.
+10. (*Optional*) In **Configure hub peering**, you can enable **Manage hub peering**. Enabling this option allows Cloudflare to attach remote hubs you have chosen to this hub (establishing connectivity between VPCs attached to any of the peered hubs):
+    1. Select **Manage hub peering** to enable this feature.
+    2. Select the remote hubs you want Cloudflare to attach to this hub.
 11. Select **Continue**.
 12. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
+    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
 
-  1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-  Warning
-  Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
-  2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
+       Warning
+
+       Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
+    2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
 13. Select **Continue**. Applying your settings might take a few seconds to complete.
 14. Review the changes in your cloud environment, and select **Approve changes**.
 
@@ -110,34 +108,31 @@ You have successfully created your Cloudflare WAN on-ramp. However, on-ramp crea
 
 #### Create a new hub
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select **Add new on-ramp**.
-4. Go to **Create a new hub & connect it to Cloudflare** \> **Select**.
+4. Go to **Create a new hub & connect it to Cloudflare** > **Select**.
 5. Give your new on-ramp a name and a description (optional), then select **Continue**.
 6. Configure your cloud in **Select your cloud details**:
-
-  1. From the drop-down menu, choose your cloud provider. You can choose between AWS, GCP, and Azure.
-  2. Choose an existing integration. This list comes from the [cloud integrations](https://developers.cloudflare.com/multi-cloud-networking/get-started/) you have already set up.
-  3. Choose a region in which to create the new hub.
-  4. Select **Continue**.
-7. (_Optional_) In **VPC peering configuration**, you can enable **Manage VPC peering**. This allows Cloudflare to attach your chosen VPCs to the hub:
-
-  1. Select **Manage VPC peering** to enable this feature.
-  2. Choose the VPCs you want Cloudflare to attach to the hub.
+   1. From the drop-down menu, choose your cloud provider. You can choose between AWS, GCP, and Azure.
+   2. Choose an existing integration. This list comes from the [cloud integrations](https://developers.cloudflare.com/multi-cloud-networking/get-started/) you have already set up.
+   3. Choose a region in which to create the new hub.
+   4. Select **Continue**.
+7. (*Optional*) In **VPC peering configuration**, you can enable **Manage VPC peering**. This allows Cloudflare to attach your chosen VPCs to the hub:
+   1. Select **Manage VPC peering** to enable this feature.
+   2. Choose the VPCs you want Cloudflare to attach to the hub.
 8. Select **Continue**.
-9. (_Optional_) In **Configure hub peering**, you can enable **Manage hub peering**. Enabling this option allows Cloudflare to attach remote hubs you have chosen to this hub (establishing connectivity between VPCs attached to any of the peered hubs):
-
-  1. Select **Manage hub peering** to enable this feature.
-  2. Select the remote hubs you want Cloudflare to attach to this hub.
+9. (*Optional*) In **Configure hub peering**, you can enable **Manage hub peering**. Enabling this option allows Cloudflare to attach remote hubs you have chosen to this hub (establishing connectivity between VPCs attached to any of the peered hubs):
+   1. Select **Manage hub peering** to enable this feature.
+   2. Select the remote hubs you want Cloudflare to attach to this hub.
 10. Select **Continue**.
 11. **Configure route propagation** shows where Cloudflare will install the new routes. Installing these routes is required to correctly configure both Cloudflare WAN and your cloud provider, and ensure successful communication between them:
+    1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
 
-  1. **Add routes for your Cloudflare WAN address space to your cloud network**: Select this option to install routes for reaching Cloudflare WAN in your cloud network's route tables (refer to [Cloudflare WAN address space](#cloudflare-wan-address-space) to learn what routes are installed and how to customize them). If you prefer to do this manually, unselect this option.
-  Warning
-  Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
-  2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
+       Warning
+
+       Cloudflare recommends that you leave this option selected. If you unselect **Add routes for your Cloudflare WAN address space to your cloud network**, you will need to manually create all the required configurations to allow Cloudflare WAN to connect to your cloud, such as routing tables, transit gateways, and VPNs. Refer to the [Cloudflare WAN How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section, or consult the documentation for your cloud provider for more information.
+    2. **Add routes for your cloud network to Cloudflare WAN**: Select this option to create routes for reaching your cloud network in Cloudflare WAN.
 12. Select **Continue**. Applying your settings might take a few seconds to complete.
 13. Review the changes in your cloud environment, and select **Approve changes**.
 
@@ -149,13 +144,13 @@ You can download a Terraform configuration for a cloud on-ramp.
 
 You might want to do this to:
 
-* Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
-* Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
+- Review the proposed configuration for an on-ramp before deploying it with Cloudflare.
+- Deploy the on-ramp using your own infrastructure-as-code pipeline instead of deploying it with Cloudflare.
 
 The download will contain two files:
 
-* `main.tf`: Terraform configuration for the new resources needed to create the on-ramp.
-* `instructions.txt`: Instructions for modifying resources that already exist in your cloud environment.
+- `main.tf`: Terraform configuration for the new resources needed to create the on-ramp.
+- `instructions.txt`: Instructions for modifying resources that already exist in your cloud environment.
 
 If you intend to plan and apply the downloaded configuration using Terraform, you will need to use the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/) (in addition to the Terraform provider for the on-ramp's cloud service provider). Use your Cloudflare [Global API Key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/), not an API Token.
 
@@ -165,20 +160,17 @@ Do not deploy the on-ramp using both Cloudflare and Terraform. If you plan to de
 
 #### Download Terraform configuration for a new on-ramp
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, select **Add new on-ramp** and begin the **Create a Cloudflare WAN cloud on-ramp** workflow following the standard steps.
 4. After the **Configure route propagation** step, select **View download options** instead of selecting **Continue**.
 5. Select a download option:
-
-  1. Choose **Download file and continue** to download the Terraform configuration, review the configuration, and then continue deploying the on-ramp with Cloudflare.
-  2. Choose **Download file and exit** to download the Terraform configuration that you will apply yourself.
+   1. Choose **Download file and continue** to download the Terraform configuration, review the configuration, and then continue deploying the on-ramp with Cloudflare.
+   2. Choose **Download file and exit** to download the Terraform configuration that you will apply yourself.
 
 #### Download Terraform configuration for an existing on-ramp
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, find the on-ramp you want to download > select the three dots > **Download as Terraform**.
 
@@ -192,23 +184,22 @@ After setting up your on-ramps, you need to update your network security groups 
 
 ### Edit a Cloudflare WAN cloud on-ramp
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select the on-ramp you want to edit.
 4. Select **Edit** in the side panel.
 5. In **Basic information**, you can change the name and description of your on-ramp. Select **Save** when you are finished.
 6. In **Configurations**, you can modify where the required routes are installed. Select **Continue**.
+   1. Select **Save and review** after making changes.
+   2. Review your settings, and select **Approve changes**.
 
-  1. Select **Save and review** after making changes.
-  2. Review your settings, and select **Approve changes**.
-  Caution
-  If you uncheck any of the Propagation settings, you will have to manually configure Cloudflare WAN or your cloud provider to ensure successful communication between them. Refer to the [How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section of Cloudflare WAN, or consult the documentation for your cloud provider for more information.
+      Caution
+
+      If you uncheck any of the Propagation settings, you will have to manually configure Cloudflare WAN or your cloud provider to ensure successful communication between them. Refer to the [How to](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/) section of Cloudflare WAN, or consult the documentation for your cloud provider for more information.
 
 ### Delete a Cloudflare WAN cloud on-ramp
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. Select the on-ramp you want to delete.
 4. Select **Edit** in the side panel.
@@ -229,8 +220,7 @@ By default, Cloudflare installs the following summarized routes in your cloud ro
 
 To override the defaults with custom prefixes:
 
-1. Go to the **Routes** page.
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+1. Go to the **Routes** page. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **WAN configuration**.
 3. Scroll to **Propagated routes to cloud networks**.
 4. Delete the prefixes, and enter your custom ones.
@@ -244,8 +234,7 @@ To install a default route to send all traffic to Cloudflare WAN, enter `0.0.0.0
 
 You can view estimated costs associated with your cloud resources in the Cloudflare dashboard.
 
-1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to the **Connectors** page. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select the **Cloud (beta)** tab.
 3. In **Cloud on-ramps**, find the cloud on-ramp for which you want to check the estimated costs > select the three dots > **Associated Resources**.
 4. In the **Associated Resources** page, you can view the estimated monthly costs for all the resources associated with the on-ramp you chose. You can also search for a specific resource using the search box.

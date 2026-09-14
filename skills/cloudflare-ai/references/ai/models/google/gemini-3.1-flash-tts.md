@@ -15,17 +15,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-3.1-flash-tts`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
-| Model Info          |                                                                                                                               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Zero data retention | Yes                                                                                                                           |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
+| Model Info | |
+| --- | --- |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
 
 ## Usage
 
@@ -60,7 +60,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Custom Voice** — Generate speech with a specific voice
+<details>
+
+<summary>**Custom Voice** — Generate speech with a specific voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -92,7 +96,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Longer Text** — Convert longer text to speech
+</details>
+
+<details>
+
+<summary>**Longer Text** — Convert longer text to speech</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -127,7 +137,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Narrative Voice** — Generate speech with a narrative voice style
+</details>
+
+<details>
+
+<summary>**Narrative Voice** — Generate speech with a narrative voice style</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -162,6 +178,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -188,7 +206,7 @@ maxOutputTokens
 
 `integer`exclusiveMinimum: 0maximum: 9007199254740991Maximum number of tokens to generate
 
-▶stopSequences\[\]
+▶stopSequences\[]
 
 `array`Sequences where the model will stop generating further tokens
 
@@ -198,9 +216,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-3.1-flash-tts/schema-output.json)
 
 Was this helpful?
 

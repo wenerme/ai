@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add additional audio tracks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/edit-videos/adding-additional-audio-tracks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A video must be uploaded before additional audio tracks can be attached to it. In the following example URLs, the video’s UID is referenced as `VIDEO_UID`.
 
@@ -32,6 +32,8 @@ curl -X POST \
  -d '{"url": "https://www.examplestorage.com/audio_file.mp3", "label": "Example Audio Label"}' \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio/copy
 ```
+
+*Example response to add additional audio tracksjson*
 
 ```json
 {
@@ -71,6 +73,8 @@ curl -X POST \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
 
+*Example response to add Additional audio tracksjson*
+
 ```json
 {
  "result": {
@@ -94,6 +98,8 @@ curl \
  -H 'Authorization: Bearer <API_TOKEN>' \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/audio
 ```
+
+*Example response to get the audio tracks associated with a videojson*
 
 ```json
 {
@@ -134,6 +140,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/au
 
 Editing the `default` status of an audio track to `true` will mark all other audio tracks on the video `default` status to `false`.
 
+*Example response to edit the audio tracks associated with a videojson*
+
 ```json
 {
   "result": {
@@ -161,6 +169,8 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>/au
 Deleting a `default` audio track is not allowed. You must assign another audio track as `default` prior to deletion.
 
 If there is an entry in `errors` response field, the audio track has not been deleted.
+
+*Example response to delete an audio trackjson*
 
 ```json
 {

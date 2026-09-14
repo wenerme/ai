@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare One Appliance (formerly Magic WAN Connector) software is certified for use on the [Dell Networking Virtual Edge Platform ↗](https://www.dell.com/support/home/en-us/product-support/product/dell-emc-networking-vep1445-vep1485/docs). It can be purchased with software pre-installed through our partner network for plug-and-play connectivity to Cloudflare One.
 
 ## Security and other information
 
-* Cloudflare ensures the Cloudflare One Appliance device is secure and is not altered via TPM/Secure boot (does not apply to Virtual Appliance).
-* Connectivity to the Cloudflare global network is secure and all traffic is encrypted through IPsec tunneling. The Cloudflare One Appliance uses ESP-in-UDP with GCM-AES-256 encryption. Cloudflare uses a non-IKE keying protocol built into our control plane, secured with TLS, that establishes the keys used to encrypt dataplane traffic in the IPsec ESP protocol. From Appliance version 2026.2.0, the control plane provides post-quantum protection for traffic with hybrid ML-KEM (X25519MLKEM768) over TLS 1.3 to establish the dataplane keys used in IPsec ESP.
-* The Cloudflare One Appliance does not support fail open.
-* Customers have the ability to layer on additional security features/policies that are enforced at the Cloudflare network.
+- Cloudflare ensures the Cloudflare One Appliance device is secure and is not altered via TPM/Secure boot (does not apply to Virtual Appliance).
+- Connectivity to the Cloudflare global network is secure and all traffic is encrypted through IPsec tunneling. The Cloudflare One Appliance uses ESP-in-UDP with GCM-AES-256 encryption. Cloudflare uses a non-IKE keying protocol built into our control plane, secured with TLS, that establishes the keys used to encrypt dataplane traffic in the IPsec ESP protocol. From Appliance version 2026.2.0, the control plane provides post-quantum protection for traffic with hybrid ML-KEM (X25519MLKEM768) over TLS 1.3 to establish the dataplane keys used in IPsec ESP.
+- The Cloudflare One Appliance does not support fail open.
+- Customers have the ability to layer on additional security features/policies that are enforced at the Cloudflare network.
 
 ---
 
@@ -43,8 +43,8 @@ You can setup VLAN IDs both for WAN and LAN. For instructions on setting up VLAN
 
 ### Terminology
 
-* **Primary/Secondary**: Used to identify the two nodes which are part of a high availability (HA) configuration pair of Cloudflare One Appliances. This identity allows the node to identify which configuration is attributed to it — for example, specifying a primary and secondary IP in a LAN configuration. This identity is configured by the user on the Cloudflare dashboard.
-* **Active/Standby**: These are states that the two nodes in a HA pair will dynamically assume based on an election process. Only one node at any time is expected to be active.
+- **Primary/Secondary**: Used to identify the two nodes which are part of a high availability (HA) configuration pair of Cloudflare One Appliances. This identity allows the node to identify which configuration is attributed to it — for example, specifying a primary and secondary IP in a LAN configuration. This identity is configured by the user on the Cloudflare dashboard.
+- **Active/Standby**: These are states that the two nodes in a HA pair will dynamically assume based on an election process. Only one node at any time is expected to be active.
 
 ### High availability
 
@@ -70,14 +70,14 @@ The HA link cannot be connected back-to-back. It has to be connected over a swit
 
 The Cloudflare One Appliance's health can be in one of three states:
 
-* **Good** : All health parameters are good
-* **Degraded** : One of the following is true:
-  * Health of at least one configured tunnel is `DOWN`
-  * At least one of the LAN links is disconnected (physically unplugged)
-* **Down** : If one of the following is true:
-  * Health of all tunnels is `DOWN`
-  * All LAN interfaces are disconnected
-  * Cloudflare One Appliance's software is not healthy
+- **Good** : All health parameters are good
+- **Degraded** : One of the following is true:
+  - Health of at least one configured tunnel is `DOWN`
+  - At least one of the LAN links is disconnected (physically unplugged)
+- **Down** : If one of the following is true:
+  - Health of all tunnels is `DOWN`
+  - All LAN interfaces are disconnected
+  - Cloudflare One Appliance's software is not healthy
 
 A failover happens when the active node's health declines to a level lower than that of the standby node. For example, from `GOOD` to `DEGRADED`, or from `DEGRADED` to `DOWN`. In the case of a failover where one Cloudflare One Appliance is acting as a DHCP server, DHCP leases will be synchronized.
 
@@ -103,21 +103,21 @@ If you do not have more than one anycast IP configured in your account, and you 
 
 ### WAN settings
 
-* **Interface number:** When using the hardware version of Cloudflare One Appliance, this refers to the Ethernet port that you are using for your WAN. If you need a throughput higher than 1 Gbps, you can use one of the SFP+ ports. For details on supported hardware, refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/).
- If you are using Virtual Appliance, this needs to correspond to the virtual network interface on the Virtual Appliance instance you have set up in your virtual machine.
-* **VLAN ID**: Allows you to have multiple virtual WANs configured over the same port on your Cloudflare One Appliance. Refer to [VLAN ID](#vlan-id) for more information.
-* **Priority**: Assigns a priority to the WAN interface. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
-* **Health check rate:** Configures the health check frequency for your WAN. Options are low, mid, and high. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
-* **Addressing:** Configures the Cloudflare One Appliance to work in a DHCP or static IP environment.
+- **Interface number:** When using the hardware version of Cloudflare One Appliance, this refers to the Ethernet port that you are using for your WAN. If you need a throughput higher than 1 Gbps, you can use one of the SFP+ ports. For details on supported hardware, refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/).
+   If you are using Virtual Appliance, this needs to correspond to the virtual network interface on the Virtual Appliance instance you have set up in your virtual machine.
+- **VLAN ID**: Allows you to have multiple virtual WANs configured over the same port on your Cloudflare One Appliance. Refer to [VLAN ID](#vlan-id) for more information.
+- **Priority**: Assigns a priority to the WAN interface. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
+- **Health check rate:** Configures the health check frequency for your WAN. Options are low, mid, and high. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
+- **Addressing:** Configures the Cloudflare One Appliance to work in a DHCP or static IP environment.
 
 ## LAN settings
 
-* **Interface number:** When using the hardware version of Cloudflare One Appliance, this refers to the Ethernet port that you are using for your LAN. If you need a throughput higher than 1 Gbps, you can use one of the SFP+ ports. For details on supported hardware, refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/).
- If you are using the Virtual Appliance, this needs to correspond to the virtual LAN interface on the Virtual Appliance instance you have set up in your virtual machine.
-* **VLAN ID**: Allows you to have multiple virtual LANs configured over the same port on your Cloudflare One Appliance. Refer to [VLAN ID](#vlan-id) for more information.
-* **Static addressing:** Configures the type of IP addressing for your Appliance. Depending on your use case, this is where you configure your LAN interface IP address, or enable DHCP server or DHCP relay. For details, refer to [DHCP options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/).
-* **Static NAT prefix**: Enable NAT (network address translation). This is an optional setting.
-* **Routed subnets:** Configures additional subnets behind a layer 3 router. For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
+- **Interface number:** When using the hardware version of Cloudflare One Appliance, this refers to the Ethernet port that you are using for your LAN. If you need a throughput higher than 1 Gbps, you can use one of the SFP+ ports. For details on supported hardware, refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/).
+   If you are using the Virtual Appliance, this needs to correspond to the virtual LAN interface on the Virtual Appliance instance you have set up in your virtual machine.
+- **VLAN ID**: Allows you to have multiple virtual LANs configured over the same port on your Cloudflare One Appliance. Refer to [VLAN ID](#vlan-id) for more information.
+- **Static addressing:** Configures the type of IP addressing for your Appliance. Depending on your use case, this is where you configure your LAN interface IP address, or enable DHCP server or DHCP relay. For details, refer to [DHCP options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/).
+- **Static NAT prefix**: Enable NAT (network address translation). This is an optional setting.
+- **Routed subnets:** Configures additional subnets behind a layer 3 router. For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
 
 ### Restrict traffic to your premises
 

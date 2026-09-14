@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local development
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run your Pages application locally with our Wrangler Command Line Interface (CLI).
 
@@ -34,11 +34,11 @@ This will then start serving your Pages project. You can press `b` to open the b
 
 Note
 
-If you have a [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) file configured for your Pages project, you can run [wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) without specifying a directory.
+If you have a [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) file configured for your Pages project, you can run [`wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) without specifying a directory.
 
 ### HTTPS support
 
-To serve your local development server over HTTPS with a self-signed certificate, you can \[set `local_protocol` via the [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/#local-development-settings) or you can pass the `--local-protocol=https` argument to [wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev):
+To serve your local development server over HTTPS with a self-signed certificate, you can \[set `local_protocol` via the [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/#local-development-settings) or you can pass the `--local-protocol=https` argument to [`wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev):
 
 ```sh
 npx wrangler pages dev --local-protocol=https <DIRECTORY-OF-ASSETS>

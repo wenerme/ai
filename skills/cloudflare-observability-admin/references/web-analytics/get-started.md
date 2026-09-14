@@ -12,12 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Sites not proxied through Cloudflare
 
-1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
+1. In the Cloudflare dashboard, go to the **Web Analytics** page. [Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select **Add a site**.
 3. In **Set up hostname**, write your website's hostname.
 4. Select the message box that appears to choose the hostname you have input and select **Done**.
@@ -35,8 +34,7 @@ For more information on how many sites you can track, refer to [Limits](https://
 
 ## Sites proxied through Cloudflare
 
-1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
+1. In the Cloudflare dashboard, go to the **Web Analytics** page. [Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select **Add a site**.
 3. Select a hostname from the drop-down menu > **Done**.
 
@@ -44,9 +42,9 @@ Your website is now using Web Analytics through the automatic setup, which is en
 
 You always have the option to go to **Manage Site** and change the automatic setup to one of the following:
 
-* **Enable, excluding visitor data in the EU** \- The JS Snippet will not be injected for visitors from the EU.
-* **Enable with JS Snippet installation** \- The JS Snippet needs to be installed manually.
-* **Disable** \- The JS Snippet will not be injected and has been disabled.
+- **Enable, excluding visitor data in the EU** - The JS Snippet will not be injected for visitors from the EU.
+- **Enable with JS Snippet installation** - The JS Snippet needs to be installed manually.
+- **Disable** - The JS Snippet will not be injected and has been disabled.
 
 Repeat these steps for all of the websites you want to track with Web Analytics. Web Analytics is enabled by default for sites proxied through Cloudflare that previously used Browser Insights. Adjust Web Analytics for your site at any time by selecting **Manage site** from Web Analytics.
 
@@ -64,8 +62,7 @@ If you have a `Cache-Control` header set to `public, no-transform`, Cloudflare p
 
 Cloudflare Pages offers a one-click setup for Web Analytics:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Metrics** and select **Enable** under Web Analytics.
 

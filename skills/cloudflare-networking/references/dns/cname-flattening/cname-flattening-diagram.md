@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Example diagram
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With CNAME flattening, Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. This process supports a few features and delivers better performance and flexibility, as mentioned in the [CNAME flattening concept page](https://developers.cloudflare.com/dns/cname-flattening/).
 
@@ -24,20 +24,21 @@ Note that this is a simpler scenario. Cases where CNAME flattening is optional a
 
 ## Example use case
 
-* `domain.test` is a zone on Cloudflare and has the following CNAME record:
+- `domain.test` is a zone on Cloudflare and has the following CNAME record:
 
-| Type  | Name        | Content              | TTL  |
-| ----- | ----------- | -------------------- | ---- |
-| CNAME | domain.test | external-origin.test | 3600 |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `CNAME` | `domain.test` | `external-origin.test` | `3600` |
 
-* `external-origin.test` is a zone on a different DNS provider and has the following A record:
+- `external-origin.test` is a zone on a different DNS provider and has the following A record:
 
-| Type | Name                 | Content   | TTL  |
-| ---- | -------------------- | --------- | ---- |
-| A    | external-origin.test | 192.0.2.1 | 7200 |
+| Type | Name | Content | TTL |
+| --- | --- | --- | --- |
+| `A` | `external-origin.test` | `192.0.2.1` | `7200` |
 
 In this case, the process to respond to queries for `domain.test` directly with the IP address can be represented by the following diagram:
 
+```
 flowchart BT
 accTitle: CNAME flattening diagram
 accDescr: Diagram of CNAME flattening process when there is a request for a domain in Cloudflare and the zone has a CNAME record at apex that points to an external A record.
@@ -70,10 +71,12 @@ accDescr: Diagram of CNAME flattening process when there is a request for a doma
  O --> B
  N --> B
 
+```
+
 ## Aspects to consider
 
-* If the CNAME record is proxied in Cloudflare, the answer is made up of multiple [Cloudflare IPs ↗](https://www.cloudflare.com/ips/) and its Time to Live (TTL) is set to `300`.
-* If the CNAME record in Cloudflare is not proxied, the flattened answer consists of the IP address from the external DNS provider and its TTL corresponds to the lower value between the external record and the Cloudflare CNAME record.
+- If the CNAME record is proxied in Cloudflare, the answer is made up of multiple [Cloudflare IPs ↗](https://www.cloudflare.com/ips/) and its Time to Live (TTL) is set to `300`.
+- If the CNAME record in Cloudflare is not proxied, the flattened answer consists of the IP address from the external DNS provider and its TTL corresponds to the lower value between the external record and the Cloudflare CNAME record.
 
 Was this helpful?
 

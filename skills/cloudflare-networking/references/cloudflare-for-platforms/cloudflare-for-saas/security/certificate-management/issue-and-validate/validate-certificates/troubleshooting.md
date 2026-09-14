@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## High-risk domains
 
@@ -50,13 +50,13 @@ In this case you would need to either select a Certificate Authority whose CAA r
 
 If a certificate issuance times out, the error message will indicate where the timeout occurred:
 
-* Timed Out (Initializing)
-* Timed Out (Validation)
-* Timed Out (Issuance)
-* Timed Out (Deployment)
-* Timed Out (Deletion)
+- Timed Out (Initializing)
+- Timed Out (Validation)
+- Timed Out (Issuance)
+- Timed Out (Deployment)
+- Timed Out (Deletion)
 
-To fix this error, send a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) through the API or select **Refresh** for the specific custom hostname in the dashboard. If using the API, make sure that the `--data` field contains an `ssl` object with the same `method` and `type` as the original request.
+To fix this error, send a [PATCH request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) through the API or select **Refresh** for the specific custom hostname in the dashboard. If using the API, make sure that the `--data` field contains an `ssl` object with the same `method` and `type` as the original request.
 
 If these return an error, delete and recreate the custom hostname.
 
@@ -74,12 +74,14 @@ Check whether the delegation CNAME is in place at the `_acme-challenge` hostname
 dig _acme-challenge.example.com CNAME +short
 ```
 
-* If this returns **nothing**, the delegation CNAME is missing. Run a `TXT` query to check whether a hardcoded record is also present:
-```sh
-dig _acme-challenge.example.com TXT +short
-```
-If this returns a raw token string, a hardcoded `_acme-challenge` TXT record is blocking certificate issuance — remove it before adding the delegation CNAME.
-* If this returns a **CNAME target** but certificate validation is still stuck, the conflict is likely a hardcoded `_acme-challenge` TXT record inside your customer's direct Cloudflare zone. Because resolvers follow the CNAME chain rather than exposing records at the source name, the only way to confirm this is to inspect the customer's zone directly: go to **DNS** \> **Records** in the Cloudflare dashboard for their zone and look for any `_acme-challenge` TXT entries.
+- If this returns **nothing**, the delegation CNAME is missing. Run a `TXT` query to check whether a hardcoded record is also present:
+
+  ```sh
+  dig _acme-challenge.example.com TXT +short
+  ```
+
+  If this returns a raw token string, a hardcoded `_acme-challenge` TXT record is blocking certificate issuance — remove it before adding the delegation CNAME.
+- If this returns a **CNAME target** but certificate validation is still stuck, the conflict is likely a hardcoded `_acme-challenge` TXT record inside your customer's direct Cloudflare zone. Because resolvers follow the CNAME chain rather than exposing records at the source name, the only way to confirm this is to inspect the customer's zone directly: go to **DNS** > **Records** in the Cloudflare dashboard for their zone and look for any `_acme-challenge` TXT entries.
 
 ### Common causes and remediation
 
@@ -93,7 +95,7 @@ To resolve this, ask your customer to remove the `_acme-challenge` TXT record fr
 
 ## Immediate validation checks
 
-You can send a [PATCH request](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) to request an immediate validation check on any certificate. The PATCH data should include the same `ssl` object as the original request.
+You can send a [PATCH request](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/) to request an immediate validation check on any certificate. The PATCH data should include the same `ssl` object as the original request.
 
 ---
 

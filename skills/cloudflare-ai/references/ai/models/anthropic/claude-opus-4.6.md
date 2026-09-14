@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-opus-4.6`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Claude Opus 4.6 is Anthropic's flagship language model built for complex, multi-step work in coding, financial analysis, and legal reasoning. It uses extended thinking to work through complex problems carefully and features a one million token context window.
 
-| Model Info                                                                          |                                                                                                                             |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                                 | Yes                                                                                                                         |
-| Request formats                                                                     | Anthropic Messages                                                                                                          |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.6) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/opus) |
+| Zero data retention | Yes |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.6) |
 
 ## Usage
 
@@ -63,6 +63,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Laws of Thermodynamics
 
 Here are the three main laws (along with the "zeroth" law often included):
@@ -82,6 +83,7 @@ As a system's temperature approaches **absolute zero** (0 Kelvin / −273.15°C)
 ---
 
 Together, these laws govern how energy behaves in all physical and chemical processes, from engines to stars to biological systems.
+```
 
 ```json
 {
@@ -110,7 +112,11 @@ Together, these laws govern how energy behaves in all physical and chemical proc
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -143,6 +149,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading a JSON File in Python
 
 Python has a built-in `json` module that makes it easy to read JSON files. Here are the most common approaches:
@@ -231,6 +238,7 @@ with open('data.json', 'r', encoding='utf-8') as file:
 | `null`    | `None`      |
 
 > **Tip:** Always use the `with` statement when opening files — it ensures the file is properly closed, even if an error occurs.
+````
 
 ```json
 {
@@ -257,7 +265,13 @@ with open('data.json', 'r', encoding='utf-8') as file:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -305,6 +319,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # Great Stops Between SF & LA
 
 Here are some popular options depending on your route:
@@ -332,6 +347,7 @@ This is the fastest route (~5-6 hours):
 - 🏨 Consider an overnight stop if taking the coastal route
 
 **Which route interests you more – scenic or fast?**
+```
 
 ```json
 {
@@ -358,7 +374,13 @@ This is the fastest route (~5-6 hours):
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -394,6 +416,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 # The Orchid on the Windowsill
 
 Detective Mara Solis had seen her share of crime scenes—enough to know when something didn't belong.
@@ -415,6 +438,7 @@ A single line, handwritten in red ink:
 Mara set the note down. Her hands were steady. Her pulse was not.
 
 She read it again—not because she needed to, but because some part of her recognized the handwriting.
+```
 
 ```json
 {
@@ -441,7 +465,13 @@ She read it again—not because she needed to, but because some part of her reco
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -472,6 +502,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Understanding Recursion
 
 ## The Concept
@@ -532,6 +563,7 @@ factorial(5)
 | **Alternative** | Most recursive solutions can also be written as **loops** (iteration) |
 
 > **Rule of thumb:** If a problem can be defined in terms of a *smaller version of itself*, recursion is a natural fit (e.g., tree traversal, searching, sorting, mathematical sequences).
+````
 
 ```json
 [
@@ -771,7 +803,13 @@ factorial(5)
 ]
 ```
 
-**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -814,9 +852,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are the top Cloudflare stories from this week:
 
 - **Stock sell-off after hitting all-time highs:**
+```
 
 ```json
 {
@@ -1132,9 +1172,11 @@ Here are the top Cloudflare stories from this week:
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -1178,7 +1220,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -1196,9 +1238,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.6/schema-output.json)
 
 Was this helpful?
 

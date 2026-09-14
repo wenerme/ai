@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.jwt.claims.sub
 
-`http.request.jwt.claims.sub` `Map<Array<String>>`
+`http.request.jwt.claims.sub``Map<Array<String>>`
 
 The `sub` (subject) claim identifies the principal that is the subject of the JWT.
 
@@ -19,8 +19,8 @@ Requires a Cloudflare Enterprise plan with a paid add-on.
 For more information on validating JSON Web Tokens, refer to [JSON Web Tokens Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) in the API Shield documentation.
 
 Categories:
-* Request
-* JWT validation
+- Request
+- JWT validation
 
 Was this helpful?
 

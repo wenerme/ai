@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Write your first test
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to get started with the `@cloudflare/vitest-plugin` package. For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 
@@ -20,24 +20,29 @@ This guide explains how to get started with the `@cloudflare/vitest-plugin` pack
 
 First, make sure that:
 
-* Your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is set to `2022-10-31` or later.
-* Your Worker using the ES modules format (if not, refer to the [migrate to the ES modules format](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) guide).
-* Vitest and `@cloudflare/vitest-plugin` are installed in your project as dev dependencies
-npmyarnpnpmbun
-```
-npm i -D vitest@^4.1.0 @cloudflare/vitest-plugin
-```
-```
-yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
-```
-```
-pnpm add -D vitest@^4.1.0 @cloudflare/vitest-plugin
-```
-```
-bun add -d vitest@^4.1.0 @cloudflare/vitest-plugin
-```
-Note
-The `@cloudflare/vitest-plugin` package requires Vitest 4.1 or later.
+- Your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is set to `2022-10-31` or later.
+- Your Worker using the ES modules format (if not, refer to the [migrate to the ES modules format](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) guide).
+- Vitest and `@cloudflare/vitest-plugin` are installed in your project as dev dependenciesnpmyarnpnpmbun
+
+  ```
+  npm i -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  ```
+
+  ```
+  yarn add -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  ```
+
+  ```
+  pnpm add -D vitest@^4.1.0 @cloudflare/vitest-plugin
+  ```
+
+  ```
+  bun add -d vitest@^4.1.0 @cloudflare/vitest-plugin
+  ```
+
+  Note
+
+  The `@cloudflare/vitest-plugin` package requires Vitest 4.1 or later.
 
 ## Define Vitest configuration
 
@@ -75,7 +80,7 @@ export default defineConfig({
 });
 ```
 
-For a full list of available Miniflare options, refer to the [Miniflare WorkersOptions API documentation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions).
+For a full list of available Miniflare options, refer to the [Miniflare `WorkersOptions` API documentation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions).
 
 For a full list of available configuration options, refer to [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/).
 
@@ -83,11 +88,19 @@ For a full list of available configuration options, refer to [Configuration](htt
 
 If you are not using Typescript, you can skip this section.
 
-First make sure you have run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/), which generates [types for the Cloudflare Workers runtime](https://developers.cloudflare.com/workers/languages/typescript/) and an `Env` type based on your Worker's bindings.
+First make sure you have run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/), which generates [types for the Cloudflare Workers runtime](https://developers.cloudflare.com/workers/languages/typescript/) and an `Env` type based on your Worker's bindings.
 
 Then add a `tsconfig.json` in your tests folder and add `"@cloudflare/vitest-plugin"` to your types array to define types for `cloudflare:test`. You should also add the output of `wrangler types` to the `include` array so that the types for the Cloudflare Workers runtime are available.
 
+<details>
+
+<summary>
+
 Example test/tsconfig.json
+
+</summary>
+
+*test/tsconfig.jsonjsonc*
 
 ```jsonc
 {
@@ -105,9 +118,13 @@ Example test/tsconfig.json
 }
 ```
 
+</details>
+
 ## Writing tests
 
 We will use this simple Worker as an example. It returns a 404 response for the `/404` path and `"Hello World!"` for all other paths.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -119,6 +136,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export default {
@@ -134,6 +153,8 @@ export default {
 ### Unit tests
 
 By importing the Worker we can write a unit test for its `fetch` handler.
+
+*test/unit.spec.jsjs*
 
 ```js
 import { env } from "cloudflare:workers";
@@ -162,6 +183,8 @@ describe("Hello World worker", () => {
 	});
 });
 ```
+
+*test/unit.spec.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -195,6 +218,8 @@ describe("Hello World worker", () => {
 
 You can use the `exports` object provided by `cloudflare:workers` to write an integration test. `exports.default.fetch()` calls the default export handler defined in the main Worker.
 
+*test/integration.spec.jsjs*
+
 ```js
 import { exports } from "cloudflare:workers";
 import { describe, it, expect } from "vitest";
@@ -207,6 +232,8 @@ describe("Hello World worker", () => {
 	});
 });
 ```
+
+*test/integration.spec.tsts*
 
 ```ts
 import { exports } from "cloudflare:workers";
@@ -225,9 +252,9 @@ When using `exports.default.fetch()` for integration tests, your Worker code run
 
 ## Related resources
 
-* For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
-* [Configuration API reference](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/)
-* [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/)
+- For more complex examples of testing with `@cloudflare/vitest-plugin`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
+- [Configuration API reference](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/)
+- [Test APIs reference](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/)
 
 Was this helpful?
 

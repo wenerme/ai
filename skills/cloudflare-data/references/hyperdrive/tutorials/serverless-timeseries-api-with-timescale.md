@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a serverless, globally distributed time-series API with Timescale
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
@@ -20,17 +20,17 @@ You will create and deploy a Worker function that exposes API routes for ingesti
 
 You will learn how to:
 
-* Build and deploy a Cloudflare Worker.
-* Use Worker secrets with the Wrangler CLI.
-* Deploy a Timescale database service.
-* Connect your Worker to your Timescale database service with Hyperdrive.
-* Query your new API.
+- Build and deploy a Cloudflare Worker.
+- Use Worker secrets with the Wrangler CLI.
+- Deploy a Timescale database service.
+- Connect your Worker to your Timescale database service with Hyperdrive.
+- Query your new API.
 
 You can learn more about Timescale by reading their [documentation ↗](https://docs.timescale.com/getting-started/latest/services/).
 
 ---
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Run the following command to create a Worker project from the command line:
 
@@ -50,11 +50,11 @@ pnpm create cloudflare@latest timescale-api
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Make note of the URL that your application was deployed to. You will be using it when you configure your GitHub webhook.
 
@@ -64,7 +64,7 @@ Change into the directory you just created for your Worker project:
 cd timescale-api
 ```
 
-## 2\. Prepare your Timescale Service
+## 2. Prepare your Timescale Service
 
 Note
 
@@ -101,7 +101,7 @@ postgres://tsdbadmin:YOURPASSWORD@...
 
 This will be referred to as **SERVICEURL** in the following sections.
 
-## 3\. Create your Hypertable
+## 3. Create your Hypertable
 
 Timescale allows you to convert regular PostgreSQL tables into [hypertables ↗](https://docs.timescale.com/use-timescale/latest/hypertables/), tables used to deal with time-series, events, or analytics data. Once you have made this change, Timescale will seamlessly manage the hypertable's partitioning, as well as allow you to apply other features like compression or continuous aggregates.
 
@@ -128,12 +128,12 @@ SELECT create_hypertable('readings', 'ts');
 
 Timescale will manage the rest for you as you ingest and query data.
 
-## 4\. Create a database configuration
+## 4. Create a database configuration
 
 To create a new Hyperdrive instance you will need:
 
-* Your **SERVICEURL** from [step 2](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#2-prepare-your-timescale-service).
-* A name for your Hyperdrive service. For this tutorial, you will use **hyperdrive**.
+- Your **SERVICEURL** from [step 2](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#2-prepare-your-timescale-service).
+- A name for your Hyperdrive service. For this tutorial, you will use **hyperdrive**.
 
 Hyperdrive uses the `create` command with the `--connection-string` argument to pass this information. Run it as follows:
 
@@ -153,7 +153,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 	"name": "timescale-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -171,7 +171,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 name = "timescale-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -268,7 +268,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 5\. Deploy your Worker
+## 5. Deploy your Worker
 
 Run the following command to redeploy your Worker:
 
@@ -300,6 +300,8 @@ Once you have sent the `POST` request you can also issue a `GET` request to your
 
 If you have **curl** installed you can test with the following commands (replace `<YOUR_SUBDOMAIN>` with your subdomain from the deploy command above):
 
+*Ingest some databash*
+
 ```bash
 curl --request POST --data @- 'https://timescale-api.<YOUR_SUBDOMAIN>.workers.dev/readings' <<EOF
 [
@@ -314,6 +316,8 @@ curl --request POST --data @- 'https://timescale-api.<YOUR_SUBDOMAIN>.workers.de
 EOF
 ```
 
+*Query some datash*
+
 ```sh
 curl "https://timescale-api.<YOUR_SUBDOMAIN>.workers.dev/readings?limit=10"
 ```
@@ -322,9 +326,9 @@ In this tutorial, you have learned how to create a working example to ingest and
 
 ## Next steps
 
-* Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Learn more about [Timescale ↗](https://timescale.com).
-* Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
+- Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Learn more about [Timescale ↗](https://timescale.com).
+- Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 
 Was this helpful?
 

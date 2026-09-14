@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Edge certificates
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Edge certificates are the SSL/TLS certificates that Cloudflare presents to visitors connecting to your domain. These certificates secure the encrypted connection between your visitors and Cloudflare.
 
@@ -24,8 +24,8 @@ Occasionally, the Cloudflare dashboard displays a wildcard certificate with only
 
 This behavior occurs when all of the following conditions are true:
 
-* The zone is on a [subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
-* The certificate has a subject or SAN that is a wildcard for the zone's parent domain.
+- The zone is on a [subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
+- The certificate has a subject or SAN that is a wildcard for the zone's parent domain.
 
 ## Use cases
 
@@ -33,9 +33,9 @@ This behavior occurs when all of the following conditions are true:
 
 Managing certificate issuance, renewal, and expiration tracking can be time-consuming. Cloudflare can handle this for you:
 
-* [**Universal SSL**](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/): Automatic, free certificates for your apex domain and first-level subdomains. Provisioned automatically on [full setups](https://developers.cloudflare.com/dns/zone-setups/full-setup/).
-* [**Advanced certificates**](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/): Automatic certificates with more control — choose your certificate authority (CA), covered hostnames, and validity period.
-* [**Custom certificates**](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/): Upload your own certificates for full control over the CA and [validation level](https://developers.cloudflare.com/ssl/concepts/#validation-level). You handle issuance and renewal.
+- [**Universal SSL**](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/): Automatic, free certificates for your apex domain and first-level subdomains. Provisioned automatically on [full setups](https://developers.cloudflare.com/dns/zone-setups/full-setup/).
+- [**Advanced certificates**](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/): Automatic certificates with more control — choose your certificate authority (CA), covered hostnames, and validity period.
+- [**Custom certificates**](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/): Upload your own certificates for full control over the CA and [validation level](https://developers.cloudflare.com/ssl/concepts/#validation-level). You handle issuance and renewal.
 
 ### Meet cipher suites requirements
 

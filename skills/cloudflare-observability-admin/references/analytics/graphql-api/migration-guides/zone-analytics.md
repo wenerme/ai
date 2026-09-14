@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Analytics to GraphQL Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/zone-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Zone Analytics API allows you to get request data by zone. It offers optional `since` and `until` parameters to specify the request time period and a `continuous` parameter to indicate whether the time period should be moved backward to find a period with completely aggregated data.
 
@@ -23,7 +23,13 @@ curl "https://api.cloudflare.com/client/v4/zones/<ZONE_ID>/analytics/dashboard?s
 --header "Authorization: Bearer <API_TOKEN>" --silent | jq .
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -260,6 +266,8 @@ Response
 }
 ```
 
+</details>
+
 As you can see from the response, Zone Analytics returns metrics along many dimensions and does not give you the option to control what you receive. With GraphQL Analytics, you can ask for only the data that you need. However, if you wanted to get exactly the same metrics and dimensions as you would from Zone Analytics, here is the query you would make:
 
 ```graphql
@@ -324,7 +332,13 @@ query ZoneAnalyticsMigrationSample($zoneTag: string, $start: Time, $end: Time) {
 }
 ```
 
+<details>
+
+<summary>
+
 Response
+
+</summary>
 
 ```json
 {
@@ -508,6 +522,8 @@ Response
 	"errors": null
 }
 ```
+
+</details>
 
 Notice that you can specify the request time period using a dataset filter (refer to [Filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/)). The `continuous` parameter is no longer needed because GraphQL Analytics is designed to provide data as soon as it is available.
 

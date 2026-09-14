@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Plans
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/plans/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Customers with API Security already have access to Schema Profiles through Schema Learning and Schema Validation. Cloudflare is opening a closed beta to invited Enterprise customers without API Security. Interested customers can contact their account team to express interest. Closed beta access does not imply future plan availability or pricing.
 
@@ -20,13 +20,13 @@ To subscribe to API Shield, upgrade to an Enterprise plan and contact your accou
 
 Existing operation and uploaded schema limits remain based on your zone plan. These limits do not determine Application Profiles availability.
 
-| Plan type                         | Saved endpoints | Uploaded schemas | Total uploaded schema size | Rule action  |
-| --------------------------------- | --------------- | ---------------- | -------------------------- | ------------ |
-| **Free**                          | 100             | 5                | 200 kB                     | Block only   |
-| **Pro**                           | 250             | 5                | 500 kB                     | Block only   |
-| **Business**                      | 500             | 10               | 2 MB                       | Block only   |
-| **Enterprise without API Shield** | 3000            | 10               | 5 MB                       | Log or Block |
-| **Enterprise with API Shield**    | 10,000          | 10+              | 10+ MB                     | Log or Block |
+| Plan type | Saved endpoints | Uploaded schemas | Total uploaded schema size | Rule action |
+| --- | --- | --- | --- | --- |
+| **Free** | 100 | 5 | 200 kB | `Block` only |
+| **Pro** | 250 | 5 | 500 kB | `Block` only |
+| **Business** | 500 | 10 | 2 MB | `Block` only |
+| **Enterprise without API Shield** | 3000 | 10 | 5 MB | `Log` or `Block` |
+| **Enterprise with API Shield** | 10,000 | 10+ | 10+ MB | `Log` or `Block` |
 
 Was this helpful?
 

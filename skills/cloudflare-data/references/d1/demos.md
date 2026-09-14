@@ -12,14 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Demos and architectures
 
-Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/demos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how you can use D1 within your existing application and architecture.
 
 ## Featured Demos
 
-* [Starter code for D1 Sessions API ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template): An introduction to D1 Sessions API. This demo simulates purchase orders administration.
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
+- [Starter code for D1 Sessions API ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template): An introduction to D1 Sessions API. This demo simulates purchase orders administration.
+
+  [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
 
 Tip: Place your database further away for the read replication demo
 
@@ -29,17 +30,19 @@ You can find this in the **Database location hint** dropdown.
 
 ## Reference architectures
 
-Explore the following reference architectures that use D1:
+Explore the following reference architectures
 
-[**Fullstack applications**A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
+ that use D1:
 
-[**Ingesting BigQuery Data into Workers AI**You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/)
+[**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 
-[**Composable AI architecture**The architecture diagram illustrates how AI applications can be built end-to-end on Cloudflare, or single services can be integrated with external infrastructure and services.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/)
+[**Ingesting BigQuery Data into Workers AI** You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/)
 
-[**Serverless global APIs**An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/)
+[**Composable AI architecture** The architecture diagram illustrates how AI applications can be built end-to-end on Cloudflare, or single services can be integrated with external infrastructure and services.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/)
 
-[**Retrieval Augmented Generation (RAG)**RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
+[**Serverless global APIs** An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/)
+
+[**Retrieval Augmented Generation (RAG)** RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
 
 Was this helpful?
 

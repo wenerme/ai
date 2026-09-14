@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Errors
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page is the error reference for `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. When to retry or relaunch: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
+This page is the error reference for `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. When to retry or relaunch: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
 Error classes and codes returned by the Sandbox SDK 1.0 preview, with short recommended actions. For full recovery procedures, refer to [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
@@ -138,17 +138,17 @@ import {
 
 Most SDK errors extend `SandboxError`:
 
-| Member     | Description                                                  |
-| ---------- | ------------------------------------------------------------ |
-| name       | Class name (for example ContainerUnavailableError)           |
-| message    | Human-readable message                                       |
-| code       | Stable ErrorCode string (for example CONTAINER\_UNAVAILABLE) |
-| context    | Structured fields for the error type                         |
-| httpStatus | Mapped HTTP status when applicable                           |
-| operation  | Operation label when provided                                |
-| suggestion | Optional actionable suggestion                               |
-| timestamp  | ISO timestamp when provided                                  |
-| toJSON()   | Serializes the error fields for logs                         |
+| Member | Description |
+| --- | --- |
+| `name` | Class name (for example `ContainerUnavailableError`) |
+| `message` | Human-readable message |
+| `code` | Stable `ErrorCode` string (for example `CONTAINER_UNAVAILABLE`) |
+| `context` | Structured fields for the error type |
+| `httpStatus` | Mapped HTTP status when applicable |
+| `operation` | Operation label when provided |
+| `suggestion` | Optional actionable suggestion |
+| `timestamp` | ISO timestamp when provided |
+| `toJSON()` | Serializes the error fields for logs |
 
 `RuntimeIdentityInactiveError` extends `Error` directly (not `SandboxError`). It means the current container is no longer the active one for this handle or call.
 
@@ -162,37 +162,37 @@ Availability errors and deployment mismatch errors are listed in separate sectio
 
 These errors come from ordinary start, idle stop, replace, or lost contact while a call is running.
 
-| Class                        | Code                   | Key context                                  | Details                                                                                       | Recommended fix                                                                                 |
-| ---------------------------- | ---------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| ContainerUnavailableError    | CONTAINER\_UNAVAILABLE | reason, retryable: true, retryAfterMs?       | Container not ready before the operation started.                                             | Back off (honor retryAfterMs when set), then try the same kind of work again.                   |
-| OperationInterruptedError    | OPERATION\_INTERRUPTED | reason, operation, admitted, retryable       | Container or sandbox changed after the operation may have started.                            | Read reason and retryable. Check sandbox or app state before repeating work that changes state. |
-| RPCTransportError            | RPC\_TRANSPORT\_ERROR  | kind, originalMessage, errorName, closeCode? | SDK lost contact with the container during a call.                                            | A later call may work. This call may already have changed something.                            |
-| RuntimeIdentityInactiveError | —                      | —                                            | Current container is no longer active for this call or handle. Plain Error, not SandboxError. | Check whether the resource still exists; if not, start the work again from stored state.        |
+| Class | Code | Key context | Details | Recommended fix |
+| --- | --- | --- | --- | --- |
+| `ContainerUnavailableError` | `CONTAINER_UNAVAILABLE` | `reason`, `retryable: true`, `retryAfterMs?` | Container not ready before the operation started. | Back off (honor `retryAfterMs` when set), then try the same kind of work again. |
+| `OperationInterruptedError` | `OPERATION_INTERRUPTED` | `reason`, `operation`, `admitted`, `retryable` | Container or sandbox changed after the operation may have started. | Read `reason` and `retryable`. Check sandbox or app state before repeating work that changes state. |
+| `RPCTransportError` | `RPC_TRANSPORT_ERROR` | `kind`, `originalMessage`, `errorName`, `closeCode?` | SDK lost contact with the container during a call. | A later call may work. This call may already have changed something. |
+| `RuntimeIdentityInactiveError` | — | — | Current container is no longer active for this call or handle. Plain `Error`, not `SandboxError`. | Check whether the resource still exists; if not, start the work again from stored state. |
 
 ### `ContainerUnavailableError` reasons
 
 `context.reason`:
 
-| Reason               | Meaning                                              |
-| -------------------- | ---------------------------------------------------- |
-| container\_starting  | Container is still starting                          |
-| container\_unhealthy | Container is not healthy                             |
-| container\_replaced  | Container was replaced                               |
-| rpc\_upgrade\_failed | Could not establish communication with the container |
+| Reason | Meaning |
+| --- | --- |
+| `container_starting` | Container is still starting |
+| `container_unhealthy` | Container is not healthy |
+| `container_replaced` | Container was replaced |
+| `rpc_upgrade_failed` | Could not establish communication with the container |
 
 ### `OperationInterruptedError` reasons
 
 `reason` / `context.reason`:
 
-| Reason                     | Meaning                                    |
-| -------------------------- | ------------------------------------------ |
-| runtime\_replaced          | Underlying container instance was replaced |
-| container\_stopped         | Container stopped                          |
-| transport\_disposed        | Communication session was disposed         |
-| sandbox\_destroyed         | Sandbox was destroyed                      |
-| sandbox\_lifetime\_changed | Sandbox lifetime configuration changed     |
-| recovery\_exhausted        | Recovery attempts were exhausted           |
-| unknown                    | Unclassified interruption                  |
+| Reason | Meaning |
+| --- | --- |
+| `runtime_replaced` | Underlying container instance was replaced |
+| `container_stopped` | Container stopped |
+| `transport_disposed` | Communication session was disposed |
+| `sandbox_destroyed` | Sandbox was destroyed |
+| `sandbox_lifetime_changed` | Sandbox lifetime configuration changed |
+| `recovery_exhausted` | Recovery attempts were exhausted |
+| `unknown` | Unclassified interruption |
 
 Convenience getters on the error: `reason`, `retryable`, and `operationName`. Other fields such as `admitted`, `operationId`, `phase`, and backup-related metadata are on `error.context` only (`admitted` is `true | "unknown"`).
 
@@ -200,15 +200,15 @@ Convenience getters on the error: `reason`, `retryable`, and `operationName`. Ot
 
 `kind` / `context.kind`:
 
-| Kind               | Meaning                        |
-| ------------------ | ------------------------------ |
-| peer\_closed       | Peer closed the connection     |
-| connection\_failed | Connection failed              |
-| upgrade\_failed    | Connection setup failed        |
-| invalid\_frame     | Unexpected frame               |
-| protocol\_error    | Frame rejected by the protocol |
-| session\_disposed  | Session disposed               |
-| unknown            | Unclassified failure           |
+| Kind | Meaning |
+| --- | --- |
+| `peer_closed` | Peer closed the connection |
+| `connection_failed` | Connection failed |
+| `upgrade_failed` | Connection setup failed |
+| `invalid_frame` | Unexpected frame |
+| `protocol_error` | Frame rejected by the protocol |
+| `session_disposed` | Session disposed |
+| `unknown` | Unclassified failure |
 
 ---
 
@@ -218,47 +218,47 @@ These failures usually mean the Worker package and container image do not match,
 
 Deploy the Worker package and the sandbox container image from the same `@cloudflare/sandbox@next` line. A preview Worker with a stable image (or the reverse) often fails here.
 
-| Class                       | Code            | Key context | Details                                                                                                                                                                                                                                                              | Recommended fix                                                                                        |
-| --------------------------- | --------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| RuntimeControlProtocolError | INTERNAL\_ERROR | reason      | Worker and container could not complete setup together (metadata or protocol mismatch). The code is the shared INTERNAL\_ERROR value — identify this class with instanceof RuntimeControlProtocolError or by pairing code === "INTERNAL\_ERROR" with context.reason. | Deploy the Worker package and container image from the same release line. Fix configuration if needed. |
+| Class | Code | Key context | Details | Recommended fix |
+| --- | --- | --- | --- | --- |
+| `RuntimeControlProtocolError` | `INTERNAL_ERROR` | `reason` | Worker and container could not complete setup together (metadata or protocol mismatch). The code is the shared `INTERNAL_ERROR` value — identify this class with `instanceof RuntimeControlProtocolError` or by pairing `code === "INTERNAL_ERROR"` with `context.reason`. | Deploy the Worker package and container image from the same release line. Fix configuration if needed. |
 
 ### `RuntimeControlProtocolError` reasons
 
 `context.reason`:
 
-| Reason                       | Meaning                                             | Notes                                                                                     |
-| ---------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| unsupported-protocol-version | Worker and container protocol versions do not match | Worker package and container image are not from the same release                          |
-| missing-metadata             | Required setup metadata missing from the container  | Bad or incomplete image/build                                                             |
-| malformed-metadata           | Setup metadata could not be parsed                  | Bad or incomplete image/build                                                             |
-| activation-mismatch          | Activation did not match the expected container     | Can appear after container replace; if it keeps happening, check Worker and image pairing |
+| Reason | Meaning | Notes |
+| --- | --- | --- |
+| `unsupported-protocol-version` | Worker and container protocol versions do not match | Worker package and container image are not from the same release |
+| `missing-metadata` | Required setup metadata missing from the container | Bad or incomplete image/build |
+| `malformed-metadata` | Setup metadata could not be parsed | Bad or incomplete image/build |
+| `activation-mismatch` | Activation did not match the expected container | Can appear after container replace; if it keeps happening, check Worker and image pairing |
 
 The following permanent problems are related and return the same response:
 
-| Problem                                                 | Recommended fix                                                                                        |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Wrong or missing container image in wrangler / registry | Deploy the Worker package and container image from the same release line. Fix configuration if needed. |
-| Container exits before it becomes ready                 | Fix the image or entrypoint and redeploy. Do not only retry the app call.                              |
-| Account or location capacity limits                     | Refer to [Production capacity limits](#production-capacity-limits)                                     |
+| Problem | Recommended fix |
+| --- | --- |
+| Wrong or missing container image in `wrangler` / registry | Deploy the Worker package and container image from the same release line. Fix configuration if needed. |
+| Container exits before it becomes ready | Fix the image or entrypoint and redeploy. Do not only retry the app call. |
+| Account or location capacity limits | Refer to [Production capacity limits](#production-capacity-limits) |
 
 ---
 
 ## Process
 
-| Class                          | Code                           | Key context                             | Details                                             | Recommended fix                                                                                    |
-| ------------------------------ | ------------------------------ | --------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ProcessNotFoundError           | PROCESS\_NOT\_FOUND            | processId                               | Unknown process ID in the current container.        | Use the correct ID, or start the process again from stored state.                                  |
-| StaleProcessHandleError        | STALE\_PROCESS\_HANDLE         | processId, pid, operation               | Handle or ID from a previous container.             | Start the work again from stored state. Do not reuse the old handle.                               |
-| ProcessSpawnFailedError        | PROCESS\_SPAWN\_FAILED         | processId, command, cwd?, stderr?       | Process could not start.                            | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
-| InvalidProcessCwdError         | INVALID\_PROCESS\_CWD          | cwd, reason                             | Invalid working directory.                          | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
-| InvalidProcessEnvironmentError | INVALID\_PROCESS\_ENVIRONMENT  | name?, reason                           | Invalid environment overlay.                        | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
-| InvalidProcessCursorError      | INVALID\_PROCESS\_CURSOR       | processId, cursor?, reason              | Bad log cursor.                                     | Correct the cursor or other arguments. Do not retry the same invalid value.                        |
-| ProcessWaitTimeoutError        | PROCESS\_WAIT\_TIMEOUT         | processId, operation, timeout           | Local output, waitForExit, or waitForLog timed out. | The wait ended. The process or terminal may still be running.                                      |
-| ProcessAbortedError            | PROCESS\_ABORTED               | processId, operation                    | Local AbortSignal ended a wait or stream.           | The wait ended. The process or terminal may still be running.                                      |
-| ProcessReadyTimeoutError       | PROCESS\_READY\_TIMEOUT        | processId, command, condition, timeout  | Readiness wait timed out.                           | Check whether the process is still running before starting another.                                |
-| ProcessExitedBeforeReadyError  | PROCESS\_EXITED\_BEFORE\_READY | processId, command, condition, exitCode | Process exited before readiness.                    | Correct the command or environment, then start again if needed.                                    |
-| ProcessExitedBeforeLogError    | PROCESS\_EXITED\_BEFORE\_LOG   | processId, pid, exit                    | Process exited before a log match.                  | Correct the command or environment, then start again if needed.                                    |
-| ProcessError                   | PROCESS\_ERROR                 | processId, pid?, exitCode?, stderr?     | General process failure.                            | Check sandbox or app state before repeating work that changes state.                               |
+| Class | Code | Key context | Details | Recommended fix |
+| --- | --- | --- | --- | --- |
+| `ProcessNotFoundError` | `PROCESS_NOT_FOUND` | `processId` | Unknown process ID in the current container. | Use the correct ID, or start the process again from stored state. |
+| `StaleProcessHandleError` | `STALE_PROCESS_HANDLE` | `processId`, `pid`, `operation` | Handle or ID from a previous container. | Start the work again from stored state. Do not reuse the old handle. |
+| `ProcessSpawnFailedError` | `PROCESS_SPAWN_FAILED` | `processId`, `command`, `cwd?`, `stderr?` | Process could not start. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| `InvalidProcessCwdError` | `INVALID_PROCESS_CWD` | `cwd`, `reason` | Invalid working directory. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| `InvalidProcessEnvironmentError` | `INVALID_PROCESS_ENVIRONMENT` | `name?`, `reason` | Invalid environment overlay. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| `InvalidProcessCursorError` | `INVALID_PROCESS_CURSOR` | `processId`, `cursor?`, `reason` | Bad log cursor. | Correct the cursor or other arguments. Do not retry the same invalid value. |
+| `ProcessWaitTimeoutError` | `PROCESS_WAIT_TIMEOUT` | `processId`, `operation`, `timeout` | Local `output`, `waitForExit`, or `waitForLog` timed out. | The wait ended. The process or terminal may still be running. |
+| `ProcessAbortedError` | `PROCESS_ABORTED` | `processId`, `operation` | Local `AbortSignal` ended a wait or stream. | The wait ended. The process or terminal may still be running. |
+| `ProcessReadyTimeoutError` | `PROCESS_READY_TIMEOUT` | `processId`, `command`, `condition`, `timeout` | Readiness wait timed out. | Check whether the process is still running before starting another. |
+| `ProcessExitedBeforeReadyError` | `PROCESS_EXITED_BEFORE_READY` | `processId`, `command`, `condition`, `exitCode` | Process exited before readiness. | Correct the command or environment, then start again if needed. |
+| `ProcessExitedBeforeLogError` | `PROCESS_EXITED_BEFORE_LOG` | `processId`, `pid`, `exit` | Process exited before a log match. | Correct the command or environment, then start again if needed. |
+| `ProcessError` | `PROCESS_ERROR` | `processId`, `pid?`, `exitCode?`, `stderr?` | General process failure. | Check sandbox or app state before repeating work that changes state. |
 
 `getProcess` and `listProcesses` returning `null` or `[]` is not an error.
 
@@ -266,13 +266,13 @@ The following permanent problems are related and return the same response:
 
 ## Terminal
 
-| Class                      | Code                      | Key context                    | Details                                                  | Recommended fix                                                                                    |
-| -------------------------- | ------------------------- | ------------------------------ | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| TerminalNotFoundError      | TERMINAL\_NOT\_FOUND      | terminalId                     | Unknown terminal ID in the current container.            | Use the correct ID, or start the terminal again from stored state.                                 |
-| StaleTerminalHandleError   | STALE\_TERMINAL\_HANDLE   | terminalId, operation          | Handle or ID from a previous container.                  | Start the work again from stored state. Do not reuse the old handle.                               |
-| InvalidTerminalCwdError    | INVALID\_TERMINAL\_CWD    | terminalId, cwd, reason        | Invalid working directory at create.                     | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
-| InvalidTerminalCursorError | INVALID\_TERMINAL\_CURSOR | terminalId, cursor?, reason    | Bad output cursor.                                       | Correct the cursor or other arguments. Do not retry the same invalid value.                        |
-| TerminalControlError       | TERMINAL\_CONTROL\_ERROR  | terminalId, operation, reason? | Interrupt, terminate, resize, or related control failed. | Check sandbox or app state before repeating work that changes state.                               |
+| Class | Code | Key context | Details | Recommended fix |
+| --- | --- | --- | --- | --- |
+| `TerminalNotFoundError` | `TERMINAL_NOT_FOUND` | `terminalId` | Unknown terminal ID in the current container. | Use the correct ID, or start the terminal again from stored state. |
+| `StaleTerminalHandleError` | `STALE_TERMINAL_HANDLE` | `terminalId`, `operation` | Handle or ID from a previous container. | Start the work again from stored state. Do not reuse the old handle. |
+| `InvalidTerminalCwdError` | `INVALID_TERMINAL_CWD` | `terminalId`, `cwd`, `reason` | Invalid working directory at create. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| `InvalidTerminalCursorError` | `INVALID_TERMINAL_CURSOR` | `terminalId`, `cursor?`, `reason` | Bad output cursor. | Correct the cursor or other arguments. Do not retry the same invalid value. |
+| `TerminalControlError` | `TERMINAL_CONTROL_ERROR` | `terminalId`, `operation`, `reason?` | Interrupt, terminate, resize, or related control failed. | Check sandbox or app state before repeating work that changes state. |
 
 `getTerminal` and `listTerminals` returning `null` or `[]` is not an error.
 
@@ -280,13 +280,13 @@ The following permanent problems are related and return the same response:
 
 ## Backup
 
-| Class                    | Code                    | Details                 | Recommended fix                                                                                    |
-| ------------------------ | ----------------------- | ----------------------- | -------------------------------------------------------------------------------------------------- |
-| BackupCreateError        | BACKUP\_CREATE\_FAILED  | Backup create failed.   | Check failure details; correct options if they are invalid.                                        |
-| BackupRestoreError       | BACKUP\_RESTORE\_FAILED | Backup restore failed.  | Check failure details; correct options if they are invalid.                                        |
-| BackupNotFoundError      | BACKUP\_NOT\_FOUND      | Unknown backup ID.      | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
-| BackupExpiredError       | BACKUP\_EXPIRED         | Backup past validity.   | Correct options, or create a new backup.                                                           |
-| InvalidBackupConfigError | INVALID\_BACKUP\_CONFIG | Invalid backup options. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| Class | Code | Details | Recommended fix |
+| --- | --- | --- | --- |
+| `BackupCreateError` | `BACKUP_CREATE_FAILED` | Backup create failed. | Check failure details; correct options if they are invalid. |
+| `BackupRestoreError` | `BACKUP_RESTORE_FAILED` | Backup restore failed. | Check failure details; correct options if they are invalid. |
+| `BackupNotFoundError` | `BACKUP_NOT_FOUND` | Unknown backup ID. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| `BackupExpiredError` | `BACKUP_EXPIRED` | Backup past validity. | Correct options, or create a new backup. |
+| `InvalidBackupConfigError` | `INVALID_BACKUP_CONFIG` | Invalid backup options. | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
 
 ---
 
@@ -294,13 +294,13 @@ The following permanent problems are related and return the same response:
 
 These classes are available from `@cloudflare/sandbox/errors` (and some mount helpers from the package root). Confirm details against your installed package. Preview-specific guides for every domain are not all published yet.
 
-| Domain                  | Examples                                                                                                                             | Recommended fix                                                                                    |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| Filesystem              | FileNotFoundError, FileExistsError, PermissionDeniedError, FileTooLargeError, FileSystemError                                        | Correct the path or handle a missing file.                                                         |
-| Ports / preview         | PortAlreadyExposedError, PortNotExposedError, InvalidPortError, PortInUseError, ServiceNotRespondingError, CustomDomainRequiredError | Correct port options or expose settings.                                                           |
-| Interpreter (extension) | InterpreterNotReadyError, ContextNotFoundError, CodeExecutionError                                                                   | If the interpreter is not ready, back off and try again. Otherwise correct the request.            |
-| Mounts                  | BucketMountError, BucketUnmountError, S3FSMountError, MissingCredentialsError, InvalidMountConfigError                               | Correct mount options or credentials.                                                              |
-| Validation              | ValidationFailedError                                                                                                                | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
+| Domain | Examples | Recommended fix |
+| --- | --- | --- |
+| Filesystem | `FileNotFoundError`, `FileExistsError`, `PermissionDeniedError`, `FileTooLargeError`, `FileSystemError` | Correct the path or handle a missing file. |
+| Ports / preview | `PortAlreadyExposedError`, `PortNotExposedError`, `InvalidPortError`, `PortInUseError`, `ServiceNotRespondingError`, `CustomDomainRequiredError` | Correct port options or expose settings. |
+| Interpreter (extension) | `InterpreterNotReadyError`, `ContextNotFoundError`, `CodeExecutionError` | If the interpreter is not ready, back off and try again. Otherwise correct the request. |
+| Mounts | `BucketMountError`, `BucketUnmountError`, `S3FSMountError`, `MissingCredentialsError`, `InvalidMountConfigError` | Correct mount options or credentials. |
+| Validation | `ValidationFailedError` | Correct the path, environment, command, or other arguments. Do not retry the same invalid request. |
 
 Other domain classes may exist on `@cloudflare/sandbox/errors` in your installed package. Confirm against that package before depending on undocumented surfaces.
 
@@ -310,10 +310,10 @@ Mount-related errors are also exported from `@cloudflare/sandbox` next to the mo
 
 ## Platform helpers
 
-| Helper                                | Details                                                                                                                                              | Recommended fix                                                                         |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| isPlatformTransientError(error)       | True for some transient platform signals (for example connection lost, certain Durable Object storage startup resets, or retryable platform errors). | Prefer a new request or operation.                                                      |
-| isDurableObjectCodeUpdateReset(error) | True when the Durable Object isolate was replaced by a code update or deploy.                                                                        | Do not keep retrying inside the same request. Let a new request run on the new isolate. |
+| Helper | Details | Recommended fix |
+| --- | --- | --- |
+| `isPlatformTransientError(error)` | True for some transient platform signals (for example connection lost, certain Durable Object storage startup resets, or retryable platform errors). | Prefer a new request or operation. |
+| `isDurableObjectCodeUpdateReset(error)` | True when the Durable Object isolate was replaced by a code update or deploy. | Do not keep retrying inside the same request. Let a new request run on the new isolate. |
 
 These helpers complement `SandboxError` subclasses. They do not replace the recovery rules on [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/).
 
@@ -329,11 +329,11 @@ Refer to [Platform limits](https://developers.cloudflare.com/sandbox/platform/li
 
 ## Related
 
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
-* [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
+- [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
 
 Was this helpful?
 

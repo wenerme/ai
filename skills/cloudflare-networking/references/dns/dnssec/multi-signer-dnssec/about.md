@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Multi-signer DNSSEC consists of two models that allow different authoritative DNS providers to serve the same zone and have DNSSEC enabled at the same time.
 
@@ -70,8 +70,8 @@ Cloudflare recommends model 2 for multi-signer setups. In this model, each provi
 
 ### Understand DNSKEY flags
 
-* **ZSKs (Zone Signing Keys)**: flag `256`
-* **KSKs (Key Signing Keys)**: flag `257`
+- **ZSKs (Zone Signing Keys)**: flag `256`
+- **KSKs (Key Signing Keys)**: flag `257`
 
 When exchanging keys between providers, ensure you are adding the correct key type (typically ZSKs) to the DNSKEY RRset.
 
@@ -83,9 +83,9 @@ Always wait for the TTL duration after making changes to DNSKEYs and DS records 
 
 Not all DNS providers support adding external DNSKEYs to their DNSKEY RRset. Before starting a multi-signer migration:
 
-* Verify that your other provider supports multi-signer DNSSEC.
-* Confirm they can add Cloudflare's ZSK to their DNSKEY records.
-* Test the configuration in a non-production environment if possible.
+- Verify that your other provider supports multi-signer DNSSEC.
+- Confirm they can add Cloudflare's ZSK to their DNSKEY records.
+- Test the configuration in a non-production environment if possible.
 
 Some third-party providers may not support the required functionality.
 

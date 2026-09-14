@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Breakout traffic
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Breakout traffic allows you to define which applications should bypass Cloudflare's security filtering, and go directly to the Internet. It works via DNS requests inspection. This means that if your network is caching DNS requests, Breakout traffic will only take effect after you cache entries expire and your client issues a new DNS request that Cloudflare One Appliance (formerly Magic WAN Connector) can detect. This can take several minutes.
 
@@ -20,7 +20,7 @@ Caution
 
 Breakout traffic will not work for applications that use DNS-over-HTTPS.
 
-
+```
 flowchart LR
 accTitle: Breakout traffic flow
 accDescr: Applications 1 and 2 are configured to bypass Cloudflare's security filtering, and go straight to the Internet.
@@ -31,7 +31,9 @@ a-- Breakout traffic ---d(Application1) & e(Application2) --> c
 classDef orange fill:#f48120,color: black
 class a,b orange
 
-_In the graph above, Applications 1 and 2 are configured to bypass Cloudflare's security filtering, and go straight to the Internet._
+```
+
+*In the graph above, Applications 1 and 2 are configured to bypass Cloudflare's security filtering, and go straight to the Internet.*
 
 A note on security
 
@@ -41,17 +43,28 @@ For details on how Cloudflare routes traffic, refer to [Traffic steering](https:
 
 ## Add an application to your account
 
-Before you can add or remove Breakout traffic applications to your Cloudflare One Appliance, you need to create an account-level list with the applications that you want to configure. Currently, adding to or modifying this list is only possible via API, through the [managed\_app\_id](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/create/) endpoint.
+Before you can add or remove Breakout traffic applications to your Cloudflare One Appliance, you need to create an account-level list with the applications that you want to configure. Currently, adding to or modifying this list is only possible via API, through the [`managed_app_id`](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/create/) endpoint.
 
 To add applications to your account:
 
 Send a `POST` request to add new apps to your account.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Create a new Appbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
@@ -84,7 +97,7 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
 1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
 5. In **Breakout traffic**, select **Create**.
@@ -98,65 +111,84 @@ Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with an account.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic WAN Read`
-  * `Magic Transit Read`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-	{
-		"result": [
-			{
-				"managed_app_id": "<APP_ID>",
-				"name": "<APP_NAME>",
-				"type": "File Sharing",
-				"hostnames": [
-					"<app_name.com>",
-					"<app-name.info>"
-				]
-			}
-		]
-	}
-```
-Take note of the `"managed_app_id"` value for any application you want to add.
-2. Send a `POST` request to add new apps to the Breakout traffic policy.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
-	--request POST \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"managed_app_id": "<MANAGED_APP_ID>",
-		"breakout": true
-	}'
-```
-```json
-{
-	"result": {
-		"account_app_id": "<APP_ID>",
-		"name": "<APP_NAME>",
-		"type": "<BREAKOUT_OR_PRIORITY>"
-	},
-	"success": true,
-	"errors": [],
-	"messages": []
-}
-```
+1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/list/) to list the applications associated with an account.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic WAN Read</code>
+   - <code>Magic Transit Read</code>
+   - <code>Magic Transit Write</code></details>
+
+   *List Appsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/apps" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   	{
+   		"result": [
+   			{
+   				"managed_app_id": "<APP_ID>",
+   				"name": "<APP_NAME>",
+   				"type": "File Sharing",
+   				"hostnames": [
+   					"<app_name.com>",
+   					"<app-name.info>"
+   				]
+   			}
+   		]
+   	}
+   ```
+
+   Take note of the `"managed_app_id"` value for any application you want to add.
+2. Send a `POST` request to add new apps to the Breakout traffic policy.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic Transit Write</code></details>
+
+   *Create a new App Configbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+   	--request POST \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+   	--json '{
+   		"managed_app_id": "<MANAGED_APP_ID>",
+   		"breakout": true
+   	}'
+   ```
+
+   ```json
+   {
+   	"result": {
+   		"account_app_id": "<APP_ID>",
+   		"name": "<APP_NAME>",
+   		"type": "<BREAKOUT_OR_PRIORITY>"
+   	},
+   	"success": true,
+   	"errors": [],
+   	"messages": []
+   }
+   ```
+
+
 
 ### Delete an application from Cloudflare One Appliance
 
 1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
 5. In **Breakout traffic**, find the application you want to delete > select the **three dots** next to it > **Remove application traffic**.
@@ -168,49 +200,62 @@ You will need your [account ID](https://developers.cloudflare.com/fundamentals/a
 
 You need to delete Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-1. Send a [GET request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with a site.
-Required API token permissions
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-  * `Magic WAN Write`
-  * `Magic WAN Read`
-  * `Magic Transit Read`
-  * `Magic Transit Write`
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-```json
-	{
-		"result": [
-			{
-				"id": "<APP_ID>",
-				"site_id": "<SITE_ID>",
-				"managed_app_id": "<APP_NAME>",
-				"breakout": true
-			}
-		]
-	}
-```
-Take note of the `"id"` value for the application that you want to delete.
+1. Send a [`GET` request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/apps/methods/list/) to list the applications associated with a site.<details><summary>
+
+   Required API token permissions</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+   - <code>Magic WAN Write</code>
+   - <code>Magic WAN Read</code>
+   - <code>Magic Transit Read</code>
+   - <code>Magic Transit Write</code></details>
+
+   *List App Configsbash*
+
+
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/app_configs" \
+   	--request GET \
+   	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+   ```
+
+   ```json
+   	{
+   		"result": [
+   			{
+   				"id": "<APP_ID>",
+   				"site_id": "<SITE_ID>",
+   				"managed_app_id": "<APP_NAME>",
+   				"breakout": true
+   			}
+   		]
+   	}
+   ```
+
+   Take note of the `"id"` value for the application that you want to delete.
 2. Send a `DELETE` request to delete an application from the Breakout traffic policy.
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \
-	--request DELETE
-```
-```json
-{
-		"result": {
-				"id": "<APP_ID>",
-				"site_id": "<SITE_ID>",
-				"managed_app_id": "<APP_NAME>",
-				"breakout": true
-		},
-		"success": true,
-		"errors": [],
-		"messages": []
-}
-```
+
+   ```bash
+   curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/sites/%7Bsite_id%7D/app_configs/%7Bid%7D" \
+   	--request DELETE
+   ```
+
+   ```json
+   {
+   		"result": {
+   				"id": "<APP_ID>",
+   				"site_id": "<SITE_ID>",
+   				"managed_app_id": "<APP_NAME>",
+   				"breakout": true
+   		},
+   		"success": true,
+   		"errors": [],
+   		"messages": []
+   }
+   ```
+
+
 
 ## Designate WAN ports for breakout apps
 
@@ -221,9 +266,9 @@ With this preferred breakout port, customers have direct control over their loca
 To pin applications to a WAN port:
 
 1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Profiles**.
+2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
-4. In **Traffic steering** \> **Breakout Traffic** find the application you want to pin to a WAN port.
+4. In **Traffic steering** > **Breakout Traffic** find the application you want to pin to a WAN port.
 5. Select the three dots next to it > **Edit application traffic**.
 6. From the **Preferred breakout port** drop-down menu, select the WAN port you want to assign to the applications.
 7. Select **Save**.
@@ -253,11 +298,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 	}'
 ```
 
-1. You can customize the configuration by adding optional fields to the JSON payload. These fields include:
-* `collector_port`: The UDP port for the collector. The default is `2055`.
-* `sampling_rate`: The rate at which packets are sampled.
-* `active_timeout`: The timeout for active flows in seconds.
-* `inactive_timeout`: The timeout for inactive flows in seconds.
+3. You can customize the configuration by adding optional fields to the JSON payload. These fields include:
+
+- `collector_port`: The UDP port for the collector. The default is `2055`.
+- `sampling_rate`: The rate at which packets are sampled.
+- `active_timeout`: The timeout for active flows in seconds.
+- `inactive_timeout`: The timeout for inactive flows in seconds.
 
 Full configuration example:
 
@@ -281,8 +327,8 @@ If you have Cloudflare One Appliance (formerly Magic WAN Connector) and Cloudfla
 
 You may need to configure your firewall to allow this new traffic. Make sure to allow the following IPs and ports:
 
-* **Destination IPs**: `162.159.193.0/24`, `162.159.197.0/24`
-* **Destination ports**: `443`, `500`, `1701`, `2408`, `4443`, `4500`, `8095`, `8443`
+- **Destination IPs**: `162.159.193.0/24`, `162.159.197.0/24`
+- **Destination ports**: `443`, `500`, `1701`, `2408`, `4443`, `4500`, `8095`, `8443`
 
 Refer to [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/) for more information on this topic.
 

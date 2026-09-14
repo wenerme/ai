@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare 1xxx errors
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The errors covered in this document may occur when accessing a website proxied by Cloudflare. For issues related to the Cloudflare API or dashboard, refer to our [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 
@@ -26,10 +26,10 @@ Refer to [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
 
 If the suggested resolutions for each error do not resolve the issue, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
-* Only the website owner can contact Cloudflare for technical support. You can find a domain's contact details via the [Whoisdatabase ↗](https://lookup.icann.org/).
-* Pro, Business and Enterprise plan users have access to email support.
-* Business and Enterprise users can also access chat support.
-* For additional support options, refer to the [Cloudflare plans ↗](https://www.cloudflare.com/plans/).
+- Only the website owner can contact Cloudflare for technical support. You can find a domain's contact details via the [Whoisdatabase ↗](https://lookup.icann.org/).
+- Pro, Business and Enterprise plan users have access to email support.
+- Business and Enterprise users can also access chat support.
+- For additional support options, refer to the [Cloudflare plans ↗](https://www.cloudflare.com/plans/).
 
 ## Error 1000: DNS points to prohibited IP
 

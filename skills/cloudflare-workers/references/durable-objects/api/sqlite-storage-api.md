@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQLite-backed Durable Object Storage
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,21 +24,29 @@ The Durable Object Storage API allows Durable Objects to access transactional an
 
 The Durable Object Storage API comes with several methods, including SQL, point-in-time recovery (PITR), key-value (KV), and alarm APIs. Available API methods depend on the storage backend for a Durable Objects class, either [SQLite](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) or [KV](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/#create-durable-object-class-with-key-value-storage).
 
-| Methods 1           | SQLite-backed Durable Object class | KV-backed Durable Object class |
-| ------------------- | ---------------------------------- | ------------------------------ |
-| SQL API             | ✅                                  | ❌                              |
-| PITR API            | ✅                                  | ❌                              |
-| Synchronous KV API  | ✅ 2, 3                             | ❌                              |
-| Asynchronous KV API | ✅ 3                                | ✅                              |
-| Alarms API          | ✅                                  | ✅                              |
+| Methods <sup>1</sup> | SQLite-backed Durable Object class | KV-backed Durable Object class |
+| --- | --- | --- |
+| SQL API | ✅ | ❌ |
+| PITR API | ✅ | ❌ |
+| Synchronous KV API | ✅ <sup>2, 3</sup> | ❌ |
+| Asynchronous KV API | ✅ <sup>3</sup> | ✅ |
+| Alarms API | ✅ | ✅ |
+
+<details>
+
+<summary>
 
 Footnotes
 
-1 Each method is implicitly wrapped inside a transaction, such that its results are atomic and isolated from all other storage operations, even when accessing multiple key-value pairs.
+</summary>
 
-2 KV API methods like `get()`, `put()`, `delete()`, or `list()` store data in a hidden SQLite table `__cf_kv`. Note that you will be able to view this table when listing all tables, but you will not be able to access its content through the SQL API.
+<sup>1</sup> Each method is implicitly wrapped inside a transaction, such that its results are atomic and isolated from all other storage operations, even when accessing multiple key-value pairs.
 
-3 SQLite-backed Durable Objects also use [synchronous KV API methods](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#synchronous-kv-api) using `ctx.storage.kv`, whereas KV-backed Durable Objects only provide [asynchronous KV API methods](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#asynchronous-kv-api).
+<sup>2</sup> KV API methods like <code>get()</code>, <code>put()</code>, <code>delete()</code>, or <code>list()</code> store data in a hidden SQLite table <code>__cf_kv</code>. Note that you will be able to view this table when listing all tables, but you will not be able to access its content through the SQL API.
+
+<sup>3</sup> SQLite-backed Durable Objects also use <a href="https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#synchronous-kv-api">synchronous KV API methods</a> using <code>ctx.storage.kv</code>, whereas KV-backed Durable Objects only provide <a href="https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#asynchronous-kv-api">asynchronous KV API methods</a>.
+
+</details>
 
 Recommended SQLite-backed Durable Objects
 
@@ -103,11 +111,13 @@ class Counter(DurableObject):
     return value
 ```
 
-JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates
+
+ and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ## SQL API
 
-The `SqlStorage` interface encapsulates methods that modify the SQLite database embedded within a Durable Object. The `SqlStorage` interface is accessible via the [sql property](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#sql) of `DurableObjectStorage` class.
+The `SqlStorage` interface encapsulates methods that modify the SQLite database embedded within a Durable Object. The `SqlStorage` interface is accessible via the [`sql` property](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#sql) of `DurableObjectStorage` class.
 
 For example, using `sql.exec()` a user can create a table and insert rows.
 
@@ -154,32 +164,32 @@ class MyDurableObject(DurableObject):
     """)
 ```
 
-* SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
-* When writing data, every row update of an index counts as an additional row. However, indexes may be beneficial for read-heavy use cases. Refer to [Index for SQLite Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#indexes-in-sqlite).
-* Writing data to [SQLite virtual tables ↗](https://www.sqlite.org/vtab.html) also counts towards rows written.
+- SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
+- When writing data, every row update of an index counts as an additional row. However, indexes may be beneficial for read-heavy use cases. Refer to [Index for SQLite Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#indexes-in-sqlite).
+- Writing data to [SQLite virtual tables ↗](https://www.sqlite.org/vtab.html) also counts towards rows written.
 
 Durable Objects support a subset of SQLite extensions for added functionality, including:
 
-* [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
-* [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
-* [Math functions ↗](https://sqlite.org/lang%5Fmathfunc.html).
+- [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
+- [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
+- [Math functions ↗](https://sqlite.org/lang_mathfunc.html).
 
 Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
 
 ### `exec`
 
-`` exec(query: `string`, ...bindings: `any[]`) ``: `SqlStorageCursor`
+``exec(query: `string`, ...bindings: `any[]`)``: `SqlStorageCursor`
 
 #### Parameters
 
-* `query`: `string`
-  * The SQL query string to be executed. `query` can contain `?` placeholders for parameter bindings. Multiple SQL statements, separated with a semicolon, can be executed in the `query`. With multiple SQL statements, any parameter bindings are applied to the last SQL statement in the `query`, and the returned cursor is only for the last SQL statement.
-* `...bindings`: `any[]` Optional
-  * Optional variable number of arguments that correspond to the `?` placeholders in `query`.
+- `query`: `string`
+  - The SQL query string to be executed. `query` can contain `?` placeholders for parameter bindings. Multiple SQL statements, separated with a semicolon, can be executed in the `query`. With multiple SQL statements, any parameter bindings are applied to the last SQL statement in the `query`, and the returned cursor is only for the last SQL statement.
+- `...bindings`: `any[]` Optional
+  - Optional variable number of arguments that correspond to the `?` placeholders in `query`.
 
 #### Returns
 
-A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `SqlStorageCursor` is a JavaScript [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterable%5Fprotocol), which supports iteration using `for (let row of cursor)`. `SqlStorageCursor` is also a JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterator%5Fprotocol), which supports iteration using `cursor.next()`.
+A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `SqlStorageCursor` is a JavaScript [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol), which supports iteration using `for (let row of cursor)`. `SqlStorageCursor` is also a JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol), which supports iteration using `cursor.next()`.
 
 Consume cursors synchronously
 
@@ -204,16 +214,16 @@ const rows = cursor.toArray();
 
 `SqlStorageCursor` supports the following methods:
 
-* `next()`
-  * Returns an object representing the next value of the cursor. The returned object has `done` and `value` properties adhering to the JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterator%5Fprotocol). `done` is set to `false` when a next value is present, and `value` is set to the next row object in the query result. `done` is set to `true` when the entire cursor is consumed, and no `value` is set.
-* `toArray()`
-  * Iterates through remaining cursor value(s) and returns an array of returned row objects.
-* `one()`
-  * Returns a row object if query result has exactly one row. If query result has zero rows or more than one row, `one()` throws an exception.
-* `raw()`: `Iterator`
-  * Returns an Iterator over the same query results, with each row as an array of column values (with no column names) rather than an object.
-  * Returned Iterator supports `next()` and `toArray()` methods above.
-  * Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
+- `next()`
+  - Returns an object representing the next value of the cursor. The returned object has `done` and `value` properties adhering to the JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol). `done` is set to `false` when a next value is present, and `value` is set to the next row object in the query result. `done` is set to `true` when the entire cursor is consumed, and no `value` is set.
+- `toArray()`
+  - Iterates through remaining cursor value(s) and returns an array of returned row objects.
+- `one()`
+  - Returns a row object if query result has exactly one row. If query result has zero rows or more than one row, `one()` throws an exception.
+- `raw()`: `Iterator`
+  - Returns an Iterator over the same query results, with each row as an array of column values (with no column names) rather than an object.
+  - Returned Iterator supports `next()` and `toArray()` methods above.
+  - Returned cursor and `raw()` iterator iterate over the same query results and can be combined. For example:
 
 ```ts
 let cursor = this.sql.exec("SELECT * FROM artist ORDER BY artistname ASC;");
@@ -243,17 +253,17 @@ print(cursor.toArray())  # prints [{ artistid: 456, artistname: 'Bob' },{ artist
 
 `SqlStorageCursor` has the following properties:
 
-* `columnNames`: `string[]`
-  * The column names of the query in the order they appear in each row array returned by the `raw` iterator.
-* `rowsRead`: `number`
-  * The number of rows read so far as part of this SQL `query`. This may increase as you iterate the cursor. The final value is used for [SQL billing](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend).
-* `rowsWritten`: `number`
-  * The number of rows written so far as part of this SQL `query`. This may increase as you iterate the cursor. The final value is used for [SQL billing](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend).
-* Any numeric value in a column is affected by JavaScript's 52-bit precision for numbers. If you store a very large number (in `int64`), then retrieve the same value, the returned value may be less precise than your original number.
+- `columnNames`: `string[]`
+  - The column names of the query in the order they appear in each row array returned by the `raw` iterator.
+- `rowsRead`: `number`
+  - The number of rows read so far as part of this SQL `query`. This may increase as you iterate the cursor. The final value is used for [SQL billing](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend).
+- `rowsWritten`: `number`
+  - The number of rows written so far as part of this SQL `query`. This may increase as you iterate the cursor. The final value is used for [SQL billing](https://developers.cloudflare.com/durable-objects/platform/pricing/#sqlite-storage-backend).
+- Any numeric value in a column is affected by JavaScript's 52-bit precision for numbers. If you store a very large number (in `int64`), then retrieve the same value, the returned value may be less precise than your original number.
 
 SQL transactions
 
-Note that `sql.exec()` cannot execute transaction-related statements like `BEGIN TRANSACTION` or `SAVEPOINT`. Instead, use the [ctx.storage.transaction()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) or [ctx.storage.transactionSync()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transactionsync) APIs to start a transaction, and then execute SQL queries in your callback.
+Note that `sql.exec()` cannot execute transaction-related statements like `BEGIN TRANSACTION` or `SAVEPOINT`. Instead, use the [`ctx.storage.transaction()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transaction) or [`ctx.storage.transactionSync()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#transactionsync) APIs to start a transaction, and then execute SQL queries in your callback.
 
 #### Examples
 
@@ -396,19 +406,19 @@ The PITR API represents points in time using 'bookmarks'. A bookmark is a mostly
 
 `ctx.storage.getCurrentBookmark()`: `Promise<string>`
 
-* Returns a bookmark representing the current point in time in the object's history.
+- Returns a bookmark representing the current point in time in the object's history.
 
 ### `getBookmarkForTime`
 
-`` ctx.storage.getBookmarkForTime(timestamp: `number | Date`) ``: `Promise<string>`
+``ctx.storage.getBookmarkForTime(timestamp: `number | Date`)``: `Promise<string>`
 
-* Returns a bookmark representing approximately the given point in time, which must be within the last 30 days. If the timestamp is represented as a number, it is converted to a date as if using `new Date(timestamp)`.
+- Returns a bookmark representing approximately the given point in time, which must be within the last 30 days. If the timestamp is represented as a number, it is converted to a date as if using `new Date(timestamp)`.
 
 ### `onNextSessionRestoreBookmark`
 
-`` ctx.storage.onNextSessionRestoreBookmark(bookmark: `string`) ``: `Promise<string>`
+``ctx.storage.onNextSessionRestoreBookmark(bookmark: `string`)``: `Promise<string>`
 
-* Configures the Durable Object so that the next time it restarts, it should restore its storage to exactly match what the storage contained at the given bookmark. After calling this, the application should typically invoke `ctx.abort()` to restart the Durable Object, thus completing the point-in-time recovery.
+- Configures the Durable Object so that the next time it restarts, it should restore its storage to exactly match what the storage contained at the given bookmark. After calling this, the application should typically invoke `ctx.abort()` to restart the Durable Object, thus completing the point-in-time recovery.
 
 This method returns a special bookmark representing the point in time immediately before the recovery takes place (even though that point in time is still technically in the future). Thus, after the recovery completes, it can be undone by performing a second recovery to this bookmark.
 
@@ -432,110 +442,98 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 ### `get`
 
-* `` ctx.storage.kv.get(key `string`) ``: `Any, undefined`
-  * Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
+- ``ctx.storage.kv.get(key `string`)``: `Any, undefined`
+  - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
 
 ### `put`
 
-* `` ctx.storage.kv.put(key `string`, value `any`) ``: `void`
-  * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
-  For the size of keys and values refer to [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
+- ``ctx.storage.kv.put(key `string`, value `any`)``: `void`
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+
+    For the size of keys and values refer to [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
 
 ### `delete`
 
-* `` ctx.storage.kv.delete(key `string`) ``: `boolean`
-  * Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
+- ``ctx.storage.kv.delete(key `string`)``: `boolean`
+  - Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
 
 ### `list`
 
-* `` ctx.storage.kv.list(options `Object` optional) ``: `Iterable<string, any>`
-  * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
-  * The type of each returned value in the [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration%5Fprotocols#the%5Fiterable%5Fprotocol) will be whatever was previously written for the corresponding key.
-  * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
+- ``ctx.storage.kv.list(options `Object` optional)``: `Iterable<string, any>`
+  - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
+  - The type of each returned value in the [`Iterable` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) will be whatever was previously written for the corresponding key.
+  - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
 
 #### Supported options
 
-* `start` `string`
-
-  * Key at which the list results should start, inclusive.
-* `startAfter` `string`
-
-  * Key after which the list results should start, exclusive. Cannot be used simultaneously with `start`.
-* `end` `string`
-
-  * Key at which the list results should end, exclusive.
-* `prefix` `string`
-
-  * Restricts results to only include key-value pairs whose keys begin with the prefix.
-* `reverse` `boolean`
-
-  * If true, return results in descending order instead of the default ascending order.
-  * Enabling `reverse` does not change the meaning of `start`, `startKey`, or `endKey`. `start` still defines the smallest key in lexicographic order that can be returned (inclusive), effectively serving as the endpoint for a reverse-order list. `end` still defines the largest key in lexicographic order that the list should consider (exclusive), effectively serving as the starting point for a reverse-order list.
-* `limit` `number`
-
-  * Maximum number of key-value pairs to return.
+- `start` `string`
+  - Key at which the list results should start, inclusive.
+- `startAfter` `string`
+  - Key after which the list results should start, exclusive. Cannot be used simultaneously with `start`.
+- `end` `string`
+  - Key at which the list results should end, exclusive.
+- `prefix` `string`
+  - Restricts results to only include key-value pairs whose keys begin with the prefix.
+- `reverse` `boolean`
+  - If true, return results in descending order instead of the default ascending order.
+  - Enabling `reverse` does not change the meaning of `start`, `startKey`, or `endKey`. `start` still defines the smallest key in lexicographic order that can be returned (inclusive), effectively serving as the endpoint for a reverse-order list. `end` still defines the largest key in lexicographic order that the list should consider (exclusive), effectively serving as the starting point for a reverse-order list.
+- `limit` `number`
+  - Maximum number of key-value pairs to return.
 
 ## Asynchronous KV API
 
 ### get
 
-* `` ctx.storage.get(key `string`, options `Object` optional) ``: `Promise<any>`
-
-  * Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
-* `` ctx.storage.get(keys `Array<string>`, options `Object` optional) ``: `Promise<Map<string, any>>`
-
-  * Retrieves the values associated with each of the provided keys. The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
+- ``ctx.storage.get(key `string`, options `Object` optional)``: `Promise<any>`
+  - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
+- ``ctx.storage.get(keys `Array<string>`, options `Object` optional)``: `Promise<Map<string, any>>`
+  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
 #### Supported options
 
-* `allowConcurrency`: `boolean`
-
-  * By default, the system will pause delivery of I/O events to the Object while a storage operation is in progress, in order to avoid unexpected race conditions. Pass `allowConcurrency: true` to opt out of this behavior and allow concurrent events to be delivered.
-* `noCache`: `boolean`
-
-  * If true, then the key/value will not be inserted into the in-memory cache. If the key is already in the cache, the cached value will be returned, but its last-used time will not be updated. Use this when you expect this key will not be used again in the near future. This flag is only a hint. This flag will never change the semantics of your code, but it may affect performance.
+- `allowConcurrency`: `boolean`
+  - By default, the system will pause delivery of I/O events to the Object while a storage operation is in progress, in order to avoid unexpected race conditions. Pass `allowConcurrency: true` to opt out of this behavior and allow concurrent events to be delivered.
+- `noCache`: `boolean`
+  - If true, then the key/value will not be inserted into the in-memory cache. If the key is already in the cache, the cached value will be returned, but its last-used time will not be updated. Use this when you expect this key will not be used again in the near future. This flag is only a hint. This flag will never change the semantics of your code, but it may affect performance.
 
 ### put
 
-* `` put(key `string`, value `any`, options `Object` optional) ``: `Promise`
+- ``put(key `string`, value `any`, options `Object` optional)``: `Promise`
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
-  * Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
-  The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
+    The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
+    - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
+    - [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
 
-    * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
-    * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits).
-  On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
-* `` put(entries `Object`, options `Object` optional) ``: `Promise`
+    On a KV-backed Durable Object, if the serialized value exceeds the 128 KiB (131072 bytes) value-size limit, `put()` throws a `RangeError` (for example, `Values cannot be larger than 131072 bytes.`) before the write is applied.
 
-  * Takes an Object and stores each of its keys and values to storage.
-  * Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm), which is true of most types.
-  * Supports up to 128 key-value pairs at a time. The size of keys and values have different limits depending on the flavor of Durable Object you are using. Refer to either:
-    * [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
-    * [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits)
+
+- ``put(entries `Object`, options `Object` optional)``: `Promise`
+  - Takes an Object and stores each of its keys and values to storage.
+  - Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Supports up to 128 key-value pairs at a time. The size of keys and values have different limits depending on the flavor of Durable Object you are using. Refer to either:
+    - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
+    - [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits)
 
 ### delete
 
-* `` delete(key `string`, options `Object` optional) ``: `Promise<boolean>`
-
-  * Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
-* `` delete(keys `Array<string>`, options `Object` optional) ``: `Promise<number>`
-
-  * Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
+- ``delete(key `string`, options `Object` optional)``: `Promise<boolean>`
+  - Deletes the key and associated value. Returns `true` if the key existed or `false` if it did not.
+- ``delete(keys `Array<string>`, options `Object` optional)``: `Promise<number>`
+  - Deletes the provided keys and their associated values. Supports up to 128 keys at a time. Returns a count of the number of key-value pairs deleted.
 
 #### Supported options
 
-* `put()`, `delete()` and `deleteAll()` support the following options:
-* `allowUnconfirmed` `boolean`
-
-  * By default, the system will pause outgoing network messages from the Durable Object until all previous writes have been confirmed flushed to disk. If the write fails, the system will reset the Object, discard all outgoing messages, and respond to any clients with errors instead.
-  * This way, Durable Objects can continue executing in parallel with a write operation, without having to worry about prematurely confirming writes, because it is impossible for any external party to observe the Object's actions unless the write actually succeeds.
-  * After any write, subsequent network messages may be slightly delayed. Some applications may consider it acceptable to communicate on the basis of unconfirmed writes. Some programs may prefer to allow network traffic immediately. In this case, set `allowUnconfirmed` to `true` to opt out of the default behavior.
-  * If you want to allow some outgoing network messages to proceed immediately but not others, you can use the allowUnconfirmed option to avoid blocking the messages that you want to proceed and then separately call the [sync()](#sync) method, which returns a promise that only resolves once all previous writes have successfully been persisted to disk.
-* `noCache` `boolean`
-
-  * If true, then the key/value will be discarded from memory as soon as it has completed writing to disk.
-  * Use `noCache` if the key will not be used again in the near future. `noCache` will never change the semantics of your code, but it may affect performance.
-  * If you use `get()` to retrieve the key before the write has completed, the copy from the write buffer will be returned, thus ensuring consistency with the latest call to `put()`.
+- `put()`, `delete()` and `deleteAll()` support the following options:
+- `allowUnconfirmed` `boolean`
+  - By default, the system will pause outgoing network messages from the Durable Object until all previous writes have been confirmed flushed to disk. If the write fails, the system will reset the Object, discard all outgoing messages, and respond to any clients with errors instead.
+  - This way, Durable Objects can continue executing in parallel with a write operation, without having to worry about prematurely confirming writes, because it is impossible for any external party to observe the Object's actions unless the write actually succeeds.
+  - After any write, subsequent network messages may be slightly delayed. Some applications may consider it acceptable to communicate on the basis of unconfirmed writes. Some programs may prefer to allow network traffic immediately. In this case, set `allowUnconfirmed` to `true` to opt out of the default behavior.
+  - If you want to allow some outgoing network messages to proceed immediately but not others, you can use the allowUnconfirmed option to avoid blocking the messages that you want to proceed and then separately call the [`sync()`](#sync) method, which returns a promise that only resolves once all previous writes have successfully been persisted to disk.
+- `noCache` `boolean`
+  - If true, then the key/value will be discarded from memory as soon as it has completed writing to disk.
+  - Use `noCache` if the key will not be used again in the near future. `noCache` will never change the semantics of your code, but it may affect performance.
+  - If you use `get()` to retrieve the key before the write has completed, the copy from the write buffer will be returned, thus ensuring consistency with the latest call to `put()`.
 
 Automatic write coalescing
 
@@ -547,101 +545,91 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ### list
 
-* `` list(options `Object` optional) ``: `Promise<Map<string, any>>`
-  * Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
-  * The type of each returned value in the [Map ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Map) will be whatever was previously written for the corresponding key.
-  * Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
+- ``list(options `Object` optional)``: `Promise<Map<string, any>>`
+  - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
+  - The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
+  - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
 
 #### Supported options
 
-* `start` `string`
-
-  * Key at which the list results should start, inclusive.
-* `startAfter` `string`
-
-  * Key after which the list results should start, exclusive. Cannot be used simultaneously with `start`.
-* `end` `string`
-
-  * Key at which the list results should end, exclusive.
-* `prefix` `string`
-
-  * Restricts results to only include key-value pairs whose keys begin with the prefix.
-* `reverse` `boolean`
-
-  * If true, return results in descending order instead of the default ascending order.
-  * Enabling `reverse` does not change the meaning of `start`, `startKey`, or `endKey`. `start` still defines the smallest key in lexicographic order that can be returned (inclusive), effectively serving as the endpoint for a reverse-order list. `end` still defines the largest key in lexicographic order that the list should consider (exclusive), effectively serving as the starting point for a reverse-order list.
-* `limit` `number`
-
-  * Maximum number of key-value pairs to return.
-* `allowConcurrency` `boolean`
-
-  * Same as the option to [get()](#do-kv-async-get), above.
-* `noCache` `boolean`
-
-  * Same as the option to [get()](#do-kv-async-get), above.
+- `start` `string`
+  - Key at which the list results should start, inclusive.
+- `startAfter` `string`
+  - Key after which the list results should start, exclusive. Cannot be used simultaneously with `start`.
+- `end` `string`
+  - Key at which the list results should end, exclusive.
+- `prefix` `string`
+  - Restricts results to only include key-value pairs whose keys begin with the prefix.
+- `reverse` `boolean`
+  - If true, return results in descending order instead of the default ascending order.
+  - Enabling `reverse` does not change the meaning of `start`, `startKey`, or `endKey`. `start` still defines the smallest key in lexicographic order that can be returned (inclusive), effectively serving as the endpoint for a reverse-order list. `end` still defines the largest key in lexicographic order that the list should consider (exclusive), effectively serving as the starting point for a reverse-order list.
+- `limit` `number`
+  - Maximum number of key-value pairs to return.
+- `allowConcurrency` `boolean`
+  - Same as the option to [`get()`](#do-kv-async-get), above.
+- `noCache` `boolean`
+  - Same as the option to [`get()`](#do-kv-async-get), above.
 
 ## Alarms
 
 ### `getAlarm`
 
-* `` getAlarm(options `Object` optional) ``: `Promise<Number | null>`
-  * Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
+- ``getAlarm(options `Object` optional)``: `Promise<Number | null>`
+  - Retrieves the current alarm time (if set) as integer milliseconds since epoch. The alarm is considered to be set if it has not started, or if it has failed and any retry has not begun. If no alarm is set, `getAlarm()` returns `null`.
 
 #### Supported options
 
-* Same options as [get()](#do-kv-async-get), but without `noCache`.
+- Same options as [`get()`](#do-kv-async-get), but without `noCache`.
 
 ### `setAlarm`
 
-* `` setAlarm(scheduledTime `Date | number`, options `Object` optional) ``: `Promise`
+- ``setAlarm(scheduledTime `Date | number`, options `Object` optional)``: `Promise`
+  - Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
 
-  * Sets the current alarm time, accepting either a JavaScript `Date`, or integer milliseconds since epoch.
-If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
+  If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm will be scheduled for asynchronous execution in the immediate future. If the alarm handler is currently executing in this case, it will not be canceled. Alarms can be set to millisecond granularity and will usually execute within a few milliseconds after the set time, but can be delayed by up to a minute due to maintenance or failures while failover takes place.
 
 ### `deleteAlarm`
 
-* `` deleteAlarm(options `Object` optional) ``: `Promise`
-  * Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
+- ``deleteAlarm(options `Object` optional)``: `Promise`
+  - Deletes the alarm if one exists. Does not cancel the alarm handler if it is currently executing.
 
 #### Supported options
 
-* `setAlarm()` and `deleteAlarm()` support the same options as [put()](#do-kv-async-put), but without `noCache`.
+- `setAlarm()` and `deleteAlarm()` support the same options as [`put()`](#do-kv-async-put), but without `noCache`.
 
 ## Other
 
 ### `deleteAll`
 
-* `` deleteAll(options `Object` optional) ``: `Promise`
-  * Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
-  * For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
-  * For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [deleteAlarm()](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).
+- ``deleteAll(options `Object` optional)``: `Promise`
+  - Deletes all stored data, effectively deallocating all storage used by the Durable Object. For Durable Objects with a key-value storage backend, `deleteAll()` removes all keys and associated values for an individual Durable Object. For Durable Objects with a [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), `deleteAll()` removes the entire contents of a Durable Object's private SQLite database, including both SQL data and key-value data.
+  - For Durable Objects with a key-value storage backend, an in-progress `deleteAll()` operation can fail, which may leave a subset of data undeleted. Durable Objects with a SQLite storage backend do not have a partial `deleteAll()` issue because `deleteAll()` operations are atomic (all or nothing).
+  - For Workers with a compatibility date of `2026-02-24` or later, `deleteAll()` also deletes any active [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/). For earlier compatibility dates, `deleteAll()` does not delete alarms. Use [`deleteAlarm()`](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm) separately, or enable the `delete_all_deletes_alarm` [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/).
 
 ### `transactionSync`
 
-* `transactionSync(callback)`: `any`
-  * Only available when using SQLite-backed Durable Objects.
-  * Invokes `callback()` wrapped in a transaction, and returns its result.
-  * If `callback()` throws an exception, the transaction will be rolled back.
-  * The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete synchronously.
+- `transactionSync(callback)`: `any`
+  - Only available when using SQLite-backed Durable Objects.
+  - Invokes `callback()` wrapped in a transaction, and returns its result.
+  - If `callback()` throws an exception, the transaction will be rolled back.
+  - The callback must complete synchronously, that is, it should not be declared `async` nor otherwise return a Promise. Only synchronous storage operations can be part of the transaction. This is intended for use with SQL queries using [`ctx.storage.sql.exec()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), which complete synchronously.
 
 ### `transaction`
 
-* `transaction(closureFunction(txn))`: `Promise`
+- `transaction(closureFunction(txn))`: `Promise`
+  - Runs the sequence of storage operations called on `txn` in a single transaction that either commits successfully or aborts.
+  - Explicit transactions are no longer necessary. Any series of write operations with no intervening `await` will automatically be submitted atomically, and the system will prevent concurrent events from executing while `await` a read operation (unless you use `allowConcurrency: true`). Therefore, a series of reads followed by a series of writes (with no other intervening I/O) are automatically atomic and behave like a transaction.
+- `txn`
+  - Provides access to the `put()`, `get()`, `delete()`, and `list()` methods documented above to run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` Object instead of on the top-level `ctx.storage` Object.
 
-  * Runs the sequence of storage operations called on `txn` in a single transaction that either commits successfully or aborts.
-  * Explicit transactions are no longer necessary. Any series of write operations with no intervening `await` will automatically be submitted atomically, and the system will prevent concurrent events from executing while `await` a read operation (unless you use `allowConcurrency: true`). Therefore, a series of reads followed by a series of writes (with no other intervening I/O) are automatically atomic and behave like a transaction.
-* `txn`
-
-  * Provides access to the `put()`, `get()`, `delete()`, and `list()` methods documented above to run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` Object instead of on the top-level `ctx.storage` Object.
-
-  Also supports a `rollback()` function that ensures any changes made during the transaction will be rolled back rather than committed. After `rollback()` is called, any subsequent operations on the `txn` Object will fail with an exception. `rollback()` takes no parameters and returns nothing to the caller.
-  * When using [the SQLite-backed storage engine](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), the `txn` object is obsolete. Any storage operations performed directly on the `ctx.storage` object, including SQL queries using [ctx.storage.sql.exec()](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), will be considered part of the transaction.
+    Also supports a `rollback()` function that ensures any changes made during the transaction will be rolled back rather than committed. After `rollback()` is called, any subsequent operations on the `txn` Object will fail with an exception. `rollback()` takes no parameters and returns nothing to the caller.
+  - When using [the SQLite-backed storage engine](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class), the `txn` object is obsolete. Any storage operations performed directly on the `ctx.storage` object, including SQL queries using [`ctx.storage.sql.exec()`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec), will be considered part of the transaction.
 
 ### `sync`
 
-* `sync()`: `Promise`
-  * Synchronizes any pending writes to disk.
-  * This is similar to normal behavior from automatic write coalescing. If there are any pending writes in the write buffer (including those submitted with [the allowUnconfirmed option](#supported-options-1)), the returned promise will resolve when they complete. If there are no pending writes, the returned promise will be already resolved.
+- `sync()`: `Promise`
+  - Synchronizes any pending writes to disk.
+  - This is similar to normal behavior from automatic write coalescing. If there are any pending writes in the write buffer (including those submitted with [the `allowUnconfirmed` option](#supported-options-1)), the returned promise will resolve when they complete. If there are no pending writes, the returned promise will be already resolved.
 
 ## Storage properties
 
@@ -651,9 +639,9 @@ If `setAlarm()` is called with a time equal to or before `Date.now()`, the alarm
 
 ## Related resources
 
-* [Durable Objects: Easy, Fast, Correct Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
-* [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
-* [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
+- [Durable Objects: Easy, Fast, Correct Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
+- [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
+- [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
 Was this helpful?
 

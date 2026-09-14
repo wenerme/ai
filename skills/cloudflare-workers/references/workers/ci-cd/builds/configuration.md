@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
@@ -20,8 +20,8 @@ When connecting your Git repository to your Worker, you can customize the config
 
 When a commit is pushed to your connected repository, Workers Builds runs a two-step process:
 
-1. **Build command** _(optional)_ \- Compiles your project (for example, `npm run build` for frameworks like Next.js or Astro)
-2. **Deploy command** \- Deploys your Worker to Cloudflare (defaults to `npx wrangler deploy`)
+1. **Build command** *(optional)* - Compiles your project (for example, `npm run build` for frameworks like Next.js or Astro)
+2. **Deploy command** - Deploys your Worker to Cloudflare (defaults to `npx wrangler deploy`)
 
 For preview builds (commits to branches other than your production branch), the deploy command is replaced with a **preview deploy command** (defaults to `npx wrangler versions upload`), which creates a preview version without promoting it to production.
 
@@ -31,23 +31,23 @@ Workers that use Containers
 
 ## Build settings
 
-Build settings can be found by navigating to **Settings** \> **Build** within your Worker.
+Build settings can be found by navigating to **Settings** > **Build** within your Worker.
 
-Note that when you update and save build settings, the updated settings will be applied to your _next_ build. When you _retry_ a build, the build configurations that exist when the build is retried will be applied.
+Note that when you update and save build settings, the updated settings will be applied to your *next* build. When you *retry* a build, the build configurations that exist when the build is retried will be applied.
 
 ### Overview
 
-| Setting                                                                                                                                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Git account**                                                                                                                                        | Select the Git account you would like to use. After the initial connection, you can continue to use this Git account for future projects.                                                                                                                                                                                                                                                                                                                                                                               |
-| **Git repository**                                                                                                                                     | Choose the Git repository you would like to connect your Worker to.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Git branch**                                                                                                                                         | Select the branch you would like Cloudflare to listen to for new commits. This will be defaulted to main.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| **Build command** _(Optional)_                                                                                                                         | Set a build command if your project requires a build step (e.g. npm run build). This is necessary, for example, when using a [front-end framework](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#framework-support) such as Next.js or Remix.                                                                                                                                                                                                                                                   |
-| **[Deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#deploy-command)**                                             | The deploy command lets you set the [specific Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) used to deploy your Worker. Your deploy command will default to npx wrangler deploy but you may customize this command. Workers Builds will use the Wrangler version set in your package.json.                                                                                                                                                                             |
-| **[Non-production branch deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#non-production-branch-deploy-command)** | Set a command to run when executing [a build for commit on a non-production branch](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds). This will default to npx wrangler versions upload but you may customize this command. Workers Builds will use the Wrangler version set in your package.json.                                                                                                                                                        |
-| **Root directory** _(Optional)_                                                                                                                        | Specify the path to your project. The root directory defines where the build command will be run and can be helpful in [monorepos](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos) to isolate a specific project within the repository for builds.                                                                                                                                                                                                                                   |
-| **[API token](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#api-token)** _(Optional)_                                          | The API token is used to authenticate your build request and authorize the upload and deployment of your Worker to Cloudflare. By default, Cloudflare will automatically generate an API token for your account when using Workers Builds, and continue to use this API token for all subsequent builds. Alternatively, you can [create your own API token](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/authentication/#generate-tokens), or select one that you already own. |
-| **Build variables and secrets** _(Optional)_                                                                                                           | Add environment variables and secrets accessible only to your build. Build variables will not be accessible at runtime. If you would like to configure runtime variables you can do so in **Settings** \> **Variables & Secrets**                                                                                                                                                                                                                                                                                       |
+| Setting | Description |
+| --- | --- |
+| **Git account** | Select the Git account you would like to use. After the initial connection, you can continue to use this Git account for future projects. |
+| **Git repository** | Choose the Git repository you would like to connect your Worker to. |
+| **Git branch** | Select the branch you would like Cloudflare to listen to for new commits. This will be defaulted to `main`. |
+| **Build command** *(Optional)* | Set a build command if your project requires a build step (e.g. `npm run build`). This is necessary, for example, when using a [front-end framework](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#framework-support) such as Next.js or Remix. |
+| **[Deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#deploy-command)** | The deploy command lets you set the [specific Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) used to deploy your Worker. Your deploy command will default to `npx wrangler deploy` but you may customize this command. Workers Builds will use the Wrangler version set in your `package.json`. |
+| **[Non-production branch deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#non-production-branch-deploy-command)** | Set a command to run when executing [a build for commit on a non-production branch](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds). This will default to `npx wrangler versions upload` but you may customize this command. Workers Builds will use the Wrangler version set in your `package.json`. |
+| **Root directory** *(Optional)* | Specify the path to your project. The root directory defines where the build command will be run and can be helpful in [monorepos](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos) to isolate a specific project within the repository for builds. |
+| **[API token](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#api-token)** *(Optional)* | The API token is used to authenticate your build request and authorize the upload and deployment of your Worker to Cloudflare. By default, Cloudflare will automatically generate an API token for your account when using Workers Builds, and continue to use this API token for all subsequent builds. Alternatively, you can [create your own API token](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/authentication/#generate-tokens), or select one that you already own. |
+| **Build variables and secrets** *(Optional)* | Add environment variables and secrets accessible only to your build. Build variables will not be accessible at runtime. If you would like to configure runtime variables you can do so in **Settings** > **Variables & Secrets** |
 
 Note
 
@@ -61,12 +61,12 @@ If you have added a Wrangler deploy command as a script in your `package.json`, 
 
 Examples of other deploy commands you can set include:
 
-| Example Command                                    | Description                                                                                                                                                                                                                                                                                                                                       |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| npx wrangler deploy --assets ./public/             | Deploy your Worker along with static assets from the specified directory. Alternatively, you can use the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/).                                                                                                                                                      |
-| npx wrangler deploy --env staging                  | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
-| npx wrangler deploy --containers-rollout=immediate | [Containers](https://developers.cloudflare.com/containers/) rollout mode for this deploy. Refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/).                                                                                                                                                              |
-| npx wrangler deploy --containers-rollout=none      | Deploy the Worker only. Skip container image build/push and instance rollout.                                                                                                                                                                                                                                                                     |
+| Example Command | Description |
+| --- | --- |
+| `npx wrangler deploy --assets ./public/` | Deploy your Worker along with static assets from the specified directory. Alternatively, you can use the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/). |
+| `npx wrangler deploy --env staging` | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
+| `npx wrangler deploy --containers-rollout=immediate` | [Containers](https://developers.cloudflare.com/containers/) rollout mode for this deploy. Refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/). |
+| `npx wrangler deploy --containers-rollout=none` | Deploy the Worker only. Skip container image build/push and instance rollout. |
 
 ### Non-production branch deploy command
 
@@ -80,10 +80,10 @@ Preview URLs are not generated for Durable Object Workers, including [Containers
 
 Examples of other non-production branch deploy commands you can set include:
 
-| Example Command                            | Description                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| yarn exec wrangler versions upload         | You can customize the package manager used to run Wrangler.                                                                                                                                                                                                                                                                                                             |
-| npx wrangler versions upload --env staging | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your non-production branch deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
+| Example Command | Description |
+| --- | --- |
+| `yarn exec wrangler versions upload` | You can customize the package manager used to run Wrangler. |
+| `npx wrangler versions upload --env staging` | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your non-production branch deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
 
 ### Automatic configuration for new projects
 
@@ -95,11 +95,11 @@ The API token in Workers Builds defines the access granted to Workers Builds for
 
 When you select **Create new token**, a new API token will be created automatically with the following permissions:
 
-* **Account:** Account Settings (read), Workers Scripts (edit), Workers KV Storage (edit), Workers R2 Storage (edit)
-* **Zone:** Workers Routes (edit) for all zones on the account
-* **User:** User Details (read), Memberships (read)
+- **Account:** Account Settings (read), Workers Scripts (edit), Workers KV Storage (edit), Workers R2 Storage (edit)
+- **Zone:** Workers Routes (edit) for all zones on the account
+- **User:** User Details (read), Memberships (read)
 
-You can configure the permissions of this API token by navigating to **My Profile** \> **API Tokens** for user tokens.
+You can configure the permissions of this API token by navigating to **My Profile** > **API Tokens** for user tokens.
 
 It is recommended to consistently use the same API token across all uploads and deployments of your Worker to maintain consistent access permissions.
 
@@ -107,38 +107,38 @@ It is recommended to consistently use the same API token across all uploads and 
 
 [Static assets](https://developers.cloudflare.com/workers/static-assets/) and [frameworks](https://developers.cloudflare.com/workers/framework-guides/) are now supported in Cloudflare Workers. Learn to set up Workers projects and the commands for each framework in the framework guides:
 
-* [Deploy an existing project](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
-* [Web applications](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
-  * [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
-  * [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
-  * [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
-  * [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
-  * [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)
-  * [Vue](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
-  * [RedwoodSDK](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
-  * [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
-  * [Microfrontends](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
-  * [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
-  * [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
-  * [More guides...](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
-    * [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
-    * [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
-    * [Docusaurus](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
-    * [Gatsby](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
-    * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
-    * [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
-    * [Qwik](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
-    * [Solid](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
-    * [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
-* [Mobile applications](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
-  * [Expo](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
-* [APIs](https://developers.cloudflare.com/workers/framework-guides/apis/)
-  * [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
-  * [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
-  * [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
-* [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
-  * [Agents SDK](https://developers.cloudflare.com/agents/)
-  * [LangChain](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
+- [Deploy an existing project](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/)
+- [Web applications](https://developers.cloudflare.com/workers/framework-guides/web-apps/)
+  - [React + Vite](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
+  - [Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/)
+  - [React Router (formerly Remix)](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/)
+  - [Next.js](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/)
+  - [OpenNext adapter](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/)
+  - [Vue](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/)
+  - [RedwoodSDK](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/)
+  - [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/)
+  - [Microfrontends](https://developers.cloudflare.com/workers/framework-guides/web-apps/microfrontends/)
+  - [SvelteKit](https://developers.cloudflare.com/workers/framework-guides/web-apps/sveltekit/)
+  - [Vike](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/)
+  - [More guides...](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/)
+    - [Analog](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/)
+    - [Angular](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/angular/)
+    - [Docusaurus](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/docusaurus/)
+    - [Gatsby](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/gatsby/)
+    - [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+    - [Nuxt](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/)
+    - [Qwik](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/)
+    - [Solid](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/solid/)
+    - [Waku](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/)
+- [Mobile applications](https://developers.cloudflare.com/workers/framework-guides/mobile-apps/)
+  - [Expo](https://docs.expo.dev/eas/hosting/reference/worker-runtime/)
+- [APIs](https://developers.cloudflare.com/workers/framework-guides/apis/)
+  - [FastAPI](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/)
+  - [Flask](https://developers.cloudflare.com/workers/languages/python/packages/flask/)
+  - [Hono](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/hono/)
+- [AI & agents](https://developers.cloudflare.com/workers/framework-guides/ai-and-agents/)
+  - [Agents SDK](https://developers.cloudflare.com/agents/)
+  - [LangChain](https://developers.cloudflare.com/workers/languages/python/packages/langchain/)
 
 ## Environment variables
 
@@ -147,9 +147,11 @@ You can provide custom environment variables to your build.
 To add environment variables via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-1. In **Overview**, select your Worker.
-2. Select **Settings** \> **Environment variables**.
+
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+
+2. In **Overview**, select your Worker.
+3. Select **Settings** > **Environment variables**.
 
 To add env variables using Wrangler, define text and JSON via the `[vars]` configuration in your Wrangler file.
 
@@ -185,13 +187,13 @@ API_ACCOUNT_ID = "example_user"
 
 The following system environment variables are injected by default (but can be overridden):
 
-| Environment Variable     | Injected value                | Example use-case                                                                      |
-| ------------------------ | ----------------------------- | ------------------------------------------------------------------------------------- |
-| CI                       | true                          | Changing build behaviour when run on CI versus locally                                |
-| WORKERS\_CI              | 1                             | Changing build behaviour when run on Workers Builds versus locally                    |
-| WORKERS\_CI\_BUILD\_UUID | <build-uuid-of-current-build> | Passing the Build UUID along to custom workflows                                      |
-| WORKERS\_CI\_COMMIT\_SHA | <sha1-hash-of-current-commit> | Passing current commit ID to error reporting, for example, Sentry                     |
-| WORKERS\_CI\_BRANCH      | <branch-name-from-push-event  | Customizing build based on branch, for example, disabling debug logging on production |
+| Environment Variable | Injected value | Example use-case |
+| --- | --- | --- |
+| `CI` | `true` | Changing build behaviour when run on CI versus locally |
+| `WORKERS_CI` | `1` | Changing build behaviour when run on Workers Builds versus locally |
+| `WORKERS_CI_BUILD_UUID` | `<build-uuid-of-current-build>` | Passing the Build UUID along to custom workflows |
+| `WORKERS_CI_COMMIT_SHA` | `<sha1-hash-of-current-commit>` | Passing current commit ID to error reporting, for example, Sentry |
+| `WORKERS_CI_BRANCH` | `<branch-name-from-push-event` | Customizing build based on branch, for example, disabling debug logging on `production` |
 
 Was this helpful?
 

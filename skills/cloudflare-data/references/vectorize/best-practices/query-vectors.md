@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query vectors
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Querying an index, or vector search, enables you to search an index by providing an input vector and returning the nearest vectors based on the [configured distance metric](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/#distance-metrics).
 
@@ -93,7 +93,7 @@ High-precision scoring is enabled by setting `returnValues: true` on your query.
 
 ## Workers AI
 
-If you are generating embeddings from a [Workers AI](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) text embedding model, the response type from `env.AI.run()` is an object that includes both the `shape` of the response vector - e.g. `[1,768]` \- and the vector `data` as an array of vectors:
+If you are generating embeddings from a [Workers AI](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) text embedding model, the response type from `env.AI.run()` is an object that includes both the `shape` of the response vector - e.g. `[1,768]` - and the vector `data` as an array of vectors:
 
 ```ts
 interface EmbeddingResponse {

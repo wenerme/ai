@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terminals
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents the terminal API on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. For today's stable `sandbox.terminal()` helper, refer to [Terminal](https://developers.cloudflare.com/sandbox/api/terminal/).
+This page documents the terminal API on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. For today's stable `sandbox.terminal()` helper, refer to [Terminal](https://developers.cloudflare.com/sandbox/api/terminal/).
 
 Create and control interactive PTY terminals in the current container for a sandbox.
 
@@ -32,14 +32,14 @@ createTerminal(options: CreateTerminalOptions): Promise<Terminal>
 
 ### `CreateTerminalOptions`
 
-| Field      | Type                   | Description                                                                  |
-| ---------- | ---------------------- | ---------------------------------------------------------------------------- |
-| command    | SandboxCommand         | Argv to run under the PTY. Required. Example: \['bash'\] or \['/bin/bash'\]. |
-| cwd        | string                 | Working directory for the terminal process.                                  |
-| env        | Record<string, string> | Environment overlay for this terminal. Does not mutate later launches.       |
-| cols       | number                 | Initial width in columns.                                                    |
-| rows       | number                 | Initial height in rows.                                                      |
-| bufferSize | number                 | Output buffer sizing for replay (when supported by the runtime).             |
+| Field | Type | Description |
+| --- | --- | --- |
+| `command` | `SandboxCommand` | Argv to run under the PTY. Required. Example: `['bash']` or `['/bin/bash']`. |
+| `cwd` | `string` | Working directory for the terminal process. |
+| `env` | `Record<string, string>` | Environment overlay for this terminal. Does not mutate later launches. |
+| `cols` | `number` | Initial width in columns. |
+| `rows` | `number` | Initial height in rows. |
+| `bufferSize` | `number` | Output buffer sizing for replay (when supported by the runtime). |
 
 `SandboxCommand` is the same argv type as process `exec`: `readonly [executable: string, ...args: string[]]`.
 
@@ -91,17 +91,17 @@ listTerminals(): Promise<Terminal[]>
 
 ## `Terminal`
 
-| Member                  | Description                                                               |
-| ----------------------- | ------------------------------------------------------------------------- |
-| id                      | Terminal ID in the current container.                                     |
-| getSnapshot()           | Current snapshot (running / exited / error).                              |
-| write(data)             | Write bytes to the PTY (stdin).                                           |
-| resize(cols, rows)      | Resize the PTY.                                                           |
-| output(options?)        | Cursor-based output event stream.                                         |
-| waitForExit(options?)   | Wait until the terminal completes.                                        |
-| interrupt()             | Send an interrupt to the terminal session (for example Ctrl-C semantics). |
-| terminate()             | End the terminal resource.                                                |
-| connect(request, opts?) | Accept a browser WebSocket upgrade and attach it to this terminal.        |
+| Member | Description |
+| --- | --- |
+| `id` | Terminal ID in the current container. |
+| `getSnapshot()` | Current snapshot (`running` / `exited` / `error`). |
+| `write(data)` | Write bytes to the PTY (stdin). |
+| `resize(cols, rows)` | Resize the PTY. |
+| `output(options?)` | Cursor-based output event stream. |
+| `waitForExit(options?)` | Wait until the terminal completes. |
+| `interrupt()` | Send an interrupt to the terminal session (for example Ctrl-C semantics). |
+| `terminate()` | End the terminal resource. |
+| `connect(request, opts?)` | Accept a browser WebSocket upgrade and attach it to this terminal. |
 
 ### `getSnapshot()`
 
@@ -139,12 +139,12 @@ output(options?: TerminalOutputOptions): Promise<ReadableStream<TerminalOutputEv
 
 #### `TerminalOutputOptions`
 
-| Field  | Type        | Description                                                |
-| ------ | ----------- | ---------------------------------------------------------- |
-| since  | string      | Opaque cursor; resume after a previous event.              |
-| replay | boolean     | Include buffered history when resuming.                    |
-| follow | boolean     | Keep the stream open for live output.                      |
-| signal | AbortSignal | Cancel this subscription only. The terminal keeps running. |
+| Field | Type | Description |
+| --- | --- | --- |
+| `since` | `string` | Opaque cursor; resume after a previous event. |
+| `replay` | `boolean` | Include buffered history when resuming. |
+| `follow` | `boolean` | Keep the stream open for live output. |
+| `signal` | `AbortSignal` | Cancel this subscription only. The terminal keeps running. |
 
 #### `TerminalOutputEvent`
 
@@ -218,9 +218,9 @@ connect(
 ): Promise<Response>
 ```
 
-* `request` must be a WebSocket upgrade request.
-* `cursor` resumes output replay after a previous disconnect when the client has one.
-* `cols` / `rows` set the PTY size for this attachment when provided.
+- `request` must be a WebSocket upgrade request.
+- `cursor` resumes output replay after a previous disconnect when the client has one.
+- `cols` / `rows` set the PTY size for this attachment when provided.
 
 Returns the WebSocket upgrade `Response` your Worker should return to the client.
 
@@ -304,36 +304,36 @@ const addon = new SandboxAddon({
 });
 ```
 
-| Item                   | Preview detail                          |
-| ---------------------- | --------------------------------------- |
-| Connection target      | { sandboxId, terminalId? }              |
-| getWebSocketUrl params | sandboxId, terminalId?, cursor?, origin |
-| Properties             | state, sandboxId, terminalId            |
+| Item | Preview detail |
+| --- | --- |
+| Connection target | `{ sandboxId, terminalId? }` |
+| `getWebSocketUrl` params | `sandboxId`, `terminalId?`, `cursor?`, `origin` |
+| Properties | `state`, `sandboxId`, `terminalId` |
 
 `@xterm/xterm` is an optional peer dependency of the preview package.
 
 ## Common errors
 
-| Situation                                                 | Class / outcome                                        |
-| --------------------------------------------------------- | ------------------------------------------------------ |
-| Unknown terminal ID in the current container              | TerminalNotFoundError                                  |
-| getTerminal / listTerminals while no container is running | null / \[\] (not an error; does not start a container) |
-| Handle or terminal ID from a previous container           | StaleTerminalHandleError                               |
-| Invalid working directory at create                       | InvalidTerminalCwdError                                |
-| Invalid output cursor                                     | InvalidTerminalCursorError                             |
-| Control operation failed                                  | TerminalControlError                                   |
+| Situation | Class / outcome |
+| --- | --- |
+| Unknown terminal ID in the current container | `TerminalNotFoundError` |
+| `getTerminal` / `listTerminals` while no container is running | `null` / `[]` (not an error; does not start a container) |
+| Handle or terminal ID from a previous container | `StaleTerminalHandleError` |
+| Invalid working directory at create | `InvalidTerminalCwdError` |
+| Invalid output cursor | `InvalidTerminalCursorError` |
+| Control operation failed | `TerminalControlError` |
 
 Recovery guidance: [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/). Full catalog: [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/). Lifetime: [How long a process lives](https://developers.cloudflare.com/sandbox/1-0-preview/processes/#how-long-a-process-lives).
 
 ## Related
 
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
-* [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
-* [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
-* Stable: [Terminal](https://developers.cloudflare.com/sandbox/api/terminal/)
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
+- [Errors and recovery](https://developers.cloudflare.com/sandbox/1-0-preview/errors/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/)
+- [API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/)
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- Stable: [Terminal](https://developers.cloudflare.com/sandbox/api/terminal/)
 
 Was this helpful?
 

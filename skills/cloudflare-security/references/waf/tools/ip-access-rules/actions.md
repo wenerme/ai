@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IP Access rules actions
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/ip-access-rules/actions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An IP Access rule can perform one of the following actions:
 
-* **Block**: Prevents a visitor from visiting your site.
-* **Allow**: Excludes visitors from all security checks, including [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/), [Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/), and the WAF. Use this option when a trusted visitor is being blocked by Cloudflare's default security features. The _Allow_ action takes precedence over the _Block_ action.
-Allowing a given country code will not bypass WAF managed rules (previous and new versions). Refer to [Important remarks about allowing/blocking by country](https://developers.cloudflare.com/waf/tools/ip-access-rules/#important-remarks-about-allowingblocking-by-country) for more information.
-* **Managed Challenge**: Depending on the characteristics of a request, Cloudflare will dynamically choose the appropriate type of challenge from a list of possible actions. For more information, refer to [Interstitial Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge).
-* **Non-Interactive Challenge**: Presents a non-interactive challenge page to visitors. Prevents bots from accessing the site.
-* **Interactive Challenge**: Requires the visitor to complete an interactive challenge before visiting your site. Prevents bots from accessing the site.
+- **Block**: Prevents a visitor from visiting your site.
+- **Allow**: Excludes visitors from all security checks, including [Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/), [Under Attack mode](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/), and the WAF. Use this option when a trusted visitor is being blocked by Cloudflare's default security features. The *Allow* action takes precedence over the *Block* action.
+  Allowing a given country code will not bypass WAF managed rules (previous and new versions). Refer to [Important remarks about allowing/blocking by country](https://developers.cloudflare.com/waf/tools/ip-access-rules/#important-remarks-about-allowingblocking-by-country) for more information.
+- **Managed Challenge**: Depending on the characteristics of a request, Cloudflare will dynamically choose the appropriate type of challenge from a list of possible actions. For more information, refer to [Interstitial Challenge Pages](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge).
+- **Non-Interactive Challenge**: Presents a non-interactive challenge page to visitors. Prevents bots from accessing the site.
+- **Interactive Challenge**: Requires the visitor to complete an interactive challenge before visiting your site. Prevents bots from accessing the site.
 
 Was this helpful?
 

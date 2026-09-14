@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/reference/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To investigate issues with a Spectrum application, use the logs and diagnostics described on this page. For API validation errors returned when creating or updating an application, refer to [Error codes](https://developers.cloudflare.com/spectrum/reference/error-codes/).
 
@@ -26,9 +26,9 @@ When a Spectrum application uses a [virtual network origin](https://developers.c
 
 ### Cloudflare Tunnel as the connector
 
-* **Tunnel logs** record activity between `cloudflared` and Cloudflare's network and between `cloudflared` and your origin. Refer to [Log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
-* **Tunnel diagnostic logs** collect a diagnostic report from a single `cloudflared` instance. Refer to [Diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/).
-* **Private network connectivity** covers common causes when traffic does not reach a private origin through a tunnel. Refer to [Private network connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/private-networks/).
+- **Tunnel logs** record activity between `cloudflared` and Cloudflare's network and between `cloudflared` and your origin. Refer to [Log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
+- **Tunnel diagnostic logs** collect a diagnostic report from a single `cloudflared` instance. Refer to [Diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/).
+- **Private network connectivity** covers common causes when traffic does not reach a private origin through a tunnel. Refer to [Private network connectivity](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/private-networks/).
 
 ### Cloudflare WAN as the connector
 
@@ -38,8 +38,8 @@ For tunnel health, BGP, and routing diagnostics on WAN-connected origins, refer 
 
 ### Symptoms
 
-* When creating a Spectrum application in the dashboard, you receive the error: **"An A, AAAA or CNAME record already exists with that host."**
-* You already have a manually-created proxied DNS record (`A`, `AAAA`, or `CNAME`) for the hostname you are trying to use for a new Spectrum application.
+- When creating a Spectrum application in the dashboard, you receive the error: **"An A, AAAA or CNAME record already exists with that host."**
+- You already have a manually-created proxied DNS record ( `A`, `AAAA`, or `CNAME`) for the hostname you are trying to use for a new Spectrum application.
 
 ### Cause
 
@@ -53,10 +53,10 @@ If you only need Spectrum applications on the hostname (for example, an HTTP/HTT
 
 If you need to keep a manually-created proxied DNS record on the hostname (for example, to route standard HTTP/HTTPS traffic through the CDN and WAF instead of through Spectrum), use a **split-hostname architecture** instead, where the manually-created proxied record and the Spectrum application use different hostnames:
 
-| Traffic type                                | Hostname            | Cloudflare service                               |
-| ------------------------------------------- | ------------------- | ------------------------------------------------ |
-| HTTPS (web UI, APIs)                        | app.example.com     | Manually-created proxied DNS record with CDN/WAF |
-| TCP (custom protocol, ICA/HDX, and similar) | app-tcp.example.com | Spectrum application                             |
+| Traffic type | Hostname | Cloudflare service |
+| --- | --- | --- |
+| HTTPS (web UI, APIs) | `app.example.com` | Manually-created proxied DNS record with CDN/WAF |
+| TCP (custom protocol, ICA/HDX, and similar) | `app-tcp.example.com` | Spectrum application |
 
 Configure your application or client to use the appropriate hostname for each traffic type.
 
@@ -70,9 +70,9 @@ For more details on this limitation, refer to [Spectrum Limitations](https://dev
 
 ### Symptoms
 
-* Your Spectrum application edge port uses HTTP (for example, port 8012), and your origin expects HTTPS on port 443.
-* The origin rejects the connection or returns errors because it receives plaintext HTTP instead of encrypted HTTPS.
-* The configuration appears to work as: `http:8012 → Cloudflare Spectrum → http:443 (origin)` instead of the expected `http:8012 → Cloudflare Spectrum → https:443 (origin)`.
+- Your Spectrum application edge port uses HTTP (for example, port 8012), and your origin expects HTTPS on port 443.
+- The origin rejects the connection or returns errors because it receives plaintext HTTP instead of encrypted HTTPS.
+- The configuration appears to work as: `http:8012 → Cloudflare Spectrum → http:443 (origin)` instead of the expected `http:8012 → Cloudflare Spectrum → https:443 (origin)`.
 
 ### Cause
 
@@ -82,8 +82,8 @@ Spectrum operates at Layer 4 (TCP/UDP). When Edge TLS Termination is set to **of
 
 To send encrypted traffic from Cloudflare to your origin, you must turn on **Edge TLS Termination** on the Spectrum application and set it to **Full** or **Full (Strict)**:
 
-* **Full**: Cloudflare connects to origin using TLS but does not validate the origin certificate.
-* **Full (Strict)**: Cloudflare connects to origin using TLS and validates the origin certificate against a trusted CA or Cloudflare Origin CA.
+- **Full**: Cloudflare connects to origin using TLS but does not validate the origin certificate.
+- **Full (Strict)**: Cloudflare connects to origin using TLS and validates the origin certificate against a trusted CA or Cloudflare Origin CA.
 
 You can configure Edge TLS Termination in the Spectrum application settings in the dashboard, or via the API by setting the `tls` field to `full` or `strict`.
 
@@ -93,8 +93,8 @@ Refer to [Edge TLS Termination](https://developers.cloudflare.com/spectrum/refer
 
 ### Symptoms
 
-* For TCP applications with Edge TLS Termination set to **Full** or **Full (Strict)**: connections to the origin fail. Spectrum event logs may show `521` (connection refused) or `522` (connection timeout) because a failed TLS handshake at the origin is reported as an origin connection failure. Refer to [Event logs](https://developers.cloudflare.com/spectrum/reference/logs/) for the full status code reference.
-* For HTTP/HTTPS applications: clients receive error `525` (SSL handshake failed).
+- For TCP applications with Edge TLS Termination set to **Full** or **Full (Strict)**: connections to the origin fail. Spectrum event logs may show `521` (connection refused) or `522` (connection timeout) because a failed TLS handshake at the origin is reported as an origin connection failure. Refer to [Event logs](https://developers.cloudflare.com/spectrum/reference/logs/) for the full status code reference.
+- For HTTP/HTTPS applications: clients receive error `525` (SSL handshake failed).
 
 These errors typically appear after creating a Spectrum application or modifying TLS settings.
 
@@ -102,9 +102,9 @@ These errors typically appear after creating a Spectrum application or modifying
 
 The TLS handshake between Cloudflare and your origin server failed. Common causes include:
 
-* **Edge TLS Termination is set to Full or Full (Strict)**, but the origin does not have a valid TLS certificate or does not accept TLS connections on the configured port.
-* **The Spectrum application origin points to another Cloudflare-proxied hostname** (for example, `origin.example.com.cdn.cloudflare.net`). This creates a double-proxy chain that is not supported for TCP application types and can cause TLS handshake failures.
-* **TLS version or cipher mismatch** between Cloudflare's edge and the origin server.
+- **Edge TLS Termination is set to Full or Full (Strict)**, but the origin does not have a valid TLS certificate or does not accept TLS connections on the configured port.
+- **The Spectrum application origin points to another Cloudflare-proxied hostname** (for example, `origin.example.com.cdn.cloudflare.net`). This creates a double-proxy chain that is not supported for TCP application types and can cause TLS handshake failures.
+- **TLS version or cipher mismatch** between Cloudflare's edge and the origin server.
 
 ### Solution
 
@@ -123,15 +123,15 @@ For the full status code table, refer to [Event logs](https://developers.cloudfl
 
 The following table lists frequently observed Spectrum status code patterns and their likely causes:
 
-| Pattern                                     | Likely cause                                                                                                                                    | Recommended action                                                                        |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| High volume of **444** (Origin sent RST)    | Origin server is actively resetting connections. May indicate origin overload, misconfigured firewall, or application crash.                    | Check origin server health, firewall rules, and application logs.                         |
-| High volume of **445** (Origin timeout)     | Established connections to origin are timing out. May indicate origin is slow to respond or network path issues.                                | Check origin server performance and network connectivity between Cloudflare and origin.   |
-| High volume of **497** (Client timeout)     | Client connections are timing out. May indicate network issues between clients and Cloudflare edge, or clients with very long idle connections. | Review client network conditions and consider adjusting idle timeout expectations.        |
-| High volume of **498** (Client broken pipe) | Client connections are dropping mid-session. May indicate unstable client networks (for example, mobile users).                                 | Often expected for mobile or unreliable networks. Monitor for trends.                     |
-| High volume of **499** (Client sent RST)    | Clients are actively closing connections. May indicate client-side timeouts or application-level disconnects.                                   | Review client application timeout settings.                                               |
-| **521** (Origin refused connection)         | Origin is not accepting connections on the configured port.                                                                                     | Verify origin server is running and listening on the correct port. Check origin firewall. |
-| **522** (Origin connection timeout)         | Cannot establish a TCP connection to origin.                                                                                                    | Verify origin IP address, port, and that origin is reachable from Cloudflare.             |
+| Pattern | Likely cause | Recommended action |
+| --- | --- | --- |
+| High volume of **444** (Origin sent RST) | Origin server is actively resetting connections. May indicate origin overload, misconfigured firewall, or application crash. | Check origin server health, firewall rules, and application logs. |
+| High volume of **445** (Origin timeout) | Established connections to origin are timing out. May indicate origin is slow to respond or network path issues. | Check origin server performance and network connectivity between Cloudflare and origin. |
+| High volume of **497** (Client timeout) | Client connections are timing out. May indicate network issues between clients and Cloudflare edge, or clients with very long idle connections. | Review client network conditions and consider adjusting idle timeout expectations. |
+| High volume of **498** (Client broken pipe) | Client connections are dropping mid-session. May indicate unstable client networks (for example, mobile users). | Often expected for mobile or unreliable networks. Monitor for trends. |
+| High volume of **499** (Client sent RST) | Clients are actively closing connections. May indicate client-side timeouts or application-level disconnects. | Review client application timeout settings. |
+| **521** (Origin refused connection) | Origin is not accepting connections on the configured port. | Verify origin server is running and listening on the correct port. Check origin firewall. |
+| **522** (Origin connection timeout) | Cannot establish a TCP connection to origin. | Verify origin IP address, port, and that origin is reachable from Cloudflare. |
 
 Note
 

@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • AssemblyAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `assemblyai/universal-3.5-pro`
 
-* Third-party
+- Third-party
 
 AssemblyAI's Universal-3.5 Pro speech recognition model for fast, high-accuracy transcription.
 
-| Model Info        |                                                                                                                                |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                    |
-| More information  | [link ↗](https://www.assemblyai.com/docs/getting-started/universal-3-5-pro)                                                    |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3.5-pro) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service) |
+| More information | [link ↗](https://www.assemblyai.com/docs/getting-started/universal-3-5-pro) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3.5-pro) |
 
 ## Usage
 
@@ -52,7 +52,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
+```
 
 ```json
 {
@@ -307,7 +309,11 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 ## Examples
 
-**Language and Keyterms** — Transcribe with an explicit language and domain terms
+<details>
+
+<summary>**Language and Keyterms** — Transcribe with an explicit language and domain terms</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -340,7 +346,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
+```
 
 ```json
 {
@@ -640,6 +648,8 @@ In the heart of the city, there is a large park where people go to relax and enj
 }
 ```
 
+</details>
+
 ## Parameters
 
 audio\_url
@@ -670,7 +680,7 @@ prompt
 
 `string`Natural-language instructions for transcription style.
 
-▶keyterms\_prompt\[\]
+▶keyterms\_prompt\[]
 
 `array`Words or phrases to prioritize during transcription.
 
@@ -710,7 +720,7 @@ multichannel
 
 `boolean`Whether to transcribe each audio channel separately.
 
-▶custom\_spelling\[\]
+▶custom\_spelling\[]
 
 `array`
 
@@ -762,7 +772,7 @@ redact\_pii\_audio\_quality
 
 `object`
 
-▶redact\_pii\_policies\[\]
+▶redact\_pii\_policies\[]
 
 `array`PII categories to redact.
 
@@ -804,9 +814,9 @@ language\_confidence
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/assemblyai/universal-3.5-pro/schema-output.json)
 
 Was this helpful?
 

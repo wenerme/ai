@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DEX MCP server
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The MCP server [(Model Context Protocol) ↗](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
 
@@ -20,8 +20,8 @@ Any Cloudflare One customer using a Free, Pay-as-you-go, or Enterprise account c
 
 There are two primary options for connecting to the DEX MCP server:
 
-* [In Cloudflare's AI Playground](#cloudflare-ai-playground)
-* [With your preferred AI assistant](#ai-assistant)
+- [In Cloudflare's AI Playground](#cloudflare-ai-playground)
+- [With your preferred AI assistant](#ai-assistant)
 
 ## Cloudflare AI Playground
 
@@ -55,17 +55,20 @@ You need a Claude Pro account (or higher subscription) to configure an MCP serve
 4. Under **Desktop app**, select **Developer** to show the **Local MCP servers** page.
 5. Select **Edit Config** and open the `claude_desktop_config.json` file in a text editor of your choice.
 6. Copy the JSON configuration for the DEX MCP server and paste it into `claude_desktop_config.json`. Save the file.
-```json
-{
-	"globalShortcut": "",
-	"mcpServers": {
-		"cloudflare-dex-analysis": {
-			"command": "npx",
-			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-		}
-	}
-}
-```
+
+   ```json
+   {
+   	"globalShortcut": "",
+   	"mcpServers": {
+   		"cloudflare-dex-analysis": {
+   			"command": "npx",
+   			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+   		}
+   	}
+   }
+   ```
+
+
 7. Fully close Claude by using the task manager to stop any background processes related to Claude.
 8. Open Claude, and your DEX MCP server configuration should appear on the **Local MCP servers** page.
 9. Authenticate your Cloudflare account and allow the DEX MCP server.
@@ -78,25 +81,29 @@ All tiers of Google AI Free, Pro, and Ultra offer an MCP server integration via 
 You will need to use a CLI of your choice and npm or homebrew to install and access the Gemini CLI.
 
 1. Visit the GitHub page for the [Gemini CLI ↗](https://github.com/google-gemini/gemini-cli) and follow the installation instructions.
-2. Navigate to the `settings.json` file for your Gemini CLI install and open it in a text editor of your choice.
-File path for the `settings.json` file
-  * Windows: `%USERPROFILE%\.gemini\settings.json`
-  * Mac and Linux: `~/.gemini/settings.json`
+2. Navigate to the `settings.json` file for your Gemini CLI install and open it in a text editor of your choice.<details><summary>File path for the <code>settings.json</code> file</summary>
+
+   - Windows: <code>%USERPROFILE%\.gemini\settings.json</code>
+   - Mac and Linux: <code>~/.gemini/settings.json</code></details>
+
 3. Copy the JSON configuration for the DEX MCP server and paste it into **settings.json**. Save the file.
-```json
-{
-	"globalShortcut": "",
-	"mcpServers": {
-		"cloudflare-dex-analysis": {
-			"command": "npx",
-			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
-		}
-	}
-}
-```
+
+   ```json
+   {
+   	"globalShortcut": "",
+   	"mcpServers": {
+   		"cloudflare-dex-analysis": {
+   			"command": "npx",
+   			"args": ["mcp-remote", "https://dex.mcp.cloudflare.com/mcp"]
+   		}
+   	}
+   }
+   ```
+
+
 4. Run Gemini in your CLI of choice.
 5. If everything is working as expected, the Gemini CLI will show the following message:
-`Using: 1 MCP server (ctrl+t to view)`
+   `Using: 1 MCP server (ctrl+t to view)`
 6. Authenticate the email associated with your Cloudflare account in the Gemini CLI.
 7. You can start asking the Gemini CLI questions about DEX. As a simple test, you can ask "Are you connected to the DEX MCP server".
 
@@ -111,7 +118,7 @@ You need a ChatGPT Pro or Business account to configure an MCP server. ChatGPT F
 5. Provide a **Name** (like `DEX MCP`), **Description** (optional), and **MCP Server URL** for the Connector. The DEX MCP Server URL is: `https://dex.mcp.cloudflare.com/mcp`.
 6. Create the new Connector.
 7. Before you ask ChatGPT a question about DEX, select the **+** (plus) button next to the ChatGPT prompt box.
-8. Select **Use Connectors** \> **Add Sources**, then select the DEX MCP as a source.
+8. Select **Use Connectors** > **Add Sources**, then select the DEX MCP as a source.
 9. You can start asking ChatGPT questions about DEX. As a simple test, you can ask "Are you connected to the DEX MCP server".
 
 Was this helpful?

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.uri
 
-`http.request.uri` `String`
+`http.request.uri``String`
 
 The URI path and query string of the request.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* URI
+- Request
+- URI
 
 Was this helpful?
 

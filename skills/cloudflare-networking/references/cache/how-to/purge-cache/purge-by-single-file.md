@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Purge by single-file
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With purge by single-file, cached resources are instantly removed from the stored assets in your Content Delivery Network (CDN) across all data centers. New requests for the purged asset receive the latest version from your origin web server and add it back to your CDN cache within the specific Cloudflare data center that served the request.
 
@@ -20,8 +20,7 @@ For information on single-file purge rate limits, refer to the [limits](https://
 
 ## How to purge a single file
 
-1. In the Cloudflare dashboard, go to the **Configuration** page.
-[Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
+1. In the Cloudflare dashboard, go to the **Configuration** page. [Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Under **Purge Cache**, select **Custom Purge**. The **Custom Purge** window appears.
 3. Under **Purge by**, select **URL**.
 4. Enter the appropriate value(s) in the text field using the format shown in the example. Be aware that the host part of the URL is not case-sensitive, meaning it will always be converted to lowercase according to RFC standards. However, the path portion is case-sensitive. For example, `https://EXAMPLE.com/helloHI` would be treated as `https://example.com/helloHI`.
@@ -39,10 +38,10 @@ If you use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-ru
 
 **What to do instead:**
 
-* **Use the API** to [purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/#purge-cached-content-by-url), including all headers and cookies that are part of your custom cache key. If any header or cookie is missing from the purge request, Cloudflare treats it as an empty value in the cache key.
-* **Use purge by prefix** ([purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/)) to clear all resources under a URL path.
-* **Use purge by tag** ([purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)) if your resources are tagged.
-* **Use purge everything** ([purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)) to clear all cached resources for the zone.
+- **Use the API** to [purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/#purge-cached-content-by-url), including all headers and cookies that are part of your custom cache key. If any header or cookie is missing from the purge request, Cloudflare treats it as an empty value in the cache key.
+- **Use purge by prefix** ([purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)) to clear all resources under a URL path.
+- **Use purge by tag** ([purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)) if your resources are tagged.
+- **Use purge everything** ([purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)) to clear all cached resources for the zone.
 
 ### Cache Rules that match on request properties
 
@@ -52,20 +51,20 @@ Single-file purge may also not work as expected if your Cache Rules match only o
 
 Update your Cache Rule expression to also match on the `PURGE` method, for example `(http.host eq "example.com" and (http.request.method eq "GET" or http.request.method eq "PURGE"))`. This allows the rule to apply to both client requests and purge requests.
 
-For rules that match on fields which cannot be evaluated during purge (such as `cf.bot_management.score`), use [purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/), [purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/), or [purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).
+For rules that match on fields which cannot be evaluated during purge (such as `cf.bot_management.score`), use [purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/), [purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/), or [purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).
 
 ### Resources with special headers
 
 A single-file purge performed through your Cloudflare dashboard does not clear objects that contain any of the following:
 
-* [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
-* Any of these request headers:
-  * `X-Forwarded-Host`
-  * `X-Host`
-  * `X-Forwarded-Scheme`
-  * `X-Original-URL`
-  * `X-Rewrite-URL`
-  * `Forwarded`
+- [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
+- Any of these request headers:
+  - `X-Forwarded-Host`
+  - `X-Host`
+  - `X-Forwarded-Scheme`
+  - `X-Original-URL`
+  - `X-Rewrite-URL`
+  - `Forwarded`
 
 You can purge objects with these characteristics using an API call to [purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/). In the `headers` object of the request body, include the header values that match those used in the cached resource's cache key.
 
@@ -87,7 +86,7 @@ For information on how to purge assets cached by [Cache API](https://developers.
 
 ## Resulting cache status
 
-Purging by single-file deletes the resource, resulting in the `CF-Cache-Status` header being set to [MISS](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss) for subsequent requests.
+Purging by single-file deletes the resource, resulting in the `CF-Cache-Status` header being set to [`MISS`](https://developers.cloudflare.com/cache/concepts/cache-responses/#miss) for subsequent requests.
 
 Was this helpful?
 

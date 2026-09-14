@@ -16,11 +16,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • ByteDance
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `bytedance/seedance-2.5`
 
-* Third-party
+- Third-party
 
 ByteDance's next-generation video model with a unified multimodal reference-to-video architecture. Generates video from text, up to 30 reference images, 10 reference videos, and 10 reference audio clips — including audio-only input with no image or video required. Supports first/last-frame image-to-video, video editing, video extension, intelligent duration (including automatic selection), and adaptive aspect ratio.
 
@@ -66,7 +66,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Cinematic Wide Shot** — Longer cinematic video with an explicit 16:9 aspect ratio
+<details>
+
+<summary>**Cinematic Wide Shot** — Longer cinematic video with an explicit 16:9 aspect ratio</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -109,7 +113,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**First and Last Frame** — Generate a video that transitions between a given first-frame and last-frame image
+</details>
+
+<details>
+
+<summary>**First and Last Frame** — Generate a video that transitions between a given first-frame and last-frame image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -153,7 +163,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Video with MOV Output** — Vertical video for social media, encoded as mov for higher color fidelity
+</details>
+
+<details>
+
+<summary>**Portrait Video with MOV Output** — Vertical video for social media, encoded as mov for higher color fidelity</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -197,6 +213,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -211,15 +229,15 @@ last\_frame\_image
 
 `string`Last-frame reference image (HTTP(S) URL or base64 data URI). Requires a first-frame image to also be given.
 
-▶reference\_images\[\]
+▶reference\_images\[]
 
 `array`maxItems: 30Reference images (0-30, HTTP(S) URLs or base64 data URIs) to guide multimodal video generation, editing, or extension.
 
-▶reference\_videos\[\]
+▶reference\_videos\[]
 
 `array`maxItems: 10Reference videos (0-10, HTTP(S) URLs or base64 data URIs) for style/motion guidance, video editing, or video extension. Total duration of all reference videos must not exceed 30 seconds.
 
-▶reference\_audios\[\]
+▶reference\_audios\[]
 
 `array`maxItems: 10Reference audio clips (0-10, HTTP(S) URLs or base64 data:audio/... URIs). Supports audio-only input (no image or video required). Total duration of all audio clips must not exceed 30 seconds.
 
@@ -253,7 +271,7 @@ watermark
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed. Passing this does not error, but reproducibility is not guaranteed and is not documented by the provider.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Random seed. Passing this does not error, but reproducibility is not guaranteed and is not documented by the provider.
 
 output\_format
 
@@ -269,9 +287,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/schema-output.json)
 
 Was this helpful?
 

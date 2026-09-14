@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use Roughtime
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/time-services/roughtime/recipes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/recipes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are various ways you can use Roughtime to keep your clock in sync. These recipes use [Cloudflare's Go package ↗](https://github.com/cloudflare/roughtime), which is based on Google's [Go client ↗](https://roughtime.googlesource.com/roughtime/+/master/go/client/).
 
@@ -40,11 +40,11 @@ The client configuration consists of a list of named Roughtime servers formatted
 }
 ```
 
-It includes each server's _root public key_. When the server starts, it generates an _online_ public/secret key pair. The root secret key is used to create a _delegation_ for the online public key and the online secret key is used to sign the response.
+It includes each server's *root public key*. When the server starts, it generates an *online* public/secret key pair. The root secret key is used to create a *delegation* for the online public key and the online secret key is used to sign the response.
 
 The delegation serves the same function as a traditional [X.509 certificate ↗](https://en.wikipedia.org/wiki/X.509) on the web. The client first uses the root public key to verify the delegation, then uses the online public key to verify the response.
 
-Because the response is _auditable_, the protocol makes each client accountable to provide accurate time.
+Because the response is *auditable*, the protocol makes each client accountable to provide accurate time.
 
 The configuration also encodes the type of signature algorithm used by the server (currently only [Ed25519 ↗](https://en.wikipedia.org/wiki/EdDSA) is supported). Lastly, the configuration contains a list of addresses where the service can be reached and which transport protocol to use to reach them (currently only UDP is supported).
 

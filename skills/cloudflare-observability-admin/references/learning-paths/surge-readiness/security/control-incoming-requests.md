@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Control incoming requests
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/security/control-incoming-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) to allow you to control incoming traffic by filtering requests to a zone. They work as customized web application firewall (WAF) rules that you can use to perform actions like Block or Managed Challenge on incoming requests.
 
@@ -28,16 +28,16 @@ To help you define the best rate limiting setting for your use case, refer to [H
 
 ## Security models
 
-* Positive Security policy: Allow specific requests and deny everything else.
-* Negative Security policy: Block specific requests and allow everything else.
+- Positive Security policy: Allow specific requests and deny everything else.
+- Negative Security policy: Block specific requests and allow everything else.
 
 ## Actions
 
-* Log: Test rule effectiveness before committing to a more severe action.
-* Allow: Allow matching requests to access the site.
-* Block: Block matching requests from accessing the site.
-* Non-Interactive Challenge: Visitors will be shown a non-interactive challenge before proceeding.
-* Interactive Challenge: Visitors will be shown an interactive challenge before proceeding.
+- Log: Test rule effectiveness before committing to a more severe action.
+- Allow: Allow matching requests to access the site.
+- Block: Block matching requests from accessing the site.
+- Non-Interactive Challenge: Visitors will be shown a non-interactive challenge before proceeding.
+- Interactive Challenge: Visitors will be shown an interactive challenge before proceeding.
 
 Was this helpful?
 

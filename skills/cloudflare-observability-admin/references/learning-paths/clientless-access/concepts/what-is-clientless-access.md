@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is clientless access?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Clientless access is a deployment option of a [Zero Trust Network Access (ZTNA) ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) service that provides secure access to internal applications without requiring end users to install any software. Users access corporate resources like intranet web apps, SSH terminals, and Windows servers through RDP from their web browser. Clientless access is commonly used to provide internal, [least-privilege access ↗](https://www.cloudflare.com/learning/access-management/principle-of-least-privilege/) to users on unmanaged devices. Users may include third-party contractors, suppliers, and partners, or employees using personal mobile phones as part of an organization's bring-your-own-device (BYOD) policy.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use attack signatures in Security Rules
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/use-attack-signatures-in-security-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/attack-signature-detection/use-attack-signatures-in-security-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Attack Signature Detection fields let Security Rules act on matching traffic. The detection fields do not apply actions by themselves.
 
@@ -22,7 +22,7 @@ Attack Signature Detection is available in Early Access. Contact your Cloudflare
 
 ## Create a mitigation policy
 
-1. Review historical matches in **Security Analytics** \> **Attack Analysis**.
+1. Review historical matches in **Security Analytics** > **Attack Analysis**.
 2. Choose whether to match a confidence, category, or signature Ref value.
 3. Scope the rule to the intended hostname, path, method, or endpoint.
 4. Select an action appropriate for the reviewed traffic.
@@ -72,15 +72,15 @@ For a known false positive, exclude the legitimate endpoint from mitigation. Kee
 
 Attack Signature Detection and Managed Rules have no special interaction. A Custom Rule using a detection field follows normal Custom Rules ordering.
 
-A terminating action stops request processing at that rule. Managed Rules do not evaluate the same request. A non-terminating _Log_ action lets processing continue to Managed Rules.
+A terminating action stops request processing at that rule. Managed Rules do not evaluate the same request. A non-terminating *Log* action lets processing continue to Managed Rules.
 
 ## Compare with Managed Rules
 
 To compare the two products without changing traffic:
 
 1. Create a Custom Rule that references the relevant detection fields.
-2. Select the _Log_ action for the Custom Rule.
-3. Keep the corresponding Managed Rules protection in _Block_ mode.
+2. Select the *Log* action for the Custom Rule.
+3. Keep the corresponding Managed Rules protection in *Block* mode.
 4. In [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/), compare logged detection matches with Managed Rules blocks.
 
 Verify whether Managed Rules already mitigate the traffic before adding duplicate handling. Recheck your Security Rules after application releases or major traffic changes.

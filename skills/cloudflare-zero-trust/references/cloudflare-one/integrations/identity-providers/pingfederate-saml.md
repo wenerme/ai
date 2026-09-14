@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PingFederate
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/pingfederate-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The PingFederate offering from PingIdentity provides SSO identity management. Cloudflare Access supports PingFederate as a SAML identity provider.
 
@@ -25,40 +25,40 @@ The PingFederate offering from PingIdentity provides SSO identity management. Cl
 
 These can be any value. A prompt displays to select a signing certificate to use.
 
-1. In the **SAML attribute configuration** dialog select **Email attribute** \> **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
-2. Go to **SP Connections** \> **SP Connection** \> **Credentials**.
-3. Add the matching certificate that you upload into the Cloudflare SAML configuration for Ping. Select **Include the certificate in the signature `<KEYINFO>` element**.
+5. In the **SAML attribute configuration** dialog select **Email attribute** > **urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress**.
+6. Go to **SP Connections** > **SP Connection** > **Credentials**.
+7. Add the matching certificate that you upload into the Cloudflare SAML configuration for Ping. Select **Include the certificate in the signature `<KEYINFO>` element**.
 
 Note
 
 There is an additional setting for PingFederate prior to 9.0.
 
-1. In the **Signature Policy** tab, disable the option to **Always Sign Assertion**.
-2. Leave the option enabled for **Sign Response As Required**.
+8. In the **Signature Policy** tab, disable the option to **Always Sign Assertion**.
+9. Leave the option enabled for **Sign Response As Required**.
 
 This ensures that SAML destination headers are sent during the integration.
 
 In versions 9.0 above, you can leave both of these options enabled.
 
-1. A prompt displays to download the SAML metadata from Ping.
+10. A prompt displays to download the SAML metadata from Ping.
 
 This file shares several fields with Cloudflare Access so you do not have to input this data.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
-2. Under **Your identity providers**, select **Add new identity provider**.
-3. Select SAML.
-4. In the **IdP Entity ID** field, enter the following URL:
+11. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+12. Under **Your identity providers**, select **Add new identity provider**.
+13. Select SAML.
+14. In the **IdP Entity ID** field, enter the following URL:
 
 ```txt
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 
-1. Fill the other fields with values from your Ping dashboard.
-2. Select **Save**.
+15. Fill the other fields with values from your Ping dashboard.
+16. Select **Save**.
 
-To test that your connection is working, go to **Authentication** \> **Login methods** and select **Test** next to the login method you want to test.
+To test that your connection is working, go to **Authentication** > **Login methods** and select **Test** next to the login method you want to test.
 
 ## Example API configuration
 

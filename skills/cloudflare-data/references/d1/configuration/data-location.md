@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data location
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/configuration/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/configuration/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in D1 is determined, including where the database runs and how you optimize that location based on your needs.
 
@@ -32,15 +32,14 @@ Jurisdictions can only be set on database creation and cannot be added or update
 
 ### Supported jurisdictions
 
-| Parameter | Location                       |
-| --------- | ------------------------------ |
-| eu        | The European Union             |
-| fedramp   | FedRAMP-compliant data centers |
+| Parameter | Location |
+| --- | --- |
+| eu | The European Union |
+| fedramp | FedRAMP-compliant data centers |
 
 ### Use the dashboard
 
-1. In the Cloudflare dashboard, go to the **D1 SQL Database** page.
-[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
+1. In the Cloudflare dashboard, go to the **D1 SQL Database** page. [Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select **Create Database**.
 3. Under **Data location**, select **Specify jurisdiction** and choose a jurisdiction from the list.
 4. Select **Create** to create your database.
@@ -66,14 +65,14 @@ Location hint is an optional parameter you can provide to indicate your desired 
 
 You may want to explicitly provide a location hint in cases where the majority of your writes to a specific database come from a different location than where you are creating the database from. Location hints can be useful when:
 
-* Working in a distributed team.
-* Creating databases specific to users in specific locations.
-* Using continuous deployment (CD) or Infrastructure as Code (IaC) systems to programmatically create your databases.
+- Working in a distributed team.
+- Creating databases specific to users in specific locations.
+- Using continuous deployment (CD) or Infrastructure as Code (IaC) systems to programmatically create your databases.
 
 Provide a location hint when creating a D1 database when:
 
-* Using [wrangler d1](https://developers.cloudflare.com/workers/wrangler/commands/d1/) to create a database.
-* Creating a database [via the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/d1).
+- Using [`wrangler d1`](https://developers.cloudflare.com/workers/wrangler/commands/d1/) to create a database.
+- Creating a database [via the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/d1).
 
 Caution
 
@@ -95,8 +94,7 @@ wrangler d1 create new-database --location=weur
 
 To provide a location hint when creating a database via the dashboard:
 
-1. In the Cloudflare dashboard, go to the **D1 SQL Database** page.
-[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
+1. In the Cloudflare dashboard, go to the **D1 SQL Database** page. [Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select **Create database**.
 3. Provide a database name and an optional **Location**.
 4. Select **Create** to create your database.
@@ -105,14 +103,14 @@ To provide a location hint when creating a database via the dashboard:
 
 D1 supports the following location hints:
 
-| Hint | Hint description      |
-| ---- | --------------------- |
+| Hint | Hint description |
+| --- | --- |
 | wnam | Western North America |
 | enam | Eastern North America |
-| weur | Western Europe        |
-| eeur | Eastern Europe        |
-| apac | Asia-Pacific          |
-| oc   | Oceania               |
+| weur | Western Europe |
+| eeur | Eastern Europe |
+| apac | Asia-Pacific |
+| oc | Oceania |
 
 Caution
 

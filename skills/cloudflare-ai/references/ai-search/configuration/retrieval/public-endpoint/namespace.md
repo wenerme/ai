@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Namespace public endpoints
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) can expose its own public endpoint. A single URL then searches across several instances in that namespace and merges the results. Use one when a single search experience covers content that lives in several instances, such as documentation, a blog, and a support portal.
 
@@ -46,10 +46,10 @@ Enabling a namespace endpoint does not change the instance endpoints inside it. 
 
 `instances_allowed` controls which instances the endpoint can reach.
 
-* Every entry must be an existing instance in that namespace. An unknown entry returns error `7097`.
-* The list holds up to 10 instances.
-* An empty list means nothing is searchable. This is the state a namespace starts in when you first enable the endpoint.
-* Deleting an instance, or moving it to another namespace, removes it from the allowlist.
+- Every entry must be an existing instance in that namespace. An unknown entry returns error `7097`.
+- The list holds up to 10 instances.
+- An empty list means nothing is searchable. This is the state a namespace starts in when you first enable the endpoint.
+- Deleting an instance, or moving it to another namespace, removes it from the allowlist.
 
 A request that resolves to no searchable instance returns a `404` with error `60013`. This response is identical whether the instance does not exist, is outside the allowlist, or the allowlist is empty, so callers cannot discover which instances a namespace contains.
 
@@ -79,9 +79,9 @@ curl https://ns-<NAMESPACE_ENDPOINT_ID>.search.ai.cloudflare.com/search \
 
 Every value must be in the allowlist. Rules for this field:
 
-* Omitting the field, or setting it to `null`, searches the full allowlist.
-* A malformed value, such as an empty array or a non-string entry, returns a `400` with error `60012`.
-* A value outside the allowlist returns a `404` with error `60013`.
+- Omitting the field, or setting it to `null`, searches the full allowlist.
+- A malformed value, such as an empty array or a non-string entry, returns a `400` with error `60012`.
+- A value outside the allowlist returns a `404` with error `60013`.
 
 Note
 
@@ -102,14 +102,14 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai-searc
 
 ## Errors
 
-| Code  | Message                                          | HTTP status | Cause                                                                |
-| ----- | ------------------------------------------------ | ----------- | -------------------------------------------------------------------- |
-| 7097  | instances\_allowed\_contains\_unknown\_instances | 400         | An entry in instances\_allowed is not an instance in this namespace. |
-| 7099  | namespace\_modified\_concurrently\_please\_retry | 409         | Another update changed the namespace at the same time. Retry.        |
-| 60012 | invalid ai\_search\_options.instance\_ids        | 400         | The instance\_ids value is malformed.                                |
-| 60013 | ai\_search\_not\_found                           | 404         | No searchable instance matched the request.                          |
-| 60014 | path not supported for namespace-kind hash       | 404         | The path is not /search, /chat/completions, or /mcp.                 |
-| 60015 | request body must be a JSON object               | 400         | The request body is not a JSON object.                               |
+| Code | Message | HTTP status | Cause |
+| --- | --- | --- | --- |
+| `7097` | `instances_allowed_contains_unknown_instances` | 400 | An entry in `instances_allowed` is not an instance in this namespace. |
+| `7099` | `namespace_modified_concurrently_please_retry` | 409 | Another update changed the namespace at the same time. Retry. |
+| `60012` | `invalid ai_search_options.instance_ids` | 400 | The `instance_ids` value is malformed. |
+| `60013` | `ai_search_not_found` | 404 | No searchable instance matched the request. |
+| `60014` | `path not supported for namespace-kind hash` | 404 | The path is not `/search`, `/chat/completions`, or `/mcp`. |
+| `60015` | `request body must be a JSON object` | 400 | The request body is not a JSON object. |
 
 ## Next steps
 

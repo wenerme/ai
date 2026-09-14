@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Meta
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/meta/llama-guard-3-8b`
 
-* Cloudflare-hosted
-* LoRA
+- Cloudflare-hosted
+- LoRA
 
 Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.
 
-| Model Info                                                                          |                                                     |
-| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens                                      |
-| LoRA                                                                                | Yes                                                 |
-| Unit Pricing                                                                        | $0.48 per M input tokens, $0.03 per M output tokens |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
+| LoRA | Yes |
+| Unit Pricing | $0.48 per M input tokens, $0.03 per M output tokens |
 
 ## Playground
 
@@ -40,7 +40,6 @@ Try out this model with Workers AI LLM Playground. It does not require any setup
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -69,7 +68,6 @@ export default {
 ```
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -92,7 +90,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -115,7 +112,6 @@ print(result)
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-guard-3-8b \
   -X POST \
   -H "Authorization: Bearer $CLOUDFLARE_AUTH_TOKEN" \
@@ -128,7 +124,7 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredAn array of message objects representing the conversation history.
 
@@ -154,9 +150,9 @@ temperature
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json)
 
 Was this helpful?
 

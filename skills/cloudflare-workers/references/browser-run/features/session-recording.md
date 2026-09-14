@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session recording
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
@@ -108,11 +108,11 @@ The recording is only available after the browser session closes. CDP sessions t
 
 ## View recordings
 
-After a session closes, its recording is available in the Cloudflare dashboard under **Browser Run** \> **Runs**. Select the recording icon next to a session to open the recording viewer, where you can scrub through the timeline and replay what happened during the session.
+After a session closes, its recording is available in the Cloudflare dashboard under **Browser Run** > **Runs**. Select the recording icon next to a session to open the recording viewer, where you can scrub through the timeline and replay what happened during the session.
 
 If a session opened multiple tabs, the recording viewer shows a tab selector dropdown in the top-right corner of the replay area. Use it to switch between the recorded tabs and view the activity for each one individually.
 
-[Go to **Browser Run Runs** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run/runs)
+[Go to **Browser Run Runs** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run/runs)
 
 ## Retrieve a recording via API
 
@@ -145,28 +145,28 @@ The event arrays are available under `result.events`. The keys in `result.events
 
 ## Replay a recording
 
-Each value in `result.events` is a standard rrweb event array and can be passed directly to [rrweb-player ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
+Each value in `result.events` is a standard rrweb event array and can be passed directly to [`rrweb-player` ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
 
 Tabs replay independently — to replay a multi-tab session, render one player per target, or build a UI that lets the user switch between targets (similar to the tab selector in the dashboard recording viewer).
 
 ## Limits
 
-* Recordings are retained for 30 days after the session ends and automatically deleted.
-* Recording is opt-in. It is not enabled by default.
-* Session recording is available with Browser Sessions via `launch()` and the [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/). It is not available with Quick Actions.
-* The minimum recording duration is 1 second. Sessions shorter than 1 second will not produce a viewable recording.
-* The maximum recording duration is 2 hours.
+- Recordings are retained for 30 days after the session ends and automatically deleted.
+- Recording is opt-in. It is not enabled by default.
+- Session recording is available with Browser Sessions via `launch()` and the [CDP endpoint](https://developers.cloudflare.com/browser-run/cdp/). It is not available with Quick Actions.
+- The minimum recording duration is 1 second. Sessions shorter than 1 second will not produce a viewable recording.
+- The maximum recording duration is 2 hours.
 
 ## rrweb limitations
 
 Session recording uses [rrweb ↗](https://github.com/rrweb-io/rrweb), which records DOM state and events rather than pixels. This approach is lightweight but has the following limitations:
 
-* **Canvas elements** — The content of `<canvas>` elements is not captured. The element itself appears in the recording as a blank placeholder.
-* **Cross-origin iframes** — Content inside cross-origin `<iframe>` elements is not recorded. Same-origin iframes are recorded normally.
-* **Video and audio** — The DOM structure of `<video>` and `<audio>` elements is captured, but media playback state and content are not.
-* **WebGL** — WebGL rendering is not captured.
-* **Input fields** — The content of all input fields is masked by default and will not be visible in the replay.
-* **Large or complex pages** — Pages with frequent DOM mutations (for example, pages with real-time data feeds or heavy animations) can generate a high volume of events, which increases the size of the recording.
+- **Canvas elements** — The content of `<canvas>` elements is not captured. The element itself appears in the recording as a blank placeholder.
+- **Cross-origin iframes** — Content inside cross-origin `<iframe>` elements is not recorded. Same-origin iframes are recorded normally.
+- **Video and audio** — The DOM structure of `<video>` and `<audio>` elements is captured, but media playback state and content are not.
+- **WebGL** — WebGL rendering is not captured.
+- **Input fields** — The content of all input fields is masked by default and will not be visible in the replay.
+- **Large or complex pages** — Pages with frequent DOM mutations (for example, pages with real-time data feeds or heavy animations) can generate a high volume of events, which increases the size of the recording.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agents API
 
-Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/agents-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
@@ -20,10 +20,10 @@ This page provides an overview of the Agents SDK. For detailed documentation on 
 
 The Agents SDK provides two main APIs:
 
-| API                         | Description                                                                      |
-| --------------------------- | -------------------------------------------------------------------------------- |
-| **Server-side** Agent class | Encapsulates agent logic: connections, state, methods, AI models, error handling |
-| **Client-side** SDK         | AgentClient, useAgent, and useAgentChat for connecting from browsers             |
+| API | Description |
+| --- | --- |
+| **Server-side** `Agent` class | Encapsulates agent logic: connections, state, methods, AI models, error handling |
+| **Client-side** SDK | `AgentClient`, `useAgent`, and `useAgentChat` for connecting from browsers |
 
 Note
 
@@ -62,6 +62,7 @@ If the client disconnects, you can always route the client back to the exact sam
 
 ## Lifecycle
 
+```
 flowchart TD
     A["onStart<br/>(instance wakes up)"] --> B["onRequest<br/>(HTTP)"]
     A --> C["onConnect<br/>(WebSocket)"]
@@ -69,51 +70,53 @@ flowchart TD
     C --> E["onMessage ↔ send()<br/>onError (on failure)"]
     E --> F["onClose"]
 
-| Method                                      | When it runs                                                                                                                                                                                                                 |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| onStart(props?)                             | When the instance starts, or wakes from hibernation. Receives optional [initialization props](https://developers.cloudflare.com/agents/runtime/communication/routing/#props) passed via getAgentByName or routeAgentRequest. |
-| onRequest(request)                          | For each HTTP request to the instance                                                                                                                                                                                        |
-| onConnect(connection, ctx)                  | When a WebSocket connection is established                                                                                                                                                                                   |
-| onMessage(connection, message)              | For each WebSocket message received                                                                                                                                                                                          |
-| onError(connection, error)                  | When a WebSocket error occurs                                                                                                                                                                                                |
-| onClose(connection, code, reason, wasClean) | When a WebSocket connection closes                                                                                                                                                                                           |
-| onEmail(email)                              | When an email is routed to the instance                                                                                                                                                                                      |
-| onStateChanged(state, source)               | When state changes (from server or client)                                                                                                                                                                                   |
+```
+
+| Method | When it runs |
+| --- | --- |
+| `onStart(props?)` | When the instance starts, or wakes from hibernation. Receives optional [initialization props](https://developers.cloudflare.com/agents/runtime/communication/routing/#props) passed via `getAgentByName` or `routeAgentRequest`. |
+| `onRequest(request)` | For each HTTP request to the instance |
+| `onConnect(connection, ctx)` | When a WebSocket connection is established |
+| `onMessage(connection, message)` | For each WebSocket message received |
+| `onError(connection, error)` | When a WebSocket error occurs |
+| `onClose(connection, code, reason, wasClean)` | When a WebSocket connection closes |
+| `onEmail(email)` | When an email is routed to the instance |
+| `onStateChanged(state, source)` | When state changes (from server or client) |
 
 ## Core properties
 
-| Property   | Type             | Description                            |
-| ---------- | ---------------- | -------------------------------------- |
-| this.env   | Env              | Environment variables and bindings     |
-| this.ctx   | ExecutionContext | Execution context for the request      |
-| this.state | State            | Current persisted state                |
-| this.sql   | Function         | Execute SQL queries on embedded SQLite |
+| Property | Type | Description |
+| --- | --- | --- |
+| `this.env` | `Env` | Environment variables and bindings |
+| `this.ctx` | `ExecutionContext` | Execution context for the request |
+| `this.state` | `State` | Current persisted state |
+| `this.sql` | Function | Execute SQL queries on embedded SQLite |
 
 ## Server-side API reference
 
-| Feature                  | Methods                                                                              | Documentation                                                                                                           |
-| ------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| **State**                | setState(), onStateChanged(), initialState                                           | [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)                               |
-| **Callable methods**     | @callable() decorator                                                                | [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)                        |
-| **Scheduling**           | schedule(), scheduleEvery(), getScheduleById(), listSchedules()                      | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)                            |
-| **Durable execution**    | runFiber(), startFiber(), stash(), onFiberRecovered(), keepAlive(), keepAliveWhile() | [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)                      |
-| **Queue**                | queue(), dequeue(), dequeueAll(), getQueue()                                         | [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)                                  |
-| **WebSockets**           | onConnect(), onMessage(), onClose(), broadcast()                                     | [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)                                |
-| **HTTP/SSE**             | onRequest()                                                                          | [HTTP and SSE](https://developers.cloudflare.com/agents/runtime/communication/http-sse/)                                |
-| **Email**                | onEmail(), replyToEmail()                                                            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)                                 |
-| **Workflows**            | runWorkflow(), waitForApproval()                                                     | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)                              |
-| **MCP Client**           | addMcpServer(), removeMcpServer(), getMcpServers()                                   | [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)                      |
-| **AI Models**            | Workers AI, OpenAI, Anthropic bindings                                               | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)                         |
-| **Protocol messages**    | shouldSendProtocolMessages(), isConnectionProtocolEnabled()                          | [Protocol messages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/)                  |
-| **Context**              | getCurrentAgent()                                                                    | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/)                      |
-| **Tracing**              | wrapAISDK()                                                                          | [Tracing](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/)                           |
-| **Diagnostics channels** | subscribe(), diagnostics channels                                                    | [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/) |
-| **Sub-agents**           | subAgent(), abortSubAgent(), deleteSubAgent()                                        | [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)                                    |
-| **Agents as tools**      | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                              | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)                              |
-| **Agent Skills**         | skills registry, bundled skill sources, script runners                               | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)                                |
-| **Sessions**             | Session.create(), context blocks, compaction, search                                 | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)                                        |
-| **Think**                | Think base class, workspace tools, lifecycle hooks, extensions                       | [Think](https://developers.cloudflare.com/agents/harnesses/think/)                                                      |
-| **Chat SDK**             | createChatSdkState(), ChatSdkStateAgent                                              | [Chat SDK](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/)                                    |
+| Feature | Methods | Documentation |
+| --- | --- | --- |
+| **State** | `setState()`, `onStateChanged()`, `initialState` | [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) |
+| **Callable methods** | `@callable()` decorator | [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) |
+| **Scheduling** | `schedule()`, `scheduleEvery()`, `getScheduleById()`, `listSchedules()` | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) |
+| **Durable execution** | `runFiber()`, `startFiber()`, `stash()`, `onFiberRecovered()`, `keepAlive()`, `keepAliveWhile()` | [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) |
+| **Queue** | `queue()`, `dequeue()`, `dequeueAll()`, `getQueue()` | [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/) |
+| **WebSockets** | `onConnect()`, `onMessage()`, `onClose()`, `broadcast()` | [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/) |
+| **HTTP/SSE** | `onRequest()` | [HTTP and SSE](https://developers.cloudflare.com/agents/runtime/communication/http-sse/) |
+| **Email** | `onEmail()`, `replyToEmail()` | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) |
+| **Workflows** | `runWorkflow()`, `waitForApproval()` | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |
+| **MCP Client** | `addMcpServer()`, `removeMcpServer()`, `getMcpServers()` | [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/) |
+| **AI Models** | Workers AI, OpenAI, Anthropic bindings | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/) |
+| **Protocol messages** | `shouldSendProtocolMessages()`, `isConnectionProtocolEnabled()` | [Protocol messages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) |
+| **Context** | `getCurrentAgent()` | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/) |
+| **Tracing** | `wrapAISDK()` | [Tracing](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/) |
+| **Diagnostics channels** | `subscribe()`, diagnostics channels | [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/) |
+| **Sub-agents** | `subAgent()`, `abortSubAgent()`, `deleteSubAgent()` | [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/) |
+| **Agents as tools** | `runAgentTool()`, `clearAgentToolRuns()`, `hasAgentToolRun()` | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) |
+| **Agent Skills** | `skills` registry, bundled skill sources, script runners | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/) |
+| **Sessions** | `Session.create()`, context blocks, compaction, search | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/) |
+| **Think** | `Think` base class, workspace tools, lifecycle hooks, extensions | [Think](https://developers.cloudflare.com/agents/harnesses/think/) |
+| **Chat SDK** | `createChatSdkState()`, `ChatSdkStateAgent` | [Chat SDK](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/) |
 
 ## SQL API
 
@@ -134,13 +137,13 @@ For state that needs to sync with clients, use the [State API](https://developer
 
 ## Client-side API reference
 
-| Feature               | Methods              | Documentation                                                                                                                |
-| --------------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **WebSocket client**  | AgentClient          | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)                               |
-| **HTTP client**       | agentFetch()         | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#http-requests-with-agentfetch) |
-| **React hook**        | useAgent()           | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#react)                         |
-| **Chat hook**         | useAgentChat()       | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)                               |
-| **Agent tool events** | useAgentToolEvents() | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#render-child-timelines-in-react)   |
+| Feature | Methods | Documentation |
+| --- | --- | --- |
+| **WebSocket client** | `AgentClient` | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) |
+| **HTTP client** | `agentFetch()` | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#http-requests-with-agentfetch) |
+| **React hook** | `useAgent()` | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#react) |
+| **Chat hook** | `useAgentChat()` | [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) |
+| **Agent tool events** | `useAgentToolEvents()` | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#render-child-timelines-in-react) |
 
 Module-level helper exports include `agentTool()` from `agents/agent-tools`, which converts a Think or `AIChatAgent` subclass into an AI SDK tool definition.
 
@@ -181,9 +184,9 @@ class ChatAgent extends AIChatAgent {
 
 Features include:
 
-* Built-in message persistence
-* Automatic resumable streaming (reconnect mid-stream)
-* Works with `useAgentChat` React hook
+- Built-in message persistence
+- Automatic resumable streaming (reconnect mid-stream)
+- Works with `useAgentChat` React hook
 
 Refer to [Build a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/) for a complete tutorial.
 

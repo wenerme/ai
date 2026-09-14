@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 524
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error 524: a timeout occurred
 
@@ -28,24 +28,23 @@ Error `524` can also indicate that Cloudflare successfully connected to the orig
 
 Here are the options we suggest to work around this issue:
 
-* [Contact your hosting provider](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to exclude the following common causes at your origin web server:
-
-  * A long-running process on the origin web server.
-  * An overloaded origin web server.
-* Implement status polling of large HTTP processes to avoid hitting this error.
+- [Contact your hosting provider](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/#required-error-details-for-hosting-provider) to exclude the following common causes at your origin web server:
+  - A long-running process on the origin web server.
+  - An overloaded origin web server.
+- Implement status polling of large HTTP processes to avoid hitting this error.
 
 Note
 
-Logging request response time at your origin web server may help identify the cause of resource slowness. Contact your hosting provider or site administrator for assistance in adjusting log formats or search for related logging documentation for your brand of web server such as [Apache ↗](http://httpd.apache.org/docs/current/mod/mod%5Flog%5Fconfig.html) or [Nginx ↗](http://nginx.org/en/docs/http/ngx%5Fhttp%5Flog%5Fmodule.html#log%5Fformat).
+Logging request response time at your origin web server may help identify the cause of resource slowness. Contact your hosting provider or site administrator for assistance in adjusting log formats or search for related logging documentation for your brand of web server such as [Apache ↗](http://httpd.apache.org/docs/current/mod/mod_log_config.html) or [Nginx ↗](http://nginx.org/en/docs/http/ngx_http_log_module.html#log_format).
 
 ### Resolution on Cloudflare
 
 Here are some other actions you can take on the Cloudflare side:
 
-* If you regularly run HTTP requests that take over 125 seconds to complete (for example, large data exports), move those processes behind a [subdomain not proxied (DNS-only, grey clouded)](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) in the Cloudflare **DNS** app.
-* Enterprise customers can increase the `524` timeout up to 6,000 seconds:
-  * If your content can be cached, you can create a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#proxy-read-timeout-enterprise-only) with the `Proxy Read Timeout` setting. The content needs to be cacheable for the rule to be triggered, but does not need to be cached.
-  * You can increase the `proxy_read_timeout` setting for the whole zone using the [Edit zone setting API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/).
+- If you regularly run HTTP requests that take over 125 seconds to complete (for example, large data exports), move those processes behind a [subdomain not proxied (DNS-only, grey clouded)](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) in the Cloudflare **DNS** app.
+- Enterprise customers can increase the `524` timeout up to 6,000 seconds:
+  - If your content can be cached, you can create a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#proxy-read-timeout-enterprise-only) with the `Proxy Read Timeout` setting. The content needs to be cacheable for the rule to be triggered, but does not need to be cached.
+  - You can increase the `proxy_read_timeout` setting for the whole zone using the [Edit zone setting API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/).
 
 Note
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bot detection engines
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare uses multiple detection engines because different bot types require different detection strategies. Simple bots can be caught by pattern matching against known signatures, while sophisticated bots require machine learning and behavioral analysis.
 
@@ -26,7 +26,7 @@ The **Heuristics** engine processes all requests. Cloudflare conducts a number o
 
 The [**JavaScript Detections (JSD)**](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/) engine identifies headless browsers and other malicious fingerprints. This engine performs a lightweight, invisible JavaScript injection on the client side of any request while honoring our [strict privacy standards ↗](https://www.cloudflare.com/privacypolicy/). We do not collect any personally identifiable information during the process. The JSD engine either blocks, challenges, or passes requests to other engines.
 
-JSD is completely optional. To adjust your settings, configure Super Bot Fight Mode from **Security** \> **Bots**.
+JSD is completely optional. To adjust your settings, configure Super Bot Fight Mode from **Security** > **Bots**.
 
 ## Machine Learning (Business and Enterprise)
 
@@ -36,12 +36,12 @@ The ML system uses a supervised machine learning methodology to determine the fi
 
 The core model relies on the following process:
 
-* Input Variables (X): Various request features (headers, session characteristics, and browser signals) collected from traffic across the Cloudflare network.
-* Output Variable (Y): The predicted probability that a client is human (such as the probability of successfully solving a Challenge). This probability is mapped to the final 1–99 Bot Score.
+- Input Variables (X): Various request features (headers, session characteristics, and browser signals) collected from traffic across the Cloudflare network.
+- Output Variable (Y): The predicted probability that a client is human (such as the probability of successfully solving a Challenge). This probability is mapped to the final 1–99 Bot Score.
 
 We constantly train the ML engine on a periodic basis using vast, anonymized data to ensure it remains accurate and adapts to new threats. Customers can analyze the request features used by these models via their own logs, such as Cloudflare [Logpull](https://developers.cloudflare.com/logs/logpull/) or [Logpush](https://developers.cloudflare.com/logs/logpush/).
 
-The ML engine identifies _likely automated_ traffic.
+The ML engine identifies *likely automated* traffic.
 
 ## Anomaly detection (Enterprise)
 
@@ -55,13 +55,15 @@ Cloudflare does not recommend AD for domains that use [Cloudflare for SaaS](http
 
 ## Notes on detection
 
-Cloudflare uses the `__cf_bm` cookie to smooth out the bot score and reduce false positives for actual user sessions.
+Cloudflare uses the `__cf_bm` cookie to smooth out the bot score
+
+ and reduce false positives for actual user sessions.
 
 The Bot Management cookie measures a single user's request pattern and applies it to the machine learning data to generate a reliable bot score for all of that user's requests.
 
 For more details, refer to [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/).
 
-You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via the API](https://developers.cloudflare.com/api/resources/bot%5Fmanagement/methods/update/).
+You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via the API](https://developers.cloudflare.com/api/resources/bot_management/methods/update/).
 
 Was this helpful?
 

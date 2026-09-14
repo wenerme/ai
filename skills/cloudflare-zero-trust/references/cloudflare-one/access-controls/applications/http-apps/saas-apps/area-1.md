@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Area 1
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/area-1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/area-1/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access to Area 1
 
@@ -22,41 +22,38 @@ Beginning October 1, 2025, access and support for Email Security (formerly Area 
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to your Area 1 account
-* Your user's email in Area 1 matches their email in Cloudflare One
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to your Area 1 account
+- Your user's email in Area 1 matches their email in Cloudflare One
 
-## 1\. Add Area 1 to Cloudflare One
+## 1. Add Area 1 to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. In the **Application** field, enter `Area 1` and select **Area 1**. (Area 1 is not currently listed in the default drop-down menu.)
 5. Enter the following values for your application configuration:
 
-| **Entity ID**                      | https://horizon.area1security.com                |
-| ---------------------------------- | ------------------------------------------------ |
-| **Assertion Consumer Service URL** | https://horizon.area1security.com/api/users/saml |
-| **Name ID Format**                 | _Email_                                          |
+   | **Entity ID** | `https://horizon.area1security.com` |
+   | --- | --- |
+   | **Assertion Consumer Service URL** | `https://horizon.area1security.com/api/users/saml` |
+   | **Name ID Format** | *Email* |
 6. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 7. Save the application.
 
-## 2\. Configure SSO for Area 1
+## 2. Configure SSO for Area 1
 
 Finally, you will need to configure Area 1 to allow users to log in through Cloudflare Access.
 
-1. In your [Area 1 portal ↗](https://horizon.area1security.com/), go to **Settings** \> **SSO**.
+1. In your [Area 1 portal ↗](https://horizon.area1security.com/), go to **Settings** > **SSO**.
 2. Turn on **Single Sign On**.
-3. (Optional) To require users to sign in through Access, set **SSO Enforcement** to _All_. When SSO is enforced, users will no longer be able to sign in with their Area 1 credentials.
+3. (Optional) To require users to sign in through Access, set **SSO Enforcement** to *All*. When SSO is enforced, users will no longer be able to sign in with their Area 1 credentials.
 4. In **SAML SSO Domain**, enter `<your-team-name>.cloudflareaccess.com`.
 5. Get your Metadata XML file:
-
-  1. In Cloudflare One, copy the **SSO Endpoint** for your application.
-  ![Copy SSO settings for a SaaS application from Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1608,height=925,format=webp/_astro/saas-sso-endpoint.ubdoNRaM.png)
-  2. In a new browser tab, paste the **SSO Endpoint** and append `/saml-metadata` to the end of the URL. For example, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<app-id>/saml-metadata`.
-  3. Copy the resulting metadata.
-6. Return to the Area 1 portal and paste the metadata into **Metadata XML**.
-![Configure SSO in the Area 1 portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=685,height=487,format=webp/_astro/area1-sso-config.DWq80iDZ.png)
+   1. In Cloudflare One, copy the **SSO Endpoint** for your application.![Copy SSO settings for a SaaS application from Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1608,height=925,format=webp/_astro/saas-sso-endpoint.ubdoNRaM.png)
+   2. In a new browser tab, paste the **SSO Endpoint** and append `/saml-metadata` to the end of the URL. For example, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<app-id>/saml-metadata`.
+   3. Copy the resulting metadata.
+6. Return to the Area 1 portal and paste the metadata into **Metadata XML**.![Configure SSO in the Area 1 portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=685,height=487,format=webp/_astro/area1-sso-config.DWq80iDZ.png)
 7. Select **Update Settings**.
 
 If you added the application to your App Launcher, you can test the integration by going to `<your-team-name>.cloudflareaccess.com`.

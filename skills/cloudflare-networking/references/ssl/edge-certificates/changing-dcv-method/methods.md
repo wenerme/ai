@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Methods
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before a certificate authority (CA) will issue a certificate for a domain, the requester must prove they have control over that domain. This process is known as domain control validation (DCV).
 
@@ -20,9 +20,9 @@ Before a certificate authority (CA) will issue a certificate for a domain, the r
 
 For details on each method available for DCV, refer to the following resources:
 
-* [Delegated](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/)
-* [TXT](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/)
-* [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/)
+- [Delegated](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/delegated-dcv/)
+- [TXT](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/txt/)
+- [HTTP](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/)
 
 Note
 

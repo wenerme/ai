@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Origin Analytics
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/origin-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/origin-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Origin Analytics shows how your origin server responds to Cloudflare, using data collected at the edge without an agent on your origin.
 
@@ -23,7 +23,7 @@ Use Origin Analytics to identify slow endpoints, monitor origin response times, 
 To open the Origin Analytics tab:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
-2. Go to **Speed** \> **Origin Analytics**.
+2. Go to **Speed** > **Origin Analytics**.
 
 ## Metrics
 
@@ -47,15 +47,15 @@ Origin Analytics shows both values: the response code from your origin (`originR
 
 The following table shows common scenarios where these values differ:
 
-| What happened                              | originResponseStatus | edgeResponseStatus |
-| ------------------------------------------ | -------------------- | ------------------ |
-| Origin returned 200 with malformed headers | 200                  | 520                |
-| Origin returned a server error             | 503                  | 503 or 520         |
-| Origin closed the connection mid-response  | 0                    | 520                |
-| Origin did not respond in time             | 0                    | 524                |
-| TCP connection to origin failed            | 0                    | 522                |
-| Request served from cache                  | 0                    | 200                |
-| Worker handled the request                 | 0                    | Varies             |
+| What happened | `originResponseStatus` | `edgeResponseStatus` |
+| --- | --- | --- |
+| Origin returned `200` with malformed headers | `200` | `520` |
+| Origin returned a server error | `503` | `503` or `520` |
+| Origin closed the connection mid-response | `0` | `520` |
+| Origin did not respond in time | `0` | `524` |
+| TCP connection to origin failed | `0` | `522` |
+| Request served from cache | `0` | `200` |
+| Worker handled the request | `0` | Varies |
 
 A status code of `0` means Cloudflare did not receive an HTTP response from the origin. This can indicate a connection failure, a timeout, or that the request was served from cache or handled by a [Worker](https://developers.cloudflare.com/workers/) before reaching the origin.
 
@@ -67,18 +67,18 @@ Use this table to narrow down which specific path is causing slowdowns or errors
 
 The following table describes how to use Origin Analytics to investigate common origin errors.
 
-| Issue                                                                                                                                 | What to check                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [524 timeout errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/)    | Origin response time chart. If P95 is approaching the timeout threshold, identify slow paths in the **Top endpoints** table.                                                         |
-| [522 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | Verify that your firewall allows [Cloudflare IP ranges ↗](https://www.cloudflare.com/ips/) and that your origin is listening on the expected port.                                   |
-| [520 unknown errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/)    | Origin status code chart. If the origin returned a 200 but Cloudflare served a 520, the origin response was malformed (for example, oversized headers or an early connection close). |
+| Issue | What to check |
+| --- | --- |
+| [524 timeout errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | Origin response time chart. If P95 is approaching the timeout threshold, identify slow paths in the **Top endpoints** table. |
+| [522 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | Verify that your firewall allows [Cloudflare IP ranges ↗](https://www.cloudflare.com/ips/) and that your origin is listening on the expected port. |
+| [520 unknown errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | Origin status code chart. If the origin returned a `200` but Cloudflare served a `520`, the origin response was malformed (for example, oversized headers or an early connection close). |
 
 ## Related resources
 
-* [Cloudflare 5xx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/) — diagnose specific error codes like 520, 522, and 524.
-* [Logpush](https://developers.cloudflare.com/logs/logpush/) — export per-request logs with origin timing fields not available in the dashboard.
-* [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — query origin metrics programmatically, including fields not shown in the dashboard.
-* [Observatory dashboard](https://developers.cloudflare.com/speed/observatory/dashboard/) — monitor end-user performance with synthetic tests and real user data.
+- [Cloudflare 5xx errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/) — diagnose specific error codes like 520, 522, and 524.
+- [Logpush](https://developers.cloudflare.com/logs/logpush/) — export per-request logs with origin timing fields not available in the dashboard.
+- [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — query origin metrics programmatically, including fields not shown in the dashboard.
+- [Observatory dashboard](https://developers.cloudflare.com/speed/observatory/dashboard/) — monitor end-user performance with synthetic tests and real user data.
 
 Was this helpful?
 

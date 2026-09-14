@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Augment default analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/improve-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/prevent-ddos-attacks/advanced/improve-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare provides analytics for [security events](https://developers.cloudflare.com/waf/analytics/security-events/), [traffic patterns](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/), and more according to the level of your zone's plan.
 
@@ -26,7 +26,9 @@ If needed, you can [restore the original visitor's IP address](https://developer
 
 ## Cloudflare Logs
 
-Enterprise customers can set up [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs to regularly send Cloudflare logs to the SIEM system of their choice.
+Enterprise customers can set up [Logpush](https://developers.cloudflare.com/logs/logpush/) jobs to regularly send Cloudflare logs to the SIEM system
+
+ of their choice.
 
 This data can help when looking at long-term DDoS attack trends or when you need custom visualizations.
 
@@ -36,10 +38,10 @@ For more detailed analytics about potential bot attacks, Enterprise customers ca
 
 For a full tour of Bot Analytics, see [our blog post ↗](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
 
-* **Requests by bot score**: View your total domain traffic and segment it vertically by traffic type. Keep an eye on _automated_ and _likely automated_ traffic.
-* **Bot score distribution**: View the number of requests assigned a bot score 1 through 99.
-* **Bot score source**: Identify the most common detection engines used to score your traffic. Hover over a tooltip to learn more about each engine.
-* **Top requests by attribute**: View more detailed information on specific IP addresses and other characteristics.
+- **Requests by bot score**: View your total domain traffic and segment it vertically by traffic type. Keep an eye on *automated* and *likely automated* traffic.
+- **Bot score distribution**: View the number of requests assigned a bot score 1 through 99.
+- **Bot score source**: Identify the most common detection engines used to score your traffic. Hover over a tooltip to learn more about each engine.
+- **Top requests by attribute**: View more detailed information on specific IP addresses and other characteristics.
 
 Bot Analytics shows up to one week of data at a time and can display data up to 30 days old. Bot Analytics displays data in real time in most cases.
 

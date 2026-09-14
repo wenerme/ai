@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/page-rules/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/page-rules/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the following resources to accomplish specific goals in Page Rules.
 
-* [URL forwarding with Page Rules](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/)
+- [URL forwarding with Page Rules](https://developers.cloudflare.com/rules/page-rules/how-to/url-forwarding/)
 
 Note
 

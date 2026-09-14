@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Docker-in-Docker
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to run Docker inside a Sandbox, enabling you to build and run container images from within a secure sandbox.
 
@@ -20,13 +20,15 @@ This guide shows you how to run Docker inside a Sandbox, enabling you to build a
 
 Use Docker-in-Docker when you need to:
 
-* **Develop containerized applications** \- Run `docker build` to create images from Dockerfiles
-* **Run Docker as part of CI/CD** \- Respond to code changes and build and push images using Cloudflare Containers
-* **Run arbitrary container images** \- Start containers from an end-user provided image
+- **Develop containerized applications** - Run `docker build` to create images from Dockerfiles
+- **Run Docker as part of CI/CD** - Respond to code changes and build and push images using Cloudflare Containers
+- **Run arbitrary container images** - Start containers from an end-user provided image
 
 ## Create a Docker-enabled image
 
 Cloudflare Containers run without root privileges, so you must use the rootless Docker image. Create a custom Dockerfile that combines the sandbox binary with Docker:
+
+*Dockerfiledockerfile*
 
 ```dockerfile
 FROM docker:dind-rootless
@@ -123,15 +125,15 @@ console.log(run.stdout); // "Hello from Docker!"
 
 Docker-in-Docker in Cloudflare Containers has the following limitations:
 
-* **No iptables** \- Network isolation features that rely on iptables are not available
-* **Rootless mode only** \- You cannot use privileged containers or features requiring root
-* **Ephemeral storage** \- Built images and containers are lost when the sandbox sleeps. You must persist them manually.
+- **No iptables** - Network isolation features that rely on iptables are not available
+- **Rootless mode only** - You cannot use privileged containers or features requiring root
+- **Ephemeral storage** - Built images and containers are lost when the sandbox sleeps. You must persist them manually.
 
 ## Related resources
 
-* [Dockerfile reference](https://developers.cloudflare.com/sandbox/configuration/dockerfile/) \- Customize your sandbox image
-* [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Run commands in the sandbox
-* [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Manage long-running processes
+- [Dockerfile reference](https://developers.cloudflare.com/sandbox/configuration/dockerfile/) - Customize your sandbox image
+- [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Run commands in the sandbox
+- [Background processes](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Manage long-running processes
 
 Was this helpful?
 

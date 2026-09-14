@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add custom policies
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, you can create a maximum of 200 policies. We recommend you create lists of IP addresses to reference within policies to streamline policy management.
 
 ## Add a policy
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Firewall policies** \> **Custom policies**.
+1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Firewall policies** > **Custom policies**.
 2. Select **Add a policy**.
-3. Fill out the information for your new policy. All existing policies apply to IPv4\. You can use a managed [IP list ↗](https://www.cloudflare.com/en-gb/ips/) when populating the **Value**.
+3. Fill out the information for your new policy. All existing policies apply to IPv4. You can use a managed [IP list ↗](https://www.cloudflare.com/en-gb/ips/) when populating the **Value**.
 4. When you are done, select **Add new policy**.
 
 ## Create a disabled policy
@@ -33,7 +33,7 @@ To disable an existing policy, from the **Custom policies** tab, set the **Enabl
 
 ## Update a policy
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Firewall policies** \> **Custom policies**.
+1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Firewall policies** > **Custom policies**.
 2. Locate the policy you want to edit and select the three dots > **Edit**.
 3. Update the policy with your changes and select **Save**.
 
@@ -111,10 +111,10 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \
 
 Cloudflare Network Firewall supports [using lists in expressions](https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/) for the `ip.src` and `ip.dst` fields. The supported lists are:
 
-* `$cf.anonymizer` \- Anonymizer proxies
-* `$cf.botnetcc` \- Botnet command and control channel
-* `$cf.malware` \- Sources of malware
-* `$<IP_LIST_NAME>` \- The name of an account-level IP list
+- `$cf.anonymizer` - Anonymizer proxies
+- `$cf.botnetcc` - Botnet command and control channel
+- `$cf.malware` - Sources of malware
+- `$<IP_LIST_NAME>` - The name of an account-level IP list
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/{account_id}/rulesets \

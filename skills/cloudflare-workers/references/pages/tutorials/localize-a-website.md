@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Localize a website with HTMLRewriter
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/localize-a-website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build an example internationalization and localization engine (commonly referred to as **i18n** and **l10n**) for your application, serve the content of your site, and automatically translate the content based on your visitors’ location in the world.
 
-This tutorial uses the [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) class built into the Cloudflare Workers runtime, which allows for parsing and rewriting of HTML on the Cloudflare global network. This gives developers the ability to efficiently and transparently customize their Workers applications.
+This tutorial uses the [`HTMLRewriter`](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) class built into the Cloudflare Workers runtime, which allows for parsing and rewriting of HTML on the Cloudflare global network. This gives developers the ability to efficiently and transparently customize their Workers applications.
 
 ![An example site that has been successfully localized in Japanese, German and English](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=779,format=webp/_astro/i18n.DfrXtRlL.jpg)
 
@@ -38,7 +38,7 @@ If you would like to deploy your own version of the site, you can find the sourc
 
 ## Create a new application
 
-Create a new application using the [create-cloudflare](https://developers.cloudflare.com/pages/get-started/c3), a CLI for creating and deploying new applications to Cloudflare.
+Create a new application using the [`create-cloudflare`](https://developers.cloudflare.com/pages/get-started/c3), a CLI for creating and deploying new applications to Cloudflare.
 
 npmyarnpnpm
 
@@ -56,9 +56,9 @@ pnpm create cloudflare@latest i18n-example
 
 For setup, select the following options:
 
-* For _What would you like to start with_?, select `Framework Starter`.
-* For _Which development framework do you want to use?_, select `React`.
-* For, _Do you want to deploy your application?_, select `No`.
+- For *What would you like to start with*?, select `Framework Starter`.
+- For *Which development framework do you want to use?*, select `React`.
+- For, *Do you want to deploy your application?*, select `No`.
 
 The newly generated `i18n-example` project will contain two folders: `public` and `src` these contain files for a React application:
 
@@ -91,7 +91,7 @@ The example website in this tutorial is a basic single-page HTML project that li
 
 ![Demo code shown in Chrome DevTools with the elements described above](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=934,format=webp/_astro/code-example.Csjrvc1w.png)
 
-What is unique about this page is the addition of [data attributes ↗](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use%5Fdata%5Fattributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
+What is unique about this page is the addition of [data attributes ↗](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
 
 ```html
 <!-- source clipped from i18n-example site -->
@@ -178,7 +178,7 @@ class ElementHandler {
 }
 ```
 
-To review that everything looks as expected, use the preview functionality built into Wrangler. Call [wrangler pages dev ./public](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to open up a live preview of your project. The command is refreshed after every code change that you make.
+To review that everything looks as expected, use the preview functionality built into Wrangler. Call [`wrangler pages dev ./public`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to open up a live preview of your project. The command is refreshed after every code change that you make.
 
 You can expand on this translation functionality to provide country-specific translations, based on the incoming request’s `Accept-Language` header. By taking this header, parsing it, and passing the parsed language into your `ElementHandler`, you can retrieve a translated string in your user’s home language, provided that it is defined in `strings`.
 
@@ -188,7 +188,7 @@ To implement this:
 2. Pass a `countryStrings` object into our `ElementHandler`, so that it can be used during the parsing process.
 3. Grab the `Accept-Language` header from an incoming request, parse it, and pass the parsed language to `ElementHandler`.
 
-To parse the `Accept-Language` header, install the [accept-language-parser ↗](https://www.npmjs.com/package/accept-language-parser) npm package:
+To parse the `Accept-Language` header, install the [`accept-language-parser` ↗](https://www.npmjs.com/package/accept-language-parser) npm package:
 
 ```sh
 npm i accept-language-parser
@@ -286,7 +286,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25"
+	"compatibility_date": "2026-09-14"
 }
 ```
 
@@ -295,7 +295,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:

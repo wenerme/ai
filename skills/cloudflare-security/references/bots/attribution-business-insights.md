@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Attribution Business Insights
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/attribution-business-insights/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/attribution-business-insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Attribution Business Insights** is a dashboard designed for business decision-makers and content owners, delivering a targeted view of bot traffic flowing to your website. Analyze crawler patterns to your website in the last 24 hours, 7 days, or 30 days.
 
@@ -24,19 +24,19 @@ This dashboard is meant for visibility for a new set of stakeholders, and does n
 
 ## Access
 
-[Go to **Attribution Business Insights** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/attribution-business-insights)
+[Go to **Attribution Business Insights** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/attribution-business-insights)
 
-You can also reach the dashboard from your zone-level **Analytics** \> **Attribution Business Insights** in the Cloudflare dashboard.
+You can also reach the dashboard from your zone-level **Analytics** > **Attribution Business Insights** in the Cloudflare dashboard.
 
 ## Definitions
 
 The dashboard surfaces both existing and new metrics that help you evaluate AI traffic. In the current version, we use the following definitions for the metrics shown on the dashboard:
 
-* **Content pages**: Content is initially defined as HTML pages on your website.
-* **Crawl-to-referral ratio, per bot operator**: The average crawl-to-referral ratio (number of crawls sent by this company, vs. the number of visitors who visit you through a referral link from that company, tracked through UTM parameters) for a given company, in the selected time period.
-* **Crawl-to-referral ratio, site-wide**: The average crawl-to-referral ratio (number of crawls sent by this company, vs. the number of visitors who visit you through a referral link from that company, tracked through UTM parameters) across all activity on your zone, in the selected time period.
-* **Classification**: Each crawler is classified with Cloudflare's updated taxonomy. See [Verified bot classifications](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) for more information. If the company has at least 1 bot with an AI use case, we label the operator with the "AI" label, plus provide this as a filter.
-* **Action**: Action reflects whether requests from this company are Blocked, Allowed, or Partially blocked. Companies that have some bots blocked but at least 1 bot allowed will be marked as "Partially Blocked", and configuration can be confirmed in [Security rules](https://developers.cloudflare.com/security/rules/).
+- **Content pages**: Content is initially defined as HTML pages on your website.
+- **Crawl-to-referral ratio, per bot operator**: The average crawl-to-referral ratio (number of crawls sent by this company, vs. the number of visitors who visit you through a referral link from that company, tracked through UTM parameters) for a given company, in the selected time period.
+- **Crawl-to-referral ratio, site-wide**: The average crawl-to-referral ratio (number of crawls sent by this company, vs. the number of visitors who visit you through a referral link from that company, tracked through UTM parameters) across all activity on your zone, in the selected time period.
+- **Classification**: Each crawler is classified with Cloudflare's updated taxonomy. See [Verified bot classifications](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/) for more information. If the company has at least 1 bot with an AI use case, we label the operator with the "AI" label, plus provide this as a filter.
+- **Action**: Action reflects whether requests from this company are Blocked, Allowed, or Partially blocked. Companies that have some bots blocked but at least 1 bot allowed will be marked as "Partially Blocked", and configuration can be confirmed in [Security rules](https://developers.cloudflare.com/security/rules/).
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Types
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/binding/types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/binding/types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Flagship binding uses the following TypeScript types. These are available from the `@cloudflare/workers-types` package after running `npx wrangler types`.
 
@@ -50,13 +50,13 @@ interface FlagshipEvaluationDetails<T> {
 }
 ```
 
-| Property  | Type   | Description                                                                         |
-| --------- | ------ | ----------------------------------------------------------------------------------- |
-| flagKey   | string | The key of the evaluated flag.                                                      |
-| value     | T      | The resolved flag value.                                                            |
-| variant   | string | The name of the matched variant, if any.                                            |
-| reason    | string | Why the flag resolved to this value (for example, "TARGETING\_MATCH" or "DEFAULT"). |
-| errorCode | string | An error code if evaluation failed (for example, "TYPE\_MISMATCH" or "GENERAL").    |
+| Property | Type | Description |
+| --- | --- | --- |
+| `flagKey` | `string` | The key of the evaluated flag. |
+| `value` | `T` | The resolved flag value. |
+| `variant` | `string` | The name of the matched variant, if any. |
+| `reason` | `string` | Why the flag resolved to this value (for example, `"TARGETING_MATCH"` or `"DEFAULT"`). |
+| `errorCode` | `string` | An error code if evaluation failed (for example, `"TYPE_MISMATCH"` or `"GENERAL"`). |
 
 Refer to [evaluation reasons and error codes](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/) for the full list of possible values.
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Programmatic submissions
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/programmatic-submissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durably accept a Think turn and return before inference runs. Use `submitMessages()` for webhook handlers, RPC callers, and parent Workers that need a fast acknowledgement, safe retry, and later status inspection.
 
-Declarative [scheduled prompt tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) use the same durable submission path under the hood. Use `getScheduledTasks()` when the trigger is recurring and code-declared; use `submitMessages()` directly when an external caller or webhook creates one-off work. To wait for the response inline, use [saveMessages()](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#savemessages) instead.
+Declarative [scheduled prompt tasks](https://developers.cloudflare.com/agents/harnesses/think/scheduled-tasks/) use the same durable submission path under the hood. Use `getScheduledTasks()` when the trigger is recurring and code-declared; use `submitMessages()` directly when an external caller or webhook creates one-off work. To wait for the response inline, use [`saveMessages()`](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#savemessages) instead.
 
 ## submitMessages
 
@@ -73,14 +73,14 @@ return Response.json({
 
 ## Submission statuses
 
-| Status    | Meaning                                        |
-| --------- | ---------------------------------------------- |
-| pending   | Accepted and waiting for its turn              |
-| running   | Claimed by the agent and executing             |
-| completed | The Think turn completed successfully          |
-| aborted   | The submission was cancelled                   |
-| skipped   | Turn state was reset before the submission ran |
-| error     | Execution failed or recovery was unsafe        |
+| Status | Meaning |
+| --- | --- |
+| `pending` | Accepted and waiting for its turn |
+| `running` | Claimed by the agent and executing |
+| `completed` | The Think turn completed successfully |
+| `aborted` | The submission was cancelled |
+| `skipped` | Turn state was reset before the submission ran |
+| `error` | Execution failed or recovery was unsafe |
 
 ## Idempotent retries
 

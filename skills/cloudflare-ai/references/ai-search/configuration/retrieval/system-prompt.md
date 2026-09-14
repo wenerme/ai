@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # System prompt
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 System prompts allow you to guide the behavior of the text-generation models used by AI Search at query time. AI Search supports system prompt configuration in two steps:
 
-* **Query rewriting**: Reformulates the original user query to improve semantic retrieval. A system prompt can guide how the model interprets and rewrites the query.
-* **Generation**: Generates the final response from retrieved context. A system prompt can help define how the model should format, filter, or prioritize information when constructing the answer.
+- **Query rewriting**: Reformulates the original user query to improve semantic retrieval. A system prompt can guide how the model interprets and rewrites the query.
+- **Generation**: Generates the final response from retrieved context. A system prompt can help define how the model should format, filter, or prioritize information when constructing the answer.
 
 ## What is a system prompt?
 
@@ -25,10 +25,10 @@ A system prompt is a special instruction sent to a large language model (LLM) th
 
 System prompts are particularly useful for:
 
-* Enforcing specific response formats
-* Constraining behavior (for example, it only responds based on the provided content)
-* Applying domain-specific tone or terminology
-* Encouraging consistent, high-quality output
+- Enforcing specific response formats
+- Constraining behavior (for example, it only responds based on the provided content)
+- Applying domain-specific tone or terminology
+- Encouraging consistent, high-quality output
 
 ## System prompt configuration
 
@@ -58,9 +58,9 @@ const response = await instance.chatCompletions({
 
 If you are using the Chat Completions endpoint, you can use the system prompt to influence how the LLM responds to the final user query using the retrieved results. At this step, the model receives:
 
-* The user's original query
-* Retrieved document chunks (with metadata)
-* The generation system prompt
+- The user's original query
+- Retrieved document chunks (with metadata)
+- The generation system prompt
 
 The model uses these inputs to generate a context-aware response.
 
@@ -96,8 +96,8 @@ Important:
 
 If query rewriting is enabled, you can provide a custom system prompt to control how the model rewrites user queries. In this step, the model receives:
 
-* The query rewrite system prompt
-* The original user query
+- The query rewrite system prompt
+- The original user query
 
 The model outputs a rewritten query optimized for semantic retrieval.
 

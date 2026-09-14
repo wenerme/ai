@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Elastic
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/elastic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Push your Cloudflare logs to Elastic for instant visibility and insights. Enabling this integration with Elastic comes with a predefined dashboard to view all of your Cloudflare observability and security data with ease.
 
 The Cloudflare Logpush integration can be used in three different modes to collect data:
 
-* **HTTP Endpoint mode** \- Cloudflare pushes logs directly to an HTTP endpoint hosted by your Elastic Agent.
-* **AWS S3 polling mode** \- Cloudflare writes data to S3, and the Elastic Agent polls the S3 bucket by listing its contents and reading new files.
-* **AWS S3 SQS mode** \- Cloudflare writes data to S3, S3 pushes a new object notification to SQS, the Elastic Agent receives the notification from SQS, and then reads the S3 object. Multiple Agents can be used in this mode.
+- **HTTP Endpoint mode** - Cloudflare pushes logs directly to an HTTP endpoint hosted by your Elastic Agent.
+- **AWS S3 polling mode** - Cloudflare writes data to S3, and the Elastic Agent polls the S3 bucket by listing its contents and reading new files.
+- **AWS S3 SQS mode** - Cloudflare writes data to S3, S3 pushes a new object notification to SQS, the Elastic Agent receives the notification from SQS, and then reads the S3 object. Multiple Agents can be used in this mode.
 
 Note
 
@@ -40,10 +40,21 @@ Add the same custom header along with its value on both sides for additional sec
 
 For example, while creating a job along with a header and value for a particular dataset:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -65,7 +76,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 ## Enable the Integration in Elastic
 
-Once the Logpush job is configured, follow Elastics instructions for [setting up the Integration ↗](https://docs.elastic.co/integrations/cloudflare%5Flogpush) in the Elastic app.
+Once the Logpush job is configured, follow Elastics instructions for [setting up the Integration ↗](https://docs.elastic.co/integrations/cloudflare_logpush) in the Elastic app.
 
 ## View Dashboards
 

@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5.4-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning, and stateful context management.
 
-| Model Info                                                                          |                                                                                                                      |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                     |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                               |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                        |
-| Zero data retention                                                                 | Yes                                                                                                                  |
-| Request formats                                                                     | Responses                                                                                                            |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
 
 ## Usage
 
@@ -54,6 +54,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The **three laws of thermodynamics** usually mean:
 
 1. **First Law — Conservation of Energy**
@@ -74,6 +75,7 @@ Small note: thermodynamics also has a **Zeroth Law**, which is often listed befo
 - This is the basis for the concept of **temperature**.
 
 If you want, I can also give a **one-line intuitive version** of each law.
+```
 
 ```json
 {
@@ -161,7 +163,11 @@ If you want, I can also give a **one-line intuitive version** of each law.
 
 ## Examples
 
-**With Instructions** — Using instructions to set context
+<details>
+
+<summary>**With Instructions** — Using instructions to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -185,6 +191,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Use Python’s built-in `json` module.
 
 ### Read a JSON file into a Python object
@@ -252,6 +259,7 @@ print(data)
 ```
 
 If you want, I can also show how to **write JSON back to a file**.
+````
 
 ```json
 {
@@ -337,7 +345,13 @@ If you want, I can also show how to **write JSON back to a file**.
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with message array
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with message array</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -385,9 +399,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - Monterey is great for the aquarium, Cannery Row, and ocean views.
 - San Luis Obispo is a fun lunch stop with a charming downtown and Mission Plaza.
 - Santa Barbara offers beaches, palm-lined streets, and an easy coastal break.
+```
 
 ```json
 {
@@ -473,7 +489,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
-**Temperature Control** — Using temperature for creative responses
+</details>
+
+<details>
+
+<summary>**Temperature Control** — Using temperature for creative responses</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -494,9 +516,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Silent circuits dream
 Learning patterns in the dark
 Dawn wakes metal minds
+```
 
 ```json
 {
@@ -582,7 +606,13 @@ Dawn wakes metal minds
 }
 ```
 
-**With Reasoning** — Using reasoning effort for complex problems
+</details>
+
+<details>
+
+<summary>**With Reasoning** — Using reasoning effort for complex problems</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -609,6 +639,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Step 1: Find their combined speed since they are moving toward each other.
 
 - Train from Chicago: **60 mph**
@@ -643,6 +674,7 @@ So they meet after about:
 **6 hours 26 minutes**
 
 Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
+```
 
 ```json
 {
@@ -728,6 +760,8 @@ Final answer: **The trains meet about 6 hours 26 minutes after they leave.**
 }
 ```
 
+</details>
+
 ## Parameters
 
 ▶input
@@ -754,13 +788,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -786,7 +818,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -804,9 +836,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5.4-pro/schema-output.json)
 
 Was this helpful?
 

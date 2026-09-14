@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • RunwayML
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `runwayml/aleph-2`
 
-* Third-party
+- Third-party
 
 RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.
 
-| Model Info        |                                                                                                                    |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                        |
-| More information  | [link ↗](https://runwayml.com/)                                                                                    |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/aleph-2) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://runwayml.com/terms-of-use) |
+| More information | [link ↗](https://runwayml.com/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/aleph-2) |
 
 ## Usage
 
@@ -70,7 +70,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Keyframe-Guided Edit** — Edit a video using a reference image anchored to the first frame of the output
+<details>
+
+<summary>**Keyframe-Guided Edit** — Edit a video using a reference image anchored to the first frame of the output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -120,7 +124,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Timed Keyframe Edit** — Place a guidance image at a specific timestamp within the input video using keyframes\[\].seconds
+</details>
+
+<details>
+
+<summary>**Timed Keyframe Edit** — Place a guidance image at a specific timestamp within the input video using keyframes[].seconds</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -170,7 +180,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Content Moderation Override** — Edit a video featuring public figures with relaxed content moderation
+</details>
+
+<details>
+
+<summary>**Content Moderation Override** — Edit a video featuring public figures with relaxed content moderation</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -214,6 +230,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -224,11 +242,11 @@ video\_uri
 
 `string`requiredHTTPS URL, Runway URI, or data URI of the source video to edit (≤30 seconds)
 
-▶keyframes\[\]
+▶keyframes\[]
 
 `array`minItems: 1maxItems: 5Timed guidance images placed at specific points in the input video. Each entry has a uri and either seconds (absolute timestamp) or at (fractional position). Up to 5.
 
-▶prompt\_images\[\]
+▶prompt\_images\[]
 
 `array`minItems: 1maxItems: 5Image keyframes for guiding the edit at specific points in the output video. Up to 5.
 
@@ -250,9 +268,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json)
 
 Was this helpful?
 

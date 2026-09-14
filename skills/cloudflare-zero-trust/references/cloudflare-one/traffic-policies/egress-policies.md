@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Egress policies
 
-Last updated Aug 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,7 +28,7 @@ Cloudflare does not publish Cloudflare One Client egress IP ranges. Cloudflare O
 
 Terraform provider v4 precedence limitation
 
-To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint.
+To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
 To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
@@ -46,13 +46,13 @@ Some upstream services only accept connections over a specific IP version. To fo
 
 The following egress policy configures all traffic destined for a third-party network to use a static source IP:
 
-| Policy name                 | Selector       | Operator | Value          | Egress method                   |
-| --------------------------- | -------------- | -------- | -------------- | ------------------------------- |
-| Access third-party provider | Destination IP | is       | 198.51.100.158 | Dedicated Cloudflare egress IPs |
+| Policy name | Selector | Operator | Value | Egress method |
+| --- | --- | --- | --- | --- |
+| Access third-party provider | Destination IP | is | `198.51.100.158` | Dedicated Cloudflare egress IPs |
 
-| Primary IPv4 address | IPv6 address  |
-| -------------------- | ------------- |
-| 203.0.113.88         | 2001:db8::/32 |
+| Primary IPv4 address | IPv6 address |
+| --- | --- |
+| `203.0.113.88` | `2001:db8::/32` |
 
 ### Secure access to SaaS applications
 
@@ -69,9 +69,9 @@ This pattern ensures that access to the SaaS application is limited to traffic t
 
 Without a catch-all policy, any traffic that does not match an explicit egress policy will attempt to use the closest dedicated egress IP location. To avoid unexpected IP assignments and maintain the best performance, create a catch-all policy that routes remaining traffic through the default Zero Trust IP range:
 
-| Policy name           | Selector | Operator | Value                  | Egress method                    |
-| --------------------- | -------- | -------- | ---------------------- | -------------------------------- |
-| Default egress policy | Protocol | in       | All options (Protocol) | Cloudflare default egress method |
+| Policy name | Selector | Operator | Value | Egress method |
+| --- | --- | --- | --- | --- |
+| Default egress policy | Protocol | in | `All options (Protocol)` | Cloudflare default egress method |
 
 Gateway policies evaluate from [top to bottom](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) in the UI. Place the catch-all policy at the bottom of the list so that more specific policies are evaluated first.
 
@@ -101,9 +101,9 @@ Selectors are the criteria that Gateway uses to match egress traffic against a p
 
 You can apply egress policies to a growing list of popular web applications. Refer to [Application and app types](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/) for more information.
 
-| UI name     | API example                 |
-| ----------- | --------------------------- |
-| Application | any(app.ids\[\*\] in {505}) |
+| UI name | API example |
+| --- | --- |
+| Application | `any(app.ids[*] in {505})` |
 
 This selector is only available for traffic onboarded to Traffic and DNS mode, PAC files, or Browser Isolation. For more information, refer to [Selector prerequisites](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
@@ -111,9 +111,9 @@ This selector is only available for traffic onboarded to Traffic and DNS mode, P
 
 Applications within a specific [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) as categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
 
-| UI name            | API example                                  |
-| ------------------ | -------------------------------------------- |
-| Content Categories | any(net.fqdn.content\_category\[\*\] in {1}) |
+| UI name | API example |
+| --- | --- |
+| Content Categories | `any(net.fqdn.content_category[*] in {1})` |
 
 This selector is only available for traffic onboarded to Traffic and DNS mode, PAC files, or Browser Isolation. For more information, refer to [Selector prerequisites](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
@@ -121,43 +121,43 @@ This selector is only available for traffic onboarded to Traffic and DNS mode, P
 
 The continent where the request is destined. Geolocation is determined from the target IP address. To specify a continent, enter its two-letter code into the **Value** field:
 
-| Continent     | Code |
-| ------------- | ---- |
-| Africa        | AF   |
-| Antarctica    | AN   |
-| Asia          | AS   |
-| Europe        | EU   |
-| North America | NA   |
-| Oceania       | OC   |
-| South America | SA   |
+| Continent | Code |
+| --- | --- |
+| Africa | `AF` |
+| Antarctica | `AN` |
+| Asia | `AS` |
+| Europe | `EU` |
+| North America | `NA` |
+| Oceania | `OC` |
+| South America | `SA` |
 
-| UI name                              | API example                   |
-| ------------------------------------ | ----------------------------- |
-| Destination Continent IP Geolocation | net.dst.geo.continent == "EU" |
+| UI name | API example |
+| --- | --- |
+| Destination Continent IP Geolocation | `net.dst.geo.continent == "EU"` |
 
 ### Destination Country
 
 The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
-| UI name                            | API example                 |
-| ---------------------------------- | --------------------------- |
-| Destination Country IP Geolocation | net.dst.geo.country == "RU" |
+| UI name | API example |
+| --- | --- |
+| Destination Country IP Geolocation | `net.dst.geo.country == "RU"` |
 
 ### Destination IP
 
 The IP address of the request's target.
 
-| UI name        | API example                           |
-| -------------- | ------------------------------------- |
-| Destination IP | any(net.dst.ip\[\*\] in {10.0.0.0/8}) |
+| UI name | API example |
+| --- | --- |
+| Destination IP | `any(net.dst.ip[*] in {10.0.0.0/8})` |
 
 ### Destination Port
 
 The port number of the request's target.
 
-| UI name          | API example          |
-| ---------------- | -------------------- |
-| Destination Port | net.dst.port == 2222 |
+| UI name | API example |
+| --- | --- |
+| Destination Port | `net.dst.port == 2222` |
 
 ### Device Posture
 
@@ -165,17 +165,17 @@ With the Device Posture selector, admins can use signals from end-user devices t
 
 For more information on device posture checks, refer to [Device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
-| UI name                      | API example                                                                                                                                                                 |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Passed Device Posture Checks | any(device\_posture.checks.failed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"}), any(device\_posture.checks.passed\[\*\] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})" |
+| UI name | API example |
+| --- | --- |
+| Passed Device Posture Checks | `any(device_posture.checks.failed[*] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})`, `any(device_posture.checks.passed[*] in {"1308749e-fcfb-4ebc-b051-fe022b632644"})"` |
 
 ### Domain Beta
 
 Use this selector to match against a domain and all subdomains. For example, you can match `example.com` and its subdomains, such as `www.example.com`.
 
-| UI name | API example                                  |
-| ------- | -------------------------------------------- |
-| Domain  | any(net.fqdn.domains\[\*\] == "example.com") |
+| UI name | API example |
+| --- | --- |
+| Domain | `any(net.fqdn.domains[*] == "example.com")` |
 
 Gateway policies do not support domains with non-Latin characters directly. To use a domain with non-Latin characters, add it to a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
@@ -185,9 +185,9 @@ This selector is only available for traffic onboarded to Traffic and DNS mode, P
 
 Use this selector to match against only the hostname specified. For example, you can match `test.example.com` but not `example.com` or `www.test.example.com`.
 
-| UI name | API example                    |
-| ------- | ------------------------------ |
-| Host    | net.fqdn.host == "example.com" |
+| UI name | API example |
+| --- | --- |
+| Host | `net.fqdn.host == "example.com"` |
 
 Gateway policies do not support hostnames with non-Latin characters directly. To use a hostname with non-Latin characters, add it to a [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
@@ -201,17 +201,17 @@ This selector is only available for traffic onboarded to Traffic and DNS mode, P
 
 The protocol used to send the packet.
 
-| UI name  | API example           |
-| -------- | --------------------- |
-| Protocol | net.protocol == "tcp" |
+| UI name | API example |
+| --- | --- |
+| Protocol | `net.protocol == "tcp"` |
 
 ### Proxy Endpoint
 
 The [proxy server](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) where your browser forwards HTTP traffic.
 
-| UI name        | API example                                                 |
-| -------------- | ----------------------------------------------------------- |
-| Proxy Endpoint | proxy.endpoint == "3ele0ss56t.proxy.cloudflare-gateway.com" |
+| UI name | API example |
+| --- | --- |
+| Proxy Endpoint | `proxy.endpoint == "3ele0ss56t.proxy.cloudflare-gateway.com"` |
 
 ### Source Continent
 
@@ -219,19 +219,19 @@ The continent of the user making the request.
 
 Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a continent, enter its two-letter code into the **Value** field:
 
-| Continent     | Code |
-| ------------- | ---- |
-| Africa        | AF   |
-| Antarctica    | AN   |
-| Asia          | AS   |
-| Europe        | EU   |
-| North America | NA   |
-| Oceania       | OC   |
-| South America | SA   |
+| Continent | Code |
+| --- | --- |
+| Africa | `AF` |
+| Antarctica | `AN` |
+| Asia | `AS` |
+| Europe | `EU` |
+| North America | `NA` |
+| Oceania | `OC` |
+| South America | `SA` |
 
-| UI name                         | API example                              |
-| ------------------------------- | ---------------------------------------- |
-| Source Continent IP Geolocation | net.src.geo.continent == "North America" |
+| UI name | API example |
+| --- | --- |
+| Source Continent IP Geolocation | `net.src.geo.continent == "North America"` |
 
 ### Source Country
 
@@ -239,73 +239,73 @@ The country of the user making the request.
 
 Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
-| UI name                       | API example                 |
-| ----------------------------- | --------------------------- |
-| Source Country IP Geolocation | net.src.geo.country == "RU" |
+| UI name | API example |
+| --- | --- |
+| Source Country IP Geolocation | `net.src.geo.country == "RU"` |
 
 ### Source Internal IP
 
 Use this selector to apply egress policies to a private IP address, assigned by a user's local network, that requests arrive to Gateway from.
 
-| UI name            | API example                                    |
-| ------------------ | ---------------------------------------------- |
-| Source Internal IP | net.src.internal\_src\_ip == "192.168.86.0/27" |
+| UI name | API example |
+| --- | --- |
+| Source Internal IP | `net.src.internal_src_ip == "192.168.86.0/27"` |
 
 ### Source IP
 
 The originating IP address or addresses of a device proxied by Gateway.
 
-| UI name   | API example                      |
-| --------- | -------------------------------- |
-| Source IP | net.src.ip\[\*\] in {10.0.0.0/8} |
+| UI name | API example |
+| --- | --- |
+| Source IP | `net.src.ip[*] in {10.0.0.0/8}` |
 
 ### Source Port
 
 The originating port of a device proxied by Gateway.
 
-| UI name     | API example            |
-| ----------- | ---------------------- |
-| Source Port | net.src.port == "2222" |
+| UI name | API example |
+| --- | --- |
+| Source Port | `net.src.port == "2222"` |
 
 ### Users
 
 Use these selectors to match against identity attributes.
 
-| UI name           | API example                                                                                                     |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| User Email        | identity.email == "user@example.com"                                                                            |
-| User Name         | identity.name == "Test User"                                                                                    |
-| User Group IDs    | any(identity.groups\[\*\].id in {"group\_id"})                                                                  |
-| User Group Names  | any(identity.groups\[\*\].name in {"group\_name"})                                                              |
-| User Group Emails | any(identity.groups\[\*\].email in {"group@example.com"})                                                       |
-| SAML Attributes   | any(identity.saml\_attributes\["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"\] in {"Test User"}) |
+| UI name | API example |
+| --- | --- |
+| User Email | `identity.email == "user@example.com"` |
+| User Name | `identity.name == "Test User"` |
+| User Group IDs | `any(identity.groups[*].id in {"group_id"})` |
+| User Group Names | `any(identity.groups[*].name in {"group_name"})` |
+| User Group Emails | `any(identity.groups[*].email in {"group@example.com"})` |
+| SAML Attributes | `any(identity.saml_attributes["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] in {"Test User"})` |
 
 ### Virtual Network
 
 Use this selector to match all traffic routed through a specific [Virtual Network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) via the Cloudflare One Client.
 
-| UI name         | API example                                            |
-| --------------- | ------------------------------------------------------ |
-| Virtual Network | net.vnet\_id == "957fc748-591a-e96s-a15d-1j90204a7923" |
+| UI name | API example |
+| --- | --- |
+| Virtual Network | `net.vnet_id == "957fc748-591a-e96s-a15d-1j90204a7923"` |
 
 ## Comparison operators
 
 Comparison operators are the way Gateway matches traffic to a selector. When you choose a **Selector** in the dashboard policy builder, the **Operator** dropdown menu will display the available options for that selector.
 
-| Operator                 | Meaning                                                                                                            |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| is                       | equals the defined value                                                                                           |
-| is not                   | does not equal the defined value                                                                                   |
-| in                       | matches at least one of the defined values                                                                         |
-| not in                   | does not match any of the defined values                                                                           |
-| in list                  | in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values     |
-| not in list              | not in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
-| matches regex            | regex evaluates to true                                                                                            |
-| does not match regex     | regex evaluates to false                                                                                           |
-| greater than             | exceeds the defined number                                                                                         |
-| greater than or equal to | exceeds or equals the defined number                                                                               |
-| less than                | below the defined number                                                                                           |
-| less than or equal to    | below or equals the defined number                                                                                 |
+| Operator | Meaning |
+| --- | --- |
+| is | equals the defined value |
+| is not | does not equal the defined value |
+| in | matches at least one of the defined values |
+| not in | does not match any of the defined values |
+| in list | in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
+| not in list | not in a pre-defined [list](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of values |
+| matches regex | regex evaluates to true |
+| does not match regex | regex evaluates to false |
+| greater than | exceeds the defined number |
+| greater than or equal to | exceeds or equals the defined number |
+| less than | below the defined number |
+| less than or equal to | below or equals the defined number |
 
 ## Value
 
@@ -317,10 +317,10 @@ Gateway uses Rust to evaluate regular expressions. The Rust implementation is sl
 
 To evaluate multiple conditions in an expression, select the **And** logical operator. These expressions can be compared further with the **Or** logical operator.
 
-| Operator | Meaning                                       |
-| -------- | --------------------------------------------- |
-| And      | match all of the conditions in the expression |
-| Or       | match any of the conditions in the expression |
+| Operator | Meaning |
+| --- | --- |
+| And | match all of the conditions in the expression |
+| Or | match any of the conditions in the expression |
 
 The **Or** operator will only work with conditions in the same expression group. For example, you cannot compare conditions in **Traffic** with conditions in **Identity** or **Device Posture**.
 

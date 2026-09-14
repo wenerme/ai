@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/stream/changelog/index.xml)
 
@@ -30,7 +30,7 @@ For more information, refer to [Use your own player](https://developers.cloudfla
 
 **Stream Live WebRTC WHIP/WHEP Upgrades**
 
-Stream Live WHIP/WHEP will be progressively migrated to a new implementation powered by Cloudflare Realtime (Calls) starting Thursday 2025-03-13\. No API or integration changes will be required as part of this upgrade. Customers can expect an improved playback experience. Otherwise, this should be a transparent change, although some error handling cases and status reporting may have changed.
+Stream Live WHIP/WHEP will be progressively migrated to a new implementation powered by Cloudflare Realtime (Calls) starting Thursday 2025-03-13. No API or integration changes will be required as part of this upgrade. Customers can expect an improved playback experience. Otherwise, this should be a transparent change, although some error handling cases and status reporting may have changed.
 
 For more information review the [Stream Live WebRTC beta](https://developers.cloudflare.com/stream/webrtc-beta/) documentation.
 
@@ -170,10 +170,10 @@ Generating MP4 downloads of live stream recordings is now significantly faster. 
 
 Stream now supports adding multiple audio tracks to an existing video upload. This allows you to:
 
-* Provide viewers with audio tracks in multiple languages
-* Provide dubbed audio tracks, or audio commentary tracks (ex: Director’s Commentary)
-* Allow your users to customize the customize the audio mix, by providing separate audio tracks for music, speech or other audio tracks.
-* Provide Audio Description tracks to ensure your content is accessible. ([WCAG 2.0 Guideline 1.2 1](https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only))
+- Provide viewers with audio tracks in multiple languages
+- Provide dubbed audio tracks, or audio commentary tracks (ex: Director’s Commentary)
+- Allow your users to customize the customize the audio mix, by providing separate audio tracks for music, speech or other audio tracks.
+- Provide Audio Description tracks to ensure your content is accessible. ([WCAG 2.0 Guideline 1.2 1](https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only))
 
 To request an invite to the beta, refer to [this post](https://community.cloudflare.com/t/new-in-beta-support-for-multiple-audio-tracks/439629).
 
@@ -195,7 +195,7 @@ For more, refer to [the docs](https://developers.cloudflare.com/stream/webrtc-be
 
 **Deprecating the 'per-video' Analytics API**
 
-The “per-video” analytics API is being deprecated. If you still use this API, you will need to switch to using the [GraphQL Analytics API](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/) by February 1, 2023\. After this date, the per-video analytics API will be no longer available.
+The “per-video” analytics API is being deprecated. If you still use this API, you will need to switch to using the [GraphQL Analytics API](https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics/) by February 1, 2023. After this date, the per-video analytics API will be no longer available.
 
 The GraphQL Analytics API provides the same functionality and more, with additional filters and metrics, as well as the ability to fetch data about multiple videos in a single request. Queries are faster, more reliable, and built on a shared analytics system that you can [use across many Cloudflare products](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/).
 
@@ -205,7 +205,7 @@ For more about this change and how to migrate existing API queries, refer to [th
 
 **Create an unlimited number of live inputs**
 
-Cloudflare Stream now has no limit on the number of [live inputs](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/get/) you can create. Stream is designed to allow your end-users to go live — live inputs can be created quickly on-demand via a single API request for each of user of your platform or app.
+Cloudflare Stream now has no limit on the number of [live inputs](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/get/) you can create. Stream is designed to allow your end-users to go live — live inputs can be created quickly on-demand via a single API request for each of user of your platform or app.
 
 For more on creating and managing live inputs, get started with the [docs](https://developers.cloudflare.com/stream/stream-live/).
 
@@ -221,7 +221,7 @@ If a live stream contains content with low visual complexity, like a slideshow p
 
 This change is particularly helpful if you're building a platform or application that allows your end users to create their own live streams, where these end users have their own streaming software and hardware that you can't control. Because this new functionality adapts based on the live video we receive, rather than just the configuration advertised by the broadcaster, even in cases where your end users' settings are less than ideal, client video players will not receive excessively high estimates of bandwidth requirements, causing playback quality to decrease unnecessarily. Your end users don't have to be OBS Studio experts in order to get high quality video playback.
 
-No work is required on your end — this change applies to all live inputs, for all customers of Cloudflare Stream. For more, refer to the [docs](https://developers.cloudflare.com/stream/stream-live/#bitrate-estimates-at-each-quality-level-bitrate-ladder).
+No work is required on your end — this change applies to all live inputs, for all customers of Cloudflare Stream. For more, refer to the [docs](https://developers.cloudflare.com/stream/stream-live/#bitrate-estimates-at-each-quality-level-bitrate-ladder).
 
 ## 2022-10-05
 
@@ -266,13 +266,13 @@ You can now change the start and end times of a video uploaded to Cloudflare Str
 
 **Live inputs**
 
-The Live Inputs API now supports optional pagination, search, and filter parameters. For more information, refer to the [Live Inputs API documentation](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/methods/list/).
+The Live Inputs API now supports optional pagination, search, and filter parameters. For more information, refer to the [Live Inputs API documentation](https://developers.cloudflare.com/api/resources/stream/subresources/live_inputs/methods/list/).
 
 ## 2022-05-24
 
 **Picture-in-Picture support**
 
-The [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) now displays a button to activate Picture-in-Picture mode, if the viewer's web browser supports the [Picture-in-Picture API](https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture%5FAPI).
+The [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) now displays a button to activate Picture-in-Picture mode, if the viewer's web browser supports the [Picture-in-Picture API](https://developer.mozilla.org/en-US/docs/Web/API/Picture-in-Picture_API).
 
 ## 2022-05-13
 
@@ -436,10 +436,10 @@ Cloudflare Stream now delivers video using 3-10x less bandwidth, with no reducti
 
 A brand new version of the Stream Player is now available for preview. New features include:
 
-* Unified controls across desktop and mobile devices
-* Keyboard shortcuts
-* Intelligent mouse cursor interactions with player controls
-* Phased out support for Internet Explorer 11
+- Unified controls across desktop and mobile devices
+- Keyboard shortcuts
+- Intelligent mouse cursor interactions with player controls
+- Phased out support for Internet Explorer 11
 
 For more, refer to [this post](https://community.cloudflare.com/t/announcing-the-preview-build-for-stream-player-2-0/243095) on the Cloudflare Community Forum.
 

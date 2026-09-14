@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Result controls
 
-Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These settings control how many results are returned and the minimum score required. To filter results by metadata attributes like folder or category, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -20,15 +20,15 @@ These settings control how many results are returned and the minimum score requi
 
 The `match_threshold` sets the minimum vector similarity score that a chunk must meet to be included in the results. Threshold values range from `0` to `1`. The threshold filters on the vector similarity score, not the fused score returned in the response.
 
-* A higher threshold means stricter filtering, returning only highly similar matches.
-* A lower threshold allows broader matches, increasing recall but possibly reducing precision.
+- A higher threshold means stricter filtering, returning only highly similar matches.
+- A lower threshold allows broader matches, increasing recall but possibly reducing precision.
 
 ## Maximum number of results
 
 The `max_num_results` setting controls the number of top-matching chunks returned. The maximum allowed value is 50.
 
-* Use a higher value if you want to synthesize across multiple documents. However, providing more input to the model can increase latency and cost.
-* Use a lower value if you prefer concise answers with minimal context.
+- Use a higher value if you want to synthesize across multiple documents. However, providing more input to the model can increase latency and cost.
+- Use a lower value if you prefer concise answers with minimal context.
 
 ## How they work together
 

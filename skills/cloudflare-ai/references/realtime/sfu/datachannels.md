@@ -12,15 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DataChannels
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/datachannels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/datachannels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Realtime SFU DataChannels to send low-latency application data over WebRTC. Common payloads include chat messages, game state, sensor updates, and control events.
 
 Use Realtime SFU media tracks, rather than DataChannels, to send audio and video.
 
+```
 graph LR
     A[Publisher] -->|Application data| B[Cloudflare Realtime SFU]
     B -->|Application data| C@{ shape: procs, label: "Subscribers"}
+
+```
 
 Each publisher can send a named DataChannel to multiple subscribers. By default, messages flow from the publisher to subscribers.
 
@@ -39,9 +42,9 @@ DataChannels use reliable, ordered delivery by default. Choose partial reliabili
 
 Set these optional fields when you create a DataChannel with the [HTTPS API](https://developers.cloudflare.com/realtime/sfu/https-api/):
 
-* `ordered` (`boolean`, default `true`): Set to `false` to allow messages to arrive out of order. A delayed message will not block later messages.
-* `maxRetransmits` (`integer`): Limits retransmission attempts after the first send. Set to `0` for no retransmissions, or omit for no retransmission limit.
-* `maxPacketLifeTime` (`integer`): Limits how long, in milliseconds, the transport attempts delivery. Omit for no lifetime limit.
+- `ordered` ( `boolean`, default `true`): Set to `false` to allow messages to arrive out of order. A delayed message will not block later messages.
+- `maxRetransmits` ( `integer`): Limits retransmission attempts after the first send. Set to `0` for no retransmissions, or omit for no retransmission limit.
+- `maxPacketLifeTime` ( `integer`): Limits how long, in milliseconds, the transport attempts delivery. Omit for no lifetime limit.
 
 `maxRetransmits` and `maxPacketLifeTime` are mutually exclusive. Do not set both on the same channel.
 
@@ -97,12 +100,12 @@ For partial reliability, choose a retransmission limit or packet lifetime based 
 
 Set `waitForAck: true` on a remote DataChannel to delay delivery until the subscriber signals that it is ready.
 
-* `waitForAck` applies only to `location: "remote"` DataChannels and defaults to `false`.
-* While the gate is closed, the SFU holds delivery to that subscriber.
-* After the DataChannel opens, the subscriber sends any message, such as `"ack"`. The SFU consumes this first message, opens the gate, and starts forwarding publisher messages.
-* The acknowledgment must reach the SFU within 30 seconds after creating the remote DataChannel. Otherwise, the SFU tears down the gated channel. Create the remote DataChannel again to retry.
+- `waitForAck` applies only to `location: "remote"` DataChannels and defaults to `false`.
+- While the gate is closed, the SFU holds delivery to that subscriber.
+- After the DataChannel opens, the subscriber sends any message, such as `"ack"`. The SFU consumes this first message, opens the gate, and starts forwarding publisher messages.
+- The acknowledgment must reach the SFU within 30 seconds after creating the remote DataChannel. Otherwise, the SFU tears down the gated channel. Create the remote DataChannel again to retry.
 
-Without [canReply](#return-to-publisher-canreply), later subscriber messages are not forwarded to the publisher.
+Without [`canReply`](#return-to-publisher-canreply), later subscriber messages are not forwarded to the publisher.
 
 Create a remote DataChannel with the gate enabled by calling `POST /apps/{appId}/sessions/{sessionId}/datachannels/new` on the subscriber session:
 
@@ -163,6 +166,7 @@ dc.send("ack"); // The first message opens the gate.
 
 Messages travel from the publisher to subscribers by default. Set `canReply: true` when one subscriber needs to respond on the same channel, such as an operator responding to a device that publishes telemetry.
 
+```
 graph LR
     P[Publisher] -->|Publisher messages| SFU[Cloudflare Realtime SFU]
     SFU -->|Publisher messages| S1[Subscriber with canReply]
@@ -170,12 +174,14 @@ graph LR
     S1 -->|Reply| SFU
     SFU -->|Reply| P
 
+```
+
 `canReply` controls reply access as follows:
 
-* `canReply` applies only to `location: "remote"` DataChannels and defaults to `false`.
-* At most one subscriber can have reply access for each publisher DataChannel. Granting access to another subscriber replaces the previous subscriber.
-* The SFU forwards replies only from the subscriber with access.
-* The publisher receives the replies. Other subscribers do not.
+- `canReply` applies only to `location: "remote"` DataChannels and defaults to `false`.
+- At most one subscriber can have reply access for each publisher DataChannel. Granting access to another subscriber replaces the previous subscriber.
+- The SFU forwards replies only from the subscriber with access.
+- The publisher receives the replies. Other subscribers do not.
 
 ### Allow replies when subscribing
 
@@ -220,11 +226,11 @@ To change reply access without recreating the remote DataChannel, call `PUT /app
 
 Use the same body with `"canReply": false` to revoke. The following table lists common patterns:
 
-| Goal                              | Action                                                                                                         |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Allow replies after subscribing   | Create the remote DataChannel without canReply, then update it with canReply: true.                            |
-| Move access to another subscriber | On the new subscriber, update the DataChannel with canReply: true. The previous subscriber loses reply access. |
-| Stop replies                      | On the subscriber with reply access, update the DataChannel with canReply: false.                              |
+| Goal | Action |
+| --- | --- |
+| Allow replies after subscribing | Create the remote DataChannel without `canReply`, then update it with `canReply: true`. |
+| Move access to another subscriber | On the new subscriber, update the DataChannel with `canReply: true`. The previous subscriber loses reply access. |
+| Stop replies | On the subscriber with reply access, update the DataChannel with `canReply: false`. |
 
 ```ts
 // The subscriber already pulled "my-channel" without canReply.

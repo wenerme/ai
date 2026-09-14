@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Container runtime
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/concepts/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -43,10 +43,10 @@ The container provides a standard Linux filesystem. You can read and write anywh
 
 **Standard directories**:
 
-* `/workspace` \- Default working directory for user code
-* `/tmp` \- Temporary files
-* `/home` \- User home directory
-* `/usr/bin`, `/usr/local/bin` \- Executable binaries
+- `/workspace` - Default working directory for user code
+- `/tmp` - Temporary files
+- `/home` - User home directory
+- `/usr/bin`, `/usr/local/bin` - Executable binaries
 
 **Example**:
 
@@ -108,14 +108,14 @@ redis-cli ping      # Connect locally
 
 **Between sandboxes** (isolated):
 
-* Each sandbox is a separate container
-* Filesystem, memory and network are all isolated
+- Each sandbox is a separate container
+- Filesystem, memory and network are all isolated
 
 **Within sandbox** (shared):
 
-* All processes see the same files
-* Processes can communicate with each other
-* Environment variables are session-scoped
+- All processes see the same files
+- Processes can communicate with each other
+- Environment variables are session-scoped
 
 To run untrusted code, use separate sandboxes per user:
 
@@ -127,16 +127,16 @@ const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 
 **Cannot**:
 
-* Load kernel modules or access host hardware
+- Load kernel modules or access host hardware
 
 ## Related resources
 
-* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) \- Deploy and keep package and image aligned
-* [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/) \- Containers deploy path
-* [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How containers fit in the system
-* [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Container isolation details
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Container lifecycle management
-* [Docker-in-Docker](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/) \- Run Docker containers inside a Sandbox
+- [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) - Deploy and keep package and image aligned
+- [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/) - Containers deploy path
+- [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) - How containers fit in the system
+- [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) - Container isolation details
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) - Container lifecycle management
+- [Docker-in-Docker](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/) - Run Docker containers inside a Sandbox
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is DNS?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Domain Name System (DNS) is the phonebook of the Internet. DNS translates the domain name that you type in the browser (such as `www.example.com`) to a computer-friendly IP address (`93.184.216.34`), similar to how a phonebook translates a person's name to a phone number. The IP address identifies the server where the website data is stored, allowing the browser to contact the server and load the page.
 
@@ -22,6 +22,7 @@ The process of translating a domain to an IP address is known as a DNS lookup. D
 
 As shown in the diagram below, the DNS resolver contacts a series of nameservers (where DNS records are stored) to track down the requested IP address. The resolver analyzes the domain in reverse, starting from the top-level domain (`.com`) and ending with the subdomain (`www`). The final nameserver in the DNS lookup, called the authoritative nameserver, contains the desired IP address. The concept is similar to how the post office delivers a package — first routing it to the correct country, then to the correct state, city, street and so forth until it arrives at your home address.
 
+```
 flowchart LR
 accTitle: DNS lookup process
 A[Browser] -- What is the IP address of www.example.com? --> B((DNS resolver)) -- Where is .com? --> C[("Root nameserver")]
@@ -31,6 +32,8 @@ D -- IP of example.com nameserver --> B
 B -- Where is www.example.com? --> E[(example.com nameserver)]
 E -- 93.184.216.34 --> B
 B -- 93.184.216.34 --> A
+
+```
 
 ## Related resources
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 1005
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1005/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1005/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Errors 1005 Access Denied: Autonomous System Number (ASN) banned
 
@@ -29,13 +29,13 @@ If you are not the website owner, provide the website owner with a screenshot of
 If you are the website owner:
 
 1. Retrieve a screenshot of the `1005` error from your customer
-2. Search the [**Security Events log**](https://developers.cloudflare.com/waf/analytics/security-events/) (available at **Security** \> **Events**) for the [**Ray ID**](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), or client IP Address from the visitor's 1005 error message.
+2. Search the [**Security Events log**](https://developers.cloudflare.com/waf/analytics/security-events/) (available at **Security** > **Events**) for the [**Ray ID**](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/), or client IP Address from the visitor's 1005 error message.
 
 Note
 
 Convert the UTC timestamp of the `1005` error to your local timezone when searching in the **Security Events log**.
 
-1. Assess the cause of the block and ensure the ASN is allowed under the [IP Access Rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) security feature.
+3. Assess the cause of the block and ensure the ASN is allowed under the [IP Access Rules](https://developers.cloudflare.com/waf/tools/ip-access-rules/) security feature.
 
 Was this helpful?
 

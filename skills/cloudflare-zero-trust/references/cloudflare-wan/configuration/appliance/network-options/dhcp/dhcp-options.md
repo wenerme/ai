@@ -12,40 +12,53 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DHCP server options
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When the Cloudflare One Appliance is configured as the DHCP server for a LAN, you can attach **custom DHCP options** to the leases it issues. This is commonly used for:
 
-* **Network boot** of workstations or kiosks with PXE, PXELINUX, or iPXE (options 43, 60, 66, 67, 175, 209, and 210).
-* **VoIP phone provisioning** (option 66 — TFTP server).
-* **Vendor-specific client configuration** (option 43 with vendor sub-options).
+- **Network boot** of workstations or kiosks with PXE, PXELINUX, or iPXE (options 43, 60, 66, 67, 175, 209, and 210).
+- **VoIP phone provisioning** (option 66 — TFTP server).
+- **Vendor-specific client configuration** (option 43 with vendor sub-options).
 
 DHCP options can only be configured when the appliance is acting as the DHCP server. They have no effect when the appliance is in [DHCP relay](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/) mode.
 
 ## Configure DHCP options
 
 1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. Go to the **Appliances** tab > **Profiles**.
-2. Select your Cloudflare One Appliance > **Edit**.
-3. Select **Network Configuration**.
-4. In **LAN configuration**, select **Add LAN** to create a new LAN, or select an existing LAN > **Edit**.
-5. Make sure **This is a DHCP server** is selected.
-6. In **DHCP server options**, select **Add DHCP option**.
-7. Choose one of the listed common options, or select **Add custom option** to enter your own option code, type, and value.
-8. Select **Save**.
+
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+
+2. Go to the **Appliances** tab > **Profiles**.
+3. Select your Cloudflare One Appliance > **Edit**.
+4. Select **Network Configuration**.
+5. In **LAN configuration**, select **Add LAN** to create a new LAN, or select an existing LAN > **Edit**.
+6. Make sure **This is a DHCP server** is selected.
+7. In **DHCP server options**, select **Add DHCP option**.
+8. Choose one of the listed common options, or select **Add custom option** to enter your own option code, type, and value.
+9. Select **Save**.
 
 Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-You can also configure DHCP options via the API and Terraform using the `dhcp_options` field on the LAN's `dhcp_server` configuration. Create a [PUT request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to configure DHCP options:
+You can also configure DHCP options via the API and Terraform using the `dhcp_options` field on the LAN's `dhcp_server` configuration. Create a [`PUT` request](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/update/) to update the LAN where you want to configure DHCP options:
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Magic WAN Write`
-* `Magic Transit Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Magic WAN Write</code>
+- <code>Magic Transit Write</code>
+
+</details>
+
+*Update Site LANbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SITE_ID/lans/$LAN_ID" \
@@ -72,42 +85,42 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 Each option is defined by three fields:
 
-| Field | Description                                              | Example             |
-| ----- | -------------------------------------------------------- | ------------------- |
-| code  | The DHCP option code (1–254).                            | 67                  |
-| type  | The value encoding: text, hex, ip, byte, short, integer. | text                |
-| value | The option value, encoded per type.                      | boot/x64/pxelinux.0 |
+| Field | Description | Example |
+| --- | --- | --- |
+| `code` | The DHCP option code (1–254). | `67` |
+| `type` | The value encoding: `text`, `hex`, `ip`, `byte`, `short`, `integer`. | `text` |
+| `value` | The option value, encoded per `type`. | `boot/x64/pxelinux.0` |
 
 ### Value type encoding
 
-| Type    | Format                                                                         | Example value       |
-| ------- | ------------------------------------------------------------------------------ | ------------------- |
-| text    | A UTF-8 string (max 255 bytes).                                                | boot/x64/pxelinux.0 |
-| hex     | A colon-separated sequence of hex bytes, used for sub-options (max 255 bytes). | 01:04:aa:bb:cc      |
-| ip      | A dotted-quad IPv4 address.                                                    | 10.20.30.40         |
-| byte    | An unsigned 8-bit integer (0–255).                                             | 1                   |
-| short   | An unsigned 16-bit integer (0–65535).                                          | 512                 |
-| integer | An unsigned 32-bit integer (0–4294967295).                                     | 0                   |
+| Type | Format | Example value |
+| --- | --- | --- |
+| `text` | A UTF-8 string (max 255 bytes). | `boot/x64/pxelinux.0` |
+| `hex` | A colon-separated sequence of hex bytes, used for sub-options (max 255 bytes). | `01:04:aa:bb:cc` |
+| `ip` | A dotted-quad IPv4 address. | `10.20.30.40` |
+| `byte` | An unsigned 8-bit integer (0–255). | `1` |
+| `short` | An unsigned 16-bit integer (0–65535). | `512` |
+| `integer` | An unsigned 32-bit integer (0–4294967295). | `0` |
 
 ### Restricted option codes
 
-* Options `0` and `255` are reserved by [RFC 2132 ↗](https://www.rfc-editor.org/rfc/rfc2132) and cannot be configured.
-* Options `3`, `6`, and `51` are managed by the Cloudflare One Appliance and cannot be configured, since they conflict with connector-managed configuration (default gateway, DNS servers, and lease time).
-* Each option code can only be used once per LAN. Duplicate option codes are rejected.
+- Options `0` and `255` are reserved by [RFC 2132 ↗](https://www.rfc-editor.org/rfc/rfc2132) and cannot be configured.
+- Options `3`, `6`, and `51` are managed by the Cloudflare One Appliance and cannot be configured, since they conflict with connector-managed configuration (default gateway, DNS servers, and lease time).
+- Each option code can only be used once per LAN. Duplicate option codes are rejected.
 
 ## Common network boot options
 
 The most frequently used network boot options are:
 
-| Option | Type | Purpose                                                                                                                                          |
-| ------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 43     | hex  | Vendor-specific information. The vendor defines the sub-option layout.                                                                           |
-| 60     | text | Vendor class identifier, typically PXEClient.                                                                                                    |
-| 66     | text | TFTP server name.                                                                                                                                |
-| 67     | text | Boot file name, for example ipxe.pxe or undionly.kpxe. iPXE also accepts a URI, such as an HTTP URL for an iPXE script.                          |
-| 175    | hex  | Client-specific encapsulated options used by Etherboot and iPXE. IANA lists this option as tentatively assigned and does not define its payload. |
-| 209    | text | PXELINUX configuration filename or path, loaded through TFTP.                                                                                    |
-| 210    | text | PXELINUX TFTP path prefix, prepended to option 209.                                                                                              |
+| Option | Type | Purpose |
+| --- | --- | --- |
+| 43 | `hex` | Vendor-specific information. The vendor defines the sub-option layout. |
+| 60 | `text` | Vendor class identifier, typically `PXEClient`. |
+| 66 | `text` | TFTP server name. |
+| 67 | `text` | Boot file name, for example `ipxe.pxe` or `undionly.kpxe`. iPXE also accepts a URI, such as an HTTP URL for an iPXE script. |
+| 175 | `hex` | Client-specific encapsulated options used by Etherboot and iPXE. IANA lists this option as tentatively assigned and does not define its payload. |
+| 209 | `text` | PXELINUX configuration filename or path, loaded through TFTP. |
+| 210 | `text` | PXELINUX TFTP path prefix, prepended to option 209. |
 
 For a complete list of standard DHCP option codes, refer to the [IANA BOOTP/DHCP parameters registry ↗](https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml).
 

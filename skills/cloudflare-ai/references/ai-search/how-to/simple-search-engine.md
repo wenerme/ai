@@ -12,27 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a simple search engine
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/simple-search-engine/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide builds a search engine that returns the file names matching a query, using the `search()` method on the [Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/). You can adapt it to use the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) instead.
 
 For the best results with this pattern:
 
-* Disable query rewriting so the original user query is matched directly.
-* Configure your AI Search instance with small chunk sizes (256 tokens is usually enough).
+- Disable query rewriting so the original user query is matched directly.
+- Configure your AI Search instance with small chunk sizes (256 tokens is usually enough).
 
 ## Prerequisites
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+<details>
+
+<summary>
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+</summary>
+
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+
+</details>
 
 You also need an AI Search instance that already contains indexed content. To create one and add content, refer to [Get started](https://developers.cloudflare.com/ai-search/get-started/).
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
@@ -54,11 +62,11 @@ pnpm create cloudflare@latest search-engine
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Go to your application directory:
 
@@ -66,7 +74,7 @@ Go to your application directory:
 cd search-engine
 ```
 
-## 2\. Bind your Worker to AI Search
+## 2. Bind your Worker to AI Search
 
 Add the following to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
@@ -92,9 +100,11 @@ remote = true
 
 This binds the `default` [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) to `env.AI_SEARCH`. The `remote` option lets `wrangler dev` proxy requests to your deployed instance, since AI Search does not run locally.
 
-## 3\. Add the search code
+## 3. Add the search code
 
 Update `src/index.ts`. This Worker reads a query from the URL, searches your instance, and returns the file name of each matching chunk. Replace `my-instance` with the name of your instance.
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -112,6 +122,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -134,7 +146,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 4\. Run and deploy
+## 4. Run and deploy
 
 Start a local development server, then query it at `/?query=your+search+terms`:
 

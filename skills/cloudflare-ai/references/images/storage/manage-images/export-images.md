@@ -12,14 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Export images
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/export-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/storage/manage-images/export-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Images supports image exports via the Cloudflare dashboard and API which allows you to get the original version of your image.
 
 ## Export images via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Find the image or images you want to export.
 3. To export a single image, select **Export** from its menu. To export several images, select the checkbox next to each image and then select **Export selected**.
 

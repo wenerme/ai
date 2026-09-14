@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/security-center.xml)
 
@@ -27,13 +27,13 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 This update introduces a major shift from pure detection to actionable enforcement, eliminating the manual burden for your Trust & Safety and Legal teams:
 
-* **Instant WHOIS and Recipient Lookup:** We automatically scrape registrar data and WHOIS contact information (such as the registrant or registrar abuse email) behind the scenes, highlighting exactly where your notice needs to be sent
-* **Smart Template Automation:** We pre-fill your custom-branded templates with essential metadata, including the infringing domain, registrar name, and discovery date.
-* **Tailored Enforcement Tones:** Choose from three default layout strategies depending on the severity of the infrastructure match:
-  * _Exact Match:_ A formal demand for identical trademark infringements
-  * _Similar Match:_ A standard notice optimized for typosquatting (one-character distance matches)
-  * _Friendly Tone:_ An amicable initial outreach for potential unintentional or accidental infringements
-* **Full Editing Control:** Before creating the final PDF, a real-time review screen allows you to fine-tune the messaging, modify placeholders, and ensure your text aligns perfectly with internal legal standards
+- **Instant WHOIS and Recipient Lookup:** We automatically scrape registrar data and WHOIS contact information (such as the registrant or registrar abuse email) behind the scenes, highlighting exactly where your notice needs to be sent
+- **Smart Template Automation:** We pre-fill your custom-branded templates with essential metadata, including the infringing domain, registrar name, and discovery date.
+- **Tailored Enforcement Tones:** Choose from three default layout strategies depending on the severity of the infrastructure match:
+  - *Exact Match:* A formal demand for identical trademark infringements
+  - *Similar Match:* A standard notice optimized for typosquatting (one-character distance matches)
+  - *Friendly Tone:* An amicable initial outreach for potential unintentional or accidental infringements
+- **Full Editing Control:** Before creating the final PDF, a real-time review screen allows you to fine-tune the messaging, modify placeholders, and ensure your text aligns perfectly with internal legal standards
 
 #### How it works
 
@@ -57,15 +57,15 @@ Cloudforce One users can now turn [Threat Events indicators](https://developers.
 
 Threat intelligence is most effective when it is immediately actionable. Previously, blocking threat actors required manually extracting indicators from threat events and copying them into your firewall rules. This new integration bridges the gap between threat discovery and threat mitigation:
 
-* When you identify an active threat pattern - such as an ongoing campaign targeting a specific industry, or using a known indicator type - you can pivot from investigation to mitigation in a single click.
-* Instead of writing complex, static IP rules, this functionality allows you to leverage the specific filtering logic you have already defined and saved within your Threat Events ecosystem.
-* Automating the generation of the WAF rule expression from your threat views eliminates manual copying errors, ensuring that the right malicious infrastructure is blocked instantly.
+- When you identify an active threat pattern - such as an ongoing campaign targeting a specific industry, or using a known indicator type - you can pivot from investigation to mitigation in a single click.
+- Instead of writing complex, static IP rules, this functionality allows you to leverage the specific filtering logic you have already defined and saved within your Threat Events ecosystem.
+- Automating the generation of the WAF rule expression from your threat views eliminates manual copying errors, ensuring that the right malicious infrastructure is blocked instantly.
 
 #### How to use it
 
 You can implement these rules through both the dashboard UI and via the API / Terraform.
 
-Go to **Cloudflare Dashboard** \> **Application Security** \> **Threat Intelligence** \> **Manage Views**, select your desired view, and select **Create WAF Rule**.
+Go to **Cloudflare Dashboard** > **Application Security** > **Threat Intelligence** > **Manage Views**, select your desired view, and select **Create WAF Rule**.
 
 This will automatically pre-populate the [WAF rule builder](https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/) with the matching threat event IP indicators.
 
@@ -82,16 +82,16 @@ You can also automate this workflow by utilizing the [**WAF Rule Builder API**](
 
 Security teams often suffer from a visibility gap. When an attack is blocked, it's difficult to know if it was a random automated bot or a sophisticated advanced persistent threat (APT) campaign specifically targeting your industry. Finding out usually means leaving your security dashboard to hunt through external OSINT feeds or static, out-of-date threat reports. Threat Actor Profiles solve this by sharing Cloudforce One’s deep adversary research directly inside your workflow:
 
-* Cloudflare sees the traffic in real-time across approximately 20% of the web. This means actor profiles display active malicious infrastructure the moment it touches our global edge.
-* Every profile provides clear strategic and tactical modules including alternative aliases, origin tracking, historical threat event volume, and MITRE ATT&CK mapping detailing the adversary's technical methods.
-* You can search the dedicated threat actor directory or click an actor's name inside any threat event to view all details and related events to the specific threat actor.
+- Cloudflare sees the traffic in real-time across approximately 20% of the web. This means actor profiles display active malicious infrastructure the moment it touches our global edge.
+- Every profile provides clear strategic and tactical modules including alternative aliases, origin tracking, historical threat event volume, and MITRE ATT&CK mapping detailing the adversary's technical methods.
+- You can search the dedicated threat actor directory or click an actor's name inside any threat event to view all details and related events to the specific threat actor.
 
 #### How to use it
 
 Adversary tracking is now available in the Cloudflare Dashbboard and ready to be included in your daily investigation workflow:
 
-* Click on the **Threat Actor** name in the Threat Events table to open their full identity profile and review their aliases and attack stats.
-* Navigate to **Cloudflare Dashboard > Application Security > Threat Intelligence** to explore the new **Threat Actors** tab. Here, you can browse a card-based directory of all established entities tracked by Cloudforce One.
+- Click on the **Threat Actor** name in the Threat Events table to open their full identity profile and review their aliases and attack stats.
+- Navigate to **Cloudflare Dashboard > Application Security > Threat Intelligence** to explore the new **Threat Actors** tab. Here, you can browse a card-based directory of all established entities tracked by Cloudforce One.
 
 Learn more in the [Cloudforce One documentation ↗](https://developers.cloudflare.com/security-center/cloudforce-one/#identify-the-adversary).
 
@@ -119,19 +119,19 @@ The Internet is shifting from a human-read web to a machine-read web. AI agents 
 
 This update provides material value by breaking down readiness into six actionable categories:
 
-* **Basic Web Presence**
-* **Discoverability**
-* **Content Accessibility**
-* **Bot Access Control**
-* **Protocol Discovery**
-* **Commerce**
+- **Basic Web Presence**
+- **Discoverability**
+- **Content Accessibility**
+- **Bot Access Control**
+- **Protocol Discovery**
+- **Commerce**
 
 #### Accessing the report
 
 You can view these scores for any scanned URL directly in the dashboard or via our API.
 
-* **Dashboard:** Go to **Protect & Connect > Application Security > Investigate**. After running a scan, select the **Agent Readiness** tab in the report.
-* **API:** Use the [URL Scanner API ↗](https://developers.cloudflare.com/radar/investigate/url-scanner/) to programmatically retrieve these scores for your infrastructure.
+- **Dashboard:** Go to **Protect & Connect > Application Security > Investigate**. After running a scan, select the **Agent Readiness** tab in the report.
+- **API:** Use the [URL Scanner API ↗](https://developers.cloudflare.com/radar/investigate/url-scanner/) to programmatically retrieve these scores for your infrastructure.
 
 To learn more about the methodology behind these scores, refer to the [blogpost ↗](https://blog.cloudflare.com/agent-readiness/).
 
@@ -146,8 +146,8 @@ You can now export your Requests for Information (RFI) history to a **CSV docume
 
 These quality-of-life updates focus on data portability and dashboard performance, allowing power users to manage high volumes of requests more efficiently:
 
-* The new **CSV export** allows you to move RFI data into external tools for custom reporting, internal auditing, or cross-referencing with other security projects without manual data entry
-* With **adjustable page density**, you can now choose to load more records at once (10, 25 or 50) to scan through history faster
+- The new **CSV export** allows you to move RFI data into external tools for custom reporting, internal auditing, or cross-referencing with other security projects without manual data entry
+- With **adjustable page density**, you can now choose to load more records at once (10, 25 or 50) to scan through history faster
 
 Cloudforce One subscribers can find these new options in [Cloudflare Dashboard > Application Security > Threat Intelligence > Requests for Information ↗](https://dash.cloudflare.com/?to=/:account/application-security/threat-intelligence/requests).
 
@@ -160,9 +160,9 @@ The Cloudforce One Threat Events API now supports [**TAXII** ↗](https://www.cl
 
 #### Why this matters
 
-* You can now ingest Cloudforce One threat data directly into your SIEM, TIP or SOAR tools that prefer TAXII-formatted streams without needing custom translation scripts.
-* By supporting the TAXII format parameter in our API, security teams can automate the synchronization of indicator data, reducing the manual overhead of updating blocklists and detection rules.
-* This alignment with industry standards ensures that your threat data remains consistent across different security ecosystems and partner integrations.
+- You can now ingest Cloudforce One threat data directly into your SIEM, TIP or SOAR tools that prefer TAXII-formatted streams without needing custom translation scripts.
+- By supporting the TAXII format parameter in our API, security teams can automate the synchronization of indicator data, reducing the manual overhead of updating blocklists and detection rules.
+- This alignment with industry standards ensures that your threat data remains consistent across different security ecosystems and partner integrations.
 
 #### How to use it
 
@@ -170,7 +170,7 @@ When calling the Threat Events API, you can now specify `taxii` in the `format` 
 
 `GET /accounts/{account_id}/cloudforce_one/threat_events?format=taxii`
 
-You can find the updated documentation in the [Cloudflare API Reference ↗](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/threat%5Fevents/methods/list#%28resource%29%20cloudforce%5Fone.threat%5Fevents%20%3E%20%28method%29%20list%20%3E%20%28params%29%20default%20%3E%20%28param%29%20format%20%3E%20%28schema%29).
+You can find the updated documentation in the [Cloudflare API Reference ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list#%28resource%29%20cloudforce_one.threat_events%20%3E%20%28method%29%20list%20%3E%20%28params%29%20default%20%3E%20%28param%29%20format%20%3E%20%28schema%29).
 
 ## 2026-04-27
 
@@ -181,14 +181,14 @@ We have introduced a unified investigation workspace within Brand Protection to 
 
 #### What's new
 
-* You can now elect multiple saved queries from your dashboard to generate a consolidated "Combined Matches" view. This allows you to triage results from different brand queries in one unified table
-* You can open query extended views in distinct tabs within the Brand Protection dashboard. This enables you to maintain multiple investigation contexts simultaneously and switch between them without losing your place.
-* You can reset your workspace using the new "Clear Selection" action, making it easier to pivot between different investigation sets.
+- You can now elect multiple saved queries from your dashboard to generate a consolidated "Combined Matches" view. This allows you to triage results from different brand queries in one unified table
+- You can open query extended views in distinct tabs within the Brand Protection dashboard. This enables you to maintain multiple investigation contexts simultaneously and switch between them without losing your place.
+- You can reset your workspace using the new "Clear Selection" action, making it easier to pivot between different investigation sets.
 
 #### Key benefits
 
-* Eliminate fragmented workflows by viewing all matches across different query buckets in a single table, reducing the need to click through dozens of individual query pages
-* Correlate related campaigns by seeing similar domains or infrastructure patterns that appear across multiple saved queries
+- Eliminate fragmented workflows by viewing all matches across different query buckets in a single table, reducing the need to click through dozens of individual query pages
+- Correlate related campaigns by seeing similar domains or infrastructure patterns that appear across multiple saved queries
 
 Learn more in our [Brand Protection documentation](https://developers.cloudflare.com/security-center/brand-protection/).
 
@@ -203,13 +203,14 @@ You can now automate your threat monitoring by setting up custom alerts in your 
 
 By linking your saved views to the Cloudflare Notifications Center, you can ensure the right information reaches your team at the right time.
 
-* **Immediate Alerts**: receive real-time notifications the moment a critical event is detected that matches your saved criteria. This is essential for high-priority monitoring, such as tracking active campaigns from specific APT groups.
-* **Daily Digests**: opt for a summarized report delivered once a day. This is ideal for maintaining situational awareness of broader trends, like regional activity shifts or industry-wide threat landscapes, without cluttering your inbox.
+- **Immediate Alerts**: receive real-time notifications the moment a critical event is detected that matches your saved criteria. This is essential for high-priority monitoring, such as tracking active campaigns from specific APT groups.
+- **Daily Digests**: opt for a summarized report delivered once a day. This is ideal for maintaining situational awareness of broader trends, like regional activity shifts or industry-wide threat landscapes, without cluttering your inbox.
+
 ![Threat Events notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2630,height=1424,format=webp/_astro/threat-events-notifications.3Fl8LGOn.png)
 
 #### How to get started
 
-To set up an alert, go to **Application Security** \> **Threat Intelligence** \> **Threat Events**. From there:
+To set up an alert, go to **Application Security** > **Threat Intelligence** > **Threat Events**. From there:
 
 1. Choose your datasets and apply your desired filters and select **Save View** (or select an existing one).
 2. Open the **Manage Saved Views** menu.
@@ -226,9 +227,9 @@ We are introducing **Logo Match Preview**, bringing the same pre-save visibility
 
 #### What’s new:
 
-* Upload your brand logo and immediately see a sample of potential matches from recently detected sites before finalizing the query
-* Adjust your similarity score (from 75% to 100%) and watch the results refresh in real-time to find the balance between broad detection and noise reduction
-* Review the specific logos triggered by your current settings to ensure your query is capturing the right level of brand infringement
+- Upload your brand logo and immediately see a sample of potential matches from recently detected sites before finalizing the query
+- Adjust your similarity score (from 75% to 100%) and watch the results refresh in real-time to find the balance between broad detection and noise reduction
+- Review the specific logos triggered by your current settings to ensure your query is capturing the right level of brand infringement
 
 If you are ready to test your brand assets, go to the [Brand Protection dashboard ↗](https://developers.cloudflare.com/security-center/brand-protection/) to try the new preview tool.
 
@@ -241,15 +242,15 @@ We have introduced new triage controls to help you manage your Brand Protection 
 
 #### What's new
 
-* **Dismiss matches**: Users can now mark specific results as dismissed if they are determined to be benign or false positives, removing them from the primary triage view.
-* **Show/Hide toggle**: A new visibility control allows you to instantly switch between viewing only active matches and including previously dismissed ones.
-* **Persistent review states**: Dismissed status is saved across sessions, ensuring that your workspace remains organized and focused on new or high-priority threats.
+- **Dismiss matches**: Users can now mark specific results as dismissed if they are determined to be benign or false positives, removing them from the primary triage view.
+- **Show/Hide toggle**: A new visibility control allows you to instantly switch between viewing only active matches and including previously dismissed ones.
+- **Persistent review states**: Dismissed status is saved across sessions, ensuring that your workspace remains organized and focused on new or high-priority threats.
 
 #### Key benefits of the dismiss match functionality:
 
-* Reduce alert fatigue by hiding known-safe results, allowing your team to focus exclusively on unreviewed or high-risk infringements.
-* Auditability and recovery through the visibility toggle, ensuring that no match is ever truly "lost" and can be re-evaluated if a site's content changes.
-* Improved collaboration as your team members can see which matches have already been vetted and dismissed by others.
+- Reduce alert fatigue by hiding known-safe results, allowing your team to focus exclusively on unreviewed or high-risk infringements.
+- Auditability and recovery through the visibility toggle, ensuring that no match is ever truly "lost" and can be re-evaluated if a site's content changes.
+- Improved collaboration as your team members can see which matches have already been vetted and dismissed by others.
 
 Ready to clean up your match queue? Learn more in our [Brand Protection documentation](https://developers.cloudflare.com/security-center/brand-protection/).
 
@@ -264,8 +265,8 @@ Ready to clean up your match queue? Learn more in our [Brand Protection document
 
 Threat intelligence is most effective when it is personalized. Previously, analysts had to manually re-apply complex filters (like combining specific industry datasets with geographic origins) every time they logged in. This update provides material value by:
 
-* Analysts can now jump straight into "Known Ransomware Infrastructure" or "Retail Sector Targets" views with a single click, eliminating repetitive setup tasks
-* Teams can ensure everyone is looking at the same data subsets by using standardized saved views, reducing the risk of missing critical patterns due to inconsistent filtering.
+- Analysts can now jump straight into "Known Ransomware Infrastructure" or "Retail Sector Targets" views with a single click, eliminating repetitive setup tasks
+- Teams can ensure everyone is looking at the same data subsets by using standardized saved views, reducing the risk of missing critical patterns due to inconsistent filtering.
 
 Cloudforce One subscribers can start saving their custom views now in [Application Security > Threat Intelligence > Threat Events ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
 
@@ -278,11 +279,15 @@ We have introduced dynamic visualizations to the Threat Events dashboard to help
 
 What's new:
 
-* **Sankey Diagrams**: Trace the flow of attacks from country of origin to target country to identify which regions are being hit hardest and where the threat infrastructure resides.
+- **Sankey Diagrams**: Trace the flow of attacks from country of origin to target country to identify which regions are being hit hardest and where the threat infrastructure resides.
+
 ![Sankey Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2652,height=1186,format=webp/_astro/2026-02-19-sankey-diagram.VZMSmdZL.png)
-* **Dataset Distribution over time**: Instantly pivot your view to understand if a specific campaign is targeting your sector or if it is a broad-spectrum commodity attack.
+
+- **Dataset Distribution over time**: Instantly pivot your view to understand if a specific campaign is targeting your sector or if it is a broad-spectrum commodity attack.
+
 ![Events over time](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2648,height=1176,format=webp/_astro/2026-02-19-events-over-time.CqD7VKqA.png)
-* **Enhanced Filtering**: Use these visual tools to filter and drill down into specific attack vectors directly from the charts.
+
+- **Enhanced Filtering**: Use these visual tools to filter and drill down into specific attack vectors directly from the charts.
 
 Cloudforce One subscribers can explore these new views now in [Application Security > Threat Intelligence > Threat Events ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
 
@@ -295,14 +300,14 @@ We have significantly upgraded our Logo Matching capabilities within Brand Prote
 
 #### What's new
 
-* **Configurable match thresholds**: Users can set a minimum match score (starting at 75%) when creating a logo query to capture subtle variations or high-quality impersonations.
-* **Visual match scores**: Allow users to see the exact percentage of the match directly in the results table, highlighted with color-coded lozenges to indicate severity.
-* **Direct logo previews**: Available in the Cloudflare dashboard — similar to string matches — to verify infringements at a glance.
+- **Configurable match thresholds**: Users can set a minimum match score (starting at 75%) when creating a logo query to capture subtle variations or high-quality impersonations.
+- **Visual match scores**: Allow users to see the exact percentage of the match directly in the results table, highlighted with color-coded lozenges to indicate severity.
+- **Direct logo previews**: Available in the Cloudflare dashboard — similar to string matches — to verify infringements at a glance.
 
 #### Key benefits
 
-* **Expose sophisticated impersonators** who use slightly altered logos to bypass basic detection filters.
-* **Faster triage** of the most relevant threats immediately using visual indicators, reducing the time spent manually reviewing matches.
+- **Expose sophisticated impersonators** who use slightly altered logos to bypass basic detection filters.
+- **Faster triage** of the most relevant threats immediately using visual indicators, reducing the time spent manually reviewing matches.
 
 Ready to protect your visual identity? Learn more in our [Brand Protection documentation](https://developers.cloudflare.com/security-center/brand-protection/).
 
@@ -317,10 +322,10 @@ This new field is available in both the Cloudflare dashboard and via the API. In
 
 #### Key benefits
 
-* Easily map Cloudflare-tracked actors to the naming conventions used by other vendors without manual cross-referencing.
-* Quickly identify if a detected threat actor matches a group your team is already monitoring via other intelligence feeds.
+- Easily map Cloudflare-tracked actors to the naming conventions used by other vendors without manual cross-referencing.
+- Quickly identify if a detected threat actor matches a group your team is already monitoring via other intelligence feeds.
 
-For more information on how to access this data, refer to the [Threat Events API documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/threat%5Fevents/).
+For more information on how to access this data, refer to the [Threat Events API documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/).
 
 ## 2026-01-14
 
@@ -331,15 +336,15 @@ We have expanded the reporting capabilities of the Cloudflare URL Scanner. In ad
 
 **Key Benefits:**
 
-* Consolidate scan results, including screenshots, security signatures, and metadata, into a single, portable document
-* Easily share professional-grade summaries with non-technical stakeholders or legal teams for faster incident response
+- Consolidate scan results, including screenshots, security signatures, and metadata, into a single, portable document
+- Easily share professional-grade summaries with non-technical stakeholders or legal teams for faster incident response
 
 **What’s new:**
 
-* **PDF Export Button:** A new download option is available in the URL Scanner results page within the Cloudflare dashboard
-* **Unified Documentation:** Access all scan details—from high-level summaries to specific security flags—in one offline-friendly file
+- **PDF Export Button:** A new download option is available in the URL Scanner results page within the Cloudflare dashboard
+- **Unified Documentation:** Access all scan details—from high-level summaries to specific security flags—in one offline-friendly file
 
-To get started with the URL Scanner and explore our reporting capabilities, visit the [URL Scanner API documentation ↗](https://developers.cloudflare.com/api/resources/url%5Fscanner/).
+To get started with the URL Scanner and explore our reporting capabilities, visit the [URL Scanner API documentation ↗](https://developers.cloudflare.com/api/resources/url_scanner/).
 
 ---
 
@@ -354,10 +359,10 @@ By adopting this industry-standard format, you can now integrate Cloudflare's th
 
 #### Key benefits
 
-* Eliminate the need for custom parsers, as STIX2 allows for "out of the box" ingestion into major **Threat Intel Platforms (TIPs)**, **SIEMs**, and **SOAR** tools.
-* STIX2 provides a standardized way to represent relationships between indicators, sightings, and threat actors, giving your analysts a clearer picture of the threat landscape.
+- Eliminate the need for custom parsers, as STIX2 allows for "out of the box" ingestion into major **Threat Intel Platforms (TIPs)**, **SIEMs**, and **SOAR** tools.
+- STIX2 provides a standardized way to represent relationships between indicators, sightings, and threat actors, giving your analysts a clearer picture of the threat landscape.
 
-For technical details on how to query events using this format, please refer to our [Threat Events API Documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce%5Fone/subresources/threat%5Fevents/methods/list/).
+For technical details on how to query events using this format, please refer to our [Threat Events API Documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/).
 
 ---
 
@@ -390,9 +395,9 @@ The Requests for Information (RFI) dashboard now shows users the number of token
 
 What’s new:
 
-* Users can now see the number of tokens used for a submitted request for information.
-* Users can see the remaining tokens allocated to their account for the quarter.
-* Users can only select the Routine priority for the `Strategic Threat Research` request type.
+- Users can now see the number of tokens used for a submitted request for information.
+- Users can see the remaining tokens allocated to their account for the quarter.
+- Users can only select the Routine priority for the `Strategic Threat Research` request type.
 
 Cloudforce One subscribers can try it now in [Application Security > Threat Intelligence > Requests for Information ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/requests).
 
@@ -403,7 +408,7 @@ Cloudforce One subscribers can try it now in [Application Security > Threat Inte
 
 Cloudflare's new **Application Security report**, currently in Closed Beta, is now available in the dashboard.
 
-[Go to **Security reports** ↗](https://dash.cloudflare.com/?to=/:account/security-center/reports)
+[Go to **Security reports** ↗](https://dash.cloudflare.com/?to=/:account/security-center/reports)
 
 The reports are generated monthly and provide cyber security insights trends for all of the Enterprise zones in your Cloudflare account.
 
@@ -424,7 +429,7 @@ Use the feedback survey link at the top of the page to help us improve the repor
 
 [Brand Protection](https://developers.cloudflare.com/security-center/brand-protection/) detects domains that may be impersonating your brand — from common misspellings (`cloudfalre.com`) to malicious concatenations (`cloudflare-okta.com`). Saved search queries run continuously and alert you when suspicious domains appear.
 
-You can now create and save multiple queries in a single step, streamlining setup and management. Available now via the [Brand Protection bulk query creation API](https://developers.cloudflare.com/api/resources/brand%5Fprotection/subresources/queries/methods/bulk/).
+You can now create and save multiple queries in a single step, streamlining setup and management. Available now via the [Brand Protection bulk query creation API](https://developers.cloudflare.com/api/resources/brand_protection/subresources/queries/methods/bulk/).
 
 ## 2025-07-18
 
@@ -435,49 +440,49 @@ The Brand Protection API is now available, allowing users to create new queries 
 
 What you can do:
 
-* **create new string or logo query**
-* **delete string or logo queries**
-* **download matches for both logo and string queries**
-* **read matches for both logo and string queries**
+- **create new string or logo query**
+- **delete string or logo queries**
+- **download matches for both logo and string queries**
+- **read matches for both logo and string queries**
 
-Ready to start? Check out the [Brand Protection API](https://developers.cloudflare.com/api/resources/brand%5Fprotection/) in our documentation.
+Ready to start? Check out the [Brand Protection API](https://developers.cloudflare.com/api/resources/brand_protection/) in our documentation.
 
 ## 2025-05-08
 
 
 **URL Scanner now supports geo-specific scanning**
 
-Enterprise customers can now choose the geographic location from which a URL scan is performed — either via [Security Center](https://developers.cloudflare.com/security-center/investigate/) in the Cloudflare dashboard or via the [URL Scanner API](https://developers.cloudflare.com/api/resources/url%5Fscanner/subresources/scans/methods/create/).
+Enterprise customers can now choose the geographic location from which a URL scan is performed — either via [Security Center](https://developers.cloudflare.com/security-center/investigate/) in the Cloudflare dashboard or via the [URL Scanner API](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/create/).
 
 This feature gives security teams greater insight into how a website behaves across different regions, helping uncover targeted, location-specific threats.
 
 **What’s new:**
 
-* Location Picker: Select a location for the scan via **Security Center → Investigate** in the dashboard or through the API.
-* Region-aware scanning: Understand how content changes by location — useful for detecting regionally tailored attacks.
-* Default behavior: If no location is set, scans default to the user’s current geographic region.
+- Location Picker: Select a location for the scan via **Security Center → Investigate** in the dashboard or through the API.
+- Region-aware scanning: Understand how content changes by location — useful for detecting regionally tailored attacks.
+- Default behavior: If no location is set, scans default to the user’s current geographic region.
 
 Learn more in the [Security Center documentation](https://developers.cloudflare.com/security-center/).
 
 ## 2025-02-03
 
-* Security Center now has a role called Brand Protection. This role gives you access to the Brand Protection feature on the API and Cloudflare dashboard. Brand Protection role also gives you access to the Investigate platform, where you can consume the Threat Intel API and URL scanner API calls.
+- Security Center now has a role called Brand Protection. This role gives you access to the Brand Protection feature on the API and Cloudflare dashboard. Brand Protection role also gives you access to the Investigate platform, where you can consume the Threat Intel API and URL scanner API calls.
 
 ## 2025-01-20
 
-* On the URL scanner, customers who search for a report will now get a list of all reports related to that specific hostname. A hash is also available in the security report. By selecting the hash, the dashboard will list reports containing the same hash.
+- On the URL scanner, customers who search for a report will now get a list of all reports related to that specific hostname. A hash is also available in the security report. By selecting the hash, the dashboard will list reports containing the same hash.
 
 ## 2024-09-23
 
-* Customers can now export all matches from a saved query. Select your **Query name** \> select the three dots > **Export matches**.
+- Customers can now export all matches from a saved query. Select your **Query name** > select the three dots > **Export matches**.
 
 ## 2024-09-19
 
-* Customers can now create a `security.txt` file file to provide the security research team with a standardized way to report vulnerabilities.
+- Customers can now create a `security.txt` file file to provide the security research team with a standardized way to report vulnerabilities.
 
 ## 2024-07-22
 
-* Customers can now archive multiple Security Insights at the same time. Go to **Security Center** \> **Security Insights** and select the insights to archive.
+- Customers can now archive multiple Security Insights at the same time. Go to **Security Center** > **Security Insights** and select the insights to archive.
 
 Was this helpful?
 

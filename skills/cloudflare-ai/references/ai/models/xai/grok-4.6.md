@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.6`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs.
 
-| Model Info                                                                          |                                                                                                                |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens                                                                                                 |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                       |
-| More information                                                                    | [link ↗](https://docs.x.ai/developers/models)                                                                  |
-| Zero data retention                                                                 | Yes                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.6) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 500,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service-enterprise) |
+| More information | [link ↗](https://docs.x.ai/developers/models) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.6) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 **First law (conservation of energy):** The internal energy of an isolated system is constant; energy can change form (e.g., heat \(\leftrightarrow\) work) but is neither created nor destroyed. In equation form, \(\Delta U = Q - W\) (sign conventions vary).
 
 **Second law (entropy/directionality):** The entropy of an isolated system never decreases; spontaneous processes increase total entropy. Equivalently, heat cannot spontaneously flow from a colder body to a hotter one, and no cyclic process can convert heat entirely into work with 100% efficiency (Kelvin–Planck and Clausius statements).
@@ -68,6 +69,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 (The zeroth law, which underpins the definition of temperature via thermal equilibrium, is sometimes listed separately and was formalized later.)
 
 These statements have multiple equivalent formulations; the versions above are the most common in introductory physics/chemistry.
+```
 
 ```json
 {
@@ -113,7 +115,11 @@ These statements have multiple equivalent formulations; the versions above are t
 
 ## Examples
 
-**Image Understanding** — Analyze an image supplied alongside a text prompt
+<details>
+
+<summary>**Image Understanding** — Analyze an image supplied alongside a text prompt</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -165,7 +171,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 A smiling young woman with dark hair in a navy knit sweater holds a fuzzy microphone while seated in a cozy room with a white fireplace mantel, framed photo collage, and warm lighting.
+```
 
 ```json
 {
@@ -209,7 +217,13 @@ A smiling young woman with dark hair in a navy knit sweater holds a fuzzy microp
 }
 ```
 
-**Function Calling** — Force the model to return a typed function call
+</details>
+
+<details>
+
+<summary>**Function Calling** — Force the model to return a typed function call</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -339,7 +353,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
-**Structured Output** — Constrain the response to a JSON schema
+</details>
+
+<details>
+
+<summary>**Structured Output** — Constrain the response to a JSON schema</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -417,7 +437,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 {"confidence":0.95,"sentiment":"positive"}
+```
 
 ```json
 {
@@ -461,9 +483,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredminItems: 1maxItems: 500
 
@@ -555,7 +579,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -581,9 +605,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.6/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.6/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.6/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.6/schema-output.json)
 
 Was this helpful?
 

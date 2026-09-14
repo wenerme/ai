@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Two-factor authentication
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure.
+We recommend that all Cloudflare user account holders enable two-factor authentication (2FA) to keep your accounts secure. 
 
 2FA can only be enabled successfully on an account with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/). If you do not verify your email address first, you may lock yourself out of your account.
 
@@ -26,7 +26,7 @@ To enable two-factor authentication for your Cloudflare login:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
 2. Under the **My Profile** dropdown, select **My Profile**.
-3. Select **Authentication**.
+3. Select **Authentication**. 
 4. Select **Add** next to [Mobile App Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication) or [Security Key Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-security-key-authentication-for-two-factor-cloudflare-login), or **Enable** next to [Email Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-email-two-factor-authentication).
 
 Note
@@ -64,7 +64,7 @@ You can configure a security key, such as a Yubikey, to use with your account. B
 
 On a Windows device, you may need to set up Windows Hello or register your security key to your Microsoft account. Review the Windows documentation for more details.
 
-1. Once your security key is plugged in, go to **Profile** \> **Authentication**.
+1. Once your security key is plugged in, go to **Profile** > **Authentication**.
 2. From **Two-Factor Authentication**, select **Set up**.
 3. From **Security Key Authentication**, select **Add**.
 4. Enter your Cloudflare password on the **Add a Security Key** screen, then select **Next**.
@@ -79,15 +79,17 @@ On a Windows device, you may need to set up Windows Hello or register your secur
 
 Time-based one-time password (TOTP) authentication works by using an authenticatior app, such as Google Authenticator or Microsoft Authenticator, which generates a secret code shared between the app and a website. When you log in to the website, you enter your username, password, and the secret code generated from the authenticator app. The secret code is only valid for a short period of time, about 30 to 60 seconds, before a new code is generated.
 
-1. Once your security key is plugged in, go to **Profile** \> **Authentication**.
+1. Once your security key is plugged in, go to **Profile** > **Authentication**.
 2. From **Two-Factor Authentication**, select **Set up**.
 3. Under **Mobile App Authentication**, select **Add**.
 4. Scan the QR code with your mobile device and enter the code from your authenticator application.
 5. Enter your Cloudflare password, then select **Next**. If you cannot scan the QR code, select **Can't scan QR code, Follow alternative steps** to configure your authenticator application manually.
+
 ![You can enable 2FA by scanning a QR code with your mobile device.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=467,height=856,format=webp/_astro/2FA_scan_QR_code.t5BNYUYn.png)
-1. Enter your Cloudflare password again.
-2. Select **Next** to review your backup codes. You can use backup codes to access your account without your mobile device.
-3. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
+
+6. Enter your Cloudflare password again.
+7. Select **Next** to review your backup codes. You can use backup codes to access your account without your mobile device.
+8. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
 
 Note
 
@@ -95,7 +97,7 @@ To avoid being locked out of your account, be sure to generate and save your rec
 
 You can regenerate your backup codes at any time using the Cloudflare dashboard.
 
-1. Select **Next** on the backup code page to complete the recovery code setup.
+9. Select **Next** on the backup code page to complete the recovery code setup.
 
 ### Reconfigure TOTP mobile application authentication
 
@@ -124,8 +126,7 @@ Note
 
 Regenerating your backup codes will invalidate your previous codes.
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **My Profile**.
 3. Select **Authentication**.
 4. For **Two-Factor Authentication**, select **Manage**.
@@ -139,18 +140,17 @@ Note
 
 If you are not the Super Administrator of an organization with **2FA Enforcement** enabled, you may not have permission to disable 2FA.
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select **Profile**.
 3. Select the **Authentication**.
+   - To remove your security key:
+     1. Select **Edit** in the **Security Key Authentication** card. A drop-down menu shows more details about your security key.
+     2. Select **Delete**.
+     3. Enter your Cloudflare password, then select **Remove**.
+   - To remove your TOTP mobile application authentication:
+     1. Select **Delete method** in the **Mobile App Authentication** card.
+     2. Enter your Cloudflare password, authenticator application code, or a recovery code, then select **Disable**.
 
-  * To remove your security key:
-    1. Select **Edit** in the **Security Key Authentication** card. A drop-down menu shows more details about your security key.
-    2. Select **Delete**.
-    3. Enter your Cloudflare password, then select **Remove**.
-  * To remove your TOTP mobile application authentication:
-    1. Select **Delete method** in the **Mobile App Authentication** card.
-    2. Enter your Cloudflare password, authenticator application code, or a recovery code, then select **Disable**.
 ![how to disable your TOTP mobile application authentication.](https://developerdocsgifs.cloudflaretraining.com/resampled_5fps_disable_mobile_auth_v2_final.gif)
 
 ## Use a backup code
@@ -162,12 +162,10 @@ Refer to Google's documentation to [transfer Google Authenticator codes from one
 When setting up 2FA, you should have saved your backup codes in a secure location. To restore lost access using a Cloudflare backup code:
 
 1. Retrieve the backup code from where you stored it.
-2. Go to the [Cloudflare login page ↗](https://dash.cloudflare.com/login), enter your username and password and select **Log in**.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Go to the [Cloudflare login page ↗](https://dash.cloudflare.com/login), enter your username and password and select **Log in**. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 3. You should see a page titled **Two-Factor Authentication**
-
-  * If it has a text box, enter one of your backup codes and select **Log in**.
-  * If instead you see "Insert your security key and touch it", cancel any prompts from your browser that appear and select **try another authentication method or backup code**. Proceed to enter one of your backup codes and select **Log in**.
+   - If it has a text box, enter one of your backup codes and select **Log in**.
+   - If instead you see "Insert your security key and touch it", cancel any prompts from your browser that appear and select **try another authentication method or backup code**. Proceed to enter one of your backup codes and select **Log in**.
 
 Note
 
@@ -175,10 +173,10 @@ Once you use a backup code, it becomes invalid.
 
 ## Related resources
 
-* [Google Authentication documentation ↗](https://support.google.com/accounts/answer/1066447?hl=en&ref%5Ftopic=2954345&co=GENIE.Platform%3DiOS&oco=0)
-* [YubiKey documentation ↗](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)
-* [Set up multi-user accounts on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-members/)
-* [Account recovery](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/)
+- [Google Authentication documentation ↗](https://support.google.com/accounts/answer/1066447?hl=en&ref_topic=2954345&co=GENIE.Platform%3DiOS&oco=0)
+- [YubiKey documentation ↗](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)
+- [Set up multi-user accounts on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-members/)
+- [Account recovery](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/)
 
 Was this helpful?
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local development
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [workerd ↗](https://github.com/cloudflare/workerd).
+You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [`workerd` ↗](https://github.com/cloudflare/workerd).
 
 [By default](https://developers.cloudflare.com/workers/local-development/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/local-development/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
@@ -24,14 +24,14 @@ You can build, run, and test your Worker code on your own local machine before d
 
 When developing Workers, it's important to understand two distinct concepts:
 
-* **Worker execution**: Where your Worker code actually runs (on your local machine vs on Cloudflare's infrastructure).
-* [**Bindings**](https://developers.cloudflare.com/workers/runtime-apis/bindings/): How your Worker interacts with Cloudflare resources (like [KV namespaces](https://developers.cloudflare.com/kv), [R2 buckets](https://developers.cloudflare.com/r2), [D1 databases](https://developers.cloudflare.com/d1), [Queues](https://developers.cloudflare.com/queues/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), etc). In your Worker code, these are accessed via the `env` object (such as `env.MY_KV`).
+- **Worker execution**: Where your Worker code actually runs (on your local machine vs on Cloudflare's infrastructure).
+- [**Bindings**](https://developers.cloudflare.com/workers/runtime-apis/bindings/): How your Worker interacts with Cloudflare resources (like [KV namespaces](https://developers.cloudflare.com/kv), [R2 buckets](https://developers.cloudflare.com/r2), [D1 databases](https://developers.cloudflare.com/d1), [Queues](https://developers.cloudflare.com/queues/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), etc). In your Worker code, these are accessed via the `env` object (such as `env.MY_KV`).
 
 ## Start a local development server
 
 You can start a local development server using:
 
-1. The Cloudflare Workers CLI [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), using the built-in [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command.
+1. The Cloudflare Workers CLI [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), using the built-in [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) command.
 
 npmyarnpnpm
 
@@ -47,7 +47,7 @@ yarn wrangler dev
 pnpm wrangler dev
 ```
 
-1. [**Vite** ↗](https://vite.dev/), using the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/).
+2. [**Vite** ↗](https://vite.dev/), using the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/).
 
 npmyarnpnpm
 
@@ -65,16 +65,16 @@ pnpm vite dev
 
 Both Wrangler and the Cloudflare Vite plugin use [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) under the hood, and are developed and maintained by the Cloudflare team. For guidance on choosing when to use Wrangler versus Vite, see our guide [Choosing between Wrangler & Vite](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
 
-* [Get started with Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
-* [Get started with the Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/get-started/)
+- [Get started with Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/)
+- [Get started with the Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/get-started/)
 
 ### Defaults
 
 By default, running `wrangler dev` / `vite dev` (when using the [Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/get-started/)) means that:
 
-* Your Worker code runs on your local machine.
-* All resources your Worker is bound to in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) are simulated locally.
-* The local `workerd` runtime runs with `TZ=UTC` so that `Date` and `Intl` APIs inside your Worker observe UTC, matching the production Cloudflare runtime regardless of your machine's timezone.
+- Your Worker code runs on your local machine.
+- All resources your Worker is bound to in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) are simulated locally.
+- The local `workerd` runtime runs with `TZ=UTC` so that `Date` and `Intl` APIs inside your Worker observe UTC, matching the production Cloudflare runtime regardless of your machine's timezone.
 
 ### Bindings during local development
 
@@ -82,13 +82,13 @@ By default, running `wrangler dev` / `vite dev` (when using the [Vite plugin](ht
 
 During local development, your Worker code interacts with these bindings using the exact same API calls (such as `env.MY_KV.put()`) as it would in a deployed environment. These local resources are initially empty, but you can populate them with data, as documented in [Adding local data](https://developers.cloudflare.com/workers/local-development/local-data/).
 
-* By default, bindings connect to **local resource simulations** (except for [AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/), as AI models always run remotely).
-* You can override this default behavior and **connect to the remote resource** on a per-binding basis with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings). This lets you connect to real, production resources while still running your Worker code locally.
-* When using `wrangler dev`, you can temporarily disable all [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) (and connect only to local resources) by providing the `--local` flag (i.e. `wrangler dev --local`)
+- By default, bindings connect to **local resource simulations** (except for [AI bindings](https://developers.cloudflare.com/workers-ai/configuration/bindings/), as AI models always run remotely).
+- You can override this default behavior and **connect to the remote resource** on a per-binding basis with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings). This lets you connect to real, production resources while still running your Worker code locally.
+- When using `wrangler dev`, you can temporarily disable all [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) (and connect only to local resources) by providing the `--local` flag (i.e. `wrangler dev --local`)
 
 ## Remote bindings
 
-**Remote bindings** are bindings that are configured to connect to the deployed, remote resource during local development _instead_ of the locally simulated resource. Remote bindings are supported by [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/), and the `@cloudflare/vitest-plugin` package. You can configure remote bindings by setting `remote: true` in the binding definition.
+**Remote bindings** are bindings that are configured to connect to the deployed, remote resource during local development *instead* of the locally simulated resource. Remote bindings are supported by [**Wrangler**](https://developers.cloudflare.com/workers/wrangler/), the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/), and the `@cloudflare/vitest-plugin` package. You can configure remote bindings by setting `remote: true` in the binding definition.
 
 ### Example configuration
 
@@ -96,7 +96,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 
 	"r2_buckets": [
 		{
@@ -111,7 +111,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -131,7 +131,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 
 	"env": {
 		"production": {
@@ -158,7 +158,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -172,8 +172,8 @@ remote = true
 
 Running `wrangler dev -e staging` (or `CLOUDFLARE_ENV=staging vite dev`) with the above configuration means that:
 
-* Your Worker code runs locally
-* All calls made to `env.screenshots_bucket` will use the `preview-screenshots-bucket` resource, rather than the production `screenshots-bucket`.
+- Your Worker code runs locally
+- All calls made to `env.screenshots_bucket` will use the `preview-screenshots-bucket` resource, rather than the production `screenshots-bucket`.
 
 ### Recommended remote bindings
 
@@ -321,19 +321,19 @@ Certain bindings are not supported for remote connections (i.e. with `remote: tr
 
 If `remote: true` is specified in Wrangler configuration for any of the following unsupported binding types, Cloudflare **will issue an error**. See [all supported and unsupported bindings for remote bindings](https://developers.cloudflare.com/workers/local-development/bindings-per-env/).
 
-* [**Durable Objects**](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects): Enabling remote connections for Durable Objects may be supported in the future, but currently will always run locally. However, using Durable Objects in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
-* [**Workflows**](https://developers.cloudflare.com/workflows/): Enabling remote connections for Workflows may be supported in the future, but currently will only run locally. However, using Workflows in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
-* [**Environment Variables (vars)**](https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables): Environment variables are intended to be distinct between local development and deployed environments. They are easily configurable locally (such as in a `.dev.vars` file or directly in Wrangler configuration).
-* [**Secrets**](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets): Like environment variables, secrets are expected to have different values in local development versus deployed environments for security reasons. Use `.dev.vars` for local secret management.
-* [**Static Assets**](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) Static assets are always served from your local disk during development for speed and direct feedback on changes.
-* [**Version Metadata**](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/): Since your Worker code is running locally, version metadata (like commit hash, version tags) associated with a specific deployed version is not applicable or accurate.
-* [**Analytics Engine**](https://developers.cloudflare.com/analytics/analytics-engine/): Local development sessions typically don't contribute data directly to production Analytics Engine.
-* [**Hyperdrive**](https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive): This is being actively worked on, but is currently unsupported.
-* [**Rate Limiting**](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#configuration): Local development sessions typically should not share or affect rate limits of your deployed Workers. Rate limiting logic should be tested against local simulations.
+- [**Durable Objects**](https://developers.cloudflare.com/workers/wrangler/configuration/#durable-objects): Enabling remote connections for Durable Objects may be supported in the future, but currently will always run locally. However, using Durable Objects in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
+- [**Workflows**](https://developers.cloudflare.com/workflows/): Enabling remote connections for Workflows may be supported in the future, but currently will only run locally. However, using Workflows in combination with remote bindings is possible. Refer to [Using remote resources with Durable Objects and Workflows](#using-remote-resources-with-durable-objects-and-workflows) below.
+- [**Environment Variables ( `vars`)**](https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables): Environment variables are intended to be distinct between local development and deployed environments. They are easily configurable locally (such as in a `.dev.vars` file or directly in Wrangler configuration).
+- [**Secrets**](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets): Like environment variables, secrets are expected to have different values in local development versus deployed environments for security reasons. Use `.dev.vars` for local secret management.
+- [**Static Assets**](https://developers.cloudflare.com/workers/wrangler/configuration/#assets) Static assets are always served from your local disk during development for speed and direct feedback on changes.
+- [**Version Metadata**](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/): Since your Worker code is running locally, version metadata (like commit hash, version tags) associated with a specific deployed version is not applicable or accurate.
+- [**Analytics Engine**](https://developers.cloudflare.com/analytics/analytics-engine/): Local development sessions typically don't contribute data directly to production Analytics Engine.
+- [**Hyperdrive**](https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive): This is being actively worked on, but is currently unsupported.
+- [**Rate Limiting**](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#configuration): Local development sessions typically should not share or affect rate limits of your deployed Workers. Rate limiting logic should be tested against local simulations.
 
 Note
 
-If you have use-cases for connecting to any of the remote resources above, please [open a feature request ↗](https://github.com/cloudflare/workers-sdk/issues) in our [workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk).
+If you have use-cases for connecting to any of the remote resources above, please [open a feature request ↗](https://github.com/cloudflare/workers-sdk/issues) in our [`workers-sdk` repository ↗](https://github.com/cloudflare/workers-sdk).
 
 #### Using remote resources with Durable Objects and Workflows
 
@@ -341,17 +341,19 @@ While Durable Object and Workflow bindings cannot currently be remote, you can s
 
 There are two recommended patterns for this:
 
-* **Local Durable Objects/Workflows with remote bindings:**
-When you enable remote bindings in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration), your locally running Durable Objects and Workflows can access remote resources. This allows such bindings, although run locally, to interact with remote resources during local development.
-* **Accessing remote Durable Objects/Workflows via service bindings:**
-To interact with remote Durable Object or Workflow instances, deploy a Worker that defines those. Then, in your local Worker, configure a remote [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) pointing to the deployed Worker. Your local Worker will be then able to interact with the remote deployed Worker, which in turn can communicate with the remote Durable Objects/Workflows. Using this method, you can create a communication channel via the remote service binding, effectively using the deployed Worker as a proxy interface to the remote bindings during local development.
+- **Local Durable Objects/Workflows with remote bindings:**
+
+  When you enable remote bindings in your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration), your locally running Durable Objects and Workflows can access remote resources. This allows such bindings, although run locally, to interact with remote resources during local development.
+- **Accessing remote Durable Objects/Workflows via service bindings:**
+
+  To interact with remote Durable Object or Workflow instances, deploy a Worker that defines those. Then, in your local Worker, configure a remote [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) pointing to the deployed Worker. Your local Worker will be then able to interact with the remote deployed Worker, which in turn can communicate with the remote Durable Objects/Workflows. Using this method, you can create a communication channel via the remote service binding, effectively using the deployed Worker as a proxy interface to the remote bindings during local development.
 
 ### Important Considerations
 
-* [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/): If your Worker is protected by Cloudflare Access, Wrangler must authenticate with Access when connecting to remote bindings. Refer to [Connect to Access-protected Workers](#connect-to-access-protected-workers).
-* **Data modification**: Operations (writes, deletes, updates) on bindings connected remotely will affect your actual data in the targeted Cloudflare resource (be it preview or production).
-* **Billing**: Interactions with remote Cloudflare services through these connections will incur standard operational costs for those services (such as KV operations, R2 storage/operations, AI requests, D1 usage).
-* **Network latency**: Expect network latency for operations on these remotely connected bindings, as they involve communication over the internet.
+- [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/): If your Worker is protected by Cloudflare Access, Wrangler must authenticate with Access when connecting to remote bindings. Refer to [Connect to Access-protected Workers](#connect-to-access-protected-workers).
+- **Data modification**: Operations (writes, deletes, updates) on bindings connected remotely will affect your actual data in the targeted Cloudflare resource (be it preview or production).
+- **Billing**: Interactions with remote Cloudflare services through these connections will incur standard operational costs for those services (such as KV operations, R2 storage/operations, AI requests, D1 usage).
+- **Network latency**: Expect network latency for operations on these remotely connected bindings, as they involve communication over the internet.
 
 ### Connect to Access-protected Workers
 
@@ -359,27 +361,33 @@ If your Worker is protected by [Cloudflare Access](https://developers.cloudflare
 
 There are two ways you can authenticate against Access:
 
-* **Interactive login** (local development): If you have a policy defined that accepts user login, then Wrangler launches the interactive `cloudflared access login` flow in your browser. No additional setup is required beyond being signed in to the correct account. If the policy only allows service token authentication, Wrangler will skip the interactive flow and throw an error indicating that service token credentials are required.
-* **Service token** (CI / non-interactive environments): In CI/CD pipelines and other non-interactive contexts, or where the policy only allows service token authentication, Wrangler cannot trigger the interactive flow via the browser. Authentication must be via a [Cloudflare Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) instead. If you do not configure a service token in a non-interactive environment, Wrangler will throw an error rather than attempting the interactive flow.
+- **Interactive login** (local development): If you have a policy defined that accepts user login, then Wrangler launches the interactive `cloudflared access login` flow in your browser. No additional setup is required beyond being signed in to the correct account. If the policy only allows service token authentication, Wrangler will skip the interactive flow and throw an error indicating that service token credentials are required.
+- **Service token** (CI / non-interactive environments): In CI/CD pipelines and other non-interactive contexts, or where the policy only allows service token authentication, Wrangler cannot trigger the interactive flow via the browser. Authentication must be via a [Cloudflare Access service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) instead. If you do not configure a service token in a non-interactive environment, Wrangler will throw an error rather than attempting the interactive flow.
 
 To set up service token authentication:
 
 1. **Create a service token.**
-In the Cloudflare dashboard, go to **Zero Trust** \> **Access** \> **Service Auth** \> **Service Tokens** and create a new token. Refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for the full reference. You will be shown a Client ID and a Client Secret — save them somewhere safe, as the secret is not shown again.
-2. **Add a Service Auth policy to the Access application that protects your Worker.**
-Open the _existing_ Access application that already protects the Worker or the hostname you use for remote bindings, and attach a new policy with:
 
-  * **Action**: Service Auth
-  * **Include**: The service token you created, or "Any Access Service Token" if you want to allow any service token to access the Worker.
-Caution
-Do not create a separate Access application for the same Worker or hostname only to add service token authentication. Doing so can conflict with the Access application that already protects the Worker. Attach the Service Auth policy to the existing application instead.
+   In the Cloudflare dashboard, go to **Zero Trust** > **Access** > **Service Auth** > **Service Tokens** and create a new token. Refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for the full reference. You will be shown a Client ID and a Client Secret — save them somewhere safe, as the secret is not shown again.
+2. **Add a Service Auth policy to the Access application that protects your Worker.**
+
+   Open the *existing* Access application that already protects the Worker or the hostname you use for remote bindings, and attach a new policy with:
+   - **Action**: Service Auth
+   - **Include**: The service token you created, or "Any Access Service Token" if you want to allow any service token to access the Worker.
+
+   Caution
+
+   Do not create a separate Access application for the same Worker or hostname only to add service token authentication. Doing so can conflict with the Access application that already protects the Worker. Attach the Service Auth policy to the existing application instead.
 3. **Expose the credentials to Wrangler.**
-Set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) in the environment that runs Wrangler:
-```sh
-export CLOUDFLARE_ACCESS_CLIENT_ID=<CLIENT_ID>
-export CLOUDFLARE_ACCESS_CLIENT_SECRET=<CLIENT_SECRET>
-```
-In CI, store the values as secrets and expose them as environment variables to the step that runs Wrangler.
+
+   Set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) in the environment that runs Wrangler:
+
+   ```sh
+   export CLOUDFLARE_ACCESS_CLIENT_ID=<CLIENT_ID>
+   export CLOUDFLARE_ACCESS_CLIENT_SECRET=<CLIENT_SECRET>
+   ```
+
+   In CI, store the values as secrets and expose them as environment variables to the step that runs Wrangler.
 
 ### API
 
@@ -387,9 +395,9 @@ Wrangler provides programmatic utilities to help tooling authors support remote 
 
 **Key APIs include:**
 
-* [startRemoteProxySession](#startRemoteProxySession): Starts a proxy session that allows interaction with remote bindings.
-* [unstable\_convertConfigBindingsToStartWorkerBindings](#unstable%5Fconvertconfigbindingstostartworkerbindings): Utility for converting binding definitions.
-* [experimental\_maybeStartOrUpdateProxySession](#experimental%5Fmaybestartorupdatemixedmodesession): Convenience function to easily start or update a proxy session.
+- [`startRemoteProxySession`](#startRemoteProxySession): Starts a proxy session that allows interaction with remote bindings.
+- [`unstable_convertConfigBindingsToStartWorkerBindings`](#unstable_convertconfigbindingstostartworkerbindings): Utility for converting binding definitions.
+- [`experimental_maybeStartOrUpdateProxySession`](#experimental_maybestartorupdatemixedmodesession): Convenience function to easily start or update a proxy session.
 
 #### `startRemoteProxySession`
 
@@ -397,10 +405,10 @@ This function starts a proxy session for a given set of bindings. It accepts opt
 
 It returns an object with:
 
-* `ready` `Promise<void>`: Resolves when the session is ready.
-* `dispose` `() => Promise<void>`: Stops the session.
-* `updateBindings` `(bindings: StartDevWorkerInput['bindings']) => Promise<void>`: Updates session bindings.
-* `remoteProxyConnectionString` `remoteProxyConnectionString`: String to pass to Miniflare for remote binding access.
+- `ready` `Promise<void>`: Resolves when the session is ready.
+- `dispose` `() => Promise<void>`: Stops the session.
+- `updateBindings` `(bindings: StartDevWorkerInput['bindings']) => Promise<void>`: Updates session bindings.
+- `remoteProxyConnectionString` `remoteProxyConnectionString`: String to pass to Miniflare for remote binding access.
 
 #### `unstable_convertConfigBindingsToStartWorkerBindings`
 
@@ -414,21 +422,21 @@ This type conversion is temporary. In the future, the types will be unified so y
 
 This wrapper simplifies proxy session management. It takes:
 
-* An object that contains either:
-  * the path to a Wrangler configuration and a potential target environment
-  * the name of the Worker and the bindings it is using
-* The current proxy session details (this parameter can be set to `null` or not being provided if none).
-* Potentially the auth data to use for the remote proxy session.
+- An object that contains either:
+  - the path to a Wrangler configuration and a potential target environment
+  - the name of the Worker and the bindings it is using
+- The current proxy session details (this parameter can be set to `null` or not being provided if none).
+- Potentially the auth data to use for the remote proxy session.
 
 It returns an object with the proxy session details if started or updated, or `null` if no proxy session is needed.
 
 The function:
 
-* Based on the first argument prepares the input arguments for the proxy session.
-* If there are no remote bindings to be used (nor a pre-existing proxy session) it returns null, signaling that no proxy session is needed.
-* If the details of an existing proxy session have been provided it updates the proxy session accordingly.
-* Otherwise if starts a new proxy session.
-* Returns the proxy session details (that can later be passed as the second argument to `maybeStartOrUpdateRemoteProxySession`).
+- Based on the first argument prepares the input arguments for the proxy session.
+- If there are no remote bindings to be used (nor a pre-existing proxy session) it returns null, signaling that no proxy session is needed.
+- If the details of an existing proxy session have been provided it updates the proxy session accordingly.
+- Otherwise if starts a new proxy session.
+- Returns the proxy session details (that can later be passed as the second argument to `maybeStartOrUpdateRemoteProxySession`).
 
 #### Example
 
@@ -530,7 +538,7 @@ async function startOrUpdateDevSession() {
 
 ## `wrangler dev --remote` (Legacy)
 
-Separate from Miniflare-powered local development, Wrangler also offers a fully remote development mode via [wrangler dev --remote](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). Remote development is [**not** supported in the Vite plugin](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
+Separate from Miniflare-powered local development, Wrangler also offers a fully remote development mode via [`wrangler dev --remote`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev). Remote development is [**not** supported in the Vite plugin](https://developers.cloudflare.com/workers/local-development/wrangler-vs-vite/).
 
 npmyarnpnpm
 
@@ -552,16 +560,16 @@ When using remote development, all bindings automatically connect to their remot
 
 ### When to use Remote development
 
-* For most development tasks, the most efficient and productive experience will be local development along with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) when needed.
-* You may want to use `wrangler dev --remote` for testing features or behaviors that are highly specific to Cloudflare's network and cannot be adequately simulated locally or tested via remote bindings.
+- For most development tasks, the most efficient and productive experience will be local development along with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) when needed.
+- You may want to use `wrangler dev --remote` for testing features or behaviors that are highly specific to Cloudflare's network and cannot be adequately simulated locally or tested via remote bindings.
 
 ### Considerations
 
-* Iteration is significantly slower than local development due to the upload/deployment step for each change.
+- Iteration is significantly slower than local development due to the upload/deployment step for each change.
 
 ### Limitations
 
-* When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in[ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
+- When you run a remote development session using the `--remote` flag, a limit of 50 [routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) per zone is enforced. Learn more in [ Workers platform limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains-when-using-wrangler-dev---remote).
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web UI Kit
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/realtimekit/release-notes/web-ui-kit/index.xml)
 
@@ -22,13 +22,13 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Fixes**
 
-* Restored Safari 16.x compatibility by incorporating an [upstream Stencil fix](https://github.com/stenciljs/core/pull/6236).
-* Fixed `rtk-idle-screen` incorrectly displaying non-fatal `preJoinError` events, such as declining to share media, as fatal errors.
-* Starting a recording while one is already in progress now displays a specific message instead of a generic internal error.
+- Restored Safari 16.x compatibility by incorporating an [upstream Stencil fix](https://github.com/stenciljs/core/pull/6236).
+- Fixed `rtk-idle-screen` incorrectly displaying non-fatal `preJoinError` events, such as declining to share media, as fatal errors.
+- Starting a recording while one is already in progress now displays a specific message instead of a generic internal error.
 
 **New localization keys**
 
-* `recording.error.already_recording` — "A recording is already in progress."
+- `recording.error.already_recording` — "A recording is already in progress."
 
 ## 2026-07-17
 
@@ -36,21 +36,21 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 **Fixes**
 
-* The `joinError` state has been superseded by `preJoinError` to cover all errors that occur before or during joining the meeting. Refer to [State management](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/) for details on UI Kit states.
-* The `rtk-idle-screen` now displays user-friendly error messages instead of just an infinite loader, helping customers identify issues and retry.
-* Fixed errors thrown by the Core SDK not being captured and shown properly by the UI Kit.
+- The `joinError` state has been superseded by `preJoinError` to cover all errors that occur before or during joining the meeting. Refer to [State management](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/) for details on UI Kit states.
+- The `rtk-idle-screen` now displays user-friendly error messages instead of just an infinite loader, helping customers identify issues and retry.
+- Fixed errors thrown by the Core SDK not being captured and shown properly by the UI Kit.
 
 **New localization keys**
 
-* `init.auth_error` — "We couldn't verify your access to this meeting. The meeting may have ended, or you may not have permission to join."
-* `init.network_error` — "We couldn't connect to the meeting. Please try again, and if the problem continues, check your internet connection."
-* `init.browser_error` — "Your browser is not supported. Please try a different or updated browser."
-* `init.default_error` — "Something went wrong while connecting to the meeting. Please try again."
-* `join.network_error` — "We couldn't connect to the meeting. Please check your internet connection and try again."
-* `join.media_error` — "We're having trouble connecting to the meeting. Please try again, and if the problem continues, try using a different network."
-* `join.media_firewall_error` — "Your network may be blocking this connection. Try using a different network, or contact your network administrator for help."
-* `join.default_error` — "Something went wrong while joining the meeting. Please try again."
-* `join.error_code` — "Error code"
+- `init.auth_error` — "We couldn't verify your access to this meeting. The meeting may have ended, or you may not have permission to join."
+- `init.network_error` — "We couldn't connect to the meeting. Please try again, and if the problem continues, check your internet connection."
+- `init.browser_error` — "Your browser is not supported. Please try a different or updated browser."
+- `init.default_error` — "Something went wrong while connecting to the meeting. Please try again."
+- `join.network_error` — "We couldn't connect to the meeting. Please check your internet connection and try again."
+- `join.media_error` — "We're having trouble connecting to the meeting. Please try again, and if the problem continues, try using a different network."
+- `join.media_firewall_error` — "Your network may be blocking this connection. Try using a different network, or contact your network administrator for help."
+- `join.default_error` — "Something went wrong while joining the meeting. Please try again."
+- `join.error_code` — "Error code"
 
 ## 2026-06-18
 
@@ -66,36 +66,36 @@ The `rtk-plugin-main` and `rtk-plugins` components have been updated for the new
 
 Key changes:
 
-* `rtk-plugin-main` no longer renders an `<iframe>`. Instead, it uses a `<slot>` to project the `plugin.component` (any `HTMLElement`) you provide in the plugin config.
-* Plugin permission checks now use `plugin.permissions.canActivate` and `plugin.permissions.canDeactivate` instead of the old `meeting.self.permissions.plugins.canStart` / `canClose`.
-* Plugin list (`rtk-plugins`) now shows `plugin.icon` instead of `plugin.picture`.
-* Added an empty state message ("No plugins available") when no plugins are registered.
-* Removed iframe interaction checks (`canInteractWithPlugin`, `viewModeEnabled`) and the `block-inputs` overlay. These are no longer applicable without iframes.
+- `rtk-plugin-main` no longer renders an `<iframe>`. Instead, it uses a `<slot>` to project the `plugin.component` (any `HTMLElement`) you provide in the plugin config.
+- Plugin permission checks now use `plugin.permissions.canActivate` and `plugin.permissions.canDeactivate` instead of the old `meeting.self.permissions.plugins.canStart` / `canClose`.
+- Plugin list ( `rtk-plugins`) now shows `plugin.icon` instead of `plugin.picture`.
+- Added an empty state message ("No plugins available") when no plugins are registered.
+- Removed iframe interaction checks ( `canInteractWithPlugin`, `viewModeEnabled`) and the `block-inputs` overlay. These are no longer applicable without iframes.
 
 **Removed deprecated API usages**
 
-* `meeting.leaveRoom()` — use `meeting.leave()`.
-* `meeting.connectedMeetings.supportsConnectedMeetings` — removed. Breakout room checks use `meeting.connectedMeetings.isActive` and permission checks directly.
-* `participant.clientSpecificId` — use `participant.customParticipantId`.
+- `meeting.leaveRoom()` — use `meeting.leave()`.
+- `meeting.connectedMeetings.supportsConnectedMeetings` — removed. Breakout room checks use `meeting.connectedMeetings.isActive` and permission checks directly.
+- `participant.clientSpecificId` — use `participant.customParticipantId`.
 
 **Enhancements**
 
-* AI Transcriptions UI: Rewrote the search UI for transcriptions. Search now covers both participant names and transcript content. Added dedicated search placeholder and "no results" states.
-* AI Transcriptions header: Fixed typo "MeetingAI" to "Meeting AI".
-* Chat message spacing: Reduced line height in `rtk-message-view` for better vertical spacing.
-* Audio track handling: `RTKAudio.addTrack()` now removes any existing track with the same ID before adding, preventing stale tracks from accumulating (fixes double audio on reconnect).
+- AI Transcriptions UI: Rewrote the search UI for transcriptions. Search now covers both participant names and transcript content. Added dedicated search placeholder and "no results" states.
+- AI Transcriptions header: Fixed typo "MeetingAI" to "Meeting AI".
+- Chat message spacing: Reduced line height in `rtk-message-view` for better vertical spacing.
+- Audio track handling: `RTKAudio.addTrack()` now removes any existing track with the same ID before adding, preventing stale tracks from accumulating (fixes double audio on reconnect).
 
 **New localization keys**
 
-* `plugins.empty` — "No plugins available"
-* `ai.transcriptions.search_placeholder` — "Search by participant name or transcript"
-* `ai.transcriptions.no_transcripts_found` — "No transcripts found. Try searching for a different participant or transcript."
-* `ai.transcriptions.no_transcripts_yet` — "No transcripts yet."
+- `plugins.empty` — "No plugins available"
+- `ai.transcriptions.search_placeholder` — "Search by participant name or transcript"
+- `ai.transcriptions.no_transcripts_found` — "No transcripts found. Try searching for a different participant or transcript."
+- `ai.transcriptions.no_transcripts_yet` — "No transcripts yet."
 
 **Fixes**
 
-* Fixed abrupt disconnection screen appearing incorrectly during media reconnection.
-* Fixed missing audio after reconnection due to stale tracks not being replaced.
+- Fixed abrupt disconnection screen appearing incorrectly during media reconnection.
+- Fixed missing audio after reconnection due to stale tracks not being replaced.
 
 ## 2026-05-28
 
@@ -105,16 +105,16 @@ Key changes:
 
 **Features**
 
-* When a user fails to join a meeting, `rtk-idle-screen` and `rtk-setup-screen` now display a troubleshooting link to help resolve common connection issues such as firewall restrictions and permission errors.
-* If the meeting preset allows transcripts, the transcription panel is now shown by default without requiring manual activation.
+- When a user fails to join a meeting, `rtk-idle-screen` and `rtk-setup-screen` now display a troubleshooting link to help resolve common connection issues such as firewall restrictions and permission errors.
+- If the meeting preset allows transcripts, the transcription panel is now shown by default without requiring manual activation.
 
 **Enhancements**
 
-* Raw SDK error codes and messages are no longer shown to end users on join failure. Error messages are now mapped to clear, user-friendly, localized text with a small reference code (for example, `Error code: 0002`) for support and debugging.
+- Raw SDK error codes and messages are no longer shown to end users on join failure. Error messages are now mapped to clear, user-friendly, localized text with a small reference code (for example, `Error code: 0002`) for support and debugging.
 
 **Fixes**
 
-* Corrected several typos and spacing issues in the default language pack.
+- Corrected several typos and spacing issues in the default language pack.
 
 ## 2026-03-31
 
@@ -122,7 +122,7 @@ Key changes:
 
 **Enhancements**
 
-* AI sidebar component now uses `activeSidebar` state instead of `activeAI` state, streamlining all sidebar components under a single state.
+- AI sidebar component now uses `activeSidebar` state instead of `activeAI` state, streamlining all sidebar components under a single state.
 
 ## 2026-03-10
 
@@ -132,17 +132,17 @@ Key changes:
 
 **Enhancements**
 
-* Improved error handling for room join failures to display actionable error messages instead of showing an infinite loader.
+- Improved error handling for room join failures to display actionable error messages instead of showing an infinite loader.
 
 **Fixes**
 
-* Corrected typos in UI strings:
-  * `occured` → `occurred`
-  * `On you device` → `On your device`
-  * `Grant acess` → `Grant access`
-* Fixed default language pack keys:
-  * `ai.chat.summerise` → `ai.chat.summarize`
-  * `date.yesteday` → `date.yesterday`
+- Corrected typos in UI strings:
+  - `occured` → `occurred`
+  - `On you device` → `On your device`
+  - `Grant acess` → `Grant access`
+- Fixed default language pack keys:
+  - `ai.chat.summerise` → `ai.chat.summarize`
+  - `date.yesteday` → `date.yesterday`
 
 ## 2026-01-30
 
@@ -152,68 +152,70 @@ Key changes:
 
 **Features**
 
-* Chat message operations (edit, delete, pin) are now available to all participants.
-* Chat pagination with infinite scroll for improved performance in meetings with high message volume.
-* Pinned messages are now displayed in a dedicated view for easy access.
-* Added `overrides` prop support on `rtk-meeting` and `rtk-ui-provider` for easier UI customization. Available overrides include:
-  * `disablePrivateChat` \- Disable private chat functionality.
-  * `disableEmojiPicker` \- Hide emoji picker in chat component.
-```tsx
-<RtkMeeting meeting={meeting} overrides={{
-  disablePrivateChat: true,
-  disableEmojiPicker: true
-}} />
-```
+- Chat message operations (edit, delete, pin) are now available to all participants.
+- Chat pagination with infinite scroll for improved performance in meetings with high message volume.
+- Pinned messages are now displayed in a dedicated view for easy access.
+- Added `overrides` prop support on `rtk-meeting` and `rtk-ui-provider` for easier UI customization. Available overrides include:
+  - `disablePrivateChat` - Disable private chat functionality.
+  - `disableEmojiPicker` - Hide emoji picker in chat component.
+
+  ```tsx
+  <RtkMeeting meeting={meeting} overrides={{
+    disablePrivateChat: true,
+    disableEmojiPicker: true
+  }} />
+  ```
 
 **New components**
 
-* `rtk-chat-header` \- Header component with pinned messages and private chat selector.
-* `rtk-pinned-message-selector` \- Displays all pinned messages with paginated infinite scroll.
-* `rtk-chat-selector` \- Switch between public chat and private chats with specific participants.
+- `rtk-chat-header` - Header component with pinned messages and private chat selector.
+- `rtk-pinned-message-selector` - Displays all pinned messages with paginated infinite scroll.
+- `rtk-chat-selector` - Switch between public chat and private chats with specific participants.
 
 **Component enhancements**
 
-* `rtk-chat-composer-view` now accepts `isSending` prop to display sender messages on the right and other messages on the left with different colors.
-* `rtk-chat-messages-ui-paginated` now accepts `privateChatRecipient` prop for displaying paginated private chat messages.
-* `rtk-chat-messages-ui-paginated` now emits `editMessage`, `deleteMessage`, and `pinMessage` events for message operations.
-* `rtk-menu-item` and `rtk-menu-list` now accept `menuVariant` prop for different color schemes based on user actions.
-* `rtk-message-view` now accepts `isEdited`, `isSelf`, `messageType`, and `pinned` props for appropriate message rendering.
-* Added automatic scrolling to new messages.
+- `rtk-chat-composer-view` now accepts `isSending` prop to display sender messages on the right and other messages on the left with different colors.
+- `rtk-chat-messages-ui-paginated` now accepts `privateChatRecipient` prop for displaying paginated private chat messages.
+- `rtk-chat-messages-ui-paginated` now emits `editMessage`, `deleteMessage`, and `pinMessage` events for message operations.
+- `rtk-menu-item` and `rtk-menu-list` now accept `menuVariant` prop for different color schemes based on user actions.
+- `rtk-message-view` now accepts `isEdited`, `isSelf`, `messageType`, and `pinned` props for appropriate message rendering.
+- Added automatic scrolling to new messages.
 
 **Breaking changes**
 
 Removed non-operational chat channel components to streamline the SDK. `rtk-chat` remains fully operational.
 
-* Removed `rtk-channel-creator`.
-* Removed `rtk-channel-header`.
-* Removed `rtk-channel-details`.
-* Removed `rtk-channel-selector-ui`.
-* Removed `rtk-channel-selector-view`.
-* `rtk-chat-composer-ui` no longer accepts `channelId` prop.
-* `rtk-chat` no longer accepts `disablePrivateChat` prop. Use preset configuration instead, or pass as override:
-```tsx
-<RtkMeeting meeting={meeting} overrides={{disablePrivateChat: true}} />
-```
+- Removed `rtk-channel-creator`.
+- Removed `rtk-channel-header`.
+- Removed `rtk-channel-details`.
+- Removed `rtk-channel-selector-ui`.
+- Removed `rtk-channel-selector-view`.
+- `rtk-chat-composer-ui` no longer accepts `channelId` prop.
+- `rtk-chat` no longer accepts `disablePrivateChat` prop. Use preset configuration instead, or pass as override:
+
+  ```tsx
+  <RtkMeeting meeting={meeting} overrides={{disablePrivateChat: true}} />
+  ```
 
 **Deprecations**
 
-* `rtk-chat-composer-ui` is deprecated due to scalability limitations and lack of pagination support.
+- `rtk-chat-composer-ui` is deprecated due to scalability limitations and lack of pagination support.
 
 **Removed localization keys**
 
-* `ai.chat.summarise`
-* `ai.chat.agenda`
-* `chat.new_channel`
-* `chat.channel_name`
-* `chat.channel_members`
+- `ai.chat.summarise`
+- `ai.chat.agenda`
+- `chat.new_channel`
+- `chat.channel_name`
+- `chat.channel_members`
 
 **Renamed localization keys**
 
-* `chat.empty_channel` → `chat.empty_chat`
+- `chat.empty_channel` → `chat.empty_chat`
 
 **Known limitations**
 
-* Total message count for public and private chats is not currently displayed.
+- Total message count for public and private chats is not currently displayed.
 
 ## 2025-12-17
 
@@ -221,7 +223,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Fixed iOS issue where the chat compose view would zoom when typing a message.
+- Fixed iOS issue where the chat compose view would zoom when typing a message.
 
 ## 2025-11-18
 
@@ -229,8 +231,8 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Fixed alignment issues with unread chat message count, unread polls count, and pending participant stage request count.
-* Resolved issue where action toggles were incorrectly displayed in participant video preview in the settings component.
+- Fixed alignment issues with unread chat message count, unread polls count, and pending participant stage request count.
+- Resolved issue where action toggles were incorrectly displayed in participant video preview in the settings component.
 
 ## 2025-10-30
 
@@ -238,17 +240,17 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Fixed an issue where `rtk-debugger` displayed audio and video bitrate as `0`.
-* Resolved menu visibility for the last participant when the participants list is long.
-* Fixed `rtk-polls` not rendering when props were provided after initial mount.
-* Improved `rtk-participant-tile` audio visualizer appearance when muted (no longer shows as a single dot).
-* Prevented large notifications from overflowing their container.
-* Fixed a memory leak in the `mediaConnectionUpdate` event listener.
-* Corrected `rtk-ui-provider` prop passing to children during consecutive meetings on the same page.
+- Fixed an issue where `rtk-debugger` displayed audio and video bitrate as `0`.
+- Resolved menu visibility for the last participant when the participants list is long.
+- Fixed `rtk-polls` not rendering when props were provided after initial mount.
+- Improved `rtk-participant-tile` audio visualizer appearance when muted (no longer shows as a single dot).
+- Prevented large notifications from overflowing their container.
+- Fixed a memory leak in the `mediaConnectionUpdate` event listener.
+- Corrected `rtk-ui-provider` prop passing to children during consecutive meetings on the same page.
 
 **New localization keys**
 
-* `network.troubleshoot` — "Troubleshoot your connection"
+- `network.troubleshoot` — "Troubleshoot your connection"
 
 ## 2025-08-14
 
@@ -256,11 +258,11 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Fixed Safari CSS issues where the `rtk-settings` component was not visible and the Audio Playback modal was not taking the proper height.
+- Fixed Safari CSS issues where the `rtk-settings` component was not visible and the Audio Playback modal was not taking the proper height.
 
 **Enhancements**
 
-* Livestream viewer now has a seeker and DVR functionality.
+- Livestream viewer now has a seeker and DVR functionality.
 
 ## 2025-07-17
 
@@ -268,12 +270,12 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Fixed Angular integration issues.
+- Fixed Angular integration issues.
 
 **Enhancements**
 
-* Added support for multiple meetings on the same page in RealtimeKit.
-* Enhanced the `rtk-ui-provider` component to serve as a parent component for sharing common props (`meeting`, `config`, `iconPack`) with all child components.
+- Added support for multiple meetings on the same page in RealtimeKit.
+- Enhanced the `rtk-ui-provider` component to serve as a parent component for sharing common props ( `meeting`, `config`, `iconPack`) with all child components.
 
 ## 2025-07-08
 
@@ -281,12 +283,12 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Fixes**
 
-* Resolved `TypeError` that occurred for meetings without titles.
-* Implemented minor UI improvements for chat components.
+- Resolved `TypeError` that occurred for meetings without titles.
+- Implemented minor UI improvements for chat components.
 
 **Features**
 
-* Made Livestream feature available to all beta users.
+- Made Livestream feature available to all beta users.
 
 ## 2025-07-02
 
@@ -294,7 +296,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Performance**
 
-* Fixed dependency issues to enhance performance and Angular integration.
+- Fixed dependency issues to enhance performance and Angular integration.
 
 ## 2025-06-30
 
@@ -302,7 +304,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Deprecated API**
 
-* Discontinued Vue UI support.
+- Discontinued Vue UI support.
 
 ## 2025-05-29
 
@@ -310,7 +312,7 @@ Removed non-operational chat channel components to streamline the SDK. `rtk-chat
 
 **Features**
 
-* Initial release of Cloudflare RealtimeKit with support for group calls, webinars, livestreaming, polls, and chat.
+- Initial release of Cloudflare RealtimeKit with support for group calls, webinars, livestreaming, polls, and chat.
 
 Was this helpful?
 

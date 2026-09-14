@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Organizations
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -38,6 +38,7 @@ Gateway evaluates source account policies before any recipient account policies.
 
 All traffic and corresponding policies, logs, and configurations for a recipient account will be contained to that recipient account. Organization owners can view logs for recipient accounts on a per-account basis, and [Logpush jobs](https://developers.cloudflare.com/logs/logpush/) must be configured separately. When using DLP policies with [payload logging](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules), each recipient account must configure its own [encryption public key](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#set-a-dlp-payload-encryption-public-key).
 
+```
 flowchart TD
 %% Accessibility
  accTitle: How Gateway policies work in a tiered account configuration
@@ -88,19 +89,21 @@ flowchart TD
     classDef Peach stroke-width:1px, stroke-dasharray:none, stroke:#FBB35A, fill:#FFEFDB, color:#8F632D
     classDef Forest stroke-width:1px, stroke-dasharray:none, stroke:#2D6A4F, fill:#D8F3DC, color:#2D6A4F
 
+```
+
 In the diagram above:
 
-* Blue policies (**Block malware** and **Block spyware**) are shared from the source account.
-* Orange policies (**Block DNS tunnel**) are not shared.
-* Green policies (**Block social media** and **Block instant messaging**) are created locally in recipient accounts.
+- Blue policies (**Block malware** and **Block spyware**) are shared from the source account.
+- Orange policies (**Block DNS tunnel**) are not shared.
+- Green policies (**Block social media** and **Block instant messaging**) are created locally in recipient accounts.
 
 ## Limitations
 
 Tiered policies with Organizations have the following limitations:
 
-* [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) cannot be shared between accounts.
-* Source accounts cannot share policies that use [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) selectors, the [Detected protocol](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol) selector, or the [Quarantine](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#quarantine) action. Source and recipient accounts can still create and apply policies with these selectors and actions separately from the Organization share.
-* Policies can only be shared within an Organization. Sharing to sub-organizations is not supported.
+- [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) cannot be shared between accounts.
+- Source accounts cannot share policies that use [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) selectors, the [Detected protocol](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol) selector, or the [Quarantine](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#quarantine) action. Source and recipient accounts can still create and apply policies with these selectors and actions separately from the Organization share.
+- Policies can only be shared within an Organization. Sharing to sub-organizations is not supported.
 
 Caution
 
@@ -114,10 +117,10 @@ You can create, configure, and share your tiered policies in the source account 
 
 To share a Gateway policy from a source account to a recipient account:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
-2. Choose the policy type you want to share. If you want to share a resolver policy, go to **Traffic policies** \> **Resolver policies**.
-3. Find the policy you want to share from the list. In the three-dot menu, select **Share**. Alternatively, to bulk share multiple policies, you can select each policy you want to share, then select **Actions** \> **Share**.
-4. In **Select account**, choose the accounts you want to share the policy with. To share the policy with all existing and future recipient accounts in your Organization, choose _Select all accounts in org_.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+2. Choose the policy type you want to share. If you want to share a resolver policy, go to **Traffic policies** > **Resolver policies**.
+3. Find the policy you want to share from the list. In the three-dot menu, select **Share**. Alternatively, to bulk share multiple policies, you can select each policy you want to share, then select **Actions** > **Share**.
+4. In **Select account**, choose the accounts you want to share the policy with. To share the policy with all existing and future recipient accounts in your Organization, choose *Select all accounts in org*.
 5. Select **Continue**, then select **Share**.
 
 A sharing icon will appear next to the policy's name. When sharing is complete, the policy will appear in and apply to the recipient accounts. Shared policies will appear grayed out in the recipient account's list of Gateway policies.
@@ -132,8 +135,8 @@ If a policy fails to share to recipient accounts, Gateway will retry deploying t
 
 To change or remove recipients for a Gateway policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
-2. Choose the policy type you want to edit. If you want to edit a resolver policy, go to **Traffic policies** \> **Resolver policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+2. Choose the policy type you want to edit. If you want to edit a resolver policy, go to **Traffic policies** > **Resolver policies**.
 3. Find the policy you want to edit from the list.
 4. In the three-dot menu, select **Edit shared configuration recipients**.
 5. In **Select account**, choose the accounts you want to share the policy with. To remove a recipient, select **Remove** next to the recipient account's name.
@@ -143,15 +146,15 @@ When sharing is complete, the policy sharing will update across the configured r
 
 Note
 
-If you selected _Select all accounts in org_ when sharing the policy, you will need to [unshare the policy](#unshare-policy) before you can edit its recipient accounts.
+If you selected *Select all accounts in org* when sharing the policy, you will need to [unshare the policy](#unshare-policy) before you can edit its recipient accounts.
 
 ### Unshare policy
 
 To stop sharing a policy with all recipient accounts:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
-2. Choose the policy type you want to remove. If you want to remove a resolver policy, go to **Traffic policies** \> **Resolver policies**.
-3. Find the policy you want to remove from the list. In the three-dot menu, select **Unshare**. Alternatively, to bulk remove multiple policies, you can select each policy you want to remove, then select **Actions** \> **Unshare**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+2. Choose the policy type you want to remove. If you want to remove a resolver policy, go to **Traffic policies** > **Resolver policies**.
+3. Find the policy you want to remove from the list. In the three-dot menu, select **Unshare**. Alternatively, to bulk remove multiple policies, you can select each policy you want to remove, then select **Actions** > **Unshare**.
 4. Select **Unshare**.
 
 When sharing is complete, Gateway will stop sharing the policy with all recipient accounts and only apply the policy to the source account.
@@ -168,9 +171,9 @@ You can share certain Gateway settings - the Gateway block page and extended ema
 
 To share your [Gateway block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) settings from a source account to a recipient account:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Custom pages**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
 2. In **Account Gateway block page**, select the three-dot menu and choose **Share**.
-3. In **Select account**, choose the accounts you want to share the settings with. To share the settings with all existing and future recipient accounts in your Organization, choose _Select all accounts in org_.
+3. In **Select account**, choose the accounts you want to share the settings with. To share the settings with all existing and future recipient accounts in your Organization, choose *Select all accounts in org*.
 4. Select **Continue**, then select **Share**.
 
 A sharing icon will appear next to the setting. When sharing is complete, the setting will appear in and apply to the recipient accounts.
@@ -181,9 +184,9 @@ To modify share recipients or unshare the setting, select the three-dot menu and
 
 To share your [extended email address matching](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#extended-email-addresses) settings from a source account to a recipient account:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Traffic settings**.
-2. In **Firewall** \> **Matched extended email address**, select the three-dot menu and choose **Share**.
-3. In **Select account**, choose the accounts you want to share the settings with. To share the settings with all existing and future recipient accounts in your Organization, choose _Select all accounts in org_.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+2. In **Firewall** > **Matched extended email address**, select the three-dot menu and choose **Share**.
+3. In **Select account**, choose the accounts you want to share the settings with. To share the settings with all existing and future recipient accounts in your Organization, choose *Select all accounts in org*.
 4. Select **Continue**, then select **Share**.
 
 A sharing icon will appear next to the setting. When sharing is complete, the setting will appear in and apply to the recipient accounts.

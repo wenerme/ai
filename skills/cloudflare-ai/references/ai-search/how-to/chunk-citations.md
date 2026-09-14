@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Show source citations in responses
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [AI Search](https://developers.cloudflare.com/ai-search/) returns the source chunks it uses to generate an answer. Use those chunks to show citations, references, or source links in your application.
 
@@ -22,10 +22,10 @@ This guide shows how to build a [Cloudflare Worker](https://developers.cloudflar
 
 You will create a Worker endpoint that:
 
-* Sends a user question to `chatCompletions()`
-* Returns the generated answer with source identifiers, snippets, metadata, and relevance scores
-* Groups repeated chunks into one citation per source document
-* Handles citations for standard and streaming responses
+- Sends a user question to `chatCompletions()`
+- Returns the generated answer with source identifiers, snippets, metadata, and relevance scores
+- Groups repeated chunks into one citation per source document
+- Handles citations for standard and streaming responses
 
 ## How citations work
 
@@ -39,7 +39,7 @@ Each returned chunk contains an `item` object with `key` (filename or URL), `tim
 
 The `score` field indicates how relevant the chunk was to the query. The `chunks` array is also available in the `search()` response, and the same approach applies.
 
-## 1\. Create a Worker
+## 1. Create a Worker
 
 Create a Worker project for the citation examples:
 
@@ -65,7 +65,7 @@ Move into the project directory:
 cd ai-search-citations
 ```
 
-## 2\. Configure the binding
+## 2. Configure the binding
 
 Add an AI Search namespace binding to your Wrangler configuration:
 
@@ -75,7 +75,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
   "name": "ai-search-citations",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -89,7 +89,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
 name = "ai-search-citations"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -100,11 +100,13 @@ This binding lets your Worker access AI Search instances in the `default` namesp
 
 If you do not have an instance yet, create one and add content before you run the Worker. To create an instance with Wrangler, refer to [Wrangler commands](https://developers.cloudflare.com/ai-search/get-started/wrangler/).
 
-## 3\. Display citations from chat completions
+## 3. Display citations from chat completions
 
 Start with the simplest citation pattern: return the generated answer and a list of source documents in the same JSON response.
 
 Replace the contents of `src/index.ts` with the following Worker code:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -133,6 +135,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -194,11 +198,13 @@ The response looks like:
 }
 ```
 
-## 4\. Deduplicate citations by source
+## 4. Deduplicate citations by source
 
 Multiple chunks can come from the same document. Group them by `item.key` to show one citation per source document.
 
 To show one citation per source, update `src/index.ts` to group chunks by source document:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -249,6 +255,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -307,11 +315,13 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 5\. Parse citations from a streaming response
+## 5. Parse citations from a streaming response
 
 When using `stream: true`, the chunks are sent as a separate Server-Sent Events (SSE) event named `chunks` before the streamed answer begins. Parse this event to show citations before the full answer finishes streaming.
 
 To show citations before the full answer finishes streaming, update `src/index.ts` to transform the stream:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -392,6 +402,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -479,11 +491,13 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 6\. Use scoring details to rank citations
+## 6. Use scoring details to rank citations
 
 Each chunk includes a `scoring_details` object with a breakdown of how it was scored. Use these details to filter out low-quality citations or display confidence indicators.
 
 To filter citations by relevance, update `src/index.ts` to use score fields:
+
+*src/index.jsjs*
 
 ```js
 export default {
@@ -518,6 +532,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -561,21 +577,21 @@ export default {
 
 Each chunk in the `chunks` array can include the following fields:
 
-| Field                             | Type   | Description                                                               |
-| --------------------------------- | ------ | ------------------------------------------------------------------------- |
-| id                                | string | Unique identifier for the chunk.                                          |
-| type                              | string | Content type, typically text.                                             |
-| score                             | number | Overall relevance score between 0 and 1.                                  |
-| text                              | string | The text content of the chunk.                                            |
-| item.key                          | string | The file path or URL of the source document.                              |
-| item.timestamp                    | number | Unix timestamp of when the item was last indexed.                         |
-| item.metadata                     | object | Custom metadata associated with the source item.                          |
-| scoring\_details.vector\_score    | number | Semantic similarity score (0 to 1).                                       |
-| scoring\_details.keyword\_score   | number | BM25 keyword match score. Present when using hybrid or keyword retrieval. |
-| scoring\_details.keyword\_rank    | number | Keyword rank position.                                                    |
-| scoring\_details.vector\_rank     | number | Vector rank position.                                                     |
-| scoring\_details.reranking\_score | number | Reranking score (0 to 1). Present when reranking is enabled.              |
-| scoring\_details.fusion\_method   | string | Fusion method used (rrf or max). Present when using hybrid retrieval.     |
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | string | Unique identifier for the chunk. |
+| `type` | string | Content type, typically `text`. |
+| `score` | number | Overall relevance score between 0 and 1. |
+| `text` | string | The text content of the chunk. |
+| `item.key` | string | The file path or URL of the source document. |
+| `item.timestamp` | number | Unix timestamp of when the item was last indexed. |
+| `item.metadata` | object | Custom metadata associated with the source item. |
+| `scoring_details.vector_score` | number | Semantic similarity score (0 to 1). |
+| `scoring_details.keyword_score` | number | BM25 keyword match score. Present when using hybrid or keyword retrieval. |
+| `scoring_details.keyword_rank` | number | Keyword rank position. |
+| `scoring_details.vector_rank` | number | Vector rank position. |
+| `scoring_details.reranking_score` | number | Reranking score (0 to 1). Present when reranking is enabled. |
+| `scoring_details.fusion_method` | string | Fusion method used (`rrf` or `max`). Present when using hybrid retrieval. |
 
 For multi-instance searches, each chunk also includes an `instance_id` field identifying which instance it came from. To search or chat across multiple instances, refer to [namespace methods](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#namespace-methods).
 

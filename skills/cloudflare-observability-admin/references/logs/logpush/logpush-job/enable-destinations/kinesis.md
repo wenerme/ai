@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Amazon Kinesis
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Logpush supports [Amazon Kinesis ↗](https://aws.amazon.com/kinesis/) as a destination for all datasets. Each Kinesis record that Logpush sends will contain a batch of GZIP-compressed data in newline-delimited JSON format (by default), or in the format specified in the [output\_options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/) parameter when the job was created.
+Logpush supports [Amazon Kinesis ↗](https://aws.amazon.com/kinesis/) as a destination for all datasets. Each Kinesis record that Logpush sends will contain a batch of GZIP-compressed data in newline-delimited JSON format (by default), or in the format specified in the [`output_options`](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/) parameter when the job was created.
 
 ## Configure Kinesis using STS Assume Role (recommended)
 
@@ -37,7 +37,7 @@ Logpush supports [Amazon Kinesis ↗](https://aws.amazon.com/kinesis/) as a dest
 }
 ```
 
-1. Ensure that the IAM role has permissions to perform the `PutRecord` action on your Kinesis stream. Replace `<AWS_REGION>`, `<YOUR_AWS_ACCOUNT_ID>` and `<STREAM_NAME>` with your own values:
+2. Ensure that the IAM role has permissions to perform the `PutRecord` action on your Kinesis stream. Replace `<AWS_REGION>`, `<YOUR_AWS_ACCOUNT_ID>` and `<STREAM_NAME>` with your own values:
 
 ```java
 {
@@ -52,13 +52,13 @@ Logpush supports [Amazon Kinesis ↗](https://aws.amazon.com/kinesis/) as a dest
 }
 ```
 
-1. Create a Logpush job, using the following format for the `destination_conf` field:
+3. Create a Logpush job, using the following format for the `destination_conf` field:
 
 ```bash
 kinesis://<STREAM_NAME>?region=<AWS_REGION>&sts-assume-role-arn=arn:aws:iam::<YOUR_AWS_ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 ```
 
-1. (optional) When using STS Assume Role, you can include `sts-external-id` as a `destination_conf` parameter so it is included in your Logpush job's requests to Kinesis. Refer to [Securely Using External ID for Accessing AWS Accounts Owned by Others ↗](https://aws.amazon.com/blogs/apn/securely-using-external-id-for-accessing-aws-accounts-owned-by-others/) for more information.
+4. (optional) When using STS Assume Role, you can include `sts-external-id` as a `destination_conf` parameter so it is included in your Logpush job's requests to Kinesis. Refer to [Securely Using External ID for Accessing AWS Accounts Owned by Others ↗](https://aws.amazon.com/blogs/apn/securely-using-external-id-for-accessing-aws-accounts-owned-by-others/) for more information.
 
 ```bash
 kinesis://<STREAM_NAME>?region=<AWS_REGION>&sts-assume-role-arn=arn:aws:iam::<YOUR_AWS_ACCOUNT_ID>:role/<IAM_ROLE_NAME>&sts-external-id=<EXTERNAL_ID>

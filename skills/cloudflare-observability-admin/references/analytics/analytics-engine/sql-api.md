@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL API
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Analytics Engine SQL API is an HTTP API that allows executing SQL queries against your Workers Analytics Engine datasets.
 
@@ -28,15 +28,15 @@ Use the dashboard to create a token with permission to read analytics data on yo
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Complete the **Create Custom Token** form as follows:
-  * Give your token a descriptive name.
-  * For **Permissions** select _Account_ | _Account Analytics_ | _Read_
-  * Optionally configure account and IP restrictions and TTL.
-  * Submit and confirm the form to create the token.
+   - Give your token a descriptive name.
+   - For **Permissions** select *Account* | *Account Analytics* | *Read*
+   - Optionally configure account and IP restrictions and TTL.
+   - Submit and confirm the form to create the token.
 5. Make a note of the token string.
 
 ## Querying the API
 
-Submit the query text in the body of a `POST` request to the API address. The format of the data returned can be selected using the [FORMAT](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/#format-clause) option in your query.
+Submit the query text in the body of a `POST` request to the API address. The format of the data returned can be selected using the [`FORMAT`](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/statements/#format-clause) option in your query.
 
 You can use cURL to test the API as follows, replacing the `<account_id>` with your 32 character account ID (available in the dashboard) and the `<token>` with the token string you generated above.
 
@@ -62,14 +62,14 @@ A new table will automatically be created for each dataset once you start writin
 
 The table will have the following columns:
 
-| Name               | Type     | Description                                                                                                                                                                                                                                          |
-| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| dataset            | string   | This column will contain the dataset name in every row.                                                                                                                                                                                              |
-| timestamp          | DateTime | The timestamp at which the event was logged in your worker.                                                                                                                                                                                          |
-| \_sample\_interval | integer  | In case that the data has been sampled, this column indicates what the sample rate is for this row (that is, how many rows of the original data are represented by this row). Refer to the [sampling](#sampling) section below for more information. |
-| index1             | string   | The index value that was logged with the event. The value in this column is used as the key for sampling.                                                                                                                                            |
-| blob1...blob20     | string   | The blob values that were logged with the event.                                                                                                                                                                                                     |
-| double1...double20 | double   | The double values that were logged with the event.                                                                                                                                                                                                   |
+| Name | Type | Description |
+| --- | --- | --- |
+| dataset | string | This column will contain the dataset name in every row. |
+| timestamp | DateTime | The timestamp at which the event was logged in your worker. |
+| \_sample\_interval | integer | In case that the data has been sampled, this column indicates what the sample rate is for this row (that is, how many rows of the original data are represented by this row). Refer to the [sampling](#sampling) section below for more information. |
+| index1 | string | The index value that was logged with the event. The value in this column is used as the key for sampling. |
+| blob1<br>...<br>blob20 | string | The blob values that were logged with the event. |
+| double1<br>...<br>double20 | double | The double values that were logged with the event. |
 
 ## Sampling
 
@@ -79,11 +79,11 @@ We have tested this system of sampling over a number of years at Cloudflare and 
 
 The rate at which the data is sampled is exposed via the `_sample_interval` column. This means that if you are doing statistical analysis of your data, you may need to take this column into account. For example:
 
-| Original query               | Query taking into account sampling                                           |
-| ---------------------------- | ---------------------------------------------------------------------------- |
-| SELECT COUNT() FROM ...      | SELECT SUM(\_sample\_interval) FROM ...                                      |
-| SELECT SUM(double1) FROM ... | SELECT SUM(\_sample\_interval \* double1) FROM ...                           |
-| SELECT AVG(double1) FROM ... | SELECT SUM(\_sample\_interval \* double1) / SUM(\_sample\_interval) FROM ... |
+| Original query | Query taking into account sampling |
+| --- | --- |
+| `SELECT COUNT() FROM ...` | `SELECT SUM(_sample_interval) FROM ...` |
+| `SELECT SUM(double1) FROM ...` | `SELECT SUM(_sample_interval * double1) FROM ...` |
+| `SELECT AVG(double1) FROM ...` | `SELECT SUM(_sample_interval * double1) / SUM(_sample_interval) FROM ...` |
 
 Additionally, the [QUANTILEEXACTWEIGHTED](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/aggregate-functions/#quantileexactweighted) function is designed to be used with sample interval as the third argument.
 

@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_serial
 
-`cf.tls_client_auth.cert_serial` `String`
+`cf.tls_client_auth.cert_serial``String`
 
 Serial number of the mTLS client certificate.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* mTLS
+- Request
+- mTLS
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cannot add domain
 
-Last updated Sep 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/cannot-add-domain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you encounter issues [adding a domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, follow these troubleshooting steps.
 
@@ -22,9 +22,9 @@ Cloudflare cannot provide authoritative DNS resolution for a domain — a [domai
 
 If you do not disable **DNSSEC** before changing your nameservers, you might experience the following issues:
 
-* DNS does not resolve after switching to Cloudflare's nameservers.
-* DNS query response status is `SERVFAIL`.
-* The domain remains in a [Pending status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/).
+- DNS does not resolve after switching to Cloudflare's nameservers.
+- DNS query response status is `SERVFAIL`.
+- The domain remains in a [Pending status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/).
 
 If you experience these issues, refer to [Configuring DNSSEC](https://developers.cloudflare.com/dns/dnssec) and [Troubleshooting DNSSEC](https://developers.cloudflare.com/dns/dnssec/troubleshooting/).
 
@@ -34,15 +34,15 @@ If you experience these issues, refer to [Configuring DNSSEC](https://developers
 
 If the issue is with your registrar, you may receive the following error messages:
 
-* `exampledomain.com is not a registered domain (Code: 1049)`
-* `We were unable to identify bad.psl-example as a registered domain. Please ensure you are providing the root domain and not any subdomains (e.g., example.com, not subdomain.example.com) (Code: 1099)`
-* `Failed to lookup registrar and hosting information of exampledomain.com at this time. Please contact Cloudflare Support or try again later. (Code: 1110)`
+- `exampledomain.com is not a registered domain (Code: 1049)`
+- `We were unable to identify bad.psl-example as a registered domain. Please ensure you are providing the root domain and not any subdomains (e.g., example.com, not subdomain.example.com) (Code: 1099)`
+- `Failed to lookup registrar and hosting information of exampledomain.com at this time. Please contact Cloudflare Support or try again later. (Code: 1110)`
 
 If you receive these error messages, make sure that:
 
-* You are providing the apex domain (also known as "root domain", e.g. `example.com`) and not a subdomain (`www.example.com`).
-* Your domain is fully registered and its registration data lists its nameservers.
-* Your domain uses a verified [top-level domain (TLD) ↗](https://publicsuffix.org/list/).
+- You are providing the apex domain (also known as "root domain", e.g. `example.com`) and not a subdomain ( `www.example.com`).
+- Your domain is fully registered and its registration data lists its nameservers.
+- Your domain uses a verified [top-level domain (TLD) ↗](https://publicsuffix.org/list/).
 
 ---
 
@@ -55,7 +55,6 @@ dig +short ns cloudflare.com
 ```
 
 ```sh
-
 ns3.cloudflare.com.
 ns4.cloudflare.com.
 ns5.cloudflare.com.
@@ -70,7 +69,6 @@ dig +short soa cloudflare.com
 ```
 
 ```sh
-
 ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
 ```
 
@@ -80,20 +78,20 @@ ns3.cloudflare.com. dns.cloudflare.com. 2029202248 10000 2400 604800 300
 
 If Cloudflare has temporary or permanent restrictions on a domain, you will receive the following errors:
 
-* **Error 1105**
-  * **Message**: `Error with Cloudflare request: [1105] This zone is temporarily restricted and cannot be added to Cloudflare at this time, please contact Cloudflare Support.`
-  * **Cause**: We have seen too many attempts to add a domain to Cloudflare
-  * **Resolution**: Wait 3 hours before attempting to re-add the domain to Cloudflare. Support cannot speed up this process.
-* **Error 1093 or 1116**
-  * **Message**: `This zone cannot be added to Cloudflare at this time, please contact Cloudflare Support. (Code: 1093)`
-  * **Cause**: You may have entered a subdomain (`www.example.com`) instead of the apex domain (also known as "root domain", e.g. `example.com`).
-  * **Resolution**: Verify that you are entering the apex domain. If you are and still experience issues, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
-* **Error 1097**
-  * **Message**: `This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, contact your account team. Otherwise, email abusereply@cloudflare.com with a detailed explanation of your association with this zone. (Code: 1097)`
-  * **Resolution**: Contact [abusereply@cloudflare.com](mailto:abusereply@cloudflare.com) with a detailed explanation of your association with this zone.
-* **Error: Cannot be found** OR **`<your domain>` is not a registered domain (code: 1049)**
-  * This can happen if the domain has not been registered yet. Some domains, like `.gov` domains, have special requirements that require the domain be added first.
-  * **Resolution:** Contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you require assistance adding a `.gov` and/or other domains that require manual registration.
+- **Error 1105**
+  - **Message**: `Error with Cloudflare request: [1105] This zone is temporarily restricted and cannot be added to Cloudflare at this time, please contact Cloudflare Support.`
+  - **Cause**: We have seen too many attempts to add a domain to Cloudflare
+  - **Resolution**: Wait 3 hours before attempting to re-add the domain to Cloudflare. Support cannot speed up this process.
+- **Error 1093 or 1116**
+  - **Message**: `This zone cannot be added to Cloudflare at this time, please contact Cloudflare Support. (Code: 1093)`
+  - **Cause**: You may have entered a subdomain ( `www.example.com`) instead of the apex domain (also known as "root domain", e.g. `example.com`).
+  - **Resolution**: Verify that you are entering the apex domain. If you are and still experience issues, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+- **Error 1097**
+  - **Message**: `This web property cannot be added to Cloudflare at this time. If you are an Enterprise customer, contact your account team. Otherwise, email abusereply@cloudflare.com with a detailed explanation of your association with this zone. (Code: 1097)`
+  - **Resolution**: Contact [abusereply@cloudflare.com](mailto:abusereply@cloudflare.com) with a detailed explanation of your association with this zone.
+- **Error: Cannot be found** OR **`<your domain>` is not a registered domain (code: 1049)**
+  - This can happen if the domain has not been registered yet. Some domains, like `.gov` domains, have special requirements that require the domain be added first.
+  - **Resolution:** Contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you require assistance adding a `.gov` and/or other domains that require manual registration.
 
 ---
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Update local DNS resolver
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-update-local-resolver/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-update-local-resolver/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With a Gateway location created, you have the ability to send traffic to your environment. You can test without risk by changing your DNS resolvers in your browser or network settings.
 
@@ -20,76 +20,133 @@ With a Gateway location created, you have the ability to send traffic to your en
 
 To configure your device to send traffic to Gateway:
 
+<details>
+
+<summary>
+
 macOS
 
-![macOS DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1326,height=820,format=webp/_astro/dns-resolvers-macosx.B1GnFXfW.png)
+</summary>
+
+![macOS DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1326,height=820,format=webp/_astro/dns-resolvers-macosx.B1GnFXfW.png)</details>
+
+
+
+<details>
+
+<summary>
 
 Windows
 
-![Windows DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=622,height=708,format=webp/_astro/dns-resolvers-windows.3Ns9LR4f.png)
+</summary>
+
+![Windows DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=622,height=708,format=webp/_astro/dns-resolvers-windows.3Ns9LR4f.png)</details>
+
+
+
+<details>
+
+<summary>
 
 Linux
+
+</summary>
 
 ```sh
 cat /etc/resolv.conf
 ```
 
 ```sh
-
 nameserver 172.64.X.X
 nameserver 172.64.X.X
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 iPhone
 
-![iPhone DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1125,height=1347,format=webp/_astro/dns-resolvers-iphone.BNl5oq1v.png)
+</summary>
+
+![iPhone DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1125,height=1347,format=webp/_astro/dns-resolvers-iphone.BNl5oq1v.png)</details>
+
+
+
+<details>
+
+<summary>
 
 Android
 
-![Android DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=1642,format=webp/_astro/dns-resolvers-android.JkoCH2BP.png)
+</summary>
+
+![Android DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=1642,format=webp/_astro/dns-resolvers-android.JkoCH2BP.png)</details>
+
+
 
 ## Change DNS resolver in the browser
 
 To configure your browser to send traffic to Gateway:
 
 1. Obtain your DNS over HTTPS (DoH) address:
+   1. Go to **Traffic policies** > **DNS locations**.
+   2. Select the default location.
+   3. Copy your **DNS over HTTPS** hostname: `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`
+2. Follow the configuration instructions for your browser:<details><summary>
 
-  1. Go to **Traffic policies** \> **DNS locations**.
-  2. Select the default location.
-  3. Copy your **DNS over HTTPS** hostname: `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`
-2. Follow the configuration instructions for your browser:
-Mozilla Firefox
+   Mozilla Firefox</summary>
 
-  1. In Firefox, go to **Settings**.
-  2. In **Privacy & Security**, go to **DNS over HTTPS**.
-  3. Under **Enable secure DNS using**, select _Max Protection_.
-  4. In **Choose provider**, choose _Custom_.
-  5. In the field, enter `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`.
-Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to [Mozilla's documentation ↗](https://support.mozilla.org/kb/dns-over-https).
-Note
-If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the [Firefox DoH canary domain ↗](https://support.mozilla.org/kb/canary-domain-use-application-dnsnet).
-Google Chrome
+   1. In Firefox, go to **Settings**.
+   2. In **Privacy &amp; Security**, go to **DNS over HTTPS**.
+   3. Under **Enable secure DNS using**, select *Max Protection*.
+   4. In **Choose provider**, choose *Custom*.
+   5. In the field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
 
-  1. In Chrome, go to **Settings** \> **Privacy and security** \> **Security**.
-  2. Scroll down and turn on **Use secure DNS**.
-  3. Select **With Custom**.
-  4. In the **Enter custom provider** field, enter `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`.
-Read more about [enabling DNS over HTTPS ↗](https://www.chromium.org/developers/dns-over-https) on Chrome.
-Microsoft Edge
+   Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to <a href="https://support.mozilla.org/kb/dns-over-https">Mozilla's documentation ↗</a>.
 
-  1. In Microsoft Edge, go to **Settings**.
-  2. Select **Privacy, Search, and Services**, and scroll down to **Security**.
-  3. Turn on **Use secure DNS**.
-  4. Select **Choose a service provider**.
-  5. In the **Enter custom provider** field, enter `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`.
-Brave
+   Note
 
-  1. In Brave, go to **Settings** \> **Security and Privacy** \> **Security**.
-  2. Turn on **Use secure DNS**.
-  3. Select **With Custom**.
-  4. In the **Enter custom provider** field, enter `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`.
-Safari
-Currently, Safari does not support DNS over HTTPS.
+   If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the <a href="https://support.mozilla.org/kb/canary-domain-use-application-dnsnet">Firefox DoH canary domain ↗</a>.</details>
+
+<details><summary>
+
+   Google Chrome</summary>
+
+   1. In Chrome, go to **Settings** &gt; **Privacy and security** &gt; **Security**.
+   2. Scroll down and turn on **Use secure DNS**.
+   3. Select **With Custom**.
+   4. In the **Enter custom provider** field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
+
+   Read more about <a href="https://www.chromium.org/developers/dns-over-https">enabling DNS over HTTPS ↗</a> on Chrome.</details>
+
+<details><summary>
+
+   Microsoft Edge</summary>
+
+   1. In Microsoft Edge, go to **Settings**.
+   2. Select **Privacy, Search, and Services**, and scroll down to **Security**.
+   3. Turn on **Use secure DNS**.
+   4. Select **Choose a service provider**.
+   5. In the **Enter custom provider** field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.</details>
+
+<details><summary>
+
+   Brave</summary>
+
+   1. In Brave, go to **Settings** &gt; **Security and Privacy** &gt; **Security**.
+   2. Turn on **Use secure DNS**.
+   3. Select **With Custom**.
+   4. In the **Enter custom provider** field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.</details>
+
+<details><summary>
+
+   Safari</summary>
+
+Currently, Safari does not support DNS over HTTPS.</details>
+
 3. Verify that third-party firewall or TLS decryption software does not inspect or block traffic to the DoH endpoint: `https://<YOUR_DOH_SUBDOMAIN>.cloudflare-gateway.com/dns-query`.
 
 ## More locations

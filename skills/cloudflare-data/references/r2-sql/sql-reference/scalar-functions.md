@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scalar functions
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/scalar-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/scalar-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Scalar functions transform individual values and can be used in `SELECT`, `WHERE`, `GROUP BY`, `HAVING`, and `ORDER BY` clauses.
 
@@ -595,7 +595,7 @@ LIMIT 1
 
 ### exp
 
-Returns _e_ raised to the given power.
+Returns *e* raised to the given power.
 
 ```sql
 SELECT exp(total_amount / 1000.0) AS exp_val
@@ -1133,7 +1133,7 @@ LIMIT 1
 
 ### left
 
-Returns the leftmost _n_ characters of a string.
+Returns the leftmost *n* characters of a string.
 
 ```sql
 SELECT department, left(department, 5) AS prefix
@@ -1165,7 +1165,7 @@ LIMIT 5
 
 ### right
 
-Returns the rightmost _n_ characters of a string.
+Returns the rightmost *n* characters of a string.
 
 ```sql
 SELECT department, right(department, 3) AS suffix
@@ -1208,7 +1208,7 @@ LIMIT 5
 
 ### substr\_index
 
-Returns the substring before the _n_\-th occurrence of a delimiter. Alias: `substring_index`.
+Returns the substring before the *n*-th occurrence of a delimiter. Alias: `substring_index`.
 
 ```sql
 SELECT customer_id, substr_index(customer_id, '-', 1) AS first_segment

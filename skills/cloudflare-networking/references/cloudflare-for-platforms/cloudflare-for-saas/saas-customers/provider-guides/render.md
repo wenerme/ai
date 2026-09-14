@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Render
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/render/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/render/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare partners with [Render ↗](https://render.com) to provide Render customers’ web services and static sites with Cloudflare’s performance and security benefits.
 
@@ -32,9 +32,9 @@ Render customers can enable O2O on any Cloudflare zone plan. Cloudflare support 
 
 To enable O2O for a specific hostname within a Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with your Render site name as the target. Render's domain addition setup will walk you through other validation steps.
 
-| Type  | Name             | Target                                                  | Proxy status |
-| ----- | ---------------- | ------------------------------------------------------- | ------------ |
-| CNAME | <YOUR\_HOSTNAME> | <RENDER\_SUBDOMAIN> (for example, example.onrender.com) | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `<YOUR_HOSTNAME>` | `<RENDER_SUBDOMAIN>` (for example, `example.onrender.com`) | Proxied |
 
 Note
 
@@ -52,9 +52,9 @@ If your root domain needs to route somewhere besides Render, add individual subd
 
 When a hostname within your Cloudflare zone has O2O enabled, you assume additional responsibility for the traffic on that hostname because you can now configure various Cloudflare products to affect that traffic. Some of the Cloudflare products compatible with O2O are:
 
-* [Caching](https://developers.cloudflare.com/cache/)
-* [Workers](https://developers.cloudflare.com/workers/)
-* [Rules](https://developers.cloudflare.com/rules/)
+- [Caching](https://developers.cloudflare.com/cache/)
+- [Workers](https://developers.cloudflare.com/workers/)
+- [Rules](https://developers.cloudflare.com/rules/)
 
 For a full list of compatible products and potential limitations, refer to [Product compatibility](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/product-compatibility/).
 

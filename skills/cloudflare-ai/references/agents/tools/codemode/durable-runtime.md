@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a durable Code Mode runtime
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/durable-runtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide adds a durable Code Mode runtime to an Agents SDK application. The runtime stores execution history, pending approvals, and snippets across Durable Object hibernation.
 
@@ -26,308 +26,390 @@ You need an existing Agents SDK application with a Durable Object and Vite. The 
 
 ## Integrate Code Mode
 
-1. Install the Code Mode package:
-npmyarnpnpmbun
-```
-npm i @cloudflare/codemode
-```
-```
-yarn add @cloudflare/codemode
-```
-```
-pnpm add @cloudflare/codemode
-```
-```
-bun add @cloudflare/codemode
-```
+1. Install the Code Mode package:npmyarnpnpmbun
+
+   ```
+   npm i @cloudflare/codemode
+   ```
+
+   ```
+   yarn add @cloudflare/codemode
+   ```
+
+   ```
+   pnpm add @cloudflare/codemode
+   ```
+
+   ```
+   bun add @cloudflare/codemode
+   ```
+
+
 2. Add a Worker Loader binding. `DynamicWorkerExecutor` uses this binding to run model-generated code in isolated Workers:
-```jsonc
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  // Set this to today's date
-  "compatibility_date": "2026-08-25",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "worker_loaders": [
-    {
-      "binding": "LOADER"
-    }
-  ]
-}
-```
-```toml
-# Set this to today's date
-compatibility_date = "2026-08-25"
-compatibility_flags = ["nodejs_compat"]
-[[worker_loaders]]
-binding = "LOADER"
-```
+
+   ```jsonc
+   {
+     "$schema": "./node_modules/wrangler/config-schema.json",
+     // Set this to today's date
+     "compatibility_date": "2026-09-14",
+     "compatibility_flags": [
+       "nodejs_compat"
+     ],
+     "worker_loaders": [
+       {
+         "binding": "LOADER"
+       }
+     ]
+   }
+   ```
+
+   ```toml
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+   compatibility_flags = ["nodejs_compat"]
+
+   [[worker_loaders]]
+   binding = "LOADER"
+   ```
+
+
 3. Add the Agents and Code Mode plugins to `vite.config.ts`:
-```js
-import { cloudflare } from "@cloudflare/vite-plugin";
-import codemode from "@cloudflare/codemode/vite";
-import agents from "agents/vite";
-import { defineConfig } from "vite";
-export default defineConfig({
-	plugins: [agents(), codemode(), cloudflare()],
-});
-```
-```ts
-import { cloudflare } from "@cloudflare/vite-plugin";
-import codemode from "@cloudflare/codemode/vite";
-import agents from "agents/vite";
-import { defineConfig } from "vite";
-export default defineConfig({
-	plugins: [agents(), codemode(), cloudflare()],
-});
-```
-The plugin exports the `CodemodeRuntime` facet class from your Worker entry module. The runtime stores execution state in a Durable Object facet, and the Workers runtime requires facet classes to be available through `ctx.exports`. If you do not use the plugin, add the export manually:
-```ts
-export { CodemodeRuntime } from "@cloudflare/codemode";
-```
+
+   *vite.config.jsjs*
+
+
+
+   ```js
+   import { cloudflare } from "@cloudflare/vite-plugin";
+   import codemode from "@cloudflare/codemode/vite";
+   import agents from "agents/vite";
+   import { defineConfig } from "vite";
+
+   export default defineConfig({
+   	plugins: [agents(), codemode(), cloudflare()],
+   });
+   ```
+
+   *vite.config.tsts*
+
+
+
+   ```ts
+   import { cloudflare } from "@cloudflare/vite-plugin";
+   import codemode from "@cloudflare/codemode/vite";
+   import agents from "agents/vite";
+   import { defineConfig } from "vite";
+
+   export default defineConfig({
+   	plugins: [agents(), codemode(), cloudflare()],
+   });
+   ```
+
+   The plugin exports the `CodemodeRuntime` facet class from your Worker entry module. The runtime stores execution state in a Durable Object facet, and the Workers runtime requires facet classes to be available through `ctx.exports`. If you do not use the plugin, add the export manually:
+
+   ```ts
+   export { CodemodeRuntime } from "@cloudflare/codemode";
+   ```
+
+
 4. Create a connector. Connectors are plain classes — they need no special file name or import syntax. This example stores notes in the Agent's Durable Object storage:
-```js
-import { CodemodeConnector } from "@cloudflare/codemode";
-export class NotesConnector extends CodemodeConnector {
-	storage;
-	constructor(ctx, env) {
-		super(ctx, env);
-		this.storage = ctx.storage;
-	}
-	name() {
-		return "notes";
-	}
-	instructions() {
-		return "Use this connector to list and create saved notes.";
-	}
-	tools() {
-		return {
-			listNotes: {
-				description: "List saved notes.",
-				execute: async () => (await this.storage.get("notes")) ?? [],
-			},
-			createNote: {
-				description: "Create a saved note.",
-				inputSchema: {
-					type: "object",
-					properties: { text: { type: "string" } },
-					required: ["text"],
-				},
-				requiresApproval: true,
-				execute: async (input) => {
-					const { text } = input;
-					const note = { id: crypto.randomUUID(), text };
-					const notes = (await this.storage.get("notes")) ?? [];
-					await this.storage.put("notes", [...notes, note]);
-					return note;
-				},
-				revert: async (_input, result) => {
-					const { id } = result;
-					const notes = (await this.storage.get("notes")) ?? [];
-					await this.storage.put(
-						"notes",
-						notes.filter((note) => note.id !== id),
-					);
-				},
-			},
-		};
-	}
-}
-```
-```ts
-import {
-	CodemodeConnector,
-	type ConnectorTools,
-} from "@cloudflare/codemode";
-type Note = { id: string; text: string };
-export class NotesConnector extends CodemodeConnector<Env> {
-	private storage: DurableObjectStorage;
-	constructor(ctx: DurableObjectState, env: Env) {
-		super(ctx, env);
-		this.storage = ctx.storage;
-	}
-	override name() {
-		return "notes";
-	}
-	protected override instructions() {
-		return "Use this connector to list and create saved notes.";
-	}
-	protected override tools(): ConnectorTools {
-		return {
-			listNotes: {
-				description: "List saved notes.",
-				execute: async () =>
-					(await this.storage.get<Note[]>("notes")) ?? [],
-			},
-			createNote: {
-				description: "Create a saved note.",
-				inputSchema: {
-					type: "object",
-					properties: { text: { type: "string" } },
-					required: ["text"],
-				},
-				requiresApproval: true,
-				execute: async (input) => {
-					const { text } = input as { text: string };
-					const note = { id: crypto.randomUUID(), text };
-					const notes = (await this.storage.get<Note[]>("notes")) ?? [];
-					await this.storage.put("notes", [...notes, note]);
-					return note;
-				},
-				revert: async (_input, result) => {
-					const { id } = result as Note;
-					const notes = (await this.storage.get<Note[]>("notes")) ?? [];
-					await this.storage.put(
-						"notes",
-						notes.filter((note) => note.id !== id),
-					);
-				},
-			},
-		};
-	}
-}
-```
-The `name()` result becomes the sandbox global, in this case `notes`. `requiresApproval: true` pauses before `createNote` executes. The optional `revert` function lets `runtime.rollback()` compensate for an applied call.
-Use `McpConnector` for MCP tools or `OpenApiConnector` for OpenAPI operations. For MCP-specific setup, refer to [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/).
+
+   *src/notes-connector.jsjs*
+
+
+
+   ```js
+   import { CodemodeConnector } from "@cloudflare/codemode";
+
+   export class NotesConnector extends CodemodeConnector {
+   	storage;
+
+   	constructor(ctx, env) {
+   		super(ctx, env);
+   		this.storage = ctx.storage;
+   	}
+
+   	name() {
+   		return "notes";
+   	}
+
+   	instructions() {
+   		return "Use this connector to list and create saved notes.";
+   	}
+
+   	tools() {
+   		return {
+   			listNotes: {
+   				description: "List saved notes.",
+   				execute: async () => (await this.storage.get("notes")) ?? [],
+   			},
+   			createNote: {
+   				description: "Create a saved note.",
+   				inputSchema: {
+   					type: "object",
+   					properties: { text: { type: "string" } },
+   					required: ["text"],
+   				},
+   				requiresApproval: true,
+   				execute: async (input) => {
+   					const { text } = input;
+   					const note = { id: crypto.randomUUID(), text };
+   					const notes = (await this.storage.get("notes")) ?? [];
+   					await this.storage.put("notes", [...notes, note]);
+   					return note;
+   				},
+   				revert: async (_input, result) => {
+   					const { id } = result;
+   					const notes = (await this.storage.get("notes")) ?? [];
+   					await this.storage.put(
+   						"notes",
+   						notes.filter((note) => note.id !== id),
+   					);
+   				},
+   			},
+   		};
+   	}
+   }
+   ```
+
+   *src/notes-connector.tsts*
+
+
+
+   ```ts
+   import {
+   	CodemodeConnector,
+   	type ConnectorTools,
+   } from "@cloudflare/codemode";
+
+   type Note = { id: string; text: string };
+
+   export class NotesConnector extends CodemodeConnector<Env> {
+   	private storage: DurableObjectStorage;
+
+   	constructor(ctx: DurableObjectState, env: Env) {
+   		super(ctx, env);
+   		this.storage = ctx.storage;
+   	}
+
+   	override name() {
+   		return "notes";
+   	}
+
+   	protected override instructions() {
+   		return "Use this connector to list and create saved notes.";
+   	}
+
+   	protected override tools(): ConnectorTools {
+   		return {
+   			listNotes: {
+   				description: "List saved notes.",
+   				execute: async () =>
+   					(await this.storage.get<Note[]>("notes")) ?? [],
+   			},
+   			createNote: {
+   				description: "Create a saved note.",
+   				inputSchema: {
+   					type: "object",
+   					properties: { text: { type: "string" } },
+   					required: ["text"],
+   				},
+   				requiresApproval: true,
+   				execute: async (input) => {
+   					const { text } = input as { text: string };
+   					const note = { id: crypto.randomUUID(), text };
+   					const notes = (await this.storage.get<Note[]>("notes")) ?? [];
+   					await this.storage.put("notes", [...notes, note]);
+   					return note;
+   				},
+   				revert: async (_input, result) => {
+   					const { id } = result as Note;
+   					const notes = (await this.storage.get<Note[]>("notes")) ?? [];
+   					await this.storage.put(
+   						"notes",
+   						notes.filter((note) => note.id !== id),
+   					);
+   				},
+   			},
+   		};
+   	}
+   }
+   ```
+
+   The `name()` result becomes the sandbox global, in this case `notes`. `requiresApproval: true` pauses before `createNote` executes. The optional `revert` function lets `runtime.rollback()` compensate for an applied call.
+
+   Use `McpConnector` for MCP tools or `OpenApiConnector` for OpenAPI operations. For MCP-specific setup, refer to [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/).
 5. Import the connector and create a runtime in your Agent:
-```js
-import { AIChatAgent } from "@cloudflare/ai-chat";
-import {
-	createCodemodeRuntime,
-	DynamicWorkerExecutor,
-} from "@cloudflare/codemode";
-import { callable } from "agents";
-import { convertToModelMessages, stepCountIs, streamText } from "ai";
-import { NotesConnector } from "./notes-connector";
-import { model } from "./model";
-export class Chat extends AIChatAgent {
-	#runtime() {
-		return createCodemodeRuntime({
-			ctx: this.ctx,
-			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-			connectors: [new NotesConnector(this.ctx, this.env)],
-		});
-	}
-	async onChatMessage() {
-		const result = streamText({
-			model,
-			messages: await convertToModelMessages(this.messages),
-			tools: { codemode: this.#runtime().tool() },
-			stopWhen: stepCountIs(10),
-		});
-		return result.toUIMessageStreamResponse();
-	}
-	@callable()
-	async pendingApprovals() {
-		return this.#runtime().pending();
-	}
-	@callable()
-	async approveExecution(executionId) {
-		return this.#runtime().approve({ executionId });
-	}
-	@callable()
-	async rejectExecution(executionId, seq) {
-		return this.#runtime().reject({ executionId, seq });
-	}
-	@callable()
-	async rollbackExecution(executionId) {
-		await this.#runtime().rollback({ executionId });
-	}
-	@callable()
-	async executionHistory() {
-		return this.#runtime().executions(20);
-	}
-	@callable()
-	async saveSnippet(name, description, executionId) {
-		const runtime = this.#runtime();
-		const execution = (await runtime.executions()).find(
-			(item) => item.id === executionId,
-		);
-		if (execution?.status !== "completed") {
-			throw new Error("Only completed executions can be saved as snippets.");
-		}
-		return runtime.saveSnippet(name, { description, executionId });
-	}
-	@callable()
-	async snippets() {
-		return this.#runtime().snippets();
-	}
-}
-```
-```ts
-import { AIChatAgent } from "@cloudflare/ai-chat";
-import {
-	createCodemodeRuntime,
-	DynamicWorkerExecutor,
-	type CodemodeRuntimeHandle,
-	type ExecutionState,
-	type PendingAction,
-	type Snippet,
-} from "@cloudflare/codemode";
-import { callable } from "agents";
-import { convertToModelMessages, stepCountIs, streamText } from "ai";
-import { NotesConnector } from "./notes-connector";
-import { model } from "./model";
-export class Chat extends AIChatAgent<Env> {
-	#runtime(): CodemodeRuntimeHandle {
-		return createCodemodeRuntime({
-			ctx: this.ctx,
-			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
-			connectors: [new NotesConnector(this.ctx, this.env)],
-		});
-	}
-	async onChatMessage() {
-		const result = streamText({
-			model,
-			messages: await convertToModelMessages(this.messages),
-			tools: { codemode: this.#runtime().tool() },
-			stopWhen: stepCountIs(10),
-		});
-		return result.toUIMessageStreamResponse();
-	}
-	@callable()
-	async pendingApprovals(): Promise<PendingAction[]> {
-		return this.#runtime().pending();
-	}
-	@callable()
-	async approveExecution(executionId: string) {
-		return this.#runtime().approve({ executionId });
-	}
-	@callable()
-	async rejectExecution(executionId: string, seq: number): Promise<boolean> {
-		return this.#runtime().reject({ executionId, seq });
-	}
-	@callable()
-	async rollbackExecution(executionId: string): Promise<void> {
-		await this.#runtime().rollback({ executionId });
-	}
-	@callable()
-	async executionHistory(): Promise<ExecutionState[]> {
-		return this.#runtime().executions(20);
-	}
-	@callable()
-	async saveSnippet(
-		name: string,
-		description: string,
-		executionId: string,
-	): Promise<Snippet> {
-		const runtime = this.#runtime();
-		const execution = (await runtime.executions()).find(
-			(item) => item.id === executionId,
-		);
-		if (execution?.status !== "completed") {
-			throw new Error("Only completed executions can be saved as snippets.");
-		}
-		return runtime.saveSnippet(name, { description, executionId });
-	}
-	@callable()
-	async snippets(): Promise<Snippet[]> {
-		return this.#runtime().snippets();
-	}
-}
-```
-Replace the `model` import with the existing model setup in your application.
+
+   *src/server.jsjs*
+
+
+
+   ```js
+   import { AIChatAgent } from "@cloudflare/ai-chat";
+   import {
+   	createCodemodeRuntime,
+   	DynamicWorkerExecutor,
+   } from "@cloudflare/codemode";
+   import { callable } from "agents";
+   import { convertToModelMessages, stepCountIs, streamText } from "ai";
+   import { NotesConnector } from "./notes-connector";
+   import { model } from "./model";
+
+   export class Chat extends AIChatAgent {
+   	#runtime() {
+   		return createCodemodeRuntime({
+   			ctx: this.ctx,
+   			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+   			connectors: [new NotesConnector(this.ctx, this.env)],
+   		});
+   	}
+
+   	async onChatMessage() {
+   		const result = streamText({
+   			model,
+   			messages: await convertToModelMessages(this.messages),
+   			tools: { codemode: this.#runtime().tool() },
+   			stopWhen: stepCountIs(10),
+   		});
+
+   		return result.toUIMessageStreamResponse();
+   	}
+
+   	@callable()
+   	async pendingApprovals() {
+   		return this.#runtime().pending();
+   	}
+
+   	@callable()
+   	async approveExecution(executionId) {
+   		return this.#runtime().approve({ executionId });
+   	}
+
+   	@callable()
+   	async rejectExecution(executionId, seq) {
+   		return this.#runtime().reject({ executionId, seq });
+   	}
+
+   	@callable()
+   	async rollbackExecution(executionId) {
+   		await this.#runtime().rollback({ executionId });
+   	}
+
+   	@callable()
+   	async executionHistory() {
+   		return this.#runtime().executions(20);
+   	}
+
+   	@callable()
+   	async saveSnippet(name, description, executionId) {
+   		const runtime = this.#runtime();
+   		const execution = (await runtime.executions()).find(
+   			(item) => item.id === executionId,
+   		);
+   		if (execution?.status !== "completed") {
+   			throw new Error("Only completed executions can be saved as snippets.");
+   		}
+
+   		return runtime.saveSnippet(name, { description, executionId });
+   	}
+
+   	@callable()
+   	async snippets() {
+   		return this.#runtime().snippets();
+   	}
+   }
+   ```
+
+   *src/server.tsts*
+
+
+
+   ```ts
+   import { AIChatAgent } from "@cloudflare/ai-chat";
+   import {
+   	createCodemodeRuntime,
+   	DynamicWorkerExecutor,
+   	type CodemodeRuntimeHandle,
+   	type ExecutionState,
+   	type PendingAction,
+   	type Snippet,
+   } from "@cloudflare/codemode";
+   import { callable } from "agents";
+   import { convertToModelMessages, stepCountIs, streamText } from "ai";
+   import { NotesConnector } from "./notes-connector";
+   import { model } from "./model";
+
+   export class Chat extends AIChatAgent<Env> {
+   	#runtime(): CodemodeRuntimeHandle {
+   		return createCodemodeRuntime({
+   			ctx: this.ctx,
+   			executor: new DynamicWorkerExecutor({ loader: this.env.LOADER }),
+   			connectors: [new NotesConnector(this.ctx, this.env)],
+   		});
+   	}
+
+   	async onChatMessage() {
+   		const result = streamText({
+   			model,
+   			messages: await convertToModelMessages(this.messages),
+   			tools: { codemode: this.#runtime().tool() },
+   			stopWhen: stepCountIs(10),
+   		});
+
+   		return result.toUIMessageStreamResponse();
+   	}
+
+   	@callable()
+   	async pendingApprovals(): Promise<PendingAction[]> {
+   		return this.#runtime().pending();
+   	}
+
+   	@callable()
+   	async approveExecution(executionId: string) {
+   		return this.#runtime().approve({ executionId });
+   	}
+
+   	@callable()
+   	async rejectExecution(executionId: string, seq: number): Promise<boolean> {
+   		return this.#runtime().reject({ executionId, seq });
+   	}
+
+   	@callable()
+   	async rollbackExecution(executionId: string): Promise<void> {
+   		await this.#runtime().rollback({ executionId });
+   	}
+
+   	@callable()
+   	async executionHistory(): Promise<ExecutionState[]> {
+   		return this.#runtime().executions(20);
+   	}
+
+   	@callable()
+   	async saveSnippet(
+   		name: string,
+   		description: string,
+   		executionId: string,
+   	): Promise<Snippet> {
+   		const runtime = this.#runtime();
+   		const execution = (await runtime.executions()).find(
+   			(item) => item.id === executionId,
+   		);
+   		if (execution?.status !== "completed") {
+   			throw new Error("Only completed executions can be saved as snippets.");
+   		}
+
+   		return runtime.saveSnippet(name, { description, executionId });
+   	}
+
+   	@callable()
+   	async snippets(): Promise<Snippet[]> {
+   		return this.#runtime().snippets();
+   	}
+   }
+   ```
+
+   Replace the `model` import with the existing model setup in your application.
 
 ## Use the runtime without the AI SDK
 

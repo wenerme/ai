@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Streamlined WAF deployment across zones and applications
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -30,10 +30,10 @@ Cloudflare offers comprehensive Application Security & Performance solutions, wh
 
 In this guide, you will learn:
 
-* How to implement the Cloudflare WAF and factor common rules.
-* How to easily implement common configurations across multiple applications.
-* How to deploy exceptions and specific configurations when needed.
-* What are the best practices to follow when deploying the Cloudflare WAF.
+- How to implement the Cloudflare WAF and factor common rules.
+- How to easily implement common configurations across multiple applications.
+- How to deploy exceptions and specific configurations when needed.
+- What are the best practices to follow when deploying the Cloudflare WAF.
 
 ## Example Scenario
 
@@ -47,9 +47,9 @@ In many cases, Cloudflare customers end up managing many Cloudflare Zones (such 
 
 For example, you could be in the following (or similar) scenario:
 
-* The majority of your web applications run on a newly deployed in-house Content Management System (CMS)
-* You also have some legacy web applications that are running on their custom stacks.
-* Finally, you may have dedicated infrastructure (managed by a partner) for a few applications.
+- The majority of your web applications run on a newly deployed in-house Content Management System (CMS)
+- You also have some legacy web applications that are running on their custom stacks.
+- Finally, you may have dedicated infrastructure (managed by a partner) for a few applications.
 
 The example scenario is visualized in the below diagram: ![Diagram showing the example scenario with multiple domains, subdomains and web applications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=499,height=401,format=svg/_astro/diagram-1.D8xm98w0.svg "Figure 1: An example scenario with multiple domains, subdomains and web applications.")
 
@@ -57,10 +57,10 @@ The example scenario is visualized in the below diagram: ![Diagram showing the e
 
 From a WAF setup perspective, this scenario raises interesting requirements:
 
-* To create an easily deployable configuration that implements standard WAF rules configuration in front of most applications.
-* To have the ability to fine tune and tweak which rules are deployed in front of the legacy applications, which may be more prone to false positives than the others.
-* To include a "catch-all" configuration, ensuring that a Cloudflare default WAF setup is always applied to all web traffic that does not fall in the above scenarios.
-* To minimize set up time and ongoing maintenance efforts, as applications are added and removed over time.
+- To create an easily deployable configuration that implements standard WAF rules configuration in front of most applications.
+- To have the ability to fine tune and tweak which rules are deployed in front of the legacy applications, which may be more prone to false positives than the others.
+- To include a "catch-all" configuration, ensuring that a Cloudflare default WAF setup is always applied to all web traffic that does not fall in the above scenarios.
+- To minimize set up time and ongoing maintenance efforts, as applications are added and removed over time.
 
 In this Design Guide we will review how the Cloudflare WAF operates and what tools are provided to achieve all the above architectural requirements.
 
@@ -74,39 +74,39 @@ For the purposes of this guide, we will build on the example scenario and WAF Re
 
 Let's imagine that there are six applications behind six FQDNs across two domains. For these applications, you want to apply a baseline WAF security posture. However, of these six applications, two will require a more special treatment:
 
-* One is implemented on a legacy application server, prone to false positives.
-* Another is implemented by a third party on their own infrastructure.
+- One is implemented on a legacy application server, prone to false positives.
+- Another is implemented by a third party on their own infrastructure.
 
 Let's visualize the scenario below:
 
 ![Diagram showing how the example scenario can be modelled in a Cloudflare Account with multiple zones](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=521,height=420,format=svg/_astro/diagram-2.DsX9Y3eo.svg "Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.")
 
-Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.
+*Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.*
 
 ### Using Account Level WAF to minimize configuration overheads
 
 We will use the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) as an example, keeping in mind that the approach can also be used for other Cloudflare Managed Rules, Rate Limiting Rules, and Custom Rules.
 
-* For `web1.example.com`, `web2.example.com`, `web3.example.com` and `web5.example.org`: you want to apply the default WAF Managed Ruleset, already tuned by Cloudflare.
-* For `special4.example.com`: you want to apply a different subset of the default Managed Ruleset, as you already identified a couple of rules that are causing false positives on the legacy application.
-* For `special6.example.org`: you want to apply the Managed Ruleset in logging mode, as this is a newly introduced application from a third party and you need to start evaluating how to protect it.
+- For `web1.example.com`, `web2.example.com`, `web3.example.com` and `web5.example.org`: you want to apply the default WAF Managed Ruleset, already tuned by Cloudflare.
+- For `special4.example.com`: you want to apply a different subset of the default Managed Ruleset, as you already identified a couple of rules that are causing false positives on the legacy application.
+- For `special6.example.org`: you want to apply the Managed Ruleset in logging mode, as this is a newly introduced application from a third party and you need to start evaluating how to protect it.
 
 Then, you can adopt the following approach:
 
-* Deploy one instance of the Cloudflare Managed Ruleset at the Account Level. This implements the common subset of rules for the four FQDNS requiring it. This is easier to set up and maintain than replicating the same configuration four times at the Zone level.
-* For `special4.example.com` and `special6.example.org`, you will deploy two additional instances of the Managed Ruleset, with the specific tweaks required by the applications behind these particular FQDNs.
+- Deploy one instance of the Cloudflare Managed Ruleset at the Account Level. This implements the common subset of rules for the four FQDNS requiring it. This is easier to set up and maintain than replicating the same configuration four times at the Zone level.
+- For `special4.example.com` and `special6.example.org`, you will deploy two additional instances of the Managed Ruleset, with the specific tweaks required by the applications behind these particular FQDNs.
 
 In practice, using the [Account Level WAF's Managed rulesets](https://developers.cloudflare.com/waf/account/managed-rulesets/), you can deploy the three instances of our Managed Ruleset. Each instance will have its own [Custom Filter Expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/), which will check that the HTTPS requests's hostname belongs to one of the FQDNs in a list:
 
-* For the first list (`web1.example.com`, `web2.example.com`, `web3.example.com` and `web5.example.org`), you will apply the Cloudflare Managed Ruleset in its `Default` configuration.
-* For `special4.example.com`, the same ruleset will be deployed in `Default` mode, but taking care of disabling the specific rules that cause false positives. This can be achieved with the [Rule Overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/), using the Dashboard or the APIs. [Real examples are available here](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/).
-* For `special6.example.org`, you repeat the setup done for the first list, this time modifying the Managed Ruleset instance to operate in `Log` mode instead of `Default`.
+- For the first list ( `web1.example.com`, `web2.example.com`, `web3.example.com` and `web5.example.org`), you will apply the Cloudflare Managed Ruleset in its `Default` configuration.
+- For `special4.example.com`, the same ruleset will be deployed in `Default` mode, but taking care of disabling the specific rules that cause false positives. This can be achieved with the [Rule Overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/), using the Dashboard or the APIs. [Real examples are available here](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-examples/).
+- For `special6.example.org`, you repeat the setup done for the first list, this time modifying the Managed Ruleset instance to operate in `Log` mode instead of `Default`.
 
 Let's visualize the complete configuration in the below diagram:
 
 ![Diagram depicting the implemented WAF configuration at the account level](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=888,height=450,format=svg/_astro/diagram-3.DrnYaql1.svg "Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.")
 
-Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.
+*Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.*
 
 This setup will provide three instances of the Managed Ruleset, calibrated for each application group.
 
@@ -120,9 +120,9 @@ The rulesets (and in particular the Managed Ruleset) are already finely tuned by
 
 If this is your scenario, you can simplify the above setup in the following way by using [Exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/):
 
-* First, you can identify which applications (FQDNs) require a special treatment by deploying the ruleset in `Log` mode. For example, following testing you find that `special1.example.com` requires disabling a small set of Managed Rules, and `special2.example.org` disabling a similar, but different set of rules.
-* Deploy two managed Exceptions, with a filter matching on the each FQDN, and then skipping thoserules from the Managed Ruleset.
-* Finally, deploy a Default version of the Managed Ruleset, which will match on everything else, and run the Cloudflare recommended settings of the Managed Ruleset.
+- First, you can identify which applications (FQDNs) require a special treatment by deploying the ruleset in `Log` mode. For example, following testing you find that `special1.example.com` requires disabling a small set of Managed Rules, and `special2.example.org` disabling a similar, but different set of rules.
+- Deploy two managed Exceptions, with a filter matching on the each FQDN, and then skipping thoserules from the Managed Ruleset.
+- Finally, deploy a Default version of the Managed Ruleset, which will match on everything else, and run the Cloudflare recommended settings of the Managed Ruleset.
 
 This approach can be simpler when there are few exceptions to the norm, and when the initial calibration confirms that the fine tuning already done by Cloudflare to minimize false positives is appropriate in your situation.
 
@@ -154,8 +154,8 @@ Unless your configuration is specific to a single zone, Cloudflare recommends im
 
 For more information, please refer to the following resources:
 
-* [Create a Rate Limiting Rule at the Account level](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/)
-* [Create Custom Rulesets at the Account level](https://developers.cloudflare.com/waf/account/custom-rulesets/)
+- [Create a Rate Limiting Rule at the Account level](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/)
+- [Create Custom Rulesets at the Account level](https://developers.cloudflare.com/waf/account/custom-rulesets/)
 
 ## Summary
 

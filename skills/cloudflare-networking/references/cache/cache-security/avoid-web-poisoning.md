@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Avoid web cache poisoning
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/cache-security/avoid-web-poisoning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A cache poisoning attack uses an HTTP request to trick an origin web server into responding with a harmful resource that has the same cache key as a clean request. As a result, the poisoned resource gets cached and served to other users.
 
@@ -22,22 +22,22 @@ A Content Delivery Network (CDN) like Cloudflare relies on cache keys to compare
 
 To deepen your understanding of the risks and vulnerabilities associated with cache poisoning, consult the following resources:
 
-* [Practical Web Cache Poisoning ↗](https://portswigger.net/blog/practical-web-cache-poisoning)
-* [How Cloudflare protects customers from cache poisoning ↗](https://blog.cloudflare.com/cache-poisoning-protection/)
+- [Practical Web Cache Poisoning ↗](https://portswigger.net/blog/practical-web-cache-poisoning)
+- [How Cloudflare protects customers from cache poisoning ↗](https://blog.cloudflare.com/cache-poisoning-protection/)
 
 ## Only cache files that are truly static
 
 Review the caching configuration for your origin web server and ensure you are caching files that are static and do not depend on user input in any way. To learn more about Cloudflare caching, review:
 
-* [Which file extensions does Cloudflare cache for static content?](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/)
-* [How Do I Tell Cloudflare What to Cache?](https://developers.cloudflare.com/cache/how-to/cache-rules/)
+- [Which file extensions does Cloudflare cache for static content?](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/)
+- [How Do I Tell Cloudflare What to Cache?](https://developers.cloudflare.com/cache/how-to/cache-rules/)
 
 ## Do not trust data in HTTP headers
 
 Attackers can exploit HTTP headers to inject malicious content into cached responses. For example, if your application reflects an untrusted header value in the response body, an attacker could use this to perform cross-site scripting (XSS) through the cache. To reduce this risk:
 
-* Do not rely on values in HTTP headers if they are not part of your [cache key](https://developers.cloudflare.com/cache/how-to/cache-keys/).
-* Do not include untrusted header values in your response body.
+- Do not rely on values in HTTP headers if they are not part of your [cache key](https://developers.cloudflare.com/cache/how-to/cache-keys/).
+- Do not include untrusted header values in your response body.
 
 ## Do not trust GET request bodies
 
@@ -47,9 +47,9 @@ Cloudflare caches contents of GET request bodies, but they are not included in t
 
 To keep informed about Internet security threats, Cloudflare recommends that you monitor web security advisories on a regular basis. Some of the more popular advisories include:
 
-* [Drupal Security Advisories ↗](https://www.drupal.org/security)
-* [Symfony Security Advisories ↗](https://symfony.com/blog/category/security-advisories)
-* [Laminas Security Advisories ↗](https://getlaminas.org/security/advisories)
+- [Drupal Security Advisories ↗](https://www.drupal.org/security)
+- [Symfony Security Advisories ↗](https://symfony.com/blog/category/security-advisories)
+- [Laminas Security Advisories ↗](https://getlaminas.org/security/advisories)
 
 Was this helpful?
 

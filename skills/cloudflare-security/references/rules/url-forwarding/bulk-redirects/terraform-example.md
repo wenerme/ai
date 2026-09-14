@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Bulk Redirects using Terraform
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/terraform-example/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -121,18 +121,18 @@ resource "cloudflare_ruleset" "bulk_root_redirect_to_id" {
 
 Your API token must have at least the following [permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/):
 
-* Account Filter Lists > Edit
-* Bulk URL Redirects > Edit
+- Account Filter Lists > Edit
+- Bulk URL Redirects > Edit
 
-* Account Rule Lists Write
-* Bulk URL Redirects Write
+- Account Rule Lists Write
+- Bulk URL Redirects Write
 
 ## Additional resources
 
 For additional guidance on using Terraform with Cloudflare, refer to the following resources:
 
-* [Terraform documentation](https://developers.cloudflare.com/terraform/)
-* [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
+- [Terraform documentation](https://developers.cloudflare.com/terraform/)
+- [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 Was this helpful?
 

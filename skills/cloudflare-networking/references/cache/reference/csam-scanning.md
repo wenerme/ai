@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # CSAM Scanning Tool
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/reference/csam-scanning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/reference/csam-scanning/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Child Sexual Abuse Material (CSAM) Scanning Tool allows website owners to proactively identify and take action on CSAM located on their website. By enabling this tool, Cloudflare will compare content served for your website through the Cloudflare cache to known lists of CSAM. These lists are provided to Cloudflare by leading child safety advocacy groups such as the National Center for Missing and Exploited Children (NCMEC).
 
-Remember, by enabling the Service, you agree to the [Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms) for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.
+Remember, by enabling the Service, you agree to the  [Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms) for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.
 
 ---
 
@@ -32,7 +32,7 @@ To enable the tool:
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Select your account and zone.
-3. Go to **Caching** \> **Configuration**.
+3. Go to **Caching** > **Configuration**.
 4. For **CSAM Scanning Tool**, select **Configure**.
 
 You must provide an email address, which will be used to notify you in the event Cloudflare detects a positive match.
@@ -52,13 +52,17 @@ When a potential match is detected with the tool:
 
 You are responsible for understanding and complying with any legal obligations you have as a website owner when made aware of any potential CSAM. Although legal obligations vary based on the provider and the jurisdiction, website owners often have obligations to report apparent CSAM, to remove content, and to preserve records. Some of those possible obligations are as follows:
 
-* You likely have an obligation to report apparent CSAM to the appropriate authorities. You can file a report to NCMEC with additional information via NCMEC's CyberTip reporting form or find the preferred reporting portal for your jurisdiction via the INHOPE website.
+- You likely have an obligation to report apparent CSAM to the appropriate authorities. You can file a report to NCMEC with additional information via NCMEC's CyberTip reporting form or find the preferred reporting portal for your jurisdiction via the INHOPE website.
 
-* You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.
-* You likely have an obligation to securely preserve certain information related to your report for one year in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
 
-* You should remove the content and notify Cloudflare of the removal.
-* Once any preservation obligations have been fulfilled, you should remove the content from your website. This is especially important if Cloudflare's notice to you indicates that our block was unsuccessful.
+
+- You may need to preserve and securely store a copy of the content and related data in the case NCMEC or law enforcement reach out for additional details.
+- You likely have an obligation to securely preserve certain information related to your report for one year in the case of an investigation. To ensure that access to the content is limited, take care not to store this information anywhere accessible to anyone but those within your organization responsible for legal requests.
+
+
+
+- You should remove the content and notify Cloudflare of the removal.
+- Once any preservation obligations have been fulfilled, you should remove the content from your website. This is especially important if Cloudflare's notice to you indicates that our block was unsuccessful.
 
 ---
 
@@ -68,9 +72,9 @@ To disable a block, either because you have determined that the blocked content 
 
 These actions are available to users with the following roles:
 
-* Admin
-* Super Admin
-* Trust & Safety
+- Admin
+- Super Admin
+- Trust & Safety
 
 ---
 

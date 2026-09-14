@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Slack
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/slack/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/slack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Slack is a communication channel for agents that need to participate in team conversations. A Slack-connected agent can receive events from Slack, route each message to the right agent instance, and respond back to direct messages or channel mentions.
 
 Use Slack when you want an agent to:
 
-* Respond to direct messages from Slack users.
-* Reply when mentioned in public channels.
-* Maintain context inside Slack threads.
-* Serve multiple Slack workspaces from one deployment.
+- Respond to direct messages from Slack users.
+- Reply when mentioned in public channels.
+- Maintain context inside Slack threads.
+- Serve multiple Slack workspaces from one deployment.
 
 ## How it works
 
@@ -29,10 +29,10 @@ Slack sends events to your Worker through the [Slack Events API ↗](https://api
 
 Common Slack events include:
 
-| Event        | Use case                   |
-| ------------ | -------------------------- |
-| message.im   | Direct messages to the bot |
-| app\_mention | Mentions in channels       |
+| Event | Use case |
+| --- | --- |
+| `message.im` | Direct messages to the bot |
+| `app_mention` | Mentions in channels |
 
 For multi-workspace Slack apps, store each workspace installation separately and route events by team or enterprise ID. Each workspace can map to an isolated agent instance with its own Durable Object-backed state.
 

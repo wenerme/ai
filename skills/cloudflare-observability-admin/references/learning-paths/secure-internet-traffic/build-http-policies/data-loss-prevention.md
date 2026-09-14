@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build Data Loss Prevention (DLP) policies
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/data-loss-prevention/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In order to use Data Loss Prevention (DLP) tools within Cloudflare Zero Trust, you first need to define your DLP profiles. [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) are complex objects with dictionaries, pre-built detections, and custom logic that you can reference as selectors within your Gateway policies.
 
@@ -22,7 +22,7 @@ You may either use DLP profiles predefined by Cloudflare, or create your own cus
 
 ### Configure a predefined profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Choose a [predefined profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and select **Edit**.
 3. Enable one or more **Detection entries** according to your preferences.
 4. Select **Save profile**.
@@ -31,31 +31,36 @@ Most predefined profiles match when any enabled detection entry matches. The **P
 
 ### Build a custom profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
-4. Add detection entries to the profile.
-Create a custom entry
+4. Add detection entries to the profile.<details><summary>
 
-  1. Select **Create custom entry**.
-  2. Choose the type of detection entry you want to create and configure its values.
-  For information on supported detection entry types, refer to [Configure detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/).
-  3. To save the detection entry, select **Done**.
-Add existing entries
-Existing entries include [predefined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) and [user-defined](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) detection entries that you manage from the Detection entries section.
+   Create a custom entry</summary>
 
-  1. Select **Add existing entries**.
-  2. Choose which entries you want to add, then select **Confirm**.
-  3. To finish, select **Done**.
+   1. Select **Create custom entry**.
+   2. Choose the type of detection entry you want to create and configure its values.
+
+      For information on supported detection entry types, refer to <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/">Configure detection entries</a>.
+   3. To save the detection entry, select **Done**.</details>
+
+<details><summary>
+
+   Add existing entries</summary>
+
+Existing entries include <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/">predefined</a> and <a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/">user-defined</a> detection entries that you manage from the Detection entries section.
+   1. Select **Add existing entries**.
+   2. Choose which entries you want to add, then select **Confirm**.
+   3. To finish, select **Done**.</details>
+
 5. (Optional) Add data classes to include reusable classification rules.
-
-  * Select **Add data classes**
-  * Choose the data classes you want to add, then select **Confirm**
+   - Select **Add data classes**
+   - Choose the data classes you want to add, then select **Confirm**
 6. (Optional) Use labels as match criteria for the profile.
+   - Select a sensitivity schema and minimum sensitivity level.
+   - Select a data tag group and one or more data tags.
 
-  * Select a sensitivity schema and minimum sensitivity level.
-  * Select a data tag group and one or more data tags.
-For more information on labels, templates, and data classes, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
+   For more information on labels, templates, and data classes, refer to [Data Classification](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/).
 7. (Optional) Configure [**profile settings**](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/advanced-settings/) for the profile.
 8. Select **Save profile**.
 
@@ -71,10 +76,12 @@ If your organization is most concerned about general data patterns that fit exis
 
 To help this better match the needs of your organization, you can also build a complex profile that matches data to both an existing library and a custom string detection or database. For example:
 
-| Selector    | Operator | Value                     | Logic | Action |
-| ----------- | -------- | ------------------------- | ----- | ------ |
-| DLP Profile | in       | _Credentials and Secrets_ | Or    | Block  |
-| DLP Profile | in       | _AWS Key Dataset_         |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| DLP Profile | in | *Credentials and Secrets* | Or | Block |
+| DLP Profile | in | *AWS Key Dataset* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -107,15 +114,17 @@ For example, you can use a custom expression to detect when your users share pro
 
 1. [Build a custom profile](#build-a-custom-profile) with the following custom entry:
 
-| Detection entry name | Value                     |
-| -------------------- | ------------------------- |
-| Product SKUs         | CF\[0-9\]{1,4}-\[0-9\]{5} |
+   | Detection entry name | Value |
+   | --- | --- |
+   | Product SKUs | `CF[0-9]{1,4}-[0-9]{5}` |
 2. Create an HTTP policy with the following expressions:
 
-| Selector    | Operator      | Value                        | Logic | Action |
-| ----------- | ------------- | ---------------------------- | ----- | ------ |
-| DLP Profile | in            | _Product SKUs_               | And   | Block  |
-| User Email  | matches regex | \[a-z0-9\]{0,15}@example.com |       |        |
+   | Selector | Operator | Value | Logic | Action |
+   | --- | --- | --- | --- | --- |
+   | DLP Profile | in | *Product SKUs* | And | Block |
+   | User Email | matches regex | `[a-z0-9]{0,15}@example.com` |  |  |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -139,11 +148,11 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 If your data is a distinct [dataset](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#exact-data-match-datasets) you have defined, you can build a profile by uploading a database to use in an Exact Data Match or Custom Wordlist function. Exact Data Match and Custom Wordlist feature some key differences:
 
-|                     | Exact Data Match                                        | Custom Wordlist                                                    |
-| ------------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
-| **Encryption**      | Hashed and compared to encrypted traffic                | Stored as plaintext                                                |
-| **Payload logging** | Matches redacted in logs                                | Matches appear in logs                                             |
-| **Usage**           | PII (such as names, addresses, and credit card numbers) | Non-sensitive data (such as intellectual property and SKU numbers) |
+|  | Exact Data Match | Custom Wordlist |
+| --- | --- | --- |
+| **Encryption** | Hashed and compared to encrypted traffic | Stored as plaintext |
+| **Payload logging** | Matches redacted in logs | Matches appear in logs |
+| **Usage** | PII (such as names, addresses, and credit card numbers) | Non-sensitive data (such as intellectual property and SKU numbers) |
 
 We recommend using Exact Data Match for highly sensitive datasets and Custom Wordlists for lists of keywords.
 
@@ -163,10 +172,12 @@ The best way to start applying data loss prevention to your traffic, minimize th
 
 Many organizations want to detect and log financial information egressing from user devices to critical SaaS applications. To limit the risk of false positives and to filter out logging noise, Cloudflare recommends building your first series of policies to specify both target data and target destination. For example, you can block financial information from being sent to AI chatbots, such as ChatGPT and Gemini:
 
-| Selector           | Operator | Value                     | Logic | Action |
-| ------------------ | -------- | ------------------------- | ----- | ------ |
-| DLP Profile        | in       | _Financial Information_   | And   | Block  |
-| Content Categories | in       | _Artificial Intelligence_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| DLP Profile | in | *Financial Information* | And | Block |
+| Content Categories | in | *Artificial Intelligence* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Polls
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/polls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/polls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide explains how to create, vote on, and interact with polls in a meeting using Cloudflare RealtimeKit.
 
@@ -198,10 +198,10 @@ interface PollOption {
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
 
-* `question` (string) - The poll question
-* `options` (string\[\]) - Array of poll options
-* `anonymous` (boolean) - Whether votes are anonymous
-* `hideVotes` (boolean, optional) - Whether to hide vote counts
+- `question` (string) - The poll question
+- `options` (string\[]) - Array of poll options
+- `anonymous` (boolean) - Whether votes are anonymous
+- `hideVotes` (boolean, optional) - Whether to hide vote counts
 
 The following snippet creates a poll where votes are anonymous:
 
@@ -215,10 +215,10 @@ await meeting.polls.create(
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
 
-* `question` (string) - The poll question
-* `options` (string\[\]) - Array of poll options
-* `anonymous` (boolean) - Whether votes are anonymous
-* `hideVotes` (boolean, optional) - Whether to hide vote counts
+- `question` (string) - The poll question
+- `options` (string\[]) - Array of poll options
+- `anonymous` (boolean) - Whether votes are anonymous
+- `hideVotes` (boolean, optional) - Whether to hide vote counts
 
 The following snippet creates a poll where votes are anonymous:
 
@@ -232,12 +232,12 @@ await meeting.polls.create(
 
 To create a new poll, use the `create` method available on the `meeting.polls` object. The `meeting.polls.create()` function requires the following parameters:
 
-| Param     | Type         | Required | Description                                |
-| --------- | ------------ | -------- | ------------------------------------------ |
-| question  | String       | yes      | The question that is to be voted for.      |
-| options   | List<String> | yes      | The options of the poll.                   |
-| anonymous | Boolean      | yes      | If true, the poll votes are anonymous.     |
-| hideVotes | Boolean      | yes      | If true, the votes on the poll are hidden. |
+| Param | Type | Required | Description |
+| --- | --- | --- | --- |
+| question | `String` | yes | The question that is to be voted for. |
+| options | `List<String>` | yes | The options of the poll. |
+| anonymous | `Boolean` | yes | If true, the poll votes are anonymous. |
+| hideVotes | `Boolean` | yes | If true, the votes on the poll are hidden. |
 
 The following snippet creates a poll where votes are anonymous.
 
@@ -252,12 +252,12 @@ val pollsCreateError: PollsError? = meeting.polls.create(
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.createPoll()` method accepts the following parameters:
 
-| Param     | Type       | Default Value | Required | Description                                |
-| --------- | ---------- | ------------- | -------- | ------------------------------------------ |
-| question  | string     | \-            | yes      | The question that is to be voted for.      |
-| options   | string\[\] | \-            | yes      | The options of the poll.                   |
-| anonymous | boolean    | \-            | no       | If true, the poll votes are anonymous.     |
-| hideVotes | boolean    | \-            | no       | If true, the votes on the poll are hidden. |
+| Param | Type | Default Value | Required | Description |
+| --- | --- | --- | --- | --- |
+| question | `string` | - | yes | The question that is to be voted for. |
+| options | `string[]` | - | yes | The options of the poll. |
+| anonymous | `boolean` | - | no | If true, the poll votes are anonymous. |
+| hideVotes | `boolean` | - | no | If true, the votes on the poll are hidden. |
 
 The following snippet creates a poll where votes are anonymous.
 
@@ -272,12 +272,12 @@ let pollsCreateError: PollsError? = meeting.polls.createPoll(
 
 A new poll can be created using the `create` method from the `meeting.polls` object. The `meeting.polls.create()` method accepts the following parameters:
 
-| Param     | Type       | Default Value | Required | Description                                |
-| --------- | ---------- | ------------- | -------- | ------------------------------------------ |
-| question  | string     | \-            | yes      | The question that is to be voted for.      |
-| options   | string\[\] | \-            | yes      | The options of the poll.                   |
-| anonymous | boolean    | false         | no       | If true, the poll votes are anonymous.     |
-| hideVotes | boolean    | false         | no       | If true, the votes on the poll are hidden. |
+| Param | Type | Default Value | Required | Description |
+| --- | --- | --- | --- | --- |
+| question | `string` | - | yes | The question that is to be voted for. |
+| options | `string[]` | - | yes | The options of the poll. |
+| anonymous | `boolean` | false | no | If true, the poll votes are anonymous. |
+| hideVotes | `boolean` | false | no | If true, the votes on the poll are hidden. |
 
 The following snippet creates a poll where votes are anonymous.
 
@@ -293,8 +293,8 @@ await meeting.poll.create(
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
 
-* `pollId` (string) - The ID of the poll
-* `optionIndex` (number) - The index of the selected option
+- `pollId` (string) - The ID of the poll
+- `optionIndex` (number) - The index of the selected option
 
 The following snippet votes for the first option on the first poll created in the meeting:
 
@@ -305,8 +305,8 @@ await meeting.polls.vote(poll.id, 0);
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
 
-* `pollId` (string) - The ID of the poll
-* `optionIndex` (number) - The index of the selected option
+- `pollId` (string) - The ID of the poll
+- `optionIndex` (number) - The index of the selected option
 
 The following snippet votes for the first option on the first poll created in the meeting:
 
@@ -317,10 +317,10 @@ await meeting.polls.vote(poll.id, 0);
 
 To register a vote on a poll, use the `meeting.polls.vote()` method. This method requires the following parameters:
 
-| Param       | Type       | Default Value | Required | Description                  |
-| ----------- | ---------- | ------------- | -------- | ---------------------------- |
-| pollMessage | Poll       | \-            | yes      | The poll message to vote on. |
-| pollOption  | PollOption | \-            | yes      | The option to vote for.      |
+| Param | Type | Default Value | Required | Description |
+| --- | --- | --- | --- | --- |
+| pollMessage | `Poll` | - | yes | The poll message to vote on. |
+| pollOption | `PollOption` | - | yes | The option to vote for. |
 
 The following snippet votes for the first option on the first poll created in the meeting.
 
@@ -333,10 +333,10 @@ val pollsError: PollsError? = meeting.polls.vote(poll.id, selectedPollOption)
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
 
-| Param       | Type       | Default Value | Required | Description                  |
-| ----------- | ---------- | ------------- | -------- | ---------------------------- |
-| pollMessage | Poll       | \-            | yes      | The poll message to vote on. |
-| pollOption  | PollOption | \-            | yes      | The option to vote for.      |
+| Param | Type | Default Value | Required | Description |
+| --- | --- | --- | --- | --- |
+| pollMessage | `Poll` | - | yes | The poll message to vote on. |
+| pollOption | `PollOption` | - | yes | The option to vote for. |
 
 The following snippet votes for the first option on the first poll created in the meeting.
 
@@ -349,10 +349,10 @@ meeting.poll.vote(poll, selectedPollOption)
 
 The `meeting.polls.vote()` method can be used to register a vote on a poll. It accepts the following parameters:
 
-| Param | Type   | Default Value | Required | Description                                |
-| ----- | ------ | ------------- | -------- | ------------------------------------------ |
-| id    | string | \-            | yes      | The ID of the poll that is to be voted on. |
-| index | number | \-            | yes      | The index of the option.                   |
+| Param | Type | Default Value | Required | Description |
+| --- | --- | --- | --- | --- |
+| id | `string` | - | yes | The ID of the poll that is to be voted on. |
+| index | `number` | - | yes | The index of the option. |
 
 The following snippet votes for the first option on the first poll created in the meeting.
 
@@ -459,8 +459,8 @@ const options = poll.options;
 
 An event is fired each time `meeting.polls.items` is updated or created. You can listen for this to get the updated list of polls. The response object contains the following properties:
 
-* `polls` \- List of all polls
-* `newPoll` \- A boolean variable which is `true` when a new poll has been created
+- `polls` - List of all polls
+- `newPoll` - A boolean variable which is `true` when a new poll has been created
 
 ```js
 meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
@@ -471,8 +471,8 @@ meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
 
 An event is fired each time `meeting.polls.items` is updated or created. You can listen for this to get the updated list of polls. The response object contains the following properties:
 
-* `polls` \- List of all polls
-* `newPoll` \- A boolean variable which is `true` when a new poll has been created
+- `polls` - List of all polls
+- `newPoll` - A boolean variable which is `true` when a new poll has been created
 
 ```jsx
 meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {
@@ -492,8 +492,8 @@ const polls = useRealtimeKitSelector((m) => m.polls.items);
 
 An event is fired each time `meeting.polls.items` is updated or created. You can listen for this to get the updated list of polls. The response object contains the following properties:
 
-* `polls` \- List of all polls
-* `newPoll` \- A boolean variable which is `true` when a new poll has been created
+- `polls` - List of all polls
+- `newPoll` - A boolean variable which is `true` when a new poll has been created
 
 ```ts
 meeting.polls.on("pollsUpdate", ({ polls, newPoll }) => {

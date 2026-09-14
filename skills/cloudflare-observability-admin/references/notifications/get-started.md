@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Cloudflare Notifications
 
-Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The list of notifications available depends on the type of account you have. Refer to [Available Notifications](https://developers.cloudflare.com/notifications/notification-available/) to learn more about what each notification does and what do to when receiving one.
 
@@ -36,8 +36,7 @@ This guide will help you create, edit, test, or delete notifications using the C
 
 You can create a notification via the Cloudflare dashboard.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. On the notification you want to create, choose **Select**.
 4. Name the notification.
@@ -47,8 +46,8 @@ Note
 
 Professional and Business plans will have access to more notifications and PagerDuty. Accounts with a paid service will additionally have access to webhooks.
 
-1. (Optional) Specify any additional options for the notification, if required. For example, some notifications require that you select one or more domains or services.
-2. Select **Create**.
+6. (Optional) Specify any additional options for the notification, if required. For example, some notifications require that you select one or more domains or services.
+7. Select **Create**.
 
 The browser will navigate back to the list of notifications, where the new notification will appear as **Enabled**.
 
@@ -56,8 +55,7 @@ The browser will navigate back to the list of notifications, where the new notif
 
 You can edit existing Notifications via the Cloudflare dashboard.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to modify, select **Edit**.
 3. Make your changes as needed and select **Save**.
 
@@ -67,16 +65,14 @@ The browser will navigate back to the list of notifications.
 
 You can delete or disable existing Notifications via the Cloudflare dashboard.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to disable, select the **Enabled** toggle. To delete it, select **Delete**.
 
 ### Mute a notification
 
 You can temporarily mute a notification to stop receiving alerts for a set period of time. Muted notifications create a silence that automatically expires after the specified duration.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On the notification that you want to mute, select **Mute**.
 3. Select a duration preset (**1h**, **12h**, or **24h**), or set a custom time range using the **Start Time** and **End Time** fields.
 4. Select **Save**.
@@ -89,8 +85,7 @@ While a notification is muted, alerts that would have triggered it are suppresse
 
 You can view, edit, or delete existing silences from the **Silences** tab.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select the **Silences** tab.
 3. To create a new silence, select **Add**. To modify an existing silence, select **Edit**. To remove a silence before it expires, select **Delete**.
 

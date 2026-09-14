@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Binary string functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/binary-string/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/binary-string/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `encode`
 
@@ -26,8 +26,8 @@ encode(expression, format)
 
 **Arguments**
 
-* **expression**: Expression containing string or binary data
-* **format**: Supported formats are: `base64`, `hex`
+- **expression**: Expression containing string or binary data
+- **format**: Supported formats are: `base64`, `hex`
 
 **Related functions**: [decode](#decode)
 
@@ -41,8 +41,8 @@ decode(expression, format)
 
 **Arguments**
 
-* **expression**: Expression containing encoded string data
-* **format**: Same arguments as [encode](#encode)
+- **expression**: Expression containing encoded string data
+- **format**: Same arguments as [encode](#encode)
 
 **Related functions**: [encode](#encode)
 

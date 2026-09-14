@@ -16,16 +16,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • MyShell
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/melotts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/melotts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/myshell-ai/melotts`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.
 
-| Model Info   |                          |
-| ------------ | ------------------------ |
+| Model Info | |
+| --- | --- |
 | Unit Pricing | $0.0002 per audio minute |
 
 ## Parameters
@@ -50,9 +50,9 @@ The generated audio in MP3 format
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json)
 
 Was this helpful?
 

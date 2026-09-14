@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot connectivity
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/connectivity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you determine whether a tunnel health alert is actually affecting your traffic. A degraded or down tunnel only matters if your traffic is currently routing through the Cloudflare data center where that tunnel is unhealthy.
 
@@ -24,10 +24,10 @@ Cloudflare does not synchronize health checks among global network servers. A tu
 
 Understand how Cloudflare WAN health checks and traffic routing work:
 
-* Health checks run independently from every Cloudflare data center.
-* Each data center evaluates tunnel health based on its own probes.
-* Traffic enters Cloudflare at the data center closest to the source (anycast routing).
-* A degraded tunnel in a data center that is not handling your traffic has no impact on your connectivity.
+- Health checks run independently from every Cloudflare data center.
+- Each data center evaluates tunnel health based on its own probes.
+- Traffic enters Cloudflare at the data center closest to the source (anycast routing).
+- A degraded tunnel in a data center that is not handling your traffic has no impact on your connectivity.
 
 If you are experiencing actual tunnel health issues (tunnels flapping, all tunnels down, or IPsec errors), refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/) instead.
 
@@ -35,6 +35,7 @@ If you are experiencing actual tunnel health issues (tunnels flapping, all tunne
 
 Use this flowchart to determine whether a tunnel health alert requires action.
 
+```
 flowchart TD
 accTitle: Connectivity troubleshooting flowchart
 accDescr: A decision tree to determine whether a degraded tunnel alert is affecting your traffic.
@@ -48,13 +49,15 @@ C --> G{"Are tunnels healthy<br>at your ingress<br>data center?"}
 G -- "Yes" --> H["The issue is not<br>tunnel-related. Check<br>Cloudflare Status and<br>your origin network."]
 G -- "No" --> I["Tunnels at your ingress<br>data center are unhealthy.<br>Refer to Troubleshoot<br>tunnel health."]
 
-## 1\. Identify your ingress data center
+```
+
+## 1. Identify your ingress data center
 
 Determine which Cloudflare data center your traffic is entering. This is the only data center whose tunnel health status matters for your current connectivity.
 
 ### Use traceroute
 
-Run a `traceroute` from the source network to your Cloudflare WAN prefix. Look for the Cloudflare data center hostname in the trace output, which contains a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) that identifies the data center.
+Run a `traceroute` from the source network to your Cloudflare WAN prefix. Look for the Cloudflare data center hostname in the trace output, which contains a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA_airport_code) that identifies the data center.
 
 ```sh
 traceroute 203.0.113.1
@@ -74,14 +77,13 @@ In this example, `lhr` indicates that traffic enters Cloudflare at the London (H
 
 You can identify which data centers handle your traffic by using **Network Analytics**.
 
-1. Go to the **Network Analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+1. Go to the **Network Analytics** page. [Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 2. Select **Add filter** and filter traffic by your source IP addresses to isolate your traffic.
-3. Under **Packets summary**, select the **Source data center** tab. If the tab is not visible, select the three-dot menu (`...`) to reveal additional view options and select **Source data center**.
+3. Under **Packets summary**, select the **Source data center** tab. If the tab is not visible, select the three-dot menu ( `...`) to reveal additional view options and select **Source data center**.
 4. Review the per-data-center traffic breakdown to identify which Cloudflare data centers are handling your traffic.
 5. Cross-reference these data centers with the tunnel health status on the [**Connector health** page](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/). If tunnels are healthy at the data centers carrying your traffic, a degraded tunnel alert for a different data center is not the cause of your connectivity issue.
 
-## 2\. Correlate with Cloudflare status
+## 2. Correlate with Cloudflare status
 
 If your tunnels are healthy at the relevant data center but you still experience connectivity issues, check for broader platform issues.
 
@@ -89,7 +91,7 @@ If your tunnels are healthy at the relevant data center but you still experience
 2. Look for any active incidents or maintenance at the data center you identified.
 3. Check for any incidents that might affect your traffic, such as outages related to networking, BYOIP, or the services your configuration depends on.
 
-## 3\. Gather information for support
+## 3. Gather information for support
 
 If you have worked through this guide and cannot resolve the issue, gather the following information before contacting Cloudflare support.
 
@@ -99,24 +101,24 @@ If you have worked through this guide and cannot resolve the issue, gather the f
 2. **Timestamps** (in UTC) when the issue started
 3. **Ingress data center** you identified (airport code, for example `LHR`, `IAD`)
 4. **Symptoms observed:**
-  * Whether user traffic is affected or only health check alerts fired
-  * Which tunnels and data centers show degraded or down status
-  * Whether the issue is intermittent or persistent
+   - Whether user traffic is affected or only health check alerts fired
+   - Which tunnels and data centers show degraded or down status
+   - Whether the issue is intermittent or persistent
 
 ### Helpful diagnostic data
 
-* **Traceroute output** from your source network to your Cloudflare WAN prefix
-* **Dashboard screenshots** showing tunnel health at the relevant data center
-* **Distributed traceroutes** using tools like [ping.pe ↗](https://ping.pe) to test reachability from multiple global locations
-* **Packet captures** from your router if traffic loss is confirmed
+- **Traceroute output** from your source network to your Cloudflare WAN prefix
+- **Dashboard screenshots** showing tunnel health at the relevant data center
+- **Distributed traceroutes** using tools like [ping.pe ↗](https://ping.pe) to test reachability from multiple global locations
+- **Packet captures** from your router if traffic loss is confirmed
 
 ## Related resources
 
-* [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/): Resolve common tunnel health issues (flapping, IPsec errors, stateful firewall drops).
-* [Troubleshoot routing and BGP](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/): Diagnose routing and BGP issues that affect traffic delivery.
-* [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/): Monitor tunnel status per data center.
-* [Tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/): Technical details on how health checks work.
-* [Network Analytics](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/): Analyze traffic patterns over time.
+- [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/tunnel-health/): Resolve common tunnel health issues (flapping, IPsec errors, stateful firewall drops).
+- [Troubleshoot routing and BGP](https://developers.cloudflare.com/cloudflare-wan/troubleshooting/routing-and-bgp/): Diagnose routing and BGP issues that affect traffic delivery.
+- [Check tunnel health in the dashboard](https://developers.cloudflare.com/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/): Monitor tunnel status per data center.
+- [Tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/): Technical details on how health checks work.
+- [Network Analytics](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/): Analyze traffic patterns over time.
 
 Was this helpful?
 

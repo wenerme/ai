@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # View rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/basic-operations/view-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page includes examples of the following API operations:
 
-* [View available rulesets](#view-available-rulesets)
-* [Get an entry point ruleset](#get-an-entry-point-ruleset)
-* [View the rules included in a ruleset](#view-the-rules-included-in-a-ruleset)
+- [View available rulesets](#view-available-rulesets)
+- [Get an entry point ruleset](#get-an-entry-point-ruleset)
+- [View the rules included in a ruleset](#view-the-rules-included-in-a-ruleset)
 
 ## View available rulesets
 
@@ -30,55 +30,66 @@ For a list of API endpoints refer to [List and view rulesets](https://developers
 
 The response to the [GET request](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) obtaining the list of rulesets at the zone level will include the following rulesets:
 
-* Managed rulesets you can deploy, indicated by `"kind": "managed"`.
-* Zone-level phase entry point rulesets, if configured, indicated by `"kind": "zone"`.
-* Custom rulesets, if configured, indicated by `"kind": "custom"`.
+- Managed rulesets you can deploy, indicated by `"kind": "managed"`.
+- Zone-level phase entry point rulesets, if configured, indicated by `"kind": "zone"`.
+- Custom rulesets, if configured, indicated by `"kind": "custom"`.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Response Compression Read`
-* `Config Settings Write`
-* `Config Settings Read`
-* `Dynamic URL Redirects Write`
-* `Dynamic URL Redirects Read`
-* `Cache Settings Write`
-* `Cache Settings Read`
-* `Custom Errors Write`
-* `Custom Errors Read`
-* `Origin Write`
-* `Origin Read`
-* `Managed headers Write`
-* `Managed headers Read`
-* `Zone Transform Rules Write`
-* `Zone Transform Rules Read`
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `HTTP DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Read`
-* `Sanitize Write`
-* `Sanitize Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Bot Management Write`
-* `Bot Management Read`
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Response Compression Read</code>
+- <code>Config Settings Write</code>
+- <code>Config Settings Read</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Dynamic URL Redirects Read</code>
+- <code>Cache Settings Write</code>
+- <code>Cache Settings Read</code>
+- <code>Custom Errors Write</code>
+- <code>Custom Errors Read</code>
+- <code>Origin Write</code>
+- <code>Origin Read</code>
+- <code>Managed headers Write</code>
+- <code>Managed headers Read</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Zone Transform Rules Read</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Read</code>
+- <code>Sanitize Write</code>
+- <code>Sanitize Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Bot Management Write</code>
+- <code>Bot Management Read</code>
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*List zone rulesetsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
@@ -127,29 +138,40 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets" \
 
 The response to the [GET request](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) obtaining the list of rulesets at the account level will include the following rulesets:
 
-* Managed rulesets you can deploy, indicated by `"kind": "managed"`.
-* Account-level phase entry point rulesets, if configured, indicated by `"kind": "root"`.
-* Custom rulesets, if configured, indicated by `"kind": "custom"`.
+- Managed rulesets you can deploy, indicated by `"kind": "managed"`.
+- Account-level phase entry point rulesets, if configured, indicated by `"kind": "root"`.
+- Custom rulesets, if configured, indicated by `"kind": "custom"`.
+
+<details>
+
+<summary>
 
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*List account rulesetsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets" \
@@ -215,51 +237,62 @@ If the entry point ruleset does not exist, the API will return a `404 Not Found`
 
 The following [GET request](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) obtains the definition of the entry point ruleset for the `http_request_firewall_managed` phase at the zone level. In this case, the entry point ruleset exists and contains one rule.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Response Compression Read`
-* `Config Settings Write`
-* `Config Settings Read`
-* `Dynamic URL Redirects Write`
-* `Dynamic URL Redirects Read`
-* `Cache Settings Write`
-* `Cache Settings Read`
-* `Custom Errors Write`
-* `Custom Errors Read`
-* `Origin Write`
-* `Origin Read`
-* `Managed headers Write`
-* `Managed headers Read`
-* `Zone Transform Rules Write`
-* `Zone Transform Rules Read`
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `HTTP DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Read`
-* `Sanitize Write`
-* `Sanitize Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Bot Management Write`
-* `Bot Management Read`
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Response Compression Read</code>
+- <code>Config Settings Write</code>
+- <code>Config Settings Read</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Dynamic URL Redirects Read</code>
+- <code>Cache Settings Write</code>
+- <code>Cache Settings Read</code>
+- <code>Custom Errors Write</code>
+- <code>Custom Errors Read</code>
+- <code>Origin Write</code>
+- <code>Origin Read</code>
+- <code>Managed headers Write</code>
+- <code>Managed headers Read</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Zone Transform Rules Read</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Read</code>
+- <code>Sanitize Write</code>
+- <code>Sanitize Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Bot Management Write</code>
+- <code>Bot Management Read</code>
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*Get a zone entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
@@ -300,25 +333,36 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 
 The following [GET request](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) obtains the definition of the entry point ruleset for the `http_request_firewall_managed` phase at the account level.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*Get an account entry point rulesetbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
@@ -334,51 +378,62 @@ You can view all versions of phase entry point rulesets (at the account and zone
 
 The following [GET request](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/subresources/versions/methods/get/) lists the rules in version `2` of the `http_request_firewall_managed` phase entry point ruleset at the zone level.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Response Compression Write`
-* `Response Compression Read`
-* `Config Settings Write`
-* `Config Settings Read`
-* `Dynamic URL Redirects Write`
-* `Dynamic URL Redirects Read`
-* `Cache Settings Write`
-* `Cache Settings Read`
-* `Custom Errors Write`
-* `Custom Errors Read`
-* `Origin Write`
-* `Origin Read`
-* `Managed headers Write`
-* `Managed headers Read`
-* `Zone Transform Rules Write`
-* `Zone Transform Rules Read`
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `HTTP DDoS Managed Ruleset Write`
-* `HTTP DDoS Managed Ruleset Read`
-* `Sanitize Write`
-* `Sanitize Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Bot Management Write`
-* `Bot Management Read`
-* `Zone WAF Write`
-* `Zone WAF Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Response Compression Write</code>
+- <code>Response Compression Read</code>
+- <code>Config Settings Write</code>
+- <code>Config Settings Read</code>
+- <code>Dynamic URL Redirects Write</code>
+- <code>Dynamic URL Redirects Read</code>
+- <code>Cache Settings Write</code>
+- <code>Cache Settings Read</code>
+- <code>Custom Errors Write</code>
+- <code>Custom Errors Read</code>
+- <code>Origin Write</code>
+- <code>Origin Read</code>
+- <code>Managed headers Write</code>
+- <code>Managed headers Read</code>
+- <code>Zone Transform Rules Write</code>
+- <code>Zone Transform Rules Read</code>
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>HTTP DDoS Managed Ruleset Write</code>
+- <code>HTTP DDoS Managed Ruleset Read</code>
+- <code>Sanitize Write</code>
+- <code>Sanitize Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Bot Management Write</code>
+- <code>Bot Management Read</code>
+- <code>Zone WAF Write</code>
+- <code>Zone WAF Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*Get a zone entry point ruleset versionbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint/versions/2" \
@@ -421,25 +476,36 @@ The following [GET request](https://developers.cloudflare.com/api/resources/rule
 
 Each rule in a managed ruleset can have associated tags or categories, listed in the `categories` field.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Mass URL Redirects Write`
-* `Mass URL Redirects Read`
-* `Magic Firewall Write`
-* `Magic Firewall Read`
-* `L4 DDoS Managed Ruleset Write`
-* `L4 DDoS Managed Ruleset Read`
-* `Transform Rules Write`
-* `Transform Rules Read`
-* `Select Configuration Write`
-* `Select Configuration Read`
-* `Account WAF Write`
-* `Account WAF Read`
-* `Account Rulesets Read`
-* `Account Rulesets Write`
-* `Logs Write`
-* `Logs Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Mass URL Redirects Write</code>
+- <code>Mass URL Redirects Read</code>
+- <code>Magic Firewall Write</code>
+- <code>Magic Firewall Read</code>
+- <code>L4 DDoS Managed Ruleset Write</code>
+- <code>L4 DDoS Managed Ruleset Read</code>
+- <code>Transform Rules Write</code>
+- <code>Transform Rules Read</code>
+- <code>Select Configuration Write</code>
+- <code>Select Configuration Read</code>
+- <code>Account WAF Write</code>
+- <code>Account WAF Read</code>
+- <code>Account Rulesets Read</code>
+- <code>Account Rulesets Write</code>
+- <code>Logs Write</code>
+- <code>Logs Read</code>
+
+</details>
+
+*Get an account ruleset versionbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rulesets/$MANAGED_RULESET_ID/versions/2" \

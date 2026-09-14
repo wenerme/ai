@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Multi-vendor AI observability and control
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -22,11 +22,11 @@ Inference-as-a-Service is a cloud-based model that allows users to deploy and ex
 
 As this field evolves rapidly, developers and organizations face several challenges:
 
-* Fragmentation: Many inference service providers offer only a limited range of models and features. Different use cases may require multiple vendors, leading to fragmentation.
-* Availability: With increasing demand and fast-paced technological advancements, inference service providers struggle to maintain high API availability.
-* Lack of observability: Providers often offer limited analytics and logging capabilities, which vary across vendors. Gaining a unified view of AI usage proves challenging.
-* Lack of security control: Organizations encounter difficulties in maintaining adequate security measures.
-* Lack of cost control: Understanding usage insights can be challenging, and the absence of custom rate limits poses risks in public-facing AI use cases.
+- Fragmentation: Many inference service providers offer only a limited range of models and features. Different use cases may require multiple vendors, leading to fragmentation.
+- Availability: With increasing demand and fast-paced technological advancements, inference service providers struggle to maintain high API availability.
+- Lack of observability: Providers often offer limited analytics and logging capabilities, which vary across vendors. Gaining a unified view of AI usage proves challenging.
+- Lack of security control: Organizations encounter difficulties in maintaining adequate security measures.
+- Lack of cost control: Understanding usage insights can be challenging, and the absence of custom rate limits poses risks in public-facing AI use cases.
 
 Using a forward proxy can mitigate these challenges. Positioned between the service making inference requests and the inference service platform, it serves as a single point for observability and control. By shifting features such as rate limiting, caching, and error handling to the proxy layer, organizations can apply unified configurations across services and inference service providers.
 
@@ -36,7 +36,7 @@ The following architecture illustrates the setup of [AI Gateway](https://develop
 
 ![Figure 1: Multi-vendor AI architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/ai-multi-vendor-observability-control.DprqSV76.svg "Multi-vendor AI architecture")
 
-Multi-vendor AI architecture
+*Multi-vendor AI architecture*
 
 1. **Inference request**: Send POST request to your AI gateway.
 2. **Request proxying**: Forward `POST` request to AI Inference provider or serve response from [cache, if enabled and available](https://developers.cloudflare.com/ai-gateway/features/caching). During this process, both [analytics](https://developers.cloudflare.com/ai-gateway/observability/analytics/) and [logs](https://developers.cloudflare.com/ai-gateway/observability/logging/) are collected. Additionally, controls such as Rate Limiting are enforced.
@@ -44,8 +44,8 @@ Multi-vendor AI architecture
 
 ## Related resources
 
-* [AI Gateway: Get started](https://developers.cloudflare.com/ai-gateway/get-started/)
-* [AI Gateway: Supported Providers](https://developers.cloudflare.com/ai-gateway/usage/providers/)
+- [AI Gateway: Get started](https://developers.cloudflare.com/ai-gateway/get-started/)
+- [AI Gateway: Supported Providers](https://developers.cloudflare.com/ai-gateway/usage/providers/)
 
 Was this helpful?
 

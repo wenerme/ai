@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Application security
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your website or application from attacks, bots, and abuse. Cloudflare's application security (also known as Web Application Firewall or WAF) blocks SQL injection, XSS, and OWASP Top 10 vulnerabilities. DDoS Protection mitigates volumetric and application-layer attacks automatically. Bot Security uses machine learning to score every request. API Shield validates API traffic against your OpenAPI specification. Client-side security monitors third-party scripts for malicious behavior.
 
-* [Block application attacks](https://developers.cloudflare.com/use-cases/application-security/block-attacks/)
-* [Mitigate DDoS attacks](https://developers.cloudflare.com/use-cases/application-security/ddos/)
-* [Stop malicious bots](https://developers.cloudflare.com/use-cases/application-security/bots/)
-* [Protect against client-side threats](https://developers.cloudflare.com/use-cases/application-security/client-side/)
-* [Secure API endpoints](https://developers.cloudflare.com/use-cases/application-security/api-endpoints/)
+- [Block application attacks](https://developers.cloudflare.com/use-cases/application-security/block-attacks/)
+- [Mitigate DDoS attacks](https://developers.cloudflare.com/use-cases/application-security/ddos/)
+- [Stop malicious bots](https://developers.cloudflare.com/use-cases/application-security/bots/)
+- [Protect against client-side threats](https://developers.cloudflare.com/use-cases/application-security/client-side/)
+- [Secure API endpoints](https://developers.cloudflare.com/use-cases/application-security/api-endpoints/)
 
 ## Architecture patterns
 
@@ -28,33 +28,33 @@ Protect your website or application from attacks, bots, and abuse. Cloudflare's 
 
 Protect a website or web application from common attacks:
 
-* **SSL/TLS** encrypts all traffic between visitors and Cloudflare
-* **Security rules** managed rulesets block SQL injection, XSS, and OWASP Top 10 vulnerabilities
-* **DDoS Protection** mitigates volumetric and application-layer attacks automatically
-* **Bot Security** scores every request and blocks automated threats
+- **SSL/TLS** encrypts all traffic between visitors and Cloudflare
+- **Security rules** managed rulesets block SQL injection, XSS, and OWASP Top 10 vulnerabilities
+- **DDoS Protection** mitigates volumetric and application-layer attacks automatically
+- **Bot Security** scores every request and blocks automated threats
 
 ### API security
 
 Secure Application Programming Interface (API) endpoints with schema enforcement and authentication:
 
-* **API Shield** validates requests against your OpenAPI specification
-* **Rate Limiting** prevents abuse with per-endpoint request limits
-* **mTLS** authenticates known clients with mutual TLS certificates
+- **API Shield** validates requests against your OpenAPI specification
+- **Rate Limiting** prevents abuse with per-endpoint request limits
+- **mTLS** authenticates known clients with mutual TLS certificates
 
 ### Client-side defense
 
 Protect visitors from threats that execute in the browser:
 
-* **Client-side security** monitors third-party scripts loading on your pages
-* **Turnstile** replaces CAPTCHAs on forms with a privacy-preserving challenge
-* **Content security rules** block requests from known malicious sources
+- **Client-side security** monitors third-party scripts loading on your pages
+- **Turnstile** replaces CAPTCHAs on forms with a privacy-preserving challenge
+- **Content security rules** block requests from known malicious sources
 
 ---
 
 ## Prerequisites
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). All solutions in this use case require your domain's DNS records to be proxied through Cloudflare so that traffic passes through Cloudflare's network before reaching your origin.
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). All solutions in this use case require your domain's DNS records to be proxied through Cloudflare so that traffic passes through Cloudflare's network before reaching your origin.
 
 ---
 

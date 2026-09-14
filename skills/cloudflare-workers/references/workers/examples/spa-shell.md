@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Use HTMLRewriter to inject bootstrap data into an SPA shell — whether the shell is served from Workers Static Assets or fetched from an external origin.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/spa-shell/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/spa-shell/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses a Worker and [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) to inject prefetched API data into a single-page application (SPA) shell. The Worker fetches bootstrap data in parallel with the HTML shell and streams the result to the browser, so the SPA has everything it needs before its JavaScript runs.
 
@@ -42,7 +42,7 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 	"name": "my-spa",
 	"main": "src/worker.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"directory": "./dist",
@@ -57,7 +57,7 @@ Set `not_found_handling` to `"single-page-application"` so that every route retu
 name = "my-spa"
 main = "src/worker.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -67,7 +67,7 @@ not_found_handling = "single-page-application"
 run_worker_first = [ "/*", "!/assets/*" ]
 ```
 
-For more details on these options, refer to [Static Assets routing](https://developers.cloudflare.com/workers/static-assets/routing/) and the [run\_worker\_first reference](https://developers.cloudflare.com/workers/static-assets/binding/#run%5Fworker%5Ffirst).
+For more details on these options, refer to [Static Assets routing](https://developers.cloudflare.com/workers/static-assets/routing/) and the [`run_worker_first` reference](https://developers.cloudflare.com/workers/static-assets/binding/#run_worker_first).
 
 ### Inject bootstrap data with HTMLRewriter
 
@@ -208,7 +208,7 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 	"name": "my-spa-proxy",
 	"main": "src/worker.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"vars": {
 		"SPA_ORIGIN": "https://my-spa.example-hosting.com",
@@ -221,7 +221,7 @@ Because the SPA is not in Workers Static Assets, you do not need an `assets` blo
 name = "my-spa-proxy"
 main = "src/worker.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -359,6 +359,8 @@ async function fetchBootstrapData(
 
 On the client, read `window.__BOOTSTRAP_DATA__` before making any API calls. If the data exists, use it directly. Otherwise, fall back to a normal fetch.
 
+*src/App.tsxtsx*
+
 ```tsx
 // React example — works the same way in Vue, Svelte, or any other framework.
 import { useEffect, useState } from "react";
@@ -384,6 +386,8 @@ function App() {
 ```
 
 Add a type declaration so TypeScript recognizes the global property:
+
+*global.d.tsts*
 
 ```ts
 declare global {
@@ -458,13 +462,13 @@ new HTMLRewriter()
 
 ## Related resources
 
-* [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) — Streaming HTML parser and transformer.
-* [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) — Serve static files alongside your Worker.
-* [Static Assets routing](https://developers.cloudflare.com/workers/static-assets/routing/) — Configure `run_worker_first` and `not_found_handling`.
-* [Static Assets binding](https://developers.cloudflare.com/workers/static-assets/binding/) — Reference for the `ASSETS` binding and routing options.
-* [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) — Attach a Worker to a domain as the origin.
-* [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) — Run a Worker in front of an existing origin server.
-* [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/) — Code patterns and configuration guidance for Workers.
+- [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) — Streaming HTML parser and transformer.
+- [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) — Serve static files alongside your Worker.
+- [Static Assets routing](https://developers.cloudflare.com/workers/static-assets/routing/) — Configure `run_worker_first` and `not_found_handling`.
+- [Static Assets binding](https://developers.cloudflare.com/workers/static-assets/binding/) — Reference for the `ASSETS` binding and routing options.
+- [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) — Attach a Worker to a domain as the origin.
+- [Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/) — Run a Worker in front of an existing origin server.
+- [Workers Best Practices](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/) — Code patterns and configuration guidance for Workers.
 
 Was this helpful?
 

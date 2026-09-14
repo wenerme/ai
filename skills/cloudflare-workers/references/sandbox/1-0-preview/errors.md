@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Errors and recovery
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
-This page documents error handling on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0\. Class names, codes, and context fields: [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/).
+This page documents error handling on `@cloudflare/sandbox@next`, the preview of Sandbox SDK 1.0. Class names, codes, and context fields: [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/).
 
 Some failures mean the container never started your work. Others mean the work may already have started. Those cases need different recovery.
 
@@ -100,11 +100,11 @@ Invalid `cwd` or environment variables, a missing executable, or similar request
 
 Some failures mean the Worker package and container image do not match, the image cannot start, or setup between Worker and container failed.
 
-| Signal                                                                                                | Response                                                                                                                           |
-| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| RuntimeControlProtocolError (for example unsupported-protocol-version, missing or malformed metadata) | Deploy the Worker package and container image from the same @cloudflare/sandbox@next line. Do not mix preview and stable packages. |
-| Wrong or missing image, or the container exits before it is ready                                     | Fix wrangler, the image, or the entrypoint. Retrying the same application call will not help.                                      |
-| Account or location capacity limits                                                                   | Lower concurrency or raise limits. Refer to [Platform limits](https://developers.cloudflare.com/sandbox/platform/limits/).         |
+| Signal | Response |
+| --- | --- |
+| `RuntimeControlProtocolError` (for example `unsupported-protocol-version`, missing or malformed metadata) | Deploy the Worker package and container image from the same `@cloudflare/sandbox@next` line. Do not mix preview and stable packages. |
+| Wrong or missing image, or the container exits before it is ready | Fix `wrangler`, the image, or the entrypoint. Retrying the same application call will not help. |
+| Account or location capacity limits | Lower concurrency or raise limits. Refer to [Platform limits](https://developers.cloudflare.com/sandbox/platform/limits/). |
 
 Catalog detail: [Worker and container image mismatch](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/#worker-and-container-image-mismatch).
 
@@ -238,12 +238,12 @@ Prefer `instanceof` with classes from `@cloudflare/sandbox`. Full tables: [Error
 
 ## Related
 
-* [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
-* [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
-* [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
-* [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
-* [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
-* [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/) · [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/1-0-preview/lifecycle/)
+- [Errors API](https://developers.cloudflare.com/sandbox/1-0-preview/api/errors/)
+- [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/)
+- [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/)
+- [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)
+- [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/) · [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Security Architecture
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -22,8 +22,8 @@ However, as Internet bandwidth increased and more people needed to do work outsi
 
 Since 2010, Cloudflare has been building a unique, large-scale network on which we run a set of security services that allow organizations to build improved connectivity and better protect their public and private networks, applications, users, and data. This document provides insight into how this network and platform are architected from a security perspective, how they are operated, and what services are available for businesses to address their own security challenges. The document comprises two main sections:
 
-* How Cloudflare builds and operates its secure global network.
-* How to protect your business infrastructure and assets using Cloudflare services built on the network.
+- How Cloudflare builds and operates its secure global network.
+- How to protect your business infrastructure and assets using Cloudflare services built on the network.
 
 ### Who is this document for and what will you learn?
 
@@ -31,12 +31,13 @@ This document is designed for IT and security professionals who are looking at u
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-* What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
-* [How Cloudflare strengthens security everywhere you do business ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere%5FSecurity-Cloudflare-strengthens-security-everywhere-you%5Fdo-business.pdf) (10 minutes)
+- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+
+- [How Cloudflare strengthens security everywhere you do business ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere_Security-Cloudflare-strengthens-security-everywhere-you_do-business.pdf) (10 minutes)
 
 ## Secure global network
 
-Any cloud security solution needs to be fast and always available. Our network protects over 20% of Internet web properties, operates in over 330 cities, and is 50 ms away from 95% of the Internet-connected population. Each server in each data center runs every service, so that traffic is inspected in one pass and acted upon close to the end user. These servers are connected together by over 13,000 network peers with over 405 Tbps network capacity. Cloudflare’s network is also connected to [every Internet exchange ↗](https://bgp.he.net/report/exchanges#%5Fparticipants) (more than Microsoft, AWS, and Google) to ensure that we are able to peer traffic from any part of the Internet.
+Any cloud security solution needs to be fast and always available. Our network protects over 20% of Internet web properties, operates in over 330 cities, and is 50 ms away from 95% of the Internet-connected population. Each server in each data center runs every service, so that traffic is inspected in one pass and acted upon close to the end user. These servers are connected together by over 13,000 network peers with over 405 Tbps network capacity. Cloudflare’s network is also connected to [every Internet exchange ↗](https://bgp.he.net/report/exchanges#_participants) (more than Microsoft, AWS, and Google) to ensure that we are able to peer traffic from any part of the Internet.
 
 With millions of customers using Cloudflare, the network serves over [57 million HTTP requests ↗](https://radar.cloudflare.com/traffic) per second on average, with more than 77 million HTTP requests per second at peak. As we analyze all this traffic, we detect and block an average of [209 billion cyber threats each day ↗](https://radar.cloudflare.com/security-and-attacks). This network runs at this massive scale to ensure that customers using our security products experience low latency, access to high bandwidth, and a level of reliability that ensures the ongoing security of their business. (Note metrics are correct as of June 2024.)
 
@@ -52,20 +53,20 @@ A unique aspect of the network's security architecture is how we use anycast net
 
 Server updates, such as access policies, rate limiting, and firewall rules, are performed by our [Quicksilver service ↗](https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale). Customer changes are reflected across the entire network in seconds, allowing customers to respond to changing business requirements and ensuring policies are quickly implemented globally.
 
-Every level of the network conforms to strict hardened security controls. Processes running on the edge are designed with a need-to-know basis and run with least privilege. We have our own key management system to ensure keys are secured at rest and in transit and that the right access to keys is given at the right time. To ensure tight control over and detailed visibility of changes to the network, all infrastructure is managed via code ([IaC ↗](https://en.wikipedia.org/wiki/Infrastructure%5Fas%5Fcode)).
+Every level of the network conforms to strict hardened security controls. Processes running on the edge are designed with a need-to-know basis and run with least privilege. We have our own key management system to ensure keys are secured at rest and in transit and that the right access to keys is given at the right time. To ensure tight control over and detailed visibility of changes to the network, all infrastructure is managed via code ([IaC ↗](https://en.wikipedia.org/wiki/Infrastructure_as_code)).
 
 #### Servers
 
 Cloudflare designs and owns all the servers in our network. There are two main types.
 
-* **Private core servers**: The control plane where all customer configuration, logging, and other data lives.
-* **Public edge servers**: Where Internet and privately tunneled traffic terminates to the Cloudflare network, to be inspected and then routed to its destination.
+- **Private core servers**: The control plane where all customer configuration, logging, and other data lives.
+- **Public edge servers**: Where Internet and privately tunneled traffic terminates to the Cloudflare network, to be inspected and then routed to its destination.
 
 Server hardware is designed by Cloudflare and built by industry-respected manufacturers that complete a comprehensive supply chain and security review. Every server runs an identical software stack, allowing for consistent hardware design. The operating system on edge servers is also a single design and built from a highly modified Linux distribution, tailored for the scale and speed of our platform. Cloudflare is a significant contributor to the Linux kernel, and we regularly share information on how we secure our [servers and services ↗](https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application), helping the Linux community and the rest of the Internet benefit from our [engineering ↗](https://blog.cloudflare.com/linux-kernel-hardening).
 
 #### Services
 
-Every server runs all Cloudflare products and services that customers use to secure their networks and applications. Later in this document we provide an overview of these services, but for the moment it's important to provide insight into the development of the software. From the initial design of every product, the engineering team works hand in hand with security, compliance, and risk teams to review all aspects of the service. These teams can be viewed as part of the engineering and product teams, not an external group. They are essential to the development of everything we do at Cloudflare and we have some of the most respected professionals in the industry. Code is reviewed by security teams at every stage of development, and we implement many automated systems to analyze software looking for vulnerabilities. Threat modeling and penetration testing frameworks such as [OWASP ↗](https://owasp.org/www-project-web-security-testing-guide/latest/3-The%5FOWASP%5FTesting%5FFramework/), [STRIDE ↗](https://en.wikipedia.org/wiki/STRIDE%5F%28security%29), and [DREAD ↗](https://en.wikipedia.org/wiki/DREAD%5F%28risk%5Fassessment%5Fmodel%29) are used during design, development, and the release process.
+Every server runs all Cloudflare products and services that customers use to secure their networks and applications. Later in this document we provide an overview of these services, but for the moment it's important to provide insight into the development of the software. From the initial design of every product, the engineering team works hand in hand with security, compliance, and risk teams to review all aspects of the service. These teams can be viewed as part of the engineering and product teams, not an external group. They are essential to the development of everything we do at Cloudflare and we have some of the most respected professionals in the industry. Code is reviewed by security teams at every stage of development, and we implement many automated systems to analyze software looking for vulnerabilities. Threat modeling and penetration testing frameworks such as [OWASP ↗](https://owasp.org/www-project-web-security-testing-guide/latest/3-The_OWASP_Testing_Framework/), [STRIDE ↗](<https://en.wikipedia.org/wiki/STRIDE_(security)>), and [DREAD ↗](<https://en.wikipedia.org/wiki/DREAD_(risk_assessment_model)>) are used during design, development, and the release process.
 
 Many of our products run on our [serverless runtime](https://developers.cloudflare.com/workers/) environment, which leverages the very latest techniques in service isolation. We anticipated this secure runtime environment could be very valuable to our customers, so we productized it, allowing them to [build](https://developers.cloudflare.com/workers/reference/how-workers-works/) and [run ↗](https://blog.cloudflare.com/cloud-computing-without-containers) their own applications on our network. More about that at the very end of this document.
 
@@ -79,11 +80,11 @@ Not only must the design of the network be secure, but so should how we run and 
 
 Customers send sensitive information to our products and services. The mission for the Cloudflare compliance team is to ensure the underlying infrastructure that supports these services meets [industry compliance standards ↗](https://www.cloudflare.com/trust-hub/compliance-resources/) such as FedRAMP, SOC II, ISO, PCI certifications, C5, privacy, and regulatory frameworks. The compliance team works with all engineering organizations to help integrate these requirements as part of the way we work. From a compliance perspective, our areas of focus include:
 
-* Privacy and security of customer data
-* Maintaining compliance validations
-* Helping customers with their own compliance
-* Monitoring the changes to the regulatory landscape
-* Providing feedback to regulatory bodies on upcoming changes
+- Privacy and security of customer data
+- Maintaining compliance validations
+- Helping customers with their own compliance
+- Monitoring the changes to the regulatory landscape
+- Providing feedback to regulatory bodies on upcoming changes
 
 We also run a [bug bounty program ↗](https://hackerone.com/cloudflare), giving incentives for the community to find and report vulnerabilities to us for financial reward.
 
@@ -95,56 +96,56 @@ The reason the Cloudflare network exists is to provide services to customers to 
 
 1. [Securing public and private resources](#securing-public-and-private-resources)
 2. [Protecting public resources](#protecting-public-resources)
-  1. [Common attacks and protection](#common-attacks-and-protection)
-    1. [DDoS attacks](#ddos-attacks)
-    2. [Zero-day attacks](#zero-day-attacks)
-    3. [Unauthorized access](#unauthorized-access)
-    4. [Client-side attacks](#client-side-attacks)
-    5. [Data exfiltration](#data-exfiltration)
-    6. [Credential stuffing](#credential-stuffing)
-    7. [Brute force attacks](#brute-force-attacks)
-    8. [Credit card skimming](#credit-card-skimming)
-    9. [Inventory hoarding](#inventory-hoarding)
-    10. [Fuzzing (vulnerability scanning)](#fuzzing-vulnerability-scanning)
-    11. [Cross-Site Scripting (XSS) attacks](#cross-site-scripting-xss-attacks)
-    12. [Remote Code Execution (RCE) attacks](#remote-code-execution-rce-attacks)
-    13. [SQL injection (SQLi) attacks](#sql-injection-sqli-attacks)
-    14. [Malware](#malware)
-  2. [Cloudflare application security products](#cloudflare-application-security-products)
-    1. [Security Analytics](#security-analytics)
-    2. [Web Application Firewall (WAF)](#web-application-firewall-waf)
-    3. [Rate limiting](#rate-limiting)
-    4. [L7 DDoS](#l7-ddos)
-    5. [API Shield](#api-shield)
-    6. [Bot Management](#bot-management)
-    7. [Client-side security](#client-side-security)
-    8. [SSL/TLS](#ssltls)
-    9. [Security Center](#security-center)
-    10. [Cloudflare for SaaS](#cloudflare-for-saas)
-  3. [Cloudflare network security products](#cloudflare-network-security-products)
-    1. [Magic Transit](#magic-transit)
-    2. [Cloudflare WAN](#cloudflare-wan)
-    3. [Cloudflare Network Firewall](#cloudflare-network-firewall)
-    4. [Network Flow](#network-flow)
-    5. [Spectrum](#spectrum)
+   1. [Common attacks and protection](#common-attacks-and-protection)
+      1. [DDoS attacks](#ddos-attacks)
+      2. [Zero-day attacks](#zero-day-attacks)
+      3. [Unauthorized access](#unauthorized-access)
+      4. [Client-side attacks](#client-side-attacks)
+      5. [Data exfiltration](#data-exfiltration)
+      6. [Credential stuffing](#credential-stuffing)
+      7. [Brute force attacks](#brute-force-attacks)
+      8. [Credit card skimming](#credit-card-skimming)
+      9. [Inventory hoarding](#inventory-hoarding)
+      10. [Fuzzing (vulnerability scanning)](#fuzzing-vulnerability-scanning)
+      11. [Cross-Site Scripting (XSS) attacks](#cross-site-scripting-xss-attacks)
+      12. [Remote Code Execution (RCE) attacks](#remote-code-execution-rce-attacks)
+      13. [SQL injection (SQLi) attacks](#sql-injection-sqli-attacks)
+      14. [Malware](#malware)
+   2. [Cloudflare application security products](#cloudflare-application-security-products)
+      1. [Security Analytics](#security-analytics)
+      2. [Web Application Firewall (WAF)](#web-application-firewall-waf)
+      3. [Rate limiting](#rate-limiting)
+      4. [L7 DDoS](#l7-ddos)
+      5. [API Shield](#api-shield)
+      6. [Bot Management](#bot-management)
+      7. [Client-side security](#client-side-security)
+      8. [SSL/TLS](#ssltls)
+      9. [Security Center](#security-center)
+      10. [Cloudflare for SaaS](#cloudflare-for-saas)
+   3. [Cloudflare network security products](#cloudflare-network-security-products)
+      1. [Magic Transit](#magic-transit)
+      2. [Cloudflare WAN](#cloudflare-wan)
+      3. [Cloudflare Network Firewall](#cloudflare-network-firewall)
+      4. [Network Flow](#network-flow)
+      5. [Spectrum](#spectrum)
 3. [Protecting private resources](#protecting-private-resources)
-  1. [Securing connectivity to private resources](#securing-connectivity-to-private-resources)
-  2. [User connectivity](#user-connectivity)
-  3. [Integrating identity systems](#integrating-identity-systems)
-  4. [Access control](#access-control)
-  5. [Protecting data](#protecting-data)
-  6. [Securing Internet access](#securing-internet-access)
+   1. [Securing connectivity to private resources](#securing-connectivity-to-private-resources)
+   2. [User connectivity](#user-connectivity)
+   3. [Integrating identity systems](#integrating-identity-systems)
+   4. [Access control](#access-control)
+   5. [Protecting data](#protecting-data)
+   6. [Securing Internet access](#securing-internet-access)
 4. [Observability](#observability)
 5. [Developer platform](#developer-platform)
 
 In general, what customers need to effectively combat and protect against the growing breadth and complexity of threats is a unified security solution that provides visibility, analytics, detection, and mitigation in an operationally consistent and efficient manner. Cloudflare addresses these needs in several ways:
 
-* Operational consistency: Cloudflare has a single dashboard/UI for all administrative tasks.
-* Operational simplicity: Cloudflare is well-known for minimizing operational complexity with well-designed user interfaces that minimize manual configurations and UI workflows. Additionally, cross-product integrations allow for automating configurations and policies.
-* Continuous innovation: Cloudflare continues to innovate across its broad security portfolio with unique differentiating capabilities such as its CAPTCHA replacement product, Turnstile, and the industry-first API Sequence Mitigation capability.
-* Workload location agnostic: Cloudflare was built first and foremost around performance and security services. As such, it was built from the ground up to be workload location agnostic with multi-cloud inherently being a top use case. Customers can deploy workloads in multiple clouds and/or on-prem and get the same operational consistency.
-* Performance and scale: All Cloudflare services run on every server in every data center on the same global cloud, allowing for maximum performance in terms of global reachability and latency and ability to scale out, leveraging the full capacity of Cloudflare’s global infrastructure.
-* API first: Cloudflare is API first. All configurations and capabilities available from the UI/dashboard are also available from the API. Cloudflare can easily be configured with Terraform to support automation for customer workflows/processes.
+- Operational consistency: Cloudflare has a single dashboard/UI for all administrative tasks.
+- Operational simplicity: Cloudflare is well-known for minimizing operational complexity with well-designed user interfaces that minimize manual configurations and UI workflows. Additionally, cross-product integrations allow for automating configurations and policies.
+- Continuous innovation: Cloudflare continues to innovate across its broad security portfolio with unique differentiating capabilities such as its CAPTCHA replacement product, Turnstile, and the industry-first API Sequence Mitigation capability.
+- Workload location agnostic: Cloudflare was built first and foremost around performance and security services. As such, it was built from the ground up to be workload location agnostic with multi-cloud inherently being a top use case. Customers can deploy workloads in multiple clouds and/or on-prem and get the same operational consistency.
+- Performance and scale: All Cloudflare services run on every server in every data center on the same global cloud, allowing for maximum performance in terms of global reachability and latency and ability to scale out, leveraging the full capacity of Cloudflare’s global infrastructure.
+- API first: Cloudflare is API first. All configurations and capabilities available from the UI/dashboard are also available from the API. Cloudflare can easily be configured with Terraform to support automation for customer workflows/processes.
 
 Cloudflare’s security services that protect networks, applications, devices, users, and data can be grouped into the following categories.
 
@@ -156,8 +157,8 @@ Note this list is focused on security and doesn't include products such as our c
 
 There are two main types of resources our customers are trying to secure:
 
-* **Public resources** are defined as any content, asset, or infrastructure that has an interface available and accessible to the general Internet, such as brand websites, ecommerce sites, and APIs. They can also be defined by the fact they are accessible by anonymous users or people who register themselves to gain access, such as social media websites, video streaming services, and banking services.
-* **Private resources** are defined as content, assets, or infrastructure with the intended set of users constrained to a single company, organization, or set of customers. These services typically require accounts and credentials to gain access. Examples of such resources are the company HR system, source code repositories, and a point of sale (POS) system residing on a retail branch network. These resources are typically accessible only by employees, partners, and other trusted, known identities.
+- **Public resources** are defined as any content, asset, or infrastructure that has an interface available and accessible to the general Internet, such as brand websites, ecommerce sites, and APIs. They can also be defined by the fact they are accessible by anonymous users or people who register themselves to gain access, such as social media websites, video streaming services, and banking services.
+- **Private resources** are defined as content, assets, or infrastructure with the intended set of users constrained to a single company, organization, or set of customers. These services typically require accounts and credentials to gain access. Examples of such resources are the company HR system, source code repositories, and a point of sale (POS) system residing on a retail branch network. These resources are typically accessible only by employees, partners, and other trusted, known identities.
 
 Public and private resources can also include both infrastructure-level components like servers and consumed resources like websites and API endpoints. Communication over networks and the Internet happens in different stages and levels as shown in the open systems interconnection (OSI) model diagram below.
 
@@ -165,12 +166,12 @@ Public and private resources can also include both infrastructure-level componen
 
 Cloudflare can protect at multiple layers of the OSI model, and in this document we are primarily concerned with protecting resources at layers 3, 4, and 7.
 
-* Layer 3, referred to as the “network layer,” is responsible for facilitating data transfer between two different networks. The network layer breaks up segments from the transport layer into smaller units, called packets, on the sender’s device and reassembles these packets on the receiving device. The network layer is where routing takes place — finding the best physical path for the data to reach its destination.
-* Layer 4, referred to as the “transport layer,” is responsible for end-to-end communication between the two devices. This includes taking data from the session layer and breaking it up into chunks called “segments” before sending it to layer 3.
+- Layer 3, referred to as the “network layer,” is responsible for facilitating data transfer between two different networks. The network layer breaks up segments from the transport layer into smaller units, called packets, on the sender’s device and reassembles these packets on the receiving device. The network layer is where routing takes place — finding the best physical path for the data to reach its destination.
+- Layer 4, referred to as the “transport layer,” is responsible for end-to-end communication between the two devices. This includes taking data from the session layer and breaking it up into chunks called “segments” before sending it to layer 3.
 
 Cloudflare security products that can be used for L3 and L4 security include Cloudflare's network services offerings, including [Magic Transit](https://developers.cloudflare.com/magic-transit/), [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/), [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/), [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring), and [Spectrum](https://developers.cloudflare.com/spectrum/).
 
-* Layer 7, referred to as the “application layer,” is the top layer of the data processing that occurs just below the surface or behind the scenes of the software applications that users interact with. HTTP and API requests/responses are layer 7 events.
+- Layer 7, referred to as the “application layer,” is the top layer of the data processing that occurs just below the surface or behind the scenes of the software applications that users interact with. HTTP and API requests/responses are layer 7 events.
 
 Cloudflare has a suite of application security products that includes [Web Application Firewall](https://developers.cloudflare.com/waf/) (WAF), [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/), [L7 DDoS](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/), [API Shield](https://developers.cloudflare.com/api-shield/), [Bot Management](https://developers.cloudflare.com/bots/), and [client-side security](https://developers.cloudflare.com/client-side-security/).
 
@@ -190,12 +191,12 @@ The diagram below shows a typical request for a public asset going through the C
 
 The diagram highlights the following:
 
-* The [world's fastest DNS service ↗](https://www.dnsperf.com/) provides fast resolution of public hostnames
-* Ensure data compliance by [choosing geographic locations ↗](https://www.cloudflare.com/data-localization/) for the inspection and storage of data
-* Spectrum extends Cloudflare security capabilities to all UDP/TCP applications
-* Security services inspect a request in one pass
-* Application performance services also act on the request in the same pass
-* [Smart routing](https://developers.cloudflare.com/argo-smart-routing/) finds the lowest latency path between Cloudflare and the public destination
+- The [world's fastest DNS service ↗](https://www.dnsperf.com/) provides fast resolution of public hostnames
+- Ensure data compliance by [choosing geographic locations ↗](https://www.cloudflare.com/data-localization/) for the inspection and storage of data
+- Spectrum extends Cloudflare security capabilities to all UDP/TCP applications
+- Security services inspect a request in one pass
+- Application performance services also act on the request in the same pass
+- [Smart routing](https://developers.cloudflare.com/argo-smart-routing/) finds the lowest latency path between Cloudflare and the public destination
 
 #### Common attacks and protection
 
@@ -207,7 +208,7 @@ A [distributed denial-of-service (DDoS) attack ↗](https://www.cloudflare.com/l
 
 ![DDoS attacks are prevented at layers 3, 4 and 7.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=856,format=svg/_astro/security-ref-arch-5.Dk00_Til.svg)
 
-Cloudflare’s L7 DDoS Protection prevents denial of service at layer 7; Spectrum protects at layer 4; and Magic Transit protects at layer 3\. In addition to the core DDoS-specific security products, Cloudflare provides advanced rate limiting capabilities to allow for throttling traffic based on very granular request data, including headers information and API tokens. Cloudflare’s Bot Management capabilities can also limit denial-of-service attacks by effectively mitigating bot traffic.
+Cloudflare’s L7 DDoS Protection prevents denial of service at layer 7; Spectrum protects at layer 4; and Magic Transit protects at layer 3. In addition to the core DDoS-specific security products, Cloudflare provides advanced rate limiting capabilities to allow for throttling traffic based on very granular request data, including headers information and API tokens. Cloudflare’s Bot Management capabilities can also limit denial-of-service attacks by effectively mitigating bot traffic.
 
 Products: [L7 DDoS](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/), [Spectrum](https://developers.cloudflare.com/spectrum/), [Magic Transit](https://developers.cloudflare.com/magic-transit/)
 
@@ -217,10 +218,10 @@ A zero-day exploit (also called a zero-day threat) is an attack that takes advan
 
 Web Application Firewall (WAF) [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) allow you to deploy pre-configured managed rulesets that provide immediate protection against the following:
 
-* Zero-day vulnerabilities
-* Top 10 attack techniques
-* Use of stolen/exposed credentials
-* Extraction of sensitive data
+- Zero-day vulnerabilities
+- Top 10 attack techniques
+- Use of stolen/exposed credentials
+- Extraction of sensitive data
 
 WAF checks incoming web requests and filters undesired traffic based on sets of rules (rulesets) deployed at the edge. These managed rulesets are maintained and regularly updated by Cloudflare. From the extensive threat intelligence obtained from across our global network, Cloudflare is able to quickly detect and classify threats. As new attacks/threats are identified, Cloudflare will automatically push WAF rules to customers to ensure they are protected against the latest zero-day attacks.
 
@@ -248,10 +249,10 @@ Client-side security uses threat-feed detections of malicious JavaScript domains
 
 [Content security rules](https://developers.cloudflare.com/client-side-security/rules/) can be created and applied to add an additional level of security that helps detect and mitigate certain types of attacks, including:
 
-* Content/code injection
-* Cross-site scripting (XSS)
-* Embedding malicious resources
-* Malicious iframes (clickjacking)
+- Content/code injection
+- Cross-site scripting (XSS)
+- Embedding malicious resources
+- Malicious iframes (clickjacking)
 
 Products: [Client-side security](https://developers.cloudflare.com/client-side-security/)
 
@@ -345,10 +346,10 @@ Using Cloudflare [WAF](https://developers.cloudflare.com/waf/), customers can de
 
 [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) allow customers to deploy pre-configured managed rulesets that provide immediate protection against:
 
-* Zero-day vulnerabilities
-* Top 10 attack techniques
-* Use of stolen/exposed credentials
-* Extraction of sensitive data
+- Zero-day vulnerabilities
+- Top 10 attack techniques
+- Use of stolen/exposed credentials
+- Extraction of sensitive data
 
 ##### Rate limiting
 
@@ -357,8 +358,11 @@ Using Cloudflare [WAF](https://developers.cloudflare.com/waf/), customers can de
 Customers can also configure which request criteria is used as a counter for determining when to throttle or block after a limit is exceeded. Customers can implement two different behaviors for rate limiting:
 
 1. **Block for the selected duration**. Once the rate is exceeded, the WAF will block all requests during the selected duration before the counter is reset.
+
 ![All actions are blocked once the rate limit is reached.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1257,height=524,format=svg/_astro/security-ref-arch-8.DyW4Rkuf.svg)
-1. **Throttle requests over the maximum configured rate**. The WAF will block any requests exceeding the configured rate, and the remaining requests will be allowed. The analogy for this behavior is a sliding window effect.
+
+2. **Throttle requests over the maximum configured rate**. The WAF will block any requests exceeding the configured rate, and the remaining requests will be allowed. The analogy for this behavior is a sliding window effect.
+
 ![All security detection can be seen from a single dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1257,height=544,format=svg/_astro/security-ref-arch-9.CXEx1mEx.svg)
 
 ##### L7 DDoS
@@ -377,7 +381,7 @@ Customers can enable a positive security model using mTLS, JWT validation, and s
 
 ![API Shield has many stages, discovery, review, using a positive security model, abuse protection, data protection and endpoint management/monitoring.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1442,height=610,format=svg/_astro/security-ref-arch-11.CCbosnqv.svg "Common user workflow for API Shield")
 
-Common user workflow for API Shield
+*Common user workflow for API Shield*
 
 ##### Bot Management
 
@@ -389,9 +393,9 @@ Additionally, Cloudflare can take the action of challenging clients if it suspec
 
 Depending on the characteristics of a request, Cloudflare will choose an appropriate type of challenge, which may include but is not limited to:
 
-* A non-interactive challenge.
-* A custom interactive challenge (such as clicking a button).
-* Private Access Tokens (using recent Apple operating systems).
+- A non-interactive challenge.
+- A custom interactive challenge (such as clicking a button).
+- Private Access Tokens (using recent Apple operating systems).
 
 With [Turnstile](https://developers.cloudflare.com/turnstile/), Cloudflare has completely moved away from CAPTCHA. Turnstile is Cloudflare’s smart CAPTCHA alternative. It can be embedded into any website without sending traffic through Cloudflare and works without showing visitors a CAPTCHA. Turnstile allows you to run challenges anywhere on your site in a less intrusive way and uses APIs to communicate with Cloudflare’s Managed Challenge platform.
 
@@ -421,10 +425,10 @@ Customers can also enable [mutual Transport Layer Security (mTLS)](https://devel
 
 Key capabilities offered:
 
-* Inventory and review IT infrastructure assets like domains, ASNs, and IPs.
-* Manage an always up-to-date list of misconfigurations and risks in Cloudflare IT assets.
-* Query threat data gathered from the Cloudflare network to investigate and respond to security risks.
-* Gain full control over who sends email on your organization's behalf with DMARC Management.
+- Inventory and review IT infrastructure assets like domains, ASNs, and IPs.
+- Manage an always up-to-date list of misconfigurations and risks in Cloudflare IT assets.
+- Query threat data gathered from the Cloudflare network to investigate and respond to security risks.
+- Gain full control over who sends email on your organization's behalf with DMARC Management.
 
 ##### Cloudflare for SaaS
 
@@ -464,9 +468,9 @@ Private resources typically contain highly sensitive, company confidential infor
 
 The following are typical attributes of private resources:
 
-* Users have been pre-authorized and provisioned. They can't just sign up. They need to be given specific access to the resource either directly or via access control mechanisms such as certificates, group membership, or role assignment.
-* Network access to a self-hosted resource is typically over-managed, private network routes and not accessible via the general Internet.
-* Private resources that live in data centers (physical or virtual) and are connected to networks that are hosted and managed by the business, which are either on-premises or virtual private networks running in public cloud infrastructure.
+- Users have been pre-authorized and provisioned. They can't just sign up. They need to be given specific access to the resource either directly or via access control mechanisms such as certificates, group membership, or role assignment.
+- Network access to a self-hosted resource is typically over-managed, private network routes and not accessible via the general Internet.
+- Private resources that live in data centers (physical or virtual) and are connected to networks that are hosted and managed by the business, which are either on-premises or virtual private networks running in public cloud infrastructure.
 
 As mentioned, traditional access to private resources required physical access to the network by being in the office connected via Ethernet. As remote access needs increased, companies installed on-premises VPN servers that allowed users and devices to "dial in" to these private networks. Many applications have left these private networks and instead migrated to SaaS applications or are hosted in public cloud infrastructure. This traditional approach has become unmanageable and costly, with a variety of technologies providing network connectivity and access control.
 
@@ -478,12 +482,12 @@ As we describe the following Cloudflare services, you will learn how the Cloudfl
 
 Protecting internal resources can be broken down into the following areas.
 
-* Securing connectivity between the user and the application/network.
-* Identity systems providing authentication and maintaining user identities and group membership.
-* Policies controlling user access to applications/data.
-* Data protection controls to identify and protect sensitive and confidential data.
-* Protecting users and devices from attacks (malware, phishing, etc.) that originate from access to the Internet.
-* Operational visibility to IT and security teams.
+- Securing connectivity between the user and the application/network.
+- Identity systems providing authentication and maintaining user identities and group membership.
+- Policies controlling user access to applications/data.
+- Data protection controls to identify and protect sensitive and confidential data.
+- Protecting users and devices from attacks (malware, phishing, etc.) that originate from access to the Internet.
+- Operational visibility to IT and security teams.
 
 #### Securing connectivity to private resources
 
@@ -499,14 +503,14 @@ Because all network traffic routes through Cloudflare, security controls are def
 
 Existing private infrastructure can be complex. Cloudflare provides a variety of methods by which businesses can connect their networks and user devices into this new enterprise network. We often call these methods "on-ramps," which describes how traffic for a specific network or device is routed into Cloudflare. The following table outlines these different methods.
 
-| Method                                                                                                                   | Description                                                                                                                                                  | Common Use                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)                                                      | IPsec or GRE tunnel from networking devices to Cloudflare, routing entire network traffic.                                                                   | Connecting existing network routers to Cloudflare. Allowing all traffic into and out of the network to go through Cloudflare.                                                       |
-| [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)                    | Appliance-based IPsec or GRE tunnel from networking devices to Cloudflare, routing entire network traffic.                                                   | Uses the same technology as Cloudflare WAN; however, instead of using existing networking devices, a dedicated appliance or virtual machine is used — the Cloudflare One Appliance. |
-| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)                   | Software agent deployed on servers or alongside services like Kubernetes for creating a tunnel for incoming connections to private applications or networks. | IT admins or application owners can easily install this tunnel software to expose their application to the Cloudflare network.                                                      |
-| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)                 | Software agent deployed on servers for creating a tunnel for incoming and outgoing connections to private applications or networks.                          | Similar to cloudflared, but supports East to West traffic and is often used in place of Cloudflare WAN when there is no ability to create an IPsec tunnel from existing devices.    |
-| [WARP Desktop Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | Software agent deployed on user devices, creating a tunnel for traffic to and from private applications and networks.                                        | Connecting end user devices like phones and laptops to be part of the Cloudflare network.                                                                                           |
-| [Cloudflare Network Interconnect ↗](https://www.cloudflare.com/network-services/products/network-interconnect/)          | Direct connection between your physical networks and Cloudflare.                                                                                             | When your applications live in the same data centers we operate in, we can connect those networks directly to Cloudflare.                                                           |
+| Method | Description | Common Use |
+| --- | --- | --- |
+| [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) | IPsec or GRE tunnel from networking devices to Cloudflare, routing entire network traffic. | Connecting existing network routers to Cloudflare. Allowing all traffic into and out of the network to go through Cloudflare. |
+| [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) | Appliance-based IPsec or GRE tunnel from networking devices to Cloudflare, routing entire network traffic. | Uses the same technology as Cloudflare WAN; however, instead of using existing networking devices, a dedicated appliance or virtual machine is used — the Cloudflare One Appliance. |
+| [cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) | Software agent deployed on servers or alongside services like Kubernetes for creating a tunnel for incoming connections to private applications or networks. | IT admins or application owners can easily install this tunnel software to expose their application to the Cloudflare network. |
+| [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) | Software agent deployed on servers for creating a tunnel for incoming and outgoing connections to private applications or networks. | Similar to cloudflared, but supports East to West traffic and is often used in place of Cloudflare WAN when there is no ability to create an IPsec tunnel from existing devices. |
+| [WARP Desktop Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) | Software agent deployed on user devices, creating a tunnel for traffic to and from private applications and networks. | Connecting end user devices like phones and laptops to be part of the Cloudflare network. |
+| [Cloudflare Network Interconnect ↗](https://www.cloudflare.com/network-services/products/network-interconnect/) | Direct connection between your physical networks and Cloudflare. | When your applications live in the same data centers we operate in, we can connect those networks directly to Cloudflare. |
 
 For more details on how these methods work, please refer to our [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
 
@@ -540,16 +544,17 @@ This centralization of identity into a common access control layer allows you to
 
 The focus on this document is about security, and now that applications, devices, identities, and networks are all connected, every request to and from any resource on the network, and also to the Internet, is now subject to Cloudflare's access control and firewall services. There are two services that apply policy-based controls to traffic.
 
-* **Zero Trust Network Access**: Our [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) product manages access to specific networks or applications that are deemed private. It enforces authentication either for users via an existing identity provider, or for other applications via service tokens or mTLS.
-* **Secure Web Gateway**: Our [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) product is used to analyze traffic and apply policies, no matter the destination. It is most commonly used to allow, block, or isolate traffic that is destined for the Internet. This can be used to apply access controls to SaaS applications, but any traffic flowing through Cloudflare can be inspected and acted upon by Gateway. Therefore it can also be used to add additional access controls to non-Internet, private tunneled applications.
+- **Zero Trust Network Access**: Our [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) product manages access to specific networks or applications that are deemed private. It enforces authentication either for users via an existing identity provider, or for other applications via service tokens or mTLS.
+- **Secure Web Gateway**: Our [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) product is used to analyze traffic and apply policies, no matter the destination. It is most commonly used to allow, block, or isolate traffic that is destined for the Internet. This can be used to apply access controls to SaaS applications, but any traffic flowing through Cloudflare can be inspected and acted upon by Gateway. Therefore it can also be used to add additional access controls to non-Internet, private tunneled applications.
+
 ![Cloudflare's ZTNA and SWG services can be combined to secure both private and Internet access.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1303,height=822,format=svg/_astro/security-ref-arch-21.CYH5oM7H.svg)
 
 Both of these technologies can be combined to ensure appropriate access to private applications. For users with our [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) installed, the policies can also include device-level requirements. When combined with identity data, policies such as the following can be written to control access to, for example, an internal database administration tool.
 
-* User must have authenticated via the company IdP, and used MFA as part of the authentication
-* User must be in the "Database Administrators" group in the IdP
-* User device must have a Crowdstrike risk score above 70
-* User device must be on the very latest release of the operating system
+- User must have authenticated via the company IdP, and used MFA as part of the authentication
+- User must be in the "Database Administrators" group in the IdP
+- User device must have a Crowdstrike risk score above 70
+- User device must be on the very latest release of the operating system
 
 It is possible to define access groups of users that can be applied across multiple policies. This allows IT and security administrators to create a single definition of what a secure administrator looks like, which is then reusable across many policies.
 
@@ -587,27 +592,27 @@ Many of Cloudflare's security services are built on a highly optimized serverles
 
 The following use cases show how our customers’ security teams have used our [developer platform ↗](https://workers.cloudflare.com/):
 
-* In our ZTNA service, Cloudflare Access, when a request is made to access a private resource, that request can include a call to a Cloudflare Worker, passing in everything known about the user. Custom business logic can then be implemented to determine access. For example:
-  * Only allow access during employee working hours. Check via API calls to employee systems.
-  * Allow access only if an incident has been declared in PagerDuty.
-* Implement honeypots for bots: Because Workers can be attached to routes of any Cloudflare-protected resource, you can examine the bot score of a request and then redirect or modify the request if you suspect it's not legitimate traffic. For example, execute the request but modify the response to redact information or change values to protect data.
-* Write complex web application firewall (WAF) type rules: As described above, our WAF is very powerful for protecting your public-facing applications. But with Workers, you can write incredibly complex rules based on information provided in the [IncomingRequestCfProperties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties), which expose metadata for every request. These properties contain extensive information and can be expressed as code for effective rule implementation.
-* Enhance traffic with extra security information: Your downstream application may have other security products in front of it, or maybe provides other security if certain HTTP headers exist. Using Workers, you can enhance any requests to the application and add in headers to help the downstream application implement greater security controls.
-* Write your own authentication service: Some customers have extreme requirements, and the power of Workers allows you, as we have with our own product suite, to write entire authentication stacks. One such customer [did just this ↗](https://www.cloudflare.com/case-studies/epam/). While this isn't common, it's an example of the flexibility of using Cloudflare. You can mix complex code that you write with our own products to fine-tune exactly the right security outcome.
+- In our ZTNA service, Cloudflare Access, when a request is made to access a private resource, that request can include a call to a Cloudflare Worker, passing in everything known about the user. Custom business logic can then be implemented to determine access. For example:
+  - Only allow access during employee working hours. Check via API calls to employee systems.
+  - Allow access only if an incident has been declared in PagerDuty.
+- Implement honeypots for bots: Because Workers can be attached to routes of any Cloudflare-protected resource, you can examine the bot score of a request and then redirect or modify the request if you suspect it's not legitimate traffic. For example, execute the request but modify the response to redact information or change values to protect data.
+- Write complex web application firewall (WAF) type rules: As described above, our WAF is very powerful for protecting your public-facing applications. But with Workers, you can write incredibly complex rules based on information provided in the [IncomingRequestCfProperties](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties), which expose metadata for every request. These properties contain extensive information and can be expressed as code for effective rule implementation.
+- Enhance traffic with extra security information: Your downstream application may have other security products in front of it, or maybe provides other security if certain HTTP headers exist. Using Workers, you can enhance any requests to the application and add in headers to help the downstream application implement greater security controls.
+- Write your own authentication service: Some customers have extreme requirements, and the power of Workers allows you, as we have with our own product suite, to write entire authentication stacks. One such customer [did just this ↗](https://www.cloudflare.com/case-studies/epam/). While this isn't common, it's an example of the flexibility of using Cloudflare. You can mix complex code that you write with our own products to fine-tune exactly the right security outcome.
 
 Using Workers for implementing some of your security controls has the following advantages:
 
-* **Advanced logic and testability**: Enables the implementation of highly sophisticated logic that's easily testable through unit tests.
-* **Accessibility to developers**: Security features are accessible to a broader audience due to native support in languages like JavaScript, TypeScript, Rust, and Python, catering to developers' familiarity.
-* **Granularity and flexibility**: Offers unparalleled granularity, with support for regex, JSON parsing, and easy access to request/response headers and bodies enriched by Cloudflare. Policies can be designed based on any feature of the request/response.
-* **Response modification**: While traditional security stacks often focus solely on requests, Workers empowers effortless modification of responses. For instance, verbose error messages can be obscured to enhance security.
-* **Implement DevSecOps lifecycles**: Workers makes it very easy to adhere to DevSecOps best practices like version control, code audits, automated tests, gradual roll-outs, and rollback capabilities.
+- **Advanced logic and testability**: Enables the implementation of highly sophisticated logic that's easily testable through unit tests.
+- **Accessibility to developers**: Security features are accessible to a broader audience due to native support in languages like JavaScript, TypeScript, Rust, and Python, catering to developers' familiarity.
+- **Granularity and flexibility**: Offers unparalleled granularity, with support for regex, JSON parsing, and easy access to request/response headers and bodies enriched by Cloudflare. Policies can be designed based on any feature of the request/response.
+- **Response modification**: While traditional security stacks often focus solely on requests, Workers empowers effortless modification of responses. For instance, verbose error messages can be obscured to enhance security.
+- **Implement DevSecOps lifecycles**: Workers makes it very easy to adhere to DevSecOps best practices like version control, code audits, automated tests, gradual roll-outs, and rollback capabilities.
 
 However, you should also consider the following:
 
-* **Cost**: By adding Workers into the request process, you will incur extra costs. However, this might be acceptable for the scenarios where the significant security outcome is highly beneficial.
-* **Latency**: While minimal, there will always be some impact on traffic latency because you are running your own logic on every request.
-* **Requires developer skill set**: This is a bit obvious, but worth mentioning. Using Workers requires a development team to create, test, and maintain whatever code is implemented.
+- **Cost**: By adding Workers into the request process, you will incur extra costs. However, this might be acceptable for the scenarios where the significant security outcome is highly beneficial.
+- **Latency**: While minimal, there will always be some impact on traffic latency because you are running your own logic on every request.
+- **Requires developer skill set**: This is a bit obvious, but worth mentioning. Using Workers requires a development team to create, test, and maintain whatever code is implemented.
 
 You can review some examples of how our Workers platform can be used for [security](https://developers.cloudflare.com/workers/examples/?tags=Security) or [authentication](https://developers.cloudflare.com/workers/examples/?tags=Authentication) use cases.
 
@@ -617,11 +622,11 @@ You should now have a good understanding of the massive scale of the Cloudflare 
 
 In summary, the benefits of using Cloudflare for your business’s security are:
 
-* Protect all your business assets, public or private.
-* Leverage a comprehensive range of security services on a single platform.
-* Rely on a massively scaled network with high performance and reliability.
-* Implement security controls once, in a single dashboard, and impact traffic from anywhere.
-* Empower DevSecOps teams with full API and Terraform support.
+- Protect all your business assets, public or private.
+- Leverage a comprehensive range of security services on a single platform.
+- Rely on a massively scaled network with high performance and reliability.
+- Implement security controls once, in a single dashboard, and impact traffic from anywhere.
+- Empower DevSecOps teams with full API and Terraform support.
 
 We have a very simple [self-service signup ↗](https://dash.cloudflare.com/sign-up), where many of our services can be evaluated for free. If you wish to work with our expert team to evaluate Cloudflare, please [reach out ↗](https://www.cloudflare.com/plans/enterprise/contact/).
 

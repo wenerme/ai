@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protocols per plan
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/protocols-per-plan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/protocols-per-plan/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 On this table, you have information about which protocols are available per plan.
 
-|                             | Free | Pro         | Business    | Enterprise  |
-| --------------------------- | ---- | ----------- | ----------- | ----------- |
-| Availability                | No   | Paid add-on | Paid add-on | Yes         |
-| TCP                         | No   | No          | No          | Paid add-on |
-| UDP                         | No   | No          | No          | Paid add-on |
-| HTTP                        | No   | No          | No          | Paid add-on |
-| HTTPS                       | No   | No          | No          | Paid add-on |
-| Minecraft (one app allowed) | No   | Yes         | Yes         | Yes         |
-| SSH (one app allowed)       | No   | Yes         | Yes         | Yes         |
-| RDP (one app allowed)       | No   | No          | Yes         | Yes         |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Paid add-on | Paid add-on | Yes |
+| TCP | No | No | No | Paid add-on |
+| UDP | No | No | No | Paid add-on |
+| HTTP | No | No | No | Paid add-on |
+| HTTPS | No | No | No | Paid add-on |
+| Minecraft (one app allowed) | No | Yes | Yes | Yes |
+| SSH (one app allowed) | No | Yes | Yes | Yes |
+| RDP (one app allowed) | No | No | Yes | Yes |
 
 Was this helpful?
 

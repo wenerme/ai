@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Resolver for Firefox
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Frequently asked questions about the Cloudflare resolver for Firefox
 
@@ -28,43 +28,43 @@ To address this, Mozilla has partnered with Cloudflare to provide DNS resolution
 
 Any data Cloudflare handles as a result of its resolver for Firefox is as a data processor acting pursuant to Mozilla's data processing instructions. The data Cloudflare collects and processes pursuant to its agreement with Mozilla is not covered by the [Cloudflare Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/). As part of its agreement with Mozilla, Cloudflare has agreed to collect only a limited amount of data about the DNS requests sent to the Cloudflare resolver for Firefox via the Firefox browser. Cloudflare will collect only the following information from Firefox users:
 
-* date
-* dateTime
-* srcAsNum
-* srcIPVersion
-* dstIPVersion
-* dstIPv6
-* dstIPv4
-* dstPort
-* protocol
-* queryName
-* queryType
-* queryClass
-* queryRd
-* queryDo
-* querySize
-* queryEdns
-* ednsVersion
-* ednsPayload
-* ednsNsid
-* responseType
-* responseCode
-* responseSize
-* responseCount
-* responseTimeMs
-* responseCached
-* responseMinTTL
-* answerData type
-* answerData
-* validationState
-* coloID (unique Cloudflare data center ID)
-* metalId (unique Cloudflare data center ID)
+- date
+- dateTime
+- srcAsNum
+- srcIPVersion
+- dstIPVersion
+- dstIPv6
+- dstIPv4
+- dstPort
+- protocol
+- queryName
+- queryType
+- queryClass
+- queryRd
+- queryDo
+- querySize
+- queryEdns
+- ednsVersion
+- ednsPayload
+- ednsNsid
+- responseType
+- responseCode
+- responseSize
+- responseCount
+- responseTimeMs
+- responseCached
+- responseMinTTL
+- answerData type
+- answerData
+- validationState
+- coloID (unique Cloudflare data center ID)
+- metalId (unique Cloudflare data center ID)
 
 All of the above information is stored in temporary logs and then permanently deleted within 24 hours of Cloudflare's receipt of such information. In addition, Cloudflare stores the following in permanent logs:
 
-* Total number of requests processed by each Cloudflare data center.
-* Aggregate list of all domain names requested.
-* Samples of domain names queried along with the times of such queries.
+- Total number of requests processed by each Cloudflare data center.
+- Aggregate list of all domain names requested.
+- Samples of domain names queried along with the times of such queries.
 
 Information stored in permanent logs is anonymized and may be held indefinitely by Cloudflare for internal research and development purposes.
 
@@ -72,9 +72,9 @@ Information stored in permanent logs is anonymized and may be held indefinitely 
 
 Cloudflare commits to using the information collected from the Cloudflare resolver for Firefox solely to improve the performance of the Cloudflare resolver for Firefox and to assist in debugging efforts if an issue arises. In addition to limiting collection and use of data, Cloudflare promises:
 
-* Cloudflare will not retain or sell or transfer to any third party (except as may be required by law) any personal information, IP addresses, or other user identifiers from the DNS queries sent from the Firefox browser to the Cloudflare resolver for Firefox.
-* Cloudflare will not combine the data that it collects from such queries with any other Cloudflare or third-party data in any way that can be used to identify individual end users.
-* Cloudflare will not sell, license, sublicense, or grant any rights to your data to any other person or entity without Mozilla's explicit written permission.
+- Cloudflare will not retain or sell or transfer to any third party (except as may be required by law) any personal information, IP addresses, or other user identifiers from the DNS queries sent from the Firefox browser to the Cloudflare resolver for Firefox.
+- Cloudflare will not combine the data that it collects from such queries with any other Cloudflare or third-party data in any way that can be used to identify individual end users.
+- Cloudflare will not sell, license, sublicense, or grant any rights to your data to any other person or entity without Mozilla's explicit written permission.
 
 ### What about government requests for content blocking?
 

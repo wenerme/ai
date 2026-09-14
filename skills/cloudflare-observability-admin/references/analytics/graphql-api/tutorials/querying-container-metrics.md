@@ -12,46 +12,62 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Querying Containers metrics with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-container-metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the GraphQL Analytics API to query metrics for your [Containers](https://developers.cloudflare.com/containers/). Two endpoints are available:
 
-* `containersMetricsAdaptiveGroups` returns metrics for the code running inside your container, including every process inside it. Use this endpoint to inspect CPU, memory, disk, network, and uptime behavior for your own workload.
-* `containersUsageAdaptiveGroups` returns the resources consumed by your container together with the micro VM sandbox required to run it. These are the values that populate the usage estimates in the Cloudflare dashboard, and are the ones to use when estimating your billing costs.
+- `containersMetricsAdaptiveGroups` returns metrics for the code running inside your container, including every process inside it. Use this endpoint to inspect CPU, memory, disk, network, and uptime behavior for your own workload.
+- `containersUsageAdaptiveGroups` returns the resources consumed by your container together with the micro VM sandbox required to run it. These are the values that populate the usage estimates in the Cloudflare dashboard, and are the ones to use when estimating your billing costs.
 
 Both endpoints share the same underlying dataset, but expose different slices of it.
 
-Replace `<CLOUDFLARE_ACCOUNT_TAG>` and `<API_TOKEN>`[1](#user-content-fn-1) with your Account ID and API token, and adjust the `datetimeStart` and `datetimeEnd` values for the time range you want to query.
+Replace `<CLOUDFLARE_ACCOUNT_TAG>` and `<API_TOKEN>`<sup>[1](#user-content-fn-1)</sup> with your Account ID and API token, and adjust the `datetimeStart` and `datetimeEnd` values for the time range you want to query.
 
 ## Query container workload metrics
 
 Use `containersMetricsAdaptiveGroups` to understand how your container and its subprocesses are behaving. The numbers returned reflect resource usage of your own code and do not include any platform overhead.
 
+<details>
+
+<summary>
+
 Dimensions
+
+</summary>
 
 You can group results by any of the following dimensions:
 
-| Dimension                                                                                                   | Description                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| instanceId                                                                                                  | The container instance ID. This is the same ID shown in the Cloudflare dashboard and by [Wrangler](https://developers.cloudflare.com/workers/wrangler/).                                           |
-| placementId                                                                                                 | A single container instance can be placed in different locations over its lifetime (for example, when moved between data centers). Group by placementId to separate metrics across each placement. |
-| applicationId                                                                                               | The Containers application the instance belongs to.                                                                                                                                                |
-| location                                                                                                    | The Cloudflare data center where the container is running.                                                                                                                                         |
-| region                                                                                                      | The region the container is running in.                                                                                                                                                            |
-| label(name: "...")                                                                                          | The value of a specific container label. See [Filter and group by labels](#filter-and-group-by-labels).                                                                                            |
-| date, datetime, datetimeMinute, datetimeFiveMinutes, datetimeFifteenMinutes, datetimeHour, datetimeSixHours | Time buckets of varying granularity.                                                                                                                                                               |
+| Dimension | Description |
+| --- | --- |
+| <code>instanceId</code> | The container instance ID. This is the same ID shown in the Cloudflare dashboard and by <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a>. |
+| <code>placementId</code> | A single container instance can be placed in different locations over its lifetime (for example, when moved between data centers). Group by <code>placementId</code> to separate metrics across each placement. |
+| <code>applicationId</code> | The Containers application the instance belongs to. |
+| <code>location</code> | The Cloudflare data center where the container is running. |
+| <code>region</code> | The region the container is running in. |
+| <code>label(name: "...")</code> | The value of a specific container label. See <a href="#filter-and-group-by-labels">Filter and group by labels</a>. |
+| <code>date</code>, <code>datetime</code>, <code>datetimeMinute</code>, <code>datetimeFiveMinutes</code>, <code>datetimeFifteenMinutes</code>, <code>datetimeHour</code>, <code>datetimeSixHours</code> | Time buckets of varying granularity. |
+
+</details>
+
+<details>
+
+<summary>
 
 Metrics
 
-The following metric groups are available. Each group exposes multiple fields — use GraphQL introspection or the [GraphQL API Explorer](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/) to discover the full list.
+</summary>
 
-| Group     | Examples                                                                                                           | Description                                                                                           |
-| --------- | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| count     | —                                                                                                                  | Number of metric samples received.                                                                    |
-| avg       | memory, cpuUtilization, rxBandwidthBps, txBandwidthBps, gpuMemory, containerUptime                                 | Average of the metric over the selected time range.                                                   |
-| sum       | cpuTimeSec, allocatedMemory, allocatedDisk, allocatedCpu, rxBytes, txBytes, containerUptime                        | Total value of the metric over the selected time range.                                               |
-| max       | memory, cpuUtilization, diskUsage, diskUsagePercentage, rxBandwidthBps, txBandwidthBps, containerUptime            | Maximum observed value of the metric.                                                                 |
-| quantiles | memory, cpuUtilization, rxBandwidthBps, txBandwidthBps, diskUsage, diskUsagePercentage, gpuMemory, containerUptime | Weighted quantiles. Each metric is available with a P50, P95, or P99 suffix (for example, memoryP95). |
+The following metric groups are available. Each group exposes multiple fields — use GraphQL introspection or the <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/">GraphQL API Explorer</a> to discover the full list.
+
+| Group | Examples | Description |
+| --- | --- | --- |
+| <code>count</code> | — | Number of metric samples received. |
+| <code>avg</code> | <code>memory</code>, <code>cpuUtilization</code>, <code>rxBandwidthBps</code>, <code>txBandwidthBps</code>, <code>gpuMemory</code>, <code>containerUptime</code> | Average of the metric over the selected time range. |
+| <code>sum</code> | <code>cpuTimeSec</code>, <code>allocatedMemory</code>, <code>allocatedDisk</code>, <code>allocatedCpu</code>, <code>rxBytes</code>, <code>txBytes</code>, <code>containerUptime</code> | Total value of the metric over the selected time range. |
+| <code>max</code> | <code>memory</code>, <code>cpuUtilization</code>, <code>diskUsage</code>, <code>diskUsagePercentage</code>, <code>rxBandwidthBps</code>, <code>txBandwidthBps</code>, <code>containerUptime</code> | Maximum observed value of the metric. |
+| <code>quantiles</code> | <code>memory</code>, <code>cpuUtilization</code>, <code>rxBandwidthBps</code>, <code>txBandwidthBps</code>, <code>diskUsage</code>, <code>diskUsagePercentage</code>, <code>gpuMemory</code>, <code>containerUptime</code> | Weighted quantiles. Each metric is available with a <code>P50</code>, <code>P95</code>, or <code>P99</code> suffix (for example, <code>memoryP95</code>). |
+
+</details>
 
 ### API call
 
@@ -157,30 +173,46 @@ https://api.cloudflare.com/client/v4/graphql \
 
 Use `containersUsageAdaptiveGroups` to estimate your billing costs. Results include both your container's resource usage and the micro VM sandbox required to run it, and match the usage values shown in the Cloudflare dashboard.
 
+<details>
+
+<summary>
+
 Dimensions
+
+</summary>
 
 You can group results by any of the following dimensions:
 
-| Dimension                                                                                                   | Description                                                                                                                                                                                        |
-| ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| instanceId                                                                                                  | The container instance ID. This is the same ID shown in the Cloudflare dashboard and by [Wrangler](https://developers.cloudflare.com/workers/wrangler/).                                           |
-| placementId                                                                                                 | A single container instance can be placed in different locations over its lifetime (for example, when moved between data centers). Group by placementId to separate metrics across each placement. |
-| applicationId                                                                                               | The Containers application the instance belongs to.                                                                                                                                                |
-| location                                                                                                    | The Cloudflare data center where the container is running.                                                                                                                                         |
-| region                                                                                                      | The region the container is running in.                                                                                                                                                            |
-| label(name: "...")                                                                                          | The value of a specific container label. See [Filter and group by labels](#filter-and-group-by-labels).                                                                                            |
-| date, datetime, datetimeMinute, datetimeFiveMinutes, datetimeFifteenMinutes, datetimeHour, datetimeSixHours | Time buckets of varying granularity.                                                                                                                                                               |
+| Dimension | Description |
+| --- | --- |
+| <code>instanceId</code> | The container instance ID. This is the same ID shown in the Cloudflare dashboard and by <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a>. |
+| <code>placementId</code> | A single container instance can be placed in different locations over its lifetime (for example, when moved between data centers). Group by <code>placementId</code> to separate metrics across each placement. |
+| <code>applicationId</code> | The Containers application the instance belongs to. |
+| <code>location</code> | The Cloudflare data center where the container is running. |
+| <code>region</code> | The region the container is running in. |
+| <code>label(name: "...")</code> | The value of a specific container label. See <a href="#filter-and-group-by-labels">Filter and group by labels</a>. |
+| <code>date</code>, <code>datetime</code>, <code>datetimeMinute</code>, <code>datetimeFiveMinutes</code>, <code>datetimeFifteenMinutes</code>, <code>datetimeHour</code>, <code>datetimeSixHours</code> | Time buckets of varying granularity. |
+
+</details>
+
+<details>
+
+<summary>
 
 Metrics
 
-Only `sum` metrics are available:
+</summary>
 
-| Field           | Description                              |
-| --------------- | ---------------------------------------- |
-| cpuTimeSec      | Total CPU time, in seconds.              |
-| allocatedMemory | Total allocated memory, in byte-seconds. |
-| allocatedDisk   | Total allocated disk, in byte-seconds.   |
-| txBytes         | Total bytes transmitted.                 |
+Only <code>sum</code> metrics are available:
+
+| Field | Description |
+| --- | --- |
+| <code>cpuTimeSec</code> | Total CPU time, in seconds. |
+| <code>allocatedMemory</code> | Total allocated memory, in byte-seconds. |
+| <code>allocatedDisk</code> | Total allocated disk, in byte-seconds. |
+| <code>txBytes</code> | Total bytes transmitted. |
+
+</details>
 
 ### API call
 
@@ -269,8 +301,8 @@ https://api.cloudflare.com/client/v4/graphql \
 
 Both endpoints expose container labels through two fields:
 
-* `labels` is an array of `key=value` strings, and is designed for filtering. Use the [\_has operator](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/) to match a specific label.
-* `label(name: "...")` is a grouping dimension that returns the value of a named label. Alias it to a convenient field name in your response.
+- `labels` is an array of `key=value` strings, and is designed for filtering. Use the [`_has` operator](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/) to match a specific label.
+- `label(name: "...")` is a grouping dimension that returns the value of a named label. Alias it to a convenient field name in your response.
 
 For example, the following query returns CPU time and memory usage for production containers, grouped by environment:
 

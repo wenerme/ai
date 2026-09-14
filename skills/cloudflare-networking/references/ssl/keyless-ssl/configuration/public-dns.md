@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Public DNS
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you cannot use a [Cloudflare Tunnel setup](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/), you can also create a public DNS record for your key server.
 
@@ -32,16 +32,16 @@ In addition to running on bare metal, the key server should run without issue in
 
 You will need to have a supported operating system (OS) to run Keyless. Supported operating systems include:
 
-* Ubuntu 20.04 LTS (Focal), 22.04 LTS (Jammy), 24.04 LTS (Noble)
-* Debian 11 (Bullseye), 12 (Bookworm), 13 (Trixie)
-* RHEL 8, 9, CentOS 8, and CentOS Stream 9
-* Amazon Linux 2, 2023
+- Ubuntu 20.04 LTS (Focal), 22.04 LTS (Jammy), 24.04 LTS (Noble)
+- Debian 11 (Bullseye), 12 (Bookworm), 13 (Trixie)
+- RHEL 8, 9, CentOS 8, and CentOS Stream 9
+- Amazon Linux 2, 2023
 
 We strongly recommend that you use an operating system still supported by the vendor (still receiving security updates) as your key server will have access to your private keys.
 
 ---
 
-## 1\. Create public DNS record
+## 1. Create public DNS record
 
 1. Open a Terminal and run `openssl rand -hex 24` to generate a long, random hostname such as `11aa40b4a5db06d4889e48e2f738950ddfa50b7349d09b5f.example.com`.
 2. Add this record via your DNS provider’s interface as an **A** or **AAAA** record pointing to the IP address of your Keyless SSL server.
@@ -61,10 +61,10 @@ If your key server hostname is on a Cloudflare zone, you must create a DNS-only 
 
 Keyless SSL involves **two different certificates**. Confusing them is the most common setup error.
 
-| Certificate                               | What it is                                                          | SAN should contain                                      |
-| ----------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------- |
-| **Edge (Keyless SSL) certificate**        | The public certificate Cloudflare serves for your site.             | Your site hostnames only (for example, www.example.com) |
-| **Key server authentication certificate** | The certificate your key server uses to prove itself to Cloudflare. | The key server hostname only                            |
+| Certificate | What it is | SAN should contain |
+| --- | --- | --- |
+| **Edge (Keyless SSL) certificate** | The public certificate Cloudflare serves for your site. | Your site hostnames only (for example, `www.example.com`) |
+| **Key server authentication certificate** | The certificate your key server uses to prove itself to Cloudflare. | The key server hostname only |
 
 Caution
 
@@ -72,7 +72,7 @@ Do **not** add your key server hostname to the SAN of your public edge certifica
 
 ---
 
-## 2\. Upload Keyless SSL Certificates
+## 2. Upload Keyless SSL Certificates
 
 Before your key servers can be configured, you must next upload the corresponding SSL certificates to Cloudflare’s edge. During TLS termination, Cloudflare will present these certificates to connecting browsers and then (for non-resumed sessions) communicate with the specified key server to complete the handshake.
 
@@ -82,24 +82,23 @@ You will have to upload each certificate used with Keyless SSL.
 
 To create a Keyless certificate in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Upload Keyless SSL Certificate**.
 3. Fill in the upload modal with the certificate and other details and select **Add**.
 
-| Label               | Description                                                                                                                                                                                     | Example Values                                               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| Key server label    | Any unique identifier for your key server.                                                                                                                                                      | “test-keyless”, “production-keyless-1”                       |
-| Key server hostname | The hostname of your key server that holds the key for this certificate (such as the random hostname generated earlier).                                                                        | 11aa40b4a5db06d4889e48e2f738950ddfa50b7349d09b5f.example.com |
-| Key server port     | Set to 2407 unless you have changed this on the key server.                                                                                                                                     | 2407                                                         |
-| SSL Certificate     | The valid X509v3 SSL certificate (in PEM form) for which you hold the private key.                                                                                                              | (PEM bytes)                                                  |
-| Bundle method       | This should almost always be **Compatible**. Refer to [Uploading Custom Certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/) for more details. | Compatible                                                   |
+| Label | Description | Example Values |
+| --- | --- | --- |
+| Key server label | Any unique identifier for your key server. | “test-keyless”, “production-keyless-1” |
+| Key server hostname | The hostname of your key server that holds the key for this certificate (such as the random hostname generated earlier). | 11aa40b4a5db06d4889e48e2f738950ddfa50b7349d09b5f.example.com |
+| Key server port | Set to 2407 unless you have changed this on the key server. | 2407 |
+| SSL Certificate | The valid X509v3 SSL certificate (in PEM form) for which you hold the private key. | (PEM bytes) |
+| Bundle method | This should almost always be **Compatible**. Refer to [Uploading Custom Certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/) for more details. | Compatible |
 
-To create a Keyless certificate with the API, send a [POST](https://developers.cloudflare.com/api/resources/keyless%5Fcertificates/methods/create/) request.
+To create a Keyless certificate with the API, send a [`POST`](https://developers.cloudflare.com/api/resources/keyless_certificates/methods/create/) request.
 
 ---
 
-## 3\. Set up and activate key server
+## 3. Set up and activate key server
 
 Finally, you need to install the key server on your infrastructure, populate it with the SSL keys of the certificates you wish to use to terminate TLS at Cloudflare’s edge, and activate the key server so it can be mutually authenticated.
 
@@ -200,13 +199,14 @@ Add your Cloudflare account details to the configuration file located at `/etc/k
 1. Set the hostname of the key server, for example, `11aa40b4a5db06d4889e48e2f.example.com`. This is also the value you entered when you uploaded your keyless certificate and is the hostname of your key server that holds the key for this certificate.
 2. Set the Zone ID (found on **Overview** tab of the Cloudflare dashboard).
 3. Set the authentication credential for server certificate enrollment. gokeyless supports two options:
+   - **API Token (recommended):** [Create an API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone > SSL and Certificates > Edit** permission. Set it in your configuration:
 
-  * **API Token (recommended):** [Create an API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone > SSL and Certificates > Edit** permission. Set it in your configuration:
-  ```yaml
-  api_token: "<YOUR_API_TOKEN>"
-  ```
-  Or use the environment variable `KEYLESS_API_TOKEN`.
-  * **Origin CA API key (deprecated):** [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/). This option will stop working on September 30, 2026.
+     ```yaml
+     api_token: "<YOUR_API_TOKEN>"
+     ```
+
+     Or use the environment variable `KEYLESS_API_TOKEN`.
+   - **Origin CA API key (deprecated):** [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/). This option will stop working on September 30, 2026.
 
 Origin CA Service Keys are removed September 30, 2026
 
@@ -234,8 +234,8 @@ When running multiple key servers, make sure all required keys are distributed t
 
 To activate, restart your keyless instance:
 
-* systemd: `sudo service gokeyless restart`
-* upstart/sysvinit: `sudo /etc/init.d/gokeyless restart`
+- systemd: `sudo service gokeyless restart`
+- upstart/sysvinit: `sudo /etc/init.d/gokeyless restart`
 
 Note
 

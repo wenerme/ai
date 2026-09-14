@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits and validation
 
-Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/resource-tagging/reference/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## API limits
 
-| Limit                         | Value            | Error code |
-| ----------------------------- | ---------------- | ---------- |
-| Maximum tags per account      | 10,000 (beta)    | N/A        |
-| Maximum tag key length        | 256 characters   | 1011       |
-| Maximum tag value length      | 1,024 characters | 1012       |
-| Maximum tag filters per query | 20               | 1010       |
-| Maximum OR values per filter  | 10               | 1013       |
-| Results per page              | 100 (fixed)      | N/A        |
+| Limit | Value | Error code |
+| --- | --- | --- |
+| Maximum tags per account | 10,000 (beta) | N/A |
+| Maximum tag key length | 256 characters | `1011` |
+| Maximum tag value length | 1,024 characters | `1012` |
+| Maximum tag filters per query | 20 | `1010` |
+| Maximum OR values per filter | 10 | `1013` |
+| Results per page | 100 (fixed) | N/A |
 
 When a limit is exceeded, the API returns `400 Bad Request` with the corresponding error code.
 
@@ -39,42 +39,42 @@ Tag keys must follow these character rules:
 
 ### Allowed
 
-* Unicode letters (any language)
-* Unicode digits (0-9)
-* Underscores (`_`)
-* Periods (`.`)
-* Hyphens (`-`)
+- Unicode letters (any language)
+- Unicode digits (0-9)
+- Underscores ( `_`)
+- Periods ( `.`)
+- Hyphens ( `-`)
 
 ### Not allowed
 
-* Empty strings
-* Spaces
-* Special characters (except `_`, `.`, `-`)
+- Empty strings
+- Spaces
+- Special characters (except `_`, `.`, `-`)
 
 ### Examples
 
-| Key         | Valid  | Reason              |
-| ----------- | ------ | ------------------- |
-| environment | Yes    | Letters only        |
-| team\_name  | Yes    | Underscore          |
-| cost-center | Yes    | Hyphen              |
-| owner.email | Yes    | Period              |
-| env123      | Yes    | Letters and digits  |
-| env name    | **No** | Contains space      |
-| team@work   | **No** | Special character @ |
-| (empty)     | **No** | Empty string        |
+| Key | Valid | Reason |
+| --- | --- | --- |
+| `environment` | Yes | Letters only |
+| `team_name` | Yes | Underscore |
+| `cost-center` | Yes | Hyphen |
+| `owner.email` | Yes | Period |
+| `env123` | Yes | Letters and digits |
+| `env name` | **No** | Contains space |
+| `team@work` | **No** | Special character `@` |
+| (empty) | **No** | Empty string |
 
 Invalid tag keys return `400 Bad Request` with error code `1014`.
 
 ## Pagination
 
-List endpoints use cursor-based pagination with a fixed page size of 100\. The page size is not configurable.
+List endpoints use cursor-based pagination with a fixed page size of 100. The page size is not configurable.
 
 Paginated endpoints:
 
-* `GET /accounts/{account_id}/tags/keys`
-* `GET /accounts/{account_id}/tags/resources`
-* `GET /accounts/{account_id}/tags/values/{tag_key}`
+- `GET /accounts/{account_id}/tags/keys`
+- `GET /accounts/{account_id}/tags/resources`
+- `GET /accounts/{account_id}/tags/values/{tag_key}`
 
 Refer to [Filter resources by tag](https://developers.cloudflare.com/resource-tagging/how-to/filter-resources/#pagination) for pagination examples.
 

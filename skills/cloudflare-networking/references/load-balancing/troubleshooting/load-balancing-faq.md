@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQs
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/load-balancing-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -48,13 +48,13 @@ To learn more about how endpoints and pools become unhealthy, refer to [Endpoint
 
 If you know that your endpoint is healthy but load balancing is reporting it as unhealthy, check the following settings on the [monitor](https://developers.cloudflare.com/load-balancing/monitors):
 
-* Perform a `curl` request against the configured endpoint. Make sure the response you are seeing matches your settings for the monitor.
-* Ensure your firewall or web server does not block or rate limit [our health monitors](https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#specific-products) and accepts requests from [Cloudflare IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/).
-* If you are looking for a specific value in the **Response Body**, make sure that value is relatively static and within the first 10 KB of the HTML page.
-* If your endpoint responds with a `301` or `302` status code, make sure **Follow Redirects** is selected.
-* Try increasing the **Timeout** value.
-* Review the **Host Header** for the health monitor.
-* If you are using [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or require [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/), make sure that you entered a zone value for **Simulate Zone** corresponding to the zone with these features configured.
+- Perform a `curl` request against the configured endpoint. Make sure the response you are seeing matches your settings for the monitor.
+- Ensure your firewall or web server does not block or rate limit [our health monitors](https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#specific-products) and accepts requests from [Cloudflare IP addresses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/).
+- If you are looking for a specific value in the **Response Body**, make sure that value is relatively static and within the first 10 KB of the HTML page.
+- If your endpoint responds with a `301` or `302` status code, make sure **Follow Redirects** is selected.
+- Try increasing the **Timeout** value.
+- Review the **Host Header** for the health monitor.
+- If you are using [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/), [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/), [Bring your own CA (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), or require [HTTP/2 to Origin](https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/), make sure that you entered a zone value for **Simulate Zone** corresponding to the zone with these features configured.
 
 ---
 
@@ -96,7 +96,7 @@ To learn more about how endpoints and pools become unhealthy, refer to [Endpoint
 
 You may see different numbers of requests when reviewing [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/), especially when compared to other Cloudflare dashboards (Caching, etc.).
 
-Load balancing **requests** are the number of uncached requests made by your load balancer. By default, Cloudflare caches resolved IP addresses for up to five seconds. This built-in caching is often the cause of an discrepancies.
+Load balancing **requests** are the number of uncached requests made by your load balancer. By default, Cloudflare caches resolved IP addresses for up to five seconds. This built-in caching is often the cause of an discrepancies.
 
 ---
 
@@ -108,9 +108,9 @@ For a list of specific error codes and next steps, refer to [Load Balancing Trou
 
 ## Related resources
 
-* [Endpoint and pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details)
-* [Monitors](https://developers.cloudflare.com/load-balancing/monitors)
-* [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/)
+- [Endpoint and pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details)
+- [Monitors](https://developers.cloudflare.com/load-balancing/monitors)
+- [Load Balancing Analytics](https://developers.cloudflare.com/load-balancing/reference/load-balancing-analytics/)
 
 Was this helpful?
 

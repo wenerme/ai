@@ -12,14 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
 Subdomain setup is only available for Enterprise accounts. If you only want to create a subdomain for your site in Cloudflare, refer to [Create a subdomain record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/).
 
-[Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) relies on a process known as delegation. When, in a parent domain such as `example.com`, an [NS record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) is created for a subdomain `blog.example.com`, this means that DNS management for the subdomain can be done separately, in its own [DNS zone](https://developers.cloudflare.com/dns/concepts/#zone).
+[Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) relies on a process known as delegation. When, in a parent domain such as `example.com`, an [NS record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) is created for a subdomain `blog.example.com`, this means that DNS management for the subdomain can be done separately, in its own [DNS zone](https://developers.cloudflare.com/dns/concepts/#zone)
 
+.
+
+```
     flowchart TD
       accTitle: Example of parent zone and subdomains
       A[<code>example.com</code>] --> B[<code>docs.example.com</code>]
@@ -32,20 +35,23 @@ Subdomain setup is only available for Enterprise accounts. If you only want to c
         C
       end
 
+
+```
+
 ---
 
 ## Available setups
 
 When configuring a subdomain setup, its availability will depend on both the parent zone setup and the setup used for the child zone. A child zone holds DNS management for a delegated subdomain.
 
-| Parent zone                                                                                                                                                                     | Child zone                                                                                             | Available |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | --------- |
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |
-| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                            | No        |
-| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                  | Yes       |
-| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes       |
-| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                                                                                                     | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)                            | Yes       |
+| Parent zone | Child zone | Available |
+| --- | --- | --- |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) | Yes |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes |
+| [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | No |
+| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | [Full](https://developers.cloudflare.com/dns/zone-setups/full-setup/) | Yes |
+| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | [Secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) | Yes |
+| [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | [Partial](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) | Yes |
 
 Subdomain zones in partial setup are not delegated
 
@@ -59,8 +65,8 @@ This table assumes zones that are in an [active status](https://developers.cloud
 
 Refer to the following guides to learn how to configure a subdomain setup depending on the setup used for the parent zone:
 
-* [Parent zone on full setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-full/)
-* [Parent zone on partial setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/)
+- [Parent zone on full setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-full/)
+- [Parent zone on partial setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/setup/parent-on-partial/)
 
 Although the how-to guides in this documentation are focused on both parent domains and subdomains existing in Cloudflare, it is also possible to achieve a subdomain setup in Cloudflare while the parent domain exists in a different DNS provider.
 
@@ -76,8 +82,8 @@ If a certificate is already active on the child zone for a specific hostname (`s
 
 To use subdomain setups with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), note that:
 
-* If the child zone is in a pending state when you create the Access application, your configuration will not automatically apply when you activate the zone. You must also re-save the Access application once your subdomain setup is active.
-* If you split out a subdomain which already has an Access application, you will also need to re-save the Access application to associate it with the new child zone.
+- If the child zone is in a pending state when you create the Access application, your configuration will not automatically apply when you activate the zone. You must also re-save the Access application once your subdomain setup is active.
+- If you split out a subdomain which already has an Access application, you will also need to re-save the Access application to associate it with the new child zone.
 
 Was this helpful?
 

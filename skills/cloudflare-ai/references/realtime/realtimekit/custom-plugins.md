@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Plugins
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Plugins are interactive real-time applications that run inside a meeting, such as a shared whiteboard or a document viewer. RealtimeKit lets you build your own plugins and render them alongside the meeting UI.
 
@@ -22,7 +22,7 @@ To learn how plugins are registered and controlled through the SDK, refer to [Pl
 
 ## Guides
 
-* [Build your own plugins](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/)
+- [Build your own plugins](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/build-your-own-plugins/)
 
 Was this helpful?
 

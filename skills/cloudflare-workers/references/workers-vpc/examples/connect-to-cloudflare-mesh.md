@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect Workers to Cloudflare Mesh
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to use a VPC Network binding with [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) to connect to any private service in your account from a Worker — without pre-registering individual hosts or specifying a Cloudflare Tunnel UUID.
 
@@ -20,10 +20,10 @@ When you bind to [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-
 
 ## Prerequisites
 
-* A [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node connected to your private network
-* Private services running behind your Mesh node (for example, an internal API, database, or web application)
+- A [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) node connected to your private network
+- Private services running behind your Mesh node (for example, an internal API, database, or web application)
 
-## 1\. Configure your Worker
+## 1. Configure your Worker
 
 Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wrangler configuration:
 
@@ -33,7 +33,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 	"name": "mesh-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"vpc_networks": [
 		{
 			"binding": "MESH",
@@ -49,7 +49,7 @@ Bind your Worker to Cloudflare Mesh using `network_id: "cf1:network"` in your Wr
 name = "mesh-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[vpc_networks]]
 binding = "MESH"
@@ -59,9 +59,11 @@ remote = true
 
 With this single binding, your Worker can reach any service across all Cloudflare Tunnels, Mesh nodes, and Cloudflare WAN on-ramps in your account.
 
-## 2\. Implement the Worker
+## 2. Implement the Worker
 
 Use the VPC Network binding to access services by private IP address. Cloudflare Mesh currently supports IP-based routing only.
+
+*index.jsjs*
 
 ```js
 // You can target a Mesh node directly by its Mesh IP or any private IP
@@ -90,6 +92,8 @@ Unlike [VPC Services](https://developers.cloudflare.com/workers-vpc/configuratio
 
 You can also use `connect()` to open raw TCP sockets to non-HTTP services through the same binding:
 
+*index.jsjs*
+
 ```js
 // You can target a Mesh node directly by its Mesh IP or any private IP
 // on a subnet route behind the node
@@ -114,7 +118,7 @@ export default {
 };
 ```
 
-## 3\. Deploy and test
+## 3. Deploy and test
 
 Deploy your Worker and verify it can reach your private services:
 
@@ -132,10 +136,10 @@ curl https://mesh-gateway.workers.dev/api/metrics
 
 ## Next steps
 
-* Learn more about [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) configuration options
-* Refer to the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/) reference
-* [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/) for your account
-* Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
+- Learn more about [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) configuration options
+- Refer to the [Workers Binding API](https://developers.cloudflare.com/workers-vpc/api/) reference
+- [Set up Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/) for your account
+- Explore [other examples](https://developers.cloudflare.com/workers-vpc/examples/)
 
 Was this helpful?
 

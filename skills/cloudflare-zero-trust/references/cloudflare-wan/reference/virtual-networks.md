@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Virtual networks
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
 
@@ -24,20 +24,21 @@ Cloudflare Tunnel and the Cloudflare One Client support multiple virtual network
 
 ## When to use virtual networks
 
-* **Environment separation** — Keep production and staging networks isolated. Traffic destined for `10.0.0.1` in production routes to a different destination than `10.0.0.1` in staging.
-* **Partner isolation** — Connect multiple partners to your Cloudflare account without allowing them to reach each other. Each partner gets its own virtual network.
-* **Overlapping IP space** — When different networks use the same IP ranges (common with RFC 1918 addresses), virtual networks let you route to the correct destination based on context, not just IP address.
-* **Private application connectivity** — Connect Cloudflare Workers or CDN to backends in your private network. The virtual network tells Cloudflare where to route traffic for private IP addresses.
-* **Public TCP/UDP to private origins** — Expose a private backend to the Internet for TCP or UDP traffic through a [Spectrum application](https://developers.cloudflare.com/spectrum/get-started/#create-a-spectrum-application-using-a-virtual-network-origin), without requiring a Load Balancer. The virtual network determines which tunnel or WAN connection carries the traffic to your origin.
+- **Environment separation** — Keep production and staging networks isolated. Traffic destined for `10.0.0.1` in production routes to a different destination than `10.0.0.1` in staging.
+- **Partner isolation** — Connect multiple partners to your Cloudflare account without allowing them to reach each other. Each partner gets its own virtual network.
+- **Overlapping IP space** — When different networks use the same IP ranges (common with RFC 1918 addresses), virtual networks let you route to the correct destination based on context, not just IP address.
+- **Private application connectivity** — Connect Cloudflare Workers or CDN to backends in your private network. The virtual network tells Cloudflare where to route traffic for private IP addresses.
+- **Public TCP/UDP to private origins** — Expose a private backend to the Internet for TCP or UDP traffic through a [Spectrum application](https://developers.cloudflare.com/spectrum/get-started/#create-a-spectrum-application-using-a-virtual-network-origin), without requiring a Load Balancer. The virtual network determines which tunnel or WAN connection carries the traffic to your origin.
 
 ## How virtual networks work
 
 When traffic enters Cloudflare destined for a private IP address, Cloudflare looks up the route in the virtual network routing table. The virtual network determines:
 
-* Which private destinations are reachable.
-* Which connector (Tunnel or WAN connection) carries the traffic.
-* How overlapping IP addresses are disambiguated.
+- Which private destinations are reachable.
+- Which connector (Tunnel or WAN connection) carries the traffic.
+- How overlapping IP addresses are disambiguated.
 
+```
 flowchart TD
 accTitle: Virtual network routing
 accDescr: Shows how a Cloudflare account contains three virtual networks, each with their own routing table and connectors pointing to separate destinations. The same CIDR can exist in each virtual network as isolated routing domains.
@@ -82,6 +83,8 @@ accDescr: Shows how a Cloudflare account contains three virtual networks, each w
     style vnet_prod stroke:#f48120,stroke-width:2px
     style vnet_stg stroke:#f48120,stroke-width:2px
 
+```
+
 The same CIDR (`10.0.0.0/8`) can exist in each virtual network because they are isolated routing domains.
 
 Each virtual network maintains its own routing table. Routes added to one virtual network do not appear in another virtual network routing table. However, if traffic does not match a route in the selected virtual network, Cloudflare may fall back to the default virtual network routing table for WAN routes.
@@ -92,12 +95,12 @@ You can add entries to a virtual network routing table through static route conf
 
 Virtual network support varies by product:
 
-| Product               | Virtual network support   | Details                                                              |
-| --------------------- | ------------------------- | -------------------------------------------------------------------- |
-| Cloudflare Tunnel     | Multiple virtual networks | Assign CIDR routes to a virtual network when configuring your tunnel |
-| Cloudflare One Client | Multiple virtual networks | Users land in a virtual network based on policy or client selection  |
-| Cloudflare Mesh       | Not currently supported   | —                                                                    |
-| Cloudflare WAN        | Default only              | All IPsec, GRE, and CNI connections use the default virtual network  |
+| Product | Virtual network support | Details |
+| --- | --- | --- |
+| Cloudflare Tunnel | Multiple virtual networks | Assign CIDR routes to a virtual network when configuring your tunnel |
+| Cloudflare One Client | Multiple virtual networks | Users land in a virtual network based on policy or client selection |
+| Cloudflare Mesh | Not currently supported | — |
+| Cloudflare WAN | Default only | All IPsec, GRE, and CNI connections use the default virtual network |
 
 ## The default virtual network
 
@@ -113,10 +116,10 @@ Cloudflare WAN connections (IPsec, GRE, CNI) always use the default virtual netw
 
 If you are familiar with enterprise networking concepts, a virtual network is analogous to a VRF (Virtual Routing and Forwarding):
 
-* Each virtual network maintains its own routing table.
-* Routes are isolated between virtual networks.
-* The same IP prefix can exist in multiple virtual networks without conflict.
-* BGP routes learned on a connection populate only that connection virtual network routing table. BGP peering is currently supported for IPsec/GRE tunnels (beta) and CNI (beta).
+- Each virtual network maintains its own routing table.
+- Routes are isolated between virtual networks.
+- The same IP prefix can exist in multiple virtual networks without conflict.
+- BGP routes learned on a connection populate only that connection virtual network routing table. BGP peering is currently supported for IPsec/GRE tunnels (beta) and CNI (beta).
 
 If you are familiar with cloud networking concepts, a virtual network is analogous to a VPC (Virtual Private Cloud).
 
@@ -130,9 +133,9 @@ To add static routes or configure BGP peering within the Cloudflare Virtual Netw
 
 ## Related resources
 
-* [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) — Connect your infrastructure to Cloudflare
-* [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) — Define IP and hostname routes through your connectors
-* [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/) — Route prioritization, ECMP, and BGP within the Cloudflare Virtual Network
+- [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) — Connect your infrastructure to Cloudflare
+- [Routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/) — Define IP and hostname routes through your connectors
+- [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/) — Route prioritization, ECMP, and BGP within the Cloudflare Virtual Network
 
 Was this helpful?
 

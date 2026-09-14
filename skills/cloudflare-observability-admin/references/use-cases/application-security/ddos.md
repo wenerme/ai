@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mitigate DDoS attacks
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/ddos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/application-security/ddos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Distributed Denial of Service (DDoS) attacks can take your application offline by flooding it with traffic. Cloudflare DDoS Protection mitigates these attacks automatically at the network edge, with no caps on attack size or duration and no manual intervention required.
 
@@ -22,9 +22,9 @@ Distributed Denial of Service (DDoS) attacks can take your application offline b
 
 Automatic mitigation of volumetric and application-layer DDoS attacks. [Learn more about DDoS Protection](https://developers.cloudflare.com/ddos-protection/).
 
-* **Always-on protection** \- Attacks are mitigated automatically with no manual intervention required
-* **Unlimited mitigation** \- No caps on attack size or duration
-* **Layer 3/4 protection** \- Block network-layer floods and amplification attacks at the network edge
+- **Always-on protection** - Attacks are mitigated automatically with no manual intervention required
+- **Unlimited mitigation** - No caps on attack size or duration
+- **Layer 3/4 protection** - Block network-layer floods and amplification attacks at the network edge
 
 ## Get started
 

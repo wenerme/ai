@@ -1,7 +1,5 @@
 ---
-description: PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.
-
-It can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.
+description: "PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering."
 title: plamo-embedding-1b
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -18,22 +16,21 @@ p
 
 Text Embeddings • pfnet
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/pfnet/plamo-embedding-1b`
 
-* Cloudflare-hosted
+- Cloudflare-hosted
 
 PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc. It can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.
 
-| Model Info   |                           |
-| ------------ | ------------------------- |
+| Model Info | |
+| --- | --- |
 | Unit Pricing | $0.019 per M input tokens |
 
 ## Usage
 
 ```ts
-
 export interface Env {
   AI: Ai;
 }
@@ -61,7 +58,6 @@ export default {
 ```
 
 ```py
-
 import os
 import requests
 
@@ -85,7 +81,6 @@ print(response.json())
 ```
 
 ```sh
-
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/pfnet/plamo-embedding-1b  \
   -X POST  \
   -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"  \
@@ -102,19 +97,19 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 `one of`required
 
-▶data\[\]
+▶data\[]
 
 `array`Embedding vectors, where each vector is a list of floats.
 
-▶shape\[\]
+▶shape\[]
 
-`array`minItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension\].
+`array`minItems: 2maxItems: 2Shape of the embedding data as \[number\_of\_embeddings, embedding\_dimension].
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json)
 
 Was this helpful?
 

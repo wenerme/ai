@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data location
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in R2 is determined and about the different available inputs that control the physical location where objects in your buckets are stored.
 
@@ -30,11 +30,10 @@ Using Location Hints can be a good choice when you expect the majority of access
 
 You can choose to automatically create your bucket in the closest available region based on your location or choose a specific location from the list.
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
-4. Under **Location**, leave _None_ selected for automatic selection or choose a region from the list.
+4. Under **Location**, leave *None* selected for automatic selection or choose a region from the list.
 5. Select **Create bucket** to complete the bucket creation process.
 
 ### Set hints via the S3 API
@@ -58,14 +57,14 @@ Refer to [Examples](https://developers.cloudflare.com/r2/examples/) for addition
 
 The following hint locations are supported:
 
-| Hint | Hint description      |
-| ---- | --------------------- |
+| Hint | Hint description |
+| --- | --- |
 | wnam | Western North America |
 | enam | Eastern North America |
-| weur | Western Europe        |
-| eeur | Eastern Europe        |
-| apac | Asia-Pacific          |
-| oc   | Oceania               |
+| weur | Western Europe |
+| eeur | Eastern Europe |
+| apac | Asia-Pacific |
+| oc | Oceania |
 
 ### Additional considerations
 
@@ -79,8 +78,7 @@ Use Jurisdictional Restrictions when you need to ensure data is stored and proce
 
 ### Set jurisdiction via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter a name for the bucket.
 4. Under **Location**, select **Specify jurisdiction** and choose a jurisdiction from the list.
@@ -119,7 +117,7 @@ When interacting with R2 resources that belong to a defined jurisdiction with th
 
 You can use your jurisdiction-specific endpoint for any [supported S3 API operations](https://developers.cloudflare.com/r2/api/s3/api/). When using a jurisdiction endpoint, you will not be able to access R2 resources outside of that jurisdiction.
 
-The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [@aws-sdk/client-s3 ↗](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
+The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [`@aws-sdk/client-s3` ↗](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
 
 ```js
 import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";
@@ -145,10 +143,10 @@ Refer to [Examples](https://developers.cloudflare.com/r2/examples/) for addition
 The following jurisdictions are supported:
 
 | Jurisdiction | Jurisdiction description |
-| ------------ | ------------------------ |
-| eu           | European Union           |
-| fedramp      | FedRAMP                  |
-| us           | United States            |
+| --- | --- |
+| eu | European Union |
+| fedramp | FedRAMP |
+| us | United States |
 
 Note
 
@@ -158,7 +156,7 @@ Cloudflare Enterprise customers may contact their account team or [Cloudflare Su
 
 The following services do not interact with R2 resources with assigned jurisdictions:
 
-* [Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/). As a workaround to this limitation, you can set up a [Logpush job using an S3-compatible endpoint](https://developers.cloudflare.com/data-localization/how-to/r2/#send-logs-to-r2-via-s3-compatible-endpoint) to store logs in an R2 bucket in the jurisdiction of your choice.
+- [Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/). As a workaround to this limitation, you can set up a [Logpush job using an S3-compatible endpoint](https://developers.cloudflare.com/data-localization/how-to/r2/#send-logs-to-r2-via-s3-compatible-endpoint) to store logs in an R2 bucket in the jurisdiction of your choice.
 
 ### Additional considerations
 

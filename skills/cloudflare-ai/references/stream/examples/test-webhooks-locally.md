@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Stream cannot send [webhook notifications](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/) to `localhost` or local IP addresses. To test webhooks during local development, you need a publicly accessible URL that forwards requests to your local machine.
 
@@ -30,11 +30,11 @@ This example shows how to:
 
 ## Prerequisites
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up) with Stream enabled
-* [Node.js ↗](https://nodejs.org/) (v18 or later)
-* The [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed (`npm install -g wrangler`)
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up) with Stream enabled
+- [Node.js ↗](https://nodejs.org/) (v18 or later)
+- The [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed ( `npm install -g wrangler`)
 
-## 1\. Create a Worker project
+## 1. Create a Worker project
 
 Create a new Worker project that will receive webhook requests:
 
@@ -42,7 +42,7 @@ Create a new Worker project that will receive webhook requests:
 npm create cloudflare@latest stream-webhook-handler
 ```
 
-## 2\. Start a Cloudflare Tunnel
+## 2. Start a Cloudflare Tunnel
 
 Before registering a webhook URL, you need a public URL that points to your local machine. In a terminal, start a [quick tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) that forwards to the default Wrangler dev server port (`8787`):
 
@@ -58,14 +58,25 @@ https://example-words-here.trycloudflare.com
 
 Copy this URL. It changes every time you restart the tunnel.
 
-## 3\. Register the tunnel URL as your webhook endpoint
+## 3. Register the tunnel URL as your webhook endpoint
 
 Use the Stream API to set the tunnel URL as your webhook notification URL. The API response includes a `secret` field — you will need this to verify webhook signatures.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Stream Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Stream Write</code>
+
+</details>
+
+*Create VOD webhooksbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \
@@ -77,6 +88,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" 
 ```
 
 The response will include a `secret` field:
+
+*Example responsejson*
 
 ```json
 {
@@ -93,23 +106,27 @@ The response will include a `secret` field:
 
 Save the `secret` value. You will use it in the next step.
 
-## 4\. Store the webhook secret for local development
+## 4. Store the webhook secret for local development
 
 Create a `.dev.vars` file in the root of your Worker project and add the webhook secret from the API response:
+
+*.dev.varstxt*
 
 ```txt
 WEBHOOK_SECRET=85011ed3a913c6ad5f9cf6c5573cc0a7
 ```
 
-Replace the value with the actual secret from step 3\. Wrangler automatically loads `.dev.vars` when running `wrangler dev`.
+Replace the value with the actual secret from step 3. Wrangler automatically loads `.dev.vars` when running `wrangler dev`.
 
 Caution
 
 Do not commit `.dev.vars` to version control. Add it to your `.gitignore` file. For more information, refer to [Local development with secrets](https://developers.cloudflare.com/workers/configuration/secrets/#local-development-with-secrets).
 
-## 5\. Add the webhook handler
+## 5. Add the webhook handler
 
 Replace the contents of `src/index.ts` in your Worker project with the following code. This Worker receives webhook `POST` requests, [verifies the signature](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/#verify-webhook-authenticity), and logs the payload.
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -216,7 +233,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-## 6\. Start the local dev server
+## 6. Start the local dev server
 
 In a separate terminal (keep the tunnel running), start the Worker locally with Wrangler:
 
@@ -226,7 +243,7 @@ npx wrangler dev
 
 Wrangler will load the `WEBHOOK_SECRET` from your `.dev.vars` file automatically.
 
-## 7\. Trigger a test event
+## 7. Trigger a test event
 
 Upload a video to Stream to trigger a webhook event. Once the video finishes processing, you will see the webhook payload logged in the terminal running `wrangler dev`, along with a confirmation that the signature was verified.
 
@@ -240,10 +257,21 @@ npx wrangler deploy
 
 Then update the webhook subscription to point to your deployed Worker URL:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Stream Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Stream Write</code>
+
+</details>
+
+*Create VOD webhooksbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/webhook" \

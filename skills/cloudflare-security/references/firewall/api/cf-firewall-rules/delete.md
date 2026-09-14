@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DELETE examples
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/delete/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/delete/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,12 +22,16 @@ The `DELETE` operation does not delete any filter related to the firewall rule. 
 
 This example deletes firewall rules with IDs `{rule_id_1}` and `{rule_id_2}`.
 
+*Requestbash*
+
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules?id={rule_id_1}&id={rule_id_2}" \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -49,12 +53,16 @@ curl --request DELETE \
 
 This example deletes the rule with ID `{rule_id}`.
 
+*Requestbash*
+
 ```bash
 curl --request DELETE \
 "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules/{rule_id}" \
 --header "X-Auth-Email: <EMAIL>" \
 --header "X-Auth-Key: <API_KEY>"
 ```
+
+*Responsejson*
 
 ```json
 {

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Validate the Access token with FastAPI
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/fastapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial covers how to validate that the [Access JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) is on requests made to FastAPI apps.
 
@@ -20,10 +20,10 @@ This tutorial covers how to validate that the [Access JWT](https://developers.cl
 
 ## Prerequisites
 
-* A [self-hosted Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) for your FastAPI app
-* The [AUD tag](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#get-your-aud-tag) for your Access application
+- A [self-hosted Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) for your FastAPI app
+- The [AUD tag](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#get-your-aud-tag) for your Access application
 
-## 1\. Create a validation function
+## 1. Create a validation function
 
 1. In your FastAPI project, create a new file called `cloudflare.py` that contains the following code:
 
@@ -88,9 +88,9 @@ def verify_token(request):
     return True
 ```
 
-## 2\. Use the validation function in your app
+## 2. Use the validation function in your app
 
-You can now add the validation function as a dependency in your FastAPI app. One way to do this is by creating an [APIRouter instance ↗](https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter). The following example executes the validation function on each request made to paths that start with `/admin`:
+You can now add the validation function as a dependency in your FastAPI app. One way to do this is by creating an [`APIRouter` instance ↗](https://fastapi.tiangolo.com/tutorial/bigger-applications/#another-module-with-apirouter). The following example executes the validation function on each request made to paths that start with `/admin`:
 
 ```python
 from fastapi import APIRouter, Depends, HTTPException

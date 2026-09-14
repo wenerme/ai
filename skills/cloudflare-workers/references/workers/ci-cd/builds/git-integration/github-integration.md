@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GitHub integration
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports connecting your GitHub repository to your Cloudflare Worker, and will automatically deploy your code every time you push a change.
 
@@ -62,7 +62,7 @@ To add Cloudflare Workers installation to an organization, your user account mus
 
 GitHub security consideration
 
-A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** \> For **Repository access**, select **Only select repositories** \> select your repositories.
+A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** > For **Repository access**, select **Only select repositories** > select your repositories.
 
 ### Remove access
 
@@ -76,7 +76,7 @@ To remove access to an individual GitHub repository, you can navigate to **Repos
 
 #### Remove Cloudflare access to the entire GitHub account
 
-To remove Cloudflare Workers and Pages access to your entire Git account, you can navigate to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the Cloudflare Workers and Pages app will revoke Cloudflare's access to _all repositories_ from that GitHub account. If you want to only disable automatic builds and deployments, follow the [Disable Build](https://developers.cloudflare.com/workers/ci-cd/builds/#disconnecting-builds) instructions.
+To remove Cloudflare Workers and Pages access to your entire Git account, you can navigate to **Uninstall "Cloudflare Workers and Pages"**, then select **Uninstall**. Removing access to the Cloudflare Workers and Pages app will revoke Cloudflare's access to *all repositories* from that GitHub account. If you want to only disable automatic builds and deployments, follow the [Disable Build](https://developers.cloudflare.com/workers/ci-cd/builds/#disconnecting-builds) instructions.
 
 Note that removing access to GitHub will disable new builds for Workers and Pages projects that were connected to those repositories, though your previous deployments will continue to be hosted by Cloudflare Workers.
 
@@ -85,18 +85,18 @@ Note that removing access to GitHub will disable new builds for Workers and Page
 When encountering Git integration related issues, one potential troubleshooting step is attempting to uninstall and reinstall the GitHub or GitLab application associated with the Cloudflare Pages installation. The process for each Git provider is provided below.
 
 1. Go to the installation settings page on GitHub:
-  * Navigate to **Settings > Builds** for the Workers or Pages project and select **Manage** under Git Repository.
-  * Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
+   - Navigate to **Settings > Builds** for the Workers or Pages project and select **Manage** under Git Repository.
+   - Alternatively, visit these links to find the Cloudflare Workers and Pages installation and select **Configure**:
 
-| **Individual**   | https://github.com/settings/installations                                          |
-| ---------------- | ---------------------------------------------------------------------------------- |
-| **Organization** | https://github.com/organizations/<YOUR\_ORGANIZATION\_NAME>/settings/installations |
+| **Individual** | `https://github.com/settings/installations` |
+| --- | --- |
+| **Organization** | `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` |
 
-1. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
-2. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** \> **Pages** \> **Connect to Git**.
-3. Select the **\+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
-4. You should be redirected to the create project page with your GitHub account or organization in the account list.
-5. Attempt to make a new deployment with your project which was previously broken.
+2. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
+3. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
+4. Select the **+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
+5. You should be redirected to the create project page with your GitHub account or organization in the account list.
+6. Attempt to make a new deployment with your project which was previously broken.
 
 Was this helpful?
 

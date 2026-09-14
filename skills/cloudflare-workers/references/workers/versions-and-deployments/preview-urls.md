@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview URLs
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Preview URLs allow you to preview new versions of your Worker without deploying it to production.
 
 There are two types of preview URLs:
 
-* **Versioned Preview URLs**: A unique URL generated automatically for each new version of your Worker.
-* **Aliased Preview URLs**: A static, human-readable alias that you can manually assign to a Worker version.
+- **Versioned Preview URLs**: A unique URL generated automatically for each new version of your Worker.
+- **Aliased Preview URLs**: A static, human-readable alias that you can manually assign to a Worker version.
 
 Both preview URL types follow the format: `<VERSION_PREFIX OR ALIAS>-<WORKER_NAME>.<SUBDOMAIN>.workers.dev`.
 
 Preview URLs can be:
 
-* Integrated into CI/CD pipelines, allowing automatic generation of preview environments for every pull request.
-* Used for collaboration between teams to test code changes in a live environment and verify updates.
-* Used to test new API endpoints, validate data formats, and ensure backward compatibility with existing services.
+- Integrated into CI/CD pipelines, allowing automatic generation of preview environments for every pull request.
+- Used for collaboration between teams to test code changes in a live environment and verify updates.
+- Used to test new API endpoints, validate data formats, and ensure backward compatibility with existing services.
 
 When testing zone level performance or security features for a version, we recommend using [version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) so that your zone's performance and security settings apply.
 
@@ -43,24 +43,23 @@ Every time you create a new [version](https://developers.cloudflare.com/workers/
 
 New versions of a Worker are created when you run:
 
-* [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy)
-* [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload)
-* Or when you make edits via the Cloudflare dashboard
+- [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy)
+- [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload)
+- Or when you make edits via the Cloudflare dashboard
 
 If Preview URLs have been enabled, they are public and available immediately after version creation.
 
 Note
 
-Minimum required Wrangler version: 3.74.0\. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+Minimum required Wrangler version: 3.74.0. Check your version by running `wrangler --version`. To update Wrangler, refer to [Install/Update Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 #### View versioned preview URLs using Wrangler
 
-The [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command uploads a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker and returns a preview URL for each version uploaded.
+The [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command uploads a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker and returns a preview URL for each version uploaded.
 
 #### View versioned preview URLs on the Workers dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Go to the **Deployments** tab, and find the version you would like to view.
 
@@ -84,11 +83,11 @@ The resulting alias would be associated with this version, and immediately avail
 
 #### Rules and limitations
 
-* Aliases may only be created during version upload.
-* Aliases must use only lowercase letters, numbers, and dashes.
-* Aliases must begin with a lowercase letter.
-* The alias and Worker name combined (with a dash) must not exceed 63 characters due to DNS label limits.
-* Only the 1000 most recently deployed aliases are retained. When a new alias is created beyond this limit, the least recently deployed alias is deleted.
+- Aliases may only be created during version upload.
+- Aliases must use only lowercase letters, numbers, and dashes.
+- Aliases must begin with a lowercase letter.
+- The alias and Worker name combined (with a dash) must not exceed 63 characters due to DNS label limits.
+- Only the 1000 most recently deployed aliases are retained. When a new alias is created beyond this limit, the least recently deployed alias is deleted.
 
 ## Manage access to Preview URLs
 
@@ -102,18 +101,17 @@ To use details about the signed-in user in your Worker, read the [user's identit
 
 Note:
 
-* Preview URLs are enabled by default when `workers_dev` is enabled.
-* Preview URLs are disabled by default when `workers_dev` is disabled.
-* Disabling Preview URLs will disable routing to both versioned and aliased preview URLs.
+- Preview URLs are enabled by default when `workers_dev` is enabled.
+- Preview URLs are disabled by default when `workers_dev` is disabled.
+- Disabling Preview URLs will disable routing to both versioned and aliased preview URLs.
 
 ### From the Dashboard
 
 To toggle Preview URLs for a Worker:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
-3. Go to **Settings** \> **Domains & Routes**.
+3. Go to **Settings** > **Domains & Routes**.
 4. For Preview URLs, click **Enable** or **Disable**.
 5. Confirm your action.
 
@@ -157,10 +155,10 @@ If you enable or disable Preview URLs in the Cloudflare dashboard, but do not up
 
 ## Limitations
 
-* Preview URLs are not generated for Workers that implement a [Durable Object](https://developers.cloudflare.com/durable-objects/), including [Containers](https://developers.cloudflare.com/containers/) and [Sandbox](https://developers.cloudflare.com/sandbox/) Workers. For Containers testing options, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
-* Preview URLs are not currently generated for [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers). This is a temporary limitation, we are working to remove it.
-* You cannot currently configure Preview URLs to run on a subdomain other than [workers.dev](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).
-* You cannot view logs for Preview URLs today, this includes Workers Logs, Wrangler tail and Logpush.
+- Preview URLs are not generated for Workers that implement a [Durable Object](https://developers.cloudflare.com/durable-objects/), including [Containers](https://developers.cloudflare.com/containers/) and [Sandbox](https://developers.cloudflare.com/sandbox/) Workers. For Containers testing options, refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
+- Preview URLs are not currently generated for [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) [user Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers). This is a temporary limitation, we are working to remove it.
+- You cannot currently configure Preview URLs to run on a subdomain other than [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).
+- You cannot view logs for Preview URLs today, this includes Workers Logs, Wrangler tail and Logpush.
 
 Was this helpful?
 

@@ -12,19 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Demos and architectures
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/demos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/demos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how you can use Queues within your existing application and architecture.
 
 ## Reference architectures
 
-Explore the following reference architectures that use Queues:
+Explore the following reference architectures
 
-[**Fullstack applications**A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
+ that use Queues:
 
-[**Serverless ETL pipelines**Cloudflare enables fully serverless ETL pipelines, significantly reducing complexity, accelerating time to production, and lowering overall costs.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/)
+[**Fullstack applications** A practical example of how these services come together in a real fullstack application architecture.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/fullstack-application/)
 
-[**Retrieval Augmented Generation (RAG)**RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
+[**Serverless ETL pipelines** Cloudflare enables fully serverless ETL pipelines, significantly reducing complexity, accelerating time to production, and lowering overall costs.](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/)
+
+[**Retrieval Augmented Generation (RAG)** RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
 
 Was this helpful?
 

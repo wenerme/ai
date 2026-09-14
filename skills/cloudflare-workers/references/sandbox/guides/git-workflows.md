@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Work with Git
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/git-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/git-workflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to clone repositories, manage branches, and automate Git operations in the sandbox.
 
@@ -179,9 +179,9 @@ await sandbox.exec('cd repo && git commit -m "Update README"');
 
 ## Best practices
 
-* **Use shallow clones** \- Faster for large repos with `depth: 1`
-* **Store credentials securely** \- Use environment variables for tokens
-* **Clean up** \- Delete unused repositories to save space
+- **Use shallow clones** - Faster for large repos with `depth: 1`
+- **Store credentials securely** - Use environment variables for tokens
+- **Clean up** - Delete unused repositories to save space
 
 ## Troubleshooting
 
@@ -225,9 +225,9 @@ await sandbox.gitCheckout('https://github.com/user/large-repo', {
 
 ## Related resources
 
-* [Files API reference](https://developers.cloudflare.com/sandbox/api/files/) \- File operations after cloning
-* [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) \- Run git commands
-* [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) \- Work with cloned files
+- [Files API reference](https://developers.cloudflare.com/sandbox/api/files/) - File operations after cloning
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Run git commands
+- [Manage files guide](https://developers.cloudflare.com/sandbox/guides/manage-files/) - Work with cloned files
 
 Was this helpful?
 

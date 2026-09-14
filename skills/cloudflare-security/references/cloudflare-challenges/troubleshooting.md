@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Common issues
 
@@ -37,6 +37,8 @@ For example, a visitor coming from a given website is challenged by a [WAF rule]
 This affects tools like Google Analytics, which reads the referer from JavaScript, since it replaces the previous website that visitors came from.
 
 You can add tracking scripts, such as the Google Tag Manager Javascript, within an existing [Challenge Page](https://developers.cloudflare.com/rules/custom-errors/) to capture the correct referer header on the initial request.
+
+*Example JavaScriptjs*
 
 ```js
 <script>
@@ -79,20 +81,20 @@ Cross-origin resource sharing (CORS) preflight requests, or `OPTIONS`, exclude u
 
 Cloudflare issues challenges to website visitors to protect against malicious activity, such as bot attacks and DDoS attempts. If a legitimate human visitor is unexpectedly challenged, the reason typically stems from a security feature flagging their request.
 
-| Source                                      | Description                                                                 |
-| ------------------------------------------- | --------------------------------------------------------------------------- |
-| High threat score                           | IP addresses with a high-risk score trigger Challenges.                     |
-| IP reputation                               | If your IP has a history of suspicious activity, it may be flagged.         |
-| Bot detection                               | Automated traffic resembling bots is filtered by Cloudflare.                |
-| Web Application Firewall (WAF) custom rules | Site owners may set rules targeting specific regions or user agents.        |
-| Browser Integrity Check                     | Cloudflare verifies that browsers meet certain standards.                   |
-| Challenge Passage                           | Technologies like Privacy Pass reduce the frequency of repeated Challenges. |
+| Source | Description |
+| --- | --- |
+| High threat score | IP addresses with a high-risk score trigger Challenges. |
+| IP reputation | If your IP has a history of suspicious activity, it may be flagged. |
+| Bot detection | Automated traffic resembling bots is filtered by Cloudflare. |
+| Web Application Firewall (WAF) custom rules | Site owners may set rules targeting specific regions or user agents. |
+| Browser Integrity Check | Cloudflare verifies that browsers meet certain standards. |
+| Challenge Passage | Technologies like Privacy Pass reduce the frequency of repeated Challenges. |
 
 To avoid repeated challenges, visitors can take the following steps to ensure their environment does not trigger security checks:
 
-* Ensure your web browser is updated to the latest stable version for full compatibility with modern challenge technologies.
-* Temporarily disable browser extensions, such as ad blockers or privacy tools, that may block standard browser headers or the necessary challenge scripts.
-* If your IP address has a poor reputation (often seen with shared VPNs or corporate proxies), try switching to a different, trusted network connection.
+- Ensure your web browser is updated to the latest stable version for full compatibility with modern challenge technologies.
+- Temporarily disable browser extensions, such as ad blockers or privacy tools, that may block standard browser headers or the necessary challenge scripts.
+- If your IP address has a poor reputation (often seen with shared VPNs or corporate proxies), try switching to a different, trusted network connection.
 
 ### Allowlist traffic from mitigation actions
 
@@ -100,7 +102,7 @@ If you need to prevent a **Block** or **Challenge** action from being applied to
 
 Cloudflare supports two primary methods for creating these exclusions:
 
-#### 1\. Use a Skip rule (recommended)
+#### 1. Use a Skip rule (recommended)
 
 The most robust method for creating an exception is to create a custom rule with the **Skip** action. This allows matching requests to bypass certain security features, including Bot Management and other WAF rules.
 
@@ -108,57 +110,63 @@ Note
 
 Due to the evaluation order, **Skip** rules must be positioned before the **Block** or **Challenge** rule they are designed to bypass.
 
+<details>
+
+<summary>
+
 Example
+
+</summary>
 
 Block Amazon Web Services (AWS) and Google Cloud Platform (GCP) because of large volumes of undesired traffic, but allow Googlebot and other known bots that Cloudflare validates.
 
-* Basic rule, no exclusion:
-
-  * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`
-  * **Action**: Block (or a challenge action)
-* Rule that excludes IP addresses from being blocked or challenged:
-
-  * **Expression**: `(ip.src.asnum in {16509 15169} and not cf.client.bot) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`
-  * **Action**: Block (or a challenge action)
-* Two rules to skip remaining custom rules for specific IPs and block the rest.
-
+- Basic rule, no exclusion:
+  - **Expression**: <code>(ip.src.asnum in {16509 15169} and not cf.client.bot)</code>
+  - **Action**: Block (or a challenge action)
+- Rule that excludes IP addresses from being blocked or challenged:
+  - **Expression**: <code>(ip.src.asnum in {16509 15169} and not cf.client.bot) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})</code>
+  - **Action**: Block (or a challenge action)
+- Two rules to skip remaining custom rules for specific IPs and block the rest.
   1. Rule 1:
-
-    * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`
-    * Action: Skip > All remaining custom rules
+     - Expression: <code>ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}</code>
+     - Action: Skip &gt; All remaining custom rules
   2. Rule 2:
+     - Expression: <code>(ip.src.asnum in {16509 15169} and not cf.client.bot)</code>
+     - Action: Block (or a challenge action)
 
-    * Expression: `(ip.src.asnum in {16509 15169} and not cf.client.bot)`
-    * Action: Block (or a challenge action)
+</details>
 
-#### 2\. Modify the Rule Expression
+#### 2. Modify the Rule Expression
 
 You can refine the expression of a **Block** or **Challenge** rule to directly exclude known good traffic by using the logical not operator with an exclusion list, such as an IP list, country code, or ASN.
 
 This approach is useful for simple exclusions but can make complex rules more difficult to maintain than separate **Skip** rules.
 
+<details>
+
+<summary>
+
 Example
+
+</summary>
 
 Exclude multiple IP addresses from a **Block** or **Challenge** rule that assesses attack score.
 
-* Basic rule, no exclusion:
-
-  * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20)`
-  * **Action**: Block (or a challenge action)
-* Rule that excludes IP addresses from being blocked/challenged:
-
-  * **Expression**: `(http.host eq "example.com" and cf.waf.score lt 20) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})`
-  * **Action**: Block (or a challenge action)
-* Two rules to skip remaining custom rules for specific IPs and block the rest.
-
+- Basic rule, no exclusion:
+  - **Expression**: <code>(http.host eq "example.com" and cf.waf.score lt 20)</code>
+  - **Action**: Block (or a challenge action)
+- Rule that excludes IP addresses from being blocked/challenged:
+  - **Expression**: <code>(http.host eq "example.com" and cf.waf.score lt 20) and not (ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24})</code>
+  - **Action**: Block (or a challenge action)
+- Two rules to skip remaining custom rules for specific IPs and block the rest.
   1. Rule 1:
-
-    * Expression: `ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}`
-    * Action: Skip > All remaining custom rules
+     - Expression: <code>ip.src in {192.0.2.1 198.51.100.42 203.0.113.0/24}</code>
+     - Action: Skip &gt; All remaining custom rules
   2. Rule 2:
+     - Expression: <code>(http.host eq "example.com" and cf.waf.score lt 20)</code>
+     - Action: Block (or a challenge action)
 
-    * Expression: `(http.host eq "example.com" and cf.waf.score lt 20)`
-    * Action: Block (or a challenge action)
+</details>
 
 Was this helpful?
 

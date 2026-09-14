@@ -12,37 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect and secure from any network to anywhere
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/connect-secure-from-any-network-to-anywhere-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build your new corporate network with Cloudflare, connecting any network into our modern SASE platform and secure applications, users, devices and your company data. In this video you will learn all the different methods of connecting networks to Cloudflare and what services can be used to improve security and performance.
 
+<details>
+
+<summary>
+
 Chapters
 
-* ![Introduction to SASE and the Need for Modern, Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=0s)
+</summary>
 
-**Introduction to SASE and the Need for Modern, Secure Corporate Networking**0s
-* ![Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=117s)
+- ![Introduction to SASE and the Need for Modern, Secure Corporate Networking](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=0s)**Introduction to SASE and the Need for Modern, Secure Corporate Networking**0s
+- ![Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=117s)**Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations**1m57s
+- ![Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=167s)**Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach**2m47s
+- ![Integrating Private Networks and Data Centers using various methods](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=257s)**Integrating Private Networks and Data Centers using various methods**4m17s
+- ![Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=317s)**Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management**5m17s
 
-**Using Cloudflare to Unify and Secure Corporate Networks Across Multiple Locations**1m57s
-* ![Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=167s)
-
-**Enabling Secure Remote Access for Distributed Teams with Cloudflare's Zero Trust Approach**2m47s
-* ![Integrating Private Networks and Data Centers using various methods](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=257s)
-
-**Integrating Private Networks and Data Centers using various methods**4m17s
-* ![Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/86f22d1f760b77cdc349f89b25b63c3e/thumbnails/thumbnail.jpg?fit=crop&time=317s)
-
-**Cloudflare's Connectivity Cloud: Security, Performance, and Simplified Network Management**5m17s
+</details>
 
 **Related content**
 
 If you want to dive into detail about using Cloudflare to modernize your corporate network, refer to the following pages:
 
-* [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-* [WAN transformation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/)
-* [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
-* [Protect data center networks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/)
-* [Protect hybrid cloud networks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/)
+- [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- [WAN transformation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/wan-transformation/)
+- [Magic Transit Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/)
+- [Protect data center networks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-data-center-networks/)
+- [Protect hybrid cloud networks](https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/)
 
 ### [Watch Episode 1: The evolution of corporate networks](https://developers.cloudflare.com/learning-paths/sase-overview-course/series/evolution-corporate-networks-1/)
 

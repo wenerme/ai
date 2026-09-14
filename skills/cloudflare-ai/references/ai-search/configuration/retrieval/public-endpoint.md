@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Public endpoint settings
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure public endpoints to expose your AI Search instance directly to users without requiring authentication. This enables you to share your AI Search functionality with external users, or to integrate it into public-facing applications.
 
@@ -22,11 +22,11 @@ You can enable a public endpoint on a single instance or on a whole [namespace](
 
 An instance or a namespace can expose three public endpoints:
 
-| Endpoint          | Description                                   |
-| ----------------- | --------------------------------------------- |
-| /mcp              | Model Context Protocol endpoint for AI agents |
-| /chat/completions | OpenAI-compatible chat completion endpoint    |
-| /search           | Search endpoint that returns relevant chunks  |
+| Endpoint | Description |
+| --- | --- |
+| `/mcp` | Model Context Protocol endpoint for AI agents |
+| `/chat/completions` | OpenAI-compatible chat completion endpoint |
+| `/search` | Search endpoint that returns relevant chunks |
 
 For details on how to use these endpoints, refer to [Public endpoint usage](https://developers.cloudflare.com/ai-search/api/search/public-endpoint/).
 
@@ -34,15 +34,15 @@ For details on how to use these endpoints, refer to [Public endpoint usage](http
 
 Cloudflare generates the hostname when you enable the endpoint. It is not the instance or namespace name.
 
-| Hostname                                              | Serves                                                                                                                                             |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <PUBLIC\_ENDPOINT\_ID>.search.ai.cloudflare.com       | A single instance.                                                                                                                                 |
-| ns-<NAMESPACE\_ENDPOINT\_ID>.search.ai.cloudflare.com | A [namespace](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/), searching across several instances. |
+| Hostname | Serves |
+| --- | --- |
+| `<PUBLIC_ENDPOINT_ID>.search.ai.cloudflare.com` | A single instance. |
+| `ns-<NAMESPACE_ENDPOINT_ID>.search.ai.cloudflare.com` | A [namespace](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/), searching across several instances. |
 
 For example:
 
-* `https://abc123.search.ai.cloudflare.com/search`
-* `https://ns-abc123.search.ai.cloudflare.com/search`
+- `https://abc123.search.ai.cloudflare.com/search`
+- `https://ns-abc123.search.ai.cloudflare.com/search`
 
 The identifier is generated the first time you enable the endpoint and is never rotated. Disabling the endpoint keeps the identifier, so re-enabling it reuses the same URL.
 
@@ -52,9 +52,9 @@ You can also serve the same endpoints from a hostname that you own, such as `htt
 
 You can enable or disable each public endpoint independently:
 
-1. Log in to your Cloudflare account, and go to **AI Search**. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Log in to your Cloudflare account, and go to **AI Search**. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance or namespace.
-3. Go to **Settings** \> **Public Endpoints**.
+3. Go to **Settings** > **Public Endpoints**.
 4. Toggle on **Public Endpoints** to enable the feature, then toggle each individual endpoint on or off as needed.
 
 Each endpoint has its own configuration panel for granular control.
@@ -65,11 +65,11 @@ To enable a namespace endpoint through the API, refer to [Namespace public endpo
 
 Configure rate limits to control usage across all public endpoints:
 
-| Setting             | Description                               | Default  |
-| ------------------- | ----------------------------------------- | -------- |
-| Requests per period | Maximum number of requests allowed        | 120      |
-| Time period         | Time window for the rate limit            | 1 minute |
-| Period type         | Rate limiting technique: fixed or sliding | fixed    |
+| Setting | Description | Default |
+| --- | --- | --- |
+| Requests per period | Maximum number of requests allowed | 120 |
+| Time period | Time window for the rate limit | 1 minute |
+| Period type | Rate limiting technique: `fixed` or `sliding` | `fixed` |
 
 Rate limits apply across all enabled public endpoints for the AI Search instance.
 
@@ -79,8 +79,8 @@ Cross-Origin Resource Sharing (CORS) is enabled by default to support browser-ba
 
 The default allowed origins depend on your data source type:
 
-* **Website data sources**: The source domain is automatically added as an allowed origin.
-* **Other data sources**: All origins (`*`) are allowed by default.
+- **Website data sources**: The source domain is automatically added as an allowed origin.
+- **Other data sources**: All origins ( `*`) are allowed by default.
 
 You can customize allowed origins in the **Public Endpoints** settings by adding specific hostnames to **Authorized hosts**.
 
@@ -109,10 +109,10 @@ To restrict who can query the endpoint, add a [custom domain](https://developers
 
 If you keep the endpoint open:
 
-* Only index content that is safe to expose publicly.
-* Set a [rate limit](#rate-limiting) to limit abuse.
-* Disable the endpoints you do not use, such as `/mcp`.
-* Monitor usage through your dashboard analytics.
+- Only index content that is safe to expose publicly.
+- Set a [rate limit](#rate-limiting) to limit abuse.
+- Disable the endpoints you do not use, such as `/mcp`.
+- Monitor usage through your dashboard analytics.
 
 ## Related
 

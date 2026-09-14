@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dockerfile reference
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -24,11 +24,11 @@ Customize the sandbox container image with your own packages, tools, and configu
 
 The Sandbox SDK provides multiple Ubuntu-based image variants. Choose the one that fits your use case:
 
-| Image    | Tag suffix | Use case                                       |
-| -------- | ---------- | ---------------------------------------------- |
-| Default  | (none)     | Lean image for JavaScript/TypeScript workloads |
-| Python   | \-python   | Data science, ML, Python code execution        |
-| OpenCode | \-opencode | AI coding agents with OpenCode CLI             |
+| Image | Tag suffix | Use case |
+| --- | --- | --- |
+| Default | (none) | Lean image for JavaScript/TypeScript workloads |
+| Python | `-python` | Data science, ML, Python code execution |
+| OpenCode | `-opencode` | AI coding agents with OpenCode CLI |
 
 ```dockerfile
 # Default - lean, no Python
@@ -53,27 +53,29 @@ See [Version compatibility](https://developers.cloudflare.com/sandbox/concepts/s
 
 The default image is optimized for JavaScript and TypeScript workloads:
 
-* Ubuntu 22.04 LTS base
-* Node.js 20 LTS with npm
-* Bun 1.x (JavaScript/TypeScript runtime)
-* System utilities: curl, wget, git, jq, zip, unzip, file, procps, ca-certificates
+- Ubuntu 22.04 LTS base
+- Node.js 20 LTS with npm
+- Bun 1.x (JavaScript/TypeScript runtime)
+- System utilities: curl, wget, git, jq, zip, unzip, file, procps, ca-certificates
 
 ### Python image
 
 The `-python` variant includes everything in the default image plus:
 
-* Python 3.11 with pip and venv
-* Pre-installed packages: matplotlib, numpy, pandas, ipython
+- Python 3.11 with pip and venv
+- Pre-installed packages: matplotlib, numpy, pandas, ipython
 
 ### OpenCode image
 
 The `-opencode` variant includes everything in the default image plus:
 
-* [OpenCode CLI ↗](https://opencode.ai) for AI-powered coding agents
+- [OpenCode CLI ↗](https://opencode.ai) for AI-powered coding agents
 
 ## Creating a custom image
 
 Create a `Dockerfile` in your project root:
+
+*Dockerfiledockerfile*
 
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.7.0-python
@@ -96,6 +98,8 @@ RUN apt-get update && apt-get install -y \
 
 Update `wrangler.jsonc` to reference your Dockerfile:
 
+*wrangler.jsoncjsonc*
+
 ```jsonc
 {
 	"containers": [
@@ -113,6 +117,8 @@ When you run `wrangler dev` or `wrangler deploy`, Wrangler automatically builds 
 
 You can add sandbox capabilities to any Docker image using the standalone binary. This approach lets you use your existing images without depending on the Cloudflare base images:
 
+*Dockerfiledockerfile*
+
 ```dockerfile
 FROM your-custom-image:tag
 
@@ -123,6 +129,8 @@ ENTRYPOINT ["/sandbox"]
 ```
 
 The `/sandbox` binary starts the HTTP API server that enables SDK communication. You can optionally run your own startup command:
+
+*Dockerfiledockerfile*
 
 ```dockerfile
 FROM node:20-slim
@@ -143,6 +151,8 @@ When using `CMD`, the sandbox binary runs your command as a child process with p
 
 For more complex startup sequences, create a custom startup script:
 
+*Dockerfiledockerfile*
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.7.0-python
 
@@ -154,6 +164,8 @@ CMD ["/workspace/startup.sh"]
 ```
 
 The base image already sets the correct `ENTRYPOINT`, so you only need to provide a `CMD`. The sandbox binary starts the HTTP API server, then spawns your `CMD` as a child process with proper signal forwarding.
+
+*startup.shbash*
 
 ```bash
 #!/bin/bash
@@ -175,10 +187,10 @@ If you have existing startup scripts that end with `exec bun /container-server/d
 
 ## Related resources
 
-* [Image Management](https://developers.cloudflare.com/containers/guides/image-management/) \- Building and pushing images to Cloudflare's registry
-* [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Using custom images in wrangler.jsonc
-* [Docker documentation ↗](https://docs.docker.com/reference/dockerfile/) \- Complete Dockerfile syntax
-* [Container concepts](https://developers.cloudflare.com/sandbox/concepts/containers/) \- Understanding the runtime environment
+- [Image Management](https://developers.cloudflare.com/containers/guides/image-management/) - Building and pushing images to Cloudflare's registry
+- [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) - Using custom images in wrangler.jsonc
+- [Docker documentation ↗](https://docs.docker.com/reference/dockerfile/) - Complete Dockerfile syntax
+- [Container concepts](https://developers.cloudflare.com/sandbox/concepts/containers/) - Understanding the runtime environment
 
 Was this helpful?
 

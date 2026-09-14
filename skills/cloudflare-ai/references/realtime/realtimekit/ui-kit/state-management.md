@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # State Management
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/state-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -40,6 +40,7 @@ The React Native UI Kit components communicate and synchronize with each other b
 
 Here's an example of how state synchronization works when opening the participants sidebar:
 
+```
 flowchart LR
     accTitle: Sidebar State Synchronization Example
     accDescr: Example showing how clicking participants toggle updates sidebar through meeting coordination
@@ -55,6 +56,8 @@ flowchart LR
 
     style Meeting fill:#F48120,stroke:#333,stroke-width:2px,color:#fff
     style App fill:#0051C3,stroke:#333,stroke-width:2px,color:#fff
+
+```
 
 ## State Flow
 
@@ -254,6 +257,8 @@ For Web Components, you need to add an event listener to the `rtk-meeting` compo
 ```
 
 For Angular, you need to add an event listener to the `rtk-meeting` component to listen for `rtkStatesUpdate` events.
+
+*meeting.component.tstypescript*
 
 ```typescript
 import {
@@ -559,18 +564,18 @@ function MeetingEvents() {
 
 The `rtkStatesUpdate` event provides detailed information about the UI Kit's internal state. Key properties include:
 
-* **`meeting`**: Current meeting state - `'idle'`, `'setup'`, `'joined'`, `'ended'`, or `'waiting'`
-* **`activeSidebar`**: Whether the sidebar is currently open (boolean)
-* **`sidebar`**: Current sidebar section - `'chat'`, `'participants'`, `'polls'`, `'plugins'`, etc.
-* **`activeScreenShare`**: Whether screen sharing UI is active (boolean)
-* **`activeMoreMenu`**: Whether the more menu is open (boolean)
-* **`activeSettings`**: Whether settings panel is open (boolean)
-* **`viewType`**: Current video grid view type (string)
-* **`prefs`**: User preferences object (e.g., `mirrorVideo`, `muteNotificationSounds`)
-* **`roomLeftState`**: State when leaving the room
-* **`activeOverlayModal`**: Active overlay modal configuration object
-* **`activeConfirmationModal`**: Active confirmation modal configuration object
-* **And many more UI state properties**
+- **`meeting`**: Current meeting state - `'idle'`, `'setup'`, `'joined'`, `'ended'`, or `'waiting'`
+- **`activeSidebar`**: Whether the sidebar is currently open (boolean)
+- **`sidebar`**: Current sidebar section - `'chat'`, `'participants'`, `'polls'`, `'plugins'`, etc.
+- **`activeScreenShare`**: Whether screen sharing UI is active (boolean)
+- **`activeMoreMenu`**: Whether the more menu is open (boolean)
+- **`activeSettings`**: Whether settings panel is open (boolean)
+- **`viewType`**: Current video grid view type (string)
+- **`prefs`**: User preferences object (e.g., `mirrorVideo`, `muteNotificationSounds`)
+- **`roomLeftState`**: State when leaving the room
+- **`activeOverlayModal`**: Active overlay modal configuration object
+- **`activeConfirmationModal`**: Active confirmation modal configuration object
+- **And many more UI state properties**
 
 Note
 
@@ -578,29 +583,29 @@ These are **UI Kit internal states** for managing the interface. For meeting dat
 
 On mobile platforms, state is observed through Core SDK event listeners rather than a single state object. The key event listeners and their callbacks include:
 
-**`RtkMeetingRoomEventListener`** \- Meeting lifecycle:
+**`RtkMeetingRoomEventListener`** - Meeting lifecycle:
 
-* **`onMeetingRoomJoinStarted`**: Meeting join process has started
-* **`onMeetingRoomJoinCompleted`**: Successfully joined the meeting
-* **`onMeetingRoomJoinFailed`**: Meeting join failed (provides exception details)
-* **`onMeetingRoomLeaveStarted`**: Leave process has started
-* **`onMeetingRoomLeft`**: Successfully left the meeting
-* **`onMeetingEnded`**: Meeting ended for all participants
-* **`onActiveTabUpdate`**: Active sidebar tab changed (chat, polls, participants)
+- **`onMeetingRoomJoinStarted`**: Meeting join process has started
+- **`onMeetingRoomJoinCompleted`**: Successfully joined the meeting
+- **`onMeetingRoomJoinFailed`**: Meeting join failed (provides exception details)
+- **`onMeetingRoomLeaveStarted`**: Leave process has started
+- **`onMeetingRoomLeft`**: Successfully left the meeting
+- **`onMeetingEnded`**: Meeting ended for all participants
+- **`onActiveTabUpdate`**: Active sidebar tab changed (chat, polls, participants)
 
-**`RtkSelfEventListener`** \- Local participant:
+**`RtkSelfEventListener`** - Local participant:
 
-* **`onAudioUpdate`**: Audio toggled on or off
-* **`onVideoUpdate`**: Video toggled on or off
-* **`onRemovedFromMeeting`**: Local user was removed by host
+- **`onAudioUpdate`**: Audio toggled on or off
+- **`onVideoUpdate`**: Video toggled on or off
+- **`onRemovedFromMeeting`**: Local user was removed by host
 
-**`RtkParticipantsEventListener`** \- Remote participants:
+**`RtkParticipantsEventListener`** - Remote participants:
 
-* **`onParticipantJoin`**: A participant joined the meeting
-* **`onParticipantLeave`**: A participant left the meeting
-* **`onActiveParticipantsChanged`**: Active participants list changed
-* **`onAudioUpdate`**: A remote participant's audio state changed
-* **`onVideoUpdate`**: A remote participant's video state changed
+- **`onParticipantJoin`**: A participant joined the meeting
+- **`onParticipantLeave`**: A participant left the meeting
+- **`onActiveParticipantsChanged`**: Active participants list changed
+- **`onAudioUpdate`**: A remote participant's audio state changed
+- **`onVideoUpdate`**: A remote participant's video state changed
 
 Note
 
@@ -608,14 +613,14 @@ For the full list of event listeners and their callbacks, refer to the [Core SDK
 
 On React Native, use the `useRealtimeKitSelector` hook to observe specific properties on the meeting object. Key properties include:
 
-* **`m.self.roomState`**: Current room state (`'init'`, `'joined'`, `'left'`, etc.)
-* **`m.self.audioEnabled`**: Whether local audio is enabled (boolean)
-* **`m.self.videoEnabled`**: Whether local video is enabled (boolean)
-* **`m.self.screenShareEnabled`**: Whether screen share is active (boolean)
-* **`m.self.name`**: Local participant display name
-* **`m.self.id`**: Local participant peer ID
-* **`m.participants.joined`**: List of joined participants
-* **`m.participants.active`**: List of active participants
+- **`m.self.roomState`**: Current room state ( `'init'`, `'joined'`, `'left'`, etc.)
+- **`m.self.audioEnabled`**: Whether local audio is enabled (boolean)
+- **`m.self.videoEnabled`**: Whether local video is enabled (boolean)
+- **`m.self.screenShareEnabled`**: Whether screen share is active (boolean)
+- **`m.self.name`**: Local participant display name
+- **`m.self.id`**: Local participant peer ID
+- **`m.participants.joined`**: List of joined participants
+- **`m.participants.active`**: List of active participants
 
 Note
 
@@ -623,26 +628,26 @@ For the full list of available properties, refer to the [Core SDK meeting object
 
 ## Best Practices
 
-* **Store states appropriately**: Use React's `useState` hook or a state management library (like Zustand or Redux) for React apps. For vanilla JavaScript, use a reactive state management solution or simple object storage.
-* **Avoid excessive re-renders**: Only update your UI when necessary. In React, consider using `useMemo` or `useCallback` to optimize performance.
-* **Access nested properties safely**: Always check if nested properties exist before accessing them (e.g., `states.sidebar`, `states.prefs?.mirrorVideo`).
-* **Use states for conditional rendering**: Leverage the UI states to show/hide UI elements or respond to interface changes (e.g., showing custom indicators when `states.activeScreenShare` is true).
-* **Understand the difference**: `rtkStatesUpdate` provides **UI Kit internal states** for interface management. For meeting data (participants, active speaker, recording status), use the Core SDK's `meeting` object and its events directly.
+- **Store states appropriately**: Use React's `useState` hook or a state management library (like Zustand or Redux) for React apps. For vanilla JavaScript, use a reactive state management solution or simple object storage.
+- **Avoid excessive re-renders**: Only update your UI when necessary. In React, consider using `useMemo` or `useCallback` to optimize performance.
+- **Access nested properties safely**: Always check if nested properties exist before accessing them (e.g., `states.sidebar`, `states.prefs?.mirrorVideo`).
+- **Use states for conditional rendering**: Leverage the UI states to show/hide UI elements or respond to interface changes (e.g., showing custom indicators when `states.activeScreenShare` is true).
+- **Understand the difference**: `rtkStatesUpdate` provides **UI Kit internal states** for interface management. For meeting data (participants, active speaker, recording status), use the Core SDK's `meeting` object and its events directly.
 
-* **Remove listeners on cleanup**: Always remove event listeners in `onDestroy()` to prevent memory leaks. Store listener references so you can unregister them later.
-* **Use appropriate threading**: Event listener callbacks may fire on background threads. Use `runOnUiThread` or post to the main handler when updating UI elements.
-* **Store state in observable patterns**: Use `LiveData`, `StateFlow`, or `MutableState` (Compose) to propagate state changes to your UI reactively.
-* **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
+- **Remove listeners on cleanup**: Always remove event listeners in `onDestroy()` to prevent memory leaks. Store listener references so you can unregister them later.
+- **Use appropriate threading**: Event listener callbacks may fire on background threads. Use `runOnUiThread` or post to the main handler when updating UI elements.
+- **Store state in observable patterns**: Use `LiveData`, `StateFlow`, or `MutableState` (Compose) to propagate state changes to your UI reactively.
+- **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
 
-* **Remove listeners on cleanup**: Always remove event listeners when your view controller or view model is deallocated to prevent retain cycles and memory leaks.
-* **Use `@Published` for reactive UI**: In SwiftUI, mark state properties as `@Published` in your `ObservableObject` to automatically re-render views when meeting state changes.
-* **Handle threading**: Event listener callbacks may fire on background threads. Use `DispatchQueue.main.async` when updating UI elements from callbacks.
-* **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
+- **Remove listeners on cleanup**: Always remove event listeners when your view controller or view model is deallocated to prevent retain cycles and memory leaks.
+- **Use `@Published` for reactive UI**: In SwiftUI, mark state properties as `@Published` in your `ObservableObject` to automatically re-render views when meeting state changes.
+- **Handle threading**: Event listener callbacks may fire on background threads. Use `DispatchQueue.main.async` when updating UI elements from callbacks.
+- **Understand the difference**: Event listeners provide **meeting lifecycle and participant state** changes. The UI Kit manages its own internal UI state separately.
 
-* **Use selectors for efficiency**: The `useRealtimeKitSelector` hook only re-renders your component when the selected value changes. Select only the specific properties you need rather than the entire meeting object.
-* **Clean up event listeners**: When using `meeting.self.on()` event listeners, always return a cleanup function from `useEffect` that calls `removeListener`.
-* **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
-* **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
+- **Use selectors for efficiency**: The `useRealtimeKitSelector` hook only re-renders your component when the selected value changes. Select only the specific properties you need rather than the entire meeting object.
+- **Clean up event listeners**: When using `meeting.self.on()` event listeners, always return a cleanup function from `useEffect` that calls `removeListener`.
+- **Combine with `useMemo` and `useCallback`**: Use React memoization hooks to prevent unnecessary re-renders when meeting state changes frequently.
+- **Understand the difference**: `useRealtimeKitSelector` provides access to **Core SDK meeting state** (participants, media, room state). The UI Kit handles its own internal UI state through the `RtkMeeting` component.
 
 Was this helpful?
 

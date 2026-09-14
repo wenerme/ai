@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot routing and BGP
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/troubleshooting/routing-and-bgp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common routing and BGP issues with Magic Transit. These issues can affect traffic delivery, cause unexpected latency, or result in connectivity loss.
 
@@ -35,18 +35,18 @@ ISP route refresh delays may impact traffic
 
 Cloudflare's action to advertise or withdraw a route takes effect across the global network within minutes. However, Cloudflare has no control over how quickly external ISPs refresh their BGP tables after the change.
 
-| Action               | Cloudflare propagation | Global Internet propagation     |
-| -------------------- | ---------------------- | ------------------------------- |
-| Prefix advertisement | 1-2 minutes            | 2-5 minutes typical             |
-| Prefix withdrawal    | 1-2 minutes            | 2-15 minutes (BGP path hunting) |
+| Action | Cloudflare propagation | Global Internet propagation |
+| --- | --- | --- |
+| Prefix advertisement | 1-2 minutes | 2-5 minutes typical |
+| Prefix withdrawal | 1-2 minutes | 2-15 minutes (BGP path hunting) |
 
 ### Why withdrawals take longer
 
 When a route is withdrawn, Internet networks perform BGP path hunting. They search for alternative paths before converging on the new routing state. This behavior is amplified by:
 
-* Cloudflare's global anycast network and extensive peering relationships
-* The Minimum Route Advertisement Interval (MRAI), typically 30 seconds per iteration
-* Multiple Tier-1 networks needing to converge independently
+- Cloudflare's global anycast network and extensive peering relationships
+- The Minimum Route Advertisement Interval (MRAI), typically 30 seconds per iteration
+- Multiple Tier-1 networks needing to converge independently
 
 During path hunting, traffic may be routed suboptimally or dropped entirely.
 
@@ -64,18 +64,18 @@ This section covers BGP peering sessions (beta) between your network and Cloudfl
 
 #### Symptoms
 
-* BGP session never reaches **Established** state
-* No routes being advertised or received
-* Router logs show repeated connection attempts
+- BGP session never reaches **Established** state
+- No routes being advertised or received
+- Router logs show repeated connection attempts
 
 #### BGP session states
 
-| State           | Meaning                              | Action                                     |
-| --------------- | ------------------------------------ | ------------------------------------------ |
-| **Established** | Session up, exchanging routes        | Normal operation                           |
-| **Active**      | Attempting to initiate connection    | Check firewall rules, verify neighbor IP   |
-| **Connect**     | TCP connection in progress           | Check port 179 access, verify peering IP   |
-| **Idle**        | Session down, no connection attempts | Check configuration, verify BGP is enabled |
+| State | Meaning | Action |
+| --- | --- | --- |
+| **Established** | Session up, exchanging routes | Normal operation |
+| **Active** | Attempting to initiate connection | Check firewall rules, verify neighbor IP |
+| **Connect** | TCP connection in progress | Check port `179` access, verify peering IP |
+| **Idle** | Session down, no connection attempts | Check configuration, verify BGP is enabled |
 
 #### Solution
 
@@ -88,15 +88,15 @@ This section covers BGP peering sessions (beta) between your network and Cloudfl
 
 #### Symptoms
 
-* Dashboard shows prefix as **Advertised**
-* External hosts cannot reach IPs in the prefix
-* Traffic is dropped
+- Dashboard shows prefix as **Advertised**
+- External hosts cannot reach IPs in the prefix
+- Traffic is dropped
 
 #### Causes
 
-* Route propagation still in progress
-* Missing return path routing on your network
-* ROA/RPKI validation issues with upstream ISPs
+- Route propagation still in progress
+- Missing return path routing on your network
+- ROA/RPKI validation issues with upstream ISPs
 
 #### Solution
 
@@ -109,17 +109,17 @@ This section covers BGP peering sessions (beta) between your network and Cloudfl
 
 #### Symptoms
 
-* Prefix withdrawn through API or dashboard
-* External traffic continues arriving at Cloudflare but is dropped
-* Connectivity loss persists for several minutes after withdrawal
+- Prefix withdrawn through API or dashboard
+- External traffic continues arriving at Cloudflare but is dropped
+- Connectivity loss persists for several minutes after withdrawal
 
 #### Cause
 
 This is BGP path hunting behavior. When Cloudflare withdraws your prefix, Internet networks search for alternative paths. Convergence typically takes two to five minutes but can extend beyond 11 minutes. During this period, traffic may:
 
-* Route to Cloudflare through cached paths at ISPs
-* Loop between Tier-1 providers that have not yet converged
-* Be dropped before reaching your network
+- Route to Cloudflare through cached paths at ISPs
+- Loop between Tier-1 providers that have not yet converged
+- Be dropped before reaching your network
 
 #### Solution
 
@@ -138,24 +138,23 @@ Refer to [Safely withdraw a BYOIP prefix](https://developers.cloudflare.com/magi
 
 #### Symptoms
 
-* Traffic from specific regions routed through distant data centers
-* Higher than expected latency for regional users
-* Traffic not using the closest tunnel or CNI
+- Traffic from specific regions routed through distant data centers
+- Higher than expected latency for regional users
+- Traffic not using the closest tunnel or CNI
 
 #### Causes
 
-* Tunnel health degradation causing route deprioritization
-* Regional route scoping misconfiguration
-* BGP route priorities not set as expected
-* Static routes overriding BGP routes
+- Tunnel health degradation causing route deprioritization
+- Regional route scoping misconfiguration
+- BGP route priorities not set as expected
+- Static routes overriding BGP routes
 
 #### Solution
 
 1. **Check tunnel health**: Degraded tunnels have 500,000 added to their route priority. Down tunnels have 1,000,000 added. Traffic shifts to healthier paths, which may be in different regions. Refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/) for diagnostic steps.
 2. **Review route priorities**: Lower priority values indicate higher preference. Verify your routes have the expected priority configuration.
-
-  * Default BGP route priority: `100`
-  * Static routes at priority `100` take precedence over BGP routes at `100`
+   - Default BGP route priority: `100`
+   - Static routes at priority `100` take precedence over BGP routes at `100`
 3. **Check regional scoping**: If you use region-scoped routes, ensure all regions have route coverage. Traffic arriving at a region without a matching route is dropped.
 4. **Use Network Analytics**: Review traffic patterns to identify where traffic is landing and which paths it follows. Refer to [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/) for usage instructions.
 
@@ -163,19 +162,19 @@ Refer to [Safely withdraw a BYOIP prefix](https://developers.cloudflare.com/magi
 
 #### Symptoms
 
-* CNI shows down in dashboard
-* BGP session over CNI drops
-* Traffic fails over to tunnels or alternate CNIs
+- CNI shows down in dashboard
+- BGP session over CNI drops
+- Traffic fails over to tunnels or alternate CNIs
 
 #### CNI issue layers
 
 CNI issues can occur at multiple layers:
 
-| Issue type         | Impact                             | What to check                      |
-| ------------------ | ---------------------------------- | ---------------------------------- |
+| Issue type | Impact | What to check |
+| --- | --- | --- |
 | Physical link down | All traffic over that CNI affected | Light levels, cross-connect status |
-| BGP session down   | Dynamic routes withdrawn           | BGP neighbor state on your router  |
-| Prefixes withdrawn | Specific routes unavailable        | BGP advertised and received routes |
+| BGP session down | Dynamic routes withdrawn | BGP neighbor state on your router |
+| Prefixes withdrawn | Specific routes unavailable | BGP advertised and received routes |
 
 A healthy physical link can still have BGP issues. A healthy BGP session can exist while specific prefixes are withdrawn.
 
@@ -208,9 +207,9 @@ Refer to [Network Interconnect](https://developers.cloudflare.com/network-interc
 
 #### Symptoms
 
-* BGP routes not being used despite being learned
-* Traffic not following expected BGP path
-* Route changes not taking effect as expected
+- BGP routes not being used despite being learned
+- Traffic not following expected BGP path
+- Route changes not taking effect as expected
 
 #### Cause
 
@@ -220,13 +219,13 @@ Cloudflare prefers static routes when static and BGP routes share the same prefi
 
 Adjust route priorities based on your preference:
 
-* **To prefer BGP routes**: Set static route priority to a higher number (for example, `150` or `200`). Higher numbers indicate lower preference.
-* **To prefer static routes**: Keep static route priority at or below `100`. BGP routes default to priority `100`.
+- **To prefer BGP routes**: Set static route priority to a higher number (for example, `150` or `200`). Higher numbers indicate lower preference.
+- **To prefer static routes**: Keep static route priority at or below `100`. BGP routes default to priority `100`.
 
-| Route type | Prefix      | Priority | Selected               |
-| ---------- | ----------- | -------- | ---------------------- |
-| Static     | 10.0.0.0/24 | 100      | Yes (static wins ties) |
-| BGP        | 10.0.0.0/24 | 100      | No                     |
+| Route type | Prefix | Priority | Selected |
+| --- | --- | --- | --- |
+| Static | `10.0.0.0/24` | `100` | Yes (static wins ties) |
+| BGP | `10.0.0.0/24` | `100` | No |
 
 To make the BGP route preferred in this example, change the static route priority to `150` or higher, or remove the static route entirely.
 
@@ -236,11 +235,11 @@ Refer to [Route prioritization](https://developers.cloudflare.com/magic-transit/
 
 Understanding the relationship between these components helps diagnose routing issues:
 
-| Component         | What it monitors                                        | Impact when unhealthy                                          |
-| ----------------- | ------------------------------------------------------- | -------------------------------------------------------------- |
-| **CNI health**    | Physical or virtual interconnect link status            | BGP session may drop. All traffic over that CNI is affected.   |
+| Component | What it monitors | Impact when unhealthy |
+| --- | --- | --- |
+| **CNI health** | Physical or virtual interconnect link status | BGP session may drop. All traffic over that CNI is affected. |
 | **Tunnel health** | Logical GRE or IPsec tunnel through health check probes | Route priority penalized. Traffic steers to healthier tunnels. |
-| **BGP session**   | Control plane connectivity for dynamic routing          | Dynamic routes withdrawn. Static routes remain unaffected.     |
+| **BGP session** | Control plane connectivity for dynamic routing | Dynamic routes withdrawn. Static routes remain unaffected. |
 
 A healthy CNI can have an unhealthy tunnel if health check probes are blocked or misconfigured. BGP routes can be withdrawn even when the underlying physical link is operational.
 
@@ -253,19 +252,19 @@ If you have worked through this guide and still experience routing issues, gathe
 1. **Account ID** and affected prefix(es), tunnel name(s), or CNI identifier(s)
 2. **Timestamps** (in UTC) when the issue occurred
 3. **BGP configuration details:**
-  * Your ASN and Cloudflare peering ASN
-  * Neighbor IP addresses
-  * Sanitized router configuration (remove passwords and keys)
+   - Your ASN and Cloudflare peering ASN
+   - Neighbor IP addresses
+   - Sanitized router configuration (remove passwords and keys)
 4. **Current state information:**
-  * BGP session state from your router
-  * Dashboard screenshots showing prefix, route, or tunnel status
+   - BGP session state from your router
+   - Dashboard screenshots showing prefix, route, or tunnel status
 
 ### Helpful diagnostic data
 
-* **External BGP visibility**: Results from looking glass tools showing your prefix
-* **Router logs**: BGP neighbor logs covering the incident timeframe
-* **Traceroute results**: From affected source networks to your prefix
-* **For CNI issues**: Optical light level readings from your equipment
+- **External BGP visibility**: Results from looking glass tools showing your prefix
+- **Router logs**: BGP neighbor logs covering the incident timeframe
+- **Traceroute results**: From affected source networks to your prefix
+- **For CNI issues**: Optical light level readings from your equipment
 
 ### Router diagnostic commands
 
@@ -291,13 +290,13 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 
 ## Resources
 
-* [Traffic steering](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#route-prioritization): Route prioritization, BGP communities, and ECMP behavior
-* [Advertise prefixes](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/): BGP control methods and safe withdrawal procedures
-* [Configure routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/): Static route configuration
-* [Network Interconnect](https://developers.cloudflare.com/network-interconnect/): CNI setup and BGP peering
-* [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/): Tunnel-specific diagnostic steps
-* [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Traffic analysis and monitoring
-* [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
+- [Traffic steering](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#route-prioritization): Route prioritization, BGP communities, and ECMP behavior
+- [Advertise prefixes](https://developers.cloudflare.com/magic-transit/how-to/advertise-prefixes/): BGP control methods and safe withdrawal procedures
+- [Configure routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/): Static route configuration
+- [Network Interconnect](https://developers.cloudflare.com/network-interconnect/): CNI setup and BGP peering
+- [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/): Tunnel-specific diagnostic steps
+- [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Traffic analysis and monitoring
+- [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway is available to use on all plans.
 
@@ -28,10 +28,10 @@ Persistent logs are available on all plans. Log storage limits vary by plan.
 
 ### Log storage limits
 
-| Plan         | Log storage limit                      |
-| ------------ | -------------------------------------- |
+| Plan | Log storage limit |
+| --- | --- |
 | Workers Free | 100,000 logs total across all gateways |
-| Workers Paid | 10,000,000 logs per gateway            |
+| Workers Paid | 10,000,000 logs per gateway |
 
 For more details on log storage behavior and automatic log deletion, refer to [Limits](https://developers.cloudflare.com/ai-gateway/reference/limits/) and [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion).
 
@@ -43,7 +43,7 @@ DLP profiles are shared at the account level with [Cloudflare One](https://devel
 
 ## Guardrails
 
-[Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/) evaluates prompts and responses using [@cf/meta/llama-guard-3-8b](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/) on Workers AI. Usage is billed as [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) token-based inference — cost scales with the length of the prompts and responses being evaluated.
+[Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/) evaluates prompts and responses using [`@cf/meta/llama-guard-3-8b`](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/) on Workers AI. Usage is billed as [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) token-based inference — cost scales with the length of the prompts and responses being evaluated.
 
 ## Unified Billing
 
@@ -53,8 +53,8 @@ A 5% fee is applied to all credits purchased through [Unified Billing](https://d
 
 Logpush is only available on the Workers Paid plan.
 
-|          | Paid plan                          |
-| -------- | ---------------------------------- |
+|  | Paid plan |
+| --- | --- |
 | Requests | 10 million / month, +$0.05/million |
 
 ## Pricing notes

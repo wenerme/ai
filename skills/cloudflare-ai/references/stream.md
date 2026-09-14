@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Stream
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Serverless live and on-demand video streaming
 
@@ -60,7 +60,7 @@ Explore Analytics
 
 ### [Discord](https://discord.cloudflare.com)
 
- Join the Stream developer community
+Join the Stream developer community
 
 Was this helpful?
 

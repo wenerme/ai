@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create an exception
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/create-exception/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of a managed ruleset of some of its rules.
 
@@ -30,9 +30,9 @@ Currently, only the [Cloudflare Web Application Firewall (WAF)](https://develope
 
 An exception can have one of the following behaviors (from highest to lowest priority):
 
-* [Skip all remaining rules in the entry point ruleset](#skip-all-remaining-rules)
-* [Skip one or more managed rulesets](#skip-one-or-more-managed-rulesets)
-* [Skip one or more rules of managed rulesets](#skip-one-or-more-rules-of-managed-rulesets)
+- [Skip all remaining rules in the entry point ruleset](#skip-all-remaining-rules)
+- [Skip one or more managed rulesets](#skip-one-or-more-managed-rulesets)
+- [Skip one or more rules of managed rulesets](#skip-one-or-more-rules-of-managed-rulesets)
 
 You define exceptions in a given context — zone level or account level — and they apply only to that context. For example, if you define an exception that skips all remaining rules at the account level, the rules defined in the entry point ruleset at the zone level will still be evaluated.
 
@@ -109,9 +109,9 @@ For a full example, refer to the [WAF documentation](https://developers.cloudfla
 
 ## Additional notes
 
-* Exceptions have priority over [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
-* If you define an exception that skips all remaining rules, the expressions of those rules are not evaluated.
-* If you define an exception that skips a rule of a managed ruleset, the expression of the rule that executes the managed ruleset is evaluated and the managed ruleset rules are executed except for that specific rule, which is bypassed.
+- Exceptions have priority over [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
+- If you define an exception that skips all remaining rules, the expressions of those rules are not evaluated.
+- If you define an exception that skips a rule of a managed ruleset, the expression of the rule that executes the managed ruleset is evaluated and the managed ruleset rules are executed except for that specific rule, which is bypassed.
 
 Was this helpful?
 

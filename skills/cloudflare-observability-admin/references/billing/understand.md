@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Understand
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these pages to understand how Cloudflare calculates charges, creates invoices, and applies billing policies.
 

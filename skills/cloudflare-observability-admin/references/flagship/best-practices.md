@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Best practices
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these patterns to keep Flagship evaluations predictable, fast, and easy to maintain.
 

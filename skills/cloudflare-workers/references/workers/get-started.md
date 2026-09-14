@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build your first Worker.
 
-* [CLI](https://developers.cloudflare.com/workers/get-started/guide/)
-* [Dashboard](https://developers.cloudflare.com/workers/get-started/dashboard/)
-* [Prompting](https://developers.cloudflare.com/workers/get-started/prompting/)
-* [Templates](https://developers.cloudflare.com/workers/get-started/quickstarts/)
+- [CLI](https://developers.cloudflare.com/workers/get-started/guide/)
+- [Dashboard](https://developers.cloudflare.com/workers/get-started/dashboard/)
+- [Prompting](https://developers.cloudflare.com/workers/get-started/prompting/)
+- [Templates](https://developers.cloudflare.com/workers/get-started/quickstarts/)
 
 Was this helpful?
 

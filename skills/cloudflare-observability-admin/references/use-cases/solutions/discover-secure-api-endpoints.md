@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Discover and secure your API endpoints (Free, Pro, and Business)
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once your API is in production and receiving traffic, you need to decide which endpoints to protect first, what restrictions to apply, and how to monitor for abuse without blocking legitimate clients. This guide walks through that process in five stages: inventory your endpoints, enforce encrypted connections, restrict access to expected traffic patterns, block automated abuse, and monitor the results.
 
@@ -29,15 +29,17 @@ Before configuring any security rules, build an inventory of your API endpoints.
 ### Audit your API surface manually
 
 1. Review your application's routing configuration and list every endpoint with its HTTP method and expected parameters.
-AI-assisted endpoint discovery
-Consider using an AI agent to analyze the API routes exposed in your codebase and then generate an OpenAPI schema from the findings.
+
+   AI-assisted endpoint discovery
+
+   Consider using an AI agent to analyze the API routes exposed in your codebase and then generate an OpenAPI schema from the findings.
 2. Categorize each endpoint by access level (public, authenticated, internal). Prioritize endpoints that accept file uploads, process payments, or return sensitive data.
 
-| Access level      | Description                       | Example endpoints          |
-| ----------------- | --------------------------------- | -------------------------- |
-| **Public**        | No authentication required        | /api/status, /api/products |
-| **Authenticated** | Require a token or session        | /api/account, /api/orders  |
-| **Internal**      | Should not be publicly accessible | /api/admin, /api/debug     |
+   | Access level | Description | Example endpoints |
+   | --- | --- | --- |
+   | **Public** | No authentication required | `/api/status`, `/api/products` |
+   | **Authenticated** | Require a token or session | `/api/account`, `/api/orders` |
+   | **Internal** | Should not be publicly accessible | `/api/admin`, `/api/debug` |
 3. Record the inventory in a spreadsheet or OpenAPI schema file for reference when writing rule expressions in later sections. If you already have an OpenAPI specification, you can use it directly with API Shield's schema validation (covered in the Enterprise callout below).
 
 API Shield Endpoint Discovery (Enterprise)
@@ -52,8 +54,7 @@ API requests carry credentials, tokens, and response data that attackers can int
 
 Set your encryption mode to **Full (Strict)** to encrypt traffic between visitors and Cloudflare and between Cloudflare and your origin server. This mode requires a valid certificate on your origin.
 
-1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. For **SSL/TLS encryption**, select **Full (Strict)**.
 
 For more information on encryption modes and their requirements, refer to [SSL/TLS encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/).
@@ -66,11 +67,9 @@ Note
 
 If only some parts of your application support HTTPS, do not turn on Always Use HTTPS. Use a [single redirect](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) to redirect specific API paths instead. Refer to [Redirect admin area requests to HTTPS](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-admin-https/) for an example.
 
-1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the Cloudflare dashboard, go to the SSL/TLS **Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Verify that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/) is not set to **Off**. The Always Use HTTPS option is not visible when encryption is off.
-3. Go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+3. Go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 4. Turn on **Always Use HTTPS**.
 
 ### Set minimum TLS version to 1.2
@@ -79,8 +78,7 @@ Since APIs can carry sensitive information, like credentials and tokens, you wan
 
 TLS 1.0 and 1.1 have known vulnerabilities. Setting the minimum to TLS 1.2 rejects connections from clients using older protocols.
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **Minimum TLS Version**, select **TLS 1.2**.
 
 For more information, refer to [Minimum TLS Version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/).
@@ -89,8 +87,7 @@ For more information, refer to [Minimum TLS Version](https://developers.cloudfla
 
 [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/) changes HTTP links to HTTPS within HTML responses. For API endpoints that return JSON or other non-HTML content, this rewriting is unnecessary and can cause unexpected behavior if API clients follow rewritten URLs. If your domain serves only API traffic, turn off this setting.
 
-1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Turn off **Automatic HTTPS Rewrites**.
 
 Note
@@ -107,14 +104,16 @@ API clients typically include a `Content-Type` header and may include an `Author
 
 The following custom security rule blocks requests to `/api/` paths that are missing a `Content-Type` header. Adjust the path and header checks to match your API.
 
-1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to **Security** > **Security rules**. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Custom rules**.
 3. Define the rule name. For example, `Block API requests missing Content-Type`.
 4. In the expression editor, enter:
-```txt
-(starts_with(http.request.uri.path, "/api/") and not len(http.request.headers["content-type"][0]) > 0)
-```
+
+   ```txt
+   (starts_with(http.request.uri.path, "/api/") and not len(http.request.headers["content-type"][0]) > 0)
+   ```
+
+
 5. For **Choose action**, select **Block**.
 6. Select **Deploy**.
 
@@ -122,19 +121,20 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
 
-1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to **Security** > **Security rules**. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Custom rules**.
 3. Define the rule name. For example, `Block unexpected methods on /api/users`.
 4. In the expression editor, enter:
-```txt
-(http.request.uri.path eq "/api/users" and http.request.method ne "GET" and http.request.method ne "POST")
-```
-Adjust the path and allowed methods to match your endpoint.
+
+   ```txt
+   (http.request.uri.path eq "/api/users" and http.request.method ne "GET" and http.request.method ne "POST")
+   ```
+
+   Adjust the path and allowed methods to match your endpoint.
 5. For **Choose action**, select **Block**.
 6. Select **Deploy**.
 
-Repeat this pattern for each endpoint with restricted methods. You can combine multiple paths into a single rule using [or operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#logical-operators) if they share the same allowed methods.
+Repeat this pattern for each endpoint with restricted methods. You can combine multiple paths into a single rule using [`or` operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#logical-operators) if they share the same allowed methods.
 
 Tip
 
@@ -151,9 +151,8 @@ Create separate rate limiting rules for authenticated and unauthenticated endpoi
 
 The following example limits requests to `/api/auth/login` to 10 per minute per IP address. Adjust the path, request threshold, and period for your endpoints.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Rate limiting rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Rate limiting rules**.
 3. Enter a descriptive name. For example, `Rate limit login endpoint`.
 4. In the **Field** drop-down, select **URI Path**. Set **Operator** to **equals** and **Value** to `/api/auth/login`.
 5. Under **With the same characteristics**, add **IP**.
@@ -188,8 +187,7 @@ If you are on a Cloudflare Pro or Business plan, go to the [next section](#creat
 
 Bot Fight Mode challenges requests that match known bot patterns. It applies to your entire domain and is available on all plans at no additional cost.
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
@@ -200,18 +198,19 @@ For more information on Bot Fight Mode behavior and limitations, refer to [Bot F
 
 ### Create exception rules for legitimate bot clients (Pro, Business)
 
-If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the _Skip_ action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
+If your API receives traffic from known automated clients (monitoring services, partner APIs, CI/CD systems), create a [custom security rule with the *Skip* action](https://developers.cloudflare.com/waf/custom-rules/skip/) to exclude them from bot protections. Create the exception rule before turning on Super Bot Fight Mode in the next section.
 
-1. In the Cloudflare dashboard, go to **Security** \> **Security rules**.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. Select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to **Security** > **Security rules**. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. Select **Create rule** > **Custom rules**.
 3. Define the rule name. For example, `Skip bot protections for monitoring service`.
 4. Build an expression that matches your known bot traffic. For example, to skip protections for requests from a specific IP range with a known User-Agent:
-```txt
-(ip.src in {203.0.113.0/24} and http.user_agent contains "MonitoringBot")
-```
-Replace the IP range and User-Agent with values that match your legitimate bot clients.
-5. For **Choose action**, select _Skip_ and then select **All Super Bot Fight Mode rules**.
+
+   ```txt
+   (ip.src in {203.0.113.0/24} and http.user_agent contains "MonitoringBot")
+   ```
+
+   Replace the IP range and User-Agent with values that match your legitimate bot clients.
+5. For **Choose action**, select *Skip* and then select **All Super Bot Fight Mode rules**.
 6. Select **Deploy**.
 
 Note
@@ -224,27 +223,25 @@ Place exception rules above (before) enforcement rules in your rule list. Cloudf
 
 Note
 
-If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** \> **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
+If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** > **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
 
 To configure Super Bot Fight Mode:
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Bot traffic**.
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
-
-  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
-  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
-  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
-  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
+   - For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
+   - For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
+   - For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
+   - For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
 
 With Super Bot Fight Mode, you can configure different actions for different bot types:
 
-* Block or allow verified bots
-* Configure a separate action (allow, block, or challenge) for **Definitely automated traffic** ([bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) of 1)
-* On Business plans and above: Configure a separate action for **Likely automated traffic** (bot score of 2-29)
+- Block or allow verified bots
+- Configure a separate action (allow, block, or challenge) for **Definitely automated traffic** ([bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) of 1)
+- On Business plans and above: Configure a separate action for **Likely automated traffic** (bot score of 2-29)
 
 Super Bot Fight Mode applies domain-wide and does not support path-specific rules. If you need to apply different bot thresholds to different API paths, you need a [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) subscription (Enterprise).
 
@@ -262,12 +259,12 @@ Access to the `cf.waf.credential_check.username_and_password_leaked` field (User
 
 The following rate limiting rule limits requests that contain a previously leaked username and password combination to 5 per minute per IP:
 
-| Setting                  | Value                                                    |
-| ------------------------ | -------------------------------------------------------- |
-| Expression               | cf.waf.credential\_check.username\_and\_password\_leaked |
-| Counting characteristics | IP                                                       |
-| Requests per period      | 5 requests / 1 minute                                    |
-| Action                   | Block                                                    |
+| Setting | Value |
+| --- | --- |
+| Expression | `cf.waf.credential_check.username_and_password_leaked` |
+| Counting characteristics | IP |
+| Requests per period | 5 requests / 1 minute |
+| Action | Block |
 
 For the full expression including account takeover (ATO) detection IDs, refer to [Example mitigation rules](https://developers.cloudflare.com/waf/detections/leaked-credentials/examples/).
 
@@ -285,15 +282,13 @@ After deploying your security rules, review the results to identify false positi
 
 [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) shows every request that your rules matched, including the action taken and the rule that triggered it. Filter by your API path prefix to see what Cloudflare is blocking and why.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Add a filter for **URI Path** starts with `/api/`.
 4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:
-
-  * Requests from known partner IP addresses
-  * Requests with valid API keys or authorization headers
-  * Requests from monitoring services with known User-Agent strings
+   - Requests from known partner IP addresses
+   - Requests with valid API keys or authorization headers
+   - Requests from monitoring services with known User-Agent strings
 
 If you find false positives, update your custom rules to exclude the affected traffic. Refer to the [exception rule procedure](#create-exception-rules-for-legitimate-bot-clients-pro-business) in an earlier section.
 
@@ -301,8 +296,7 @@ If you find false positives, update your custom rules to exclude the affected tr
 
 Rate limiting thresholds that are too tight block legitimate clients. Thresholds that are too loose allow abuse. Review rate limiting events in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) to find the right balance.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 3. Filter by **Action** equals **Block** and **Service** equals **Rate limiting**.
 4. Check whether blocked requests come from legitimate clients or abusive traffic.
@@ -317,8 +311,7 @@ Enterprise customers can use the **Request rate analysis** tab in [Security Anal
 
 Cloudflare Notifications can alert you when security event volume exceeds a threshold, indicating a potential attack or a misconfigured rule.
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Filter by **WAF** and select **Security Events Alert**.
 4. Define a name for the notification and the delivery method (email, webhook, or PagerDuty).
@@ -335,39 +328,39 @@ Enterprise customers have access to the [Advanced Security Events Alert](https:/
 
 **Application Security**
 
-* [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) — Create rules based on request attributes to block, challenge, or skip specific security features for targeted traffic
-* [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) — Define request rate thresholds per client and choose enforcement actions
-* [Rate limiting best practices](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/) — Common rate limiting patterns for credential stuffing, API protection, and GraphQL
-* [Rate limiting rule examples](https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/) — Example rules with expressions for login pages, API keys, and complexity-based limiting
-* [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) — How custom rules, rate limiting rules, Super Bot Fight Mode, and Managed Rules interact
-* [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) — Detect requests containing credentials from known data breaches
-* [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) — Review matched requests and rule actions
+- [Custom rules](https://developers.cloudflare.com/waf/custom-rules/) — Create rules based on request attributes to block, challenge, or skip specific security features for targeted traffic
+- [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) — Define request rate thresholds per client and choose enforcement actions
+- [Rate limiting best practices](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/) — Common rate limiting patterns for credential stuffing, API protection, and GraphQL
+- [Rate limiting rule examples](https://developers.cloudflare.com/waf/rate-limiting-rules/use-cases/) — Example rules with expressions for login pages, API keys, and complexity-based limiting
+- [Security features interoperability](https://developers.cloudflare.com/waf/feature-interoperability/) — How custom rules, rate limiting rules, Super Bot Fight Mode, and Managed Rules interact
+- [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/) — Detect requests containing credentials from known data breaches
+- [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) — Review matched requests and rule actions
 
 **Bots**
 
-* [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) — Automatic challenge for requests matching known bot patterns (Free plan)
-* [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) — Granular bot controls including verified bot allowlisting (Pro, Business, Enterprise)
-* [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) — Bot score, detection IDs, and custom rule templates (Enterprise)
-* [Bot Management variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) — Fields available in rule expressions for bot detection (Enterprise)
+- [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) — Automatic challenge for requests matching known bot patterns (Free plan)
+- [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) — Granular bot controls including verified bot allowlisting (Pro, Business, Enterprise)
+- [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) — Bot score, detection IDs, and custom rule templates (Enterprise)
+- [Bot Management variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) — Fields available in rule expressions for bot detection (Enterprise)
 
 **SSL/TLS**
 
-* [Get started with SSL/TLS](https://developers.cloudflare.com/ssl/get-started/) — Edge certificates, encryption modes, and HTTPS enforcement
-* [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) — Redirect all HTTP requests to HTTPS
-* [Minimum TLS Version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) — Reject connections using older TLS protocols
+- [Get started with SSL/TLS](https://developers.cloudflare.com/ssl/get-started/) — Edge certificates, encryption modes, and HTTPS enforcement
+- [Always Use HTTPS](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/always-use-https/) — Redirect all HTTP requests to HTTPS
+- [Minimum TLS Version](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) — Reject connections using older TLS protocols
 
 **API Shield (Enterprise)**
 
-* [API Shield overview](https://developers.cloudflare.com/api-shield/) — Discovery, schema validation, JWT validation, and sequence analytics for API security
-* [Get started with API Shield](https://developers.cloudflare.com/api-shield/get-started/) — Onboarding flow from session identifiers through schema validation
-* [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/) — Automatic endpoint discovery from traffic analysis
-* [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) — Validate incoming requests against your OpenAPI schema
-* [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) — Verify JSON Web Tokens at the edge
-* [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) — Track and analyze API request sequences
-* [Volumetric Abuse Detection](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/) — Per-session, per-endpoint adaptive rate limiting
-* [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/) — helps users identify authentication misconfigurations for APIs and alerts of their presence
-* [BOLA vulnerability detection](https://developers.cloudflare.com/api-shield/security/bola-vulnerability-detection/) — Detect endpoints at risk of Broken Object Level Authorization (BOLA) attacks
-* [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) — Test your API endpoints for common vulnerabilities
+- [API Shield overview](https://developers.cloudflare.com/api-shield/) — Discovery, schema validation, JWT validation, and sequence analytics for API security
+- [Get started with API Shield](https://developers.cloudflare.com/api-shield/get-started/) — Onboarding flow from session identifiers through schema validation
+- [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/) — Automatic endpoint discovery from traffic analysis
+- [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/) — Validate incoming requests against your OpenAPI schema
+- [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) — Verify JSON Web Tokens at the edge
+- [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) — Track and analyze API request sequences
+- [Volumetric Abuse Detection](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/) — Per-session, per-endpoint adaptive rate limiting
+- [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/) — helps users identify authentication misconfigurations for APIs and alerts of their presence
+- [BOLA vulnerability detection](https://developers.cloudflare.com/api-shield/security/bola-vulnerability-detection/) — Detect endpoints at risk of Broken Object Level Authorization (BOLA) attacks
+- [Vulnerability Scanner](https://developers.cloudflare.com/api-shield/security/vulnerability-scanner/) — Test your API endpoints for common vulnerabilities
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Send emails with various types of attachments including PDFs, images, and file uploads with proper validation.
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/email-attachments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to send emails with various types of attachments including PDFs, inline images, and file uploads.
 
@@ -407,9 +407,9 @@ function getFileTypeDescription(mimeType: string): string {
 
 ## Next steps
 
-* [Send method](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — full reference for the `Attachment` interface and the `send()` method.
-* [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — message size and attachment limits.
-* [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — set custom headers alongside attachments.
+- [Send method](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) — full reference for the `Attachment` interface and the `send()` method.
+- [Limits](https://developers.cloudflare.com/email-service/platform/limits/) — message size and attachment limits.
+- [Email headers](https://developers.cloudflare.com/email-service/reference/headers/) — set custom headers alongside attachments.
 
 Was this helpful?
 

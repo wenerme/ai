@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use GraphQL to create widgets
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/use-graphql-create-widgets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This article presents examples of queries you can use to populate your own dashboard.
 
-* [Parameters and filters](#parameters-and-filters)
-* [Timeseries graph](#timeseries-graph)
-* [Activity log](#activity-log)
-* [Top N cards - source](#top-n-cards---source)
-* [Top N cards - destination](#top-n-cards---destination)
-* [TCP Flags](#tcp-flags)
-* [Executive summary](#executive-summary)
+- [Parameters and filters](#parameters-and-filters)
+- [Timeseries graph](#timeseries-graph)
+- [Activity log](#activity-log)
+- [Top N cards - source](#top-n-cards---source)
+- [Top N cards - destination](#top-n-cards---destination)
+- [TCP Flags](#tcp-flags)
+- [Executive summary](#executive-summary)
 
 Use this workflow to build and test queries:
 
-* Install and configure the [GraphiQL ↗](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/) app to authenticate to the Cloudflare Analytics GraphQL API. Cloudflare recommends token authentication. Refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/), for more information.
-* Construct the queries in the GraphiQL. You can use the introspective documentation in the GraphQL client to explore the nodes available. For further information about queries, refer to [Querying basics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/).
-* Test your queries by running them from GraphiQL or by passing them as the payload in a cURL request to the GraphQL API endpoint.
-* Use the queries in your application to provide data for your dashboard widgets.
+- Install and configure the [GraphiQL ↗](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/) app to authenticate to the Cloudflare Analytics GraphQL API. Cloudflare recommends token authentication. Refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/), for more information.
+- Construct the queries in the GraphiQL. You can use the introspective documentation in the GraphQL client to explore the nodes available. For further information about queries, refer to [Querying basics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/).
+- Test your queries by running them from GraphiQL or by passing them as the payload in a cURL request to the GraphQL API endpoint.
+- Use the queries in your application to provide data for your dashboard widgets.
 
 ## Parameters and filters
 
@@ -38,6 +38,8 @@ These examples use the account ID for the Cloudflare account that you are queryi
 The queries also use a filter to specify the time interval that you want to query. The filter uses a start time and end time to define the time interval. You use different attributes to specify the start and end times, depending on the time period that you want to query. Refer to [Filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/) for further information about filters.
 
 The following example queries for data with dates greater than or equal to `date_geq` and less than or equal to `date_leq`:
+
+*Account and query time interval settingsjson*
 
 ```json
 {
@@ -52,28 +54,30 @@ This table lists Network Analytics datasets (nodes) and the `datetimeDimension` 
 
 When you want an aggregated view of data, use the `Groups` query nodes. For example, the `ipFlows1mAttacksGroups` dataset represents minute-wise rollup reports of attack activity. For more detail, refer to [Datasets](https://developers.cloudflare.com/analytics/graphql-api/features/data-sets/).
 
-| **Time Selection** | **Query node**              | **datetimeDimension**       |
-| ------------------ | --------------------------- | --------------------------- |
-| Last week          | ipFlows1dGroups             | date                        |
-| Last month         | ipFlows1dGroups             | date                        |
-| 24 hours           | ipFlows1mGroups             | datetimeFifteenMinutes      |
-| 12 hours           | ipFlows1mGroups             | datetimeFifteenMinutes      |
-| 6 hours            | ipFlows1mGroups             | datetimeFiveMinutes         |
-| 30 mins            | ipFlows1mGroups             | datetimeMinute              |
-| Custom range       | Dependent on range selected | Dependent on range selected |
+| **Time Selection** | **Query node** | **datetimeDimension** |
+| --- | --- | --- |
+| Last week | ipFlows1dGroups | date |
+| Last month | ipFlows1dGroups | date |
+| 24 hours | ipFlows1mGroups | datetimeFifteenMinutes |
+| 12 hours | ipFlows1mGroups | datetimeFifteenMinutes |
+| 6 hours | ipFlows1mGroups | datetimeFiveMinutes |
+| 30 mins | ipFlows1mGroups | datetimeMinute |
+| Custom range | Dependent on range selected | Dependent on range selected |
 
 The table below lists the start and end time attributes that are valid for query nodes representing different time ranges.
 
-| **Query node**         | **Start day / time filter** | **End day / time filter** |
-| ---------------------- | --------------------------- | ------------------------- |
-| ipFlows1mGroups        | datetimeMinute\_geq         | datetimeMinute\_leq       |
-| ipFlows1mAttacksGroups | date\_geq                   | date\_leq                 |
-| ipFlows1hGroups        | datetimeHour\_geq           | datetimeHour\_leq         |
-| ipFlows1dGroups        | date\_geq                   | date\_leq                 |
+| **Query node** | **Start day / time filter** | **End day / time filter** |
+| --- | --- | --- |
+| ipFlows1mGroups | datetimeMinute\_geq | datetimeMinute\_leq |
+| ipFlows1mAttacksGroups | date\_geq | date\_leq |
+| ipFlows1hGroups | datetimeHour\_geq | datetimeHour\_leq |
+| ipFlows1dGroups | date\_geq | date\_leq |
 
 ## Timeseries graph
 
 Use the following query to build the timeseries graph in network analytics:
+
+*Timeseries graphgraphql*
 
 ```graphql
 query ipFlowTimeseries(
@@ -105,6 +109,8 @@ query ipFlowTimeseries(
 ## Activity log
 
 This query returns an activity log summarizing minute-wise rollups of attack traffic in IP flows. The query groups the data by the fields listed in the `dimensions` object.
+
+*Activity log querygraphql*
 
 ```graphql
 query ipFlowEventLog(
@@ -153,6 +159,8 @@ query ipFlowEventLog(
 ## Top N cards - source
 
 This query returns data about the top source IPs. The `limit` parameter controls the amount of records returned for each node. In the following code, the highlighted lines indicate where you configure `limit`.
+
+*Top N Cards querygraphql*
 
 ```graphql
 query GetTopNBySource(
@@ -246,6 +254,8 @@ query GetTopNBySource(
 
 This query returns data about the top destination IPs. The `limit` parameter controls the amount of records returned. In the following code, the highlighted lines indicate that the query returns the five highest results.
 
+*Top N Cards - Destinationgraphql*
+
 ```graphql
 query GetTopNByDestination(
     $accountTag: string
@@ -294,6 +304,8 @@ Add the following line to the filter to indicate that you want to view TCP data:
 { "ipProtocol": "TCP" }
 ```
 
+*TCP Flags querygraphql*
+
 ```graphql
 query GetTCPFlags(
     $accountTag: string
@@ -324,6 +336,8 @@ The executive summary query summarizes overall activity, therefore it only filte
 
 If the time interval is absolute, for example March 25th 09:00 to March 25th 17:00, then execute a query for attacks within those times. [Use the appropriate query node](#parameters-and-filters), for example `ipFlows1dGroups`, for the time interval.
 
+*GetPreviousAttacks query - fetch previous attacksgraphql*
+
 ```graphql
 query GetPreviousAttacks($accountTag: string, $filter: filter) {
   viewer {
@@ -344,6 +358,8 @@ query GetPreviousAttacks($accountTag: string, $filter: filter) {
 
 If the time interval is relative to the current time, for example the last 24 hours or the last 30 minutes, then make a query to the `ipFlows1mGroup` node to check whether there were attacks in the past five minutes. Attacks within the past five minutes are classed as ongoing: the Activity Log displays `Present`. The query response lists the `attackID` values of ongoing attacks.
 
+*GetOngoingAttackIds query - check for ongoing attacksgraphql*
+
 ```graphql
 query GetOngoingAttackIds($accountTag: string, $filter: filter) {
 	viewer {
@@ -359,6 +375,8 @@ query GetOngoingAttackIds($accountTag: string, $filter: filter) {
 ```
 
 If there are ongoing attacks, query the `ipFlows1mAttacksGroups` node, filtering with the `attackID` values from the previous query. The query below returns the maximum bit and packet rates.
+
+*GetOngoingAttacks query - fetch data for ongoing attacksgraphql*
 
 ```graphql
 query GetOngoingAttacks($accountTag: string, $filter: filter) {

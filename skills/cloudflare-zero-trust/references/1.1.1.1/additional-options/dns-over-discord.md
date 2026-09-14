@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS over Discord
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The 1.1.1.1 DNS over Discord bot allows you to run DNS lookups and WHOIS queries directly inside Discord, which is useful when you are debugging DNS issues collaboratively or need quick record checks without switching to a terminal.
 
@@ -36,33 +36,41 @@ Example:
 
 Discord has a limit of 25 options in slash commands, so DNS over Discord offers the 25 most common DNS record types to choose from.
 
+<details>
+
+<summary>
+
 Supported DNS record types
 
-* `A`
-* `AAAA`
-* `CAA`
-* `CDNSKEY`
-* `CDS`
-* `CERT`
-* `CNAME`
-* `DNSKEY`
-* `DS`
-* `HINFO`
-* `HTTPS`
-* `LOC`
-* `MX`
-* `NAPTR`
-* `NS`
-* `PTR`
-* `SMIMEA`
-* `SOA`
-* `SPF`
-* `SRV`
-* `SSHFP`
-* `SVCB`
-* `TLSA`
-* `TXT`
-* `URI`
+</summary>
+
+- <code>A</code>
+- <code>AAAA</code>
+- <code>CAA</code>
+- <code>CDNSKEY</code>
+- <code>CDS</code>
+- <code>CERT</code>
+- <code>CNAME</code>
+- <code>DNSKEY</code>
+- <code>DS</code>
+- <code>HINFO</code>
+- <code>HTTPS</code>
+- <code>LOC</code>
+- <code>MX</code>
+- <code>NAPTR</code>
+- <code>NS</code>
+- <code>PTR</code>
+- <code>SMIMEA</code>
+- <code>SOA</code>
+- <code>SPF</code>
+- <code>SRV</code>
+- <code>SSHFP</code>
+- <code>SVCB</code>
+- <code>TLSA</code>
+- <code>TXT</code>
+- <code>URI</code>
+
+</details>
 
 To query other DNS record types, or multiple record types at once, use the `/multi-dig` command.
 
@@ -114,55 +122,63 @@ Unlike `/dig`, the `/multi-dig` command does not show an autocomplete menu for r
 
 If you include an invalid record type, the bot drops it without an error message. So if results seem incomplete, check for typos in your type list. If no valid types are provided, the bot defaults to `A` records.
 
+<details>
+
+<summary>
+
 DNS record types supported and considered valid by the bot
 
-Use a `*` (asterisk) in place of a record type to get DNS results for all supported types.
+</summary>
 
-* `A`
-* `AAAA`
-* `AFSDB`
-* `APL`
-* `CAA`
-* `CDNSKEY`
-* `CDS`
-* `CERT`
-* `CNAME`
-* `CSYNC`
-* `DHCID`
-* `DLV`
-* `DNAME`
-* `DNSKEY`
-* `DS`
-* `EUI48`
-* `EUI64`
-* `HINFO`
-* `HIP`
-* `HTTPS`
-* `IPSECKEY`
-* `KEY`
-* `KX`
-* `LOC`
-* `MX`
-* `NAPTR`
-* `NS`
-* `NSEC`
-* `NSEC3`
-* `NSEC3PARAM`
-* `OPENPGPKEY`
-* `PTR`
-* `RP`
-* `SMIMEA`
-* `SOA`
-* `SPF`
-* `SRV`
-* `SSHFP`
-* `SVCB`
-* `TA`
-* `TKEY`
-* `TLSA`
-* `TXT`
-* `URI`
-* `ZONEMD`
+Use a <code>*</code> (asterisk) in place of a record type to get DNS results for all supported types.
+
+- <code>A</code>
+- <code>AAAA</code>
+- <code>AFSDB</code>
+- <code>APL</code>
+- <code>CAA</code>
+- <code>CDNSKEY</code>
+- <code>CDS</code>
+- <code>CERT</code>
+- <code>CNAME</code>
+- <code>CSYNC</code>
+- <code>DHCID</code>
+- <code>DLV</code>
+- <code>DNAME</code>
+- <code>DNSKEY</code>
+- <code>DS</code>
+- <code>EUI48</code>
+- <code>EUI64</code>
+- <code>HINFO</code>
+- <code>HIP</code>
+- <code>HTTPS</code>
+- <code>IPSECKEY</code>
+- <code>KEY</code>
+- <code>KX</code>
+- <code>LOC</code>
+- <code>MX</code>
+- <code>NAPTR</code>
+- <code>NS</code>
+- <code>NSEC</code>
+- <code>NSEC3</code>
+- <code>NSEC3PARAM</code>
+- <code>OPENPGPKEY</code>
+- <code>PTR</code>
+- <code>RP</code>
+- <code>SMIMEA</code>
+- <code>SOA</code>
+- <code>SPF</code>
+- <code>SRV</code>
+- <code>SSHFP</code>
+- <code>SVCB</code>
+- <code>TA</code>
+- <code>TKEY</code>
+- <code>TLSA</code>
+- <code>TXT</code>
+- <code>URI</code>
+- <code>ZONEMD</code>
+
+</details>
 
 ### Short form response
 

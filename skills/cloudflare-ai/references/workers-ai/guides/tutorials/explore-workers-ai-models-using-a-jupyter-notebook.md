@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Explore Workers AI Models Using a Jupyter Notebook
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
 
@@ -103,24 +103,24 @@ Executing cells in Jupyter Notebooks can be done quickly and efficiently using v
 
 **Mac**
 
-* **Shift + Enter**: Execute the current cell and insert a new cell below.
-* **Ctrl + Enter**: Execute the current cell and insert a new cell below, without creating a new output display.
+- **Shift + Enter**: Execute the current cell and insert a new cell below.
+- **Ctrl + Enter**: Execute the current cell and insert a new cell below, without creating a new output display.
 
 **Windows/Linux**
 
-* **Shift + Enter**: Execute the current cell and insert a new cell below.
-* **Ctrl + Enter**: Execute the current cell and move to the next cell.
+- **Shift + Enter**: Execute the current cell and insert a new cell below.
+- **Ctrl + Enter**: Execute the current cell and move to the next cell.
 
 **Additional Shortcuts**
 
-* **Alt + Enter**: Execute the current cell and create a new output display below (Mac), or move to the next cell (Windows/Linux).
-* **Ctrl + Shift + Enter**: Execute the current cell and create a new output display below (Mac), or create a new cell below (Windows/Linux).
+- **Alt + Enter**: Execute the current cell and create a new output display below (Mac), or move to the next cell (Windows/Linux).
+- **Ctrl + Shift + Enter**: Execute the current cell and create a new output display below (Mac), or create a new cell below (Windows/Linux).
 
 **Tips and Tricks**
 
-* You can also use the **Run Cell** button in the Jupyter Notebook toolbar, or the **Run** menu option (macOS) or **Run -> Run Cell** (Windows/Linux).
-* To execute a selection of cells, use **Shift + Alt + Enter** (Mac) or **Shift + Ctrl + Enter** (Windows/Linux).
-* To execute a cell and move to the next cell, use **Ctrl + Shift + Enter** (all platforms).
+- You can also use the **Run Cell** button in the Jupyter Notebook toolbar, or the **Run** menu option (macOS) or **Run -> Run Cell** (Windows/Linux).
+- To execute a selection of cells, use **Shift + Alt + Enter** (Mac) or **Shift + Ctrl + Enter** (Windows/Linux).
+- To execute a cell and move to the next cell, use **Ctrl + Shift + Enter** (all platforms).
 
 By using these keyboard shortcuts, you'll be able to work more efficiently and quickly in your Jupyter Notebooks. Happy coding!
 
@@ -317,7 +317,7 @@ result = client.workers.ai.run(
 result
 ```
 
-\[TextClassification(label='NEGATIVE', score=0.00012679687642958015), TextClassification(label='POSITIVE', score=0.999873161315918)\]
+\[TextClassification(label='NEGATIVE', score=0.00012679687642958015), TextClassification(label='POSITIVE', score=0.999873161315918)]
 
 ### Image Classification
 
@@ -338,7 +338,7 @@ response
 
 ![jpeg](https://developers.cloudflare.com/workers-ai-notebooks/cloudflare-workers-ai/assets/output_27_0.jpg)
 
-\[TextClassification(label='BURRITO', score=0.9999679327011108), TextClassification(label='GUACAMOLE', score=8.516660273016896e-06), TextClassification(label='BAGEL', score=4.689153229264775e-06), TextClassification(label='SPATULA', score=4.075985089002643e-06), TextClassification(label='POTPIE', score=3.0849002996546915e-06)\]
+\[TextClassification(label='BURRITO', score=0.9999679327011108), TextClassification(label='GUACAMOLE', score=8.516660273016896e-06), TextClassification(label='BAGEL', score=4.689153229264775e-06), TextClassification(label='SPATULA', score=4.075985089002643e-06), TextClassification(label='POTPIE', score=3.0849002996546915e-06)]
 
 ## Summarization
 
@@ -361,7 +361,7 @@ response = client.workers.ai.run(
 response["summary"]
 ```
 
-'The Declaration of Independence was signed by the thirteen states on July 4, 1776\. It was the first attempt at a U.S. Constitution. It declared the right of the people to change their Government.'
+'The Declaration of Independence was signed by the thirteen states on July 4, 1776. It was the first attempt at a U.S. Constitution. It declared the right of the people to change their Government.'
 
 Was this helpful?
 

@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Connect Hyperdrive to a PlanetScale MySQL database.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/planetscale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/planetscale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows you how to connect Hyperdrive to a [PlanetScale ↗](https://planetscale.com/) MySQL database.
 
-## 1\. Allow Hyperdrive access
+## 1. Allow Hyperdrive access
 
 You can connect Hyperdrive to any existing PlanetScale MySQL-compatible database by creating a new user and fetching your database connection string.
 
@@ -34,6 +34,8 @@ Note
 
 To reduce latency, use a [Placement Hint](https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints) to run your Worker close to your PlanetScale database. This is especially useful when a single request makes multiple queries.
 
+*wrangler.jsoncjsonc*
+
 ```jsonc
 {
 	"placement": {
@@ -43,14 +45,14 @@ To reduce latency, use a [Placement Hint](https://developers.cloudflare.com/work
 }
 ```
 
-## 2\. Create a database configuration
+## 2. Create a database configuration
 
 To configure Hyperdrive, you will need:
 
-* The IP address (or hostname) and port of your database.
-* The database username (for example, `hyperdrive-demo`) you configured in a previous step.
-* The password associated with that username.
-* The name of the database you want Hyperdrive to connect to. For example, `mysql`.
+- The IP address (or hostname) and port of your database.
+- The database username (for example, `hyperdrive-demo`) you configured in a previous step.
+- The password associated with that username.
+- The name of the database you want Hyperdrive to connect to. For example, `mysql`.
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
@@ -62,8 +64,8 @@ Most database providers will provide a connection string you can copy-and-paste 
 
 To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/), open your terminal and run the following command.
 
-* Replace <NAME\_OF\_HYPERDRIVE\_CONFIG> with a name for your Hyperdrive configuration and paste the connection string provided from your database host, or,
-* Replace `user`, `password`, `HOSTNAME_OR_IP_ADDRESS`, `port`, and `database_name` placeholders with those specific to your database:
+- Replace \<NAME\_OF\_HYPERDRIVE\_CONFIG> with a name for your Hyperdrive configuration and paste the connection string provided from your database host, or,
+- Replace `user`, `password`, `HOSTNAME_OR_IP_ADDRESS`, `port`, and `database_name` placeholders with those specific to your database:
 
 ```sh
 npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="mysql://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
@@ -81,7 +83,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -100,7 +102,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -108,7 +110,7 @@ binding = "HYPERDRIVE"
 id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 ```
 
-## 3\. Use Hyperdrive from your Worker
+## 3. Use Hyperdrive from your Worker
 
 Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
 
@@ -143,7 +145,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -156,7 +158,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -211,9 +213,9 @@ When connecting to a PlanetScale database with Hyperdrive, you should use a driv
 
 ## Next steps
 
-* Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
-* Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
+- Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
+- Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 Was this helpful?
 

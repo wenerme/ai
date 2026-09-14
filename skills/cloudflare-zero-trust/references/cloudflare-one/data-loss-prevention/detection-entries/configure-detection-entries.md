@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure detection entries
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Detection entries are the reusable detection logic that Cloudflare DLP uses to identify sensitive content in your web traffic and SaaS applications. You can create and manage detection entries independently of [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/), then add the same entry to one or more custom profiles. You can also use detection entries in [data classes](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/data-classification/build-a-data-class/).
 
 Detection entries include:
 
-* [Pattern entries](#pattern-entries) — regular expressions used to detect text patterns
-* [Predefined detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) — Cloudflare-managed detections for specific types of sensitive content
-* [Exact Data Match datasets](#exact-data-match-datasets) — uploaded datasets of sensitive values to match against, such as customer records or account numbers
-* [Custom Wordlist datasets](#custom-wordlist-datasets) — uploaded plaintext datasets used to detect terms such as product names, internal codes, or SKU numbers
-* [Document entries](#document-entries) — fingerprints of example documents used to find similar content
-* [AI prompt topics](#ai-prompt-topics) — categories of prompts submitted to generative AI tools
+- [Pattern entries](#pattern-entries) — regular expressions used to detect text patterns
+- [Predefined detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/predefined-detection-entries/) — Cloudflare-managed detections for specific types of sensitive content
+- [Exact Data Match datasets](#exact-data-match-datasets) — uploaded datasets of sensitive values to match against, such as customer records or account numbers
+- [Custom Wordlist datasets](#custom-wordlist-datasets) — uploaded plaintext datasets used to detect terms such as product names, internal codes, or SKU numbers
+- [Document entries](#document-entries) — fingerprints of example documents used to find similar content
+- [AI prompt topics](#ai-prompt-topics) — categories of prompts submitted to generative AI tools
 
 ## Manage detection entries
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries** to create, review, and manage detection entries.
+In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries** to create, review, and manage detection entries.
 
 The Detection entries section includes dedicated views for different entry types, including **All**, **Pattern**, **Predefined**, **Datasets**, **Documents**, and **AI prompt topics**. You can use search and filters to find specific entries and review details such as type, status, and last updated time.
 
@@ -57,7 +57,7 @@ DLP does not support regular expressions with `+` or `*` operators because they 
 
 ### Create a pattern entry
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Pattern** tab, select **Add Pattern**.
 3. Enter a name. Optionally, add a description.
 4. In **Value**, enter the regular expression you want to detect.
@@ -90,7 +90,7 @@ To select which Exact Data Match columns to use, you will need to [reupload any 
 
 ### Upload a new Exact Data Match dataset
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select **Add a dataset**.
 3. Select **Exact Data Match (EDM)**.
 4. Upload your dataset file. Select **Next**.
@@ -106,7 +106,7 @@ The dataset will appear in the list with an **Uploading** status. Once the uploa
 
 Uploaded Exact Data Match datasets are read-only. To update a dataset, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select the dataset you want to update.
 3. Select **Upload dataset** and choose your updated dataset. Select **Next**.
 4. Review and choose the new columns. Select **Next**.
@@ -130,7 +130,7 @@ Column title cells may result in false positives in Custom Wordlist datasets and
 
 ### Upload a new Custom Wordlist dataset
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select **Add a dataset**.
 3. Select **Custom Wordlist (CWL)**.
 4. Name your dataset. Optionally, add a description.
@@ -146,7 +146,7 @@ The dataset will appear in the list with an **Uploading** status. Once the uploa
 
 Uploaded Custom Wordlist datasets are read-only. To update a dataset, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select the dataset you want to update.
 3. Select **Upload dataset** and choose your updated dataset. Select **Next**.
 4. Select **Save dataset**.
@@ -165,7 +165,7 @@ DLP supports documents in `.docx` and `.txt` format. Documents must be under 10 
 
 ### Upload a new document entry
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Documents** tab, select **Add a document entry**.
 3. Name your document. Optionally, add a description.
 4. In **Minimum similarity for matches**, enter a value between 0% and 100%.
@@ -180,7 +180,7 @@ To use your uploaded document fingerprint, add it as an existing entry to one or
 
 Uploaded document entries are read-only. To update a document entry, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Data loss prevention** \> **Detection entries**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Documents** tab, choose the document you want to update and select **Edit**.
 3. (Optional) Update the name and minimum similarity for matches for your document entry. You can also open the existing uploaded document.
 4. In **Update document entry**, choose and upload your updated document file.
@@ -192,21 +192,21 @@ Your new document entry will replace the original document entry. If your file u
 
 DLP uses [Application Granular Controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls) to detect and categorize prompts submitted to generative AI tools. Application Granular Controls analyzes prompts for both content and user intent. Supported AI prompt protection detections include:
 
-| Detection entry                       | Description                                                                                       |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Content: PII                          | Prompt contains personal information such as names, SSNs, or email addresses.                     |
-| Content: Credentials and Secrets      | Prompt contains API keys, passwords, or other sensitive credentials.                              |
-| Content: Source Code                  | Prompt contains actual source code, code snippets, or proprietary algorithms.                     |
-| Content: Customer Data                | Prompt contains customer names, projects, business activities, or confidential customer contexts. |
-| Content: Financial Information        | Prompt contains financial numbers or confidential business data.                                  |
-| Intent: PII                           | Prompt requests specific personal information about individuals.                                  |
-| Intent: Code Abuse and Malicious Code | Prompt requests malicious code for attacks, exploits, or harmful activities.                      |
-| Intent: Jailbreak                     | Prompt attempts to circumvent AI security policies.                                               |
+| Detection entry | Description |
+| --- | --- |
+| Content: PII | Prompt contains personal information such as names, SSNs, or email addresses. |
+| Content: Credentials and Secrets | Prompt contains API keys, passwords, or other sensitive credentials. |
+| Content: Source Code | Prompt contains actual source code, code snippets, or proprietary algorithms. |
+| Content: Customer Data | Prompt contains customer names, projects, business activities, or confidential customer contexts. |
+| Content: Financial Information | Prompt contains financial numbers or confidential business data. |
+| Intent: PII | Prompt requests specific personal information about individuals. |
+| Intent: Code Abuse and Malicious Code | Prompt requests malicious code for attacks, exploits, or harmful activities. |
+| Intent: Jailbreak | Prompt attempts to circumvent AI security policies. |
 
 Each detection entry is categorized as either **Content** or **Intent**:
 
-* **Content** — Detects specific text or data in the prompt itself (for example, a user pasting source code or a credit card number into a chat).
-* **Intent** — Detects the user's goal or objective for the AI's response (for example, a user asking an AI to generate malicious code or extract personal information).
+- **Content** — Detects specific text or data in the prompt itself (for example, a user pasting source code or a credit card number into a chat).
+- **Intent** — Detects the user's goal or objective for the AI's response (for example, a user asking an AI to generate malicious code or extract personal information).
 
 Intent detection is useful when AI applications have access to internal data sources containing sensitive information through SaaS connectors or Model Context Protocol (MCP) servers.
 

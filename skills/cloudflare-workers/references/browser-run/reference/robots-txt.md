@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # robots.txt and sitemaps
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/reference/robots-txt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/robots-txt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides general guidance on configuring `robots.txt` and sitemaps for websites you plan to access with Browser Run.
 
@@ -26,9 +26,9 @@ To verify that a request originated from Cloudflare Browser Run specifically, us
 
 Requests can be identified by the [automatic headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) that Cloudflare attaches:
 
-* [User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent): Each Browser Run method has a different default User-Agent, which you can use to write targeted `robots.txt` rules
-* `cf-brapi-request-id`: Unique identifier for Quick Actions requests
-* `Signature-agent`: Pointer to Cloudflare's bot verification keys
+- [User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent): Each Browser Run method has a different default User-Agent, which you can use to write targeted `robots.txt` rules
+- `cf-brapi-request-id`: Unique identifier for Quick Actions requests
+- `Signature-agent`: Pointer to Cloudflare's bot verification keys
 
 To allow or block Browser Run traffic using WAF rules instead of `robots.txt`, use the [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) on the automatic request headers page.
 
@@ -40,6 +40,8 @@ A well-configured `robots.txt` helps crawlers understand which parts of your sit
 
 Include a reference to your sitemap in `robots.txt` so crawlers can discover your URLs:
 
+*robots.txttxt*
+
 ```txt
 User-agent: *
 Allow: /
@@ -48,6 +50,8 @@ Sitemap: https://example.com/sitemap.xml
 ```
 
 You can list multiple sitemaps:
+
+*robots.txttxt*
 
 ```txt
 User-agent: *
@@ -60,6 +64,8 @@ Sitemap: https://example.com/blog-sitemap.xml
 ### Set a crawl delay
 
 Use `crawl-delay` to control how frequently crawlers request pages from your server:
+
+*robots.txttxt*
 
 ```txt
 User-agent: *
@@ -79,6 +85,8 @@ If you want to prevent Browser Run (or other crawlers) from accessing your site,
 
 To prevent all crawlers from accessing any page on your site:
 
+*robots.txttxt*
+
 ```txt
 User-agent: *
 Disallow: /
@@ -88,7 +96,9 @@ This is the most restrictive configuration and blocks all compliant bots, not ju
 
 ### Block only the /crawl endpoint
 
-The [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) identifies itself with the User-Agent `CloudflareBrowserRenderingCrawler/1.0`. To block the `/crawl` endpoint while allowing all other traffic (including other Browser Run [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) endpoints, which use a [different User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent)):
+The [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) identifies itself with the User-Agent `CloudflareBrowserRenderingCrawler/1.0`. To block the `/crawl` endpoint while allowing all other traffic (including other Browser Run [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) endpoints, which use a [different User-Agent](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#user-agent)):
+
+*robots.txttxt*
 
 ```txt
 User-agent: CloudflareBrowserRenderingCrawler
@@ -100,7 +110,9 @@ Allow: /
 
 ### Block the /crawl endpoint on specific paths
 
-To allow the [/crawl endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) to access your site but block specific sections:
+To allow the [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) to access your site but block specific sections:
+
+*robots.txttxt*
 
 ```txt
 User-agent: CloudflareBrowserRenderingCrawler
@@ -115,6 +127,8 @@ Allow: /
 ## Best practices for sitemaps
 
 Structure your sitemap to help crawlers process your site efficiently:
+
+*sitemap.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -132,15 +146,17 @@ Structure your sitemap to help crawlers process your site efficiently:
 </urlset>
 ```
 
-| Attribute  | Purpose                       | Recommendation                                                                           |
-| ---------- | ----------------------------- | ---------------------------------------------------------------------------------------- |
-| <loc>      | URL of the page               | Required. Use full URLs.                                                                 |
-| <lastmod>  | Last modification date        | Include to help the crawler identify updated content. Use ISO 8601 format.               |
-| <priority> | Relative importance (0.0-1.0) | Set higher values for important pages. The crawler will process pages in priority order. |
+| Attribute | Purpose | Recommendation |
+| --- | --- | --- |
+| `<loc>` | URL of the page | Required. Use full URLs. |
+| `<lastmod>` | Last modification date | Include to help the crawler identify updated content. Use ISO 8601 format. |
+| `<priority>` | Relative importance (0.0-1.0) | Set higher values for important pages. The crawler will process pages in priority order. |
 
 ### Sitemap index files
 
 For large sites with multiple sitemaps, use a sitemap index file. Browser Run uses the `depth` parameter to control how many levels of nested sitemaps are crawled:
+
+*sitemap.xmlxml*
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -163,15 +179,15 @@ Browser Run periodically refetches sitemaps to keep content fresh. Serve your si
 
 ### Recommendations
 
-* Include `<lastmod>` on all URLs to help identify which pages have changed. Use ISO 8601 format (for example, `2025-01-15T00:00:00+00:00`).
-* Use sitemap index files for large sites with multiple sitemaps.
-* Compress large sitemaps using `.gz` format to reduce bandwidth.
-* Keep sitemaps under 50 MB and 50,000 URLs per file (standard sitemap limits).
+- Include `<lastmod>` on all URLs to help identify which pages have changed. Use ISO 8601 format (for example, `2025-01-15T00:00:00+00:00`).
+- Use sitemap index files for large sites with multiple sitemaps.
+- Compress large sitemaps using `.gz` format to reduce bandwidth.
+- Keep sitemaps under 50 MB and 50,000 URLs per file (standard sitemap limits).
 
 ## Related resources
 
-* [FAQ: Will Browser Run be detected by Bot Management?](https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management) — How Browser Run interacts with bot protection and how to create a WAF skip rule
-* [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) — User-Agent strings and non-configurable headers used by Browser Run
+- [FAQ: Will Browser Run be detected by Bot Management?](https://developers.cloudflare.com/browser-run/faq/#will-browser-run-be-detected-by-bot-management) — How Browser Run interacts with bot protection and how to create a WAF skip rule
+- [Automatic request headers](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/) — User-Agent strings and non-configurable headers used by Browser Run
 
 Was this helpful?
 

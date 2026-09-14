@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Querying Magic Transit endpoint health check results with GraphQL
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-magic-transit-endpoint-healthcheck-results/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-magic-transit-endpoint-healthcheck-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) to query endpoint health check results for your account. The `magicEndpointHealthCheckAdaptiveGroups` dataset returns probe results aggregated by the dimensions and time interval you specify.
 
@@ -22,20 +22,20 @@ Send all GraphQL queries as HTTP `POST` requests to `https://api.cloudflare.com/
 
 You need the following to query endpoint health check data:
 
-* Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-* An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Account > Account Analytics > Read` permissions. For details, refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
+- Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
+- An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Account > Account Analytics > Read` permissions. For details, refer to [Configure an Analytics API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/).
 
 ### Query parameters
 
 The following parameters are some of the most common ones in the `filter` object:
 
-| Parameter     | Description                                                                                                                                                                                                                                       |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| date\_geq     | Start date for the query in YYYY-MM-DD format (for example, 2026-01-01). When used with a date-based truncation dimension, returns results from this date onward. You can also use a full ISO 8601 timestamp (for example, 2026-01-01T00:00:00Z). |
-| date\_leq     | _(Optional)_ End date for the query. Uses the same format as date\_geq.                                                                                                                                                                           |
-| datetime\_geq | _(Optional)_ Start timestamp in ISO 8601 format (for example, 2026-01-01T00:00:00Z). Use instead of date\_geq for time-based truncation dimensions.                                                                                               |
-| datetime\_leq | _(Optional)_ End timestamp in ISO 8601 format.                                                                                                                                                                                                    |
-| limit         | Maximum number of result groups to return.                                                                                                                                                                                                        |
+| Parameter | Description |
+| --- | --- |
+| `date_geq` | Start date for the query in `YYYY-MM-DD` format (for example, `2026-01-01`). When used with a date-based truncation dimension, returns results from this date onward. You can also use a full ISO 8601 timestamp (for example, `2026-01-01T00:00:00Z`). |
+| `date_leq` | *(Optional)* End date for the query. Uses the same format as `date_geq`. |
+| `datetime_geq` | *(Optional)* Start timestamp in ISO 8601 format (for example, `2026-01-01T00:00:00Z`). Use instead of `date_geq` for time-based truncation dimensions. |
+| `datetime_leq` | *(Optional)* End timestamp in ISO 8601 format. |
+| `limit` | Maximum number of result groups to return. |
 
 You can also filter on any dimension listed in the [Available dimensions](#available-dimensions) table. Append an operator suffix to the dimension name to create a filter — for example, `endpoint_in` to filter by a list of endpoints, or `checkType_neq` to exclude a specific check type. Using a dimension name without a suffix filters for equality. For the full list of supported operators, refer to [Filtering](https://developers.cloudflare.com/analytics/graphql-api/features/filtering/).
 
@@ -43,28 +43,28 @@ You can also filter on any dimension listed in the [Available dimensions](#avail
 
 You can query the following dimensions in the `dimensions` field:
 
-| Dimension              | Description                                                                      |
-| ---------------------- | -------------------------------------------------------------------------------- |
-| checkId                | The unique ID of the configured health check.                                    |
-| checkType              | The type of health check (for example, icmp).                                    |
-| endpoint               | The IP address of the endpoint being checked.                                    |
-| name                   | The name assigned to the health check when configured (may be empty if not set). |
-| date                   | Event timestamp truncated to the day.                                            |
-| datetime               | Full event timestamp.                                                            |
-| datetimeMinute         | Event timestamp truncated to the minute.                                         |
-| datetimeFiveMinutes    | Event timestamp truncated to five-minute intervals.                              |
-| datetimeFifteenMinutes | Event timestamp truncated to 15-minute intervals.                                |
-| datetimeHalfOfHour     | Event timestamp truncated to 30-minute intervals.                                |
-| datetimeHour           | Event timestamp truncated to the hour.                                           |
+| Dimension | Description |
+| --- | --- |
+| `checkId` | The unique ID of the configured health check. |
+| `checkType` | The type of health check (for example, `icmp`). |
+| `endpoint` | The IP address of the endpoint being checked. |
+| `name` | The name assigned to the health check when configured (may be empty if not set). |
+| `date` | Event timestamp truncated to the day. |
+| `datetime` | Full event timestamp. |
+| `datetimeMinute` | Event timestamp truncated to the minute. |
+| `datetimeFiveMinutes` | Event timestamp truncated to five-minute intervals. |
+| `datetimeFifteenMinutes` | Event timestamp truncated to 15-minute intervals. |
+| `datetimeHalfOfHour` | Event timestamp truncated to 30-minute intervals. |
+| `datetimeHour` | Event timestamp truncated to the hour. |
 
 ### Available metrics
 
-| Metric             | Description                                       |
-| ------------------ | ------------------------------------------------- |
-| count              | Total number of health check events in the group. |
-| sum.total          | Total number of health check probes sent.         |
-| sum.failures       | Number of failed health check probes.             |
-| avg.lossPercentage | Average calculated loss percentage (0-100).       |
+| Metric | Description |
+| --- | --- |
+| `count` | Total number of health check events in the group. |
+| `sum.total` | Total number of health check probes sent. |
+| `sum.failures` | Number of failed health check probes. |
+| `avg.lossPercentage` | Average calculated loss percentage (0-100). |
 
 ### API call
 

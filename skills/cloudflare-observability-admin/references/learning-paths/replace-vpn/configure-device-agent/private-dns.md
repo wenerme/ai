@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Resolve private DNS
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/configure-device-agent/private-dns/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, all DNS requests on the user device are resolved by Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/) except for common top level domains used for local resolution (such as `localhost`). To allow users to connect to internal server names or domains that do not resolve on the public Internet, you have two options:
 
-* [Add internal domains to Local Domain Fallback](#local-domain-fallback)
-* [Build custom resolver policies](#resolver-policies)
+- [Add internal domains to Local Domain Fallback](#local-domain-fallback)
+- [Build custom resolver policies](#resolver-policies)
 
 ## Local Domain Fallback
 
@@ -29,87 +29,102 @@ To learn more about how Local Domain Fallback works, refer to [How the Cloudflar
 
 To add a domain to the Local Domain Fallback list:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
-1. In **Domain**, enter the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`).
-2. In **DNS Servers**, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
-3. Enter an optional description and select **Save domain**.
+
+4. In **Domain**, enter the apex domain ( `example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`).
+5. In **DNS Servers**, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
+6. Enter an optional description and select **Save domain**.
 
 A Local Domain Fallback list is scoped to a specific [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/). If a device profile does not have a corresponding Local Domain Fallback resource, those devices will use the default local domains shown in Step 2.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
-
-  * `Zero Trust Write`
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
-```tf
-locals {
-	default_local_domains = [
-		# Default Local Domain Fallback entries recommended by Cloudflare
-    {
-  suffix = "corp"
-},
-{
-  suffix = "domain"
-},
-{
-  suffix = "home"
-},
-{
-  suffix = "home.arpa"
-},
-{
-  suffix = "host"
-},
-{
-  suffix = "internal"
-},
-{
-  suffix = "intranet"
-},
-{
-  suffix = "invalid"
-},
-{
-  suffix = "lan"
-},
-{
-  suffix = "local"
-},
-{
-  suffix = "localdomain"
-},
-{
-  suffix = "localhost"
-},
-{
-  suffix = "private"
-},
-{
-  suffix = "test"
-}
-	]
-}
-```
-3. To configure Local Domain Fallback for the default device profile, use the [cloudflare\_zero\_trust\_device\_default\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fdefault%5Fprofile%5Flocal%5Fdomain%5Ffallback) resource. To configure Local Domain Fallback for a custom device profile, use[cloudflare\_zero\_trust\_device\_custom\_profile\_local\_domain\_fallback ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fdevice%5Fcustom%5Fprofile%5Flocal%5Fdomain%5Ffallback). For example:
-```tf
-resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {
-	account_id = var.cloudflare_account_id
-	policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
-	domains = concat(
-		# Global entries
-		local.default_local_domains,
-		# Profile-specific entries
-		[
-			{
-			suffix = "example.com"
-			description = "Domain for local development"
-			dns_server = ["1.1.1.1", "192.168.0.1"]
-			}
-		]
-	)
-}
-```
+
+   *local-domains.local.tftf*
+
+
+
+   ```tf
+   locals {
+   	default_local_domains = [
+   		# Default Local Domain Fallback entries recommended by Cloudflare
+       {
+     suffix = "corp"
+   },
+   {
+     suffix = "domain"
+   },
+   {
+     suffix = "home"
+   },
+   {
+     suffix = "home.arpa"
+   },
+   {
+     suffix = "host"
+   },
+   {
+     suffix = "internal"
+   },
+   {
+     suffix = "intranet"
+   },
+   {
+     suffix = "invalid"
+   },
+   {
+     suffix = "lan"
+   },
+   {
+     suffix = "local"
+   },
+   {
+     suffix = "localdomain"
+   },
+   {
+     suffix = "localhost"
+   },
+   {
+     suffix = "private"
+   },
+   {
+     suffix = "test"
+   }
+   	]
+   }
+   ```
+
+
+3. To configure Local Domain Fallback for the default device profile, use the [`cloudflare_zero_trust_device_default_profile_local_domain_fallback` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile_local_domain_fallback) resource. To configure Local Domain Fallback for a custom device profile, use [`cloudflare_zero_trust_device_custom_profile_local_domain_fallback` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile_local_domain_fallback). For example:
+
+   *device-profiles.tftf*
+
+
+
+   ```tf
+   resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example" {
+   	account_id = var.cloudflare_account_id
+   	policy_id  = cloudflare_zero_trust_device_custom_profile.example.id
+   	domains = concat(
+   		# Global entries
+   		local.default_local_domains,
+
+   		# Profile-specific entries
+   		[
+   			{
+   			suffix = "example.com"
+   			description = "Domain for local development"
+   			dns_server = ["1.1.1.1", "192.168.0.1"]
+   			}
+   		]
+   	)
+   }
+   ```
+
+
 
 For `suffix`, specify the apex domain (`example.com`) that you want to resolve using your private DNS server. All prefixes under the apex domain are subject to Local Domain Fallback (in other words, `example.com` is interpreted as `*.example.com`). For `dns_server`, enter the IP address of the DNS servers that should resolve that domain name. Cloudflare recommends keeping the list to a maximum of eight servers to avoid performance issues.
 
@@ -119,11 +134,10 @@ The Cloudflare One Client tries all servers and always uses the fastest response
 
 The Cloudflare One Client routes DNS traffic to your [Local Domain Fallback server](#add-a-domain) according to your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/). To ensure that queries can reach your private DNS server:
 
-* If your DNS server is only reachable inside of the WARP tunnel (for example, via `cloudflared` or Cloudflare WAN):
-
-  1. Go to **Networking** \> **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
+- If your DNS server is only reachable inside of the WARP tunnel (for example, via `cloudflared` or Cloudflare WAN):
+  1. Go to **Networking** > **Routes** and verify that the DNS server is connected to Cloudflare. To connect a DNS server, refer to [Private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/).
   2. In your [Split Tunnel configuration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/), verify that the DNS server IP routes through the WARP tunnel.
-* If your DNS server is only reachable outside of the WARP tunnel (for example, via a third-party VPN), verify that the DNS server IP is [excluded from the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
+- If your DNS server is only reachable outside of the WARP tunnel (for example, via a third-party VPN), verify that the DNS server IP is [excluded from the WARP tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
 For more information, refer to [How the Cloudflare One Client handles DNS requests](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/#how-the-warp-client-handles-dns-requests).
 
@@ -143,15 +157,16 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Resolver policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:
 
-| Selector | Operator | Value                |
-| -------- | -------- | -------------------- |
-| Host     | in       | internal.example.com |
-Make sure your destination is not subject to [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#manage-local-domains).
-4. In **Select DNS resolver**, choose _Configure custom DNS resolvers_.
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Host | in | `internal.example.com` |
+
+   Make sure your destination is not subject to [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#manage-local-domains).
+4. In **Select DNS resolver**, choose *Configure custom DNS resolvers*.
 5. Enter the IP addresses of your custom DNS resolver. As you enter an IP address, Gateway will search through your [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) configured in Zero Trust.
 6. In **Network**, choose whether to route queries publicly (to the Internet) or privately (to a private network service).
 7. (Optional) Enter a custom port for each IP address.
@@ -159,39 +174,41 @@ Make sure your destination is not subject to [Local Domain Fallback](https://dev
 
 Custom resolvers are saved to your account for future use. You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Create a resolver policy using the [`cloudflare_zero_trust_gateway_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy) resource:
 
-  * `Zero Trust Write`
-2. Create a resolver policy using the [cloudflare\_zero\_trust\_gateway\_policy ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Fgateway%5Fpolicy) resource:
-```tf
-resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
-	name        = "Example resolver policy"
-	enabled     = true
-	account_id  = var.cloudflare_account_id
-	description = "TERRAFORM MANAGED resolver policy"
-	action      = "resolve"
-	traffic     = "dns.fqdn in {\"internal.example.com\"}"
-	identity    = "identity.email in {\"jdoe@example.com\"}"
-	precedence  = 1
-	rule_settings = {
-			dns_resolvers = {
-			# You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
-				ipv4 = [{
-					ip = "192.0.2.24"
-					port = 53
-					route_through_private_network = true
-					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-				}]
-				ipv6 = [{
-					ip = "2001:DB8::"
-					port = 53
-					route_through_private_network = true
-					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
-				}]
-			}
-	}
-}
-```
+   ```tf
+   resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
+   	name        = "Example resolver policy"
+   	enabled     = true
+   	account_id  = var.cloudflare_account_id
+   	description = "TERRAFORM MANAGED resolver policy"
+   	action      = "resolve"
+   	traffic     = "dns.fqdn in {\"internal.example.com\"}"
+   	identity    = "identity.email in {\"jdoe@example.com\"}"
+   	precedence  = 1
+   	rule_settings = {
+   			dns_resolvers = {
+   			# You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
+   				ipv4 = [{
+   					ip = "192.0.2.24"
+   					port = 53
+   					route_through_private_network = true
+   					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+   				}]
+   				ipv6 = [{
+   					ip = "2001:DB8::"
+   					port = 53
+   					route_through_private_network = true
+   					vnet_id = cloudflare_zero_trust_tunnel_cloudflared_virtual_network.staging_vnet.id
+   				}]
+   			}
+   	}
+   }
+   ```
+
+
 
 When a user's query matches a resolver policy, Gateway will send the query to your listed resolvers in the following order:
 

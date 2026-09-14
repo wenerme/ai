@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Query Builder
 
-Last updated Sep 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/query-builder/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/query-builder/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Query Builder helps you write structured queries to investigate and visualize your telemetry data. The Query Builder searches the Workers Observability dataset, which currently includes all logs stored by [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/).
 
@@ -20,7 +20,7 @@ You can also run the same queries programmatically using the [Workers Observabil
 
 The Query Builder can be found in the **Observability** page of the Cloudflare dashboard:
 
-[Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
+[Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 
 ## Enable Query Builder
 
@@ -49,8 +49,7 @@ enabled = true
 
 ## Write a query in the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Select **Observability** in the left-hand navigation panel, and then the **Overview** tab.
 4. Select a **Visualization**.
@@ -64,27 +63,27 @@ enabled = true
 
 The Query Builder supports many visualization operators, including:
 
-| Function               | Arguments     | Description                                                   |
-| ---------------------- | ------------- | ------------------------------------------------------------- |
-| **Count**              | n/a           | The total number of rows matching the query conditions        |
-| **Count Distinct**     | any field     | The number of occurrences of the unique values in the dataset |
-| **Min**                | numeric field | The smallest value for the field in the dataset               |
-| **Max**                | numeric field | The largest value for the field in the dataset                |
-| **Sum**                | numeric field | The total of all of the values for the field in the dataset   |
-| **Average**            | numeric field | The average of the field in the dataset                       |
-| **Standard Deviation** | numeric field | The standard deviation of the field in the dataset            |
-| **Variance**           | numeric field | The variance of the field in the dataset                      |
-| **P001**               | numeric field | The value of the field below which 0.1% of the data falls     |
-| **P01**                | numeric field | The value of the field below with 1% of the data falls        |
-| **P05**                | numeric field | The value of the field below with 5% of the data falls        |
-| **P10**                | numeric field | The value of the field below with 10% of the data falls       |
-| **P25**                | numeric field | The value of the field below with 25% of the data falls       |
-| **Median (P50)**       | numeric field | The value of the field below with 50% of the data falls       |
-| **P75**                | numeric field | The value of the field below with 75% of the data falls       |
-| **P90**                | numeric field | The value of the field below with 90% of the data falls       |
-| **P95**                | numeric field | The value of the field below with 95% of the data falls       |
-| **P99**                | numeric field | The value of the field below with 99% of the data falls       |
-| **P999**               | numeric field | The value of the field below with 99.9% of the data falls     |
+| Function | Arguments | Description |
+| --- | --- | --- |
+| **Count** | n/a | The total number of rows matching the query conditions |
+| **Count Distinct** | any field | The number of occurrences of the unique values in the dataset |
+| **Min** | numeric field | The smallest value for the field in the dataset |
+| **Max** | numeric field | The largest value for the field in the dataset |
+| **Sum** | numeric field | The total of all of the values for the field in the dataset |
+| **Average** | numeric field | The average of the field in the dataset |
+| **Standard Deviation** | numeric field | The standard deviation of the field in the dataset |
+| **Variance** | numeric field | The variance of the field in the dataset |
+| **P001** | numeric field | The value of the field below which 0.1% of the data falls |
+| **P01** | numeric field | The value of the field below with 1% of the data falls |
+| **P05** | numeric field | The value of the field below with 5% of the data falls |
+| **P10** | numeric field | The value of the field below with 10% of the data falls |
+| **P25** | numeric field | The value of the field below with 25% of the data falls |
+| **Median (P50)** | numeric field | The value of the field below with 50% of the data falls |
+| **P75** | numeric field | The value of the field below with 75% of the data falls |
+| **P90** | numeric field | The value of the field below with 90% of the data falls |
+| **P95** | numeric field | The value of the field below with 95% of the data falls |
+| **P99** | numeric field | The value of the field below with 99% of the data falls |
+| **P999** | numeric field | The value of the field below with 99.9% of the data falls |
 
 You can add multiple visualizations in a single query. Each visualization renders a graph. A single summary table is also returned, which shows the raw query results.
 
@@ -100,16 +99,16 @@ The key is any field in a log event. For example, you may choose `$workers.cpuTi
 
 The operator is a logical condition that evaluates to true or false. See the table below for supported conditions:
 
-| Data Type | Valid Conditions (Operators)                                                                     |
-| --------- | ------------------------------------------------------------------------------------------------ |
-| Numeric   | Equals, Does not equal, Greater, Greater or equals, Less, Less or equals, Exists, Does not exist |
-| String    | Equals, Does not equal, Includes, Does not include, Regex, Exists, Does not exist, Starts with   |
+| Data Type | Valid Conditions (Operators) |
+| --- | --- |
+| Numeric | Equals, Does not equal, Greater, Greater or equals, Less, Less or equals, Exists, Does not exist |
+| String | Equals, Does not equal, Includes, Does not include, Regex, Exists, Does not exist, Starts with |
 
 The value for a numeric field is an integer. The value for a string field is any string.
 
 To add a filter:
 
-1. Select **+** in the **Filter** section. 2\. Select **Select key...** and input a key name. For example, `$workers.cpuTimeMs`. 3\. Select the operator and change it to the operator best suited. For example, `Greater than`. 4\. Select **Select value...** and input a value. For example, `100`.
+1. Select **+** in the **Filter** section. 2. Select **Select key...** and input a key name. For example, `$workers.cpuTimeMs`. 3. Select the operator and change it to the operator best suited. For example, `Greater than`. 4. Select **Select value...** and input a value. For example, `100`.
 
 When you run the query with the filter specified above, only log events where `$workers.cpuTimeMs > 100` will be returned.
 
@@ -169,8 +168,7 @@ Queries can be starred by users. Starred queries are unique to the user, and not
 
 Saved queries can be deleted from the **Queries** tab. If you delete a query, the query is deleted for all users in the account.
 
-1. In the Cloudflare dashboard, go to the **Observability** page.
-[Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
+1. In the Cloudflare dashboard, go to the **Observability** page. [Go to **Observability** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability)
 2. Select the **Queries** tab.
 3. On the right-hand side, select the three dots for additional actions.
 4. Select **Delete Query** and follow the instructions.
@@ -181,7 +179,7 @@ Saved queries are assigned a unique URL and can be shared with any user in the a
 
 ## Example: Composing a query
 
-In this example, we will construct a query to find and debug all paths that respond with 5xx errors. First, we create a base query. In this base query, we want to visualize by the raw event count. We can add a filter for `$workers.event.response.status` that is greater than 500\. Then, we group by `$workers.event.request.path` and `$workers.event.response.status` to identify the number of requests that were affected by this behavior.
+In this example, we will construct a query to find and debug all paths that respond with 5xx errors. First, we create a base query. In this base query, we want to visualize by the raw event count. We can add a filter for `$workers.event.response.status` that is greater than 500. Then, we group by `$workers.event.request.path` and `$workers.event.response.status` to identify the number of requests that were affected by this behavior.
 
 ![Constructing a query](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2102,height=794,format=webp/_astro/wobs_QB_visualization_122.DhDuHs4F.png)
 

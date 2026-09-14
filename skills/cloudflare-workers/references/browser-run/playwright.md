@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Playwright
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
@@ -40,7 +40,7 @@ bun add -d @cloudflare/playwright
 
 Note
 
-The current version is [@cloudflare/playwright v1.3.0 ↗](https://github.com/cloudflare/playwright/releases/tag/v1.3.0), based on [Playwright v1.58.2 ↗](https://playwright.dev/docs/release-notes#version-158).
+The current version is [`@cloudflare/playwright` v1.3.0 ↗](https://github.com/cloudflare/playwright/releases/tag/v1.3.0), based on [Playwright v1.58.2 ↗](https://playwright.dev/docs/release-notes#version-158).
 
 ## Use Playwright in a Worker
 
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 upload_source_maps = true
 
 [browser]
@@ -249,7 +249,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -267,7 +267,7 @@ name = "storage-state-examples"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [browser]
 binding = "MYBROWSER"
@@ -278,6 +278,8 @@ id = "<YOUR-KV-NAMESPACE-ID>"
 ```
 
 Now, you can use the storage state to persist cookies and other storage data in KV:
+
+*src/index.tsts*
 
 ```ts
 // gets persisted storage state from KV or undefined if it does not exist
@@ -319,7 +321,7 @@ This is an inactivity timeout, not a maximum session duration. Sessions can rema
 
 ### Session Reuse
 
-The best way to improve the performance of your Browser Run Worker is to reuse sessions by keeping the browser open after you have finished with it, and connecting to that session each time you have a new request. Playwright handles [browser.close ↗](https://playwright.dev/docs/api/class-browser#browser-close) differently from Puppeteer. In Playwright, if the browser was obtained using a `connect` session, the session will disconnect. If the browser was obtained using a `launch` session, the session will close.
+The best way to improve the performance of your Browser Run Worker is to reuse sessions by keeping the browser open after you have finished with it, and connecting to that session each time you have a new request. Playwright handles [`browser.close` ↗](https://playwright.dev/docs/api/class-browser#browser-close) differently from Puppeteer. In Playwright, if the browser was obtained using a `connect` session, the session will disconnect. If the browser was obtained using a `launch` session, the session will close.
 
 ```js
 import { env } from "cloudflare:workers";
@@ -444,10 +446,10 @@ You should also be able to access this information in the dashboard, albeit with
 }
 ```
 
-* `activeSessions` lists the IDs of the current open sessions.
-* `maxConcurrentSessions` defines how many browsers can be open at the same time.
-* `allowedBrowserAcquisitions` specifies if a new browser session can be opened according to the rate [limits](https://developers.cloudflare.com/browser-run/limits/) in place.
-* `timeUntilNextAllowedBrowserAcquisition` defines the waiting period before a new browser can be launched.
+- `activeSessions` lists the IDs of the current open sessions.
+- `maxConcurrentSessions` defines how many browsers can be open at the same time.
+- `allowedBrowserAcquisitions` specifies if a new browser session can be opened according to the rate [limits](https://developers.cloudflare.com/browser-run/limits/) in place.
+- `timeUntilNextAllowedBrowserAcquisition` defines the waiting period before a new browser can be launched.
 
 ## Playwright API
 
@@ -455,10 +457,10 @@ The full Playwright API can be found at the [Playwright API documentation ↗](h
 
 The following capabilities are not yet fully supported, but we’re actively working on them:
 
-* [Playwright Test ↗](https://playwright.dev/docs/test-configuration) except [Assertions ↗](https://playwright.dev/docs/test-assertions)
-* [Components ↗](https://playwright.dev/docs/test-components)
-* [Firefox ↗](https://playwright.dev/docs/api/class-playwright#playwright-firefox), [Android ↗](https://playwright.dev/docs/api/class-android) and [Electron ↗](https://playwright.dev/docs/api/class-electron), as well as different versions of Chrome
-* [Videos ↗](https://playwright.dev/docs/next/videos)
+- [Playwright Test ↗](https://playwright.dev/docs/test-configuration) except [Assertions ↗](https://playwright.dev/docs/test-assertions)
+- [Components ↗](https://playwright.dev/docs/test-components)
+- [Firefox ↗](https://playwright.dev/docs/api/class-playwright#playwright-firefox), [Android ↗](https://playwright.dev/docs/api/class-android) and [Electron ↗](https://playwright.dev/docs/api/class-electron), as well as different versions of Chrome
+- [Videos ↗](https://playwright.dev/docs/next/videos)
 
 This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results ↗](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported.
 

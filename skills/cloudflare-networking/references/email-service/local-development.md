@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local development
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Test and develop your email applications locally using Wrangler before deploying to production.
 
-* [Email sending](https://developers.cloudflare.com/email-service/local-development/sending/)
-* [Email routing](https://developers.cloudflare.com/email-service/local-development/routing/)
+- [Email sending](https://developers.cloudflare.com/email-service/local-development/sending/)
+- [Email routing](https://developers.cloudflare.com/email-service/local-development/routing/)
 
 Was this helpful?
 

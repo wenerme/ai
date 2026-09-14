@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • MiniMax
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `minimax/speech-2.8-turbo`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice cloning, emotion control, and 40+ language support at faster speeds.
 
-| Model Info          |                                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.minimaxi.com/terms)                                                                                   |
-| More information    | [link ↗](https://www.minimaxi.com/)                                                                                        |
-| Zero data retention | Yes                                                                                                                        |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.minimaxi.com/terms) |
+| More information | [link ↗](https://www.minimaxi.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
 
 ## Usage
 
@@ -80,7 +80,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Fast Narration** — Speed up narration for quick playback
+<details>
+
+<summary>**Fast Narration** — Speed up narration for quick playback</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -126,7 +130,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Calm Tone** — Calm and steady speech for meditation or relaxation
+</details>
+
+<details>
+
+<summary>**Calm Tone** — Calm and steady speech for meditation or relaxation</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -174,7 +184,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Adjusted Pitch** — Lower the pitch for a deeper voice
+</details>
+
+<details>
+
+<summary>**Adjusted Pitch** — Lower the pitch for a deeper voice</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -220,6 +236,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 text
@@ -240,7 +258,7 @@ volume
 
 pitch
 
-`integer`requireddefault: 0minimum: \-12maximum: 12Pitch adjustment (-12 to 12)
+`integer`requireddefault: 0minimum: -12maximum: 12Pitch adjustment (-12 to 12)
 
 emotion
 
@@ -260,9 +278,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/minimax/speech-2.8-turbo/schema-output.json)
 
 Was this helpful?
 

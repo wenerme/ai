@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Store application data
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/store-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/store-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web applications need different storage types for different workloads — relational data, key-value lookups, file uploads, and real-time state. Cloudflare provides serverless storage options including D1 (SQL), KV (key-value), R2 (object storage), and Durable Objects (strongly consistent state).
 
@@ -22,25 +22,25 @@ Web applications need different storage types for different workloads — relati
 
 Serverless SQL database built on SQLite, with global read replication. [Learn more about D1](https://developers.cloudflare.com/d1/).
 
-* **SQL database** \- Full Structured Query Language (SQL) with global read replication built on SQLite
+- **SQL database** - Full Structured Query Language (SQL) with global read replication built on SQLite
 
 ### KV
 
 Globally distributed key-value storage for low-latency reads. [Learn more about KV](https://developers.cloudflare.com/kv/).
 
-* **Key-value storage** \- Fast globally-distributed reads for configuration, sessions, and cached data
+- **Key-value storage** - Fast globally-distributed reads for configuration, sessions, and cached data
 
 ### R2
 
 S3-compatible object storage with zero egress fees. [Learn more about R2](https://developers.cloudflare.com/r2/).
 
-* **Object storage** \- Store user-uploaded files and assets with no egress fees
+- **Object storage** - Store user-uploaded files and assets with no egress fees
 
 ### Durable Objects
 
 Stateful objects with strongly consistent storage and coordination. [Learn more about Durable Objects](https://developers.cloudflare.com/durable-objects/).
 
-* **Real-time state** \- Strongly consistent coordination for collaborative features and live data
+- **Real-time state** - Strongly consistent coordination for collaborative features and live data
 
 ## Get started
 

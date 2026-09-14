@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudy AI agent (beta)
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudy-ai-agent/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudy is Cloudflare's first version of an AI agent, with assistant-like functionality designed to help users understand and improve their Cloudflare configurations in multiple areas of the product suite.
 
@@ -51,7 +51,7 @@ However, Cloudy is an entirely optional tool that you can choose not to use. By 
 To opt out of the chat interface, do the following:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
-2. Go to **Manage Account** \> **Configurations**.
+2. Go to **Manage Account** > **Configurations**.
 3. Turn off the **Cloudy features** setting.
 
 As noted above, Cloudy is not trained on user or customer data and does not share your Cloudflare setup with other customers.

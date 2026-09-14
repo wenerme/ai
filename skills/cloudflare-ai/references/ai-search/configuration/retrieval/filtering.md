@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Filtering
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Metadata filtering narrows down search results based on metadata, so only relevant content is retrieved. The filter is applied before retrieval, so you only query the documents that matter.
 
@@ -48,16 +48,16 @@ Filters are JSON objects where keys are metadata attribute names and values spec
 
 ### Supported operators
 
-| Operator | Description                                                  |
-| -------- | ------------------------------------------------------------ |
-| $eq      | Equals                                                       |
-| $ne      | Not equals                                                   |
-| $in      | Matches a stored scalar against any candidate scalar value   |
-| $nin     | Excludes a stored scalar matching any candidate scalar value |
-| $lt      | Less than                                                    |
-| $lte     | Less than or equal to                                        |
-| $gt      | Greater than                                                 |
-| $gte     | Greater than or equal to                                     |
+| Operator | Description |
+| --- | --- |
+| `$eq` | Equals |
+| `$ne` | Not equals |
+| `$in` | Matches a stored scalar against any candidate scalar value |
+| `$nin` | Excludes a stored scalar matching any candidate scalar value |
+| `$lt` | Less than |
+| `$lte` | Less than or equal to |
+| `$gt` | Greater than |
+| `$gte` | Greater than or equal to |
 
 ### Implicit `$eq`
 
@@ -136,11 +136,11 @@ Use range queries to filter for all files within a folder and its subfolders.
 
 For example, consider this file structure:
 
-* docs
-  * guide.pdf
-  * tutorials
-    * getting-started
-      * intro.pdf
+- docs
+  - guide.pdf
+  - tutorials
+    - getting-started
+      - intro.pdf
 
 Using `{ "folder": "docs/" }` only matches files directly in that folder (like `guide.pdf`), not files in subfolders.
 
@@ -158,8 +158,8 @@ To match all files starting with `docs/`, use a range query:
 
 This works because:
 
-* `$gte` includes all paths starting with `docs/`
-* `$lt` with `docs0` excludes paths that do not start with `docs/` (since `0` comes after `/` in ASCII)
+- `$gte` includes all paths starting with `docs/`
+- `$lt` with `docs0` excludes paths that do not start with `docs/` (since `0` comes after `/` in ASCII)
 
 Was this helpful?
 

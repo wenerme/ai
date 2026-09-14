@@ -1,5 +1,5 @@
 ---
-description: Miniflare supports both the traditional service-worker and the newer modules formats for writing workers. To use the modules format, enable it with:
+description: "Miniflare supports both the traditional service-worker and the newer modules formats for writing workers. To use the modules format, enable it with:"
 title: Modules
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Modules
 
-Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/modules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/core/modules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Modules Reference](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/)
+- [Modules Reference](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/)
 
 ## Enabling Modules
 

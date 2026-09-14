@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Static site
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -38,7 +38,7 @@ If you already have a Next.js project that you wish to deploy, ensure that it is
 npx create-next-app --example with-static-export my-app
 ```
 
-After creating your project, a new `my-app` directory will be generated using the official [with-static-export ↗](https://github.com/vercel/next.js/tree/canary/examples/with-static-export) example as a template. Change to this directory to continue.
+After creating your project, a new `my-app` directory will be generated using the official [`with-static-export` ↗](https://github.com/vercel/next.js/tree/canary/examples/with-static-export) example as a template. Change to this directory to continue.
 
 ```sh
 cd my-app
@@ -58,18 +58,18 @@ git push -u origin main
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
-6. In the **Build settings** section, select _Next.js (Static HTML Export)_ as your **Framework preset**. Your selection will provide the following information:
+6. In the **Build settings** section, select *Next.js (Static HTML Export)* as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value          | |  Production branch | main |
-| -------------------- | -------------- | -------------------- | ---- |
-| Build command        | npx next build |                      |      |
-| Build directory      | out            |                      |      |
+Configuration option | Value
+| Production branch | `main` |
+| --- | --- |
+| Build command | `npx next build` |
+| Build directory | `out` |
 
 After configuring your site, you can begin your first deploy. Cloudflare Pages will install `next`, your project dependencies, and build your site before deploying it.
 

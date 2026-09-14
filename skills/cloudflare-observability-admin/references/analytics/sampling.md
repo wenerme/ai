@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Understanding sampling in Cloudflare Analytics
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/sampling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Sampling ↗](https://en.wikipedia.org/wiki/Sampling%5F%28statistics%29) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
+[Sampling ↗](<https://en.wikipedia.org/wiki/Sampling_(statistics)>) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
 
 ## How sampling works
 
@@ -28,9 +28,9 @@ Cloudflare's data pipeline handles [over 700 million events per second ↗](http
 
 Sampling enables:
 
-* **Scalability**: Reduces the volume of data processed without compromising insights.
-* **Performance**: Speeds up query execution for analytics.
-* **Cost-Efficiency**: Minimizes resource usage and storage needs.
+- **Scalability**: Reduces the volume of data processed without compromising insights.
+- **Performance**: Speeds up query execution for analytics.
+- **Cost-Efficiency**: Minimizes resource usage and storage needs.
 
 ## Can I trust sampled data?
 
@@ -38,9 +38,9 @@ Sampled data is highly reliable, and can provide insights that are as dependable
 
 Sampling is an approach similarly used in other domains, for instance:
 
-* Google Maps: Just as online maps display lower-resolution images when zoomed out and higher-resolution images when zoomed in — keeping the total number of pixels relatively constant — Cloudflare Analytics dynamically adjusts sampling rates to efficiently provide insights, ensuring queries return consistent and accurate results regardless of dataset size.
-* Opinion Polls: Similar to how pollsters sample a subset of the population to predict election outcomes, Cloudflare samples a portion of your data to provide accurate, system-wide insights.
-* Movie Frames: Watching a movie at 30 frames per second (fps) instead of 60 fps does not change the overall experience, much like how analyzing fewer data points still reveals the same patterns and trends in your analytics dataset.
+- Google Maps: Just as online maps display lower-resolution images when zoomed out and higher-resolution images when zoomed in — keeping the total number of pixels relatively constant — Cloudflare Analytics dynamically adjusts sampling rates to efficiently provide insights, ensuring queries return consistent and accurate results regardless of dataset size.
+- Opinion Polls: Similar to how pollsters sample a subset of the population to predict election outcomes, Cloudflare samples a portion of your data to provide accurate, system-wide insights.
+- Movie Frames: Watching a movie at 30 frames per second (fps) instead of 60 fps does not change the overall experience, much like how analyzing fewer data points still reveals the same patterns and trends in your analytics dataset.
 
 We acknowledge it can be challenging to verify the exact resolution of ABR query results at this time. However, as a general rule, you can check the number of rows read. A higher number of rows read will result in higher resolution results. For example, results based on thousands of rows are highly likely to be representative, while those based on just a few rows may not be as reliable.
 
@@ -50,27 +50,27 @@ In the near future, we plan to expose confidence intervals along with query resu
 
 **When sampling occurs**
 
-* Sampling is typically applied to very high-traffic datasets where full data analysis would be impractical.
-* For smaller datasets, full data analysis is often performed without sampling.
+- Sampling is typically applied to very high-traffic datasets where full data analysis would be impractical.
+- For smaller datasets, full data analysis is often performed without sampling.
 
 **Sampling rates**
 
-* Sampling rates vary depending on the dataset and product.
-* Cloudflare ensures that sampling rates are consistent within a single dataset to maintain accuracy across queries.
+- Sampling rates vary depending on the dataset and product.
+- Cloudflare ensures that sampling rates are consistent within a single dataset to maintain accuracy across queries.
 
 **Impact on metrics**
 
-* While sampling reduces the volume of processed data, aggregated metrics like totals, averages, and percentiles are extrapolated based on the sample size. This ensures the reported metrics represent the entire dataset accurately.
+- While sampling reduces the volume of processed data, aggregated metrics like totals, averages, and percentiles are extrapolated based on the sample size. This ensures the reported metrics represent the entire dataset accurately.
 
 **Limitations**
 
-* Sampling may not capture extremely rare events with very low occurrence rates.
+- Sampling may not capture extremely rare events with very low occurrence rates.
 
 **Sampling in analytics interfaces**
 
-* GraphQL API: Sampling metadata is included in the query response. For more information, refer to the sampling [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/sampling/) documentation.
-* Workers Analytics Engine: For more information, refer to the [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/sampling/) documentation.
-* Dashboard Analytics: Displays an icon with the sampled percentage of data, if sampled data was used for the visualization.
+- GraphQL API: Sampling metadata is included in the query response. For more information, refer to the sampling [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/sampling/) documentation.
+- Workers Analytics Engine: For more information, refer to the [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/sampling/) documentation.
+- Dashboard Analytics: Displays an icon with the sampled percentage of data, if sampled data was used for the visualization.
 
 Was this helpful?
 

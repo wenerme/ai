@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bandwidth measurement
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare measures Magic Transit usage based on the 95th percentile of clean bandwidth for your network. "Clean bandwidth" refers to the egress traffic Cloudflare routes to your network after applying all Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) mitigation and firewall functions. The usage measurement explicitly excludes attack traffic we block at our global network.
 
@@ -30,8 +30,8 @@ Clean bandwidth includes all egress traffic Cloudflare routes to your network th
 
 For example, if you have onboarded `10.0.0.0/20` to Magic Transit and are advertising it from the Cloudflare edge, but have also advertised a more specific `10.0.1.0/24` via your ISP, the following applies:
 
-* **Internet traffic** to `10.0.1.0/24` reaches you via your ISP because the global Internet routing table uses Longest Prefix Match.
-* **Cloudflare-originated traffic** to `10.0.1.0/24` is routed through your Magic Transit tunnels and interconnects because Cloudflare keeps that traffic inside its own network when the covering /20 prefix is advertised from Cloudflare. This traffic counts toward your bandwidth usage.
+- **Internet traffic** to `10.0.1.0/24` reaches you via your ISP because the global Internet routing table uses Longest Prefix Match.
+- **Cloudflare-originated traffic** to `10.0.1.0/24` is routed through your Magic Transit tunnels and interconnects because Cloudflare keeps that traffic inside its own network when the covering /20 prefix is advertised from Cloudflare. This traffic counts toward your bandwidth usage.
 
 **To avoid this:** If you do not want Cloudflare-originated traffic flowing through your Magic Transit tunnel, withdraw the covering prefix from Cloudflare. The traffic will then egress to the Internet and follow standard Internet routing (including your more specific ISP routes).
 

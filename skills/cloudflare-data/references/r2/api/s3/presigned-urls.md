@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Presigned URLs
 
-Last updated Aug 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Presigned URLs are an [S3 concept ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
 
@@ -30,18 +30,18 @@ Presigned URLs are generated server-side with no communication with R2, requirin
 
 R2 supports two patterns for time-limited access. They overlap but have different trade-offs:
 
-| Pattern                                                                                     | Grants                                                                                                         | Good for                                                                                                                   |
-| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Presigned URLs (this page)                                                                  | A single S3 operation on a single object                                                                       | Granting direct HTTP access to a single object without an S3 client, such as a browser upload or a shareable download link |
-| [Temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) | Multiple S3 operations, scoped to a bucket and a set of permitted operations, and optionally to specific paths | Callers that use a standard S3 client or SDK to perform multiple operations in a scoped session                            |
+| Pattern | Grants | Good for |
+| --- | --- | --- |
+| Presigned URLs (this page) | A single S3 operation on a single object | Granting direct HTTP access to a single object without an S3 client, such as a browser upload or a shareable download link |
+| [Temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) | Multiple S3 operations, scoped to a bucket and a set of permitted operations, and optionally to specific paths | Callers that use a standard S3 client or SDK to perform multiple operations in a scoped session |
 
 ## Generate a presigned URL
 
 ### Prerequisites
 
-* [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (for constructing the S3 endpoint URL)
-* [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) (Access Key ID and Secret Access Key)
-* AWS SDK or compatible S3 client library
+- [Account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) (for constructing the S3 endpoint URL)
+- [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) (Access Key ID and Secret Access Key)
+- AWS SDK or compatible S3 client library
 
 ### SDK examples
 
@@ -131,18 +131,18 @@ aws s3 presign --endpoint-url https://<ACCOUNT_ID>.r2.cloudflarestorage.com \
 
 For complete examples and additional operations, refer to the SDK-specific documentation:
 
-* [AWS SDK for JavaScript](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#generate-presigned-urls)
-* [AWS SDK for Python (Boto3)](https://developers.cloudflare.com/r2/examples/aws/boto3/#generate-presigned-urls)
-* [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/#generate-presigned-urls)
-* [AWS SDK for Go](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-go/#generate-presigned-urls)
-* [AWS SDK for PHP](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-php/#generate-presigned-urls)
+- [AWS SDK for JavaScript](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/#generate-presigned-urls)
+- [AWS SDK for Python (Boto3)](https://developers.cloudflare.com/r2/examples/aws/boto3/#generate-presigned-urls)
+- [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/#generate-presigned-urls)
+- [AWS SDK for Go](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-go/#generate-presigned-urls)
+- [AWS SDK for PHP](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-php/#generate-presigned-urls)
 
 ### Best practices
 
 When generating presigned URLs, you can limit abuse and misuse by:
 
-* **Restricting Content-Type**: Specify the allowed `Content-Type` in your SDK's parameters. The signature will include this header, so uploads will fail with a `403/SignatureDoesNotMatch` error if the client sends a different `Content-Type` for an upload request.
-* **Configuring CORS**: If your presigned URLs will be used from a browser, set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#use-cors-with-a-presigned-url) on your bucket to control which origins can make requests.
+- **Restricting Content-Type**: Specify the allowed `Content-Type` in your SDK's parameters. The signature will include this header, so uploads will fail with a `403/SignatureDoesNotMatch` error if the client sends a different `Content-Type` for an upload request.
+- **Configuring CORS**: If your presigned URLs will be used from a browser, set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#use-cors-with-a-presigned-url) on your bucket to control which origins can make requests.
 
 ## Using a presigned URL
 
@@ -169,12 +169,12 @@ https://my-bucket.123456789abcdef0123456789abcdef.r2.cloudflarestorage.com/photo
 
 In this example, this presigned url performs a `GetObject` on the object `photos/cat.png` within bucket `my-bucket` in the account with id `123456789abcdef0123456789abcdef`. The key signature parameters that compose this presigned URL are:
 
-* `X-Amz-Algorithm`: Identifies the algorithm used to sign the URL.
-* `X-Amz-Credential`: Contains information about the credentials used to calculate the signature.
-* `X-Amz-Date`: The date and time (in ISO 8601 format) when the signature was created.
-* `X-Amz-Expires`: The duration in seconds that the presigned URL remains valid, starting from `X-Amz-Date`.
-* `X-Amz-Signature`: The signature proving the URL was signed using the secret key.
-* `X-Amz-SignedHeaders`: Lists the HTTP headers that were included in the signature calculation.
+- `X-Amz-Algorithm`: Identifies the algorithm used to sign the URL.
+- `X-Amz-Credential`: Contains information about the credentials used to calculate the signature.
+- `X-Amz-Date`: The date and time (in ISO 8601 format) when the signature was created.
+- `X-Amz-Expires`: The duration in seconds that the presigned URL remains valid, starting from `X-Amz-Date`.
+- `X-Amz-Signature`: The signature proving the URL was signed using the secret key.
+- `X-Amz-SignedHeaders`: Lists the HTTP headers that were included in the signature calculation.
 
 Note
 
@@ -184,10 +184,10 @@ The signature parameters (e.g. `X-Amz-Algorithm`, `X-Amz-Credential`, `X-Amz-Dat
 
 R2 supports presigned URLs for the following HTTP methods:
 
-* `GET`: Fetch an object from a bucket
-* `HEAD`: Fetch an object's metadata from a bucket
-* `PUT`: Upload an object to a bucket
-* `DELETE`: Delete an object from a bucket
+- `GET`: Fetch an object from a bucket
+- `HEAD`: Fetch an object's metadata from a bucket
+- `PUT`: Upload an object to a bucket
+- `DELETE`: Delete an object from a bucket
 
 `POST` (multipart form uploads via HTML forms) is not currently supported.
 

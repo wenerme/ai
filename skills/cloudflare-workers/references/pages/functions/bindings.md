@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Bindings
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) enables your Pages Functions to interact with resources on the Cloudflare developer platform. Use bindings to integrate your Pages Functions with Cloudflare resources like [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Objects](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1](https://developers.cloudflare.com/d1/). You can set bindings for both production and preview environments.
 
@@ -30,10 +30,9 @@ To bind your KV namespace to your Pages Function, you can configure a KV namespa
 
 To configure a KV namespace binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **KV namespace**.
+3. Go to **Settings** > **Bindings** > **Add** > **KV namespace**.
 4. Give your binding a name under **Variable name**.
 5. Under **KV namespace**, select your desired namespace.
 6. Redeploy your project for the binding to take effect.
@@ -62,8 +61,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 You can interact with your KV namespace bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 To interact with your KV namespace binding locally by passing arguments to the Wrangler CLI, add `-k <BINDING_NAME>` or `--kv=<BINDING_NAME>` to the `wrangler pages dev` command. For example, if your KV namespace is bound your Function via the `TODO_LIST` binding, access the KV namespace in local development by running:
 
@@ -85,10 +84,9 @@ To bind your Durable Object to your Pages Function, you can configure a Durable 
 
 To configure a Durable Object binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **Durable Object**.
+3. Go to **Settings** > **Bindings** > **Add** > **Durable Object**.
 4. Give your binding a name under **Variable name**.
 5. Under **Durable Object namespace**, select your desired namespace.
 6. Redeploy your project for the binding to take effect.
@@ -123,8 +121,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
 You can interact with your Durable Object bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 While developing locally, to interact with a Durable Object namespace, run `wrangler dev` in the directory of the Worker exporting the Durable Object. In another terminal, run `wrangler pages dev` in the directory of your Pages project.
 
@@ -144,10 +142,9 @@ To bind your R2 bucket to your Pages Function, you can configure a R2 bucket bin
 
 To configure a R2 bucket binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **R2 bucket**.
+3. Go to **Settings** > **Bindings** > **Add** > **R2 bucket**.
 4. Give your binding a name under **Variable name**.
 5. Under **R2 bucket**, select your desired R2 bucket.
 6. Redeploy your project for the binding to take effect.
@@ -182,8 +179,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 You can interact with your R2 bucket bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 Note
 
@@ -209,10 +206,9 @@ To bind your D1 database to your Pages Function, you can configure a D1 database
 
 To configure a D1 database binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add**\> **D1 database bindings**.
+3. Go to **Settings** > **Bindings** > **Add**> **D1 database bindings**.
 4. Give your binding a name under **Variable name**.
 5. Under **D1 database**, select your desired D1 database.
 6. Redeploy your project for the binding to take effect.
@@ -247,8 +243,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 You can interact with your D1 database bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 To interact with a D1 database via the Wrangler CLI while [developing locally](https://developers.cloudflare.com/d1/best-practices/local-development/#develop-locally-with-pages), add `--d1 <BINDING_NAME>=<DATABASE_ID>` to the `wrangler pages dev` command.
 
@@ -278,11 +274,10 @@ To bind your Vectorize index to your Pages Function, you can configure a Vectori
 
 To configure a Vectorize index binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Choose whether you would like to set up the binding in your **Production** or **Preview** environment.
 3. Select your Pages project > **Settings**.
-4. Go to **Bindings** \> **Add** \> **Vectorize index**.
+4. Go to **Bindings** > **Add** > **Vectorize index**.
 5. Give your binding a name under **Variable name**.
 6. Under **Vectorize index**, select your desired Vectorize index.
 7. Redeploy your project for the binding to take effect.
@@ -407,14 +402,13 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 To bind Workers AI to your Pages Function, you can configure a Workers AI binding in the [Wrangler configuration file](https://developers.cloudflare.com/pages/functions/wrangler-configuration/#workers-ai) or the Cloudflare dashboard.
 
-When developing locally using Wrangler, you can define an AI binding using the `--ai` flag. Start Wrangler in development mode by running [wrangler pages dev --ai AI](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to expose the `context.env.AI` binding.
+When developing locally using Wrangler, you can define an AI binding using the `--ai` flag. Start Wrangler in development mode by running [`wrangler pages dev --ai AI`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) to expose the `context.env.AI` binding.
 
 To configure a Workers AI binding via the Cloudflare dashboard:
 
-1. Go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. Go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Settings**.
-3. Select your Pages environment > **Bindings** \> **Add** \> **Workers AI**.
+3. Select your Pages environment > **Bindings** > **Add** > **Workers AI**.
 4. Give your binding a name under **Variable name**.
 5. Redeploy your project for the binding to take effect.
 
@@ -460,8 +454,8 @@ Using Workers AI always accesses your Cloudflare account in order to run AI mode
 
 You can interact with your Workers AI bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 To interact with a Workers AI binding via the Wrangler CLI while developing locally, run:
 
@@ -481,10 +475,9 @@ To bind your Pages Function to a Worker, configure a Service binding in your Pag
 
 To configure a Service binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **Service binding**.
+3. Go to **Settings** > **Bindings** > **Add** > **Service binding**.
 4. Give your binding a name under **Variable name**.
 5. Under **Service**, select your desired Worker.
 6. Redeploy your project for the binding to take effect.
@@ -511,8 +504,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 You can interact with your Service bindings locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and run [npx wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
-* Pass arguments to `wrangler pages dev` directly.
+- Configure your Pages project's Wrangler file and run [`npx wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+- Pass arguments to `wrangler pages dev` directly.
 
 To interact with a [Service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) while developing locally, run the Worker you want to bind to via `wrangler dev` and in parallel, run `wrangler pages dev` with `--service <BINDING_NAME>=<SCRIPT_NAME>` where `SCRIPT_NAME` indicates the name of the Worker. For example, if your Worker is called `my-worker`, connect with this Worker by running it via `npx wrangler dev` (in the Worker's directory) alongside `npx wrangler pages dev <OUTPUT_DIR> --service MY_SERVICE=my-worker` (in the Pages' directory). Interact with this binding by using `context.env` (for example, `context.env.MY_SERVICE`).
 
@@ -538,10 +531,9 @@ To bind a queue to your Pages Function, configure a queue producer binding in yo
 
 To configure a queue producer binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **Queue**.
+3. Go to **Settings** > **Bindings** > **Add** > **Queue**.
 4. Give your binding a name under **Variable name**.
 5. Under **Queue**, select your desired queue.
 6. Redeploy your project for the binding to take effect.
@@ -584,7 +576,7 @@ If using a queue producer binding with a Pages Function, you will be able to sen
 
 Note
 
-PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
+PostgreSQL drivers like [`Postgres.js` ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
 ```jsonc
 {
@@ -592,14 +584,14 @@ PostgreSQL drivers like [Postgres.js ↗](https://github.com/porsager/postgres) 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25"
+	"compatibility_date": "2026-09-14"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -608,10 +600,9 @@ To bind your Hyperdrive config to your Pages Function, you can configure a Hyper
 
 To configure a Hyperdrive binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **Hyperdrive**.
+3. Go to **Settings** > **Bindings** > **Add** > **Hyperdrive**.
 4. Give your binding a name under **Variable name**.
 5. Under **Hyperdrive configuration**, select your desired configuration.
 6. Redeploy your project for the binding to take effect.
@@ -664,7 +655,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 ### Interact with your Hyperdrive binding locally
 
-To interact with your Hyperdrive binding locally, you must provide a local connection string to your database that your Pages project will connect to directly. You can set an environment variable `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` with the connection string of the database, or use the Wrangler file to configure your Hyperdrive binding with a `localConnectionString` as specified in [Hyperdrive documentation for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/). Then, run [npx wrangler pages dev <OUTPUT\_DIR>](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
+To interact with your Hyperdrive binding locally, you must provide a local connection string to your database that your Pages project will connect to directly. You can set an environment variable `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` with the connection string of the database, or use the Wrangler file to configure your Hyperdrive binding with a `localConnectionString` as specified in [Hyperdrive documentation for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/). Then, run [`npx wrangler pages dev <OUTPUT_DIR>`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev).
 
 ## Analytics Engine
 
@@ -674,10 +665,9 @@ To bind an Analytics Engine dataset to your Pages Function, you must configure a
 
 To configure an Analytics Engine binding via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Bindings** \> **Add** \> **Analytics engine**.
+3. Go to **Settings** > **Bindings** > **Add** > **Analytics engine**.
 4. Give your binding a name under **Variable name**.
 5. Under **Dataset**, input your desired dataset.
 6. Redeploy your project for the binding to take effect.
@@ -728,10 +718,9 @@ To add environment variables to your Pages project, you can use the [Wrangler co
 
 To configure an environment variable via the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Variables and Secrets** \> **Add** .
+3. Go to **Settings** > **Variables and Secrets** > **Add** .
 4. After setting a variable name and value, select **Save**.
 
 Below is an example of how to use environment variables in your Function. The environment variable in this example is `ENVIRONMENT` and you can access the environment variable on `context.env`:
@@ -764,8 +753,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
 
 You can interact with your environment variables locally in one of two ways:
 
-* Configure your Pages project's Wrangler file and running `npx wrangler pages dev`.
-* Pass arguments to [wrangler pages dev](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) directly.
+- Configure your Pages project's Wrangler file and running `npx wrangler pages dev`.
+- Pass arguments to [`wrangler pages dev`](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) directly.
 
 To interact with your environment variables locally via the Wrangler CLI, add `--binding=<ENVIRONMENT_VARIABLE_NAME>=<ENVIRONMENT_VARIABLE_VALUE>` to the `wrangler pages dev` command:
 
@@ -779,10 +768,9 @@ Secrets are a type of binding that allow you to attach encrypted text values to 
 
 To add secrets to your Pages project:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Variables and Secrets** \> **Add**.
+3. Go to **Settings** > **Variables and Secrets** > **Add**.
 4. Set a variable name and value.
 5. Select **Encrypt** to create your secret.
 6. Select **Save**.
@@ -799,13 +787,15 @@ Put secrets for use in local development in either a `.dev.vars` file or a `.env
 
 Note
 
-You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
+You can use the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
 Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+
+*.dev.vars / .envbash*
 
 ```bash
 SECRET_KEY="value"
@@ -820,19 +810,19 @@ To set different secrets for each Cloudflare environment, create files named `.d
 
 When you select a Cloudflare environment in your local development, the corresponding environment-specific file will be loaded ahead of the generic `.dev.vars` (or `.env`) file.
 
-* When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
-* In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
-  * `.env.<environment-name>.local` (most specific)
-  * `.env.local`
-  * `.env.<environment-name>`
-  * `.env` (least specific)
+- When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
+- In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
+  - `.env.<environment-name>.local` (most specific)
+  - `.env.local`
+  - `.env.<environment-name>`
+  - `.env` (least specific)
 
 Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
-* To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
-* To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
+- To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
+- To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
 Was this helpful?
 

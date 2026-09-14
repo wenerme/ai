@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Set up an A/B test by controlling what response is served based on cookies.
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This version passes through requests for `/test/*` and `/control/*` URI paths to the origin server, bypassing random assignment.
 

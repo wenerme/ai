@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoints
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For some operations, you can use specific endpoints provided by the Rulesets API for managing phase entry point rulesets. These endpoints include the phase name in the endpoint instead of the ruleset ID.
 
@@ -50,35 +50,35 @@ The Cloudflare Rulesets API supports the operations outlined below. Visit the as
 
 ## List and view rulesets
 
-| Operation                                                                                                                                                                      | Method | Notes                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------ | ---------------------------------------------------------------------------------- |
-| [List existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-existing-rulesets)                                                           | GET    | Returns the list of existing rulesets at the account level or at the zone level.   |
-| [View a specific ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-ruleset)                                                         | GET    | Returns the properties of the most recent version of a specific ruleset.           |
-| [List all versions of a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-all-versions-of-a-ruleset)                                           | GET    | Returns a list of all the versions of a ruleset.                                   |
-| [View a specific version of a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-version-of-a-ruleset)                               | GET    | Returns the configuration of a specific version of a ruleset, including its rules. |
-| [List rules in a managed ruleset with a specific tag](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-rules-in-a-managed-ruleset-with-a-specific-tag) | GET    | Returns a list of all the rules in a managed ruleset with a specific tag.          |
+| Operation | Method | Notes |
+| --- | --- | --- |
+| [List existing rulesets](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-existing-rulesets) | `GET` | Returns the list of existing rulesets at the account level or at the zone level. |
+| [View a specific ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-ruleset) | `GET` | Returns the properties of the most recent version of a specific ruleset. |
+| [List all versions of a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-all-versions-of-a-ruleset) | `GET` | Returns a list of all the versions of a ruleset. |
+| [View a specific version of a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#view-a-specific-version-of-a-ruleset) | `GET` | Returns the configuration of a specific version of a ruleset, including its rules. |
+| [List rules in a managed ruleset with a specific tag](https://developers.cloudflare.com/ruleset-engine/rulesets-api/view/#list-rules-in-a-managed-ruleset-with-a-specific-tag) | `GET` | Returns a list of all the rules in a managed ruleset with a specific tag. |
 
 ## Create rulesets
 
-| Operation                                                                                 | Verb | Notes                                             |
-| ----------------------------------------------------------------------------------------- | ---- | ------------------------------------------------- |
-| [Create a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/) | POST | Creates a new ruleset or a new phase entry point. |
+| Operation | Verb | Notes |
+| --- | --- | --- |
+| [Create a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/) | `POST` | Creates a new ruleset or a new phase entry point. |
 
 ## Update and deploy rulesets
 
-| Operation                                                                                                | Verb   | Notes                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Update or deploy a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/)      | PUT    | Updates the basic properties of a ruleset and the list of rules in the ruleset.Allows you to configure the execution of managed rulesets.          |
-| [Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/)       | POST   | Adds a single rule to an existing ruleset.Allows you to add a single rule without having to include all the existing ruleset rules in the request. |
-| [Update a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/) | PATCH  | Updates the definition of a single rule within a ruleset.Allows you to change the order of a rule in a ruleset.                                    |
-| [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/) | DELETE | Deletes a single rule in a ruleset.                                                                                                                |
+| Operation | Verb | Notes |
+| --- | --- | --- |
+| [Update or deploy a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/) | `PUT` | Updates the basic properties of a ruleset and the list of rules in the ruleset.<br>Allows you to configure the execution of managed rulesets. |
+| [Add a rule to a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/add-rule/) | `POST` | Adds a single rule to an existing ruleset.<br>Allows you to add a single rule without having to include all the existing ruleset rules in the request. |
+| [Update a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update-rule/) | `PATCH` | Updates the definition of a single rule within a ruleset.<br>Allows you to change the order of a rule in a ruleset. |
+| [Delete a rule in a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete-rule/) | `DELETE` | Deletes a single rule in a ruleset. |
 
 ## Delete rulesets
 
-| Operation                                                                                                                | Verb   | Notes                                    |
-| ------------------------------------------------------------------------------------------------------------------------ | ------ | ---------------------------------------- |
-| [Delete a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset)                 | DELETE | Deletes all the versions of a ruleset.   |
-| [Delete a ruleset version](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset-version) | DELETE | Deletes a specific version of a ruleset. |
+| Operation | Verb | Notes |
+| --- | --- | --- |
+| [Delete a ruleset](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset) | `DELETE` | Deletes all the versions of a ruleset. |
+| [Delete a ruleset version](https://developers.cloudflare.com/ruleset-engine/rulesets-api/delete/#delete-ruleset-version) | `DELETE` | Deletes a specific version of a ruleset. |
 
 Was this helpful?
 

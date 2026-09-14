@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-# FLUX.2 \[pro\]
+# FLUX.2 \[pro]
 
 Text-to-Image • Black Forest Labs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `black-forest-labs/flux-2-pro-preview`
 
-* Third-party
+- Third-party
 
-FLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \[pro\] weights with strong multi-reference support.
+FLUX.2 \[pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \[pro] weights with strong multi-reference support.
 
-| Model Info        |                                                                                                                                        |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                                 |
-| More information  | [link ↗](https://blackforestlabs.ai/)                                                                                                  |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-pro-preview) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
+| More information | [link ↗](https://blackforestlabs.ai/) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-pro-preview) |
 
 ## Usage
 
@@ -75,7 +75,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Multi-Reference Editing** — Multi-reference editing — combine two reference images in a single composition
+<details>
+
+<summary>**Multi-Reference Editing** — Multi-reference editing — combine two reference images in a single composition</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -121,7 +125,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Reproducible PNG Output** — Seeded generation with PNG output for downstream editing pipelines
+</details>
+
+<details>
+
+<summary>**Reproducible PNG Output** — Seeded generation with PNG output for downstream editing pipelines</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -159,6 +169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -167,7 +179,7 @@ prompt
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Optional seed for reproducible generation.
 
 width
 
@@ -185,7 +197,7 @@ output\_format
 
 `string`enum: jpeg, png, webpOutput image format. Defaults to jpeg.
 
-▶input\_images\[\]
+▶input\_images\[]
 
 `array`maxItems: 8Up to 8 reference images for editing or multi-image composition. Each entry is an HTTPS URL or a data:image/...;base64,... URI.
 
@@ -195,9 +207,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/schema-output.json)
 
 Was this helpful?
 

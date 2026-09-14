@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Webhooks
 
-Last updated Sep 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webhooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Webhooks let your backend receive RealtimeKit events as they happen. RealtimeKit sends an HTTP `POST` request to your configured endpoint with a JSON payload when a subscribed event occurs, such as when a meeting starts, a participant joins, or a recording is uploaded.
 
@@ -21,7 +21,7 @@ Use webhooks for backend workflows that depend on asynchronous events, such as s
 ## How webhooks work
 
 1. Create an HTTP endpoint in your backend that can receive `POST` requests.
-2. Register the endpoint URL with the RealtimeKit [Webhooks API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/webhooks/).
+2. Register the endpoint URL with the RealtimeKit [Webhooks API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/webhooks/).
 3. Choose the event types that should trigger the webhook.
 4. Verify incoming requests with the `rtk-signature` header.
 5. Return a `2xx` response after accepting the event.
@@ -31,6 +31,8 @@ Webhook events are subscription-only. Your endpoint receives only the events inc
 ## Create a webhook endpoint
 
 Your webhook endpoint must accept JSON `POST` requests. The endpoint can handle multiple event types by switching on the `event` field in the request body.
+
+*src/index.jsjs*
 
 ```js
 async function handleEvent(event) {
@@ -61,6 +63,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 type RealtimeKitWebhookEvent = {
@@ -100,7 +104,7 @@ Your endpoint should return a `2xx` response as soon as it accepts the event. Mo
 
 ## Register a webhook
 
-Register the publicly accessible endpoint URL using the RealtimeKit [Webhooks API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/webhooks/):
+Register the publicly accessible endpoint URL using the RealtimeKit [Webhooks API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/webhooks/):
 
 ```bash
 curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/webhooks" \
@@ -126,15 +130,15 @@ You can also manage webhooks from the [RealtimeKit dashboard ↗](https://dash.c
 
 RealtimeKit includes headers that help you identify, deduplicate, and verify webhook deliveries:
 
-| Header         | Description                                                                                                                 |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| rtk-signature  | Base64-encoded RSA-SHA256 signature for the request body. Use this header to verify that the request came from RealtimeKit. |
-| rtk-uuid       | Unique ID for the webhook delivery. Store this value if you need to avoid processing duplicate deliveries.                  |
-| rtk-webhook-id | ID of the webhook configuration that triggered the delivery.                                                                |
+| Header | Description |
+| --- | --- |
+| `rtk-signature` | Base64-encoded RSA-SHA256 signature for the request body. Use this header to verify that the request came from RealtimeKit. |
+| `rtk-uuid` | Unique ID for the webhook delivery. Store this value if you need to avoid processing duplicate deliveries. |
+| `rtk-webhook-id` | ID of the webhook configuration that triggered the delivery. |
 
 ## Verify webhook signatures
 
-RealtimeKit signs each webhook request body with RSA-SHA256\. Verify the signature before processing the event.
+RealtimeKit signs each webhook request body with RSA-SHA256. Verify the signature before processing the event.
 
 ### Fetch the public key
 
@@ -159,6 +163,8 @@ The response includes a PEM-encoded public key:
 ### Verify the request body
 
 Verify `rtk-signature` against the raw request body. Do not reserialize parsed JSON before verification because changes in whitespace or key order can change the signed bytes.
+
+*src/index.jsjs*
 
 ```js
 async function verifySignature(publicKeyPem, signature, body) {
@@ -223,6 +229,8 @@ export default {
 	},
 };
 ```
+
+*src/index.tsts*
 
 ```ts
 type Env = {
@@ -319,17 +327,17 @@ After repeated delivery failures, RealtimeKit may temporarily reduce delivery at
 
 RealtimeKit supports these webhook events:
 
-| Event                      | Trigger                                                              |
-| -------------------------- | -------------------------------------------------------------------- |
-| meeting.started            | The first participant joins a meeting.                               |
-| meeting.ended              | The meeting ends because the host ended it or all participants left. |
-| meeting.participantJoined  | A participant joins a meeting.                                       |
-| meeting.participantLeft    | A participant leaves a meeting.                                      |
-| meeting.chatSynced         | The chat export for a completed meeting is available.                |
-| recording.statusUpdate     | A recording changes status.                                          |
-| livestreaming.statusUpdate | A livestream changes status.                                         |
-| meeting.transcript         | The transcript for a completed meeting is available.                 |
-| meeting.summary            | The AI-generated summary for a completed meeting is available.       |
+| Event | Trigger |
+| --- | --- |
+| `meeting.started` | The first participant joins a meeting. |
+| `meeting.ended` | The meeting ends because the host ended it or all participants left. |
+| `meeting.participantJoined` | A participant joins a meeting. |
+| `meeting.participantLeft` | A participant leaves a meeting. |
+| `meeting.chatSynced` | The chat export for a completed meeting is available. |
+| `recording.statusUpdate` | A recording changes status. |
+| `livestreaming.statusUpdate` | A livestream changes status. |
+| `meeting.transcript` | The transcript for a completed meeting is available. |
+| `meeting.summary` | The AI-generated summary for a completed meeting is available. |
 
 Fetch the current event list with the Webhooks API:
 

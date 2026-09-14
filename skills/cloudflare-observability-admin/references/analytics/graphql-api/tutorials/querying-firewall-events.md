@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Querying Firewall Events with GraphQL
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-firewall-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-firewall-events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, we are going to use the GraphQL Analytics API to query for Firewall Events over a specified time period.
 
-The following API call will request Firewall Events over a one hour period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ZONE_TAG>`, `<EMAIL>`, and `<API_TOKEN>`[1](#user-content-fn-1) with your zone tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values to your liking.
+The following API call will request Firewall Events over a one hour period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ZONE_TAG>`, `<EMAIL>`, and `<API_TOKEN>`<sup>[1](#user-content-fn-1)</sup> with your zone tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values to your liking.
 
 ## API Call
 

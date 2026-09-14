@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review reference information related to Cloudflare Radar:
 
-* [Quarterly DDoS threat reports](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/)
+- [Quarterly DDoS threat reports](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/)
 
 Was this helpful?
 

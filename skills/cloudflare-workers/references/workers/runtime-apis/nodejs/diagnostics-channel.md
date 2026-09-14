@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Diagnostics Channel
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/diagnostics-channel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-The [diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics%5Fchannel.html) module provides an API to create named channels to report arbitrary message data for diagnostics purposes. The API is essentially a simple event pub/sub model that is specifically designed to support low-overhead diagnostics reporting.
+The [`diagnostics_channel` ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics_channel.html) module provides an API to create named channels to report arbitrary message data for diagnostics purposes. The API is essentially a simple event pub/sub model that is specifically designed to support low-overhead diagnostics reporting.
 
 ```js
 import {
@@ -64,11 +64,11 @@ export default {
 };
 ```
 
-Note that message published to the tail worker is passed through the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm) (same mechanism as the [structuredClone() ↗](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) API) so only values that can be successfully cloned are supported.
+Note that message published to the tail worker is passed through the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) (same mechanism as the [`structuredClone()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) API) so only values that can be successfully cloned are supported.
 
 ## `TracingChannel`
 
-Per the Node.js documentation, "[TracingChannel ↗](https://nodejs.org/api/diagnostics%5Fchannel.html#class-tracingchannel) is a collection of \[Channels\] which together express a single traceable action. `TracingChannel` is used to formalize and simplify the process of producing events for tracing application flow."
+Per the Node.js documentation, " [`TracingChannel` ↗](https://nodejs.org/api/diagnostics_channel.html#class-tracingchannel) is a collection of \[Channels] which together express a single traceable action. `TracingChannel` is used to formalize and simplify the process of producing events for tracing application flow."
 
 ```js
 import { tracingChannel } from "node:diagnostics_channel";
@@ -111,7 +111,7 @@ channel.tracePromise(
 );
 ```
 
-Refer to the [Node.js documentation for diagnostics\_channel ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics%5Fchannel.html) for more information.
+Refer to the [Node.js documentation for `diagnostics_channel` ↗](https://nodejs.org/dist/latest-v20.x/docs/api/diagnostics_channel.html) for more information.
 
 Was this helpful?
 

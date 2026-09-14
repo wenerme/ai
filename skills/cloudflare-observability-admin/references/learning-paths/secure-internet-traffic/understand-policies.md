@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Understand and streamline policy creation
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you begin building security policies, there are a few key details about Gateway to review.
 
@@ -24,9 +24,9 @@ This guide will provide you with a baseline of recommended policies to build and
 
 By the end of this module, you will be able to:
 
-* Understand the order Gateway enforces policies for filtering traffic.
-* Create reusable lists for Gateway policies.
-* Subscribe to indicator feeds for advanced threat intelligence.
+- Understand the order Gateway enforces policies for filtering traffic.
+- Create reusable lists for Gateway policies.
+- Subscribe to indicator feeds for advanced threat intelligence.
 
 Was this helpful?
 

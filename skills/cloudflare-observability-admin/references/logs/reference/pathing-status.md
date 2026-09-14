@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pathing status
 
-Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/reference/pathing-status/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/reference/pathing-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Understand pathing
 
 Cloudflare issues the following **Edge Pathing Statuses**:
 
-* **EdgePathingSrc** (pathing source): The stage that made the routing decision.
-* **EdgePathingOp** (pathing operation): The specific action or operation taken.
-* **EdgePathingStatus** (pathing status): Additional information complementing the **EdgePathingOp**.
+- **EdgePathingSrc** (pathing source): The stage that made the routing decision.
+- **EdgePathingOp** (pathing operation): The specific action or operation taken.
+- **EdgePathingStatus** (pathing status): Additional information complementing the **EdgePathingOp**.
 
 ### EdgePathingSrc
 
 **EdgePathingSrc** refers to the system that last handled the request before an error occurred or the request was passed to the cache server. Typically, this will be the macro/reputation list. Possible pathing sources include:
 
-* `err`
-* `sslv` (SSL verification checker)
-* `bic` (browser integrity check)
-* `hot` (hotlink protection)
-* `macro` (the reputation list)
-* `skip` (Always Online or cdnjs resources)
-* `user` (user firewall rule)
+- `err`
+- `sslv` (SSL verification checker)
+- `bic` (browser integrity check)
+- `hot` (hotlink protection)
+- `macro` (the reputation list)
+- `skip` (Always Online or cdnjs resources)
+- `user` (user firewall rule)
 
 For example:
 
@@ -50,8 +50,8 @@ jq -r .EdgePathingSrc logs.json | sort -n | uniq -c | sort -n | tail
 
 **EdgePathingOp** indicates how the request was handled. `wl` is a request that passed all security checks in the cn. Other possible values are:
 
-* `errHost` (host header mismatch, DNS errors, etc.)
-* `ban` (blocked by IP address, range, etc.)
+- `errHost` (host header mismatch, DNS errors, etc.)
+- `ban` (blocked by IP address, range, etc.)
 
 For example:
 
@@ -84,24 +84,24 @@ jq -r .EdgePathingStatus logs.json | sort -n | uniq -c | sort -n | tail
 
 Certain combinations of pathing have been labeled in the Cloudflare **Threat Analytics** feature (in the **Analytics** app in the Cloudflare dashboard). The mapping is as follows:
 
-| Pathing         | Label                |
-| --------------- | -------------------- |
-| bic.ban.unknown | Bad browser          |
-| hot.ban.unknown | Blocked hotlink      |
-| hot.ban.ip      |                      |
-| macro.ban.ip    | Bad IP               |
-| user.ban.ctry   | Country block        |
-| user.ban.ip     | IP block (user)      |
-| user.ban.ipr16  | IP range block (/16) |
-| user.ban.ipr24  | IP range block (/24) |
+| Pathing | Label |
+| --- | --- |
+| `bic.ban.unknown` | Bad browser |
+| `hot.ban.unknown` | Blocked hotlink |
+| `hot.ban.ip` | |
+| `macro.ban.ip` | Bad IP |
+| `user.ban.ctry` | Country block |
+| `user.ban.ip` | IP block (user) |
+| `user.ban.ipr16` | IP range block (/16) |
+| `user.ban.ipr24` | IP range block (/24) |
 
 ## Understand response fields
 
 The response status appears in three places in a request:
 
-* **edgeResponse**
-* **cacheResponse**
-* **originResponse**
+- **edgeResponse**
+- **cacheResponse**
+- **originResponse**
 
 In your logs, the edge is what first accepts a visitor's request. The cache then accepts the request and either forwards it to your origin or responds from the cache. It is possible to have a request that has only an **edgeResponse** or a request that has an **edgeResponse** and a **cacheResponse**, but no **originResponse**.
 
@@ -124,108 +124,108 @@ The information stored is broken down based on the following categories:
 
 These occur for requests that did not pass any of the validation performed by the Cloudflare network. Example cases include:
 
-* Whenever Cloudflare is unable to look up a domain or zone.
-* An attempt to improperly use the IP for an origin server.
-* Domain ownership is unclear (for example, the domain is not in Cloudflare).
+- Whenever Cloudflare is unable to look up a domain or zone.
+- An attempt to improperly use the IP for an origin server.
+- Domain ownership is unclear (for example, the domain is not in Cloudflare).
 
-| EdgePathingStatus  | Description                                               | EdgePathingOp | Status Code |
-| ------------------ | --------------------------------------------------------- | ------------- | ----------- |
-| cyclic             | Cloudflare loop.                                          | err\_host     | 403         |
-| dns\_err           | Unable to resolve.                                        | err\_host     | 409         |
-| reserved\_ip       | DNS points to local or disallowed IP.                     | err\_host     | 403         |
-| reserved\_ip6      | DNS points to local or disallowed IPv6 address.           | err\_host     | 403         |
-| bad\_host          | Bad or no Host header.                                    | err\_host     | 403         |
-| no\_existing\_host | Ownership lookup failed: host possibly not on Cloudflare. | err\_host     | 409         |
+| EdgePathingStatus | Description | EdgePathingOp | Status Code |
+| --- | --- | --- | --- |
+| `cyclic` | Cloudflare loop. | `err_host` | `403` |
+| `dns_err` | Unable to resolve. | `err_host` | `409` |
+| `reserved_ip` | DNS points to local or disallowed IP. | `err_host` | `403` |
+| `reserved_ip6` | DNS points to local or disallowed IPv6 address. | `err_host` | `403` |
+| `bad_host` | Bad or no Host header. | `err_host` | `403` |
+| `no_existing_host` | Ownership lookup failed: host possibly not on Cloudflare. | `err_host` | `409` |
 
 ## User-based actions
 
 These occur for actions triggered from users based on the configuration for a specific IP (or IP range).
 
-| EdgePathingStatus                                  | Description                                   | EdgePathingOp | EdgePathingSrc | Status Code |
-| -------------------------------------------------- | --------------------------------------------- | ------------- | -------------- | ----------- |
-| Asnum ip ipr24 ipr16 ip6 ip6r64 ip6r48 ip6r32 ctry | The request was blocked.                      | ban           | user           | 403         |
-| Asnum ip ipr24 ipr16 ip6 ip6r64 ip6r48 ip6r32 ctry | The request was allowed.WAF will not execute. | wl            | user           | n/a         |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc | Status Code |
+| --- | --- | --- | --- | --- |
+| `Asnum`<br> `ip`<br> `ipr24`<br> `ipr16`<br> `ip6`<br> `ip6r64`<br> `ip6r48`<br> `ip6r32`<br> `ctry`<br> | The request was blocked. | `ban` | `user` | `403` |
+| `Asnum`<br> `ip`<br> `ipr24`<br> `ipr16`<br> `ip6`<br> `ip6r64`<br> `ip6r48`<br> `ip6r32`<br> `ctry`<br> | <ul><li>The request was allowed.</li><li>WAF will not execute.</li></ul> | `wl` | `user` | n/a |
 
 ## Firewall Rules
 
 Cloudflare Firewall Rules (deprecated) triggers actions based on matching customer-defined rules.
 
-| EdgePathingStatus       | Description              | EdgePathingOp |
-| ----------------------- | ------------------------ | ------------- |
-| filter\_based\_firewall | The request was blocked. | ban           |
-| filter\_based\_firewall | The request was allowed. | wl            |
+| EdgePathingStatus | Description | EdgePathingOp |
+| --- | --- | --- |
+| `filter_based_firewall` | The request was blocked. | `ban` |
+| `filter_based_firewall` | The request was allowed. | `wl` |
 
 ## Zone Lockdown
 
 **Zone Lockdown** blocks visitors to particular URIs where the visitor's IP is not allowlisted.
 
-| EdgePathingStatus | Description        | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ------------------ | ------------- | -------------- |
-| zl                | Lock down applied. | ban           | user           |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `zl` | Lock down applied. | `ban` | `user` |
 
 ## Firewall User-Agent Block
 
 Challenge (Interactive or Non-Interactive) or block visitors who use a browser for which the User-Agent name matches a specific string.
 
-| EdgePathingStatus | Description         | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ------------------- | ------------- | -------------- |
-| ua                | Blocked User-Agent. | ban           | user           |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `ua` | Blocked User-Agent. | `ban` | `user` |
 
 ## Browser Integrity Check
 
 Assert whether the source of the request is illegitimate or the request itself is malicious.
 
-| EdgePathingStatus | Description      | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ---------------- | ------------- | -------------- |
-| empty             | Blocked request. | ban           | bic            |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| empty | Blocked request. | `ban` | `bic` |
 
 ## Hot Linking
 
 Prevent hot linking from other sites.
 
-| EdgePathingStatus | Description      | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ---------------- | ------------- | -------------- |
-| empty             | Blocked request. | ban           | hot            |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| empty | Blocked request. | `ban` | `hot` |
 
 ## L7-to-L7 DDoS mitigation
 
 Drop DDoS attacks through L7 mitigation.
 
-| EdgePathingStatus | Description      | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ---------------- | ------------- | -------------- |
-| l7ddos            | Blocked request. | ban           | protect        |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `l7ddos` | Blocked request. | `ban` | `protect` |
 
 ## IP Reputation (MACRO)
 
 The macro stage is comprised of many different paths. They are categorized by the reputation of the visitor IP.
 
-| EdgePathingStatus | Description                                                                                                                               | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------- |
-| nr                | There is no reputation data for the IP and no action is being taken.                                                                      | wl            | macro          |
-| wl                | IP is explicitly allowlisted.                                                                                                             | wl            | macro          |
-| scan              | IP is explicitly allowlisted and categorized as a security scanner.                                                                       | wl            | macro          |
-| mon               | IP is explicitly allowlisted and categorized as a Monitoring Service.                                                                     | wl            | macro          |
-| bak               | IP is explicitly allowlisted and categorized as a Backup Service.                                                                         | wl            | macro          |
-| mob               | IP is explicitly allowlisted and categorized as Mobile Proxy Service.                                                                     | wl            | macro          |
-| se                | IP is explicitly allowlisted as it belongs to a search engine crawler and no action is taken.                                             | wl            | macro          |
-| grey              | IP is greylisted (suspected to be bad) but the request was either for a favicon or security is turned off and as such, it is allowlisted. | wl            | macro          |
-| bad\_ok           | The reputation score of the IP is bad but the request was either for a favicon or security is turned off and as such, it is allowlisted.  | wl            | macro          |
-| unknown           | The pathing\_status is unknown and the request is being processed as normal.                                                              | wl            | macro          |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `nr` | There is no reputation data for the IP and no action is being taken. | `wl` | `macro` |
+| `wl` | IP is explicitly allowlisted. | `wl` | `macro` |
+| `scan` | IP is explicitly allowlisted and categorized as a security scanner. | `wl` | `macro` |
+| `mon` | IP is explicitly allowlisted and categorized as a Monitoring Service. | `wl` | `macro` |
+| `bak` | IP is explicitly allowlisted and categorized as a Backup Service. | `wl` | `macro` |
+| `mob` | IP is explicitly allowlisted and categorized as Mobile Proxy Service. | `wl` | `macro` |
+| `se` | IP is explicitly allowlisted as it belongs to a search engine crawler and no action is taken. | `wl` | `macro` |
+| `grey` | IP is greylisted (suspected to be bad) but the request was either for a favicon or security is turned off and as such, it is allowlisted. | `wl` | `macro` |
+| `bad_ok` | The reputation score of the IP is bad but the request was either for a favicon or security is turned off and as such, it is allowlisted. | `wl` | `macro` |
+| `unknown` | The `pathing_status` is unknown and the request is being processed as normal. | `wl` | `macro` |
 
 ## Rate Limiting
 
-| EdgePathingStatus | Description                   | EdgePathingOp | EdgePathingSrc |
-| ----------------- | ----------------------------- | ------------- | -------------- |
-| rate\_limit       | Dropped request.              | ban           | user           |
-| rate\_limit       | IP is explicitly allowlisted. | simulate      | user           |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `rate_limit` | Dropped request. | `ban` | `user` |
+| `rate_limit` | IP is explicitly allowlisted. | `simulate` | `user` |
 
 ## Special cases
 
-| EdgePathingStatus | Description                                               | EdgePathingOp | EdgePathingSrc |
-| ----------------- | --------------------------------------------------------- | ------------- | -------------- |
-| ao\_crawl         | AO (Always Online) crawler request.                       | wl            | skip           |
-| cdnjs             | Request to a cdnjs resource.                              | wl            | skip           |
-|                   | Certain challenge forced by Cloudflare's special headers. |               | forced         |
+| EdgePathingStatus | Description | EdgePathingOp | EdgePathingSrc |
+| --- | --- | --- | --- |
+| `ao_crawl` | AO (Always Online) crawler request. | `wl` | `skip` |
+| `cdnjs` | Request to a cdnjs resource. | `wl` | `skip` |
+|  | Certain challenge forced by Cloudflare's special headers. |  | `forced` |
 
 Was this helpful?
 

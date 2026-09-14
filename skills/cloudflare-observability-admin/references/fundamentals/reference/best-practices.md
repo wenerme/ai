@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account and domain management best practices
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 More and more of our lives revolve around our online presence and maintaining access to our various online accounts, such as social media, banking, personal, and business accounts. These accounts are critical to remaining connected with our loved ones and business. As such, ensuring a level of continuity with these services is critical. Below is a list of important items to help ensure you are able to maintain access or delegate access to your Cloudflare account in the event that you are unable to manage your account.
 
@@ -20,10 +20,10 @@ You can lose access to your account and or domain for several reasons: Death, di
 
 To help prevent loss of access:
 
-* Decentralize access to your account.
-* Protect yourself by following good password management practices.
-* Maintain control of your domain name.
-* Save your 2FA backup keys.
+- Decentralize access to your account.
+- Protect yourself by following good password management practices.
+- Maintain control of your domain name.
+- Save your 2FA backup keys.
 
 ## Relationships, partnerships, and business ventures
 
@@ -31,9 +31,9 @@ Ensuring equal access with your partner, spouse, or your business partner is imp
 
 If you have a domain name or a portfolio of domain names for your business, ensuring you have a strict organization policy when it comes to vendor account creation or domain name registration is critical. The steps below will ensure your organization is the owner of the account and or domain names:
 
-* Ensure the registrant of the domain name is your organization's name.
-* Ensure the vendor account is in your organization's name.
-* Ensure that access to the email address used to set up these accounts is decentralized, but can still be used to send emails. Do not use a distribution list email address.
+- Ensure the registrant of the domain name is your organization's name.
+- Ensure the vendor account is in your organization's name.
+- Ensure that access to the email address used to set up these accounts is decentralized, but can still be used to send emails. Do not use a distribution list email address.
 
 ## Email addresses
 

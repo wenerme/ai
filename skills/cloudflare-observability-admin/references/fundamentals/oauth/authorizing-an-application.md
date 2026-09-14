@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authorizing an application
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/authorizing-an-application/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -22,16 +22,16 @@ When you authorize a third-party OAuth application, you grant it permission to a
 
 When a third-party application requests access to your Cloudflare account, you will see a consent screen that displays:
 
-* **Application name and logo**: The name and branding of the requesting application
-* **Publisher domain**: The domain and verification status of the application publisher
-* **Account selection**: Choose which Cloudflare account(s) the application can access
-* **Requested permissions**: After selecting the account(s) the application may access, the specific scopes the application is requesting will be displayed before consent is complete. You can also decline optional permissions. To finish the authorization process, review the permissions the application is requesting and select “**Authorize**”
+- **Application name and logo**: The name and branding of the requesting application
+- **Publisher domain**: The domain and verification status of the application publisher
+- **Account selection**: Choose which Cloudflare account(s) the application can access
+- **Requested permissions**: After selecting the account(s) the application may access, the specific scopes the application is requesting will be displayed before consent is complete. You can also decline optional permissions. To finish the authorization process, review the permissions the application is requesting and select “**Authorize**”
 
 Each shield icon indicates who owns the application and whether its domain ownership is verified:
 
-* **Green filled shield**: Cloudflare owns and manages the application.
-* **Blue outlined shield**: A third-party application with verified ownership of its domain.
-* **Amber filled shield**: A third-party application without verified ownership of a domain.
+- **Green filled shield**: Cloudflare owns and manages the application.
+- **Blue outlined shield**: A third-party application with verified ownership of its domain.
+- **Amber filled shield**: A third-party application without verified ownership of a domain.
 
 Domain verification only confirms that the application owner controls the displayed domain.
 
@@ -48,15 +48,15 @@ All requested permissions are selected by default. You can turn off optional per
 Application authorizations may be viewed and revoked at any time from the profile page on the Cloudflare dashboard.
 
 1. Log in to the Cloudflare dashboard.
-2. [Go to **Manage OAuth authorizations** ↗](https://dash.cloudflare.com/?to=/profile/access-management/authorization)
+2. [Go to **Manage OAuth authorizations** ↗](https://dash.cloudflare.com/?to=/profile/access-management/authorization)
 3. View the list of applications you have authorized.
-  * If you wish to revoke access to an application, select the “Revoke” button for that row
+   - If you wish to revoke access to an application, select the “Revoke” button for that row
 
 ## Account administrator controls
 
 If an account is not available for selection during the consent flow, it may be due to an administrator of that account disabling access to account resources via OAuth.
 
-Account administrators can restrict OAuth applications from accessing account resources via **Manage Account** \> **Members > Settings > Public OAuth App access**.
+Account administrators can restrict OAuth applications from accessing account resources via **Manage Account** > **Members > Settings > Public OAuth App access**.
 
 Caution
 

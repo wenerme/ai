@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How Artifacts works
 
-Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/concepts/how-artifacts-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts creates Git repos on demand. Each repo is an isolated Git service with its own remote URL, tokens, and durable state.
 
@@ -28,9 +28,9 @@ Like [Durable Objects](https://developers.cloudflare.com/durable-objects/concept
 
 Because each repo is isolated, it has its own:
 
-* Git history and refs
-* access tokens and remote URL
-* lifecycle and durable state
+- Git history and refs
+- access tokens and remote URL
+- lifecycle and durable state
 
 Repos can be created as needed. This lets Artifacts model many small units of work across separate repos.
 
@@ -38,8 +38,8 @@ Forking follows the same model. A fork creates a new repo that starts from an ex
 
 Access is also repo-scoped. Each repo has its own tokens, and each token can be limited to a specific level of access:
 
-* `read` for clone, fetch, pull, indexing, and review
-* `write` for push and other mutations
+- `read` for clone, fetch, pull, indexing, and review
+- `write` for push and other mutations
 
 Your Worker or API layer decides when to mint those tokens. That keeps authentication and authorization outside the repo while still making the repo usable from Workers, the REST API, or any standard Git client.
 

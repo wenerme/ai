@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/about/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Web3 gateways let your application interact with decentralized networks (IPFS and Ethereum) using standard HTTP requests. Instead of running your own IPFS or Ethereum node, you point your domain at Cloudflare and the gateway handles network communication on your behalf.
 
@@ -24,8 +24,8 @@ When you [create a gateway](https://developers.cloudflare.com/web3/how-to/manage
 
 When your application sends a read request (for example, fetching a file from IPFS or querying an Ethereum account balance), the gateway checks whether the response is already cached at a nearby Cloudflare data center.
 
-* If cached, the gateway returns the content immediately over HTTP, without contacting the underlying network.
-* If not cached, the gateway fetches the content from Cloudflare's own IPFS or Ethereum nodes, caches it for future requests, and returns it over HTTP.
+- If cached, the gateway returns the content immediately over HTTP, without contacting the underlying network.
+- If not cached, the gateway fetches the content from Cloudflare's own IPFS or Ethereum nodes, caches it for future requests, and returns it over HTTP.
 
 ## Write operations
 

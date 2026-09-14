@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL reference
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -86,11 +86,11 @@ SELECT [DISTINCT] column_specification [, column_specification, ...]
 
 ### Column specification
 
-* **Column name**: `column_name`
-* **All columns**: `*`
-* **Qualified wildcard**: `table_name.*`
-* **Column alias**: `column_name AS alias`
-* **Expressions**: arithmetic, function calls, CASE expressions, and casts
+- **Column name**: `column_name`
+- **All columns**: `*`
+- **Qualified wildcard**: `table_name.*`
+- **Column alias**: `column_name AS alias`
+- **Expressions**: arithmetic, function calls, CASE expressions, and casts
 
 ### Examples
 
@@ -215,14 +215,14 @@ R2 SQL supports joining multiple Iceberg tables in a single query. All join type
 
 ### Supported join types
 
-| Join type        | Syntax                          | Description                                                        |
-| ---------------- | ------------------------------- | ------------------------------------------------------------------ |
-| Inner join       | INNER JOIN ... ON               | Returns rows that match in both tables                             |
-| Left outer join  | LEFT JOIN ... ON                | Returns all rows from the left table, NULLs for non-matching right |
-| Right outer join | RIGHT JOIN ... ON               | Returns all rows from the right table, NULLs for non-matching left |
-| Full outer join  | FULL OUTER JOIN ... ON          | Returns all rows from both tables, NULLs where no match            |
-| Cross join       | CROSS JOIN                      | Cartesian product of both tables                                   |
-| Implicit join    | FROM t1, t2 WHERE t1.id = t2.id | Comma-separated tables with join condition in WHERE                |
+| Join type | Syntax | Description |
+| --- | --- | --- |
+| Inner join | `INNER JOIN ... ON` | Returns rows that match in both tables |
+| Left outer join | `LEFT JOIN ... ON` | Returns all rows from the left table, NULLs for non-matching right |
+| Right outer join | `RIGHT JOIN ... ON` | Returns all rows from the right table, NULLs for non-matching left |
+| Full outer join | `FULL OUTER JOIN ... ON` | Returns all rows from both tables, NULLs where no match |
+| Cross join | `CROSS JOIN` | Cartesian product of both tables |
+| Implicit join | `FROM t1, t2 WHERE t1.id = t2.id` | Comma-separated tables with join condition in `WHERE` |
 
 ### Syntax
 
@@ -271,9 +271,9 @@ LIMIT 20
 
 ### Join conditions
 
-* Join conditions use the `ON` clause with equality (`=`) or expression-based predicates.
-* Functions are supported in join predicates (for example, `ON LOWER(a.col) = LOWER(b.col)`).
-* Multiple conditions can be combined with `AND`.
+- Join conditions use the `ON` clause with equality ( `=`) or expression-based predicates.
+- Functions are supported in join predicates (for example, `ON LOWER(a.col) = LOWER(b.col)`).
+- Multiple conditions can be combined with `AND`.
 
 Note
 
@@ -289,9 +289,9 @@ SELECT * FROM t1 JOIN t2 ON t1.id = t2.id JOIN t3 ON t2.id = t3.id
 
 ### Best practices for joins
 
-* Include `WHERE` filters to reduce intermediate result sizes, especially for multi-way joins.
-* Join large fact tables through a shared dimension table rather than directly cross-joining two large tables.
-* Use `LIMIT` to cap result sizes.
+- Include `WHERE` filters to reduce intermediate result sizes, especially for multi-way joins.
+- Join large fact tables through a shared dimension table rather than directly cross-joining two large tables.
+- Use `LIMIT` to cap result sizes.
 
 ---
 
@@ -451,37 +451,37 @@ SELECT * FROM namespace_name.table_name WHERE condition [AND | OR condition ...]
 
 #### Null checks
 
-* `column_name IS NULL`
-* `column_name IS NOT NULL`
+- `column_name IS NULL`
+- `column_name IS NOT NULL`
 
 #### Boolean checks
 
-* `IS TRUE`, `IS FALSE`, `IS NOT TRUE`, `IS NOT FALSE`
-* `IS UNKNOWN`, `IS NOT UNKNOWN`
+- `IS TRUE`, `IS FALSE`, `IS NOT TRUE`, `IS NOT FALSE`
+- `IS UNKNOWN`, `IS NOT UNKNOWN`
 
 #### Range
 
-* `column_name BETWEEN value1 AND value2`
-* `column_name NOT BETWEEN value1 AND value2`
+- `column_name BETWEEN value1 AND value2`
+- `column_name NOT BETWEEN value1 AND value2`
 
 #### List membership
 
-* `column_name IN ('value1', 'value2')`
-* `column_name NOT IN ('value1', 'value2')`
+- `column_name IN ('value1', 'value2')`
+- `column_name NOT IN ('value1', 'value2')`
 
 #### Pattern matching
 
-* `column_name LIKE 'pattern'`
-* `column_name NOT LIKE 'pattern'`
-* `column_name ILIKE 'pattern'` (case-insensitive)
-* `column_name NOT ILIKE 'pattern'`
-* `column_name SIMILAR TO 'regex_pattern'`
+- `column_name LIKE 'pattern'`
+- `column_name NOT LIKE 'pattern'`
+- `column_name ILIKE 'pattern'` (case-insensitive)
+- `column_name NOT ILIKE 'pattern'`
+- `column_name SIMILAR TO 'regex_pattern'`
 
 #### Logical operators
 
-* `AND`
-* `OR`
-* `NOT`
+- `AND`
+- `OR`
+- `NOT`
 
 ### Examples
 
@@ -529,9 +529,9 @@ GROUP BY department, category
 
 These extensions compute multiple groupings, including subtotals and grand totals, in a single query.
 
-* **`GROUPING SETS`**: Computes exactly the groupings you list. `()` produces the grand total.
-* **`ROLLUP`**: Computes hierarchical subtotals from left to right. `ROLLUP(a, b)` groups by `(a, b)`, `(a)`, and `()`.
-* **`CUBE`**: Computes every combination of the listed columns. `CUBE(a, b)` groups by `(a, b)`, `(a)`, `(b)`, and `()`.
+- **`GROUPING SETS`**: Computes exactly the groupings you list. `()` produces the grand total.
+- **`ROLLUP`**: Computes hierarchical subtotals from left to right. `ROLLUP(a, b)` groups by `(a, b)`, `(a)`, and `()`.
+- **`CUBE`**: Computes every combination of the listed columns. `CUBE(a, b)` groups by `(a, b)`, `(a)`, `(b)`, and `()`.
 
 ```sql
 -- Subtotals per department plus a grand total
@@ -587,9 +587,9 @@ HAVING SUM(total_amount) > 1000000
 ORDER BY expression [ASC | DESC] [, expression [ASC | DESC], ...]
 ```
 
-* **ASC**: Ascending order (default)
-* **DESC**: Descending order
-* Multi-column ordering is supported
+- **ASC**: Ascending order (default)
+- **DESC**: Descending order
+- Multi-column ordering is supported
 
 ### Examples
 
@@ -616,8 +616,8 @@ ORDER BY dept_count DESC, department ASC
 LIMIT number
 ```
 
-* **Type**: Integer only
-* **Default**: 500
+- **Type**: Integer only
+- **Default**: 500
 
 ### Examples
 
@@ -643,11 +643,11 @@ function(args) OVER (
 
 ### Supported functions
 
-| Category  | Functions                                                        |
-| --------- | ---------------------------------------------------------------- |
-| Ranking   | ROW\_NUMBER, RANK, DENSE\_RANK, PERCENT\_RANK, CUME\_DIST, NTILE |
-| Offset    | LAG, LEAD, FIRST\_VALUE, LAST\_VALUE, NTH\_VALUE                 |
-| Aggregate | SUM, AVG, COUNT, MIN, MAX, and other aggregates used with OVER   |
+| Category | Functions |
+| --- | --- |
+| Ranking | `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `PERCENT_RANK`, `CUME_DIST`, `NTILE` |
+| Offset | `LAG`, `LEAD`, `FIRST_VALUE`, `LAST_VALUE`, `NTH_VALUE` |
+| Aggregate | `SUM`, `AVG`, `COUNT`, `MIN`, `MAX`, and other aggregates used with `OVER` |
 
 ### Examples
 
@@ -695,12 +695,12 @@ SELECT ... FROM table2
 
 ### Supported operations
 
-| Operation | Description                                                        |
-| --------- | ------------------------------------------------------------------ |
-| UNION     | Returns all rows from both queries, removing duplicates            |
-| UNION ALL | Returns all rows from both queries, including duplicates           |
-| INTERSECT | Returns only rows that appear in both query results                |
-| EXCEPT    | Returns rows from the first query that do not appear in the second |
+| Operation | Description |
+| --- | --- |
+| `UNION` | Returns all rows from both queries, removing duplicates |
+| `UNION ALL` | Returns all rows from both queries, including duplicates |
+| `INTERSECT` | Returns only rows that appear in both query results |
+| `EXCEPT` | Returns rows from the first query that do not appear in the second |
 
 ### Examples
 
@@ -733,9 +733,9 @@ SELECT zone_id FROM my_namespace.firewall_events
 
 ### Requirements
 
-* All queries in a set operation must return the same number of columns.
-* Corresponding columns must have compatible data types.
-* Column names in the result are taken from the first query.
+- All queries in a set operation must return the same number of columns.
+- Corresponding columns must have compatible data types.
+- Column names in the result are taken from the first query.
 
 Note
 
@@ -849,17 +849,17 @@ LIMIT 1
 
 ## Data type reference
 
-| Type      | Description     | Example Values               |
-| --------- | --------------- | ---------------------------- |
-| integer   | Whole numbers   | 1, 42, \-10, 0               |
-| float     | Decimal numbers | 1.5, 3.14, \-2.7, 0.0        |
-| string    | Text values     | 'hello', 'GET', '2024-01-01' |
-| boolean   | Boolean values  | true, false                  |
-| timestamp | RFC3339         | '2025-09-24T01:00:00Z'       |
-| date      | Date values     | '2025-09-24'                 |
-| struct    | Named fields    | struct\_col\['field\_name'\] |
-| array     | Ordered list    | array\_col\[1\] (1-indexed)  |
-| map       | Key-value pairs | map\_keys(map\_col)          |
+| Type | Description | Example Values |
+| --- | --- | --- |
+| `integer` | Whole numbers | `1`, `42`, `-10`, `0` |
+| `float` | Decimal numbers | `1.5`, `3.14`, `-2.7`, `0.0` |
+| `string` | Text values | `'hello'`, `'GET'`, `'2024-01-01'` |
+| `boolean` | Boolean values | `true`, `false` |
+| `timestamp` | RFC3339 | `'2025-09-24T01:00:00Z'` |
+| `date` | Date values | `'2025-09-24'` |
+| `struct` | Named fields | `struct_col['field_name']` |
+| `array` | Ordered list | `array_col[1]` (1-indexed) |
+| `map` | Key-value pairs | `map_keys(map_col)` |
 
 ---
 

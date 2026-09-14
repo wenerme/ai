@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Accessibility
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/accessibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/accessibility/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser Isolation offers features to support users who have visual impairments or non-English language requirements.
 
@@ -22,7 +22,7 @@ The isolated browser has a built-in screen reader which speaks out loud the cont
 
 ### Turn the screen reader on or off
 
-To turn the built-in screen reader on or off, right-click on any isolated page and select **Accessibility** \> **Enable** / **Disable screen reader**.
+To turn the built-in screen reader on or off, right-click on any isolated page and select **Accessibility** > **Enable** / **Disable screen reader**.
 
 Alternatively, to use a keyboard shortcut, press `CTRL + ALT + Z`.
 

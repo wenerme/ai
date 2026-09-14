@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-error-logging/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If a user is able to connect to Cloudflare and the site they connect to has NEL enabled, Cloudflare passes back two headers to the browser indicating that they should report any network failures to an endpoint specified in the headers. The browser will operate as usual, and if something happens that prevents the browser from connecting to the site, the browser will log the failure as a report and send it to the endpoint.
 
@@ -32,9 +32,9 @@ Transit flaps look like momentary outages caused by transits re-establishing BGP
 
 To customers, this will appear as `tcp.timed_out` reports from a variety of ASNs over a short period of time. This could happen for several reasons:
 
-* Maintenance in the transit network necessitated a reset of the session.
-* Maintenance or reboots in Cloudflare necessitated a reset of the BGP session.
-* Packet loss in the network caused the session to flap.
+- Maintenance in the transit network necessitated a reset of the session.
+- Maintenance or reboots in Cloudflare necessitated a reset of the BGP session.
+- Packet loss in the network caused the session to flap.
 
 Heavy packet loss in the network will likely result in a series of flaps over time. Maintenance is typically one impact period that lasts no more than two minutes.
 

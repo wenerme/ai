@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Summary
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ai/summary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit generates AI-powered meeting summaries from transcript data.
 
@@ -22,7 +22,7 @@ Summarization requires a transcript. To generate summaries automatically when a 
 
 ## Turn on summarization
 
-Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/). For post-meeting summaries, also set `transcribe_on_end: true` so RealtimeKit generates the summary automatically after the transcript is available:
+Set `summarize_on_end: true` when [creating a meeting](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/). For post-meeting summaries, also set `transcribe_on_end: true` so RealtimeKit generates the summary automatically after the transcript is available:
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/meetings" \
@@ -47,27 +47,27 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime
 
 ## Configuration
 
-| Option        | Type   | Default  | Description                            |
-| ------------- | ------ | -------- | -------------------------------------- |
-| word\_limit   | number | 500      | Summary length (150-1000 words)        |
-| text\_format  | string | markdown | Output format: plain\_text or markdown |
-| summary\_type | string | general  | Meeting context for tailored summaries |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `word_limit` | number | 500 | Summary length (150-1000 words) |
+| `text_format` | string | `markdown` | Output format: `plain_text` or `markdown` |
+| `summary_type` | string | `general` | Meeting context for tailored summaries |
 
 ### Summary types
 
 Choose a type that matches your meeting for better results:
 
-| Type                  | Best for                     |
-| --------------------- | ---------------------------- |
-| general               | Any meeting (default)        |
-| team\_meeting         | Regular team syncs           |
-| daily\_standup        | Agile standups               |
-| one\_on\_one\_meeting | 1:1 meetings                 |
-| sales\_call           | Customer sales conversations |
-| client\_check\_in     | Client status updates        |
-| interview             | Job interviews               |
-| lecture               | Educational content          |
-| code\_review          | Technical code reviews       |
+| Type | Best for |
+| --- | --- |
+| `general` | Any meeting (default) |
+| `team_meeting` | Regular team syncs |
+| `daily_standup` | Agile standups |
+| `one_on_one_meeting` | 1:1 meetings |
+| `sales_call` | Customer sales conversations |
+| `client_check_in` | Client status updates |
+| `interview` | Job interviews |
+| `lecture` | Educational content |
+| `code_review` | Technical code reviews |
 
 ## Consume summaries
 
@@ -95,7 +95,7 @@ Configure the `meeting.summary` event in [RealtimeKit webhooks](https://develope
 
 #### Fetch summary
 
-Refer to [Fetch summary of transcripts for a session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/get%5Fsession%5Fsummary/).
+Refer to [Fetch summary of transcripts for a session](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_session_summary/).
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \
@@ -104,7 +104,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/
 
 #### Trigger manually
 
-Use the [Generate summary of transcripts for the session](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/sessions/methods/generate%5Fsummary%5Fof%5Ftranscripts/) API if `summarize_on_end` was not set and you want to generate a summary manually after the transcript is available.
+Use the [Generate summary of transcripts for the session](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/generate_summary_of_transcripts/) API if `summarize_on_end` was not set and you want to generate a summary manually after the transcript is available.
 
 ```bash
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/sessions/$SESSION_ID/summary" \

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Other functions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/other/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/other/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-_Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference._
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
 ## `arrow_cast`
 
@@ -26,8 +26,8 @@ arrow_cast(expression, datatype)
 
 **Arguments**
 
-* **expression**: Expression to cast. Can be a constant, column, or function, and any combination of arithmetic or string operators.
-* **datatype**: [Arrow data type ↗](https://docs.rs/arrow/latest/arrow/datatypes/enum.DataType.html) name to cast to, as a string. The format is the same as that returned by \[`arrow_typeof`\]
+- **expression**: Expression to cast. Can be a constant, column, or function, and any combination of arithmetic or string operators.
+- **datatype**: [Arrow data type ↗](https://docs.rs/arrow/latest/arrow/datatypes/enum.DataType.html) name to cast to, as a string. The format is the same as that returned by \[`arrow_typeof`]
 
 **Example**
 
@@ -55,7 +55,7 @@ arrow_typeof(expression)
 
 **Arguments**
 
-* **expression**: Expression to evaluate. Can be a constant, column, or function, and any combination of arithmetic or string operators.
+- **expression**: Expression to evaluate. Can be a constant, column, or function, and any combination of arithmetic or string operators.
 
 **Example**
 

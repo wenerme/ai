@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Best practices
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/reference/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/reference/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Follow these best practices to avoid potential issues and improve the visitor experience.
 
@@ -40,8 +40,8 @@ When users are actively queueing, only make changes to your [configuration setti
 
 Though you can change your [queueing method](https://developers.cloudflare.com/waiting-room/reference/queueing-methods/), it may affect users if your waiting room is actively queueing:
 
-* **From FIFO to Random**: Users will no longer be ordered based on their cookie timestamp, which may affect the displayed wait time.
-* **From Random to FIFO**: Users will be ordered based on their cookie timestamp, meaning any new users move to the end of the FIFO queue.
+- **From FIFO to Random**: Users will no longer be ordered based on their cookie timestamp, which may affect the displayed wait time.
+- **From Random to FIFO**: Users will be ordered based on their cookie timestamp, meaning any new users move to the end of the FIFO queue.
 
 Note
 

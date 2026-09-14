@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ruleset logic
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Network Firewall (formerly Magic Firewall) rules are performed after Cloudflare's DDoS mitigations have been applied. The two systems are independent, and therefore, permitting traffic inside Cloudflare Network Firewall does not allow it within our DDoS mitigations. Traffic can still be blocked by DDoS mitigations that are applied first in the flow through Cloudflare's systems.
 
@@ -22,8 +22,8 @@ By default, Cloudflare Network Firewall permits all traffic until explicitly blo
 
 You have two options for configuring a security policy:
 
-* Enforce a positive security model and only permit required traffic and block everything else.
-* Begin with a minimal ruleset to block specific traffic and, by default, everything else is permitted.
+- Enforce a positive security model and only permit required traffic and block everything else.
+- Begin with a minimal ruleset to block specific traffic and, by default, everything else is permitted.
 
 Traffic is matched in order of the configured rules. As soon as traffic is matched by an enabled rule, it is no longer validated against the later rules, and traffic will pass through disabled rules. In the dashboard under **Cloudflare Network Firewall**, rule order begins from the top and flows down your list of rules.
 
@@ -33,7 +33,9 @@ For best practices when configuring your security policy, refer to [Best practic
 
 ## Cloudflare Network Firewall rules and Magic Transit endpoint health checks
 
-Cloudflare-sourced traffic is also subject to the Cloudflare Network Firewall rules you configure. If you block all ICMP traffic, you will also block Cloudflare's [endpoint health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/#endpoint-health-checks). When blocking ICMP traffic, ensure your rules first allow ICMP sourced from Cloudflare public IPs to your prefix endpoint IPs before applying a block ICMP rule.
+Cloudflare-sourced traffic is also subject to the Cloudflare Network Firewall rules you configure. If you block all ICMP traffic, you will also block Cloudflare's [endpoint health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/#endpoint-health-checks)
+
+. When blocking ICMP traffic, ensure your rules first allow ICMP sourced from Cloudflare public IPs to your prefix endpoint IPs before applying a block ICMP rule.
 
 For a list of Cloudflare's public IPs, refer to [IP Ranges ↗](https://www.cloudflare.com/ips/).
 

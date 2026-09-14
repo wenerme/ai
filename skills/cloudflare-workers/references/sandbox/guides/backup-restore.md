@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Backup and restore
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/backup-restore/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/backup-restore/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to snapshot a sandbox directory to R2 and restore it later.
 
@@ -23,78 +23,91 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
 ## Prerequisites
 
 1. Create an R2 bucket:
-```sh
-npx wrangler r2 bucket create my-backup-bucket
-```
+
+   ```sh
+   npx wrangler r2 bucket create my-backup-bucket
+   ```
+
+
 2. Add the `BACKUP_BUCKET` R2 binding and presigned URL settings to your Wrangler configuration:
-```jsonc
-{
-	"name": "my-sandbox-worker",
-	"main": "src/index.ts",
-	// Set this to today's date
-	"compatibility_date": "2026-09-01",
-	"compatibility_flags": ["nodejs_compat"],
-	"containers": [
-		{
-			"class_name": "Sandbox",
-			"image": "./Dockerfile",
-		},
-	],
-	"durable_objects": {
-		"bindings": [
-			{
-				"class_name": "Sandbox",
-				"name": "Sandbox",
-			},
-		],
-	},
-	"migrations": [
-		{
-			"new_sqlite_classes": ["Sandbox"],
-			"tag": "v1",
-		},
-	],
-	"vars": {
-		"BACKUP_BUCKET_NAME": "my-backup-bucket",
-		"CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",
-	},
-	"r2_buckets": [
-		{
-			"binding": "BACKUP_BUCKET",
-			"bucket_name": "my-backup-bucket",
-		},
-	],
-}
-```
-```toml
-name = "my-sandbox-worker"
-main = "src/index.ts"
-# Set this to today's date
-compatibility_date = "2026-09-01"
-compatibility_flags = [ "nodejs_compat" ]
-[[containers]]
-class_name = "Sandbox"
-image = "./Dockerfile"
-[[durable_objects.bindings]]
-class_name = "Sandbox"
-name = "Sandbox"
-[[migrations]]
-new_sqlite_classes = [ "Sandbox" ]
-tag = "v1"
-[vars]
-BACKUP_BUCKET_NAME = "my-backup-bucket"
-CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
-[[r2_buckets]]
-binding = "BACKUP_BUCKET"
-bucket_name = "my-backup-bucket"
-```
-If the bucket uses a jurisdiction-specific endpoint, add `BACKUP_BUCKET_ENDPOINT` to `vars`. For an EU bucket, use `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com`.
+
+   ```jsonc
+   {
+   	"name": "my-sandbox-worker",
+   	"main": "src/index.ts",
+   	// Set this to today's date
+   	"compatibility_date": "2026-09-14",
+   	"compatibility_flags": ["nodejs_compat"],
+   	"containers": [
+   		{
+   			"class_name": "Sandbox",
+   			"image": "./Dockerfile",
+   		},
+   	],
+   	"durable_objects": {
+   		"bindings": [
+   			{
+   				"class_name": "Sandbox",
+   				"name": "Sandbox",
+   			},
+   		],
+   	},
+   	"migrations": [
+   		{
+   			"new_sqlite_classes": ["Sandbox"],
+   			"tag": "v1",
+   		},
+   	],
+   	"vars": {
+   		"BACKUP_BUCKET_NAME": "my-backup-bucket",
+   		"CLOUDFLARE_ACCOUNT_ID": "<YOUR_ACCOUNT_ID>",
+   	},
+   	"r2_buckets": [
+   		{
+   			"binding": "BACKUP_BUCKET",
+   			"bucket_name": "my-backup-bucket",
+   		},
+   	],
+   }
+   ```
+
+   ```toml
+   name = "my-sandbox-worker"
+   main = "src/index.ts"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+   compatibility_flags = [ "nodejs_compat" ]
+
+   [[containers]]
+   class_name = "Sandbox"
+   image = "./Dockerfile"
+
+   [[durable_objects.bindings]]
+   class_name = "Sandbox"
+   name = "Sandbox"
+
+   [[migrations]]
+   new_sqlite_classes = [ "Sandbox" ]
+   tag = "v1"
+
+   [vars]
+   BACKUP_BUCKET_NAME = "my-backup-bucket"
+   CLOUDFLARE_ACCOUNT_ID = "<YOUR_ACCOUNT_ID>"
+
+   [[r2_buckets]]
+   binding = "BACKUP_BUCKET"
+   bucket_name = "my-backup-bucket"
+   ```
+
+   If the bucket uses a jurisdiction-specific endpoint, add `BACKUP_BUCKET_ENDPOINT` to `vars`. For an EU bucket, use `https://<ACCOUNT_ID>.eu.r2.cloudflarestorage.com`.
 3. Store R2 API credentials as secrets:
-```sh
-npx wrangler secret put R2_ACCESS_KEY_ID
-npx wrangler secret put R2_SECRET_ACCESS_KEY
-```
-Create the token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** \> **Overview** \> **Manage R2 API Tokens**. Grant **Object Read & Write** on the backup bucket.
+
+   ```sh
+   npx wrangler secret put R2_ACCESS_KEY_ID
+   npx wrangler secret put R2_SECRET_ACCESS_KEY
+   ```
+
+   Create the token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** > **Overview** > **Manage R2 API Tokens**. Grant **Object Read & Write** on the backup bucket.
 
 Note
 
@@ -473,11 +486,11 @@ try {
 
 ## Related resources
 
-* [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) \- Overlay restore, local extract, and `EXDEV`
-* [Backups API](https://developers.cloudflare.com/sandbox/api/backups/) \- Methods, options, and types
-* [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) \- Mount S3-compatible buckets
-* [R2 documentation](https://developers.cloudflare.com/r2/) \- R2 buckets and credentials
-* [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) \- Automatic object cleanup
+- [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) - Overlay restore, local extract, and `EXDEV`
+- [Backups API](https://developers.cloudflare.com/sandbox/api/backups/) - Methods, options, and types
+- [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) - Mount S3-compatible buckets
+- [R2 documentation](https://developers.cloudflare.com/r2/) - R2 buckets and credentials
+- [R2 lifecycle rules](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) - Automatic object cleanup
 
 Was this helpful?
 

@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create a test policy
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-create-test-policy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-create-test-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To ensure a smooth deployment, we recommend testing a simple policy before deploying DNS filtering to your organization.
 
 ## Test a policy in the browser
 
-1. Go to **Traffic policies** \> **Firewall policies**.
+1. Go to **Traffic policies** > **Firewall policies**.
 2. Create a policy to block all security categories:
 
-| Selector            | Operator | Value                | Action |
-| ------------------- | -------- | -------------------- | ------ |
-| Security Categories | in       | _All security risks_ | Block  |
+   | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- |
+   | Security Categories | in | *All security risks* | Block |
 3. In the browser, go to `malware.testcategory.com`. You should see a generic Gateway block page.
-4. In **Logs** \> **Gateway** \> **DNS**, verify that you see the blocked domain.
+4. In **Logs** > **Gateway** > **DNS**, verify that you see the blocked domain.
 
 Note
 

@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review the content below for more information about Cloudflare Network Firewall (formerly Magic Firewall).
 
-* [Cloudflare Network Firewall fields](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/)
-* [Cloudflare Network Firewall functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#cloudflare-network-firewall-functions)
+- [Cloudflare Network Firewall fields](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/)
+- [Cloudflare Network Firewall functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#cloudflare-network-firewall-functions)
 
 Was this helpful?
 

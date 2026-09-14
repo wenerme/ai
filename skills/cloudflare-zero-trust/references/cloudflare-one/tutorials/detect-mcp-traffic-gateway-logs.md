@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Detect MCP traffic in Gateway logs
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -20,26 +20,26 @@ As an IT administrator, you want to identify shadow MCP traffic to prevent unaut
 
 ## Prerequisites
 
-* A Cloudflare account with a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/)
-* [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with HTTP filtering enabled and actively proxying user traffic
-* An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
-  * Account-level `Zero Trust: Read`
-  * Account-level `DLP: Write`
-  * Account-level `Gateway: Write`
-* Your Cloudflare account ID (available in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) under **Account Home**)
-* Familiarity with [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) queries
-* A working knowledge of TypeScript and REST APIs
+- A Cloudflare account with a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/)
+- [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) with HTTP filtering enabled and actively proxying user traffic
+- An [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the following permissions:
+  - Account-level `Zero Trust: Read`
+  - Account-level `DLP: Write`
+  - Account-level `Gateway: Write`
+- Your Cloudflare account ID (available in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) under **Account Home**)
+- Familiarity with [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) queries
+- A working knowledge of TypeScript and REST APIs
 
-## 1\. Review the Gateway HTTP dataset
+## 1. Review the Gateway HTTP dataset
 
 The `gatewayHttpRequestsAdaptiveGroups` dataset in the GraphQL Analytics API provides aggregated Gateway HTTP log data. Use this dataset to query for MCP-related traffic patterns:
 
-* **Dimensions**: `httpHost`, `httpRequestURI`, `action`, `users`, `dlpProfiles`
-* **Time range**: Up to 30 days of historical data
-* **Grouping**: Aggregates results by dimension values
-* **Filtering**: Supports `OR`, `AND`, and `like` operators
+- **Dimensions**: `httpHost`, `httpRequestURI`, `action`, `users`, `dlpProfiles`
+- **Time range**: Up to 30 days of historical data
+- **Grouping**: Aggregates results by dimension values
+- **Filtering**: Supports `OR`, `AND`, and `like` operators
 
-## 2\. Build the MCP detection query
+## 2. Build the MCP detection query
 
 MCP traffic can be identified by three signals:
 
@@ -149,7 +149,7 @@ const groups =
 
 Replace `<YOUR_ACCOUNT_ID>` with your Cloudflare account ID. Replace `<START_DATE>` and `<END_DATE>` with ISO-8601 timestamps covering your desired time range (up to 30 days).
 
-## 3\. Process the query results
+## 3. Process the query results
 
 Each group in the response represents aggregated traffic for a specific `httpHost` and `action` combination. Parse the results to identify unblocked MCP connections:
 
@@ -201,11 +201,11 @@ console.log(`${unblockedHits.length} destinations are unblocked`);
 
 Key insights from the data:
 
-* **Unblocked traffic** (`action` \= `allow`) - Active MCP connections that need investigation or blocking
-* **Blocked traffic** (`action` \= `block`) - Your existing policies are working
-* **User attribution** \- This indicates which employees are connecting to MCP servers
+- **Unblocked traffic** ( `action` = `allow`) - Active MCP connections that need investigation or blocking
+- **Blocked traffic** ( `action` = `block`) - Your existing policies are working
+- **User attribution** - This indicates which employees are connecting to MCP servers
 
-## 4\. Create DLP profiles for MCP JSON-RPC detection
+## 4. Create DLP profiles for MCP JSON-RPC detection
 
 Gateway HTTP policies can match domains and URL paths, but they cannot inspect request bodies. DLP profiles scan `POST` body content for patterns, which is useful for shadow MCP detection, since MCP uses JSON-RPC over HTTP and has several detectable hallmarks.
 
@@ -226,10 +226,10 @@ An attacker could run an MCP server on a non-standard domain (for example, `inte
 
 Before building detection patterns, note the following DLP limitations:
 
-* **Regex syntax** — Rust regex (differs slightly from JavaScript and PCRE)
-* **Scan depth** — First 1,024 bytes of the request body only
-* **POST only** — DLP only scans `POST` requests
-* **Performance** — Regex patterns must be efficient to avoid catastrophic backtracking
+- **Regex syntax** — Rust regex (differs slightly from JavaScript and PCRE)
+- **Scan depth** — First 1,024 bytes of the request body only
+- **POST only** — DLP only scans `POST` requests
+- **Performance** — Regex patterns must be efficient to avoid catastrophic backtracking
 
 ### Build MCP detection patterns
 
@@ -327,10 +327,10 @@ const DLP_REGEX_PATTERNS = [
 
 Pattern explanation:
 
-* `\\s{0,5}` — Allows zero to five whitespace characters to handle both minified and pretty-printed JSON
-* `"method"` — Double quotes are literal because JSON requires them
-* `"tools/call"` — Matches the exact MCP method name
-* `202[4-9]` — Matches MCP protocol versions 2024 through 2029
+- `\\s{0,5}` — Allows zero to five whitespace characters to handle both minified and pretty-printed JSON
+- `"method"` — Double quotes are literal because JSON requires them
+- `"tools/call"` — Matches the exact MCP method name
+- `202[4-9]` — Matches MCP protocol versions 2024 through 2029
 
 ### Create the DLP profile via API
 
@@ -436,21 +436,21 @@ const dlpRule = {
 
 This rule triggers when the DLP profile matches any of the regex patterns in the request body.
 
-## 5\. Classify Portal traffic and shadow MCP traffic
+## 5. Classify Portal traffic and shadow MCP traffic
 
 Cloudflare [MCP Server Portals](https://developers.cloudflare.com/cloudflare-one/) provide governed infrastructure for approved MCP access within your organization, including:
 
-* **Governed access** — Centralized MCP infrastructure managed by your IT team
-* **Audit trails** — All MCP requests logged through Gateway with user attribution
-* **Policy enforcement** — Zero Trust policies apply automatically, including authentication and DLP
-* **Approved tools** — A curated set of MCP tools and resources vetted by security
+- **Governed access** — Centralized MCP infrastructure managed by your IT team
+- **Audit trails** — All MCP requests logged through Gateway with user attribution
+- **Policy enforcement** — Zero Trust policies apply automatically, including authentication and DLP
+- **Approved tools** — A curated set of MCP tools and resources vetted by security
 
 When analyzing Gateway logs, it is helpful to differentiate between two types of MCP traffic:
 
-| Traffic type       | Characteristics                                                                                | Risk level  | Action                    |
-| ------------------ | ---------------------------------------------------------------------------------------------- | ----------- | ------------------------- |
-| MCP Portal traffic | httpHost matches your portal domain (for example, mcp.yourcompany.com or mcp-portal.pages.dev) | Authorized  | Monitor                   |
-| Shadow MCP traffic | httpHost does not match any portal domain (for example, mcp.datadog.com, api.stripe.com/mcp)   | Investigate | Block, redirect or review |
+| Traffic type | Characteristics | Risk level | Action |
+| --- | --- | --- | --- |
+| MCP Portal traffic | `httpHost` matches your portal domain (for example, `mcp.yourcompany.com` or `mcp-portal.pages.dev`) | Authorized | Monitor |
+| Shadow MCP traffic | `httpHost` does not match any portal domain (for example, `mcp.datadog.com`, `api.stripe.com/mcp`) | Investigate | Block, redirect or review |
 
 Extend the query processing from [Process the query results](#3-process-the-query-results) to classify traffic by comparing hostnames against your list of approved portal domains:
 
@@ -514,13 +514,13 @@ Replace the `portalDomains` array with the actual domains of your approved MCP S
 
 ## Related resources
 
-* [Zero Trust documentation](https://developers.cloudflare.com/cloudflare-one/)
-* [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
-* [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
-* [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/)
-* [Rules language and wirefilter expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/)
-* [Pages Functions](https://developers.cloudflare.com/pages/functions/)
-* [Logpush](https://developers.cloudflare.com/logs/logpush/)
+- [Zero Trust documentation](https://developers.cloudflare.com/cloudflare-one/)
+- [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+- [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/)
+- [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/)
+- [Rules language and wirefilter expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/)
+- [Pages Functions](https://developers.cloudflare.com/pages/functions/)
+- [Logpush](https://developers.cloudflare.com/logs/logpush/)
 
 Was this helpful?
 

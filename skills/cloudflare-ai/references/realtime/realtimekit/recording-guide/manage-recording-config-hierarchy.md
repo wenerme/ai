@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage Recording Config Precedence Order
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/manage-recording-config-hierarchy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/manage-recording-config-hierarchy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This document provides an overview of the precedence structure for managing recording configurations within our system. It explains how various configuration levels interact and prioritize settings. The recording configuration can be defined at three different levels:
 
-* [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/)
-* [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/)
-* Specified via [Cloudflare RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit)
+- [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/)
+- [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/)
+- Specified via [Cloudflare RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit)
 
 ## Understand Recording Configuration Precedence
 
 To comprehend the precedence of recording configurations, it is important to delve into the following details. This understanding becomes crucial when dealing with multiple configurations set through APIs and the developer portal.
 
-| Precedence | Config                                                                                                                                            | Description                                                                                                                                           |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1          | [Start recording API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) configs | Highest priority in the system. Any settings defined here will take precedence over other configurations.                                             |
-| 2          | [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/create/) configs              | Second level of priority in the system. Settings here will supersede Org level config but not Start recording a meeting API configs.                  |
-| 3          | Specified via Dashboard                                                                                                                           | Lowest priority in the system. Settings defined here will be overridden by both Start recording a meeting API config and Create a meeting API config. |
+| Precedence | Config | Description |
+| --- | --- | --- |
+| 1 | [Start recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/) configs | Highest priority in the system. Any settings defined here will take precedence over other configurations. |
+| 2 | [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/) configs | Second level of priority in the system. Settings here will supersede Org level config but not Start recording a meeting API configs. |
+| 3 | Specified via Dashboard | Lowest priority in the system. Settings defined here will be overridden by both Start recording a meeting API config and Create a meeting API config. |
 
 ## Example Scenario
 

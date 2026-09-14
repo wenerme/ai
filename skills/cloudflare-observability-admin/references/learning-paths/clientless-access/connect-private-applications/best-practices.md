@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Best practices
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 We recommend following these best practices when you deploy Cloudflare Tunnel for clientless access.
 
 ## Deploy another instance of cloudflared
 
-For an additional point of availability, add a [cloudflared replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) to another host machine in your network.
+For an additional point of availability, add a [`cloudflared` replica](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) to another host machine in your network.
 
 ## Standardize public hostnames
 
 To make your applications easier to manage, standardize the public hostnames that you publish your applications on. Here are a few examples of how customers manage their public hostnames:
 
-* Delegate a subdomain of your primary public website to use for internal applications (for example, `tools.dev.customer.com`).
-* If your internal DNS infrastructure is available for public use, register your internal primary DNS record on Cloudflare and use this domain for your public hostname routes. This allows you to present applications on identical private and public hostnames.
-* Specify some sort of internal logic that generates hostnames based on the type of tool you are connecting. For example, if you have a set of applications in a US-East datacenter allocated explicitly for production resources, you could create subdomains of `tools.us-east.prod.ztproject.com`.
+- Delegate a subdomain of your primary public website to use for internal applications (for example, `tools.dev.customer.com`).
+- If your internal DNS infrastructure is available for public use, register your internal primary DNS record on Cloudflare and use this domain for your public hostname routes. This allows you to present applications on identical private and public hostnames.
+- Specify some sort of internal logic that generates hostnames based on the type of tool you are connecting. For example, if you have a set of applications in a US-East datacenter allocated explicitly for production resources, you could create subdomains of `tools.us-east.prod.ztproject.com`.
 
 ## Configure TLS verification
 
@@ -44,7 +44,7 @@ If your target application sits behind a load balancer or similar, you may need 
 
 ## Update cloudflared
 
-[Update cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/) regularly to get the latest features and bug fixes.
+[Update `cloudflared`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/update-cloudflared/) regularly to get the latest features and bug fixes.
 
 Was this helpful?
 

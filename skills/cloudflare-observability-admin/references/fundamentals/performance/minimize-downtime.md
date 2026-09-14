@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Minimize downtime
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/performance/minimize-downtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/performance/minimize-downtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When making any change to the routing of an Internet application, there is always a possibility of downtime due to certificate issuance, misconfigured settings, or limitations at your origin server. To avoid downtime when going live, it is important to review the most common configurations.
 
@@ -30,9 +30,9 @@ This setting prevents Cloudflare from proxying your traffic before you have an a
 
 Take extra time to confirm the accuracy of your DNS records before activating your domain, paying special attention to:
 
-* [Zone apex records (example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
-* [Subdomain records (www.example.com or blog.example.com)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
-* [Email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
+- [Zone apex records ( `example.com`)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
+- [Subdomain records ( `www.example.com` or `blog.example.com`)](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
+- [Email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
 
 If you add DNS records to your authoritative DNS provider between onboarding your domain and activating your domain, you may need to also add these records within Cloudflare.
 
@@ -40,8 +40,8 @@ If you add DNS records to your authoritative DNS provider between onboarding you
 
 Finish the [DNS setup](https://developers.cloudflare.com/dns/zone-setups/) for your domain, moving the [domain status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) to **Active**:
 
-* [Full setups](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/): Update the authoritative nameservers at your registrar and wait for that change to be authenticated.
-* [Partial setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/): Add the verification TXT record to your authoritative DNS and wait for that change to be authenticated.
+- [Full setups](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/): Update the authoritative nameservers at your registrar and wait for that change to be authenticated.
+- [Partial setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/): Add the verification TXT record to your authoritative DNS and wait for that change to be authenticated.
 
 ## Verify SSL/TLS edge certificates
 

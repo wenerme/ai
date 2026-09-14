@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,10 +24,11 @@ CNAME flattening occurs by default for all plans when your domain uses a CNAME r
 
 ## For all CNAME records
 
-For zones on paid plans, you can choose to flatten all CNAME records. This option is useful for DNS-only (unproxied) CNAME records. [Proxied records](https://developers.cloudflare.com/dns/proxy-status/) are flattened by default as they return Cloudflare anycast IPs.
+For zones on paid plans, you can choose to flatten all CNAME records. This option is useful for DNS-only (unproxied)
 
-1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+ CNAME records. [Proxied records](https://developers.cloudflare.com/dns/proxy-status/) are flattened by default as they return Cloudflare anycast IPs.
+
+1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Turn on the option **CNAME flattening for all CNAME records**.
 
 Make a `PATCH` request to the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint and set `flatten_all_cnames` to `true` in the request body.
@@ -51,9 +52,9 @@ Unavailable flatten option
 
 For the following cases, **Flatten** will not be available:
 
-* The record is at the [zone apex](#for-your-zone-apex).
-* The record is already proxied, which means it will be flattened by default.
-* **CNAME flattening for all CNAME records** is turned on, which means you cannot override it per record.
+- The record is at the [zone apex](#for-your-zone-apex).
+- The record is already proxied, which means it will be flattened by default.
+- **CNAME flattening for all CNAME records** is turned on, which means you cannot override it per record.
 
 With the available [API endpoints](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/), specify the following for each CNAME record in the request body:
 

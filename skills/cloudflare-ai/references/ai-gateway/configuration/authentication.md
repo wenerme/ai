@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticated Gateway
 
-Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway requires a valid Cloudflare API token for each request. This prevents unauthorized access and protects against invalid requests that can inflate log storage usage.
 
@@ -27,8 +27,8 @@ The `cf-aig-authorization` header is used with the `gateway.ai.cloudflare.com` e
 1. Go to the Settings for the specific gateway you want to enable authentication for.
 2. Select **Create authentication token** to generate a custom token with the required `Run` permissions. Be sure to securely save this token, as it will not be displayed again.
 3. Include the API token in each request:
-  * If using the REST API (`/ai/run`), include your Cloudflare API token in the standard `Authorization` header.
-  * If using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header.
+   - If using the REST API ( `/ai/run`), include your Cloudflare API token in the standard `Authorization` header.
+   - If using [provider-native endpoints](https://developers.cloudflare.com/ai-gateway/usage/providers/) at `gateway.ai.cloudflare.com`, use the `cf-aig-authorization` header.
 4. Return to the settings page and toggle on Authenticated Gateway.
 
 AI Gateway API tokens are account-scoped
@@ -80,16 +80,16 @@ const openai = createOpenAI({
 Note
 
 When an AI Gateway is accessed from a Cloudflare Worker using a **binding**, the `cf-aig-authorization` header does not need to be manually included.
-Requests made through bindings are **pre-authenticated** within the associated Cloudflare account.
+ Requests made through bindings are **pre-authenticated** within the associated Cloudflare account.
 
 The following table outlines gateway behavior based on the authentication settings and header status:
 
-| Authentication Setting | Header Info    | Gateway State           | Response                                   |
-| ---------------------- | -------------- | ----------------------- | ------------------------------------------ |
-| On                     | Header present | Authenticated gateway   | Request succeeds                           |
-| On                     | No header      | Error                   | Request fails due to missing authorization |
-| Off                    | Header present | Unauthenticated gateway | Request succeeds                           |
-| Off                    | No header      | Unauthenticated gateway | Request succeeds                           |
+| Authentication Setting | Header Info | Gateway State | Response |
+| --- | --- | --- | --- |
+| On | Header present | Authenticated gateway | Request succeeds |
+| On | No header | Error | Request fails due to missing authorization |
+| Off | Header present | Unauthenticated gateway | Request succeeds |
+| Off | No header | Unauthenticated gateway | Request succeeds |
 
 Was this helpful?
 

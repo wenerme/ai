@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Package registry security
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -30,15 +30,15 @@ Detection is fail-open. If the URL cannot be classified as a package download, t
 
 Gateway detects package downloads for the following ecosystems:
 
-| Ecosystem | Example artifact pattern                                      | Namespace                   |
-| --------- | ------------------------------------------------------------- | --------------------------- |
-| npm       | /{package}/-/{package}-{version}.tgz                          | Scope (for example, @babel) |
-| PyPI      | /packages/{hash}/{hash}/{hash}/{package}-{version}.whl        | —                           |
-| RubyGems  | /gems/{package}-{version}.gem                                 | —                           |
-| Cargo     | /crates/{package}/{package}-{version}.crate                   | —                           |
-| Go        | /{module}/@v/{version}.zip                                    | Module path                 |
-| Maven     | /maven2/{group}/{artifact}/{version}/{artifact}-{version}.jar | Group ID                    |
-| NuGet     | /{package}/{version}/{package}.{version}.nupkg                | —                           |
+| Ecosystem | Example artifact pattern | Namespace |
+| --- | --- | --- |
+| npm | `/{package}/-/{package}-{version}.tgz` | Scope (for example, `@babel`) |
+| PyPI | `/packages/{hash}/{hash}/{hash}/{package}-{version}.whl` | — |
+| RubyGems | `/gems/{package}-{version}.gem` | — |
+| Cargo | `/crates/{package}/{package}-{version}.crate` | — |
+| Go | `/{module}/@v/{version}.zip` | Module path |
+| Maven | `/maven2/{group}/{artifact}/{version}/{artifact}-{version}.jar` | Group ID |
+| NuGet | `/{package}/{version}/{package}.{version}.nupkg` | — |
 
 ### Detected operation
 
@@ -48,23 +48,23 @@ The initial release detects **download** operations only. Download is the one op
 
 The following selectors are available for [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) with the Allow and Block actions:
 
-| Selector      | UI name           | API example                          | Description                                                                                                                                            |
-| ------------- | ----------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| pkg.ecosystem | Package Ecosystem | pkg.ecosystem == "npm"               | The package ecosystem detected from the request URL.                                                                                                   |
-| pkg.name      | Package Name      | pkg.name == "lodash"                 | The package name extracted from the download URL.                                                                                                      |
-| pkg.version   | Package Version   | pkg.version == "4.17.21"             | The package version extracted from the download URL. Supports exact match and ecosystem-aware comparison operators.                                    |
-| pkg.namespace | Package Namespace | pkg.namespace == "@babel"            | The package namespace, when the ecosystem supports one. For npm this is the scope, for Maven this is the group ID, and for Go this is the module path. |
-| pkg.purl      | Package URL       | pkg.purl == "pkg:npm/lodash@4.17.21" | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only.                 |
+| Selector | UI name | API example | Description |
+| --- | --- | --- | --- |
+| `pkg.ecosystem` | Package Ecosystem | `pkg.ecosystem == "npm"` | The package ecosystem detected from the request URL. |
+| `pkg.name` | Package Name | `pkg.name == "lodash"` | The package name extracted from the download URL. |
+| `pkg.version` | Package Version | `pkg.version == "4.17.21"` | The package version extracted from the download URL. Supports exact match and ecosystem-aware comparison operators. |
+| `pkg.namespace` | Package Namespace | `pkg.namespace == "@babel"` | The package namespace, when the ecosystem supports one. For npm this is the scope, for Maven this is the group ID, and for Go this is the module path. |
+| `pkg.purl` | Package URL | `pkg.purl == "pkg:npm/lodash@4.17.21"` | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
 
 ### Build expressions in the dashboard
 
 In the dashboard, **Package Ecosystem** is the primary selector. Selecting it reveals nested fields for specifying package name, version, and namespace. The following rules apply:
 
-* You must select an ecosystem before any other package fields become available.
-* You must select exactly one ecosystem to enable the nested fields. If you use the `in` or `not in` operator to match multiple ecosystems, the nested package name, version, and namespace fields are disabled.
-* You must add a package name before you can add a version constraint.
-* The namespace field is only available for ecosystems that support one. The label changes based on the selected ecosystem: **Scope** for npm, **Group ID** for Maven, and **Module namespace** for Go.
-* The `pkg.purl` (Package URL) selector is not available in the dashboard. Use the API to write expressions that match on PURL.
+- You must select an ecosystem before any other package fields become available.
+- You must select exactly one ecosystem to enable the nested fields. If you use the `in` or `not in` operator to match multiple ecosystems, the nested package name, version, and namespace fields are disabled.
+- You must add a package name before you can add a version constraint.
+- The namespace field is only available for ecosystems that support one. The label changes based on the selected ecosystem: **Scope** for npm, **Group ID** for Maven, and **Module namespace** for Go.
+- The `pkg.purl` (Package URL) selector is not available in the dashboard. Use the API to write expressions that match on PURL.
 
 When using the API directly, these selectors can be combined freely in wirefilter expressions without these constraints.
 
@@ -72,26 +72,26 @@ When using the API directly, these selectors can be combined freely in wirefilte
 
 The `pkg.version` selector supports ecosystem-aware comparison operators in addition to exact string matching. Each ecosystem uses its own native versioning semantics:
 
-| Ecosystem | Versioning standard              |
-| --------- | -------------------------------- |
-| npm       | SemVer                           |
-| Cargo     | SemVer                           |
-| PyPI      | PEP 440                          |
-| RubyGems  | Gem::Version                     |
-| Go        | Go module versions               |
-| Maven     | Maven version ordering           |
-| NuGet     | NuGet normalization and ordering |
+| Ecosystem | Versioning standard |
+| --- | --- |
+| npm | SemVer |
+| Cargo | SemVer |
+| PyPI | PEP 440 |
+| RubyGems | Gem::Version |
+| Go | Go module versions |
+| Maven | Maven version ordering |
+| NuGet | NuGet normalization and ordering |
 
 The following comparison operators are supported:
 
-| Operator              | API syntax | Description                                                        |
-| --------------------- | ---------- | ------------------------------------------------------------------ |
-| equals                | \==        | Normalized equality using ecosystem-specific identity rules.       |
-| not equals            | !=         | Negation of normalized equality.                                   |
-| greater than          | \>         | Version is greater than the specified value using native ordering. |
-| greater than or equal | \>=        | Version is greater than or equal to the specified value.           |
-| less than             | <          | Version is less than the specified value.                          |
-| less than or equal    | <=         | Version is less than or equal to the specified value.              |
+| Operator | API syntax | Description |
+| --- | --- | --- |
+| equals | `==` | Normalized equality using ecosystem-specific identity rules. |
+| not equals | `!=` | Negation of normalized equality. |
+| greater than | `>` | Version is greater than the specified value using native ordering. |
+| greater than or equal | `>=` | Version is greater than or equal to the specified value. |
+| less than | `<` | Version is less than the specified value. |
+| less than or equal | `<=` | Version is less than or equal to the specified value. |
 
 When a version string cannot be parsed by the ecosystem's versioning rules, or when the detected ecosystem does not match the comparison context, the comparison returns no match. This includes `!=`, meaning an unparseable version does not match anything.
 
@@ -105,9 +105,9 @@ Ecosystem-specific range syntax such as npm `^1.2.3`, PyPI `~=1.4`, or Maven int
 
 To block all PyPI package downloads across your organization:
 
-| Selector          | Operator | Value | Action |
-| ----------------- | -------- | ----- | ------ |
-| Package Ecosystem | is       | pypi  | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Package Ecosystem | is | `pypi` | Block |
 
 Wirefilter expression:
 
@@ -119,10 +119,10 @@ pkg.ecosystem == "pypi"
 
 To block a known malicious or unwanted npm package regardless of version:
 
-| Selector          | Operator | Value        | Logic | Action |
-| ----------------- | -------- | ------------ | ----- | ------ |
-| Package Ecosystem | is       | npm          | And   | Block  |
-| Package Name      | is       | event-stream |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | And | Block |
+| Package Name | is | `event-stream` |  | |
 
 Wirefilter expression:
 
@@ -134,11 +134,11 @@ pkg.ecosystem == "npm" and pkg.name == "event-stream"
 
 To block all versions of `lodash` below `4.17.21`, which is the version that patched CVE-2021-23337:
 
-| Selector          | Operator  | Value   | Logic | Action |
-| ----------------- | --------- | ------- | ----- | ------ |
-| Package Ecosystem | is        | npm     | And   | Block  |
-| Package Name      | is        | lodash  | And   |        |
-| Package Version   | less than | 4.17.21 |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | And | Block |
+| Package Name | is | `lodash` | And | |
+| Package Version | less than | `4.17.21` |  | |
 
 Wirefilter expression:
 
@@ -152,10 +152,10 @@ To allow npm package downloads only through your corporate Artifactory instance 
 
 **Policy 1 - Allow sanctioned mirror (higher priority):**
 
-| Selector          | Operator | Value                    | Logic | Action |
-| ----------------- | -------- | ------------------------ | ----- | ------ |
-| Package Ecosystem | is       | npm                      | And   | Allow  |
-| Host              | is       | npm.internal.example.com |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | And | Allow |
+| Host | is | `npm.internal.example.com` |  | |
 
 Wirefilter expression:
 
@@ -165,9 +165,9 @@ pkg.ecosystem == "npm" and http.request.host == "npm.internal.example.com"
 
 **Policy 2 - Block all other npm downloads (lower priority):**
 
-| Selector          | Operator | Value | Action |
-| ----------------- | -------- | ----- | ------ |
-| Package Ecosystem | is       | npm   | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | Block |
 
 Wirefilter expression:
 
@@ -183,12 +183,12 @@ To allow downloads of a sensitive internal package only through your corporate r
 
 **Policy 1 - Allow from sanctioned host (higher priority):**
 
-| Selector          | Operator | Value                    | Logic | Action |
-| ----------------- | -------- | ------------------------ | ----- | ------ |
-| Package Ecosystem | is       | npm                      | And   | Allow  |
-| Package Namespace | is       | @acme                    | And   |        |
-| Package Name      | is       | internal-sdk             | And   |        |
-| Host              | is       | npm.internal.example.com |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | And | Allow |
+| Package Namespace | is | `@acme` | And | |
+| Package Name | is | `internal-sdk` | And | |
+| Host | is | `npm.internal.example.com` |  | |
 
 Wirefilter expression:
 
@@ -198,11 +198,11 @@ pkg.ecosystem == "npm" and pkg.namespace == "@acme" and pkg.name == "internal-sd
 
 **Policy 2 - Block from all other hosts (lower priority):**
 
-| Selector          | Operator | Value        | Logic | Action |
-| ----------------- | -------- | ------------ | ----- | ------ |
-| Package Ecosystem | is       | npm          | And   | Block  |
-| Package Namespace | is       | @acme        | And   |        |
-| Package Name      | is       | internal-sdk |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Package Ecosystem | is | `npm` | And | Block |
+| Package Namespace | is | `@acme` | And | |
+| Package Name | is | `internal-sdk` |  | |
 
 Wirefilter expression:
 
@@ -214,45 +214,45 @@ pkg.ecosystem == "npm" and pkg.namespace == "@acme" and pkg.name == "internal-sd
 
 Package detection classifies traffic based on the URL path structure of each registry's download API. It does not rely on matching against a list of known registry hostnames. This design means that any server serving packages using a compatible URL layout is detected the same way, whether it is:
 
-* The official public registry (for example, `registry.npmjs.org` or `pypi.org`)
-* A corporate proxy registry such as JFrog Artifactory, Sonatype Nexus, or AWS CodeArtifact
-* A self-hosted mirror
-* A CDN-fronted registry endpoint
+- The official public registry (for example, `registry.npmjs.org` or `pypi.org`)
+- A corporate proxy registry such as JFrog Artifactory, Sonatype Nexus, or AWS CodeArtifact
+- A self-hosted mirror
+- A CDN-fronted registry endpoint
 
 The `http.request.host` selector remains available for policies that need to distinguish between specific registry hosts. By combining `pkg.*` selectors with `http.request.host`, you can write rules that apply different actions depending on where the package is being fetched from.
 
 ## Logging
 
-When Gateway detects a package download, the package metadata is included in the Gateway HTTP log. This data is available in [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) and through [Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway%5Fhttp/).
+When Gateway detects a package download, the package metadata is included in the Gateway HTTP log. This data is available in [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) and through [Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/).
 
 ### Activity Log fields
 
 The following package fields are available in the Gateway Activity Log:
 
-| Field              | Description                                                                                         |
-| ------------------ | --------------------------------------------------------------------------------------------------- |
-| Package Ecosystem  | The detected registry type (for example, npm, pypi, cargo).                                         |
-| Package URL (PURL) | The Package URL string derived from the detected coordinates (for example, pkg:npm/lodash@4.17.21). |
+| Field | Description |
+| --- | --- |
+| Package Ecosystem | The detected registry type (for example, `npm`, `pypi`, `cargo`). |
+| Package URL (PURL) | The Package URL string derived from the detected coordinates (for example, `pkg:npm/lodash@4.17.21`). |
 
 ### Logpush fields
 
 Package metadata is available in the `PackageInfo` object in the `gateway_http` Logpush dataset:
 
-| Field                 | Type   | Description                           |
-| --------------------- | ------ | ------------------------------------- |
-| PackageInfo.Ecosystem | string | The detected package ecosystem.       |
-| PackageInfo.Namespace | string | The package namespace, if applicable. |
-| PackageInfo.Name      | string | The package name.                     |
-| PackageInfo.Version   | string | The package version string.           |
-| PackageInfo.Purl      | string | The Package URL string.               |
+| Field | Type | Description |
+| --- | --- | --- |
+| `PackageInfo.Ecosystem` | `string` | The detected package ecosystem. |
+| `PackageInfo.Namespace` | `string` | The package namespace, if applicable. |
+| `PackageInfo.Name` | `string` | The package name. |
+| `PackageInfo.Version` | `string` | The package version string. |
+| `PackageInfo.Purl` | `string` | The Package URL string. |
 
 ## Limitations
 
-* Package detection requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to be turned on. Packages downloaded over connections that bypass TLS inspection (due to Do Not Inspect policies or applications on the [inspection limitations list](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#inspection-limitations)) are not detected.
-* Some language runtimes and HTTP clients maintain their own certificate trust stores separate from the operating system. If the certificate used for inspection (such as the Cloudflare managed certificate) is only installed in the OS trust store, package downloads from these clients may fail with certificate verification errors. Refer to [Install certificate manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/) for instructions on adding the certificate to application-specific trust stores, including Python, Node.js, Ruby, Rust, Java, and Go.
-* Only **download** operations are detected. Metadata lookups (resolve), package publishing, and other registry operations are not classified.
-* Version comparison uses each ecosystem's native ordering rules. Cross-ecosystem version comparisons are not supported.
-* Ecosystem-specific range syntax (such as npm `^1.2.3`, PyPI `~=1.4`, or Maven interval notation) is not supported. Use the individual comparison operators (`>`, `<`, `>=`, `<=`) instead.
+- Package detection requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to be turned on. Packages downloaded over connections that bypass TLS inspection (due to Do Not Inspect policies or applications on the [inspection limitations list](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#inspection-limitations)) are not detected.
+- Some language runtimes and HTTP clients maintain their own certificate trust stores separate from the operating system. If the certificate used for inspection (such as the Cloudflare managed certificate) is only installed in the OS trust store, package downloads from these clients may fail with certificate verification errors. Refer to [Install certificate manually](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/) for instructions on adding the certificate to application-specific trust stores, including Python, Node.js, Ruby, Rust, Java, and Go.
+- Only **download** operations are detected. Metadata lookups (resolve), package publishing, and other registry operations are not classified.
+- Version comparison uses each ecosystem's native ordering rules. Cross-ecosystem version comparisons are not supported.
+- Ecosystem-specific range syntax (such as npm `^1.2.3`, PyPI `~=1.4`, or Maven interval notation) is not supported. Use the individual comparison operators ( `>`, `<`, `>=`, `<=`) instead.
 
 Was this helpful?
 

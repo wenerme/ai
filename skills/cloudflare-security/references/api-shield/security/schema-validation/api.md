@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API configuration
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/schema-validation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the API to upload, activate, list, and delete OpenAPI schemas. An uploaded schema supplies a Schema Profile for its operations.
 
@@ -41,11 +41,22 @@ Operations must exist in Web Assets for Schema Validation matching.
 
 Upload a schema with `POST`. This example uses `example_schema.yaml` from the current directory.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account API Gateway`
-* `Domain API Gateway`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account API Gateway</code>
+- <code>Domain API Gateway</code>
+
+</details>
+
+*Upload a schemabash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \
@@ -80,11 +91,22 @@ By default, uploaded schema evaluation is inactive. Set `validation_enabled=true
 
 Use `PATCH` to activate evaluation after inspecting the schema.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account API Gateway`
-* `Domain API Gateway`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account API Gateway</code>
+- <code>Domain API Gateway</code>
+
+</details>
+
+*Enable validation for a schemabash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schemas/$SCHEMA_ID" \
@@ -118,6 +140,8 @@ Schemas contain hosts, paths, and methods that define operations. An operation r
 
 Schema Validation evaluates requests only for operations added to Web Assets. Retrieve schema operations and their configuration with `GET`.
 
+*cURL commandbash*
+
 ```bash
 curl --request GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&operation_status=new&page=1&per_page=5000" \
 --header "Authorization: Bearer <API_TOKEN>" \
@@ -148,6 +172,8 @@ curl --request GET "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
 To receive information about the configuration of existing operations, Cloudflare recommends passing the `?feature=schema_info` parameter.
 
 Add schema operations to Web Assets with `POST`.
+
+*cURL commandbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operations" \
@@ -181,6 +207,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/operation
 
 You can add schema operations that do not exist in Web Assets. This API call supports up to 20 operations and requires `jq`. For schemas with more than 20 new operations, run the command again to add the next batch.
 
+*cURL commandbash*
+
 ```bash
 response="$(curl --silent --fail-with-body "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/user_schemas/{schema_id}/operations?feature=schema_info&page=1&per_page=20&operation_status=new" --header "Authorization: Bearer <API_TOKEN>")" || exit 1
 operations="$(printf "%s" "$response" | jq --exit-status ".result")" || exit 1
@@ -205,13 +233,24 @@ List uploaded schemas on a zone with `GET`.
 
 `validation_enabled=true` is an optional parameter.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account API Gateway`
-* `Account API Gateway Read`
-* `Domain API Gateway`
-* `Domain API Gateway Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account API Gateway</code>
+- <code>Account API Gateway Read</code>
+- <code>Domain API Gateway</code>
+- <code>Domain API Gateway Read</code>
+
+</details>
+
+*List all uploaded schemasbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas" \
@@ -246,11 +285,22 @@ Use `omit_source=true` to exclude each schema source from the response.
 
 You can delete a schema using `DELETE`.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Account API Gateway`
-* `Domain API Gateway`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Account API Gateway</code>
+- <code>Domain API Gateway</code>
+
+</details>
+
+*Delete a schemabash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/schema_validation/schemas/$SCHEMA_ID" \

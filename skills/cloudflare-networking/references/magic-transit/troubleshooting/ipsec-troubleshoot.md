@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot IPsec tunnels
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/troubleshooting/ipsec-troubleshoot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose IPsec tunnel issues (also called connectors in the Cloudflare dashboard), from initial establishment through ongoing operation. Use the following sections to identify your symptom and find the appropriate solution.
 
@@ -20,9 +20,9 @@ This guide helps you diagnose IPsec tunnel issues (also called connectors in the
 
 ### Symptoms
 
-* Tunnel status shows `Down` and never becomes healthy
-* No traffic passes through the tunnel
-* Tunnel endpoint logs show IKE negotiation errors or retransmissions
+- Tunnel status shows `Down` and never becomes healthy
+- No traffic passes through the tunnel
+- Tunnel endpoint logs show IKE negotiation errors or retransmissions
 
 ### Possible causes and solutions
 
@@ -30,9 +30,9 @@ This guide helps you diagnose IPsec tunnel issues (also called connectors in the
 
 Your edge firewall may be blocking the traffic required for IPsec tunnel establishment. Verify your firewall permits:
 
-* UDP port `500` (IKE)
-* UDP port `4500` (IKE NAT-T)
-* IP protocol `50` (ESP)
+- UDP port `500` (IKE)
+- UDP port `4500` (IKE NAT-T)
+- IP protocol `50` (ESP)
 
 #### Crypto parameter mismatch
 
@@ -44,8 +44,7 @@ Verify your parameters match Cloudflare's supported values. For the complete lis
 
 Authentication failures in Phase 1 indicate a PSK mismatch. To resolve:
 
-1. Go to **Connectors** and select your tunnel.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+1. Go to **Connectors** and select your tunnel. [Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 2. Select **Generate new PSK**.
 3. Copy the new PSK exactly — do not add extra spaces or characters.
 4. Update your tunnel endpoint with the new PSK.
@@ -62,9 +61,9 @@ Ensure your tunnel endpoint is configured to accept an FQDN peer identity. To fi
 
 ### Symptoms
 
-* IKE negotiation completes successfully
-* Tunnel shows `Down` or `Degraded` in the dashboard
-* User traffic may still pass through the tunnel
+- IKE negotiation completes successfully
+- Tunnel shows `Down` or `Degraded` in the dashboard
+- User traffic may still pass through the tunnel
 
 ### Possible causes and solutions
 
@@ -76,9 +75,9 @@ Disable anti-replay protection on your tunnel endpoint, or set the replay window
 
 #### Health check type incompatible with stateful firewall
 
-Stateful firewalls (such as Palo Alto Networks, Check Point, Cisco, and Fortinet) drop the default _Reply_ health check packets because no matching ICMP request exists in their session table.
+Stateful firewalls (such as Palo Alto Networks, Check Point, Cisco, and Fortinet) drop the default *Reply* health check packets because no matching ICMP request exists in their session table.
 
-Change the health check type from _Reply_ to _Request_. For detailed steps, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/).
+Change the health check type from *Reply* to *Request*. For detailed steps, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/).
 
 #### ISP blocking health check return path
 
@@ -98,9 +97,9 @@ Use Request-style health checks instead. Configure a loopback address on your tu
 
 ### Symptoms
 
-* Tunnel alternates between healthy and unhealthy states
-* Intermittent packet loss on the tunnel
-* Traffic works for a period then stops without configuration changes
+- Tunnel alternates between healthy and unhealthy states
+- Intermittent packet loss on the tunnel
+- Traffic works for a period then stops without configuration changes
 
 ### Possible causes and solutions
 
@@ -120,7 +119,7 @@ To minimize any impact from rekeys, increase SA lifetimes on your tunnel endpoin
 
 #### MTU issues
 
-Packets exceeding the tunnel MTU are fragmented or dropped, causing intermittent connectivity issues. Verify MTU is set correctly — typically `1476` for GRE tunnels and `1400`\-`1450` for IPsec tunnels. For detailed guidance, refer to [MTU and MSS](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/).
+Packets exceeding the tunnel MTU are fragmented or dropped, causing intermittent connectivity issues. Verify MTU is set correctly — typically `1476` for GRE tunnels and `1400`-`1450` for IPsec tunnels. For detailed guidance, refer to [MTU and MSS](https://developers.cloudflare.com/magic-transit/reference/mtu-mss/).
 
 ---
 
@@ -130,12 +129,11 @@ Use IPsec logs to monitor tunnel activity during the key-exchange phase of the I
 
 ### Set up an IPsec Logpush job
 
-1. Go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+1. Go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. Select **IPsec logs** as your dataset.
 
-Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more information about features, including the [available fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec%5Flogs/) in the dataset.
+Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more information about features, including the [available fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/) in the dataset.
 
 ## Anti-replay protection
 

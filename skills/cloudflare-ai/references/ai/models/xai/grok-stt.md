@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-stt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-stt/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-stt`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.
 
-| Model Info          |                                                                                                                |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
-| More information    | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/speech-to-text)                                 |
-| Zero data retention | Yes                                                                                                            |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-stt) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/speech-to-text) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-stt) |
 
 ## Usage
 
@@ -54,7 +54,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 How old is the Brooklyn Bridge?
+```
 
 ```json
 {
@@ -104,7 +106,11 @@ How old is the Brooklyn Bridge?
 
 ## Examples
 
-**With Language and Formatting** — Enable Inverse Text Normalization so spoken numbers become digits
+<details>
+
+<summary>**With Language and Formatting** — Enable Inverse Text Normalization so spoken numbers become digits</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -132,7 +138,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 How old is the Brooklyn Bridge?
+```
 
 ```json
 {
@@ -180,7 +188,13 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Speaker Diarization with Key Terms** — Identify speakers and bias transcription toward proper nouns
+</details>
+
+<details>
+
+<summary>**Speaker Diarization with Key Terms** — Identify speakers and bias transcription toward proper nouns</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -213,7 +227,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 How old is the Brooklyn Bridge?
+```
 
 ```json
 {
@@ -267,7 +283,13 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Filler Words Preserved** — Keep filler words (uh, um, er) in the transcript instead of removing them
+</details>
+
+<details>
+
+<summary>**Filler Words Preserved** — Keep filler words (uh, um, er) in the transcript instead of removing them</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -295,7 +317,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 How old is the Brooklyn Bridge?
+```
 
 ```json
 {
@@ -343,7 +367,13 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Data URI Upload** — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`)
+</details>
+
+<details>
+
+<summary>**Data URI Upload** — Pass the audio file directly as a base64 data URI (mutually exclusive with `url`)</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -379,6 +409,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 file
@@ -399,7 +431,7 @@ audio\_format
 
 sample\_rate
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Sample rate in Hz. Required when audio\_format is set.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Sample rate in Hz. Required when audio\_format is set.
 
 language
 
@@ -425,7 +457,7 @@ channels
 
 `integer`minimum: 2maximum: 8Number of audio channels (2–8). Required only for multichannel raw audio; auto-detected for container formats.
 
-▶keyterm\[\]
+▶keyterm\[]
 
 `array`maxItems: 100Key terms to bias transcription toward (e.g. product names, proper nouns). Each term up to 50 characters, max 100 terms. Sent as repeated form fields: keyterm=Term+One&keyterm=Term+Two.
 
@@ -441,19 +473,19 @@ duration
 
 `number`Audio duration in seconds (2 d.p.).
 
-▶words\[\]
+▶words\[]
 
 `array`Word-level segments. Each entry has text, start, end (seconds). Includes speaker integer when diarize=true.
 
-▶channels\[\]
+▶channels\[]
 
 `array`Per-channel transcripts when multichannel=true.
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json)
 
 Was this helpful?
 

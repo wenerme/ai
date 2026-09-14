@@ -12,12 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Confirm DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/confirm-dns-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you change your nameservers, confirm your DNS records are displaying correctly.
 
-1. In the Cloudflare dashboard, go to the DNS **Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. In the Cloudflare dashboard, go to the DNS **Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. To add a record, select **Add record**.
 3. To edit an existing record, select **Edit** for the appropriate record.
 4. After making your changes, select **Save**.

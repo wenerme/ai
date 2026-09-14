@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Widget configurations
 
-Last updated Jun 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure your Turnstile widget's appearance, behavior, and functionality using data attributes or JavaScript render parameters.
 
@@ -29,6 +29,8 @@ Implicit rendering automatically scans your HTML for elements with the `cf-turns
 3. Widgets will render automatically when the page loads.
 4. Configure the widget using `data-*` attributes on the HTML element.
 
+*Examplehtml*
+
 ```html
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="light"></div>
@@ -42,6 +44,8 @@ Explicit rendering gives you programmatic control over when and how widgets are 
 2. Create container elements (without the `cf-turnstile` class).
 3. Call `turnstile.render()` function when you want to create widgets.
 4. Configure the widget using JavaScript object parameters.
+
+*Examplehtml*
 
 ```html
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>
@@ -66,31 +70,39 @@ Explicit rendering gives you programmatic control over when and how widgets are 
 
 The Turnstile widget can have two different fixed sizes or a flexible width size when using the Managed or Non-Interactive modes.
 
-| Size     | Width             | Height | Use case                  |
-| -------- | ----------------- | ------ | ------------------------- |
-| Normal   | 300px             | 65px   | Standard implementation   |
-| Flexible | 100% (min: 300px) | 65px   | Responsive design         |
-| Compact  | 150px             | 140px  | Space-constrained layouts |
+| Size | Width | Height | Use case |
+| --- | --- | --- | --- |
+| Normal | 300px | 65px | Standard implementation |
+| Flexible | 100% (min: 300px) | 65px | Responsive design |
+| Compact | 150px | 140px | Space-constrained layouts |
 
-* `normal`: The default size works well for most desktop and mobile layouts. Use this if you have adequate horizontal space on your website or form.
-* `flexible`: Automatically adapts to the container width while maintaining minimum usability. Use this for responsive designs that need to work across all screen sizes.
-* `compact`: Ideal for mobile interfaces, sidebars, or any space where horizontal space is limited. The compact widget is taller than normal to accommodate the smaller width.
+- `normal`: The default size works well for most desktop and mobile layouts. Use this if you have adequate horizontal space on your website or form.
+- `flexible`: Automatically adapts to the container width while maintaining minimum usability. Use this for responsive designs that need to work across all screen sizes.
+- `compact`: Ideal for mobile interfaces, sidebars, or any space where horizontal space is limited. The compact widget is taller than normal to accommodate the smaller width.
 
 Note
 
 Widget size only applies to Managed and Non-Interactive modes. Invisible widgets have no visual footprint regardless of size configuration.
 
+*Normal size (default)html*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
+
+*Flexible sizehtml*
 
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="flexible"></div>
 ```
 
+*Compact sizehtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="compact"></div>
 ```
+
+*Normal size (default)js*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -98,12 +110,16 @@ Widget size only applies to Managed and Non-Interactive modes. Invisible widgets
 	});
 ```
 
+*Flexible sizejs*
+
 ```js
 	turnstile.render('#widget-container', {
 		sitekey: '<YOUR-SITE-KEY>',
 		size: 'flexible'
 	});
 ```
+
+*Compact sizejs*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -118,21 +134,29 @@ Widget size only applies to Managed and Non-Interactive modes. Invisible widgets
 
 Customize the widget's visual appearance to match your website's design.
 
-* `auto` (default): Automatically matches the visitor's system theme preference. Auto is recommended for most implementations as it respects the visitor's preferences and provides the best accessibility experience.
-* `light`: Light theme with bright colors and clear contrast. Light theme works best on bright backgrounds and provides high contrast for readability.
-* `dark`: Dark theme optimized for dark interfaces. Dark theme is ideal for dark interfaces, gaming sites, or applications with dark color schemes.
+- `auto` (default): Automatically matches the visitor's system theme preference. Auto is recommended for most implementations as it respects the visitor's preferences and provides the best accessibility experience.
+- `light`: Light theme with bright colors and clear contrast. Light theme works best on bright backgrounds and provides high contrast for readability.
+- `dark`: Dark theme optimized for dark interfaces. Dark theme is ideal for dark interfaces, gaming sites, or applications with dark color schemes.
+
+*Auto theme (default)html*
 
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
 
+*Light themehtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="light"></div>
 ```
 
+*Dark themehtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-theme="dark"></div>
 ```
+
+*Auto theme (default)js*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -140,12 +164,16 @@ Customize the widget's visual appearance to match your website's design.
 	});
 ```
 
+*Light themejs*
+
 ```js
 	turnstile.render('#widget-container', {
 		sitekey: '<YOUR-SITE-KEY>',
 		theme: 'light'
 	});
 ```
+
+*Dark themejs*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -160,25 +188,33 @@ Customize the widget's visual appearance to match your website's design.
 
 Control when the widget becomes visible to visitors using the appearance mode.
 
-* `always` (default): The widget is always visible from page load. This is the best option for most implementations where you want your visitors to see the widget immediately as it provides clear visual feedback that security verification is in place.
-* `execute`: The widget only becomes visible after the challenge begins. This is useful for when you need to control the timing of widget appearance, such as showing it only when a visitor starts filling out a form or selecting a submit button.
-* `interaction-only`: The widget becomes visible only when visitor interaction is required and provides the cleanest visitor experience. Most visitors will never see the widget, but suspected bots will encounter the interactive challenge.
+- `always` (default): The widget is always visible from page load. This is the best option for most implementations where you want your visitors to see the widget immediately as it provides clear visual feedback that security verification is in place.
+- `execute`: The widget only becomes visible after the challenge begins. This is useful for when you need to control the timing of widget appearance, such as showing it only when a visitor starts filling out a form or selecting a submit button.
+- `interaction-only`: The widget becomes visible only when visitor interaction is required and provides the cleanest visitor experience. Most visitors will never see the widget, but suspected bots will encounter the interactive challenge.
 
 Note
 
 Appearance modes only affect visible widget types (Managed and Non-Interactive). Invisible widgets are never shown regardless of the appearance setting.
 
+*Always visible (default)html*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
+
+*Visible only after challenge beginshtml*
 
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-appearance="execute"></div>
 ```
 
+*Visible only when interaction is neededhtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-appearance="interaction-only"></div>
 ```
+
+*Always visible (default)js*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -186,12 +222,16 @@ Appearance modes only affect visible widget types (Managed and Non-Interactive).
 	});
 ```
 
+*Visible only after challenge beginsjs*
+
 ```js
 	turnstile.render('#widget-container', {
 		sitekey: '<YOUR-SITE-KEY>',
 		appearance: 'execute'
 	});
 ```
+
+*Visible only when interaction is neededjs*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -206,23 +246,28 @@ Appearance modes only affect visible widget types (Managed and Non-Interactive).
 
 Control when the challenge runs and a token is generated.
 
-* `render` (default): The challenge runs automatically after calling the `render()` function and provides immediate protection as soon as the widget loads. The challenge runs in the background while the page loads, ensuring the token is ready when the visitor submits data.
-* `execute`: The challenge runs after calling the `turnstile.execute()` function separately and gives you precise control over when verification occurs. This option is useful for multi-step forms, conditional verification, or when you want to defer the challenge until the visitor actually attempts to submit data. This can improve page load performance and visitor experience by only running verification when needed.
+- `render` (default): The challenge runs automatically after calling the `render()` function and provides immediate protection as soon as the widget loads. The challenge runs in the background while the page loads, ensuring the token is ready when the visitor submits data.
+- `execute`: The challenge runs after calling the `turnstile.execute()` function separately and gives you precise control over when verification occurs. This option is useful for multi-step forms, conditional verification, or when you want to defer the challenge until the visitor actually attempts to submit data. This can improve page load performance and visitor experience by only running verification when needed.
 
-**Common scenarios**
+  **Common scenarios**
+  - Multi-step forms: Run verification only on the final step.
+  - Conditional protection: Only verify visitors who meet certain criteria.
+  - Performance optimization: Defer verification to reduce initial page load time.
+  - User-triggered verification: Let visitors manually start the verification process.
 
-  * Multi-step forms: Run verification only on the final step.
-  * Conditional protection: Only verify visitors who meet certain criteria.
-  * Performance optimization: Defer verification to reduce initial page load time.
-  * User-triggered verification: Let visitors manually start the verification process.
+*Auto execution (default)html*
 
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
 
+*Manual executionhtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-execution="execute"></div>
 ```
+
+*Auto execution (default)js*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -230,12 +275,16 @@ Control when the challenge runs and a token is generated.
 	});
 ```
 
+*Manual executionjs*
+
 ```js
 	turnstile.render('#widget-container', {
 		sitekey: '<YOUR-SITE-KEY>',
 		execution: 'execute'
 	});
 ```
+
+*Execute the challenge laterjs*
 
 ```js
 	turnstile.execute('#widget-container');
@@ -247,34 +296,44 @@ Control when the challenge runs and a token is generated.
 
 Set the language for the widget interface.
 
-* `auto` (default): Uses the visitor's browser language preference.
-* Specific language codes: ISO 639-1 two-letter codes, such as `es`, `fr`, `de`.
-* Language and region: Combined codes for regional variants, such as `en-US`, `es-MX`, `pt-BR`.
+- `auto` (default): Uses the visitor's browser language preference.
+- Specific language codes: ISO 639-1 two-letter codes, such as `es`, `fr`, `de`.
+- Language and region: Combined codes for regional variants, such as `en-US`, `es-MX`, `pt-BR`.
 
 Notes
 
-* When set to `auto`, Turnstile automatically detects the visitor's preferred language from their browser settings.
-* If a requested language is not supported, Turnstile falls back to English.
-* Language affects all visitor-facing text including loading messages, error states, and accessibility labels.
-* Setting specific languages can improve visitor experience for international audiences.
+- When set to `auto`, Turnstile automatically detects the visitor's preferred language from their browser settings.
+- If a requested language is not supported, Turnstile falls back to English.
+- Language affects all visitor-facing text including loading messages, error states, and accessibility labels.
+- Setting specific languages can improve visitor experience for international audiences.
+
+*Auto language (default)html*
 
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
 
+*Specific languagehtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-language="es"></div>
 ```
 
+*Language and countryhtml*
+
 ```html
 	<div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-language="en-US"></div>
 ```
+
+*Auto language (default)js*
 
 ```js
 	turnstile.render('#widget-container', {
 		sitekey: '<YOUR-SITE-KEY>'
 	});
 ```
+
+*Specific languagejs*
 
 ```js
 	turnstile.render('#widget-container', {
@@ -289,10 +348,10 @@ Notes
 
 Handle widget events with callbacks.
 
-* `callback`: Triggered when the challenge is successfully completed.
-* `error-callback`: Triggered when an error occurs during the challenge.
-* `expired-callback`: Triggered when a token expires (before timeout).
-* `timeout-callback`: Triggered when an interactive challenge times out.
+- `callback`: Triggered when the challenge is successfully completed.
+- `error-callback`: Triggered when an error occurs during the challenge.
+- `expired-callback`: Triggered when a token expires (before timeout).
+- `timeout-callback`: Triggered when an interactive challenge times out.
 
 The success callback receives a token that must be validated on your server using the Siteverify API. Tokens are single-use and expire after 300 seconds (five minutes).
 
@@ -339,10 +398,10 @@ The success callback receives a token that must be validated on your server usin
 
 ### Best practices
 
-* Always implement the success callback to handle the token and proceed with form submission or next steps.
-* Use error callbacks for graceful error handling and visitor feedback.
-* Monitor expired tokens to refresh challenges before they become invalid.
-* Handle timeouts to guide visitors through challenge resolution.
+- Always implement the success callback to handle the token and proceed with form submission or next steps.
+- Use error callbacks for graceful error handling and visitor feedback.
+- Monitor expired tokens to refresh challenges before they become invalid.
+- Handle timeouts to guide visitors through challenge resolution.
 
 ---
 
@@ -352,17 +411,23 @@ The success callback receives a token that must be validated on your server usin
 
 Control how Turnstile handles failed challenges.
 
-* `auto` (default): Automatically retries failed challenges. Auto retry provides better visitor experience by automatically recovering from temporary network issues or processing errors.
-* `never`: Disables automatic retry. This requires manual intervention and gives you full control over error handling in applications that need custom retry logic.
-* `retry-interval`: Controls the time between retry attempts (default: 8000ms) and lets you balance between quick recovery and server load.
+- `auto` (default): Automatically retries failed challenges. Auto retry provides better visitor experience by automatically recovering from temporary network issues or processing errors.
+- `never`: Disables automatic retry. This requires manual intervention and gives you full control over error handling in applications that need custom retry logic.
+- `retry-interval`: Controls the time between retry attempts (default: 8000ms) and lets you balance between quick recovery and server load.
+
+*Auto retry (default)html*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
 
+*Disable retryhtml*
+
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-retry="never"></div>
 ```
+
+*Custom retry interval (8000ms default)html*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-retry-interval="0000"></div>
@@ -372,24 +437,30 @@ Control how Turnstile handles failed challenges.
 
 Control how Turnstile handles token expiration and interactive timeouts.
 
-* `refresh-expired`: Controls behavior when tokens expire (`auto`, `manual`, `never`).
-* `refresh-timeout`: Controls behavior when interactive challenges timeout (`auto`, `manual`, `never`).
+- `refresh-expired`: Controls behavior when tokens expire ( `auto`, `manual`, `never`).
+- `refresh-timeout`: Controls behavior when interactive challenges timeout ( `auto`, `manual`, `never`).
 
 #### Benefits
 
-* `auto` refresh provides seamless visitor experience but uses more resources.
-* `manual` refresh gives visitors control but requires them to take action.
-* `never` refresh requires your application to handle all refresh logic.
+- `auto` refresh provides seamless visitor experience but uses more resources.
+- `manual` refresh gives visitors control but requires them to take action.
+- `never` refresh requires your application to handle all refresh logic.
 
 Different strategies can be used for token expiration versus interactive timeouts based on your visitor experience requirements.
+
+*Auto refresh expired tokens (default)html*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
 ```
 
+*Manual refreshhtml*
+
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-refresh-expired="manual"></div>
 ```
+
+*Auto refresh timeouts (default for Managed mode)html*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-refresh-timeout="auto"></div>
@@ -399,23 +470,27 @@ Different strategies can be used for token expiration versus interactive timeout
 
 Add custom identifiers and data to your challenges.
 
-* `action`: A custom identifier for analytics and differentiation (maximum 32 characters).
-* `cData`: Custom payload data returned during validation (maximum 255 characters).
+- `action`: A custom identifier for analytics and differentiation (maximum 32 characters).
+- `cData`: Custom payload data returned during validation (maximum 255 characters).
 
 #### Use cases
 
-* Action tracking: Differentiate between login, signup, contact forms, and more. in your analytics.
-* Visitor context: Pass visitor IDs, session information, or other contextual data.
-* A/B testing: Track different widget configurations or page variants.
-* Fraud detection: Include additional context for risk assessment.
+- Action tracking: Differentiate between login, signup, contact forms, and more. in your analytics.
+- Visitor context: Pass visitor IDs, session information, or other contextual data.
+- A/B testing: Track different widget configurations or page variants.
+- Fraud detection: Include additional context for risk assessment.
 
 Caution
 
 Both action and cData fields only accept alphanumeric characters, underscores (\_), and hyphens (-).
 
+*Add custom action identifierhtml*
+
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-action="login"></div>
 ```
+
+*Add custom data payloadhtml*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-cdata="user-cdata"></div>
@@ -427,18 +502,22 @@ Configure how Turnstile integrates with HTML forms.
 
 When enabled, Turnstile automatically creates a hidden `<input>` element with the verification token. This gets submitted along with your other form data, making server-side validation straightforward.
 
-* `response-field`: Determines whether to create a hidden form field with the token (`default: true`)
-* `response-field-name`: Custom name for the hidden form field (`default: cf-turnstile-response`)
+- `response-field`: Determines whether to create a hidden form field with the token ( `default: true`)
+- `response-field-name`: Custom name for the hidden form field ( `default: cf-turnstile-response`)
 
 #### Benefits
 
-* Automatic form integration means that the token is included when the form is submitted, requiring no additional JavaScript.
-* Custom field names helps avoid conflicts with existing form fields.
-* Disabled response fields give you full control over token handling for complex form scenarios.
+- Automatic form integration means that the token is included when the form is submitted, requiring no additional JavaScript.
+- Custom field names helps avoid conflicts with existing form fields.
+- Disabled response fields give you full control over token handling for complex form scenarios.
+
+*Custom response field namehtml*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-response-field-name="turnstile-token"></div>
 ```
+
+*Disable response fieldhtml*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-response-field="false"></div>
@@ -448,41 +527,45 @@ When enabled, Turnstile automatically creates a hidden `<input>` element with th
 
 ## Complete configuration reference
 
-| JavaScript Render Parameters | Data Attribute                   | Description                                                                                                                                                                                                                                                                                                                                            |
-| ---------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| sitekey                      | data-sitekey                     | Every widget has a sitekey. This sitekey is associated with the corresponding widget configuration and is created upon the widget creation.                                                                                                                                                                                                            |
-| action                       | data-action                      | A customer value that can be used to differentiate widgets under the same sitekey in analytics and which is returned upon validation. This can only contain up to 32 alphanumeric characters including \_ and \-.                                                                                                                                      |
-| cData                        | data-cdata                       | A customer payload that can be used to attach customer data to the challenge throughout its issuance and which is returned upon validation. This can only contain up to 255 alphanumeric characters including \_ and \-.                                                                                                                               |
-| callback                     | data-callback                    | A JavaScript callback invoked upon success of the challenge. The callback is passed a token that can be validated.                                                                                                                                                                                                                                     |
-| error-callback               | data-error-callback              | A JavaScript callback invoked when there is an error (e.g. network error or the challenge failed). Refer to [Client-side errors](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/).                                                                                                                                     |
-| execution                    | data-execution                   | Execution controls when to obtain the token of the widget and can be on render (default) or on execute. Refer to [Execution Modes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#execution-modes) for more information.                                                                                               |
-| expired-callback             | data-expired-callback            | A JavaScript callback invoked when the token expires and does not reset the widget.                                                                                                                                                                                                                                                                    |
-| before-interactive-callback  | data-before-interactive-callback | A JavaScript callback invoked before the challenge enters interactive mode.                                                                                                                                                                                                                                                                            |
-| after-interactive-callback   | data-after-interactive-callback  | A JavaScript callback invoked when challenge has left interactive mode.                                                                                                                                                                                                                                                                                |
-| unsupported-callback         | data-unsupported-callback        | A JavaScript callback invoked when a given client/browser is not supported by Turnstile.                                                                                                                                                                                                                                                               |
-| theme                        | data-theme                       | The widget theme. Can take the following values: light, dark, auto. The default is auto, which respects the visitor preference. This can be forced to light or dark by setting the theme accordingly.                                                                                                                                                  |
-| language                     | data-language                    | Language to display, must be either: auto (default) to use the language that the visitor has chosen, or an ISO 639-1 two-letter language code (e.g. en) or language and country code (e.g. en-US). Refer to the [list of supported languages](https://developers.cloudflare.com/turnstile/reference/supported-languages/) for more information.        |
-| tabindex                     | data-tabindex                    | The tabindex of Turnstile's iframe for accessibility purposes. The default value is 0.                                                                                                                                                                                                                                                                 |
-| timeout-callback             | data-timeout-callback            | A JavaScript callback invoked when the challenge presents an interactive challenge but was not solved within a given time. A callback will reset the widget to allow a visitor to solve the challenge again.                                                                                                                                           |
-| response-field               | data-response-field              | A boolean that controls if an input element with the response token is created, defaults to true.                                                                                                                                                                                                                                                      |
-| response-field-name          | data-response-field-name         | Name of the input element, defaults to cf-turnstile-response.                                                                                                                                                                                                                                                                                          |
-| size                         | data-size                        | The widget size. Can take the following values: normal, flexible, compact.                                                                                                                                                                                                                                                                             |
-| retry                        | data-retry                       | Controls whether the widget should automatically retry to obtain a token if it did not succeed. The default is auto, which will retry automatically. This can be set to never to disable retry on failure.                                                                                                                                             |
-| retry-interval               | data-retry-interval              | When retry is set to auto, retry-interval controls the time between retry attempts in milliseconds. Value must be a positive integer less than 900000, defaults to 8000.                                                                                                                                                                               |
-| refresh-expired              | data-refresh-expired             | Automatically refreshes the token when it expires. Can take auto, manual, or never, defaults to auto.                                                                                                                                                                                                                                                  |
-| refresh-timeout              | data-refresh-timeout             | Controls whether the widget should automatically refresh upon entering an interactive challenge and observing a timeout. Can take auto (automatically refreshes upon encountering an interactive timeout), manual (prompts the visitor to manually refresh) or never (will show a timeout), defaults to auto. Only applies to widgets of Managed mode. |
-| appearance                   | data-appearance                  | Appearance controls when the widget is visible. It can be always (default), execute, or interaction-only. Refer to [Appearance modes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#appearance-modes) for more information.                                                                                           |
-| feedback-enabled             | data-feedback-enabled            | Allows Cloudflare to gather visitor feedback upon widget failure. It can be true (default) or false.                                                                                                                                                                                                                                                   |
-| offlabel-show-privacy        | data-offlabel-show-privacy       | Displays privacy link for unbranded Turnstile widgets. Can be true (default) or false.                                                                                                                                                                                                                                                                 |
-| offlabel-show-help           | data-offlabel-show-help          | Displays help link for unbranded Turnstile widgets. Can be true (default) or false.                                                                                                                                                                                                                                                                    |
+| JavaScript Render Parameters | Data Attribute | Description |
+| --- | --- | --- |
+| `sitekey` | `data-sitekey` | Every widget has a sitekey. This sitekey is associated with the corresponding widget configuration and is created upon the widget creation. |
+| `action` | `data-action` | A customer value that can be used to differentiate widgets under the same sitekey in analytics and which is returned upon validation. This can only contain up to 32 alphanumeric characters including `_` and `-`. |
+| `cData` | `data-cdata` | A customer payload that can be used to attach customer data to the challenge throughout its issuance and which is returned upon validation. This can only contain up to 255 alphanumeric characters including `_` and `-`. |
+| `callback` | `data-callback` | A JavaScript callback invoked upon success of the challenge. The callback is passed a token that can be validated. |
+| `error-callback` | `data-error-callback` | A JavaScript callback invoked when there is an error (e.g. network error or the challenge failed). Refer to [Client-side errors](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/). |
+| `execution` | `data-execution` | Execution controls when to obtain the token of the widget and can be on `render` (default) or on `execute`. Refer to [Execution Modes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#execution-modes) for more information. |
+| `expired-callback` | `data-expired-callback` | A JavaScript callback invoked when the token expires and does not reset the widget. |
+| `before-interactive-callback` | `data-before-interactive-callback` | A JavaScript callback invoked before the challenge enters interactive mode. |
+| `after-interactive-callback` | `data-after-interactive-callback` | A JavaScript callback invoked when challenge has left interactive mode. |
+| `unsupported-callback` | `data-unsupported-callback` | A JavaScript callback invoked when a given client/browser is not supported by Turnstile. |
+| `theme` | `data-theme` | The widget theme. Can take the following values: `light`, `dark`, `auto`. <br><br>The default is `auto`, which respects the visitor preference. This can be forced to light or dark by setting the theme accordingly. |
+| `language` | `data-language` | Language to display, must be either: `auto` (default) to use the language that the visitor has chosen, or an ISO 639-1 two-letter language code (e.g. `en`) or language and country code (e.g. `en-US`). Refer to the [list of supported languages](https://developers.cloudflare.com/turnstile/reference/supported-languages/) for more information. |
+| `tabindex` | `data-tabindex` | The tabindex of Turnstile's iframe for accessibility purposes. The default value is `0`. |
+| `timeout-callback` | `data-timeout-callback` | A JavaScript callback invoked when the challenge presents an interactive challenge but was not solved within a given time. A callback will reset the widget to allow a visitor to solve the challenge again. |
+| `response-field` | `data-response-field` | A boolean that controls if an input element with the response token is created, defaults to `true`. |
+| `response-field-name` | `data-response-field-name` | Name of the input element, defaults to `cf-turnstile-response`. |
+| `size` | `data-size` | The widget size. Can take the following values: `normal`, `flexible`, `compact`. |
+| `retry` | `data-retry` | Controls whether the widget should automatically retry to obtain a token if it did not succeed. The default is `auto`, which will retry automatically. This can be set to `never` to disable retry on failure. |
+| `retry-interval` | `data-retry-interval` | When `retry` is set to `auto`, `retry-interval` controls the time between retry attempts in milliseconds. Value must be a positive integer less than `900000`, defaults to `8000`. |
+| `refresh-expired` | `data-refresh-expired` | Automatically refreshes the token when it expires. Can take `auto`, `manual`, or `never`, defaults to `auto`. |
+| `refresh-timeout` | `data-refresh-timeout` | Controls whether the widget should automatically refresh upon entering an interactive challenge and observing a timeout. Can take `auto` (automatically refreshes upon encountering an interactive timeout), `manual` (prompts the visitor to manually refresh) or `never` (will show a timeout), defaults to `auto`. Only applies to widgets of Managed mode. |
+| `appearance` | `data-appearance` | Appearance controls when the widget is visible. It can be `always` (default), `execute`, or `interaction-only`. Refer to [Appearance modes](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#appearance-modes) for more information. |
+| `feedback-enabled` | `data-feedback-enabled` | Allows Cloudflare to gather visitor feedback upon widget failure. It can be `true` (default) or `false`. |
+| `offlabel-show-privacy` | `data-offlabel-show-privacy` | Displays privacy link for unbranded Turnstile widgets. Can be `true` (default) or `false`. |
+| `offlabel-show-help` | `data-offlabel-show-help` | Displays help link for unbranded Turnstile widgets. Can be `true` (default) or `false`. |
 
 ### Examples
+
+*Responsive design widgethtml*
 
 ```html
 <div style="max-width: 500px;">
   <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="flexible" data-theme="auto"></div>
 </div>
 ```
+
+*Mobile-optimized compact widgethtml*
 
 ```html
 <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>" data-size="compact" data-theme="light" data-language="en">

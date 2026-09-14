@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Stablecoin payments
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/stablecoin-payments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can pay for Cloudflare services with USDC stablecoin at the checkout. Stablecoin payments support one-time charges and recurring billing, including usage-based products.
 
@@ -27,20 +27,20 @@ For recurring billing, Cloudflare charges your saved wallet each cycle. You only
 
 ## Supported stablecoins and wallets
 
-| Item                     | Value                                                                  |
-| ------------------------ | ---------------------------------------------------------------------- |
-| Stablecoins              | USDC on Base and Polygon                                               |
-| Wallets                  | MetaMask, Phantom, Coinbase Wallet, and 400+ wallets via WalletConnect |
-| Invoice currency         | US dollars (USD)                                                       |
-| Chargebacks and disputes | Not available. Stablecoin payments are final once confirmed on-chain.  |
+| Item | Value |
+| --- | --- |
+| Stablecoins | USDC on Base and Polygon |
+| Wallets | MetaMask, Phantom, Coinbase Wallet, and 400+ wallets via WalletConnect |
+| Invoice currency | US dollars (USD) |
+| Chargebacks and disputes | Not available. Stablecoin payments are final once confirmed on-chain. |
 
 ## Recurring billing
 
 The smart contract permit authorizes future automatic charges for:
 
-* Monthly or annual subscription renewals for paid plans
-* Usage-based charges billed at threshold for Workers, R2, and Stream
-* Prorated charges for plan upgrades
+- Monthly or annual subscription renewals for paid plans
+- Usage-based charges billed at threshold for Workers, R2, and Stream
+- Prorated charges for plan upgrades
 
 Each charge is processed against the saved permit. No action is required between cycles.
 
@@ -48,11 +48,11 @@ Each charge is processed against the saved permit. No action is required between
 
 Stablecoin payments fail for a small number of well-defined reasons:
 
-| Reason             | What happens                                               | How to resolve                                                                              |
-| ------------------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| Insufficient funds | Your wallet does not have enough USDC                      | Add USDC to the wallet, then retry. Subscriptions enter dunning until the payment succeeds. |
-| Approval revoked   | You revoked or reduced the permit below the payment amount | Return to the checkout and reconnect your wallet to issue a new permit                      |
-| Wallet screening   | Pre-transaction screening flagged the wallet               | Use a different wallet or payment method                                                    |
+| Reason | What happens | How to resolve |
+| --- | --- | --- |
+| Insufficient funds | Your wallet does not have enough USDC | Add USDC to the wallet, then retry. Subscriptions enter dunning until the payment succeeds. |
+| Approval revoked | You revoked or reduced the permit below the payment amount | Return to the checkout and reconnect your wallet to issue a new permit |
+| Wallet screening | Pre-transaction screening flagged the wallet | Use a different wallet or payment method |
 
 Note
 
@@ -65,27 +65,58 @@ Refunds for stablecoin payments are returned as USDC to the wallet you paid from
 ## View your payment history
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
-2. Go to **Manage Account** \> **Billing**.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices**. Stablecoin payments are listed with payment method `crypto`.
 
 ## FAQ
 
+<details>
+
+<summary>
+
 Network fees and gas
+
+</summary>
 
 Gas fees for the on-chain transaction are paid by your wallet to the network. Cloudflare does not add a markup or transaction fee for stablecoin payments. The amount charged in USDC matches your invoice amount in USD.
 
+</details>
+
+<details>
+
+<summary>
+
 Smart contract permit scope
+
+</summary>
 
 The permit authorizes charges for the specific subscription you are activating. You can revoke it at any time from your wallet. Revoking it stops future automatic charges; existing subscriptions enter dunning until you reconnect a wallet or switch payment methods.
 
+</details>
+
+<details>
+
+<summary>
+
 Multiple payment methods
+
+</summary>
 
 You can have a crypto wallet and a card on file at the same time. The card serves as a fallback if the wallet charge fails.
 
+</details>
+
+<details>
+
+<summary>
+
 Pending state during on-chain confirmation
 
-Stablecoin payments pass through a `processing` state while the on-chain transaction confirms. This typically takes a few seconds but can take longer if the network is congested. The payment resolves automatically.
+</summary>
+
+Stablecoin payments pass through a <code>processing</code> state while the on-chain transaction confirms. This typically takes a few seconds but can take longer if the network is congested. The payment resolves automatically.
+
+</details>
 
 Was this helpful?
 

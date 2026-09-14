@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticate coding agents
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coding agents such as Claude Code, OpenCode, and Windsurf often need to reach resources protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/). When a resource is behind Access, unauthenticated requests receive a redirect or `403` error instead of the expected response. Your agent needs a way to authenticate before it can reach the resource.
 
 This page covers two authentication methods:
 
-* [**cloudflared**](#use-cloudflared) — authenticates under your user identity. Use for interactive development where you can complete a browser login.
-* [**Service tokens**](#use-service-tokens) — authenticates with a static credential pair. Use for headless or automated workflows where no browser is available.
+- [**cloudflared**](#use-cloudflared) — authenticates under your user identity. Use for interactive development where you can complete a browser login.
+- [**Service tokens**](#use-service-tokens) — authenticates with a static credential pair. Use for headless or automated workflows where no browser is available.
 
 Note
 
@@ -63,16 +63,19 @@ Service tokens are static credential pairs that authenticate requests without a 
 1. [Create a service token](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#create-a-service-token) and save the **Client ID** and **Client Secret**.
 2. In the Access application's policy configuration, add a [Service Auth policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#service-auth). This policy type accepts service token credentials instead of requiring an identity provider login. Use the **Service Token** selector and select the token you created.
 
-| Action       | Rule type | Selector      | Value            |
-| ------------ | --------- | ------------- | ---------------- |
-| Service Auth | Include   | Service Token | Your agent token |
+   | Action | Rule type | Selector | Value |
+   | --- | --- | --- | --- |
+   | Service Auth | Include | Service Token | Your agent token |
 3. Store the Client ID and Client Secret in a secure location on your machine that your agent can read.
 4. Include both values as headers in requests to the protected resource:
-```sh
-curl --header "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" \
-     --header "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" \
-     https://example.com/api/endpoint
-```
+
+   ```sh
+   curl --header "CF-Access-Client-Id: $CF_ACCESS_CLIENT_ID" \
+        --header "CF-Access-Client-Secret: $CF_ACCESS_CLIENT_SECRET" \
+        https://example.com/api/endpoint
+   ```
+
+
 
 For more information, refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
 
@@ -80,7 +83,7 @@ For more information, refer to [Service tokens](https://developers.cloudflare.co
 
 Add an `AGENTS.md` file to your project root with the following skill definition. This instructs coding agents to automatically detect Cloudflare Access-protected resources and authenticate using the standard OAuth 2.0 flow with PKCE (RFC 9728).
 
-```markdown
+````markdown
 ---
 name: access-oauth
 description: "Detect Cloudflare Access-protected websites and authenticate via the standard OAuth 2.0 flow (RFC 9728 resource metadata, dynamic client registration, authorization code + PKCE)"
@@ -390,7 +393,7 @@ curl -s -X POST <token_endpoint> \
 | No `www-authenticate` header                            | Site doesn't support OAuth resource metadata                        | Fall back to `cloudflared access curl` or browser auth                     |
 | No `registration_endpoint` in AS metadata               | Dynamic registration not enabled                                    | Must use a pre-registered client or different auth method                  |
 | Port 8400 already in use                                | Previous listener didn't shut down                                  | Kill the process or use a different port (update redirect_uri accordingly) |
-```
+````
 
 Was this helpful?
 

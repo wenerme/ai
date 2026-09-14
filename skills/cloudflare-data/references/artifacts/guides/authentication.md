@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication
 
-Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/guides/authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/guides/authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts uses a different authentication path for each interface. Choose auth based on how your code reaches the repo.
 
@@ -20,11 +20,11 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 ## Compare auth methods
 
-| Interface       | Authenticate with                                 | Permissions or scopes                                                                     | Use for                              |
-| --------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------ |
-| Workers binding | Configured artifacts binding                      | Wrangler auth is only for local Wrangler commands such as dev and deploy.                 | Worker code that calls env.ARTIFACTS |
-| REST API        | Cloudflare API token in Authorization: Bearer ... | **Artifacts** \> **Read** for read routes and **Artifacts** \> **Edit** for write routes. | Control-plane HTTP requests          |
-| Git protocol    | Repo-scoped Artifacts token                       | read for clone, fetch, and pull. write for push.                                          | Standard Git over HTTPS              |
+| Interface | Authenticate with | Permissions or scopes | Use for |
+| --- | --- | --- | --- |
+| Workers binding | Configured `artifacts` binding | Wrangler auth is only for local Wrangler commands such as `dev` and `deploy`. | Worker code that calls `env.ARTIFACTS` |
+| REST API | Cloudflare API token in `Authorization: Bearer ...` | **Artifacts** > **Read** for read routes and **Artifacts** > **Edit** for write routes. | Control-plane HTTP requests |
+| Git protocol | Repo-scoped Artifacts token | `read` for clone, fetch, and pull. `write` for push. | Standard Git over HTTPS |
 
 Cloudflare API tokens authenticate control-plane access. Repo-scoped Artifacts tokens authenticate Git access.
 
@@ -40,7 +40,7 @@ Add the binding in your Wrangler config:
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-08-25",
+  "compatibility_date": "2026-09-14",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -54,14 +54,14 @@ Add the binding in your Wrangler config:
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[artifacts]]
 binding = "ARTIFACTS"
 namespace = "default"
 ```
 
-At runtime, deployed Workers use the configured binding directly. For local Wrangler commands such as `wrangler dev`, `wrangler deploy`, or `wrangler types`, authenticate Wrangler first. For local OAuth authentication, refer to [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). For CI or headless environments, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
+At runtime, deployed Workers use the configured binding directly. For local Wrangler commands such as `wrangler dev`, `wrangler deploy`, or `wrangler types`, authenticate Wrangler first. For local OAuth authentication, refer to [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). For CI or headless environments, refer to [Running Wrangler in CI/CD](https://developers.cloudflare.com/workers/ci-cd/).
 
 ## Authenticate the REST API
 
@@ -96,10 +96,10 @@ curl --request POST "$ARTIFACTS_BASE_URL/repos" \
 
 Git uses repo-scoped Artifacts tokens, not Cloudflare API tokens. Mint these tokens from the Workers binding or the REST API, then use them with the repo `remote` URL.
 
-| Token scope | Allowed commands                         |
-| ----------- | ---------------------------------------- |
-| read        | git clone, git fetch, git pull           |
-| write       | git clone, git fetch, git pull, git push |
+| Token scope | Allowed commands |
+| --- | --- |
+| `read` | `git clone`, `git fetch`, `git pull` |
+| `write` | `git clone`, `git fetch`, `git pull`, `git push` |
 
 Use the exact repo `remote` value returned by the Workers binding or REST API:
 

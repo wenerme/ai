@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Verify email address
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-For security reasons, Cloudflare attempts to verify the email address associated with your account. You cannot perform certain tasks within the Cloudflare dashboard -- for example, [adding a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/#add-account-members), [changing your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#change-email-address) or [updating your communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) \-- without verifying your email.
+For security reasons, Cloudflare attempts to verify the email address associated with your account. You cannot perform certain tasks within the Cloudflare dashboard -- for example, [adding a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/#add-account-members), [changing your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#change-email-address) or [updating your communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) -- without verifying your email.
 
 ## When creating your account
 
@@ -34,8 +34,7 @@ If someone else used your email to sign up for a Cloudflare account, you can rem
 
 If you cannot find your verification email or your email has expired, request another verification email:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile**.
 3. For **Email Address**, select **Send verification email** (if this option is not available, your email has already been verified).
 
@@ -45,8 +44,7 @@ If you experience issues with your verification link, you might have already ver
 
 To check your verification:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile**.
 3. For **Email Address**, your email address will have `(verified)` added after it.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 5 – Add exceptions with Page Rules
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the [Configure HTTPS settings](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/) tutorial, you configured zone settings that apply to all incoming requests for `example.com`. In this tutorial, you will add an exception to these settings using [Page Rules](https://developers.cloudflare.com/rules/page-rules/).
 
@@ -22,7 +22,7 @@ Note
 
 Terraform code snippets below refer to the v5 SDK only.
 
-## 1\. Create Page Rules configuration
+## 1. Create Page Rules configuration
 
 Create a new branch and append the configuration.
 
@@ -61,14 +61,14 @@ resource "cloudflare_page_rule" "legacy_redirect" {
 
 The first rule increases security to "Under Attack" mode for your database endpoint. The second rule redirects old URLs with a 301 permanent redirect.
 
-## 2\. Preview and apply the changes:
+## 2. Preview and apply the changes:
 
 ```sh
 terraform plan
 terraform apply
 ```
 
-## 3\. Verify changes:
+## 3. Verify changes:
 
 Test the redirect functionality:
 
@@ -97,7 +97,7 @@ HTTP/1.1 503 Service Temporarily Unavailable
 
 The 503 response indicates the Under Attack mode is active, presenting visitors with a challenge page before allowing access to protect against DDoS attacks.
 
-## 4\. Commit and merge the changes:
+## 4. Commit and merge the changes:
 
 ```bash
 git add main.tf

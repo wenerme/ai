@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.user\_agent
 
-`http.user_agent` `String`
+`http.user_agent``String`
 
 The HTTP `User-Agent` request header, which contains a characteristic string to identify the client operating system and web browser.
 
@@ -19,8 +19,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

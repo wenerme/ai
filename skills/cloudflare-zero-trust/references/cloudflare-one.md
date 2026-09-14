@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secure your organization with Cloudflare One — a cloud security platform that replaces legacy perimeters with Cloudflare's global network.
 

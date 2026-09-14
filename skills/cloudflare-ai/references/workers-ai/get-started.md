@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are several options to build your Workers AI projects on Cloudflare. To get started, choose your preferred method:
 
-* [Workers Bindings](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/)
-* [REST API](https://developers.cloudflare.com/workers-ai/get-started/rest-api/)
-* [Dashboard](https://developers.cloudflare.com/workers-ai/get-started/dashboard/)
+- [Workers Bindings](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/)
+- [REST API](https://developers.cloudflare.com/workers-ai/get-started/rest-api/)
+- [Dashboard](https://developers.cloudflare.com/workers-ai/get-started/dashboard/)
 
 Note
 

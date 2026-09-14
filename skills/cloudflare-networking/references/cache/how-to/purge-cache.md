@@ -12,18 +12,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Purge cache
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Instant Purge ensures that updates to your content are reflected immediately. Multiple options are available for purging content, with single-file cache purging (purge by URL) being the recommended method. However, the following additional options are also available:
 
-* [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
-* [​Purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)
-* [Purge cache by cache-tags](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)
-* [​Purge cache by hostname](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)
-* [​Purge cache by prefix (URL)](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/)
-* [Purge cache key resources](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/)
-* [P​urge varied images](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-varied-images/)
-* [Purge zone versions via API](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-versions/)
+- [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
+- [​Purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)
+- [Purge cache by cache-tags](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)
+- [​Purge cache by hostname](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)
+- [​Purge cache by prefix (URL)](https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/)
+- [Purge cache key resources](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-cache-key/)
+- [P​urge varied images](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-varied-images/)
+- [Purge zone versions via API](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-versions/)
 
 To purge cached content using the Cloudflare API, refer to [Purge Cached Content](https://developers.cloudflare.com/api/resources/cache/methods/purge/).
 
@@ -33,20 +33,20 @@ If versioning is active on your zone and multiple environments are configured, y
 
 ## Availability and limits
 
-|               | Free                                             | Pro                                              | Business                                         | Enterprise                                       |
-| ------------- | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| Availability  | Yes                                              | Yes                                              | Yes                                              | Yes                                              |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 | Purge options | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything |
 
 ### Hostname, tag, prefix URL, and purge everything limits
 
 The current purge limits are applied per **account**:
 
-|                            | Free                  | Pro                   | Business               | Enterprise             |
-| -------------------------- | --------------------- | --------------------- | ---------------------- | ---------------------- |
-| Requests                   | 5 requests per minute | 5 requests per second | 10 requests per second | 50 requests per second |
-| Bucket size                | 25                    | 25                    | 50                     | 500                    |
-| Max operations per request | 100                   | 100                   | 100                    | 100                    |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Requests | 5 requests per minute | 5 requests per second | 10 requests per second | 50 requests per second |
+| Bucket size | 25 | 25 | 50 | 500 |
+| Max operations per request | 100 | 100 | 100 | 100 |
 
 If your account includes zones with different Cloudflare plans, the above limits are shared between all the zones with the same plan. For example, all the zones in your account with a Pro plan will share the limits for the Pro plan, and all the zones in your account with a Business plan will share the limits for the Business plan.
 
@@ -54,10 +54,10 @@ If your account includes zones with different Cloudflare plans, the above limits
 
 The current purge limits are applied per **account**:
 
-|                            | Free                | Pro                  | Business             | Enterprise           |
-| -------------------------- | ------------------- | -------------------- | -------------------- | -------------------- |
-| URLs                       | 800 URLs per second | 1500 URLs per second | 1500 URLs per second | 3000 URLs per second |
-| Max operations per request | 100                 | 100                  | 100                  | 500                  |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| URLs | 800 URLs per second | 1500 URLs per second | 1500 URLs per second | 3000 URLs per second |
+| Max operations per request | 100 | 100 | 100 | 500 |
 
 If your account includes zones with different Cloudflare plans, the above limits are shared between all the zones with the same plan. For example, all the zones in your account with a Pro plan will share the limits for the Pro plan, and all the zones in your account with a Business plan will share the limits for the Business plan.
 

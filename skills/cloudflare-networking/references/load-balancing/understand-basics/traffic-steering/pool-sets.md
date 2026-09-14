@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pool sets
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/pool-sets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pool sets allow you to combine geographic steering with other traffic steering policies. For example, you can apply Dynamic Latency steering within a specific region or country. For load balancers managed through the API, pool sets can replace Geo steering.
 
 With pool sets you can:
 
-* Apply any supported steering policy within a single location
-* Set pool weights that apply only to that location
-* Assign a fallback pool for that location instead of the global fallback pool
-* Return a fixed HTTP response for matched proxied traffic
+- Apply any supported steering policy within a single location
+- Set pool weights that apply only to that location
+- Assign a fallback pool for that location instead of the global fallback pool
+- Return a fixed HTTP response for matched proxied traffic
 
 Note
 
@@ -58,20 +58,20 @@ A pool set with `disabled` set to `true` is skipped.
 
 The `match` object decides which requests a pool set applies to. Set either `default` or `topology` — the two cannot be combined. A pool set with no `match` at all applies to every request.
 
-| Field    | Description                                                             |
-| -------- | ----------------------------------------------------------------------- |
-| default  | When true, matches every request. Cannot be combined with topology.     |
-| topology | Matches by location. Requires at least one of pops, countries, regions. |
+| Field | Description |
+| --- | --- |
+| `default` | When `true`, matches every request. Cannot be combined with `topology`. |
+| `topology` | Matches by location. Requires at least one of `pops`, `countries`, `regions`. |
 
 ### Topology matching
 
 Within `topology`, each field takes a list of location codes:
 
-| Field     | Values                                                                                                                                                |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| pops      | Cloudflare data center codes, matched against the data center handling the request                                                                    |
-| countries | ISO 3166-1 alpha-2 country codes                                                                                                                      |
-| regions   | Cloudflare [region codes](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions), such as WNAM |
+| Field | Values |
+| --- | --- |
+| `pops` | Cloudflare data center codes, matched against the data center handling the request |
+| `countries` | ISO 3166-1 alpha-2 country codes |
+| `regions` | Cloudflare [region codes](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api/#list-of-load-balancer-regions), such as `WNAM` |
 
 Entries within a single field are combined with OR. A request from Germany matches `"countries": ["FR", "DE", "GB"]`.
 
@@ -105,13 +105,13 @@ Country matching uses the location resolved for the request. When the client loc
 
 The `overrides` object holds the routing behavior applied on a match. Its fields are optional, but a pool set without `fixed_response` must set `overrides.pools`.
 
-| Field                 | Description                                                                                     |
-| --------------------- | ----------------------------------------------------------------------------------------------- |
-| pools                 | Pool IDs to route to. Replaces the load balancer's pool selection entirely for this request.    |
-| pool\_weights         | Per-pool weights, applied only within this pool set                                             |
-| pool\_default\_weight | Weight for any pool in pools without an entry in pool\_weights                                  |
-| fallback\_pool        | Pool of last resort for this pool set. When omitted, the load balancer's fallback pool is used. |
-| steering\_policy      | Steering policy applied to pools                                                                |
+| Field | Description |
+| --- | --- |
+| `pools` | Pool IDs to route to. Replaces the load balancer's pool selection entirely for this request. |
+| `pool_weights` | Per-pool weights, applied only within this pool set |
+| `pool_default_weight` | Weight for any pool in `pools` without an entry in `pool_weights` |
+| `fallback_pool` | Pool of last resort for this pool set. When omitted, the load balancer's fallback pool is used. |
+| `steering_policy` | Steering policy applied to `pools` |
 
 `pools` is a flat list rather than a map of locations to pools. The matched pool set defines the whole set of candidate pools for the request.
 
@@ -119,14 +119,14 @@ The `overrides` object holds the routing behavior applied on a match. Its fields
 
 These steering policies are supported within a pool set:
 
-| Policy                       | Behavior within the pool set                                     |
-| ---------------------------- | ---------------------------------------------------------------- |
-| off                          | Use pools in failover order                                      |
-| random                       | Select a pool at random, honoring pool\_weights                  |
-| dynamic\_latency             | Select the pool with the lowest round trip time                  |
-| proximity                    | Select the pool closest to the request by latitude and longitude |
-| least\_outstanding\_requests | Select a pool by weights and outstanding request counts          |
-| least\_connections           | Select a pool by weights and open connection counts              |
+| Policy | Behavior within the pool set |
+| --- | --- |
+| `off` | Use `pools` in failover order |
+| `random` | Select a pool at random, honoring `pool_weights` |
+| `dynamic_latency` | Select the pool with the lowest round trip time |
+| `proximity` | Select the pool closest to the request by latitude and longitude |
+| `least_outstanding_requests` | Select a pool by weights and outstanding request counts |
+| `least_connections` | Select a pool by weights and open connection counts |
 
 `pool_weights` and `pool_default_weight` apply to `random`, `least_outstanding_requests`, and `least_connections`. These weights are separate from the load balancer's `random_steering` weights, so each pool set can weight its pools independently.
 
@@ -179,11 +179,11 @@ A pool set applies `overrides.steering_policy` after evaluating its match. The o
 
 Pool sets are subject to the following limits:
 
-| Limit                                        | Value |
-| -------------------------------------------- | ----- |
-| Pool sets per load balancer                  | 1,000 |
-| Characters in name                           | 200   |
-| Entries per pops, countries, or regions list | 1,000 |
+| Limit | Value |
+| --- | --- |
+| Pool sets per load balancer | 1,000 |
+| Characters in `name` | 200 |
+| Entries per `pops`, `countries`, or `regions` list | 1,000 |
 
 Duplicate entries within a single `pops`, `countries`, or `regions` list are rejected.
 
@@ -193,11 +193,11 @@ A pool referenced by a pool set cannot be [deleted](https://developers.cloudflar
 
 ## Configure pool sets via the API
 
-Pool sets are managed through the `pool_sets` field on the [Update Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/edit/) endpoint. When you send a `PATCH` request:
+Pool sets are managed through the `pool_sets` field on the [Update Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/edit/) endpoint. When you send a `PATCH` request:
 
-* Omitting `pool_sets` leaves existing pool sets unchanged
-* Sending `"pool_sets": []` removes all pool sets
-* Sending `"pool_sets": null` makes no change
+- Omitting `pool_sets` leaves existing pool sets unchanged
+- Sending `"pool_sets": []` removes all pool sets
+- Sending `"pool_sets": null` makes no change
 
 ### Example request
 
@@ -206,6 +206,8 @@ Before using this example, create the referenced pools. Replace each example poo
 This request splits Western North American traffic across two pools by weight and uses a regional fallback pool. It selects the lowest-latency pool for German traffic. A default pool set handles all remaining traffic. The load balancer uses a separate global fallback pool.
 
 Send a `PATCH` request to `/zones/{zone_id}/load_balancers/{load_balancer_id}` with the following body:
+
+*Requestjson*
 
 ```json
 {
@@ -254,11 +256,11 @@ Send a `PATCH` request to `/zones/{zone_id}/load_balancers/{load_balancer_id}` w
 
 After the request completes, the load balancer routes traffic with this configuration:
 
-| Order | Match                        | Pools                                                              | Steering policy  | Fallback pool                    |
-| ----- | ---------------------------- | ------------------------------------------------------------------ | ---------------- | -------------------------------- |
-| 1     | Western North America (WNAM) | 17b5962d775c646f3f9725cbc7a53df4, 9290f38c5d07c2e2f4df57b1f61d4196 | Random, 50% each | 2a28d35d1c00f000540fe739a04b3230 |
-| 2     | Germany (DE)                 | 0930eec54a4c7ae6616985b79f678210, c8b4f5a6d7e84910a2b3c4d5e6f70819 | Dynamic Latency  | Global fallback                  |
-| 3     | All remaining traffic        | ff02c959d17f7bb2b1184a202e3c0af7                                   | Failover order   | Global fallback                  |
+| Order | Match | Pools | Steering policy | Fallback pool |
+| --- | --- | --- | --- | --- |
+| 1 | Western North America (`WNAM`) | `17b5962d775c646f3f9725cbc7a53df4`, `9290f38c5d07c2e2f4df57b1f61d4196` | Random, 50% each | `2a28d35d1c00f000540fe739a04b3230` |
+| 2 | Germany (`DE`) | `0930eec54a4c7ae6616985b79f678210`, `c8b4f5a6d7e84910a2b3c4d5e6f70819` | Dynamic Latency | Global fallback |
+| 3 | All remaining traffic | `ff02c959d17f7bb2b1184a202e3c0af7` | Failover order | Global fallback |
 
 The global fallback pool is `6f1ed002ab5595859014ebf0951522d9`.
 
@@ -266,16 +268,16 @@ The global fallback pool is `6f1ed002ab5595859014ebf0951522d9`.
 
 Invalid Pool Sets configurations return HTTP status `400` and API error code `1002`. The error message explains the problem and can include one of these identifiers:
 
-| Message identifier              | Cause                                                            |
-| ------------------------------- | ---------------------------------------------------------------- |
-| POOL\_SETS\_TOO\_LARGE          | More than 1,000 pool sets on one load balancer                   |
-| POOL\_SET\_NO\_INTENT           | A pool set specifies neither overrides.pools nor fixed\_response |
-| POOL\_SET\_DEFAULT\_WITH\_MATCH | A match combines default with topology                           |
-| POOL\_SET\_EMPTY\_TOPOLOGY      | A topology sets none of pops, countries, or regions              |
-| POOL\_SET\_TOPOLOGY\_TOO\_LARGE | A topology list exceeds 1,000 entries                            |
-| POOL\_SET\_POP\_ENTITLEMENT     | The account is not entitled to data center steering              |
-| POOL\_SET\_REGION\_ENTITLEMENT  | The account is not entitled to region steering                   |
-| POOL\_SET\_COUNTRY\_ENTITLEMENT | The account is not entitled to country steering                  |
+| Message identifier | Cause |
+| --- | --- |
+| `POOL_SETS_TOO_LARGE` | More than 1,000 pool sets on one load balancer |
+| `POOL_SET_NO_INTENT` | A pool set specifies neither `overrides.pools` nor `fixed_response` |
+| `POOL_SET_DEFAULT_WITH_MATCH` | A `match` combines `default` with `topology` |
+| `POOL_SET_EMPTY_TOPOLOGY` | A `topology` sets none of `pops`, `countries`, or `regions` |
+| `POOL_SET_TOPOLOGY_TOO_LARGE` | A `topology` list exceeds 1,000 entries |
+| `POOL_SET_POP_ENTITLEMENT` | The account is not entitled to data center steering |
+| `POOL_SET_REGION_ENTITLEMENT` | The account is not entitled to region steering |
+| `POOL_SET_COUNTRY_ENTITLEMENT` | The account is not entitled to country steering |
 
 Was this helpful?
 

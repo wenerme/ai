@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Proxy status
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can load balance your traffic at different levels of the networking stack, such as:
 
-* [Layer 7 (HTTP/HTTPS)](#layer-7-load-balancing) (most common)
-* [DNS-only](#dns-only-load-balancing)
-* [Layer 4 (TCP)](#layer-4-load-balancing)
+- [Layer 7 (HTTP/HTTPS)](#layer-7-load-balancing) (most common)
+- [DNS-only](#dns-only-load-balancing)
+- [Layer 4 (TCP)](#layer-4-load-balancing)
 
 ---
 
@@ -40,13 +40,13 @@ Note that if a [DNS-only (grey cloud)](https://developers.cloudflare.com/dns/pro
 
 In comparison to DNS-only load balancing, layer 7 load balancing:
 
-* Protects endpoints from DDoS attacks by hiding their IP addresses.
-* Offers faster failover and more accurate routing, which can otherwise be affected by DNS caching.
-* Integrates with other Cloudflare features such as caching, Workers, and the WAF.
-* Reduces authoritative queries against Cloudflare, which can potentially save money for customers with usage-based billing.
-* Supports customized [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) and [endpoint drain](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#endpoint-drain).
-* More accurately geo-locates traffic, using the data center associated with the user making the request instead of the data center associated with a user's recursive resolver.
-* Supports private IP addresses with [Private Network Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/).
+- Protects endpoints from DDoS attacks by hiding their IP addresses.
+- Offers faster failover and more accurate routing, which can otherwise be affected by DNS caching.
+- Integrates with other Cloudflare features such as caching, Workers, and the WAF.
+- Reduces authoritative queries against Cloudflare, which can potentially save money for customers with usage-based billing.
+- Supports customized [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) and [endpoint drain](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/#endpoint-drain).
+- More accurately geo-locates traffic, using the data center associated with the user making the request instead of the data center associated with a user's recursive resolver.
+- Supports private IP addresses with [Private Network Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/).
 
 ---
 
@@ -66,20 +66,21 @@ Note that if a load balancer endpoint is a [proxied (orange-cloud)](https://deve
 
 ### Benefits
 
-If your load balancer is attached to a hostname used for an [MX or SRV record](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/) — and not an `A`, `AAAA`, or `CNAME` record — its proxy mode should be **DNS-only**.
+If your load balancer is attached to a hostname used for an [`MX` or `SRV` record](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/) — and not an `A`, `AAAA`, or `CNAME` record — its proxy mode should be **DNS-only**.
+
 
 
 ### Limitations
 
 In comparison to proxied, layer 7 load balancing, DNS-only load balancing:
 
-* Does not hide the IP addresses of your endpoints, leaving them vulnerable to DDoS attacks.
-* Performs slower failover and less accurate routing, because it has to rely on DNS resolvers and cache settings.
-* Cannot integrate with other Cloudflare features such as caching, Workers, and the WAF.
-* Increases authoritative queries against Cloudflare, which can potentially cost more for customers with usage-based billing.
-* Does not support [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/). Alternatively, you can use [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/).
-* Geo-locates traffic based on the data center associated with the ECS source address, if available. If not available, geo-locates based on a user's recursive resolver, which can sometimes cause issues with [latency-based steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/dynamic-steering/).
-* Does not support [Private Network Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/).
+- Does not hide the IP addresses of your endpoints, leaving them vulnerable to DDoS attacks.
+- Performs slower failover and less accurate routing, because it has to rely on DNS resolvers and cache settings.
+- Cannot integrate with other Cloudflare features such as caching, Workers, and the WAF.
+- Increases authoritative queries against Cloudflare, which can potentially cost more for customers with usage-based billing.
+- Does not support [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/). Alternatively, you can use [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/).
+- Geo-locates traffic based on the data center associated with the ECS source address, if available. If not available, geo-locates based on a user's recursive resolver, which can sometimes cause issues with [latency-based steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/dynamic-steering/).
+- Does not support [Private Network Load Balancing](https://developers.cloudflare.com/load-balancing/private-network/).
 
 ---
 

@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get tenant details
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/how-to/get-tenant-details/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [**Tenant Admin**](https://developers.cloudflare.com/tenant/glossary/#tenant-admin)'s unit and membership details will be used for access of resources and all Tenant operations on the API. The unit ID (`unit_tag`), for example, can be used to create an account on a specific unit.
 
 This is especially useful when a Tenant Admin has multiple units and wants to create an account on a specific unit. All accounts created are associated with the units, each of which can have one or more memberships.
 
 To retrieve tenant details, send a `GET` request to the `/user/tenants` endpoint:
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/user/tenants" \

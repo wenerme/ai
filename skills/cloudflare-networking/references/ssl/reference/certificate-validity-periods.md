@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Validity periods and renewal
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For certificates managed by Cloudflare, attempts to renew start at the auto renewal period and continue up until 24 hours before expiration. The auto renewal period varies according to the certificate validity period, as explained in the sections below.
 
@@ -34,16 +34,16 @@ Universal certificates have a 90-day validity period. The auto renewal period st
 
 When you order an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/), you can select different certificate validity periods. Each certificate validity period has a corresponding auto renewal period, when [attempts to renew](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/) will start.
 
-| Certificate validity period | Auto renewal period | Notes                                                                                                                                                                                                                                                |
-| --------------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1 year                      | 30 days             | Limited to Enterprise customers using [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) with [SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#sslcom) |
-| 3 months                    | 30 days             |                                                                                                                                                                                                                                                      |
-| 1 month                     | 7 days              | Not supported by [Let's Encrypt](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#lets-encrypt)                                                                                                                              |
-| 2 weeks                     | 3 days              | Not supported by [Let's Encrypt](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#lets-encrypt)                                                                                                                              |
+| Certificate validity period | Auto renewal period | Notes |
+| --- | --- | --- |
+| 1 year | 30 days | Limited to Enterprise customers using [advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) with [SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#sslcom) |
+| 3 months | 30 days | |
+| 1 month | 7 days | Not supported by [Let's Encrypt](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#lets-encrypt) |
+| 2 weeks | 3 days | Not supported by [Let's Encrypt](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#lets-encrypt) |
 
 Note
 
-For more details on the `validity_days` parameter used in API calls, refer to [Order Advanced Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate%5Fpacks/methods/create/).
+For more details on the `validity_days` parameter used in API calls, refer to [Order Advanced Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/).
 
 ### Custom certificates
 
@@ -59,9 +59,9 @@ Before a certificate authority (CA) will issue a certificate for a domain, the r
 
 [HTTP validation](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/http/) is attempted on renewals but will fall back to TXT validation depending on the certificate validity period:
 
-* 90-days certificates: after failing for 15 days
-* 30-days certificates: after failing for 7 days
-* 14-days certificates: after failing for 3 days
+- 90-days certificates: after failing for 15 days
+- 30-days certificates: after failing for 7 days
+- 14-days certificates: after failing for 3 days
 
 ## Benefits of shorter validity periods
 

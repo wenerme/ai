@@ -1,6 +1,5 @@
 ---
-description: Review the TLS cipher suites supported by `cloudflared` for secure connections between your origin and Cloudflare's network.
-
+description: "Review the TLS cipher suites supported by `cloudflared` for secure connections between your origin and Cloudflare's network.\n"
 title: Cipher suites
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cipher suites
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cipher-suites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cipher-suites/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel connections use the cipher suites supported by `cloudflared`, which relies on the Go TLS library for its TLS implementation. These cipher suites apply to both the TLS connection between Cloudflare's network and `cloudflared`, and the HTTPS connection between `cloudflared` and your origin. In both cases, `cloudflared` negotiates the most secure cipher suite supported by both sides. All tunnel connections use TLS 1.3 and post-quantum encryption by default.
 
 The following table lists the cipher suites supported by `cloudflared`:
 
-| Protocol support            | Cipher suites                                                                                                                                                                                                                                                                            |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TLS 1.3 only                | TLS\_AES\_128\_GCM\_SHA256TLS\_AES\_256\_GCM\_SHA384TLS\_CHACHA20\_POLY1305\_SHA256                                                                                                                                                                                                      |
-| TLS 1.2 only                | TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384TLS\_ECDHE\_RSA\_WITH\_CHACHA20\_POLY1305\_SHA256TLS\_ECDHE\_ECDSA\_WITH\_CHACHA20\_POLY1305\_SHA256 |
-| Up to and including TLS 1.2 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHATLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHATLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_CBC\_SHATLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_CBC\_SHA                                                                                                                 |
+| Protocol support | Cipher suites |
+| --- | --- |
+| TLS 1.3 only | `TLS_AES_128_GCM_SHA256`<br>`TLS_AES_256_GCM_SHA384`<br>`TLS_CHACHA20_POLY1305_SHA256` |
+| TLS 1.2 only | `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`<br>`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256`<br>`TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256` |
+| Up to and including TLS 1.2 | `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`<br>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`<br>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA`<br>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA` |
 
 Was this helpful?
 

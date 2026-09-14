@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_hello\_length
 
-`cf.tls_client_hello_length` `Number`
+`cf.tls_client_hello_length``Number`
 
 The length of the client hello message sent in a [TLS handshake](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake).
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* SSL/TLS
+- Request
+- SSL/TLS
 
 Was this helpful?
 

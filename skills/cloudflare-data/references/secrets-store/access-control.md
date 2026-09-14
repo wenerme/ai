@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Secrets Store access control
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/access-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/secrets-store/access-control/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Secrets Store allows security administrators to have more control by implementing role-based access. For details about roles at Cloudflare, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/manage-members/).
 
@@ -33,35 +33,35 @@ Refer to the list below for default role definitions.
 
 #### Super Administrator
 
-* Can create, edit, duplicate, delete, and view secrets metadata.
-* Can [add a Secrets Store binding to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
-* Can [create an association between a secret and an AI gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
+- Can create, edit, duplicate, delete, and view secrets metadata.
+- Can [add a Secrets Store binding to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
+- Can [create an association between a secret and an AI gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 
 #### Secrets Store Admin
 
-* Can create, edit, duplicate, delete, and view secrets metadata.
+- Can create, edit, duplicate, delete, and view secrets metadata.
 
 #### Secrets Store Deployer
 
-* Can view secrets metadata but cannot create, edit, duplicate, nor delete secrets.
-* Can [add a Secrets Store binding to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
-* Can [create an association between a secret and an AI gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
+- Can view secrets metadata but cannot create, edit, duplicate, nor delete secrets.
+- Can [add a Secrets Store binding to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
+- Can [create an association between a secret and an AI gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 
 #### Secrets Store Reporter
 
-* Can view secrets metadata.
-* Cannot perform any actions (create, edit, duplicate, delete secrets), nor use Secrets Store integrations with other Cloudflare products.
+- Can view secrets metadata.
+- Cannot perform any actions (create, edit, duplicate, delete secrets), nor use Secrets Store integrations with other Cloudflare products.
 
 ## API token permissions
 
 [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) have two Secrets Store permission levels: **Read** and **Edit**. The permission you need depends on what the token is doing, not on whether you intend to modify the secret itself.
 
-* **Account Secrets Store Read**: Allows the caller to view metadata for secrets (for example, listing secrets or fetching the name, ID, scopes, and comments of a secret). This permission does not grant access to the value of a secret, and does not allow binding a secret to another resource.
-* **Account Secrets Store Edit**: Allows the caller to create, edit, duplicate, or delete secrets. **Edit is also required to bind a secret to another Cloudflare resource**, such as adding a Secrets Store binding to a Worker or associating a secret with an AI Gateway. Attaching a secret to a resource is treated as a write against the secret.
+- **Account Secrets Store Read**: Allows the caller to view metadata for secrets (for example, listing secrets or fetching the name, ID, scopes, and comments of a secret). This permission does not grant access to the value of a secret, and does not allow binding a secret to another resource.
+- **Account Secrets Store Edit**: Allows the caller to create, edit, duplicate, or delete secrets. **Edit is also required to bind a secret to another Cloudflare resource**, such as adding a Secrets Store binding to a Worker or associating a secret with an AI Gateway. Attaching a secret to a resource is treated as a write against the secret.
 
 Deploying Workers from CI/CD
 
-If you use Wrangler in a CI/CD pipeline (for example, [wrangler-action ↗](https://github.com/cloudflare/wrangler-action) in GitHub Actions) to deploy a Worker that has a [Secrets Store binding](https://developers.cloudflare.com/secrets-store/integrations/workers/), the API token used by the pipeline must have **Account Secrets Store Edit** permission. A token with only **Read** will fail at deploy time with an authorization error such as `failed to fetch secrets store binding due to authorization error - check deploy permissions and secret scopes`.
+If you use Wrangler in a CI/CD pipeline (for example, [`wrangler-action` ↗](https://github.com/cloudflare/wrangler-action) in GitHub Actions) to deploy a Worker that has a [Secrets Store binding](https://developers.cloudflare.com/secrets-store/integrations/workers/), the API token used by the pipeline must have **Account Secrets Store Edit** permission. A token with only **Read** will fail at deploy time with an authorization error such as `failed to fetch secrets store binding due to authorization error - check deploy permissions and secret scopes`.
 
 ## Secret scopes
 
@@ -69,13 +69,13 @@ Each secret has a list of **scopes** that determine which Cloudflare services ar
 
 The currently supported scopes are:
 
-* `workers` — allows the secret to be [bound to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
-* `ai-gateway` — allows the secret to be [associated with an AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
+- `workers` — allows the secret to be [bound to a Worker](https://developers.cloudflare.com/secrets-store/integrations/workers/).
+- `ai-gateway` — allows the secret to be [associated with an AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 
 A request to bind or associate a secret with a service will be rejected if that service is not in the scope list, even if the caller has the correct role or API token permission. Deploying a Worker with a Secrets Store binding therefore requires both:
 
-* A user role or API token that can bind secrets (Super Administrator or Secrets Store Deployer role, or **Account Secrets Store Edit** API token permission).
-* A scope list on the secret that includes `workers`.
+- A user role or API token that can bind secrets (Super Administrator or Secrets Store Deployer role, or **Account Secrets Store Edit** API token permission).
+- A scope list on the secret that includes `workers`.
 
 You can set scopes when [creating a secret](https://developers.cloudflare.com/secrets-store/manage-secrets/) using the dashboard, the API (`scopes` field), or Wrangler (`--scopes` flag).
 

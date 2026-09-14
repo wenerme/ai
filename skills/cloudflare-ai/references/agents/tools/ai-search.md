@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AI Search
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/ai-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [AI Search](https://developers.cloudflare.com/ai-search/) to retrieve relevant information from indexed content and use it to augment [calls to AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/). AI Search manages the retrieval pipeline for you, including indexing, search, and optional chat completions over your content.
 
 Use AI Search when you want an agent to:
 
-* Search product docs, support content, user files, or internal knowledge bases.
-* Retrieve relevant chunks before calling a model.
-* Use managed indexing instead of building retrieval infrastructure yourself.
-* Query content from an R2 bucket, website, or uploaded files.
+- Search product docs, support content, user files, or internal knowledge bases.
+- Retrieve relevant chunks before calling a model.
+- Use managed indexing instead of building retrieval infrastructure yourself.
+- Query content from an R2 bucket, website, or uploaded files.
 
 ## Basic pattern
 

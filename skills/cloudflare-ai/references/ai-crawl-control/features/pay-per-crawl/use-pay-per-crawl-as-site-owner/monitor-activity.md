@@ -12,8 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor activity
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/monitor-activity/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/monitor-activity/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+```
 graph LR
 A[Enable in<br>account settings] --> B[Set a pay per <br/>crawl price ]
 B --> C[Select crawlers<br>to charge]
@@ -26,20 +27,21 @@ click B "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owne
 click C "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/select-crawlers-to-charge/"
 click E "/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/manage-payouts/"
 
+```
+
 After configuring pay per crawl, monitor crawler activity to understand how AI crawlers interact with your content, and track your earnings.
 
 ## View crawler activity
 
-1. Go to **AI Crawl Control**.
-[Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+1. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 2. Go to the **Metrics** tab to view detailed analytics.
 
 The metrics help you understand:
 
-* Which crawlers are accessing your content
-* How often they are being charged
-* Request patterns and trends
-* Robots.txt violations
+- Which crawlers are accessing your content
+- How often they are being charged
+- Request patterns and trends
+- Robots.txt violations
 
 For detailed information about available metrics, refer to [View AI Crawl Control metrics](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/#view-the-metrics-tab).
 
@@ -57,15 +59,15 @@ Consider updating your `robots.txt` file to clearly indicate which pages should 
 
 Do the following to ensure you are using pay per crawl most effectively:
 
-* Review crawler activity regularly to identify patterns
-* Adjust pricing based on demand and content value
-* Modify crawler actions (charge, allow, block) as needed
-* Monitor for any unusual or unwanted crawler behavior
+- Review crawler activity regularly to identify patterns
+- Adjust pricing based on demand and content value
+- Modify crawler actions (charge, allow, block) as needed
+- Monitor for any unusual or unwanted crawler behavior
 
 ## Additional resources
 
-* [Pay Per Crawl FAQs](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq)
-* [Analyze AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
+- [Pay Per Crawl FAQs](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/faq)
+- [Analyze AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/)
 
 Was this helpful?
 

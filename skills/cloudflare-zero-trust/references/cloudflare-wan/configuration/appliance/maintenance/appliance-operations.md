@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Appliance operations
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can restart, reboot, or shut down a Cloudflare One Appliance (formerly Magic WAN Connector) from the dashboard or via API. Operations are asynchronous — the appliance executes them the next time it checks in.
 
-| Operation    | Effect                                                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| **Restart**  | Restart managed services. Purges temporary and (optionally) persistent state.                                             |
-| **Reboot**   | Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.            |
+| Operation | Effect |
+| --- | --- |
+| **Restart** | Restart managed services. Purges temporary and (optionally) persistent state. |
+| **Reboot** | Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch. |
 | **Shutdown** | Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again. |
 
 Caution
@@ -27,15 +27,17 @@ Caution
 Operations may disrupt service. Only one operation can be pending at a time.
 
 1. Go to the **Connectors** page.
-[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
-1. Go to the **Appliances** tab > **Appliances**.
-2. Find the Cloudflare One Appliance you want to manage > **Edit**.
-3. Scroll down to the **Operations** section.
-4. Select **Restart**, **Reboot**, or **Shutdown**.
-5. In the confirmation dialog:
-  * Check **I understand this operation may disrupt service** (required).
-  * Optionally, check **Purge persistent state** to clear persistent data in addition to temporary state.
-6. Select **Confirm**.
+
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+
+2. Go to the **Appliances** tab > **Appliances**.
+3. Find the Cloudflare One Appliance you want to manage > **Edit**.
+4. Scroll down to the **Operations** section.
+5. Select **Restart**, **Reboot**, or **Shutdown**.
+6. In the confirmation dialog:
+   - Check **I understand this operation may disrupt service** (required).
+   - Optionally, check **Purge persistent state** to clear persistent data in addition to temporary state.
+7. Select **Confirm**.
 
 The operation is submitted and runs when the appliance next checks in. A banner shows the pending operation status until the appliance executes it.
 

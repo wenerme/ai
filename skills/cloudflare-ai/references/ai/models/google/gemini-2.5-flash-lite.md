@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/gemini-2.5-flash-lite`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput tasks.
 
-| Model Info                                                                          |                                                                                                                                |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                               |
-| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
-| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
-| Zero data retention                                                                 | Yes                                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/gemini/) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
 
 ## Usage
 
@@ -65,6 +65,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The three laws of thermodynamics are fundamental principles that describe the behavior of energy and matter. Here they are:
 
 1.  **The Zeroth Law of Thermodynamics:**
@@ -88,6 +89,7 @@ The three laws of thermodynamics are fundamental principles that describe the be
         *   It suggests that the universe is heading towards a state of maximum entropy, often referred to as "heat death."
 
 These three laws are fundamental to understanding how energy works in everything from chemical reactions and engines to living organisms and the universe as a whole.
+```
 
 ```json
 {
@@ -134,7 +136,11 @@ These three laws are fundamental to understanding how energy works in everything
 
 ## Examples
 
-**With System Instruction** — Using a system instruction to set context
+<details>
+
+<summary>**With System Instruction** — Using a system instruction to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -181,6 +187,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+````
 Reading a JSON file in Python is a straightforward process thanks to the built-in `json` module. Here's a breakdown of how to do it, along with explanations and examples:
 
 **The Core Concept**
@@ -314,6 +321,7 @@ except json.JSONDecodeError:
 *   **Error Handling is Essential:** Always include error handling to gracefully manage situations where the file is missing or contains invalid JSON.
 
 By following these steps, you can effectively read and work with JSON data in your Python applications.
+````
 
 ```json
 {
@@ -358,7 +366,13 @@ By following these steps, you can effectively read and work with JSON data in yo
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -425,6 +439,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 Absolutely! The drive from San Francisco to Los Angeles offers a variety of stunning scenery and charming towns. Here are some of the most popular and highly recommended stops, depending on your interests and how much time you have:
 
 **The Classic Coastal Route (Highway 1 - the most scenic, but can be slower):**
@@ -451,6 +466,7 @@ This is the iconic drive for a reason! Expect breathtaking ocean views, dramatic
 *   **Cambria:**
     *   **Moonstone Beach:** Known for its smooth, colorful "moonstones."
     *
+```
 
 ```json
 {
@@ -495,7 +511,13 @@ This is the iconic drive for a reason! Expect breathtaking ocean views, dramatic
 }
 ```
 
-**Creative Writing** — Higher temperature for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Higher temperature for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -538,11 +560,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The air in the cramped apartment hung thick with the scent of stale cigarettes and something vaguely floral, a cloying perfume that did little to mask the metallic tang of dried blood. Detective Miles Corbin, a man whose trench coat seemed permanently etched with the grime of a thousand city streets, surveyed the scene with weary eyes. Another Tuesday, another victim. But this one, a young woman named Clara Bellweather, had left behind more than just a messy end to her life.
 
 Miles knelt beside the overturned coffee table, its polished surface marred by a dark, sticky stain. He’d seen plenty of overturned furniture, plenty of blood. What made him pause, what pricked at his seasoned detective’s intuition, was the object nestled amidst the shattered ceramic mug and scattered papers. It was a single, perfectly preserved peacock feather.
 
 Not just any feather, either. This one shimmered with an iridescent blues and greens, its eye a mesmerizing swirl of sapphire and emerald. It was impossibly vibrant, almost glowing against the drab carpet. Miles had seen exotic pets, he’d even seen a crime scene once that involved a boa constrictor, but never, in all his years, had he encountered a peacock feather at a homicide. And not just a stray one, mind you. This looked…placed. Deliberately. As if the killer, in their haste or their madness, had left behind a calling card of pure, unadulterated strangeness.
+```
 
 ```json
 {
@@ -587,13 +611,15 @@ Not just any feather, either. This one shimmered with an iridescent blues and gr
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Generate ContentChat Completions
 
-▶contents\[\]
+▶contents\[]
 
 `array`required
 
@@ -605,19 +631,17 @@ Generate ContentChat Completions
 
 `object`
 
-▶safetySettings\[\]
+▶safetySettings\[]
 
 `array`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 toolConfig
 
-``
-
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -639,11 +663,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -653,19 +677,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -673,7 +693,7 @@ response\_format
 
 `object`
 
-▶candidates\[\]
+▶candidates\[]
 
 `array`
 
@@ -701,7 +721,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -711,9 +731,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash-lite/schema-output.json)
 
 Was this helpful?
 

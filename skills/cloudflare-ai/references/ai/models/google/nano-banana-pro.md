@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/nano-banana-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's higher-quality image generation model with improved detail and prompt adherence.
 
-| Model Info          |                                                                                                                          |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                   |
-| Zero data retention | Yes                                                                                                                      |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
 
 ## Usage
 
@@ -77,7 +77,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Fantasy Illustration** — Epic fantasy scene
+<details>
+
+<summary>**Fantasy Illustration** — Epic fantasy scene</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -120,7 +124,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Architectural Visualization** — Modern architecture render
+</details>
+
+<details>
+
+<summary>**Architectural Visualization** — Modern architecture render</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -165,7 +175,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Character Design** — Game character concept art
+</details>
+
+<details>
+
+<summary>**Character Design** — Game character concept art</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -206,13 +222,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`required
 
-▶image\_input\[\]
+▶image\_input\[]
 
 `array`maxItems: 3
 
@@ -234,9 +252,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json)
 
 Was this helpful?
 

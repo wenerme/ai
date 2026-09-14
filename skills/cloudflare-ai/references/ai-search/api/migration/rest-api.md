@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API migration
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/migration/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [AutoRAG API endpoints](https://developers.cloudflare.com/api/resources/autorag/) are the legacy REST API for AI Search. They will continue to work, but all new features and improvements are only available through the new [AI Search API endpoints](https://developers.cloudflare.com/ai-search/api/search/rest-api/).
 
@@ -20,31 +20,31 @@ The [AutoRAG API endpoints](https://developers.cloudflare.com/api/resources/auto
 
 The legacy AutoRAG API endpoints under `/autorag/rags/` have been replaced by new endpoints under `/ai-search/instances/`.
 
-| Description      | New endpoint                                 | Reference                                                                                                                       |
-| ---------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Chat completions | /ai-search/instances/{name}/chat/completions | [API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/) |
-| Search           | /ai-search/instances/{name}/search           | [API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/)             |
+| Description | New endpoint | Reference |
+| --- | --- | --- |
+| Chat completions | `/ai-search/instances/{name}/chat/completions` | [API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/chat_completions/) |
+| Search | `/ai-search/instances/{name}/search` | [API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/) |
 
 The new API also includes endpoints for [instance management](https://developers.cloudflare.com/ai-search/api/instances/rest-api/), [items](https://developers.cloudflare.com/ai-search/api/items/rest-api/), and [namespace-level search](https://developers.cloudflare.com/ai-search/api/search/rest-api/#cross-instance-search-and-chat) that are not available in the legacy API. For the legacy endpoints, refer to the [AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/).
 
 ## API token permissions
 
-The legacy AutoRAG endpoints used the **AutoRAG** API token permission. The new AI Search endpoints require the **AI Search** permission instead, so update the permissions on the token you use to call the API. We recommend using [account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/), which are owned by the account rather than a single user, and adding the **AI Search** permission found under **AI & Machine Learning** \> **AI Search**.
+The legacy AutoRAG endpoints used the **AutoRAG** API token permission. The new AI Search endpoints require the **AI Search** permission instead, so update the permissions on the token you use to call the API. We recommend using [account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/), which are owned by the account rather than a single user, and adding the **AI Search** permission found under **AI & Machine Learning** > **AI Search**.
 
 ### Create a new token
 
-1. In the Cloudflare dashboard, go to **Manage Account** \> **API Tokens**.
+1. In the Cloudflare dashboard, go to **Manage Account** > **API Tokens**.
 2. Select **Create Token**, then start a custom token.
 3. Enter a name for the token.
-4. Add a permission policy and select **AI & Machine Learning** \> **AI Search**, then choose the access level you need. AI Search offers **Read**, **Run**, and **Edit** access.
+4. Add a permission policy and select **AI & Machine Learning** > **AI Search**, then choose the access level you need. AI Search offers **Read**, **Run**, and **Edit** access.
 5. (Optional) Set client IP address filtering and a token expiration.
 6. Create the token and copy its value.
 
 ### Edit an existing token
 
-1. In the Cloudflare dashboard, go to **Manage Account** \> **API Tokens**.
+1. In the Cloudflare dashboard, go to **Manage Account** > **API Tokens**.
 2. Select the token you want to update.
-3. Add or update a permission policy to include **AI & Machine Learning** \> **AI Search** with the access level you need, then save.
+3. Add or update a permission policy to include **AI & Machine Learning** > **AI Search** with the access level you need, then save.
 
 For the full token creation flow, refer to [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
 
@@ -128,16 +128,16 @@ The new AI Search REST API uses Vectorize-style metadata filtering, which differ
 
 The filter operators have been renamed to use a `$` prefix:
 
-| AutoRAG API | AI Search API     |
-| ----------- | ----------------- |
-| eq          | $eq (or implicit) |
-| ne          | $ne               |
-| gt          | $gt               |
-| gte         | $gte              |
-| lt          | $lt               |
-| lte         | $lte              |
-|             | $in (new)         |
-|             | $nin (new)        |
+| AutoRAG API | AI Search API |
+| --- | --- |
+| `eq` | `$eq` (or implicit) |
+| `ne` | `$ne` |
+| `gt` | `$gt` |
+| `gte` | `$gte` |
+| `lt` | `$lt` |
+| `lte` | `$lte` |
+|  | `$in` (new) |
+|  | `$nin` (new) |
 
 ### Examples
 
@@ -204,10 +204,10 @@ Combine multiple conditions where all must match:
 
 ## API references
 
-* [REST API documentation](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
-* [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/chat%5Fcompletions/)
-* [Search API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/instances/methods/search/)
-* [Legacy AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/)
+- [REST API documentation](https://developers.cloudflare.com/ai-search/api/search/rest-api/)
+- [Chat Completions API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/chat_completions/)
+- [Search API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/instances/methods/search/)
+- [Legacy AutoRAG API reference](https://developers.cloudflare.com/api/resources/autorag/)
 
 Was this helpful?
 

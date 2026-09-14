@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Leonardo
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/leonardo/phoenix-1.0`
 
-* Cloudflare-hosted
-* Partner
+- Cloudflare-hosted
+- Partner
 
 Phoenix 1.0 is a model by Leonardo.Ai that generates images with exceptional prompt adherence and coherent text.
 
-| Model Info        |                                                 |
-| ----------------- | ----------------------------------------------- |
+| Model Info | |
+| --- | --- |
 | Terms and License | [link ↗](https://leonardo.ai/terms-of-service/) |
-| Partner           | Yes                                             |
-| Unit Pricing      | $0.0058 per 512 by 512 tile, $0.00011 per step  |
+| Partner | Yes |
+| Unit Pricing | $0.0058 per 512 by 512 tile, $0.00011 per step |
 
 ## Parameters
 
@@ -65,9 +65,9 @@ The binding returns a `ReadableStream` with the output (check the model's output
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/phoenix-1.0/schema-output.json)
 
 Was this helpful?
 

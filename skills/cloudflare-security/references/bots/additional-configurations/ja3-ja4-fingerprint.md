@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JA3/JA4 fingerprint
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [**JA3** ↗](https://github.com/salesforce/ja3) and [**JA4** ↗](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
 
@@ -24,12 +24,11 @@ JA3 and JA4 fingerprints are only available to Enterprise customers who have pur
 
 If you want to use JA4 fingerprints and Signals Intelligence, your Workers script should be able to handle missing fields when Bot Management isn't able to calculate or populate JA4 Signals (for example, non-TLS traffic or when Bot Management is skipped). For Orange-to-Orange (O2O) scenarios where Bot Management is in effect, JA4 Signals correspond to the eyeball (end-user) connection and are preserved through the O2O chain, including O2O zone requests and any corresponding subrequests.
 
-* The possibility that the JA4 fingerprint could be missing.
-* The possibility that the `ja4Signals` array could be missing (for example, if JA4 isn't available for the request).
-* Results with `NaN` or `Infinity` values will be excluded from the array.
+- The possibility that the JA4 fingerprint could be missing.
+- The possibility that the `ja4Signals` array could be missing (for example, if JA4 isn't available for the request).
+- Results with `NaN` or `Infinity` values will be excluded from the array.
 
 ```json
-
 {
   "ja4Signals": {
     "h2h3_ratio_1h": 0.98826485872269,
@@ -66,6 +65,8 @@ If you want to use JA4 fingerprints and Signals Intelligence, your Workers scrip
 
 When JA4 Signals are missing, the output appears as follows:
 
+*Missing JA4 signals outputjson*
+
 ```json
 {
   "ja4Signals": {},
@@ -83,10 +84,10 @@ This sample was generated using [Workers' Cloudflare Object script](https://deve
 
 The JA3 or JA4 fingerprint is an SSL/TLS-based identifier and can be null or empty in logs under specific circumstances:
 
-* Since JA3 and JA4 are calculated during the TLS (SSL) handshake, they will not be present for non-encrypted HTTP traffic.
-* The field may be empty when a [Worker](https://developers.cloudflare.com/workers/) sends a request to a zone that is either internal to Cloudflare's network (for example, non-proxied/internal O2O) or to a third-party origin, or when a Worker is routing traffic to the target zone.
-* The fingerprints may be absent when Bot Management itself is skipped for a request, as the feature is responsible for calculating and populating these values.
-* With [TLS Session Resumption ↗](https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/), once the initial TLS handshake is successfully completed, subsequent connections will be streamlined. This results in no further fingerprint calculation.
+- Since JA3 and JA4 are calculated during the TLS (SSL) handshake, they will not be present for non-encrypted HTTP traffic.
+- The field may be empty when a [Worker](https://developers.cloudflare.com/workers/) sends a request to a zone that is either internal to Cloudflare's network (for example, non-proxied/internal O2O) or to a third-party origin, or when a Worker is routing traffic to the target zone.
+- The fingerprints may be absent when Bot Management itself is skipped for a request, as the feature is responsible for calculating and populating these values.
+- With [TLS Session Resumption ↗](https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/), once the initial TLS handshake is successfully completed, subsequent connections will be streamlined. This results in no further fingerprint calculation.
 
 In [Orange-to-Orange (O2O)](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/) scenarios where Bot Management is in effect, JA3/JA4 fingerprints are preserved through the O2O chain and represent the eyeball (end-user) connection. This includes requests on the O2O zone and any corresponding subrequests.
 
@@ -94,18 +95,18 @@ In [Orange-to-Orange (O2O)](https://developers.cloudflare.com/cloudflare-for-pla
 
 To get more information about potential bot requests, use these JA3 and JA4 fingerprints in:
 
-* [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/#enterprise-bot-management)
-* [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) and [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/)
-* [Analytics GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/), specifically the **HTTP Requests** dataset
-* [Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/)
+- [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/#enterprise-bot-management)
+- [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/) and [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/)
+- [Analytics GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/), specifically the **HTTP Requests** dataset
+- [Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/)
 
 ## Actions
 
 To adjust how your application responds to specific fingerprints, use them with:
 
-* [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)
-* [Transform Rules](https://developers.cloudflare.com/rules/transform/)
-* [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties)
+- [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)
+- [Transform Rules](https://developers.cloudflare.com/rules/transform/)
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties)
 
 ## Use cases
 
@@ -113,7 +114,7 @@ To adjust how your application responds to specific fingerprints, use them with:
 
 A group of similar requests may share the same JA3 fingerprint. For this reason, JA3 may be useful in blocking an incoming threat. For example, if you notice that a bot attack is not caught by existing defenses, create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that blocks or challenges the JA3 used for the attack.
 
-Alternatively, if existing defenses are blocking traffic that is actually legitimate, create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) with the _Skip_ action allowing the JA3 seen across good requests.
+Alternatively, if existing defenses are blocking traffic that is actually legitimate, create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) with the *Skip* action allowing the JA3 seen across good requests.
 
 JA3 may also be useful if you want to immediately remedy false positives or false negatives with Bot Management.
 

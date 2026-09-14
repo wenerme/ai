@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Playwright MCP
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[@cloudflare/playwright-mcp ↗](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
+[`@cloudflare/playwright-mcp` ↗](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
 
 This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Its key features are:
 
-* Fast and lightweight. Uses Playwright's accessibility tree, not pixel-based input.
-* LLM-friendly. No vision models needed, operates purely on structured data.
-* Deterministic tool application. Avoids ambiguity common with screenshot-based approaches.
+- Fast and lightweight. Uses Playwright's accessibility tree, not pixel-based input.
+- LLM-friendly. No vision models needed, operates purely on structured data.
+- Deterministic tool application. Avoids ambiguity common with screenshot-based approaches.
 
 Note
 
@@ -60,7 +60,7 @@ pnpm add -D @cloudflare/playwright-mcp
 bun add -d @cloudflare/playwright-mcp
 ```
 
-1. Make sure you have the [Browser Run](https://developers.cloudflare.com/browser-run/) and [Durable Object](https://developers.cloudflare.com/durable-objects/) bindings and [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) in your Wrangler configuration file.
+2. Make sure you have the [Browser Run](https://developers.cloudflare.com/browser-run/) and [Durable Object](https://developers.cloudflare.com/durable-objects/) bindings and [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) in your Wrangler configuration file.
 
 Note
 
@@ -72,7 +72,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "playwright-mcp-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "BROWSER",
@@ -99,7 +99,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "playwright-mcp-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -114,7 +114,9 @@ name = "MCP_OBJECT"
 class_name = "PlaywrightMCP"
 ```
 
-1. Edit the code.
+3. Edit the code.
+
+*src/index.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -139,7 +141,7 @@ export default {
 };
 ```
 
-1. Deploy the server.
+4. Deploy the server.
 
 ```bash
 npx wrangler deploy

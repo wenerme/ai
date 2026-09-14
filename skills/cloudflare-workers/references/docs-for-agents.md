@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Docs for agents
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/docs-for-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/docs-for-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI agents — tools like Cursor, GitHub Copilot, and Claude Code — can answer questions about Cloudflare products, generate configuration, and call Cloudflare APIs on your behalf. Cloudflare documentation provides content in agent-friendly formats, agent skills, and MCP servers so your AI agent can look up documentation and interact with Cloudflare services directly.
 
@@ -22,7 +22,7 @@ This page explains the available approaches and how to set them up.
 
 These resources cover different aspects of using AI agents with Cloudflare documentation. Start with the one most relevant to you:
 
-### [Understand key concepts](#concepts)
+### Understand key concepts
 
 Learn about agent skills and MCP (Model Context Protocol).
 
@@ -30,7 +30,7 @@ Learn about agent skills and MCP (Model Context Protocol).
 
 Install skills and MCP servers for your specific AI tool.
 
-### [Extract documentation in agent-friendly format](#markdown-documentation-for-llms)
+### Extract documentation in agent-friendly format
 
 Minimize token usage while improving the accuracy of your agent's responses.
 
@@ -50,8 +50,8 @@ Cloudflare runs managed remote MCP servers that give your agent the ability to s
 
 There are two approaches:
 
-* **[Cloudflare API MCP server](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)**: A Code Mode server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
-* **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare) repository.
+- **[Cloudflare API MCP server](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)**: A Code Mode server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
+- **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare) repository.
 
 Each agent's [Agent setup](#set-up-your-agent) guide includes MCP server installation as part of its Quick start. For the full list of available MCP servers, refer to [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/).
 
@@ -59,16 +59,16 @@ Each agent's [Agent setup](#set-up-your-agent) guide includes MCP server install
 
 AI agents use large language models (LLMs) to understand your requests and generate responses. The model affects response quality, speed, and cost. How many models you can choose from depends on the agent:
 
-* **Locked**: Only the vendor's own models are supported.
-* **BYOK** (Bring Your Own Key): You supply your own API key for the model provider of your choice.
-* **Multi-provider**: Several model providers are supported out of the box.
+- **Locked**: Only the vendor's own models are supported.
+- **BYOK** (Bring Your Own Key): You supply your own API key for the model provider of your choice.
+- **Multi-provider**: Several model providers are supported out of the box.
 
 ### Context approaches
 
 How the agent retains information about your project between conversations affects how much your agent remembers between sessions:
 
-* **Project memory**: The agent remembers context across sessions using stored files or memory.
-* **Indexed codebase**: The agent builds a searchable index of your repository for fast lookups.
+- **Project memory**: The agent remembers context across sessions using stored files or memory.
+- **Indexed codebase**: The agent builds a searchable index of your repository for fast lookups.
 
 ## Set up your agent
 
@@ -109,21 +109,21 @@ The response includes `x-markdown-tokens` and `x-original-tokens` headers with e
 
 These endpoints follow the [llms.txt standard ↗](https://llmstxt.org/) and provide documentation content in Markdown format:
 
-| Endpoint                                                          | Description                                                                                                                                                                                     |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [/llms.txt](https://developers.cloudflare.com/llms.txt)           | Page index grouped by product category, with links to each product's own llms.txt                                                                                                               |
-| [/llms-full.txt](https://developers.cloudflare.com/llms-full.txt) | Full content of all documentation in a single file, for offline indexing, bulk vectorization (converting content into numerical representations for similarity search), or large-context models |
+| Endpoint | Description |
+| --- | --- |
+| [`/llms.txt`](https://developers.cloudflare.com/llms.txt) | Page index grouped by product category, with links to each product's own `llms.txt` |
+| [`/llms-full.txt`](https://developers.cloudflare.com/llms-full.txt) | Full content of all documentation in a single file, for offline indexing, bulk vectorization (converting content into numerical representations for similarity search), or large-context models |
 
 ### Per-product endpoints
 
 Each product has its own scoped `llms.txt` and `llms-full.txt`. Use these when you only need documentation for a specific product.
 
-| Endpoint                                                                          | Description                                     |
-| --------------------------------------------------------------------------------- | ----------------------------------------------- |
-| [/workers/llms.txt](https://developers.cloudflare.com/workers/llms.txt)           | Page index for Workers documentation            |
-| [/workers/llms-full.txt](https://developers.cloudflare.com/workers/llms-full.txt) | Full content of all Workers documentation pages |
+| Endpoint | Description |
+| --- | --- |
+| [`/workers/llms.txt`](https://developers.cloudflare.com/workers/llms.txt) | Page index for Workers documentation |
+| [`/workers/llms-full.txt`](https://developers.cloudflare.com/workers/llms-full.txt) | Full content of all Workers documentation pages |
 
-Replace `/workers/` with any product path. For the full list of available products, refer to [/llms.txt](https://developers.cloudflare.com/llms.txt).
+Replace `/workers/` with any product path. For the full list of available products, refer to [`/llms.txt`](https://developers.cloudflare.com/llms.txt).
 
 ## OpenAPI specification
 
@@ -131,9 +131,9 @@ An [OpenAPI specification ↗](https://www.openapis.org/) is a machine-readable 
 
 The full Cloudflare API OpenAPI specification is available for AI coding tools, API clients, and code generators:
 
-| Endpoint                                                              | Description                                      |
-| --------------------------------------------------------------------- | ------------------------------------------------ |
-| [cloudflare/api-schemas ↗](https://github.com/cloudflare/api-schemas) | Full Cloudflare API OpenAPI specification (JSON) |
+| Endpoint | Description |
+| --- | --- |
+| [`cloudflare/api-schemas` ↗](https://github.com/cloudflare/api-schemas) | Full Cloudflare API OpenAPI specification (JSON) |
 
 For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 

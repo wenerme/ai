@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reserved IP addresses
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare reserves several IPv4 and IPv6 ranges for internal routing and service functionality. Most of these ranges are drawn from the CGNAT address space (`100.64.0.0/10`). [Gateway initial resolved IPs](#gateway-initial-resolved-ips) are the exception, using a public Cloudflare-owned range by default. To avoid routing conflicts, your Cloudflare Tunnel, Cloudflare Mesh, or WAN routes should not include subsets of these reserved ranges. Broader routes that contain a reserved range, such as `0.0.0.0/0`, are unaffected because longest-prefix match ensures the reserved ranges still take priority.
 
@@ -20,30 +20,30 @@ When planning your private network addressing and configuring [Split Tunnel](htt
 
 ## IPv4 ranges
 
-| Name                                                          | Default CIDR    | Configurable |
-| ------------------------------------------------------------- | --------------- | ------------ |
-| [Cloudflare source IPs](#cloudflare-source-ips)               | 100.64.0.0/12   | Yes          |
-| [Gateway initial resolved IPs](#gateway-initial-resolved-ips) | 172.64.128.0/20 | Yes          |
-| [Device IPs](#device-ips)                                     | 100.96.0.0/12   | Yes          |
-| [Private Load Balancer IPs](#private-load-balancer-ips)       | 100.112.0.0/16  | Yes          |
+| Name | Default CIDR | Configurable |
+| --- | --- | --- |
+| [Cloudflare source IPs](#cloudflare-source-ips) | `100.64.0.0/12` | Yes |
+| [Gateway initial resolved IPs](#gateway-initial-resolved-ips) | `172.64.128.0/20` | Yes |
+| [Device IPs](#device-ips) | `100.96.0.0/12` | Yes |
+| [Private Load Balancer IPs](#private-load-balancer-ips) | `100.112.0.0/16` | Yes |
 
 Unlike the other IPv4 ranges, Gateway initial resolved IPs are drawn from public Cloudflare address space rather than CGNAT (`100.64.0.0/10`) by default. If your account was created before this default changed, or if you configured a custom range, it may still fall within CGNAT space — refer to [Gateway initial resolved IPs](#gateway-initial-resolved-ips).
 
 ## IPv6 ranges
 
-| Name                                                          | Default CIDR             | Configurable |
-| ------------------------------------------------------------- | ------------------------ | ------------ |
-| [Device IPs](#device-ips)                                     | 2606:4700:0cf1:1000::/64 | No           |
-| [Gateway initial resolved IPs](#gateway-initial-resolved-ips) | 2606:4700:0cf1:4000::/64 | No           |
-| [Cloudflare source IPs](#cloudflare-source-ips)               | 2606:4700:0cf1:5000::/64 | No           |
+| Name | Default CIDR | Configurable |
+| --- | --- | --- |
+| [Device IPs](#device-ips) | `2606:4700:0cf1:1000::/64` | No |
+| [Gateway initial resolved IPs](#gateway-initial-resolved-ips) | `2606:4700:0cf1:4000::/64` | No |
+| [Cloudflare source IPs](#cloudflare-source-ips) | `2606:4700:0cf1:5000::/64` | No |
 
 ## Cloudflare source IPs
 
 Cloudflare source IPs are the source addresses used when a Cloudflare service sends traffic to your private networks. This range applies to customers using [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). Examples of requests that are sourced from this range include:
 
-* [Load Balancing](https://developers.cloudflare.com/load-balancing/monitors/) — health check requests to private endpoints
-* [Gateway DNS resolver](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/) — DNS resolution for private hostnames
-* [Cloudflare Workers](https://developers.cloudflare.com/workers/) — requests from Workers to private origins
+- [Load Balancing](https://developers.cloudflare.com/load-balancing/monitors/) — health check requests to private endpoints
+- [Gateway DNS resolver](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/dns-resolver-ips/) — DNS resolution for private hostnames
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) — requests from Workers to private origins
 
 The default IPv4 range is `100.64.0.0/12`. You can change this to a different `/12` CIDR to avoid conflicts with your existing IP address management plan. For more information on affected services and configuration instructions, refer to [Configure Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/).
 
@@ -53,10 +53,10 @@ Gateway initial resolved IPs (also called token IPs) are ephemeral addresses use
 
 The following features use this range:
 
-* [Private hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) — routes traffic to private applications behind Cloudflare Tunnel using their hostnames.
-* [Public hostname routing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) — egresses traffic through Cloudflare Tunnel to anchor source IPs for public destinations.
-* [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) — evaluates Gateway egress policies using hostname-based selectors.
-* [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) — manage access to private applications using their private hostnames.
+- [Private hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) — routes traffic to private applications behind Cloudflare Tunnel using their hostnames.
+- [Public hostname routing](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/egress-cloudflared/) — egresses traffic through Cloudflare Tunnel to anchor source IPs for public destinations.
+- [Egress policy host selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/) — evaluates Gateway egress policies using hostname-based selectors.
+- [Access private applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/) — manage access to private applications using their private hostnames.
 
 Cloudflare assigns initial resolved IPs from the `172.64.128.0/20` (IPv4) or `2606:4700:0cf1:4000::/64` (IPv6) range by default. Unlike earlier CGNAT-based defaults, the IPv4 range is public Cloudflare address space, so it is not affected by [Google Chrome's Local Network Access restrictions](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#google-chrome-restricts-access-to-private-hostnames).
 
@@ -66,8 +66,8 @@ You can configure a custom IPv4 range if the default conflicts with your existin
 
 Device IPs (also called Mesh IPs in [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/)) are virtual addresses assigned to each Cloudflare One Client registration and each mesh node. These IPs identify and route traffic to specific devices for the following features:
 
-* [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) — mesh nodes and client devices communicate using their Mesh IPs for device-to-device, site-to-site, and mesh connectivity.
-* [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) — on-ramps traffic from WAN tunnels to Cloudflare One Client devices.
+- [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) — mesh nodes and client devices communicate using their Mesh IPs for device-to-device, site-to-site, and mesh connectivity.
+- [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/) — on-ramps traffic from WAN tunnels to Cloudflare One Client devices.
 
 The default IPv4 range is `100.96.0.0/12`. If this range conflicts with services on your private network, you can configure custom IPv4 subnets drawn from RFC 1918 or CGNAT address space. If your account uses [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/), custom subnets require [Unified Routing (beta)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#unified-routing-mode-beta). For configuration instructions, refer to [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
 

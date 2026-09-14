@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway policy expressions
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway policies use a wirefilter-based expression language to match traffic against selectors (criteria). This syntax is similar to, but distinct from, the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) used by WAF, Rules, and other Cloudflare products. Refer to [Gateway versus Ruleset Engine](#gateway-versus-ruleset-engine) for details on the differences.
 
@@ -20,11 +20,11 @@ Important
 
 The [Ruleset Engine documentation](https://developers.cloudflare.com/ruleset-engine/rules-language/) does not apply to Gateway policies. Gateway has its own set of selectors and fields specific to Zero Trust traffic filtering. For available selectors, refer to the documentation for each policy type:
 
-* [DNS policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#selectors)
-* [HTTP policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#selectors)
-* [Network policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#selectors)
-* [Egress policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selectors)
-* [Resolver policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#selectors)
+- [DNS policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#selectors)
+- [HTTP policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#selectors)
+- [Network policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#selectors)
+- [Egress policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selectors)
+- [Resolver policy selectors](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#selectors)
 
 ## Expression syntax
 
@@ -46,26 +46,26 @@ identity.email == "user@company.com"
 
 Gateway supports the following operators:
 
-| Operator | Name                       | Example                                             |
-| -------- | -------------------------- | --------------------------------------------------- |
-| \==      | Equals                     | dns.fqdn == "example.com"                           |
-| !=       | Does not equal             | http.request.host != "blocked.com"                  |
-| in       | Value is in set            | net.dst.port in {80 443}                            |
-| matches  | Matches regular expression | http.request.host matches ".\*\\\\.example\\\\.com" |
-| \>       | Greater than               | http.upload.file.size > 10                          |
-| \>=      | Greater than or equal to   | http.download.file.size >= 100                      |
-| <        | Less than                  | http.upload.file.size < 50                          |
-| <=       | Less than or equal to      | http.download.file.size <= 200                      |
+| Operator | Name | Example |
+| --- | --- | --- |
+| `==` | Equals | `dns.fqdn == "example.com"` |
+| `!=` | Does not equal | `http.request.host != "blocked.com"` |
+| `in` | Value is in set | `net.dst.port in {80 443}` |
+| `matches` | Matches regular expression | `http.request.host matches ".*\\.example\\.com"` |
+| `>` | Greater than | `http.upload.file.size > 10` |
+| `>=` | Greater than or equal to | `http.download.file.size >= 100` |
+| `<` | Less than | `http.upload.file.size < 50` |
+| `<=` | Less than or equal to | `http.download.file.size <= 200` |
 
 ### Logical operators
 
 Combine multiple conditions using logical operators:
 
-| Operator | Name        | Example                                                             |
-| -------- | ----------- | ------------------------------------------------------------------- |
-| and      | Logical AND | dns.fqdn == "example.com" and identity.email == "admin@company.com" |
-| or       | Logical OR  | net.dst.port == 80 or net.dst.port == 443                           |
-| not      | Logical NOT | not(identity.email == "guest@company.com")                          |
+| Operator | Name | Example |
+| --- | --- | --- |
+| `and` | Logical AND | `dns.fqdn == "example.com" and identity.email == "admin@company.com"` |
+| `or` | Logical OR | `net.dst.port == 80 or net.dst.port == 443` |
+| `not` | Logical NOT | `not(identity.email == "guest@company.com")` |
 
 ## Array handling
 
@@ -97,19 +97,19 @@ http.request.host in $<LIST_UUID>
 any(http.request.domains[*] in $<LIST_UUID>)
 ```
 
-To find a list's UUID, go to **My Team** \> **Lists** in Zero Trust and select the list. The UUID appears in the browser URL.
+To find a list's UUID, go to **My Team** > **Lists** in Zero Trust and select the list. The UUID appears in the browser URL.
 
 ## Common field patterns
 
 Each Gateway policy type has its own set of available fields. The following table shows the field prefixes used by each policy type:
 
-| Policy type    | Field prefix     | Example fields                                            |
-| -------------- | ---------------- | --------------------------------------------------------- |
-| DNS            | dns.             | dns.fqdn, dns.content\_category, dns.src\_ip              |
-| HTTP           | http.            | http.request.host, http.request.uri, http.request.domains |
-| Network        | net.             | net.dst.ip, net.dst.port, net.src.ip                      |
-| Identity       | identity.        | identity.email, identity.groups, identity.name            |
-| Device posture | device\_posture. | device\_posture.checks.passed                             |
+| Policy type | Field prefix | Example fields |
+| --- | --- | --- |
+| DNS | `dns.` | `dns.fqdn`, `dns.content_category`, `dns.src_ip` |
+| HTTP | `http.` | `http.request.host`, `http.request.uri`, `http.request.domains` |
+| Network | `net.` | `net.dst.ip`, `net.dst.port`, `net.src.ip` |
+| Identity | `identity.` | `identity.email`, `identity.groups`, `identity.name` |
+| Device posture | `device_posture.` | `device_posture.checks.passed` |
 
 For a complete list of available fields for each policy type, refer to the selectors documentation linked at the top of this page.
 
@@ -147,15 +147,15 @@ http.request.host == "internal.example.com" and identity.email matches ".*@compa
 
 ## Gateway versus Ruleset Engine
 
-The following table summarizes the key differences between the Rules language\](/ruleset-engine/rules-language/) (supported by the Ruleset Engine) and Gateway policy expressions:
+The following table summarizes the key differences between the Rules language](/ruleset-engine/rules-language/) (supported by the Ruleset Engine) and Gateway policy expressions:
 
-|                     | Ruleset Engine                                                                     | Gateway                                                                                |
-| ------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| **Products**        | WAF, Transform Rules, Cache Rules, Configuration Rules                             | DNS, HTTP, Network, Egress, Resolver policies                                          |
-| **Field examples**  | http.request.uri.path, cf.bot\_management.score, ip.src                            | dns.fqdn, http.request.host, identity.email                                            |
-| **Identity fields** | Not available                                                                      | Available (for example, identity.email, identity.groups)                               |
-| **DNS fields**      | Not available                                                                      | Available (for example, dns.fqdn, dns.content\_category)                               |
-| **Documentation**   | [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) | [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) |
+|  | Ruleset Engine | Gateway |
+| --- | --- | --- |
+| **Products** | WAF, Transform Rules, Cache Rules, Configuration Rules | DNS, HTTP, Network, Egress, Resolver policies |
+| **Field examples** | `http.request.uri.path`, `cf.bot_management.score`, `ip.src` | `dns.fqdn`, `http.request.host`, `identity.email` |
+| **Identity fields** | Not available | Available (for example, `identity.email`, `identity.groups`) |
+| **DNS fields** | Not available | Available (for example, `dns.fqdn`, `dns.content_category`) |
+| **Documentation** | [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/) | [Traffic policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) |
 
 Note
 
@@ -163,11 +163,11 @@ Do not reference the [Ruleset Engine fields reference](https://developers.cloudf
 
 ## Related resources
 
-* [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
-* [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)
-* [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
-* [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/)
-* [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)
+- [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
+- [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)
+- [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)
+- [Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/)
+- [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)
 
 Was this helpful?
 

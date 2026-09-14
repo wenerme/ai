@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Querying Email Routing events with GraphQL
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-email-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/querying-email-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the GraphQL Analytics API to query for Email Routing events over a specified time period.
 
 ## Activity logs API call
 
-The following API call will request Email Routing activity logs over a one day period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ZONE_TAG>` and `<API_TOKEN>`[1](#user-content-fn-1) with your zone tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values as required.
+The following API call will request Email Routing activity logs over a one day period, and output the requested fields. Be sure to replace `<CLOUDFLARE_ZONE_TAG>` and `<API_TOKEN>`<sup>[1](#user-content-fn-1)</sup> with your zone tag and API credentials, and adjust the `datetime_geg` and `datetime_leq` values as required.
 
 ```bash
 echo '{ "query":

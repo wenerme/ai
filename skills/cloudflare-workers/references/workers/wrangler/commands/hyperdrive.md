@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hyperdrive
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/hyperdrive/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Manage [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) database configurations using Wrangler.
 
@@ -36,67 +36,74 @@ yarn wrangler hyperdrive create [NAME]
 pnpm wrangler hyperdrive create [NAME]
 ```
 
-* `[NAME]` `string` required
-The name of the Hyperdrive config
-* `--connection-string` `string`
-The connection string for the database you want Hyperdrive to connect to - ex: protocol://user:password@host:port/database
-* `--service-id` `string`
-The Workers VPC Service ID of the origin database
-* `--origin-host` `string` alias: --host
-The host of the origin database
-* `--origin-port` `number` alias: --port
-The port number of the origin database
-* `--origin-scheme` `string` alias: --schemedefault: postgresql
-The scheme used to connect to the origin database
-* `--database` `string`
-The name of the database within the origin database
-* `--origin-user` `string` alias: --user
-The username used to connect to the origin database
-* `--origin-password` `string` alias: --password
-The password used to connect to the origin database
-* `--access-client-id` `string`
-The Client ID of the Access token to use when connecting to the origin database
-* `--access-client-secret` `string`
-The Client Secret of the Access token to use when connecting to the origin database
-* `--caching-disabled` `boolean`
-Disables the caching of SQL responses
-* `--max-age` `number`
-Specifies max duration for which items should persist in the cache, cannot be set when caching is disabled
-* `--swr` `number`
-Indicates the number of seconds cache may serve the response after it becomes stale, cannot be set when caching is disabled
-* `--ca-certificate-id` `string` alias: --ca-certificate-uuid
-Sets custom CA certificate when connecting to origin database. Must be valid UUID of already uploaded CA certificate.
-* `--mtls-certificate-id` `string` alias: --mtls-certificate-uuid
-Sets custom mTLS client certificates when connecting to origin database. Must be valid UUID of already uploaded public/private key certificates.
-* `--sslmode` `string`
-Sets sslmode for connecting to database. For PostgreSQL: 'require, verify-ca, verify-full'. For MySQL: 'REQUIRED, VERIFY\_CA, VERIFY\_IDENTITY'.
-* `--origin-connection-limit` `number`
-The (soft) maximum number of connections that Hyperdrive may establish to the origin database
-* `--binding` `string`
-The binding name of this resource in your Worker
-* `--update-config` `boolean`
-Automatically update your config file with the newly added resource
+- `[NAME]` `string` required
+
+  The name of the Hyperdrive config
+- `--connection-string` `string` The connection string for the database you want Hyperdrive to connect to - ex: protocol://user:password@host:port/database
+- `--service-id` `string` The Workers VPC Service ID of the origin database
+- `--origin-host` `string` alias: --host
+
+  The host of the origin database
+- `--origin-port` `number` alias: --port
+
+  The port number of the origin database
+- `--origin-scheme` `string` alias: --schemedefault: postgresql
+
+  The scheme used to connect to the origin database
+- `--database` `string` The name of the database within the origin database
+- `--origin-user` `string` alias: --user
+
+  The username used to connect to the origin database
+- `--origin-password` `string` alias: --password
+
+  The password used to connect to the origin database
+- `--access-client-id` `string` The Client ID of the Access token to use when connecting to the origin database
+- `--access-client-secret` `string` The Client Secret of the Access token to use when connecting to the origin database
+- `--caching-disabled` `boolean` Disables the caching of SQL responses
+- `--max-age` `number` Specifies max duration for which items should persist in the cache, cannot be set when caching is disabled
+- `--swr` `number` Indicates the number of seconds cache may serve the response after it becomes stale, cannot be set when caching is disabled
+- `--ca-certificate-id` `string` alias: --ca-certificate-uuid
+
+  Sets custom CA certificate when connecting to origin database. Must be valid UUID of already uploaded CA certificate.
+- `--mtls-certificate-id` `string` alias: --mtls-certificate-uuid
+
+  Sets custom mTLS client certificates when connecting to origin database. Must be valid UUID of already uploaded public/private key certificates.
+- `--sslmode` `string` Sets sslmode for connecting to database. For PostgreSQL: 'require, verify-ca, verify-full'. For MySQL: 'REQUIRED, VERIFY\_CA, VERIFY\_IDENTITY'.
+- `--origin-connection-limit` `number` The (soft) maximum number of connections that Hyperdrive may establish to the origin database
+- `--binding` `string` The binding name of this resource in your Worker
+- `--update-config` `boolean` Automatically update your config file with the newly added resource
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `hyperdrive delete`
 
@@ -116,29 +123,41 @@ yarn wrangler hyperdrive delete [ID]
 pnpm wrangler hyperdrive delete [ID]
 ```
 
-* `[ID]` `string` required
-The ID of the Hyperdrive config
+- `[ID]` `string` required
+
+  The ID of the Hyperdrive config
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `hyperdrive get`
 
@@ -158,29 +177,41 @@ yarn wrangler hyperdrive get [ID]
 pnpm wrangler hyperdrive get [ID]
 ```
 
-* `[ID]` `string` required
-The ID of the Hyperdrive config
+- `[ID]` `string` required
+
+  The ID of the Hyperdrive config
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `hyperdrive list`
 
@@ -200,26 +231,37 @@ yarn wrangler hyperdrive list
 pnpm wrangler hyperdrive list
 ```
 
+<details>
+
+<summary>
+
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `hyperdrive planetscale signature`
 
@@ -242,26 +284,37 @@ yarn wrangler hyperdrive planetscale signature
 pnpm wrangler hyperdrive planetscale signature
 ```
 
+<details>
+
+<summary>
+
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ## `hyperdrive update`
 
@@ -281,65 +334,73 @@ yarn wrangler hyperdrive update [ID]
 pnpm wrangler hyperdrive update [ID]
 ```
 
-* `[ID]` `string` required
-The ID of the Hyperdrive config
-* `--name` `string`
-Give your config a new name
-* `--connection-string` `string`
-The connection string for the database you want Hyperdrive to connect to - ex: protocol://user:password@host:port/database
-* `--service-id` `string`
-The Workers VPC Service ID of the origin database
-* `--origin-host` `string` alias: --host
-The host of the origin database
-* `--origin-port` `number` alias: --port
-The port number of the origin database
-* `--origin-scheme` `string` alias: --scheme
-The scheme used to connect to the origin database
-* `--database` `string`
-The name of the database within the origin database
-* `--origin-user` `string` alias: --user
-The username used to connect to the origin database
-* `--origin-password` `string` alias: --password
-The password used to connect to the origin database
-* `--access-client-id` `string`
-The Client ID of the Access token to use when connecting to the origin database
-* `--access-client-secret` `string`
-The Client Secret of the Access token to use when connecting to the origin database
-* `--caching-disabled` `boolean`
-Disables the caching of SQL responses
-* `--max-age` `number`
-Specifies max duration for which items should persist in the cache, cannot be set when caching is disabled
-* `--swr` `number`
-Indicates the number of seconds cache may serve the response after it becomes stale, cannot be set when caching is disabled
-* `--ca-certificate-id` `string` alias: --ca-certificate-uuid
-Sets custom CA certificate when connecting to origin database. Must be valid UUID of already uploaded CA certificate.
-* `--mtls-certificate-id` `string` alias: --mtls-certificate-uuid
-Sets custom mTLS client certificates when connecting to origin database. Must be valid UUID of already uploaded public/private key certificates.
-* `--sslmode` `string`
-Sets sslmode for connecting to database. For PostgreSQL: 'require, verify-ca, verify-full'. For MySQL: 'REQUIRED, VERIFY\_CA, VERIFY\_IDENTITY'.
-* `--origin-connection-limit` `number`
-The (soft) maximum number of connections that Hyperdrive may establish to the origin database
+- `[ID]` `string` required
+
+  The ID of the Hyperdrive config
+- `--name` `string` Give your config a new name
+- `--connection-string` `string` The connection string for the database you want Hyperdrive to connect to - ex: protocol://user:password@host:port/database
+- `--service-id` `string` The Workers VPC Service ID of the origin database
+- `--origin-host` `string` alias: --host
+
+  The host of the origin database
+- `--origin-port` `number` alias: --port
+
+  The port number of the origin database
+- `--origin-scheme` `string` alias: --scheme
+
+  The scheme used to connect to the origin database
+- `--database` `string` The name of the database within the origin database
+- `--origin-user` `string` alias: --user
+
+  The username used to connect to the origin database
+- `--origin-password` `string` alias: --password
+
+  The password used to connect to the origin database
+- `--access-client-id` `string` The Client ID of the Access token to use when connecting to the origin database
+- `--access-client-secret` `string` The Client Secret of the Access token to use when connecting to the origin database
+- `--caching-disabled` `boolean` Disables the caching of SQL responses
+- `--max-age` `number` Specifies max duration for which items should persist in the cache, cannot be set when caching is disabled
+- `--swr` `number` Indicates the number of seconds cache may serve the response after it becomes stale, cannot be set when caching is disabled
+- `--ca-certificate-id` `string` alias: --ca-certificate-uuid
+
+  Sets custom CA certificate when connecting to origin database. Must be valid UUID of already uploaded CA certificate.
+- `--mtls-certificate-id` `string` alias: --mtls-certificate-uuid
+
+  Sets custom mTLS client certificates when connecting to origin database. Must be valid UUID of already uploaded public/private key certificates.
+- `--sslmode` `string` Sets sslmode for connecting to database. For PostgreSQL: 'require, verify-ca, verify-full'. For MySQL: 'REQUIRED, VERIFY\_CA, VERIFY\_IDENTITY'.
+- `--origin-connection-limit` `number` The (soft) maximum number of connections that Hyperdrive may establish to the origin database
+
+<details>
+
+<summary>
 
 Global flags
 
-* `--v` `boolean` alias: --version
-Show version number
-* `--cwd` `string`
-Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` `string` alias: --c
-Path to Wrangler configuration file
-* `--env` `string` alias: --e
-Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` `string`
-Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
-Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
-Automatically provision draft bindings with new resources
-* `--install-skills` `boolean` default: false
-Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` `string`
-Use a specific auth profile
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNSKEY
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dnskey/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dnskey/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Standard DNS has no built-in way to verify that a response actually came from the authoritative server for a domain. An attacker could return a forged answer, and a resolver would have no way to detect it.
 
@@ -20,8 +20,8 @@ Standard DNS has no built-in way to verify that a response actually came from th
 
 DNSSEC uses two DNS record types to distribute the public keys needed for verification:
 
-* **DNSKEY** records contain the public signing keys for a domain.
-* **DS** (Delegation Signer) records link a child zone's keys to its parent zone, creating a chain of trust.
+- **DNSKEY** records contain the public signing keys for a domain.
+- **DS** (Delegation Signer) records link a child zone's keys to its parent zone, creating a chain of trust.
 
 Resolvers use these keys to verify the signatures stored in [RRSIG records ↗](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/).
 
@@ -29,13 +29,13 @@ Resolvers use these keys to verify the signatures stored in [RRSIG records ↗](
 
 1.1.1.1 supports the following DNSSEC signature algorithms:
 
-* RSA/SHA-1
-* RSA/SHA-256
-* RSA/SHA-512
-* RSASHA1-NSEC3-SHA1
-* ECDSA Curve P-256 with SHA-256 (ECDSAP256SHA256)
-* ECDSA Curve P-384 with SHA-384 (ECDSAP384SHA384)
-* ED25519
+- RSA/SHA-1
+- RSA/SHA-256
+- RSA/SHA-512
+- RSASHA1-NSEC3-SHA1
+- ECDSA Curve P-256 with SHA-256 (ECDSAP256SHA256)
+- ECDSA Curve P-384 with SHA-384 (ECDSAP384SHA384)
+- ED25519
 
 Was this helpful?
 

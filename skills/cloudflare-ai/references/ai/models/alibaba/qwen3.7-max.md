@@ -16,20 +16,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Alibaba
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `alibaba/qwen3.7-max`
 
-* Third-party
+- Third-party
 
 Alibaba's Qwen 3.7 Max is the largest and most capable model in the Qwen3.7 series, a next-generation flagship built for the agent-centric era with deep strengths in programming, office and productivity tasks, and long-term autonomous execution, served via DashScope's OpenAI-compatible endpoint.
 
-| Model Info        |                                                                                                                       |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                  |
-| More information  | [link ↗](https://www.qwencloud.com/models/qwen3.7-max)                                                                |
-| Request formats   | Chat Completions, Responses                                                                                           |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-max) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
+| More information | [link ↗](https://www.qwencloud.com/models/qwen3.7-max) |
+| Request formats | Chat Completions, Responses |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-max) |
 
 ## Usage
 
@@ -56,6 +56,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three laws of thermodynamics govern the behavior of energy, heat, and work in the universe. Here is a clear breakdown of each:
 
 ### 1. The First Law of Thermodynamics (Law of Conservation of Energy)
@@ -84,6 +85,7 @@ You might occasionally hear about the **Zeroth Law of Thermodynamics**. It was f
 * **1st Law:** You can't win (you can't get something for nothing).
 * **2nd Law:** You can't break even (you always lose some energy to entropy).
 * **3rd Law:** You can't get out of the game (you can never reach absolute zero).
+```
 
 ```json
 {
@@ -118,7 +120,11 @@ You might occasionally hear about the **Zeroth Law of Thermodynamics**. It was f
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -152,6 +158,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you use the built-in **`json`** module along with Python's built-in **`open()`** function.
 
 Here is the quickest and most standard way to do it:
@@ -236,6 +243,7 @@ import json
 json_string = '{"name": "Alice", "age": 28}'
 data_from_string = json.loads(json_string)
 ```
+````
 
 ```json
 {
@@ -268,7 +276,13 @@ data_from_string = json.loads(json_string)
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -316,6 +330,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The stops you'll want to make depend entirely on which route you choose! You basically have two options: the **Scenic Coastal Route** (Highway 101 and Highway 1) or the **Fast Inland Route** (Interstate 5).
 
 Here are the best stops for both:
@@ -340,6 +355,7 @@ Here are the best stops for both:
 **To help me narrow this down for you:**
 1. Are you planning to do this drive in **one day**, or do you have time to make it a **multi-day trip**?
 2. Are you more interested in **nature/scenery**, **food**, or **history/quirky attractions**?
+```
 
 ```json
 {
@@ -372,7 +388,13 @@ Here are the best stops for both:
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -405,6 +427,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 At its core, **recursion** is a problem-solving method where the solution to a problem depends on solutions to smaller instances of the same problem.
 
 In programming, recursion happens when **a function calls itself** until it reaches a specific stopping point.
@@ -471,6 +494,7 @@ The final answer is **6**.
 * **Think of recursion as a loop**, but instead of using `for` or `while`, the function repeats by calling itself.
 * **Always define a Base Case**, or your program will run out of memory (a "Stack Overflow" error) because it will keep calling itself forever.
 * Recursion is incredibly useful for tasks that have nested or branching structures, like searching through folders on your computer, navigating a maze, or analyzing family trees.
+````
 
 ```json
 [
@@ -9046,13 +9070,15 @@ The final answer is **6**.
 ]
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
 
 Chat CompletionsResponses
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -9074,11 +9100,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -9088,19 +9114,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -9132,13 +9154,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -9164,7 +9184,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -9188,7 +9208,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -9206,9 +9226,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/alibaba/qwen3.7-max/schema-output.json)
 
 Was this helpful?
 

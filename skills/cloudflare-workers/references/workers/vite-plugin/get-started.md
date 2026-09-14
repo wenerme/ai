@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 This guide demonstrates creating a standalone Worker from scratch. If you would instead like to create a new application from a ready-to-go template, refer to the [TanStack Start](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/), [React Router](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/), [React](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/) or [Vue](https://developers.cloudflare.com/workers/framework-guides/web-apps/vue/) framework guides.
 
 ## Start with a basic `package.json`
+
+*package.jsonjson*
 
 ```json
 {
@@ -61,6 +63,8 @@ bun add -d vite @cloudflare/vite-plugin wrangler
 
 ## Create your Vite config file and include the Cloudflare plugin
 
+*vite.config.tsts*
+
 ```ts
 import { defineConfig } from "vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -81,7 +85,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "cloudflare-vite-get-started",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"main": "./src/index.ts"
 }
 ```
@@ -90,7 +94,7 @@ Refer to the [API reference](https://developers.cloudflare.com/workers/vite-plug
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "cloudflare-vite-get-started"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 main = "./src/index.ts"
 ```
 
@@ -99,6 +103,8 @@ The `name` field specifies the name of your Worker. By default, this is also use
 For more information about the Worker configuration, see [Configuration](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
 ## Create your Worker entry file
+
+*src/index.tsts*
 
 ```ts
 export default {

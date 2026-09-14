@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transition legacy Vectorize indexes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/reference/transition-vectorize-legacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024\. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
+Legacy Vectorize (V1) indexes are on a deprecation path as of Aug 15, 2024. Your Vectorize index may be a legacy index if it fulfills any of the following crieria:
 
 1. Was created with a Wrangler version lower than `v3.71.0`.
 2. Was created using the "--deprecated-v1" flag enabled.
@@ -26,7 +26,7 @@ This document provides details around any transition steps that may be needed to
 
 Legacy Vectorize (V1) indexes are on a deprecation path. Support for these indexes would be limited and their usage is not recommended for any production workloads.
 
-Furthermore, you will no longer be able to create legacy Vectorize indexes by December 2024\. Other operations will be unaffected and will remain functional.
+Furthermore, you will no longer be able to create legacy Vectorize indexes by December 2024. Other operations will be unaffected and will remain functional.
 
 Additionally, the new Vectorize (V2) indexes can operate at a significantly larger scale (with a capacity for multi-million vectors), and provide faster performance. Please review the [Limits](https://developers.cloudflare.com/vectorize/platform/limits/) page to understand the latest capabilities supported by Vectorize.
 
@@ -49,26 +49,34 @@ Watch this space for the upcoming capability to migrate legacy (V1) indexes to t
 1. Wrangler now supports operations on the new version of Vectorize (V2) indexes by default. To use Wrangler commands for legacy (V1) indexes, the `--deprecated-v1` flag must be enabled. Please note that this flag is only supported to create, get, list and delete indexes and to insert vectors.
 2. Refer to the [REST API](https://developers.cloudflare.com/api/resources/vectorize/subresources/indexes/methods/create/) page for details on the routes and payload types for the new Vectorize (V2) indexes.
 3. To use the new version of Vectorize indexes in Workers, the environment binding must be defined as a `Vectorize` interface.
-```typescript
-export interface Env {
-	// This makes your vector index methods available on env.VECTORIZE.*
-	// For example, env.VECTORIZE.insert() or query()
-	VECTORIZE: Vectorize;
-}
-```
-The `Vectorize` interface includes the type changes and the capabilities supported by new Vectorize (V2) indexes.
-For legacy Vectorize (V1) indexes, use the `VectorizeIndex` interface.
-```typescript
-export interface Env {
-	// This makes your vector index methods available on env.VECTORIZE.*
-	// For example, env.VECTORIZE.insert() or query()
-	VECTORIZE: VectorizeIndex;
-}
-```
+
+   ```typescript
+   export interface Env {
+   	// This makes your vector index methods available on env.VECTORIZE.*
+   	// For example, env.VECTORIZE.insert() or query()
+   	VECTORIZE: Vectorize;
+   }
+   ```
+
+   The `Vectorize` interface includes the type changes and the capabilities supported by new Vectorize (V2) indexes.
+
+   For legacy Vectorize (V1) indexes, use the `VectorizeIndex` interface.
+
+   ```typescript
+   export interface Env {
+   	// This makes your vector index methods available on env.VECTORIZE.*
+   	// For example, env.VECTORIZE.insert() or query()
+   	VECTORIZE: VectorizeIndex;
+   }
+   ```
+
+
 4. With the new Vectorize (V2) version, the `returnMetadata` option for the [query operation](https://developers.cloudflare.com/vectorize/reference/client-api/#query-vectors) now expects either `all`, `indexed` or `none` string values. For legacy Vectorize (V1), the `returnMetadata` option was a boolean field.
 5. With the new Vectorize (V2) indexes, all index and vector mutations are asynchronous and return a `mutationId` in the response as a unique identifier for that mutation operation.
-These mutation operations are: [Vector Inserts](https://developers.cloudflare.com/vectorize/reference/client-api/#insert-vectors), [Vector Upserts](https://developers.cloudflare.com/vectorize/reference/client-api/#upsert-vectors), [Vector Deletes](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-vectors-by-id), [Metadata Index Creation](https://developers.cloudflare.com/vectorize/reference/client-api/#create-metadata-index), [Metadata Index Deletion](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-metadata-index).
-To check the identifier and the timestamp of the last mutation processed, use the Vectorize [Info command](https://developers.cloudflare.com/vectorize/reference/client-api/#get-index-info).
+
+   These mutation operations are: [Vector Inserts](https://developers.cloudflare.com/vectorize/reference/client-api/#insert-vectors), [Vector Upserts](https://developers.cloudflare.com/vectorize/reference/client-api/#upsert-vectors), [Vector Deletes](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-vectors-by-id), [Metadata Index Creation](https://developers.cloudflare.com/vectorize/reference/client-api/#create-metadata-index), [Metadata Index Deletion](https://developers.cloudflare.com/vectorize/reference/client-api/#delete-metadata-index).
+
+   To check the identifier and the timestamp of the last mutation processed, use the Vectorize [Info command](https://developers.cloudflare.com/vectorize/reference/client-api/#get-index-info).
 
 Was this helpful?
 

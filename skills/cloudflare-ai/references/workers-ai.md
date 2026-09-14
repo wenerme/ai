@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Workers AI
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run machine learning models, powered by serverless GPUs, on Cloudflare's global network.
 
@@ -22,11 +22,11 @@ Workers AI allows you to run AI models in a serverless way, without having to wo
 
 Workers AI gives you access to:
 
-* **50+ [open-source models](https://developers.cloudflare.com/workers-ai/models/)**, available as a part of our model catalog
-* Serverless, **pay-for-what-you-use** [pricing model](https://developers.cloudflare.com/workers-ai/platform/pricing/)
-* All as part of a **fully-featured developer platform**, including [AI Gateway](https://developers.cloudflare.com/ai-gateway/), [Vectorize](https://developers.cloudflare.com/vectorize/), [Workers](https://developers.cloudflare.com/workers/) and more...
+- **50+ [open-source models](https://developers.cloudflare.com/workers-ai/models/)**, available as a part of our model catalog
+- Serverless, **pay-for-what-you-use** [pricing model](https://developers.cloudflare.com/workers-ai/platform/pricing/)
+- All as part of a **fully-featured developer platform**, including [AI Gateway](https://developers.cloudflare.com/ai-gateway/), [Vectorize](https://developers.cloudflare.com/vectorize/), [Workers](https://developers.cloudflare.com/workers/) and more...
 
-[Get started](https://developers.cloudflare.com/workers-ai/get-started)[Watch a Workers AI demo](https://youtu.be/cK%5FleoJsBWY?si=4u6BIy%5FuBOZf9Ve8)
+[Get started](https://developers.cloudflare.com/workers-ai/get-started) [Watch a Workers AI demo](https://youtu.be/cK_leoJsBWY?si=4u6BIy_uBOZf9Ve8)
 
 Custom requirements
 

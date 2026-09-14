@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IdP federation
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 IdP federation allows organizations with multiple Cloudflare accounts to use a single identity provider (IdP) configuration across accounts. Instead of configuring the same IdP (for example, Okta or Entra ID) separately in every account, you configure it once in a source account and share it with the other accounts in your organization.
 
@@ -29,15 +29,15 @@ When a user in a recipient account authenticates, the request is routed through 
 
 ## Prerequisites
 
-* You must have permission to edit the source IdP in the source account.
-* You must be a member of a [Cloudflare Organization](https://developers.cloudflare.com/fundamentals/organizations/).
-* The source account must belong to a Cloudflare Organization.
+- You must have permission to edit the source IdP in the source account.
+- You must be a member of a [Cloudflare Organization](https://developers.cloudflare.com/fundamentals/organizations/).
+- The source account must belong to a Cloudflare Organization.
 
 ## Share an IdP
 
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the IdP you want to share and select the three dots menu.
 3. Select **Share**.
 4. Select the recipient accounts you want to share the IdP with.
@@ -47,7 +47,7 @@ The IdP is shared to the selected accounts automatically. Each recipient account
 
 Sharing an IdP via the API is a two-step process: create a federation grant, then share it with specific accounts or your entire organization.
 
-#### 1\. Create a federation grant
+#### 1. Create a federation grant
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants" \
@@ -66,12 +66,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_feder
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-#### 2\. Share the grant
+#### 2. Share the grant
 
 You can share the grant with specific accounts or with your entire Cloudflare Organization. In the `recipients` array, target each recipient with one of the following fields:
 
-* `recipient_account_id`: Shares the IdP with a single account. Repeat the field for each account you want to add.
-* `organization_id`: Shares the IdP with every account in your Cloudflare Organization.
+- `recipient_account_id`: Shares the IdP with a single account. Repeat the field for each account you want to add.
+- `organization_id`: Shares the IdP with every account in your Cloudflare Organization.
 
 Specify only one of these fields per recipient. If you provide neither, the grant is shared with your entire Organization by default.
 
@@ -135,14 +135,14 @@ Deleting the federation grant immediately removes the IdP connection from all re
 
 The dashboard handles both grant and share deletion in a single flow.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the shared IdP and select the three dots menu.
 3. Select **Unshare**.
 4. Confirm the action.
 
 Unfederating an IdP via the API is a two-step process. Deleting the grant stops the sharing and removes the read-only IdP from recipient accounts. You can optionally clean up the share record afterward.
 
-#### 1\. Delete the federation grant
+#### 1. Delete the federation grant
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federation_grants/$GRANT_ID" \
@@ -150,7 +150,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_feder
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-#### 2\. (Optional) Delete the share
+#### 2. (Optional) Delete the share
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID" \
@@ -160,8 +160,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares/$SHARE_ID
 
 ## Limitations
 
-* An account can federate at most one IdP as a source.
-* A source IdP cannot be deleted while it has a federation grant associated with it. Delete the grant first.
+- An account can federate at most one IdP as a source.
+- A source IdP cannot be deleted while it has a federation grant associated with it. Delete the grant first.
 
 Was this helpful?
 

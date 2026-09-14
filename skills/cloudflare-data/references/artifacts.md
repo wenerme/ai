@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Artifacts
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Versioned storage that speaks Git.
 
@@ -26,10 +26,10 @@ Review [Namespaces](https://developers.cloudflare.com/artifacts/concepts/namespa
 
 Use Artifacts when you need to:
 
-* Store versioned file trees instead of raw blobs
-* Hand off work to Git-aware tools, agents, and automation
-* Isolate work in separate repos or branches for safer parallel execution
-* Fork from a shared baseline and diff or merge the results later
+- Store versioned file trees instead of raw blobs
+- Hand off work to Git-aware tools, agents, and automation
+- Isolate work in separate repos or branches for safer parallel execution
+- Fork from a shared baseline and diff or merge the results later
 
 The same repository can be addressed from [Workers](https://developers.cloudflare.com/artifacts/get-started/workers/), the REST API, and Git clients. You can create one repo per agent, user, branch, or task, keep each unit of work separate, and compare or merge the results later.
 

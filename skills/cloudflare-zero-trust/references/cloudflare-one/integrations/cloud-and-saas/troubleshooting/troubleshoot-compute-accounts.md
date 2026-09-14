@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot compute accounts
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/troubleshooting/troubleshoot-compute-accounts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common compute account issues include security or functionality updates and API token misconfigurations.
 
@@ -20,7 +20,7 @@ Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common 
 
 To identify unhealthy compute accounts:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose the integration you created for cloud scanning.
 3. Select **Manage compute accounts**.
 
@@ -38,19 +38,21 @@ Upgrading a compute account applies the latest software features, bug fixes, and
 
 To upgrade a compute account:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** \> **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose the integration you created for cloud scanning.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to validate your local Terraform and CLI configuration.
 5. Under **Step 2: Deploy Terraform Configuration**, copy the template to your local configuration. This template will be the most up to date version of the integration's Terraform configuration.
 6. In a local terminal, update the cached version of the CDS Terraform modules:
-```bash
-terraform init --upgrade
-```
+
+   ```bash
+   terraform init --upgrade
+   ```
 7. Apply the upgraded Terraform configuration to your compute account:
-```bash
-terraform apply
-```
+
+   ```bash
+   terraform apply
+   ```
 
 ## Roll API tokens
 
@@ -64,13 +66,13 @@ If your token is lost or compromised, you can either create a new token or roll 
 
 To roll your API token:
 
-1. Go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
-2. Next to the API token you want to roll, select the **three dot icon** \> **Roll**.
+1. Go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+2. Next to the API token you want to roll, select the **three dot icon** > **Roll**.
 3. Select **Confirm** to generate a new API token.
-1. Copy your API token.
 
-Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage%5Fupdate-secret-value.html) or [Google Cloud Platform (GCP) ↗](https://cloud.google.com/secret-manager/docs/edit-secrets).
+4. Copy your API token.
+
+Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-secret-value.html) or [Google Cloud Platform (GCP) ↗](https://cloud.google.com/secret-manager/docs/edit-secrets).
 
 ### Common token issues
 

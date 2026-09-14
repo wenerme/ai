@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Infrastructure
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/infrastructure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/infrastructure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User permission
 
@@ -22,13 +22,13 @@ The **Infrastructure** tab provides an overview of the IT assets associated with
 
 [Security Insights](https://developers.cloudflare.com/security/security-insights/) scans populate Infrastructure data. Initial scan time depends on the number of IT assets across the domains in your account.
 
-To open the **Infrastructure** tab, go to Account Home > **Security Center** \> **Infrastructure**.
+To open the **Infrastructure** tab, go to Account Home > **Security Center** > **Infrastructure**.
 
 From the Infrastructure tab, you can:
 
-* **Filter the displayed information** — Narrow results by specific assets, domains, or configurations to focus on areas of interest.
-* **Print or download a PDF report** — Generate a report of your infrastructure overview for offline review or sharing with your team.
-* **Manage your security.txt file** — Create or update a [security.txt](https://developers.cloudflare.com/security-center/infrastructure/security-file/) file that provides security researchers with a standardized way to report vulnerabilities.
+- **Filter the displayed information** — Narrow results by specific assets, domains, or configurations to focus on areas of interest.
+- **Print or download a PDF report** — Generate a report of your infrastructure overview for offline review or sharing with your team.
+- **Manage your security.txt file** — Create or update a [`security.txt`](https://developers.cloudflare.com/security-center/infrastructure/security-file/) file that provides security researchers with a standardized way to report vulnerabilities.
 
 Was this helpful?
 

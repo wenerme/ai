@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Hostname routing
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/hostname-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use [dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) Workers to route millions of vanity domains or subdomains to Workers without hitting traditional [route limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains). These hostnames can be subdomains under your managed domain (e.g. `customer1.saas.com`) or vanity domains controlled by your end customers (e.g. `mystore.com`), which can be managed through [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/).
 
@@ -20,9 +20,9 @@ You can use [dynamic dispatch](https://developers.cloudflare.com/cloudflare-for-
 
 Configure a wildcard [Route](https://developers.cloudflare.com/workers/configuration/routing/routes/) (`*/*`) on your SaaS domain (the domain where you configure custom hostnames) to point to your dynamic dispatch Worker. This allows you to:
 
-* **Support both subdomains and vanity domains**: Handle `customer1.myplatform.com` (subdomain) and `shop.customer.com` (custom hostname) with the same routing logic.
-* **Avoid route limits**: Instead of creating individual routes for every domain, which can cause you to hit [Routes limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains), you can handle the routing logic in code and proxy millions of domains to individual Workers.
-* **Programmatically control routing logic**: Write custom code to route requests based on hostname, [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/), path, or any other properties.
+- **Support both subdomains and vanity domains**: Handle `customer1.myplatform.com` (subdomain) and `shop.customer.com` (custom hostname) with the same routing logic.
+- **Avoid route limits**: Instead of creating individual routes for every domain, which can cause you to hit [Routes limits](https://developers.cloudflare.com/workers/platform/limits/#routes-and-domains), you can handle the routing logic in code and proxy millions of domains to individual Workers.
+- **Programmatically control routing logic**: Write custom code to route requests based on hostname, [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/), path, or any other properties.
 
 Note
 
@@ -30,8 +30,8 @@ This will route all traffic inbound to the domain to the dispatch Worker.
 
 If you'd like to exclude certain hostnames from routing to the dispatch Worker, you can either:
 
-* Add routes without a Worker specification to opt certain hostnames or paths from being executed by the dispatcher Worker (for example, for `saas.com`, `api.saas.com`, etc)
-* Use a [dedicated domain](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) (for example, `customers.saas.com`) for custom hostname and dispatch worker management to keep the rest of the traffic for that domain separate.
+- Add routes without a Worker specification to opt certain hostnames or paths from being executed by the dispatcher Worker (for example, for `saas.com`, `api.saas.com`, etc)
+- Use a [dedicated domain](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/) (for example, `customers.saas.com`) for custom hostname and dispatch worker management to keep the rest of the traffic for that domain separate.
 
 ### Setup
 
@@ -107,8 +107,8 @@ When your customers are also using Cloudflare and point their custom domain to y
 
 This can cause inconsistent behavior when using specific hostname routes:
 
-* If you're routing based on the CNAME target (`saas.com`), the custom hostname's DNS record must be orange-clouded for the Worker to be invoked.
-* If you're routing based on the custom hostname (`mystore.com`), the customer's record must be grey-clouded for the Worker to be invoked.
+- If you're routing based on the CNAME target ( `saas.com`), the custom hostname's DNS record must be orange-clouded for the Worker to be invoked.
+- If you're routing based on the custom hostname ( `mystore.com`), the customer's record must be grey-clouded for the Worker to be invoked.
 
 Since you may not have control over your customer's DNS proxy settings, we recommend using `*/*` wildcard route to ensure routing logic always works as expected, regardless of how DNS is configured.
 
@@ -116,11 +116,11 @@ Since you may not have control over your customer's DNS proxy settings, we recom
 
 The table below shows when Workers are invoked based on your route pattern and the customer's DNS proxy settings:
 
-| Route Pattern         | Custom Hostname (Orange Cloud) | Custom Hostname (Grey Cloud) |
-| --------------------- | ------------------------------ | ---------------------------- |
-| \*/\* (Recommended)   | ✅                              | ✅                            |
-| Target hostname route | ✅                              | ❌                            |
-| Custom hostname route | ❌                              | ✅                            |
+| Route Pattern | Custom Hostname (Orange Cloud) | Custom Hostname (Grey Cloud) |
+| --- | --- | --- |
+| `*/*` (Recommended) | ✅ | ✅ |
+| Target hostname route | ✅ | ❌ |
+| Custom hostname route | ❌ | ✅ |
 
 Was this helpful?
 

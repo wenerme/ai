@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email security
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/email-security-cf1.xml)
 
@@ -29,9 +29,9 @@ Support is backwards compatible and enabled automatically for all customers. Sen
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-08-12
 
@@ -40,17 +40,17 @@ This applies to all Email Security packages:
 
 Cloudflare Email security now lets administrators write their own content-based blocking rules. A new **Blocked content** area under **Policies & rules** lets you define a plaintext string or a regular expression, choose whether to scan the message subject, body, or both, and automatically block any message that matches.
 
-* Create rules using either **plaintext** matches or **regular expressions** — useful for blocking targeted phishing campaigns, known-bad phrases, or content patterns unique to your organization.
-* Choose the **search location** for each rule: **subject**, **body**, or **subject and body**.
-* Use the built-in **regular expression checker** to validate your pattern against sample text before saving, so you can confirm the rule matches what you expect and avoid false positives.
-* Matching messages are marked with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/) and prevented from reaching users' inboxes.
+- Create rules using either **plaintext** matches or **regular expressions** — useful for blocking targeted phishing campaigns, known-bad phrases, or content patterns unique to your organization.
+- Choose the **search location** for each rule: **subject**, **body**, or **subject and body**.
+- Use the built-in **regular expression checker** to validate your pattern against sample text before saving, so you can confirm the rule matches what you expect and avoid false positives.
+- Matching messages are marked with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/) and prevented from reaching users' inboxes.
 
 Blocked content rules currently only support the block action.
 
 This feature is available for the following Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 To get started, refer to [Blocked content](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/blocked-content/).
 
@@ -65,7 +65,7 @@ These summaries help users quickly understand the nature of a message without ne
 
 **These summaries are not trained on customer data.** They are generated using the outputs of our existing detection models and analysis systems.
 
-This feature is available for PhishNet with Office 365\. Support for Gmail will be available by the end of the quarter.
+This feature is available for PhishNet with Office 365. Support for Gmail will be available by the end of the quarter.
 
 ## 2026-04-07
 
@@ -74,16 +74,16 @@ This feature is available for PhishNet with Office 365\. Support for Gmail will 
 
 Cloudflare Email security now supports **Triage Status Tracking for User Submissions**. This enhancement gives SOC teams a streamlined way to track, manage, and prioritize user-submitted emails directly within the Cloudflare One dashboard.
 
-* The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
-* SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
+- The User Submissions table now includes a **Status** column with three states: **Unreviewed** (new submissions awaiting triage), **Reviewed** (submissions assessed by the SOC team), and **Escalated** (submissions escalated to team submissions for further investigation). Analysts can quickly update statuses and filter the table to focus on what needs attention.
+- SOC teams can now organize their triage workflows, avoid duplicate reviews, and make sure critical threats get escalated for deeper investigation—bringing order to the chaos of high-volume submission management.
 
 Triage Status Tracking is **automatically available** for all Email security customers using the user submissions feature. No additional configuration is required; customers just need to make sure user submissions are being sent to their user submission aliases.
 
 This applies to all Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-04-06
 
@@ -92,14 +92,14 @@ This applies to all Email security packages:
 
 Cloudflare Email Security now supports DANE (DNS-based Authentication of Named Entities) for MX deployments. This enhancement strengthens email transport security by enabling DNSSEC-backed certificate verification for our regional MX records.
 
-* Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
-* DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
+- Regional MX hostnames now publish DANE TLSA records backed by DNSSEC, enabling DANE-capable SMTP senders to cryptographically validate certificate identities before establishing TLS connections—moving beyond opportunistic encryption to verified encrypted delivery.
+- DANE support is automatically available for all customers using regional MX deployments. No additional configuration is required; DANE-capable mail infrastructure will automatically validate MX certificates using the published records.
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-03-15
 
@@ -108,19 +108,19 @@ This applies to all Email Security packages:
 
 Investigations now support unlimited result paging in both the dashboard and the API, removing the previous 1,000-record cap. Security teams can page through complete result sets when searching across large mail volumes, giving SOC analysts and automated workflows deeper visibility for forensics and threat hunting.
 
-In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email%5Fsecurity/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
+In the dashboard, infinite paging is now supported in the Investigations view. The 1,000-record ceiling has been removed, so you can navigate through the full result set directly in the UI. The [Investigations API](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/list) now returns up to 10,000 records per page (up from 1,000), with no cap on total result volume across pages.
 
 For high-volume use cases, we recommend:
 
-* **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
-* **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
-* **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
+- **[Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/) to a SIEM** for full-fidelity datasets and long-term retention.
+- **SOAR playbooks** against the async bulk action API for large-scale remediation. Bulk actions initiated from the dashboard remain capped at 1,000 messages per action.
+- **The Investigations API** for report exports larger than 1,000 results, which is the dashboard download cap.
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-02-02
 
@@ -129,18 +129,18 @@ This applies to all Email Security packages:
 
 We have updated the Monitoring page to provide a more streamlined and insightful experience for administrators, improving both data visualization and dashboard accessibility.
 
-* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3212,height=2344,format=webp/_astro/monitoring-bar-charts.Bi-4BuXC.png)
-* **Improved Accessibility & Usability**:
-  * **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
-  * **Actionable UI**: All available actions are now accessible via dedicated buttons.
-  * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3178,height=664,format=webp/_astro/monitoring-buttons.DORPJvP_.png)
-* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3202,height=1486,format=webp/_astro/monitoring-monthly-dispositions.CYuI5d9y.png)
+- **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3212,height=2344,format=webp/_astro/monitoring-bar-charts.Bi-4BuXC.png)
+- **Improved Accessibility & Usability**:
+  - **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
+  - **Actionable UI**: All available actions are now accessible via dedicated buttons.
+  - **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3178,height=664,format=webp/_astro/monitoring-buttons.DORPJvP_.png)
+- **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3202,height=1486,format=webp/_astro/monitoring-monthly-dispositions.CYuI5d9y.png)
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2026-01-12
 
@@ -159,8 +159,8 @@ This update allows you to see the full lifecycle of a failed action. For instanc
 
 This applies to all Email Security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-12-03
 
@@ -171,13 +171,13 @@ We have updated the terminology “Reclassify” and “Reclassifications” to 
 
 Submissions are leveraged to tune future variants of campaigns. To respect data sanctity, providing a submission does not change the original disposition of the emails submitted.
 
-![nav_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
+![nav\_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
 
 This applies to all Email Security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-11-18
 
@@ -186,12 +186,12 @@ This applies to all Email Security packages:
 
 #### Adjustment to Final Disposition column
 
-#### The **Final Disposition** column in **Submissions** \> **Team Submissions** tab is changing for non-Phishguard customers.
+#### The **Final Disposition** column in **Submissions** > **Team Submissions** tab is changing for non-Phishguard customers.
 
 #### What's Changing
 
-* Column will be called **Status** instead of **Final Disposition**
-* Column status values will now be: **Submitted**, **Accepted** or **Rejected**.
+- Column will be called **Status** instead of **Final Disposition**
+- Column status values will now be: **Submitted**, **Accepted** or **Rejected**.
 
 #### Next Steps
 
@@ -206,18 +206,18 @@ You can now generate on-demand security reports directly from the Cloudflare das
 
 These reports offer several key benefits:
 
-* **Executive Summary:** Quickly view the performance of Email security with a high-level executive summary.
-* **Actionable Insights:** Dive deep into trend data, breakdowns of threat types, and analysis of top targets to identify and address vulnerabilities.
-* **Configuration Transparency:** Gain a clear view of your policy, submission, and domain configurations to ensure optimal setup.
-* **Account Takeover Risks:** Get a snapshot of your M365 risky users (requires a Microsoft Entra ID P2 license and [M365 SaaS integration ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)).
+- **Executive Summary:** Quickly view the performance of Email security with a high-level executive summary.
+- **Actionable Insights:** Dive deep into trend data, breakdowns of threat types, and analysis of top targets to identify and address vulnerabilities.
+- **Configuration Transparency:** Gain a clear view of your policy, submission, and domain configurations to ensure optimal setup.
+- **Account Takeover Risks:** Get a snapshot of your M365 risky users (requires a Microsoft Entra ID P2 license and [M365 SaaS integration ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)).
 
 To get started, refer to [Download a security report](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#download-a-security-report). ![Report](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1009,height=571,format=webp/_astro/report.CbkPa8Jt.png)
 
 This feature is available across the following Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-09-23
 
@@ -228,18 +228,21 @@ Email security relies on your submissions to continuously improve our detection 
 
 To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/submission-addresses/):
 
-* **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** \> **Invalid submission emails** and turn the feature off.
+- **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** > **Invalid submission emails** and turn the feature off.
+
 ![EmailSec-Invalid-Submissions-Toggle](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=175,format=webp/_astro/EmailSec-Invalid-Submissions-Toggle.DXjbR6aX.png)
-* **Invalid Submission dashboard:** You can quickly identify which users need education to provide valid submissions so Cloudflare can provide continuous protection.
+
+- **Invalid Submission dashboard:** You can quickly identify which users need education to provide valid submissions so Cloudflare can provide continuous protection.
+
 ![EmailSec-Invalid-Submissions-Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=511,format=webp/_astro/EmailSec-Invalid-Submissions-Dashboard.zuf1on2n.png)
 
 Learn more about this feature on [invalid submissions](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/invalid-submissions/).
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-09-11
 
@@ -252,9 +255,9 @@ We’re excited to announce that Email security customers can now choose their p
 
 Customers can now select where their email is processed. The following regions are supported:
 
-* **Germany**
-* **India**
-* **Australia**
+- **Germany**
+- **India**
+- **Australia**
 
 Global processing remains the default option, providing flexibility to meet both compliance requirements or operational preferences.
 
@@ -270,9 +273,9 @@ When onboarding a domain with MX, BCC, or Journaling:
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 #### What’s next
 
@@ -287,12 +290,12 @@ To provide more granular controls, we refined the [existing roles](https://devel
 
 All Email security roles no longer have read or write access to any of the other Zero Trust products:
 
-* **Email Configuration Admin**
-* **Email Integration Admin**
-* **Email security Read Only**
-* **Email security Analyst**
-* **Email security Policy Admin**
-* **Email security Reporting**
+- **Email Configuration Admin**
+- **Email Integration Admin**
+- **Email security Read Only**
+- **Email security Analyst**
+- **Email security Policy Admin**
+- **Email security Reporting**
 
 To configure [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) or [Remote Browser Isolation (RBI)](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/#set-up-clientless-web-isolation), you now need to be an admin for the Zero Trust dashboard with the **Cloudflare Zero Trust** role.
 
@@ -300,9 +303,9 @@ Also through customer feedback, we have created a new additive role to allow **E
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-08-07
 
@@ -315,12 +318,12 @@ For example, you may want to deliver suspicious messages but isolate the links f
 
 ![Expanded Email Link Isolation Configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=497,format=webp/_astro/expanded-link-actions.DziIg6E8.jpg)
 
-To isolate all links within a message based on the disposition, select **Settings** \> **Link Actions** \> **View** and select **Configure**. As with other other links you isolate, an interstitial will be provided to warn users that this site has been isolated and the link will be recrawled live to evaluate if there are any changes in our threat intel. Learn more about this feature on [Configure link actions ↗](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/).
+To isolate all links within a message based on the disposition, select **Settings** > **Link Actions** > **View** and select **Configure**. As with other other links you isolate, an interstitial will be provided to warn users that this site has been isolated and the link will be recrawled live to evaluate if there are any changes in our threat intel. Learn more about this feature on [Configure link actions ↗](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/).
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-05-15
 
@@ -329,14 +332,14 @@ This feature is available across these Email security packages:
 
 You can now safely open email attachments to view and investigate them.
 
-What this means is that messages now have a **Attachments** section. Here, you can view processed attachments and their classifications (for example, _Malicious_, _Suspicious_, _Encrypted_). Next to each attachment, a **Browser Isolation** icon allows your team to safely open the file in a **clientless, isolated browser** with no risk to the analyst or your environment.
+What this means is that messages now have a **Attachments** section. Here, you can view processed attachments and their classifications (for example, *Malicious*, *Suspicious*, *Encrypted*). Next to each attachment, a **Browser Isolation** icon allows your team to safely open the file in a **clientless, isolated browser** with no risk to the analyst or your environment.
 
 ![Attachment-RBI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=517,height=155,format=webp/_astro/Attachment-RBI.U9Dp8dJO.png)
 
 To use this feature, you must:
 
-* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
-* Have **Browser Isolation (BISO)** seats assigned.
+- Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
+- Have **Browser Isolation (BISO)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
 
@@ -344,9 +347,9 @@ Some attachment types may not render in Browser Isolation. If there is a file ty
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-05-08
 
@@ -361,16 +364,16 @@ From **Investigation**, go to **View details**, and look for the **Links identif
 
 To use this feature, you must:
 
-* Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
-* Have **Browser Isolation (RBI)** seats assigned.
+- Turn on **Allow users to open a remote browser without the device client** in your Zero Trust settings.
+- Have **Browser Isolation (RBI)** seats assigned.
 
 For more details, refer to our [setup guide](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/clientless-browser-isolation/).
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-04-01
 
@@ -389,8 +392,8 @@ Refer to [Add an integration](https://developers.cloudflare.com/cloudflare-one/i
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-03-01
 
@@ -407,8 +410,8 @@ For more information, refer to [Enable detection logs](https://developers.cloudf
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-27
 
@@ -419,22 +422,23 @@ Concerns about performance for Email security or Area 1? You can now check the o
 
 For Email security, look under **Cloudflare Sites and Services**.
 
-* **Dashboard** is the dashboard for Cloudflare, including Email security
-* **Email security (Zero Trust)** is the processing of email
-* **API** are the Cloudflare endpoints, including the ones for Email security
+- **Dashboard** is the dashboard for Cloudflare, including Email security
+- **Email security (Zero Trust)** is the processing of email
+- **API** are the Cloudflare endpoints, including the ones for Email security
 
 For Area 1, under **Cloudflare Sites and Services**:
 
-* **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
-* **Email security (Area1)** is the processing of email
-* **Area 1 - API** are the Area 1 endpoints
+- **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
+- **Email security (Area1)** is the processing of email
+- **Area 1 - API** are the Area 1 endpoints
+
 ![Status-page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=792,height=348,format=webp/_astro/Status-Page.DcFJ1286.png)
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-25
 
@@ -461,8 +465,8 @@ Prevent delivery:
 
 This feature is available across these Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2025-02-07
 
@@ -479,9 +483,9 @@ For more details, refer to [Open links](https://developers.cloudflare.com/cloudf
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2024-12-19
 
@@ -498,9 +502,9 @@ Refer to [User submissions](https://developers.cloudflare.com/cloudflare-one/ema
 
 This feature is available across these Email security packages:
 
-* **Advantage**
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Advantage**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2024-12-19
 
@@ -526,17 +530,18 @@ Filter logs matching specific criteria you have set or select from multiple fiel
 
 When creating a new Logpush job, remember to select **Audit logs** as the dataset and filter by:
 
-* **Field**: `"ResourceType"`
-* **Operator**: `"starts with"`
-* **Value**: `"email_security"`.
+- **Field**: `"ResourceType"`
+- **Operator**: `"starts with"`
+- **Value**: `"email_security"`.
+
 ![Logpush-user-actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=829,height=454,format=webp/_astro/Logpush-User-Actions.D14fWgmq.png)
 
 For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs).
 
 This feature is available across all Email security packages:
 
-* **Enterprise**
-* **Enterprise + PhishGuard**
+- **Enterprise**
+- **Enterprise + PhishGuard**
 
 ## 2024-12-19
 

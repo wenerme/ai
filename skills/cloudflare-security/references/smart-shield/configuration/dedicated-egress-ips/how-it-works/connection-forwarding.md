@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection forwarding
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/connection-forwarding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/how-it-works/connection-forwarding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Since IPv6 address ranges are deployed globally, no forwarding is needed.
 
@@ -26,6 +26,7 @@ After a request reaches Cloudflare on an ingress data center, and the cache serv
 
 If the server running the egress router has access to an applicable dedicated CDN egress IP, traffic egresses from that server.
 
+```
 flowchart LR
         accTitle: Dedicated CDN Egress IPs and connection forwarding
         accDescr: Diagram showing IPv4 connection forwarding for Dedicated CDN Egress IPs - Same data center.
@@ -38,12 +39,15 @@ flowchart LR
         A --ingress--> X
         B --egress--> C
 
+```
+
 ### Connection forwarding is needed
 
 If the server does not have access to an applicable IP, the following options are checked and the first that is possible will take place:
 
-* Another server in the same data center has access to an applicable IP and the connection is forwarded to that server.
+- Another server in the same data center has access to an applicable IP and the connection is forwarded to that server.
 
+```
 flowchart LR
         accTitle: Dedicated CDN Egress IPs and connection forwarding
         accDescr: Diagram showing IPv4 connection forwarding for Dedicated CDN Egress IPs - Same data center.
@@ -57,8 +61,11 @@ flowchart LR
         A --ingress--> X
         Y --egress--> C
 
-* Another data center in the same location has access to an applicable IP and the connection is forwarded to that data center.
+```
 
+- Another data center in the same location has access to an applicable IP and the connection is forwarded to that data center.
+
+```
 flowchart LR
         accTitle: Dedicated CDN Egress IPs and connection forwarding
         accDescr: Diagram showing IPv4 connection forwarding for Dedicated CDN Egress IPs - Different data center.
@@ -77,8 +84,11 @@ flowchart LR
         A --ingress--> X
         Y --egress--> C
 
-* Another data center in a different location has access to an applicable IP. The closest location is selected and connection is forwarded to that location.
+```
 
+- Another data center in a different location has access to an applicable IP. The closest location is selected and connection is forwarded to that location.
+
+```
 flowchart LR
         accTitle: Dedicated CDN Egress IPs and connection forwarding
         accDescr: Diagram showing IPv4 connection forwarding for Dedicated CDN Egress IPs - Different location.
@@ -98,6 +108,8 @@ flowchart LR
 
         A --ingress--> X
         Y --egress--> C
+
+```
 
 Was this helpful?
 

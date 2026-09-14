@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Magic Transit egress
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/magic-transit-egress/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/magic-transit-egress/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The suggestions in the [Minimal ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/minimal-ruleset) and [Extended ruleset](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/best-practices/extended-ruleset) are recommendations for ingress (incoming) traffic. This page covers the additional consideration needed for egress (outgoing) traffic.
 
@@ -20,12 +20,13 @@ Cloudflare Network Firewall does not track connection state (it is not "stateful
 
 For Magic Transit egress traffic, consider the following:
 
-* Network Firewall rules apply to both Magic Transit ingress and egress traffic passing through Cloudflare.
-* If you have a "default drop" catchall rule (a final rule that blocks all traffic not matched by earlier rules) for ingress traffic, you must add an earlier rule to permit traffic sourced from your Magic Transit prefix with the destination as **any** to allow outbound egress traffic.
-For example, place the following allow rule before any default-drop catchall rule:
+- Network Firewall rules apply to both Magic Transit ingress and egress traffic passing through Cloudflare.
+- If you have a "default drop" catchall rule (a final rule that blocks all traffic not matched by earlier rules) for ingress traffic, you must add an earlier rule to permit traffic sourced from your Magic Transit prefix with the destination as **any** to allow outbound egress traffic.
 
-**Match**: `ip.src in {<YOUR_MAGIC_TRANSIT_PREFIX>}`
-**Action**: Allow
+  For example, place the following allow rule before any default-drop catchall rule:
+
+  **Match**: `ip.src in {<YOUR_MAGIC_TRANSIT_PREFIX>}`
+  **Action**: Allow
 
 Was this helpful?
 

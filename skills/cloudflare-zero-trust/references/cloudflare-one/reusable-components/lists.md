@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Lists
 
-Last updated Apr 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Cloudflare One, you can create lists of URLs, hostnames, or other entries to reference when creating [Gateway policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) or [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). This allows you to quickly create rules that match and take actions against several items at once.
 
@@ -26,17 +26,19 @@ The lists described in this page are not the same as [custom lists](https://deve
 
 Lists can contain a single type of data each. Supported data types include:
 
-* URLs
-* Hostnames or domains
-* Serial numbers
-* User email addresses
-* IP addresses
-* Device ID numbers
-* AAGUIDs (used by [Access independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) to restrict the WebAuthn authenticators users can enroll)
+- URLs
+- Hostnames or domains
+- Serial numbers
+- User email addresses
+- IP addresses
+- Device ID numbers
+- AAGUIDs (used by [Access independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#restrict-authenticators-by-aaguid) to restrict the WebAuthn authenticators users can enroll)
 
 ## Create a list from a CSV file
 
 To test uploading CSV lists, you can download a [sample CSV file](https://developers.cloudflare.com/cloudflare-one/static/list-test.csv) of IP address ranges or copy the following into a file:
+
+*list-test.csvcsv*
 
 ```csv
 value,description
@@ -47,48 +49,55 @@ value,description
 
 When you format a CSV file for upload:
 
-* Each line should be a single entry that includes a value and an optional description.
-* A header row must be present for Zero Trust to recognize descriptions.
-* Trailing whitespace characters are not allowed.
-* CRLF (Windows) and LF (Unix) line endings are valid.
+- Each line should be a single entry that includes a value and an optional description.
+- A header row must be present for Zero Trust to recognize descriptions.
+- Trailing whitespace characters are not allowed.
+- CRLF (Windows) and LF (Unix) line endings are valid.
 
 To upload the list to the Cloudflare dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
 2. Select **Upload CSV**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Drag and drop a file into the **CSV file** window, or select a file.
 5. Select **Create**.
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
-
-  * `Zero Trust Write`
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
 2. Decode the contents of the CSV file and store it as a local value:
-```tf
-locals {
-	ip_list = csvdecode(file("${path.module}/list-test.csv"))
-}
-```
-3. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource:
-```tf
-resource "cloudflare_zero_trust_list" "ips_from_csv" {
-	account_id  = var.cloudflare_account_id
-	name        = "IPs imported from CSV"
-	description = "Managed by Terraform"
-	type        = "IP"
-	items 			= local.ip_list
-}
-```
 
-You can now use this list in the policy builder by choosing the _in list_ operator.
+   ```tf
+   locals {
+   	ip_list = csvdecode(file("${path.module}/list-test.csv"))
+   }
+   ```
+
+
+3. Create a list using the [`cloudflare_zero_trust_list` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
+
+   ```tf
+   resource "cloudflare_zero_trust_list" "ips_from_csv" {
+   	account_id  = var.cloudflare_account_id
+   	name        = "IPs imported from CSV"
+   	description = "Managed by Terraform"
+   	type        = "IP"
+   	items 			= local.ip_list
+   }
+   ```
+
+
+
+You can now use this list in the policy builder by choosing the *in list* operator.
 
 ## Create a list manually
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Reusable components** \> **Lists**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
 2. Select **Create manual list**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Enter your list element manually into the **Add entry** field and select **Add**.
 5. Select **Save**.
+
+*Create Zero Trust listbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
@@ -109,56 +118,60 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 	}'
 ```
 
-1. Add the following permission to your [cloudflare\_api\_token ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api%5Ftoken):
+1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Create a list using the [`cloudflare_zero_trust_list` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource.
 
-  * `Zero Trust Write`
-2. Create a list using the [cloudflare\_zero\_trust\_list ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero%5Ftrust%5Flist) resource.
-Example list of IPs:
-```tf
-resource "cloudflare_zero_trust_list" "wiki_IPs" {
-	account_id  = var.cloudflare_account_id
-	name        = "Company Wiki IP addresses"
-	description = "Managed by Terraform"
-	type        = "IP"
-	items = [
-		{
-			description = "Example IP address range"
-			value = "192.0.2.0/24",
-		},
-		{
-			value = "198.51.100.0/24"
-		}
-	]
-}
-```
-Example list of domains:
-```tf
-resource "cloudflare_zero_trust_list" "wiki_domains" {
-	account_id  = var.cloudflare_account_id
-	name        = "Company Wiki Domains"
-	description = "Managed by Terraform"
-	type        = "DOMAIN"
-	items = [
-		{
-			value = "wiki.example.com"
-		},
-		{
-			value = "wiki2.example.com"
-		}]
-}
-```
+   Example list of IPs:
 
-You can now use this list in the policy builder by choosing the _in list_ operator.
+   ```tf
+   resource "cloudflare_zero_trust_list" "wiki_IPs" {
+   	account_id  = var.cloudflare_account_id
+   	name        = "Company Wiki IP addresses"
+   	description = "Managed by Terraform"
+   	type        = "IP"
+   	items = [
+   		{
+   			description = "Example IP address range"
+   			value = "192.0.2.0/24",
+   		},
+   		{
+   			value = "198.51.100.0/24"
+   		}
+   	]
+   }
+   ```
+
+   Example list of domains:
+
+   ```tf
+   resource "cloudflare_zero_trust_list" "wiki_domains" {
+   	account_id  = var.cloudflare_account_id
+   	name        = "Company Wiki Domains"
+   	description = "Managed by Terraform"
+   	type        = "DOMAIN"
+   	items = [
+   		{
+   			value = "wiki.example.com"
+   		},
+   		{
+   			value = "wiki2.example.com"
+   		}]
+   }
+   ```
+
+
+
+You can now use this list in the policy builder by choosing the *in list* operator.
 
 ## Edit a list
 
 1. In the **Lists** page, locate the list you want to edit.
 2. Select **Edit**. This will allow you to:
-
-  * Edit list name and description by selecting on the three-dots menu to the right of your list's name.
-  * Delete the list by selecting the three-dots menu to the right of your list's name.
-  * Delete individual entries.
-  * Manually add entries to your list.
+   - Edit list name and description by selecting on the three-dots menu to the right of your list's name.
+   - Delete the list by selecting the three-dots menu to the right of your list's name.
+   - Delete individual entries.
+   - Manually add entries to your list.
 3. Once you have edited your list, select **Save**.
 
 ## Limitations
@@ -189,47 +202,79 @@ Extended email addresses (also known as plus addresses) are variants of an exist
 
 By default, Gateway will either filter only exact matches or all extended variants depending on the type of policy and action used:
 
+<details>
+
+<summary>
+
 DNS policies
 
-| Action             | Behavior                             |
-| ------------------ | ------------------------------------ |
-| Allow              | Match exact address only             |
-| Block              | Match exact address and all variants |
-| Override           | Match exact address and all variants |
-| Safe Search        | Match exact address and all variants |
+</summary>
+
+| Action | Behavior |
+| --- | --- |
+| Allow | Match exact address only |
+| Block | Match exact address and all variants |
+| Override | Match exact address and all variants |
+| Safe Search | Match exact address and all variants |
 | YouTube Restricted | Match exact address and all variants |
+
+</details>
+
+<details>
+
+<summary>
 
 Network policies
 
-| Action           | Behavior                             |
-| ---------------- | ------------------------------------ |
-| Allow            | Match exact address only             |
-| Block            | Match exact address and all variants |
-| Network Override | Match exact address only             |
+</summary>
+
+| Action | Behavior |
+| --- | --- |
+| Allow | Match exact address only |
+| Block | Match exact address and all variants |
+| Network Override | Match exact address only |
+
+</details>
+
+<details>
+
+<summary>
 
 HTTP policies
 
-| Action         | Behavior                             |
-| -------------- | ------------------------------------ |
-| Allow          | Match exact address only             |
-| Block          | Match exact address and all variants |
-| Do Not Inspect | Match exact address only             |
-| Do Not Isolate | Match exact address only             |
-| Do Not Scan    | Match exact address only             |
-| Isolate        | Match exact address and all variants |
+</summary>
+
+| Action | Behavior |
+| --- | --- |
+| Allow | Match exact address only |
+| Block | Match exact address and all variants |
+| Do Not Inspect | Match exact address only |
+| Do Not Isolate | Match exact address only |
+| Do Not Scan | Match exact address only |
+| Isolate | Match exact address and all variants |
+
+</details>
+
+<details>
+
+<summary>
 
 Other policies
 
-| Policy type     | Behavior                 |
-| --------------- | ------------------------ |
-| Egress policy   | Match exact address only |
+</summary>
+
+| Policy type | Behavior |
+| --- | --- |
+| Egress policy | Match exact address only |
 | Resolver policy | Match exact address only |
 
-To force Gateway to match all email address variants, go to **Traffic policies** \> **Traffic settings** \> **Policy settings** and turn on **Match extended email addresses**. This setting applies to all firewall, egress, and resolver policies.
+</details>
+
+To force Gateway to match all email address variants, go to **Traffic policies** > **Traffic settings** > **Policy settings** and turn on **Match extended email addresses**. This setting applies to all firewall, egress, and resolver policies.
 
 ### API rate limit
 
-You can send 600 requests to the [Gateway Lists](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/) endpoint per minute. If you exceed the rate limit, Cloudflare will block subsequent requests for 120 seconds.
+You can send 600 requests to the [Gateway Lists](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/) endpoint per minute. If you exceed the rate limit, Cloudflare will block subsequent requests for 120 seconds.
 
 Was this helpful?
 

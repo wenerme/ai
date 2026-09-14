@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete variants
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can delete variants via the Images dashboard or API. The only variant you cannot delete is public.
 
@@ -22,8 +22,7 @@ Deleting a variant is a global action that will affect other images that contain
 
 ## Delete variants via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select the **Delivery** tab.
 3. Find the variant you want to remove and select **Delete**.
 

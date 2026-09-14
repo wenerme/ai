@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/platform/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/platform/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/artifacts.xml)
 
@@ -63,7 +63,7 @@ You can open a repo to view its files and copy its Git remote URL.
 
 You can also provision tokens directly from the dashboard to scope Git access to a single repo, with read tokens for clone, fetch, and pull workflows, or write tokens when a client needs to push changes.
 
-To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select **Storage & databases** \> **Artifacts**.
+To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select **Storage & databases** > **Artifacts**.
 
 If you are enrolled in the Artifacts beta, you can use the dashboard to set up Artifacts. If you would like to join the beta, complete the [request form ↗](https://forms.gle/DwBoPRa3CWQ8ajFp7).
 
@@ -76,13 +76,13 @@ You can now manage [Artifacts](https://developers.cloudflare.com/artifacts/) nam
 
 Available commands:
 
-* `wrangler artifacts namespaces list` — List Artifacts namespaces in your account.
-* `wrangler artifacts namespaces get` — Get metadata for a namespace.
-* `wrangler artifacts repos create` — Create a repo in a namespace.
-* `wrangler artifacts repos list` — List repos in a namespace.
-* `wrangler artifacts repos get` — Get metadata for a repo.
-* `wrangler artifacts repos delete` — Delete a repo.
-* `wrangler artifacts repos issue-token` — Issue a repo-scoped token for Git access.
+- `wrangler artifacts namespaces list` — List Artifacts namespaces in your account.
+- `wrangler artifacts namespaces get` — Get metadata for a namespace.
+- `wrangler artifacts repos create` — Create a repo in a namespace.
+- `wrangler artifacts repos list` — List repos in a namespace.
+- `wrangler artifacts repos get` — Get metadata for a repo.
+- `wrangler artifacts repos delete` — Delete a repo.
+- `wrangler artifacts repos issue-token` — Issue a repo-scoped token for Git access.
 
 To get started, refer to the [Wrangler Artifacts commands documentation](https://developers.cloudflare.com/workers/wrangler/commands/artifacts/).
 
@@ -97,9 +97,9 @@ You can [read the announcement blog ↗](https://blog.cloudflare.com/artifacts-g
 
 Artifacts has three API surfaces:
 
-* Workers bindings (for creating and managing repositories)
-* REST API (for creating and managing repos from any other compute platform)
-* Git protocol (for interacting with repos)
+- Workers bindings (for creating and managing repositories)
+- REST API (for creating and managing repos from any other compute platform)
+- Git protocol (for interacting with repos)
 
 As an example: you can use the Workers binding to create a repo and read back its remote URL:
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # sFlow DDoS attack rule
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/rules/s-flow-ddos-attack/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An sFlow DDoS attack rule (beta) alerts you when a DDoS attack is detected in your network traffic. Network Flow (formerly Magic Network Monitoring) uses the same DDoS detection rules that protect Cloudflare's global network to identify these attacks.
 
-To use sFlow DDoS attack rules, you must send sFlow data to Cloudflare. You can only configure these rules through the [Network Flow Rules API](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/) — they are not available in the dashboard.
+To use sFlow DDoS attack rules, you must send sFlow data to Cloudflare. You can only configure these rules through the [Network Flow Rules API](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/) — they are not available in the dashboard.
 
 ## Send sFlow data from your network to Cloudflare
 
@@ -24,17 +24,17 @@ To send sFlow data to Cloudflare, your router must support sFlow exports. Refer 
 
 ## Rule configuration fields
 
-| Field                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Rule name**          | Must be unique and cannot contain spaces. Supports characters A-Z, a-z, 0-9, underscore (\_), dash (\-), period (.), and tilde (\~). Maximum of 256 characters.                                                                                                                                                                                                                                                                                                                                          |
-| **Rule type**          | advanced\_ddos                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| **Prefix Match**       | The field prefix\_match determines how IP matches are handled. **Subnet** (recommended): Automatically advertise if the attacked IPs are within a subnet of a public IP prefix that can be advertised by Magic Transit.**Exact**: Automatically advertise if the attacked IPs are an exact match with a public IP prefix that can be advertised by Magic Transit.**Supernet**: Automatically advertise if the attacked IPs are a supernet of a public IP prefix that can be advertised by Magic Transit. |
-| **Auto-advertisement** | If you are a [Magic Transit On Demand](https://developers.cloudflare.com/magic-transit/on-demand) customer, you can enable this feature to automatically enable Magic Transit if the rule's dynamic threshold is triggered. To learn more, refer to [Auto-advertisement](https://developers.cloudflare.com/network-flow/rules/#rule-auto-advertisement).                                                                                                                                                 |
-| **Rule IP prefix**     | The IP prefix associated with the rule for monitoring traffic volume. Must be a CIDR range such as 160.168.0.1/24. The maximum is 5,000 unique CIDR entries. To learn more and see an example, refer to [Rule IP prefixes](https://developers.cloudflare.com/network-flow/rules/#rule-ip-prefixes).                                                                                                                                                                                                      |
+| Field | Description |
+| --- | --- |
+| **Rule name** | Must be unique and cannot contain spaces. Supports characters `A-Z`, `a-z`, `0-9`, underscore (`_`), dash (`-`), period (`.`), and tilde (`~`). Maximum of 256 characters. |
+| **Rule type** | advanced\_ddos |
+| **Prefix Match** | The field `prefix_match` determines how IP matches are handled. <br><br>**Subnet** (recommended): Automatically advertise if the attacked IPs are within a subnet of a public IP prefix that can be advertised by Magic Transit.<br><br>**Exact**: Automatically advertise if the attacked IPs are an exact match with a public IP prefix that can be advertised by Magic Transit.<br><br>**Supernet**: Automatically advertise if the attacked IPs are a supernet of a public IP prefix that can be advertised by Magic Transit. |
+| **Auto-advertisement** | If you are a [Magic Transit On Demand](https://developers.cloudflare.com/magic-transit/on-demand) customer, you can enable this feature to automatically enable Magic Transit if the rule's dynamic threshold is triggered. To learn more, refer to [Auto-advertisement](https://developers.cloudflare.com/network-flow/rules/#rule-auto-advertisement). |
+| **Rule IP prefix** | The IP prefix associated with the rule for monitoring traffic volume. Must be a CIDR range such as `160.168.0.1/24`. The maximum is 5,000 unique CIDR entries. To learn more and see an example, refer to [Rule IP prefixes](https://developers.cloudflare.com/network-flow/rules/#rule-ip-prefixes). |
 
 ## API documentation
 
-Refer to the [Rules API documentation](https://developers.cloudflare.com/api/resources/magic%5Fnetwork%5Fmonitoring/subresources/rules/) to review an example API configuration call using CURL and the expected output for a successful response.
+Refer to the [Rules API documentation](https://developers.cloudflare.com/api/resources/magic_network_monitoring/subresources/rules/) to review an example API configuration call using CURL and the expected output for a successful response.
 
 ## Tune the sFlow DDoS alert thresholds
 

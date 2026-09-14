@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • MiniMax
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `minimax/hailuo-2.3`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 A high-fidelity video generation model optimized for realistic human motion, cinematic VFX, expressive characters, and strong prompt and style adherence across text-to-video and image-to-video workflows.
 
-| Model Info          |                                                                                                                      |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                 |
-| More information    | [link ↗](https://hailuoai.com/)                                                                                      |
-| Zero data retention | Yes                                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://hailuoai.com/terms) |
+| More information | [link ↗](https://hailuoai.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
 
 ## Usage
 
@@ -80,7 +80,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution** — 1080P video for higher quality output
+<details>
+
+<summary>**High Resolution** — 1080P video for higher quality output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -127,7 +131,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Image to Video** — Animate a still image with I2V
+</details>
+
+<details>
+
+<summary>**Image to Video** — Animate a still image with I2V</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -176,7 +186,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Fast Processing** — Enable fast pretreatment for quicker results
+</details>
+
+<details>
+
+<summary>**Fast Processing** — Enable fast pretreatment for quicker results</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -222,6 +238,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -262,9 +280,9 @@ status
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3/schema-output.json)
 
 Was this helpful?
 

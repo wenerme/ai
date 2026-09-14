@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_auth.cert\_fingerprint\_sha256
 
-`cf.tls_client_auth.cert_fingerprint_sha256` `String`
+`cf.tls_client_auth.cert_fingerprint_sha256``String`
 
 The SHA-256 fingerprint of the mTLS client certificate.
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* mTLS
+- Request
+- mTLS
 
 Was this helpful?
 

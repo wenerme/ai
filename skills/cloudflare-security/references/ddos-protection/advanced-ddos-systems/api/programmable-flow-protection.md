@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Programmable Flow Protection
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/api/programmable-flow-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare API](https://developers.cloudflare.com/api/) to configure Programmable Flow Protection.
 
@@ -32,31 +32,31 @@ The tables in the following sections summarize the available operations.
 
 ### Program operations
 
-| Operation           | Method and endpoint / Description                                                                                                                                                                                                                                     |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| List programs       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsFetches all Programmable Flow Protection programs in the account.                                                                                                                     |
-| Upload a program    | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsUploads a new program to the account. Include the optional X-Program-Name header to specify a human-readable program name. If omitted, the API generates a UUID as the program name. |
-| Get a program       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Fetches the details of an existing program.                                                                                                                             |
-| Update a program    | PATCH accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Updates an existing program.                                                                                                                                          |
-| Delete a program    | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}Deletes an existing program from the account.                                                                                                                        |
-| Delete all programs | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programsDeletes all existing programs from the account.                                                                                                                                    |
+| Operation | Method and endpoint / Description |
+| --- | --- |
+| List programs | `GET accounts/{account_id}/magic/programmable_flow_protection/configs/programs` Fetches all Programmable Flow Protection programs in the account. |
+| Upload a program | `POST accounts/{account_id}/magic/programmable_flow_protection/configs/programs` Uploads a new program to the account. Include the optional `X-Program-Name` header to specify a human-readable program name. If omitted, the API generates a UUID as the program name. |
+| Get a program | `GET accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}` Fetches the details of an existing program. |
+| Update a program | `PATCH accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}` Updates an existing program. |
+| Delete a program | `DELETE accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}` Deletes an existing program from the account. |
+| Delete all programs | `DELETE accounts/{account_id}/magic/programmable_flow_protection/configs/programs` Deletes all existing programs from the account. |
 
 ### Rule operations
 
-| Operation        | Method and endpoint / Description                                                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| List rules       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesFetches all Programmable Flow Protection rules in the account. |
-| Create a rule    | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesCreates a new rule in the account.                            |
-| Get a rule       | GET accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Fetches the details of an existing rule.            |
-| Update a rule    | PATCH accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Updates an existing rule in the account.          |
-| Delete a rule    | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rules/{rule\_id}Deletes an existing rule from the account.       |
-| Delete all rules | DELETE accounts/{account\_id}/magic/programmable\_flow\_protection/configs/rulesDeletes all existing rules from the account.                |
+| Operation | Method and endpoint / Description |
+| --- | --- |
+| List rules | `GET accounts/{account_id}/magic/programmable_flow_protection/configs/rules` Fetches all Programmable Flow Protection rules in the account. |
+| Create a rule | `POST accounts/{account_id}/magic/programmable_flow_protection/configs/rules` Creates a new rule in the account. |
+| Get a rule | `GET accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}` Fetches the details of an existing rule. |
+| Update a rule | `PATCH accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}` Updates an existing rule in the account. |
+| Delete a rule | `DELETE accounts/{account_id}/magic/programmable_flow_protection/configs/rules/{rule_id}` Deletes an existing rule from the account. |
+| Delete all rules | `DELETE accounts/{account_id}/magic/programmable_flow_protection/configs/rules` Deletes all existing rules from the account. |
 
 ### Debug operations
 
-| Operation       | Method and endpoint / Description                                                                                                                                                           |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Debug with PCAP | POST accounts/{account\_id}/magic/programmable\_flow\_protection/configs/programs/{program\_id}/pcapRuns a program against a PCAP file and returns an annotated PCAP with program verdicts. |
+| Operation | Method and endpoint / Description |
+| --- | --- |
+| Debug with PCAP | `POST accounts/{account_id}/magic/programmable_flow_protection/configs/programs/{program_id}/pcap` Runs a program against a PCAP file and returns an annotated PCAP with program verdicts. |
 
 ## Pagination
 

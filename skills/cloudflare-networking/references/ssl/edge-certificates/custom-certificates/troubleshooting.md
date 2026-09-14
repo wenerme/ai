@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Generic troubleshooting
 
@@ -53,9 +53,9 @@ Use the `unprotected.key` file when uploading to Cloudflare. For detailed instru
 
 Private keys must be in one of the following unencrypted formats:
 
-* PKCS#8
-* PKCS#1
-* Elliptic Curve
+- PKCS#8
+- PKCS#1
+- Elliptic Curve
 
 ## Moved domains
 
@@ -69,8 +69,8 @@ As Let's Encrypt - one of the [certificate authorities (CAs)](https://developers
 
 If you are using a Let's Encrypt certificate uploaded by yourself as a custom certificate, consider the following:
 
-* If you use **compatible** or **modern** [bundle method](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/) and have uploaded your certificate before September 9, 2024, [update your custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) so that it can be bundled with the new chain.
-* If you use **user-defined** bundle method, make sure that your certificates uploaded after September 30, 2024, do not use the Let's Encrypt cross-signed chain.
+- If you use **compatible** or **modern** [bundle method](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/) and have uploaded your certificate before September 9, 2024, [update your custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#update-or-renew-an-existing-custom-certificate) so that it can be bundled with the new chain.
+- If you use **user-defined** bundle method, make sure that your certificates uploaded after September 30, 2024, do not use the Let's Encrypt cross-signed chain.
 
 ## Error codes
 
@@ -80,7 +80,7 @@ If you are using a Let's Encrypt certificate uploaded by yourself as a custom ce
 
 The certificate you are trying to upload is invalid. For example, there might be extra lines, or the BEGIN/END text is not correct, or extra characters are added following a copy/paste.
 
-In the case of an update with the [PATCH API call](https://developers.cloudflare.com/api/resources/custom%5Fcertificates/methods/edit/), it can mean the path parameter `{custom_certificate_id}` is invalid.
+In the case of an update with the [PATCH API call](https://developers.cloudflare.com/api/resources/custom_certificates/methods/edit/), it can mean the path parameter `{custom_certificate_id}` is invalid.
 
 **Solution**
 
@@ -90,7 +90,7 @@ Carefully check the content of the certificate. You may use `openssl` to check a
 openssl x509 -in certificate.crt -noout -text
 ```
 
-When using the API, carefully check the `{custom_certificate_id}` path parameter. You can confirm the certificate ID by [listing the existing custom certificates](https://developers.cloudflare.com/api/resources/custom%5Fcertificates/methods/list/) (`id` in the response).
+When using the API, carefully check the `{custom_certificate_id}` path parameter. You can confirm the certificate ID by [listing the existing custom certificates](https://developers.cloudflare.com/api/resources/custom_certificates/methods/list/) (`id` in the response).
 
 ### You have reached the maximum number of custom certificates. (Code: 1212)
 
@@ -126,7 +126,7 @@ A custom certificate pack can only have one certificate per signature algorithm 
 
 **Solution**
 
-Instead of uploading a new certificate, update the existing certificate using the edit option in the dashboard or the [PATCH API endpoint](https://developers.cloudflare.com/api/resources/custom%5Fcertificates/methods/edit/).
+Instead of uploading a new certificate, update the existing certificate using the edit option in the dashboard or the [PATCH API endpoint](https://developers.cloudflare.com/api/resources/custom_certificates/methods/edit/).
 
 ### This certificate cannot be deleted at this time. (Code: 1305)
 

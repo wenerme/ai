@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # PhishGuard
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 PhishGuard is a team of analysts that routinely inspects your email environment and responds to threats that come through your email inbox.
 
@@ -28,9 +28,9 @@ PhishGuard coordinates with the email detections team, allowing you to directly 
 
 Additionally, PhishGuard analysts:
 
-* Use real-time threat data to identify malicious activity. Email-based threats are responded to rapidly, and immediately reported and documented.
-* Review every [user](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#user-submissions) and [team](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#team-submissions) submission so your security team can focus on more critical activities.
-* Help you detect and mitigate threats faster, reducing the time attacks have access to your network. This also helps reducing business impact, because it prevents data breaches, financial loss, and reputational damage.
+- Use real-time threat data to identify malicious activity. Email-based threats are responded to rapidly, and immediately reported and documented.
+- Review every [user](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#user-submissions) and [team](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#team-submissions) submission so your security team can focus on more critical activities.
+- Help you detect and mitigate threats faster, reducing the time attacks have access to your network. This also helps reducing business impact, because it prevents data breaches, financial loss, and reputational damage.
 
 To use PhishGuard:
 
@@ -40,13 +40,13 @@ To use PhishGuard:
 
 The dashboard will display the following metrics:
 
-* ROI Calculator
-* Insider threat defense
-* Email threat hunting
-* Actions
-* API Status
-* Managed email security operations
-* Reports
+- ROI Calculator
+- Insider threat defense
+- Email threat hunting
+- Actions
+- API Status
+- Managed email security operations
+- Reports
 
 ## ROI Calculator
 
@@ -54,9 +54,9 @@ Use the ROI Calculator to compare triage durations and hourly rates to calculate
 
 The ROI Calculator displays:
 
-* Total aggregated saved number in USD dollars.
-* Triage duration: The amount of time in minutes spent triaging the message.
-* Hourly rate.
+- Total aggregated saved number in USD dollars.
+- Triage duration: The amount of time in minutes spent triaging the message.
+- Hourly rate.
 
 ## Insider threat defense
 
@@ -88,10 +88,10 @@ Managed email security operations allows you to review the results of phish subm
 
 It displays the following:
 
-* Total [phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/)
-* Tracked incidents
-* Median time to resolve
-* Resolved track incidents
+- Total [phish submissions](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/)
+- Tracked incidents
+- Median time to resolve
+- Resolved track incidents
 
 ## Reports
 
@@ -99,13 +99,13 @@ Under Reports, you can review reports of threats discovered and resolved by the 
 
 If you select the three dots, you can:
 
-* **View report details**: Report Details gives you the following information about each report:
-  * **Overview**: An Overview of the report. This includes date and time of the report, type of attack performed, and more.
-  * **Target and victimology**: Company targeted.
-  * **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.
-  * **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
-* Preview email.
-* [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
+- **View report details**: Report Details gives you the following information about each report:
+  - **Overview**: An Overview of the report. This includes date and time of the report, type of attack performed, and more.
+  - **Target and victimology**: Company targeted.
+  - **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.
+  - **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
+- Preview email.
+- [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
 
 Was this helpful?
 

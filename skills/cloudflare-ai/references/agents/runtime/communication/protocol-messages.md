@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Protocol messages
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a WebSocket client connects to an Agent, the framework automatically sends several JSON text frames — identity, state, and MCP server lists. You can suppress these per-connection protocol messages for clients that cannot handle them.
 
@@ -20,19 +20,19 @@ When a WebSocket client connects to an Agent, the framework automatically sends 
 
 On every new connection, the Agent sends three protocol messages:
 
-| Message type            | Content                   |
-| ----------------------- | ------------------------- |
-| cf\_agent\_identity     | Agent name and class      |
-| cf\_agent\_state        | Current agent state       |
-| cf\_agent\_mcp\_servers | Connected MCP server list |
+| Message type | Content |
+| --- | --- |
+| `cf_agent_identity` | Agent name and class |
+| `cf_agent_state` | Current agent state |
+| `cf_agent_mcp_servers` | Connected MCP server list |
 
 State and MCP messages are also broadcast to all connections whenever they change.
 
 For most web clients this is fine — the [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/) and `useAgent` hook consume these messages automatically. However, some clients cannot handle JSON text frames:
 
-* **Binary-only clients** — MQTT devices, IoT sensors, custom binary protocols
-* **Lightweight clients** — Embedded systems with minimal WebSocket stacks
-* **Non-browser clients** — Hardware devices connecting via WebSocket
+- **Binary-only clients** — MQTT devices, IoT sensors, custom binary protocols
+- **Lightweight clients** — Embedded systems with minimal WebSocket stacks
+- **Non-browser clients** — Hardware devices connecting via WebSocket
 
 For these connections, you can suppress protocol messages while keeping everything else (RPC, regular messages, broadcasts via `this.broadcast()`) working normally.
 
@@ -67,9 +67,9 @@ export class IoTAgent extends Agent<Env, State> {
 
 This hook runs during `onConnect`, before any messages are sent. When it returns `false`:
 
-* No `cf_agent_identity`, `cf_agent_state`, or `cf_agent_mcp_servers` messages are sent on connect
-* The connection is excluded from state and MCP broadcasts going forward
-* RPC calls, regular `onMessage` handling, and `this.broadcast()` still work normally
+- No `cf_agent_identity`, `cf_agent_state`, or `cf_agent_mcp_servers` messages are sent on connect
+- The connection is excluded from state and MCP broadcasts going forward
+- RPC calls, regular `onMessage` handling, and `this.broadcast()` still work normally
 
 ### Using WebSocket subprotocol
 
@@ -136,16 +136,16 @@ export class MyAgent extends Agent<Env, State> {
 
 The following table shows what still works when protocol messages are suppressed for a connection:
 
-| Action                                                    | Works? |
-| --------------------------------------------------------- | ------ |
-| Receive cf\_agent\_identity on connect                    | **No** |
-| Receive cf\_agent\_state on connect and broadcasts        | **No** |
-| Receive cf\_agent\_mcp\_servers on connect and broadcasts | **No** |
-| Send and receive regular WebSocket messages               | Yes    |
-| Call @callable() RPC methods                              | Yes    |
-| Receive this.broadcast() messages                         | Yes    |
-| Send binary data                                          | Yes    |
-| Mutate agent state via RPC                                | Yes    |
+| Action | Works? |
+| --- | --- |
+| Receive `cf_agent_identity` on connect | **No** |
+| Receive `cf_agent_state` on connect and broadcasts | **No** |
+| Receive `cf_agent_mcp_servers` on connect and broadcasts | **No** |
+| Send and receive regular WebSocket messages | Yes |
+| Call `@callable()` RPC methods | Yes |
+| Receive `this.broadcast()` messages | Yes |
+| Send binary data | Yes |
+| Mutate agent state via RPC | Yes |
 
 ## Combining with readonly
 
@@ -213,11 +213,11 @@ Both flags are stored in the connection's WebSocket attachment and hidden from `
 
 An overridable hook that determines if a connection should receive protocol messages when it connects.
 
-| Parameter   | Type              | Description                         |
-| ----------- | ----------------- | ----------------------------------- |
-| connection  | Connection        | The connecting client               |
-| ctx         | ConnectionContext | Contains the upgrade request        |
-| **Returns** | boolean           | false to suppress protocol messages |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `connection` | `Connection` | The connecting client |
+| `ctx` | `ConnectionContext` | Contains the upgrade request |
+| **Returns** | `boolean` | `false` to suppress protocol messages |
 
 Default: returns `true` (all connections receive protocol messages).
 
@@ -227,10 +227,10 @@ This hook is evaluated once on connect. The result is persisted in the connectio
 
 Check if a connection currently has protocol messages enabled.
 
-| Parameter   | Type       | Description                           |
-| ----------- | ---------- | ------------------------------------- |
-| connection  | Connection | The connection to check               |
-| **Returns** | boolean    | true if protocol messages are enabled |
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `connection` | `Connection` | The connection to check |
+| **Returns** | `boolean` | `true` if protocol messages are enabled |
 
 Safe to call at any time, including after the agent wakes from hibernation.
 
@@ -238,19 +238,19 @@ Safe to call at any time, including after the agent wakes from hibernation.
 
 Protocol status is stored as an internal flag in the connection's WebSocket attachment — the same mechanism used by [readonly connections](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/). This means:
 
-* **Survives hibernation** — the flag is serialized and restored when the agent wakes up
-* **No cleanup needed** — connection state is automatically discarded when the connection closes
-* **Zero overhead** — no database tables or queries, just the connection's built-in attachment
-* **Safe from user code** — `connection.state` and `connection.setState()` never expose or overwrite the flag
+- **Survives hibernation** — the flag is serialized and restored when the agent wakes up
+- **No cleanup needed** — connection state is automatically discarded when the connection closes
+- **Zero overhead** — no database tables or queries, just the connection's built-in attachment
+- **Safe from user code** — `connection.state` and `connection.setState()` never expose or overwrite the flag
 
 Unlike [readonly](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/) which can be toggled dynamically with `setConnectionReadonly()`, protocol status is set once on connect and cannot be changed afterward. To change a connection's protocol status, the client must disconnect and reconnect.
 
 ## Related resources
 
-* [Readonly connections](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/)
-* [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
-* [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
-* [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+- [Readonly connections](https://developers.cloudflare.com/agents/runtime/communication/readonly-connections/)
+- [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+- [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+- [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
 Was this helpful?
 

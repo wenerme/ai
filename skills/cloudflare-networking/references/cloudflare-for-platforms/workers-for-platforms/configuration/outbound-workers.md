@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Outbound Workers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into all outgoing `fetch()` requests from user Workers.
 
@@ -22,13 +22,13 @@ Outbound Workers sit between your customer's Workers and the public Internet. Th
 
 Outbound Workers can be used to:
 
-* Log all subrequests to identify malicious domains or usage patterns.
-* Create, allow, or block lists for hostnames requested by user Workers.
-* Configure authentication to your APIs behind the scenes (without end developers needing to set credentials).
+- Log all subrequests to identify malicious domains or usage patterns.
+- Create, allow, or block lists for hostnames requested by user Workers.
+- Configure authentication to your APIs behind the scenes (without end developers needing to set credentials).
 
 Note
 
-When an Outbound Worker is enabled, your customer's Worker will no longer be able to use the [connect() API](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect)to create outbound TCP Sockets. This is to ensure all outbound communication goes through the Outbound Worker's `fetch` method.
+When an Outbound Worker is enabled, your customer's Worker will no longer be able to use the [`connect() API`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/#connect) to create outbound TCP Sockets. This is to ensure all outbound communication goes through the Outbound Worker's `fetch` method.
 
 ## Use Outbound Workers
 
@@ -66,7 +66,7 @@ namespace = "<NAMESPACE_NAME>"
   parameters = [ "params_object" ]
 ```
 
-1. Edit your dynamic dispatch Worker to call the Outbound Worker and declare variables to pass on `dispatcher.get()`.
+3. Edit your dynamic dispatch Worker to call the Outbound Worker and declare variables to pass on `dispatcher.get()`.
 
 ```js
 export default {
@@ -102,7 +102,7 @@ export default {
 };
 ```
 
-1. The Outbound Worker will now be invoked on any `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
+4. The Outbound Worker will now be invoked on any `fetch()` requests from a user Worker. The user Worker will trigger a [FetchEvent](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) on the Outbound Worker. The variables declared in the binding can be accessed in the Outbound Worker through `env.<VAR_NAME>`.
 
 The following is an example of an Outbound Worker that logs the fetch request from user Worker and creates a JWT if the fetch request matches `api.example.com`.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DDoS testing guide
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-guide/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/tutorials/ddos-testing-guide/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To test Network Flow (formerly Magic Network Monitoring) in a repeatable manner, simulate a DDoS attack. At a high level, you need to:
 
@@ -23,8 +23,8 @@ To test Network Flow (formerly Magic Network Monitoring) in a repeatable manner,
 
 You need to contact Cloudflare to obtain permission before conducting a DDoS test if:
 
-* Your property is hosted in Cloudflare.
-* Internet traffic goes through Cloudflare before reaching your property.
+- Your property is hosted in Cloudflare.
+- Internet traffic goes through Cloudflare before reaching your property.
 
 If you are an Enterprise customer with Network Flow enabled, contact your Cloudflare Account Manager before starting DDoS testing, even if the property is not hosted in Cloudflare.
 

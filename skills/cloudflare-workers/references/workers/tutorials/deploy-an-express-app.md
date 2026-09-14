@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy an Express.js application on Cloudflare Workers
 
-Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to deploy an [Express.js ↗](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
@@ -30,7 +30,7 @@ This creates a repository in your GitHub account and deploys the application to 
 
 You may wish to manually follow the steps if you are new to Cloudflare Workers.
 
-## 1\. Create a new Cloudflare Workers project
+## 1. Create a new Cloudflare Workers project
 
 Use [C3 ↗](https://developers.cloudflare.com/learning-paths/workers/get-started/c3-and-wrangler/#c3), the command-line tool for Cloudflare's developer products, to create a new directory and initialize a new Worker project:
 
@@ -50,11 +50,11 @@ pnpm create cloudflare@latest express-d1-app
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 Change into your new project directory:
 
@@ -62,7 +62,7 @@ Change into your new project directory:
 cd express-d1-app
 ```
 
-## 2\. Install Express and dependencies
+## 2. Install Express and dependencies
 
 In this tutorial, you will use [Express.js ↗](https://expressjs.com/), a popular web framework for Node.js. To use Express in a Cloudflare Workers environment, install Express along with the necessary TypeScript types:
 
@@ -98,7 +98,7 @@ Express.js on Cloudflare Workers requires the `nodejs_compat` [compatibility fla
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
-## 3\. Create a D1 database
+## 3. Create a D1 database
 
 You will now create a D1 database to store member information. Use the `wrangler d1 create` command to create a new database:
 
@@ -108,9 +108,9 @@ npx wrangler d1 create members-db
 
 The command will create a new D1 database and ask you the following questions:
 
-* **Would you like Wrangler to add it on your behalf?**: Type `Y`.
-* **What binding name would you like to use?**: Type `DB` and press Enter.
-* **For local dev, do you want to connect to the remote resource instead of a local resource?**: Type `N`.
+- **Would you like Wrangler to add it on your behalf?**: Type `Y`.
+- **What binding name would you like to use?**: Type `DB` and press Enter.
+- **For local dev, do you want to connect to the remote resource instead of a local resource?**: Type `N`.
 
 ```sh
  ⛅️ wrangler 4.44.0
@@ -154,9 +154,11 @@ database_name = "members-db"
 database_id = "<unique-ID-for-your-database>"
 ```
 
-## 4\. Create database schema
+## 4. Create database schema
 
 Create a directory called `schemas` in your project root, and inside it, create a file called `schema.sql`:
+
+*schemas/schema.sqlsql*
 
 ```sql
 DROP TABLE IF EXISTS members;
@@ -184,9 +186,11 @@ npx wrangler d1 execute members-db --file=./schemas/schema.sql
 
 The above command creates the table in your local development database. You will deploy the schema to production later.
 
-## 5\. Initialize Express application
+## 5. Initialize Express application
 
 Update your `src/index.ts` file to set up Express with TypeScript. Replace the file content with the following:
+
+*src/index.tsts*
 
 ```ts
 import { env } from "cloudflare:workers";
@@ -215,9 +219,11 @@ Next, execute the typegen command to generate type definitions for your Worker e
 npm run cf-typegen
 ```
 
-## 6\. Implement read operations
+## 6. Implement read operations
 
 Add endpoints to retrieve members from the database. Update your `src/index.ts` file by adding the following routes after the health check endpoint:
+
+*src/index.tsts*
 
 ```ts
 // GET all members
@@ -251,9 +257,11 @@ app.get('/api/members/:id', async (req, res) => {
 
 These routes use the D1 binding (`env.DB`) to prepare SQL statements and execute them. Since you imported `env` from `cloudflare:workers` at the top of the file, it is accessible throughout your application. The `prepare`, `bind`, and `all` methods on the D1 binding allow you to safely query the database. Refer to [D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) for all available methods.
 
-## 7\. Implement create operation
+## 7. Implement create operation
 
 Add an endpoint to create new members. Add the following route to your `src/index.ts` file:
+
+*src/index.tsts*
 
 ```ts
 // POST - Create a new member
@@ -312,9 +320,11 @@ app.post("/api/members", async (req, res) => {
 
 This endpoint validates the input, checks the email format, and inserts a new member into the database. It also handles duplicate email addresses by checking for unique constraint violations.
 
-## 8\. Implement update operation
+## 8. Implement update operation
 
 Add an endpoint to update existing members. Add the following route to your `src/index.ts` file:
+
+*src/index.tsts*
 
 ```ts
 app.put("/api/members/:id", async (req, res) => {
@@ -381,9 +391,11 @@ app.put("/api/members/:id", async (req, res) => {
 
 This endpoint allows updating either the name, email, or both fields of an existing member. It builds a dynamic SQL query based on the provided fields.
 
-## 9\. Implement delete operation
+## 9. Implement delete operation
 
 Add an endpoint to delete members. Add the following route to your `src/index.ts` file:
+
+*src/index.tsts*
 
 ```ts
 // DELETE - Delete a member
@@ -410,7 +422,7 @@ app.delete("/api/members/:id", async (req, res) => {
 
 This endpoint deletes a member by their ID and returns an error if the member does not exist.
 
-## 10\. Test locally
+## 10. Test locally
 
 Start the development server to test your API locally:
 
@@ -421,6 +433,8 @@ npm run dev
 The development server will start, and you can access your API at `http://localhost:8787`.
 
 Open a new terminal window and test the endpoints using `curl`:
+
+*Get all memberssh*
 
 ```sh
 curl http://localhost:8787/api/members
@@ -454,6 +468,8 @@ curl http://localhost:8787/api/members
 
 Test creating a new member:
 
+*Create a membersh*
+
 ```sh
 curl -X POST http://localhost:8787/api/members \
   -H "Content-Type: application/json" \
@@ -470,11 +486,15 @@ curl -X POST http://localhost:8787/api/members \
 
 Test getting a single member:
 
+*Get a member by IDsh*
+
 ```sh
 curl http://localhost:8787/api/members/1
 ```
 
 Test updating a member:
+
+*Update a membersh*
 
 ```sh
 curl -X PUT http://localhost:8787/api/members/1 \
@@ -484,11 +504,13 @@ curl -X PUT http://localhost:8787/api/members/1 \
 
 Test deleting a member:
 
+*Delete a membersh*
+
 ```sh
 curl -X DELETE http://localhost:8787/api/members/4
 ```
 
-## 11\. Deploy to Cloudflare Workers
+## 11. Deploy to Cloudflare Workers
 
 Before deploying to production, execute the schema file against your remote (production) database:
 
@@ -519,9 +541,11 @@ Current Version ID: <version-id>
 
 After successful deployment, Wrangler will output your Worker's URL.
 
-## 12\. Test production deployment
+## 12. Test production deployment
 
 Test your deployed API using the provided URL. Replace `<your-worker-url>` with your actual Worker URL:
+
+*Test production APIsh*
 
 ```sh
 curl https://<your-worker-url>/api/members
@@ -530,6 +554,8 @@ curl https://<your-worker-url>/api/members
 You should see the same member data you created in the production database.
 
 Create a new member in production:
+
+*Create a member in productionsh*
 
 ```sh
 curl -X POST https://<your-worker-url>/api/members \
@@ -543,17 +569,17 @@ Your Express.js application with D1 database is now running on Cloudflare Worker
 
 In this tutorial, you built a Members Registry API using Express.js and D1 database, then deployed it to Cloudflare Workers. You implemented full CRUD operations (Create, Read, Update, Delete) and learned how to:
 
-* Set up an Express.js application for Cloudflare Workers
-* Create and configure a D1 database with bindings
-* Implement database operations using D1's prepared statements
-* Test your API locally and in production
+- Set up an Express.js application for Cloudflare Workers
+- Create and configure a D1 database with bindings
+- Implement database operations using D1's prepared statements
+- Test your API locally and in production
 
 ## Next steps
 
-* Learn more about [D1 database features](https://developers.cloudflare.com/d1/)
-* Explore [Workers routing and middleware](https://developers.cloudflare.com/workers/runtime-apis/)
-* Add authentication to your API using [Workers authentication](https://developers.cloudflare.com/workers/runtime-apis/handlers/)
-* Implement pagination for large datasets using [D1 query optimization](https://developers.cloudflare.com/d1/worker-api/)
+- Learn more about [D1 database features](https://developers.cloudflare.com/d1/)
+- Explore [Workers routing and middleware](https://developers.cloudflare.com/workers/runtime-apis/)
+- Add authentication to your API using [Workers authentication](https://developers.cloudflare.com/workers/runtime-apis/handlers/)
+- Implement pagination for large datasets using [D1 query optimization](https://developers.cloudflare.com/d1/worker-api/)
 
 Was this helpful?
 
@@ -564,5 +590,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

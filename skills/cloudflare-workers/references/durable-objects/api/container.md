@@ -12,15 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable Object Container
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/container/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/container/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
-Each [container](https://developers.cloudflare.com/containers/) is managed by a Durable Object. The [Container class](https://developers.cloudflare.com/containers/reference/container-class/) from `@cloudflare/containers` extends `DurableObject` and handles lifecycle management, port readiness, and sleep timeouts for you. The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM.
+Each [container](https://developers.cloudflare.com/containers/) is managed by a Durable Object. The [`Container` class](https://developers.cloudflare.com/containers/reference/container-class/) from `@cloudflare/containers` extends `DurableObject` and handles lifecycle management, port readiness, and sleep timeouts for you. The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM.
 
 The low-level API documented on this page is available on `this.ctx.container` inside any Durable Object class that has a container binding. Use it when you need direct control over the container process or cannot use the `Container` class.
 
 Because the `Container` class extends `DurableObject`, you also have access to [SQLite storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) via `this.ctx.storage`, [alarms](https://developers.cloudflare.com/durable-objects/api/alarms/), and all other Durable Object APIs.
+
+*index.jsjs*
 
 ```js
 export class MyDurableObject extends DurableObject {
@@ -34,6 +36,8 @@ export class MyDurableObject extends DurableObject {
 	}
 }
 ```
+
+*index.tsts*
 
 ```ts
 export class MyDurableObject extends DurableObject {
@@ -77,14 +81,14 @@ this.ctx.container.start({
 
 #### Parameters
 
-* `options` (optional): An object with the following properties:
-  * `env`: An object containing environment variables to pass to the container. This is useful for passing configuration values or secrets to the container.
-  * `entrypoint`: An array of strings representing the command to run in the container.
-  * `enableInternet`: A boolean indicating whether to enable internet access for the container.
+- `options` (optional): An object with the following properties:
+  - `env`: An object containing environment variables to pass to the container. This is useful for passing configuration values or secrets to the container.
+  - `entrypoint`: An array of strings representing the command to run in the container.
+  - `enableInternet`: A boolean indicating whether to enable internet access for the container.
 
 #### Return values
 
-* None.
+- None.
 
 ### `exec`
 
@@ -147,14 +151,14 @@ export class MyContainer extends Container {
 
 #### Parameters
 
-* `cmd` (`string[]`) — executable followed by its arguments.
-* `options` (`ContainerExecOptions`, optional) — process configuration:
-  * `stdin` (`ReadableStream | "pipe"`) — source for standard input. Use `"pipe"` to write through the returned `stdin` stream. When omitted, standard input closes and sends end-of-file (EOF).
-  * `stdout` (`"pipe" | "ignore"`, default `"pipe"`) — captures or discards standard output.
-  * `stderr` (`"pipe" | "ignore" | "combined"`, default `"pipe"`) — captures, discards, or merges standard error into standard output. The `"combined"` value requires `stdout: "pipe"`. Combined output does not guarantee ordering between its source streams.
-  * `cwd` (`string`) — working directory for the process.
-  * `env` (`Record<string, string>`) — environment additions and overrides. The process inherits existing Container variables. Matching keys use the per-execution value.
-  * `user` (`string`) — image user for the process.
+- `cmd` ( `string[]`) — executable followed by its arguments.
+- `options` ( `ContainerExecOptions`, optional) — process configuration:
+  - `stdin` ( `ReadableStream | "pipe"`) — source for standard input. Use `"pipe"` to write through the returned `stdin` stream. When omitted, standard input closes and sends end-of-file (EOF).
+  - `stdout` ( `"pipe" | "ignore"`, default `"pipe"`) — captures or discards standard output.
+  - `stderr` ( `"pipe" | "ignore" | "combined"`, default `"pipe"`) — captures, discards, or merges standard error into standard output. The `"combined"` value requires `stdout: "pipe"`. Combined output does not guarantee ordering between its source streams.
+  - `cwd` ( `string`) — working directory for the process.
+  - `env` ( `Record<string, string>`) — environment additions and overrides. The process inherits existing Container variables. Matching keys use the per-execution value.
+  - `user` ( `string`) — image user for the process.
 
 #### Return values
 
@@ -162,13 +166,13 @@ Returns `Promise<ExecProcess>`.
 
 An `ExecProcess` has these fields and methods:
 
-* `stdin` (`WritableStream | null`) — writable standard input when `stdin` is `"pipe"`.
-* `stdout` (`ReadableStream | null`) — readable standard output when piped.
-* `stderr` (`ReadableStream | null`) — readable standard error when piped separately.
-* `pid` (`number`) — process identifier.
-* `exitCode` (`Promise<number>`) — resolves when the process exits. Nonzero codes resolve normally instead of rejecting.
-* `output()` (`Promise<ExecOutput>`) — reads buffered output once. `ExecOutput` contains `stdout` (`ArrayBuffer`), `stderr` (`ArrayBuffer`), and `exitCode` (`number`). Ignored streams produce empty buffers. Use `TextDecoder` to decode text.
-* `kill(signal?: number)` (`void`) — queues a signal for the process. The default is `SIGTERM`, signal `15`. The signal must be from `1` through `64`.
+- `stdin` ( `WritableStream | null`) — writable standard input when `stdin` is `"pipe"`.
+- `stdout` ( `ReadableStream | null`) — readable standard output when piped.
+- `stderr` ( `ReadableStream | null`) — readable standard error when piped separately.
+- `pid` ( `number`) — process identifier.
+- `exitCode` ( `Promise<number>`) — resolves when the process exits. Nonzero codes resolve normally instead of rejecting.
+- `output()` ( `Promise<ExecOutput>`) — reads buffered output once. `ExecOutput` contains `stdout` ( `ArrayBuffer`), `stderr` ( `ArrayBuffer`), and `exitCode` ( `number`). Ignored streams produce empty buffers. Use `TextDecoder` to decode text.
+- `kill(signal?: number)` ( `void`) — queues a signal for the process. The default is `SIGTERM`, signal `15`. The signal must be from `1` through `64`.
 
 With `stderr: "combined"`, `stderr` is `null` on `ExecProcess` and an empty `ArrayBuffer` on `ExecOutput`. Read both output channels from `stdout`.
 
@@ -178,11 +182,11 @@ With `stderr: "combined"`, `stderr` is `null` on `ExecProcess` and an empty `Arr
 
 #### Exceptions
 
-* `exec()` throws when the Container is not running.
-* `exec()` throws a `TypeError` when `cmd` is empty, an option mode is invalid, or `stderr: "combined"` is used with `stdout: "ignore"`.
-* `exec()` rejects if the runtime cannot create or start the process.
-* Environment variable names cannot contain `=` or null characters. Environment values, `cwd`, and `user` cannot contain null characters.
-* `kill()` throws a `RangeError` when the signal is outside the supported range.
+- `exec()` throws when the Container is not running.
+- `exec()` throws a `TypeError` when `cmd` is empty, an option mode is invalid, or `stderr: "combined"` is used with `stdout: "ignore"`.
+- `exec()` rejects if the runtime cannot create or start the process.
+- Environment variable names cannot contain `=` or null characters. Environment values, `cwd`, and `user` cannot contain null characters.
+- `kill()` throws a `RangeError` when the signal is outside the supported range.
 
 For task-oriented examples, refer to [Execute commands](https://developers.cloudflare.com/containers/guides/execute-commands/).
 
@@ -196,11 +200,11 @@ this.ctx.container.destroy("Manually Destroyed");
 
 #### Parameters
 
-* `error` (optional): A string that will be sent to the error handler of the `monitor` method. This is useful for logging or debugging purposes.
+- `error` (optional): A string that will be sent to the error handler of the `monitor` method. This is useful for logging or debugging purposes.
 
 #### Return values
 
-* A promise that returns once the container is destroyed.
+- A promise that returns once the container is destroyed.
 
 ### `signal`
 
@@ -213,11 +217,11 @@ this.ctx.container.signal(SIGTERM);
 
 #### Parameters
 
-* `signal`: a number representing the signal to send to the container. This is typically a POSIX signal number, such as SIGTERM (15) or SIGKILL (9).
+- `signal`: a number representing the signal to send to the container. This is typically a POSIX signal number, such as SIGTERM (15) or SIGKILL (9).
 
 #### Return values
 
-* None.
+- None.
 
 ### `getTcpPort`
 
@@ -248,11 +252,11 @@ try {
 
 #### Parameters
 
-* `port` (number): a TCP port number to use for communication with the container.
+- `port` (number): a TCP port number to use for communication with the container.
 
 #### Return values
 
-* `TcpPort`: a `TcpPort` object representing the TCP port. This object can be used to send requests to the container over TCP and HTTP.
+- `TcpPort`: a `TcpPort` object representing the TCP port. This object can be used to send requests to the container over TCP and HTTP.
 
 ### `monitor`
 
@@ -279,11 +283,11 @@ class MyContainer extends DurableObject {
 
 #### Parameters
 
-* None
+- None
 
 #### Return values
 
-* A promise that resolves when the container exits.
+- A promise that resolves when the container exits.
 
 ### `interceptOutboundHttp`
 
@@ -307,12 +311,12 @@ await this.ctx.container.interceptOutboundHttp("123.123.123.123/23", worker);
 
 #### Parameters
 
-* `target` (string): A hostname, hostname glob (for example, `*.example.com`), IP address, IP:port, or CIDR range to match.
-* `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
+- `target` (string): A hostname, hostname glob (for example, `*.example.com`), IP address, IP:port, or CIDR range to match.
+- `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
 
 #### Return values
 
-* None.
+- None.
 
 ### `interceptAllOutboundHttp`
 
@@ -324,11 +328,11 @@ await this.ctx.container.interceptAllOutboundHttp(worker);
 
 #### Parameters
 
-* `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle all outbound HTTP requests.
+- `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle all outbound HTTP requests.
 
 #### Return values
 
-* A promise that resolves once the intercept rule is installed.
+- A promise that resolves once the intercept rule is installed.
 
 ### `interceptOutboundHttps`
 
@@ -351,20 +355,20 @@ this.ctx.container.interceptOutboundHttps("*", worker);
 
 #### Parameters
 
-* `target` (string): A hostname or hostname glob pattern to match. Use `*` to intercept all HTTPS traffic.
-* `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
+- `target` (string): A hostname or hostname glob pattern to match. Use `*` to intercept all HTTPS traffic.
+- `worker` (WorkerEntrypoint): A `WorkerEntrypoint` instance to handle matching requests.
 
 #### Return values
 
-* None.
+- None.
 
 ## Related resources
 
-* [Container class reference](https://developers.cloudflare.com/containers/reference/container-class/) — the recommended high-level API built on top of this interface
-* [Containers overview](https://developers.cloudflare.com/containers/)
-* [Get started with Containers](https://developers.cloudflare.com/containers/get-started/)
-* [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) — persist state across container restarts
-* [Durable Objects](https://developers.cloudflare.com/durable-objects/) — the underlying platform that powers Containers
+- [Container class reference](https://developers.cloudflare.com/containers/reference/container-class/) — the recommended high-level API built on top of this interface
+- [Containers overview](https://developers.cloudflare.com/containers/)
+- [Get started with Containers](https://developers.cloudflare.com/containers/get-started/)
+- [SQLite storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) — persist state across container restarts
+- [Durable Objects](https://developers.cloudflare.com/durable-objects/) — the underlying platform that powers Containers
 
 Was this helpful?
 

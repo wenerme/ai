@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Businesses are eager to realize the potential boosts to productivity and efficiency promised by Generative AI. But with AI adoption, comes new security challenges. LLMs, chatbots, and institutional adoption of GenAI are quickly reshaping the landscape for data and user security.
 

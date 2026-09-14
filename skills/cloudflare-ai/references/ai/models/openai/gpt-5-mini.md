@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5-mini`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 GPT-5 Mini is the lightweight, low-cost variant of GPT-5, well suited to high-volume coding and reasoning tasks.
 
-| Model Info                                                                          |                                                                                                                     |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                      |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                              |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                       |
-| Zero data retention                                                                 | Yes                                                                                                                 |
-| Request formats                                                                     | Responses, Chat Completions                                                                                         |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-mini) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-mini) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Briefly, the fundamental laws are:
 
 - Zeroth law (often counted separately): If system A is in thermal equilibrium with B, and B is in thermal equilibrium with C, then A is in thermal equilibrium with C. This justifies the concept of temperature and allows the use of thermometers.
@@ -74,6 +75,7 @@ Briefly, the fundamental laws are:
 - Third law (zero‑temperature limit): As T → 0, the entropy of a perfect crystalline substance approaches a constant (often taken as zero). Consequences include the unattainability principle: absolute zero cannot be reached in a finite number of steps.
 
 (Traditionally textbooks list the First, Second and Third laws; the Zeroth law was named later because it underpins the concept of temperature.)
+```
 
 ```json
 {
@@ -118,7 +120,11 @@ Briefly, the fundamental laws are:
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -152,6 +158,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 The built‑in json module is the usual way. Use json.load() to parse a file object into Python objects (dicts, lists, strings, numbers, booleans, None).
 
 Basic example:
@@ -227,6 +234,7 @@ df = pd.read_json("data.json")
 ```
 
 That covers the usual ways — if you share the structure of your JSON or constraints (huge file, NDJSON, custom types), I can give a more specific example.
+````
 
 ```json
 {
@@ -269,7 +277,13 @@ That covers the usual ways — if you share the structure of your JSON or constr
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -317,6 +331,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great — here are several good stop options and a few sample itineraries depending on how much time you have and which route you take (PCH/Highway 1 for scenery, US‑101 for a balance of speed and towns, I‑5 if you want the fastest drive).
 
 High-level route choices
@@ -405,6 +420,7 @@ If you tell me:
 - how many days you have,
 - whether you prefer beaches, hiking, wine, food stops, or quick travel,
 I’ll draft a detailed day‑by‑day plan with drive times, restaurants and where to stay.
+```
 
 ```json
 {
@@ -447,7 +463,13 @@ I’ll draft a detailed day‑by‑day plan with drive times, restaurants and wh
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -481,6 +503,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The stairwell smelled like old coffee and lemon oil; the landlord kept the cleaner’s bottle on the second landing like a totem. I’d been up and down those stairs enough to know the rhythm of the building—how the pipes sang at night, which door stuck in winter—but the little hallway outside 3B hit a chord I hadn’t heard before: silence so neat it felt deliberate.
 
 Her coat was still on the back of a chair, collar up like a small, pale stack of waves. No sign of forced entry, no overturned furniture, just the slow, inevitable disorder of someone who left thinking she’d be right back. I moved to the chair because detectives move where other people don’t: to pockets. Fingers downed in fabric, searching for lint and receipts and the kind of trash that forgets its own story.
@@ -488,6 +511,7 @@ Her coat was still on the back of a chair, collar up like a small, pale stack of
 Folded twice, tucked in the inner pocket, was a drawing on cheap paper—crayon blue and stubborn as truth. A stick figure, two dots for eyes, and across the forehead a jagged line of darker crayon. At the bottom, in a child’s hurried script, the name: Jonah. My Jonah. The line across the forehead was the scar I got when I was eight and dared a chain-link fence like a daredevil out of hindsight. A scar nobody I worked with would know about; a scar I had never told anyone about.
 
 The paper smelled faintly of rain and something waxy. I held it up to the single strip of window light and the crayon wax glowed like it had a pulse. The building hummed. Downstairs, someone laughed at nothing. In my chest, something rearranged—an old drawer opened, and a key I’d misplaced years ago slid into my hand. Not a clue so much as an accusation: someone had been in her pockets and had known the exact shape of my face.
+```
 
 ```json
 {
@@ -530,7 +554,13 @@ The paper smelled faintly of rain and something waxy. I held it up to the single
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -563,6 +593,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Recursion is when a function calls itself to solve a smaller instance of the same problem. Two parts are essential:
 - Base case: a simple instance that can be answered directly (stops recursion).
 - Recursive case: reduces the problem toward the base case by calling the function again.
@@ -593,6 +624,7 @@ def sum_list(lst):
 Notes:
 - Always ensure the base case will be reached (otherwise you get infinite recursion and eventually a stack overflow).
 - Recursion can make code clearer for problems that naturally break into smaller subproblems (tree traversal, divide-and-conquer). For very deep recursion, consider iterative solutions or tail recursion (if the language optimizes it).
+```
 
 ```json
 [
@@ -6704,7 +6736,13 @@ Notes:
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -6734,6 +6772,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Do you mean this calendar week (June 16–22, 2026)? Assuming yes — here are the three top Cloudflare stories from June 16–22, 2026:
 
 - Jun 22, 2026 — Eastern North America fiber cut caused increased error rates/latency and a partial degradation across Cloudflare services; engineers re‑routed traffic and mitigated most impact. ([cloudflarestatus.com](https://www.cloudflarestatus.com/))
@@ -6741,6 +6780,7 @@ Do you mean this calendar week (June 16–22, 2026)? Assuming yes — here are t
 - Jun 17–18, 2026 — Cloudflare launched a Cloudflare One “Design Partner” designation and an AI‑powered toolkit (Cloudflare One Stack) to speed SASE/Zero‑Trust and AI security migrations via select channel partners. ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))
 
 Want me to expand any item (impacts, affected customers, timelines) or fetch more sources?
+```
 
 ```json
 {
@@ -6938,6 +6978,8 @@ Want me to expand any item (impacts, affected customers, timelines) or fetch mor
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -6968,13 +7010,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -6984,7 +7024,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -7006,11 +7046,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -7020,19 +7060,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -7056,7 +7092,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -7088,7 +7124,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7098,9 +7134,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/schema-output.json)
 
 Was this helpful?
 

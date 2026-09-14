@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Refactor a Worker to a Pages Function
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/how-to/refactor-a-worker-to-pages-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to refactor a Worker made to intake form submissions to a Pages Function that can be hosted on your Cloudflare Pages application. [Pages Functions](https://developers.cloudflare.com/pages/functions/) is a serverless function that lives within the same project directory as your application and is deployed with Cloudflare Pages. It enables you to run server-side code that adds dynamic functionality without running a dedicated server. You may want to refactor a Worker to a Pages Function for one of these reasons:
 
@@ -28,7 +28,7 @@ However, when using the `_worker.js` file in Pages, the entire `/functions` dire
 ## General refactoring steps
 
 1. Remove the fetch handler and replace it with the appropriate `OnRequest` method. Refer to [Functions](https://developers.cloudflare.com/pages/functions/get-started/) to select the appropriate method for your Function.
-2. Pass the `context` object as an argument to your new `OnRequest` method to access the properties of the context parameter: `request`,`env`,`params` and `next`.
+2. Pass the `context` object as an argument to your new `OnRequest` method to access the properties of the context parameter: `request`, `env`, `params` and `next`.
 3. Use middleware to handle logic that must be executed before or after route handlers. Learn more about [using Middleware](https://developers.cloudflare.com/pages/functions/middleware/) in the Functions documentation.
 
 ## Background
@@ -53,7 +53,7 @@ This step creates the boilerplate to write your Airtable submission Worker. Afte
 
 The following code block shows an example of a Worker that handles Airtable form submission.
 
-The `submitHandler` async function is called if the pathname of the work is `/submit`. This function checks that the request method is a `POST` request and then proceeds to parse and post the form entries to Airtable using your credentials, which you can store using [Wrangler secret](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret).
+The `submitHandler` async function is called if the pathname of the work is `/submit`. This function checks that the request method is a `POST` request and then proceeds to parse and post the form entries to Airtable using your credentials, which you can store using [Wrangler `secret`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret).
 
 ```js
 export default {
@@ -179,9 +179,9 @@ You can test your Function [locally using Wrangler](https://developers.cloudflar
 
 ## Related resources
 
-* [HTML forms](https://developers.cloudflare.com/pages/tutorials/forms/)
-* [Plugins documentation](https://developers.cloudflare.com/pages/functions/plugins/)
-* [Functions documentation](https://developers.cloudflare.com/pages/functions/)
+- [HTML forms](https://developers.cloudflare.com/pages/tutorials/forms/)
+- [Plugins documentation](https://developers.cloudflare.com/pages/functions/plugins/)
+- [Functions documentation](https://developers.cloudflare.com/pages/functions/)
 
 Was this helpful?
 

@@ -12,24 +12,34 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-## 1\. Turn on the detection
+## 1. Turn on the detection
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Leaked credential detection**.
 
 Use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Update the Leaked Credential Checks status for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks" \
@@ -53,25 +63,25 @@ Note
 
 To achieve optimal latency performance, Cloudflare recommends that you turn off [Exposed Credentials Checks](https://developers.cloudflare.com/waf/managed-rules/reference/exposed-credentials-check/) (a previous implementation) after turning on leaked credentials detection and setting up your mitigation strategy as described in the next steps.
 
-## 2\. Validate the leaked credentials detection behavior
+## 2. Validate the leaked credentials detection behavior
 
 Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) and HTTP logs to validate that Cloudflare is correctly detecting leaked credentials in incoming requests.
 
 Refer to [Test your configuration](#test-your-configuration) for more information on the test credentials you can use to validate your configuration.
 
-Alternatively, create a custom rule like the one described in the next step using a _Log_ action (only available to Enterprise customers). This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your configuration.
+Alternatively, create a custom rule like the one described in the next step using a *Log* action (only available to Enterprise customers). This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your configuration.
 
-## 3\. Mitigate requests with leaked credentials
+## 3. Mitigate requests with leaked credentials
 
-If you are on a Free plan, deploy the suggested [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) template available in **Security** \> **Security rules**.
+If you are on a Free plan, deploy the suggested [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) template available in **Security** > **Security rules**.
 
 When you deploy a rule using this template, you get instant protection against IPs attempting to access your application with a leaked password more than five times per 10 seconds. This rule can delay attacks by blocking them for a period of time. Alternatively, you can create a custom rule.
 
 Paid plans have access to more granular controls when creating a rule. If you are on a paid plan, [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that challenges requests containing leaked credentials:
 
-| Field                    | Operator | Value |
-| ------------------------ | -------- | ----- |
-| User and Password Leaked | equals   | True  |
+| Field | Operator | Value |
+| --- | --- | --- |
+| User and Password Leaked | equals | True |
 
 If you use the Expression Editor, enter the following expression:
 
@@ -79,41 +89,51 @@ If you use the Expression Editor, enter the following expression:
 (cf.waf.credential_check.username_and_password_leaked)
 ```
 
-Rule action: _Managed Challenge_
+Rule action: *Managed Challenge*
 
 This rule will match requests where Cloudflare detects a previously leaked set of credentials (username and password). For a list of fields provided by leaked credentials detection, refer to [Leaked credentials fields](https://developers.cloudflare.com/waf/detections/leaked-credentials/#leaked-credentials-fields).
 
+<details>
+
+<summary>
+
 Combine with other Rules language fields
 
-You can combine the previous expression with other [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) and [functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) of the Rules language. This allows you to customize the rule scope or combine leaked credential checking with other security features. For example:
+</summary>
 
-* The following expression will match requests containing leaked credentials addressed at an authentication endpoint:
+You can combine the previous expression with other <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/">fields</a> and <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/">functions</a> of the Rules language. This allows you to customize the rule scope or combine leaked credential checking with other security features. For example:
 
-| Field                    | Operator | Value            | Logic |
-| ------------------------ | -------- | ---------------- | ----- |
-| User and Password Leaked | equals   | True             | And   |
-| URI Path                 | contains | /admin/login.php |       |
-Expression when using the editor:
-`(cf.waf.credential_check.username_and_password_leaked and http.request.uri.path contains "/admin/login.php")`
-* The following expression will match requests coming from bots that include authentication credentials:
+- The following expression will match requests containing leaked credentials addressed at an authentication endpoint:
 
-| Field                   | Operator  | Value | Logic |
-| ----------------------- | --------- | ----- | ----- |
-| Authentication detected | equals    | True  | And   |
-| Bot Score               | less than | 10    |       |
-Expression when using the editor:
-`(cf.waf.auth_detected and cf.bot_management.score lt 10)`
+  | Field | Operator | Value | Logic |
+  | --- | --- | --- | --- |
+  | User and Password Leaked | equals | True | And |
+  | URI Path | contains | <code>/admin/login.php</code> |  |
+
+  Expression when using the editor: <br> <code>(cf.waf.credential_check.username_and_password_leaked and http.request.uri.path contains "/admin/login.php")</code>
+- The following expression will match requests coming from bots that include authentication credentials:
+
+  | Field | Operator | Value | Logic |
+  | --- | --- | --- | --- |
+  | Authentication detected | equals | True | And |
+  | Bot Score | less than | <code>10</code> |  |
+
+  Expression when using the editor: <br> <code>(cf.waf.auth_detected and cf.bot_management.score lt 10)</code>
+
+</details>
 
 For additional examples, refer to [Example mitigation rules](https://developers.cloudflare.com/waf/detections/leaked-credentials/examples/).
 
 ### Handle detected leaked credentials at the origin server
 
-Additionally, you may want to handle leaked credentials detected by Cloudflare at your origin server:
+Additionally, you may want to handle leaked credentials detected by Cloudflare at your origin server
+
+:
 
 1. [Turn on](https://developers.cloudflare.com/rules/transform/managed-transforms/configure/) the **Add Leaked Credentials Checks Header** managed transform.
 2. For requests received at your origin server containing the `Exposed-Credential-Check` header, you could redirect your end users to your reset password page when detecting previously leaked credentials.
 
-## 4\. (Optional) Configure a custom detection location
+## 4. (Optional) Configure a custom detection location
 
 Note
 
@@ -121,31 +141,43 @@ Only available for Enterprise customers.
 
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
-3. Under **Leaked credential detection** \> **Configurations**, select the edit icon.
+3. Under **Leaked credential detection** > **Configurations**, select the edit icon.
 4. Select **Add custom username and password location**.
 5. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:
+   - Username location:
+     `lookup_json_string(http.request.body.raw, "user")`
+   - Password location:
+     `lookup_json_string(http.request.body.raw, "secret")`
 
-  * Username location:
-  `lookup_json_string(http.request.body.raw, "user")`
-  * Password location:
-  `lookup_json_string(http.request.body.raw, "secret")`
-This configuration will scan incoming HTTP requests containing a JSON body with a structure similar to the following:
-```js
-{"user": "<USERNAME>", "secret": "<PASSWORD>"}
-```
-Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
+   This configuration will scan incoming HTTP requests containing a JSON body with a structure similar to the following:
+
+   ```js
+   {"user": "<USERNAME>", "secret": "<PASSWORD>"}
+   ```
+
+   Refer to the [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) documentation for more information on this function.
 6. Select **Save**.
 
 Use a `POST` request similar to the following:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone WAF Write`
-* `Account WAF Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zone WAF Write</code>
+- <code>Account WAF Write</code>
+
+</details>
+
+*Create a custom detection location for a zone.bash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/leaked-credential-checks/detections" \
@@ -163,7 +195,7 @@ This pair of lookup expressions (for username and password) will scan incoming H
 {"user": "<USERNAME>", "secret": "<PASSWORD>"}
 ```
 
-Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
+Refer to the [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) documentation for more information on this function.
 
 Use the `cloudflare_leaked_credential_check_rule` resource to add a custom detection location. For example:
 
@@ -175,7 +207,7 @@ resource "cloudflare_leaked_credential_check_rule" "custom_location_example" {
 }
 ```
 
-Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
+Refer to the [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) documentation for more information on this function.
 
 You only need to provide an expression for the username in custom detection locations.
 
@@ -191,13 +223,13 @@ After enabling and configuring the detection, you can use the credentials mentio
 
 Test credentials for users on a Free plan (will also work in paid plans):
 
-* Username: `CF_LEAKED_USERNAME_FREE`
-* Password: `CF_LEAKED_PASSWORD`
+- Username: `CF_LEAKED_USERNAME_FREE`
+- Password: `CF_LEAKED_PASSWORD`
 
 Test credentials for users on paid plans (will not work on Free plans):
 
-* Username: `CF_EXPOSED_USERNAME` or `CF_EXPOSED_USERNAME@example.com`
-* Password: `CF_EXPOSED_PASSWORD`
+- Username: `CF_EXPOSED_USERNAME` or `CF_EXPOSED_USERNAME@example.com`
+- Password: `CF_EXPOSED_PASSWORD`
 
 Cloudflare considers these specific credentials as having been previously leaked. Use them in your tests to check the behavior of your current configuration.
 

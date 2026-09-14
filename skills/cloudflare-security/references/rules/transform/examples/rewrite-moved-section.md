@@ -1,4 +1,5 @@
 ---
+description: Create a URL rewrite rule (part of Transform Rules) to rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`.
 title: Rewrite path of moved section of a website
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Create a URL rewrite rule (part of Transform Rules) to rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`.
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-moved-section/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-moved-section/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To rewrite everything under `/blog/<PATH>` to `/marketing/<PATH>`, create a new URL rewrite rule and define a dynamic URL path rewrite using [wildcard pattern parameters](https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#wildcard-pattern-parameters):
 
 **When incoming requests match**
 
-* **Wildcard pattern**
-  * **Request URL**: `https://<YOUR_HOSTNAME>/blog/*`
+- **Wildcard pattern**
+  - **Request URL**: `https://<YOUR_HOSTNAME>/blog/*`
 
 **Then rewrite the path and/or query**
 
-* **Target path**: \[`/`\] `blog/*`
-* **Rewrite to**: \[`/`\] `marketing/${1}`
+- **Target path**: \[`/`] `blog/*`
+- **Rewrite to**: \[`/`] `marketing/${1}`
 
 Make sure to replace `<YOUR_HOSTNAME>` with your actual hostname and adjust the example paths according to your setup.
 

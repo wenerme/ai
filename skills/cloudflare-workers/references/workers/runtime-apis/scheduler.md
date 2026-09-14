@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Scheduler
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/scheduler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/scheduler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
 The `scheduler` global provides task scheduling APIs based on the [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis). Workers currently implement the `scheduler.wait()` method.
 
-`scheduler.wait()` returns a Promise that resolves after a given number of milliseconds. It is an `await`\-able alternative to `setTimeout()` that does not require a callback.
+`scheduler.wait()` returns a Promise that resolves after a given number of milliseconds. It is an `await`-able alternative to `setTimeout()` that does not require a callback.
 
 Like other [timers in Workers](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#timers), `scheduler.wait()` does not advance during CPU execution when deployed to Cloudflare. This is a [security measure to mitigate against Spectre attacks](https://developers.cloudflare.com/workers/reference/security-model/#step-1-disallow-timers-and-multi-threading). In local development, timers advance regardless of whether I/O occurs.
 
@@ -31,15 +31,12 @@ await scheduler.wait(delay, options);
 
 ## Parameters
 
-* `delay` number
-
-  * The number of milliseconds to wait before the returned Promise resolves.
-* `options` object optional
-
-  * Optional configuration for the wait operation.
-  * `signal` AbortSignal optional
-
-    * An [AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) that cancels the wait. When the signal is aborted, the returned Promise rejects with an `AbortError`.
+- `delay` number
+  - The number of milliseconds to wait before the returned Promise resolves.
+- `options` object optional
+  - Optional configuration for the wait operation.
+  - `signal` AbortSignal optional
+    - An [`AbortSignal`](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) that cancels the wait. When the signal is aborted, the returned Promise rejects with an `AbortError`.
 
 ## Return value
 
@@ -137,7 +134,7 @@ export default {
 
 ### Cancel with AbortSignal
 
-Use an [AbortController](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
+Use an [`AbortController`](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) to cancel a pending wait.
 
 ```js
 export default {
@@ -183,10 +180,10 @@ export default {
 
 ## Related resources
 
-* [Timers](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#timers) — `setTimeout()` and `setInterval()` APIs
-* [Performance and timers](https://developers.cloudflare.com/workers/runtime-apis/performance/) — `performance.now()` and timer security behavior
-* [AbortController and AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) — cancel asynchronous operations
-* [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis) — the specification this API is based on
+- [Timers](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#timers) — `setTimeout()` and `setInterval()` APIs
+- [Performance and timers](https://developers.cloudflare.com/workers/runtime-apis/performance/) — `performance.now()` and timer security behavior
+- [AbortController and AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) — cancel asynchronous operations
+- [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis) — the specification this API is based on
 
 Was this helpful?
 

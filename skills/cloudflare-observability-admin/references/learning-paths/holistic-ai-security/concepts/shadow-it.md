@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Shadow IT?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-it/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/shadow-it/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Shadow IT is the use of IT hardware, software, or services by employees or departments without the knowledge or approval of the company's IT and security teams. This can include anything from cloud services and apps to hardware, like personal laptops or servers.
 

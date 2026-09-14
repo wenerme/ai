@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this tutorial to set up a Cloudflare Web3 gateway, which gives your application HTTP access to the IPFS or Ethereum network without running your own node.
 
@@ -28,28 +28,45 @@ Web3 gateways are a paid add-on. To get access, [subscribe to a gateway](https:/
 
 After purchasing a gateway subscription, create a gateway.
 
+<details>
+
+<summary>
+
 Create via dashboard
+
+</summary>
 
 To create a gateway using the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Web3** page.
-[Go to **Web3** ↗](https://dash.cloudflare.com/?to=/:account/:zone/web3)
+1. In the Cloudflare dashboard, go to the **Web3** page.<a href="https://dash.cloudflare.com/?to=/:account/:zone/web3">Go to **Web3** ↗</a>
 2. Click **Create Gateway**.
 3. Enter the following information:
-* **Hostname**: Enter a hostname to use as your gateway, which has to be a subdomain of the current Cloudflare zone.
-* **Gateway Description**: Enter a description to help distinguish between different gateways.
-* **Gateway Type**: Select a gateway target of [IPFS DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/), [IPFS Universal Path](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/), or [Ethereum](https://developers.cloudflare.com/web3/ethereum-gateway/).
-* **DNSLink**: Only applicable to IPFS gateways, more details at [DNSLink](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#how-is-it-used-with-cloudflare).
-1. Click **Deploy**.
+
+- **Hostname**: Enter a hostname to use as your gateway, which has to be a subdomain of the current Cloudflare zone.
+- **Gateway Description**: Enter a description to help distinguish between different gateways.
+- **Gateway Type**: Select a gateway target of <a href="https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/">IPFS DNSLink</a>, <a href="https://developers.cloudflare.com/web3/ipfs-gateway/concepts/universal-gateway/">IPFS Universal Path</a>, or <a href="https://developers.cloudflare.com/web3/ethereum-gateway/">Ethereum</a>.
+- **DNSLink**: Only applicable to IPFS gateways, more details at <a href="https://developers.cloudflare.com/web3/ipfs-gateway/concepts/dnslink/#how-is-it-used-with-cloudflare">DNSLink</a>.
+
+4. Click **Deploy**.
+
+</details>
+
+<details>
+
+<summary>
 
 Create via API
 
-To create a gateway using the API, send a [POST](https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/create/) request that includes the following parameters:
+</summary>
 
-* `name`: The hostname that will point to the target gateway via a `CNAME` record.
-* `target`: The gateway target for the hostname (`ethereum`, `ipfs`, `ipfs_universal_path`).
+To create a gateway using the API, send a <a href="https://developers.cloudflare.com/api/resources/web3/subresources/hostnames/methods/create/"><code>POST</code></a> request that includes the following parameters:
 
-If you need help with API authentication, refer to [Cloudflare API documentation](https://developers.cloudflare.com/fundamentals/api/).
+- <code>name</code>: The hostname that will point to the target gateway via a <code>CNAME</code> record.
+- <code>target</code>: The gateway target for the hostname (<code>ethereum</code>, <code>ipfs</code>, <code>ipfs_universal_path</code>).
+
+If you need help with API authentication, refer to <a href="https://developers.cloudflare.com/fundamentals/api/">Cloudflare API documentation</a>.
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
@@ -65,6 +82,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/web3/hostnames" \
 ```
 
 The response contains the complete definition of the new gateway.
+
+*Responsejson*
 
 ```json
 {
@@ -84,11 +103,13 @@ The response contains the complete definition of the new gateway.
 }
 ```
 
+</details>
+
 When you create a gateway, Cloudflare automatically:
 
-* Creates and adds [records to your Cloudflare DNS](https://developers.cloudflare.com/web3/reference/gateway-dns-records/) so your gateway can receive and route traffic appropriately.
-* [Proxies](https://developers.cloudflare.com/dns/proxy-status/) traffic to that hostname.
-* Issues an SSL/TLS certificate to cover the specified hostname.
+- Creates and adds [records to your Cloudflare DNS](https://developers.cloudflare.com/web3/reference/gateway-dns-records/) so your gateway can receive and route traffic appropriately.
+- [Proxies](https://developers.cloudflare.com/dns/proxy-status/) traffic to that hostname.
+- Issues an SSL/TLS certificate to cover the specified hostname.
 
 ## Step 3 - Customize Cloudflare settings
 
@@ -106,17 +127,17 @@ Since this is a service with [usage-based billing](https://developers.cloudflare
 
 To set up those notifications:
 
-1. In the Cloudflare dashboard, go to the **Notifications** page.
-[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. On **Alert Type** of **Usage Based Billing**, click **Select**.
 3. Fill out the following information:
+   - **Name**
+   - **Product**
+   - **Notification limit** (exact metric will vary based on product)
+   - **Notification email**
 
-  * **Name**
-  * **Product**
-  * **Notification limit** (exact metric will vary based on product)
-  * **Notification email**
-Note
-Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
+   Note
+
+   Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
 4. Select **Save**.
 
 ## Step 6 - Use the gateway

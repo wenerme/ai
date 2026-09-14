@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TURN Service
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/turn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/turn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Separately from the SFU, Realtime offers a managed TURN service. TURN acts as a relay point for traffic between WebRTC clients like the browser and SFUs, particularly in scenarios where direct communication is obstructed by NATs or firewalls. TURN maintains an allocation of public IP addresses and ports for each session, ensuring connectivity even in restrictive network environments.
 
@@ -20,18 +20,18 @@ Using Cloudflare Realtime TURN service is available free of charge when used tog
 
 ## Service address and ports
 
-| Protocol      | Primary address     | Primary port | Alternate port |
-| ------------- | ------------------- | ------------ | -------------- |
-| STUN over UDP | stun.cloudflare.com | 3478/udp     |                |
-| TURN over UDP | turn.cloudflare.com | 3478/udp     |                |
-| TURN over TCP | turn.cloudflare.com | 3478/tcp     | 80/tcp         |
-| TURN over TLS | turn.cloudflare.com | 5349/tcp     | 443/tcp        |
+| Protocol | Primary address | Primary port | Alternate port |
+| --- | --- | --- | --- |
+| STUN over UDP | stun.cloudflare.com | 3478/udp | |
+| TURN over UDP | turn.cloudflare.com | 3478/udp | |
+| TURN over TCP | turn.cloudflare.com | 3478/tcp | 80/tcp |
+| TURN over TLS | turn.cloudflare.com | 5349/tcp | 443/tcp |
 
 ## Regions
 
-Cloudflare Realtime TURN service runs on [Cloudflare's global network ↗](https://www.cloudflare.com/network) \- a growing global network of thousands of machines distributed across hundreds of locations, with the notable exception of the Cloudflare's [China Network](https://developers.cloudflare.com/china-network/).
+Cloudflare Realtime TURN service runs on [Cloudflare's global network ↗](https://www.cloudflare.com/network) - a growing global network of thousands of machines distributed across hundreds of locations, with the notable exception of the Cloudflare's [China Network](https://developers.cloudflare.com/china-network/).
 
-When a client tries to connect to `turn.cloudflare.com`, it _automatically_ connects to the Cloudflare location closest to them. We achieve this using [anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/).
+When a client tries to connect to `turn.cloudflare.com`, it *automatically* connects to the Cloudflare location closest to them. We achieve this using [anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/).
 
 To learn more about the architecture that makes this possible, read this [technical deep-dive about Realtime ↗](https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc).
 
@@ -39,17 +39,17 @@ To learn more about the architecture that makes this possible, read this [techni
 
 TLS versions supported include TLS 1.1, TLS 1.2, and TLS 1.3.
 
-| OpenSSL Name                  | TLS 1.1 | TLS 1.2 | TLS 1.3 |
-| ----------------------------- | ------- | ------- | ------- |
-| AEAD-AES128-GCM-SHA256        | No      | No      | ✅       |
-| AEAD-AES256-GCM-SHA384        | No      | No      | ✅       |
-| AEAD-CHACHA20-POLY1305-SHA256 | No      | No      | ✅       |
-| ECDHE-ECDSA-AES128-GCM-SHA256 | No      | ✅       | No      |
-| ECDHE-RSA-AES128-GCM-SHA256   | No      | ✅       | No      |
-| ECDHE-RSA-AES128-SHA          | ✅       | ✅       | No      |
-| AES128-GCM-SHA256             | No      | ✅       | No      |
-| AES128-SHA                    | ✅       | ✅       | No      |
-| AES256-SHA                    | ✅       | ✅       | No      |
+| OpenSSL Name | TLS 1.1 | TLS 1.2 | TLS 1.3 |
+| --- | --- | --- | --- |
+| AEAD-AES128-GCM-SHA256 | No | No | ✅ |
+| AEAD-AES256-GCM-SHA384 | No | No | ✅ |
+| AEAD-CHACHA20-POLY1305-SHA256 | No | No | ✅ |
+| ECDHE-ECDSA-AES128-GCM-SHA256 | No | ✅ | No |
+| ECDHE-RSA-AES128-GCM-SHA256 | No | ✅ | No |
+| ECDHE-RSA-AES128-SHA | ✅ | ✅ | No |
+| AES128-GCM-SHA256 | No | ✅ | No |
+| AES128-SHA | ✅ | ✅ | No |
+| AES256-SHA | ✅ | ✅ | No |
 
 ## MTU
 
@@ -59,9 +59,9 @@ There is no specific MTU limit for Cloudflare Realtime TURN service.
 
 Cloudflare Realtime TURN service places limits on:
 
-* Unique IP address you can communicate with per relay allocation (>5 new IP/sec)
-* Packet rate outbound and inbound to the relay allocation (>5-10 kpps)
-* Data rate outbound and inbound to the relay allocation (>50-100 Mbps)
+- Unique IP address you can communicate with per relay allocation (>5 new IP/sec)
+- Packet rate outbound and inbound to the relay allocation (>5-10 kpps)
+- Data rate outbound and inbound to the relay allocation (>50-100 Mbps)
 
 Limits apply to each TURN allocation independently
 

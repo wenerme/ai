@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Binding
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/batch-api/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/batch-api/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Workers Bindings to interact with the Batch API.
 
@@ -23,6 +23,8 @@ Send your initial batch inference request by composing a JSON payload containing
 Note
 
 Ensure that the total payload is under 10 MB.
+
+*src/index.tsts*
 
 ```ts
 export interface Env {
@@ -68,9 +70,9 @@ export default {
 
 You will get a response with the following values:
 
-* **`status`**: Indicates that your request is queued.
-* **`request_id`**: A unique identifier for the batch request.
-* **`model`**: The model used for the batch inference.
+- **`status`**: Indicates that your request is queued.
+- **`request_id`**: A unique identifier for the batch request.
+- **`model`**: The model used for the batch inference.
 
 Of these, the `request_id` is important for when you need to [poll the batch status](#poll-batch-status).
 

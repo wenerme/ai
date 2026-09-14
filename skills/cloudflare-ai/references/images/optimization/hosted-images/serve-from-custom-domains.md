@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Serve images from custom domains
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Image delivery is supported from all customer domains under the same Cloudflare account. To serve images through custom domains, an image URL should be adjusted to the following format:
 
@@ -28,11 +28,11 @@ https://example.com/cdn-cgi/imagedelivery/ZWd9g1K7eljCn_KDTu_MWA/083eb7b2-5392-4
 
 In this example, `<ACCOUNT_HASH>`, `<IMAGE_ID>` and `<VARIANT_NAME>` are the same, but the hostname and prefix path is different:
 
-* `example.com`: Cloudflare proxied domain under the same account as the Cloudflare Images.
-* `/cdn-cgi/imagedelivery`: Path to trigger `cdn-cgi` image proxy.
-* `ZWd9g1K7eljCn_KDTu_MWA`: The Images account hash. This can be found in the Cloudflare Images Dashboard.
-* `083eb7b2-5392-4565-b69e-aff66acddd00`: The image ID.
-* `public`: The variant name.
+- `example.com`: Cloudflare proxied domain under the same account as the Cloudflare Images.
+- `/cdn-cgi/imagedelivery`: Path to trigger `cdn-cgi` image proxy.
+- `ZWd9g1K7eljCn_KDTu_MWA`: The Images account hash. This can be found in the Cloudflare Images Dashboard.
+- `083eb7b2-5392-4565-b69e-aff66acddd00`: The image ID.
+- `public`: The variant name.
 
 ## Custom paths
 
@@ -46,17 +46,18 @@ This example lets you rewrite a request from `example.com/images` to `example.co
 
 To create a rule:
 
-1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+1. In the Cloudflare dashboard, go to the **Rules Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Next to **URL Rewrite Rules**, select **Create rule**.
 3. Under **If incoming requests match**, select **Wildcard pattern** and enter the following **Request URL** (update with your own domain):
-```txt
-https://example.com/images/*
-```
-4. Under **Then rewrite the path and/or query** \> **Path**, enter the following values (using your account hash):
 
-  * **Target path**: \[`/`\] `images/*`
-  * **Rewrite to**: \[`/`\] `cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}`
+   ```txt
+   https://example.com/images/*
+   ```
+
+
+4. Under **Then rewrite the path and/or query** > **Path**, enter the following values (using your account hash):
+   - **Target path**: \[`/`] `images/*`
+   - **Rewrite to**: \[`/`] `cdn-cgi/imagedelivery/<ACCOUNT_HASH>/${1}`
 5. Select **Deploy** when you are done.
 
 ### Advanced version
@@ -69,13 +70,12 @@ This example lets you rewrite a request from `example.com/images/some-image-id/w
 
 To create a rule:
 
-1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+1. In the Cloudflare dashboard, go to the **Rules Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Next to **URL Rewrite Rules**, select **Create rule**.
 3. Under **If incoming requests match**, select **Custom filter expression** and then select **Edit expression**.
 4. In the text field, enter `(http.request.uri.path matches "^/images/.*$")`.
 5. Under **Path**, select **Rewrite to**.
-6. Select _Dynamic_ and enter the following in the text field.
+6. Select *Dynamic* and enter the following in the text field.
 
 ```txt
 regex_replace(

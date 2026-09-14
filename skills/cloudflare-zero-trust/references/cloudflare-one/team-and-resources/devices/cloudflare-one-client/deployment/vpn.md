@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client with legacy VPNs
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/vpn/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare One Client (formerly WARP) can run alongside most legacy third-party VPNs. However, both the Cloudflare One Client and your VPN try to control the same things on the device: which traffic goes where (routing), which DNS server answers queries, and which firewall rules apply. To prevent conflicts, you must split these responsibilities between the two products:
 
-* IP traffic is split tunneled between the Cloudflare One Client and the VPN. All VPN traffic must bypass the Cloudflare One Client and vice versa.
-* The VPN bypasses/allows/excludes all domains, IPs, and ports listed in [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
-* DNS resolution is handled by either the Cloudflare One Client or the VPN. You must disable DNS filtering in one of the two products.
+- IP traffic is split tunneled between the Cloudflare One Client and the VPN. All VPN traffic must bypass the Cloudflare One Client and vice versa.
+- The VPN bypasses/allows/excludes all domains, IPs, and ports listed in [Cloudflare One Client with firewall](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/).
+- DNS resolution is handled by either the Cloudflare One Client or the VPN. You must disable DNS filtering in one of the two products.
 
 For the most stable and consistent connection, we recommend connecting your [private network or individual applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) to Cloudflare instead of using a legacy VPN. However, until you can migrate, the following guidelines will help get your Zero Trust deployment up and running.
 
@@ -28,36 +28,36 @@ In [Traffic and DNS mode](https://developers.cloudflare.com/cloudflare-one/team-
 
 If you cannot disable DNS on your VPN, switch to [Traffic only mode](#secure-web-gateway-without-dns-filtering) mode to disable DNS in the Cloudflare One Client.
 
-### 1\. Configure the VPN
+### 1. Configure the VPN
 
 Perform these steps in your third-party VPN software. Refer to your VPN's documentation for specific instructions on how to configure these settings.
 
 1. Enable split tunneling in the third-party VPN.
 2. Disable DNS configuration in the third-party VPN.
 
-### 2\. Configure WARP
+### 2. Configure WARP
 
-Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
 2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:
+   - Private IP address range exposed by your third-party VPN client. For example,
 
-  * Private IP address range exposed by your third-party VPN client. For example,
+     | Selector | Value |
+     | --- | --- |
+     | IP Address | `172.16.0.0/12` |
+     |  |  |
+   - Server that your third-party VPN client connects to. For example,
 
-| Selector   | Value         |
-| ---------- | ------------- |
-| IP Address | 172.16.0.0/12 |
-|            |               |
-  * Server that your third-party VPN client connects to. For example,
+     | Selector | Value |
+     | --- | --- |
+     | Domain | `*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com` |
 
-| Selector | Value                                                         |
-| -------- | ------------------------------------------------------------- |
-| Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
-1. (Optional) In [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/), add the domains that you want to resolve using your VPN's private DNS servers. For example,
+3. (Optional) In [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/), add the domains that you want to resolve using your VPN's private DNS servers. For example,
 
-| Domain                 | DNS Servers                  |
-| ---------------------- | ---------------------------- |
-| internal.wiki.intranet | 172.31.26.130, 172.31.23.120 |
+   | Domain | DNS Servers |
+   | --- | --- |
+   | `internal.wiki.intranet` | `172.31.26.130`, `172.31.23.120` |
 
 You can now [test](#test-the-configuration) if WARP runs alongside the VPN.
 
@@ -65,29 +65,29 @@ You can now [test](#test-the-configuration) if WARP runs alongside the VPN.
 
 In [Traffic only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#traffic-only-mode), the Cloudflare One Client only controls IP routing — it does not manage DNS. This is the simpler option when your VPN must retain DNS control, because you only need to split tunnel IP traffic.
 
-### 1\. Configure the VPN
+### 1. Configure the VPN
 
 Enable split tunneling in your third-party VPN software. Refer to your VPN's documentation for specific instructions on how to configure this setting.
 
-### 2\. Configure WARP
+### 2. Configure WARP
 
-Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** \> **Team & Resources** \> **Devices** \> **Device profiles** \> **General profiles**.
+Perform these steps in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 
 1. Set your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) to **Exclude IPs and domains**.
 2. [Add the following entries](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#add-a-route) to your Split Tunnel Exclude list:
+   - Private IP address range exposed by your third-party VPN client. For example,
 
-  * Private IP address range exposed by your third-party VPN client. For example,
+     | Selector | Value |
+     | --- | --- |
+     | IP Address | `172.16.0.0/12` |
+     |  |  |
+   - Server that your third-party VPN client connects to. For example,
 
-| Selector   | Value         |
-| ---------- | ------------- |
-| IP Address | 172.16.0.0/12 |
-|            |               |
-  * Server that your third-party VPN client connects to. For example,
+     | Selector | Value |
+     | --- | --- |
+     | Domain | `*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com` |
 
-| Selector | Value                                                         |
-| -------- | ------------------------------------------------------------- |
-| Domain   | \*.cvpn-endpoint-xxxxx.prod.clientvpn.us-west-2.amazonaws.com |
-1. In your device profile, verify that **Service mode** is set to **Traffic only mode**.
+3. In your device profile, verify that **Service mode** is set to **Traffic only mode**.
 
 ## Test the configuration
 

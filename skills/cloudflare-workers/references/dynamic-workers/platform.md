@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Limits](https://developers.cloudflare.com/dynamic-workers/platform/limits/)
+- [Limits](https://developers.cloudflare.com/dynamic-workers/platform/limits/)
 
 Was this helpful?
 

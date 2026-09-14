@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Privacy Pass Protocol
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Pass splits responsibility across four roles so that no single party knows everything about user's identity and activity. This page explains the information flow of the protocol. For who operates each role and the privacy properties this design provides, refer to [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/).
 
@@ -20,12 +20,12 @@ Privacy Pass splits responsibility across four roles so that no single party kno
 
 ## Roles overview
 
-| Role     | Responsibility                                                                                                            |
-| -------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Client   | Requests access, conducts issuance and redemption protocols.                                                              |
-| Origin   | Issues token challenges and verifies redeemed tokens.                                                                     |
-| Attester | Runs a deployment-specific attestation process to verify the client.                                                      |
-| Issuer   | Signs blinded token requests for attested clients. Cloudflare's issuers use publicly verifiable Blind RSA (token type 2). |
+| Role | Responsibility |
+| --- | --- |
+| Client | Requests access, conducts issuance and redemption protocols. |
+| Origin | Issues token challenges and verifies redeemed tokens. |
+| Attester | Runs a deployment-specific attestation process to verify the client. |
+| Issuer | Signs blinded token requests for attested clients. Cloudflare's issuers use publicly verifiable Blind RSA (token type `2`). |
 
 ---
 
@@ -79,9 +79,9 @@ To run the complete issuance and redemption flow on your own machine — no Clou
 
 ## Related resources
 
-* [RFC 9576: Privacy Pass Architecture ↗](https://datatracker.ietf.org/doc/rfc9576/)
-* [RFC 9577: The Privacy Pass HTTP Authentication Scheme ↗](https://datatracker.ietf.org/doc/rfc9577/)
-* [RFC 9578: Privacy Pass Issuance Protocols ↗](https://datatracker.ietf.org/doc/rfc9578/)
+- [RFC 9576: Privacy Pass Architecture ↗](https://datatracker.ietf.org/doc/rfc9576/)
+- [RFC 9577: The Privacy Pass HTTP Authentication Scheme ↗](https://datatracker.ietf.org/doc/rfc9577/)
+- [RFC 9578: Privacy Pass Issuance Protocols ↗](https://datatracker.ietf.org/doc/rfc9578/)
 
 Was this helpful?
 

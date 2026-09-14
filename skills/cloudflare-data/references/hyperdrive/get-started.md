@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Aug 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive accelerates access to your existing databases from Cloudflare Workers, making even single-region databases feel globally distributed.
 
@@ -22,9 +22,9 @@ Hyperdrive understands the difference between read and write queries to your dat
 
 This guide will instruct you through:
 
-* Creating your first Hyperdrive configuration.
-* Creating a [Cloudflare Worker](https://developers.cloudflare.com/workers/) and binding it to your Hyperdrive configuration.
-* Establishing a database connection from your Worker to a public database.
+- Creating your first Hyperdrive configuration.
+- Creating a [Cloudflare Worker](https://developers.cloudflare.com/workers/) and binding it to your Hyperdrive configuration.
+- Establishing a database connection from your Worker to a public database.
 
 Note
 
@@ -37,10 +37,10 @@ Learn more about the [databases that Hyperdrive supports](https://developers.clo
 Before you begin, ensure you have completed the following:
 
 1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a Node version manager like [nvm ↗](https://github.com/nvm-sh/nvm) or [Volta ↗](https://volta.sh/) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
-3. Have a publicly accessible PostgreSQL or MySQL (or compatible) database. _If your database is in a private network_, refer to [Connect to a private database using Workers VPC](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/).
+2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a Node version manager like [nvm ↗](https://github.com/nvm-sh/nvm) or [Volta ↗](https://volta.sh/) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+3. Have a publicly accessible PostgreSQL or MySQL (or compatible) database. *If your database is in a private network*, refer to [Connect to a private database using Workers VPC](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/).
 
-## 1\. Log in
+## 1. Log in
 
 Before creating your Hyperdrive binding, log in with your Cloudflare account by running:
 
@@ -50,7 +50,7 @@ npx wrangler login
 
 You will be directed to a web page asking you to log in to the Cloudflare dashboard. After you have logged in, you will be asked if Wrangler can make changes to your Cloudflare account. Scroll down and select **Allow** to continue.
 
-## 2\. Create a Worker
+## 2. Create a Worker
 
 New to Workers?
 
@@ -74,16 +74,16 @@ pnpm create cloudflare@latest hyperdrive-tutorial
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tutorial` directory will include:
 
-* A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
-* A [wrangler.jsonc](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. `wrangler.jsonc` is how your `hyperdrive-tutorial` Worker will connect to Hyperdrive.
+- A `"Hello World"` [Worker](https://developers.cloudflare.com/workers/get-started/guide/#3-write-code) at `src/index.ts`.
+- A [`wrangler.jsonc`](https://developers.cloudflare.com/workers/wrangler/configuration/) configuration file. `wrangler.jsonc` is how your `hyperdrive-tutorial` Worker will connect to Hyperdrive.
 
 ### Enable Node.js compatibility
 
@@ -91,7 +91,7 @@ This will create a new `hyperdrive-tutorial` directory. Your new `hyperdrive-tut
 
 For compatibility dates of `2026-08-04` or later, Workers and Pages projects enable both `nodejs_compat` and `nodejs_compat_v2` by default. Built-in runtime APIs and polyfills are available without additional configuration. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date.
 
-If your compatibility date is before `2026-08-04`, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
+If your compatibility date is before `2026-08-04`, add the [`nodejs_compat`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
 
 ```jsonc
 {
@@ -107,7 +107,7 @@ compatibility_flags = [ "nodejs_compat" ]
 
 To turn off [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) completely for a compatibility date of `2026-08-04` or later, remove the positive flags if present. Then add both `no_nodejs_compat` and `no_nodejs_compat_v2`. For configuration examples, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-## 3\. Connect Hyperdrive to a database
+## 3. Connect Hyperdrive to a database
 
 Hyperdrive works by connecting to your database, pooling database connections globally, and speeding up your database access through Cloudflare's network.
 
@@ -121,15 +121,14 @@ cd hyperdrive-tutorial
 
 To create your first Hyperdrive, you will need:
 
-* The IP address (or hostname) and port of your database.
-* The database username (for example, `hyperdrive-demo`).
-* The password associated with that username.
-* The name of the database you want Hyperdrive to connect to. For example, `postgres` or `mysql`.
+- The IP address (or hostname) and port of your database.
+- The database username (for example, `hyperdrive-demo`).
+- The password associated with that username.
+- The name of the database you want Hyperdrive to connect to. For example, `postgres` or `mysql`.
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
 ```txt
-
 postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
@@ -142,7 +141,6 @@ npx wrangler hyperdrive create <YOUR_CONFIG_NAME> --connection-string="postgres:
 ```
 
 ```txt
-
 mysql://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 ```
 
@@ -181,7 +179,7 @@ Note
 
 Hyperdrive will attempt to connect to your database with the provided credentials to verify they are correct before creating a configuration. If you encounter an error when attempting to connect, refer to Hyperdrive's [troubleshooting documentation](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug possible causes.
 
-## 4\. Bind your Worker to Hyperdrive
+## 4. Bind your Worker to Hyperdrive
 
 You must create a binding in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) for your Worker to connect to your Hyperdrive configuration. [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) allow your Workers to access resources, like Hyperdrive, on the Cloudflare developer platform.
 
@@ -206,9 +204,9 @@ id = "<YOUR_DATABASE_ID>"
 
 Specifically:
 
-* The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-* The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
-* Your binding is available in your Worker at `env.<BINDING_NAME>`.
+- The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
+- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
 
@@ -235,7 +233,7 @@ Note
 
 Learn more about setting up [Hyperdrive for local development](https://developers.cloudflare.com/hyperdrive/configuration/local-development/).
 
-## 5\. Run a query against your database
+## 5. Run a query against your database
 
 Once you have created a Hyperdrive configuration and bound it to your Worker, you can run a query against your database.
 
@@ -478,7 +476,7 @@ Alternatively, you can run `wrangler dev --remote` to test against your deployed
 
 Learn more about [local development with Hyperdrive](https://developers.cloudflare.com/hyperdrive/configuration/local-development/).
 
-## 6\. Deploy your Worker
+## 6. Deploy your Worker
 
 You can now deploy your Worker to make your project accessible on the Internet. To deploy your Worker, run:
 
@@ -499,6 +497,8 @@ If your Worker makes **multiple sequential queries** per request, use [Placement
 
 If your Worker makes only one query per request, placement does not improve end-to-end latency. The total round-trip time is the same whether it happens near the user or near the database.
 
+*wrangler.jsoncjsonc*
+
 ```jsonc
 {
 	"placement": {
@@ -509,9 +509,9 @@ If your Worker makes only one query per request, placement does not improve end-
 
 ## Next steps
 
-* Learn more about [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* How to [configure query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
-* [Troubleshooting common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
+- Learn more about [how Hyperdrive works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- How to [configure query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
+- [Troubleshooting common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
 
 If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
 

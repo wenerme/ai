@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # AppTheme
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/app-theme/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/ios/app-theme/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The application theme singleton that provides pre-configured appearance objects for UI components. Use `AppTheme.shared` to access default appearances or call `setUp(theme:)` to apply a custom theme.
 
@@ -24,9 +24,9 @@ let theme = AppTheme.shared
 
 ## Methods
 
-| Method                         | Return Type | Description                                           |
-| ------------------------------ | ----------- | ----------------------------------------------------- |
-| setUp(theme: AppThemeProtocol) | Void        | Applies a custom theme conforming to AppThemeProtocol |
+| Method | Return Type | Description |
+| --- | --- | --- |
+| `setUp(theme: AppThemeProtocol)` | `Void` | Applies a custom theme conforming to `AppThemeProtocol` |
 
 ## Usage Examples
 

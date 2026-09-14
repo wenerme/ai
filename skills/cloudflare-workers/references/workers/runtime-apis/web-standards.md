@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web standards
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/web-standards/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/web-standards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## JavaScript standards
 
@@ -20,14 +20,14 @@ The Cloudflare Workers runtime is [built on top of the V8 JavaScript and WebAsse
 
 All of the [standard built-in objects ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) supported by the current Google Chrome stable release are supported, with a few notable exceptions:
 
-* For security reasons, the following are not allowed:
-  * `eval()`
-  * `new Function`
-  * [WebAssembly.compile ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compile%5Fstatic)
-  * [WebAssembly.compileStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/compileStreaming%5Fstatic)
-  * `WebAssembly.instantiate` with a [buffer parameter ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiate%5Fstatic#primary%5Foverload%5F%E2%80%94%5Ftaking%5Fwasm%5Fbinary%5Fcode)
-  * [WebAssembly.instantiateStreaming ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript%5Finterface/instantiateStreaming%5Fstatic)
-* `Date.now()` returns the time of the last I/O; it does not advance during code execution.
+- For security reasons, the following are not allowed:
+  - `eval()`
+  - `new Function`
+  - [`WebAssembly.compile` ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/compile_static)
+  - [`WebAssembly.compileStreaming` ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/compileStreaming_static)
+  - `WebAssembly.instantiate` with a [buffer parameter ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate_static#primary_overload_%E2%80%94_taking_wasm_binary_code)
+  - [`WebAssembly.instantiateStreaming` ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiateStreaming_static)
+- `Date.now()` returns the time of the last I/O; it does not advance during code execution.
 
 ---
 
@@ -37,30 +37,23 @@ The following methods are available per the [Worker Global Scope ↗](https://de
 
 ### Base64 utility methods
 
-* atob()
-
-  * Decodes a string of data which has been encoded using base-64 encoding.
-* btoa()
-
-  * Creates a base-64 encoded ASCII string from a string of binary data.
+- atob()
+  - Decodes a string of data which has been encoded using base-64 encoding.
+- btoa()
+  - Creates a base-64 encoded ASCII string from a string of binary data.
 
 ### Timers
 
-* setInterval()
-
-  * Schedules a function to execute every time a given number of milliseconds elapses.
-* clearInterval()
-
-  * Cancels the repeated execution set using [setInterval() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setInterval).
-* setTimeout()
-
-  * Schedules a function to execute in a given amount of time.
-* clearTimeout()
-
-  * Cancels the delayed execution set using [setTimeout() ↗](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
-* [scheduler.wait()](https://developers.cloudflare.com/workers/runtime-apis/scheduler/)
-
-  * Returns a Promise that resolves after a given number of milliseconds. An `await`\-able alternative to `setTimeout()`.
+- setInterval()
+  - Schedules a function to execute every time a given number of milliseconds elapses.
+- clearInterval()
+  - Cancels the repeated execution set using [`setInterval()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/setInterval).
+- setTimeout()
+  - Schedules a function to execute in a given amount of time.
+- clearTimeout()
+  - Cancels the delayed execution set using [`setTimeout()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout).
+- [`scheduler.wait()`](https://developers.cloudflare.com/workers/runtime-apis/scheduler/)
+  - Returns a Promise that resolves after a given number of milliseconds. An `await`-able alternative to `setTimeout()`.
 
 Note
 
@@ -68,25 +61,23 @@ Timers are only available inside of [the Request Context](https://developers.clo
 
 ### `performance.timeOrigin` and `performance.now()`
 
-* performance.timeOrigin
-
-  * Returns the high resolution time origin. Workers uses the UNIX epoch as the time origin, meaning that `performance.timeOrigin` will always return `0`.
-* performance.now()
-
-  * Returns a `DOMHighResTimeStamp` representing the number of milliseconds elapsed since `performance.timeOrigin`. Note that Workers intentionally reduces the precision of `performance.now()` such that it returns the time of the last I/O and does not advance during code execution. Effectively, because of this, and because `performance.timeOrigin` is always, `0`, `performance.now()` will always equal `Date.now()`, yielding a consistent view of the passage of time within a Worker.
+- performance.timeOrigin
+  - Returns the high resolution time origin. Workers uses the UNIX epoch as the time origin, meaning that `performance.timeOrigin` will always return `0`.
+- performance.now()
+  - Returns a `DOMHighResTimeStamp` representing the number of milliseconds elapsed since `performance.timeOrigin`. Note that Workers intentionally reduces the precision of `performance.now()` such that it returns the time of the last I/O and does not advance during code execution. Effectively, because of this, and because `performance.timeOrigin` is always, `0`, `performance.now()` will always equal `Date.now()`, yielding a consistent view of the passage of time within a Worker.
 
 ### `EventTarget` and `Event`
 
-The [EventTarget ↗](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget) and [Event ↗](https://developer.mozilla.org/en-US/docs/Web/API/Event) API allow objects to publish and subscribe to events.
+The [`EventTarget` ↗](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget) and [`Event` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Event) API allow objects to publish and subscribe to events.
 
 ### `AbortController` and `AbortSignal`
 
-The [AbortController ↗](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) and [AbortSignal ↗](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) APIs provide a common model for canceling asynchronous operations.
+The [`AbortController` ↗](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) and [`AbortSignal` ↗](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) APIs provide a common model for canceling asynchronous operations.
 
 ### Fetch global
 
-* fetch()
-  * Starts the process of fetching a resource from the network. Refer to [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
+- fetch()
+  - Starts the process of fetching a resource from the network. Refer to [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
 Note
 
@@ -98,9 +89,9 @@ The Fetch API is only available inside of [the Request Context](https://develope
 
 Both `TextEncoder` and `TextDecoder` support UTF-8 encoding/decoding.
 
-[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/API/Encoding%5FAPI).
+[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/API/Encoding_API).
 
-The [TextEncoderStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream) and [TextDecoderStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream) classes are also available.
+The [`TextEncoderStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream) and [`TextDecoderStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream) classes are also available.
 
 ---
 
@@ -122,7 +113,7 @@ A new spec-compliant implementation of the URL class can be enabled using the `u
 
 The `CompressionStream` and `DecompressionStream` classes support the deflate, deflate-raw and gzip compression methods.
 
-[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/API/Compression%5FStreams%5FAPI)
+[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/API/Compression_Streams_API)
 
 ---
 
@@ -138,19 +129,21 @@ The `URLPattern` API provides a mechanism for matching URLs based on a convenien
 
 The `Intl` API allows you to format dates, times, numbers, and more to the format that is used by a provided locale (language and region).
 
-[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Intl).
+[Refer to the MDN documentation for more information ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
 
 ---
 
 ## `navigator.userAgent`
 
-When the [global\_navigator](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-navigator) compatibility flag is set, the [navigator.userAgent ↗](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent) property is available with the value `'Cloudflare-Workers'`. This can be used, for example, to reliably determine that code is running within the Workers environment.
+When the [`global_navigator`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-navigator) compatibility flag is set, the [`navigator.userAgent` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgent) property is available with the value `'Cloudflare-Workers'`. This can be used, for example, to reliably determine that code is running within the Workers environment.
 
 ## Unhandled promise rejections
 
-The [unhandledrejection ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection%5Fevent) event is emitted by the global scope when a JavaScript promise is rejected without a rejection handler attached.
+The [`unhandledrejection` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event) event is emitted by the global scope when a JavaScript promise is rejected without a rejection handler attached.
 
-The [rejectionhandled ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/rejectionhandled%5Fevent) event is emitted by the global scope when a JavaScript promise rejection is handled late (after a rejection handler is attached to the promise after an `unhandledrejection` event has already been emitted).
+The [`rejectionhandled` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/rejectionhandled_event) event is emitted by the global scope when a JavaScript promise rejection is handled late (after a rejection handler is attached to the promise after an `unhandledrejection` event has already been emitted).
+
+*worker.jsjs*
 
 ```js
 addEventListener("unhandledrejection", (event) => {
@@ -168,7 +161,7 @@ addEventListener("rejectionhandled", (event) => {
 
 ## `navigator.sendBeacon(url[, data])`
 
-When the [global\_navigator](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-navigator) compatibility flag is set, the [navigator.sendBeacon(...) ↗](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) API is available to send an HTTP `POST` request containing a small amount of data to a web server. This API is intended as a means of transmitting analytics or diagnostics information asynchronously on a best-effort basis.
+When the [`global_navigator`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-navigator) compatibility flag is set, the [`navigator.sendBeacon(...)` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) API is available to send an HTTP `POST` request containing a small amount of data to a web server. This API is intended as a means of transmitting analytics or diagnostics information asynchronously on a best-effort basis.
 
 For example, you can replace:
 
@@ -188,7 +181,7 @@ navigator.sendBeacon("https://example.com", "hello world");
 
 ## The Web File System Access API
 
-When the `enable_web_file_system` compatibility flag is set, Workers supports the [Web File System Access API ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI), which allows you to read and write files and directories to a virtual file system within the Worker environment. This API provides access to the same in-memory virtual file system as the [node:fs module](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) but does not require Node.js compatibility to be enabled.
+When the `enable_web_file_system` compatibility flag is set, Workers supports the [Web File System Access API ↗](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API), which allows you to read and write files and directories to a virtual file system within the Worker environment. This API provides access to the same in-memory virtual file system as the [`node:fs` module](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) but does not require Node.js compatibility to be enabled.
 
 ```js
 const root = await navigator.storage.getDirectory();
@@ -208,7 +201,7 @@ export default {
 };
 ```
 
-Please refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/File%5FSystem%5FAccess%5FAPI) for more information on using this API, and to the [node:fs documentation](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) for details on the virtual file system structure and limitations.
+Please refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API) for more information on using this API, and to the [`node:fs` documentation](https://developers.cloudflare.com/workers/runtime-apis/nodejs/fs/) for details on the virtual file system structure and limitations.
 
 Was this helpful?
 

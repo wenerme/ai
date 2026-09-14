@@ -12,30 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Profiling Memory
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding Worker memory usage can help you optimize performance, avoid Out of Memory (OOM) errors when hitting [Worker memory limits](https://developers.cloudflare.com/workers/platform/limits/#memory), and fix memory leaks.
 
 You can profile memory usage with snapshots in DevTools. Memory snapshots let you view a summary of memory usage, see how much memory is allocated to different data types, and get details on specific objects in memory.
 
-When using DevTools to profile memory, it may be difficult to replicate specific behavior you are seeing in production. To mimic production behavior, make sure the requests you send to the local Worker are similar to requests in production. This might mean sending a large volume of requests, making requests to specific routes, or using production-like data with the [\--remote flag](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
+When using DevTools to profile memory, it may be difficult to replicate specific behavior you are seeing in production. To mimic production behavior, make sure the requests you send to the local Worker are similar to requests in production. This might mean sending a large volume of requests, making requests to specific routes, or using production-like data with the [--remote flag](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
 ## Taking a snapshot
 
 To generate a memory snapshot:
 
-* Run `wrangler dev` to start your Worker
-* Press the `D` from your terminal to open DevTools
-* Select on the "Memory" tab
-* Send requests to your Worker to start allocating memory
-  * Optionally include a debugger to make sure you can pause execution at the proper time
-* Select `Take snapshot`
+- Run `wrangler dev` to start your Worker
+- Press the `D` from your terminal to open DevTools
+- Select on the "Memory" tab
+- Send requests to your Worker to start allocating memory
+  - Optionally include a debugger to make sure you can pause execution at the proper time
+- Select `Take snapshot`
 
 You can now inspect Worker memory.
 
 ## An Example Snapshot
 
 Let's look at an example to learn how to read a memory snapshot. Imagine you have the following Worker:
+
+*index.jsjs*
 
 ```js
 let responseText = "Hello world!";

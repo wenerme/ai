@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # About
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Simple explanation
 
@@ -52,22 +52,30 @@ For more details, refer to [What is a TLS handshake? ↗](https://www.cloudflare
 
 Without Authenticated Origin Pulls, Cloudflare performs standard TLS handshakes between a client device and Cloudflare and Cloudflare and your origin. This is true even if you have [**Full**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) or [**Full (strict)**](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) encryption modes enabled.
 
+```
     flowchart TD
       accTitle: Connection diagram without Authenticated Origin Pulls
       A[End user query for <code>example.com</code>] --Standard TLS Handshake--> B[Cloudflare network]
       B --Standard TLS Handshake--> C[Origin server]
       D[External device] --Standard TLS Handshake ----> C
 
+```
 
-This lack of authentication means that - even if your origin is [protected behind Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) \- attackers with your origin's IP address will still receive a response from your origin for HTTPS requests.
+
+
+This lack of authentication means that - even if your origin is [protected behind Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) - attackers with your origin's IP address will still receive a response from your origin for HTTPS requests.
 
 With Authenticated Origin Pulls, Cloudflare performs standard TLS handshakes between a client device and Cloudflare, but a client-authenticated TLS handshake between Cloudflare and your origin.
 
+```
     flowchart TD
       accTitle: Connection diagram with Authenticated Origin Pulls
       A[End user query for <code>example.com</code>] --Standard TLS Handshake--> B[Cloudflare network]
       B --Client authenticated TLS Handshake--> C[Origin server]
       D[External device] --Standard TLS Handshake -----x C
+
+```
+
 
 
 This additional layer of authentication ensures that any HTTPS requests outside of Cloudflare will not receive a response from your origin.

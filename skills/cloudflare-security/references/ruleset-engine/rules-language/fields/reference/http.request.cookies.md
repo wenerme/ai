@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.cookies
 
-`http.request.cookies` `Map<Array<String>>`
+`http.request.cookies``Map<Array<String>>`
 
 The `Cookie` HTTP header associated with a request represented as a Map (associative array).
 
@@ -31,8 +31,8 @@ any(http.request.cookies["app"][*] == "test")
 ```
 
 Categories:
-* Request
-* Headers
+- Request
+- Headers
 
 Was this helpful?
 

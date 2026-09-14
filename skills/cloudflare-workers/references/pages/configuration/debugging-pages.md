@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debugging Pages
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/debugging-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When setting up your Pages project, you may encounter various errors that prevent you from successfully deploying your site. This guide gives an overview of some common errors and solutions.
 
@@ -20,10 +20,10 @@ When setting up your Pages project, you may encounter various errors that preven
 
 You can review build errors in your Pages build log. To access your build log:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Deployments** \> **View details** \> **Build log**.
+3. Go to **Deployments** > **View details** > **Build log**.
+
 ![After logging in to the Cloudflare dashboard, access the build log by following the instructions above](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2078,height=1258,format=webp/_astro/pages-build-log.Dc14wrt1.png)
 
 Possible errors in your build log are included in the following sections.
@@ -36,14 +36,14 @@ To fix this in GitHub:
 
 1. Log in to your GitHub account.
 2. Go to **Settings** from your user icon > find **Applications** under Integrations.
-3. Find **Cloudflare Pages** \> **Configure** \> scroll down and select **Uninstall**.
+3. Find **Cloudflare Pages** > **Configure** > scroll down and select **Uninstall**.
 4. Re-authorize your GitHub user/organization on the Cloudflare dashboard.
 
 To fix this in GitLab:
 
 1. Log in to your GitLab account.
 2. Go to **Preferences** from your user icon > **Applications**.
-3. Find **Cloudflare Pages** \> scroll down and select **Revoke**.
+3. Find **Cloudflare Pages** > scroll down and select **Revoke**.
 
 Be aware that you need a role of **Maintainer** or above to successfully link your repository, otherwise the build will fail.
 
@@ -93,9 +93,9 @@ If you are not using Functions or have reviewed that your Functions configuratio
 
 If your custom domain is proxied ([orange-clouded](https://developers.cloudflare.com/dns/proxy-status/#benefits)) through Cloudflare, your zone's settings, like caching, will apply.
 
-If you are experiencing issues with new content not being shown, go to **Rules** \> **Page Rules** in the Cloudflare dashboard and check for a Page Rule with **Cache Everything** enabled. If present, remove this rule as Pages handles its own cache.
+If you are experiencing issues with new content not being shown, go to **Rules** > **Page Rules** in the Cloudflare dashboard and check for a Page Rule with **Cache Everything** enabled. If present, remove this rule as Pages handles its own cache.
 
-If you are experiencing errors on your custom domain but not on your `pages.dev` domain, go to **DNS** \> **Records** in the Cloudflare dashboard and set the DNS record for your project to be **DNS Only** (grey cloud). If the error persists, review your zone's configuration.
+If you are experiencing errors on your custom domain but not on your `pages.dev` domain, go to **DNS** > **Records** in the Cloudflare dashboard and set the DNS record for your project to be **DNS Only** (grey cloud). If the error persists, review your zone's configuration.
 
 ## Domain stuck in verification
 
@@ -112,7 +112,6 @@ curl -s -o /dev/null -D - https://example.com/.well-known/acme-challenge/randoms
 ```
 
 ```sh
-
 HTTP/2 302
 date: Mon, 03 Apr 2023 08:37:39 GMT
 location: https://example.cloudflareaccess.com/cdn-cgi/access/login/example.com?kid=...&redirect_url=%2F.well-known%2Facme-challenge%2F...
@@ -139,7 +138,6 @@ dig CAA example.com
 ```
 
 ```sh
-
 ; <<>> DiG 9.10.6 <<>> CAA example.com
 ;; global options: +cmd
 ;; Got answer:

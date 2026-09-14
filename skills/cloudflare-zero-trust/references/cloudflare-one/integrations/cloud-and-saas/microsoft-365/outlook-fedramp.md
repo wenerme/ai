@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Outlook (FedRAMP)
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -22,8 +22,8 @@ The Outlook (FedRAMP) integration detects a variety of data loss prevention, acc
 
 ## Integration prerequisites
 
-* A Microsoft 365 account with an active Microsoft Business Basic, Microsoft Business Standard, Microsoft 365 E3, Microsoft 365 E5, or Microsoft 365 F3 subscription
-* [Global admin role ↗](https://docs.microsoft.com/en-us/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles) or equivalent permissions in Microsoft 365
+- A Microsoft 365 account with an active Microsoft Business Basic, Microsoft Business Standard, Microsoft 365 E3, Microsoft 365 E5, or Microsoft 365 F3 subscription
+- [Global admin role ↗](https://docs.microsoft.com/en-us/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles) or equivalent permissions in Microsoft 365
 
 ## Integration permissions
 
@@ -39,34 +39,34 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 
 Get alerted when calendars in your Microsoft 365 account have their permissions changed to a less secure setting.
 
-| Finding type                          | FindingTypeID                        | Severity |
-| ------------------------------------- | ------------------------------------ | -------- |
-| Microsoft: Calendar shared externally | 7d2d9b00-3871-4abf-9e65-f29cf00c428b | Low      |
+| Finding type | FindingTypeID | Severity |
+| --- | --- | --- |
+| Microsoft: Calendar shared externally | `7d2d9b00-3871-4abf-9e65-f29cf00c428b` | Low |
 
 ### Email administrator settings
 
 Discover suspicious or insecure email configurations in your Microsoft domain. Missing SPF and DMARC records make it easier for bad actors to spoof email, while SPF records configured to another domain can be a potential warning sign of malicious activity.
 
-| Finding type                                        | FindingTypeID                        | Severity |
-| --------------------------------------------------- | ------------------------------------ | -------- |
-| Microsoft: Domain SPF record allows any IP address  | 27893e48-663e-43f9-83d4-c158c50259d0 | High     |
-| Microsoft: Domain SPF record not present            | 009093d9-43df-45a2-bdc6-2f35fc3a0c71 | Medium   |
-| Microsoft: Domain DMARC record not present          | bb3d3760-2c4e-4161-9164-cff92e809f9c | Medium   |
-| Microsoft: Domain DMARC not enforced                | a020d87d-332b-49d1-acc3-16c19d72fba4 | Medium   |
-| Microsoft: Domain DMARC not enforced for subdomains | 1837a549-4d4e-4101-917c-e9a4036e0c08 | Medium   |
-| Microsoft: Domain DMARC only partially enforced     | 943414ed-7c79-4d17-a253-8d73f34dcc1d | Medium   |
-| Microsoft: Domain not verified                      | dd1e9aba-57ee-4cf1-a895-dd2f1fc166a7 | Medium   |
-| Microsoft: App certification expires within 90 Days | d5ede282-0339-4983-88f3-849ac59ba840 | Low      |
+| Finding type | FindingTypeID | Severity |
+| --- | --- | --- |
+| Microsoft: Domain SPF record allows any IP address | `27893e48-663e-43f9-83d4-c158c50259d0` | High |
+| Microsoft: Domain SPF record not present | `009093d9-43df-45a2-bdc6-2f35fc3a0c71` | Medium |
+| Microsoft: Domain DMARC record not present | `bb3d3760-2c4e-4161-9164-cff92e809f9c` | Medium |
+| Microsoft: Domain DMARC not enforced | `a020d87d-332b-49d1-acc3-16c19d72fba4` | Medium |
+| Microsoft: Domain DMARC not enforced for subdomains | `1837a549-4d4e-4101-917c-e9a4036e0c08` | Medium |
+| Microsoft: Domain DMARC only partially enforced | `943414ed-7c79-4d17-a253-8d73f34dcc1d` | Medium |
+| Microsoft: Domain not verified | `dd1e9aba-57ee-4cf1-a895-dd2f1fc166a7` | Medium |
+| Microsoft: App certification expires within 90 Days | `d5ede282-0339-4983-88f3-849ac59ba840` | Low |
 
 ### Email forwarding
 
 Get alerted when users set their email to be forwarded externally. This can either be a sign of unauthorized activity, or an employee unknowingly sending potentially sensitive information to a personal email.
 
-| Finding type                                                     | FindingTypeID                        | Severity |
-| ---------------------------------------------------------------- | ------------------------------------ | -------- |
-| Microsoft: Active message rule forwards externally as attachment | 9efca21a-aba2-452f-bb17-e66d34b58765 | Low      |
-| Microsoft: Active message rule forwards externally               | 42fa3fe6-da72-4bf0-9bc9-5faa4a118ec4 | Low      |
-| Microsoft: Active message rule redirects externally              | b75ba81e-c98d-4b78-b5a1-47a2f54499e8 | Low      |
+| Finding type | FindingTypeID | Severity |
+| --- | --- | --- |
+| Microsoft: Active message rule forwards externally as attachment | `9efca21a-aba2-452f-bb17-e66d34b58765` | Low |
+| Microsoft: Active message rule forwards externally | `42fa3fe6-da72-4bf0-9bc9-5faa4a118ec4` | Low |
+| Microsoft: Active message rule redirects externally | `b75ba81e-c98d-4b78-b5a1-47a2f54499e8` | Low |
 
 Was this helpful?
 

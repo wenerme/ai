@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TypeScript Server SDK
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/server-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `FlagshipServerProvider` implements the OpenFeature server provider interface. The provider works in [Cloudflare Workers](https://developers.cloudflare.com/workers/), Node.js, and any server-side JavaScript runtime that supports the Fetch API.
 
@@ -120,18 +120,18 @@ const showNewCheckout = await client.getBooleanValue("new-checkout", false, {
 
 ## Configuration options
 
-| Option       | Type        | Required | Description                                                                                                                                                                     |
-| ------------ | ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| binding      | Flagship    | No       | The Flagship binding from env.FLAGS. Use this inside a Worker for best performance. The binding handles authentication automatically.                                           |
-| appId        | string      | No       | The Flagship app ID from the Cloudflare dashboard. Required when not using a binding.                                                                                           |
-| accountId    | string      | No       | Your Cloudflare account ID. Required when using appId.                                                                                                                          |
-| authToken    | string      | No       | A Cloudflare [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission. Required when not using a binding. |
-| fetchOptions | RequestInit | No       | Custom fetch options applied to HTTP requests.                                                                                                                                  |
-| timeout      | number      | No       | Request timeout in milliseconds. Defaults to 5000.                                                                                                                              |
-| retries      | number      | No       | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                                                                                          |
-| retryDelay   | number      | No       | Delay between retries in milliseconds. Defaults to 1000 and is capped at 30000.                                                                                                 |
-| cacheTtl     | number      | No       | Cache TTL in milliseconds. Enables response caching when greater than 0.                                                                                                        |
-| cacheMaxSize | number      | No       | Maximum cached entries. Defaults to 1000 when cacheTtl is set.                                                                                                                  |
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `binding` | `Flagship` | No | The Flagship binding from `env.FLAGS`. Use this inside a Worker for best performance. The binding handles authentication automatically. |
+| `appId` | `string` | No | The Flagship app ID from the Cloudflare dashboard. Required when not using a binding. |
+| `accountId` | `string` | No | Your Cloudflare account ID. Required when using `appId`. |
+| `authToken` | `string` | No | A Cloudflare [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission. Required when not using a binding. |
+| `fetchOptions` | `RequestInit` | No | Custom fetch options applied to HTTP requests. |
+| `timeout` | `number` | No | Request timeout in milliseconds. Defaults to `5000`. |
+| `retries` | `number` | No | Retry attempts on transient errors. Defaults to `1` and is capped at `10`. |
+| `retryDelay` | `number` | No | Delay between retries in milliseconds. Defaults to `1000` and is capped at `30000`. |
+| `cacheTtl` | `number` | No | Cache TTL in milliseconds. Enables response caching when greater than `0`. |
+| `cacheMaxSize` | `number` | No | Maximum cached entries. Defaults to `1000` when `cacheTtl` is set. |
 
 Provide either `binding` or `appId`, `accountId`, and `authToken`.
 
@@ -179,8 +179,8 @@ const value = await client.getBooleanValue("new-checkout", false, {
 
 The SDK ships with two hooks that you can attach to the OpenFeature client.
 
-* **LoggingHook** — Logs structured information for every evaluation.
-* **TelemetryHook** — Captures timing and event data for observability.
+- **LoggingHook** — Logs structured information for every evaluation.
+- **TelemetryHook** — Captures timing and event data for observability.
 
 ```js
 import { LoggingHook, TelemetryHook } from "@cloudflare/flagship/server";

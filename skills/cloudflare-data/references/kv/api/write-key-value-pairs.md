@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Write key-value pairs
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/api/write-key-value-pairs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/write-key-value-pairs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To create a new key-value pair, or to update the value for a particular key, call the `put()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
@@ -61,7 +61,7 @@ class Default(WorkerEntrypoint):
 
 The following method is provided to write to KV:
 
-* [put()](#put-method)
+- [put()](#put-method)
 
 ### `put()` method
 
@@ -77,23 +77,20 @@ self.env.NAMESPACE.put(key, value, options)
 
 #### Parameters
 
-* `key`: `string`
-
-  * The key to associate with the value. A key cannot be empty or be exactly equal to `.` or `..`. All other keys are valid. Keys have a maximum length of 512 bytes.
-* `value`: `string` | `ReadableStream` | `ArrayBuffer`
-
-  * The value to store. The type is inferred. The maximum size of a value is 25 MiB.
-* `options`: `{ expiration?: number, expirationTtl?: number, metadata?: object }`
-
-  * Optional. An object containing the `expiration` (optional), `expirationTtl` (optional), and `metadata` (optional) attributes.
-    * `expiration` is the number that represents when to expire the key-value pair in seconds since epoch.
-    * `expirationTtl` is the number that represents when to expire the key-value pair in seconds from now. The minimum value is 60.
-    * `metadata` is an object that must serialize to JSON. The maximum size of the serialized JSON representation of the metadata object is 1024 bytes.
+- `key`: `string`
+  - The key to associate with the value. A key cannot be empty or be exactly equal to `.` or `..`. All other keys are valid. Keys have a maximum length of 512 bytes.
+- `value`: `string` | `ReadableStream` | `ArrayBuffer`
+  - The value to store. The type is inferred. The maximum size of a value is 25 MiB.
+- `options`: `{ expiration?: number, expirationTtl?: number, metadata?: object }`
+  - Optional. An object containing the `expiration` (optional), `expirationTtl` (optional), and `metadata` (optional) attributes.
+    - `expiration` is the number that represents when to expire the key-value pair in seconds since epoch.
+    - `expirationTtl` is the number that represents when to expire the key-value pair in seconds from now. The minimum value is 60.
+    - `metadata` is an object that must serialize to JSON. The maximum size of the serialized JSON representation of the metadata object is 1024 bytes.
 
 #### Response
 
-* `response`: `Promise<void>`
-  * A `Promise` that resolves if the update is successful.
+- `response`: `Promise<void>`
+  - A `Promise` that resolves if the update is successful.
 
 The put() method returns a Promise that you should `await` on to verify a successful update.
 
@@ -111,7 +108,7 @@ Refer to [How KV works](https://developers.cloudflare.com/kv/concepts/how-kv-wor
 
 ### Write data in bulk
 
-Write more than one key-value pair at a time with Wrangler or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk%5Fupdate/).
+Write more than one key-value pair at a time with Wrangler or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk_update/).
 
 The bulk API can accept up to 10,000 KV pairs at once.
 
@@ -129,8 +126,8 @@ An `expiration` setting on a key will result in that key being deleted, even in 
 
 There are two ways to specify when a key should expire:
 
-* Set a key's expiration using an absolute time specified in a number of [seconds since the UNIX epoch ↗](https://en.wikipedia.org/wiki/Unix%5Ftime). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key’s expiration to `1554076800`.
-* Set a key's expiration time to live (TTL) using a relative number of seconds from the current time. For example, if you wanted a key to expire 10 minutes after creating it, you would set its expiration TTL to `600`.
+- Set a key's expiration using an absolute time specified in a number of [seconds since the UNIX epoch ↗](https://en.wikipedia.org/wiki/Unix_time). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key’s expiration to `1554076800`.
+- Set a key's expiration time to live (TTL) using a relative number of seconds from the current time. For example, if you wanted a key to expire 10 minutes after creating it, you would set its expiration TTL to `600`.
 
 Expiration targets that are less than 60 seconds into the future are not supported. This is true for both expiration methods.
 

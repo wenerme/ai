@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Start from Worker
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -26,21 +26,28 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
 
 1. Create a directory that will contain the assets in the root of your project (for example, `./public`)
 2. Add configuration to your Wrangler file to point to it.
-```jsonc
-{
-  "site": {
-    "bucket": "./public" // Add the directory with your static assets!
-  }
-}
-```
-```toml
-[site]
-bucket = "./public"
-```
+
+   ```jsonc
+   {
+     "site": {
+       "bucket": "./public" // Add the directory with your static assets!
+     }
+   }
+   ```
+
+   ```toml
+   [site]
+   bucket = "./public"
+   ```
+
+
 3. Install the `@cloudflare/kv-asset-handler` package in your project:
-```sh
-npm i -D @cloudflare/kv-asset-handler
-```
+
+   ```sh
+   npm i -D @cloudflare/kv-asset-handler
+   ```
+
+
 4. Import the `getAssetFromKV()` function into your Worker entry point and use it to respond with static assets.
 
 ```js
@@ -96,10 +103,13 @@ async function handleEvent(event) {
 
 For more information on the configurable options of `getAssetFromKV()` refer to [kv-asset-handler docs ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/kv-asset-handler).
 
-1. Run `wrangler deploy` or `npx wrangler deploy` as you would normally with your Worker project. Wrangler will automatically upload the assets found in the configured directory.
-```sh
-npx wrangler deploy
-```
+5. Run `wrangler deploy` or `npx wrangler deploy` as you would normally with your Worker project. Wrangler will automatically upload the assets found in the configured directory.
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
 
 Was this helpful?
 

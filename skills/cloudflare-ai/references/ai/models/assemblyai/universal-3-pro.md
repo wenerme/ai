@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • AssemblyAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `assemblyai/universal-3-pro`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.
 
-| Model Info          |                                                                                                                              |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.assemblyai.com/legal/terms-of-service)                                                                  |
-| More information    | [link ↗](https://www.assemblyai.com/)                                                                                        |
-| Zero data retention | Yes                                                                                                                          |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service) |
+| More information | [link ↗](https://www.assemblyai.com/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
 
 ## Usage
 
@@ -54,7 +54,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The sun rises in the east and sets in the west. This simple fact has been observed by humans for thousands of years.
+```
 
 ```json
 {
@@ -237,7 +239,11 @@ The sun rises in the east and sets in the west. This simple fact has been observ
 
 ## Examples
 
-**With Language Code** — Transcribe with an explicit language code
+<details>
+
+<summary>**With Language Code** — Transcribe with an explicit language code</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -260,7 +266,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 In the heart of the city, there is a large park where people go to relax and enjoy nature. The park has a beautiful pond with ducks and swans.
+```
 
 ```json
 {
@@ -483,7 +491,13 @@ In the heart of the city, there is a large park where people go to relax and enj
 }
 ```
 
-**With Key Terms** — Improve accuracy for domain-specific vocabulary
+</details>
+
+<details>
+
+<summary>**With Key Terms** — Improve accuracy for domain-specific vocabulary</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -514,7 +528,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 In the kitchen, the aroma of freshly baked bread filled the air. The loaves were golden brown and crusty on the outside and soft and warm on the inside.
+```
 
 ```json
 {
@@ -737,7 +753,13 @@ In the kitchen, the aroma of freshly baked bread filled the air. The loaves were
 }
 ```
 
-**Speaker Diarization** — Identify different speakers in the audio
+</details>
+
+<details>
+
+<summary>**Speaker Diarization** — Identify different speakers in the audio</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -760,7 +782,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
+```
 The train chugged along the tracks, carrying passengers to their destinations. The rhythmic sound of the wheels on the rails was soothing.
+```
 
 ```json
 {
@@ -942,6 +966,8 @@ The train chugged along the tracks, carrying passengers to their destinations. T
 }
 ```
 
+</details>
+
 ## Parameters
 
 audio\_url
@@ -964,7 +990,7 @@ prompt
 
 `string`A custom prompt to guide transcription style, formatting, and output characteristics. Maximum 1,500 words.
 
-▶keyterms\_prompt\[\]
+▶keyterms\_prompt\[]
 
 `array`An array of up to 1,000 words or phrases (max 6 words per phrase) to improve transcription accuracy. Cannot be used with the prompt parameter.
 
@@ -1004,7 +1030,7 @@ iab\_categories
 
 `boolean`Enable IAB (Interactive Advertising Bureau) content taxonomy classification.
 
-▶custom\_spelling\[\]
+▶custom\_spelling\[]
 
 `array`Custom spelling rules to replace specific words or phrases in the transcription output.
 
@@ -1032,7 +1058,7 @@ audio\_end\_at
 
 `integer`minimum: 0maximum: 9007199254740991Timestamp (in milliseconds) to end transcription at.
 
-▶word\_boost\[\]
+▶word\_boost\[]
 
 `array`Array of words to boost recognition accuracy (legacy - use keyterms\_prompt instead).
 
@@ -1052,7 +1078,7 @@ redact\_pii\_audio
 
 `boolean`Generate a redacted audio file with PII removed.
 
-▶redact\_pii\_policies\[\]
+▶redact\_pii\_policies\[]
 
 `array`Specific PII policies to apply for redaction.
 
@@ -1094,9 +1120,9 @@ language\_confidence
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/schema-output.json)
 
 Was this helpful?
 

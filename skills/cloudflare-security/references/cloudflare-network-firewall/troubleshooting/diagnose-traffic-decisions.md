@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Diagnose traffic decisions
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/troubleshooting/diagnose-traffic-decisions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When traffic is unexpectedly blocked, multiple Cloudflare systems could be responsible. This guide walks you through identifying what is blocking your traffic and how to resolve it.
 
@@ -34,20 +34,20 @@ To diagnose blocked traffic, use [Network Analytics](https://developers.cloudfla
 
 Before making changes, gather the following information:
 
-* What traffic is affected? Check source IP, destination IP, ports, and protocols.
-* When did the issue start?
-* Were any configuration changes made recently?
-* Is this affecting all traffic or specific flows?
-* Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) for any ongoing incidents
+- What traffic is affected? Check source IP, destination IP, ports, and protocols.
+- When did the issue start?
+- Were any configuration changes made recently?
+- Is this affecting all traffic or specific flows?
+- Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) for any ongoing incidents
 
 ## Filter dropped traffic
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
-2. Under **Protect & Connect**, go to **Insights** \> **Network analytics**.
+2. Under **Protect & Connect**, go to **Insights** > **Network analytics**.
 3. In the **All Traffic** tab, select **Add filter**.
 4. Configure the filter:
-  * Select **Action** \> **equals** \> **Drop**
-  * Select **Apply**.
+   - Select **Action** > **equals** > **Drop**
+   - Select **Apply**.
 5. Filter the time range to when the issue occurred.
 6. Add additional filters if you know the affected traffic characteristics (such as Source IP, Destination IP, and more).
 7. To identify the blocking system: In the **Packet Summary** graph, select the three dots > **Mitigation system**. This tells you which Cloudflare system blocked the traffic.
@@ -81,25 +81,25 @@ If your traffic was blocked by your Network Firewall configuration:
 If you cannot identify the issue from Network Analytics, use [packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/) to inspect the actual traffic:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
-2. Under **Protect & Connect**, go to **Insights** \> **Network health**.
+2. Under **Protect & Connect**, go to **Insights** > **Network health**.
 3. Go to **Diagnostics**, and configure a packet capture filter matching the affected traffic. Note that the packet capture (pcap) might be empty because packets were dropped.
 4. Analyze the captured packets to understand traffic characteristics.
 5. Compare against your rule configurations.
 
 ## Common scenarios
 
-| Scenario                     | Symptoms                                | Likely cause                            | Recommended action                                   |
-| ---------------------------- | --------------------------------------- | --------------------------------------- | ---------------------------------------------------- |
-| Partner traffic blocked      | Specific source IP blocked              | DDoS or ATP sensitivity                 | Allowlist partner IP ranges in both systems          |
-| New rule not working         | Traffic still passes                    | Rule order (earlier rule matches first) | Adjust rule priority or refine the matching criteria |
-| Traffic blocked after change | Sudden drops after configuration change | Rule misconfiguration                   | Review recent changes and revert to the last version |
+| Scenario | Symptoms | Likely cause | Recommended action |
+| --- | --- | --- | --- |
+| Partner traffic blocked | Specific source IP blocked | DDoS or ATP sensitivity | Allowlist partner IP ranges in both systems |
+| New rule not working | Traffic still passes | Rule order (earlier rule matches first) | Adjust rule priority or refine the matching criteria |
+| Traffic blocked after change | Sudden drops after configuration change | Rule misconfiguration | Review recent changes and revert to the last version |
 
 ## Related resources
 
-* [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/)
-* [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/)
-* [Network Firewall rule configuration](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/)
-* [Packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/)
+- [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/)
+- [Advanced TCP Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-tcp-protection/)
+- [Network Firewall rule configuration](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/add-policies/)
+- [Packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/)
 
 Was this helpful?
 

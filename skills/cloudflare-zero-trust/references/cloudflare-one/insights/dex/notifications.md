@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Notifications
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Administrators can receive alerts when Cloudflare detects connectivity issues with the Cloudflare One Client or degraded application performance. Notifications can be delivered via email, webhook, and third-party services.
 
@@ -22,7 +22,13 @@ DEX notifications are configured on the [Cloudflare dashboard ↗](https://dash.
 
 ## Available notifications
 
+<details>
+
+<summary>
+
 Device connectivity anomaly
+
+</summary>
 
 **Who is it for?**
 
@@ -30,12 +36,12 @@ Zero Trust customers who want to be notified when Cloudflare detects a spike or 
 
 **Other options / filters**
 
-* **Alert configuration**: Choose when to trigger a notification. Available options are _Connectivity spike_, _Connectivity drop_, and _Connectivity spike or drop_.
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Mode**: [WARP mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) deployed on the device.
+- **Alert configuration**: Choose when to trigger a notification. Available options are *Connectivity spike*, *Connectivity drop*, and *Connectivity spike or drop*.
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Mode**: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">WARP mode</a> deployed on the device.
 
 **Included with**
 
@@ -43,26 +49,34 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-Review your [fleet status](https://developers.cloudflare.com/cloudflare-one/insights/dex/fleet-status/) to investigate why the spike or drop occurred and which devices are impacted.
+Review your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/fleet-status/">fleet status</a> to investigate why the spike or drop occurred and which devices are impacted.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [Z-score](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score">Z-score</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 DEX test latency
 
+</summary>
+
 **Who is it for?**
 
-Zero Trust customers who wish to receive alerts when there is a spike or drop in application latency, as measured by the HTTP test [Resource Fetch time](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/#test-results) or Traceroute test [Round trip time](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/#test-results). Requires setting up a [DEX test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/).
+Zero Trust customers who wish to receive alerts when there is a spike or drop in application latency, as measured by the HTTP test <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/#test-results">Resource Fetch time</a> or Traceroute test <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/#test-results">Round trip time</a>. Requires setting up a <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/">DEX test</a>.
 
 **Other options / filters**
 
-* **Alert configuration**: Choose when to trigger a notification. Available options are _Latency spike_, _Latency drop_, and _Latency spike or drop_.
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+- **Alert configuration**: Choose when to trigger a notification. Available options are *Latency spike*, *Latency drop*, and *Latency spike or drop*.
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 
@@ -70,26 +84,34 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-View your [test results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) to investigate why the spike occurred.
+View your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/">test results</a> to investigate why the spike occurred.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [Z-score](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#z-score">Z-score</a>.
+
+</details>
+
+<details>
+
+<summary>
 
 DEX test low availability
 
+</summary>
+
 **Who is it for?**
 
-Zero Trust customers who wish to receive alerts when the percentage of successful HTTP or traceroute requests to an application drops below the selected service-level objective (SLO). Requires setting up a [DEX test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/).
+Zero Trust customers who wish to receive alerts when the percentage of successful HTTP or traceroute requests to an application drops below the selected service-level objective (SLO). Requires setting up a <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/">DEX test</a>.
 
 **Other options / filters**
 
-* **Service Level Objective (SLO)**: Specify the availability threshold that will trigger an alert. Enter a percentage in `xx.x` format (for example, `98.0`).
-* Filters:
-  * **Colo**: Cloudflare data center that the device is connected to.
-  * **Platform**: Operating system of the device.
-  * **Version**: WARP client version (for example, `2024.3.409.0`).
-  * **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
+- **Service Level Objective (SLO)**: Specify the availability threshold that will trigger an alert. Enter a percentage in <code>xx.x</code> format (for example, <code>98.0</code>).
+- Filters:
+  - **Colo**: Cloudflare data center that the device is connected to.
+  - **Platform**: Operating system of the device.
+  - **Version**: WARP client version (for example, <code>2024.3.409.0</code>).
+  - **Test name**: Choose which DEX test the alert should monitor. You will receive individual notifications for each test.
 
 **Included with**
 
@@ -97,17 +119,19 @@ All Cloudflare Zero Trust plans.
 
 **What should you do if you receive one?**
 
-View your [test results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/) to investigate why the degradation occurred.
+View your <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/">test results</a> to investigate why the degradation occurred.
 
 **Additional information**
 
-To learn more about the alert logic, refer to [SLO](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#slo).
+To learn more about the alert logic, refer to <a href="https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/#slo">SLO</a>.
+
+</details>
 
 ## Alert logic
 
 ### Z-score
 
-Cloudflare uses a z-score to detect unusual traffic spikes or drops. A [z-score ↗](https://en.wikipedia.org/wiki/Standard%5Fscore) is the number of standard deviations the current value is from the mean. Cloudflare calculates the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
+Cloudflare uses a z-score to detect unusual traffic spikes or drops. A [z-score ↗](https://en.wikipedia.org/wiki/Standard_score) is the number of standard deviations the current value is from the mean. Cloudflare calculates the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
 
 To trigger an alert, the z-score value must be above 3.5 or below -3.5, which indicates the current value is significantly different from the recent baseline.
 

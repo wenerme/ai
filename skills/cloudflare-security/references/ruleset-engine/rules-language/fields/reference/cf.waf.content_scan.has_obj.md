@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.content\_scan.has\_obj
 
-`cf.waf.content_scan.has_obj` `Boolean`
+`cf.waf.content_scan.has_obj``Boolean`
 
 Indicates whether the request contains at least one content object.
 
@@ -22,7 +22,7 @@ cf.waf.content_scan.has_obj and http.request.uri.path eq "/upload"
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

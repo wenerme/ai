@@ -14,19 +14,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Example of sub 1s latency video playback using RTMPS and ffplay
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/examples/rtmps%5Fplayback/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/rtmps_playback/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 Before you can play live video, you must first be [actively streaming to a live input](https://developers.cloudflare.com/stream/stream-live/start-stream-live).
 
-Copy the RTMPS _playback_ key for your live input from either:
+Copy the RTMPS *playback* key for your live input from either:
 
-* The **Live inputs** page of the Cloudflare dashboard.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-* The [Stream API](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api)
+- The **Live inputs** page of the Cloudflare dashboard. [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+- The [Stream API](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api)
 
 Paste it into the URL below, replacing `<RTMPS_PLAYBACK_KEY>`:
+
+*RTMPS playback with ffplaysh*
 
 ```sh
 ffplay -analyzeduration 1 -fflags -nobuffer -sync ext 'rtmps://live.cloudflare.com:443/live/<RTMPS_PLAYBACK_KEY>'

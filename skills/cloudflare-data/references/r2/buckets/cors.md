@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure CORS
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cross-Origin Resource Sharing (CORS) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
 
@@ -28,9 +28,9 @@ CORS is used when you interact with a bucket from a web browser, and you have tw
 
 Before you configure CORS, you must have:
 
-* An R2 bucket with at least one object. If you need to create a bucket, refer to [Create a public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/).
-* A domain you can use to access the object. This can also be a `localhost`.
-* (Optional) Access keys. An access key is only required when creating a presigned URL.
+- An R2 bucket with at least one object. If you need to create a bucket, refer to [Create a public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/).
+- A domain you can use to access the object. This can also be a `localhost`.
+- (Optional) Access keys. An access key is only required when creating a presigned URL.
 
 ## Use CORS with a public bucket
 
@@ -80,8 +80,7 @@ If you set a CORS policy on a bucket that is already serving traffic using a cus
 
 ## Add CORS policies from the dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Locate and select your bucket from the list.
 3. Select **Settings**.
 4. Under **CORS Policy**, select **Add CORS policy**.
@@ -96,6 +95,8 @@ You can configure CORS rules using the [Wrangler CLI](https://developers.cloudfl
 
 1. Create a JSON file with your CORS configuration:
 
+*cors.jsonjson*
+
 ```json
 {
   "rules": [
@@ -109,13 +110,13 @@ You can configure CORS rules using the [Wrangler CLI](https://developers.cloudfl
 }
 ```
 
-1. Apply the CORS policy to your bucket:
+2. Apply the CORS policy to your bucket:
 
 ```sh
 npx wrangler r2 bucket cors set <BUCKET_NAME> --file cors.json
 ```
 
-1. Verify the CORS policy was applied:
+3. Verify the CORS policy was applied:
 
 ```sh
 npx wrangler r2 bucket cors list <BUCKET_NAME>
@@ -125,13 +126,13 @@ npx wrangler r2 bucket cors list <BUCKET_NAME>
 
 The following fields in an R2 CORS policy map to HTTP response headers. These response headers are only returned when the incoming HTTP request is a valid CORS request.
 
-| Field Name     | Description                                                                                                                                                                                                                                                                                                                                                                   | Example                                                                                                                                                                                                                                                       |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AllowedOrigins | Specifies the value for the Access-Control-Allow-Origin header R2 sets when requesting objects in a bucket from a browser.                                                                                                                                                                                                                                                    | If a website at www.test.com needs to access resources (e.g. fonts, scripts) on a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) of static.example.com, you would set https://www.test.com as an AllowedOrigin. |
-| AllowedMethods | Specifies the value for the Access-Control-Allow-Methods header R2 sets when requesting objects in a bucket from a browser.                                                                                                                                                                                                                                                   | GET, POST, PUT                                                                                                                                                                                                                                                |
-| AllowedHeaders | Specifies the value for the Access-Control-Allow-Headers header R2 sets when requesting objects in this bucket from a browser.Cross-origin requests that include custom headers (e.g. x-user-id) should specify these headers as AllowedHeaders.                                                                                                                              | x-requested-by, User-Agent                                                                                                                                                                                                                                    |
-| ExposeHeaders  | Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the [safelisted response headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Expose-Headers#examples), such as Content-Encoding or cf-cache-status, you must specify it here. | Content-Encoding, cf-cache-status, Date                                                                                                                                                                                                                       |
-| MaxAgeSeconds  | Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified.                                                                                                                                                                                 | 3600                                                                                                                                                                                                                                                          |
+| Field Name | Description | Example |
+| --- | --- | --- |
+| `AllowedOrigins` | Specifies the value for the `Access-Control-Allow-Origin` header R2 sets when requesting objects in a bucket from a browser. | If a website at `www.test.com` needs to access resources (e.g. fonts, scripts) on a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) of `static.example.com`, you would set `https://www.test.com` as an `AllowedOrigin`. |
+| `AllowedMethods` | Specifies the value for the `Access-Control-Allow-Methods` header R2 sets when requesting objects in a bucket from a browser. | `GET`, `POST`, `PUT` |
+| `AllowedHeaders` | Specifies the value for the `Access-Control-Allow-Headers` header R2 sets when requesting objects in this bucket from a browser.Cross-origin requests that include custom headers (e.g. `x-user-id`) should specify these headers as `AllowedHeaders`. | `x-requested-by`, `User-Agent` |
+| `ExposeHeaders` | Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the [safelisted response headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Expose-Headers#examples), such as `Content-Encoding` or `cf-cache-status`, you must specify it here. | `Content-Encoding`, `cf-cache-status`, `Date` |
+| `MaxAgeSeconds` | Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified. | `3600` |
 
 ## Example
 
@@ -150,21 +151,21 @@ The `AllowedOrigins` specify the web server being used, and `localhost:3000` is 
 
 In general, a good strategy for making sure you have set the correct CORS rules is to look at the network request that is being blocked by your browser.
 
-* Make sure the rule's `AllowedOrigins` includes the origin where the request is being made from. (like `http://localhost:3000` or `https://yourdomain.com`)
-* Make sure the rule's `AllowedMethods` includes the blocked request's method.
-* Make sure the rule's `AllowedHeaders` includes the blocked request's headers.
+- Make sure the rule's `AllowedOrigins` includes the origin where the request is being made from. (like `http://localhost:3000` or `https://yourdomain.com`)
+- Make sure the rule's `AllowedMethods` includes the blocked request's method.
+- Make sure the rule's `AllowedHeaders` includes the blocked request's headers.
 
 Also note that CORS rule propagation can, in rare cases, take up to 30 seconds.
 
 ## Common Issues
 
-* Only a cross-origin request will include CORS response headers.
-  * A cross-origin request is identified by the presence of an `Origin` HTTP request header, with the value of the `Origin` representing a valid, allowed origin as defined by the `AllowedOrigins` field of your CORS policy.
-  * A request without an `Origin` HTTP request header will _not_ return any CORS response headers. Origin values must match exactly.
-* The value(s) for `AllowedOrigins` in your CORS policy must be a valid [HTTP Origin header value ↗](https://fetch.spec.whatwg.org/#origin-header). A valid `Origin` header does _not_ include a path component and must only be comprised of a `scheme://host[:port]` (where port is optional).
-  * Valid `AllowedOrigins` value: `https://static.example.com` \- includes the scheme and host. A port is optional and implied by the scheme.
-  * Invalid `AllowedOrigins` value: `https://static.example.com/` or `https://static.example.com/fonts/Calibri.woff2` \- incorrectly includes the path component.
-* If you need to access specific header values via JavaScript on the origin page, such as when using a video player, ensure you set `Access-Control-Expose-Headers` correctly and include the headers your JavaScript needs access to, such as `Content-Length`.
+- Only a cross-origin request will include CORS response headers.
+  - A cross-origin request is identified by the presence of an `Origin` HTTP request header, with the value of the `Origin` representing a valid, allowed origin as defined by the `AllowedOrigins` field of your CORS policy.
+  - A request without an `Origin` HTTP request header will *not* return any CORS response headers. Origin values must match exactly.
+- The value(s) for `AllowedOrigins` in your CORS policy must be a valid [HTTP Origin header value ↗](https://fetch.spec.whatwg.org/#origin-header). A valid `Origin` header does *not* include a path component and must only be comprised of a `scheme://host[:port]` (where port is optional).
+  - Valid `AllowedOrigins` value: `https://static.example.com` - includes the scheme and host. A port is optional and implied by the scheme.
+  - Invalid `AllowedOrigins` value: `https://static.example.com/` or `https://static.example.com/fonts/Calibri.woff2` - incorrectly includes the path component.
+- If you need to access specific header values via JavaScript on the origin page, such as when using a video player, ensure you set `Access-Control-Expose-Headers` correctly and include the headers your JavaScript needs access to, such as `Content-Length`.
 
 Was this helpful?
 

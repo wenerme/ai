@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshoot Transform Rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When troubleshooting a rule configuration, review the [Transform Rules evaluation](https://developers.cloudflare.com/rules/transform/#transform-rules-evaluation) section to understand how and when your Transform Rule is evaluated for each request.
 

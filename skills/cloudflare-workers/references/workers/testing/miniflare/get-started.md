@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get Started
 
-Last updated Apr 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Miniflare API allows you to dispatch events to workers without making actual HTTP requests, simulate connections between Workers, and interact with local emulations of storage products like [KV](https://developers.cloudflare.com/workers/testing/miniflare/storage/kv), [R2](https://developers.cloudflare.com/workers/testing/miniflare/storage/r2), and [Durable Objects](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects). This makes it great for writing tests, or other advanced use cases where you need finer-grained control.
 
@@ -75,7 +75,7 @@ The [rest of these docs](https://developers.cloudflare.com/workers/testing/minif
 
 ### String and File Scripts
 
-Note in the above example we're specifying `script` as a string. We could've equally put the script in a file such as `worker.js`, then used the `scriptPath`property instead:
+Note in the above example we're specifying `script` as a string. We could've equally put the script in a file such as `worker.js`, then used the `scriptPath` property instead:
 
 ```js
 const mf = new Miniflare({
@@ -182,7 +182,7 @@ const queueResult = await worker.queue("needy", [
 console.log(queueResult); // { outcome: "ok", retryAll: true, ackAll: false, explicitRetries: [], explicitAcks: []}
 ```
 
-See [📨 Fetch Events](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) and [⏰ Scheduled Events](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled)for more details.
+See [📨 Fetch Events](https://developers.cloudflare.com/workers/testing/miniflare/core/fetch) and [⏰ Scheduled Events](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled) for more details.
 
 ### HTTP Server
 
@@ -355,6 +355,7 @@ const mf = new Miniflare({
   httpsCertPath: "./cert.pem", // Path to PEM SSL cert chain
   cf: "./node_modules/.mf/cf.json", // Path for cached Request cf object from Cloudflare
   liveReload: true, // Reload HTML pages whenever worker is reloaded
+
 
 
   kvNamespaces: ["TEST_NAMESPACE"], // KV namespace to bind

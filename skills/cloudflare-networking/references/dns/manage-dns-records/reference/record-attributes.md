@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Record attributes
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use DNS record comments and tags to categorize and clarify the purpose of DNS records within Cloudflare.
 
@@ -20,9 +20,9 @@ Comments provide a unique descriptions for specific records, whereas tags group 
 
 These attributes are particularly useful when:
 
-* Multiple teams are managing DNS records within the same zone.
-* Your zone contains a large number of DNS records.
-* You want to filter your DNS records based on matching attributes (for example, when they are managed by the same team or used for the same application).
+- Multiple teams are managing DNS records within the same zone.
+- Your zone contains a large number of DNS records.
+- You want to filter your DNS records based on matching attributes (for example, when they are managed by the same team or used for the same application).
 
 Note
 
@@ -36,20 +36,20 @@ Comments and tags are only supported for [primary zones (full setup)](https://de
 
 ### Record comments
 
-|                     | Free | Pro | Business | Enterprise |
-| ------------------- | ---- | --- | -------- | ---------- |
-| Availability        | Yes  | Yes | Yes      | Yes        |
-| Character limit     | 100  | 500 | 500      | 500        |
-| Comments per record | 1    | 1   | 1        | 1          |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Character limit | 100 | 500 | 500 | 500 |
+| Comments per record | 1 | 1 | 1 | 1 |
 
 ### Record tags
 
-|                                                    | Free | Pro | Business | Enterprise |
-| -------------------------------------------------- | ---- | --- | -------- | ---------- |
-| Availability                                       | No   | Yes | Yes      | Yes        |
-| Name character limit (everything before the colon) | N/A  | 32  | 32       | 32         |
-| Value character limit (everything after the colon) | N/A  | 100 | 100      | 100        |
-| Tags per record                                    | N/A  | 20  | 20       | 20         |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | No | Yes | Yes | Yes |
+| Name character limit (everything before the colon) | N/A | 32 | 32 | 32 |
+| Value character limit (everything after the colon) | N/A | 100 | 100 | 100 |
+| Tags per record | N/A | 20 | 20 | 20 |
 
 ---
 
@@ -67,7 +67,7 @@ When exporting and importing, special tags starting by `cf-` allow you to contro
 
 ### Comments
 
-Comments are treated as [graphic Unicode characters ↗](https://en.wikipedia.org/wiki/Graphic%5Fcharacter), meaning that they are case-sensitive and do not have any character limitations. However, comments do not support newline (`\n`) or carriage return (`\r`) characters.
+Comments are treated as [graphic Unicode characters ↗](https://en.wikipedia.org/wiki/Graphic_character), meaning that they are case-sensitive and do not have any character limitations. However, comments do not support newline (`\n`) or carriage return (`\r`) characters.
 
 ### Tags
 

@@ -12,22 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Waiting Room Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Waiting Room Analytics gives you historical insights into the traffic going through your waiting room compared to your waiting room settings. Data is stored for the past 30 days.
 
 Using Waiting Room Analytics, you can:
 
-* Evaluate peak traffic flow through your waiting room and onto your site.
-* Determine how long users spent in the waiting room.
-* Use analytics to help calibrate your waiting room settings.
+- Evaluate peak traffic flow through your waiting room and onto your site.
+- Determine how long users spent in the waiting room.
+- Use analytics to help calibrate your waiting room settings.
 
 ## ​Dashboard Analytics
 
 To access your waiting room’s analytics in the dashboard:
 
-1. In the Cloudflare dashboard, go to the **Waiting Room** page.
-[Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
+1. In the Cloudflare dashboard, go to the **Waiting Room** page. [Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
 2. Expand the waiting room you would like to review metrics for, to display a preview of your waiting room analytics. The preview gives you insights into peak traffic through your waiting room over the last 24 hours including: Maximum active users, Maximum queued users and Typical time in queue for queued users.
 3. Select **View More** under the Waiting Room Analytics section to get more historical analytics for your waiting room.
 4. The time range for all of the metrics displayed defaults to the last 24 hours. To change the time range, select from the drop down. You can select any time range from the last 30 days that is a minimum of 30 minutes.
@@ -40,8 +39,8 @@ To save this event information, you can either select **Download data** or **Pri
 
 If you do not get a link to your event’s analytics, one of the following may have happened:
 
-* Your event has not happened yet.
-* Your event started more than 30 days ago.
+- Your event has not happened yet.
+- Your event started more than 30 days ago.
 
 ## Metrics
 
@@ -53,10 +52,10 @@ Time in queue summary values give you an insight into the user experience by ind
 
 If wait times are higher than you would like, and you feel comfortable doing so, you could consider taking any or all of the following actions:
 
-* Increase `total_active_users` configured value.
-* Increase `new_users_per_minute` configured value.
-* Decrease `session_duration`.
-* Disable session renewal.
+- Increase `total_active_users` configured value.
+- Increase `new_users_per_minute` configured value.
+- Decrease `session_duration`.
+- Disable session renewal.
 
 Note
 
@@ -70,16 +69,16 @@ The following are some takeaways you could have depending on the time on origin 
 
 You may want to increase session duration, giving users more time to make subrequests, and/or enable session renewal if:
 
-* You have session renewal disabled.
-* You have frequent, active queueing with long wait times.
-* The typical time on origin is around 70% of your configured session duration.
+- You have session renewal disabled.
+- You have frequent, active queueing with long wait times.
+- The typical time on origin is around 70% of your configured session duration.
 
 These may be indicators that users need more time to complete their desired tasks on your site.
 
 You may want to decrease session duration and/or disable session renewal if:
 
-* Your top 5% time on origin is less than 70% of your configured session duration.
-* You are seeing high queue times and do not want to increase traffic limits.
+- Your top 5% time on origin is less than 70% of your configured session duration.
+- You are seeing high queue times and do not want to increase traffic limits.
 
 These may be indicators that users do not need as much time on your site and are taking up spots on your origin.
 
@@ -93,9 +92,9 @@ To identify and hone in on peak traffic, select a longer time period, such as 30
 
 To check for more details about a particular moment in time, hover over a bar on the graph. This displays a tooltip which will indicate the following for the time period that bar represents:
 
-* Maximum active users reached
-* Maximum queued users reached
-* Configured active user target values
+- Maximum active users reached
+- Maximum queued users reached
+- Configured active user target values
 
 Queueing may occur below your configured limits, and active users may sometimes exceed your configured limits. Refer to the [Queuing activation](https://developers.cloudflare.com/waiting-room/how-to/monitor-waiting-room/#queueing-activation) section for more information.
 
@@ -107,9 +106,9 @@ The New users per minute chart shows how many new users per minute passed throug
 
 The Turnstile widget traffic chart shows the number of challenges issued per minute and the distribution of traffic seen with these challenges. Traffic is categorized into three main categories:
 
-* Likely Human - This represents the number of challenges that were successfully solved.
-* Likely Bots - This represents the number of unsolved challenges.
-* Bots - This represents the number of failed challenges.
+- Likely Human - This represents the number of challenges that were successfully solved.
+- Likely Bots - This represents the number of unsolved challenges.
+- Bots - This represents the number of failed challenges.
 
 If your waiting room has the infinite queue option enabled, you will see a line on the graph representing the number of refresh requests from bots in the infinite queue.
 
@@ -119,9 +118,17 @@ You can query your Waiting Room analytics data via GraphQL API. Waiting Room ana
 
 Here are some query examples to get started:
 
+<details>
+
+<summary>
+
 Fetch values for total active users and new users per minute over a certain period.
 
-This is a simple query to fetch metrics values. You can filter the data with the zone tag and query the `waitingRoomAnalyticsAdaptive` dataset. In this example, we have applied this query only on two metrics, but you can explore the schema and fetch the raw values from the GraphQL dataset without applying any aggregation methods.
+</summary>
+
+This is a simple query to fetch metrics values. You can filter the data with the zone tag and query the <code>waitingRoomAnalyticsAdaptive</code> dataset. In this example, we have applied this query only on two metrics, but you can explore the schema and fetch the raw values from the GraphQL dataset without applying any aggregation methods.
+
+*Requestbash*
 
 ```bash
 {
@@ -134,6 +141,8 @@ This is a simple query to fetch metrics values. You can filter the data with the
     }
   }
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -163,9 +172,19 @@ This is a simple query to fetch metrics values. You can filter the data with the
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Find the average of total active users and new users per minute over a certain period, and aggregate this data over a period of 15 minutes.
 
+</summary>
+
 This query calculates the average of total active users and new users per minute. The time dimension in the query is 15 minutes, therefore the data is aggregated over 15 minutes for the selected time period.
+
+*Requestbash*
 
 ```bash
 {
@@ -181,6 +200,8 @@ This query calculates the average of total active users and new users per minute
         }
       }
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -225,9 +246,19 @@ This query calculates the average of total active users and new users per minute
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Find the weighted averages of time on origin (50th percentile) and total time waited (90th percentile) for a certain period and aggregate this data over one hour.
 
+</summary>
+
 This query calculates the weighted averages of the metrics for a certain period of time aggregated hourly.
+
+*Requestbash*
 
 ```bash
 {
@@ -243,6 +274,8 @@ This query calculates the weighted averages of the metrics for a certain period 
         }
       }
 ```
+
+*Responsejson*
 
 ```json
 {
@@ -269,12 +302,14 @@ This query calculates the weighted averages of the metrics for a certain period 
 }
 ```
 
+</details>
+
 ## Why is there no data for my waiting room?
 
 If you are not seeing any historical data for your waiting room, one or more of the following may be true:
 
-* Your waiting room was not receiving any traffic for the time period you are inspecting.
-* Your waiting room was not enabled for the time period you are inspecting.
+- Your waiting room was not receiving any traffic for the time period you are inspecting.
+- Your waiting room was not enabled for the time period you are inspecting.
 
 Was this helpful?
 

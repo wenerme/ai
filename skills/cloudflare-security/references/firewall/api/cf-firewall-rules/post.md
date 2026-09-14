@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # POST example
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/post/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/post/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example creates several firewall rules using a single API call.
 
 Note
 
 To create a firewall rule you need a [filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) identifier (`id`). If you have not created a filter yet, refer to the [Cloudflare Filters API documentation](https://developers.cloudflare.com/firewall/api/cf-filters/).
+
+*Requestbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
@@ -56,6 +58,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/firewall/rules" \
   }
 ]'
 ```
+
+*Responsejson*
 
 ```json
 {

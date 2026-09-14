@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Long-running agents
 
-Last updated Aug 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build agents that persist for days, weeks, or months — surviving restarts, waking on demand, and managing work that spans far longer than any single request.
 
 The short version:
 
-* Agents are durable identities, not always-on processes.
-* State, SQL data, schedules, and fiber checkpoints survive hibernation and restarts.
-* In-memory variables, timers, open fetches, and local closures do not survive eviction.
-* Use `keepAlive()` for active work measured in minutes, `runFiber()` when work needs recovery, `startFiber()` when callers need durable acceptance and status, and Workflows for heavyweight multi-step jobs.
-* Use sub-agents when one parent coordinates many long-lived child contexts.
+- Agents are durable identities, not always-on processes.
+- State, SQL data, schedules, and fiber checkpoints survive hibernation and restarts.
+- In-memory variables, timers, open fetches, and local closures do not survive eviction.
+- Use `keepAlive()` for active work measured in minutes, `runFiber()` when work needs recovery, `startFiber()` when callers need durable acceptance and status, and Workflows for heavyweight multi-step jobs.
+- Use sub-agents when one parent coordinates many long-lived child contexts.
 
 ## Why Cloudflare for long-running agents
 
@@ -30,18 +30,18 @@ Agents spend most of their time waiting. Waiting for user input (seconds to days
 
 Durable Objects invert this model. An agent exists as an addressable entity with persistent state, but consumes zero compute when hibernated. When something happens — an HTTP request, a WebSocket message, a scheduled alarm, an inbound email — the platform wakes the agent, loads its state from SQLite, and hands it the event. The agent does its work, then goes back to sleep.
 
-This is the [actor model ↗](https://en.wikipedia.org/wiki/Actor%5Fmodel): each agent has an identity, durable state, and wakes on message. You do not manage servers, routing, health checks, or restart logic. The platform handles placement, scaling, and recovery.
+This is the [actor model ↗](https://en.wikipedia.org/wiki/Actor_model): each agent has an identity, durable state, and wakes on message. You do not manage servers, routing, health checks, or restart logic. The platform handles placement, scaling, and recovery.
 
 The economics follow directly:
 
-|                                               | VMs / Containers                               | Durable Objects                   |
-| --------------------------------------------- | ---------------------------------------------- | --------------------------------- |
-| **Idle cost**                                 | Full compute cost, always                      | Zero (hibernated)                 |
-| **Scaling**                                   | Provision and manage capacity                  | Automatic, per-agent              |
-| **State**                                     | External database required                     | Built-in SQLite                   |
-| **Recovery**                                  | You build it (process managers, health checks) | Platform restarts, state survives |
-| **Identity / routing**                        | You build it (load balancers, sticky sessions) | Built-in (name to agent)          |
-| **10,000 agents, each active 1% of the time** | 10,000 always-on instances                     | \~100 active at any moment        |
+|  | VMs / Containers | Durable Objects |
+| --- | --- | --- |
+| **Idle cost** | Full compute cost, always | Zero (hibernated) |
+| **Scaling** | Provision and manage capacity | Automatic, per-agent |
+| **State** | External database required | Built-in SQLite |
+| **Recovery** | You build it (process managers, health checks) | Platform restarts, state survives |
+| **Identity / routing** | You build it (load balancers, sticky sessions) | Built-in (name to agent) |
+| **10,000 agents, each active 1% of the time** | 10,000 always-on instances | \~100 active at any moment |
 
 For agents — which are inherently bursty, stateful, and long-lived — this is a natural fit.
 
@@ -60,20 +60,20 @@ State persists in SQLite. Agent restarts on next event.
 
 ### What survives
 
-* **`this.state`** — persisted to SQLite on every `setState()` call
-* **`this.sql` data** — all SQLite tables you create
-* **Scheduled tasks** — stored in SQLite, trigger alarms to wake the agent
-* **Connection state** — `connection.setState()` data for each WebSocket client
-* **Fiber checkpoints and ledgers** — `stash()` data from `runFiber()` and retained `startFiber()` status rows
+- **`this.state`** — persisted to SQLite on every `setState()` call
+- **`this.sql` data** — all SQLite tables you create
+- **Scheduled tasks** — stored in SQLite, trigger alarms to wake the agent
+- **Connection state** — `connection.setState()` data for each WebSocket client
+- **Fiber checkpoints and ledgers** — `stash()` data from `runFiber()` and retained `startFiber()` status rows
 
 Any higher-level abstractions built on SQLite also survive, since they share the same durable storage.
 
 ### What does not survive
 
-* **In-memory variables** — class fields not stored via `setState()` or `this.sql`
-* **Running timers** — `setTimeout`, `setInterval` are lost on hibernation/eviction
-* **Open fetch requests** — in-flight HTTP calls are abandoned
-* **Local closures** — callbacks and promise chains are lost
+- **In-memory variables** — class fields not stored via `setState()` or `this.sql`
+- **Running timers** — `setTimeout`, `setInterval` are lost on hibernation/eviction
+- **Open fetch requests** — in-flight HTTP calls are abandoned
+- **Local closures** — callbacks and promise chains are lost
 
 The implication: any work that matters must be persisted or recoverable. The SDK provides primitives for this — schedules, fibers, queues — but understanding the boundary between "in-memory" and "durable" is essential.
 
@@ -81,12 +81,12 @@ The implication: any work that matters must be persisted or recoverable. The SDK
 
 Throughout this doc, we build up a project manager agent that:
 
-* Lives for the duration of a project (weeks or months)
-* Tracks tasks, assigns work to sub-agents, and reports progress
-* Wakes up on schedule to check deadlines and send reminders
-* Reacts to external events (webhooks from GitHub, emails from team members)
-* Handles long-running operations (CI pipelines, code reviews, deployments)
-* Survives any number of restarts and evictions along the way
+- Lives for the duration of a project (weeks or months)
+- Tracks tasks, assigns work to sub-agents, and reports progress
+- Wakes up on schedule to check deadlines and send reminders
+- Reacts to external events (webhooks from GitHub, emails from team members)
+- Handles long-running operations (CI pipelines, code reviews, deployments)
+- Survives any number of restarts and evictions along the way
 
 ```ts
 import { Agent } from "agents";
@@ -124,13 +124,13 @@ The `Plan` type is introduced in [Planning as a durability strategy](#planning-a
 
 A hibernated agent can be woken by any of these sources:
 
-| Wake source              | How it works                                                                                                                                                                                                                                 | Example                                 |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
-| **HTTP request**         | Any request to the agent's URL triggers onRequest()                                                                                                                                                                                          | A webhook from GitHub                   |
-| **WebSocket connection** | A client connects, triggering onConnect()                                                                                                                                                                                                    | A team member opens the dashboard       |
-| **RPC call**             | Another Worker or agent calls a method via [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) or [@callable](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) | A coordinator agent delegates a task    |
-| **Scheduled alarm**      | A stored schedule fires, triggering your callback                                                                                                                                                                                            | Daily standup reminder at 9am           |
-| **Email**                | An inbound email triggers onEmail()                                                                                                                                                                                                          | A team member replies to a status email |
+| Wake source | How it works | Example |
+| --- | --- | --- |
+| **HTTP request** | Any request to the agent's URL triggers `onRequest()` | A webhook from GitHub |
+| **WebSocket connection** | A client connects, triggering `onConnect()` | A team member opens the dashboard |
+| **RPC call** | Another Worker or agent calls a method via [service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) or [`@callable`](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) | A coordinator agent delegates a task |
+| **Scheduled alarm** | A stored schedule fires, triggering your callback | Daily standup reminder at 9am |
+| **Email** | An inbound email triggers `onEmail()` | A team member replies to a status email |
 
 The pattern extends naturally to any event source that can reach a Worker — anything from telephony webhooks to chat platform bots. An external signal arrives, the platform wakes the agent, and the agent handles it.
 
@@ -219,21 +219,21 @@ try {
 
 `keepAlive` is for work measured in minutes, not hours. For truly long-running operations, use a different strategy:
 
-| Duration         | Strategy                                                                               |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| Seconds          | Normal request handling                                                                |
-| Minutes          | keepAlive() / keepAliveWhile()                                                         |
-| Minutes          | startFiber() when retryable acceptance matters                                         |
+| Duration | Strategy |
+| --- | --- |
+| Seconds | Normal request handling |
+| Minutes | `keepAlive()` / `keepAliveWhile()` |
+| Minutes | `startFiber()` when retryable acceptance matters |
 | Minutes to hours | [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) |
-| Hours to days    | Async pattern: start job, hibernate, wake on completion                                |
+| Hours to days | Async pattern: start job, hibernate, wake on completion |
 
 ## Surviving crashes: fibers and recovery
 
 An agent can be evicted at any time — a deploy, a platform restart, or hitting resource limits. If the agent was mid-task, that work is lost unless it was checkpointed.
 
-[runFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) provides crash-recoverable execution. It persists a row in SQLite for the duration of the work, and lets you `stash()` intermediate state. If the agent is evicted, the fiber row survives, and `onFiberRecovered()` is called on the next activation.
+[`runFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) provides crash-recoverable execution. It persists a row in SQLite for the duration of the work, and lets you `stash()` intermediate state. If the agent is evicted, the fiber row survives, and `onFiberRecovered()` is called on the next activation.
 
-Use [startFiber()](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) when the important boundary is durable acceptance. It adds an idempotency key, retained status records, inspection, cancellation, and cleanup on top of the same fiber machinery. By default it returns after acceptance; pass `waitForCompletion: true` when the request should stay open until the accepted job reaches a terminal status. This is a good fit for webhooks where the provider may retry delivery and the agent must avoid starting duplicate visible side effects.
+Use [`startFiber()`](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/#startfiber) when the important boundary is durable acceptance. It adds an idempotency key, retained status records, inspection, cancellation, and cleanup on top of the same fiber machinery. By default it returns after acceptance; pass `waitForCompletion: true` when the request should stay open until the accepted job reaches a terminal status. This is a good fit for webhooks where the provider may retry delivery and the agent must avoid starting duplicate visible side effects.
 
 ```ts
 export class ProjectManager extends Agent<Env, ProjectState> {
@@ -507,11 +507,11 @@ export class ProjectManager extends Agent<Env, ProjectState> {
 
 This pattern has several advantages for long-running agents:
 
-* **Recovery is trivial** — on restart, check `plan.currentStep` and resume
-* **Progress is visible** — clients see which steps are done and what is next
-* **Re-planning is possible** — if a step fails or requirements change, the agent can revise the remaining steps without losing completed work
-* **Human oversight** — the plan is a natural approval checkpoint ("here is what I am going to do — proceed?")
-* **Context reconstruction** — the plan tells the LLM where it is, what happened, and what to do next, without replaying the full conversation
+- **Recovery is trivial** — on restart, check `plan.currentStep` and resume
+- **Progress is visible** — clients see which steps are done and what is next
+- **Re-planning is possible** — if a step fails or requirements change, the agent can revise the remaining steps without losing completed work
+- **Human oversight** — the plan is a natural approval checkpoint ("here is what I am going to do — proceed?")
+- **Context reconstruction** — the plan tells the LLM where it is, what happened, and what to do next, without replaying the full conversation
 
 ## Delegating to sub-agents
 
@@ -567,16 +567,16 @@ class ProjectChat extends AIChatAgent<Env> {
 
 The right recovery strategy depends on the LLM provider:
 
-| Provider               | Strategy                            | How it works                                                                | Token cost |
-| ---------------------- | ----------------------------------- | --------------------------------------------------------------------------- | ---------- |
-| Workers AI             | Continue from partial               | continueLastTurn() — model continues via assistant prefill                  | Low        |
-| OpenAI (Responses API) | Retrieve completed response         | Stash responseId during streaming, retrieve on recovery                     | Zero       |
-| Anthropic              | Synthetic continuation              | Persist partial, send a synthetic user message asking the model to continue | Medium     |
-| Other                  | Try prefill, fall back to synthetic | continueLastTurn() if the provider supports it, synthetic message otherwise | Varies     |
+| Provider | Strategy | How it works | Token cost |
+| --- | --- | --- | --- |
+| Workers AI | Continue from partial | `continueLastTurn()` — model continues via assistant prefill | Low |
+| OpenAI (Responses API) | Retrieve completed response | Stash `responseId` during streaming, retrieve on recovery | Zero |
+| Anthropic | Synthetic continuation | Persist partial, send a synthetic user message asking the model to continue | Medium |
+| Other | Try prefill, fall back to synthetic | `continueLastTurn()` if the provider supports it, synthetic message otherwise | Varies |
 
 Use `ctx.createdAt` to suppress stale recoveries. For example, if a recovered chat turn is older than a few minutes, you may persist the partial answer but skip automatic continuation to avoid surprising the user with an old response.
 
-`AIChatAgent` and [Think](https://developers.cloudflare.com/agents/harnesses/think/) always use durable recovery. The default path persists partial output and continues or retries the turn when safe. Override `onChatRecovery` when a provider has a better recovery strategy. Configure `chatRecovery = { maxAttempts, terminalMessage, onExhausted }` to tune the terminal experience.
+`AIChatAgent` and [`Think`](https://developers.cloudflare.com/agents/harnesses/think/) always use durable recovery. The default path persists partial output and continues or retries the turn when safe. Override `onChatRecovery` when a provider has a better recovery strategy. Configure `chatRecovery = { maxAttempts, terminalMessage, onExhausted }` to tune the terminal experience.
 
 If the agent is interrupted before any assistant stream chunks are written, there is no partial assistant message to continue. When the latest persisted message is still the unanswered user message from that turn, chat recovery retries the turn automatically unless `onChatRecovery` returns `{ continue: false }`.
 
@@ -624,9 +624,9 @@ For agents that use `AIChatAgent`, conversation history can grow large over exte
 
 Strategies for managing conversation size:
 
-* **Sliding window** — keep only the last N messages in the active context. Simple and predictable.
-* **Summarization** — periodically summarize older messages and replace them with a compact summary. Original messages can remain in SQLite for audit.
-* **Selective retention** — retain messages that contain decisions, approvals, and key context while pruning routine exchanges.
+- **Sliding window** — keep only the last N messages in the active context. Simple and predictable.
+- **Summarization** — periodically summarize older messages and replace them with a compact summary. Original messages can remain in SQLite for audit.
+- **Selective retention** — retain messages that contain decisions, approvals, and key context while pruning routine exchanges.
 
 ## End of life
 
@@ -654,14 +654,14 @@ export class ProjectManager extends Agent<Env, ProjectState> {
 
 Both Workflows and agent-internal primitives (schedules, fibers, queues) support long-running work. The right choice depends on the nature of the work:
 
-|                    | Agent-internal                                         | Workflows                                |
-| ------------------ | ------------------------------------------------------ | ---------------------------------------- |
-| **Best for**       | Agent-centric work: scheduling, polling, state updates | Independent multi-step pipelines         |
-| **Durability**     | SQLite (survives eviction)                             | Workflow engine (survives everything)    |
-| **Retries**        | this.retry(), schedule-level retries                   | Per-step retries with backoff            |
-| **Max duration**   | Minutes per activation (with keepAlive)                | 30 minutes per step, unlimited steps     |
-| **Human approval** | Build it yourself (state + WebSocket)                  | Built-in waitForApproval()               |
-| **Complexity**     | Lower — everything is in the agent                     | Higher — separate class, wrangler config |
+|  | Agent-internal | Workflows |
+| --- | --- | --- |
+| **Best for** | Agent-centric work: scheduling, polling, state updates | Independent multi-step pipelines |
+| **Durability** | SQLite (survives eviction) | Workflow engine (survives everything) |
+| **Retries** | `this.retry()`, schedule-level retries | Per-step retries with backoff |
+| **Max duration** | Minutes per activation (with `keepAlive`) | 30 minutes per step, unlimited steps |
+| **Human approval** | Build it yourself (state + WebSocket) | Built-in `waitForApproval()` |
+| **Complexity** | Lower — everything is in the agent | Higher — separate class, wrangler config |
 
 A pragmatic rule: if the work is about the agent managing its own lifecycle (checking deadlines, syncing state, sending reminders), use schedules and fibers. If the work is a discrete pipeline that could fail and retry independently (deploy, data processing, report generation), use a Workflow.
 
@@ -671,18 +671,18 @@ The project manager agent uses both: schedules for its own rhythms (daily standu
 
 Long-running agents on Cloudflare are not long-running processes. They are durable entities that wake, work, and sleep — potentially over weeks or months. The key primitives:
 
-| Primitive                          | Purpose                                      |
-| ---------------------------------- | -------------------------------------------- |
-| **setState() / this.sql**          | Persist state across activations             |
-| **schedule() / scheduleEvery()**   | Wake the agent at future times               |
-| **keepAlive() / keepAliveWhile()** | Prevent eviction during active work          |
-| **runFiber() / stash()**           | Checkpoint and recover long tasks            |
-| **startFiber()**                   | Durably accept, inspect, and cancel jobs     |
-| **chatRecovery**                   | Recover interrupted LLM streams              |
-| **onRequest() / onEmail() / RPC**  | Wake on external events                      |
-| **runWorkflow()**                  | Delegate heavyweight multi-step work         |
-| **subAgent()**                     | Delegate specialized work to child agents    |
-| **Structured plans in state**      | Enable recovery, visibility, and re-planning |
+| Primitive | Purpose |
+| --- | --- |
+| **`setState()` / `this.sql`** | Persist state across activations |
+| **`schedule()` / `scheduleEvery()`** | Wake the agent at future times |
+| **`keepAlive()` / `keepAliveWhile()`** | Prevent eviction during active work |
+| **`runFiber()` / `stash()`** | Checkpoint and recover long tasks |
+| **`startFiber()`** | Durably accept, inspect, and cancel jobs |
+| **`chatRecovery`** | Recover interrupted LLM streams |
+| **`onRequest()` / `onEmail()` / RPC** | Wake on external events |
+| **`runWorkflow()`** | Delegate heavyweight multi-step work |
+| **`subAgent()`** | Delegate specialized work to child agents |
+| **Structured plans in state** | Enable recovery, visibility, and re-planning |
 
 For the project manager agent, these compose into an agent that:
 
@@ -698,16 +698,16 @@ The agent does not need to run continuously to do any of this. It just needs to 
 
 ## Related
 
-* [Durable Execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) — `runFiber()`, `startFiber()`, `stash()`, and crash recovery
-* [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — delayed, cron, and interval tasks
-* [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) — retry options and patterns
-* [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step processing
-* [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` and persistence
-* [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/) — lifecycle hooks and hibernation
-* [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) — RPC via `@callable` and service bindings
-* [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) — receiving inbound email
-* [Webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/) — receiving external events
-* [Human in the loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — approval flows
+- [Durable Execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) — `runFiber()`, `startFiber()`, `stash()`, and crash recovery
+- [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/) — delayed, cron, and interval tasks
+- [Retries](https://developers.cloudflare.com/agents/runtime/execution/retries/) — retry options and patterns
+- [Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/) — durable multi-step processing
+- [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/) — `setState()` and persistence
+- [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/) — lifecycle hooks and hibernation
+- [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/) — RPC via `@callable` and service bindings
+- [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/) — receiving inbound email
+- [Webhooks](https://developers.cloudflare.com/agents/communication-channels/webhooks/) — receiving external events
+- [Human in the loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — approval flows
 
 Was this helpful?
 

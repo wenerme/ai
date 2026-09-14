@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Video • Pruna AI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `pruna/p-video`
 
-* Third-party
+- Third-party
 
 Pruna's P-Video is a premium video generation model supporting text-to-video, image-to-video, and audio-conditioned generation up to 1080p at 24 or 48 fps, with configurable duration up to 20 seconds.
 
-| Model Info       |                                                                                                                 |
-| ---------------- | --------------------------------------------------------------------------------------------------------------- |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                           |
-| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video) |
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video) |
 
 ## Usage
 
@@ -105,7 +105,7 @@ aspect\_ratio
 
 seed
 
-`integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
+`integer`minimum: -9007199254740991maximum: 9007199254740991Random seed for reproducible generation.
 
 draft
 
@@ -133,9 +133,9 @@ video
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/pruna/p-video/schema-output.json)
 
 Was this helpful?
 

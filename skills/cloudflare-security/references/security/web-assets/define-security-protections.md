@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Define security protections
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/define-security-protections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security/web-assets/define-security-protections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Assets provides application context to security detections. This helps detections inspect the right traffic and lets you create rules focusing on targeted protections.
 
@@ -23,11 +23,9 @@ Use this guide to connect a Web Assets operation to a security detection and cre
 Most protections that use Web Assets follow the same workflow:
 
 1. Turn on the security detection that protects the use case, if applicable.
-2. In Web Assets, confirm that the relevant operation exists.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. In Web Assets, confirm that the relevant operation exists. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 3. Apply the required managed label if not already exists.
-4. In Security Analytics, review matched traffic and detection results.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+4. In Security Analytics, review matched traffic and detection results. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 5. Create a custom rule, or rate limiting rule to act on risky traffic.
 
 ## Example: Protect AI-powered operations
@@ -49,8 +47,7 @@ For the full setup workflow, refer to [Get started with AI Security for Apps](ht
 
 Use Security Analytics to confirm that the expected requests carry the right operation and label context before you create a blocking rule.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Filter by the relevant managed label.
 3. Review **Sampled logs**.
 4. Check detection-specific fields, such as LLM prompt fields or leaked credential fields.

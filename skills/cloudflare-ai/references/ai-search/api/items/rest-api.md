@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/api/items/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/rest-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the AI Search REST API to upload, list, and manage individual documents within an instance.
 
@@ -24,15 +24,13 @@ The Items API uploads files to an instance's built-in storage. For more details,
 
 All requests require an API token with **AI Search:Edit** and **AI Search:Run** permissions.
 
-1. In the Cloudflare dashboard, go to **My Profile** \> **API Tokens**.
-[Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
+1. In the Cloudflare dashboard, go to **My Profile** > **API Tokens**. [Go to **API Tokens** ↗](https://dash.cloudflare.com/profile/api-tokens)
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Enter a **Token name**, for example `AI Search Manager`.
 5. Under **Permissions**, add two permissions:
-
-  * **Account** \> **AI Search:Edit**
-  * **Account** \> **AI Search:Run**
+   - **Account** > **AI Search:Edit**
+   - **Account** > **AI Search:Run**
 6. Select **Continue to summary**, then select **Create Token**.
 7. Copy and save the token value. This is your `API_TOKEN`.
 
@@ -46,24 +44,24 @@ Authorization: Bearer <API_TOKEN>
 
 AI Search APIs are available at two base paths:
 
-| Path                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| /accounts/{account\_id}/ai-search/instances/{id}/                        | Operates on a specific instance                                                                              |
-| /accounts/{account\_id}/ai-search/namespaces/{namespace}/instances/{id}/ | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
+| Path | Description |
+| --- | --- |
+| `/accounts/{account_id}/ai-search/instances/{id}/` | Operates on a specific instance |
+| `/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/` | Operates on instances within a [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) |
 
-The available operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/).
+The available operations are the same for both paths. For the namespace-scoped API, refer to the [Namespace API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/).
 
 ## Items
 
-Upload, list, get, delete, and download items within an instance. For the full specification, refer to the [Items API reference](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/).
+Upload, list, get, delete, and download items within an instance. For the full specification, refer to the [Items API reference](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/).
 
-| Operation                                                                                                                                                   | Method | Description                    |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ------------------------------ |
-| [Upload](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/upload/)     | POST   | Upload a document for indexing |
-| [List](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/list/)         | GET    | List all items in an instance  |
-| [Get](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/get/)           | GET    | Get item info by ID            |
-| [Delete](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/delete/)     | DELETE | Delete an item                 |
-| [Download](https://developers.cloudflare.com/api/resources/ai%5Fsearch/subresources/namespaces/subresources/instances/subresources/items/methods/download/) | GET    | Download the original file     |
+| Operation | Method | Description |
+| --- | --- | --- |
+| [Upload](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/upload/) | `POST` | Upload a document for indexing |
+| [List](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/list/) | `GET` | List all items in an instance |
+| [Get](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/get/) | `GET` | Get item info by ID |
+| [Delete](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/delete/) | `DELETE` | Delete an item |
+| [Download](https://developers.cloudflare.com/api/resources/ai_search/subresources/namespaces/subresources/instances/subresources/items/methods/download/) | `GET` | Download the original file |
 
 ### Example: Upload a document
 

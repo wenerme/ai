@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cancel Cloudflare subscriptions
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/manage/cancel-subscription/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/cancel-subscription/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cancellations take effect at the end of the current billing period. You retain access to paid features until then. To avoid charges for the next billing period, start the cancellation process before your current period ends.
 
@@ -32,16 +32,14 @@ Changing the DNS on your domain does not cancel your account or active subscript
 
 For some subscriptions, you must turn off the product feature before you cancel the billing subscription.
 
-1. In the Cloudflare dashboard, go to the **Billing** page.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Subscriptions**.
 3. Select the feature you want to turn off under **Active Subscriptions** (Free or Pro customers) or **Plan Extensions** (Enterprise customers).
-4. Follow the product-specific instructions to turn off the feature. The flow may ask you to turn off a switch, select a button, or choose _Disable_ from a drop-down list.
+4. Follow the product-specific instructions to turn off the feature. The flow may ask you to turn off a switch, select a button, or choose *Disable* from a drop-down list.
 
 ## Cancel the subscription in your billing profile
 
-1. In the Cloudflare dashboard, go to the **Billing** page.
-[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
+1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 2. Select **Subscriptions**.
 3. Find the subscription you want to cancel and select **Cancel**.
 4. Select a reason for cancellation.
@@ -57,9 +55,9 @@ Fees are non-refundable. You are billed for the full billing period in which you
 
 ## Related resources
 
-* [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade instead of canceling
-* [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
-* [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When downgrades and cancellations take effect
+- [Change domain plan](https://developers.cloudflare.com/billing/manage/change-plan/) — Upgrade or downgrade instead of canceling
+- [Billing policy](https://developers.cloudflare.com/billing/understand/billing-policy/) — Refund policy and subscription terms
+- [How Cloudflare billing works](https://developers.cloudflare.com/billing/understand/how-billing-works/) — When downgrades and cancellations take effect
 
 Was this helpful?
 

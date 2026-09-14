@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete buckets
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/delete-buckets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/delete-buckets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To delete an R2 bucket, you must first remove all objects from it. Once the bucket is empty, you can delete it.
 
@@ -28,8 +28,7 @@ You can empty a bucket in various ways.
 
 The dashboard provides an **Empty Bucket** action that handles this for you, regardless of how many objects the bucket contains. For large buckets, the operation runs in the background and the dashboard displays progress until all objects have been removed.
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you want to empty.
 3. Go to the **Settings** tab.
 4. Scroll to the **Empty Bucket** section.
@@ -82,8 +81,7 @@ You can delete a bucket in various ways.
 
 ### Dashboard
 
-1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you want to delete.
 3. Go to the **Settings** tab.
 4. Scroll to the **Delete Bucket** section. If the bucket is not empty, select **Empty Bucket** first to clear all objects.
@@ -92,7 +90,7 @@ You can delete a bucket in various ways.
 
 ### Wrangler
 
-Use the [r2 bucket delete](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-delete) command to delete an empty bucket:
+Use the [`r2 bucket delete`](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-delete) command to delete an empty bucket:
 
 ```sh
 npx wrangler r2 bucket delete <BUCKET_NAME>
@@ -119,10 +117,10 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/r2/bu
 
 ## Behavior
 
-* A bucket must be completely empty before it can be deleted. Attempting to delete a bucket that contains objects returns an error.
-* You cannot empty a bucket that has [bucket lock rules](https://developers.cloudflare.com/r2/buckets/bucket-locks/). Remove all lock rules before emptying the bucket.
-* [Event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) configured on the bucket are removed when the bucket is deleted.
-* If you use a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) with the bucket, remove the domain association before or after deletion to avoid dangling DNS records.
+- A bucket must be completely empty before it can be deleted. Attempting to delete a bucket that contains objects returns an error.
+- You cannot empty a bucket that has [bucket lock rules](https://developers.cloudflare.com/r2/buckets/bucket-locks/). Remove all lock rules before emptying the bucket.
+- [Event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) configured on the bucket are removed when the bucket is deleted.
+- If you use a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) with the bucket, remove the domain association before or after deletion to avoid dangling DNS records.
 
 ## Related resources
 

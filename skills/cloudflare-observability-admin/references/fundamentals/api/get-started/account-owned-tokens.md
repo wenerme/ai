@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account API tokens
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 While user tokens act on behalf of a particular user and inherit a subset of that user's permissions, account API tokens allow you to set up durable integrations that can act as service principals with their own specific set of permissions. This approach is ideal for scenarios like CI/CD, or building integrations with external services like SIEMs where it is important that the integration continues working, even long after the user who configured the integration may have left your organization altogether. User tokens are better for ad hoc tasks like scripting, where acting as the user is ideal and durability is less of a concern.
 
@@ -25,7 +25,7 @@ Note
 Creating or updating an account owned token requires Super Administrator permission on the account
 
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **Manage Account** \> **Account API Tokens**.
+2. Go to **Manage Account** > **Account API Tokens**.
 3. Select **Create Token** and fill in the token name, permissions, and the optional expiration date for the token.
 4. Select **Continue to summary** and review the details.
 5. Select **Create Token**.
@@ -38,69 +38,69 @@ Refer to the [blog post ↗](https://blog.cloudflare.com/account-owned-tokens-au
 
 Account API tokens are generally available for all accounts. Some services may not support account API tokens yet. Refer to the compatibility matrix below for the latest status.
 
-| Product                                     | Compatibility |
-| ------------------------------------------- | ------------- |
-| Access                                      | ✅             |
-| Account Analytics                           | ✅             |
-| Account Management                          | ✅             |
-| AI Gateway                                  | ✅             |
-| API Shield                                  | ✅             |
-| Argo                                        | ✅             |
-| Billing                                     | ✅             |
-| Browser Run                                 | ✅             |
-| Bulk Redirects                              | ✅             |
-| Cache                                       | ✅             |
-| Tiered Cache                                | ✅             |
-| Client-side security (formerly Page Shield) | ✅             |
-| Cloud Connector                             | ✅             |
-| Configuration Rules                         | ✅             |
-| Custom Lists                                | ✅             |
-| Custom Pages                                | ✅             |
-| D1                                          | ✅             |
-| Data Loss Prevention                        | ✅             |
-| Digital Experience Monitoring               | ✅             |
-| Distributed Web                             | ✅             |
-| DNS                                         | ✅             |
-| Durable Objects                             | ✅             |
-| Email Relay                                 | ✅             |
-| Secure Web Gateway                          | ✅             |
-| Healthchecks                                | ✅             |
-| Hyperdrive                                  | ✅             |
-| Images                                      | ✅             |
-| Intel Data Platform                         | ❌             |
-| Load Balancing                              | ✅             |
-| Log Explorer                                | ✅             |
-| Network Flow                                | ✅             |
-| Magic Transit                               | ✅             |
-| Cloudflare WAN                              | ✅             |
-| Managed Rules                               | ✅             |
-| Network Error Logging                       | ✅             |
-| Page Rules                                  | ❌             |
-| Pages                                       | ✅             |
-| R2                                          | ✅             |
-| Radar                                       | ✅             |
-| Registrar                                   | ❌             |
-| Rulesets                                    | ✅             |
-| Spectrum                                    | ✅             |
-| Speed                                       | ✅             |
-| SSL/TLS                                     | ✅             |
-| Stream                                      | ✅             |
-| Super Bot Fight Mode                        | ❌             |
-| Trace                                       | ✅             |
-| Tunnels                                     | ✅             |
-| Turnstile                                   | ❌             |
-| Vectorize                                   | ✅             |
-| Waiting Room                                | ✅             |
-| Workers                                     | ✅             |
-| Workers AI                                  | ✅             |
-| Workers KV                                  | ✅             |
-| Workers Observability                       | ✅             |
-| Workers Queues                              | ✅             |
-| Workflows                                   | ✅             |
-| Zaraz                                       | ✅             |
-| Zero Trust Client Platform                  | ❌             |
-| Zero Trust Devices and Services             | ✅             |
-| Zone/Domain Management                      | ✅             |
+| Product | Compatibility |
+| --- | --- |
+| Access | ✅ |
+| Account Analytics | ✅ |
+| Account Management | ✅ |
+| AI Gateway | ✅ |
+| API Shield | ✅ |
+| Argo | ✅ |
+| Billing | ✅ |
+| Browser Run | ✅ |
+| Bulk Redirects | ✅ |
+| Cache | ✅ |
+| Tiered Cache | ✅ |
+| Client-side security (formerly Page Shield) | ✅ |
+| Cloud Connector | ✅ |
+| Configuration Rules | ✅ |
+| Custom Lists | ✅ |
+| Custom Pages | ✅ |
+| D1 | ✅ |
+| Data Loss Prevention | ✅ |
+| Digital Experience Monitoring | ✅ |
+| Distributed Web | ✅ |
+| DNS | ✅ |
+| Durable Objects | ✅ |
+| Email Relay | ✅ |
+| Secure Web Gateway | ✅ |
+| Healthchecks | ✅ |
+| Hyperdrive | ✅ |
+| Images | ✅ |
+| Intel Data Platform | ❌ |
+| Load Balancing | ✅ |
+| Log Explorer | ✅ |
+| Network Flow | ✅ |
+| Magic Transit | ✅ |
+| Cloudflare WAN | ✅ |
+| Managed Rules | ✅ |
+| Network Error Logging | ✅ |
+| Page Rules | ❌ |
+| Pages | ✅ |
+| R2 | ✅ |
+| Radar | ✅ |
+| Registrar | ❌ |
+| Rulesets | ✅ |
+| Spectrum | ✅ |
+| Speed | ✅ |
+| SSL/TLS | ✅ |
+| Stream | ✅ |
+| Super Bot Fight Mode | ❌ |
+| Trace | ✅ |
+| Tunnels | ✅ |
+| Turnstile | ❌ |
+| Vectorize | ✅ |
+| Waiting Room | ✅ |
+| Workers | ✅ |
+| Workers AI | ✅ |
+| Workers KV | ✅ |
+| Workers Observability | ✅ |
+| Workers Queues | ✅ |
+| Workflows | ✅ |
+| Zaraz | ✅ |
+| Zero Trust Client Platform | ❌ |
+| Zero Trust Devices and Services | ✅ |
+| Zone/Domain Management | ✅ |
 
 Was this helpful?
 

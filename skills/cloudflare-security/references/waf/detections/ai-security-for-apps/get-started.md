@@ -12,16 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started with AI Security for Apps
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-## 1\. Turn on AI Security for Apps
+## 1. Turn on AI Security for Apps
 
 Note
 
 AI Security for Apps (formerly Firewall for AI) is only available in the [application security dashboard](https://developers.cloudflare.com/security/).
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **AI Security for Apps**.
 
@@ -34,38 +33,36 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/ai-security/settings" 
 --json '{ "enabled": true }'
 ```
 
-## 2\. Review or add an LLM-related operation
+## 2. Review or add an LLM-related operation
 
 Once you have [onboarded your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare and some API traffic has already been [proxied by Cloudflare](https://developers.cloudflare.com/dns/proxy-status/), the Cloudflare dashboard will start showing [discovered endpoints](https://developers.cloudflare.com/api-shield/security/api-discovery/).
 
 In [Web Assets](https://developers.cloudflare.com/security/web-assets/manage-operations/), save the relevant discovered operation receiving LLM-related traffic to move it into the `full` state. If Cloudflare did not discover the operation, add it manually.
 
-1. In the Cloudflare dashboard, go to the **Web Assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Discovery** tab.
 3. Find the candidate operation receiving requests with LLM prompts and select **Save** to move it into the `full` state.
 
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
 1. Go to the **Operations** tab.
-2. Select **Add operation** \> **Manually add**.
+2. Select **Add operation** > **Manually add**.
 3. Choose the method and add the hostname pattern and path pattern for the operation.
 4. Select **Add operation**.
 
 In the context of this guide, consider an example endpoint with the following properties:
 
-* Method: `POST`
-* Path: `/v1/messages`
-* Hostname: `<YOUR_HOSTNAME>`
+- Method: `POST`
+- Path: `/v1/messages`
+- Hostname: `<YOUR_HOSTNAME>`
 
-## 3\. Add `cf-llm` label to endpoint
+## 3. Add `cf-llm` label to endpoint
 
 You must [label endpoints](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) with the `cf-llm` label so that AI Security for Apps starts scanning incoming requests for malicious LLM prompts.
 
 Add the `cf-llm` label to the endpoint you added:
 
-1. In the Cloudflare dashboard, go to the **Web assets** page.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to the **Web assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. In the **Endpoints** tab, choose the endpoint that you want to label.
 3. Select **Edit endpoint labels**.
 4. Add the `cf-llm` label to the endpoint.
@@ -73,7 +70,7 @@ Add the `cf-llm` label to the endpoint you added:
 
 Once you add a label to the endpoint, Cloudflare will start labeling incoming traffic for the endpoint with the label you selected.
 
-## 4\. (Optional) Generate API traffic
+## 4. (Optional) Generate API traffic
 
 You may need to issue some `POST` requests to the endpoint so that there is some labeled traffic to review in the following step.
 
@@ -87,65 +84,74 @@ curl "https://<YOUR_HOSTNAME>/v1/messages" \
 
 The PII category for this request would be `EMAIL_ADDRESS`.
 
-## 5\. Review labeled traffic and detection behavior
+## 5. Review labeled traffic and detection behavior
 
 Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to validate that Cloudflare is correctly labeling traffic for the endpoint.
 
-1. In the Cloudflare dashboard, go to the **Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Filter data by the `cf-llm` managed endpoint label.
 
-| Field                  | Operator | Value  |
-| ---------------------- | -------- | ------ |
-| Managed Endpoint Label | equals   | cf-llm |
+   | Field | Operator | Value |
+   | --- | --- | --- |
+   | Managed Endpoint Label | equals | `cf-llm` |
 3. Review the detection results on your traffic. Expand each line in **Sampled logs** and check the values in the **Analyses** column. Most of the incoming traffic will probably be clean (not harmful).
 4. Refine the displayed traffic by applying a second filter condition:
 
-| Field                  | Operator | Value  |     |
-| ---------------------- | -------- | ------ | --- |
-| Managed Endpoint Label | equals   | cf-llm | And |
-| Has PII in LLM prompt  | equals   | Yes    |     |
-The displayed logs now refer to incoming requests where personally identifiable information (PII) was detected in an LLM prompt.
+   | Field | Operator | Value |  |
+   | --- | --- | --- | --- |
+   | Managed Endpoint Label | equals | `cf-llm` | And |
+   | Has PII in LLM prompt | equals | Yes |  |
 
-Alternatively, you can also create a custom rule with a _Log_ action (only available on Enterprise plans) to check for potentially harmful traffic related to LLM prompts. This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your AI Security for Apps configuration.
+   The displayed logs now refer to incoming requests where personally identifiable information (PII) was detected in an LLM prompt.
 
-## 6\. Mitigate harmful requests
+Alternatively, you can also create a custom rule with a *Log* action (only available on Enterprise plans) to check for potentially harmful traffic related to LLM prompts. This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your AI Security for Apps configuration.
+
+## 6. Mitigate harmful requests
 
 [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) that blocks requests where Cloudflare detected personally identifiable information (PII) in the incoming request (as part of an LLM prompt), returning a custom JSON body:
 
-* **When incoming requests match**:
+- **When incoming requests match**:
 
-| Field            | Operator | Value |
-| ---------------- | -------- | ----- |
-| LLM PII Detected | equals   | True  |
-If you use the Expression Editor, enter the following expression:
-`(cf.llm.prompt.pii_detected)`
-* **Rule action**: Block
-* **With response type**: Custom JSON
-* **Response body**: `{ "error": "Your request was blocked. Please rephrase your request." }`
+  | Field | Operator | Value |
+  | --- | --- | --- |
+  | LLM PII Detected | equals | True |
+
+  If you use the Expression Editor, enter the following expression:
+  `(cf.llm.prompt.pii_detected)`
+- **Rule action**: Block
+- **With response type**: Custom JSON
+- **Response body**: `{ "error": "Your request was blocked. Please rephrase your request." }`
 
 For additional examples, refer to [Example mitigation rules](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/example-rules/). For a list of fields provided by AI Security for Apps, refer to [AI Security for Apps fields](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/fields/).
 
+<details>
+
+<summary>
+
 Combine with other Rules language fields
 
-You can combine the previous expression with other [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) and [functions](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/) of the Rules language. This allows you to customize the rule scope or combine AI Security for Apps with other security features. For example:
+</summary>
 
-* The following expression will match requests with PII in an LLM prompt addressed to a specific host:
+You can combine the previous expression with other <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/fields/">fields</a> and <a href="https://developers.cloudflare.com/ruleset-engine/rules-language/functions/">functions</a> of the Rules language. This allows you to customize the rule scope or combine AI Security for Apps with other security features. For example:
 
-| Field            | Operator | Value       | Logic |
-| ---------------- | -------- | ----------- | ----- |
-| LLM PII Detected | equals   | True        | And   |
-| Hostname         | equals   | example.com |       |
-Expression when using the editor:
-`(cf.llm.prompt.pii_detected and http.host == "example.com")`
-* The following expression will match requests coming from bots that include PII in an LLM prompt:
+- The following expression will match requests with PII in an LLM prompt addressed to a specific host:
 
-| Field            | Operator  | Value | Logic |
-| ---------------- | --------- | ----- | ----- |
-| LLM PII Detected | equals    | True  | And   |
-| Bot Score        | less than | 10    |       |
-Expression when using the editor:
-`(cf.llm.prompt.pii_detected and cf.bot_management.score lt 10)`
+  | Field | Operator | Value | Logic |
+  | --- | --- | --- | --- |
+  | LLM PII Detected | equals | True | And |
+  | Hostname | equals | <code>example.com</code> |  |
+
+  Expression when using the editor: <br> <code>(cf.llm.prompt.pii_detected and http.host == "example.com")</code>
+- The following expression will match requests coming from bots that include PII in an LLM prompt:
+
+  | Field | Operator | Value | Logic |
+  | --- | --- | --- | --- |
+  | LLM PII Detected | equals | True | And |
+  | Bot Score | less than | <code>10</code> |  |
+
+  Expression when using the editor: <br> <code>(cf.llm.prompt.pii_detected and cf.bot_management.score lt 10)</code>
+
+</details>
 
 Was this helpful?
 
@@ -156,5 +162,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

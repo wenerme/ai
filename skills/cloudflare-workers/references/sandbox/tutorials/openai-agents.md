@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build an AI coding agent with OpenAI Agents SDK
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sandbox SDK 1.0 preview
 
@@ -30,7 +30,7 @@ In this tutorial, you will deploy a sandbox bridge Worker and build a Python age
 2. Install [Python 3.12+ ↗](https://www.python.org/) and [uv ↗](https://docs.astral.sh/uv/).
 3. Obtain an [OpenAI API key ↗](https://platform.openai.com/api-keys).
 
-## 1\. Deploy the sandbox bridge
+## 1. Deploy the sandbox bridge
 
 The [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/) is a Cloudflare Worker that exposes the Sandbox API over HTTP so non-Worker clients — such as a Python script using the OpenAI Agents SDK — can create and control sandboxes.
 
@@ -42,36 +42,57 @@ Deploy the bridge to your Cloudflare account:
 
 The button deploys the Worker and generates a `SANDBOX_API_KEY` secret for authentication. When deployment finishes, note your Worker URL and API key — you will need them in the next step.
 
+<details>
+
+<summary>
+
 Manual deployment
+
+</summary>
 
 If you prefer to deploy step by step:
 
-1. Install [Node.js ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [Docker ↗](https://www.docker.com/).
+1. Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js ↗</a> and <a href="https://www.docker.com/">Docker ↗</a>.
 2. Scaffold the bridge project:
-```sh
-npm create cloudflare sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker
-cd sandbox-bridge
-```
-3. Authenticate with Cloudflare:
-```sh
-npx wrangler login
-```
-4. Set the API key secret:
-```sh
-openssl rand -hex 32 | tee /dev/stderr | npx wrangler secret put SANDBOX_API_KEY
-```
-The key is printed to your terminal and piped to Wrangler. Save it — you will need it to authenticate API requests.
-5. Deploy the Worker:
-```sh
-npx wrangler deploy
-```
-6. Verify the deployment:
-```sh
-curl https://cloudflare-sandbox-bridge.<your-subdomain>.workers.dev/health
-```
-You should see `{"ok":true}`.
 
-## 2\. Set up your Python project
+   ```sh
+   npm create cloudflare sandbox-bridge --template=cloudflare/sandbox-sdk/bridge/worker
+   cd sandbox-bridge
+   ```
+
+
+3. Authenticate with Cloudflare:
+
+   ```sh
+   npx wrangler login
+   ```
+
+
+4. Set the API key secret:
+
+   ```sh
+   openssl rand -hex 32 | tee /dev/stderr | npx wrangler secret put SANDBOX_API_KEY
+   ```
+
+   The key is printed to your terminal and piped to Wrangler. Save it — you will need it to authenticate API requests.
+5. Deploy the Worker:
+
+   ```sh
+   npx wrangler deploy
+   ```
+
+
+6. Verify the deployment:
+
+   ```sh
+   curl https://cloudflare-sandbox-bridge.<your-subdomain>.workers.dev/health
+   ```
+
+   You should see <code>{"ok":true}</code>.
+
+</details>
+
+## 2. Set up your Python project
 
 Create a new directory for the agent:
 
@@ -81,15 +102,19 @@ mkdir openai-sandbox-agent && cd openai-sandbox-agent
 
 Create a `.env` file with your credentials:
 
+*.envsh*
+
 ```sh
 OPENAI_API_KEY=sk-your-openai-key
 CLOUDFLARE_SANDBOX_API_KEY=your-bridge-token
 CLOUDFLARE_SANDBOX_WORKER_URL=https://cloudflare-sandbox-bridge.your-subdomain.workers.dev
 ```
 
-## 3\. Build the agent
+## 3. Build the agent
 
 Create `main.py` with the following content. The inline script metadata tells `uv` which dependencies to install, so everything is contained in a single file:
+
+*main.pypython*
 
 ```python
 # /// script
@@ -189,16 +214,16 @@ if __name__ == "__main__":
 
 Here is what the key pieces do:
 
-| Component                      | Purpose                                                                                                                                      |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| SandboxAgent                   | An Agent subclass that accepts sandbox-specific configuration, including capabilities.                                                       |
-| Shell()                        | A capability that exposes a shell tool to the LLM, allowing it to run commands inside the sandbox.                                           |
-| CloudflareSandboxClient        | Creates and manages sandbox sessions through the bridge Worker. Reads CLOUDFLARE\_SANDBOX\_API\_KEY from the environment for authentication. |
-| CloudflareSandboxClientOptions | Points the client at your bridge Worker URL.                                                                                                 |
-| Runner.run\_streamed()         | Executes the agent and yields streaming events for tool calls and text output.                                                               |
-| SandboxRunConfig               | Attaches a live sandbox session to the run so the agent's tools execute inside the container.                                                |
+| Component | Purpose |
+| --- | --- |
+| `SandboxAgent` | An `Agent` subclass that accepts sandbox-specific configuration, including `capabilities`. |
+| `Shell()` | A capability that exposes a shell tool to the LLM, allowing it to run commands inside the sandbox. |
+| `CloudflareSandboxClient` | Creates and manages sandbox sessions through the bridge Worker. Reads `CLOUDFLARE_SANDBOX_API_KEY` from the environment for authentication. |
+| `CloudflareSandboxClientOptions` | Points the client at your bridge Worker URL. |
+| `Runner.run_streamed()` | Executes the agent and yields streaming events for tool calls and text output. |
+| `SandboxRunConfig` | Attaches a live sandbox session to the run so the agent's tools execute inside the container. |
 
-## 4\. Run the agent
+## 4. Run the agent
 
 ```sh
 uv run --env-file .env main.py "Create a hello world HTTP server using Bun.serve"
@@ -223,27 +248,27 @@ The agent wrote the code, tested it inside the sandbox, and copied the deliverab
 
 You built a Python coding agent that:
 
-* Accepts a natural-language coding task
-* Executes code in an isolated Cloudflare Sandbox container
-* Installs packages, runs tests, and iterates until the task is complete
-* Copies deliverable files back to your local machine
+- Accepts a natural-language coding task
+- Executes code in an isolated Cloudflare Sandbox container
+- Installs packages, runs tests, and iterates until the task is complete
+- Copies deliverable files back to your local machine
 
 The bridge Worker's `Dockerfile` can be fully customized to suit your needs — install additional languages, system packages, or tools to match your use case.
 
 The Cloudflare Sandbox provides more capabilities you can integrate into your agents:
 
-* **PTY sessions** — Open interactive terminal sessions to sandboxes via WebSocket for real-time I/O.
-* **Bucket mounts** — Mount R2 or S3-compatible buckets as local directories inside the sandbox for persistent data.
-* **Workspace backup and restore** — Persist workspace state with `persist_workspace()` and `hydrate_workspace()` to resume work across sandbox lifecycles.
-* **File operations** — Read, write, and manage files programmatically within the sandbox.
+- **PTY sessions** — Open interactive terminal sessions to sandboxes via WebSocket for real-time I/O.
+- **Bucket mounts** — Mount R2 or S3-compatible buckets as local directories inside the sandbox for persistent data.
+- **Workspace backup and restore** — Persist workspace state with `persist_workspace()` and `hydrate_workspace()` to resume work across sandbox lifecycles.
+- **File operations** — Read, write, and manage files programmatically within the sandbox.
 
 ## Next steps
 
-* [Workspace chat example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — A full-stack chat application with a file browser sidebar, built with the OpenAI Agents SDK and Cloudflare Sandbox.
-* [OpenAI Agents SDK documentation ↗](https://openai.github.io/openai-agents-python/) — Learn about multi-agent handoffs, guardrails, tracing, and more.
-* [Sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/) — Overview of the bridge Worker, usage examples, and configuration.
-* [HTTP API reference](https://developers.cloudflare.com/sandbox/bridge/http-api/) — Complete route reference for the bridge API.
-* [Sandbox tutorials](https://developers.cloudflare.com/sandbox/tutorials/) — More tutorials covering code execution, data analysis, and CI/CD pipelines.
+- [Workspace chat example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — A full-stack chat application with a file browser sidebar, built with the OpenAI Agents SDK and Cloudflare Sandbox.
+- [OpenAI Agents SDK documentation ↗](https://openai.github.io/openai-agents-python/) — Learn about multi-agent handoffs, guardrails, tracing, and more.
+- [Sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/) — Overview of the bridge Worker, usage examples, and configuration.
+- [HTTP API reference](https://developers.cloudflare.com/sandbox/bridge/http-api/) — Complete route reference for the bridge API.
+- [Sandbox tutorials](https://developers.cloudflare.com/sandbox/tutorials/) — More tutorials covering code execution, data analysis, and CI/CD pipelines.
 
 Was this helpful?
 

@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Verified bots
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A Verified bot is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
+A Verified bot
+
+ is a bot or agent that Cloudflare has confirmed is **transparent about who it is and what it does**: it represents itself honestly and does not abuse the access that honesty earns. Examples include search engine crawlers, monitoring services, and user-driven agents.
 
 Being Verified means a bot or agent meets two bars:
 
@@ -33,27 +35,27 @@ These updated classifications reflect the new taxonomy of bots used in [BotBase]
 
 Cloudflare classifies each tracked bot by its behavior — what the bot may do on your site. A single bot can have one or more of the following behaviors:
 
-| Behavior                | Description                                                                    |
-| ----------------------- | ------------------------------------------------------------------------------ |
-| Search                  | Crawling to build search indexes or RAG databases.                             |
-| Agent                   | User-directed agents visiting a page on behalf of a human.                     |
-| Training                | Crawling to train or fine-tune models.                                         |
-| Transact                | Checkout or other transaction actions on behalf of users.                      |
-| Data Collection         | Price scraping, competitive intelligence gathering, and third-party analytics. |
-| Security Testing        | Vulnerability scanning and penetration testing.                                |
-| SEO                     | SEO crawling, site auditing, and accessibility checks.                         |
-| Ads Verification        | Ad placement verification and ad fraud detection.                              |
-| Social / Link Preview   | Link previews for social platforms and messaging apps.                         |
-| Feed Fetching           | RSS readers, podcast aggregators, and news feed bots.                          |
-| Monitoring & Operations | Uptime monitoring, webhooks, and health checks.                                |
+| Behavior | Description |
+| --- | --- |
+| Search | Crawling to build search indexes or RAG databases. |
+| Agent | User-directed agents visiting a page on behalf of a human. |
+| Training | Crawling to train or fine-tune models. |
+| Transact | Checkout or other transaction actions on behalf of users. |
+| Data Collection | Price scraping, competitive intelligence gathering, and third-party analytics. |
+| Security Testing | Vulnerability scanning and penetration testing. |
+| SEO | SEO crawling, site auditing, and accessibility checks. |
+| Ads Verification | Ad placement verification and ad fraud detection. |
+| Social / Link Preview | Link previews for social platforms and messaging apps. |
+| Feed Fetching | RSS readers, podcast aggregators, and news feed bots. |
+| Monitoring & Operations | Uptime monitoring, webhooks, and health checks. |
 
 Search, Agent, and Training are also available as managed presets you can act on across all plans. For more information, refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
 
 Cloudflare also labels every Verified bot or agent by how it is operated.
 
-| Label            | Description                                                                                                                                          |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Direct**       | Operated by a single, narrow operator — usually on the operator's own infrastructure. Only that operator can send requests that present as this bot. |
+| Label | Description |
+| --- | --- |
+| **Direct** | Operated by a single, narrow operator — usually on the operator's own infrastructure. Only that operator can send requests that present as this bot. |
 | **Intermediary** | An agentic service that a wide range of end users can operate. The operator runs the software, but each action is initiated by a different end user. |
 
 Because an **intermediary** acts on behalf of many different end users, the operator and the end user are not the same party. This introduces **transitive trust**: you may trust the intermediary operator, but not necessarily every end user driving it. Cloudflare is experimenting with forwarding information about the end user (using the `Forwarded` header defined in [RFC 7239 ↗](https://www.rfc-editor.org/info/rfc7239)) so that website owners can apply their preferences to the party ultimately responsible for a request.
@@ -66,8 +68,8 @@ Once Cloudflare approves a Verified bot, it should appear in [BotBase](https://d
 
 The bot must be Verified using one of the following validation methods:
 
-* [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
-* [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
+- [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/)
+- [IP validation](https://developers.cloudflare.com/bots/reference/bot-verification/ip-validation/)
 
 ### Breach of policy
 
@@ -75,12 +77,12 @@ If any of the requirements to validate are breached, a service will be removed f
 
 The following are examples of breaches of policy:
 
-* Adding a set of IPs that are not solely used by Verified service.
-* The service IPs are breached by an attacker.
-* The service has vulnerabilities that have not been patched.
-* A block of IPs not briefed on onboarding is added to the list.
-* The disclosed purpose of the service does not reflect on the traffic.
-* An AI Crawler that does not respect the crawl-delay directive in robots.txt.
+- Adding a set of IPs that are not solely used by Verified service.
+- The service IPs are breached by an attacker.
+- The service has vulnerabilities that have not been patched.
+- A block of IPs not briefed on onboarding is added to the list.
+- The disclosed purpose of the service does not reflect on the traffic.
+- An AI Crawler that does not respect the crawl-delay directive in robots.txt.
 
 ## Legacy categories
 
@@ -88,57 +90,97 @@ Note
 
 The original categories of Verified bots continue to be usable in WAF custom rules and currently continue to work as before, even as Cloudflare continues launching new capabilities based on the updated taxonomy.
 
-Academic research
+<details>
 
-**String value**: `Academic Research`
+<summary>Academic research</summary>
+
+
+
+**String value**: <code>Academic Research</code>
 
 **Definition**: Gathers data for scholarly research or academic purposes.
 
 **Example**: Library of Congress, TurnItInBot, Bibliothèque nationale de France
 
-Accessibility
+</details>
 
-**String value**: `Accessibility`
+<details>
+
+<summary>Accessibility</summary>
+
+
+
+**String value**: <code>Accessibility</code>
 
 **Definition**: Scans websites to identify their accessibility.
 
 **Example**: Accessible Web Bot
 
-Advertising or marketing
+</details>
 
-**String value**: `Advertising & Marketing`
+<details>
+
+<summary>Advertising or marketing</summary>
+
+
+
+**String value**: <code>Advertising &amp; Marketing</code>
 
 **Definition**: Automates marketing tasks including, but not limited to, ad placement and performance tracking.
 
 **Example**: Google Adsbot
 
-Aggregators
+</details>
 
-**String value**: `Aggregator`
+<details>
+
+<summary>Aggregators</summary>
+
+
+
+**String value**: <code>Aggregator</code>
 
 **Definition**: Collects content from various online sources and consolidates it in one place.
 
 **Example**: Pinterest, Indeed Jobsbot
 
-AI Assistant
+</details>
 
-**String value**: `AI Assistant`
+<details>
+
+<summary>AI Assistant</summary>
+
+
+
+**String value**: <code>AI Assistant</code>
 
 **Definition**: Automated AI bot driven by user action.
 
 **Example**: Perplexity-User, DuckAssistBot
 
-AI Crawler
+</details>
 
-**String value**: `AI Crawler`
+<details>
+
+<summary>AI Crawler</summary>
+
+
+
+**String value**: <code>AI Crawler</code>
 
 **Definition**: Crawls websites for content that is used for training AI models.
 
 **Example**: Google Bard, ChatGPT bot
 
-AI Search
+</details>
 
-**String value**: `AI Search`
+<details>
+
+<summary>AI Search</summary>
+
+
+
+**String value**: <code>AI Search</code>
 
 **Definition**: Powers AI-driven search experiences.
 
@@ -146,85 +188,147 @@ AI Search
 
 Note
 
-Under the taxonomy introduced on July 1, 2026, there is no longer a meaningful distinction between "AI Search" and traditional search — both are treated as **Search** behavior. The `AI Search` category value is retained for backward compatibility with existing rules, but new search crawlers are classified under **Search**. Refer to [AI bots](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots).
+Under the taxonomy introduced on July 1, 2026, there is no longer a meaningful distinction between "AI Search" and traditional search — both are treated as **Search** behavior. The <code>AI Search</code> category value is retained for backward compatibility with existing rules, but new search crawlers are classified under **Search**. Refer to <a href="https://developers.cloudflare.com/bots/concepts/bot/#ai-bots">AI bots</a>.
 
-Archiver
+</details>
 
-**String value**: `Archiver`
+<details>
+
+<summary>Archiver</summary>
+
+
+
+**String value**: <code>Archiver</code>
 
 **Definition**: Saves snapshots of websites to preserve digital content for historical records.
 
 **Example**: Internet Archive, CommonCrawl
 
-Feed fetcher
+</details>
 
-**String value**: `Feed Fetcher`
+<details>
+
+<summary>Feed fetcher</summary>
+
+
+
+**String value**: <code>Feed Fetcher</code>
 
 **Definition**: Retrieves updates from feeds to power readers or other applications.
 
 **Example**: RSS or Podcast feed updaters
 
-Monitoring or analytics
+</details>
 
-**String value**: `Monitoring & Analytics`
+<details>
+
+<summary>Monitoring or analytics</summary>
+
+
+
+**String value**: <code>Monitoring &amp; Analytics</code>
 
 **Definition**: Tracks a website's uptime, performance, and user traffic to gather key monitoring metrics.
 
 **Example**: Uptime Monitors
 
-Page preview
+</details>
 
-**String value**: `Page Preview`
+<details>
+
+<summary>Page preview</summary>
+
+
+
+**String value**: <code>Page Preview</code>
 
 **Definition**: Generates previews for links shared on social media or in messaging apps.
 
 **Example**: Facebook, Slack, Twitter, or Discord Link Preview tools
 
-Search engine crawler
+</details>
 
-**String value**: `Search Engine Crawler`
+<details>
+
+<summary>Search engine crawler</summary>
+
+
+
+**String value**: <code>Search Engine Crawler</code>
 
 **Definition**: A bot that discovers and indexes web pages for search results.
 
 **Example**: Googlebot, Bingbot, Yandexbot, Baidubot
 
-Search engine optimization
+</details>
 
-**String value**: `Search Engine Optimization`
+<details>
+
+<summary>Search engine optimization</summary>
+
+
+
+**String value**: <code>Search Engine Optimization</code>
 
 **Definition**: Analyzes websites to improve their standing in search engine results pages.
 
 **Example**: Google Lighthouse, GT Metrix, Pingdom, AddThis
 
-Security
+</details>
 
-**String value**: `Security`
+<details>
+
+<summary>Security</summary>
+
+
+
+**String value**: <code>Security</code>
 
 **Definition**: Scans websites to detect security vulnerabilities and potential threats.
 
 **Example**: Vulnerability Scanners, SSL Domain Control Validation (DCV) Check Tools
 
-Social media marketing
+</details>
 
-**String value**: `Social Media Marketing`
+<details>
+
+<summary>Social media marketing</summary>
+
+
+
+**String value**: <code>Social Media Marketing</code>
 
 **Definition**: Manages and automates activities on social platforms.
 
 **Example**: Brandwatch
 
-Webhooks
+</details>
 
-**String value**: `Webhooks`
+<details>
+
+<summary>Webhooks</summary>
+
+
+
+**String value**: <code>Webhooks</code>
 
 **Definition**: An automated messenger that sends data from one application to another for specific events.
 
 **Example**: Payment processors, WordPress Integration tools
 
-Other
+</details>
 
-**String value**: `Other`
+<details>
+
+<summary>Other</summary>
+
+
+
+**String value**: <code>Other</code>
 
 **Definition**: A dedicated category for bots that do not fit into the other classifications.
+
+</details>
 
 Cloudflare reserves the right to re-assign Verified bot categories if the bot's public documentation and observed behavior differ from the category listed in the bot submission form.
 

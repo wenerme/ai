@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Changelog
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-wan.xml)
 
@@ -24,9 +24,10 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 You can now define [custom applications](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#create-edit-or-delete-a-custom-application) for [breakout](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/) and [prioritized](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/) traffic on the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard, without calling the API.
 
 ![Adding a custom application by hostname, IP subnet, and source subnet from the Traffic Steering tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-custom-application-traffic-steering.D25Ga9-d.gif)
-* In **Traffic Steering** \> **Breakout traffic** or **Prioritized traffic**, select **Assign application traffic** \> **Add** to create a custom application matched by **Hostnames**, **IP subnets**, and/or the new **Source subnets** field, alongside Cloudflare-managed applications.
-* Edit or delete an existing custom application from the same panel, no API round-trip required.
-* **Source subnets** lets you match traffic by its source IP range, complementing the existing [source LAN interface breakout criteria](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
+
+- In **Traffic Steering** > **Breakout traffic** or **Prioritized traffic**, select **Assign application traffic** > **Add** to create a custom application matched by **Hostnames**, **IP subnets**, and/or the new **Source subnets** field, alongside Cloudflare-managed applications.
+- Edit or delete an existing custom application from the same panel, no API round-trip required.
+- **Source subnets** lets you match traffic by its source IP range, complementing the existing [source LAN interface breakout criteria](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/breakout-traffic/#breakout-by-source).
 
 This complements the existing API and Terraform workflow for managing applications.
 
@@ -40,8 +41,9 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 You can now configure [custom DHCP options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/) directly from the dashboard when the [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) is acting as the DHCP server for a LAN.
 
 ![Adding a custom DHCP option to a LAN's DHCP server from the Network Configuration tab of an appliance profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1034,format=webp/_astro/2026-09-01-appliance-dhcp-options-ui.B5OEZmib.gif)
-* In **LAN configuration**, under **DHCP server options**, select **Add DHCP option** to choose from common options for PXE / iPXE boot, VoIP phone provisioning, and vendor-specific configuration, or select **Add custom option** to enter your own option code, type, and value.
-* This complements the existing [API and Terraform workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/#configure-dhcp-options) for configuring DHCP options.
+
+- In **LAN configuration**, under **DHCP server options**, select **Add DHCP option** to choose from common options for PXE / iPXE boot, VoIP phone provisioning, and vendor-specific configuration, or select **Add custom option** to enter your own option code, type, and value.
+- This complements the existing [API and Terraform workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/#configure-dhcp-options) for configuring DHCP options.
 
 For details, refer to [DHCP server options](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-options/).
 
@@ -56,13 +58,13 @@ You can now create multiple [Cloudflare Tunnel](https://developers.cloudflare.co
 
 When creating a route, you can now:
 
-* **Add multiple destinations at once** — Enter a comma-separated list of CIDR ranges or hostnames to create several routes of the same type and connector together.
-* **Queue up multiple routes** — Select **Add another** to stage additional routes, including different types or connectors, before creating them all in one action.
-* **Retry only what failed** — If some routes in a batch fail (for example, an invalid CIDR), the routes that were created successfully are removed from the form automatically, so you only need to fix and resubmit the ones that failed.
+- **Add multiple destinations at once** — Enter a comma-separated list of CIDR ranges or hostnames to create several routes of the same type and connector together.
+- **Queue up multiple routes** — Select **Add another** to stage additional routes, including different types or connectors, before creating them all in one action.
+- **Retry only what failed** — If some routes in a batch fail (for example, an invalid CIDR), the routes that were created successfully are removed from the form automatically, so you only need to fix and resubmit the ones that failed.
 
 The same Routes UI already supports bulk creation for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) static routes, so you can add multiple WAN destinations or queue up several WAN routes before creating them together as well.
 
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 For setup steps, refer to [Add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/).
 
@@ -74,9 +76,10 @@ For setup steps, refer to [Add routes](https://developers.cloudflare.com/cloudfl
 When you register a [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), you can now select your hypervisor and download the appliance directly from the dashboard — no need to look up asset URLs.
 
 ![Selecting a hypervisor and downloading the Cloudflare One Virtual Appliance from the Connectors page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2813,height=1241,format=webp/_astro/2026-08-24-virtual-appliance-self-serve-download.Ca2YGpCA.png)
-* On the **Connectors** page, select **Add an appliance**, choose **Virtual appliance**, then select your hypervisor: **VMware ESXi**, **Proxmox**, or **libvirt/KVM**.
-* Download the OVA image (VMware ESXi) or the install script (Proxmox and libvirt/KVM) for the selected hypervisor.
-* Use **View setup guide** to open deployment instructions for your platform.
+
+- On the **Connectors** page, select **Add an appliance**, choose **Virtual appliance**, then select your hypervisor: **VMware ESXi**, **Proxmox**, or **libvirt/KVM**.
+- Download the OVA image (VMware ESXi) or the install script (Proxmox and libvirt/KVM) for the selected hypervisor.
+- Use **View setup guide** to open deployment instructions for your platform.
 
 This complements the existing self-serve [registration and license key generation](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key) in the dashboard.
 
@@ -90,11 +93,12 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 You can now restart, reboot, or shut down a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard or via API.
 
 ![Restarting a Cloudflare One Appliance from the Operations section of the Edit Appliance page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-07-17-appliance-restart-reboot-shutdown.DKqTLOh6.gif)
-* **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
-* **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
-* **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
 
-In the dashboard, go to **Networking** \> **Connectors** \> **Appliances**, select an appliance, then **Edit** \> **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
+- **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
+- **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
+- **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
+
+In the dashboard, go to **Networking** > **Connectors** > **Appliances**, select an appliance, then **Edit** > **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
 
 For details, refer to [Appliance operations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/).
 
@@ -103,16 +107,16 @@ For details, refer to [Appliance operations](https://developers.cloudflare.com/c
 
 **IPsec downgrade protection (beta)**
 
-Cloudflare IPsec now supports the [IKE\_SA\_INIT\_FULL\_TRANSCRIPT\_AUTH ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
+Cloudflare IPsec now supports the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) IKEv2 extension to protect against downgrade attacks on IPsec tunnels.
 
 IKEv2's original authentication design has each endpoint sign only its own outbound messages, not the full handshake transcript. A quantum-capable [on-path attacker ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) can exploit this to bypass post-quantum key exchange by downgrading the connection to classical cryptography. The `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` extension addresses this by having both peers sign the entire handshake transcript during the authentication exchange, preventing an attacker from manipulating the negotiation without detection.
 
 Key details:
 
-* Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
-* Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
-* Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
-* This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
+- Available in beta for Cloudflare WAN and Magic Transit IPsec tunnels.
+- Cloudflare sends the `IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` notification unconditionally as a responder when the feature flag is enabled.
+- Both the initiator (your device) and responder (Cloudflare) must support the extension for downgrade protection to be effective.
+- This feature is currently gated by a per-account feature flag. Contact your account team to turn it on.
 
 Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta) for more details.
 
@@ -135,9 +139,10 @@ For the full list of current beta limitations, refer to [Traffic steering beta l
 You can now register a [Cloudflare One Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) and generate its license key directly from the dashboard, without contacting your account team.
 
 ![Registering a Cloudflare One Virtual Appliance and generating its authentication key from the Connectors page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=988,format=webp/_astro/2026-07-06-virtual-appliance-self-serve-ui.Dn2NC_ql.gif)
-* On the **Connectors** page, select **Add an appliance** and choose **Virtual appliance** to register a virtual appliance and generate its authentication key.
-* Use **Regenerate authentication key** from a virtual appliance connector's menu to rotate its key. The previous key is immediately and irrevocably revoked.
-* The authentication key is shown only once — copy and store it securely.
+
+- On the **Connectors** page, select **Add an appliance** and choose **Virtual appliance** to register a virtual appliance and generate its authentication key.
+- Use **Regenerate authentication key** from a virtual appliance connector's menu to rotate its key. The previous key is immediately and irrevocably revoked.
+- The authentication key is shown only once — copy and store it securely.
 
 This complements the existing [API and Terraform self-serve workflow](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key) for provisioning virtual appliances. Hardware appliances continue to use the existing account-team fulfillment workflow.
 
@@ -154,15 +159,15 @@ The **Routes** page in the Cloudflare dashboard now shows the routes across all 
 
 From the unified Routes page you can:
 
-* **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
-* **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
-* **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
-* **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
-* **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
+- **Visualize your network with an interactive map** that shows how your destinations flow through to your connectors — including equal-cost multi-path (ECMP) routes where the same prefix is served by several connectors. Select a node to filter the table down to the routes behind it.
+- **See every route in one table**, with its destination, type, connector, priority, and source, and filter or sort to find what you need.
+- **Create, edit, and delete routes** of any supported type without leaving the page. When adding a Cloudflare WAN or Magic Transit static route, you now pick the next hop by **connector name** instead of typing its IP.
+- **Manage [virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/)** from a dedicated tab.
+- **Test a route** to see which connector and next hop a destination resolves to before you commit a change.
 
-To find it, go to **Networking** \> **Routes** in the dashboard sidebar.
+To find it, go to **Networking** > **Routes** in the dashboard sidebar.
 
-[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 
 Your existing routes, APIs, and configurations are unchanged — this is a dashboard experience that brings them together in one place. Learn how to [add routes](https://developers.cloudflare.com/cloudflare-one/networks/routes/add-routes/) and [manage virtual networks](https://developers.cloudflare.com/cloudflare-one/networks/virtual-networks/).
 
@@ -173,9 +178,9 @@ Your existing routes, APIs, and configurations are unchanged — this is a dashb
 
 The Cisco IOS XE third-party integration guide for Cloudflare WAN has been updated to include:
 
-* Post Quantum Cryptography (PQC)
-* Policy-Based Routing (PBR)
-* IP Service Level Agreement (IP SLA)
+- Post Quantum Cryptography (PQC)
+- Policy-Based Routing (PBR)
+- IP Service Level Agreement (IP SLA)
 
 This link will take you directly to the updated [Cisco IOS XE](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/cisco-ios-xe/) guide.
 
@@ -214,15 +219,15 @@ Previously, devices behind NAT had to be configured to initiate IKE on UDP port 
 
 What changed:
 
-* Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
-* Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
-* No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
+- Devices behind NAT can now initiate IKE on either UDP port `500` or UDP port `4500`.
+- Devices that start IKE on UDP port `500` and switch to UDP port `4500` after NAT detection now complete the handshake successfully.
+- No configuration change is required on Cloudflare. The change is available for all IPsec tunnels on Cloudflare WAN and Magic Transit.
 
 This change does not affect existing tunnels:
 
-* Tunnels using UDP port `500` with no NAT detected continue to operate as before.
-* Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
-* NAT detection logic is unchanged.
+- Tunnels using UDP port `500` with no NAT detected continue to operate as before.
+- Tunnels configured to start IKE on UDP port `4500` continue to operate as before.
+- NAT detection logic is unchanged.
 
 For configuration details, refer to [GRE and IPsec tunnels](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/).
 
@@ -244,8 +249,8 @@ For details, refer to [DHCP server options](https://developers.cloudflare.com/cl
 
 Breakout and traffic prioritization rules on the Cloudflare One Appliance can now match by **source** in addition to destination application. You can pin breakout or priority behavior to:
 
-* A source LAN interface — VLANs attached to that LAN are included automatically.
-* A source IP address, range, or CIDR block.
+- A source LAN interface — VLANs attached to that LAN are included automatically.
+- A source IP address, range, or CIDR block.
 
 This is the natural way to break out a guest VLAN to the local Internet, or to prioritize traffic from a specific subnet, without enumerating destination applications.
 
@@ -258,9 +263,9 @@ For details, refer to [Breakout traffic](https://developers.cloudflare.com/cloud
 
 You can now create, rotate, and delete Cloudflare One Virtual Appliance instances and their license keys directly via the API and Terraform.
 
-* Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
-* Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
-* Delete a virtual appliance to release the associated licensed device.
+- Create a virtual appliance and receive a license key: `POST /accounts/{account_id}/magic/connectors` with `device.provision_license: true`.
+- Rotate the license key for an existing virtual appliance: `PATCH /accounts/{account_id}/magic/connectors/{connector_id}` with `provision_license: true`. The previous key is immediately and irrevocably revoked.
+- Delete a virtual appliance to release the associated licensed device.
 
 The license key is returned in the response only once, at create or rotate time. Copy and store it securely.
 
@@ -273,14 +278,14 @@ For details, refer to [Configure a Cloudflare One Virtual Appliance](https://dev
 
 Cloudflare IPsec now supports post-quantum key agreement with compatible third-party devices. [Cisco ↗](https://www.cisco.com/) and [Fortinet ↗](https://www.fortinet.com/) are the first third-party vendors validated to interoperate with Cloudflare IPsec using ML-KEM (Module-Lattice-Based Key-Encapsulation Mechanism).
 
-Post-quantum IPsec uses [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/) to negotiate hybrid key agreement during the IKEv2 `IKE_INTERMEDIATE` phase. This combines classical Diffie-Hellman (Group 20) with ML-KEM-768 or ML-KEM-1024 to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest%5Fnow,%5Fdecrypt%5Flater) attacks.
+Post-quantum IPsec uses [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/) to negotiate hybrid key agreement during the IKEv2 `IKE_INTERMEDIATE` phase. This combines classical Diffie-Hellman (Group 20) with ML-KEM-768 or ML-KEM-1024 to protect against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks.
 
 Key details:
 
-* Compatible with Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 and Fortinet FortiOS 7.6.6 and later.
-* Uses ML-KEM-768 or ML-KEM-1024 as an additional Key Exchange to DH Group 20.
-* Follows RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem standards.
-* No additional licensing required.
+- Compatible with Cisco 8000 Series Secure Routers with IOS XR Release 26.1.1 and Fortinet FortiOS 7.6.6 and later.
+- Uses ML-KEM-768 or ML-KEM-1024 as an additional Key Exchange to DH Group 20.
+- Follows RFC 9370 and draft-ietf-ipsecme-ikev2-mlkem standards.
+- No additional licensing required.
 
 Post-quantum IPsec with third-party devices is now generally available with confirmed interoperability for the platforms listed above. Cloudflare intends to support interoperability with more vendors as they build out support for draft-ietf-ipsecme-ikev2-mlkem. Contact your account team to discuss support for additional vendors.
 
@@ -321,13 +326,13 @@ We are retiring some older brand names in favor of names that describe exactly w
 
 #### What's changing
 
-* **Magic WAN** → **Cloudflare WAN**
-* **Magic WAN IPsec** → **Cloudflare IPsec**
-* **Magic WAN GRE** → **Cloudflare GRE**
-* **Magic WAN Connector** → **Cloudflare One Appliance**
-* **Magic Firewall** → **Cloudflare Network Firewall**
-* **Magic Network Monitoring** → **Network Flow**
-* **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
+- **Magic WAN** → **Cloudflare WAN**
+- **Magic WAN IPsec** → **Cloudflare IPsec**
+- **Magic WAN GRE** → **Cloudflare GRE**
+- **Magic WAN Connector** → **Cloudflare One Appliance**
+- **Magic Firewall** → **Cloudflare Network Firewall**
+- **Magic Network Monitoring** → **Network Flow**
+- **Magic Cloud Networking** → **Cloudflare One Multi-cloud Networking**
 
 **No action is required by you** — all functionality, existing configurations, and billing will remain exactly the same.
 
@@ -368,19 +373,19 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via IPsec and GRE tunnel on-ramps.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 For configuration details, refer to:
 
-* [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
-* [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic WAN](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
+- [Configure BGP routes for Magic Transit](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes)
 
 ## 2026-01-27
 
@@ -391,15 +396,15 @@ Cloudflare source IPs are the IP addresses used by Cloudflare services (such as 
 
 For customers using legacy mode routing, traffic to private networks is sourced from public Cloudflare IPs, which may cause IP conflicts. For customers using Unified Routing mode (beta), traffic to private networks is sourced from dedicated, non-Internet-routable private IPv4 range to ensure:
 
-* Symmetric routing over private network connections
-* Proper firewall state preservation
-* Private traffic stays on secure paths
+- Symmetric routing over private network connections
+- Proper firewall state preservation
+- Private traffic stays on secure paths
 
 Key details:
 
-* **IPv4**: Sourced from `100.64.0.0/12` by default, configurable to any `/12` CIDR
-* **IPv6**: Sourced from `2606:4700:cf1:5000::/64` (not configurable)
-* **Affected connectors**: GRE, IPsec, CNI, WARP Connector, and WARP Client (Cloudflare Tunnel is not affected)
+- **IPv4**: Sourced from `100.64.0.0/12` by default, configurable to any `/12` CIDR
+- **IPv6**: Sourced from `2606:4700:cf1:5000::/64` (not configurable)
+- **Affected connectors**: GRE, IPsec, CNI, WARP Connector, and WARP Client (Cloudflare Tunnel is not affected)
 
 Configuring Cloudflare source IPs requires Unified Routing (beta) and the `Cloudflare One Networks Write` permission.
 
@@ -418,17 +423,17 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 
 **Summary of changes:**
 
-* A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
-* Product names have been removed from top-level navigation.
-* Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
-* Magic Firewall policies are now called **Firewall Policies.**
-* Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
-* Network analytics, network health, and real-time analytics are now available under **Insights.**
-* Packet Captures are found under **Insights > Diagnostics.**
-* You can manage your Sites from **Insights > Network health.**
-* You can find Magic Network Monitoring under **Insights > Network flow**.
+- A new **Overview** page provides access to the most common tasks across Magic Transit and Magic WAN.
+- Product names have been removed from top-level navigation.
+- Magic Transit and Magic WAN configuration is now organized under **Routes** and **Connectors**. For example, you will find IP Prefixes under **Routes**, and your GRE/IPsec Tunnels under **Connectors.**
+- Magic Firewall policies are now called **Firewall Policies.**
+- Magic WAN Connectors and Connector On-Ramps are now referenced in the dashboard as **Appliances** and **Appliance profiles.** They can be found under **Connectors > Appliances.**
+- Network analytics, network health, and real-time analytics are now available under **Insights.**
+- Packet Captures are found under **Insights > Diagnostics.**
+- You can manage your Sites from **Insights > Network health.**
+- You can find Magic Network Monitoring under **Insights > Network flow**.
 
-If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI\] Upcoming Network Services Dashboard Navigation Update**.
+If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
 
 Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 
@@ -441,9 +446,9 @@ Magic WAN Connector now exports NetFlow data for breakout traffic to Magic Netwo
 
 This feature allows you to:
 
-* Monitor breakout traffic statistics in the Cloudflare dashboard.
-* View traffic patterns for applications configured to bypass Cloudflare.
-* Maintain visibility across all traffic passing through your Magic WAN Connector.
+- Monitor breakout traffic statistics in the Cloudflare dashboard.
+- View traffic patterns for applications configured to bypass Cloudflare.
+- Maintain visibility across all traffic passing through your Magic WAN Connector.
 
 For more information, refer to [NetFlow statistics](https://developers.cloudflare.com/cloudflare-wan/analytics/netflow-analytics/).
 
@@ -456,9 +461,9 @@ Magic WAN now supports Automatic Return Routing (ARR), allowing customers to con
 
 Key benefits:
 
-* **Route-less mode**: Static or dynamic routes are optional when using ARR.
-* **Overlapping IP space support**: Traffic originating from customer sites can use overlapping private IP ranges.
-* **Symmetric routing**: Return traffic is guaranteed to use the same connection as the original on-ramp.
+- **Route-less mode**: Static or dynamic routes are optional when using ARR.
+- **Overlapping IP space support**: Traffic originating from customer sites can use overlapping private IP ranges.
+- **Symmetric routing**: Return traffic is guaranteed to use the same connection as the original on-ramp.
 
 This feature is currently in beta and requires the new Unified Routing mode (beta).
 
@@ -473,9 +478,9 @@ Magic WAN Connector now allows you to designate a specific WAN port for breakout
 
 With this feature, you can:
 
-* Pin breakout traffic for specific applications to a preferred WAN port.
-* Ensure critical traffic (such as Zoom or Teams) always uses your fastest or most reliable connection.
-* Benefit from automatic failover to standard WAN port priority if the preferred port goes down.
+- Pin breakout traffic for specific applications to a preferred WAN port.
+- Ensure critical traffic (such as Zoom or Teams) always uses your fastest or most reliable connection.
+- Benefit from automatic failover to standard WAN port priority if the preferred port goes down.
 
 This is useful for organizations with multiple ISP uplinks who need predictable egress behavior for performance-sensitive traffic.
 
@@ -490,7 +495,7 @@ For configuration details, refer to [Designate WAN ports for breakout apps](http
 
 Routing DNS traffic to the Gateway resolver allows DNS resolution and filtering for traffic coming from private networks while preserving source internal IP visibility. This ensures Magic WAN users have full integration with our Cloudflare One features, including [Internal DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#internal-dns) and [hostname-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#selector-prerequisites).
 
-To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use _Source Internal IP_ as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
+To configure DNS filtering, change your Magic WAN or WARP Connector DNS settings to use Cloudflare's shared resolver IPs, `172.64.36.1` and `172.64.36.2`. Once you configure DNS resolution and filtering, you can use *Source Internal IP* as a traffic selector in your [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) for routing private DNS traffic to your [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/).
 
 ## 2025-09-08
 
@@ -519,7 +524,7 @@ Now, when a Magic tunnel has a bidirectional health check configured, the bidire
 
 **Terraform V5 support for tunnels and routes**
 
-The Cloudflare Terraform provider resources for Cloudflare WAN tunnels and routes now support Terraform provider version 5\. Customers using infrastructure-as-code workflows can manage their tunnel and route configuration with the latest provider version.
+The Cloudflare Terraform provider resources for Cloudflare WAN tunnels and routes now support Terraform provider version 5. Customers using infrastructure-as-code workflows can manage their tunnel and route configuration with the latest provider version.
 
 For more information, refer to the [Cloudflare Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
@@ -534,8 +539,8 @@ This ensures that all Magic Transit and Magic WAN customers with CMB EU enabled 
 
 Specifically, these two GraphQL endpoints are now compatible with CMB EU:
 
-* `magicTransitTunnelHealthChecksAdaptiveGroups`
-* `magicTransitTunnelTrafficAdaptiveGroups`
+- `magicTransitTunnelHealthChecksAdaptiveGroups`
+- `magicTransitTunnelTrafficAdaptiveGroups`
 
 ## 2025-07-21
 
@@ -579,14 +584,14 @@ Magic WAN and Magic Transit customers can use the Cloudflare dashboard to config
 
 Using BGP peering allows customers to:
 
-* Automate the process of adding or removing networks and subnets.
-* Take advantage of failure detection and session recovery features.
+- Automate the process of adding or removing networks and subnets.
+- Take advantage of failure detection and session recovery features.
 
 With this functionality, customers can:
 
-* Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
-* Secure the session by MD5 authentication to prevent misconfigurations.
-* Exchange routes dynamically between their devices and their Magic routing table.
+- Establish an eBGP session between their devices and the Magic WAN / Magic Transit service when connected via CNI.
+- Secure the session by MD5 authentication to prevent misconfigurations.
+- Exchange routes dynamically between their devices and their Magic routing table.
 
 Refer to [Magic WAN BGP peering](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes) or [Magic Transit BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to learn more about this feature and how to set it up.
 

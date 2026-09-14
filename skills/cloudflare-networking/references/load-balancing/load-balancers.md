@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Load balancers
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/load-balancers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A load balancer distributes traffic among pools according to [pool health](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/) and [traffic steering policies](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/). Each load balancer is identified by its DNS hostname (`lb.example.com`, `dev.example.com`, etc.) or IP address.
 
@@ -58,7 +58,7 @@ For step-by-step guidance, refer to [Create a load balancer](https://developers.
 
 ## Properties
 
-For an up-to-date list of load balancer properties, refer to [Load balancer properties](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/get/) in the Cloudflare API documentation.
+For an up-to-date list of load balancer properties, refer to [Load balancer properties](https://developers.cloudflare.com/api/resources/load_balancers/methods/get/) in the Cloudflare API documentation.
 
 ---
 
@@ -66,14 +66,14 @@ For an up-to-date list of load balancer properties, refer to [Load balancer prop
 
 The Cloudflare API supports the following commands for load balancers.
 
-| Command                                                                                                            | Method | Endpoint                             |
-| ------------------------------------------------------------------------------------------------------------------ | ------ | ------------------------------------ |
-| [Create Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/)           | POST   | /zones/:zone\_id/load\_balancers     |
-| [Delete Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/delete/)           | DELETE | /zones/:zone\_id/load\_balancers/:id |
-| [List Load Balancers](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/list/)              | GET    | /zones/:zone\_id/load\_balancers     |
-| [Load Balancer Details](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/get/)             | GET    | /zones/:zone\_id/load\_balancers/:id |
-| [Overwrite specific properties](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/edit/)    | PATCH  | /zones/:zone\_id/load\_balancers/:id |
-| [Overwrite entire Load Balancer](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/update/) | PUT    | /zones/:zone\_id/load\_balancers/:id |
+| Command | Method | Endpoint |
+| --- | --- | --- |
+| [Create Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/) | `POST` | `/zones/:zone_id/load_balancers` |
+| [Delete Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/delete/) | `DELETE` | `/zones/:zone_id/load_balancers/:id` |
+| [List Load Balancers](https://developers.cloudflare.com/api/resources/load_balancers/methods/list/) | `GET` | `/zones/:zone_id/load_balancers` |
+| [Load Balancer Details](https://developers.cloudflare.com/api/resources/load_balancers/methods/get/) | `GET` | `/zones/:zone_id/load_balancers/:id` |
+| [Overwrite specific properties](https://developers.cloudflare.com/api/resources/load_balancers/methods/edit/) | `PATCH` | `/zones/:zone_id/load_balancers/:id` |
+| [Overwrite entire Load Balancer](https://developers.cloudflare.com/api/resources/load_balancers/methods/update/) | `PUT` | `/zones/:zone_id/load_balancers/:id` |
 
 Was this helpful?
 

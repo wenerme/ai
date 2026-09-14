@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client SDK
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect to agents from any JavaScript runtime — browsers, Node.js, Deno, Bun, or edge functions — using WebSockets or HTTP. The SDK provides real-time state synchronization, RPC method calls, and streaming responses.
 
@@ -20,18 +20,18 @@ Connect to agents from any JavaScript runtime — browsers, Node.js, Deno, Bun, 
 
 The client SDK offers two ways to connect with a WebSocket connection, and one way to make HTTP requests.
 
-| Client      | Use Case                                                    |
-| ----------- | ----------------------------------------------------------- |
-| useAgent    | React hook with automatic reconnection and state management |
-| AgentClient | Vanilla JavaScript/TypeScript class for any environment     |
-| agentFetch  | HTTP requests when WebSocket is not needed                  |
+| Client | Use Case |
+| --- | --- |
+| `useAgent` | React hook with automatic reconnection and state management |
+| `AgentClient` | Vanilla JavaScript/TypeScript class for any environment |
+| `agentFetch` | HTTP requests when WebSocket is not needed |
 
 All clients provide:
 
-* **Bidirectional state sync** \- Push and receive state updates in real-time
-* **RPC calls** \- Call agent methods with typed arguments and return values
-* **Streaming** \- Handle chunked responses for AI completions
-* **Auto-reconnection** \- Automatic reconnection with exponential backoff
+- **Bidirectional state sync** - Push and receive state updates in real-time
+- **RPC calls** - Call agent methods with typed arguments and return values
+- **Streaming** - Handle chunked responses for AI completions
+- **Auto-reconnection** - Automatic reconnection with exponential backoff
 
 ## Quick start
 
@@ -251,10 +251,10 @@ useAgent({
 
 The query function is cached and only re-called when:
 
-* `queryDeps` change
-* `cacheTtl` expires
-* The WebSocket connection closes (automatic cache invalidation)
-* The component remounts
+- `queryDeps` change
+- `cacheTtl` expires
+- The WebSocket connection closes (automatic cache invalidation)
+- The component remounts
 
 Automatic cache invalidation on disconnect
 
@@ -333,11 +333,14 @@ When you call `setState()`:
 
 ### State flow
 
+```
 sequenceDiagram
     participant Client
     participant Agent
     Client->>Agent: setState()
     Agent-->>Client: onStateUpdate (broadcast)
+
+```
 
 ## Calling agent methods (RPC)
 
@@ -549,12 +552,12 @@ const response = await agentFetch(
 
 **When to use `agentFetch` vs WebSocket:**
 
-| Use agentFetch                  | Use useAgent/AgentClient    |
-| ------------------------------- | --------------------------- |
-| One-time requests               | Real-time updates needed    |
-| Server-to-server calls          | Bidirectional communication |
-| Simple REST-style API           | State synchronization       |
-| No persistent connection needed | Multiple RPC calls          |
+| Use `agentFetch` | Use `useAgent`/`AgentClient` |
+| --- | --- |
+| One-time requests | Real-time updates needed |
+| Server-to-server calls | Bidirectional communication |
+| Simple REST-style API | State synchronization |
+| No persistent connection needed | Multiple RPC calls |
 
 ## MCP server integration
 
@@ -660,7 +663,7 @@ await agent.call("streamingMethod", [data], {
 
 ## Best practices
 
-### 1\. Use typed stubs
+### 1. Use typed stubs
 
 ```js
 // Prefer this:
@@ -678,11 +681,11 @@ const user = await agent.stub.getUser(id);
 const user = await agent.call("getUser", [id]);
 ```
 
-### 2\. Reconnection is automatic
+### 2. Reconnection is automatic
 
 The client auto-reconnects and the agent automatically sends the current state on each connection. Your `onStateUpdate` callback will fire with the latest state — no manual re-sync is needed. If you use an async `query` function for authentication, the cache is automatically invalidated on disconnect, ensuring fresh tokens are fetched on reconnect.
 
-### 3\. Optimize query caching
+### 3. Optimize query caching
 
 ```js
 // For auth tokens that expire hourly:
@@ -702,7 +705,7 @@ useAgent({
 });
 ```
 
-### 4\. Clean up connections
+### 4. Clean up connections
 
 In vanilla JS, close connections when done:
 
@@ -755,16 +758,16 @@ type UseAgentOptions<State> = {
 
 The `useAgent` hook returns an object with the following properties and methods:
 
-| Property/Method               | Type    | Description                |
-| ----------------------------- | ------- | -------------------------- |
-| agent                         | string  | Kebab-case agent name      |
-| name                          | string  | Instance name              |
-| setState(state)               | void    | Push state to agent        |
-| call(method, args?, options?) | Promise | Call agent method          |
-| stub                          | Proxy   | Typed method calls         |
-| send(data)                    | void    | Send raw WebSocket message |
-| close()                       | void    | Close connection           |
-| reconnect()                   | void    | Force reconnection         |
+| Property/Method | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` | Kebab-case agent name |
+| `name` | `string` | Instance name |
+| `setState(state)` | `void` | Push state to agent |
+| `call(method, args?, options?)` | `Promise` | Call agent method |
+| `stub` | `Proxy` | Typed method calls |
+| `send(data)` | `void` | Send raw WebSocket message |
+| `close()` | `void` | Close connection |
+| `reconnect()` | `void` | Force reconnection |
 
 ## Vanilla JS reference
 
@@ -788,15 +791,15 @@ type AgentClientOptions<State> = {
 
 ### AgentClient methods
 
-| Property/Method               | Type    | Description                |
-| ----------------------------- | ------- | -------------------------- |
-| agent                         | string  | Kebab-case agent name      |
-| name                          | string  | Instance name              |
-| setState(state)               | void    | Push state to agent        |
-| call(method, args?, options?) | Promise | Call agent method          |
-| send(data)                    | void    | Send raw WebSocket message |
-| close()                       | void    | Close connection           |
-| reconnect()                   | void    | Force reconnection         |
+| Property/Method | Type | Description |
+| --- | --- | --- |
+| `agent` | `string` | Kebab-case agent name |
+| `name` | `string` | Instance name |
+| `setState(state)` | `void` | Push state to agent |
+| `call(method, args?, options?)` | `Promise` | Call agent method |
+| `send(data)` | `void` | Send raw WebSocket message |
+| `close()` | `void` | Close connection |
+| `reconnect()` | `void` | Force reconnection |
 
 The client also supports WebSocket event listeners:
 

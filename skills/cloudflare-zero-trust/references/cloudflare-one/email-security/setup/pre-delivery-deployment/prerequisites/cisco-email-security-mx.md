@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cisco - Email security as MX Record
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/cisco-email-security-mx/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/cisco-email-security-mx/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ![A schematic showing where Email security sits in the life cycle of an email received](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1275,height=360,format=webp/_astro/Cisco_to_Email_Security_MX_Inline.CY054jTO.png)
 
@@ -57,47 +57,46 @@ If you are using Cloudflare for DNS, you can leave the [TTL setting as **Auto**]
 
 Below is a list with instructions on how to edit MX records for some popular services:
 
-* **Cloudflare**: [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-* **GoDaddy**: [Edit an MX Record ↗](https://www.godaddy.com/help/edit-an-mx-record-19235)
-* **AWS**: [Creating records by using the Amazon Route 53 console ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
-* **Azure**: [Create DNS records in a custom domain for a web app ↗](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
+- **Cloudflare**: [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
+- **GoDaddy**: [Edit an MX Record ↗](https://www.godaddy.com/help/edit-an-mx-record-19235)
+- **AWS**: [Creating records by using the Amazon Route 53 console ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+- **Azure**: [Create DNS records in a custom domain for a web app ↗](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
 
-## 1\. Add a Sender Group for Email security Email Protection IPs
+## 1. Add a Sender Group for Email security Email Protection IPs
 
 To add a new Sender Group:
 
-1. Go to **Mail Policies** \> **HAT Overview**.
+1. Go to **Mail Policies** > **HAT Overview**.
 2. Select **Add Sender Group**.
 3. Configure the new Sender Group as follows:
-
-  * **Name**: `Email security`.
-  * **Order**: Order above the existing **WHITELIST** sender group.
-  * **Comment**: `Email security Email Protection egress IP Addresses`.
-  * **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).
-  * **SBRS**: Leave blank.
-  * **DNS Lists**: Leave blank.
-  * **Connecting Host DNS Verification**: Leave all options unchecked.
+   - **Name**: `Email security`.
+   - **Order**: Order above the existing **WHITELIST** sender group.
+   - **Comment**: `Email security Email Protection egress IP Addresses`.
+   - **Policy**: `TRUSTED` (by default, spam detection is disabled for this mail flow policy).
+   - **SBRS**: Leave blank.
+   - **DNS Lists**: Leave blank.
+   - **Connecting Host DNS Verification**: Leave all options unchecked.
 4. Select **Submit and Add Senders** and add the IP addresses mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/)
 
-## 2\. Configure Incoming Relays
+## 2. Configure Incoming Relays
 
 You need to configure the Incoming Relays section to tell IronPort to ignore upstream hops, since all the connections are now coming from Email security. This step is needed so the IronPort can retrieve the original IPs to calculate IP reputation. IronPort also uses this information in the Anti-Spam (IPAS) scoring of messages.
 
-1. To enable the Incoming Relays Feature, select **Network** \> **Incoming Relays**.
+1. To enable the Incoming Relays Feature, select **Network** > **Incoming Relays**.
 2. Select **Enable** and commit your changes.
-3. Now, you will have to add an Incoming Relay. Select **Network** \> **Incoming Relays**.
+3. Now, you will have to add an Incoming Relay. Select **Network** > **Incoming Relays**.
 4. Select **Add Relay** and give your relay a name.
 5. Enter the IP address of the MTA, MX, or other machine that connects to the email gateway to relay incoming messages. You can use IPv4 or IPv6 addresses.
 6. Specify the `Received:` header that will identify the IP address of the original external sender.
 7. Commit your changes.
 
-## 3\. Disable SPF checks
+## 3. Disable SPF checks
 
 Make sure you disable Sender Policy Framework (SPF) checks in IronPort. Because Email security is acting as the MX record, if you do not disable SPF checks, IronPort will block emails due to an SPF failure.
 
 Refer to [Cisco's documentation ↗](https://www.cisco.com/c/en/us/support/docs/security/email-security-appliance/117973-faq-esa-00.html) for more information on how to disable SPF checks.
 
-## 4\. Set up MX/Inline
+## 4. Set up MX/Inline
 
 Now that you have completed the prerequisite steps, set up MX/Inline on the Cloudflare dashboard. Refer to [Set up MX/Inline deployment](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/) for the next steps.
 

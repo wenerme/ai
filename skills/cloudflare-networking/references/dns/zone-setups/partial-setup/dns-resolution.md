@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS resolution
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/dns-resolution/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)), Cloudflare handles DNS records a bit differently from primary zones (full setup) in order to internally resolve the origin server where proxied HTTP requests are sent to.
+When you have a partial zone ([CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+
+), Cloudflare handles DNS records a bit differently from primary zones (full setup) in order to internally resolve the origin server where proxied HTTP requests are sent to.
 
 ## Records within the same zone
 
@@ -31,6 +33,7 @@ Since Cloudflare contains both the CNAME and its target, our DNS resolution will
 
 This can cause issues if you already have DNS records for `sub2.partialzone.com` at your authoritative DNS provider. These records may point to `192.0.2.4`, another IP address, or another domain but - because Cloudflare contains the initial record and the target - it never queries your authoritative DNS provider for the record for `sub2.partialzone.com`.
 
+```
     flowchart TD
       accTitle: DNS resolution flow with CNAME target in same partial zone
       A[Request to <code>sub1.partialzone.com</code>] --> B[<code>CNAME</code> record for <code>sub1.partialzone.com</code> to <code>sub2.partialzone.com</code>]
@@ -42,9 +45,13 @@ This can cause issues if you already have DNS records for `sub2.partialzone.com`
       E[<code>A</code> record for <code>sub2.partialzone.com</code> to <code>192.0.2.4</code>]
       end
 
+```
+
+
 
 When you avoid this situation - meaning you do not have the **target** of the CNAME record within your partial zone - this DNS resolution would happen differently.
 
+```
     flowchart TD
       accTitle: DNS resolution flow with CNAME target not in partial zone
       A[Request to <code>sub1.partialzone.com</code>] --> B[<code>CNAME</code> record for <code>sub1.partialzone.com</code> to <code>sub2.partialzone.com</code>]
@@ -57,6 +64,8 @@ When you avoid this situation - meaning you do not have the **target** of the CN
         C
       end
 
+```
+
 ---
 
 ## Records pointing to a partial zone within the same account
@@ -65,6 +74,7 @@ You could also [create a CNAME record](https://developers.cloudflare.com/dns/man
 
 In this case, Cloudflare will always resolve the CNAME target based on the value at your authoritative DNS provider of the CNAME target zone.
 
+```
     flowchart TD
       accTitle: DNS resolution flow with CNAME target in a zone within the same account
       A[Request to <code>www\.alice.com</code>] --> B[<code>CNAME</code> record for <code>www\.alice.com</code> to <code>www\.partialzone.com</code>]
@@ -82,15 +92,18 @@ In this case, Cloudflare will always resolve the CNAME target based on the value
       C
       end
 
+```
+
 ### Auth DNS points to `cdn.cloudflare.net`
 
 Considering the following scenario:
 
-* The target zone (Cloudflare zone 2 in this example) is a partial zone and the DNS record on the partial zone is proxied.
-* The DNS record on the authoritative DNS server points to `cdn.cloudflare.net`
+- The target zone (Cloudflare zone 2 in this example) is a partial zone and the DNS record on the partial zone is proxied.
+- The DNS record on the authoritative DNS server points to `cdn.cloudflare.net`
 
 If such setup is in place, the subdomain (`www.partialzone.com` in this example) will resolve to a Cloudflare proxy IP, which will ultimately result in an error. Consider using [custom hostnames](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) and [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) setup instead.
 
+```
     flowchart TD
       accTitle: DNS resolution flow with CNAME target in a zone within the same account and auth DNS pointing to cdn.cloudflare.net
       A[Request to <code>www\.alice.com</code>] --> B[<code>CNAME</code> record for <code>www\.alice.com</code> to <code>www\.partialzone.com</code>]
@@ -107,6 +120,8 @@ If such setup is in place, the subdomain (`www.partialzone.com` in this example)
       subgraph Authoritative DNS
       C
       end
+
+```
 
 Was this helpful?
 

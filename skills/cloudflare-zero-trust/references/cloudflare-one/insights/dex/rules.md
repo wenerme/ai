@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Rules
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DEX rules allow you to create and manage testing policies for targeted user groups within your [fleet](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) (all devices with the Cloudflare One Client installed and connected to your Zero Trust organization). After creating a rule, you can use it to define the scope of a [test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) to specific groups such as departments (like finance or sales), devices, and/or users. You can apply and reuse rules on your desired tests.
 
@@ -22,7 +22,7 @@ Use DEX rules to scope a test to a specific group within your fleet for more pre
 
 To create a rule:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Select **Add a rule**.
 4. Give your rule a name and build your desired expressions.
@@ -34,17 +34,17 @@ Selectors are required categories in a DEX rule expression that define a group w
 
 Review the available selectors and their scope in the following list.
 
-| Selector                     | Description                                                                                                                                                        |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **User email**               | For specifying [user emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-email).                                    |
-| **User group emails**        | For specifying [group emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-email).                             |
-| **User group IDs**           | For specifying [group IDs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-ids).                                  |
-| **User group names**         | For specifying a [group name](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-names).                             |
-| **Operating systems**        | For specifying operating systems.                                                                                                                                  |
-| **Operating system version** | For specifying an operating system version (use Operator in) or versions (use Operator is).                                                                        |
-| **Managed network**          | For specifying users accessing the network from the office (managed network) compared to those accessing remotely.                                                 |
-| **SAML attributes**          | For specifying a value from the [SAML Attribute Assertion](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#saml-attributes). |
-| **Colos**                    | For specifying a Cloudflare data center (colocation) that users are connected to.                                                                                  |
+| Selector | Description |
+| --- | --- |
+| **User email** | For specifying [user emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-email). |
+| **User group emails** | For specifying [group emails](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-email). |
+| **User group IDs** | For specifying [group IDs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-ids). |
+| **User group names** | For specifying a [group name](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#user-group-names). |
+| **Operating systems** | For specifying operating systems. |
+| **Operating system version** | For specifying an operating system version (use Operator `in`) or versions (use Operator `is`). |
+| **Managed network** | For specifying users accessing the network from the office (managed network) compared to those accessing remotely. |
+| **SAML attributes** | For specifying a value from the [SAML Attribute Assertion](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/#saml-attributes). |
+| **Colos** | For specifying a Cloudflare data center (colocation) that users are connected to. |
 
 ## Add a rule to a test
 
@@ -52,7 +52,7 @@ After you have created a rule, you can add it to a test. If you do not add a rul
 
 To add a rule to a test:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Tests** tab.
 3. Choose an existing test and select **Edit**, or select **Add a test** to make a new test.
 4. Under **Select DEX rules**, select the rule you would like to apply.
@@ -64,7 +64,7 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 
 To view which tests a rule is being applied to:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Choose a rule and select **Edit**.
 4. Select the **DEX tests** tab and review the list of tests that include your selected rule.
@@ -75,7 +75,7 @@ You can create a new test from the [DEX test dashboard as described above](https
 
 To create a new test using a rule from DEX rules:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** \> **Digital experience**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Select a rule and select **Edit**.
 4. Select the **DEX tests** tab.
@@ -85,8 +85,8 @@ To create a new test using a rule from DEX rules:
 
 ## Related resources
 
-* [DEX HTTP test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/) \- Assess the accessibility of a web application.
-* [DEX Traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/) \- Measure the network path of an IP packet from an end-user device to a server.
+- [DEX HTTP test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/) - Assess the accessibility of a web application.
+- [DEX Traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/) - Measure the network path of an IP packet from an end-user device to a server.
 
 Was this helpful?
 

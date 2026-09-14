@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WARP modes
 
-Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/warp-modes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/warp-modes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The WARP client has several modes to better suit different connection needs.
 
@@ -28,13 +28,13 @@ Refer to [1.1.1.1 resolver](https://developers.cloudflare.com/1.1.1.1/encryption
 
 Formerly known as **1.1.1.1 with WARP**.
 
-The WARP application uses [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic[1](#user-content-fn-1) tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-warp/) to protect against [harvest-now-decrypt-later attacks ↗](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
+The WARP application uses [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic<sup>[1](#user-content-fn-1)</sup> tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-warp/) to protect against [harvest-now-decrypt-later attacks ↗](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
 
 This mode is available in three flavors:
 
-* **Traffic and DNS (UDP)** — All device traffic is routed through WARP, and DNS queries use UDP inside the tunnel.
-* **Traffic and DNS (TLS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-TLS (DoT).
-* **Traffic and DNS (HTTPS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-HTTPS (DoH).
+- **Traffic and DNS (UDP)** — All device traffic is routed through WARP, and DNS queries use UDP inside the tunnel.
+- **Traffic and DNS (TLS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-TLS (DoT).
+- **Traffic and DNS (HTTPS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-HTTPS (DoH).
 
 If the site you are visiting is already a Cloudflare customer, the content is immediately sent to your device. If not, Cloudflare uses its global network of data centers to devise the shortest path to the site. For more information, refer to our blog post [Introducing WARP: Fixing Mobile Internet Performance and Security ↗](https://blog.cloudflare.com/1111-warp-better-vpn/).
 
@@ -52,7 +52,7 @@ Currently, this mode is available on desktop clients only. When WARP is configur
 
 Because this feature restricts WARP to just applications configured to use the local proxy, leaving all other traffic over the Internet unencrypted by default, we have hidden it in the **Advanced** menu. To turn it on:
 
-1. Navigate to **Preferences** \> **Advanced** and select **Configure Proxy**.
+1. Navigate to **Preferences** > **Advanced** and select **Configure Proxy**.
 2. On the window that opens, check the box and configure the port you want to listen on.
 
 This will enable the **Local proxy** option in the **WARP Settings** menu.
@@ -68,7 +68,7 @@ WARP+ Unlimited is a paid, monthly subscription that can be purchased via the Ap
 To subscribe to WARP+ Unlimited:
 
 1. On an iOS or Android device, launch the **1.1.1.1: Faster Internet** app.
-2. Select **Settings** \> **Upgrade to WARP+**. A dialog will appear with the subscription price.
+2. Select **Settings** > **Upgrade to WARP+**. A dialog will appear with the subscription price.
 3. To confirm your subscription, select **Subscribe to WARP+ Unlimited**. All payments are handled by the Apple/Google app store, and the payment information associated with your Apple/Google account will be charged for these subscriptions.
 
 WARP+ Unlimited is now active on this device. You can use your license key on up to five devices.
@@ -76,9 +76,9 @@ WARP+ Unlimited is now active on this device. You can use your license key on up
 ## Footnotes
 
 1. Post-quantum cryptography requires the following minimum WARP versions:
-**Android**: 2.4.3
-**iOS**: 1.11.1
-**Windows, macOS, and Linux**: 2025.6.1335.0 [↩](#user-content-fnref-1)
+   **Android**: 2.4.3
+   **iOS**: 1.11.1
+   **Windows, macOS, and Linux**: 2025.6.1335.0 [↩](#user-content-fnref-1)
 
 Was this helpful?
 

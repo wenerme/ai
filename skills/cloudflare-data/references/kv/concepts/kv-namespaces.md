@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # KV namespaces
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/concepts/kv-namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/kv-namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A KV namespace is a key-value database replicated to Cloudflare’s global network.
 
@@ -30,15 +30,12 @@ Namespaces can optionally be restricted to a jurisdiction to durably store data 
 
 To bind KV namespaces to your Worker, assign an array of the below object to the `kv_namespaces` key.
 
-* `binding` `string` required
-
-  * The binding name used to refer to the KV namespace.
-* `id` `string` required
-
-  * The ID of the KV namespace.
-* `preview_id` `string` optional
-
-  * The ID of the KV namespace used during `wrangler dev`.
+- `binding` `string` required
+  - The binding name used to refer to the KV namespace.
+- `id` `string` required
+  - The ID of the KV namespace.
+- `preview_id` `string` optional
+  - The ID of the KV namespace used during `wrangler dev`.
 
 Example:
 
@@ -63,10 +60,9 @@ id = "<TEST_ID>"
 
 To bind the namespace to your Worker in the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your **Worker**.
-3. Select **Settings** \> **Bindings**.
+3. Select **Settings** > **Bindings**.
 4. Select **Add**.
 5. Select **KV Namespace**.
 6. Enter your desired variable name (the name of the binding).

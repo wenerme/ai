@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Diagnostics
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Packet captures allow you to record raw network traffic data passing through Cloudflare's network so you can inspect it offline in tools like Wireshark. This is useful for diagnosing connectivity issues, verifying firewall rules, or investigating unexpected traffic patterns.
 
@@ -38,8 +38,8 @@ Full packet captures will collect new traffic sent to Cloudflare's network after
 
 Refer to the articles in this section to learn how to use packet captures.
 
-* [Packet captures](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/)
-* [Buckets](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/)
+- [Packet captures](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/)
+- [Buckets](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/buckets/)
 
 Was this helpful?
 

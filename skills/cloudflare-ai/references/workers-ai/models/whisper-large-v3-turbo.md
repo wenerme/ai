@@ -1,5 +1,5 @@
 ---
-description: Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.
+description: "Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation. "
 title: whisper-large-v3-turbo
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -16,18 +16,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Automatic Speech Recognition • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cf/openai/whisper-large-v3-turbo`
 
-* Cloudflare-hosted
-* Batch
+- Cloudflare-hosted
+- Batch
 
 Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.
 
-| Model Info   |                           |
-| ------------ | ------------------------- |
-| Batch        | Yes                       |
+| Model Info | |
+| --- | --- |
+| Batch | Yes |
 | Unit Pricing | $0.00051 per audio minute |
 
 ## Parameters
@@ -74,7 +74,7 @@ compression\_ratio\_threshold
 
 log\_prob\_threshold
 
-`number`default: \-1Threshold for filtering out segments with low average log probability, indicating low confidence.
+`number`default: -1Threshold for filtering out segments with low average log probability, indicating low confidence.
 
 hallucination\_silence\_threshold
 
@@ -92,7 +92,7 @@ word\_count
 
 `number`The total number of words in the transcription.
 
-▶segments\[\]
+▶segments\[]
 
 `array`
 
@@ -102,9 +102,9 @@ vtt
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-input.json) [Download](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json) [Download](https://developers.cloudflare.com/workers-ai/models/whisper-large-v3-turbo/schema-output.json)
 
 Was this helpful?
 

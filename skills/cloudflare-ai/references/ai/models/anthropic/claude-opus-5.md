@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • Anthropic
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `anthropic/claude-opus-5`
 
-* Third-party
+- Third-party
 
 Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access.
 
-| Model Info                                                                          |                                                                                                                           |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                          |
-| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                |
-| More information                                                                    | [link ↗](https://www.anthropic.com/claude/opus)                                                                           |
-| Request formats                                                                     | Anthropic Messages                                                                                                        |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
+| More information | [link ↗](https://www.anthropic.com/claude/opus) |
+| Request formats | Anthropic Messages |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-5) |
 
 ## Usage
 
@@ -61,6 +61,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 ## The Three Laws (plus a "zeroth")
 
 **First Law — Conservation of Energy**
@@ -102,6 +103,7 @@ A common informal summary, framed as a game you can't win:
 1. You can't win (best case, you break even on energy).
 2. You can't break even (entropy always takes a cut).
 3. You can't quit the game (you can't reach absolute zero).
+```
 
 ```json
 {
@@ -143,7 +145,11 @@ A common informal summary, framed as a game you can't win:
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -174,6 +180,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 # Reading JSON Files in Python
 
 Python's built-in `json` module handles this. The key function is `json.load()`.
@@ -284,6 +291,7 @@ records = []
 with open("data.jsonl", "r", encoding="utf-8") as f:
     for line in f:
         line =
+````
 
 ```json
 {
@@ -323,9 +331,11 @@ with open("data.jsonl", "r", encoding="utf-8") as f:
 }
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -357,7 +367,7 @@ role
 
 `string`const: assistant
 
-▶content\[\]
+▶content\[]
 
 `array`
 
@@ -375,9 +385,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/schema-output.json)
 
 Was this helpful?
 

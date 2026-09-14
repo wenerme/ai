@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Share and export data
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/share-export/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/network-analytics/configure/share-export/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Share Network Analytics filters
 
@@ -22,7 +22,9 @@ To share your view of the data, copy the URL and send it to other users so that 
 
 ## Export sample log data
 
-You can export up to 100 raw events from the **Packet sample log** at a time. This option is useful when you need to combine and analyze Cloudflare data with data stored in a separate system or database, such as a SIEM system.
+You can export up to 100 raw events from the **Packet sample log** at a time. This option is useful when you need to combine and analyze Cloudflare data with data stored in a separate system or database, such as a SIEM system
+
+.
 
 To export log data:
 

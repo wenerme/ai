@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Validate the token
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to securely validate Turnstile tokens on your server using the Siteverify API.
 
@@ -22,9 +22,9 @@ You must call the Siteverify API to complete your Turnstile implementation. The 
 
 Server-side validation is required because:
 
-* **Tokens can be forged.** An attacker can submit any string to your form endpoint without completing a challenge.
-* **Tokens expire.** Each token is valid for 300 seconds (5 minutes) after generation.
-* **Tokens are single-use.** Each token can only be validated once. A replayed token will be rejected with the `timeout-or-duplicate` error code.
+- **Tokens can be forged.** An attacker can submit any string to your form endpoint without completing a challenge.
+- **Tokens expire.** Each token is valid for 300 seconds (5 minutes) after generation.
+- **Tokens are single-use.** Each token can only be validated once. A replayed token will be rejected with the `timeout-or-duplicate` error code.
 
 ## Process
 
@@ -36,6 +36,8 @@ Server-side validation is required because:
 
 ## Siteverify API overview
 
+*Endpointshell*
+
 ```shell
 POST https://challenges.cloudflare.com/turnstile/v0/siteverify
 ```
@@ -46,19 +48,19 @@ The API accepts both `application/x-www-form-urlencoded` and `application/json` 
 
 #### Required parameters
 
-| Parameter        | Required | Description                                             |
-| ---------------- | -------- | ------------------------------------------------------- |
-| secret           | Yes      | Your widget's secret key from the Cloudflare dashboard  |
-| response         | Yes      | The token from the client-side widget                   |
-| remoteip         | No       | The visitor's IP address                                |
-| idempotency\_key | No       | A UUID you generate to safely retry validation requests |
+| Parameter | Required | Description |
+| --- | --- | --- |
+| `secret` | Yes | Your widget's secret key from the Cloudflare dashboard |
+| `response` | Yes | The token from the client-side widget |
+| `remoteip` | No | The visitor's IP address |
+| `idempotency_key` | No | A UUID you generate to safely retry validation requests |
 
 #### Token characteristics
 
-* Maximum length: 2048 characters
-* Validity period: 300 seconds (5 minutes) from generation
-* Single use: Each token can only be validated once
-* Automatic expiry: Tokens automatically expire and cannot be reused
+- Maximum length: 2048 characters
+- Validity period: 300 seconds (5 minutes) from generation
+- Single use: Each token can only be validated once
+- Automatic expiry: Tokens automatically expire and cannot be reused
 
 The validation token issued by Turnstile is valid for five minutes. If a user submits the form after this period, the token is considered expired. In this scenario, the server-side verification API will return a failure, and the `error-codes` field in the response will include `timeout-or-duplicate`.
 
@@ -397,6 +399,8 @@ public async Task<IActionResult> SubmitForm([FromForm] string cfTurnstileRespons
 
 ## Advanced validation techniques
 
+*Idempotency keys for retry operationjs*
+
 ```js
 const crypto = require("crypto");
 
@@ -442,6 +446,8 @@ async function validateWithRetry(token, remoteip, maxRetries = 3) {
 	}
 }
 ```
+
+*Enhanced validation with custom checksjs*
 
 ```js
 async function validateTurnstileEnhanced(
@@ -517,6 +523,8 @@ if (result.valid) {
 
 ## API response format
 
+*Examplejson*
+
 ```json
 {
   "success": true,
@@ -531,6 +539,8 @@ if (result.valid) {
 }
 ```
 
+*Examplejson*
+
 ```json
 {
   "success": false,
@@ -540,31 +550,33 @@ if (result.valid) {
 
 ### Response fields
 
-| Field                  | Description                                      |
-| ---------------------- | ------------------------------------------------ |
-| success                | Boolean indicating if validation was successful  |
-| challenge\_ts          | ISO 8601 timestamp when the challenge was solved |
-| hostname               | Hostname where the challenge was served          |
-| error-codes            | Array of error codes (if validation failed)      |
-| action                 | Custom action identifier from client-side        |
-| cdata                  | Custom data payload from client-side             |
-| metadata.ephemeral\_id | Device fingerprint ID (Enterprise only)          |
+| Field | Description |
+| --- | --- |
+| `success` | Boolean indicating if validation was successful |
+| `challenge_ts` | ISO 8601 timestamp when the challenge was solved |
+| `hostname` | Hostname where the challenge was served |
+| `error-codes` | Array of error codes (if validation failed) |
+| `action` | Custom action identifier from client-side |
+| `cdata` | Custom data payload from client-side |
+| `metadata.ephemeral_id` | Device fingerprint ID (Enterprise only) |
 
 ### Error codes reference
 
-| Error code             | Description                             | Action required                                   |
-| ---------------------- | --------------------------------------- | ------------------------------------------------- |
-| missing-input-secret   | Secret parameter not provided           | Ensure secret key is included                     |
-| invalid-input-secret   | Secret key is invalid or expired        | Check your secret key in the Cloudflare dashboard |
-| missing-input-response | Response parameter was not provided     | Ensure token is included                          |
-| invalid-input-response | Token is invalid, malformed, or expired | User should retry the challenge                   |
-| bad-request            | Request is malformed                    | Check request format and parameters               |
-| timeout-or-duplicate   | Token has already been validated        | Each token can only be used once                  |
-| internal-error         | Internal error occurred                 | Retry the request                                 |
+| Error code | Description | Action required |
+| --- | --- | --- |
+| `missing-input-secret` | Secret parameter not provided | Ensure secret key is included |
+| `invalid-input-secret` | Secret key is invalid or expired | Check your secret key in the Cloudflare dashboard |
+| `missing-input-response` | Response parameter was not provided | Ensure token is included |
+| `invalid-input-response` | Token is invalid, malformed, or expired | User should retry the challenge |
+| `bad-request` | Request is malformed | Check request format and parameters |
+| `timeout-or-duplicate` | Token has already been validated | Each token can only be used once |
+| `internal-error` | Internal error occurred | Retry the request |
 
 ---
 
 ## Implementation
+
+*Example implementationjs*
 
 ```js
 class TurnstileValidator {
@@ -682,26 +694,26 @@ Refer to [Testing](https://developers.cloudflare.com/turnstile/troubleshooting/t
 
 ### Security
 
-* Store your secret keys securely. Use environment variables or secure key management.
-* Validate the token on every request. Never trust client-side validation alone.
-* Check additional fields. Validate the action and hostname when specified.
-* Monitor for abuse and log failed validations and unusual patterns.
-* Use HTTPS. Always validate over secure connections.
-* Only call the Siteverify API in your backend environment. If you expose the secret key in the front-end client code to call Siteverify, attackers can bypass the security check. Ensure that your client-side code sends the validation token to your backend, and that your backend is the sole caller of the Siteverify API.
+- Store your secret keys securely. Use environment variables or secure key management.
+- Validate the token on every request. Never trust client-side validation alone.
+- Check additional fields. Validate the action and hostname when specified.
+- Monitor for abuse and log failed validations and unusual patterns.
+- Use HTTPS. Always validate over secure connections.
+- Only call the Siteverify API in your backend environment. If you expose the secret key in the front-end client code to call Siteverify, attackers can bypass the security check. Ensure that your client-side code sends the validation token to your backend, and that your backend is the sole caller of the Siteverify API.
 
 ### Performance
 
-* Set reasonable timeouts. Do not wait indefinitely for Siteverify responses.
-* Implement retry logic and handle temporary network issues.
-* Cache validation results for the same token, if it is needed for your flow.
-* Monitor your API latency. Track the Siteverify response time.
+- Set reasonable timeouts. Do not wait indefinitely for Siteverify responses.
+- Implement retry logic and handle temporary network issues.
+- Cache validation results for the same token, if it is needed for your flow.
+- Monitor your API latency. Track the Siteverify response time.
 
 ### Error handling
 
-* Have fallback behavior for API failures.
-* Use user-friendly messaging. Do not expose internal error details to users.
-* Properly log errors for debugging without exposing secrets.
-* Rate limit to protect against validation flooding.
+- Have fallback behavior for API failures.
+- Use user-friendly messaging. Do not expose internal error details to users.
+- Properly log errors for debugging without exposing secrets.
+- Rate limit to protect against validation flooding.
 
 Was this helpful?
 

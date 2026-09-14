@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client-side security
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/client-side-security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ensures the safety and privacy of your website visitors' browsing environment.
 
@@ -66,20 +66,20 @@ Use Content security rules
 
 ## Availability
 
-|                                                      | Free | Pro | Business | Enterprise | Advanced |
-| ---------------------------------------------------- | ---- | --- | -------- | ---------- | -------- |
-| Availability                                         | Yes  | Yes | Yes      | Yes        | Yes      |
-| Script monitoring                                    | Yes  | Yes | Yes      | Yes        | Yes      |
-| Connection monitoring                                | No   | No  | Yes      | Yes        | Yes      |
-| Cookie monitoring                                    | No   | No  | Yes      | Yes        | Yes      |
-| Page attribution                                     | No   | No  | Yes      | Yes        | Yes      |
-| New Resources Alerts and New Domain Alerts           | No   | No  | Yes      | Yes        | Yes      |
-| Malicious script detection and alerting              | No   | No  | No       | No         | Yes      |
-| Code change detection and alerting                   | No   | No  | No       | No         | Yes      |
-| Malicious connection detection and alerting          | No   | No  | No       | No         | Yes      |
-| Cookie monitoring advanced fields                    | No   | No  | No       | No         | Yes      |
-| Number of content security rules (positive blocking) | 0    | 0   | 0        | 0          | 5        |
-| Number of Logpush jobs                               | 0    | 0   | 0        | 0          | 4        |
+|  | Free | Pro | Business | Enterprise | Advanced |
+| --- | --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes | Yes |
+| Script monitoring | Yes | Yes | Yes | Yes | Yes |
+| Connection monitoring | No | No | Yes | Yes | Yes |
+| Cookie monitoring | No | No | Yes | Yes | Yes |
+| Page attribution | No | No | Yes | Yes | Yes |
+| New Resources Alerts and New Domain Alerts | No | No | Yes | Yes | Yes |
+| Malicious script detection and alerting | No | No | No | No | Yes |
+| Code change detection and alerting | No | No | No | No | Yes |
+| Malicious connection detection and alerting | No | No | No | No | Yes |
+| Cookie monitoring advanced fields | No | No | No | No | Yes |
+| Number of content security rules (positive blocking) | 0 | 0 | 0 | 0 | 5 |
+| Number of Logpush jobs | 0 | 0 | 0 | 0 | 4 |
 
 The Page Shield add-on is now Client-Side Security Advanced. The features and entitlements are unchanged.
 

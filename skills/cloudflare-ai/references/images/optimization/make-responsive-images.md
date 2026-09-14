@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Make responsive images
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/make-responsive-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/make-responsive-images/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Responsive design scales media elements to fit the screen they are displayed on.
 
@@ -20,28 +20,28 @@ Without it, images can overflow their container and break the layout on small sc
 
 You can use Images to automatically resize images for optimal display on every device. Cloudflare supports two ways to serve responsive images on request:
 
-| Approach                                   | How it works                                                                                                      | Best for                                                                   |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [HTML srcset](#using-the-srcset-attribute) | List multiple sizes in markup and let the browser pick the best match based on viewport size and display density. | Full control over which sizes are available. Works in all browsers.        |
-| [width=auto](#using-widthauto)             | Cloudflare automatically selects the best width from a single URL — no markup changes required.                   | Simplest implementation, especially when you don't have control over HTML. |
+| Approach | How it works | Best for |
+| --- | --- | --- |
+| [HTML `srcset`](#using-the-srcset-attribute) | List multiple sizes in markup and let the browser pick the best match based on viewport size and display density. | Full control over which sizes are available. Works in all browsers. |
+| [`width=auto`](#using-widthauto) | Cloudflare automatically selects the best width from a single URL — no markup changes required. | Simplest implementation, especially when you don't have control over HTML. |
 
 ## Optimize for high-DPI displays
 
 A screen displays images using physical pixels (the individual dots that you see), while the browser uses CSS pixels (an abstract unit used for layout).
 
-On a standard display, these map 1:1\. On high-density displays (for example, Retina, 4K), each CSS pixel is rendered using multiple physical pixels — for example, 4 physical pixels on a 2x display, 9 on a 3x display.
+On a standard display, these map 1:1. On high-density displays (for example, Retina, 4K), each CSS pixel is rendered using multiple physical pixels — for example, 4 physical pixels on a 2x display, 9 on a 3x display.
 
 This ratio — the device pixel ratio (DPR) — determines how sharp an image will appear. When you serve a 960px image on a 2x display, the browser stretches it across 1920 physical pixels, making it appear blurry.
 
-To keep images sharp, you can provide a separate, higher-resolution version for high-DPI screens using the [dpr](https://developers.cloudflare.com/images/optimization/features/#dpr) parameter:
+To keep images sharp, you can provide a separate, higher-resolution version for high-DPI screens using the [`dpr`](https://developers.cloudflare.com/images/optimization/features/#dpr) parameter:
 
 | ![dpr=1 output](https://developers.cloudflare.com/_astro/dpr-1.kw44tjdd.jpg) | ![dpr=2 output](https://developers.cloudflare.com/_astro/dpr-2.frEHI63e.jpg) |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| width=300,height=200,dpr=1                                                   | width=300,height=200,dpr=2                                                   |
+| --- | --- |
+| `width=300,height=200,dpr=1` | `width=300,height=200,dpr=2` |
 
 ## Use the `srcset` attribute
 
-When you embed an image using an `<img>` element, you can use its [srcset ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#srcset) attribute to give the browser a list of the same image at different sizes.
+When you embed an image using an `<img>` element, you can use its [`srcset` ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#srcset) attribute to give the browser a list of the same image at different sizes.
 
 The browser evaluates screen size, pixel density, and network conditions, then selects the single best match.
 
@@ -115,9 +115,9 @@ If the image can have a different size depending on media queries or other CSS p
 
 In the example above:
 
-* If the screen size is below 640px, then the image fills the entire viewport.
-* If the screen size is above 640px, then the image scales with the viewport and caps at 640px.
-* On a 2x display above 640px, the browser needs 1280 physical pixels to fill the 640px layout width, so it selects the 1280w entry.
+- If the screen size is below 640px, then the image fills the entire viewport.
+- If the screen size is above 640px, then the image scales with the viewport and caps at 640px.
+- On a 2x display above 640px, the browser needs 1280 physical pixels to fill the 640px layout width, so it selects the 1280w entry.
 
 ## Use `width=auto`
 
@@ -144,13 +144,13 @@ The default breakpoints for client hints are: `320`, `768`, `960`, and `1200` pi
 The following table shows the widths that Cloudflare will pick based on the default breakpoints. If the detected viewport width exceeds the largest breakpoint, the image is served at that largest breakpoint.
 
 | Detected viewport width | Served image width |
-| ----------------------- | ------------------ |
-| 280px                   | 320px              |
-| 500px                   | 768px              |
-| 960px                   | 960px              |
-| 1500px                  | 1200px             |
+| --- | --- |
+| 280px | 320px |
+| 500px | 768px |
+| 960px | 960px |
+| 1500px | 1200px |
 
-You can override the default breakpoints using the [wbreakpoints](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameter, which accepts positive integers separated by semicolons.
+You can override the default breakpoints using the [`wbreakpoints`](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameter, which accepts positive integers separated by semicolons.
 
 #### Enabling client hints
 
@@ -184,12 +184,12 @@ When client hints are not available, Cloudflare classifies the device as mobile 
 
 The default sizes for user-agent detection are:
 
-| Device type                              | Default size |
-| ---------------------------------------- | ------------ |
-| Mobile (iPhone or Android in user-agent) | 768px        |
-| Desktop (all other user-agents)          | 1200px       |
+| Device type | Default size |
+| --- | --- |
+| Mobile (`iPhone` or `Android` in user-agent) | 768px |
+| Desktop (all other user-agents) | 1200px |
 
-You can override the default sizes using the [wmobile and wdesktop](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameters, which accept positive integers.
+You can override the default sizes using the [`wmobile` and `wdesktop`](https://developers.cloudflare.com/images/optimization/features/#width) sub-parameters, which accept positive integers.
 
 Was this helpful?
 

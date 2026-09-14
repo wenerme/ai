@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client with firewall
 
-Last updated Jul 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.
 
@@ -20,22 +20,30 @@ If your organization uses a firewall or other policies to restrict or intercept 
 
 The Cloudflare One Client connects to Cloudflare via a standard HTTPS connection outside the tunnel for operations like registration or settings changes. To perform these operations, you must allow the following IPs and domains:
 
-* IPv4 API endpoints: `162.159.137.105` and `162.159.138.105`
-* IPv6 API endpoints: `2606:4700:7::a29f:8969` and `2606:4700:7::a29f:8a69`
-* SNIs for Cloudflare One Client version 2026.6.0 and later: `api.devices.cloudflare.com`
-* SNIs for versions earlier than 2026.6.0: `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`
+- IPv4 API endpoints: `162.159.137.105` and `162.159.138.105`
+- IPv6 API endpoints: `2606:4700:7::a29f:8969` and `2606:4700:7::a29f:8a69`
+- SNIs for Cloudflare One Client version 2026.6.0 and later: `api.devices.cloudflare.com`
+- SNIs for versions earlier than 2026.6.0: `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`
 
 Cloudflare One Client version 2026.6.0 and later uses `api.devices.cloudflare.com`. Versions earlier than 2026.6.0 use `zero-trust-client.cloudflareclient.com` and `notifications.cloudflareclient.com`.
 
 These domains may resolve to different IP addresses. The Cloudflare One Client overrides the resolved IPs with the IPs listed above. To avoid connectivity issues, allow those IPs through your firewall.
 
+<details>
+
+<summary>
+
 FedRAMP High requirements
+
+</summary>
 
 To deploy the Cloudflare One Client in FedRAMP High environments, you will need to allow a different set of IPs and domains through your firewall:
 
-* IPv4 API endpoints: `162.159.213.1` and `172.64.98.1`
-* IPv6 API endpoints: `2606:54c1:11::` and `2a06:98c1:4b::`
-* SNIs: `api.devices.fed.cloudflare.com` and `notifications.devices.fed.cloudflare.com`
+- IPv4 API endpoints: <code>162.159.213.1</code> and <code>172.64.98.1</code>
+- IPv6 API endpoints: <code>2606:54c1:11::</code> and <code>2a06:98c1:4b::</code>
+- SNIs: <code>api.devices.fed.cloudflare.com</code> and <code>notifications.devices.fed.cloudflare.com</code>
+
+</details>
 
 ## DoH IP
 
@@ -45,19 +53,27 @@ Only required for [DNS only mode](https://developers.cloudflare.com/cloudflare-o
 
 In [DNS only mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode) mode, the Cloudflare One Client sends DNS requests to Gateway over an HTTPS connection. For DNS to work correctly, you must allow the following IPs and domains:
 
-* IPv4 DoH addresses: `162.159.36.1` and `162.159.46.1`
-* IPv6 DoH addresses: `2606:4700:4700::1111` and `2606:4700:4700::1001`
-* SNIs: `<ACCOUNT_ID>.cloudflare-gateway.com`
+- IPv4 DoH addresses: `162.159.36.1` and `162.159.46.1`
+- IPv6 DoH addresses: `2606:4700:4700::1111` and `2606:4700:4700::1001`
+- SNIs: `<ACCOUNT_ID>.cloudflare-gateway.com`
 
 Even though `<ACCOUNT_ID>.cloudflare-gateway.com` may resolve to different IP addresses, the Cloudflare One Client overrides the resolved IPs with the IPs listed above. To avoid connectivity issues, ensure that the above IPs are permitted through your firewall.
 
+<details>
+
+<summary>
+
 FedRAMP High requirements
+
+</summary>
 
 To deploy the Cloudflare One Client in FedRAMP High environments, you will need to allow a different set of IPs and domains through your firewall:
 
-* IPv4 DoH addresses: `172.64.100.3` and `172.64.101.3`
-* IPv6 DoH addresses: `2606:54c1:13::2`
-* SNIs: `<ACCOUNT_ID>.fed.cloudflare-gateway.com`
+- IPv4 DoH addresses: <code>172.64.100.3</code> and <code>172.64.101.3</code>
+- IPv6 DoH addresses: <code>2606:54c1:13::2</code>
+- SNIs: <code>&lt;ACCOUNT_ID&gt;.fed.cloudflare-gateway.com</code>
+
+</details>
 
 ### Android devices
 
@@ -67,15 +83,23 @@ If you are deploying the Cloudflare One Agent on Android/ChromeOS, you must also
 
 When you [log in to your Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/), you will have to complete the authentication steps required by your organization in the browser window that opens. To perform these operations, you must allow the following domains:
 
-* The IdP used to authenticate to Cloudflare One
-* `<your-team-name>.cloudflareaccess.com`
+- The IdP used to authenticate to Cloudflare One
+- `<your-team-name>.cloudflareaccess.com`
+
+<details>
+
+<summary>
 
 FedRAMP High requirements
 
+</summary>
+
 To deploy WARP in FedRAMP High environments, you will need to allow different domains through your firewall:
 
-* FedRAMP High IdP used to authenticate to Cloudflare One
-* `<your-team-name>.fed.cloudflareaccess.com`.
+- FedRAMP High IdP used to authenticate to Cloudflare One
+- <code>&lt;your-team-name&gt;.fed.cloudflareaccess.com</code>.
+
+</details>
 
 ## WARP ingress IP
 
@@ -83,44 +107,52 @@ The Cloudflare One Client connects to the following IP addresses, depending on w
 
 ### WireGuard
 
-| IPv4 address   | 162.159.193.0/24          |
-| -------------- | ------------------------- |
-| IPv6 address   | 2606:4700:100::/48        |
-| Default port   | UDP 2408                  |
-| Fallback ports | UDP 500 UDP 1701 UDP 4500 |
+| IPv4 address | `162.159.193.0/24` |
+| --- | --- |
+| IPv6 address | `2606:4700:100::/48` |
+| Default port | `UDP 2408` |
+| Fallback ports | `UDP 500` <br> `UDP 1701` <br> `UDP 4500` |
 
 ### MASQUE
 
-| IPv4 address   | 162.159.197.0/24                                                                     |
-| -------------- | ------------------------------------------------------------------------------------ |
-| IPv6 address   | 2606:4700:102::/48                                                                   |
-| Default port   | UDP 443                                                                              |
-| Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
+| IPv4 address | `162.159.197.0/24` |
+| --- | --- |
+| IPv6 address | `2606:4700:102::/48` |
+| Default port | `UDP 443` |
+| Fallback ports | `UDP 500` <br> `UDP 1701` <br> `UDP 4500` <br> `UDP 4443` <br> `UDP 8443` <br> `UDP 8095` <br> `TCP 443` <sup>[1](#user-content-fn-1)</sup> |
 
 Note
 
 Before you [log in to your Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/), you may see the IPv4 range `162.159.192.0/24`. This IP is used for the consumer WARP client ([1.1.1.1 with WARP](https://developers.cloudflare.com/warp-client/)) and is not required for Zero Trust services.
 
+<details>
+
+<summary>
+
 FedRAMP High requirements
+
+</summary>
 
 Devices will use the MASQUE protocol in FedRAMP High environments. To deploy the Cloudflare One Client for FedRAMP High, you will need to allow the following IPs and ports:
 
-| IPv4 address   | 162.159.239.0/24                                                                     |
-| -------------- | ------------------------------------------------------------------------------------ |
-| IPv6 address   | 2606:4700:105::/48                                                                   |
-| Default port   | UDP 443                                                                              |
-| Fallback ports | UDP 500 UDP 1701 UDP 4500 UDP 4443 UDP 8443 UDP 8095 TCP 443 [1](#user-content-fn-1) |
+| IPv4 address | <code>162.159.239.0/24</code> |
+| --- | --- |
+| IPv6 address | <code>2606:4700:105::/48</code> |
+| Default port | <code>UDP 443</code> |
+| Fallback ports | <code>UDP 500</code> <br> <code>UDP 1701</code> <br> <code>UDP 4500</code> <br> <code>UDP 4443</code> <br> <code>UDP 8443</code> <br> <code>UDP 8095</code> <br> <code>TCP 443</code> <sup><a href="#user-content-fn-1">1</a></sup> |
+
+</details>
 
 ## Captive portal
 
 The following domains are used as part of our captive portal check:
 
-* `cloudflareportal.com`
-* `cloudflareok.com`
-* `cloudflarecp.com`
-* `www.msftconnecttest.com`
-* `captive.apple.com`
-* `connectivitycheck.gstatic.com`
+- `cloudflareportal.com`
+- `cloudflareok.com`
+- `cloudflarecp.com`
+- `www.msftconnecttest.com`
+- `captive.apple.com`
+- `connectivitycheck.gstatic.com`
 
 ## Connectivity checks
 
@@ -130,9 +162,9 @@ As part of establishing the WARP tunnel, the client runs connectivity checks ins
 
 The client connects to the following destinations to verify general Internet connectivity outside of the WARP tunnel. Make sure that these IPs and domains are on your firewall allowlist.
 
-* `162.159.197.3`
-* `2606:4700:102::3`
-* `engage.cloudflareclient.com`: The client will always send requests directly to an IP in the [WARP ingress IPv4 or IPv6 range](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) (or to your [override\_warp\_endpoint](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#override%5Fwarp%5Fendpoint) if set). Requests will not use a proxy server, even if one is configured for the system.
+- `162.159.197.3`
+- `2606:4700:102::3`
+- `engage.cloudflareclient.com`: The client will always send requests directly to an IP in the [WARP ingress IPv4 or IPv6 range](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) (or to your [`override_warp_endpoint`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#override_warp_endpoint) if set). Requests will not use a proxy server, even if one is configured for the system.
 
 Even though `engage.cloudflareclient.com` may resolve to different IP addresses, the Cloudflare One Client overrides the resolved IPs with the IPs listed above. To avoid connectivity issues, ensure that the above IPs are permitted through your firewall.
 
@@ -140,9 +172,9 @@ Even though `engage.cloudflareclient.com` may resolve to different IP addresses,
 
 The Cloudflare One Client connects to the following destinations to verify connectivity inside of the WARP tunnel:
 
-* `162.159.197.4`
-* `2606:4700:102::4`
-* `connectivity.cloudflareclient.com`
+- `162.159.197.4`
+- `2606:4700:102::4`
+- `connectivity.cloudflareclient.com`
 
 Because this check happens inside of the tunnel, you do not need to add these IPs and domains to your firewall allowlist. However, since the requests go through Gateway, ensure that they are not blocked by a Gateway HTTP or Network policy.
 
@@ -164,27 +196,32 @@ The Cloudflare One Client attempts to synchronize the exact time by NTP (`UDP 12
 
 If your organization does not currently allow inbound/outbound communication over the IP addresses, ports, and domains described above, you must manually add an exception. The rule at a minimum needs to be scoped to the following process based on your platform:
 
-* Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe`, `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater.exe`, and `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater-armed.exe`
-* macOS: You must explicitly allow the core networking daemon, updater, and GUI component as shown in the following instructions.
-
+- Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe`, `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater.exe`, and `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater-armed.exe`
+- macOS: You must explicitly allow the core networking daemon, updater, and GUI component as shown in the following instructions.
   1. Core networking daemon: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`
-  This binary does not have a Bundle ID and must be allowed via full path.
+
+     This binary does not have a Bundle ID and must be allowed via full path.
   2. Updater: `/Applications/Cloudflare WARP.app/Contents/Resources/warp-updater`
   3. GUI component, choose one of the following three identifiers depending on your MDM or firewall vendor's preferred format:
-  `/Applications/Cloudflare WARP.app` (Path)
-  `/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP` (Path)
-  `com.cloudflare.1dot1dot1dot1.macos` (Bundle ID)
-macOS 15.0 through 15.4
-Due to changes in macOS Sequoia versions 15.0 through 15.4, you must update your [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac) to allow the Cloudflare One Client to manage your device's firewall. Later versions of macOS are not affected because of changes Apple introduced to fix the unexpected breaking changes in their firewall.
-To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 through 15.4 while still blocking unwanted incoming traffic, follow these steps:
 
+     `/Applications/Cloudflare WARP.app` (Path)
+
+     `/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP` (Path)
+
+     `com.cloudflare.1dot1dot1dot1.macos` (Bundle ID)
+
+  macOS 15.0 through 15.4
+
+  Due to changes in macOS Sequoia versions 15.0 through 15.4, you must update your [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac) to allow the Cloudflare One Client to manage your device's firewall. Later versions of macOS are not affected because of changes Apple introduced to fix the unexpected breaking changes in their firewall.
+
+  To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 through 15.4 while still blocking unwanted incoming traffic, follow these steps:
   1. Turn off the following [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac):
-  * **Block all incoming connections**
-  * **Automatically allow built-in software to receive incoming connections**
-  * **Automatically allow downloaded signed software to receive incoming connections**
-  1. Add the [WARP daemon, updater, and GUI processes](#required-scopes) to the firewall exceptions list and set them to _Allow incoming connections_.
-  2. Restrict the other allow exceptions to only the processes you want receiving traffic.
-  3. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.
+  - **Block all incoming connections**
+  - **Automatically allow built-in software to receive incoming connections**
+  - **Automatically allow downloaded signed software to receive incoming connections**
+  2. Add the [WARP daemon, updater, and GUI processes](#required-scopes) to the firewall exceptions list and set them to *Allow incoming connections*.
+  3. Restrict the other allow exceptions to only the processes you want receiving traffic.
+  4. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.
 
 ### Optional scopes
 
@@ -192,24 +229,24 @@ To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 th
 
 To run [Digital Experience Monitoring tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/), you will need to allow the `warp-dex` process to generate network traffic to your target destinations:
 
-* Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-dex.exe`
-* macOS: `/Applications/Cloudflare WARP.app/Contents/Resources/warp-dex`
+- Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-dex.exe`
+- macOS: `/Applications/Cloudflare WARP.app/Contents/Resources/warp-dex`
 
 #### Network statistics
 
 To use the network connectivity tests built into the Cloudflare One Client GUI, you will need to allow the GUI application to generate network traffic:
 
-* Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\Cloudflare WARP.exe`
-* macOS: `/Applications/Cloudflare WARP.app`
+- Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\Cloudflare WARP.exe`
+- macOS: `/Applications/Cloudflare WARP.app`
 
 ## Related resources
 
-* [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) \- Resolve selected domains via local DNS instead of Cloudflare Gateway.
-* [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) \- Control which traffic goes through the Cloudflare One Client by including or excluding specific IPs or domains.
+- [Local Domain Fallback](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/) - Resolve selected domains via local DNS instead of Cloudflare Gateway.
+- [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) - Control which traffic goes through the Cloudflare One Client by including or excluding specific IPs or domains.
 
 ## Footnotes
 
-1. Required for HTTP/2 fallback [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
+1. Required for HTTP/2 fallback [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
 
 Was this helpful?
 

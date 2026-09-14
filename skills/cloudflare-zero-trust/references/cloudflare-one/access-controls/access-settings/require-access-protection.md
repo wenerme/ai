@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Require Access protection
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/require-access-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access allows you to require Access protection for all hostnames in your account. When this setting is turned on, traffic to any hostname without a matching [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/) is automatically blocked.
 
@@ -24,12 +24,15 @@ Caution
 
 Turning on Access protection blocks traffic to any hostname that does not have an Access application. Before turning on this setting, verify that all publicly accessible hostnames have an [Access application with an Allow or Bypass policy](#allow-traffic-to-a-hostname).
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and go to **Zero Trust** \> **Access controls** \> **Access settings**.
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Turn on **Block traffic to all domains in this account**. You will see a dialog confirming you understand the scope of this change. Select **Confirm**.
-Traffic to all hostnames in the account is now blocked unless an Access application exists for the hostname.
+
+   Traffic to all hostnames in the account is now blocked unless an Access application exists for the hostname.
 3. (Optional) Under **Hostnames to Exempt**, select specific domains to exempt from the **Block traffic to all domains in this account** setting. Traffic to exempted hostnames is allowed even if no Access application exists.
-Note
-Cloudflare recommends limiting exemptions to hostnames that host only public-facing content. Internal applications should have an Access application configured.
+
+   Note
+
+   Cloudflare recommends limiting exemptions to hostnames that host only public-facing content. Internal applications should have an Access application configured.
 
 ## Allow traffic to a hostname
 

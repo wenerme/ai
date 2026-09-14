@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # User Groups
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User Groups are a collection of [account members](https://developers.cloudflare.com/fundamentals/manage-members/) that are treated equally from an access control perspective. User Groups can be assigned permission policies, with individual members in the group receiving all permissions of the roles assigned to the User Group. If users also have individually assigned permissions, then their effective permissions are the union of all of their individual permissions, plus the permissions for all of the User Groups they are a member of.
 
@@ -20,15 +20,14 @@ Note
 
 User Group permissions are inherited by each member of the group but are not currently reflected in the role field on the **Members** page. To view a member’s full set of permissions, check both:
 
-* The **Members** page for any directly assigned policies
-* The **Groups** tab to identify which groups the member belongs to, and the policies applied to those groups
+- The **Members** page for any directly assigned policies
+- The **Groups** tab to identify which groups the member belongs to, and the policies applied to those groups
 
 Cloudflare is actively working on improving this experience to make inherited and direct permissions easier to view.
 
 ## Create a User Group manually
 
-1. In the Cloudflare dashboard, go to the **Members** page.
-[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
+1. In the Cloudflare dashboard, go to the **Members** page. [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 2. Select the **Groups** tab.
 3. Select **Create a Group** and enter a name and description for your new group.
 4. Select **Create group** to confirm your changes. The **Group members** tab displays.
@@ -46,6 +45,8 @@ With your Group created, you can now add a [Permission Policy](https://developer
 Using the role identifiers from the previous section, you can create a permission policy for your group.
 
 `export ADMIN_ROLE='...' # id field from admin or desired role entry from permission_groups API response`
+
+*Example requestcurl*
 
 ```curl
 $ cat <<-PAYLOAD | curl -XPUT  -H "Authorization: Bearer $AOT" -H "Content-type: application/json" --data-binary @- https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP  | jq .
@@ -88,9 +89,9 @@ If you use the [Cloudflare dashboard SCIM integration](https://developers.cloudf
 
 Note that when managing User Groups via SCIM:
 
-* You cannot change the name, members, or delete the group manually from the Cloudflare dashboard or API.
-* The integration requires one external SCIM application per Cloudflare account.
-* Cloudflare does not currently support updating user profile fields (`firstName`, `lastName`, or `email`) via SCIM. If those attributes change in your IdP, they will not be updated in Cloudflare. These values are only set during initial provisioning.
+- You cannot change the name, members, or delete the group manually from the Cloudflare dashboard or API.
+- The integration requires one external SCIM application per Cloudflare account.
+- Cloudflare does not currently support updating user profile fields ( `firstName`, `lastName`, or `email`) via SCIM. If those attributes change in your IdP, they will not be updated in Cloudflare. These values are only set during initial provisioning.
 
 To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/).
 
@@ -98,7 +99,7 @@ To set up a user group with SCIM, refer to the [Provisioning with SCIM guide](ht
 
 After a user group is created either manually in Cloudflare dashboard or through SCIM integration the final step is to attach permissions to it.
 
-1. Go to **Manage members** \> **Members** \> **User groups**.
+1. Go to **Manage members** > **Members** > **User groups**.
 2. Select the user group you want to attach permissions to.
 3. Select the **Permission policies** tab and select **Add policy**.
 4. Choose the scope and role that you want to apply to the policy.
@@ -106,11 +107,15 @@ After a user group is created either manually in Cloudflare dashboard or through
 
 Before you begin, confirm the groups that were created internally or have been pushed to Cloudflare by using the command below.
 
-**1\. Get user groups**
+**1. Get user groups**
+
+*Example requestcurl*
 
 ```curl
 $ curl -X GET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups | jq .
 ```
+
+*Example responsecurl*
 
 ```curl
 {
@@ -182,11 +187,13 @@ $ curl -X GET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/
 }
 ```
 
-**2\. Make a query against the resource ID**
+**2. Make a query against the resource ID**
 
 Locate the tag of the group you pushed from the IdP and use it to make a direct query against its resource ID:
 
 `export PUSHED_GROUP='...' # Pull this value from the "id" json field in the group list response`
+
+*Example requestcurl*
 
 ```curl
 $ curl -XGET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP | jq .
@@ -194,13 +201,17 @@ $ curl -XGET -H "Authorization: Bearer $AOT" https://api.cloudflare.com/client/v
 
 The response for this should have the group name that was specified in the identity provider with no attached policies.
 
-**3\. Review available permission groups**
+**3. Review available permission groups**
 
 Before you modify the group's policies, review the available permission groups (roles) on the account by querying its API.
+
+*Example requestcurl*
 
 ```curl
 $ curl -XGET -H "Authorization: Bearer $DEMO_AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/permission_groups | jq .
 ```
+
+*Example responsecurl*
 
 ```curl
 {
@@ -246,9 +257,13 @@ These permission groups are from our staging environment and tags will not funct
 
 To verify the IdP synchronized the group and user members pushed in the SCIM operation, query the Group Members API.
 
+*Example requestcurl*
+
 ```curl
 $ curl -XGET -H "Authorization: Bearer $DEMO_AOT" https://api.cloudflare.com/client/v4/accounts/$ACCT/iam/user_groups/$PUSHED_GROUP/members | jq .
 ```
+
+*Example responsecurl*
 
 ```curl
 {

@@ -1,4 +1,5 @@
 ---
+description: Create a transform rule to rewrite the URL format `/posts/<YYYY>-<MM>-<DD>-<TITLE>` to the new format `/posts/<YYYY>/<MM>/<DD>/<TITLE>`.
 title: Rewrite blog archive URLs
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -13,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Create a transform rule to rewrite the URL format `/posts/<YYYY>-<MM>-<DD>-<TITLE>` to the new format `/posts/<YYYY>/<MM>/<DD>/<TITLE>`.
 
-Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-archive-urls-new-format/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/examples/rewrite-archive-urls-new-format/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To rewrite the URLs of a blog archive that follow the URL format `/posts/<YYYY>-<MM>-<DD>-<TITLE>` to the new format `/posts/<YYYY>/<MM>/<DD>/<TITLE>`, create the following URL rewrite rule:
 
@@ -23,7 +24,7 @@ Text in **Expression Editor**:
 http.request.uri.path ~ "^/posts/[0-9]+-[0-9]+-[0-9]+-.*"
 ```
 
-Text after **Path** \> **Rewrite to** \> _Dynamic_:
+Text after **Path** > **Rewrite to** > *Dynamic*:
 
 ```txt
 regex_replace(http.request.uri.path, "^/posts/([0-9]+)-([0-9]+)-([0-9]+)-(.*)$", "/posts/${1}/${2}/${3}/${4}")

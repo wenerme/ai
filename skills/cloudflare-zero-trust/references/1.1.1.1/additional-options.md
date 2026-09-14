@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Other ways to use 1.1.1.1
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/additional-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are many other ways to use 1.1.1.1 beyond the traditional set up in operating systems and routers.
 
-* [DNS in Google Sheets](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/)
-* [DNS over Discord](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/)
-* [DNS over Tor](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/)
+- [DNS in Google Sheets](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/)
+- [DNS over Discord](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-discord/)
+- [DNS over Tor](https://developers.cloudflare.com/1.1.1.1/additional-options/dns-over-tor/)
 
 Was this helpful?
 

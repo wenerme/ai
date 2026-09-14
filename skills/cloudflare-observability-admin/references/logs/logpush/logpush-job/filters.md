@@ -12,30 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Filters
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following table represents the comparison operators that are supported and example values. Filters are added as escaped JSON strings formatted as `{"key":"<field>","operator":"<comparison_operator>","value":"<value>"}`.
 
-* Refer to the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) page for a list of fields related to each dataset.
-* Comparison operators define how values must relate to fields in the log line for an expression to return true.
-* Values represent the data associated with fields.
+- Refer to the [Datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) page for a list of fields related to each dataset.
+- Comparison operators define how values must relate to fields in the log line for an expression to return true.
+- Values represent the data associated with fields.
 
-| Name                            | Operator Notation | String | Int | Bool | Array | Object | Example                                                              |
-| ------------------------------- | ----------------- | ------ | --- | ---- | ----- | ------ | -------------------------------------------------------------------- |
-| Equal                           | eq                | ✅      | ✅   | ✅    | ❌     | ❌      | {"key":"ClientRequestHost","operator":"eq","value":"example.com"}    |
-| Not equal                       | !eq               | ✅      | ✅   | ✅    | ❌     | ❌      | {"key":"ClientCountry","operator":"!eq","value":"ca"}                |
-| Less than                       | lt                | ❌      | ✅   | ❌    | ❌     | ❌      | {"key":"BotScore","operator":"lt","value":"30"}                      |
-| Less than or equal              | leq               | ❌      | ✅   | ❌    | ❌     | ❌      | {"key":"BotScore","operator":"leq","value":"30"}                     |
-| Greater than                    | gt                | ❌      | ✅   | ❌    | ❌     | ❌      | {"key":"BotScore","operator":"gt","value":"30"}                      |
-| Greater than or equal           | geq               | ❌      | ✅   | ❌    | ❌     | ❌      | {"key":"BotScore","operator":"geq","value":"30"}                     |
-| Starts with                     | startsWith        | ✅      | ❌   | ❌    | ❌     | ❌      | {"key":"ClientRequestPath","operator":"startsWith","value":"/foo"}   |
-| Ends with                       | endsWith          | ✅      | ❌   | ❌    | ❌     | ❌      | {"key":"ClientRequestPath","operator":"endsWith","value":"/foo"}     |
-| Does not start with             | !startsWith       | ✅      | ❌   | ❌    | ❌     | ❌      | {"key":"ClientRequestPath","operator":"!startsWith","value":"/foo"}  |
-| Does not end with               | !endsWith         | ✅      | ❌   | ❌    | ❌     | ❌      | {"key":"ClientRequestPath","operator":"!endsWith","value":"/foo"}    |
-| Contains                        | contains          | ✅      | ❌   | ❌    | ✅     | ❌      | {"key":"ClientRequestPath","operator":"contains","value":"/static"}  |
-| Does not contain                | !contains         | ✅      | ❌   | ❌    | ✅     | ❌      | {"key":"ClientRequestPath","operator":"!contains","value":"/static"} |
-| Value is in a set of values     | in                | ✅      | ✅   | ❌    | ❌     | ❌      | {"key":"EdgeResponseStatus","operator":"in","value":\[200,201\]}     |
-| Value is not in a set of values | !in               | ✅      | ✅   | ❌    | ❌     | ❌      | {"key":"EdgeResponseStatus","operator":"!in","value":\[200,201\]}    |
+| Name | Operator Notation | String | Int | Bool | Array | Object | Example |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Equal | `eq` | ✅ | ✅ | ✅ | ❌ | ❌ | `{"key":"ClientRequestHost","operator":"eq","value":"example.com"}` |
+| Not equal | `!eq` | ✅ | ✅ | ✅ | ❌ | ❌ | `{"key":"ClientCountry","operator":"!eq","value":"ca"}` |
+| Less than | `lt` | ❌ | ✅ | ❌ | ❌ | ❌ | `{"key":"BotScore","operator":"lt","value":"30"}` |
+| Less than or equal | `leq` | ❌ | ✅ | ❌ | ❌ | ❌ | `{"key":"BotScore","operator":"leq","value":"30"}` |
+| Greater than | `gt` | ❌ | ✅ | ❌ | ❌ | ❌ | `{"key":"BotScore","operator":"gt","value":"30"}` |
+| Greater than or equal | `geq` | ❌ | ✅ | ❌ | ❌ | ❌ | `{"key":"BotScore","operator":"geq","value":"30"}` |
+| Starts with | `startsWith` | ✅ | ❌ | ❌ | ❌ | ❌ | `{"key":"ClientRequestPath","operator":"startsWith","value":"/foo"}` |
+| Ends with | `endsWith` | ✅ | ❌ | ❌ | ❌ | ❌ | `{"key":"ClientRequestPath","operator":"endsWith","value":"/foo"}` |
+| Does not start with | `!startsWith` | ✅ | ❌ | ❌ | ❌ | ❌ | `{"key":"ClientRequestPath","operator":"!startsWith","value":"/foo"}` |
+| Does not end with | `!endsWith` | ✅ | ❌ | ❌ | ❌ | ❌ | `{"key":"ClientRequestPath","operator":"!endsWith","value":"/foo"}` |
+| Contains | `contains` | ✅ | ❌ | ❌ | ✅ | ❌ | `{"key":"ClientRequestPath","operator":"contains","value":"/static"}` |
+| Does not contain | `!contains` | ✅ | ❌ | ❌ | ✅ | ❌ | `{"key":"ClientRequestPath","operator":"!contains","value":"/static"}` |
+| Value is in a set of values | `in` | ✅ | ✅ | ❌ | ❌ | ❌ | `{"key":"EdgeResponseStatus","operator":"in","value":[200,201]}` |
+| Value is not in a set of values | `!in` | ✅ | ✅ | ❌ | ❌ | ❌ | `{"key":"EdgeResponseStatus","operator":"!in","value":[200,201]}` |
 
 The filter field has limits of approximately 30 operators and 1000 bytes. Anything exceeding this value will return an error.
 
@@ -47,20 +47,20 @@ For the Firewall events dataset, the following fields are not supported: `Action
 
 ## Logical Operators
 
-* Filters can be connected using `AND`, `OR` logical operators.
-* Logical operators can be nested.
+- Filters can be connected using `AND`, `OR` logical operators.
+- Logical operators can be nested.
 
 Here are some examples of how the logical operators can be implemented. `X`, `Y` and `Z` are used to represent filter criteria:
 
-* X AND Y AND Z - `{"where":{"and":[{X},{Y},{Z}]}}`
-* X OR Y OR Z - `{"where":{"or":[{X},{Y},{Z}]}}`
-* X AND (Y OR Z) - `{"where":{"and":[{X}, {"or":[{Y},{Z}]}]}}`
-* (X AND Y) OR Z - `{"where":{"or":[{"and": [{X},{Y}]},{Z}]}}`
+- X AND Y AND Z - `{"where":{"and":[{X},{Y},{Z}]}}`
+- X OR Y OR Z - `{"where":{"or":[{X},{Y},{Z}]}}`
+- X AND (Y OR Z) - `{"where":{"and":[{X}, {"or":[{Y},{Z}]}]}}`
+- (X AND Y) OR Z - `{"where":{"or":[{"and": [{X},{Y}]},{Z}]}}`
 
 Logpush filters act as a pass-through gate, not an exclusion list. When multiple conditions are joined with AND:
 
-* All conditions must evaluate to TRUE for the log to be pushed.
-* If any single condition is FALSE, the log is excluded.
+- All conditions must evaluate to TRUE for the log to be pushed.
+- If any single condition is FALSE, the log is excluded.
 
 A common misconception is interpreting the filter as `exclude logs matching ALL conditions` rather than `include logs matching ALL conditions`.
 
@@ -72,10 +72,21 @@ Filters can be set via API or the Cloudflare dashboard. Note that using a filter
 
 Here is an example request using cURL via API:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Logs Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create Logpush jobbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
@@ -104,8 +115,10 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 To set filters through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or domain (also known as zone) level.
-For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+
+   For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+
+   For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select the dataset you want to push to a storage service. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Below **Select data fields**, in the **Filter** section, you can set up your filters.
 4. You need to select a [dataset field](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/), an [Operator](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/#logical-operators), and a **Value**.

@@ -12,160 +12,160 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Spans and attributes
 
-Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Workers provides automatic tracing instrumentation **out of the box** \- no code changes or SDK are required.
+Cloudflare Workers provides automatic tracing instrumentation **out of the box** - no code changes or SDK are required.
 
 ## Currently supported spans and attributes
 
 ### Attributes available on all spans
 
-* `cloud.provider` \- Always set to `cloudflare`
-* `cloud.platform` \- Always set to `cloudflare.workers`
-* `faas.name` \- The name of your Worker
-* `faas.invocation_id` \- A unique identifier for this specific Worker invocation
-* `faas.version` \- The deployed version tag of your Worker
-* `faas.invoked_region` \- The region where the Worker was invoked
-* `service.name` \- The name of your Worker
-* `cloudflare.colo` \- The three-letter IATA airport code of the Cloudflare data center that processed the request (e.g., `SFO`, `LHR`)
-* `cloudflare.script_name` \- The name of your Worker
-* `cloudflare.script_tags` \- Tags associated with your Worker deployment
-* `cloudflare.script_version.id` \- The version identifier of your deployed Worker
-* `cloudflare.invocation.sequence.number` \- A counter added to every emitted span and log that can be used to distinguish which was emitted first when the timestamps are the same
-* `telemetry.sdk.language` \- The programming language used, set to `javascript`
-* `telemetry.sdk.name` \- The telemetry SDK name, set to `cloudflare`
+- `cloud.provider` - Always set to `cloudflare`
+- `cloud.platform` - Always set to `cloudflare.workers`
+- `faas.name` - The name of your Worker
+- `faas.invocation_id` - A unique identifier for this specific Worker invocation
+- `faas.version` - The deployed version tag of your Worker
+- `faas.invoked_region` - The region where the Worker was invoked
+- `service.name` - The name of your Worker
+- `cloudflare.colo` - The three-letter IATA airport code of the Cloudflare data center that processed the request (e.g., `SFO`, `LHR`)
+- `cloudflare.script_name` - The name of your Worker
+- `cloudflare.script_tags` - Tags associated with your Worker deployment
+- `cloudflare.script_version.id` - The version identifier of your deployed Worker
+- `cloudflare.invocation.sequence.number` - A counter added to every emitted span and log that can be used to distinguish which was emitted first when the timestamps are the same
+- `telemetry.sdk.language` - The programming language used, set to `javascript`
+- `telemetry.sdk.name` - The telemetry SDK name, set to `cloudflare`
 
 ---
 
 ### Attributes available on all root spans
 
-* `faas.trigger` \- The trigger that your Worker was invoked by (e.g., `http`, `cron`, `queue`, `email`)
-* `cloudflare.ray_id` \- A [unique identifier](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) for every request that goes through Cloudflare
-* `cloudflare.handler_type` \- The type of handler that processed the request (e.g., `fetch`, `scheduled`, `queue`, `email`, `alarm`)
-* `cloudflare.entrypoint` \- The entrypoint that was invoked in your Worker (e.g. the name of your Durable Object)
-* `cloudflare.execution_model` \- The execution model of the Worker (e.g., `stateless`, `stateful` for Durable Objects)
-* `cloudflare.outcome` \- The outcome of the Worker invocation (e.g., `ok`, `exception`, `exceededCpu`, `exceededMemory`)
-* `cloudflare.cpu_time_ms` \- The CPU time used by the Worker invocation, in milliseconds
-* `cloudflare.wall_time_ms` \- The wall time used by the Worker invocation, in milliseconds
+- `faas.trigger` - The trigger that your Worker was invoked by (e.g., `http`, `cron`, `queue`, `email`)
+- `cloudflare.ray_id` - A [unique identifier](https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/) for every request that goes through Cloudflare
+- `cloudflare.handler_type` - The type of handler that processed the request (e.g., `fetch`, `scheduled`, `queue`, `email`, `alarm`)
+- `cloudflare.entrypoint` - The entrypoint that was invoked in your Worker (e.g. the name of your Durable Object)
+- `cloudflare.execution_model` - The execution model of the Worker (e.g., `stateless`, `stateful` for Durable Objects)
+- `cloudflare.outcome` - The outcome of the Worker invocation (e.g., `ok`, `exception`, `exceededCpu`, `exceededMemory`)
+- `cloudflare.cpu_time_ms` - The CPU time used by the Worker invocation, in milliseconds
+- `cloudflare.wall_time_ms` - The wall time used by the Worker invocation, in milliseconds
 
 ---
 
 ### [Runtime API](https://developers.cloudflare.com/workers/runtime-apis/)
 
-#### [fetch](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
+#### [`fetch`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 
-* `network.protocol.name`
-* `network.protocol.version`
-* `url.full`
-* `url.scheme`
-* `url.path`
-* `url.query`
-* `server.port`
-* `server.address`
-* `user_agent.original`
-* `http.request.method`
-* `http.request.header.content-type`
-* `http.request.header.content-length`
-* `http.request.header.accept`
-* `http.request.header.accept-encoding`
-* `http.request.body.size`
-* `http.response.status_code`
-* `http.response.body.size`
+- `network.protocol.name`
+- `network.protocol.version`
+- `url.full`
+- `url.scheme`
+- `url.path`
+- `url.query`
+- `server.port`
+- `server.address`
+- `user_agent.original`
+- `http.request.method`
+- `http.request.header.content-type`
+- `http.request.header.content-length`
+- `http.request.header.accept`
+- `http.request.header.accept-encoding`
+- `http.request.body.size`
+- `http.response.status_code`
+- `http.response.body.size`
 
-#### [cache\_put](https://developers.cloudflare.com/workers/runtime-apis/cache/#put)
+#### [`cache_put`](https://developers.cloudflare.com/workers/runtime-apis/cache/#put)
 
-* `cache.request.url`
-* `cache.request.method`
-* `cache.request.payload.status_code`
-* `cache.request.payload.header.cache_control`
-* `cache.request.payload.header.cache_tag`
-* `cache.request.payload.header.etag`
-* `cache.request.payload.header.expires`
-* `cache.request.payload.header.last_modified`
-* `cache.request.payload.size`
-* `cache.response.success`
+- `cache.request.url`
+- `cache.request.method`
+- `cache.request.payload.status_code`
+- `cache.request.payload.header.cache_control`
+- `cache.request.payload.header.cache_tag`
+- `cache.request.payload.header.etag`
+- `cache.request.payload.header.expires`
+- `cache.request.payload.header.last_modified`
+- `cache.request.payload.size`
+- `cache.response.success`
 
-#### [cache\_match](https://developers.cloudflare.com/workers/runtime-apis/cache/#match)
+#### [`cache_match`](https://developers.cloudflare.com/workers/runtime-apis/cache/#match)
 
-* `cache.request.ignore_method`
-* `cache.request.url`
-* `cache.request.method`
-* `cache.request.header.range`
-* `cache.request.header.if_modified_since`
-* `cache.request.header.if_none_match`
-* `cache.response.status_code`
-* `cache.response.body.size`
-* `cache.response.cache_status`
-* `cache.response.success`
+- `cache.request.ignore_method`
+- `cache.request.url`
+- `cache.request.method`
+- `cache.request.header.range`
+- `cache.request.header.if_modified_since`
+- `cache.request.header.if_none_match`
+- `cache.response.status_code`
+- `cache.response.body.size`
+- `cache.response.cache_status`
+- `cache.response.success`
 
-#### [cache\_delete](https://developers.cloudflare.com/workers/runtime-apis/cache/#delete)
+#### [`cache_delete`](https://developers.cloudflare.com/workers/runtime-apis/cache/#delete)
 
-* `cache.request.ignore_method`
-* `cache.request.url`
-* `cache.request.method`
-* `cache.response.status_code`
-* `cache.response.success`
+- `cache.request.ignore_method`
+- `cache.request.url`
+- `cache.request.method`
+- `cache.response.status_code`
+- `cache.response.success`
 
 ---
 
 ### [Handlers](https://developers.cloudflare.com/workers/runtime-apis/handlers/)
 
-#### [Fetch Handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
+#### [`Fetch Handler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)
 
-* `cloudflare.verified_bot_category`
-* `cloudflare.asn`
-* `cloudflare.response.time_to_first_byte_ms`
-* `geo.timezone`
-* `geo.continent.code`
-* `geo.country.code`
-* `geo.locality.name`
-* `geo.locality.region`
-* `user_agent.original`
-* `user_agent.os.name`
-* `user_agent.os.version`
-* `user_agent.browser.name`
-* `user_agent.browser.major_version`
-* `user_agent.browser.version`
-* `user_agent.engine.name`
-* `user_agent.engine.version`
-* `user_agent.device.type`
-* `user_agent.device.vendor`
-* `user_agent.device.model`
-* `http.request.method`
-* `http.request.header.accept`
-* `http.request.header.accept-encoding`
-* `http.request.header.accept-language`
-* `url.full`
-* `url.path`
-* `network.protocol.name`
+- `cloudflare.verified_bot_category`
+- `cloudflare.asn`
+- `cloudflare.response.time_to_first_byte_ms`
+- `geo.timezone`
+- `geo.continent.code`
+- `geo.country.code`
+- `geo.locality.name`
+- `geo.locality.region`
+- `user_agent.original`
+- `user_agent.os.name`
+- `user_agent.os.version`
+- `user_agent.browser.name`
+- `user_agent.browser.major_version`
+- `user_agent.browser.version`
+- `user_agent.engine.name`
+- `user_agent.engine.version`
+- `user_agent.device.type`
+- `user_agent.device.vendor`
+- `user_agent.device.model`
+- `http.request.method`
+- `http.request.header.accept`
+- `http.request.header.accept-encoding`
+- `http.request.header.accept-language`
+- `url.full`
+- `url.path`
+- `network.protocol.name`
 
-#### [Scheduled Handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
+#### [`Scheduled Handler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
 
-* `faas.cron`
-* `cloudflare.scheduled_time`
+- `faas.cron`
+- `cloudflare.scheduled_time`
 
-#### [QueueHandler](https://developers.cloudflare.com/workers/runtime-apis/handlers/queue/)
+#### [`QueueHandler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/queue/)
 
-* `cloudflare.queue.name`
-* `cloudflare.queue.batch_size`
+- `cloudflare.queue.name`
+- `cloudflare.queue.batch_size`
 
-#### [RPC Handler](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
+#### [`RPC Handler`](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
 
-* `cloudflare.jsrpc.method`
+- `cloudflare.jsrpc.method`
 
-#### [Email Handler](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
+#### [`Email Handler`](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
-* `cloudflare.email.from`
-* `cloudflare.email.to`
-* `cloudflare.email.size`
+- `cloudflare.email.from`
+- `cloudflare.email.to`
+- `cloudflare.email.size`
 
-#### [Tail Handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/)
+#### [`Tail Handler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/tail/)
 
-* `cloudflare.trace.count`
+- `cloudflare.trace.count`
 
-#### [Alarm Handler](https://developers.cloudflare.com/durable-objects/api/alarms/#alarm)
+#### [`Alarm Handler`](https://developers.cloudflare.com/durable-objects/api/alarms/#alarm)
 
-* `cloudflare.scheduled_time`
+- `cloudflare.scheduled_time`
 
 ---
 
@@ -173,48 +173,48 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 #### Attributes available on all D1 spans
 
-* `db.system.name`
-* `db.operation.name`
-* `db.query.text`
-* `cloudflare.binding.type`
-* `cloudflare.d1.response.size_after`
-* `cloudflare.d1.response.rows_read`
-* `cloudflare.d1.response.rows_written`
-* `cloudflare.d1.response.last_row_id`
-* `cloudflare.d1.response.changed_db`
-* `cloudflare.d1.response.changes`
-* `cloudflare.d1.response.served_by_region`
-* `cloudflare.d1.response.served_by_primary`
-* `cloudflare.d1.response.sql_duration_ms`
-* `cloudflare.d1.response.total_attempts`
+- `db.system.name`
+- `db.operation.name`
+- `db.query.text`
+- `cloudflare.binding.type`
+- `cloudflare.d1.response.size_after`
+- `cloudflare.d1.response.rows_read`
+- `cloudflare.d1.response.rows_written`
+- `cloudflare.d1.response.last_row_id`
+- `cloudflare.d1.response.changed_db`
+- `cloudflare.d1.response.changes`
+- `cloudflare.d1.response.served_by_region`
+- `cloudflare.d1.response.served_by_primary`
+- `cloudflare.d1.response.sql_duration_ms`
+- `cloudflare.d1.response.total_attempts`
 
-#### [d1\_batch](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch)
+#### [`d1_batch`](https://developers.cloudflare.com/d1/worker-api/d1-database/#batch)
 
-* `db.operation.batch.size`
-* `cloudflare.d1.query.bookmark`
-* `cloudflare.d1.response.bookmark`
+- `db.operation.batch.size`
+- `cloudflare.d1.query.bookmark`
+- `cloudflare.d1.response.bookmark`
 
-#### [d1\_exec](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec)
+#### [`d1_exec`](https://developers.cloudflare.com/d1/worker-api/d1-database/#exec)
 
-#### [d1\_first](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#first)
+#### [`d1_first`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#first)
 
-* `cloudflare.d1.query.bookmark`
-* `cloudflare.d1.response.bookmark`
+- `cloudflare.d1.query.bookmark`
+- `cloudflare.d1.response.bookmark`
 
-#### [d1\_run](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run)
+#### [`d1_run`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run)
 
-* `cloudflare.d1.query.bookmark`
-* `cloudflare.d1.response.bookmark`
+- `cloudflare.d1.query.bookmark`
+- `cloudflare.d1.response.bookmark`
 
-#### [d1\_all](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run)
+#### [`d1_all`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#run)
 
-* `cloudflare.d1.query.bookmark`
-* `cloudflare.d1.response.bookmark`
+- `cloudflare.d1.query.bookmark`
+- `cloudflare.d1.response.bookmark`
 
-#### [d1\_raw](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#raw)
+#### [`d1_raw`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/#raw)
 
-* `cloudflare.d1.query.bookmark`
-* `cloudflare.d1.response.bookmark`
+- `cloudflare.d1.query.bookmark`
+- `cloudflare.d1.response.bookmark`
 
 ---
 
@@ -228,59 +228,59 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 #### Attributes available on all KV spans
 
-* `db.system.name`
-* `db.operation.name`
-* `cloudflare.binding.name`
-* `cloudflare.binding.type`
+- `db.system.name`
+- `db.operation.name`
+- `cloudflare.binding.name`
+- `cloudflare.binding.type`
 
-#### [kv\_get](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#get-method)
+#### [`kv_get`](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#get-method)
 
-* `cloudflare.kv.query.keys`
-* `cloudflare.kv.query.keys.count`
-* `cloudflare.kv.query.type`
-* `cloudflare.kv.query.cache_ttl`
-* `cloudflare.kv.response.size`
-* `cloudflare.kv.response.returned_rows`
-* `cloudflare.kv.response.metadata`
-* `cloudflare.kv.response.cache_status`
+- `cloudflare.kv.query.keys`
+- `cloudflare.kv.query.keys.count`
+- `cloudflare.kv.query.type`
+- `cloudflare.kv.query.cache_ttl`
+- `cloudflare.kv.response.size`
+- `cloudflare.kv.response.returned_rows`
+- `cloudflare.kv.response.metadata`
+- `cloudflare.kv.response.cache_status`
 
-#### [kv\_getWithMetadata](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#getwithmetadata-method)
+#### [`kv_getWithMetadata`](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#getwithmetadata-method)
 
-* `cloudflare.kv.query.keys`
-* `cloudflare.kv.query.keys.count`
-* `cloudflare.kv.query.type`
-* `cloudflare.kv.query.cache_ttl`
-* `cloudflare.kv.response.size`
-* `cloudflare.kv.response.returned_rows`
-* `cloudflare.kv.response.metadata`
-* `cloudflare.kv.response.cache_status`
+- `cloudflare.kv.query.keys`
+- `cloudflare.kv.query.keys.count`
+- `cloudflare.kv.query.type`
+- `cloudflare.kv.query.cache_ttl`
+- `cloudflare.kv.response.size`
+- `cloudflare.kv.response.returned_rows`
+- `cloudflare.kv.response.metadata`
+- `cloudflare.kv.response.cache_status`
 
-#### [kv\_put](https://developers.cloudflare.com/kv/api/write-key-value-pairs/#put-method)
+#### [`kv_put`](https://developers.cloudflare.com/kv/api/write-key-value-pairs/#put-method)
 
-* `cloudflare.kv.query.keys`
-* `cloudflare.kv.query.keys.count`
-* `cloudflare.kv.query.value_type`
-* `cloudflare.kv.query.expiration`
-* `cloudflare.kv.query.expiration_ttl`
-* `cloudflare.kv.query.metadata`
-* `cloudflare.kv.query.payload.size`
+- `cloudflare.kv.query.keys`
+- `cloudflare.kv.query.keys.count`
+- `cloudflare.kv.query.value_type`
+- `cloudflare.kv.query.expiration`
+- `cloudflare.kv.query.expiration_ttl`
+- `cloudflare.kv.query.metadata`
+- `cloudflare.kv.query.payload.size`
 
-#### [kv\_delete](https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#delete-method)
+#### [`kv_delete`](https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#delete-method)
 
-* `cloudflare.kv.query.keys`
-* `cloudflare.kv.query.keys.colunt`
+- `cloudflare.kv.query.keys`
+- `cloudflare.kv.query.keys.colunt`
 
-#### [kv\_list](https://developers.cloudflare.com/kv/api/list-keys/#list-method)
+#### [`kv_list`](https://developers.cloudflare.com/kv/api/list-keys/#list-method)
 
-* `cloudflare.kv.query.prefix`
-* `cloudflare.kv.query.limit`
-* `cloudflare.kv.query.cursor`
-* `cloudflare.kv.response.size`
-* `cloudflare.kv.response.returned_rows`
-* `cloudflare.kv.response.list_complete`
-* `cloudflare.kv.response.cursor`
-* `cloudflare.kv.response.cache_status`
-* `cloudflare.kv.response.expiration`
+- `cloudflare.kv.query.prefix`
+- `cloudflare.kv.query.limit`
+- `cloudflare.kv.query.cursor`
+- `cloudflare.kv.response.size`
+- `cloudflare.kv.response.returned_rows`
+- `cloudflare.kv.response.list_complete`
+- `cloudflare.kv.response.cursor`
+- `cloudflare.kv.response.cache_status`
+- `cloudflare.kv.response.expiration`
 
 ---
 
@@ -288,158 +288,158 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 #### Attributes available on all R2 spans
 
-* `cloudflare.binding.type`
-* `cloudflare.binding.name`
-* `cloudflare.r2.bucket`
-* `cloudflare.r2.operation`
-* `cloudflare.r2.response.success`
-* `cloudflare.r2.error.message`
-* `cloudflare.r2.error.code`
+- `cloudflare.binding.type`
+- `cloudflare.binding.name`
+- `cloudflare.r2.bucket`
+- `cloudflare.r2.operation`
+- `cloudflare.r2.response.success`
+- `cloudflare.r2.error.message`
+- `cloudflare.r2.error.code`
 
-#### [r2\_head](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#bucket-method-definitions)
+#### [`r2_head`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#bucket-method-definitions)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.response.etag`
-* `cloudflare.r2.response.size`
-* `cloudflare.r2.response.uploaded`
-* `cloudflare.r2.response.checksum.value`
-* `cloudflare.r2.response.checksum.type`
-* `cloudflare.r2.response.storage_class`
-* `cloudflare.r2.response.ssec_key`
-* `cloudflare.r2.response.content_type`
-* `cloudflare.r2.response.content_encoding`
-* `cloudflare.r2.response.content_disposition`
-* `cloudflare.r2.response.content_language`
-* `cloudflare.r2.response.cache_control`
-* `cloudflare.r2.response.cache_expiry`
-* `cloudflare.r2.response.custom_metadata`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.response.etag`
+- `cloudflare.r2.response.size`
+- `cloudflare.r2.response.uploaded`
+- `cloudflare.r2.response.checksum.value`
+- `cloudflare.r2.response.checksum.type`
+- `cloudflare.r2.response.storage_class`
+- `cloudflare.r2.response.ssec_key`
+- `cloudflare.r2.response.content_type`
+- `cloudflare.r2.response.content_encoding`
+- `cloudflare.r2.response.content_disposition`
+- `cloudflare.r2.response.content_language`
+- `cloudflare.r2.response.cache_control`
+- `cloudflare.r2.response.cache_expiry`
+- `cloudflare.r2.response.custom_metadata`
 
-#### [r2\_get](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2getoptions)
+#### [`r2_get`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2getoptions)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.range.offset`
-* `cloudflare.r2.request.range.length`
-* `cloudflare.r2.request.range.suffix`
-* `cloudflare.r2.request.range`
-* `cloudflare.r2.request.ssec_key`
-* `cloudflare.r2.request.only_if.etag_matches`
-* `cloudflare.r2.request.only_if.etag_does_not_match`
-* `cloudflare.r2.request.only_if.uploaded_before`
-* `cloudflare.r2.request.only_if.uploaded_after`
-* `cloudflare.r2.response.etag`
-* `cloudflare.r2.response.size`
-* `cloudflare.r2.response.uploaded`
-* `cloudflare.r2.response.checksum.value`
-* `cloudflare.r2.response.checksum.type`
-* `cloudflare.r2.response.storage_class`
-* `cloudflare.r2.response.ssec_key`
-* `cloudflare.r2.response.content_type`
-* `cloudflare.r2.response.content_encoding`
-* `cloudflare.r2.response.content_disposition`
-* `cloudflare.r2.response.content_language`
-* `cloudflare.r2.response.cache_control`
-* `cloudflare.r2.response.cache_expiry`
-* `cloudflare.r2.response.custom_metadata`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.range.offset`
+- `cloudflare.r2.request.range.length`
+- `cloudflare.r2.request.range.suffix`
+- `cloudflare.r2.request.range`
+- `cloudflare.r2.request.ssec_key`
+- `cloudflare.r2.request.only_if.etag_matches`
+- `cloudflare.r2.request.only_if.etag_does_not_match`
+- `cloudflare.r2.request.only_if.uploaded_before`
+- `cloudflare.r2.request.only_if.uploaded_after`
+- `cloudflare.r2.response.etag`
+- `cloudflare.r2.response.size`
+- `cloudflare.r2.response.uploaded`
+- `cloudflare.r2.response.checksum.value`
+- `cloudflare.r2.response.checksum.type`
+- `cloudflare.r2.response.storage_class`
+- `cloudflare.r2.response.ssec_key`
+- `cloudflare.r2.response.content_type`
+- `cloudflare.r2.response.content_encoding`
+- `cloudflare.r2.response.content_disposition`
+- `cloudflare.r2.response.content_language`
+- `cloudflare.r2.response.cache_control`
+- `cloudflare.r2.response.cache_expiry`
+- `cloudflare.r2.response.custom_metadata`
 
-#### [r2\_put](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2putoptions)
+#### [`r2_put`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2putoptions)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.size`
-* `cloudflare.r2.request.checksum.type`
-* `cloudflare.r2.request.checksum.value`
-* `cloudflare.r2.request.custom_metadata`
-* `cloudflare.r2.request.http_metadata.content_type`
-* `cloudflare.r2.request.http_metadata.content_encoding`
-* `cloudflare.r2.request.http_metadata.content_disposition`
-* `cloudflare.r2.request.http_metadata.content_language`
-* `cloudflare.r2.request.http_metadata.cache_control`
-* `cloudflare.r2.request.http_metadata.cache_expiry`
-* `cloudflare.r2.request.storage_class`
-* `cloudflare.r2.request.ssec_key`
-* `cloudflare.r2.request.only_if.etag_matches`
-* `cloudflare.r2.request.only_if.etag_does_not_match`
-* `cloudflare.r2.request.only_if.uploaded_before`
-* `cloudflare.r2.request.only_if.uploaded_after`
-* `cloudflare.r2.response.etag`
-* `cloudflare.r2.response.size`
-* `cloudflare.r2.response.uploaded`
-* `cloudflare.r2.response.checksum.value`
-* `cloudflare.r2.response.checksum.type`
-* `cloudflare.r2.response.storage_class`
-* `cloudflare.r2.response.ssec_key`
-* `cloudflare.r2.response.content_type`
-* `cloudflare.r2.response.content_encoding`
-* `cloudflare.r2.response.content_disposition`
-* `cloudflare.r2.response.content_language`
-* `cloudflare.r2.response.cache_control`
-* `cloudflare.r2.response.cache_expiry`
-* `cloudflare.r2.response.custom_metadata`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.size`
+- `cloudflare.r2.request.checksum.type`
+- `cloudflare.r2.request.checksum.value`
+- `cloudflare.r2.request.custom_metadata`
+- `cloudflare.r2.request.http_metadata.content_type`
+- `cloudflare.r2.request.http_metadata.content_encoding`
+- `cloudflare.r2.request.http_metadata.content_disposition`
+- `cloudflare.r2.request.http_metadata.content_language`
+- `cloudflare.r2.request.http_metadata.cache_control`
+- `cloudflare.r2.request.http_metadata.cache_expiry`
+- `cloudflare.r2.request.storage_class`
+- `cloudflare.r2.request.ssec_key`
+- `cloudflare.r2.request.only_if.etag_matches`
+- `cloudflare.r2.request.only_if.etag_does_not_match`
+- `cloudflare.r2.request.only_if.uploaded_before`
+- `cloudflare.r2.request.only_if.uploaded_after`
+- `cloudflare.r2.response.etag`
+- `cloudflare.r2.response.size`
+- `cloudflare.r2.response.uploaded`
+- `cloudflare.r2.response.checksum.value`
+- `cloudflare.r2.response.checksum.type`
+- `cloudflare.r2.response.storage_class`
+- `cloudflare.r2.response.ssec_key`
+- `cloudflare.r2.response.content_type`
+- `cloudflare.r2.response.content_encoding`
+- `cloudflare.r2.response.content_disposition`
+- `cloudflare.r2.response.content_language`
+- `cloudflare.r2.response.cache_control`
+- `cloudflare.r2.response.cache_expiry`
+- `cloudflare.r2.response.custom_metadata`
 
-#### [r2\_list](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2listoptions)
+#### [`r2_list`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2listoptions)
 
-* `cloudflare.r2.request.limit`
-* `cloudflare.r2.request.prefix`
-* `cloudflare.r2.request.cursor`
-* `cloudflare.r2.request.delimiter`
-* `cloudflare.r2.request.start_after`
-* `cloudflare.r2.request.include.http_metadata`
-* `cloudflare.r2.request.include.custom_metadata`
-* `cloudflare.r2.response.returned_objects`
-* `cloudflare.r2.response.delimited_prefixes`
-* `cloudflare.r2.response.truncated`
-* `cloudflare.r2.response.cursor`
+- `cloudflare.r2.request.limit`
+- `cloudflare.r2.request.prefix`
+- `cloudflare.r2.request.cursor`
+- `cloudflare.r2.request.delimiter`
+- `cloudflare.r2.request.start_after`
+- `cloudflare.r2.request.include.http_metadata`
+- `cloudflare.r2.request.include.custom_metadata`
+- `cloudflare.r2.response.returned_objects`
+- `cloudflare.r2.response.delimited_prefixes`
+- `cloudflare.r2.response.truncated`
+- `cloudflare.r2.response.cursor`
 
-#### [r2\_delete](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#bucket-method-definitions)
+#### [`r2_delete`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#bucket-method-definitions)
 
-* `cloudflare.r2.request.keys`
+- `cloudflare.r2.request.keys`
 
-#### [r2\_createMultipartUpload](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2multipartoptions)
+#### [`r2_createMultipartUpload`](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#r2multipartoptions)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.custom_metadata`
-* `cloudflare.r2.request.http_metadata.content_type`
-* `cloudflare.r2.request.http_metadata.content_encoding`
-* `cloudflare.r2.request.http_metadata.content_disposition`
-* `cloudflare.r2.request.http_metadata.content_language`
-* `cloudflare.r2.request.http_metadata.cache_control`
-* `cloudflare.r2.request.http_metadata.cache_expiry`
-* `cloudflare.r2.request.storage_class`
-* `cloudflare.r2.request.ssec_key`
-* `cloudflare.r2.response.upload_id`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.custom_metadata`
+- `cloudflare.r2.request.http_metadata.content_type`
+- `cloudflare.r2.request.http_metadata.content_encoding`
+- `cloudflare.r2.request.http_metadata.content_disposition`
+- `cloudflare.r2.request.http_metadata.content_language`
+- `cloudflare.r2.request.http_metadata.cache_control`
+- `cloudflare.r2.request.http_metadata.cache_expiry`
+- `cloudflare.r2.request.storage_class`
+- `cloudflare.r2.request.ssec_key`
+- `cloudflare.r2.response.upload_id`
 
-#### [r2\_uploadPart](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
+#### [`r2_uploadPart`](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.upload_id`
-* `cloudflare.r2.request.part_number`
-* `cloudflare.r2.request.ssec_key`
-* `cloudflare.r2.request.size`
-* `cloudflare.r2.response.etag`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.upload_id`
+- `cloudflare.r2.request.part_number`
+- `cloudflare.r2.request.ssec_key`
+- `cloudflare.r2.request.size`
+- `cloudflare.r2.response.etag`
 
-#### [r2\_abortMultipartUpload](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
+#### [`r2_abortMultipartUpload`](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.upload_id`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.upload_id`
 
-#### [r2\_completeMultipartUpload](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
+#### [`r2_completeMultipartUpload`](https://developers.cloudflare.com/r2/api/workers/workers-multipart-usage/)
 
-* `cloudflare.r2.request.key`
-* `cloudflare.r2.request.upload_id`
-* `cloudflare.r2.request.uploaded_parts`
-* `cloudflare.r2.response.etag`
-* `cloudflare.r2.response.size`
-* `cloudflare.r2.response.uploaded`
-* `cloudflare.r2.response.checksum.value`
-* `cloudflare.r2.response.checksum.type`
-* `cloudflare.r2.response.storage_class`
-* `cloudflare.r2.response.ssec_key`
-* `cloudflare.r2.response.content_type`
-* `cloudflare.r2.response.content_encoding`
-* `cloudflare.r2.response.content_disposition`
-* `cloudflare.r2.response.content_language`
-* `cloudflare.r2.response.cache_control`
-* `cloudflare.r2.response.cache_expiry`
-* `cloudflare.r2.response.custom_metadata`
+- `cloudflare.r2.request.key`
+- `cloudflare.r2.request.upload_id`
+- `cloudflare.r2.request.uploaded_parts`
+- `cloudflare.r2.response.etag`
+- `cloudflare.r2.response.size`
+- `cloudflare.r2.response.uploaded`
+- `cloudflare.r2.response.checksum.value`
+- `cloudflare.r2.response.checksum.type`
+- `cloudflare.r2.response.storage_class`
+- `cloudflare.r2.response.ssec_key`
+- `cloudflare.r2.response.content_type`
+- `cloudflare.r2.response.content_encoding`
+- `cloudflare.r2.response.content_disposition`
+- `cloudflare.r2.response.content_language`
+- `cloudflare.r2.response.cache_control`
+- `cloudflare.r2.response.cache_expiry`
+- `cloudflare.r2.response.custom_metadata`
 
 ---
 
@@ -453,44 +453,44 @@ Cloudflare Workers provides automatic tracing instrumentation **out of the box**
 
 The SQL API allow you to modify the SQLite database embedded within a Durable Object.
 
-#### [durable\_object\_storage\_exec](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec)
+#### [`durable_object_storage_exec`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#exec)
 
-* `db.system.name`
-* `db.operation.name`
-* `db.query.text`
-* `cloudflare.durable_object.query.bindings`
-* `cloudflare.durable_object.response.rows_read`
-* `cloudflare.durable_object.response.rows_written`
+- `db.system.name`
+- `db.operation.name`
+- `db.query.text`
+- `cloudflare.durable_object.query.bindings`
+- `cloudflare.durable_object.response.rows_read`
+- `cloudflare.durable_object.response.rows_written`
 
-#### [durable\_object\_storage\_getDatabaseSize](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#databasesize)
+#### [`durable_object_storage_getDatabaseSize`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#databasesize)
 
-* `db.operation.name`
-* `cloudflare.durable_object.response.db_size`
+- `db.operation.name`
+- `cloudflare.durable_object.response.db_size`
 
-#### [durable\_object\_storage\_kv\_get](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#get)
+#### [`durable_object_storage_kv_get`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#get)
 
-* `cloudflare.durable_object.kv.query.keys`
-* `cloudflare.durable_object.kv.query.keys.count`
+- `cloudflare.durable_object.kv.query.keys`
+- `cloudflare.durable_object.kv.query.keys.count`
 
-#### [durable\_object\_storage\_kv\_put](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#put)
+#### [`durable_object_storage_kv_put`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#put)
 
-* `cloudflare.durable_object.kv.query.keys`
-* `cloudflare.durable_object.kv.query.keys.count`
+- `cloudflare.durable_object.kv.query.keys`
+- `cloudflare.durable_object.kv.query.keys.count`
 
-#### [durable\_object\_storage\_kv\_delete](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#delete)
+#### [`durable_object_storage_kv_delete`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#delete)
 
-* `cloudflare.durable_object.kv.query.keys`
-* `cloudflare.durable_object.kv.query.keys.count`
-* `cloudflare.durable_object.kv.response.deleted_count`
+- `cloudflare.durable_object.kv.query.keys`
+- `cloudflare.durable_object.kv.query.keys.count`
+- `cloudflare.durable_object.kv.response.deleted_count`
 
-#### [durable\_object\_storage\_kv\_list](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#list)
+#### [`durable_object_storage_kv_list`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#list)
 
-* `cloudflare.durable_object.kv.query.start`
-* `cloudflare.durable_object.kv.query.startAfter`
-* `cloudflare.durable_object.kv.query.end`
-* `cloudflare.durable_object.kv.query.prefix`
-* `cloudflare.durable_object.kv.query.reverse`
-* `cloudflare.durable_object.kv.query.limit`
+- `cloudflare.durable_object.kv.query.start`
+- `cloudflare.durable_object.kv.query.startAfter`
+- `cloudflare.durable_object.kv.query.end`
+- `cloudflare.durable_object.kv.query.prefix`
+- `cloudflare.durable_object.kv.query.reverse`
+- `cloudflare.durable_object.kv.query.limit`
 
 ---
 
@@ -498,73 +498,73 @@ The SQL API allow you to modify the SQLite database embedded within a Durable Ob
 
 The legacy KV-backed API allows you to modify embedded storage within a Durable Object.
 
-#### [durable\_object\_storage\_get](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-get)
+#### [`durable_object_storage_get`](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-get)
 
-#### [durable\_object\_storage\_put](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-put)
+#### [`durable_object_storage_put`](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-put)
 
-#### [durable\_object\_storage\_delete](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-delete)
+#### [`durable_object_storage_delete`](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-delete)
 
-#### [durable\_object\_storage\_list](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-list)
+#### [`durable_object_storage_list`](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#do-kv-async-list)
 
-#### [durable\_object\_storage\_deleteAll](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#deleteall)
+#### [`durable_object_storage_deleteAll`](https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/#deleteall)
 
 ---
 
 ### [Durable Object Storage Alarms API](https://developers.cloudflare.com/durable-objects/api/alarms/)
 
-#### [durable\_object\_alarms\_getAlarm](https://developers.cloudflare.com/durable-objects/api/alarms/#getalarm)
+#### [`durable_object_alarms_getAlarm`](https://developers.cloudflare.com/durable-objects/api/alarms/#getalarm)
 
-#### [durable\_object\_alarms\_setAlarm](https://developers.cloudflare.com/durable-objects/api/alarms/#setalarm)
+#### [`durable_object_alarms_setAlarm`](https://developers.cloudflare.com/durable-objects/api/alarms/#setalarm)
 
-#### [durable\_object\_alarms\_deleteAlarm](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm)
+#### [`durable_object_alarms_deleteAlarm`](https://developers.cloudflare.com/durable-objects/api/alarms/#deletealarm)
 
 ---
 
 ### [Images](https://developers.cloudflare.com/images/optimization/binding/)
 
-### [images\_output](https://developers.cloudflare.com/images/optimization/binding/#output)
+### [`images_output`](https://developers.cloudflare.com/images/optimization/binding/#output)
 
-* `cloudflare.binding.type`
-* `cloudflare.images.options.format`
-* `cloudflare.images.options.quality`
-* `cloudflare.images.options.background`
-* `cloudflare.images.options.anim`
-* `cloudflare.images.options.transforms`
-* `cloudflare.images.error.code`
+- `cloudflare.binding.type`
+- `cloudflare.images.options.format`
+- `cloudflare.images.options.quality`
+- `cloudflare.images.options.background`
+- `cloudflare.images.options.anim`
+- `cloudflare.images.options.transforms`
+- `cloudflare.images.error.code`
 
-### [images\_info](https://developers.cloudflare.com/images/optimization/binding/#info)
+### [`images_info`](https://developers.cloudflare.com/images/optimization/binding/#info)
 
-* `cloudflare.binding.type`
-* `cloudflare.images.options.encoding`
-* `cloudflare.images.result.format`
-* `cloudflare.images.result.file_size`
-* `cloudflare.images.result.width`
-* `cloudflare.images.result.height`
-* `cloudflare.images.error.code`
+- `cloudflare.binding.type`
+- `cloudflare.images.options.encoding`
+- `cloudflare.images.result.format`
+- `cloudflare.images.result.file_size`
+- `cloudflare.images.result.width`
+- `cloudflare.images.result.height`
+- `cloudflare.images.error.code`
 
 ---
 
 ### [Email](https://developers.cloudflare.com/email-service/)
 
-#### [reply\_email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#reply-to-emails)
+#### [`reply_email`](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/#reply-to-emails)
 
-#### [forward\_email](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
+#### [`forward_email`](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/)
 
-#### [send\_email](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
+#### [`send_email`](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
 
 ---
 
 ### [Queues](https://developers.cloudflare.com/queues/)
 
-#### [queue\_send](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queue)
+#### [`queue_send`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queue)
 
-#### [queue\_sendBatch](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queue)
+#### [`queue_sendBatch`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#queue)
 
 ---
 
-### [Rate limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
+### [`Rate limiting`](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/)
 
-#### [ratelimit\_run](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#best-practices)
+#### [`ratelimit_run`](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/#best-practices)
 
 ---
 

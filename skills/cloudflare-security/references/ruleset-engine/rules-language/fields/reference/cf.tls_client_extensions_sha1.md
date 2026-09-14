@@ -8,11 +8,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.tls\_client\_extensions\_sha1
 
-`cf.tls_client_extensions_sha1` `String`
+`cf.tls_client_extensions_sha1``String`
 
 The SHA-1 fingerprint of TLS client extensions, encoded in Base64 using big-endian format.
 
-For the little-endian version of this field, refer to [cf.tls\_client\_extensions\_sha1\_le](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fextensions%5Fsha1%5Fle/).
+For the little-endian version of this field, refer to [`cf.tls_client_extensions_sha1_le`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_extensions_sha1_le/).
 
 Example value:
 
@@ -21,8 +21,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* SSL/TLS
+- Request
+- SSL/TLS
 
 Was this helpful?
 

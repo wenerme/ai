@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agent class internals
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The core of the `agents` library is the `Agent` class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how `Agent` is built, layer by layer, so you understand what is happening under the hood.
 
@@ -20,9 +20,9 @@ The snippets shown here are illustrative and do not necessarily represent best p
 
 ## What is the Agent?
 
-The `Agent` class is an extension of `DurableObject` — agents _are_ Durable Objects. If you are not familiar with Durable Objects, read [What are Durable Objects](https://developers.cloudflare.com/durable-objects/) first. At their core, Durable Objects are globally addressable (each instance has a unique ID), single-threaded compute instances with long-term storage (key-value and SQLite).
+The `Agent` class is an extension of `DurableObject` — agents *are* Durable Objects. If you are not familiar with Durable Objects, read [What are Durable Objects](https://developers.cloudflare.com/durable-objects/) first. At their core, Durable Objects are globally addressable (each instance has a unique ID), single-threaded compute instances with long-term storage (key-value and SQLite).
 
-`Agent` does not extend `DurableObject` directly. It extends `Server` from the [partyserver ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) package, which extends `DurableObject`. Think of it as layers: **DurableObject** \> **Server** \> **Agent**.
+`Agent` does not extend `DurableObject` directly. It extends `Server` from the [`partyserver` ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) package, which extends `DurableObject`. Think of it as layers: **DurableObject** > **Server** > **Agent**.
 
 ## Layer 0: Durable Object
 
@@ -55,7 +55,7 @@ await stub.bar();
 
 ### `fetch()`
 
-Durable Objects can take a `Request` from a Worker and send a `Response` back. This can only be done through the [fetch](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#invoking-the-fetch-handler) method (which the developer must implement).
+Durable Objects can take a `Request` from a Worker and send a `Response` back. This can only be done through the [`fetch`](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/#invoking-the-fetch-handler) method (which the developer must implement).
 
 ### WebSockets
 
@@ -115,7 +115,7 @@ Lastly, it is worth mentioning that the Durable Object also has the Worker `Env`
 
 ## Layer 1: `Server` (partyserver)
 
-Now that you have seen what Durable Objects provide out of the box, the `Server` class from [partyserver ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) will make more sense. It is an opinionated `DurableObject` wrapper that replaces low-level primitives with developer-friendly callbacks.
+Now that you have seen what Durable Objects provide out of the box, the `Server` class from [`partyserver` ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) will make more sense. It is an opinionated `DurableObject` wrapper that replaces low-level primitives with developer-friendly callbacks.
 
 `Server` does not add any storage operations of its own — it only wraps the Durable Object lifecycle.
 
@@ -478,13 +478,13 @@ export class MyAgent extends Agent {
 }
 ```
 
-| Option                     | Type         | Default                                                | Description                                                                                                              |
-| -------------------------- | ------------ | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| hibernate                  | boolean      | true                                                   | Whether the agent hibernates when inactive. WebSocket connections stay open while the DO sleeps                          |
-| sendIdentityOnConnect      | boolean      | true                                                   | Send identity (agent name, instance name) to clients on WebSocket connect. Set to false to hide sensitive instance names |
-| hungScheduleTimeoutSeconds | number       | 30                                                     | Timeout before a running interval schedule is considered hung and force-reset. Increase for long-running callbacks       |
-| keepAliveIntervalMs        | number       | 30000                                                  | Interval in milliseconds for keepAlive() alarm heartbeats. Lower values mean faster recovery but more frequent alarms    |
-| retry                      | RetryOptions | { maxAttempts: 3, baseDelayMs: 100, maxDelayMs: 3000 } | Default retry options for schedule(), queue(), and this.retry(). Per-task options override these defaults                |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `hibernate` | `boolean` | `true` | Whether the agent hibernates when inactive. WebSocket connections stay open while the DO sleeps |
+| `sendIdentityOnConnect` | `boolean` | `true` | Send identity (agent name, instance name) to clients on WebSocket connect. Set to `false` to hide sensitive instance names |
+| `hungScheduleTimeoutSeconds` | `number` | `30` | Timeout before a running interval schedule is considered hung and force-reset. Increase for long-running callbacks |
+| `keepAliveIntervalMs` | `number` | `30000` | Interval in milliseconds for `keepAlive()` alarm heartbeats. Lower values mean faster recovery but more frequent alarms |
+| `retry` | `RetryOptions` | `{ maxAttempts: 3, baseDelayMs: 100, maxDelayMs: 3000 }` | Default retry options for `schedule()`, `queue()`, and `this.retry()`. Per-task options override these defaults |
 
 ### `this.keepAlive()` and `this.keepAliveWhile()`
 
@@ -529,9 +529,9 @@ return new Response("Not found", { status: 404 });
 
 ## Layer 3: `AIChatAgent`
 
-The [AIChatAgent](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) class from `@cloudflare/ai-chat` extends `Agent` with an opinionated layer for AI chat. It adds automatic message persistence to SQLite, resumable streaming, tool support (server-side, client-side, and human-in-the-loop), and a React hook (`useAgentChat`) for building chat UIs.
+The [`AIChatAgent`](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/) class from `@cloudflare/ai-chat` extends `Agent` with an opinionated layer for AI chat. It adds automatic message persistence to SQLite, resumable streaming, tool support (server-side, client-side, and human-in-the-loop), and a React hook (`useAgentChat`) for building chat UIs.
 
-The full hierarchy is: **DurableObject** \> **Server** \> **Agent** \> **AIChatAgent**.
+The full hierarchy is: **DurableObject** > **Server** > **Agent** > **AIChatAgent**.
 
 If you are building a chat agent, start with `AIChatAgent`. If you need lower-level control or are not building a chat interface, use `Agent` directly.
 

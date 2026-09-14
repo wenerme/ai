@@ -12,21 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RtkNameTag
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtknametag/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtknametag/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A component which shows a participant's name.
 
 ## Properties
 
-| Property      | Type              | Required | Default         | Description                               |
-| ------------- | ----------------- | -------- | --------------- | ----------------------------------------- |
-| iconPack      | IconPack          | ❌        | defaultIconPack | Icon pack                                 |
-| isScreenShare | boolean           | ✅        | \-              | Whether it is used in a screen share view |
-| meeting       | Meeting           | ✅        | \-              | Meeting object                            |
-| participant   | Peer              | ✅        | \-              | Participant object                        |
-| size          | Size              | ✅        | \-              | Size                                      |
-| t             | RtkI18n           | ❌        | useLanguage()   | Language                                  |
-| variant       | RtkNameTagVariant | ✅        | \-              | Name tag variant                          |
+| Property | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `isScreenShare` | `boolean` | ✅ | - | Whether it is used in a screen share view |
+| `meeting` | `Meeting` | ✅ | - | Meeting object |
+| `participant` | `Peer` | ✅ | - | Participant object |
+| `size` | `Size` | ✅ | - | Size |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+| `variant` | `RtkNameTagVariant` | ✅ | - | Name tag variant |
 
 ## Usage Examples
 

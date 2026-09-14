@@ -12,18 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tutorials
 
-Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-View tutorials to help you get started with D1.
+View tutorials
 
-| Name                                                                                                                                      | Last Updated | Difficulty   |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------ |
-| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/)                                              | 5 months ago | Intermediate |
-| [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/)                                            | last year    | Beginner     |
-| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/) | last year    | Beginner     |
-| [Bulk import to D1 using REST API](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/)                            | 2 years ago  | Beginner     |
-| [Build an API to access D1 using a proxy Worker](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/)               | 2 years ago  | Intermediate |
-| [Build a Staff Directory Application](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/)                        | 2 years ago  | Intermediate |
+ to help you get started with D1.
+
+| Name | Last Updated | Difficulty |
+| --- | --- | --- |
+| [Build a Comments API](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/) | 6 months ago | Intermediate |
+| [Query D1 using Prisma ORM](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/) | last year | Beginner |
+| [Using D1 Read Replication for your e-commerce website](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com/) | last year | Beginner |
+| [Bulk import to D1 using REST API](https://developers.cloudflare.com/d1/tutorials/import-to-d1-with-rest-api/) | 2 years ago | Beginner |
+| [Build an API to access D1 using a proxy Worker](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/) | 2 years ago | Intermediate |
+| [Build a Staff Directory Application](https://developers.cloudflare.com/d1/tutorials/build-a-staff-directory-app/) | 2 years ago | Intermediate |
 
 Was this helpful?
 

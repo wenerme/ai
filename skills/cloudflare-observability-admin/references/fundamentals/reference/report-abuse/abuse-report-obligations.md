@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Customer abuse report obligations
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare permits any interested party to submit abuse reports directly to Cloudflare via [abuse.cloudflare.com ↗](https://abuse.cloudflare.com/).
 
@@ -24,9 +24,9 @@ Our Trust & Safety team sends abuse reports to the domain owner or the abuse poi
 
 To assist with timely resolution and avoid potential service interruptions:
 
-* Confirm that the [abuse contact email address](https://developers.cloudflare.com/fundamentals/account/account-security/abuse-contact/) associated with your account is actively managed and monitored for potential abuse report notifications.
-* Consider using a mailing list email address that goes to multiple people or teams within your organization instead of the email address for an individual person.
-* Respond to any abuse report notification within 24 hours. In your response, include any information that you believe will be relevant to Cloudflare in its assessment of the abuse report. Failure to respond in a timely manner or to address the concerns in the abuse report may result in the removal or blocking of reported content, websites, or apps and suspension or termination of Cloudflare services for the associated account.
+- Confirm that the [abuse contact email address](https://developers.cloudflare.com/fundamentals/account/account-security/abuse-contact/) associated with your account is actively managed and monitored for potential abuse report notifications.
+- Consider using a mailing list email address that goes to multiple people or teams within your organization instead of the email address for an individual person.
+- Respond to any abuse report notification within 24 hours. In your response, include any information that you believe will be relevant to Cloudflare in its assessment of the abuse report. Failure to respond in a timely manner or to address the concerns in the abuse report may result in the removal or blocking of reported content, websites, or apps and suspension or termination of Cloudflare services for the associated account.
 
 Was this helpful?
 

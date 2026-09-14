@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare R2 Storage allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
@@ -26,18 +26,18 @@ You need a Cloudflare account with an R2 subscription. If you do not have one:
 
 R2 is free to get started with included free monthly usage. You are billed for your usage on a monthly basis. Refer to [Pricing](https://developers.cloudflare.com/r2/pricing/) for details.
 
-[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 
 ## Choose how to access R2
 
 R2 supports multiple access methods, so you can choose the one that fits your use case best:
 
-| Method                                                                       | Use when                                                                                  |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Method | Use when |
+| --- | --- |
 | [Workers API](https://developers.cloudflare.com/r2/get-started/workers-api/) | You are building an application on Cloudflare Workers that needs to read or write from R2 |
-| [S3](https://developers.cloudflare.com/r2/get-started/s3/)                   | You want to use S3-compatible SDKs to interact with R2 in your existing applications      |
-| [CLI tools](https://developers.cloudflare.com/r2/get-started/cli/)           | You want to upload, download, or manage objects from your terminal                        |
-| [Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)         | You want to quickly view and manage buckets and objects in the browser                    |
+| [S3](https://developers.cloudflare.com/r2/get-started/s3/) | You want to use S3-compatible SDKs to interact with R2 in your existing applications |
+| [CLI tools](https://developers.cloudflare.com/r2/get-started/cli/) | You want to upload, download, or manage objects from your terminal |
+| [Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) | You want to quickly view and manage buckets and objects in the browser |
 
 ## Next steps
 

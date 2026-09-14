@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 charges based on the total volume of data stored, along with two classes of operations on that data:
 
@@ -29,13 +29,13 @@ To learn about potential cost savings from using R2, refer to the [R2 pricing ca
 
 ## R2 pricing
 
-|                                    | Standard storage             | Infrequent Access storage    |
-| ---------------------------------- | ---------------------------- | ---------------------------- |
-| Storage                            | $0.015 / GB-month            | $0.01 / GB-month             |
-| Class A Operations                 | $4.50 / million requests     | $9.00 / million requests     |
-| Class B Operations                 | $0.36 / million requests     | $0.90 / million requests     |
-| Data Retrieval (processing)        | None                         | $0.01 / GB                   |
-| Egress (data transfer to Internet) | Free [1](#user-content-fn-1) | Free [1](#user-content-fn-1) |
+|  | Standard storage | Infrequent Access storage |
+| --- | --- | --- |
+| Storage | $0.015 / GB-month | $0.01 / GB-month |
+| Class A Operations | $4.50 / million requests | $9.00 / million requests |
+| Class B Operations | $0.36 / million requests | $0.90 / million requests |
+| Data Retrieval (processing) | None | $0.01 / GB |
+| Egress (data transfer to Internet) | Free <sup>[1](#user-content-fn-1)</sup> | Free <sup>[1](#user-content-fn-1)</sup> |
 
 Billable unit rounding
 
@@ -43,20 +43,20 @@ Cloudflare rounds up your usage to the next billing unit.
 
 For example:
 
-* If you have performed one million and one operations, you will be billed for two million operations.
-* If you have used 1.1 GB-month, you will be billed for 2 GB-month.
-* If you have retrieved data (for infrequent access storage) for 1.1 GB, you will be billed for 2 GB.
+- If you have performed one million and one operations, you will be billed for two million operations.
+- If you have used 1.1 GB-month, you will be billed for 2 GB-month.
+- If you have retrieved data (for infrequent access storage) for 1.1 GB, you will be billed for 2 GB.
 
 ### Free tier
 
 You can use the following amount of storage and operations each month for free.
 
-|                                    | Free                         |
-| ---------------------------------- | ---------------------------- |
-| Storage                            | 10 GB-month / month          |
-| Class A Operations                 | 1 million requests / month   |
-| Class B Operations                 | 10 million requests / month  |
-| Egress (data transfer to Internet) | Free [1](#user-content-fn-1) |
+|  | Free |
+| --- | --- |
+| Storage | 10 GB-month / month |
+| Class A Operations | 1 million requests / month |
+| Class B Operations | 10 million requests / month |
+| Egress (data transfer to Internet) | Free <sup>[1](#user-content-fn-1)</sup> |
 
 Caution
 
@@ -64,13 +64,13 @@ The free tier only applies to Standard storage, and does not apply to Infrequent
 
 ### Storage usage
 
-Storage is billed using gigabyte-month (GB-month) as the billing metric. A GB-month is calculated by averaging the _peak_ storage per day over a billing period (30 days).
+Storage is billed using gigabyte-month (GB-month) as the billing metric. A GB-month is calculated by averaging the *peak* storage per day over a billing period (30 days).
 
 For example:
 
-* Storing 1 GB constantly for 30 days will be charged as 1 GB-month.
-* Storing 3 GB constantly for 30 days will be charged as 3 GB-month.
-* Storing 1 GB for 5 days, then 3 GB for the remaining 25 days will be charged as `1 GB * 5/30 month + 3 GB * 25/30 month = 2.66 GB-month`
+- Storing 1 GB constantly for 30 days will be charged as 1 GB-month.
+- Storing 3 GB constantly for 30 days will be charged as 3 GB-month.
+- Storing 1 GB for 5 days, then 3 GB for the remaining 25 days will be charged as `1 GB * 5/30 month + 3 GB * 25/30 month = 2.66 GB-month`
 
 For objects stored in Infrequent Access storage, you will be charged for the object for the minimum storage duration even if the object was deleted or moved before the duration specified.
 
@@ -94,10 +94,10 @@ Data retrieval fees apply when you access or retrieve data from the Infrequent A
 
 For objects stored in Infrequent Access storage, you will be charged for the object for the minimum storage duration even if the object was deleted, moved, or replaced before the specified duration.
 
-| Storage class             | Minimum storage duration |
-| ------------------------- | ------------------------ |
-| Standard storage          | None                     |
-| Infrequent Access storage | 30 days                  |
+| Storage class | Minimum storage duration |
+| --- | --- |
+| Standard storage | None |
+| Infrequent Access storage | 30 days |
 
 ## R2 Data Catalog pricing
 
@@ -127,25 +127,25 @@ To learn about potential cost savings from using R2, refer to the [R2 pricing ca
 
 If a user writes 1,000 objects in R2 **Standard storage** for 1 month with an average size of 1 GB and reads each object 1,000 times during the month, the estimated cost for the month would be:
 
-|                             | Usage                                                         | Free Tier    | Billable Quantity | Price      |
-| --------------------------- | ------------------------------------------------------------- | ------------ | ----------------- | ---------- |
-| Storage                     | (1,000 objects) \* (1 GB per object) = 1,000 GB-months        | 10 GB-months | 990 GB-months     | $14.85     |
-| Class A Operations          | (1,000 objects) \* (1 write per object) = 1,000 writes        | 1 million    | 0                 | $0.00      |
-| Class B Operations          | (1,000 objects) \* (1,000 reads per object) = 1 million reads | 10 million   | 0                 | $0.00      |
-| Data retrieval (processing) | (1,000 objects) \* (1 GB per object) = 1,000 GB               | NA           | None              | $0.00      |
-| **TOTAL**                   |                                                               |              |                   | **$14.85** |
+|  | Usage | Free Tier | Billable Quantity | Price |
+| --- | --- | --- | --- | --- |
+| Storage | (1,000 objects) \* (1 GB per object) = 1,000 GB-months | 10 GB-months | 990 GB-months | $14.85 |
+| Class A Operations | (1,000 objects) \* (1 write per object) = 1,000 writes | 1 million | 0 | $0.00 |
+| Class B Operations | (1,000 objects) \* (1,000 reads per object) = 1 million reads | 10 million | 0 | $0.00 |
+| Data retrieval (processing) | (1,000 objects) \* (1 GB per object) = 1,000 GB | NA | None | $0.00 |
+| **TOTAL** |  |  |  | **$14.85** |
 
 ### Infrequent access example
 
 If a user writes 1,000 objects in R2 Infrequent Access storage with an average size of 1 GB, stores them for 5 days, and then deletes them (delete operations are free), and during those 5 days each object is read 1,000 times, the estimated cost for the month would be:
 
-|                             | Usage                                                         | Free Tier | Billable Quantity | Price      |
-| --------------------------- | ------------------------------------------------------------- | --------- | ----------------- | ---------- |
-| Storage                     | (1,000 objects) \* (1 GB per object) = 1,000 GB-months        | NA        | 1,000 GB-months   | $10.00     |
-| Class A Operations          | (1,000 objects) \* (1 write per object) = 1,000 writes        | NA        | 1,000             | $9.00      |
-| Class B Operations          | (1,000 objects) \* (1,000 reads per object) = 1 million reads | NA        | 1 million         | $0.90      |
-| Data retrieval (processing) | (1,000 objects) \* (1 GB per object) = 1,000 GB               | NA        | 1,000 GB          | $10.00     |
-| **TOTAL**                   |                                                               |           |                   | **$29.90** |
+|  | Usage | Free Tier | Billable Quantity | Price |
+| --- | --- | --- | --- | --- |
+| Storage | (1,000 objects) \* (1 GB per object) = 1,000 GB-months | NA | 1,000 GB-months | $10.00 |
+| Class A Operations | (1,000 objects) \* (1 write per object) = 1,000 writes | NA | 1,000 | $9.00 |
+| Class B Operations | (1,000 objects) \* (1,000 reads per object) = 1 million reads | NA | 1 million | $0.90 |
+| Data retrieval (processing) | (1,000 objects) \* (1 GB per object) = 1,000 GB | NA | 1,000 GB | $10.00 |
+| **TOTAL** |  |  |  | **$29.90** |
 
 Note that the minimal storage duration for infrequent access storage is 30 days, which means the billable quantity is 1,000 GB-months, rather than 167 GB-months.
 
@@ -153,12 +153,12 @@ Note that the minimal storage duration for infrequent access storage is 30 days,
 
 If a user writes 100,000 files with an average size of 100 KB object and reads 10,000,000 objects per day, the estimated cost in a month would be:
 
-|                    | Usage                                   | Free Tier    | Billable Quantity | Price       |
-| ------------------ | --------------------------------------- | ------------ | ----------------- | ----------- |
-| Storage            | (100,000 objects) \* (100KB per object) | 10 GB-months | 0 GB-months       | $0.00       |
-| Class A Operations | (100,000 writes)                        | 1 million    | 0                 | $0.00       |
-| Class B Operations | (10,000,000 reads per day) \* (30 days) | 10 million   | 290,000,000       | $104.40     |
-| **TOTAL**          |                                         |              |                   | **$104.40** |
+|  | Usage | Free Tier | Billable Quantity | Price |
+| --- | --- | --- | --- | --- |
+| Storage | (100,000 objects) \* (100KB per object) | 10 GB-months | 0 GB-months | $0.00 |
+| Class A Operations | (100,000 writes) | 1 million | 0 | $0.00 |
+| Class B Operations | (10,000,000 reads per day) \* (30 days) | 10 million | 290,000,000 | $104.40 |
+| **TOTAL** |  |  |  | **$104.40** |
 
 ## Cloudflare billing policy
 
@@ -172,7 +172,7 @@ No. You are not charged for operations when the caller does not have permission 
 
 ## Footnotes
 
-1. Egressing directly from R2, including via the [Workers API](https://developers.cloudflare.com/r2/api/workers/), [S3 API](https://developers.cloudflare.com/r2/api/s3/), and [r2.dev domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#enable-managed-public-access) does not incur data transfer (egress) charges and is free. If you connect other metered services to an R2 bucket, you may be charged by those services. [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2) [↩3](#user-content-fnref-1-3)
+1. Egressing directly from R2, including via the [Workers API](https://developers.cloudflare.com/r2/api/workers/), [S3 API](https://developers.cloudflare.com/r2/api/s3/), and [`r2.dev` domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#enable-managed-public-access) does not incur data transfer (egress) charges and is free. If you connect other metered services to an R2 bucket, you may be charged by those services. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2) [↩<sup>3</sup>](#user-content-fnref-1-3)
 
 Was this helpful?
 

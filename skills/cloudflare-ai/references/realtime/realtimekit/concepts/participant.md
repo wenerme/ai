@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Participant
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/participant/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Before a user can join a meeting through the RealtimeKit SDK, your backend must add that user as a participant to that meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/). In RealtimeKit, a **participant** represents a user who is allowed to join a specific meeting.
+Before a user can join a meeting through the RealtimeKit SDK, your backend must add that user as a participant to that meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). In RealtimeKit, a **participant** represents a user who is allowed to join a specific meeting.
 
 You can think of this as enrolling a student into a classroom. The meeting is the classroom, and adding a participant is how you register a user so that they are allowed to attend.
 
@@ -22,10 +22,10 @@ When you add a participant, you also choose which [preset](https://developers.cl
 
 ### Participant tokens
 
-When you add a participant to a meeting using the [Add Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/add%5Fparticipant/) API endpoint, it returns:
+When you add a participant to a meeting using the [Add Participant](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/) API endpoint, it returns:
 
-* A participant `id` that identifies this participant within the meeting.
-* An authentication `token` for that participant.
+- A participant `id` that identifies this participant within the meeting.
+- An authentication `token` for that participant.
 
 Your backend should make it available to your frontend application. When the user chooses to join the meeting, the frontend passes the token to the RealtimeKit SDK.
 
@@ -37,9 +37,9 @@ Participant authentication tokens are JSON Web Tokens (JWTs). The `meetingId` an
 
 A token becomes valid when issued and expires 100 days later. You cannot configure custom start or expiration dates. If you need scheduled access, enforce the schedule in your own system because RealtimeKit SDKs do not manage scheduling or duration logic.
 
-Your backend can call the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/refresh%5Fparticipant%5Ftoken/) endpoint before or after a token expires. The new token uses the existing participant record, including its participant `id` and preset. Refreshing does not invalidate previously issued tokens. Each token remains valid until its own expiration time.
+Your backend can call the [Refresh Participant Token](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/refresh_participant_token/) endpoint before or after a token expires. The new token uses the existing participant record, including its participant `id` and preset. Refreshing does not invalidate previously issued tokens. Each token remains valid until its own expiration time.
 
-To revoke all tokens for a participant in a meeting, call the [Delete Participant](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/meetings/methods/delete%5Fmeeting%5Fparticipant/) endpoint. First, use the [Kick Participants](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/active-session/methods/kick%5Fparticipants/) endpoint to safely remove the participant from any active session.
+To revoke all tokens for a participant in a meeting, call the [Delete Participant](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/delete_meeting_participant/) endpoint. First, use the [Kick Participants](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/active-session/methods/kick_participants/) endpoint to safely remove the participant from any active session.
 
 A participant cannot join a meeting with an expired or revoked token. The RealtimeKit UI and Core SDK report the token as invalid. RealtimeKit rejects the participant before they enter the [meeting stage](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/), so they are not billed.
 
@@ -55,8 +55,8 @@ Note
 
 After understanding participants, you can explore the following topics:
 
-* Learn how [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset) define roles and permissions for participants
-* [Get started with RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/)
+- Learn how [Presets](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset) define roles and permissions for participants
+- [Get started with RealtimeKit SDKs](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/)
 
 Was this helpful?
 

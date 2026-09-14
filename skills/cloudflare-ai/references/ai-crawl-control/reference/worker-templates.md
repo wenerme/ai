@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Worker templates
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/worker-templates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/worker-templates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [AI Crawl Control analytics](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) to identify which crawlers are accessing your site, then deploy Worker templates to customize how you handle that traffic.
 
@@ -26,11 +26,11 @@ For setup instructions and Bot Management integration examples, see the [templat
 
 ## Related
 
-* [Bot reference](https://developers.cloudflare.com/ai-crawl-control/reference/bots/) — Detection IDs and user agents for common crawlers
-* [Cloudflare Workers](https://developers.cloudflare.com/workers/) — Build and deploy serverless applications
-* [Workers templates ↗](https://github.com/cloudflare/templates) — More templates on GitHub
-* [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) — Native Cloudflare integration for monetizing crawler access
-* [x402 payments](https://developers.cloudflare.com/agents/tools/payments/x402/) — Gate resources, charge for MCP tools, add payments to coding agents
+- [Bot reference](https://developers.cloudflare.com/ai-crawl-control/reference/bots/) — Detection IDs and user agents for common crawlers
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) — Build and deploy serverless applications
+- [Workers templates ↗](https://github.com/cloudflare/templates) — More templates on GitHub
+- [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) — Native Cloudflare integration for monetizing crawler access
+- [x402 payments](https://developers.cloudflare.com/agents/tools/payments/x402/) — Gate resources, charge for MCP tools, add payments to coding agents
 
 Was this helpful?
 

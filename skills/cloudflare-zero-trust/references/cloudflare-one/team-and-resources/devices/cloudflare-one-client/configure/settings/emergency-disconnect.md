@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Emergency Disconnect
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Emergency disconnect allows organizations and administrators to disconnect and reconnect their fleet of Cloudflare One Clients (formerly WARP) independently from Cloudflare infrastructure. For example, in the event of a [Cloudflare network outage](#use-cases) you ensure that you can still manage your devices even if Cloudflare’s systems are down or unreachable.
 
 Two mechanisms are available:
 
-* **[External Emergency Disconnect](#set-up-external-emergency-disconnect)**: Cloudflare One Clients periodically poll a customer-hosted HTTPS endpoint for a disconnect signal. This requires network connectivity to your endpoint but works even when Cloudflare infrastructure is unreachable.
-* **[Local Emergency Disconnect](#set-up-local-emergency-disconnect)**: The Cloudflare One Client monitors a local JSON file on the device for a disconnect signal. This does not require any network connectivity and is useful for disaster recovery scenarios where both Cloudflare and your own infrastructure may be unreachable.
+- **[External Emergency Disconnect](#set-up-external-emergency-disconnect)**: Cloudflare One Clients periodically poll a customer-hosted HTTPS endpoint for a disconnect signal. This requires network connectivity to your endpoint but works even when Cloudflare infrastructure is unreachable.
+- **[Local Emergency Disconnect](#set-up-local-emergency-disconnect)**: The Cloudflare One Client monitors a local JSON file on the device for a disconnect signal. This does not require any network connectivity and is useful for disaster recovery scenarios where both Cloudflare and your own infrastructure may be unreachable.
 
 Emergency disconnect can also be used in combination with the dashboard-initiated [Disconnect the Cloudflare One Client on all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices) setting. You can use any mechanism individually or together for multi-layer resilience. A disconnect signal from any source triggers disconnect; all sources must indicate normal operation for the client to reconnect. For details on how these settings interact, refer to [Device client settings precedence](#device-client-settings-precedence).
 
 ## Use cases
 
-* **Security Incident Response**: Quickly terminate all WARP tunnels across the entire fleet.
-* **Compliance and Auditing**: Fulfill requirements in sensitive or regulated environments that mandate an "emergency stop" capability that is fully isolated, auditable, and controlled by the organization's own infrastructure.
-* **Disaster Recovery**: If devices cannot reach Cloudflare's API (due to a network outage, routing issue, or client-side misconfiguration), administrators retain the ability to force-disconnect the fleet via the customer-hosted endpoint or a local signal file.
-* **Business Continuity Planning (BCP)**: Trigger emergency disconnect from local BCP scripts even when both Cloudflare and your own infrastructure are unreachable.
-* **Local Automation**: Integrate with configuration management tools (Ansible, Puppet, Chef) or monitoring agents to manage the disconnect state without maintaining an HTTPS endpoint.
+- **Security Incident Response**: Quickly terminate all WARP tunnels across the entire fleet.
+- **Compliance and Auditing**: Fulfill requirements in sensitive or regulated environments that mandate an "emergency stop" capability that is fully isolated, auditable, and controlled by the organization's own infrastructure.
+- **Disaster Recovery**: If devices cannot reach Cloudflare's API (due to a network outage, routing issue, or client-side misconfiguration), administrators retain the ability to force-disconnect the fleet via the customer-hosted endpoint or a local signal file.
+- **Business Continuity Planning (BCP)**: Trigger emergency disconnect from local BCP scripts even when both Cloudflare and your own infrastructure are unreachable.
+- **Local Automation**: Integrate with configuration management tools (Ansible, Puppet, Chef) or monitoring agents to manage the disconnect state without maintaining an HTTPS endpoint.
 
 ## Signal format
 
@@ -41,25 +41,33 @@ Both the external endpoint response payload and the local signal file content mu
 }
 ```
 
-* If `emergency_disconnect` is set to `true`, the device will initiate an emergency disconnect.
-* If `emergency_disconnect` is set to `false`, the device will continue normal operation.
+- If `emergency_disconnect` is set to `true`, the device will initiate an emergency disconnect.
+- If `emergency_disconnect` is set to `false`, the device will continue normal operation.
 
 ## Set up External Emergency Disconnect
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2025.10.186.0          |
-| macOS    | ✅            | 2025.10.186.0          |
-| Linux    | ✅            | 2025.10.186.0          |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2025.10.186.0 |
+| macOS | ✅ | 2025.10.186.0 |
+| Linux | ✅ | 2025.10.186.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 When External Emergency Disconnect is enabled, Cloudflare One Clients will periodically poll a customer-hosted HTTPS endpoint. A client will only change its connection state if it receives a valid JSON payload with the new state. Any failure to successfully retrieve the state (such as endpoint unreachability, invalid certificate fingerprint, or an improperly structured payload) will not cause a state change on the client.
 
@@ -71,70 +79,96 @@ An external disconnect endpoint is an HTTPS server hosted outside of Cloudflare 
 
 The external endpoint URL should:
 
-* Use the HTTPS protocol.
-* Use an IPv4 or IPv6 address as the host, not a domain.
-* (Recommended) Use a public IP to ensure that devices can fetch the latest state regardless of their network location.
+- Use the HTTPS protocol.
+- Use an IPv4 or IPv6 address as the host, not a domain.
+- (Recommended) Use a public IP to ensure that devices can fetch the latest state regardless of their network location.
 
 #### Cipher suites
 
 The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https://github.com/rustls/rustls). Make sure your HTTPS endpoint accepts one of the [cipher suites supported by Rustls ↗](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
 
-### 1\. Create an external disconnect endpoint
+### 1. Create an external disconnect endpoint
 
 To configure External Emergency Disconnect, you will need an HTTPS endpoint in your own infrastructure that serves the global disconnect signal. The Cloudflare One Client will poll the external endpoint and validate its TLS/SSL certificate against an SHA-256 fingerprint that you upload to Zero Trust. Refer to [External endpoint requirements](#external-endpoint-requirements) for more details.
 
 The following example demonstrates how to deploy an external disconnect endpoint using an nginx container in Docker.
 
 1. Generate a TLS/SSL certificate:
-```sh
-openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout key.pem -out cert.pem
-```
-You will be prompted to fill in Distinguished Name (DN) fields. Fill in your organization's information or press `Enter` to use the default values.
-The command will output a certificate in PEM format and its private key. Store these files in a secure place.
-2. Configure an HTTPS server on your network to use this certificate and key:
-a. Create an nginx configuration file called `nginx.conf`:
-```txt
-events {
-	worker_connections  1024;
-}
-http {
-		server {
-				listen              443 ssl;
-				ssl_certificate     /certs/cert.pem;
-				ssl_certificate_key /certs/key.pem;
-				location /status/disconnect {
-						default_type application/json;
-						return 200 '{"emergency_disconnect": false}';
-				}
-		}
-}
-```
-If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.
-b. Add the nginx image to your Docker compose file:
-```yml
-services:
-	nginx:
-		image: nginx:latest
-		ports:
-			- 3333:443
-		volumes:
-			- ./nginx.conf:/etc/nginx/nginx.conf:ro
-			- ./certs:/certs:ro
-```
-If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.
-c. Start the server:
-```sh
-docker compose up -d
-```
-3. To test that the HTTPS endpoint is working, run a curl command from the end user's device. You need to pass the `--insecure` option because we are using a self-signed certificate.
-```sh
-curl --insecure https://<server-ip>:3333/status/disconnect
-```
-```sh
-{"emergency_disconnect": false}
-```
 
-### 2\. Extract the SHA-256 fingerprint
+   ```sh
+   openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes -keyout key.pem -out cert.pem
+   ```
+
+   You will be prompted to fill in Distinguished Name (DN) fields. Fill in your organization's information or press `Enter` to use the default values.
+
+   The command will output a certificate in PEM format and its private key. Store these files in a secure place.
+2. Configure an HTTPS server on your network to use this certificate and key:
+
+   a. Create an nginx configuration file called `nginx.conf`:
+
+   *nginx.conftxt*
+
+
+
+   ```txt
+   events {
+   	worker_connections  1024;
+   }
+
+   http {
+   		server {
+   				listen              443 ssl;
+   				ssl_certificate     /certs/cert.pem;
+   				ssl_certificate_key /certs/key.pem;
+   				location /status/disconnect {
+   						default_type application/json;
+   						return 200 '{"emergency_disconnect": false}';
+   				}
+   		}
+   }
+   ```
+
+   If needed, replace `/certs/cert.pem` and `/certs/key.pem` with the locations of your certificate and key.
+
+   b. Add the nginx image to your Docker compose file:
+
+   *docker-compose.ymlyml*
+
+
+
+   ```yml
+   services:
+   	nginx:
+   		image: nginx:latest
+   		ports:
+   			- 3333:443
+   		volumes:
+   			- ./nginx.conf:/etc/nginx/nginx.conf:ro
+   			- ./certs:/certs:ro
+   ```
+
+   If needed, replace `./nginx.conf` and `./certs` with the locations of your nginx configuration file and certificate.
+
+   c. Start the server:
+
+   ```sh
+   docker compose up -d
+   ```
+
+
+3. To test that the HTTPS endpoint is working, run a curl command from the end user's device. You need to pass the `--insecure` option because we are using a self-signed certificate.
+
+   ```sh
+   curl --insecure https://<server-ip>:3333/status/disconnect
+   ```
+
+   ```sh
+   {"emergency_disconnect": false}
+   ```
+
+
+
+### 2. Extract the SHA-256 fingerprint
 
 To obtain the SHA-256 fingerprint of a local certificate:
 
@@ -160,17 +194,17 @@ The output will look something like:
 SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662
 ```
 
-### 3\. Turn on External Emergency Disconnect
+### 3. Turn on External Emergency Disconnect
 
 To configure External Emergency Disconnect using the dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
 2. Select **Global disconnection settings**.
 3. Find **Manage device connection using an external signal** and select **Edit**.
 4. Configure the following fields:
-  * **Endpoint IP address and port**: Enter the HTTPS URL from which to fetch the external disconnect signal (for example, `https://192.0.2.1:3333/status/disconnect`). The endpoint must use HTTPS and have an IPv4 or IPv6 address as the host.
-  * **Polling frequency**: Choose how often the Cloudflare One Client should fetch the external disconnect signal.
-  * **Certificate fingerprint**: Enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the HTTPS server certificate (for example, `DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662`).
+   - **Endpoint IP address and port**: Enter the HTTPS URL from which to fetch the external disconnect signal (for example, `https://192.0.2.1:3333/status/disconnect`). The endpoint must use HTTPS and have an IPv4 or IPv6 address as the host.
+   - **Polling frequency**: Choose how often the Cloudflare One Client should fetch the external disconnect signal.
+   - **Certificate fingerprint**: Enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the HTTPS server certificate (for example, `DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8662`).
 5. Select **Save**.
 6. Turn on **Manage device connection using an external signal**.
 
@@ -178,10 +212,21 @@ All Cloudflare One Clients in your organization will now start polling the exter
 
 To configure External Emergency Disconnect using the API, send a `PATCH` request to the `/devices/settings` endpoint:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zero Trust Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Patch device settings for a Zero Trust accountbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \
@@ -210,37 +255,51 @@ Split Tunnels in Include mode
 
 The Cloudflare One Client will automatically exclude the external endpoint IP address from the WARP tunnel. If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) in **Include** mode, ensure that your Split Tunnel entries do not contain the external endpoint IP; otherwise the Cloudflare One Client will exclude the entire Split Tunnel entry from the tunnel.
 
-### 4\. Test External Emergency Disconnect
+### 4. Test External Emergency Disconnect
 
 1. Ensure that the Cloudflare One Client is connected.
 2. Ensure that the External Emergency Disconnect feature is [turned on](#3-turn-on-external-emergency-disconnect).
 3. In your [external endpoint](#1-create-an-external-disconnect-endpoint) configuration, change `emergency_disconnect` to `true`:
-```json
-{ "emergency_disconnect": true }
-```
-4. You may need to reload the server to apply changes. To reload the [example nginx server](#1-create-an-external-disconnect-endpoint):
-```sh
-docker exec <container-name-or-id> nginx -s reload
-```
 
-The Cloudflare One Client will automatically disconnect within the configured polling interval, and the Cloudflare One Client GUI will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect). To reconnect all devices, change `emergency_disconnect` back to `false`.
+   ```json
+   { "emergency_disconnect": true }
+   ```
+
+
+4. You may need to reload the server to apply changes. To reload the [example `nginx` server](#1-create-an-external-disconnect-endpoint):
+
+   ```sh
+   docker exec <container-name-or-id> nginx -s reload
+   ```
+
+
+
+The Cloudflare One Client will automatically disconnect within the configured polling interval, and the Cloudflare One Client GUI will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect). To reconnect all devices, change `emergency_disconnect` back to `false`.
 
 ## Set up Local Emergency Disconnect
 
+<details>
+
+<summary>
+
 Feature availability
 
-| [Client modes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/) | [Zero Trust plans ↗](https://www.cloudflare.com/teams-pricing/) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| All modes                                                                                                                          | All plans                                                       |
+</summary>
 
-| System   | Availability | Minimum client version |
-| -------- | ------------ | ---------------------- |
-| Windows  | ✅            | 2026.5.0               |
-| macOS    | ✅            | 2026.5.0               |
-| Linux    | ✅            | 2026.5.0               |
-| iOS      | ❌            |                        |
-| Android  | ❌            |                        |
-| ChromeOS | ❌            |                        |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| --- | --- |
+| All modes | All plans |
+
+| System | Availability | Minimum client version |
+| --- | --- | --- |
+| Windows | ✅ | 2026.5.0 |
+| macOS | ✅ | 2026.5.0 |
+| Linux | ✅ | 2026.5.0 |
+| iOS | ❌ | |
+| Android | ❌ | |
+| ChromeOS | ❌ | |
+
+</details>
 
 Local Emergency Disconnect allows organizations to trigger an emergency disconnect on the device itself, without requiring network access to any remote infrastructure. The Cloudflare One Client monitors a local JSON file at a fixed, admin-writable path. When the file contains a disconnect signal, the client enters the emergency disconnect state. Local scripts, configuration management tools (such as Ansible, Puppet, or Chef), or monitoring agents can create or modify the signal file directly on the device.
 
@@ -248,15 +307,15 @@ Local Emergency Disconnect allows organizations to trigger an emergency disconne
 
 The Cloudflare One Client monitors a fixed file path that requires administrative privilege to modify. The path is not configurable.
 
-| Operating system | File path                                                          |
-| ---------------- | ------------------------------------------------------------------ |
-| Windows          | %PROGRAMDATA%\\Cloudflare\\emergency\_disconnect.json              |
-| macOS            | /Library/Application Support/Cloudflare/emergency\_disconnect.json |
-| Linux            | /var/lib/cloudflare-warp/emergency\_disconnect.json                |
+| Operating system | File path |
+| --- | --- |
+| Windows | `%PROGRAMDATA%\Cloudflare\emergency_disconnect.json` |
+| macOS | `/Library/Application Support/Cloudflare/emergency_disconnect.json` |
+| Linux | `/var/lib/cloudflare-warp/emergency_disconnect.json` |
 
 The signal file uses the same [JSON format](#signal-format) as the external HTTPS endpoint. If the file does not exist, the client treats it as normal operation (`false`). If the file contains invalid JSON, the client logs an error and does not change state. The client reacts to file changes within 30 seconds.
 
-### 1\. Turn on Local Emergency Disconnect
+### 1. Turn on Local Emergency Disconnect
 
 To enable the feature, deploy the `local_emergency_signal_enabled` parameter via your MDM. Add the following to your [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/):
 
@@ -267,7 +326,7 @@ To enable the feature, deploy the `local_emergency_signal_enabled` parameter via
 
 The Cloudflare One Client will begin monitoring the [signal file path](#signal-file-path) once the MDM setting is applied. Configuration changes take effect without requiring a client restart.
 
-### 2\. Test Local Emergency Disconnect
+### 2. Test Local Emergency Disconnect
 
 1. Ensure that the Cloudflare One Client is connected.
 2. Ensure that Local Emergency Disconnect is [turned on](#1-turn-on-local-emergency-disconnect).
@@ -287,7 +346,7 @@ Set-Content -Path "$env:PROGRAMDATA\Cloudflare\emergency_disconnect.json" -Value
 sudo tee /var/lib/cloudflare-warp/emergency_disconnect.json <<< '{"emergency_disconnect": true}'
 ```
 
-The Cloudflare One Client will automatically disconnect within 30 seconds, and the Cloudflare One Client GUI will display [Admin directed disconnect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
+The Cloudflare One Client will automatically disconnect within 30 seconds, and the Cloudflare One Client GUI will display [`Admin directed disconnect`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/client-errors/#admin-directed-disconnect).
 
 To reconnect, change `emergency_disconnect` to `false` or remove the file:
 
@@ -326,7 +385,7 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Team & Resources** \> **Devices** \> **Management**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
 2. Select **Global disconnection settings**.
 3. Turn off **Manage device connection using an external signal**.
 
@@ -334,10 +393,21 @@ Cloudflare will propagate the new setting to clients, instructing them to stop p
 
 Send a `PATCH` request with the endpoint URL and fingerprint set to empty strings:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zero Trust Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Patch device settings for a Zero Trust accountbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \
@@ -384,16 +454,16 @@ The client will honor disconnect signals from the Cloudflare dashboard (via [Dis
 
 The following table shows how the three signal sources combine. If **any** source indicates disconnect, the client disconnects.
 
-| Dashboard ([Disconnect all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices)) | External endpoint | Local file   | Result             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------ | ------------------ |
-| On                                                                                                                                                                                                              | true              | true         | Force disconnected |
-| On                                                                                                                                                                                                              | true              | false/absent | Force disconnected |
-| On                                                                                                                                                                                                              | false             | true         | Force disconnected |
-| On                                                                                                                                                                                                              | false             | false/absent | Force disconnected |
-| Off                                                                                                                                                                                                             | true              | true         | Force disconnected |
-| Off                                                                                                                                                                                                             | true              | false/absent | Force disconnected |
-| Off                                                                                                                                                                                                             | false             | true         | Force disconnected |
-| Off                                                                                                                                                                                                             | false             | false/absent | Normal operation   |
+| Dashboard ([Disconnect all devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices)) | External endpoint | Local file | Result |
+| --- | --- | --- | --- |
+| On | `true` | `true` | Force disconnected |
+| On | `true` | `false`/absent | Force disconnected |
+| On | `false` | `true` | Force disconnected |
+| On | `false` | `false`/absent | Force disconnected |
+| Off | `true` | `true` | Force disconnected |
+| Off | `true` | `false`/absent | Force disconnected |
+| Off | `false` | `true` | Force disconnected |
+| Off | `false` | `false`/absent | Normal operation |
 
 ### Auto connect
 

@@ -11,29 +11,29 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RTKLivestream
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtklivestream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtklivestream/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The RTKLivestream module represents the state of the current livestream, and allows to start/stop live streams.
 
-* [RTKLivestream](#module%5FRTKLivestream)
-  * [.start(\[livestreamConfig\])](#module%5FRTKLivestream+start)
-  * [.stop()](#module%5FRTKLivestream+stop)
+- [RTKLivestream](#module_RTKLivestream)
+  - [.start(\[livestreamConfig\])](#module_RTKLivestream+start)
+  - [.stop()](#module_RTKLivestream+stop)
 
-### meeting.livestream.start(\[livestreamConfig\])
+### meeting.livestream.start(\[livestreamConfig])
 
 Starts livestreaming the meeting.
 
-**Kind**: instance method of [RTKLivestream](#module%5FRTKLivestream)
+**Kind**: instance method of [`RTKLivestream`](#module_RTKLivestream)
 
-| Param                | Type                  |
-| -------------------- | --------------------- |
-| \[livestreamConfig\] | StartLivestreamConfig |
+| Param | Type |
+| --- | --- |
+| \[livestreamConfig] | `StartLivestreamConfig` |
 
 ### meeting.livestream.stop()
 
 Stops livestreaming the meeting.
 
-**Kind**: instance method of [RTKLivestream](#module%5FRTKLivestream)
+**Kind**: instance method of [`RTKLivestream`](#module_RTKLivestream)
 
 Was this helpful?
 

@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/email/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/communication-channels/email/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Email is a communication channel for agents that need to interact with users or systems through inboxes instead of chat UIs. Agents can send outbound email, receive inbound email, route replies back to an existing session, and use email content as part of an agent workflow.
 
 Use email when you want an agent to:
 
-* Send notifications, summaries, receipts, or follow-up messages.
-* Process inbound messages through [Cloudflare Email Service](https://developers.cloudflare.com/email-service/).
-* Continue a conversation from a reply.
-* Route support, sales, or operational workflows through an agent.
+- Send notifications, summaries, receipts, or follow-up messages.
+- Process inbound messages through [Cloudflare Email Service](https://developers.cloudflare.com/email-service/).
+- Continue a conversation from a reply.
+- Route support, sales, or operational workflows through an agent.
 
 ## How it works
 

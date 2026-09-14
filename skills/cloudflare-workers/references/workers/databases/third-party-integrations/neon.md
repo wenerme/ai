@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Neon
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/neon/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/neon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Neon ↗](https://neon.tech/) is a fully managed serverless PostgreSQL. It separates storage and compute to offer modern developer features, such as serverless, branching, and bottomless storage.
 
@@ -24,7 +24,7 @@ Hyperdrive can provide the lowest possible latencies because it performs the dat
 
 To connect to Neon using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
-## 1\. Allow Hyperdrive access
+## 1. Allow Hyperdrive access
 
 You can connect Hyperdrive to any existing Neon database by creating a new user and fetching your database connection string.
 
@@ -32,19 +32,19 @@ You can connect Hyperdrive to any existing Neon database by creating a new user 
 
 1. Go to the [**Neon dashboard** ↗](https://console.neon.tech/app/projects) and select the project (database) you wish to connect to.
 2. Select **Roles** from the sidebar and select **New Role**. Enter `hyperdrive-user` as the name (or your preferred name) and **copy the password**. Note that the password will not be displayed again: you will have to reset it if you do not save it somewhere.
-3. Select **Dashboard** from the sidebar > go to the **Connection Details** pane > ensure you have selected the **branch**, **database** and **role** (for example,`hyperdrive-user`) that Hyperdrive will connect through.
+3. Select **Dashboard** from the sidebar > go to the **Connection Details** pane > ensure you have selected the **branch**, **database** and **role** (for example, `hyperdrive-user`) that Hyperdrive will connect through.
 4. Select the `psql` and **uncheck the connection pooling** checkbox. Note down the connection string (starting with `postgres://hyperdrive-user@...`) from the text box.
 
 With both the connection string and the password, you can now create a Hyperdrive database configuration.
 
-## 2\. Create a database configuration
+## 2. Create a database configuration
 
 To configure Hyperdrive, you will need:
 
-* The IP address (or hostname) and port of your database.
-* The database username (for example, `hyperdrive-demo`) you configured in a previous step.
-* The password associated with that username.
-* The name of the database you want Hyperdrive to connect to. For example, `postgres`.
+- The IP address (or hostname) and port of your database.
+- The database username (for example, `hyperdrive-demo`) you configured in a previous step.
+- The password associated with that username.
+- The name of the database you want Hyperdrive to connect to. For example, `postgres`.
 
 Hyperdrive accepts the combination of these parameters in the common connection string format used by database drivers:
 
@@ -56,8 +56,7 @@ Most database providers will provide a connection string you can directly copy-a
 
 To create a Hyperdrive configuration with the Cloudflare dashboard:
 
-1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+1. In the Cloudflare dashboard, go to the **Hyperdrive** page. [Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select **Create Configuration**.
 3. Fill out the form, including the connection string.
 4. Select **Create**.
@@ -65,46 +64,54 @@ To create a Hyperdrive configuration with the Cloudflare dashboard:
 To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/):
 
 1. Open your terminal and run the following command. Replace `<NAME_OF_HYPERDRIVE_CONFIG>` with a name for your Hyperdrive configuration and paste the connection string provided from your database host, or replace `user`, `password`, `HOSTNAME_OR_IP_ADDRESS`, `port`, and `database_name` placeholders with those specific to your database:
-```sh
-npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
-```
+
+   ```sh
+   npx wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string="postgres://user:password@HOSTNAME_OR_IP_ADDRESS:PORT/database_name"
+   ```
+
+
 2. This command outputs a binding for the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
-```jsonc
-{
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "hyperdrive-example",
-	"main": "src/index.ts",
-	// Set this to today's date
-	"compatibility_date": "2026-08-25",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
-	"hyperdrive": [
-		{
-			"binding": "HYPERDRIVE",
-			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-		}
-	]
-}
-```
-```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
-name = "hyperdrive-example"
-main = "src/index.ts"
-# Set this to today's date
-compatibility_date = "2026-08-25"
-compatibility_flags = [ "nodejs_compat" ]
-[[hyperdrive]]
-binding = "HYPERDRIVE"
-id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
-```
+
+   ```jsonc
+   {
+   	"$schema": "./node_modules/wrangler/config-schema.json",
+   	"name": "hyperdrive-example",
+   	"main": "src/index.ts",
+   	// Set this to today's date
+   	"compatibility_date": "2026-09-14",
+   	"compatibility_flags": [
+   		"nodejs_compat"
+   	],
+   	// Pasted from the output of `wrangler hyperdrive create <NAME_OF_HYPERDRIVE_CONFIG> --connection-string=[...]` above.
+   	"hyperdrive": [
+   		{
+   			"binding": "HYPERDRIVE",
+   			"id": "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+   		}
+   	]
+   }
+   ```
+
+   ```toml
+   "$schema" = "./node_modules/wrangler/config-schema.json"
+   name = "hyperdrive-example"
+   main = "src/index.ts"
+   # Set this to today's date
+   compatibility_date = "2026-09-14"
+   compatibility_flags = [ "nodejs_compat" ]
+
+   [[hyperdrive]]
+   binding = "HYPERDRIVE"
+   id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
+   ```
+
+
 
 Note
 
 Hyperdrive will attempt to connect to your database with the provided credentials to verify they are correct before creating a configuration. If you encounter an error when attempting to connect, refer to Hyperdrive's [troubleshooting documentation](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug possible causes.
 
-## 3\. Use Hyperdrive from your Worker
+## 3. Use Hyperdrive from your Worker
 
 Install the `node-postgres` driver:
 
@@ -159,7 +166,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -172,7 +179,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -223,70 +230,90 @@ When connecting to a Neon database with Hyperdrive, you should use a driver like
 
 ## Next steps
 
-* Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-* Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
-* Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
+- Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
+- Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
+- Understand more about other [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) available to Cloudflare Workers.
 
 To connect to Neon using `@neondatabase/serverless`, follow these steps:
 
 1. You need to have an existing Neon database to connect to. [Create a Neon database ↗](https://neon.tech/docs/postgres/tutorial-createdb#create-a-table) or [load data from an existing database to Neon ↗](https://neon.tech/docs/import/import-from-postgres).
-2. Create an `elements` table using the Neon SQL editor. The SQL Editor allows you to query your databases directly from the Neon Console.
-```sql
-CREATE TABLE elements (
-  id INTEGER NOT NULL,
-  elementName TEXT NOT NULL,
-  atomicNumber INTEGER NOT NULL,
-  symbol TEXT NOT NULL
-);
-```
+2. Create an `elements` table using the Neon SQL editor. The SQL Editor allows you to query your databases directly from the Neon Console.
+
+   ```sql
+   CREATE TABLE elements (
+     id INTEGER NOT NULL,
+     elementName TEXT NOT NULL,
+     atomicNumber INTEGER NOT NULL,
+     symbol TEXT NOT NULL
+   );
+   ```
+
+
 3. Insert some data into your newly created table.
-```sql
-INSERT INTO elements (id, elementName, atomicNumber, symbol)
-VALUES
-  (1, 'Hydrogen', 1, 'H'),
-  (2, 'Helium', 2, 'He'),
-  (3, 'Lithium', 3, 'Li'),
-  (4, 'Beryllium', 4, 'Be'),
-  (5, 'Boron', 5, 'B'),
-  (6, 'Carbon', 6, 'C'),
-  (7, 'Nitrogen', 7, 'N'),
-  (8, 'Oxygen', 8, 'O'),
-  (9, 'Fluorine', 9, 'F'),
-  (10, 'Neon', 10, 'Ne');
-```
+
+   ```sql
+   INSERT INTO elements (id, elementName, atomicNumber, symbol)
+   VALUES
+     (1, 'Hydrogen', 1, 'H'),
+     (2, 'Helium', 2, 'He'),
+     (3, 'Lithium', 3, 'Li'),
+     (4, 'Beryllium', 4, 'Be'),
+     (5, 'Boron', 5, 'B'),
+     (6, 'Carbon', 6, 'C'),
+     (7, 'Nitrogen', 7, 'N'),
+     (8, 'Oxygen', 8, 'O'),
+     (9, 'Fluorine', 9, 'F'),
+     (10, 'Neon', 10, 'Ne');
+   ```
+
+
 4. Configure the Neon database credentials in your Worker:
-You need to add your Neon database connection string as a secret to your Worker. Get your connection string from the [Neon Console ↗](https://console.neon.tech) under **Connection Details**, then add it as a secret using Wrangler:
-```sh
-# Add the database connection string as a secret
-npx wrangler secret put DATABASE_URL
-# When prompted, paste your Neon database connection string
-```
-5. In your Worker, install the `@neondatabase/serverless` driver to connect to your database and start manipulating data:
-npmyarnpnpmbun
-```
-npm i @neondatabase/serverless
-```
-```
-yarn add @neondatabase/serverless
-```
-```
-pnpm add @neondatabase/serverless
-```
-```
-bun add @neondatabase/serverless
-```
+
+   You need to add your Neon database connection string as a secret to your Worker. Get your connection string from the [Neon Console ↗](https://console.neon.tech) under **Connection Details**, then add it as a secret using Wrangler:
+
+   ```sh
+   # Add the database connection string as a secret
+   npx wrangler secret put DATABASE_URL
+   # When prompted, paste your Neon database connection string
+   ```
+
+
+5. In your Worker, install the `@neondatabase/serverless` driver to connect to your database and start manipulating data:npmyarnpnpmbun
+
+   ```
+   npm i @neondatabase/serverless
+   ```
+
+   ```
+   yarn add @neondatabase/serverless
+   ```
+
+   ```
+   pnpm add @neondatabase/serverless
+   ```
+
+   ```
+   bun add @neondatabase/serverless
+   ```
+
+
 6. The following example shows how to make a query to your Neon database in a Worker. The credentials needed to connect to Neon have been added as secrets to your Worker.
-```js
-import { Client } from "@neondatabase/serverless";
-export default {
-	async fetch(request, env, ctx) {
-		const client = new Client(env.DATABASE_URL);
-		await client.connect();
-		const { rows } = await client.query("SELECT * FROM elements");
-		return new Response(JSON.stringify(rows));
-	},
-};
-```
+
+   ```js
+   import { Client } from "@neondatabase/serverless";
+
+   export default {
+   	async fetch(request, env, ctx) {
+   		const client = new Client(env.DATABASE_URL);
+   		await client.connect();
+   		const { rows } = await client.query("SELECT * FROM elements");
+
+   		return new Response(JSON.stringify(rows));
+   	},
+   };
+   ```
+
+
 
 To learn more about Neon, refer to [Neon's official documentation ↗](https://neon.tech/docs/introduction).
 

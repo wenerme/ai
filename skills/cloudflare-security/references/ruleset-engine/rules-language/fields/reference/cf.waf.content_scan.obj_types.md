@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # cf.waf.content\_scan.obj\_types
 
-`cf.waf.content_scan.obj_types` `Array<String>`
+`cf.waf.content_scan.obj_types``Array<String>`
 
 An array of file types in the order the content objects were detected in the request.
 
@@ -24,7 +24,7 @@ any(cf.waf.content_scan.obj_types[*] != "application/pdf") and http.request.uri.
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

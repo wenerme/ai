@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delegate subdomains
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Subdomain delegation allows different individuals, teams, or organizations to manage different subdomains of a site.
 
@@ -28,9 +28,9 @@ Cloudflare's CDN and security services are not applied to delegated subdomains.
 
 ## Availability
 
-|              | Free | Pro | Business | Enterprise |
-| ------------ | ---- | --- | -------- | ---------- |
-| Availability | Yes  | Yes | Yes      | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 
 ---
 
@@ -40,16 +40,16 @@ To delegate a subdomain such as `blog.example.com`, tell DNS resolvers where to 
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Select the domain that contains the subdomain to be delegated.
-3. Go to the **DNS Records** page.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+3. Go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 4. Create `NS` records for the subdomain. For example:
+   - `blog.example.com NS ns1.externalhost.com`
+   - `blog.example.com NS ns2.externalhost.com`
+   - `blog.example.com NS ns3.externalhost.com`
 
-  * `blog.example.com NS ns1.externalhost.com`
-  * `blog.example.com NS ns2.externalhost.com`
-  * `blog.example.com NS ns3.externalhost.com`
-Note
-The `A` records for the subdomain are only required as glue records for nameservers that are located in the subdomain of the current zone that is being delegated.
-5. (Optional) If the delegated nameserver has DNSSEC enabled, [add the DS record](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare) in Cloudflare.
+   Note
+
+   The `A` records for the subdomain are only required as glue records for nameservers that are located in the subdomain of the current zone that is being delegated.
+5. (Optional) If the delegated nameserver has DNSSEC enabled, [add the `DS` record](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare) in Cloudflare.
 
 ### Limits
 
@@ -59,27 +59,35 @@ According to DNS standards defined in [RFC 1912 ↗](https://www.rfc-editor.org/
 
 To align with these standards and maintain platform stability:
 
-* Cloudflare supports up to 10 NS records per delegation name, but the best practice is to keep the set at seven or fewer.
-* Creating more than 10 NS records for the same name is not supported. Requests that exceed this limit may be rejected or fail validation.
+- Cloudflare supports up to 10 NS records per delegation name, but the best practice is to keep the set at seven or fewer.
+- Creating more than 10 NS records for the same name is not supported. Requests that exceed this limit may be rejected or fail validation.
+
+<details>
+
+<summary>
 
 Example
 
+</summary>
+
 DNS management for **example.com**:
 
-| Type | Name | Content               |
-| ---- | ---- | --------------------- |
-| NS   | blog | ns1.externalhost.com  |
-| NS   | blog | ns2.externalhost.com  |
-| NS   | blog | ns3.externalhost.com  |
-| NS   | blog | ns4.externalhost.com  |
-| NS   | blog | ns5.externalhost.com  |
-| NS   | blog | ns6.externalhost.com  |
-| NS   | blog | ns7.externalhost.com  |
-| NS   | blog | ns8.externalhost.com  |
-| NS   | blog | ns9.externalhost.com  |
-| NS   | blog | ns10.externalhost.com |
+| Type | Name | Content |
+| --- | --- | --- |
+| NS | blog | <code>ns1.externalhost.com</code> |
+| NS | blog | <code>ns2.externalhost.com</code> |
+| NS | blog | <code>ns3.externalhost.com</code> |
+| NS | blog | <code>ns4.externalhost.com</code> |
+| NS | blog | <code>ns5.externalhost.com</code> |
+| NS | blog | <code>ns6.externalhost.com</code> |
+| NS | blog | <code>ns7.externalhost.com</code> |
+| NS | blog | <code>ns8.externalhost.com</code> |
+| NS | blog | <code>ns9.externalhost.com</code> |
+| NS | blog | <code>ns10.externalhost.com</code> |
 
-In this example, Cloudflare would prevent you from adding another NS record for the delegation name `blog`.
+In this example, Cloudflare would prevent you from adding another NS record for the delegation name <code>blog</code>.
+
+</details>
 
 ## Delegate a subdomain (incoming)
 

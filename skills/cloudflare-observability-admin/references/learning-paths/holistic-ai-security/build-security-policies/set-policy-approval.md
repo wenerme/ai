@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set policy based on approval status
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you use specific AI tools within your organization, you may want to create policies to explicitly allow the usage of those tools while continuing to evaluate additional usage within your organization.
 
 ## Create a Gateway policy for monitoring and evaluating all AI tool usage
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
 
-| Selector    | Operator | Value                     |
-| ----------- | -------- | ------------------------- |
-| Application | in       | _Artificial Intelligence_ |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *Artificial Intelligence* |
 5. For **Action**, select **Allow**.
 6. Select **Create policy**.
 
@@ -41,23 +41,22 @@ Cloudflare Workers are an easy method to stand up custom user coaching pages. Th
 
 ## Redirect users towards approved AI tools
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
 
-| Selector    | Operator | Value                     |
-| ----------- | -------- | ------------------------- |
-| Application | in       | _Artificial Intelligence_ |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *Artificial Intelligence* |
 5. For **Action**, select **Block**.
 6. To **Modify the Gateway block behavior**, determine how you want to redirect your users.
-
-  * Redirect users to a custom block page to coach the user:
-    1. Select **Use account-level block setting**.
-    2. Check **Add an additional message to your custom block page when traffic matches** this policy and enter your custom message.
-  * Redirect users to an approved AI tool automatically:
-    1. Select **Override account setting with URL redirect**.
-    2. Enter the URL to the approved application you want to redirect the user to use instead.
+   - Redirect users to a custom block page to coach the user:
+     1. Select **Use account-level block setting**.
+     2. Check **Add an additional message to your custom block page when traffic matches** this policy and enter your custom message.
+   - Redirect users to an approved AI tool automatically:
+     1. Select **Override account setting with URL redirect**.
+     2. Enter the URL to the approved application you want to redirect the user to use instead.
 7. Select **Create policy**.
 
 For more information, refer to [Configure policy block behavior](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#configure-policy-block-behavior).
@@ -66,19 +65,19 @@ For more information, refer to [Configure policy block behavior](https://develop
 
 You can build policies that enable Prompt Capture for AI applications in specific, complex scenarios. This gives you the flexibility to apply advanced functionality to certain applications, tool types, or user groups, such as contractors or new employees, especially if they pose a higher risk for using unsanctioned applications due to lack of awareness or training.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
 
-| Selector    | Operator | Value                     |
-| ----------- | -------- | ------------------------- |
-| Application | in       | _Artificial Intelligence_ |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *Artificial Intelligence* |
 5. Under **Identity**, build a logical express that defines the user identity you want to capture and log their prompts to review for data loss prevention.
 
-| Selector    | Operator | API Value                                                               |
-| ----------- | -------- | ----------------------------------------------------------------------- |
-| Application | in       | any(identity.groups.name\[\*\] in {\\"contractors\\" \\"cohort-224\\"}) |
+   | Selector | Operator | API Value |
+   | --- | --- | --- |
+   | Application | in | `any(identity.groups.name[*] in {\"contractors\" \"cohort-224\"})` |
 6. For **Action**, select **Allow**.
 7. Select **Create policy**.
 
@@ -88,21 +87,20 @@ If your organization uses [ChatGPT Business ↗](https://chatgpt.com/business/),
 
 To create this policy, you will add a custom HTTP header to your Gateway policy. This header, `Chatgpt-Allowed-Workspace-Id`, ensures that only requests with your organization's unique workspace ID are permitted.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Traffic policies** \> **Firewall policies**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow.
 
-| Selector    | Operator | Value     |
-| ----------- | -------- | --------- |
-| Application | in       | _ChatGPT_ |
-5. In **Action**, choose _Allow_.
-6. In **Untrusted certificate action**, choose _Block_.
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *ChatGPT* |
+5. In **Action**, choose *Allow*.
+6. In **Untrusted certificate action**, choose *Block*.
 7. Under **Add headers to matched requests**, select **Add a header**.
 8. Add the following values to each field:
-
-  * **Custom header name**: `Chatgpt-Allowed-Workspace-Id`
-  * **Custom header value**: Your organization's workspace ID
+   - **Custom header name**: `Chatgpt-Allowed-Workspace-Id`
+   - **Custom header value**: Your organization's workspace ID
 9. Select **Create policy**.
 
 For more information, refer to the [OpenAI documentation ↗](https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace).
@@ -115,25 +113,25 @@ For example, if you want to prevent sensitive data being shared with AI but want
 
 1. The policy that blocks sensitive data being shared would need to be ordered first in this policy group. This will allow it to be enforced before the next policy in the policy group.
 
-| Operator | Selector    | Operator | Value                     | Action |
-| -------- | ----------- | -------- | ------------------------- | ------ |
-|          | Application | in       | _Artificial Intelligence_ |        |
-| And      | DLP Profile | in       | _my-sensitive-data_       | Block  |
+   | Operator | Selector | Operator | Value | Action |
+   | --- | --- | --- | --- | --- |
+   |  | Application | in | *Artificial Intelligence* |  |
+   | And | DLP Profile | in | *my-sensitive-data* | Block |
 2. Next, create the policy that allows the use of AI and specifies the prompt capture for specific user groups.
 
-| Selector    | Operator | Value                     |
-| ----------- | -------- | ------------------------- |
-| Application | in       | _Artificial Intelligence_ |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *Artificial Intelligence* |
 3. Under **Traffic**:
 
-| Selector    | Operator | Value                     |
-| ----------- | -------- | ------------------------- |
-| Application | in       | _Artificial Intelligence_ |
+   | Selector | Operator | Value |
+   | --- | --- | --- |
+   | Application | in | *Artificial Intelligence* |
 4. Under **Identity**:
 
-| Selector         | Operator | API Value                                                               | Action |
-| ---------------- | -------- | ----------------------------------------------------------------------- | ------ |
-| User Group Names | in       | any(identity.groups.name\[\*\] in {\\"contractors\\" \\"cohort-224\\"}) | Allow  |
+   | Selector | Operator | API Value | Action |
+   | --- | --- | --- | --- |
+   | User Group Names | in | `any(identity.groups.name[*] in {\"contractors\" \"cohort-224\"})` | Allow |
 
 By structuring your policies in this way, you ensure that any instance of sensitive data is blocked from AI applications, no matter which user group is involved. If Cloudflare does not detect sensitive data, it will allow the prompt while capturing it for the targeted user groups – in this case, users belonging to the `contractors` and `cohort-224` groups. If that same user group were to then use sensitive data in a prompt, it would be detected and blocked.
 

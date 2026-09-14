@@ -12,10 +12,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Introduction to Vectorize](https://developers.cloudflare.com/vectorize/get-started/intro/)
-* [Vectorize and Workers AI](https://developers.cloudflare.com/vectorize/get-started/embeddings/)
+- [Introduction to Vectorize](https://developers.cloudflare.com/vectorize/get-started/intro/)
+- [Vectorize and Workers AI](https://developers.cloudflare.com/vectorize/get-started/embeddings/)
 
 Was this helpful?
 

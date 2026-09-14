@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Platform
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/platform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Platform details for Cloudflare Email Service, including limits and pricing.
 
-* [Limits](https://developers.cloudflare.com/email-service/platform/limits/)
-* [Pricing](https://developers.cloudflare.com/email-service/platform/pricing/)
-* [Email Routing REST API](https://developers.cloudflare.com/api/resources/email%5Frouting/)
-* [Email Sending REST API](https://developers.cloudflare.com/api/resources/email%5Fsending/)
-* [Event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/)
+- [Limits](https://developers.cloudflare.com/email-service/platform/limits/)
+- [Pricing](https://developers.cloudflare.com/email-service/platform/pricing/)
+- [Email Routing REST API](https://developers.cloudflare.com/api/resources/email_routing/)
+- [Email Sending REST API](https://developers.cloudflare.com/api/resources/email_sending/)
+- [Event subscriptions](https://developers.cloudflare.com/email-service/platform/event-subscriptions/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Shopify
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare partners with Shopify to provide Shopify customers’ websites with Cloudflare’s performance and security benefits.
 
@@ -28,7 +28,7 @@ For more details about how O2O is different than other Cloudflare setups, refer 
 
 When you [set up O2O routing for your Shopify website](#enable), Cloudflare enables specific configurations for this SaaS provider. Currently, this includes the following:
 
-* Workers and Snippets are disabled on the `/checkout` URI path.
+- Workers and Snippets are disabled on the `/checkout` URI path.
 
 ## Enable
 
@@ -36,9 +36,9 @@ You can enable O2O on any Cloudflare zone plan.
 
 To enable O2O on your account, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a `CNAME` DNS record.
 
-| Type  | Name                 | Target              | Proxy status |
-| ----- | -------------------- | ------------------- | ------------ |
-| CNAME | <YOUR\_SHOP\_DOMAIN> | shops.myshopify.com | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `<YOUR_SHOP_DOMAIN>` | `shops.myshopify.com` | Proxied |
 
 Once you save the new DNS record, the Cloudflare dashboard will show a Shopify icon next to the CNAME record value. For example:
 
@@ -58,9 +58,9 @@ For questions about Shopify setup, refer to their [support guide ↗](https://he
 
 When a hostname within your Cloudflare zone has O2O enabled, you assume additional responsibility for the traffic on that hostname because you can now configure various Cloudflare products to affect that traffic. Some of the Cloudflare products compatible with O2O are:
 
-* [Caching](https://developers.cloudflare.com/cache/)
-* [Workers](https://developers.cloudflare.com/workers/)
-* [Rules](https://developers.cloudflare.com/rules/)
+- [Caching](https://developers.cloudflare.com/cache/)
+- [Workers](https://developers.cloudflare.com/workers/)
+- [Rules](https://developers.cloudflare.com/rules/)
 
 For a full list of compatible products and potential limitations, refer to [Product compatibility](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/product-compatibility/).
 
@@ -80,7 +80,9 @@ Cloudflare will consult Shopify if there are technical issues that Cloudflare ca
 
 ### DNS CAA records
 
-For details about CAA records refer to the [Shopify documentation ↗](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
+For details about CAA records
+
+ refer to the [Shopify documentation ↗](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
 
 Was this helpful?
 
@@ -91,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/#page","headline":"Shopify · Cloudflare for Platforms docs","description":"Learn how to configure your zone with Shopify.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/#page","headline":"Shopify · Cloudflare for Platforms docs","description":"Learn how to configure your zone with Shopify.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

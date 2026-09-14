@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Events and parameters
 
-Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/events-and-parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/events-and-parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a Workflow is triggered, it can receive an optional event. This event can include data that your Workflow can act on, including request details, user data fetched from your database (such as D1 or KV) or from a webhook, or messages from a Queue consumer.
 
@@ -22,15 +22,15 @@ Events are a powerful part of a Workflow, as you often want a Workflow to act on
 
 You can pass parameters to a Workflow in three ways:
 
-* As an optional argument to the `create` method on a [Workflow binding](https://developers.cloudflare.com/workers/wrangler/commands/general/#trigger) when triggering a Workflow from a Worker.
-* Via the `--params` flag when using the `wrangler` CLI to trigger a Workflow.
-* Via the `step.waitForEvent` API, which allows a Workflow instance to wait for an event (and optional data) to be received _while it is running_. Workflow instances can be sent events from external services over HTTP or via the Workers API for Workflows.
+- As an optional argument to the `create` method on a [Workflow binding](https://developers.cloudflare.com/workers/wrangler/commands/general/#trigger) when triggering a Workflow from a Worker.
+- Via the `--params` flag when using the `wrangler` CLI to trigger a Workflow.
+- Via the `step.waitForEvent` API, which allows a Workflow instance to wait for an event (and optional data) to be received *while it is running*. Workflow instances can be sent events from external services over HTTP or via the Workers API for Workflows.
 
 You can pass any JSON-serializable object as a parameter.
 
 Caution
 
-A `WorkflowEvent` and its associated `payload` property are effectively _immutable_: any changes to an event are not persisted across the steps of a Workflow. This includes both cases when a Workflow is progressing normally, and in cases where a Workflow has to be restarted due to a failure.
+A `WorkflowEvent` and its associated `payload` property are effectively *immutable*: any changes to an event are not persisted across the steps of a Workflow. This includes both cases when a Workflow is progressing normally, and in cases where a Workflow has to be restarted due to a failure.
 
 Store state durably by returning it from your `step.do` callbacks.
 
@@ -93,7 +93,7 @@ A running Workflow can wait for an event (or events) by calling `step.waitForEve
 
 Because `waitForEvent` is part of the `WorkflowStep` API, you can call it multiple times within a Workflow, and use control flow to conditionally wait for an event.
 
-Calling `waitForEvent` requires you to specify an `type` (up to 100 characters [1](#user-content-fn-1)), which is used to match the corresponding `type` when sending an event to a Workflow instance.
+Calling `waitForEvent` requires you to specify an `type` (up to 100 characters <sup>[1](#user-content-fn-1)</sup>), which is used to match the corresponding `type` when sending an event to a Workflow instance.
 
 Caution
 
@@ -129,9 +129,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 
 The above example:
 
-* Calls `waitForEvent` with a `type` of `stripe-webhook` \- the corresponding `sendEvent` call would thus be `await instance.sendEvent({type: "stripe-webhook", payload: webhookPayload})`.
-* Uses a TypeScript [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html) to type the return value of `step.waitForEvent` as our `IncomingStripeWebhook`.
-* Continues on with the rest of the Workflow.
+- Calls `waitForEvent` with a `type` of `stripe-webhook` - the corresponding `sendEvent` call would thus be `await instance.sendEvent({type: "stripe-webhook", payload: webhookPayload})`.
+- Uses a TypeScript [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html) to type the return value of `step.waitForEvent` as our `IncomingStripeWebhook`.
+- Continues on with the rest of the Workflow.
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
 
@@ -227,13 +227,13 @@ export default {
 };
 ```
 
-* Similar to the [waitForEvent](#wait-for-events) example in this guide, the `type` property in our `waitForEvent` and `sendEvent` fields must match.
-* To send multiple events to a Workflow that has multiple `waitForEvent` calls, call `sendEvent` with the corresponding `type` property set (up to 100 characters [1](#user-content-fn-1)).
-* Events can also be sent using the REST API (HTTP API)'s [Events endpoint](https://developers.cloudflare.com/api/resources/workflows/subresources/instances/subresources/events/methods/create/).
+- Similar to the [`waitForEvent`](#wait-for-events) example in this guide, the `type` property in our `waitForEvent` and `sendEvent` fields must match.
+- To send multiple events to a Workflow that has multiple `waitForEvent` calls, call `sendEvent` with the corresponding `type` property set (up to 100 characters <sup>[1](#user-content-fn-1)</sup>).
+- Events can also be sent using the REST API (HTTP API)'s [Events endpoint](https://developers.cloudflare.com/api/resources/workflows/subresources/instances/subresources/events/methods/create/).
 
 Event timing
 
-You can send an event to a Workflow instance _before_ it reaches the corresponding `waitForEvent` call, as long as the instance has been created. The event will be buffered and delivered when the Workflow reaches the `waitForEvent` step with the matching `type`.
+You can send an event to a Workflow instance *before* it reaches the corresponding `waitForEvent` call, as long as the instance has been created. The event will be buffered and delivered when the Workflow reaches the `waitForEvent` step with the matching `type`.
 
 ## TypeScript and type parameters
 
@@ -288,6 +288,8 @@ interface YourEventType {
 
 When you pass your `YourEventType` to `WorkflowEvent` as a type parameter, the `event.payload` property now has the type `YourEventType` throughout your workflow definition:
 
+*src/index.tsts*
+
 ```ts
 // Import the Workflow definition
 import { WorkflowEntrypoint, WorkflowStep, WorkflowEvent} from 'cloudflare:workers';
@@ -309,13 +311,13 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Caution
 
-Providing a type parameter does _not_ validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
+Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
 
-You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does _not_ propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
+You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does *not* propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
 
 ## Footnotes
 
-1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩2](#user-content-fnref-1-2)
+1. Match pattern: `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
 
 Was this helpful?
 

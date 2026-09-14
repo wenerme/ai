@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environments
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler allows you to use environments to create different configurations for the same Worker application. Environments are configured in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 
@@ -22,45 +22,58 @@ Review the following environments flow:
 
 1. Create a Worker, named `my-worker` for example.
 2. Create an environment, for example `dev`, in the Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), by adding a `[env.<ENV_NAME>]` section.
-```jsonc
-{
-	"name": "my-worker",
-	"env": {
-		"<ENV_NAME>": {
-			// environment-specific configuration goes here
-		}
-	}
-}
-```
-```toml
-name = "my-worker"
-[env]
-"<ENV_NAME>" = { }
-```
+
+   ```jsonc
+   {
+   	"name": "my-worker",
+   	"env": {
+   		"<ENV_NAME>": {
+   			// environment-specific configuration goes here
+   		}
+   	}
+   }
+   ```
+
+   ```toml
+   name = "my-worker"
+
+   [env]
+   "<ENV_NAME>" = { }
+   ```
+
+
 3. You can configure the `dev` environment with different values to the top-level environment. Refer [here](https://developers.cloudflare.com/workers/wrangler/configuration/#environments) for how different options are inherited - or not inherited - between environments. For example, to set a different route for a Worker in the `dev` environment:
-```jsonc
-{
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "your-worker",
-	"route": "example.com",
-	"env": {
-		"dev": {
-			"route": "dev.example.com",
-		},
-	},
-}
-```
-```toml
-"$schema" = "./node_modules/wrangler/config-schema.json"
-name = "your-worker"
-route = "example.com"
-[env.dev]
-route = "dev.example.com"
-```
+
+   ```jsonc
+   {
+   	"$schema": "./node_modules/wrangler/config-schema.json",
+   	"name": "your-worker",
+   	"route": "example.com",
+   	"env": {
+   		"dev": {
+   			"route": "dev.example.com",
+   		},
+   	},
+   }
+   ```
+
+   ```toml
+   "$schema" = "./node_modules/wrangler/config-schema.json"
+   name = "your-worker"
+   route = "example.com"
+
+   [env.dev]
+   route = "dev.example.com"
+   ```
+
+
 4. Environments are used with the `--env` or `-e` flag on Wrangler commands. For example, you can develop the Worker in the `dev` environment by running `npx wrangler dev -e=dev`, and deploy it with `npx wrangler deploy -e=dev`.
-Alternatively, you can use the [CLOUDFLARE\_ENV environment variable](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) to select the active environment. For example, `CLOUDFLARE_ENV=dev npx wrangler deploy` will deploy to the `dev` environment. The `--env` command line argument takes precedence over the `CLOUDFLARE_ENV` environment variable.
-Note
-If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), you select the environment at dev or build time via the `CLOUDFLARE_ENV` environment variable rather than the `--env` flag. Otherwise, environments are defined in your Worker config file as usual. For more detail on using environments with the Cloudflare Vite plugin, refer to the [plugin documentation](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/).
+
+   Alternatively, you can use the [`CLOUDFLARE_ENV` environment variable](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#supported-environment-variables) to select the active environment. For example, `CLOUDFLARE_ENV=dev npx wrangler deploy` will deploy to the `dev` environment. The `--env` command line argument takes precedence over the `CLOUDFLARE_ENV` environment variable.
+
+   Note
+
+   If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), you select the environment at dev or build time via the `CLOUDFLARE_ENV` environment variable rather than the `--env` flag. Otherwise, environments are defined in your Worker config file as usual. For more detail on using environments with the Cloudflare Vite plugin, refer to the [plugin documentation](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/).
 
 ## Non-inheritable keys and environments
 
@@ -185,7 +198,7 @@ service = "worker-a-staging"
 
 ### Secrets for production
 
-You may assign environment-specific [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) by running the command [wrangler secret put <KEY> -env](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put). You can also create `dotenv` type files named `.dev.vars.<environment-name>`.
+You may assign environment-specific [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) by running the command [`wrangler secret put <KEY> -env`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret-put). You can also create `dotenv` type files named `.dev.vars.<environment-name>`.
 
 Like other environment variables, secrets are [non-inheritable](https://developers.cloudflare.com/workers/wrangler/configuration/#non-inheritable-keys) and must be defined per environment.
 
@@ -199,13 +212,15 @@ Put secrets for use in local development in either a `.dev.vars` file or a `.env
 
 Note
 
-You can use the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
+You can use the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property) to declare which secret names your Worker requires. When defined, only the keys listed in `secrets.required` are loaded from `.dev.vars` or `.env`. Additional keys are excluded and missing keys produce a warning.
 
 Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
 These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+
+*.dev.vars / .envbash*
 
 ```bash
 SECRET_KEY="value"
@@ -220,19 +235,19 @@ To set different secrets for each Cloudflare environment, create files named `.d
 
 When you select a Cloudflare environment in your local development, the corresponding environment-specific file will be loaded ahead of the generic `.dev.vars` (or `.env`) file.
 
-* When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
-* In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
-  * `.env.<environment-name>.local` (most specific)
-  * `.env.local`
-  * `.env.<environment-name>`
-  * `.env` (least specific)
+- When using `.dev.vars.<environment-name>` files, all secrets must be defined per environment. If `.dev.vars.<environment-name>` exists then only this will be loaded; the `.dev.vars` file will not be loaded.
+- In contrast, all matching `.env` files are loaded and the values are merged. For each variable, the value from the most specific file is used, with the following precedence:
+  - `.env.<environment-name>.local` (most specific)
+  - `.env.local`
+  - `.env.<environment-name>`
+  - `.env` (least specific)
 
 Controlling \`.env\` handling
 
 It is possible to control how `.env` files are loaded in local development by setting environment variables on the process running the tools.
 
-* To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
-* To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [secrets configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
+- To disable loading local dev vars from `.env` files without providing a `.dev.vars` file, set the `CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV` environment variable to `"false"`.
+- To include every environment variable defined in your system's process environment as a local development variable, ensure there is no `.dev.vars` and then set the `CLOUDFLARE_INCLUDE_PROCESS_ENV` environment variable to `"true"`. This is not needed when using the [`secrets` configuration property](https://developers.cloudflare.com/workers/wrangler/configuration/#secrets-configuration-property), which loads from `process.env` automatically.
 
 ---
 
@@ -240,7 +255,7 @@ It is possible to control how `.env` files are loaded in local development by se
 
 ### Staging and production environments
 
-The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [route or routes key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
+The following Wrangler file adds two environments, `[env.staging]` and `[env.production]`, to the Wrangler file. If you are deploying to a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) or [route](https://developers.cloudflare.com/workers/configuration/routing/routes/), you must provide a [`route` or `routes` key](https://developers.cloudflare.com/workers/wrangler/configuration/) for each environment.
 
 ```jsonc
 {
@@ -322,7 +337,7 @@ Published my-worker-production
   example.com/*
 ```
 
-Any defined [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) (the [vars](https://developers.cloudflare.com/workers/wrangler/configuration/) key) are available via the [env object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#accessing-bindings) in your Worker.
+Any defined [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) (the [`vars`](https://developers.cloudflare.com/workers/wrangler/configuration/) key) are available via the [`env` object](https://developers.cloudflare.com/workers/runtime-apis/bindings/#accessing-bindings) in your Worker.
 
 With this configuration, the `env.ENVIRONMENT` variable can be used to call specific code depending on the given environment:
 

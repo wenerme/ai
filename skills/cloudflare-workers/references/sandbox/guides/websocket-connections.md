@@ -12,19 +12,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WebSocket connections
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/websocket-connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/guides/websocket-connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to work with WebSocket servers running in your sandboxes.
 
 ## Choose your approach
 
-**Expose via preview URL** \- Get a public URL for external clients to connect to. Best for public chat rooms, multiplayer games, or real-time dashboards.
+**Expose via preview URL** - Get a public URL for external clients to connect to. Best for public chat rooms, multiplayer games, or real-time dashboards.
 
-**Connect with wsConnect()** \- Your Worker establishes the WebSocket connection. Best for custom routing logic, authentication gates, or when your Worker needs real-time data from sandbox services.
+**Connect with wsConnect()** - Your Worker establishes the WebSocket connection. Best for custom routing logic, authentication gates, or when your Worker needs real-time data from sandbox services.
 
 ## Connect to WebSocket echo server
 
 **Create the echo server:**
+
+*echo-server.tstypescript*
 
 ```typescript
 Bun.serve({
@@ -54,6 +56,8 @@ console.log("WebSocket server listening on port 8080");
 
 **Extend the Dockerfile:**
 
+*Dockerfiledockerfile*
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
 
@@ -66,6 +70,8 @@ RUN chmod +x /container-server/startup.sh
 ```
 
 **Create startup script:**
+
+*startup.shbash*
 
 ```bash
 #!/bin/bash
@@ -317,6 +323,8 @@ console.log(request.headers.get('Connection')); // 'Upgrade'
 
 Expose ports in Dockerfile for `wrangler dev`:
 
+*Dockerfiledockerfile*
+
 ```dockerfile
 FROM docker.io/cloudflare/sandbox:0.3.3
 
@@ -334,10 +342,10 @@ Port exposure in Dockerfile is only required for local development. In productio
 
 ## Related resources
 
-* [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete API documentation
-* [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) \- How preview URLs work
-* [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs for WebSocket services in development
-* [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) \- Managing long-running services
+- [Ports API reference](https://developers.cloudflare.com/sandbox/api/ports/) - Complete API documentation
+- [Preview URLs concept](https://developers.cloudflare.com/sandbox/concepts/preview-urls/) - How preview URLs work
+- [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) - Zero-config `*.trycloudflare.com` URLs for WebSocket services in development
+- [Background processes guide](https://developers.cloudflare.com/sandbox/guides/background-processes/) - Managing long-running services
 
 Was this helpful?
 

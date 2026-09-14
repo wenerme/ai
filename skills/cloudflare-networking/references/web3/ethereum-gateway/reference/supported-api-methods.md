@@ -12,65 +12,65 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Supported API methods
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The full list of API methods that are supported by an Ethereum Gateway is given below. The gateway returns a `403` if a method is specified that is not supported.
 
 For a full list of JSON-RPC API methods, refer to the [JSON-RPC specification ↗](https://github.com/ethereum/execution-apis).
 
-| JSON-RPC method                                                                                                                                | Cloudflare Ethereum Gateway support |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| [web3\_clientVersion ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#web3%5Fclientversion)                                           | ✅                                   |
-| [web3\_sha3 ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#web3%5Fsha3)                                                             | ✅                                   |
-| [net\_version ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net%5Fversion)                                                         | ✅                                   |
-| [net\_listening ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net%5Flistening)                                                     | ✅                                   |
-| [eth\_syncing ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsyncing)                                                         | ✅                                   |
-| [eth\_mining ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fmining)                                                           | ✅                                   |
-| [eth\_gasPrice ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgasprice)                                                       | ✅                                   |
-| [eth\_feeHistory ↗](https://github.com/ethereum/execution-apis)[1](#user-content-fn-2)                                                         | ✅                                   |
-| [eth\_blockNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fblocknumber)                                                 | ✅                                   |
-| [eth\_chainId ↗](https://github.com/ethereum/execution-apis)                                                                                   | ✅                                   |
-| [eth\_getBalance ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetbalance)                                                   | ✅                                   |
-| [eth\_getStorageAt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetstorageat)                                               | ✅                                   |
-| [eth\_getTransactionCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactioncount)                                 | ✅                                   |
-| [eth\_getBlockTransactionCountByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetblocktransactioncountbyhash)           | ✅                                   |
-| [eth\_getBlockTransactionCountByNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetblocktransactioncountbynumber)       | ✅                                   |
-| [eth\_getUncleCountByBlockHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetunclecountbyblockhash)                       | ✅                                   |
-| [eth\_getUncleCountByBlockNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetunclecountbyblocknumber)                   | ✅                                   |
-| [eth\_getCode ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetcode)                                                         | ✅                                   |
-| [eth\_sendRawTransaction ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsendrawtransaction)                                   | ✅                                   |
-| [eth\_call ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcall)                                                               | ✅                                   |
-| [eth\_estimateGas ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Festimategas)                                                 | ✅                                   |
-| [eth\_getBlockByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetblockbyhash)                                           | ✅                                   |
-| [eth\_getBlockByNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetblockbynumber)                                       | ✅                                   |
-| [eth\_getTransactionByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactionbyhash)                               | ✅                                   |
-| [eth\_getTransactionByBlockHashAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactionbyblockhashandindex)     | ✅                                   |
-| [eth\_getTransactionByBlockNumberAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactionbyblocknumberandindex) | ✅                                   |
-| [eth\_getTransactionReceipt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgettransactionreceipt)                             | ✅                                   |
-| [eth\_getUncleByBlockHashAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetunclebyblockhashandindex)                 | ✅                                   |
-| [eth\_getUncleByBlockNumberAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetunclebyblocknumberandindex)             | ✅                                   |
-| [eth\_getLogs ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetlogs)[2](#user-content-fn-1)                                  | ✅                                   |
-| [eth\_getWork ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetwork)                                                         | ✅                                   |
-| [eth\_getProof ↗](https://ethereum.github.io/execution-apis/api-documentation/)                                                                | ✅                                   |
-| [net\_peerCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net%5Fpeercount)                                                     | ❌                                   |
-| [eth\_protocolVersion ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fprotocolversion)                                         | ❌                                   |
-| [eth\_coinbase ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcoinbase)                                                       | ❌                                   |
-| [eth\_hashrate ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fhashrate)                                                       | ❌                                   |
-| [eth\_accounts ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Faccounts)                                                       | ❌                                   |
-| [eth\_sign ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsign)                                                               | ❌                                   |
-| [eth\_sendTransaction ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsendtransaction)                                         | ❌                                   |
-| [eth\_getCompilers ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetcompilers)                                               | ❌                                   |
-| [eth\_compileLLL ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcompilelll)                                                   | ❌                                   |
-| [eth\_compileSolidity ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcompile%5Fsolidity)                                      | ❌                                   |
-| [eth\_compileSerpent ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fcompileserpent)                                           | ❌                                   |
-| [eth\_newFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fnewfilter)                                                     | ❌                                   |
-| [eth\_newBlockFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fnewblockfilter)                                           | ❌                                   |
-| [eth\_newPendingTransactionFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fnewpendingtransactionfilter)                 | ❌                                   |
-| [eth\_uninstallFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Funinstallfilter)                                         | ❌                                   |
-| [eth\_getFilterChanges ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetfilterchanges)                                       | ❌                                   |
-| [eth\_getFilterLogs ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fgetfilterlogs)                                             | ❌                                   |
-| [eth\_submitWork ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsubmitwork)                                                   | ❌                                   |
-| [eth\_submitHashrate ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth%5Fsubmithashrate)                                           | ❌                                   |
+| JSON-RPC method | Cloudflare Ethereum Gateway support |
+| --- | --- |
+| [web3\_clientVersion ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_clientversion) | ✅ |
+| [web3\_sha3 ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#web3_sha3) | ✅ |
+| [net\_version ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net_version) | ✅ |
+| [net\_listening ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net_listening) | ✅ |
+| [eth\_syncing ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_syncing) | ✅ |
+| [eth\_mining ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_mining) | ✅ |
+| [eth\_gasPrice ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gasprice) | ✅ |
+| [eth\_feeHistory ↗](https://github.com/ethereum/execution-apis)<sup>[1](#user-content-fn-2)</sup> | ✅ |
+| [eth\_blockNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_blocknumber) | ✅ |
+| [eth\_chainId ↗](https://github.com/ethereum/execution-apis) | ✅ |
+| [eth\_getBalance ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getbalance) | ✅ |
+| [eth\_getStorageAt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getstorageat) | ✅ |
+| [eth\_getTransactionCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactioncount) | ✅ |
+| [eth\_getBlockTransactionCountByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbyhash) | ✅ |
+| [eth\_getBlockTransactionCountByNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblocktransactioncountbynumber) | ✅ |
+| [eth\_getUncleCountByBlockHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getunclecountbyblockhash) | ✅ |
+| [eth\_getUncleCountByBlockNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getunclecountbyblocknumber) | ✅ |
+| [eth\_getCode ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcode) | ✅ |
+| [eth\_sendRawTransaction ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_sendrawtransaction) | ✅ |
+| [eth\_call ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_call) | ✅ |
+| [eth\_estimateGas ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_estimategas) | ✅ |
+| [eth\_getBlockByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbyhash) | ✅ |
+| [eth\_getBlockByNumber ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getblockbynumber) | ✅ |
+| [eth\_getTransactionByHash ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyhash) | ✅ |
+| [eth\_getTransactionByBlockHashAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyblockhashandindex) | ✅ |
+| [eth\_getTransactionByBlockNumberAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionbyblocknumberandindex) | ✅ |
+| [eth\_getTransactionReceipt ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_gettransactionreceipt) | ✅ |
+| [eth\_getUncleByBlockHashAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getunclebyblockhashandindex) | ✅ |
+| [eth\_getUncleByBlockNumberAndIndex ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getunclebyblocknumberandindex) | ✅ |
+| [eth\_getLogs ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs)<sup>[2](#user-content-fn-1)</sup> | ✅ |
+| [eth\_getWork ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getwork) | ✅ |
+| [eth\_getProof ↗](https://ethereum.github.io/execution-apis/api-documentation/) | ✅ |
+| [net\_peerCount ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#net_peercount) | ❌ |
+| [eth\_protocolVersion ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_protocolversion) | ❌ |
+| [eth\_coinbase ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_coinbase) | ❌ |
+| [eth\_hashrate ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_hashrate) | ❌ |
+| [eth\_accounts ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_accounts) | ❌ |
+| [eth\_sign ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_sign) | ❌ |
+| [eth\_sendTransaction ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_sendtransaction) | ❌ |
+| [eth\_getCompilers ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getcompilers) | ❌ |
+| [eth\_compileLLL ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_compilelll) | ❌ |
+| [eth\_compileSolidity ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_compile_solidity) | ❌ |
+| [eth\_compileSerpent ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_compileserpent) | ❌ |
+| [eth\_newFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newfilter) | ❌ |
+| [eth\_newBlockFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newblockfilter) | ❌ |
+| [eth\_newPendingTransactionFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_newpendingtransactionfilter) | ❌ |
+| [eth\_uninstallFilter ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_uninstallfilter) | ❌ |
+| [eth\_getFilterChanges ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterchanges) | ❌ |
+| [eth\_getFilterLogs ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getfilterlogs) | ❌ |
+| [eth\_submitWork ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_submitwork) | ❌ |
+| [eth\_submitHashrate ↗](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_submithashrate) | ❌ |
 
 ## Trace methods
 
@@ -82,18 +82,20 @@ The `trace_filter` method retrieves the traces of multiple transactions in a sin
 
 #### Request Parameters
 
-* `fromBlock`: `Quantity` or `Tag` \- (optional) The block number to start receiving traces from.
-* `toBlock`: `Quantity` or `Tag` \- (optional) The block number to stop receiving traces at.
-* `fromAddress`: `Array` \- (optional) An array of addresses to start receiving traces from.
-* `toAddress`: `Address` \- (optional) An array of addresses to stop retrieving traces at.
-* `after`: `Quantity` \- (optional) The offset trace number
-* `count`: `Quantity` \- (optional) The amount of traces to return.
+- `fromBlock`: `Quantity` or `Tag` - (optional) The block number to start receiving traces from.
+- `toBlock`: `Quantity` or `Tag` - (optional) The block number to stop receiving traces at.
+- `fromAddress`: `Array` - (optional) An array of addresses to start receiving traces from.
+- `toAddress`: `Address` - (optional) An array of addresses to stop retrieving traces at.
+- `after`: `Quantity` - (optional) The offset trace number
+- `count`: `Quantity` - (optional) The amount of traces to return.
 
 #### Returns
 
 This method returns an `Array` of traces matching the given filter.
 
 #### Example
+
+*trace\_filter Requestsh*
 
 ```sh
 curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
@@ -152,12 +154,12 @@ curl https://web3-trial.cloudflare-eth.com/v1/mainnet \
 
 The `trace_filter` method has some limitations to ensure that our nodes are not overloaded.
 
-* The block range for the `trace_filter` method is limited to 800 blocks.
-* The trace `count` is limited to 200
+- The block range for the `trace_filter` method is limited to 800 blocks.
+- The trace `count` is limited to 200
 
 ## Footnotes
 
-1. **Limitations**: Max block count of 10\. [↩](#user-content-fnref-2)
+1. **Limitations**: Max block count of 10. [↩](#user-content-fnref-2)
 2. **Limitations**: Max block range of 800 blocks. [↩](#user-content-fnref-1)
 
 Was this helpful?

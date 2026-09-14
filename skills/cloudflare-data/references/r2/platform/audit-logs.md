@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/platform/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/platform/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to R2 buckets. This functionality is available on all plan types, free of charge, and is always enabled.
 
@@ -20,7 +20,7 @@ Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 To view audit logs for your R2 buckets, go to the **Audit logs** page.
 
-[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 For more information on how to access and use audit logs, refer to [Review audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
@@ -28,18 +28,18 @@ For more information on how to access and use audit logs, refer to [Review audit
 
 The following configuration actions are logged:
 
-| Operation                          | Description                                                        |
-| ---------------------------------- | ------------------------------------------------------------------ |
-| CreateBucket                       | Creation of a new bucket.                                          |
-| DeleteBucket                       | Deletion of an existing bucket.                                    |
-| AddCustomDomain                    | Addition of a custom domain to a bucket.                           |
-| RemoveCustomDomain                 | Removal of a custom domain from a bucket.                          |
-| ChangeBucketVisibility             | Change to the managed public access (r2.dev) settings of a bucket. |
-| PutBucketStorageClass              | Change to the default storage class of a bucket.                   |
-| PutBucketLifecycleConfiguration    | Change to the object lifecycle configuration of a bucket.          |
-| DeleteBucketLifecycleConfiguration | Deletion of the object lifecycle configuration for a bucket.       |
-| PutBucketCors                      | Change to the CORS configuration for a bucket.                     |
-| DeleteBucketCors                   | Deletion of the CORS configuration for a bucket.                   |
+| Operation | Description |
+| --- | --- |
+| CreateBucket | Creation of a new bucket. |
+| DeleteBucket | Deletion of an existing bucket. |
+| AddCustomDomain | Addition of a custom domain to a bucket. |
+| RemoveCustomDomain | Removal of a custom domain from a bucket. |
+| ChangeBucketVisibility | Change to the managed public access (`r2.dev`) settings of a bucket. |
+| PutBucketStorageClass | Change to the default storage class of a bucket. |
+| PutBucketLifecycleConfiguration | Change to the object lifecycle configuration of a bucket. |
+| DeleteBucketLifecycleConfiguration | Deletion of the object lifecycle configuration for a bucket. |
+| PutBucketCors | Change to the CORS configuration for a bucket. |
+| DeleteBucketCors | Deletion of the CORS configuration for a bucket. |
 
 Note
 

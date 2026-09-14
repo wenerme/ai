@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage Access policies
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Access policies define the users who can log in to your Access applications. You can create, edit, or delete policies at any time and reuse policies across multiple applications.
 
@@ -20,17 +20,17 @@ Access policies define the users who can log in to your Access applications. You
 
 To create a reusable Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Select **Add a policy**.
 3. Enter a **Policy name**.
 4. Choose an [**Action**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) for the policy.
 5. Choose a [**Session duration**](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/) for the policy.
 6. Configure as many [**Rules**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#rule-types) as needed.
 7. (Optional) Configure additional settings for users who match this policy:
-  * [Isolate application](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/).
-  * [Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)
-  * [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)
-  * [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)
+   - [Isolate application](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/isolate-application/).
+   - [Purpose justification](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/)
+   - [Temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/)
+   - [Independent MFA](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#independent-mfa)
 8. Select **Save**.
 
 You can now add this policy to an [Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
@@ -39,7 +39,7 @@ You can now add this policy to an [Access application](https://developers.cloudf
 
 To make changes to an existing Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Locate the policy you want to update and select **Configure**.
 3. Once you have made the necessary changes, select **Save**.
 
@@ -49,7 +49,7 @@ The updated policy is now in effect for all associated Access applications.
 
 To delete a reusable Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies** and locate the policy you want to delete.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies** and locate the policy you want to delete.
 2. If the policy is used by an application, remove the policy from all associated applications.
 3. Select **Delete**.
 4. A pop-up message will ask you to confirm your decision to delete the policy. Select **Delete**.
@@ -66,7 +66,7 @@ The Access policy builder allows you to test your rules before saving any change
 
 To test an individual Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Policies**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Locate the policy you want to test and select **Configure**.
 3. Go to **Policy tester** and select **Test policies**.
 
@@ -78,20 +78,24 @@ You can test your Access application policies against your user population befor
 
 To test if users have access to an application:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application you want to test and select **Configure**.
-3. Go to **Policies** \> **Policy tester**.
+3. Go to **Policies** > **Policy tester**.
 4. To test all active users in your organization, select **Test policies**.
-The policy tester reports the percentage of users who are allowed or denied access to this application based on all configured policies. You can expand the test results to view a list of allowed or blocked users.
-5. To perform a detailed test on a single user:
-a. If you made any changes to your policies, first save the application.
-b. Select **testing a single user**.
-c. Enter their email address and select **Test policies**.
-The single user test results will show:
 
-  * Whether the user is allowed or denied access to this application based on all configured policies.
-  * The user's identity from their most recent Access login attempt.
-  * Whether the user matches individual Allow, Block, or Bypass policies.
+   The policy tester reports the percentage of users who are allowed or denied access to this application based on all configured policies. You can expand the test results to view a list of allowed or blocked users.
+5. To perform a detailed test on a single user:
+
+   a. If you made any changes to your policies, first save the application.
+
+   b. Select **testing a single user**.
+
+   c. Enter their email address and select **Test policies**.
+
+   The single user test results will show:
+   - Whether the user is allowed or denied access to this application based on all configured policies.
+   - The user's identity from their most recent Access login attempt.
+   - Whether the user matches individual Allow, Block, or Bypass policies.
 
 ## Legacy policies
 
@@ -110,10 +114,21 @@ To migrate legacy policies to reusable policies:
 
 You can use the API to convert a legacy policy into a reusable policy. To convert a legacy policy, make a `PUT` request with an empty request body:
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Access: Apps and Policies Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Access: Apps and Policies Write</code>
+
+</details>
+
+*Convert an Access application policy to a reusable policybash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP_ID/policies/$POLICY_ID/make_reusable" \
@@ -121,7 +136,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-The policy is now removed from the applications endpoint (`/access/apps/$APP_ID/policies`) and managed using the [reusable policies endpoints](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/policies/)(`/access/policies/$POLICY_ID`).
+The policy is now removed from the applications endpoint (`/access/apps/$APP_ID/policies`) and managed using the [reusable policies endpoints](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/)(`/access/policies/$POLICY_ID`).
 
 Was this helpful?
 

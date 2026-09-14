@@ -1,6 +1,6 @@
 ---
 description: Fetch weather data from an API using the user's geolocation data.
-title: Geolocation: Weather application
+title: "Geolocation: Weather application"
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Fetch weather data from an API using the user's geolocation data.
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/geolocation-app-weather/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/examples/geolocation-app-weather/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you want to get started quickly, click on the button below.
 
@@ -45,7 +45,7 @@ export default {
 
 		html_content += `<p>This is a demo using Workers geolocation data. </p>`;
 		html_content += `You are located at: ${latitude},${longitude}.</p>`;
-		html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/$%7B%3C/span%3E%3Cspan%20class="nb-shiki-140thh">content.data.city.url}">${content.data.city.name}</a>:</p>`;
+		html_content += `<p>Based off sensor data from <a href="${content.data.city.url}">${content.data.city.name}</a>:</p>`;
 		html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;
 		html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;
 		html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;
@@ -95,7 +95,7 @@ export default {
 
 		html_content += `<p>This is a demo using Workers geolocation data. </p>`;
 		html_content += `You are located at: ${latitude},${longitude}.</p>`;
-		html_content += `<p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/$%7B%3C/span%3E%3Cspan%20class="nb-shiki-140thh">content.data.city.url}">${content.data.city.name}</a>:</p>`;
+		html_content += `<p>Based off sensor data from <a href="${content.data.city.url}">${content.data.city.name}</a>:</p>`;
 		html_content += `<p>The AQI level is: ${content.data.aqi}.</p>`;
 		html_content += `<p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>`;
 		html_content += `<p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>`;
@@ -175,7 +175,7 @@ app.get('*', async (c) => {
     <h1>Weather 🌦</h1>
     <p>This is a demo using Workers geolocation data.</p>
     <p>You are located at: ${latitude},${longitude}.</p>
-    <p>Based off sensor data from <a href="https://developers.cloudflare.com/workers/examples/geolocation-app-weather/$%7B%3C/span%3E%3Cspan%20class="nb-shiki-140thh">content.data.city.url}">${content.data.city.name}</a>:</p>
+    <p>Based off sensor data from <a href="${content.data.city.url}">${content.data.city.name}</a>:</p>
     <p>The AQI level is: ${content.data.aqi}.</p>
     <p>The N02 level is: ${content.data.iaqi.no2?.v}.</p>
     <p>The O3 level is: ${content.data.iaqi.o3?.v}.</p>

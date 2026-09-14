@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security model
 
-Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/reference/security-model/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/security-model/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This article includes an overview of Cloudflare security architecture, and then addresses two frequently asked about issues: V8 bugs and Spectre.
 
@@ -45,16 +45,16 @@ HTTP server
 Inbound
 HTTP proxy
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Outbound
 HTTP proxy
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Supervisor
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Main Runtime Process
 
@@ -70,48 +70,48 @@ Disk
 
 Control plane
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- HTTP
+HTTP
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- Cap'n Proto RPC
+Cap'n Proto RPC
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- In-process calls
+In-process calls
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- Other
+Other
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Process
 Sandbox
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Scheduling and routing
 
@@ -120,11 +120,11 @@ Scheduling and routing
 Process
 Sandbox
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
- V8 Isolate
+V8 Isolate
 
-\[Not supported by viewer\]
+\[Not supported by viewer]
 
 Scheduling and routing
 
@@ -138,7 +138,7 @@ First, a secure execution environment needed to be created wherein code cannot a
 
 For this, the primary tool is V8, the JavaScript engine developed by Google for use in Chrome. V8 executes code inside isolates, which prevent that code from accessing memory outside the isolate — even within the same process. Importantly, this means Cloudflare can run many isolates within a single process. This is essential for an edge compute platform like Workers where Cloudflare must host many thousands of guest applications on every machine and rapidly switch between these guests thousands of times per second with minimal overhead. If Cloudflare had to run a separate process for every guest, the number of tenants Cloudflare could support would be drastically reduced, and Cloudflare would have to limit edge compute to a small number of big Enterprise customers. With isolate technology, Cloudflare can make edge compute available to everyone.
 
-Sometimes, though, Cloudflare does decide to schedule a Worker in its own private process. Cloudflare does this if the Worker uses certain features that need an extra layer of isolation. For example, when a developer uses the devtools debugger to inspect their Worker, Cloudflare runs that Worker in a separate process. This is because historically, in the browser, the inspector protocol has only been usable by the browser’s trusted operator, and therefore has not received as much security scrutiny as the rest of V8\. In order to hedge against the increased risk of bugs in the inspector protocol, Cloudflare moves inspected Workers into a separate process with a process-level sandbox. Cloudflare also uses process isolation as an extra defense against Spectre.
+Sometimes, though, Cloudflare does decide to schedule a Worker in its own private process. Cloudflare does this if the Worker uses certain features that need an extra layer of isolation. For example, when a developer uses the devtools debugger to inspect their Worker, Cloudflare runs that Worker in a separate process. This is because historically, in the browser, the inspector protocol has only been usable by the browser’s trusted operator, and therefore has not received as much security scrutiny as the rest of V8. In order to hedge against the increased risk of bugs in the inspector protocol, Cloudflare moves inspected Workers into a separate process with a process-level sandbox. Cloudflare also uses process isolation as an extra defense against Spectre.
 
 Additionally, even for isolates that run in a shared process with other isolates, Cloudflare runs multiple instances of the whole runtime on each machine, which is called cordons. Workers are distributed among cordons by assigning each Worker a level of trust and separating low-trusted Workers from those trusted more highly. As one example of this in operation: a customer who signs up for the Free plan will not be scheduled in the same process as an Enterprise customer. This provides some defense-in-depth in the case a zero-day security vulnerability is found in V8.
 
@@ -164,7 +164,7 @@ Currently, Workers does not allow any access to the local filesystem. Therefore,
 
 But, imagine if Workers did want to support local filesystem access in the future. How can that be done? Workers should not see the whole filesystem. Imagine, though, if each Worker had its own private directory on the filesystem where it can store whatever it wants.
 
-To do this, Workers would use a design based on [capability-based security ↗](https://en.wikipedia.org/wiki/Capability-based%5Fsecurity). Capabilities are a big topic, but in this case, what it would mean is that Cloudflare would give the Worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing up the parent directory. Effectively, each Worker would see its private `Directory` as if it were the root of their own filesystem.
+To do this, Workers would use a design based on [capability-based security ↗](https://en.wikipedia.org/wiki/Capability-based_security). Capabilities are a big topic, but in this case, what it would mean is that Cloudflare would give the Worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing up the parent directory. Effectively, each Worker would see its private `Directory` as if it were the root of their own filesystem.
 
 How would such an API be implemented? As described above, the sandbox process cannot access the real filesystem. Instead, file access would be mediated by the supervisor process. The sandbox talks to the supervisor using [Cap’n Proto RPC ↗](https://capnproto.org/rpc.html), a capability-based RPC protocol. (Cap’n Proto is an open source project currently maintained by the Cloudflare Workers team.) This protocol makes it very easy to implement capability-based APIs, so that Cloudflare can strictly limit the sandbox to accessing only the files that belong to the Workers it is running.
 

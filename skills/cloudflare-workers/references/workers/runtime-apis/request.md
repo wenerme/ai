@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Request
 
-Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/request/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
+The [`Request` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
 ## Background
 
@@ -28,7 +28,7 @@ export default {
 };
 ```
 
-You may also want to construct a `Request` yourself when you need to modify a request object, because the incoming `request` parameter that you receive from the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is immutable.
+You may also want to construct a `Request` yourself when you need to modify a request object, because the incoming `request` parameter that you receive from the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) is immutable.
 
 ```js
 export default {
@@ -40,7 +40,7 @@ export default {
 };
 ```
 
-The [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) invokes the `Request` constructor. The [RequestInit](#options) and [RequestInitCfProperties](#the-cf-property-requestinitcfproperties) types defined below also describe the valid parameters that can be passed to the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
+The [`fetch() handler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) invokes the `Request` constructor. The [`RequestInit`](#options) and [`RequestInitCfProperties`](#the-cf-property-requestinitcfproperties) types defined below also describe the valid parameters that can be passed to the [`fetch() handler`](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/).
 
 ---
 
@@ -52,39 +52,30 @@ let request = new Request(input, options)
 
 ### Parameters
 
-* `input` string | Request
-
-  * Either a string that contains a URL, or an existing `Request` object.
-* `options` options optional
-
-  * Optional options object that contains settings to apply to the `Request`.
+- `input` string | Request
+  - Either a string that contains a URL, or an existing `Request` object.
+- `options` options optional
+  - Optional options object that contains settings to apply to the `Request`.
 
 #### `options`
 
 An object containing properties that you want to apply to the request.
 
-* `cache` `undefined | 'no-store' | 'no-cache'` optional
-
-  * Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other cache header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`.
-* `cf` RequestInitCfProperties optional
-
-  * Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s global network handles the request.
-* `method` `string` optional
-
-  * The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [CONNECT ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
-* `headers` Headers optional
-
-  * A [Headers object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
-* `body` string | ReadableStream | FormData | URLSearchParams optional
-
-  * The request body, if any.
-  * Note that a request using the GET or HEAD method cannot have a body.
-* `redirect` `string` optional
-
-  * The redirect mode to use: `follow`, `error`, or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
-* `signal` AbortSignal optional
-
-  * If provided, the request can be canceled by triggering an abort on the corresponding `AbortController`.
+- `cache` `undefined | 'no-store' | 'no-cache'` optional
+  - Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other cache header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`.
+- `cf` RequestInitCfProperties optional
+  - Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s global network handles the request.
+- `method` `string` optional
+  - The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [`CONNECT` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
+- `headers` Headers optional
+  - A [`Headers` object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+- `body` string | ReadableStream | FormData | URLSearchParams optional
+  - The request body, if any.
+  - Note that a request using the GET or HEAD method cannot have a body.
+- `redirect` `string` optional
+  - The redirect mode to use: `follow`, `error`, or `manual`. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
+- `signal` AbortSignal optional
+  - If provided, the request can be canceled by triggering an abort on the corresponding `AbortController`.
 
 #### The `cf` property (`RequestInitCfProperties`)
 
@@ -95,44 +86,32 @@ An object containing Cloudflare-specific properties that can be set on the `Requ
 fetch(event.request, { cf: { scrapeShield: false } })
 ```
 
-Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [wrangler types](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
+Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [`wrangler types`](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
 
-* `apps` `boolean` optional
-
-  * Whether [Cloudflare Apps ↗](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
-* `cacheEverything` `boolean` optional
-
-  * Treats all content as static and caches all [file types](https://developers.cloudflare.com/cache/concepts/default-cache-behavior#default-cached-file-extensions) beyond the Cloudflare default cached content. Respects cache headers from the origin web server. This is equivalent to setting the Page Rule [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). Defaults to `false`. This option applies to `GET` and `HEAD` request methods only.
-* `cacheKey` `string` optional
-
-  * A request’s cache key is what determines if two requests are the same for caching purposes. If a request has the same cache key as some previous request, then Cloudflare can serve the same cached response for both.
-* `cacheTags` Array<string> optional
-
-  * This option appends additional [**Cache-Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) headers to the response from the origin server. This allows for purges of cached content based on tags provided by the Worker, without modifications to the origin server. This is performed using the [**Purge by Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#purge-using-cache-tags) feature.
-* `cacheTtl` `number` optional
-
-  * This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two Page Rules: [**Edge Cache TTL**](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/) and [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). The value must be zero or a positive number. A value of `0` indicates that the cache asset expires immediately. This option applies to `GET` and `HEAD` request methods only.
-* `cacheTtlByStatus` `{ [key: string]: number }` optional
-
-  * This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
-* `vary` `RequestInitCfPropertiesVary` optional
-
-  * Controls how Cloudflare caches origin responses with a `Vary` header for a single `fetch()` request. If both `cf.vary` and [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) apply, `cf.vary` takes precedence for this subrequest.
-* `image` Object | null optional
-
-  * Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
-* `polish` `string` optional
-
-  * Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
-* `resolveOverride` `string` optional
-
-  * Directs the request to an alternate origin server by overriding the DNS lookup. The value of `resolveOverride` specifies an alternate hostname which will be used when determining the origin IP address, instead of using the hostname specified in the URL. The `Host` header of the request will still match what is in the URL. Thus, `resolveOverride` allows a request to be sent to a different server than the URL / `Host` header specifies. However, `resolveOverride` will only take effect if both the URL host and the host specified by `resolveOverride` are within your zone. If either specifies a host from a different zone / domain, then the option will be ignored for security reasons. If you need to direct a request to a host outside your zone (while keeping the `Host` header pointing within your zone), first create a CNAME record within your zone pointing to the outside host, and then set `resolveOverride` to point at the CNAME record. Note that, for security reasons, it is not possible to set the `Host` header to specify a host outside of your zone unless the request is actually being sent to that host.
-* `scrapeShield` `boolean` optional
-
-  * Whether [ScrapeShield ↗](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
-* `webp` `boolean` optional
-
-  * Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
+- `apps` `boolean` optional
+  - Whether [Cloudflare Apps ↗](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
+- `cacheEverything` `boolean` optional
+  - Treats all content as static and caches all [file types](https://developers.cloudflare.com/cache/concepts/default-cache-behavior#default-cached-file-extensions) beyond the Cloudflare default cached content. Respects cache headers from the origin web server. This is equivalent to setting the Page Rule [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). Defaults to `false`. This option applies to `GET` and `HEAD` request methods only.
+- `cacheKey` `string` optional
+  - A request’s cache key is what determines if two requests are the same for caching purposes. If a request has the same cache key as some previous request, then Cloudflare can serve the same cached response for both.
+- `cacheTags` Array\<string> optional
+  - This option appends additional [**Cache-Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/) headers to the response from the origin server. This allows for purges of cached content based on tags provided by the Worker, without modifications to the origin server. This is performed using the [**Purge by Tag**](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#purge-using-cache-tags) feature.
+- `cacheTtl` `number` optional
+  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two Page Rules: [**Edge Cache TTL**](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/) and [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). The value must be zero or a positive number. A value of `0` indicates that the cache asset expires immediately. This option applies to `GET` and `HEAD` request methods only.
+- `cacheTtlByStatus` `{ [key: string]: number }` optional
+  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time and override cache instructives sent by the origin. For example: `{ "200-299": 86400, "404": 1, "500-599": 0 }`. The value can be any integer, including zero and negative integers. A value of `0` indicates that the cache asset expires immediately. Any negative value instructs Cloudflare not to cache at all. This option applies to `GET` and `HEAD` request methods only.
+- `vary` `RequestInitCfPropertiesVary` optional
+  - Controls how Cloudflare caches origin responses with a `Vary` header for a single `fetch()` request. If both `cf.vary` and [Cache Rules Vary](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary) apply, `cf.vary` takes precedence for this subrequest.
+- `image` Object | null optional
+  - Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
+- `polish` `string` optional
+  - Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
+- `resolveOverride` `string` optional
+  - Directs the request to an alternate origin server by overriding the DNS lookup. The value of `resolveOverride` specifies an alternate hostname which will be used when determining the origin IP address, instead of using the hostname specified in the URL. The `Host` header of the request will still match what is in the URL. Thus, `resolveOverride` allows a request to be sent to a different server than the URL / `Host` header specifies. However, `resolveOverride` will only take effect if both the URL host and the host specified by `resolveOverride` are within your zone. If either specifies a host from a different zone / domain, then the option will be ignored for security reasons. If you need to direct a request to a host outside your zone (while keeping the `Host` header pointing within your zone), first create a CNAME record within your zone pointing to the outside host, and then set `resolveOverride` to point at the CNAME record. Note that, for security reasons, it is not possible to set the `Host` header to specify a host outside of your zone unless the request is actually being sent to that host.
+- `scrapeShield` `boolean` optional
+  - Whether [ScrapeShield ↗](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
+- `webp` `boolean` optional
+  - Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
 
 #### The `cf.vary` property
 
@@ -144,10 +123,10 @@ The origin response must include a `Vary` header for this setting to affect the 
 
 The `cf.vary` object supports these keys:
 
-| Key     | Required | Description                                                                                    |
-| ------- | -------- | ---------------------------------------------------------------------------------------------- |
-| default | Yes      | Configuration for any header name in the origin Vary response that is not included in headers. |
-| headers | No       | A map of lowercase request header names to configuration objects.                              |
+| Key | Required | Description |
+| --- | --- | --- |
+| `default` | Yes | Configuration for any header name in the origin `Vary` response that is not included in `headers`. |
+| `headers` | No | A map of lowercase request header names to configuration objects. |
 
 If the `vary` object is present, `default` is required. An empty `vary` object is invalid. Invalid `cf.vary` configurations are ignored for that request.
 
@@ -155,10 +134,10 @@ Each header configuration object, and the `default` object, must include an `act
 
 Additional parameters can be specified for certain header names:
 
-| Header          | Additional key | Description                                                                                                 |
-| --------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
-| accept          | media\_types   | MIME types to keep when normalizing the Accept header. Maximum 10 items and 255 characters per item.        |
-| accept-language | languages      | Languages to keep when normalizing the Accept-Language header. Maximum 20 items and 64 characters per item. |
+| Header | Additional key | Description |
+| --- | --- | --- |
+| `accept` | `media_types` | MIME types to keep when normalizing the `Accept` header. Maximum 10 items and 255 characters per item. |
+| `accept-language` | `languages` | Languages to keep when normalizing the `Accept-Language` header. Maximum 20 items and 64 characters per item. |
 
 The `default` object and `headers` entries other than `accept` and `accept-language` support only `action`.
 
@@ -166,17 +145,19 @@ For most deployments, set `default.action` to `bypass`, add `headers` entries fo
 
 The following limits and validation rules apply:
 
-* Header names in `headers` must be lowercase.
-* Header names can contain lowercase letters, numbers, underscores, and hyphens.
-* Header names cannot exceed 128 characters.
-* Header names beginning with `cf-` or `cf_` are not allowed.
-* Certain hop-by-hop, cache-control, or proxy-control headers are not allowed. Examples include `connection`, `content-length`, `cache-control`, `host`, `range`, `origin`, and `x-forwarded-for`.
-* `headers` can contain up to 50 entries.
-* `accept.media_types` can contain up to 10 entries.
-* `accept-language.languages` can contain up to 20 entries.
-* Values in `media_types` and `languages` must be non-empty printable ASCII strings.
+- Header names in `headers` must be lowercase.
+- Header names can contain lowercase letters, numbers, underscores, and hyphens.
+- Header names cannot exceed 128 characters.
+- Header names beginning with `cf-` or `cf_` are not allowed.
+- Certain hop-by-hop, cache-control, or proxy-control headers are not allowed. Examples include `connection`, `content-length`, `cache-control`, `host`, `range`, `origin`, and `x-forwarded-for`.
+- `headers` can contain up to 50 entries.
+- `accept.media_types` can contain up to 10 entries.
+- `accept-language.languages` can contain up to 20 entries.
+- Values in `media_types` and `languages` must be non-empty printable ASCII strings.
 
 The following request init fragment normalizes `Accept` and `Accept-Language`, and bypasses cache for any other header in the origin `Vary` response:
+
+*Request init fragmentjson*
 
 ```json
 {
@@ -204,182 +185,162 @@ The following request init fragment normalizes `Accept` and `Accept-Language`, a
 
 ## Properties
 
-All properties of an incoming `Request` object (the request you receive from the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)) are read-only. To modify the properties of an incoming request, create a new `Request` object and pass the options to modify to its [constructor](#constructor).
+All properties of an incoming `Request` object (the request you receive from the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/)) are read-only. To modify the properties of an incoming request, create a new `Request` object and pass the options to modify to its [constructor](#constructor).
 
-* `body` ReadableStream read-only
+- `body` ReadableStream read-only
+  - Stream of the body contents.
+- `bodyUsed` Boolean read-only
+  - Declares whether the body has been used in a response yet.
+- `cf` IncomingRequestCfProperties read-only
+  - An object containing properties about the incoming request provided by Cloudflare’s global network.
+  - This property is read-only (unless created from an existing `Request`). To modify its values, pass in the new values on the [`cf` key of the `init` options argument](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) when creating a new `Request` object.
+- `headers` Headers read-only
+  - A [`Headers` object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+  - Compared to browsers, Cloudflare Workers imposes very few restrictions on what headers you are allowed to send. For example, a browser will not allow you to set the `Cookie` header, since the browser is responsible for handling cookies itself. Workers, however, has no special understanding of cookies, and treats the `Cookie` header like any other header.
 
-  * Stream of the body contents.
-* `bodyUsed` Boolean read-only
+  Caution
 
-  * Declares whether the body has been used in a response yet.
-* `cf` IncomingRequestCfProperties read-only
+  If the response is a redirect and the redirect mode is set to `follow` (see below), then all headers will be forwarded to the redirect destination, even if the destination is a different hostname or domain. This includes sensitive headers like `Cookie`, `Authorization`, or any application-specific headers. If this is not the behavior you want, you should set redirect mode to `manual` and implement your own redirect policy. Note that redirect mode defaults to `manual` for requests that originated from the Worker's client, so this warning only applies to `fetch()`es made by a Worker that are not proxying the original request.
+- `method` string read-only
+  - Contains the request’s method, for example, `GET`, `POST`, etc.
+- `redirect` string read-only
+  - The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
+- `signal` AbortSignal read-only
+  - The `AbortSignal` corresponding to this request. If you use the [`enable_request_signal`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
 
-  * An object containing properties about the incoming request provided by Cloudflare’s global network.
-  * This property is read-only (unless created from an existing `Request`). To modify its values, pass in the new values on the [cf key of the init options argument](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) when creating a new `Request` object.
-* `headers` Headers read-only
+    *index.jsjs*
 
-  * A [Headers object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
-  * Compared to browsers, Cloudflare Workers imposes very few restrictions on what headers you are allowed to send. For example, a browser will not allow you to set the `Cookie` header, since the browser is responsible for handling cookies itself. Workers, however, has no special understanding of cookies, and treats the `Cookie` header like any other header.
-Caution
-If the response is a redirect and the redirect mode is set to `follow` (see below), then all headers will be forwarded to the redirect destination, even if the destination is a different hostname or domain. This includes sensitive headers like `Cookie`, `Authorization`, or any application-specific headers. If this is not the behavior you want, you should set redirect mode to `manual` and implement your own redirect policy. Note that redirect mode defaults to `manual` for requests that originated from the Worker's client, so this warning only applies to `fetch()`es made by a Worker that are not proxying the original request.
-* `method` string read-only
 
-  * Contains the request’s method, for example, `GET`, `POST`, etc.
-* `redirect` string read-only
 
-  * The redirect mode to use: `follow`, `error`, or `manual`. The `fetch` method will automatically follow redirects if the redirect mode is set to `follow`. If set to `manual`, the `3xx` redirect response will be returned to the caller as-is. The default for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
-* `signal` AbortSignal read-only
+    ```js
+    export default {
+    	async fetch(request, env, ctx) {
+    		// This sets up an event listener that will be called if the client disconnects from your
+    		// worker.
+    		request.signal.addEventListener("abort", () => {
+    			console.log("The request was aborted!");
+    		});
 
-  * The `AbortSignal` corresponding to this request. If you use the [enable\_request\_signal](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-requestsignal-for-incoming-requests) compatibility flag, you can attach an event listener to the signal. This allows you to perform cleanup tasks or write to logs before your Worker's invocation ends. For example, if you run the Worker below, and then abort the request from the client, a log will be written:
-  ```js
-  export default {
-  	async fetch(request, env, ctx) {
-  		// This sets up an event listener that will be called if the client disconnects from your
-  		// worker.
-  		request.signal.addEventListener("abort", () => {
-  			console.log("The request was aborted!");
-  		});
-  		const { readable, writable } = new IdentityTransformStream();
-  		sendPing(writable);
-  		return new Response(readable, {
-  			headers: { "Content-Type": "text/plain" },
-  		});
-  	},
-  };
-  async function sendPing(writable) {
-  	const writer = writable.getWriter();
-  	const enc = new TextEncoder();
-  	for (;;) {
-  		// Send 'ping' every second to keep the connection alive
-  		await writer.write(enc.encode("ping\r\n"));
-  		await scheduler.wait(1000);
-  	}
-  }
-  ```
-  ```ts
-  export default {
-    async fetch(request, env, ctx): Promise<Response> {
-      // This sets up an event listener that will be called if the client disconnects from your
-      // worker.
-      request.signal.addEventListener('abort', () => {
-        console.log('The request was aborted!');
-      });
-      const { readable, writable } = new IdentityTransformStream();
-      sendPing(writable);
-      return new Response(readable, { headers: { 'Content-Type': 'text/plain' } });
-    },
-  } satisfies ExportedHandler<Env>;
-  async function sendPing(writable: WritableStream): Promise<void> {
-  	const writer = writable.getWriter();
-  	const enc = new TextEncoder();
-  	for (;;) {
-  		// Send 'ping' every second to keep the connection alive
-  		await writer.write(enc.encode('ping\r\n'));
-  		await scheduler.wait(1000);
-  	}
-  }
-  ```
-* `url` string read-only
+    		const { readable, writable } = new IdentityTransformStream();
+    		sendPing(writable);
+    		return new Response(readable, {
+    			headers: { "Content-Type": "text/plain" },
+    		});
+    	},
+    };
 
-  * Contains the URL of the request.
+    async function sendPing(writable) {
+    	const writer = writable.getWriter();
+    	const enc = new TextEncoder();
+
+    	for (;;) {
+    		// Send 'ping' every second to keep the connection alive
+    		await writer.write(enc.encode("ping\r\n"));
+    		await scheduler.wait(1000);
+    	}
+    }
+    ```
+
+    *index.tsts*
+
+
+
+    ```ts
+    export default {
+      async fetch(request, env, ctx): Promise<Response> {
+        // This sets up an event listener that will be called if the client disconnects from your
+        // worker.
+        request.signal.addEventListener('abort', () => {
+          console.log('The request was aborted!');
+        });
+
+        const { readable, writable } = new IdentityTransformStream();
+        sendPing(writable);
+        return new Response(readable, { headers: { 'Content-Type': 'text/plain' } });
+      },
+    } satisfies ExportedHandler<Env>;
+
+    async function sendPing(writable: WritableStream): Promise<void> {
+    	const writer = writable.getWriter();
+    	const enc = new TextEncoder();
+
+    	for (;;) {
+    		// Send 'ping' every second to keep the connection alive
+    		await writer.write(enc.encode('ping\r\n'));
+    		await scheduler.wait(1000);
+    	}
+    }
+    ```
+- `url` string read-only
+  - Contains the URL of the request.
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s global network.
+In addition to the properties on the standard [`Request` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s global network.
 
 All plans have access to:
 
-* `asn` Number
-
-  * ASN of the incoming request, for example, `395747`.
-* `asOrganization` string
-
-  * The organization which owns the ASN of the incoming request, for example, `Google Cloud`.
-* `botManagement` Object | null
-
-  * Only set when using Cloudflare Bot Management. Object with the following properties: `score`, `verifiedBot`, `signedAgent`, `staticResource`, `ja3Hash`, `ja4`, and `detectionIds`. Refer to [Bot Management Variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) for more details.
-* `clientAcceptEncoding` string | null
-
-  * If Cloudflare replaces the value of the `Accept-Encoding` header, the original value is stored in the `clientAcceptEncoding` property, for example, `"gzip, deflate, br"`.
-* `clientQuicRtt` number | undefined
-
-  * The smoothed round-trip time (RTT) between Cloudflare and the client for QUIC connections, in milliseconds. Only present when the client connected over QUIC (HTTP/3). For example, `42`.
-* `clientTcpRtt` number | undefined
-
-  * The smoothed round-trip time (RTT) between the client and Cloudflare for TCP connections, in milliseconds. Only present when the client connected over TCP (HTTP/1 and HTTP/2). For example, `22`.
-* `colo` string
-
-  * The three-letter [IATA ↗](https://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) airport code of the data center that the request hit, for example, `"DFW"`.
-* `country` string | null
-
-  * Country of the incoming request. The two-letter country code in the request. This is the same value as that provided in the `CF-IPCountry` header, for example, `"US"`.
-* `edgeL4` Object | undefined
-
-  * Layer 4 transport statistics for the connection between the client and Cloudflare. Contains the following property:
-    * `deliveryRate` number - The most recent data delivery rate estimate for the connection, in bytes per second. For example, `123456`.
-* `isEUCountry` string | null
-
-  * If the country of the incoming request is in the EU, this will return `"1"`. Otherwise, this property is either omitted or `false`.
-* `httpProtocol` string
-
-  * HTTP Protocol, for example, `"HTTP/2"`.
-* `hostMetadata` Object | undefined
-
-  * Only populated when the incoming request is from a zone with custom hostname metadata. Refer to the Cloudflare for Platforms documentation for more about what you can add as [custom hostname metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/), and how it is exposed on the `hostMetadata` field.
-* `requestPriority` string | null
-
-  * The browser-requested prioritization information in the request object, for example, `"weight=192;exclusive=0;group=3;group-weight=127"`.
-* `tlsCipher` string
-
-  * The cipher for the connection to Cloudflare, for example, `"AEAD-AES128-GCM-SHA256"`.
-* `tlsClientAuth` Object | null
-
-  * Various details about the client certificate (for mTLS connections). Refer to [Client certificate variables](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/) for more details.
-* `tlsClientCiphersSha1` string
-
-  * The SHA-1 hash (Base64-encoded) of the cipher suite sent by the client during the TLS handshake, encoded in big-endian format. For example, `"GXSPDLP4G3X+prK73a4wBuOaHRc="`.
-* `tlsClientExtensionsSha1` string
-
-  * The SHA-1 hash (Base64-encoded) of the TLS client extensions sent during the handshake, encoded in big-endian format. For example, `"OWFiM2I5ZDc0YWI0YWYzZmFkMGU0ZjhlYjhiYmVkMjgxNTU5YTU2Mg=="`.
-* `tlsClientExtensionsSha1Le` string
-
-  * The SHA-1 hash (Base64-encoded) of the TLS client extensions sent during the handshake, encoded in little-endian format. For example, `"7zIpdDU5pvFPPBI2/PCzqbaXnRA="`.
-* `tlsClientHelloLength` string
-
-  * The length of the client hello message sent in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). For example, `"508"`. Specifically, the length of the bytestring of the client hello.
-* `tlsClientRandom` string
-
-  * The value of the 32-byte random value provided by the client in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Refer to [RFC 8446 ↗](https://datatracker.ietf.org/doc/html/rfc8446#section-4.1.2) for more details.
-* `tlsVersion` string
-
-  * The TLS version of the connection to Cloudflare, for example, `TLSv1.3`.
-* `city` string | null
-
-  * City of the incoming request, for example, `"Austin"`.
-* `continent` string | null
-
-  * Continent of the incoming request, for example, `"NA"`.
-* `latitude` string | null
-
-  * Latitude of the incoming request, for example, `"30.27130"`.
-* `longitude` string | null
-
-  * Longitude of the incoming request, for example, `"-97.74260"`.
-* `postalCode` string | null
-
-  * Postal code of the incoming request, for example, `"78701"`.
-* `metroCode` string | null
-
-  * Metro code (DMA) of the incoming request, for example, `"635"`.
-* `region` string | null
-
-  * If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO%5F3166-2) name for the first level region associated with the IP address of the incoming request, for example, `"Texas"`.
-* `regionCode` string | null
-
-  * If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO%5F3166-2) code for the first-level region associated with the IP address of the incoming request, for example, `"TX"`.
-* `timezone` string
-
-  * Timezone of the incoming request, for example, `"America/Chicago"`.
+- `asn` Number
+  - ASN of the incoming request, for example, `395747`.
+- `asOrganization` string
+  - The organization which owns the ASN of the incoming request, for example, `Google Cloud`.
+- `botManagement` Object | null
+  - Only set when using Cloudflare Bot Management. Object with the following properties: `score`, `verifiedBot`, `signedAgent`, `staticResource`, `ja3Hash`, `ja4`, and `detectionIds`. Refer to [Bot Management Variables](https://developers.cloudflare.com/bots/reference/bot-management-variables/) for more details.
+- `clientAcceptEncoding` string | null
+  - If Cloudflare replaces the value of the `Accept-Encoding` header, the original value is stored in the `clientAcceptEncoding` property, for example, `"gzip, deflate, br"`.
+- `clientQuicRtt` number | undefined
+  - The smoothed round-trip time (RTT) between Cloudflare and the client for QUIC connections, in milliseconds. Only present when the client connected over QUIC (HTTP/3). For example, `42`.
+- `clientTcpRtt` number | undefined
+  - The smoothed round-trip time (RTT) between the client and Cloudflare for TCP connections, in milliseconds. Only present when the client connected over TCP (HTTP/1 and HTTP/2). For example, `22`.
+- `colo` string
+  - The three-letter [`IATA` ↗](https://en.wikipedia.org/wiki/IATA_airport_code) airport code of the data center that the request hit, for example, `"DFW"`.
+- `country` string | null
+  - Country of the incoming request. The two-letter country code in the request. This is the same value as that provided in the `CF-IPCountry` header, for example, `"US"`.
+- `edgeL4` Object | undefined
+  - Layer 4 transport statistics for the connection between the client and Cloudflare. Contains the following property:
+    - `deliveryRate` number - The most recent data delivery rate estimate for the connection, in bytes per second. For example, `123456`.
+- `isEUCountry` string | null
+  - If the country of the incoming request is in the EU, this will return `"1"`. Otherwise, this property is either omitted or `false`.
+- `httpProtocol` string
+  - HTTP Protocol, for example, `"HTTP/2"`.
+- `hostMetadata` Object | undefined
+  - Only populated when the incoming request is from a zone with custom hostname metadata. Refer to the Cloudflare for Platforms documentation for more about what you can add as [custom hostname metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/), and how it is exposed on the `hostMetadata` field.
+- `requestPriority` string | null
+  - The browser-requested prioritization information in the request object, for example, `"weight=192;exclusive=0;group=3;group-weight=127"`.
+- `tlsCipher` string
+  - The cipher for the connection to Cloudflare, for example, `"AEAD-AES128-GCM-SHA256"`.
+- `tlsClientAuth` Object | null
+  - Various details about the client certificate (for mTLS connections). Refer to [Client certificate variables](https://developers.cloudflare.com/ssl/client-certificates/client-certificate-variables/) for more details.
+- `tlsClientCiphersSha1` string
+  - The SHA-1 hash (Base64-encoded) of the cipher suite sent by the client during the TLS handshake, encoded in big-endian format. For example, `"GXSPDLP4G3X+prK73a4wBuOaHRc="`.
+- `tlsClientExtensionsSha1` string
+  - The SHA-1 hash (Base64-encoded) of the TLS client extensions sent during the handshake, encoded in big-endian format. For example, `"OWFiM2I5ZDc0YWI0YWYzZmFkMGU0ZjhlYjhiYmVkMjgxNTU5YTU2Mg=="`.
+- `tlsClientExtensionsSha1Le` string
+  - The SHA-1 hash (Base64-encoded) of the TLS client extensions sent during the handshake, encoded in little-endian format. For example, `"7zIpdDU5pvFPPBI2/PCzqbaXnRA="`.
+- `tlsClientHelloLength` string
+  - The length of the client hello message sent in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). For example, `"508"`. Specifically, the length of the bytestring of the client hello.
+- `tlsClientRandom` string
+  - The value of the 32-byte random value provided by the client in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Refer to [RFC 8446 ↗](https://datatracker.ietf.org/doc/html/rfc8446#section-4.1.2) for more details.
+- `tlsVersion` string
+  - The TLS version of the connection to Cloudflare, for example, `TLSv1.3`.
+- `city` string | null
+  - City of the incoming request, for example, `"Austin"`.
+- `continent` string | null
+  - Continent of the incoming request, for example, `"NA"`.
+- `latitude` string | null
+  - Latitude of the incoming request, for example, `"30.27130"`.
+- `longitude` string | null
+  - Longitude of the incoming request, for example, `"-97.74260"`.
+- `postalCode` string | null
+  - Postal code of the incoming request, for example, `"78701"`.
+- `metroCode` string | null
+  - Metro code (DMA) of the incoming request, for example, `"635"`.
+- `region` string | null
+  - If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request, for example, `"Texas"`.
+- `regionCode` string | null
+  - If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) code for the first-level region associated with the IP address of the incoming request, for example, `"TX"`.
+- `timezone` string
+  - Timezone of the incoming request, for example, `"America/Chicago"`.
 
 Caution
 
@@ -393,27 +354,22 @@ The `request.cf` object is not available in the Cloudflare Workers dashboard or 
 
 These methods are only available on an instance of a `Request` object or through its prototype.
 
-* `clone()` : Request
-
-  * Creates a copy of the `Request` object.
-* `arrayBuffer()` : Promise<ArrayBuffer>
-
-  * Returns a promise that resolves with an [ArrayBuffer ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/ArrayBuffer) representation of the request body.
-* `formData()` : Promise<FormData>
-
-  * Returns a promise that resolves with a [FormData ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) representation of the request body.
-* `json()` : Promise<Object>
-
-  * Returns a promise that resolves with a JSON representation of the request body.
-* `text()` : Promise<string>
-
-  * Returns a promise that resolves with a string (text) representation of the request body.
+- `clone()` : Request
+  - Creates a copy of the `Request` object.
+- `arrayBuffer()` : Promise\<ArrayBuffer>
+  - Returns a promise that resolves with an [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) representation of the request body.
+- `formData()` : Promise\<FormData>
+  - Returns a promise that resolves with a [`FormData` ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) representation of the request body.
+- `json()` : Promise\<Object>
+  - Returns a promise that resolves with a JSON representation of the request body.
+- `text()` : Promise\<string>
+  - Returns a promise that resolves with a string (text) representation of the request body.
 
 ---
 
 ## The `Request` context
 
-Each time a Worker is invoked by an incoming HTTP request, the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) is called on your Worker. The `Request` context starts when the `fetch()` handler is called, and asynchronous tasks (such as making a subrequest using the [fetch() API](https://developers.cloudflare.com/workers/runtime-apis/fetch/)) can only be run inside the `Request` context:
+Each time a Worker is invoked by an incoming HTTP request, the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch) is called on your Worker. The `Request` context starts when the `fetch()` handler is called, and asynchronous tasks (such as making a subrequest using the [`fetch() API`](https://developers.cloudflare.com/workers/runtime-apis/fetch/)) can only be run inside the `Request` context:
 
 ```js
 export default {
@@ -481,28 +437,28 @@ The Workers implementation of the `Request` interface includes several extension
 
 TypeScript users
 
-Workers type definitions (from `@cloudflare/workers-types` or generated via [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types)) define a `Request` type that includes Workers-specific properties like `cf`. This type is not directly compatible with the standard `Request` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions or create a new `Request` object.
+Workers type definitions (from `@cloudflare/workers-types` or generated via [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types)) define a `Request` type that includes Workers-specific properties like `cf`. This type is not directly compatible with the standard `Request` type from `lib.dom.d.ts`. If you are working with code that uses both Workers types and standard web types, you may need to use type assertions or create a new `Request` object.
 
 ### The `cf` property
 
-Workers adds a `cf` property to the `Request` object that contains Cloudflare-specific metadata about the incoming request. This property is not part of the web standard, and is only available in the Workers runtime. Refer to [IncomingRequestCfProperties](#incomingrequestcfproperties) for details.
+Workers adds a `cf` property to the `Request` object that contains Cloudflare-specific metadata about the incoming request. This property is not part of the web standard, and is only available in the Workers runtime. Refer to [`IncomingRequestCfProperties`](#incomingrequestcfproperties) for details.
 
 ### The `headers` property
 
-The `headers` property returns a Workers-specific [Headers](https://developers.cloudflare.com/workers/runtime-apis/headers/) object that includes additional methods like `getAll()` for `Set-Cookie` headers. Refer to the [Headers documentation](https://developers.cloudflare.com/workers/runtime-apis/headers/#differences) for details on how the Workers `Headers` implementation differs from the web standard.
+The `headers` property returns a Workers-specific [`Headers`](https://developers.cloudflare.com/workers/runtime-apis/headers/) object that includes additional methods like `getAll()` for `Set-Cookie` headers. Refer to the [Headers documentation](https://developers.cloudflare.com/workers/runtime-apis/headers/#differences) for details on how the Workers `Headers` implementation differs from the web standard.
 
 ### Immutability
 
-Incoming `Request` objects passed to the [fetch() handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) are immutable. To modify properties of an incoming request, you must create a new `Request` object.
+Incoming `Request` objects passed to the [`fetch()` handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch/) are immutable. To modify properties of an incoming request, you must create a new `Request` object.
 
 ---
 
 ## Related resources
 
-* [Examples: Modify request property](https://developers.cloudflare.com/workers/examples/modify-request-property/)
-* [Examples: Accessing the cf object](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/)
-* [Reference: Response](https://developers.cloudflare.com/workers/runtime-apis/response/)
-* Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
+- [Examples: Modify request property](https://developers.cloudflare.com/workers/examples/modify-request-property/)
+- [Examples: Accessing the `cf` object](https://developers.cloudflare.com/workers/examples/accessing-the-cloudflare-object/)
+- [Reference: `Response`](https://developers.cloudflare.com/workers/runtime-apis/response/)
+- Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 Was this helpful?
 

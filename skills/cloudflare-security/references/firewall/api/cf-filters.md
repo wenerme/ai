@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Filters API
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/firewall/api/cf-filters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Cloudflare Filters** is an API-only component of firewall rules for designing complex criteria that rely on boolean operators and other logic to examine incoming HTTP traffic and look for a match.
 
@@ -22,9 +22,9 @@ Cloudflare Firewall Rules has been deprecated. Cloudflare has moved existing fir
 
 For example, a filter matching:
 
-* An HTTP user agent, and
-* The HTTP path, and
-* The source IP address
+- An HTTP user agent, and
+- The HTTP path, and
+- The source IP address
 
 Associate a filter with a firewall rule to define the scope of that rule.
 
@@ -36,8 +36,8 @@ Before getting started with the Cloudflare Filters API, familiarize yourself wit
 
 The Firewall Rules API behaves differently from most Cloudflare APIs in two ways:
 
-* API calls accept and return multiple items, and allow applying data changes to multiple items.
-* Although API calls return the [standard response](https://developers.cloudflare.com/fundamentals/api/), the error object follows the [JSON API standard ↗](http://jsonapi.org/format/#errors), such that in an error condition, it is clear which item produced the error and why.
+- API calls accept and return multiple items, and allow applying data changes to multiple items.
+- Although API calls return the [standard response](https://developers.cloudflare.com/fundamentals/api/), the error object follows the [JSON API standard ↗](http://jsonapi.org/format/#errors), such that in an error condition, it is clear which item produced the error and why.
 
 To get started, review [What is a filter?](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/), followed by the Cloudflare Filters [JSON object](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/json-object/) and [Endpoints](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/endpoints/).
 

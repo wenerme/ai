@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # TypeScript Client SDK
 
-Last updated Aug 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/sdk/client-provider/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/sdk/client-provider/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `FlagshipClientProvider` implements the OpenFeature web provider interface for browser applications. It pre-fetches a declared set of flag values on initialization and resolves evaluations synchronously from an in-memory cache.
 
@@ -28,9 +28,9 @@ We do not recommend using the client provider in public-facing apps right now. I
 
 **Fetch behavior:**
 
-* **On initialization** — all flags in `prefetchFlags` are fetched in parallel and stored in an in-memory cache. The provider transitions to `READY` once all fetches complete (individual failures are non-fatal).
-* **On context change** — the cache is invalidated and all flags are re-fetched for the new context. This is required by the [static context paradigm ↗](https://openfeature.dev/specification/glossary/#static-context-paradigm) used by the OpenFeature web SDK, where context is set globally and providers are expected to re-evaluate when it changes.
-* **At resolution time** — evaluations are served synchronously from the cache. No network request is made during `getBooleanValue`, `getStringValue`, etc.
+- **On initialization** — all flags in `prefetchFlags` are fetched in parallel and stored in an in-memory cache. The provider transitions to `READY` once all fetches complete (individual failures are non-fatal).
+- **On context change** — the cache is invalidated and all flags are re-fetched for the new context. This is required by the [static context paradigm ↗](https://openfeature.dev/specification/glossary/#static-context-paradigm) used by the OpenFeature web SDK, where context is set globally and providers are expected to re-evaluate when it changes.
+- **At resolution time** — evaluations are served synchronously from the cache. No network request is made during `getBooleanValue`, `getStringValue`, etc.
 
 ## Setup
 
@@ -96,16 +96,16 @@ Note
 
 ## Configuration options
 
-| Option        | Type        | Required | Description                                                                                                                                  |
-| ------------- | ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| appId         | string      | Yes      | The Flagship app ID from the Cloudflare dashboard.                                                                                           |
-| accountId     | string      | Yes      | Your Cloudflare account ID.                                                                                                                  |
-| authToken     | string      | Yes      | A Cloudflare [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission. |
-| fetchOptions  | RequestInit | No       | Custom fetch options applied to HTTP requests.                                                                                               |
-| timeout       | number      | No       | Request timeout in milliseconds. Defaults to 5000.                                                                                           |
-| retries       | number      | No       | Retry attempts on transient errors. Defaults to 1 and is capped at 10.                                                                       |
-| retryDelay    | number      | No       | Delay between retries in milliseconds. Defaults to 1000 and is capped at 30000.                                                              |
-| prefetchFlags | string\[\]  | Yes      | Flag keys to fetch on initialization and on every context change. Flags not in this list return FLAG\_NOT\_FOUND at evaluation time.         |
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `appId` | `string` | Yes | The Flagship app ID from the Cloudflare dashboard. |
+| `accountId` | `string` | Yes | Your Cloudflare account ID. |
+| `authToken` | `string` | Yes | A Cloudflare [API token](https://developers.cloudflare.com/flagship/api-tokens/) with Flagship Evaluate or Flagship App Evaluate permission. |
+| `fetchOptions` | `RequestInit` | No | Custom fetch options applied to HTTP requests. |
+| `timeout` | `number` | No | Request timeout in milliseconds. Defaults to `5000`. |
+| `retries` | `number` | No | Retry attempts on transient errors. Defaults to `1` and is capped at `10`. |
+| `retryDelay` | `number` | No | Delay between retries in milliseconds. Defaults to `1000` and is capped at `30000`. |
+| `prefetchFlags` | `string[]` | Yes | Flag keys to fetch on initialization and on every context change. Flags not in this list return `FLAG_NOT_FOUND` at evaluation time. |
 
 ## When to use the client provider
 

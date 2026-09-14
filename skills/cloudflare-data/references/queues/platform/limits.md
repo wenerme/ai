@@ -12,38 +12,38 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
 The following limits apply to both Workers Paid and Workers Free plans with the exception of **Message Retention**, which is non-configurable at 24 hours for the Workers Free plan.
 
-| Feature                                                                                  | Limit                                                                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| Queues                                                                                   | 10,000 per account                                                                                                                 |
-| Message size                                                                             | 128 KB 1                                                                                                                           |
-| Message retries                                                                          | 100                                                                                                                                |
-| Maximum consumer batch size                                                              | 100 messages                                                                                                                       |
-| Maximum messages per sendBatch call                                                      | 100 (or 256KB in total)                                                                                                            |
-| Maximum Batch wait time                                                                  | 60 seconds                                                                                                                         |
-| Per-queue message throughput                                                             | 5,000 messages per second 2                                                                                                        |
-| Message retention period 3                                                               | [Configurable up to 14 days](https://developers.cloudflare.com/queues/configuration/configure-queues/#queue-configuration).        |
-| Per-queue backlog size 4                                                                 | 25GB                                                                                                                               |
-| Concurrent consumer invocations                                                          | 250 push-based only                                                                                                                |
-| Consumer duration (wall clock time)                                                      | 15 minutes 5                                                                                                                       |
+| Feature | Limit |
+| --- | --- |
+| Queues | 10,000 per account |
+| Message size | 128 KB <sup>1</sup> |
+| Message retries | 100 |
+| Maximum consumer batch size | 100 messages |
+| Maximum messages per `sendBatch` call | 100 (or 256KB in total) |
+| Maximum Batch wait time | 60 seconds |
+| Per-queue message throughput | 5,000 messages per second <sup>2</sup> |
+| Message retention period <sup>3</sup> | [Configurable up to 14 days](https://developers.cloudflare.com/queues/configuration/configure-queues/#queue-configuration). |
+| Per-queue backlog size <sup>4</sup> | 25GB |
+| Concurrent consumer invocations | 250 <sup>push-based only</sup> |
+| Consumer duration (wall clock time) | 15 minutes <sup>5</sup> |
 | [Consumer CPU time](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) | [Configurable to 5 minutes](https://developers.cloudflare.com/queues/platform/limits/#increasing-queue-consumer-worker-cpu-limits) |
-| visibilityTimeout (pull-based queues)                                                    | 12 hours                                                                                                                           |
-| delaySeconds (when sending or retrying)                                                  | 24 hours                                                                                                                           |
+| `visibilityTimeout` (pull-based queues) | 12 hours |
+| `delaySeconds` (when sending or retrying) | 24 hours |
 
-1 1 KB is measured as 1000 bytes. Messages can include up to \~100 bytes of internal metadata that counts towards total message limits.
+<sup>1</sup> 1 KB is measured as 1000 bytes. Messages can include up to \~100 bytes of internal metadata that counts towards total message limits.
 
-2 Exceeding the maximum message throughput will cause the `send()` and `sendBatch()` methods to throw an exception with a `Too Many Requests` error until your producer falls below the limit.
+<sup>2</sup> Exceeding the maximum message throughput will cause the `send()` and `sendBatch()` methods to throw an exception with a `Too Many Requests` error until your producer falls below the limit.
 
-3 Messages in a queue that reach the maximum message retention are deleted from the queue. Queues does not delete messages in the same queue that have not reached this limit.
+<sup>3</sup> Messages in a queue that reach the maximum message retention are deleted from the queue. Queues does not delete messages in the same queue that have not reached this limit.
 
-4 Individual queues that reach this limit will receive a `Storage Limit Exceeded` error when calling `send()` or `sendBatch()` on the queue.
+<sup>4</sup> Individual queues that reach this limit will receive a `Storage Limit Exceeded` error when calling `send()` or `sendBatch()` on the queue.
 
-5 Refer to [Workers limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).
+<sup>5</sup> Refer to [Workers limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).
 
 Need a higher limit?
 
@@ -78,14 +78,14 @@ Wall time (also called wall-clock time) is the total elapsed time from the start
 
 The following table summarizes the wall time limits for different types of Worker invocations across the developer platform:
 
-| Invocation type                                                                                     | Wall time limit | Details                                                                                                                                                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Incoming HTTP request                                                                               | Unlimited       | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [waitUntil()](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
-| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)             | 15 minutes      | Scheduled Workers have a maximum wall time of 15 minutes per invocation.                                                                                                                                                                                                             |
-| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes      | Each consumer invocation has a maximum wall time of 15 minutes.                                                                                                                                                                                                                      |
-| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/)      | 15 minutes      | Alarm handler invocations have a maximum wall time of 15 minutes.                                                                                                                                                                                                                    |
-| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP)                  | Unlimited       | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight.                                                                                              |
-| [Workflows](https://developers.cloudflare.com/workflows/) (per step)                                | Unlimited       | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time).                                                                                                  |
+| Invocation type | Wall time limit | Details |
+| --- | --- | --- |
+| Incoming HTTP request | Unlimited | No hard limit while the client remains connected. A Worker that is still streaming a response body remains active. [`waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) extends execution for up to 30 seconds after the response or disconnect. |
+| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) | 15 minutes | Scheduled Workers have a maximum wall time of 15 minutes per invocation. |
+| [Queue consumers](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) | 15 minutes | Each consumer invocation has a maximum wall time of 15 minutes. |
+| [Durable Object alarm handlers](https://developers.cloudflare.com/durable-objects/api/alarms/) | 15 minutes | Alarm handler invocations have a maximum wall time of 15 minutes. |
+| [Durable Objects](https://developers.cloudflare.com/durable-objects/) (RPC / HTTP) | Unlimited | No hard limit while the caller stays connected to the Durable Object. Durable Objects remain active while a request, RPC call, response stream, WebSocket, or pending I/O is in flight. |
+| [Workflows](https://developers.cloudflare.com/workflows/) (per step) | Unlimited | Each step can run for an unlimited wall time. Individual steps are subject to the configured [CPU time limit](https://developers.cloudflare.com/workers/platform/limits/#cpu-time). |
 
 Was this helpful?
 

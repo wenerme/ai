@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Build a counter using Durable Objects and Workers with RPC methods.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/build-a-counter/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/build-a-counter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to build a counter using Durable Objects and Workers with [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc) that can print, increment, and decrement a `name` provided by the URL query string parameter, for example, `?name=A`.
 
@@ -253,8 +253,8 @@ new_sqlite_classes = [ "Counter" ]
 
 ### Related resources
 
-* [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
-* [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
+- [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

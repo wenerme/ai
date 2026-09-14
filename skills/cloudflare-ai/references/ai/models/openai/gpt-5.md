@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • OpenAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `openai/gpt-5`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 OpenAI's model excelling at coding, writing, and reasoning.
 
-| Model Info                                                                          |                                                                                                                |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                 |
-| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                         |
-| More information                                                                    | [link ↗](https://openai.com/)                                                                                  |
-| Zero data retention                                                                 | Yes                                                                                                            |
-| Request formats                                                                     | Responses, Chat Completions                                                                                    |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
+| Terms and License | [link ↗](https://openai.com/policies/) |
+| More information | [link ↗](https://openai.com/) |
+| Zero data retention | Yes |
+| Request formats | Responses, Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - First law (energy conservation): The change in a system’s internal energy equals the heat added to the system minus the work done by the system. In symbols: ΔU = Q − W (with W defined as work done by the system).
 
 - Second law (entropy increase): In any real process, the total entropy of an isolated system never decreases (ΔS ≥ 0). Equivalently, heat flows spontaneously from hot to cold and no heat engine can be 100% efficient.
@@ -66,6 +67,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 - Third law (absolute zero/entropy): As temperature approaches 0 K, the entropy of a perfect crystalline substance approaches zero, and absolute zero cannot be reached in a finite number of steps.
 
 Note: There is also a “zeroth law,” which defines temperature via thermal equilibrium.
+```
 
 ```json
 {
@@ -110,7 +112,11 @@ Note: There is also a “zeroth law,” which defines temperature via thermal eq
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -144,6 +150,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The built-in json module is the standard way.
 
 Basic: read an entire JSON file into a Python object (dict/list)
@@ -202,6 +209,7 @@ Notes and variants:
 
 Common pitfalls:
 - Trailing commas or comments are not valid JSON. If you must handle commented JSON, look at json5 or commentjson.
+```
 
 ```json
 {
@@ -244,7 +252,13 @@ Common pitfalls:
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -292,6 +306,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Great question! There are three main ways to go from SF to LA, each with different types of stops. Here are top picks by route, plus a couple sample itineraries.
 
 Fastest (I-5)
@@ -337,6 +352,7 @@ If you tell me:
 - How many days you have,
 - Interests (hikes, food/wine, beaches, kid-friendly, pet-friendly),
 I’ll map a tailored stop-by-stop plan with drive times.
+```
 
 ```json
 {
@@ -379,7 +395,13 @@ I’ll map a tailored stop-by-stop plan with drive times.
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -413,6 +435,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The diner on Maple had the sort of dawn that came with mop water and an apology. Lemon and old fry oil hung in the air; the neon COFFEE sign in the front window had sputtered itself into a coma sometime before three. Someone had left the door propped with a folded phone book. Someone else had left fingerprints everywhere you could put a hand to steady yourself.
 
 “Mr. Hale?” The manager’s voice came out thin. He was a man who wore his keys like medals, ring clinking against the register as if noise could keep the room from thinking about what had happened in the stockroom. He kept rubbing a clean spot on the Formica with the heel of his palm. “They said not to touch anything. But, uh, someone’s going to have to… You know. She’s back there.”
@@ -468,6 +491,7 @@ I wish the dead had names like that. I wish they all came with something you cou
 Sometimes the city gives you a map. Sometimes it just gives you a circle and tells you to stand inside it until the world narrows down to what fits. I straightened, and the room got bigger.
 
 “Okay,” I said. “Let’s go look at the thing we’re not looking at.”
+```
 
 ```json
 {
@@ -510,7 +534,13 @@ Sometimes the city gives you a map. Sometimes it just gives you a circle and tel
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -543,6 +573,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Recursion is when a function solves a problem by calling itself on a smaller version of the same problem, stopping at a simple “base case.”
 
 Simple example: factorial
@@ -567,6 +598,7 @@ Key points:
 - Always have a base case to stop.
 - Each call must move toward the base case (smaller/simpler input).
 - Missing either leads to infinite recursion (and a crash).
+```
 
 ```json
 [
@@ -5880,7 +5912,13 @@ Key points:
 ]
 ```
 
-**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
+</details>
+
+<details>
+
+<summary>**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -5910,9 +5948,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 - June 22, 2026: Cloudflare reported increased error rates and latency tied to a fiber cut in Eastern North America, leading to a partial outage and degraded CDN/Cache performance before traffic engineering mitigations stabilized services later in the day. ([cloudflarestatus.com](https://www.cloudflarestatus.com/))
 - June 17–18, 2026: Cloudflare expanded its channel focus—launching a Cloudflare One “Design Partner” designation and AI-powered migration toolkit for SASE/Zero Trust deployments—and signed Westcon‑Comstor as an EMEA‑wide distributor to scale partner-led delivery. ([itpro.com](https://www.itpro.com/technology/artificial-intelligence/cloudflare-launches-new-partner-initiative-to-support-ai-and-sase-adoption?utm_source=openai))
 - June 16, 2026: Investor group JLens urged Cloudflare shareholders to withhold votes for two directors at the June 30 annual meeting, citing an ADL report criticizing Cloudflare’s services being used by extremist sites; the campaign was covered across financial wires. ([investing.com](https://www.investing.com/news/company-news/jlens-urges-cloudflare-shareholders-to-withhold-board-votes-93CH-4744895))
+```
 
 ```json
 {
@@ -6197,6 +6237,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }
 ```
 
+</details>
+
 ## Parameters
 
 Schema variant
@@ -6227,13 +6269,11 @@ stream
 
 `boolean`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
-
-``
 
 ▶text{}
 
@@ -6243,7 +6283,7 @@ tool\_choice
 
 `object`
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -6265,11 +6305,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -6279,19 +6319,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -6315,7 +6351,7 @@ model
 
 `string`
 
-▶output\[\]
+▶output\[]
 
 `array`
 
@@ -6347,7 +6383,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -6357,9 +6393,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/openai/gpt-5/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/openai/gpt-5/schema-output.json)
 
 Was this helpful?
 

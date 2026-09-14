@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add BCC rules
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/add-bcc-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/add-bcc-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page will show you how to add BCC rules in the Google Admin Console.
 
@@ -21,33 +21,33 @@ BCC stands for Blind Carbon Copy. A BCC rule is a Google Workspace feature that 
 To add BCC rules:
 
 1. Log in to the [Google Admin Console ↗](https://admin.google.com/).
-2. On the sidebar, go to **Apps** \> **Google Workspace** \> **Gmail** \> **Compliance**.
-3. Go to **Content Compliance** \> Select **Edit**.
+2. On the sidebar, go to **Apps** > **Google Workspace** > **Gmail** > **Compliance**.
+3. Go to **Content Compliance** > Select **Edit**.
 4. Add a **Content Compliance** filter, and name it `Email security - BCC`.
 5. In **Email messages to affect**, select **Inbound**.
 6. Select the recipients you want to send emails to Email security via BCC. Under **Add expressions that describe the content you want to search for in each message**:
-  * Select **If ANY of the following match the message**.
-  * Select **Add** to configure the expression.
-    * Select **Advanced content match**.
-    * In **Location**, select **Headers + Body**.
-    * In **Match type**, select **Matches regex**.
-    * In **Regexp**, input `.*`. You can customize the regex as needed and test within the admin page or on sites like [Regexr ↗](https://regexr.com/).
-    * Select **SAVE**.
+   - Select **If ANY of the following match the message**.
+   - Select **Add** to configure the expression.
+     - Select **Advanced content match**.
+     - In **Location**, select **Headers + Body**.
+     - In **Match type**, select **Matches regex**.
+     - In **Regexp**, input `.*`. You can customize the regex as needed and test within the admin page or on sites like [Regexr ↗](https://regexr.com/).
+     - Select **SAVE**.
 7. In **If the above expressions match, do the following**:
-  * Select **Modify message**.
-    * Ensure that **Envelope recipient** \> **Change envelope recipient** is unselected, so that emails will not be dropped as an unintended consequence. You will select this option at a later stage.
-    * Go to **Also deliver to**, select **Add more recipients** \> **ADD** \> Choose **Advanced**:
-      * Under **Envelope recipient**, select **Change envelope recipient** \> **Replace recipient** \> Enter the service address. This is the service address you copied and pasted in step 5 when [connecting your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/). If you did not copy and paste the service address: - In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**. - Go to **Settings** and locate your domain under **Your domains**. - Select the three dots > **View domain** \> **Service address**. Copy and paste the service address.
-      * Under **Spam and delivery options**, ensure **Suppress bounces from this recipient** is not enabled.
-      * Under **Headers**, select **Add X-Gm-Spam and X-Gm-Phishy headers**.
-      * Select **SAVE**.
+   - Select **Modify message**.
+     - Ensure that **Envelope recipient** > **Change envelope recipient** is unselected, so that emails will not be dropped as an unintended consequence. You will select this option at a later stage.
+     - Go to **Also deliver to**, select **Add more recipients** > **ADD** > Choose **Advanced**:
+       - Under **Envelope recipient**, select **Change envelope recipient** > **Replace recipient** > Enter the service address. This is the service address you copied and pasted in step 5 when [connecting your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/). If you did not copy and paste the service address: - In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**. - Go to **Settings** and locate your domain under **Your domains**. - Select the three dots > **View domain** > **Service address**. Copy and paste the service address.
+       - Under **Spam and delivery options**, ensure **Suppress bounces from this recipient** is not enabled.
+       - Under **Headers**, select **Add X-Gm-Spam and X-Gm-Phishy headers**.
+       - Select **SAVE**.
 8. In **Account types to affect**, select **Users** and **Groups**.
 9. Select **SAVE**.
 
 To verify that BCC rules have been configured successfully:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** \> **Settings**.
-2. Select **Domains** \> **View**.
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+2. Select **Domains** > **View**.
 3. Locate your domain. Under Status, the dashboard should display **Active**. This means that the BCC rules have been configured successfully, and your mail flow is being detected.
 
 Was this helpful?

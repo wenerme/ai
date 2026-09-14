@@ -16,23 +16,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text Generation • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-4.3`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).
 
-| Model Info                                                                          |                                                                                                                |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                               |
-| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
-| More information                                                                    | [link ↗](https://docs.x.ai/docs/models/grok-4.3)                                                               |
-| Zero data retention                                                                 | Yes                                                                                                            |
-| Request formats                                                                     | Chat Completions                                                                                               |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/docs/models/grok-4.3) |
+| Zero data retention | Yes |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
 
 ## Usage
 
@@ -59,6 +59,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The three main laws of thermodynamics (often called the First, Second, and Third Laws) are fundamental principles describing energy, entropy, and absolute temperature. (A "Zeroth Law" was added later to define thermal equilibrium and temperature, but it is not usually counted among the classic three.)
 
 **First Law (Conservation of Energy)**
@@ -82,6 +83,7 @@ As the temperature of a perfect crystal approaches absolute zero (0 K or −273.
 \]
 
 These laws apply to macroscopic systems and form the foundation of classical thermodynamics.
+```
 
 ```json
 {
@@ -129,7 +131,11 @@ These laws apply to macroscopic systems and form the foundation of classical the
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -163,6 +169,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, use the built-in `json` module. Here's the standard way:
 
 ```python
@@ -204,6 +211,7 @@ except json.JSONDecodeError:
 ```
 
 This is the recommended approach for most use cases.
+````
 
 ```json
 {
@@ -249,7 +257,13 @@ This is the recommended approach for most use cases.
 }
 ```
 
-**Multi-turn Conversation** — Continuing a conversation with context
+</details>
+
+<details>
+
+<summary>**Multi-turn Conversation** — Continuing a conversation with context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -297,6 +311,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Here are some excellent stops along the scenic Pacific Coast Highway (Hwy 1) route from San Francisco to Los Angeles, which is far more enjoyable than the faster I-5 inland drive. This path is about 450 miles and takes 8–10 hours of driving time, so plan for 1–2 days with breaks. I've focused on a mix of nature, food, and landmarks, spaced out roughly every 1–2 hours:
 
 ### Early Stops (First 2–3 hours from SF)
@@ -315,6 +330,7 @@ Here are some excellent stops along the scenic Pacific Coast Highway (Hwy 1) rou
 - **Route note**: Stick to Hwy 1 for scenery (it's slower but worth it); parts can close due to weather/landslides, so check Caltrans updates.
 - **Food/essentials**: Pack snacks, as services thin out in Big Sur. Stops like Nepenthe in Big Sur offer cliffside dining.
 - **Customization**: If you prefer nature, wine tasting (e.g., near Paso Robles), or family-friendly spots, let me know your interests, group size, or how many days you have—I can refine this or suggest an itinerary with hotels!
+```
 
 ```json
 {
@@ -360,7 +376,13 @@ Here are some excellent stops along the scenic Pacific Coast Highway (Hwy 1) rou
 }
 ```
 
-**Creative Writing** — Longer completion for creative output
+</details>
+
+<details>
+
+<summary>**Creative Writing** — Longer completion for creative output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -394,7 +416,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 Detective Mara Ellison crouched in the rain-slicked alley behind the shuttered theater, her gloved fingers brushing aside a crumpled playbill. The victim—a reclusive playwright—lay a few feet away, but it was the clue that stopped her cold: a single, flawless chess pawn carved from what looked like human bone, its base etched with the playwright’s own initials in a script too precise for any hurried killer. A faint scent of stage grease clung to it, and when she tilted it toward the streetlight, tiny notches along its side formed a pattern that looked suspiciously like Morse code.
+```
 
 ```json
 {
@@ -440,7 +464,13 @@ Detective Mara Ellison crouched in the rain-slicked alley behind the shuttered t
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -473,6 +503,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 **Recursion** is a programming technique where a function solves a problem by calling *itself* with a smaller or simpler version of the original problem. It keeps breaking the problem down until it reaches a simple case that can be solved directly (called the **base case**).
 ### Simple Example: Factorial
 The factorial of a number *n* (written as *n!*) is the product of all positive integers from 1 to *n*. For example:
@@ -504,6 +535,7 @@ So `factorial(5)` returns **120**.
 - **Base case** is crucial — without it, the function would call itself forever (causing a stack overflow).
 - Recursion uses the **call stack** to keep track of each function call.
 - While elegant for some problems (like tree traversals or divide-and-conquer algorithms), recursion can be less efficient than iteration for simple tasks due to the overhead of function calls.
+````
 
 ```json
 [
@@ -7632,9 +7664,11 @@ So `factorial(5)` returns **120**.
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`requiredminItems: 1maxItems: 500
 
@@ -7742,7 +7776,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -7764,9 +7798,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-output.json)
 
 Was this helpful?
 

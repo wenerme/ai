@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Waiting Room Bypass Rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Waiting Room Bypass Rule is a type of Waiting Room Rule built on Cloudflare’s Ruleset Engine and managed via the Waiting Room API. A Waiting Room Bypass Rule allows you to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to. Each bypass rule is created and managed at the individual waiting room level for precise control over your waiting room traffic.
 
 To indicate where you want your bypass rules to apply, write [custom logic](https://developers.cloudflare.com/ruleset-engine/rules-language/) using the [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) available via the Cloudflare Ruleset Engine, except the following:
 
-* `cf.threat_score` and fields starting with `cf.bot_management`
-* HTTP response fields
+- `cf.threat_score` and fields starting with `cf.bot_management`
+- HTTP response fields
 
 Please be advised that the waiting room will not apply to all the traffic that matches the expressions written for bypass rules and will not be counted as active users. No Waiting Room features, including but not limited to, Event pre-queueing, Reject queueing method, or Queue-all will apply to this traffic. Be mindful of this when creating and enabling Bypass Waiting Room rules. Only use bypass rules for traffic you are confident will not overwhelm your origin or cause significant traffic surges.
 
@@ -29,11 +29,11 @@ Only some customers can create Waiting Room rules. For more details, refer to ou
 
 ## Common Use Cases
 
-* **Path/URL Exclusion**: Bypass specific paths or URLs under the path you have configured for your waiting room, if you do not want your waiting room to apply to these paths.
-* **Administrative Bypass**: Allow internal site administrators to always bypass the waiting room, commonly identified by IP addresses.
-* **Geo-targeting**: Exclude certain countries from being queued.
-* **Query String Exclusion**: Exclude specific query strings under the path you have configured for your waiting room.
-* **Exclude file extensions**: Prevent waiting room from applying to certain file extensions, such as `.js` that you utilize on your waiting room HTML template so that they render properly.
+- **Path/URL Exclusion**: Bypass specific paths or URLs under the path you have configured for your waiting room, if you do not want your waiting room to apply to these paths.
+- **Administrative Bypass**: Allow internal site administrators to always bypass the waiting room, commonly identified by IP addresses.
+- **Geo-targeting**: Exclude certain countries from being queued.
+- **Query String Exclusion**: Exclude specific query strings under the path you have configured for your waiting room.
+- **Exclude file extensions**: Prevent waiting room from applying to certain file extensions, such as `.js` that you utilize on your waiting room HTML template so that they render properly.
 
 ### A note on subrequests
 
@@ -47,8 +47,7 @@ Example condition: `ends_with(http.request.uri.path, ".js")`
 
 To create a new bypass rule:
 
-1. In the Cloudflare dashboard, go to the **Waiting Room** page.
-[Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
+1. In the Cloudflare dashboard, go to the **Waiting Room** page. [Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
 2. Expand a waiting room and select **Manage rules**.
 3. Select **Create new bypass rule**.
 4. Enter a descriptive name for the rule in **Rule name**.
@@ -58,21 +57,21 @@ To create a new bypass rule:
 
 ### Operators and grouping symbols
 
-* Comparison operators specify how values defined in an expression must relate to the actual HTTP request value for the expression to return true.
-* Logical operators combine two expressions to form a compound expression and use order of precedence to determine how an expression is evaluated.
-* Grouping symbols allows you to organize expressions, enforce operator precedence, and nest expressions.
+- Comparison operators specify how values defined in an expression must relate to the actual HTTP request value for the expression to return true.
+- Logical operators combine two expressions to form a compound expression and use order of precedence to determine how an expression is evaluated.
+- Grouping symbols allows you to organize expressions, enforce operator precedence, and nest expressions.
 
 For examples and usage, refer to [Operators and grouping symbols](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) in the Rules language documentation.
 
 ## Manage Rules via the Waiting Room API
 
-You can manage, delete, and create bypass rules for your waiting room via the [Waiting Room API’s](https://developers.cloudflare.com/api/resources/waiting%5Frooms/subresources/rules/methods/get/). A bypass rule is a Waiting Room Rule that utilizes the `bypass_waiting_room` action.
+You can manage, delete, and create bypass rules for your waiting room via the [Waiting Room API’s](https://developers.cloudflare.com/api/resources/waiting_rooms/subresources/rules/methods/get/). A bypass rule is a Waiting Room Rule that utilizes the `bypass_waiting_room` action.
 
 When creating a Bypass Waiting Room Rule via API, make sure you:
 
-* Have already created and saved a waiting room you want the rule to apply to.
-* Define the expression to indicate which traffic you would like to bypass your waiting room.
-* Set the rule action to `bypass_waiting_room`.
+- Have already created and saved a waiting room you want the rule to apply to.
+- Define the expression to indicate which traffic you would like to bypass your waiting room.
+- Set the rule action to `bypass_waiting_room`.
 
 Create a waiting room rule by appending the following endpoint in the Waiting Room API to the Cloudflare API base URL. New waiting room rules will be added after any existing rules.
 
@@ -82,16 +81,24 @@ POST zones/{zone_id}/waiting_rooms/{room_id}/rules
 
 Configure your bypass rule with the following required and optional parameters:
 
-* **Description** (optional) - Give your rule a description to help keep a record of the purpose of this bypass rule.
-* **Expression** (required) - Define the rule expression indicating which traffic to apply the bypass rule to.
-* **Action** (required) - Define the action to take when expression evaluates to true. Set this to `bypass_waiting_room`.
-* **Enabled** (optional) - This will default to true. If you do not wish to deploy your rule, you must set this to false.
+- **Description** (optional) - Give your rule a description to help keep a record of the purpose of this bypass rule.
+- **Expression** (required) - Define the rule expression indicating which traffic to apply the bypass rule to.
+- **Action** (required) - Define the action to take when expression evaluates to true. Set this to `bypass_waiting_room`.
+- **Enabled** (optional) - This will default to true. If you do not wish to deploy your rule, you must set this to false.
 
 ### ​​API Examples
 
+<details>
+
+<summary>
+
 Bypass a path under your waiting room and all of its subpaths
 
-If your waiting room is configured at `example.com/` and you would like all traffic visiting `example.com/bypassme` and all of its subpaths. In this example, we also want to ensure any subrequests of `js`, `css`, or `png` from also bypass the waiting room to ensure all assets are loaded properly on the paths being bypassed. Note that in this example, all requests ending in `js`, `css` or `png` will bypass the waiting room regardless of the subpath. If this is not your intended use case, please alter the expression to suit your specific requirements and site architecture.
+</summary>
+
+If your waiting room is configured at <code>example.com/</code> and you would like all traffic visiting <code>example.com/bypassme</code> and all of its subpaths. In this example, we also want to ensure any subrequests of <code>js</code>, <code>css</code>, or <code>png</code> from also bypass the waiting room to ensure all assets are loaded properly on the paths being bypassed. Note that in this example, all requests ending in <code>js</code>, <code>css</code> or <code>png</code> will bypass the waiting room regardless of the subpath. If this is not your intended use case, please alter the expression to suit your specific requirements and site architecture.
+
+*Create Waiting Room Rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \
@@ -104,7 +111,17 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING
 	}'
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Allow a defined list of IPs to bypass the waiting room
+
+</summary>
+
+*Create Waiting Room Rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING_ROOM_ID/rules" \
@@ -117,14 +134,16 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING
 	}'
 ```
 
+</details>
+
 ### Other API options for managing bypass rules
 
 Through the Waiting Room API, you can also do the following to manage bypass rules by using the Waiting Room rules API calls:
 
-* **List Waiting Room Rules**: Lists rules for a waiting room.
-* **Replace Waiting Room Rules**: Replaces all rules for a waiting room.
-* **Patch Waiting Room Rules**: Updates a rule for a waiting room.
-* **Delete Waiting Room Rules**: Deletes a rule for a waiting room.
+- **List Waiting Room Rules**: Lists rules for a waiting room.
+- **Replace Waiting Room Rules**: Replaces all rules for a waiting room.
+- **Patch Waiting Room Rules**: Updates a rule for a waiting room.
+- **Delete Waiting Room Rules**: Deletes a rule for a waiting room.
 
 Was this helpful?
 

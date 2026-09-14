@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vendor-specific DNS records
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This article requires prior knowledge of DNS record management via the Cloudflare dashboard. To learn more, refer to Cloudflare's article on [managing DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
@@ -24,8 +24,8 @@ Google Workspace requires [specific MX records ↗](https://support.google.com/a
 
 Once you [add these records to Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/):
 
-* [Test the configuration ↗](https://toolbox.googleapps.com/apps/checkmx/check)
-* Do not add other `MX` records other than those provided by Google.
+- [Test the configuration ↗](https://toolbox.googleapps.com/apps/checkmx/check)
+- Do not add other `MX` records other than those provided by Google.
 
 ### Google Workspace service URLs
 
@@ -51,7 +51,7 @@ AWS customers must [update their domain's nameservers ↗](https://docs.aws.amaz
 
 Find the [URL ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html) for your bucket.
 
-Then, [create a CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) in Cloudflare. For example, if the full host URL of the bucket is `files.example.com.s3.amazonaws.com`, you would add a `CNAME` record similar to the following:
+Then, [create a `CNAME` record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) in Cloudflare. For example, if the full host URL of the bucket is `files.example.com.s3.amazonaws.com`, you would add a `CNAME` record similar to the following:
 
 ```txt
 files  CNAME  files.example.com.s3.amazonaws.com
@@ -69,11 +69,11 @@ For help setting up DKIM in SES, refer to the [Amazon documentation ↗](https:/
 
 Refer to [Amazon's ELB help content ↗](http://docs.amazonwebservices.com/ElasticLoadBalancing/latest/DeveloperGuide/using-domain-names-with-elb.html) for guidance on ELB configuration at Amazon, but generally you should:
 
-Add a [CNAME record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) to Cloudflare for the hostname you receive from AWS, for example:
+Add a [`CNAME` record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) to Cloudflare for the hostname you receive from AWS, for example:
 
-| Type  | Name | Target                                       | Proxy status |
-| ----- | ---- | -------------------------------------------- | ------------ |
-| CNAME | elb  | <AWS\_HOSTNAME>.<REGION>.\_elb.amazonaws.com | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `elb` | `<AWS_HOSTNAME>.<REGION>._elb.amazonaws.com` | Proxied |
 
 ### Amazon Amplify
 
@@ -81,25 +81,25 @@ To use Cloudflare DNS with AWS Amplify, refer to the [Amplify help content ↗](
 
 At Cloudflare, you will need at least two `CNAME` records:
 
-* A DNS-only `CNAME` to validate your domain ownership, which should look like the following:
+- A DNS-only `CNAME` to validate your domain ownership, which should look like the following:
 
-| Type  | Name             | Target                                         | Proxy status |
-| ----- | ---------------- | ---------------------------------------------- | ------------ |
-| CNAME | <UNIQUE\_STRING> | <UNIQUE\_STRING>.mhbtsbpdnt.acm-validation.aws | DNS only     |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `<UNIQUE_STRING>` | `<UNIQUE_STRING>.mhbtsbpdnt.acm-validation.aws` | DNS only |
 
 CNAME flattening
 
 If your Cloudflare zone is on a paid plan, also make sure that the **Flatten** option turned off for the validation `CNAME` record, and that you zone is **not** using [CNAME flattening for all CNAME records](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#for-all-cname-records).
 
-* One `CNAME` for the apex domain (`example.com`) and/or for each of the subdomains (`blog.example.com`) that you want to manage on Cloudflare. For details refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/). These records can be proxied.
+- One `CNAME` for the apex domain ( `example.com`) and/or for each of the subdomains ( `blog.example.com`) that you want to manage on Cloudflare. For details refer to [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/). These records can be proxied.
 
-| Type  | Name | Target                             |
-| ----- | ---- | ---------------------------------- |
-| CNAME | @    | <AMPLIFY\_HOSTNAME>.cloudfront.net |
+| Type | Name | Target |
+| --- | --- | --- |
+| `CNAME` | `@` | `<AMPLIFY_HOSTNAME>.cloudfront.net` |
 
-| Type  | Name | Target                             |
-| ----- | ---- | ---------------------------------- |
-| CNAME | blog | <AMPLIFY\_HOSTNAME>.cloudfront.net |
+| Type | Name | Target |
+| --- | --- | --- |
+| `CNAME` | `blog` | `<AMPLIFY_HOSTNAME>.cloudfront.net` |
 
 ---
 
@@ -121,10 +121,10 @@ Then, add Azure's required records to [Cloudflare DNS](https://developers.cloudf
 
 ### ClickFunnels
 
-You can configure Cloudflare to work with ClickFunnels. The process requires updating your Cloudflare DNS settings.
+You can configure Cloudflare to work with ClickFunnels. The process requires updating your Cloudflare DNS settings.
 
-* [Adding a Cloudflare subdomain ↗](https://help.clickfunnels.com/hc/en-us/articles/360005906774-Adding-A-Cloudflare-Subdomain-)
-* [Adding a Cloudflare domain ↗](https://help.clickfunnels.com/hc/en-us/articles/360005906094-Cloudflare-CNAME-Record)
+- [Adding a Cloudflare subdomain ↗](https://help.clickfunnels.com/hc/en-us/articles/360005906774-Adding-A-Cloudflare-Subdomain-)
+- [Adding a Cloudflare domain ↗](https://help.clickfunnels.com/hc/en-us/articles/360005906094-Cloudflare-CNAME-Record)
 
 ### Discourse
 
@@ -152,9 +152,9 @@ When you [add records to Cloudflare DNS](https://developers.cloudflare.com/dns/m
 
 ### Rackspace CloudFiles
 
-Configure Rackspace CloudFiles via _CNAME record_. Consult the [Rackspace documentation ↗](https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/).
+Configure Rackspace CloudFiles via *CNAME record*. Consult the [Rackspace documentation ↗](https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/).
 
-Refer to Rackspace CloudFiles's documentation to [get a CNAME value ↗](https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+Refer to Rackspace CloudFiles's documentation to [get a `CNAME` value ↗](https://docs.rackspace.com/support/how-to/using-cnames-with-cloud-files-containers/), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Caution
 
@@ -184,10 +184,11 @@ Then, set up your Squarespace DNS records:
 
 1. Get your Squarespace DNS information by following [these instructions ↗](https://support.squarespace.com/hc/articles/213469948).
 2. In Cloudflare, [add those records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/):
-  * All `A` records should be [Proxied](https://developers.cloudflare.com/dns/proxy-status/)
-  * The `CNAME` record for `www` should also be **Proxied**.
-  * The `CNAME` record for `verify.squarespace.com` should be **DNS-only**.
-3. If set up properly, your Squarespace DNS Settings page will now indicate that your 'Settings contain problems.' **This is the expected behavior**.
+   - All `A` records should be [Proxied](https://developers.cloudflare.com/dns/proxy-status/)
+   - The `CNAME` record for `www` should also be **Proxied**.
+   - The `CNAME` record for `verify.squarespace.com` should be **DNS-only**.
+3. If set up properly, your Squarespace DNS Settings page will now indicate that your 'Settings contain problems.' **This is the expected behavior**.
+
 ![Screenshot of error warnings in squarespace](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=737,format=webp/_astro/hc-import-squarespace_dns_settings-test-2.9_-CHey0.png)
 
 #### Pending domain owner verification
@@ -206,7 +207,7 @@ When you [add records to Cloudflare DNS](https://developers.cloudflare.com/dns/m
 
 ### Unbounce
 
-Refer to Unbounce's documentation to [get a CNAME value ↗](https://documentation.unbounce.com/hc/en-us/articles/204011950), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+Refer to Unbounce's documentation to [get a `CNAME` value ↗](https://documentation.unbounce.com/hc/en-us/articles/204011950), then [add that record within Cloudflare](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Caution
 
@@ -228,8 +229,8 @@ This method means your website is using Cloudflare for DNS only, so all your DNS
 
 For help configuring WPEngine sites, refer to:
 
-* [Configuring DNS with WPEngine ↗](https://wpengine.com/support/wordpress-best-practice-configuring-dns-for-wp-engine/)
-* [Cloudflare best practices ↗](https://wpengine.com/support/cloudflare-best-practices/)
+- [Configuring DNS with WPEngine ↗](https://wpengine.com/support/wordpress-best-practice-configuring-dns-for-wp-engine/)
+- [Cloudflare best practices ↗](https://wpengine.com/support/cloudflare-best-practices/)
 
 ### Zoho
 

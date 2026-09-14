@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Securing guest wireless networks
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -24,7 +24,7 @@ However, providing guest Wi-Fi also introduces risks. Malicious users could expl
 
 ![Figure 1: Guest networks are often directly connected to the Internet with little security.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=935,height=337,format=svg/_astro/figure1.BV1Def0b.svg "Figure 1: Guest networks are often directly connected to the Internet with little security.")
 
-Figure 1: Guest networks are often directly connected to the Internet with little security.
+*Figure 1: Guest networks are often directly connected to the Internet with little security.*
 
 While it may be unlikely that your organization could face criminal charges, your organization could become part of lengthy investigations, potentially resulting in legal expenses and reputation damage. In this guide, you will learn how Cloudflare can help minimize risk, provide visibility into guest Internet activity and [better secure your guest wireless network ↗](https://www.cloudflare.com/zero-trust/solutions/secure-guest-wifi/).
 
@@ -32,18 +32,19 @@ While it may be unlikely that your organization could face criminal charges, you
 
 This reference architecture is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks. To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-* What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
-* Cloudflare Zero Trust | [https://www.cloudflare.com/zero-trust/ ↗](https://www.cloudflare.com/zero-trust/)
-* SASE Architecture with Cloudflare | [/reference-architecture/architectures/sase/](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
+- Cloudflare Zero Trust | [https://www.cloudflare.com/zero-trust/ ↗](https://www.cloudflare.com/zero-trust/)
+- SASE Architecture with Cloudflare | [/reference-architecture/architectures/sase/](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 
 This reference architecture guide will help readers understand:
 
 1. **Cloudflare Gateway DNS**: Learn how to integrate Cloudflare Gateway DNS policies into common guest wireless deployment scenarios.
 2. **Best practices for DNS policies**: Discover effective methods for building guest wireless DNS policies to enforce your acceptable use policy and prevent malicious activities.
 3. **Enhanced visibility and security**:
-* Use the Cloudflare Zero Trust dashboard to access detailed logs and analytics, offering insights into DNS queries, traffic patterns, and potential security threats.
-* Enable **Logpush** to export logs to external storage solutions for long-term analysis or compliance purposes.
-* Integrate with your SIEM (Security Information and Event Management) platform to correlate Cloudflare logs with other security data, streamlining incident detection and response.
+
+- Use the Cloudflare Zero Trust dashboard to access detailed logs and analytics, offering insights into DNS queries, traffic patterns, and potential security threats.
+- Enable **Logpush** to export logs to external storage solutions for long-term analysis or compliance purposes.
+- Integrate with your SIEM (Security Information and Event Management) platform to correlate Cloudflare logs with other security data, streamlining incident detection and response.
 
 ### Gateway DNS
 
@@ -63,11 +64,11 @@ A common method for providing guest wireless access is to set up a completely se
 
 To route all DNS queries through Cloudflare, update your router's DNS settings in the WAN interface to use Cloudflare's resolver IP addresses. The specific resolver IPs for Zero Trust can be found in the DNS location settings in the Cloudflare dashboard. Refer to your router's manufacturer documentation for detailed configuration steps to update the WAN interface. Typically, devices connected via Wi-Fi will use the router's IP address as their DNS server. The router forwards the DNS queries to Cloudflare on their behalf. As a result, DNS queries from the wireless devices will be sent Cloudflare and originate from the static IP address assigned to the router.
 
-For enhanced security, prevent wireless guests from accessing other DNS services by creating a firewall rule on the router (if supported). This rule should allow access only to Cloudflare's DNS servers and block all other DNS destinations on UDP/TCP port 53\. Additionally, some advanced wireless routers support content filtering. If available, enable options to block DNS over TLS (DoT) or DNS over HTTPS (DoH) to ensure endpoints cannot bypass your configured DNS security settings in Cloudflare.
+For enhanced security, prevent wireless guests from accessing other DNS services by creating a firewall rule on the router (if supported). This rule should allow access only to Cloudflare's DNS servers and block all other DNS destinations on UDP/TCP port 53. Additionally, some advanced wireless routers support content filtering. If available, enable options to block DNS over TLS (DoT) or DNS over HTTPS (DoH) to ensure endpoints cannot bypass your configured DNS security settings in Cloudflare.
 
 ![Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. Guest-Security-Block and Guest-Content-Block refer to the specific DNS policies applied to the wireless guest devices.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=935,height=337,format=svg/_astro/figure2.DLXV4yIx.svg "Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations.  `Guest-Security-Block` and `Guest-Content-Block` refer to the specific DNS policies applied to the wireless guest devices.")
 
-Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. \`Guest-Security-Block\` and \`Guest-Content-Block\` refer to the specific DNS policies applied to the wireless guest devices.
+*Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. \`Guest-Security-Block\` and \`Guest-Content-Block\` refer to the specific DNS policies applied to the wireless guest devices.*
 
 ## Secure guest traffic sourced from an enterprise network
 
@@ -75,7 +76,7 @@ Some companies go beyond using consumer or semi professional grade, all in one w
 
 ### Segment internal and guest networks
 
-A common approach to separating internal and guest networks involves the use of distinct SSIDs. The internal corporate SSID and the guest wireless SSID can be linked to separate VLANs (Virtual Local Area Networks) or [Dot1q tags ↗](https://en.wikipedia.org/wiki/IEEE%5F802.1Q), providing virtual segmentation between the networks.
+A common approach to separating internal and guest networks involves the use of distinct SSIDs. The internal corporate SSID and the guest wireless SSID can be linked to separate VLANs (Virtual Local Area Networks) or [Dot1q tags ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q), providing virtual segmentation between the networks.
 
 In this configuration:
 
@@ -87,8 +88,8 @@ In this configuration:
 
 Similar to simpler setups, DNS queries from guest wireless devices should be forwarded to Cloudflare's resolver IPs. You can achieve this by:
 
-* Assigning Cloudflare DNS servers in the DHCP scope for guest devices.
-* Configuring the upstream network device to proxy DNS queries to Cloudflare.
+- Assigning Cloudflare DNS servers in the DHCP scope for guest devices.
+- Configuring the upstream network device to proxy DNS queries to Cloudflare.
 
 Note, you might also be providing guest devices access to some internal resources, and as such you might configure clients to use an internal DNS service. You can also set up this service to forward Internet bound DNS requests to Cloudflare.
 
@@ -99,7 +100,7 @@ To enhance security, configure outbound Internet firewall rules to allow DNS que
 To ensure guest traffic is sourced from a unique public IPv4 address:
 
 1. Create a Port Address Translation (PAT) policy on your firewall or edge device specifically for guest traffic.
-  * PAT (or NAT overload) allows multiple devices on the local network to access the Internet using a single public IP address.
+   - PAT (or NAT overload) allows multiple devices on the local network to access the Internet using a single public IP address.
 2. Define the source address range as the guest subnet in the firewall settings.
 3. Specify the translated source address—a public IPv4 address—to be used for all Internet-bound traffic originating from the guest network.
 
@@ -111,7 +112,7 @@ Once guest network traffic is assigned a unique public IPv4 address, this addres
 
 ![Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=564,format=svg/_astro/figure3.BJGAREAk.svg "Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.")
 
-Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.
+*Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.*
 
 ## Secure guest wireless at locations with a dynamically assigned public IPv4 or IPv6 address
 
@@ -129,8 +130,8 @@ Now that we have covered various options for sending DNS queries to Cloudflare's
 
 To get started, navigate to **DNS Locations** in the Zero Trust dashboard. For detailed, step-by-step instructions, refer to the [**DNS Locations**](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) guide. When using IPv4 or IPv6 endpoint filtering and location matching, you can define a network and subnet mask in CIDR notation to represent your location's source IP addresses. For example:
 
-* If all your wireless networks share a public IP address within the same subnet, you can apply a policy to all locations at once using a single DNS location object.
-* To assign unique policies to specific locations, use a host address ending in /32 to represent each location individually.
+- If all your wireless networks share a public IP address within the same subnet, you can apply a policy to all locations at once using a single DNS location object.
+- To assign unique policies to specific locations, use a host address ending in /32 to represent each location individually.
 
 ### Creating DNS policies
 
@@ -138,9 +139,9 @@ To get started, navigate to firewall policies and select DNS in the Zero Trust d
 
 To keep your policies organized, we recommend using meaningful names that clearly indicate their purpose. For instance, a policy named **Guest-Security-Block** conveys:
 
-* **Guests**: Who the policy applies to.
-* **Security**: The type of content being evaluated.
-* **Block**: The action being taken.
+- **Guests**: Who the policy applies to.
+- **Security**: The type of content being evaluated.
+- **Block**: The action being taken.
 
 Cloudflare provides a range of managed categories which you can use to filter a wide range of different types of threats. For example, adding into the DNS policy the [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories) Malware will prevent a connected device from making a DNS request to any site that Cloudflare has tagged as being known as part of a malware campaign or might be hosting malware. As well as security categories, we also have [content categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) which identify sites such as Cryptocurrency, P2P sharing sites or adult themed sites. Cloudflare also manages a list of [applications](https://developers.cloudflare.com/cloudflare-one/traffic-policies/application-app-types/), so you can filter access to public cloud storage or file sharing sites.
 
@@ -160,11 +161,11 @@ With DNS traffic now routed through Cloudflare and your wireless networks secure
 
 For advanced telemetry and seamless data management, consider enabling **Logpush** in your Cloudflare dashboard. Sending these logs to an external source, most commonly a SIEM platform, brings the following benefits:
 
-* **Centralized Analysis**: Consolidate logs from multiple Cloudflare services with other organizational data in your SIEM for comprehensive visibility.
-* **Enhanced Threat Detection**: Correlate DNS activity with other security events to detect patterns of malicious behavior more effectively.
-* **Compliance and Audit Readiness**: Store DNS logs for long-term retention to meet regulatory compliance requirements or support incident audits.
-* **Real-Time Alerts**: Leverage SIEM integration to trigger automated alerts and responses based on suspicious DNS activity.
-* **Operational Insights**: Gain a deeper understanding of guest browsing behavior to identify performance bottlenecks or optimize content filtering policies.
+- **Centralized Analysis**: Consolidate logs from multiple Cloudflare services with other organizational data in your SIEM for comprehensive visibility.
+- **Enhanced Threat Detection**: Correlate DNS activity with other security events to detect patterns of malicious behavior more effectively.
+- **Compliance and Audit Readiness**: Store DNS logs for long-term retention to meet regulatory compliance requirements or support incident audits.
+- **Real-Time Alerts**: Leverage SIEM integration to trigger automated alerts and responses based on suspicious DNS activity.
+- **Operational Insights**: Gain a deeper understanding of guest browsing behavior to identify performance bottlenecks or optimize content filtering policies.
 
 By leveraging logs, Logpush, and SIEM integrations, you not only enhance visibility into guest Internet activity but also strengthen your organization's overall security posture.
 
@@ -172,20 +173,20 @@ By leveraging logs, Logpush, and SIEM integrations, you not only enhance visibil
 
 Up to this point all methods mentioned have revolved around DNS, mainly due to the fact most traffic over guest Wi-Fi networks will utilize DNS and these configurations do not require any agents or certificates installed on devices, for this reason DNS centric protections are always the recommended starting point when it comes to securing guest Wi-Fi networks. Unfortunately there are ways to bypass DNS based security enforcement like:
 
-* Changing your dns resolver manually
-* Using IP address to reach sites (potentially saving IP to fully qualified domain name mappings via host file)
-* Using non sanctioned VPN clients
+- Changing your dns resolver manually
+- Using IP address to reach sites (potentially saving IP to fully qualified domain name mappings via host file)
+- Using non sanctioned VPN clients
 
 For these reasons you should also consider applying security in layers and add network centric enforcement to complement the protections provided via DNS.
 
 ![Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=607,format=svg/_astro/figure4.NuRfhipz.svg "Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.")
 
-Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.
+*Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.*
 
 To provide network level filtering, Cloudflare must be in the traffic path for more than just the DNS request. This is achieved by routing Internet-bound traffic over an [IPsec ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/) tunnel to Cloudflare. Cloudflare's [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) service allows third-party devices to establish IPsec or GRE tunnels to the Cloudflare network. It is also possible to just deploy our [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), a pre-configured lightweight network appliance that automatically creates the tunnel back to Cloudflare and can be managed remotely. Once traffic reaches Cloudflare multiple security controls can be overlaid such as:
 
-* Cloud based network firewall ([Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/))
-* Secure web gateway ([Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/))
+- Cloud based network firewall ([Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/))
+- Secure web gateway ([Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/))
 
 Below is the high level traffic flow that correlates to the above diagram:
 
@@ -202,9 +203,9 @@ If you are interested in learning more about Gateway, or other aspects of the Cl
 
 ## Related Resources
 
-* [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-* [Cloudflare One Appliance deployment options · Cloudflare Reference Architecture docs](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/)
-* [DNS policies - Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
+- [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+- [Cloudflare One Appliance deployment options · Cloudflare Reference Architecture docs](https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/)
+- [DNS policies - Cloudflare Zero Trust](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)
 
 Was this helpful?
 

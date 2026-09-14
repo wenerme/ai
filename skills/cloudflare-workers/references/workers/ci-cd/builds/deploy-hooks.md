@@ -12,21 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy Hooks
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/deploy-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, Workers Builds triggers a build when you push a commit to your [connected Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/). Deploy Hooks provide another way to trigger a build. Each hook is a unique URL that triggers a manual build for one branch when it receives an HTTP POST request. Use Deploy Hooks to connect Workers Builds with workflows such as:
 
-* Rebuild automatically when content changes in a headless CMS
-* Build on a schedule using an external cron service
-* Trigger deployments from custom CI/CD pipelines based on specific conditions
+- Rebuild automatically when content changes in a headless CMS
+- Build on a schedule using an external cron service
+- Trigger deployments from custom CI/CD pipelines based on specific conditions
 
 ## Create a Deploy Hook
 
 Before creating a Deploy Hook, ensure your Worker is [connected to a Git repository](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/).
 
-1. Go to **Workers & Pages** and select your Worker.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Go to **Settings** \> **Builds** \> **Deploy Hooks**.
+1. Go to **Workers & Pages** and select your Worker. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Go to **Settings** > **Builds** > **Deploy Hooks**.
 3. Enter a **name** and select the **branch** to build.
 4. Select **Create** and copy the generated URL.
 
@@ -65,8 +64,8 @@ The `build_uuid` in the response can be used to [monitor build status and retrie
 
 After you trigger a Deploy Hook, you can verify it from the dashboard:
 
-* In the **Deploy Hooks** list, the hook shows when it was last triggered.
-* In your Worker's build history, the **Triggered by** column identifies builds started by a Deploy Hook using the hook name and a `deploy hook` label.
+- In the **Deploy Hooks** list, the hook shows when it was last triggered.
+- In your Worker's build history, the **Triggered by** column identifies builds started by a Deploy Hook using the hook name and a `deploy hook` label.
 
 If you need to inspect these builds programmatically, use [List builds for a Worker](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#list-builds-for-a-worker) in the Builds API reference. Hook-triggered builds are recorded with `build_trigger_source: "deploy_hook"`.
 
@@ -184,13 +183,13 @@ Caution
 
 Deploy Hook URLs do not require a separate authorization header. Anyone with access to the URL can trigger builds for your Worker, so store them like other sensitive credentials.
 
-* Store Deploy Hook URLs in environment variables or a secrets manager, never in source code or public configuration files.
-* Restrict access to the URL to only the systems that need it.
-* If a URL is compromised or you suspect unauthorized use, delete the Deploy Hook immediately and create a new one. The old URL stops working as soon as it is deleted.
+- Store Deploy Hook URLs in environment variables or a secrets manager, never in source code or public configuration files.
+- Restrict access to the URL to only the systems that need it.
+- If a URL is compromised or you suspect unauthorized use, delete the Deploy Hook immediately and create a new one. The old URL stops working as soon as it is deleted.
 
 ### Using the Builds API for authenticated triggers
 
-If your external system supports custom headers, you can call the [manual build endpoint](https://developers.cloudflare.com/api/resources/workers%5Fbuilds/subresources/triggers/methods/create%5Fbuild) with an API token in the `Authorization` header instead. This gives you token-based authentication and the ability to choose the branch per request. For a step-by-step walkthrough, see [Trigger a manual build](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#trigger-a-manual-build).
+If your external system supports custom headers, you can call the [manual build endpoint](https://developers.cloudflare.com/api/resources/workers_builds/subresources/triggers/methods/create_build) with an API token in the `Authorization` header instead. This gives you token-based authentication and the ability to choose the branch per request. For a step-by-step walkthrough, see [Trigger a manual build](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#trigger-a-manual-build).
 
 ## Limits
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security Insights
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Insights provides you with a list of insights, covering different areas of your Cloudflare environment, such as: Cloudflare account settings, DNS record configurations, SSL/TLS certificates configurations, Cloudflare Access configurations and Cloudflare WAF configurations.
 
@@ -28,10 +28,10 @@ The list of insights may include potential security threats, vulnerabilities, co
 
 Each insight that is discovered by the Security Insights scan will have the following properties assigned to them:
 
-* **Severity**: The security risk of the insight. The severity values are: _Low_, _Moderate_, and _Critical_. The higher the severity level, the higher the risk of threat to your environment.
-* **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
-* **Risk**: A description of the risk associated with not addressing the issue.
-* **Type**: The insight category.
+- **Severity**: The security risk of the insight. The severity values are: *Low*, *Moderate*, and *Critical*. The higher the severity level, the higher the risk of threat to your environment.
+- **Insight**: The insight description detailing the current configuration that is causing the risk or vulnerability.
+- **Risk**: A description of the risk associated with not addressing the issue.
+- **Type**: The insight category.
 
 Was this helpful?
 

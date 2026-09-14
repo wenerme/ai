@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Detection IDs
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Detection IDs are static rules that detect predictable bot behavior with no overlap with human traffic. Each ID maps to a specific [detection method](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/) such as heuristics, verified bot detections, or anomaly detections. For example, a detection ID can identify when a client sends headers in a different order than what its claimed browser would use.
 
@@ -24,10 +24,10 @@ A request can trigger multiple detection IDs.
 
 You can use `cf.bot_management.detection_ids` fields in tools such as:
 
-* [Custom rules](https://developers.cloudflare.com/waf/custom-rules/)
-* [Advanced Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)
-* [Transform Rules](https://developers.cloudflare.com/rules/transform/)
-* [Workers](https://developers.cloudflare.com/workers/) (as `request.cf.botManagement.detectionIds`)
+- [Custom rules](https://developers.cloudflare.com/waf/custom-rules/)
+- [Advanced Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/)
+- [Transform Rules](https://developers.cloudflare.com/rules/transform/)
+- [Workers](https://developers.cloudflare.com/workers/) (as `request.cf.botManagement.detectionIds`)
 
 Bot Detection IDs and tags are also available in [Bot Analytics](https://developers.cloudflare.com/bots/bot-analytics/) and [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
 
@@ -51,11 +51,10 @@ Detection tags are available in Security Analytics, but not in the Security Even
 
 ## Create or edit an expression
 
-1. In the Cloudflare dashboard, go to the **Security Analytics** page.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+1. In the Cloudflare dashboard, go to the **Security Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Apply filters and select **Create custom security rule** to create a custom rule based on your filters.
-Alternatively, if you have already created a custom rule, you can go to the existing rule in **Security rules** and edit the expression based on your filters.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+
+   Alternatively, if you have already created a custom rule, you can go to the existing rule in **Security rules** and edit the expression based on your filters. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 3. Use the `cf.bot_management.detection_ids` field in the rule expression.
 4. Select **Deploy**.
 
@@ -88,8 +87,7 @@ and not any(cf.bot_management.detection_ids[*] in {3355446 12577893})
 
 You can create or edit existing Logpush jobs to include the new Bot Detection IDs field which will provide an array of IDs for each request that has heuristics match on it. The `BotDetectionIDs` field is available as part of the HTTP Requests dataset and you can add it to new or existing jobs via the Logpush API or on the Cloudflare dashboard. This is the primary method to discover Detection IDs.
 
-1. In the Cloudflare dashboard, go to the **Logpush** page.
-[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+1. In the Cloudflare dashboard, go to the **Logpush** page. [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush Job**.
 3. Select and enter the destination information.
 4. Select **HTTP Requests** as the dataset.

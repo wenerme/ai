@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers everything you need to configure agents for local development and production deployment, including Wrangler configuration file setup, type generation, environment variables, and the Cloudflare dashboard.
 
@@ -20,17 +20,17 @@ This guide covers everything you need to configure agents for local development 
 
 The typical file structure for an Agent project created from `npm create cloudflare@latest agents-starter -- --template cloudflare/agents-starter` follows:
 
-* src/
-  * index.ts your Agent definition
-* public/
-  * index.html
-* test/
-  * index.spec.ts your tests
-* package.json
-* tsconfig.json
-* vitest.config.mts
-* worker-configuration.d.ts
-* wrangler.jsonc your Workers and Agent configuration
+- src/
+  - index.ts your Agent definition
+- public/
+  - index.html
+- test/
+  - index.spec.ts your tests
+- package.json
+- tsconfig.json
+- vitest.config.mts
+- worker-configuration.d.ts
+- wrangler.jsonc your Workers and Agent configuration
 
 ## Wrangler configuration file
 
@@ -42,7 +42,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 	"name": "my-agent-app",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Static assets (optional)
@@ -94,7 +94,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 name = "my-agent-app"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -165,10 +165,10 @@ name = "Counter"
 class_name = "Counter"
 ```
 
-| Field       | Description                                             |
-| ----------- | ------------------------------------------------------- |
-| name        | The property name on env. Use this in code: env.Counter |
-| class\_name | Must match the exported class name exactly              |
+| Field | Description |
+| --- | --- |
+| `name` | The property name on `env`. Use this in code: `env.Counter` |
+| `class_name` | Must match the exported class name exactly |
 
 When \`name\` and \`class\_name\` differ
 
@@ -216,10 +216,10 @@ type = "durable-object"
 storage = "sqlite"
 ```
 
-| Field   | Description                                                     |
-| ------- | --------------------------------------------------------------- |
-| type    | The kind of export. Always "durable-object" for an Agent.       |
-| storage | The storage backend. Use "sqlite" for new Agents (recommended). |
+| Field | Description |
+| --- | --- |
+| `type` | The kind of export. Always `"durable-object"` for an Agent. |
+| `storage` | The storage backend. Use `"sqlite"` for new Agents (recommended). |
 
 For details on renaming, deleting, or transferring Agent classes, refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Existing Workers using the legacy `migrations` array continue to work — refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
@@ -371,6 +371,8 @@ export default defineConfig({
 	plugins: [agents(), react(), cloudflare()],
 });
 ```
+
+*vite.config.tsts*
 
 ```ts
 import { cloudflare } from "@cloudflare/vite-plugin";
@@ -620,12 +622,12 @@ npx wrangler dev
 
 Durable Object state is persisted locally in `.wrangler/state/`:
 
-* .wrangler/
-  * state/
-    * v3/
-      * d1/
-        * miniflare-D1DatabaseObject/
-          * ... (SQLite files)
+- .wrangler/
+  - state/
+    - v3/
+      - d1/
+        - miniflare-D1DatabaseObject/
+          - ... (SQLite files)
 
 ### Clearing local state
 
@@ -659,22 +661,22 @@ sqlite3 .wrangler/state/v3/d1/miniflare-D1DatabaseObject/*.sqlite
 
 When you deploy, Cloudflare automatically creates:
 
-* **Worker** \- Your deployed code
-* **Durable Object namespaces** \- One per agent class
-* **SQLite storage** \- Attached to each namespace
+- **Worker** - Your deployed code
+- **Durable Object namespaces** - One per agent class
+- **SQLite storage** - Attached to each namespace
 
 ### Viewing Durable Objects
 
 Log in to the Cloudflare dashboard, then go to Durable Objects.
 
-[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 
 Here you can:
 
-* See all Durable Object namespaces
-* View individual object instances
-* Inspect storage (keys and values)
-* Delete objects
+- See all Durable Object namespaces
+- View individual object instances
+- Inspect storage (keys and values)
+- Delete objects
 
 ### Real-time logs
 
@@ -692,9 +694,9 @@ Or in the dashboard:
 
 Filter by:
 
-* Status (success, error)
-* Search text
-* Sampling rate
+- Status (success, error)
+- Search text
+- Sampling rate
 
 ## Production deployment
 
@@ -782,7 +784,7 @@ Define environments in the Wrangler configuration file:
 
 	// Base configuration (shared)
 	// Set this to today's date
-	"compatibility_date": "2026-08-25",
+	"compatibility_date": "2026-09-14",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
@@ -819,7 +821,7 @@ Define environments in the Wrangler configuration file:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-08-25"
+compatibility_date = "2026-09-14"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -898,7 +900,7 @@ script_name = "my-agent-staging"
 
 ## Agent class lifecycle
 
-Each Agent maps to a Durable Object class. You manage the lifecycle of those classes (create, rename, delete, transfer) through the [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field of your Wrangler configuration file.
+Each Agent maps to a Durable Object class. You manage the lifecycle of those classes (create, rename, delete, transfer) through the [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field of your Wrangler configuration file.
 
 ### Adding a new agent
 
@@ -986,7 +988,7 @@ This permanently deletes all data for that class.
 3. **Test locally first.** Lifecycle changes apply on `wrangler deploy`.
 4. **Back up production data** before renaming or deleting.
 
-Existing Workers using the legacy `migrations` array continue to work — refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) for the legacy reference, or [Migrate from the legacy migrations flow](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow) to move to `exports`.
+Existing Workers using the legacy `migrations` array continue to work — refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) for the legacy reference, or [Migrate from the legacy `migrations` flow](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/#migrate-from-the-legacy-migrations-flow) to move to `exports`.
 
 ## Troubleshooting
 
@@ -1027,7 +1029,7 @@ cat .env
 
 ### Migration tag conflict (legacy `migrations` only)
 
-If your Worker uses the legacy [migrations](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array, each entry must have a unique `tag`:
+If your Worker uses the legacy [`migrations`](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/) array, each entry must have a unique `tag`:
 
 ```jsonc
 {
@@ -1069,7 +1071,7 @@ tag = "v2"
 new_sqlite_classes = [ "B" ]
 ```
 
-Consider converting to the declarative [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field.
+Consider converting to the declarative [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/) field.
 
 ## Next steps
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tenant structure
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/structure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tenant/structure/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare helps Channel and Alliance partners manage their and their customers' accounts through a Tenant structure.
 
@@ -34,20 +34,17 @@ If needed, you can also [create additional **Super administrators**](https://dev
 
 This Tenant structure gives your account streamlined administrative access to customer:
 
-* Accounts[1](#user-content-fn-1)
-* Users[2](#user-content-fn-2)
-* Resources[3](#user-content-fn-3)
+- Accounts<sup>[1](#user-content-fn-1)</sup>
+- Users<sup>[2](#user-content-fn-2)</sup>
+- Resources<sup>[3](#user-content-fn-3)</sup>
 
 At the same time, this structure keeps your customers' data and settings separate from each other.
 
 ## Footnotes
 
-1. An entity that contains various settings, users, and resources (zones, Zero Trust applications, Workers).
-[↩](#user-content-fnref-1)
-2. A member of a Cloudflare account with their own user profile and [an associated role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) that specifies their privileges within that account.
-[↩](#user-content-fnref-2)
-3. A resource is an entity owned by an account, which could be a zone/domain, a Workers instance, or a Zero Trust application.
-[↩](#user-content-fnref-3)
+1. An entity that contains various settings, users, and resources (zones, Zero Trust applications, Workers). [↩](#user-content-fnref-1)
+2. A member of a Cloudflare account with their own user profile and [an associated role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) that specifies their privileges within that account. [↩](#user-content-fnref-2)
+3. A resource is an entity owned by an account, which could be a zone/domain, a Workers instance, or a Zero Trust application. [↩](#user-content-fnref-3)
 
 Was this helpful?
 

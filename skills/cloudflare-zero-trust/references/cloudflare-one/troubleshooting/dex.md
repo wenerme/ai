@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DEX
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/dex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review common troubleshooting scenarios for Digital Experience Monitoring (DEX).
 
@@ -22,9 +22,9 @@ Review common troubleshooting scenarios for Digital Experience Monitoring (DEX).
 
 If you do not see DEX data for specific users in your organization, verify the following:
 
-* **Client version**: Ensure the users are running a version of the Cloudflare One Client that supports DEX.
-* **DEX enabled**: Confirm that DEX is enabled for the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) assigned to those users.
-* **Traffic routing**: DEX requires that traffic to Cloudflare's orchestration API is not blocked by local firewalls or SSL-inspecting proxies.
+- **Client version**: Ensure the users are running a version of the Cloudflare One Client that supports DEX.
+- **DEX enabled**: Confirm that DEX is enabled for the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) assigned to those users.
+- **Traffic routing**: DEX requires that traffic to Cloudflare's orchestration API is not blocked by local firewalls or SSL-inspecting proxies.
 
 ### Fleet status not updating
 
@@ -36,9 +36,9 @@ The Fleet status dashboard can take several minutes to reflect changes in device
 
 Remote captures require the Cloudflare One Client to be connected and able to communicate with the Cloudflare control plane. If a capture fails to start:
 
-* Verify the device status in the Zero Trust dashboard.
-* Ensure the device has sufficient disk space to store the capture files before upload.
-* Check for any local firewall rules that might be blocking the capture command.
+- Verify the device status in the Zero Trust dashboard.
+- Ensure the device has sufficient disk space to store the capture files before upload.
+- Check for any local firewall rules that might be blocking the capture command.
 
 ---
 

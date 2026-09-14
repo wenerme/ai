@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits and formats
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/get-started/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/get-started/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This section covers limits and supported formats for Images.
 
@@ -28,26 +28,26 @@ On an Enterprise plan, you can reach out to our account team to ensure that the 
 
 The following limits apply when transforming a remote image stored outside of Images:
 
-| Attribute                                | Limit                              |
-| ---------------------------------------- | ---------------------------------- |
-| Image file size                          | 100 MB                             |
-| Image area, excluding animated GIFs      | 100 MP (e.g. 10,000x10,000 pixels) |
-| Image area for animated GIFs             | 100 MP\*                           |
-| Image dimension, excluding WebP and AVIF | 12,000 pixels                      |
-| Image dimension, AVIF                    | 1,200 pixels                       |
+| Attribute | Limit |
+| --- | --- |
+| Image file size | 100 MB |
+| Image area, excluding animated GIFs | 100 MP (e.g. 10,000x10,000 pixels) |
+| Image area for animated GIFs | 100 MP\* |
+| Image dimension, excluding WebP and AVIF | 12,000 pixels |
+| Image dimension, AVIF | 1,200 pixels |
 
 ### Hosted images
 
 The following limits apply when uploading to your Images storage:
 
-| Attribute                                | Limit                              |
-| ---------------------------------------- | ---------------------------------- |
-| Image file size                          | 10 MB                              |
-| Image area, excluding animated GIFs      | 100 MP (e.g. 10,000x10,000 pixels) |
-| Image area, animated GIFs                | 100 MP\*                           |
-| Image dimension, excluding WebP and AVIF | 12,000 pixels                      |
-| Image dimension, AVIF                    | 1,200 pixels                       |
-| Image metadata                           | 1024 bytes                         |
+| Attribute | Limit |
+| --- | --- |
+| Image file size | 10 MB |
+| Image area, excluding animated GIFs | 100 MP (e.g. 10,000x10,000 pixels) |
+| Image area, animated GIFs | 100 MP\* |
+| Image dimension, excluding WebP and AVIF | 12,000 pixels |
+| Image dimension, AVIF | 1,200 pixels |
+| Image metadata | 1024 bytes |
 
 ### Limits for animated images
 
@@ -69,13 +69,13 @@ When optimizing with the [Images binding](https://developers.cloudflare.com/imag
 
 Images supports a wide range of input formats for both remote and hosted images:
 
-* PNG
-* JPEG
-* GIF (including animations)
-* WebP (including animations)
-* SVG
-* AVIF\*
-* HEIC
+- PNG
+- JPEG
+- GIF (including animations)
+- WebP (including animations)
+- SVG
+- AVIF\*
+- HEIC
 
 \*Available on an Enterprise plan.
 
@@ -83,12 +83,12 @@ Images supports a wide range of input formats for both remote and hosted images:
 
 You can serve images in the following output formats:
 
-* PNG
-* JPEG
-* GIF (including animations)
-* WebP (including animations)
-* SVG
-* AVIF
+- PNG
+- JPEG
+- GIF (including animations)
+- WebP (including animations)
+- SVG
+- AVIF
 
 When detecting the most optimal output format for the requesting browser, Cloudflare balances the time to generate an image with the time to serve the image to the browser.
 
@@ -98,12 +98,12 @@ In particular, AVIF encoding can be an order of magnitude slower than encoding t
 
 When transcoding to JPEG, Cloudflare generates images in an interlaced progressive JPEG format.
 
-You can use the [format](https://developers.cloudflare.com/images/optimization/features/#format) parameter to specify whether progressive or baseline JPEG should be used.
+You can use the [`format`](https://developers.cloudflare.com/images/optimization/features/#format) parameter to specify whether progressive or baseline JPEG should be used.
 
 However, we will always fall back to the baseline JPEG format — even when progressive JPEG is specified — if either:
 
-* The output image area dimensions are less than 50x50.
-* The output image area dimensions are greater than 3000x3000.
+- The output image area dimensions are less than 50x50.
+- The output image area dimensions are greater than 3000x3000.
 
 ### SVG
 
@@ -115,13 +115,13 @@ If you store in Images, then you can use any predefined variant as a placeholder
 
 Similarly, you can use Images to serve a sanitized SVG that is stored in your own origin, like in [R2](https://developers.cloudflare.com/r2/).
 
-When SVG files are served, they are sanitized using [svg-hush ↗](https://github.com/cloudflare/svg-hush), an open-source tool developed by Cloudflare to make SVGs as safe as possible. It streams the files without buffering, enabling us to quickly filter them on the fly. SVG files are XML documents and can contain links or Javascript features that may pose a security concern.
+When SVG files are served, they are sanitized using [`svg-hush` ↗](https://github.com/cloudflare/svg-hush), an open-source tool developed by Cloudflare to make SVGs as safe as possible. It streams the files without buffering, enabling us to quickly filter them on the fly. SVG files are XML documents and can contain links or Javascript features that may pose a security concern.
 
 The `svg-hush` tool filters SVGs and removes potentially risky features, such as:
 
-* **Scripting.** We prevent SVGs from being used for cross-site scripting attacks. Although browsers do not allow scripts in `<img>` tags, they do allow scripting when SVGs are opened directly as a top-level document.
-* **Hyperlinks to other documents.** Removing hyperlinking makes SVG files less attractive for SEO spam and phishing.
-* **References to cross-origin resources.** We stop third parties from tracking who is viewing the image.
+- **Scripting.** We prevent SVGs from being used for cross-site scripting attacks. Although browsers do not allow scripts in `<img>` tags, they do allow scripting when SVGs are opened directly as a top-level document.
+- **Hyperlinks to other documents.** Removing hyperlinking makes SVG files less attractive for SEO spam and phishing.
+- **References to cross-origin resources.** We stop third parties from tracking who is viewing the image.
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure Virtual Appliance
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-virtual-appliance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Virtual Appliance is a virtual device alternative to the hardware based Cloudflare One Appliance. These two versions of Cloudflare One Appliance are identical otherwise.
 
@@ -24,13 +24,13 @@ In this page you will find instructions on how to configure Cloudflare One Appli
 
 Before you can install Virtual Appliance, you need an Enterprise account with Cloudflare WAN. Additionally, you need to have a VMware or Proxmox host with sufficient compute, memory, and storage to run the virtual machine with Virtual Appliance. This includes:
 
-* Intel x86 CPU architecture
-* ESXi hypervisor 7.0U1 or higher
-* 4 virtual CPUs per virtual appliance (We recommend deployment with a 1:1 virtual CPU to physical core allocation to avoid CPU over contention which will cause packet loss.)
-* 8 GB of RAM per virtual appliance
-* 8 GB of disk per virtual appliance
-* One vSwitch port group or VLAN with access to the Internet (for example, through a WAN)
-* One or more vSwitch port group or VLAN that will be the internal LAN
+- Intel x86 CPU architecture
+- ESXi hypervisor 7.0U1 or higher
+- 4 virtual CPUs per virtual appliance (We recommend deployment with a 1:1 virtual CPU to physical core allocation to avoid CPU over contention which will cause packet loss.)
+- 8 GB of RAM per virtual appliance
+- 8 GB of disk per virtual appliance
+- One vSwitch port group or VLAN with access to the Internet (for example, through a WAN)
+- One or more vSwitch port group or VLAN that will be the internal LAN
 
 For details on installing ESXi and configuring a virtual machine, refer to [VMware's documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-B2F01BF5-078A-4C7E-B505-5DFFED0B8C38.html).
 
@@ -52,8 +52,8 @@ You must decide the type of configuration you want for your site from the beginn
 
 ### Do you need a high availability configuration?
 
-* If you need a high availability configuration for your premises, refer to [About high availability configurations](#about-high-availability-configurations) for details and learn how to configure your Virtual Appliance device in this mode.
-* If you do not need a high availability configuration for you premises, check if you need a [DHCP or a static IP setup](#decide-on-dhcp-vs-static-ip-connections) before proceeding to [Set up Cloudflare dashboard](#set-up-cloudflare-dashboard).
+- If you need a high availability configuration for your premises, refer to [About high availability configurations](#about-high-availability-configurations) for details and learn how to configure your Virtual Appliance device in this mode.
+- If you do not need a high availability configuration for you premises, check if you need a [DHCP or a static IP setup](#decide-on-dhcp-vs-static-ip-connections) before proceeding to [Set up Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
 Caution
 
@@ -73,37 +73,37 @@ Virtual Appliance uses a DHCP connection at first boot to download your settings
 
 Select the appropriate tab to configure Virtual Appliance on VMware ESXi or Proxmox Virtual Environment.
 
-**1\. Obtain the VMware image**
+**1. Obtain the VMware image**
 
-Download the Virtual Appliance OVA image from [https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova ↗](https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova). You can also download it from the dashboard when you register a virtual appliance, in the **Add an appliance** \> **Virtual appliance** step. The OVA image includes the files required to install and configure the virtual machine (VM) for Virtual Appliance with the appropriate settings. For details, refer to [VMware VMs documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm%5Fadmin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
+Download the Virtual Appliance OVA image from [https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova ↗](https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova). You can also download it from the dashboard when you register a virtual appliance, in the **Add an appliance** > **Virtual appliance** step. The OVA image includes the files required to install and configure the virtual machine (VM) for Virtual Appliance with the appropriate settings. For details, refer to [VMware VMs documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
 
 This image can be deployed multiple times to create several instances of a Virtual Appliance, in different locations or on the same ESXi host.
 
 You consume one license key for each instance created. Generate a license key for each instance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key). For example, to deploy 10 Virtual Appliances, generate 10 license keys.
 
-**2\. Deploy the Virtual Appliance on VMware**
+**2. Deploy the Virtual Appliance on VMware**
 
 The following instructions assume you already have VMware ESXi hypervisor installed with sufficient resources. For details, refer to [Prerequisites](#prerequisites).
 
-1. When setting up your VMware ESXi, you need to create port groups for Virtual Appliance. Go to **Networking** \> **Port groups**, and prepare your vSwitch port groups and/or VLANs for your desired network topology. For example, a simple deployment typically has:
-  * A WAN port group where the Virtual Appliance will get an IP address (static or DHCP) that has access to the Internet.
-  * A LAN port group, where the Virtual Appliance will act as default router, and possibly DHCP server.
-  * A null, or unused, port group for allocating unused virtual interfaces in the Virtual Appliance. You can, for example, create a null port group with the name of `Null port group`, and a **VLAN ID** of `999`.
+1. When setting up your VMware ESXi, you need to create port groups for Virtual Appliance. Go to **Networking** > **Port groups**, and prepare your vSwitch port groups and/or VLANs for your desired network topology. For example, a simple deployment typically has:
+   - A WAN port group where the Virtual Appliance will get an IP address (static or DHCP) that has access to the Internet.
+   - A LAN port group, where the Virtual Appliance will act as default router, and possibly DHCP server.
+   - A null, or unused, port group for allocating unused virtual interfaces in the Virtual Appliance. You can, for example, create a null port group with the name of `Null port group`, and a **VLAN ID** of `999`.
 
 VLAN tagging
 
-Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE%5F802.1Q).
+Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q).
 
 Use VLAN ID `0` when:
 
-* Connected to a Port Group or Distributed Port Group that is associated with a specific VLAN.
-* Connected to a Port Group or Distributed Port Group that is configured as a trunk that requires untagged packets.
+- Connected to a Port Group or Distributed Port Group that is associated with a specific VLAN.
+- Connected to a Port Group or Distributed Port Group that is configured as a trunk that requires untagged packets.
 
-You can also configure subinterfaces on the Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`\-`4094`).
+You can also configure subinterfaces on the Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`-`4094`).
 
 Refer to [VMware's documentation ↗](https://kb.vmware.com/s/article/1003825) for more information.
 
-1. Extract the files in the OVA image you downloaded. For example:
+2. Extract the files in the OVA image you downloaded. For example:
 
 ```sh
 tar -xvf mconn.ova
@@ -111,34 +111,32 @@ tar -xvf mconn.ova
 
 Take note of the folder where you are extracting the files to, as you will need to refer to that folder when creating the VM.
 
-1. Go to **Virtual Machines** \> **Create/Register VM** wizard to start deploying the Virtual Appliance.
-2. Select **Deploy a virtual machine from an OVF or OVA file** \> **Next**.
-3. Choose a descriptive name for your virtual machine.
-4. Upload the files you have extracted from the OVA image. These include `mconn.ovf`, `mconn.nvram`, and `mconn.vmdk`.
-5. Select where you want to save the files extracted from the OVA image > **Next**.
-6. In **Networking mappings**, select assignments for your desired topology according to the port groups you set up previously:
-
-  1. For example, map `eno1` port to `VM Network` to create your WAN, and `eno2` to `LAN0` to act as your LAN port.
-  2. Allocate any unused ports to the `null` port group.
-  3. Take note of your configuration. You will need this information to configure your network in the Cloudflare dashboard.
-7. In **Disk provisioning**, select **Thin**.
-8. Before completing the deployment wizard, disable **Power on automatically**. This is important so that you can configure the license key prior to boot.
-9. Configure the virtual machine with the license key you generated:
-
-  1. Select the Virtual Appliance's VM > **Settings**.
-  2. Go to **VM Options** \> **Advanced** \> **Edit Configuration**.
-  3. Select **Add parameter** to add your license key. Scroll down to the last entry (this is where VMware adds the new parameter), and add the following two new entries:
-    * **Key**: `guestinfo.cloudflare.identity`
-    * **Value** `<YOUR_LICENSE_KEY>`
+3. Go to **Virtual Machines** > **Create/Register VM** wizard to start deploying the Virtual Appliance.
+4. Select **Deploy a virtual machine from an OVF or OVA file** > **Next**.
+5. Choose a descriptive name for your virtual machine.
+6. Upload the files you have extracted from the OVA image. These include `mconn.ovf`, `mconn.nvram`, and `mconn.vmdk`.
+7. Select where you want to save the files extracted from the OVA image > **Next**.
+8. In **Networking mappings**, select assignments for your desired topology according to the port groups you set up previously:
+   1. For example, map `eno1` port to `VM Network` to create your WAN, and `eno2` to `LAN0` to act as your LAN port.
+   2. Allocate any unused ports to the `null` port group.
+   3. Take note of your configuration. You will need this information to configure your network in the Cloudflare dashboard.
+9. In **Disk provisioning**, select **Thin**.
+10. Before completing the deployment wizard, disable **Power on automatically**. This is important so that you can configure the license key prior to boot.
+11. Configure the virtual machine with the license key you generated:
+    1. Select the Virtual Appliance's VM > **Settings**.
+    2. Go to **VM Options** > **Advanced** > **Edit Configuration**.
+    3. Select **Add parameter** to add your license key. Scroll down to the last entry (this is where VMware adds the new parameter), and add the following two new entries:
+       - **Key**: `guestinfo.cloudflare.identity`
+       - **Value** `<YOUR_LICENSE_KEY>`
 
 Note
 
 You cannot use the same license key twice, or reuse a key once the virtual machine has been registered with Cloudflare. Generate a new key for every new Virtual Appliance from the [Connectors page](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#register-a-virtual-appliance-and-generate-a-license-key).
 
-1. Select **Save** to finish configuring your Virtual Appliance.
-2. Continue setup in your [Cloudflare dashboard.](#set-up-cloudflare-dashboard)
+12. Select **Save** to finish configuring your Virtual Appliance.
+13. Continue setup in your [Cloudflare dashboard.](#set-up-cloudflare-dashboard)
 
-**1\. Obtain the Virtual Appliance script**
+**1. Obtain the Virtual Appliance script**
 
 Download the Virtual Appliance helper script for Proxmox to your Proxmox server. The script sets up and configures a Proxmox virtual machine with the appropriate settings for Virtual Appliance. For details on system requirements, refer to [Prerequisites](#prerequisites).
 
@@ -148,7 +146,7 @@ The script can be deployed multiple times to create several instances of a Virtu
 curl -OL https://assets.magic-wan-connector.cloudflare.com/stable/proxmox_mconn_vm.sh
 ```
 
-**2\. Deploy the Virtual Appliance on Proxmox**
+**2. Deploy the Virtual Appliance on Proxmox**
 
 The following instructions assume you already have Proxmox Virtual Environment installed with sufficient resources. For details, refer to [Prerequisites](#prerequisites).
 
@@ -158,8 +156,8 @@ The following instructions assume you already have Proxmox Virtual Environment i
 bash ./proxmox_mconn_vm.sh
 ```
 
-1. You will be prompted to create a new Virtual Appliance. Select **yes** to proceed.
-2. Enter your license key.
+2. You will be prompted to create a new Virtual Appliance. Select **yes** to proceed.
+3. Enter your license key.
 
 Note
 
@@ -167,27 +165,27 @@ You cannot use the same license key twice, or reuse a key once the virtual machi
 
 The script applies default settings and configures the virtual machine for Virtual Appliance. After the script finishes, adjust the VM for your environment. The new VM has all network interface cards (NICs) on the same bridge, and only the first NIC has an active link.
 
-1. In the **Hardware settings** for the new VM, select the NIC you want to use with Virtual Appliance.
-2. Select the network bridge that corresponds to the physical NIC on your host machine. This bridge allows the network adapter in the virtual machine to communicate through the NIC in the host, as if it were directly connected to the physical network.
-3. (Optional) Configure your VLAN setting if needed.
+4. In the **Hardware settings** for the new VM, select the NIC you want to use with Virtual Appliance.
+5. Select the network bridge that corresponds to the physical NIC on your host machine. This bridge allows the network adapter in the virtual machine to communicate through the NIC in the host, as if it were directly connected to the physical network.
+6. (Optional) Configure your VLAN setting if needed.
 
 VLAN tagging
 
-Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE%5F802.1Q).
+Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q).
 
 Use VLAN ID `0` when:
 
-* Connected to a Port Group or Distributed Port Group that is associated with a specific VLAN.
-* Connected to a Port Group or Distributed Port Group that is configured as a trunk that requires untagged packets.
+- Connected to a Port Group or Distributed Port Group that is associated with a specific VLAN.
+- Connected to a Port Group or Distributed Port Group that is configured as a trunk that requires untagged packets.
 
-You can also configure subinterfaces on the Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`\-`4094`).
+You can also configure subinterfaces on the Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`-`4094`).
 
 Refer to [Proxmox documentation ↗](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started) for more information.
 
-1. Make sure the hardware settings match the minimum requirements for running Virtual Appliance. Make changes to the RAM and CPU if needed.
-2. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
+7. Make sure the hardware settings match the minimum requirements for running Virtual Appliance. Make changes to the RAM and CPU if needed.
+8. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
-**1\. Obtain the Virtual Appliance script**
+**1. Obtain the Virtual Appliance script**
 
 Download the Virtual Appliance helper script for libvirt/KVM to your host. The script deploys the virtual machine with the appropriate settings for Virtual Appliance. For details on system requirements, refer to [Prerequisites](#prerequisites).
 
@@ -199,7 +197,7 @@ The script can be deployed multiple times to create several instances of a Virtu
 curl -OL https://assets.magic-wan-connector.cloudflare.com/stable/libvirt_mconn_vm.sh
 ```
 
-**2\. Deploy the Virtual Appliance on libvirt/KVM**
+**2. Deploy the Virtual Appliance on libvirt/KVM**
 
 The following instructions assume you already have libvirt installed with sufficient resources. For details, refer to [Prerequisites](#prerequisites).
 
@@ -209,10 +207,10 @@ The following instructions assume you already have libvirt installed with suffic
 sudo bash ./libvirt_mconn_vm.sh
 ```
 
-1. When prompted, enter a name for the VM. This name is used for the VM definition, the disk name, and the nvram file name. If the name already exists, the script exits with an error and you must use a different name.
-2. Select the storage pool for the VM disk.
-3. Choose whether to enable the graphics console in addition to the serial console.
-4. Enter your license key.
+2. When prompted, enter a name for the VM. This name is used for the VM definition, the disk name, and the nvram file name. If the name already exists, the script exits with an error and you must use a different name.
+3. Select the storage pool for the VM disk.
+4. Choose whether to enable the graphics console in addition to the serial console.
+5. Enter your license key.
 
 Note
 
@@ -220,8 +218,8 @@ You cannot use the same license key twice, or reuse a key once the virtual machi
 
 The script deploys the virtual machine with the appropriate settings. NICs are named based on the defined PCI path of each NIC. Changing the PCI path of a NIC breaks functionality. NICs are configured in an inactive state with the `default` network source.
 
-1. Configure the NICs for your environment. Configure the WAN-associated NICs as macvtap devices to avoid potential connectivity issues.
-2. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
+6. Configure the NICs for your environment. Configure the WAN-associated NICs as macvtap devices to avoid potential connectivity issues.
+7. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
 
 ---
 
@@ -234,16 +232,16 @@ You need to create a profile for your appliance before connecting it to the Inte
 To create a profile:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances** \> **Create a profile**.
+2. Go to **Connectors** > **Appliances** > **Create a profile**.
 3. In **Name**, enter a descriptive name for your Virtual Appliance. Optionally, you can also add a description for it.
 4. You need to decide if you want to turn on high availability for the Virtual Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 5. Select **Create and continue**.
 6. Select **Add Appliance**. This will display a list of devices associated with your account. For a Virtual Appliance to show up you need to:
-  * **VMware:** Have already obtained your OVA package and license keys if you are installing on VMware.
-  * **Proxmox:** Have already obtained your Virtual Appliance Script and license keys if you are installing on Proxmox.
- For more information, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
+
+   - **VMware:** Have already obtained your OVA package and license keys if you are installing on VMware.
+   - **Proxmox:** Have already obtained your Virtual Appliance Script and license keys if you are installing on Proxmox. For more information, refer to [Configure a virtual machine](#configure-a-virtual-machine) and select the appropriate tab.
 7. If you have more than one Virtual Appliance, choose the one that corresponds to the on-ramp you are creating. Virtual Appliance devices are identified by a serial number, also known as a service tag. Use this information to choose the right Virtual Appliance.
- Select **Add Appliance** when you are ready to proceed.
+    Select **Add Appliance** when you are ready to proceed.
 8. Virtual Appliance will be added to your account with an **Interrupt window** defined. The interrupt window is the time period when the Virtual Appliance software can update, which may result in interruption to existing connections. You can change this later. Refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/) for more details on how to define when the Virtual Appliance can update its systems.
 9. Select **Continue** to proceed to creating your WAN and LAN networks.
 
@@ -252,24 +250,25 @@ To create a profile:
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
 1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Virtual Appliance to load balance traffic over WANs of equal priority. It also allows Virtual Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details.
-Note
-This is not the same as a high availability (HA) configuration. HA configurations need two Virtual Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
+
+   Note
+
+   This is not the same as a high availability (HA) configuration. HA configurations need two Virtual Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 2. In **Interface name**, enter a descriptive name for your WAN.
 3. **Interface number** needs to correspond to the virtual network interface on the Virtual Appliance instance you have set up in VMware. Following our example from the previous steps, you need to choose port `1` since that is what corresponds to the `eno1` port we set up in VMware.
 4. In **VLAN ID**, enter a number between `0` and `4094` to specify a [VLAN ID](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#vlan-id).
 5. In **Priority**, choose the priority for your WAN. Lower numbers have higher priority. For details on how Cloudflare calculates priorities, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/).
 6. In **Health check rate** configure the health check frequency for your site. Options are `low`, `mid`, and `high`. For details, refer to [Update tunnel health checks frequency](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/update-tunnel-health-checks-frequency/).
 7. **Addressing**: Select **DHCP**. This is needed the first time you set up your Virtual Appliance to successfully download all settings to the machine and activate it. If you need a static IP address in your network environment:
-
-  1. Continue the set up flow to activate your Virtual Appliance.
-  2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
+   1. Continue the set up flow to activate your Virtual Appliance.
+   2. Refer to [WAN with a static IP address](#wan-with-a-static-ip-address). If you choose a static IP, you also need to specify the static IP and gateway addresses.
 8. Select **Save** when you are finished.
 
 Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
+Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
 The `static_addressing` object is optional. Omit it if you are using DHCP. If you are using static addressing, add the `secondary_address` parameter when your site is in high availability (HA) mode.
 
@@ -294,15 +293,15 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 2. Enter a descriptive name for your LAN in **Interface name**.
 3. **Interface number** needs to correspond to the virtual LAN interface on the Virtual Appliance instance you have set up in VMware. Following our example from the previous steps, you need to choose port `2` since that is what corresponds to the `eno2` port we set up in VMware.
 4. In **VLAN ID**, specify a [VLAN ID](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#vlan-id) to create virtual LANs.
-5. In **Static addressing** \> **Static address** give your Virtual Appliance's LAN interface its IP address. You can also enable the following options if they suit your use case:
-  * **This is a DHCP server**: If your Virtual Appliance is a [DHCP server](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
-  * **This is a DHCP relay**: If your Virtual Appliance is a [DHCP relay](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/).
-6. (Optional) In **Directly attached subnet** \> **Static NAT prefix**, enter a CIDR prefix to enable NAT (network address translation). The prefix you enter here should be the same size as the prefix entered in **Static addressing**. For example, both networks have a subnet mask of `/24`: `192.168.100.0/24` and `10.10.100.0/24`.
+5. In **Static addressing** > **Static address** give your Virtual Appliance's LAN interface its IP address. You can also enable the following options if they suit your use case:
+   - **This is a DHCP server**: If your Virtual Appliance is a [DHCP server](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
+   - **This is a DHCP relay**: If your Virtual Appliance is a [DHCP relay](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/).
+6. (Optional) In **Directly attached subnet** > **Static NAT prefix**, enter a CIDR prefix to enable NAT (network address translation). The prefix you enter here should be the same size as the prefix entered in **Static addressing**. For example, both networks have a subnet mask of `/24`: `192.168.100.0/24` and `10.10.100.0/24`.
 7. (Optional) If your LAN contains additional subnets behind a layer 3 router, select **Add routed subnet** under **Routed subnets** to add them:
-  * **Prefix**: The CIDR prefix for the subnet behind the L3 router.
-  * **Next hop**: The address of the L3 router to which the Virtual Appliance should forward packets for this subnet.
-  * **Static NAT prefix**: Optional setting. If you want to enable NAT for a routed subnet, supply an "external" prefix for the overlay-facing side of the NAT to use. It must be the same size as **Prefix**.
-   For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
+   - **Prefix**: The CIDR prefix for the subnet behind the L3 router.
+   - **Next hop**: The address of the L3 router to which the Virtual Appliance should forward packets for this subnet.
+   - **Static NAT prefix**: Optional setting. If you want to enable NAT for a routed subnet, supply an "external" prefix for the overlay-facing side of the NAT to use. It must be the same size as **Prefix**.
+      For details, refer to [Routed subnets](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/routed-subnets/).
 8. Select **Save**.
 9. Select **Done** to finish your configuration. Tunnels and static routes will be automatically created for your Virtual Appliance, once it boots up.
 
@@ -310,7 +309,7 @@ Note
 
 You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
-Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/create/) to create a LAN.
+Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic_transit/subresources/sites/subresources/lans/methods/create/) to create a LAN.
 
 Example:
 
@@ -337,10 +336,10 @@ After setting up your LANs, you can configure your Virtual Appliance to enable c
 
 Virtual Appliance supports different types of DHCP configurations. Virtual Appliance can:
 
-* Connect to a DHCP server or use a static IP address instead of connecting to a DHCP server.
-* Act as a [DHCP server](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
-* Use [DHCP relay](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/) to connect to a DHCP server outside the location your Virtual Appliance is in.
-* [Reserve IP addresses](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-static-address-reservation/) for specific devices on your network.
+- Connect to a DHCP server or use a static IP address instead of connecting to a DHCP server.
+- Act as a [DHCP server](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-server/).
+- Use [DHCP relay](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-relay/) to connect to a DHCP server outside the location your Virtual Appliance is in.
+- [Reserve IP addresses](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/dhcp/dhcp-static-address-reservation/) for specific devices on your network.
 
 ### Add your Virtual Appliance to a site
 
@@ -361,7 +360,7 @@ Remember to connect Virtual Appliance through a route that supports DHCP for its
 When you are ready to connect your Virtual Appliance to the Cloudflare network:
 
 1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
-2. Go to **Connectors** \> **Appliances**.
+2. Go to **Connectors** > **Appliances**.
 3. Find the Virtual Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Virtual Appliance you want to activate.
 4. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
 5. The **Interrupt window** is the time period when the Virtual Appliance software can update, which may result in interruption to existing connections. Choose a time period to minimize disruption to your sites. For details on defining when the Virtual Appliance can update its systems, refer to [Interrupt window](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/).
@@ -403,9 +402,9 @@ You need to install two Virtual Appliances before you can set up a site in high 
 
 Because Virtual Appliances in high availability configurations share a single site, you need to set up:
 
-* **Static address**: The IP for the primary node in your site.
-* **Secondary static address**: The IP for the secondary node in your site.
-* **Virtual static address**: The IP that the LAN south of the Virtual Appliance device will forward traffic to, which is the LAN's gateway IP.
+- **Static address**: The IP for the primary node in your site.
+- **Secondary static address**: The IP for the secondary node in your site.
+- **Virtual static address**: The IP that the LAN south of the Virtual Appliance device will forward traffic to, which is the LAN's gateway IP.
 
 Make sure all IPs are part of the same subnet.
 
@@ -449,10 +448,10 @@ To check the IPsec tunnels and static routes created by your Virtual Appliance:
 
 ## Next steps
 
-* [Network options](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/)
-* [Maintenance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/)
-* [Reference information](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/)
-* [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/)
+- [Network options](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/network-options/)
+- [Maintenance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/)
+- [Reference information](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/)
+- [Troubleshooting](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/troubleshooting/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tools
 
-Last updated Aug 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 MCP tools are functions that an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/) exposes for clients to call. An LLM can invoke a tool to look up data, run a calculation, or call an API. The MCP server executes the tool and returns its result.
 
@@ -134,9 +134,9 @@ Set `isError: true` to signal that the tool call failed. The LLM receives the er
 
 The `description` parameter is critical — it is what the LLM reads to decide whether and when to call your tool. Write descriptions that are:
 
-* **Specific** about what the tool does: "Get the current weather for a city" is better than "Weather tool"
-* **Clear about inputs**: "Requires a city name as a string" helps the LLM format the call correctly
-* **Honest about limitations**: "Only supports US cities" prevents the LLM from calling it with unsupported inputs
+- **Specific** about what the tool does: "Get the current weather for a city" is better than "Weather tool"
+- **Clear about inputs**: "Requires a city name as a string" helps the LLM format the call correctly
+- **Honest about limitations**: "Only supports US cities" prevents the LLM from calling it with unsupported inputs
 
 ## Input validation with Zod
 
@@ -200,7 +200,7 @@ server.registerTool(
 
 ## Using tools with `createMcpHandler`
 
-For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/):
+For stateless MCP servers, define tools inside a factory function and pass the server to [`createMcpHandler`](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/):
 
 ```js
 import { createMcpHandler } from "agents/mcp/server";
@@ -256,7 +256,7 @@ export default {
 
 ## Using tools with `McpAgent`
 
-This section applies only to existing legacy routes during migration. Define their tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/). Tools have access to the agent instance through `this`, so they can read and write state.
+This section applies only to existing legacy routes during migration. Define their tools in the `init()` method of an [`McpAgent`](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/). Tools have access to the agent instance through `this`, so they can read and write state.
 
 ```js
 import { McpAgent } from "agents/mcp";

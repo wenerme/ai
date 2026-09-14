@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Groq
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Groq ↗](https://groq.com/) delivers high-speed processing and low-latency performance.
 
@@ -30,14 +30,16 @@ When making requests to [Groq ↗](https://groq.com/), replace `https://api.groq
 
 When making requests to Groq, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Groq API token.
-* The name of the Groq model you want to use.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Groq API token.
+- The name of the Groq model you want to use.
 
 ## Examples
 
 ### cURL
+
+*Example fetch requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/completions \
@@ -56,7 +58,9 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/co
 
 ### Use Groq SDK with JavaScript
 
-If using the [groq-sdk ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
+If using the [`groq-sdk` ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
+
+*JavaScriptjs*
 
 ```js
 import Groq from "groq-sdk";
@@ -91,7 +95,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 "model": "groq/{model}"
 }

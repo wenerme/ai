@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Global read replication
 
-Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
 
@@ -114,29 +114,31 @@ export default {
 
 ![D1 read replication concept](https://developers.cloudflare.com/images/d1/d1-read-replication-concept.png)
 
-When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the  primary database instance . D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
+When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the primary database instance
 
-When using read replication, D1 creates multiple asynchronously replicated copies of the primary database instance, which only serve read requests, called  read replicas . D1 creates the read replicas in [multiple regions](https://developers.cloudflare.com/d1/best-practices/read-replication/#read-replica-locations) throughout the world across Cloudflare's network.
+. D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
+
+When using read replication, D1 creates multiple asynchronously replicated copies of the primary database instance, which only serve read requests, called read replicas . D1 creates the read replicas in [multiple regions](https://developers.cloudflare.com/d1/best-practices/read-replication/#read-replica-locations) throughout the world across Cloudflare's network.
 
 Even though a user may be located far away from the primary database instance, they could be close to a read replica. When D1 routes read requests to the read replica instead of the primary database instance, the user enjoys faster responses for their read queries.
 
-D1 asynchronously replicates changes from the primary database instance to all read replicas. This means that at any given time, a read replica may be arbitrarily out of date. The time it takes for the latest committed data in the primary database instance to be replicated to the read replica is known as the  replica lag . Replica lag and non-deterministic routing to individual replicas can lead to application data consistency issues. The D1 Sessions API solves this by ensuring sequential consistency. For more information, refer to [replica lag and consistency model](https://developers.cloudflare.com/d1/best-practices/read-replication/#replica-lag-and-consistency-model).
+D1 asynchronously replicates changes from the primary database instance to all read replicas. This means that at any given time, a read replica may be arbitrarily out of date. The time it takes for the latest committed data in the primary database instance to be replicated to the read replica is known as the replica lag . Replica lag and non-deterministic routing to individual replicas can lead to application data consistency issues. The D1 Sessions API solves this by ensuring sequential consistency. For more information, refer to [replica lag and consistency model](https://developers.cloudflare.com/d1/best-practices/read-replication/#replica-lag-and-consistency-model).
 
 Note
 
 All write queries are still forwarded to the primary database instance. Read replication only improves the response time for read query requests.
 
-| Type of database instance      | Description                                                                                                                             | How it handles write queries                                | How it handles read queries                               |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------- |
-| Primary database instance      | The database instance containing the “original” copy of the database                                                                    | Can serve write queries                                     | Can serve read queries                                    |
+| Type of database instance | Description | How it handles write queries | How it handles read queries |
+| --- | --- | --- | --- |
+| Primary database instance | The database instance containing the “original” copy of the database | Can serve write queries | Can serve read queries |
 | Read replica database instance | A database instance containing a copy of the original database which asynchronously receives updates from the primary database instance | Forwards any write queries to the primary database instance | Can serve read queries using its own copy of the database |
 
 ## Benefits of read replication
 
 A system with multiple read replicas located around the world improves the performance of databases:
 
-* The query latency decreases for users located close to the read replicas. By shortening the physical distance between a the database instance and the user, read query latency decreases, resulting in a faster application.
-* The read throughput increases by distributing load across multiple replicas. Since multiple database instances are able to serve read-only requests, your application can serve a larger number of queries at any given time.
+- The query latency decreases for users located close to the read replicas. By shortening the physical distance between a the database instance and the user, read query latency decreases, resulting in a faster application.
+- The read throughput increases by distributing load across multiple replicas. Since multiple database instances are able to serve read-only requests, your application can serve a larger number of queries at any given time.
 
 ## Use Sessions API
 
@@ -148,9 +150,8 @@ D1 read replication achieves this by attaching a bookmark to each query within a
 
 Read replication can be enabled at the database level in the Cloudflare dashboard. Check **Settings** for your D1 database to view if read replication is enabled.
 
-1. In the Cloudflare dashboard, go to the **D1** page.
-[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
-2. Select an existing database > **Settings** \> **Enable Read Replication**.
+1. In the Cloudflare dashboard, go to the **D1** page. [Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
+2. Select an existing database > **Settings** > **Enable Read Replication**.
 
 ### Start a session without constraints
 
@@ -164,9 +165,9 @@ const result = await session
 	.run()
 ```
 
-* `withSession()` is the same as `withSession("first-unconstrained")`
-* This approach is best when your application does not require the latest database version. All queries in a session ensure sequential consistency.
-* Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
+- `withSession()` is the same as `withSession("first-unconstrained")`
+- This approach is best when your application does not require the latest database version. All queries in a session ensure sequential consistency.
+- Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
 
 ### Start a session with all latest data
 
@@ -180,8 +181,8 @@ const result = await session
 	.run()
 ```
 
-* This approach is best when your application requires the latest database version. All queries in a session ensure sequential consistency.
-* Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
+- This approach is best when your application requires the latest database version. All queries in a session ensure sequential consistency.
+- Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
 
 ### Start a session from previous context (bookmark)
 
@@ -199,8 +200,8 @@ const result = await session
 response.headers.set('x-d1-bookmark', session.getBookmark() ?? "")
 ```
 
-* Starting a session with a `bookmark` ensures the new session will be at least as up-to-date as the previous session that generated the given `bookmark`.
-* Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
+- Starting a session with a `bookmark` ensures the new session will be at least as up-to-date as the previous session that generated the given `bookmark`.
+- Refer to the [D1 Workers Binding API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession).
 
 ### Check where D1 request was processed
 
@@ -216,7 +217,7 @@ console.log({
 });
 ```
 
-* `served_by_region` and `served_by_primary` fields are present for all D1 remote requests, regardless of whether read replication is enabled or if the Sessions API is used. On local development, `npx wrangler dev`, these fields are `undefined`.
+- `served_by_region` and `served_by_primary` fields are present for all D1 remote requests, regardless of whether read replication is enabled or if the Sessions API is used. On local development, `npx wrangler dev`, these fields are `undefined`.
 
 ### Enable read replication via REST API
 
@@ -305,20 +306,20 @@ const data = await response.json();
 console.log(data.read_replication.mode);
 ```
 
-* Check the `read_replication` property of the `result` object
-  * `"mode": "auto"` indicates read replication is enabled
-  * `"mode": "disabled"` indicates read replication is disabled
+- Check the `read_replication` property of the `result` object
+  - `"mode": "auto"` indicates read replication is enabled
+  - `"mode": "disabled"` indicates read replication is disabled
 
 ## Read replica locations
 
 Currently, D1 automatically creates a read replica in [every supported region](https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints), including the region where the primary database instance is located. These regions are:
 
-* ENAM
-* WNAM
-* WEUR
-* EEUR
-* APAC
-* OC
+- ENAM
+- WNAM
+- WEUR
+- EEUR
+- APAC
+- OC
 
 Note
 
@@ -328,10 +329,10 @@ Read replica locations are subject to change at Cloudflare's discretion.
 
 To see the impact of read replication and check the how D1 requests are processed by additional database instances, you can use:
 
-* The `meta` object within the [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result) return object, which includes new fields:
-  * `served_by_region`
-  * `served_by_primary`
-* The Cloudflare dashboard, where you can view your database metrics breakdown by region that processed D1 requests.
+- The `meta` object within the [`D1Result`](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result) return object, which includes new fields:
+  - `served_by_region`
+  - `served_by_primary`
+- The Cloudflare dashboard, where you can view your database metrics breakdown by region that processed D1 requests.
 
 ## Pricing
 
@@ -341,19 +342,20 @@ D1 read replication is built into D1, so you don’t pay extra storage or comput
 
 There are some known limitations for D1 read replication.
 
-* Sessions API is only available via the [D1 Worker Binding](https://developers.cloudflare.com/d1/worker-api/d1-database/#withsession) and not yet available via the REST API.
+- Sessions API is only available via the [D1 Worker Binding](https://developers.cloudflare.com/d1/worker-api/d1-database/#withsession) and not yet available via the REST API.
 
 ## Background information
 
 ### Replica lag and consistency model
 
-To account for replica lag, it is important to consider the consistency model for D1\. A consistency model is a logical framework that governs how a database system serves user queries (how the data is updated and accessed) when there are multiple database instances. Different models can be useful in different use cases. Most database systems provide [read committed ↗](https://jepsen.io/consistency/models/read-committed), [snapshot isolation ↗](https://jepsen.io/consistency/models/snapshot-isolation), or [serializable ↗](https://jepsen.io/consistency/models/serializable) consistency models, depending on their configuration.
+To account for replica lag, it is important to consider the consistency model for D1. A consistency model is a logical framework that governs how a database system serves user queries (how the data is updated and accessed) when there are multiple database instances. Different models can be useful in different use cases. Most database systems provide [read committed ↗](https://jepsen.io/consistency/models/read-committed), [snapshot isolation ↗](https://jepsen.io/consistency/models/snapshot-isolation), or [serializable ↗](https://jepsen.io/consistency/models/serializable) consistency models, depending on their configuration.
 
 #### Without a consistency model framework
 
 Consider what could happen in a distributed database system without an explicit framework to enforce a consistency model.
 
 ![Distributed replicas could cause inconsistencies without Sessions API](https://developers.cloudflare.com/images/d1/consistency-without-sessions-api.png)
+
 1. Your SQL write query is processed by the primary database instance.
 2. You obtain a response acknowledging the write query.
 3. Your subsequent SQL read query goes to a read replica.
@@ -364,6 +366,7 @@ Consider what could happen in a distributed database system without an explicit 
 When using D1 Sessions API, your queries obtain bookmarks which allows the read replica to only serve sequentially consistent data.
 
 ![D1 offers sequential consistency when using Sessions API](https://developers.cloudflare.com/images/d1/consistency-with-sessions-api.png)
+
 1. SQL write query is processed by the primary database instance.
 2. You obtain a response acknowledging the write query. You also obtain a bookmark (100) which identifies the state of the database after the write query.
 3. Your subsequent SQL read query goes to a read replica, and also provides the bookmark (100).
@@ -378,20 +381,20 @@ D1 read replication offers [sequential consistency ↗](https://jepsen.io/consis
 
 Sequential consistency has properties such as:
 
-* **Monotonic reads**: If you perform two reads one after the other (read-1, then read-2), read-2 cannot read a version of the database prior to read-1.
-* **Monotonic writes**: If you perform write-1 then write-2, all processes observe write-1 before write-2.
-* **Writes follow reads**: If you read a value, then perform a write, the subsequent write must be based on the value that was just read.
-* **Read my own writes**: If you write to the database, all subsequent reads will see the write.
+- **Monotonic reads**: If you perform two reads one after the other (read-1, then read-2), read-2 cannot read a version of the database prior to read-1.
+- **Monotonic writes**: If you perform write-1 then write-2, all processes observe write-1 before write-2.
+- **Writes follow reads**: If you read a value, then perform a write, the subsequent write must be based on the value that was just read.
+- **Read my own writes**: If you write to the database, all subsequent reads will see the write.
 
 ## Supplementary information
 
 You may wish to refer to the following resources:
 
-* Blog: [Sequential consistency without borders: How D1 implements global read replication ↗](https://blog.cloudflare.com/d1-read-replication-beta/)
-* Blog: [Building D1: a Global Database ↗](https://blog.cloudflare.com/building-d1-a-global-database/)
-* [D1 Sessions API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession)
-* [Starter code for D1 Sessions API demo ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
-* [E-commerce store read replication tutorial](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com)
+- Blog: [Sequential consistency without borders: How D1 implements global read replication ↗](https://blog.cloudflare.com/d1-read-replication-beta/)
+- Blog: [Building D1: a Global Database ↗](https://blog.cloudflare.com/building-d1-a-global-database/)
+- [D1 Sessions API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession)
+- [Starter code for D1 Sessions API demo ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
+- [E-commerce store read replication tutorial](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com)
 
 Was this helpful?
 

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Team and resources
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/)
-* [Devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/)
-* [Users](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/)
+- [Application Library](https://developers.cloudflare.com/cloudflare-one/team-and-resources/app-library/)
+- [Devices](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/)
+- [Users](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/)
 
 Was this helpful?
 

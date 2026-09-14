@@ -12,35 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client checks
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These device posture checks are performed by the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). To use this feature, you must [deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) to your devices and enable the desired posture checks.
 
 ## Supported Client modes
 
-* Traffic and DNS mode
-* Traffic only mode
-* Posture only mode
+- Traffic and DNS mode
+- Traffic only mode
+- Posture only mode
 
 ## Supported operating systems
 
-| Device posture check                                                                                                                        | macOS | Windows | Linux | iOS | Android/ChromeOS |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | ----- | ------- | ----- | --- | ---------------- |
-| [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/)                   | ❌     | ✅       | ❌     | ❌   | ❌                |
-| [Application check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/)   | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Carbon Black](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/carbon-black/)             | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Client certificate](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/client-certificate/) | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/)     | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Device UUID](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/)               | ❌     | ❌       | ❌     | ✅   | ✅                |
-| [Disk encryption](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/)       | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Domain joined](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/)           | ❌     | ✅       | ❌     | ❌   | ❌                |
-| [File check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/file-check/)                 | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Firewall](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/firewall/)                     | ✅     | ✅       | ❌     | ❌   | ❌                |
-| [OS version](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/)                 | ✅     | ✅       | ✅     | ✅   | ✅                |
-| [Require Gateway](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/)       | ✅     | ✅       | ✅     | ✅   | ✅                |
-| [Require WARP](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/)             | ✅     | ✅       | ✅     | ✅   | ✅                |
-| [SentinelOne](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/sentinel-one/)              | ✅     | ✅       | ✅     | ❌   | ❌                |
-| [Tanium (legacy)](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/tanium/)                | ✅     | ✅       | ✅     | ❌   | ❌                |
+| Device posture check | macOS | Windows | Linux | iOS | Android/ChromeOS |
+| --- | --- | --- | --- | --- | --- |
+| [Antivirus](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/) | ❌ | ✅ | ❌ | ❌ | ❌ |
+| [Application check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/application-check/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Carbon Black](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/carbon-black/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Client certificate](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/client-certificate/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Device UUID](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/) | ❌ | ❌ | ❌ | ✅ | ✅ |
+| [Disk encryption](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/disk-encryption/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Domain joined](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/domain-joined/) | ❌ | ✅ | ❌ | ❌ | ❌ |
+| [File check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/file-check/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Firewall](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/firewall/) | ✅ | ✅ | ❌ | ❌ | ❌ |
+| [OS version](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/os-version/) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [Require Gateway](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-gateway/) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [Require WARP](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/require-warp/) | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [SentinelOne](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/sentinel-one/) | ✅ | ✅ | ✅ | ❌ | ❌ |
+| [Tanium (legacy)](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/tanium/) | ✅ | ✅ | ✅ | ❌ | ❌ |
 
 Was this helpful?
 

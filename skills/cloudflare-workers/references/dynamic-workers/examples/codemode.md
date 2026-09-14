@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Code Mode Example
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/codemode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows how to use the [@cloudflare/codemode ↗](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
+This example shows how to use the [`@cloudflare/codemode` ↗](https://www.npmjs.com/package/@cloudflare/codemode) library with the [Agents SDK ↗](https://www.npmjs.com/package/agents) to build an agent where the LLM writes code to orchestrate tool calls, instead of calling them one at a time. This approach, called [Code Mode ↗](https://blog.cloudflare.com/code-mode/), reduces tokens spent by up to 80%, returns better results, and avoids bloating the context window.
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/codemode)
 
 This example shows you how to:
 
-* Define tools as plain functions with Zod schemas
-* Use `createCodeTool` to expose your tools to the LLM as a single "write code" tool
-* Use `DynamicWorkerExecutor` to safely run LLM-generated code
-* Wire it all together with `AIChatAgent` to handle chat over WebSockets
+- Define tools as plain functions with Zod schemas
+- Use `createCodeTool` to expose your tools to the LLM as a single "write code" tool
+- Use `DynamicWorkerExecutor` to safely run LLM-generated code
+- Wire it all together with `AIChatAgent` to handle chat over WebSockets
 
 ## How it works
 
-The agent uses three components from the [@cloudflare/codemode ↗](https://www.npmjs.com/package/@cloudflare/codemode) library and the [Agents SDK ↗](https://www.npmjs.com/package/agents):
+The agent uses three components from the [`@cloudflare/codemode` ↗](https://www.npmjs.com/package/@cloudflare/codemode) library and the [Agents SDK ↗](https://www.npmjs.com/package/agents):
 
-* **`AIChatAgent` (`@cloudflare/ai-chat`)**, your agent's base class. Handles chat over WebSockets, persists messages, and calls the LLM.
-* **`createCodeTool` (`@cloudflare/codemode/ai`)**, wraps your tools into a single `codemode` tool that accepts `{ code: string }`.
-* **`DynamicWorkerExecutor` (`@cloudflare/codemode`)**, runs the LLM-generated code in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/).
+- **`AIChatAgent` ( `@cloudflare/ai-chat`)**, your agent's base class. Handles chat over WebSockets, persists messages, and calls the LLM.
+- **`createCodeTool` ( `@cloudflare/codemode/ai`)**, wraps your tools into a single `codemode` tool that accepts `{ code: string }`.
+- **`DynamicWorkerExecutor` ( `@cloudflare/codemode`)**, runs the LLM-generated code in an isolated [Dynamic Worker](https://developers.cloudflare.com/dynamic-workers/).
 
 The flow:
 
@@ -46,10 +46,10 @@ The flow:
 
 `DynamicWorkerExecutor` is part of the `@cloudflare/codemode` library. When the LLM writes code that orchestrates your tools, that code needs to run somewhere safe. `DynamicWorkerExecutor` spins up an isolated Dynamic Worker for each execution using the Worker Loader binding. Inside the sandbox:
 
-* A `codemode` proxy object routes calls like `codemode.createTask(...)` back to your real tool implementations over Workers RPC
-* Setting `globalOutbound` to `null` blocks `fetch()`, so the code can only reach the outside world through your tools
-* `console.log` output is captured and returned alongside the result
-* Each execution gets its own Worker instance with a 30-second timeout
+- A `codemode` proxy object routes calls like `codemode.createTask(...)` back to your real tool implementations over Workers RPC
+- Setting `globalOutbound` to `null` blocks `fetch()`, so the code can only reach the outside world through your tools
+- `console.log` output is captured and returned alongside the result
+- Each execution gets its own Worker instance with a 30-second timeout
 
 ```js
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
@@ -75,9 +75,9 @@ const executor = new DynamicWorkerExecutor({
 
 `createCodeTool` is part of `@cloudflare/codemode`. It takes your tools and an executor, and returns a single AI SDK `tool()`. It:
 
-* Generates TypeScript type declarations from your tools' Zod schemas, so the LLM knows what is available and what the argument shapes look like.
-* Puts those types in the tool's description, so the LLM sees a single tool with parameter `{ code: string }` and a description that includes the full typed API surface.
-* On execution, normalizes the LLM's code (strips markdown fences, wraps bare statements in async functions, auto-returns the last expression), then passes it to the executor.
+- Generates TypeScript type declarations from your tools' Zod schemas, so the LLM knows what is available and what the argument shapes look like.
+- Puts those types in the tool's description, so the LLM sees a single tool with parameter `{ code: string }` and a description that includes the full typed API surface.
+- On execution, normalizes the LLM's code (strips markdown fences, wraps bare statements in async functions, auto-returns the last expression), then passes it to the executor.
 
 ```js
 import { createCodeTool } from "@cloudflare/codemode/ai";

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic detections
 
-Last updated Sep 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Traffic detections check incoming requests for malicious, potentially malicious, or non-conforming activity. Each enabled detection scores or classifies requests by populating one or more fields. These fields appear as filters in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard, and you can use them in rule expressions.
 
@@ -30,26 +30,26 @@ Customers with API Security already have access to Schema Profiles through Schem
 
 Cloudflare provides the following detections:
 
-* [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/)
-* [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/)
-* [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/)
-* [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/)
-* [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
-* [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
-* [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
-* [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/)
+- [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/)
+- [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/)
+- [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/)
+- [Leaked credentials detection](https://developers.cloudflare.com/waf/detections/leaked-credentials/)
+- [Malicious uploads detection](https://developers.cloudflare.com/waf/detections/malicious-uploads/)
+- [AI Security for Apps](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/)
+- [Threat intelligence](https://developers.cloudflare.com/waf/detections/threat-intelligence/)
+- [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/)
 
 ## Availability
 
-|                                      | Free            | Pro                                       | Business                                  | Enterprise                    |
-| ------------------------------------ | --------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------- |
-| Availability                         | Yes             | Yes                                       | Yes                                       | Yes                           |
-| Malicious uploads detection          | No              | No                                        | No                                        | Paid add-on                   |
-| Leaked credentials detection         | Yes             | Yes                                       | Yes                                       | Yes                           |
-| Leaked credentials fields            | Password Leaked | Password Leaked, User and Password Leaked | Password Leaked, User and Password Leaked | All leaked credentials fields |
-| Number of custom detection locations | 0               | 0                                         | 0                                         | 10                            |
-| Attack score                         | No              | No                                        | One field only                            | Yes                           |
-| AI Security for Apps                 | No              | No                                        | No                                        | Yes                           |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Malicious uploads detection | No | No | No | Paid add-on |
+| Leaked credentials detection | Yes | Yes | Yes | Yes |
+| Leaked credentials fields | Password Leaked | Password Leaked, User and Password Leaked | Password Leaked, User and Password Leaked | All leaked credentials fields |
+| Number of custom detection locations | 0 | 0 | 0 | 10 |
+| Attack score | No | No | One field only | Yes |
+| AI Security for Apps | No | No | No | Yes |
 
 For more information on bot score, refer to [Bot scores](https://developers.cloudflare.com/bots/concepts/bot-score/).
 
@@ -57,8 +57,7 @@ For more information on bot score, refer to [Bot scores](https://developers.clou
 
 For detections managed through Security settings:
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **Detection tools**.
 3. Turn on the desired detections.
 
@@ -66,8 +65,8 @@ Detections enabled through Security settings run for all incoming traffic. Appli
 
 Notes
 
-* On Free plans, the leaked credentials detection is enabled by default, and no action is required.
-* Currently, you cannot manage the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) and [attack score](https://developers.cloudflare.com/waf/detections/attack-score/) detections from the **Settings** page. Refer to the documentation of each feature for availability details.
+- On Free plans, the leaked credentials detection is enabled by default, and no action is required.
+- Currently, you cannot manage the [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) and [attack score](https://developers.cloudflare.com/waf/detections/attack-score/) detections from the **Settings** page. Refer to the documentation of each feature for availability details.
 
 ## More resources
 

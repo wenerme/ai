@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metrics and analytics
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/observability/metrics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/observability/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive exposes analytics that allow you to inspect query volume, query latency, cache hit ratios, and connection pool metrics for each Hyperdrive configuration in your account.
 
@@ -24,15 +24,15 @@ Hyperdrive currently exports metrics via the `hyperdriveQueriesAdaptiveGroups` a
 
 The `hyperdriveQueriesAdaptiveGroups` dataset contains the following metrics:
 
-| Metric             | GraphQL Field Name | Description                                                                                                                                                                                 |
-| ------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Queries            | count              | The number of queries issued against your Hyperdrive in the given time period.                                                                                                              |
-| Cache Status       | cacheStatus        | Whether the query was cached or not. Can be one of disabled, hit, miss, uncacheable, multiplestatements, notaquery, oversizedquery, oversizedresult, parseerror, transaction, and volatile. |
-| Query Bytes        | queryBytes         | The size of your queries, in bytes.                                                                                                                                                         |
-| Result Bytes       | resultBytes        | The size of your query _results_, in bytes.                                                                                                                                                 |
-| Connection Latency | connectionLatency  | The time (in milliseconds) required to establish new connections from Hyperdrive to your database, as measured from your Hyperdrive connection pool(s).                                     |
-| Query Latency      | queryLatency       | The time (in milliseconds) required to query (and receive results) from your database, as measured from your Hyperdrive connection pool(s).                                                 |
-| Event Status       | eventStatus        | Whether a query responded successfully (complete) or failed (error).                                                                                                                        |
+| Metric | GraphQL Field Name | Description |
+| --- | --- | --- |
+| Queries | `count` | The number of queries issued against your Hyperdrive in the given time period. |
+| Cache Status | `cacheStatus` | Whether the query was cached or not. Can be one of `disabled`, `hit`, `miss`, `uncacheable`, `multiplestatements`, `notaquery`, `oversizedquery`, `oversizedresult`, `parseerror`, `transaction`, and `volatile`. |
+| Query Bytes | `queryBytes` | The size of your queries, in bytes. |
+| Result Bytes | `resultBytes` | The size of your query *results*, in bytes. |
+| Connection Latency | `connectionLatency` | The time (in milliseconds) required to establish new connections from Hyperdrive to your database, as measured from your Hyperdrive connection pool(s). |
+| Query Latency | `queryLatency` | The time (in milliseconds) required to query (and receive results) from your database, as measured from your Hyperdrive connection pool(s). |
+| Event Status | `eventStatus` | Whether a query responded successfully (`complete`) or failed (`error`). |
 
 The `volatile` cache status indicates the query contains a PostgreSQL function categorized as `STABLE` or `VOLATILE` (for example, `NOW()`, `RANDOM()`). Refer to [Query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/) for details on which functions affect cacheability.
 
@@ -40,14 +40,14 @@ The `volatile` cache status indicates the query contains a PostgreSQL function c
 
 The `hyperdrivePoolSizesAdaptiveGroups` dataset contains the following connection pool metrics:
 
-| Metric                | GraphQL Field Name     | Description                                                       |
-| --------------------- | ---------------------- | ----------------------------------------------------------------- |
-| Avg. open connections | avg.currentPoolSize    | Average number of connections currently open in the pool.         |
-| Avg. available slots  | avg.availablePoolSlots | Average number of pool connections available for checkout.        |
-| Avg. waiting clients  | avg.waitingClients     | Average number of clients waiting for a connection from the pool. |
-| Pool size maximum     | max.maxPoolSize        | Configured maximum size of the connection pool.                   |
-| Peak open connections | max.currentPoolSize    | Peak number of connections open in the pool.                      |
-| Peak waiting clients  | max.waitingClients     | Peak number of clients waiting for a connection from the pool.    |
+| Metric | GraphQL Field Name | Description |
+| --- | --- | --- |
+| Avg. open connections | `avg.currentPoolSize` | Average number of connections currently open in the pool. |
+| Avg. available slots | `avg.availablePoolSlots` | Average number of pool connections available for checkout. |
+| Avg. waiting clients | `avg.waitingClients` | Average number of clients waiting for a connection from the pool. |
+| Pool size maximum | `max.maxPoolSize` | Configured maximum size of the connection pool. |
+| Peak open connections | `max.currentPoolSize` | Peak number of connections open in the pool. |
+| Peak waiting clients | `max.waitingClients` | Peak number of clients waiting for a connection from the pool. |
 
 Connection contention appears as a spike in waiting clients, or when open connections consistently approach the pool size maximum. If your open connections regularly approach this limit, consider [increasing your Hyperdrive connection limit](https://developers.cloudflare.com/hyperdrive/platform/limits/#request-a-limit-increase).
 
@@ -57,8 +57,7 @@ Metrics can be queried (and are retained) for the past 31 days.
 
 Per-database analytics for Hyperdrive are available in the Cloudflare dashboard. To view current and historical metrics for a Hyperdrive configuration:
 
-1. In the Cloudflare dashboard, go to the **Hyperdrive** page.
-[Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
+1. In the Cloudflare dashboard, go to the **Hyperdrive** page. [Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 2. Select an existing Hyperdrive configuration.
 3. Select the **Metrics** tab.
 

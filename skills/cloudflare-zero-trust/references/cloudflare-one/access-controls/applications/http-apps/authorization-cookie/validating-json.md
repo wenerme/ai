@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Validate JWTs
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare sends a request to your origin, the request will include an [application token](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) as a `Cf-Access-Jwt-Assertion` request header. Requests made through a browser will also pass the token as a `CF_Authorization` cookie.
 
@@ -20,17 +20,19 @@ Cloudflare signs the token with a key pair unique to your account. You should va
 
 ## Access signing keys
 
-The public key for the signing key pair is located at `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs`, where `<your-team-name>` is your Cloudflare One team name.
+The public key for the signing key pair is located at `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs`, where `<your-team-name>` is your Cloudflare One team name
+
+.
 
 By default, Access rotates the signing key every 6 weeks. This means you will need to programmatically or manually update your keys as they rotate. Previous keys remain valid for 7 days after rotation to allow time for you to make the update.
 
-You can also manually rotate the key using the [API](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/keys/methods/rotate/). This can be done for testing or security purposes.
+You can also manually rotate the key using the [API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/keys/methods/rotate/). This can be done for testing or security purposes.
 
 As shown in the example below, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/certs` contains two public keys: the current key used to sign all new tokens, and the previous key that has been rotated out.
 
-* `keys`: both keys in JWK format
-* `public_cert`: current key in PEM format
-* `public_certs`: both keys in PEM format
+- `keys`: both keys in JWK format
+- `public_cert`: current key in PEM format
+- `public_certs`: both keys in PEM format
 
 ```txt
 {
@@ -71,8 +73,8 @@ As shown in the example below, `https://<your-team-name>.cloudflareaccess.com/cd
 
 Avoid key rotation issues
 
-* Validate tokens using the external endpoint rather than saving the public key as a hard-coded value.
-* Do not fetch the current key from `public_cert`, since your origin may inadvertently read an expired value from an outdated cache. Instead, match the `kid` value in the JWT to the corresponding certificate in `public_certs`.
+- Validate tokens using the external endpoint rather than saving the public key as a hard-coded value.
+- Do not fetch the current key from `public_cert`, since your origin may inadvertently read an expired value from an outdated cache. Instead, match the `kid` value in the JWT to the corresponding certificate in `public_certs`.
 
 ## Verify the JWT manually
 
@@ -82,7 +84,7 @@ To verify the token manually:
 2. Go to [jwt.io ↗](https://jwt.io/).
 3. Select the RS256 algorithm.
 4. Paste the JWT into the **Encoded** box.
-5. In the **Payload** box, ensure that the `iss` field points to your team domain (`https://<your-team-name>.cloudflareaccess.com`). `jwt.io` uses the `iss` value to fetch the public key for token validation.
+5. In the **Payload** box, ensure that the `iss` field points to your team domain ( `https://<your-team-name>.cloudflareaccess.com`). `jwt.io` uses the `iss` value to fetch the public key for token validation.
 6. Ensure that the page says **Signature Verified**.
 
 You can now trust that this request was sent by Access.
@@ -97,7 +99,7 @@ Cloudflare Access assigns a unique AUD tag to each application. The `aud` claim 
 
 To get the AUD tag:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Configure** for your application.
 3. From **Additional settings**, copy the **Application Audience (AUD) Tag**.
 
@@ -225,10 +227,10 @@ export default {
 
 Add these [environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) to your Worker:
 
-* `POLICY_AUD`: Your application's [AUD tag](#get-your-aud-tag)
-* `TEAM_DOMAIN`: `https://<your-team-name>.cloudflareaccess.com`, where `<your-team-name>` is replaced with your actual team name.
+- `POLICY_AUD`: Your application's [AUD tag](#get-your-aud-tag)
+- `TEAM_DOMAIN`: `https://<your-team-name>.cloudflareaccess.com`, where `<your-team-name>` is replaced with your actual team name.
 
-You can set these variables by adding them to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), or via the Cloudflare dashboard under **Workers & Pages** \> **your-worker** \> **Settings** \> **Environment Variables**.
+You can set these variables by adding them to your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), or via the Cloudflare dashboard under **Workers & Pages** > **your-worker** > **Settings** > **Environment Variables**.
 
 ### Golang example
 
@@ -301,10 +303,10 @@ func main() {
 
 `pip` install the following:
 
-* flask
-* requests
-* PyJWT
-* cryptography
+- flask
+- requests
+- PyJWT
+- cryptography
 
 ```python
 from flask import Flask, request

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Recommended network policies
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-network-policies/recommended-network-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 We recommend you add the following network policies to build an Internet and SaaS app security strategy for your organization.
 
@@ -22,12 +22,14 @@ For additional commonly used network policy examples, refer to [Common network p
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-| Selector         | Operator    | Value                               | Logic | Action |
-| ---------------- | ----------- | ----------------------------------- | ----- | ------ |
-| Destination IP   | not in list | _Quarantined-Users-IPAllowlist_     | Or    | Block  |
-| SNI              | not in list | _Quarantined-Users-HostAllowlist_   | Or    |        |
-| SNI Domain       | not in list | _Quarantined-Users-DomainAllowlist_ | And   |        |
-| User Group Names | in          | _Quarantined Users_                 |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | not in list | *Quarantined-Users-IPAllowlist* | Or | Block |
+| SNI | not in list | *Quarantined-Users-HostAllowlist* | Or | |
+| SNI Domain | not in list | *Quarantined-Users-DomainAllowlist* | And | |
+| User Group Names | in | *Quarantined Users* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -67,12 +69,14 @@ Restrict access for devices where baseline posture checks have not passed. If po
 
 Restrict access for users included in an identity provider (IdP) user group for risky users. This policy ensures your security team can restrict traffic for users of whom malicious or suspicious activity was detected.
 
-| Selector                     | Operator    | Value                               | Logic | Action |
-| ---------------------------- | ----------- | ----------------------------------- | ----- | ------ |
-| Destination IP               | not in list | _Posture-Fail-IPAllowlist_          | Or    | Block  |
-| SNI                          | not in list | _Posture-Fail-HostAllowlist_        | Or    |        |
-| SNI Domain                   | not in list | _Posture-Fail-DomainAllowlist_      | And   |        |
-| Passed Device Posture Checks | not in      | _Windows 10 or higher (OS version)_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | not in list | *Posture-Fail-IPAllowlist* | Or | Block |
+| SNI | not in list | *Posture-Fail-HostAllowlist* | Or | |
+| SNI Domain | not in list | *Posture-Fail-DomainAllowlist* | And | |
+| Passed Device Posture Checks | not in | *Windows 10 or higher (OS version)* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -112,10 +116,12 @@ You can add a number of Cloudflare One Client device posture checks as needed, s
 
 Allow HTTPS access for user groups. For example, the following policy gives finance users access to any known financial applications:
 
-| Selector         | Operator | Value             | Logic | Action |
-| ---------------- | -------- | ----------------- | ----- | ------ |
-| Destination IP   | in list  | _Finance Servers_ | And   | Allow  |
-| User Group Names | in       | _Finance Users_   |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | in list | *Finance Servers* | And | Allow |
+| User Group Names | in | *Finance Users* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -151,15 +157,19 @@ resource "cloudflare_zero_trust_gateway_policy" "finance_users_net_https_finance
 
 ## All-NET-Internet-Blocklist
 
-Block traffic to destination IPs, SNIs, and SNI domains that are malicious or pose a threat to your organization.
+Block traffic to destination IPs, SNIs
+
+, and SNI domains that are malicious or pose a threat to your organization.
 
 You can implement this policy by either creating custom blocklists or by using blocklists provided by threat intelligence partners or regional Computer Emergency and Response Teams (CERTs). Ideally, your CERTs can update the blocklist with an [API automation](https://developers.cloudflare.com/security-center/intel-apis/) to provide real-time threat protection.
 
-| Selector       | Operator | Value              | Logic | Action |
-| -------------- | -------- | ------------------ | ----- | ------ |
-| Destination IP | in list  | _IP Blocklist_     | Or    | Block  |
-| SNI            | in list  | _Host Blocklist_   | Or    |        |
-| SNI Domain     | in list  | _Domain Blocklist_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | in list | *IP Blocklist* | Or | Block |
+| SNI | in list | *Host Blocklist* | Or | |
+| SNI Domain | in list | *Domain Blocklist* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -201,12 +211,14 @@ Allow SSH traffic to specific endpoints on the Internet for specific users. You 
 
 Optionally, you can include a selector to filter by source IP or IdP group.
 
-| Selector          | Operator | Value               | Logic | Action |
-| ----------------- | -------- | ------------------- | ----- | ------ |
-| Destination IP    | in list  | _SSHAllowList_      | Or    | Allow  |
-| SNI               | in list  | _SSHAllowlistFQDN_  | And   |        |
-| Detected Protocol | is       | _SSH_               | And   |        |
-| User Group Names  | in       | _SSH-Allowed-Users_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | in list | *SSHAllowList* | Or | Allow |
+| SNI | in list | *SSHAllowlistFQDN* | And | |
+| Detected Protocol | is | *SSH* | And | |
+| User Group Names | in | *SSH-Allowed-Users* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -244,10 +256,12 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_ssh_internet_allowlist"
 
 Block all non-web traffic towards the Internet. By using the **Detected Protocol** selector, you will ensure alternative ports for HTTP and HTTPS are allowed.
 
-| Selector          | Operator    | Value             | Logic | Action |
-| ----------------- | ----------- | ----------------- | ----- | ------ |
-| Destination IP    | not in list | _InternalNetwork_ | And   | Block  |
-| Detected Protocol | not in      | _HTTP_, _HTTP2_   |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| Destination IP | not in list | *InternalNetwork* | And | Block |
+| Detected Protocol | not in | *HTTP*, *HTTP2* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -283,9 +297,11 @@ resource "cloudflare_zero_trust_gateway_policy" "all_net_no_http_https_internet_
 
 Implicitly deny all of your internal IP ranges included in a list. We recommend you place this policy at the [bottom of your policy list](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/understand-policies/order-of-enforcement/#order-of-precedence) to ensure you explicitly approve traffic defined in the above policies.
 
-| Selector       | Operator | Value                  | Action |
-| -------------- | -------- | ---------------------- | ------ |
-| Destination IP | in list  | _Internal Network IPs_ | Block  |
+| Selector | Operator | Value | Action |
+| --- | --- | --- | --- |
+| Destination IP | in list | *Internal Network IPs* | Block |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -323,10 +339,12 @@ Only allow network traffic from known and approved devices.
 
 In the following example, you can use a list of [device serial numbers](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/corp-device/) to ensure users can only access an application if they connect with the Cloudflare One Client from a company device:
 
-| Selector                     | Operator | Value                   | Logic | Action |
-| ---------------------------- | -------- | ----------------------- | ----- | ------ |
-| SNI Domain                   | is       | internalapp.com         | And   | Block  |
-| Passed Device Posture Checks | not in   | _Device serial numbers_ |       |        |
+| Selector | Operator | Value | Logic | Action |
+| --- | --- | --- | --- | --- |
+| SNI Domain | is | `internalapp.com` | And | Block |
+| Passed Device Posture Checks | not in | *Device serial numbers* |  | |
+
+*Create a Zero Trust Gateway rulebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
@@ -346,7 +364,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 	}'
 ```
 
-To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/devices/subresources/posture/methods/list/) endpoint.
+To get the UUIDs of your device posture checks, use the [List device posture rules](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 ```tf
 resource "cloudflare_zero_trust_gateway_policy" "all_net_applicationaccess_allow" {

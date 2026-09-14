@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Conversation state and memory
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents need memory to be useful over time. Without it, every conversation starts from zero. The agent forgets who the user is, what it learned, and what it was doing. Memory is what turns a stateless LLM call into a persistent, context-aware agent.
 
@@ -268,9 +268,9 @@ Unlike searchable context where the agent retrieves small chunks from a larger c
 
 Skills are backed by the `SkillProvider` interface. A skill provider has three methods:
 
-* **`get()`** returns a metadata listing (titles and descriptions) that appears in the system prompt
-* **`load(key)`** fetches the full content of a specific skill
-* **`set(key, content, description?)`** writes or updates a skill entry (optional)
+- **`get()`** returns a metadata listing (titles and descriptions) that appears in the system prompt
+- **`load(key)`** fetches the full content of a specific skill
+- **`set(key, content, description?)`** writes or updates a skill entry (optional)
 
 The system prompt shows available skills as a listing. The `[loadable]` tag tells the LLM that these entries are not inline. It needs to use a tool to access the full content:
 
@@ -488,13 +488,13 @@ The Session detects the `load()` method via duck-typing and generates the approp
 
 #### Skills vs other memory types
 
-| Aspect               | Skills                              | Writable context         | Searchable context                 |
-| -------------------- | ----------------------------------- | ------------------------ | ---------------------------------- |
-| **In system prompt** | Metadata listing only               | Full content             | Summary count                      |
-| **Access pattern**   | Load whole document by key          | Always visible           | Search by query                    |
-| **Best for**         | Large documents, reference material | Short notes, preferences | Large collections of small entries |
-| **Context cost**     | Low (until loaded)                  | Proportional to content  | Low (until searched)               |
-| **Agent writes?**    | Optional (if set implemented)       | Yes (via set\_context)   | Yes (via set\_context)             |
+| Aspect | Skills | Writable context | Searchable context |
+| --- | --- | --- | --- |
+| **In system prompt** | Metadata listing only | Full content | Summary count |
+| **Access pattern** | Load whole document by key | Always visible | Search by query |
+| **Best for** | Large documents, reference material | Short notes, preferences | Large collections of small entries |
+| **Context cost** | Low (until loaded) | Proportional to content | Low (until searched) |
+| **Agent writes?** | Optional (if `set` implemented) | Yes (via `set_context`) | Yes (via `set_context`) |
 
 The key distinction: skills are **lazy**. They cost nearly nothing in the system prompt until the agent decides it needs one. This makes them ideal for large reference material where only a subset is relevant to any given conversation.
 
@@ -530,13 +530,13 @@ const result = streamText({
 
 The Session generates tools dynamically based on what provider types are present:
 
-| Tool                | Generated when                              | What it does                                                                                                              |
-| ------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **set\_context**    | Any writable, skill, or search block exists | Writes content to a named block. For writable blocks, replaces or appends. For skill/search blocks, writes a keyed entry. |
-| **load\_context**   | Any skill block exists                      | Loads full content of a document by key into the agent's context.                                                         |
-| **unload\_context** | Any skill block exists                      | Frees context space by removing a previously loaded document. The document remains available for re-loading.              |
-| **search\_context** | Any search block exists                     | Full-text search within a searchable block. Returns the top results ranked by relevance.                                  |
-| **session\_search** | Using SessionManager                        | Searches across all sessions (cross-conversation search).                                                                 |
+| Tool | Generated when | What it does |
+| --- | --- | --- |
+| **`set_context`** | Any writable, skill, or search block exists | Writes content to a named block. For writable blocks, replaces or appends. For skill/search blocks, writes a keyed entry. |
+| **`load_context`** | Any skill block exists | Loads full content of a document by key into the agent's context. |
+| **`unload_context`** | Any skill block exists | Frees context space by removing a previously loaded document. The document remains available for re-loading. |
+| **`search_context`** | Any search block exists | Full-text search within a searchable block. Returns the top results ranked by relevance. |
+| **`session_search`** | Using `SessionManager` | Searches across all sessions (cross-conversation search). |
 
 The tools include descriptions and parameter schemas that tell the LLM which blocks are available and what they are for. The agent decides when and how to use them based on the conversation.
 
@@ -580,8 +580,8 @@ LLM providers (Anthropic, OpenAI, and others) cache the system prompt prefix. Wh
 
 The Session API is designed to work with prompt caching:
 
-* **`freezeSystemPrompt()`** renders the system prompt from all context blocks on the first call, then returns the cached value on subsequent calls. The prompt does not change between turns, even when the agent writes to memory via `set_context`.
-* **`withCachedPrompt()`** persists the frozen prompt to storage, so it survives Durable Object hibernation and eviction. When the agent wakes up, it loads the same prompt without re-fetching from all providers.
+- **`freezeSystemPrompt()`** renders the system prompt from all context blocks on the first call, then returns the cached value on subsequent calls. The prompt does not change between turns, even when the agent writes to memory via `set_context`.
+- **`withCachedPrompt()`** persists the frozen prompt to storage, so it survives Durable Object hibernation and eviction. When the agent wakes up, it loads the same prompt without re-fetching from all providers.
 
 When the agent uses `set_context` to update a writable block, the underlying provider is updated immediately (the data is saved), but the frozen system prompt is **not** re-rendered. The LLM sees the update on its next turn only if you explicitly call `refreshSystemPrompt()`, which you typically do between conversation turns, not mid-turn.
 
@@ -644,10 +644,10 @@ Overlay:   [1] [2] [SUMMARY of 3-7]           [8] [9] [10]
 
 The key points:
 
-* **Non-destructive**, original messages are never deleted. The full conversation is always available in the database.
-* **Iterative**, when the conversation grows again and triggers another compaction, the existing summary is passed to the LLM to update, not replaced from scratch.
-* **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
-* **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
+- **Non-destructive**, original messages are never deleted. The full conversation is always available in the database.
+- **Iterative**, when the conversation grows again and triggers another compaction, the existing summary is passed to the LLM to update, not replaced from scratch.
+- **Boundary-aware**, compaction boundaries are shifted to avoid splitting tool call / tool result pairs.
+- **Configurable**, `protectHead` preserves the first N messages (usually the system context), and `tailTokenBudget` keeps the most recent messages intact.
 
 ```js
 import { createCompactFunction } from "agents/experimental/memory/utils/compaction-helpers";

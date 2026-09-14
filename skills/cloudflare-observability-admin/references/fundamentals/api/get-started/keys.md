@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get Global API key (legacy)
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/get-started/keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Global API key is the previous authorization scheme for interacting with the Cloudflare API. When possible, use [API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) instead of Global API key.
 
@@ -26,10 +26,10 @@ Global API key is only available after the [account email address is verified](h
 
 Global API key has multiple limitations when compared to API tokens:
 
-* **Access to all Cloudflare resources** \- Global API key has access to all of a user's resources. This makes it impossible to safely use Global API key to access non-production resources when a user also has access to production resources.
-* **Full permissions** \- Similarly, Global API key has the exact same permissions as the user, which means if the user can delete zones or change DNS records, so can the Global API key.
-* **Limited to one per user** \- Only one Global API key can be provisioned per user. This complicates using Cloudflare's API in production systems where maintaining two secrets for accessing the API is important in the case one needs to be rolled.
-* **Lack of advanced limits on usage** \- API tokens can be limited to specific time windows and expire or be limited to use from specific IP ranges.
+- **Access to all Cloudflare resources** - Global API key has access to all of a user's resources. This makes it impossible to safely use Global API key to access non-production resources when a user also has access to production resources.
+- **Full permissions** - Similarly, Global API key has the exact same permissions as the user, which means if the user can delete zones or change DNS records, so can the Global API key.
+- **Limited to one per user** - Only one Global API key can be provisioned per user. This complicates using Cloudflare's API in production systems where maintaining two secrets for accessing the API is important in the case one needs to be rolled.
+- **Lack of advanced limits on usage** - API tokens can be limited to specific time windows and expire or be limited to use from specific IP ranges.
 
 For these reasons, Global API key is not recommended for new customers. Current customers using Global API key are encouraged to migrate and use API tokens instead.
 
@@ -37,17 +37,15 @@ For these reasons, Global API key is not recommended for new customers. Current 
 
 To retrieve your Global API key:
 
-1. In the Cloudflare dashboard and select **User Profile** \> **API Tokens**.
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+1. In the Cloudflare dashboard and select **User Profile** > **API Tokens**. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. In the **API Keys** section, click `View` button of **Global API Key**.
 
 ## Change your Global API key
 
 If your API key might be compromised, change your API key:
 
-1. Log in to the Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Go to **My Profile** \> **API Tokens**.
+1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Go to **My Profile** > **API Tokens**.
 3. In the **API Keys** section, find your key.
 4. Select **Change**.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Errors parameters
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/custom-errors/reference/parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/reference/parameters/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Custom error rules
 
@@ -20,7 +20,7 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 ### Response type
 
-API name: _N/A_ (handled via [asset\_name](#asset) and [content\_type](#response) parameters)
+API name: *N/A* (handled via [`asset_name`](#asset) and [`content_type`](#response) parameters)
 
 The content type of the inline response to send to the website visitor (JSON, HTML, Text, or XML), or **Custom error asset** if sending the content of a custom error asset.
 
@@ -58,10 +58,10 @@ The maximum content size is 10 KB.
 
 When using the API you must also set the `content_type` parameter, which defines the content type of the returned response. The value must be one of the following:
 
-* `text/html`
-* `text/plain`
-* `application/json`
-* `text/xml`
+- `text/html`
+- `text/plain`
+- `application/json`
+- `text/xml`
 
 Caution
 
@@ -85,9 +85,9 @@ The name of the custom error asset. Example value: `"500_error_template"`.
 
 An asset name can contain the following characters:
 
-* Uppercase and lowercase letters (`A-Z` and `a-z`)
-* Numbers (`0-9`)
-* The underscore (`_`) character
+- Uppercase and lowercase letters ( `A-Z` and `a-z`)
+- Numbers ( `0-9`)
+- The underscore ( `_`) character
 
 The maximum length is 200 characters.
 

@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy Hooks
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/deploy-hooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/configuration/deploy-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Deploy Hooks, you can trigger deployments using event sources beyond commits in your source repository. Each event source may obtain its own unique URL, which will receive HTTP POST requests in order to initiate new deployments. This feature allows you to integrate Pages with new or existing workflows. For example, you may:
 
-* Automatically deploy new builds whenever content in a Headless CMS changes
-* Implement a fully customized CI/CD pipeline, deploying only under desired conditions
-* Schedule a CRON trigger to update your website on a fixed timeline
+- Automatically deploy new builds whenever content in a Headless CMS changes
+- Implement a fully customized CI/CD pipeline, deploying only under desired conditions
+- Schedule a CRON trigger to update your website on a fixed timeline
 
 To create a Deploy Hook:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
-3. Go to **Settings** \> **Builds** and select **Add deploy hook** to start configuration.
+3. Go to **Settings** > **Builds** and select **Add deploy hook** to start configuration.
+
 ![Add a deploy hook on the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=322,format=webp/_astro/deploy-hooks-add.u1N247wc.png)
 
 ## Parameters needed
@@ -34,6 +34,7 @@ To configure your Deploy Hook, you must enter two key parameters:
 
 1. **Deploy hook name:** a unique identifier for your Deploy Hook (for example, `contentful-site`)
 2. **Branch to build:** the repository branch your Deploy Hook should build
+
 ![Choosing Deploy Hook name and branch to build on Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=287,format=webp/_astro/deploy-hooks-configure.C0YoLPl3.png)
 
 ## Using your Deploy Hook

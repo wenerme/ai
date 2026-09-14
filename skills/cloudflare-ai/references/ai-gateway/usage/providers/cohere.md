@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cohere
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cohere ↗](https://cohere.com/) build AI models designed to solve real-world business challenges.
 
@@ -30,14 +30,16 @@ When making requests to [Cohere ↗](https://cohere.com/), replace `https://api.
 
 When making requests to Cohere, ensure you have the following:
 
-* Your AI Gateway Account ID.
-* Your AI Gateway gateway name.
-* An active Cohere API token.
-* The name of the Cohere model you want to use.
+- Your AI Gateway Account ID.
+- Your AI Gateway gateway name.
+- An active Cohere API token.
+- The name of the Cohere model you want to use.
 
 ## Examples
 
 ### cURL
+
+*Requestbash*
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/chat \
@@ -55,10 +57,11 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/ch
 
 ### Use Cohere SDK with Python
 
-If using the [cohere-python-sdk ↗](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
+If using the [`cohere-python-sdk` ↗](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
+
+*Pythonjs*
 
 ```js
-
 import cohere
 import os
 
@@ -94,7 +97,6 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completion
 Specify:
 
 ```json
-
 {
 "model": "cohere/{model}"
 }

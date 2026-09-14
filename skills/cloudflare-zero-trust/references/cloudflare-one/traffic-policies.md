@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Traffic policies
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Secure Web Gateway (SWG) is a security service that sits between an organization's users and the Internet. It inspects outbound traffic to enforce security policies, block threats, and prevent data loss. Core SWG capabilities include:
 
-* **URL and domain filtering** – Controls which websites users can access.
-* **Anti-malware scanning** – Inspects files in transit for malicious code.
-* **Application control** – Manages which applications users can reach and what actions they can perform.
-* **Data Loss Prevention (DLP)** – Detects and blocks sensitive data before it leaves the network.fprotecting
-* **Traffic inspection** – Decrypts and examines encrypted (HTTPS) traffic for hidden threats.
+- **URL and domain filtering** – Controls which websites users can access.
+- **Anti-malware scanning** – Inspects files in transit for malicious code.
+- **Application control** – Manages which applications users can reach and what actions they can perform.
+- **Data Loss Prevention (DLP)** – Detects and blocks sensitive data before it leaves the network.fprotecting
+- **Traffic inspection** – Decrypts and examines encrypted (HTTPS) traffic for hidden threats.
 
 ## The need for an SWG
 
 Traditional network security relied on hardware firewalls at the perimeter of a corporate network. That model assumed users, applications, and data all lived inside the same network boundary. Modern organizations face a different reality:
 
-* **Distributed workforce** – Employees connect from home networks, public Wi-Fi, and mobile devices, outside any corporate perimeter.
-* **Cloud and SaaS adoption** – Business-critical applications and data have moved to cloud platforms like Microsoft 365, Google Workspace, and Salesforce.
-* **Expanding threat surface** – Phishing, ransomware, command-and-control botnets, and data exfiltration attempts target users regardless of their location.
+- **Distributed workforce** – Employees connect from home networks, public Wi-Fi, and mobile devices, outside any corporate perimeter.
+- **Cloud and SaaS adoption** – Business-critical applications and data have moved to cloud platforms like Microsoft 365, Google Workspace, and Salesforce.
+- **Expanding threat surface** – Phishing, ransomware, command-and-control botnets, and data exfiltration attempts target users regardless of their location.
 
 Without an SWG, organizations lose visibility into what websites and applications users access, what threats reach user devices, and what data leaves the organization. An SWG restores that visibility and control by inspecting traffic in the cloud, close to users, rather than forcing all traffic through a central data center.
 
@@ -44,51 +44,99 @@ Every organization needs a way to control what users can reach on the Internet �
 
 If you are familiar with traditional network security, Gateway's policy layers map to familiar firewall functions:
 
-* **DNS policies** correspond to DNS-layer filtering (blocking domains before connections are established).
-* **Network policies** correspond to a Layer 4 stateful firewall, sometimes called Firewall-as-a-Service (FWaaS), filtering by IP address, port, and protocol.
-* **HTTP policies** correspond to a Layer 7 application firewall (forward proxy with TLS decryption and deep packet inspection).
+- **DNS policies** correspond to DNS-layer filtering (blocking domains before connections are established).
+- **Network policies** correspond to a Layer 4 stateful firewall, sometimes called Firewall-as-a-Service (FWaaS), filtering by IP address, port, and protocol.
+- **HTTP policies** correspond to a Layer 7 application firewall (forward proxy with TLS decryption and deep packet inspection).
 
 Unlike hardware firewalls that sit at a single network perimeter, Gateway enforces these policies across Cloudflare's global network, protecting traffic regardless of where users connect.
 
 Gateway supports several policy types because network traffic can be inspected at different layers — from raw packets up to full HTTP requests. Each policy type gives you control at a specific layer:
 
+<details>
+
+<summary>
+
 Packet filtering
 
-**[Packet filtering](https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/)** inspects raw network packets and blocks traffic based on properties like source IP address or protocol. It does not need to know who the user is or what session they belong to.
+</summary>
+
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/packet-filtering/network-firewall-overview/">Packet filtering</a>** inspects raw network packets and blocks traffic based on properties like source IP address or protocol. It does not need to know who the user is or what session they belong to.
 
 Use packet filtering to drop unwanted traffic before it reaches any other policy.
 
+</details>
+
+<details>
+
+<summary>
+
 DNS policies
 
-**[DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/)** check every DNS query your users make. When a query matches a policy rule, Gateway can block the domain from resolving — the site never loads because the domain name is never translated to an IP address.
+</summary>
 
-DNS policies act at the earliest stage of a connection, before any content is fetched. This makes them the fastest policy type to deploy and the broadest in scope. For more information on [DNS filtering ↗](https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/), refer to the Cloudflare Learning Center.
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/">DNS policies</a>** check every DNS query your users make. When a query matches a policy rule, Gateway can block the domain from resolving — the site never loads because the domain name is never translated to an IP address.
+
+DNS policies act at the earliest stage of a connection, before any content is fetched. This makes them the fastest policy type to deploy and the broadest in scope. For more information on <a href="https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/">DNS filtering ↗</a>, refer to the Cloudflare Learning Center.
 
 Use DNS policies to block malicious domains, restrict content categories, or prevent entire sites from loading. For full threat protection, pair DNS policies with HTTP policies — DNS blocks known bad domains, while HTTP catches threats hidden in allowed traffic.
 
+</details>
+
+<details>
+
+<summary>
+
 Network policies
 
-**[Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/)** inspect individual TCP, UDP, and Generic Routing Encapsulation (GRE) packets. They can match on IP addresses, ports, protocols, and the server name sent at the start of an encrypted connection (Server Name Indication, or SNI).
+</summary>
+
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/">Network policies</a>** inspect individual TCP, UDP, and Generic Routing Encapsulation (GRE) packets. They can match on IP addresses, ports, protocols, and the server name sent at the start of an encrypted connection (Server Name Indication, or SNI).
 
 Use network policies to block access to specific ports or non-HTTP services such as SSH and RDP.
 
+</details>
+
+<details>
+
+<summary>
+
 HTTP policies
 
-**[HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/)** inspect the full content of web requests — including URLs, headers, and uploaded or downloaded files. Gateway decrypts HTTPS traffic so it can examine what DNS and network policies cannot see. This requires installing a [Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) on user devices.
+</summary>
 
-Use HTTP policies to block specific URLs, scan file uploads for sensitive data, block malware in downloads, [quarantine suspicious files](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/) for sandbox analysis, and control which accounts users can sign in to. For example, allow your company Google Workspace account but block personal Gmail.
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/">HTTP policies</a>** inspect the full content of web requests — including URLs, headers, and uploaded or downloaded files. Gateway decrypts HTTPS traffic so it can examine what DNS and network policies cannot see. This requires installing a <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/">Cloudflare root certificate</a> on user devices.
+
+Use HTTP policies to block specific URLs, scan file uploads for sensitive data, block malware in downloads, <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/file-sandboxing/">quarantine suspicious files</a> for sandbox analysis, and control which accounts users can sign in to. For example, allow your company Google Workspace account but block personal Gmail.
+
+</details>
+
+<details>
+
+<summary>
 
 Egress policies
 
-**[Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/)** control how traffic leaves your network by assigning fixed IP addresses that belong to your organization. Third-party services can recognize these IPs as yours.
+</summary>
+
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/">Egress policies</a>** control how traffic leaves your network by assigning fixed IP addresses that belong to your organization. Third-party services can recognize these IPs as yours.
 
 Use egress policies to connect to partners or services that only allow traffic from a known list of IP addresses.
 
+</details>
+
+<details>
+
+<summary>
+
 Resolver policies
 
-**[Resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/)** send DNS queries to specific DNS servers instead of the default Cloudflare resolver.
+</summary>
+
+**<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/">Resolver policies</a>** send DNS queries to specific DNS servers instead of the default Cloudflare resolver.
 
 Use resolver policies to resolve private hostnames on your internal network, route queries to your own DNS servers for compliance, or reach internal resources while connected through Cloudflare One.
+
+</details>
 
 ### Identity and device context
 
@@ -96,8 +144,8 @@ Gateway policies can go beyond network attributes (domains, IPs, ports) and inco
 
 When users connect through the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), Gateway can evaluate:
 
-* **User identity** – Email address, group membership, and authentication method from your [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) (for example, Okta, Microsoft Entra ID, or Google Workspace).
-* **Device posture** – Signals such as operating system version, disk encryption status, firewall state, and whether the device serial number matches a managed device list. For the full list of available checks, refer to [Device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+- **User identity** – Email address, group membership, and authentication method from your [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) (for example, Okta, Microsoft Entra ID, or Google Workspace).
+- **Device posture** – Signals such as operating system version, disk encryption status, firewall state, and whether the device serial number matches a managed device list. For the full list of available checks, refer to [Device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 These signals can be combined with traffic selectors to create context-aware policies. For example, you can create an HTTP policy that allows access to a sensitive SaaS application only when the user belongs to a specific group **and** the device has disk encryption turned on.
 
@@ -124,15 +172,15 @@ For step-by-step setup guides, refer to [DNS](https://developers.cloudflare.com/
 
 The following table maps common traffic-filtering goals to the best Cloudflare Gateway policy type:
 
-| Filtering goal                         | Policy type      | Why                                                                    |
-| -------------------------------------- | ---------------- | ---------------------------------------------------------------------- |
-| Block websites by URL                  | HTTP             | Inspects the full URL path, not just the domain                        |
-| Block domains (all pages)              | DNS              | Prevents the domain from resolving                                     |
-| Block non-HTTP traffic (SSH, RDP)      | Network          | Inspects TCP/UDP packets on any port                                   |
-| Block malware and threats              | DNS _and_ HTTP   | DNS blocks known-bad domains. HTTP catches threats in allowed traffic. |
-| Assign static egress IPs               | Egress           | Lets third-party services identify your organization                   |
-| Drop traffic before other policies run | Packet filtering | Blocks by packet attributes without user context                       |
-| Route DNS to custom nameservers        | Resolver         | Overrides the default Cloudflare resolver                              |
+| Filtering goal | Policy type | Why |
+| --- | --- | --- |
+| Block websites by URL | HTTP | Inspects the full URL path, not just the domain |
+| Block domains (all pages) | DNS | Prevents the domain from resolving |
+| Block non-HTTP traffic (SSH, RDP) | Network | Inspects TCP/UDP packets on any port |
+| Block malware and threats | DNS *and* HTTP | DNS blocks known-bad domains. HTTP catches threats in allowed traffic. |
+| Assign static egress IPs | Egress | Lets third-party services identify your organization |
+| Drop traffic before other policies run | Packet filtering | Blocks by packet attributes without user context |
+| Route DNS to custom nameservers | Resolver | Overrides the default Cloudflare resolver |
 
 After you choose a Cloudflare Gateway policy type, continue with the matching setup guide to create the policy that fits your traffic-filtering goal.
 
@@ -140,17 +188,17 @@ After you choose a Cloudflare Gateway policy type, continue with the matching se
 
 The connection method (on-ramp) you use determines which policy types Gateway can enforce. The following table summarizes each method:
 
-| Connection method                                                                                                                  | DNS policies | Network policies | HTTP policies      | Best for                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------ | --------------------------------------------------------- |
-| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (WARP) | Yes          | Yes              | Yes                | Roaming users on managed devices (laptops, phones)        |
-| [DNS resolver](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) configuration       | Yes          | No               | No                 | Unmanaged devices, entire networks, or initial rollout    |
-| [Proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file)      | No           | No               | Yes (browser only) | Browser-level HTTP filtering without a device agent       |
-| [Network tunnel](https://developers.cloudflare.com/cloudflare-one/networks/) (IPsec/GRE via Magic WAN)                             | Yes          | Yes              | Yes                | Branch offices, data centers, and site-level connectivity |
+| Connection method | DNS policies | Network policies | HTTP policies | Best for |
+| --- | --- | --- | --- | --- |
+| [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (WARP) | Yes | Yes | Yes | Roaming users on managed devices (laptops, phones) |
+| [DNS resolver](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) configuration | Yes | No | No | Unmanaged devices, entire networks, or initial rollout |
+| [Proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file) | No | No | Yes (browser only) | Browser-level HTTP filtering without a device agent |
+| [Network tunnel](https://developers.cloudflare.com/cloudflare-one/networks/) (IPsec/GRE via Magic WAN) | Yes | Yes | Yes | Branch offices, data centers, and site-level connectivity |
 
-* The **Cloudflare One Client** provides the broadest coverage and is the recommended method for per-device deployments.
-* **DNS resolver** configuration is the easiest to deploy (change a DNS setting on your router or device) and provides immediate protection, but it only enforces DNS policies.
-* **Proxy endpoints** enable HTTP inspection through browser proxy configuration without installing an agent, but they are limited to browser traffic.
-* **Network tunnels** route all site traffic through Gateway and are best for protecting entire office locations or data centers.
+- The **Cloudflare One Client** provides the broadest coverage and is the recommended method for per-device deployments.
+- **DNS resolver** configuration is the easiest to deploy (change a DNS setting on your router or device) and provides immediate protection, but it only enforces DNS policies.
+- **Proxy endpoints** enable HTTP inspection through browser proxy configuration without installing an agent, but they are limited to browser traffic.
+- **Network tunnels** route all site traffic through Gateway and are best for protecting entire office locations or data centers.
 
 You can combine multiple on-ramps. For example, use the Cloudflare One Client for remote employees and network tunnels for branch offices.
 
@@ -158,6 +206,7 @@ You can combine multiple on-ramps. For example, use the Cloudflare One Client fo
 
 When a user makes a request, Gateway inspects it at multiple layers before allowing the connection through. The following diagram shows the end-to-end flow:
 
+```
 flowchart LR
     accTitle: Gateway traffic flow
     accDescr: Diagram showing how traffic flows from user device through an on-ramp to Cloudflare Gateway for policy evaluation, then to the destination.
@@ -170,6 +219,8 @@ flowchart LR
     D --> C
     C --> B
     B --> A
+
+```
 
 1. The user's device sends a request (DNS query, TCP connection, or HTTP request).
 2. The request reaches Cloudflare through an **on-ramp** — the Cloudflare One Client, a DNS resolver configuration, a proxy endpoint, or a network tunnel.

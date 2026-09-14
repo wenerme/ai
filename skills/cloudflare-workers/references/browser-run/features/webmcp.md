@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # WebMCP
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/webmcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/webmcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [WebMCP ↗](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
 
@@ -20,7 +20,7 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 ### Manual testing with DevTools
 
-#### 1\. Start a Lab session and open DevTools
+#### 1. Start a Lab session and open DevTools
 
 WebMCP is currently available in Chrome beta, so it requires a lab session. Browser Run has an experimental pool with browser instances running Chrome beta so you can test emerging browser features before they reach stable Chrome. Your production workloads on the [standard pool](https://developers.cloudflare.com/browser-run/#key-features) remain on a stable version of Chrome.
 
@@ -38,15 +38,18 @@ wrangler browser create --lab --keepAlive 300
 
 It will open a live view of your browser session.
 
-#### 2\. Interact with the page
+#### 2. Interact with the page
 
 You can now interact with the page as you would in a regular browser.
 
 1. Go to one of the sites listed in the [WebMCP documentation ↗](https://github.com/GoogleChromeLabs/webmcp-tools/?tab=readme-ov-file#demos). The following instructions are based on the [L'Atelier Hotel Chain ↗](https://github.com/GoogleChromeLabs/webmcp-tools/tree/main/demos/hotel-chain) demo.
 2. Open the [hotel chain demo URL ↗](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and then, in the **Console** tab, run the following JavaScript statement to list the available tools:
-```js
-navigator.modelContextTesting.listTools();
-```
+
+   ```js
+   navigator.modelContextTesting.listTools();
+   ```
+
+
 
 You should get a result similar to the following:
 
@@ -120,7 +123,7 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 
 ### Using an AI Agent
 
-#### 1\. Configure Chrome DevTools MCP
+#### 1. Configure Chrome DevTools MCP
 
 [Chrome DevTools MCP ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) allows AI agents to control a browser via CDP. Configure your MCP client (such as Claude Desktop, Claude Code, Cursor, or OpenCode) with the following settings. For more details on MCP client configuration, refer to [Using with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
 
@@ -140,11 +143,11 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 
 Replace `<ACCOUNT_ID>` with your Cloudflare account ID and `<CLOUDFLARE_API_TOKEN>` with your API token. The `lab=true` parameter ensures the agent connects to a lab session with WebMCP enabled.
 
-#### 2\. (Optional) Add a WebMCP Skill
+#### 2. (Optional) Add a WebMCP Skill
 
 To help your agent understand how to work with WebMCP, add the following skill to your agent configuration:
 
-```markdown
+````markdown
 ---
 name: webmcp
 description: Interact with WebMCP-enabled websites using Browser Run lab sessions
@@ -184,21 +187,21 @@ evaluate_script({
 		"async () => await navigator.modelContextTesting.executeTool('tool_name', JSON.stringify({ param: 'value' }))",
 });
 ```
-```
+````
 
-#### 3\. Interact with WebMCP sites
+#### 3. Interact with WebMCP sites
 
 Once configured, your AI agent can navigate to WebMCP-enabled sites and use WebMCP tools. Here is an example conversation:
 
 **You:** Go to [https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/ ↗](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and find me a hotel in Paris with breakfast. Use WebMCP tools when available.
 
-_Agent navigates to the site, lists WebMCP tools, executes `searchlocation` with "Paris", then `filtersearchresults` with breakfast amenity, and presents the results._
+*Agent navigates to the site, lists WebMCP tools, executes `search_location` with "Paris", then `filter_search_results` with breakfast amenity, and presents the results.*
 
 **You:** Pick the first one and book it for Bond, James Bond ([james.bond@mi6.gov.uk](mailto:james.bond@mi6.gov.uk)).
 
-_Agent clicks the hotel, executes `startbooking`, then `completebooking` with the provided guest details._
+*Agent clicks the hotel, executes `start_booking`, then `complete_booking` with the provided guest details.*
 
-#### 4\. (Optional) Open DevTools to watch the agent
+#### 4. (Optional) Open DevTools to watch the agent
 
 Some WebMCP tools require human confirmation before completing sensitive actions. For example, `complete_booking` waits for you to select **Confirm** before finalizing a reservation. To interact with these human-in-the-loop (HITL) prompts, you need to open the browser's live view.
 
@@ -218,15 +221,15 @@ You can now view the live browser session and interact with it.
 
 ## Limitations
 
-* Lab sessions use Chrome 146 beta, which may have stability issues.
-* WebMCP APIs (`navigator.modelContext`, `navigator.modelContextTesting`) only work in lab sessions.
-* Lab sessions count against your regular [rate limits](https://developers.cloudflare.com/browser-run/limits/) and [pricing](https://developers.cloudflare.com/browser-run/pricing/).
-* The `lab` parameter is not yet supported in `@cloudflare/puppeteer` or `@cloudflare/playwright`. Acquire the session manually and connect with `sessionId`.
+- Lab sessions use Chrome 146 beta, which may have stability issues.
+- WebMCP APIs ( `navigator.modelContext`, `navigator.modelContextTesting`) only work in lab sessions.
+- Lab sessions count against your regular [rate limits](https://developers.cloudflare.com/browser-run/limits/) and [pricing](https://developers.cloudflare.com/browser-run/pricing/).
+- The `lab` parameter is not yet supported in `@cloudflare/puppeteer` or `@cloudflare/playwright`. Acquire the session manually and connect with `sessionId`.
 
 ## More resources
 
-* [Chrome WebMCP blog post ↗](https://developer.chrome.com/blog/webmcp-epp)
-* [WebMCP specification ↗](https://github.com/webmachinelearning/webmcp)
+- [Chrome WebMCP blog post ↗](https://developer.chrome.com/blog/webmcp-epp)
+- [WebMCP specification ↗](https://github.com/webmachinelearning/webmcp)
 
 ## Troubleshooting
 

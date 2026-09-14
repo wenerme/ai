@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Leaked Password Notifications
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare automatically checks if your password has been compromised when you log in to the Cloudflare dashboard. Every time you log in to your account, we will securely verify through threat intelligence sources to confirm if your password has been leaked in a past data breach.
 
@@ -32,7 +32,7 @@ Users leveraging [Single Sign-On (SSO)](https://developers.cloudflare.com/fundam
 
 We encourage you to enable two-factor authentication to secure your account.
 
-Cloudflare account Super Administrators can also require that [all members enable 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/). This functionality can be enabled by going to **Manage Account** \> **Members** in the Cloudflare dashboard.
+Cloudflare account Super Administrators can also require that [all members enable 2FA](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/). This functionality can be enabled by going to **Manage Account** > **Members** in the Cloudflare dashboard.
 
 Was this helpful?
 

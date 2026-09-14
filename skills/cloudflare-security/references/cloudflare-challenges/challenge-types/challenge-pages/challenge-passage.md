@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Challenge Passage
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When a visitor solves a [Cloudflare Challenge](https://developers.cloudflare.com/cloudflare-challenges/) \- as part of a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rule](https://developers.cloudflare.com/waf/tools/ip-access-rules/) \- you can set the **Challenge Passage** to prevent them from having to solve future Challenges for a specified period of time.
+When a visitor solves a [Cloudflare Challenge](https://developers.cloudflare.com/cloudflare-challenges/) - as part of a [WAF custom rule](https://developers.cloudflare.com/waf/custom-rules/) or [IP Access rule](https://developers.cloudflare.com/waf/tools/ip-access-rules/) - you can set the **Challenge Passage** to prevent them from having to solve future Challenges for a specified period of time.
 
 ### How it works
 
-When a visitor successfully solves a challenge, Cloudflare sets a [cf\_clearance cookie](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform) in their browser. This cookie specifies the duration your website is accessible to that visitor.
+When a visitor successfully solves a challenge, Cloudflare sets a [`cf_clearance` cookie](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform) in their browser. This cookie specifies the duration your website is accessible to that visitor.
 
 When that visitor tries to access other parts of your website, Cloudflare evaluates the cookie before presenting another challenge. If the cookie is still valid, no challenges will be shown.
 
@@ -30,8 +30,7 @@ By default, the `cf_clearance` cookie has a lifetime of 30 minutes. Cloudflare r
 
 To update the Challenge Passage (and the value of the `cf_clearance` cookie):
 
-1. In the Cloudflare dashboard, go to the **Security Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Go to **Challenge passage**.
 3. Select the edit icon to set a timeout duration.
 

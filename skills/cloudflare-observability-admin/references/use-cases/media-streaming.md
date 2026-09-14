@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Media and streaming
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/media-streaming/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Deliver video, images, and rich media at scale with encoding, optimization, and global distribution. Cloudflare Stream handles video upload, encoding, and adaptive bitrate delivery. Images transforms and optimizes images on-the-fly. R2 stores media files with zero egress fees. Cache serves content from 300+ edge locations. Hotlink Protection and signed URLs secure media from unauthorized access.
 
-* [Upload, encode, and deliver videos](https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/)
-* [Optimize and transform images for the web](https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/)
-* [Store media at scale](https://developers.cloudflare.com/use-cases/media-streaming/store-media/)
-* [Cache and accelerate media delivery](https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/)
-* [Secure your content](https://developers.cloudflare.com/use-cases/media-streaming/secure-content/)
+- [Upload, encode, and deliver videos](https://developers.cloudflare.com/use-cases/media-streaming/video-delivery/)
+- [Optimize and transform images for the web](https://developers.cloudflare.com/use-cases/media-streaming/image-optimization/)
+- [Store media at scale](https://developers.cloudflare.com/use-cases/media-streaming/store-media/)
+- [Cache and accelerate media delivery](https://developers.cloudflare.com/use-cases/media-streaming/cache-delivery/)
+- [Secure your content](https://developers.cloudflare.com/use-cases/media-streaming/secure-content/)
 
 ## Architecture patterns
 
@@ -28,9 +28,9 @@ Deliver video, images, and rich media at scale with encoding, optimization, and 
 
 Build a complete video hosting and delivery solution:
 
-* **Stream** handles upload, encoding, and adaptive bitrate delivery
-* **Stream Live** enables live streaming with automatic recording
-* **Signed URLs** protect content with token authentication
+- **Stream** handles upload, encoding, and adaptive bitrate delivery
+- **Stream Live** enables live streaming with automatic recording
+- **Signed URLs** protect content with token authentication
 
 ### Image optimization pipeline
 
@@ -54,14 +54,14 @@ Handle media uploads from users at scale:
 
 ### Create a new application
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up). Stream and R2 are account-level offerings. You do not need a domain added to Cloudflare to upload, encode, or store media.
-* For Image Transformations: enable the feature per domain from the [Transformations page ↗](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up). Stream and R2 are account-level offerings. You do not need a domain added to Cloudflare to upload, encode, or store media.
+- For Image Transformations: enable the feature per domain from the [Transformations page ↗](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
 
 ### Use an existing application
 
-* A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-* A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for CDN caching, image optimization (Polish), and cache rules.
-* For Image Transformations on an existing domain: enable the feature from the [Transformations page ↗](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
+- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for CDN caching, image optimization (Polish), and cache rules.
+- For Image Transformations on an existing domain: enable the feature from the [Transformations page ↗](https://dash.cloudflare.com/?to=/:account/images/transformations) in the dashboard. Refer to [Image Transformations](https://developers.cloudflare.com/images/optimization/transformations/overview/).
 
 ---
 

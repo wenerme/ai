@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policies
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
-* [Compliance documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
-* [Content Security Policies (CSPs)](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/)
-* [Delivering Videos with Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/)
-* [Licenses](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)
-* [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/)
+- [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
+- [Compliance documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
+- [Content Security Policies (CSPs)](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/)
+- [Delivering Videos with Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/)
+- [Licenses](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/licenses/)
+- [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/)
 
 Was this helpful?
 

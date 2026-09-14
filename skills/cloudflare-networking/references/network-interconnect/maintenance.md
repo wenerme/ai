@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Maintenance
 
-Last updated Sep 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-interconnect/maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Planned maintenance
 
@@ -22,16 +22,16 @@ Routine CNI-disruptive maintenance is planned work that can interrupt traffic on
 
 For Dataplane v2 connectivity in multi-homed PoPs only:
 
-* **Routine maintenance**: Minimum one week notice.
-* **Emergency maintenance**: Best-effort notice, which may be less than one week.
-* Routine maintenance on redundant devices at the same location will occur on different days.
-* Routine maintenance is not rescheduled to accommodate customer schedule preferences.
+- **Routine maintenance**: Minimum one week notice.
+- **Emergency maintenance**: Best-effort notice, which may be less than one week.
+- Routine maintenance on redundant devices at the same location will occur on different days.
+- Routine maintenance is not rescheduled to accommodate customer schedule preferences.
 
-| CNI deployment                                                                                                   | During routine CNI-disruptive maintenance |
-| ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| One CNI connection at one location                                                                               | The connection can be interrupted.        |
-| Two CNI connections on separate devices at one location                                                          | One connection remains in service.        |
-| Four CNI connections across two coordinated locations, with two connections on separate devices at each location | Three connections remain in service.      |
+| CNI deployment | During routine CNI-disruptive maintenance |
+| --- | --- |
+| One CNI connection at one location | The connection can be interrupted. |
+| Two CNI connections on separate devices at one location | One connection remains in service. |
+| Four CNI connections across two coordinated locations, with two connections on separate devices at each location | Three connections remain in service. |
 
 ## Emergency and non-routine maintenance
 

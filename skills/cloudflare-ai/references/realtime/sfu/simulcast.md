@@ -12,10 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Simulcast
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/simulcast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/simulcast/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Simulcast is a feature of WebRTC that allows a publisher to send multiple video streams of the same media at different qualities. For example, this is useful for scenarios where you want to send a high quality stream for desktop users and a lower quality stream for mobile users.
 
+```
 graph LR
     A[Publisher] -->|Low quality| B[Cloudflare Realtime SFU]
     A -->|Medium quality| B
@@ -23,6 +24,8 @@ graph LR
 B -->|Low quality| C@{ shape: procs, label: "Subscribers"}
 B -->|Medium quality| D@{ shape: procs, label: "Subscribers"}
 B -->|High quality| E@{ shape: procs, label: "Subscribers"}
+
+```
 
 ### How it works
 
@@ -34,16 +37,15 @@ Cloudflare Realtime SFU will automatically handle the simulcast configuration ba
 
 The `simulcast` configuration object in the API call when you start pulling a remote track allows you to specify:
 
-* `preferredRid`: The preferred quality level for the video stream (RID for the simulcast stream. [RIDs can be specified by the publisher. ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters#encodings))
-* `priorityOrdering`: Controls how the SFU handles bandwidth constraints.
+- `preferredRid`: The preferred quality level for the video stream (RID for the simulcast stream. [RIDs can be specified by the publisher. ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters#encodings))
+- `priorityOrdering`: Controls how the SFU handles bandwidth constraints.
+  - `none`: Keep sending the preferred layer, set via the preferredRid, even if there's not enough bandwidth.
+  - `asciibetical`: Use alphabetical ordering (a-z) to determine priority, where 'a' is most desirable and 'z' is least desirable.
+- `ridNotAvailable`: Controls what happens when the preferred RID is no longer available, for example when the publisher stops sending it.
+  - `none`: Do nothing.
+  - `asciibetical`: Switch to the next available RID based on the priority ordering, where 'a' is most desirable and 'z' is least desirable.
 
-  * `none`: Keep sending the preferred layer, set via the preferredRid, even if there's not enough bandwidth.
-  * `asciibetical`: Use alphabetical ordering (a-z) to determine priority, where 'a' is most desirable and 'z' is least desirable.
-* `ridNotAvailable`: Controls what happens when the preferred RID is no longer available, for example when the publisher stops sending it.
-
-  * `none`: Do nothing.
-  * `asciibetical`: Switch to the next available RID based on the priority ordering, where 'a' is most desirable and 'z' is least desirable.
-You will likely want to order the asciibetical RIDs based on your desired metric, such as highest resolution to lowest or highest bandwidth to lowest.
+  You will likely want to order the asciibetical RIDs based on your desired metric, such as highest resolution to lowest or highest bandwidth to lowest.
 
 ### Bandwidth Management across media tracks
 

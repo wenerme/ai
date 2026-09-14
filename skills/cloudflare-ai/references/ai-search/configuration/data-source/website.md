@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Website
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/website/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect a website you own as a data source for your AI Search instance. AI Search crawls and indexes the pages automatically.
 
@@ -30,8 +30,8 @@ You can connect a website when creating a new instance through the [dashboard](h
 
 AI Search finds the pages on your site, fetches each one, converts it to Markdown, splits it into chunks, and adds it to the index. The [parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/) controls how pages are found:
 
-* **Sitemap** (default): reads the XML sitemaps your site publishes.
-* **Discover**: starts at the source URL and, by default, uses both your sitemaps and the links it finds on the pages it crawls.
+- **Sitemap** (default): reads the XML sitemaps your site publishes.
+- **Discover**: starts at the source URL and, by default, uses both your sitemaps and the links it finds on the pages it crawls.
 
 Refer to [Parse types](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/) for how each type finds pages, how each one handles sitemaps and syncing, and which settings apply to only one of them.
 
@@ -39,22 +39,22 @@ Refer to [Parse types](https://developers.cloudflare.com/ai-search/configuration
 
 Crawled pages are stored in built-in storage automatically.
 
-To see the items parsed from your website, [list the instance's items](https://developers.cloudflare.com/ai-search/api/items/workers-binding/#itemslist) with the Items API, or open the **Items** tab in the dashboard (**AI** \> **AI Search** \> your instance > **Items**).
+To see the items parsed from your website, [list the instance's items](https://developers.cloudflare.com/ai-search/api/items/workers-binding/#itemslist) with the Items API, or open the **Items** tab in the dashboard (**AI** > **AI Search** > your instance > **Items**).
 
 ## Configuration
 
 Configure these options during onboarding, or later in your instance settings under **Parser options**.
 
-| Option                                                                                                                          | Description                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Path filtering](#path-filtering)                                                                                               | Include and exclude URL patterns that decide which pages are crawled.                                                                                                    |
-| [Parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/)                        | How the crawler finds pages. **Sitemap** reads your XML sitemaps. **Discover** starts at the source URL and, by default, uses both your sitemaps and the links it finds. |
-| [Specific sitemap](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#specific-sitemap) | Crawl a set of sitemap URLs that you choose instead of the ones AI Search discovers. Up to five URLs. Applies to the sitemap parse type only.                            |
-| [Discover options](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#discover-options) | Discovery source, page limit, crawl depth, cache age, and whether to follow external links and subdomains. Applies to the discover parse type only.                      |
-| [Rendering mode](#rendering-mode)                                                                                               | Whether pages are downloaded as raw HTML or loaded in a headless browser first.                                                                                          |
-| [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/) | Custom HTTP headers sent with each request, so the crawler can reach pages behind authentication. Up to five headers.                                                    |
-| [Content selectors](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/)           | Restrict indexing to the elements that a CSS selector matches, so you skip navigation, sidebars, and footers.                                                            |
-| [Custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/)               | Values extracted from the <meta> tags in each page's <head>, stored alongside the indexed content.                                                                       |
+| Option | Description |
+| --- | --- |
+| [Path filtering](#path-filtering) | Include and exclude URL patterns that decide which pages are crawled. |
+| [Parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/) | How the crawler finds pages. **Sitemap** reads your XML sitemaps. **Discover** starts at the source URL and, by default, uses both your sitemaps and the links it finds. |
+| [Specific sitemap](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#specific-sitemap) | Crawl a set of sitemap URLs that you choose instead of the ones AI Search discovers. Up to five URLs. Applies to the sitemap parse type only. |
+| [Discover options](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#discover-options) | Discovery source, page limit, crawl depth, cache age, and whether to follow external links and subdomains. Applies to the discover parse type only. |
+| [Rendering mode](#rendering-mode) | Whether pages are downloaded as raw HTML or loaded in a headless browser first. |
+| [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/) | Custom HTTP headers sent with each request, so the crawler can reach pages behind authentication. Up to five headers. |
+| [Content selectors](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/) | Restrict indexing to the elements that a CSS selector matches, so you skip navigation, sidebars, and footers. |
+| [Custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/) | Values extracted from the `<meta>` tags in each page's `<head>`, stored alongside the indexed content. |
 
 ### Path filtering
 
@@ -66,8 +66,8 @@ Path filtering matches against the full URL, including the scheme, hostname, and
 
 For example, to index only blog posts while excluding drafts:
 
-* **Include:** `**/blog/**`
-* **Exclude:** `**/blog/drafts/**`
+- **Include:** `**/blog/**`
+- **Exclude:** `**/blog/drafts/**`
 
 Refer to [Path filtering](https://developers.cloudflare.com/ai-search/configuration/indexing/path-filtering/) for pattern syntax, filtering behavior, and more examples.
 
@@ -77,35 +77,34 @@ For supported file types and size limits, refer to [Data source](https://develop
 
 You can choose how pages are parsed during crawling:
 
-* **Static sites**: Downloads the raw HTML for each page.
-* **Rendered sites**: Loads pages with a headless browser and downloads the fully rendered version, including dynamic JavaScript content.
+- **Static sites**: Downloads the raw HTML for each page.
+- **Rendered sites**: Loads pages with a headless browser and downloads the fully rendered version, including dynamic JavaScript content.
 
 ## Allow AI Search through WAF
 
 If you have Security rules configured to block bot activity on your own site, you can add a rule to allowlist the AI Search bot. Refer to [AI Search in the Cloudflare Radar bot directory ↗](https://radar.cloudflare.com/bots/directory/cloudflare-ai-search) for its verified identity and user agent.
 
-1. In the Cloudflare dashboard, go to the **Security rules** page.
-[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
-2. To create a new empty rule, select **Create rule** \> **Custom rules**.
+1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+2. To create a new empty rule, select **Create rule** > **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**, such as `Allow AI Search`.
-4. Under **When incoming requests match**, use the **Field** drop-down list to choose _Bot Detection ID_. For **Operator**, select _equals_. For **Value**, enter `122933950`.
-5. Under **Then take action**, in the **Choose action** dropdown, choose _Skip_.
-6. Under **Place at**, select the order of the rule in the **Select order** dropdown to be _First_. Setting the order as _First_ allows this rule to be applied before subsequent rules.
+4. Under **When incoming requests match**, use the **Field** drop-down list to choose *Bot Detection ID*. For **Operator**, select *equals*. For **Value**, enter `122933950`.
+5. Under **Then take action**, in the **Choose action** dropdown, choose *Skip*.
+6. Under **Place at**, select the order of the rule in the **Select order** dropdown to be *First*. Setting the order as *First* allows this rule to be applied before subsequent rules.
 7. To save and deploy your rule, select **Deploy**.
 
 ## Limits
 
 The regular AI Search [limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/) apply when using the Website data source. The following limits apply to website data sources on both Workers plans:
 
-| Limit                                                                                                                                               | Value                             |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
-| Pages per crawl, [discover parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#discover)         | 100,000                           |
-| Crawl depth, [discover parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#page-limit-and-depth) | 100,000 link hops (defaults to 5) |
-| Cached page age, [discover parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#cache-age)        | 604,800 seconds (7 days)          |
-| [Specific sitemap](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#specific-sitemap) URLs                | 5 per instance                    |
-| [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/)                     | 5 per instance                    |
-| [Content selector](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/) entries                        | 10 per instance                   |
-| Content selector path pattern and selector length                                                                                                   | 200 characters each               |
+| Limit | Value |
+| --- | --- |
+| Pages per crawl, [`discover` parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#discover) | 100,000 |
+| Crawl depth, [`discover` parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#page-limit-and-depth) | 100,000 link hops (defaults to 5) |
+| Cached page age, [`discover` parse type](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#cache-age) | 604,800 seconds (7 days) |
+| [Specific sitemap](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/#specific-sitemap) URLs | 5 per instance |
+| [Authentication headers](https://developers.cloudflare.com/ai-search/configuration/data-source/website/authentication-headers/) | 5 per instance |
+| [Content selector](https://developers.cloudflare.com/ai-search/configuration/data-source/website/content-selectors/) entries | 10 per instance |
+| Content selector path pattern and selector length | 200 characters each |
 
 The [files per instance](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) limit also applies, so the effective cap is whichever value is lower. The crawler indexes the first pages it visits until it reaches that cap, and any file it downloads that exceeds the maximum file size is not indexed.
 

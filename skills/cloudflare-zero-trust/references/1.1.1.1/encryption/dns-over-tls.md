@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # DNS over TLS
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is one way to send DNS queries over an encrypted connection. Cloudflare supports DNS over TLS on standard port `853` and is compliant with [RFC 7858 ↗](https://tools.ietf.org/html/rfc7858).
 
@@ -38,7 +38,6 @@ kdig -d @1.1.1.1 +tls-ca +tls-host=one.one.one.one example.com
 ```
 
 ```sh
-
 ;; DEBUG: Querying for owner(example.com.), class(1), type(1), server(1.1.1.1), port(853), protocol(TCP)
 ;; DEBUG: TLS, imported 138 system certificates
 ;; DEBUG: TLS, received certificate hierarchy:

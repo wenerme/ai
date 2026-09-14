@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remote-procedure call (RPC)
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 To use RPC, [define a compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates) of `2024-04-03` or higher, or include `rpc` in your [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-Workers provide a built-in, JavaScript-native [RPC (Remote Procedure Call) ↗](https://en.wikipedia.org/wiki/Remote%5Fprocedure%5Fcall) system, allowing you to:
+Workers provide a built-in, JavaScript-native [RPC (Remote Procedure Call) ↗](https://en.wikipedia.org/wiki/Remote_procedure_call) system, allowing you to:
 
-* Define public methods on your Worker that can be called by other Workers on the same Cloudflare account, via [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc)
-* Define public methods on [Durable Objects](https://developers.cloudflare.com/durable-objects) that can be called by other workers on the same Cloudflare account that declare a binding to it.
+- Define public methods on your Worker that can be called by other Workers on the same Cloudflare account, via [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc)
+- Define public methods on [Durable Objects](https://developers.cloudflare.com/durable-objects) that can be called by other workers on the same Cloudflare account that declare a binding to it.
 
 The RPC system is designed to feel as similar as possible to calling a JavaScript function in the same Worker. In most cases, you should be able to write code in the same way you would if everything was in a single Worker.
 
@@ -147,19 +147,19 @@ Note that RPC calls do not actually return `Promise`s, but they return a type th
 
 (We'll see why the type is not actually a Promise a bit later.)
 
-## Structured clonable types, and more
+## Structured cloneable types, and more
 
-Nearly all types that are [Structured Cloneable ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FWorkers%5FAPI/Structured%5Fclone%5Falgorithm#supported%5Ftypes) can be used as a parameter or return value of an RPC method. This includes, most basic "value" types in JavaScript, including objects, arrays, strings and numbers.
+Nearly all types that are [Structured Cloneable ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types) can be used as a parameter or return value of an RPC method. This includes, most basic "value" types in JavaScript, including objects, arrays, strings and numbers.
 
 As an exception to Structured Clone, application-defined classes (or objects with custom prototypes) cannot be passed over RPC, except as described below.
 
 The RPC system also supports a number of types that are not Structured Cloneable, including:
 
-* Functions, which are replaced by stubs that call back to the sender.
-* Application-defined classes that extend `RpcTarget`, which are similarly replaced by stubs.
-* [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) and [WriteableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), with automatic streaming flow control.
-* [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) and [Response](https://developers.cloudflare.com/workers/runtime-apis/response/), for conveniently representing HTTP messages.
-* RPC stubs themselves, even if the stub was received from a third Worker.
+- Functions, which are replaced by stubs that call back to the sender.
+- Application-defined classes that extend `RpcTarget`, which are similarly replaced by stubs.
+- [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) and [WritableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), with automatic streaming flow control.
+- [Request](https://developers.cloudflare.com/workers/runtime-apis/request/) and [Response](https://developers.cloudflare.com/workers/runtime-apis/response/), for conveniently representing HTTP messages.
+- RPC stubs themselves, even if the stub was received from a third Worker.
 
 ## Functions
 
@@ -304,9 +304,9 @@ Note
 
 Refer to [Explicit Resource Management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle) to learn more about the `using` declaration shown in the example above.
 
-How is this possible? The system is not serializing the function itself. When the function returned by `CounterService` is called, it runs within `CounterService` — even if it is called by another Worker.
+How is this possible? The system is not serializing the function itself. When the function returned by `CounterService` is called, it runs within `CounterService` — even if it is called by another Worker.
 
-Under the hood, the caller is not really calling the function itself directly, but calling what is called a "stub". A "stub" is a [Proxy ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Proxy) object that allows the client to call the remote service as if it were local, running in the same Worker. Behind the scenes, it calls back to the Worker that implements `CounterService` and asks it to execute the function closure that had been returned earlier.
+Under the hood, the caller is not really calling the function itself directly, but calling what is called a "stub". A "stub" is a [Proxy ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) object that allows the client to call the remote service as if it were local, running in the same Worker. Behind the scenes, it calls back to the Worker that implements `CounterService` and asks it to execute the function closure that had been returned earlier.
 
 ### Send functions as parameters of RPC methods
 
@@ -482,7 +482,7 @@ While it's possible to define a similar interface to the caller using an object 
 
 Note
 
-Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This differs from Structured Clone, which defines application-defined classes as clonable. Why the difference? By default, the Structured Clone algorithm simply ignores an object's class entirely. So, the recipient receives a plain object, containing the original object's instance properties but entirely missing its original type. This behavior is rarely useful in practice, and could be confusing if the developer had intended the class to be treated as an `RpcTarget`. So, Workers RPC has chosen to disallow classes that are not `RpcTarget`s, to avoid any confusion.
+Classes which do not inherit `RpcTarget` cannot be sent over RPC at all. This differs from Structured Clone, which defines application-defined classes as cloneable. Why the difference? By default, the Structured Clone algorithm simply ignores an object's class entirely. So, the recipient receives a plain object, containing the original object's instance properties but entirely missing its original type. This behavior is rarely useful in practice, and could be confusing if the developer had intended the class to be treated as an `RpcTarget`. So, Workers RPC has chosen to disallow classes that are not `RpcTarget`s, to avoid any confusion.
 
 ### Promise pipelining
 
@@ -532,7 +532,7 @@ await promise_for_counter.increment()
 
 In this code, `getCounter()` returns a promise for a counter. Normally, the only thing you would do with a promise is `await` it. However, Workers RPC promises are special: they also allow you to initiate speculative calls on the future result of the promise. These calls are sent to the server immediately, without waiting for the initial call to complete. Thus, multiple chained calls can be completed in a single round trip.
 
-How does this work? The promise returned by an RPC is not a real JavaScript `Promise`. Instead, it is a custom ["Thenable" ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global%5FObjects/Promise#thenables). It has a `.then()` method like `Promise`, which allows it to be used in all the places where you'd use a normal `Promise`. For instance, you can `await` it. But, in addition to that, an RPC promise also acts like a stub. Calling any method name on the promise forms a speculative call on the promise's eventual result. This is known as "promise pipelining".
+How does this work? The promise returned by an RPC is not a real JavaScript `Promise`. Instead, it is a custom ["Thenable" ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables). It has a `.then()` method like `Promise`, which allows it to be used in all the places where you'd use a normal `Promise`. For instance, you can `await` it. But, in addition to that, an RPC promise also acts like a stub. Calling any method name on the promise forms a speculative call on the promise's eventual result. This is known as "promise pipelining".
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
@@ -608,13 +608,13 @@ class Default(WorkerEntrypoint):
 
 If the initial RPC ends up throwing an exception, then any pipelined calls will also fail with the same exception
 
-## ReadableStream, WriteableStream, Request and Response
+## ReadableStream, WritableStream, Request and Response
 
-You can send and receive [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/), [WriteableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), [Request](https://developers.cloudflare.com/workers/runtime-apis/request/), and [Response](https://developers.cloudflare.com/workers/runtime-apis/response/) using RPC methods. When doing so, bytes in the body are automatically streamed with appropriate flow control. This allows you to send messages over RPC which are larger than [the typical 32 MiB limit](#limitations).
+You can send and receive [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/), [`WritableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/), and [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/) using RPC methods. When doing so, bytes in the body are automatically streamed with appropriate flow control. This allows you to send messages over RPC which are larger than [the typical 32 MiB limit](#limitations).
 
-Only [byte-oriented streams ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams%5FAPI/Using%5Freadable%5Fbyte%5Fstreams) (streams with an underlying byte source of `type: "bytes"`) are supported.
+Only [byte-oriented streams ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams) (streams with an underlying byte source of `type: "bytes"`) are supported.
 
-In all cases, ownership of the stream is transferred to the recipient. The sender can no longer read/write the stream after sending it. If the sender wishes to keep its own copy, it can use the [tee() method of ReadableStream ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee) or the [clone() method of Request or Response ↗](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone). Keep in mind that doing this may force the system to buffer bytes and lose the benefits of flow control.
+In all cases, ownership of the stream is transferred to the recipient. The sender can no longer read/write the stream after sending it. If the sender wishes to keep its own copy, it can use the [`tee()` method of `ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee) or the [`clone()` method of `Request` or `Response` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone). Keep in mind that doing this may force the system to buffer bytes and lose the benefits of flow control.
 
 ## Forwarding RPC stubs
 
@@ -641,7 +641,7 @@ Here, three different workers are involved:
 2. `COUNTER_SERVICE`
 3. `ANOTHER_SERVICE`
 
-When `ANOTHER_SERVICE` calls a method on the `counter` that is passed to it, this call will automatically be proxied through the introducer and on to the [RpcTarget](https://developers.cloudflare.com/workers/runtime-apis/rpc/) class implemented by `COUNTER_SERVICE`.
+When `ANOTHER_SERVICE` calls a method on the `counter` that is passed to it, this call will automatically be proxied through the introducer and on to the [`RpcTarget`](https://developers.cloudflare.com/workers/runtime-apis/rpc/) class implemented by `COUNTER_SERVICE`.
 
 In this way, the introducer Worker can connect two Workers that did not otherwise have any ability to form direct connections to each other.
 
@@ -653,50 +653,58 @@ In this video, we explore how Cloudflare Workers support Remote Procedure Calls 
 
 ## More Details
 
-* [Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/)
-* [Reserved Methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/reserved-methods/)
-* [Visibility and Security Model](https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/)
-* [TypeScript](https://developers.cloudflare.com/workers/runtime-apis/rpc/typescript/)
-* [Error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
+- [Lifecycle](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/)
+- [Reserved Methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/reserved-methods/)
+- [Visibility and Security Model](https://developers.cloudflare.com/workers/runtime-apis/rpc/visibility/)
+- [TypeScript](https://developers.cloudflare.com/workers/runtime-apis/rpc/typescript/)
+- [Error handling](https://developers.cloudflare.com/workers/runtime-apis/rpc/error-handling/)
 
 ## Limitations
 
-* [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
-* The maximum serialized RPC limit is 32 MiB. Consider using [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.
-```js
-export class MyService extends WorkerEntrypoint {
-	async foo() {
-		// Although this works, it puts a lot of memory pressure on the isolate.
-		// If possible, streaming the data from its original source is much preferred and would yield better performance.
-		// If you must buffer the data into memory, consider chunking it into smaller pieces if possible.
-		const sizeInBytes = 33 * 1024 * 1024; // 33 MiB
-		const arr = new Uint8Array(sizeInBytes);
-		return new ReadableStream({
-			start(controller) {
-				controller.enqueue(arr);
-				controller.close();
-			},
-		});
-	}
-}
-```
-```ts
-export class MyService extends WorkerEntrypoint {
-	async foo() {
-		// Although this works, it puts a lot of memory pressure on the isolate.
-		// If possible, streaming the data from its original source is much preferred and would yield better performance.
-		// If you must buffer the data into memory, consider chunking it into smaller pieces if possible.
-		const sizeInBytes = 33 * 1024 * 1024; // 33 MiB
-		const arr = new Uint8Array(sizeInBytes);
-		return new ReadableStream({
-			start(controller) {
-				controller.enqueue(arr);
-				controller.close();
-			},
-		});
-	}
-}
-```
+- [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is currently ignored when making RPC calls. If Smart Placement is enabled for Worker A, and Worker B declares a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings) to it, when Worker B calls Worker A via RPC, Worker A will run locally, on the same machine.
+- The maximum serialized RPC limit is 32 MiB. Consider using [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/) when returning more data.
+
+  ```js
+  export class MyService extends WorkerEntrypoint {
+  	async foo() {
+  		// Although this works, it puts a lot of memory pressure on the isolate.
+  		// If possible, streaming the data from its original source is much preferred and would yield better performance.
+  		// If you must buffer the data into memory, consider chunking it into smaller pieces if possible.
+
+  		const sizeInBytes = 33 * 1024 * 1024; // 33 MiB
+  		const arr = new Uint8Array(sizeInBytes);
+
+  		return new ReadableStream({
+  			start(controller) {
+  				controller.enqueue(arr);
+  				controller.close();
+  			},
+  		});
+  	}
+  }
+  ```
+
+  ```ts
+  export class MyService extends WorkerEntrypoint {
+  	async foo() {
+  		// Although this works, it puts a lot of memory pressure on the isolate.
+  		// If possible, streaming the data from its original source is much preferred and would yield better performance.
+  		// If you must buffer the data into memory, consider chunking it into smaller pieces if possible.
+
+  		const sizeInBytes = 33 * 1024 * 1024; // 33 MiB
+  		const arr = new Uint8Array(sizeInBytes);
+
+  		return new ReadableStream({
+  			start(controller) {
+  				controller.enqueue(arr);
+  				controller.close();
+  			},
+  		});
+  	}
+  }
+  ```
+
+
 
 Was this helpful?
 
@@ -707,5 +715,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC) · Cloudflare Workers docs","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC) · Cloudflare Workers docs","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 ```

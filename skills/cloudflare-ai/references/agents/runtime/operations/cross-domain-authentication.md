@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cross-domain authentication
 
-Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
 
@@ -22,13 +22,13 @@ WebSockets are not HTTP, so the handshake is limited when making cross-domain co
 
 You cannot send:
 
-* Custom headers during the upgrade
-* `Authorization: Bearer ...` on connect
+- Custom headers during the upgrade
+- `Authorization: Bearer ...` on connect
 
 You can:
 
-* Put a signed, short-lived token in the connection URL as query parameters
-* Verify the token in your server's connect path
+- Put a signed, short-lived token in the connection URL as query parameters
+- Verify the token in your server's connect path
 
 Note
 
@@ -366,12 +366,12 @@ export class SecureAgent extends Agent {
 
 ## Best practices
 
-1. **Use short-lived tokens** \- Tokens in URLs may be logged. Keep expiration times short (minutes, not hours).
-2. **Scope tokens appropriately** \- Include the agent name or instance in the token claims to prevent token reuse across agents.
-3. **Validate on every connection** \- Always verify tokens in `onConnect`, not just once.
-4. **Use HTTPS** \- Always use secure WebSocket connections (`wss://`) in production.
-5. **Rotate secrets** \- Regularly rotate your JWT signing keys or token secrets.
-6. **Log authentication failures** \- Track failed authentication attempts for security monitoring.
+1. **Use short-lived tokens** - Tokens in URLs may be logged. Keep expiration times short (minutes, not hours).
+2. **Scope tokens appropriately** - Include the agent name or instance in the token claims to prevent token reuse across agents.
+3. **Validate on every connection** - Always verify tokens in `onConnect`, not just once.
+4. **Use HTTPS** - Always use secure WebSocket connections ( `wss://`) in production.
+5. **Rotate secrets** - Regularly rotate your JWT signing keys or token secrets.
+6. **Log authentication failures** - Track failed authentication attempts for security monitoring.
 
 ## Next steps
 

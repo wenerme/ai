@@ -8,7 +8,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # http.request.method
 
-`http.request.method` `String`
+`http.request.method``String`
 
 The HTTP method, returned as a string of uppercase characters.
 
@@ -19,7 +19,7 @@ Example value:
 ```
 
 Categories:
-* Request
+- Request
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Vite 3
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Vite ↗](https://vitejs.dev) is a next-generation build tool for front-end developers. With [the release of Vite 3 ↗](https://vitejs.dev/blog/announcing-vite3.html), developers can make use of new command line (CLI) improvements, starter templates, and [more ↗](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#300-2022-07-13) to help build their front-end applications.
 
@@ -48,7 +48,7 @@ Done. Now run:
   npm run dev
 ```
 
-You will now create a new GitHub repository, and push your code using [GitHub's gh command line (CLI) ↗](https://cli.github.com):
+You will now create a new GitHub repository, and push your code using [GitHub's `gh` command line (CLI) ↗](https://cli.github.com):
 
 ```sh
 git init
@@ -83,15 +83,14 @@ git push
 
 To deploy your site to Pages:
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application** \> **Pages** \> **Import from an existing Git repository**.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application** > **Pages** > **Import from an existing Git repository**.
 3. Select your new GitHub repository.
 4. In the **Set up builds and deployments**, set `npm run build` as the **Build command**, and `dist` as the **Build output directory**.
 
 After completing configuration, select **Save and Deploy**.
 
-You will see your first deploy pipeline in progress. Pages installs all dependencies and builds the project as specified. After you have deployed your project, it will be available at the `<YOUR_PROJECT_NAME>.pages.dev` subdomain. Find your project's subdomain in **Workers & Pages** \> select your Pages project > **Deployments**.
+You will see your first deploy pipeline in progress. Pages installs all dependencies and builds the project as specified. After you have deployed your project, it will be available at the `<YOUR_PROJECT_NAME>.pages.dev` subdomain. Find your project's subdomain in **Workers & Pages** > select your Pages project > **Deployments**.
 
 Cloudflare Pages will automatically rebuild your project and deploy it on every new pushed commit.
 

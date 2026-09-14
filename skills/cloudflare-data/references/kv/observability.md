@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Observability
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/observability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-* [Metrics and analytics](https://developers.cloudflare.com/kv/observability/metrics-analytics/)
+- [Metrics and analytics](https://developers.cloudflare.com/kv/observability/metrics-analytics/)
 
 Was this helpful?
 

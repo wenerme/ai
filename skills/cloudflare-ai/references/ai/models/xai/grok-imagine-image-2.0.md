@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • xAI
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `xai/grok-imagine-image-2.0`
 
-* Third-party
+- Third-party
 
 xAI's Grok Imagine Image 2.0 is a precise image generation and editing model for creative work, with strong instruction following, typography, layout, and reference-image preservation.
 
-| Model Info        |                                                                                                                              |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                                |
-| More information  | [link ↗](https://docs.x.ai/developers/model-capabilities/images/generation)                                                  |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-2.0) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
+| More information | [link ↗](https://docs.x.ai/developers/model-capabilities/images/generation) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-2.0) |
 
 ## Usage
 
@@ -68,7 +68,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Portrait 2K** — High-resolution image with a controlled aspect ratio
+<details>
+
+<summary>**Portrait 2K** — High-resolution image with a controlled aspect ratio</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -113,7 +117,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Low Quality Draft** — Fast low-quality draft for iteration
+</details>
+
+<details>
+
+<summary>**Low Quality Draft** — Fast low-quality draft for iteration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -157,6 +167,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
@@ -187,7 +199,7 @@ user
 
 `object`
 
-▶images\[\]
+▶images\[]
 
 `array`maxItems: 5
 
@@ -201,9 +213,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-2.0/schema-output.json)
 
 Was this helpful?
 

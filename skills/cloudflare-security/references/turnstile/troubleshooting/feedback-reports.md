@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Feedback reports
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare detects that a challenge has failed or the user cannot be verified on a page with Turnstile, the user will encounter an [error](https://developers.cloudflare.com/turnstile/concepts/widget/#error-states) on the widget and may be asked to send feedback on the issue that they have encountered by choosing one of the options listed.
 
@@ -29,11 +29,11 @@ Currently, feedback submitted via the feedback form is sent directly to Cloudfla
 
 Available options include:
 
-* The widget always fails
-* The widget sometimes fails
-* The widget is too slow
-* The widget keeps looping
-* Other
+- The widget always fails
+- The widget sometimes fails
+- The widget is too slow
+- The widget keeps looping
+- Other
 
 Users can provide additional data in the text field and then select **Submit**.
 

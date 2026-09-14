@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Customer Metadata Boundary
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As part of the Data Localization Suite, the Customer Metadata Boundary (CMB) ensures that Customer Logs stay in the region you select.
 
@@ -25,6 +25,8 @@ An exception is made if "Allow out-of-region access" is enabled. When enabled, C
 The following diagram shows how metadata about your traffic is generated at a Cloudflare edge data center and forwarded exclusively to the core data center in the configured region (EU in this example). Authorized users access logs and analytics from that core data center.
 
 
+
+```
 sequenceDiagram
     participant UserEU as End user
     participant CloudflarePoP as Closest data center
@@ -38,6 +40,9 @@ sequenceDiagram
     CloudflareSuperAdmin->>EUCoreDC: Authenticated access
     EUCoreDC->>CloudflareSuperAdmin: Logs & Analytics
     CloudflarePoP->>UserEU: Response
+
+```
+
 
 
 ## Dashboard analytics visibility

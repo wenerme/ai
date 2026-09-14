@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Under Attack mode
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Under Attack mode performs additional security checks to help mitigate layer 7 DDoS attacks. Validated users access your website and suspicious traffic is blocked. It is designed to be used as one of the last resorts when a zone is under attack (and will temporarily pause access to your site and impact your site analytics).
 
@@ -26,8 +26,7 @@ Under Attack mode is turned off by default for your zone.
 
 To put your entire zone in Under Attack mode:
 
-1. In the Cloudflare dashboard, select your account and zone from the **Account home** page.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. In the Cloudflare dashboard, select your account and zone from the **Account home** page. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. In the zone overview page, turn on **Under Attack Mode** in the **Quick Actions** sidebar.
 
 ### Selectively
@@ -36,9 +35,9 @@ To enable Under Attack mode for specific pages or sections of your site, use a [
 
 **When incoming requests match**
 
-* **Field:** _URI Path_
-* **Operator:** _starts with_
-* **Value:** `/admin`
+- **Field:** *URI Path*
+- **Operator:** *starts with*
+- **Value:** `/admin`
 
 If you are using the Expression Editor, enter the following expression:
 `(starts_with(http.request.uri.path, "/admin"))`
@@ -56,10 +55,9 @@ To turn it on for specific ASNs (hosts/ISPs that own IP addresses), countries, o
 
 To preview what Under Attack mode looks like for your visitors:
 
-1. In the Cloudflare dashboard, go to the **Configurations** page.
-[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
+1. In the Cloudflare dashboard, go to the **Configurations** page. [Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **Custom Pages**.
-3. For **Managed Challenge / I'm Under Attack Mode™**, select **Custom Pages** \> **View default**.
+3. For **Managed Challenge / I'm Under Attack Mode™**, select **Custom Pages** > **View default**.
 
 The `Checking your browser before accessing...` challenge determines whether to block or allow a visitor within five seconds. After passing the challenge, the visitor does not observe another challenge until the duration configured in [Challenge Passage](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/challenge-passage/).
 

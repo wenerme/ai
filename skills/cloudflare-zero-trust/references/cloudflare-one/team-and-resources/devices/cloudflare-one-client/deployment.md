@@ -12,12 +12,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy the Cloudflare One Client
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Depending on how your organization is structured, you can deploy the Cloudflare One Client (formerly WARP) in one of two ways:
 
-* [Manual deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) — Users download and enroll the client themselves. This is the simplest way to get started, best suited for small organizations.
-* [Managed deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) — Bigger organizations with MDM tools like Intune or JAMF can deploy the Cloudflare One Client to their entire fleet of devices from a single operation.
+- [Manual deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/) — Users download and enroll the client themselves. This is the simplest way to get started, best suited for small organizations.
+- [Managed deployment](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) — Bigger organizations with MDM tools like Intune or JAMF can deploy the Cloudflare One Client to their entire fleet of devices from a single operation.
 
 Was this helpful?
 

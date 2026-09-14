@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure token authentication
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Token authentication allows you to restrict access to documents, files, and media to select users without requiring them to register. This helps protect paid/restricted content from leeching and unauthorized sharing.
 
@@ -22,8 +22,8 @@ There are two options to configure token authentication: via Cloudflare Workers 
 
 Refer to the following Cloudflare Workers resources for two different implementations of token authentication:
 
-* The [Sign requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example.
-* The [Auth with headers](https://developers.cloudflare.com/workers/examples/auth-with-headers/) template.
+- The [Sign requests](https://developers.cloudflare.com/workers/examples/signing-requests/) example.
+- The [Auth with headers](https://developers.cloudflare.com/workers/examples/auth-with-headers/) template.
 
 To get started with Workers, refer to [Templates](https://developers.cloudflare.com/workers/get-started/quickstarts/).
 
@@ -33,22 +33,22 @@ The code provided in the [Sign requests](https://developers.cloudflare.com/worke
 
 ## Option 2: Configure using custom rules
 
-Use the Rules language [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) HMAC validation function to validate hash-based message authentication code (HMAC) tokens in a custom rule expression.
+Use the Rules language [`is_timed_hmac_valid_v0()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) HMAC validation function to validate hash-based message authentication code (HMAC) tokens in a custom rule expression.
 
 Note
 
 Access to the `is_timed_hmac_valid_v0()` HMAC validation function requires a Cloudflare Pro, Business, or Enterprise plan.
 
-To validate token authentication, [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) with a call to the `is_timed_hmac_valid_v0()` function in the rule expression. You can use an action such as _Block_.
+To validate token authentication, [create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) with a call to the `is_timed_hmac_valid_v0()` function in the rule expression. You can use an action such as *Block*.
 
 ### Example rule
 
 This example illustrates a rule that blocks any visitor that does not pass HMAC key validation on a specific hostname and URL path. Details required for token authentication include:
 
-* The secret key for generating and validating the HMAC (for example, `mysecrettoken`)
-* The path you wish to authenticate (for example, `downloads.example.com/images/cat.jpg`)
-* The name of the query string parameter containing the token (for example, `verify`)
-* The token lifetime in seconds (for example, 3 hours = 10,800 seconds)
+- The secret key for generating and validating the HMAC (for example, `mysecrettoken`)
+- The path you wish to authenticate (for example, `downloads.example.com/images/cat.jpg`)
+- The name of the query string parameter containing the token (for example, `verify`)
+- The token lifetime in seconds (for example, 3 hours = 10,800 seconds)
 
 Consider the following example URL:
 
@@ -58,10 +58,10 @@ downloads.example.com/images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3m
 
 Where:
 
-* `/images/cat.jpg` represents the path to the asset — the HMAC message to authenticate.
-* `?verify=` is the separator between the path to the asset and the timestamp when the HMAC token was issued.
-* `1484063787` represents the timestamp when the token was issued, expressed as UNIX time in seconds.
-* `9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D` is a Base64-encoded MAC.
+- `/images/cat.jpg` represents the path to the asset — the HMAC message to authenticate.
+- `?verify=` is the separator between the path to the asset and the timestamp when the HMAC token was issued.
+- `1484063787` represents the timestamp when the token was issued, expressed as UNIX time in seconds.
+- `9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D` is a Base64-encoded MAC.
 
 Caution
 
@@ -75,13 +75,13 @@ The expression for the custom rule would be similar to the following:
 
 The components of this example custom rule (using the previous example URL) include:
 
-* Token secret key = `mysecrettoken`
-* Token lifetime = `10800` (10,800 seconds = 3 hours)
-* `http.request.uri` \= `/images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D`
-* `http.request.timestamp.sec` \= `1484071925` (for example)
-* Separator length: `len("?verify=")` \= `8`
+- Token secret key = `mysecrettoken`
+- Token lifetime = `10800` (10,800 seconds = 3 hours)
+- `http.request.uri` = `/images/cat.jpg?verify=1484063787-9JQB8vP1z0yc5DEBnH6JGWM3mBmvIeMrnnxFi3WtJLE%3D`
+- `http.request.timestamp.sec` = `1484071925` (for example)
+- Separator length: `len("?verify=")` = `8`
 
-The [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) function compares the value of a MAC generated using the `mysecrettoken` secret key to the value encoded in `http.request.uri`.
+The [`is_timed_hmac_valid_v0()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) function compares the value of a MAC generated using the `mysecrettoken` secret key to the value encoded in `http.request.uri`.
 
 If the MAC values match and if the token has not expired yet, according to the following formula:
 
@@ -163,7 +163,7 @@ The authentication token parameter (`verify=<VALUE>` in the example) must be the
 
 If you are on an Enterprise plan, you can test if URLs are being generated correctly on the origin server by doing the following:
 
-1. Set the custom rule action to _Log_.
+1. Set the custom rule action to *Log*.
 2. Check the sampled logs in [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/).
 
 ---
@@ -172,7 +172,7 @@ If you are on an Enterprise plan, you can test if URLs are being generated corre
 
 You can use the same secret key to protect several URI paths.
 
-This is illustrated in the previous example, where `http.request.uri` is passed as the [MessageMAC](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#messagemac) argument to the validation function.
+This is illustrated in the previous example, where `http.request.uri` is passed as the [`MessageMAC`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#messagemac) argument to the validation function.
 
 Since `http.request.uri` includes the path to the asset and that value is extracted for each request, the validation function evaluates all request URIs to `downloads.example.com` using the same secret key.
 
@@ -180,9 +180,9 @@ Note that while you can use the same secret key to authenticate several paths, y
 
 ## Protect an entire URI path prefix with a single signature
 
-You can protect an entire fixed-length URI path prefix with a single HMAC signature (it would also use the same secret). To achieve this, supply a URI path prefix (instead of the full URI path) and the original query string as the [MessageMAC](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#messagemac) argument for the [is\_timed\_hmac\_valid\_v0()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) function.
+You can protect an entire fixed-length URI path prefix with a single HMAC signature (it would also use the same secret). To achieve this, supply a URI path prefix (instead of the full URI path) and the original query string as the [`MessageMAC`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#messagemac) argument for the [`is_timed_hmac_valid_v0()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#hmac-validation) function.
 
-Use the [substring()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#substring) function to obtain the prefix from the full URI path.
+Use the [`substring()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#substring) function to obtain the prefix from the full URI path.
 
 In the following example, the URI path prefix requiring a single HMAC signature is always 51 characters long (`x` is a character placeholder):
 
@@ -202,7 +202,7 @@ Rule expression:
 
 Action:
 
-* Block
+- Block
 
 Example URI paths of valid incoming requests:
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Build a WebSocket server using WebSocket Hibernation on Durable Objects and Workers.
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example is similar to the [Build a WebSocket server](https://developers.cloudflare.com/durable-objects/examples/websocket-server/) example, but uses the WebSocket Hibernation API. The WebSocket Hibernation API should be preferred for WebSocket server applications built on Durable Objects, since it significantly decreases duration charge, and provides additional features that pair well with WebSocket applications. For more information, refer to [Use Durable Objects with WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
@@ -452,7 +452,7 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 
 ### Related resources
 
-* [Durable Objects: Edge Chat Demo with Hibernation ↗](https://github.com/cloudflare/workers-chat-demo/).
+- [Durable Objects: Edge Chat Demo with Hibernation ↗](https://github.com/cloudflare/workers-chat-demo/).
 
 Was this helpful?
 

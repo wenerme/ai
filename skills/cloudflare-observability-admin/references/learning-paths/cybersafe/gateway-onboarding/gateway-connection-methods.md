@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gateway connection methods
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-connection-methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-connection-methods/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are various methods to onboard your traffic and your method will be determined based on your individual or organizational requirements. In this learning path, we will focus on an [**Agentless (DNS only) deployment method**](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/).
 

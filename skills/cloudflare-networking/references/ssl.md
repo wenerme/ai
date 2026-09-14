@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare SSL/TLS
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Encrypt your web traffic to prevent data theft and other tampering.
 
@@ -40,7 +40,7 @@ Use Delegated DCV
 
 [Custom TLS settings](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/)
 
-Specify the minimum TLS version that visitors must use to connect to your website or application, and [restrict cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/)to meet compliance or security requirements.
+Specify the minimum TLS version that visitors must use to connect to your website or application, and [restrict cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) to meet compliance or security requirements.
 
 Use Custom TLS settings
 

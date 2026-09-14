@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/getting-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/getting-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can create a Worker that spins up other Workers, called Dynamic Workers, at runtime to execute code on-demand in a secure, sandboxed environment. You provide the code, choose which bindings the Dynamic Worker can access, and control whether the Dynamic Worker can reach the network.
 
 Dynamic Workers support two loading modes:
 
-* `load(code)` creates a fresh Dynamic Worker for one-time execution.
-* `get(id, callback)` caches a Dynamic Worker by ID so it can stay warm across requests.
+- `load(code)` creates a fresh Dynamic Worker for one-time execution.
+- `get(id, callback)` caches a Dynamic Worker by ID so it can stay warm across requests.
 
 `load()` is best for one-time code execution, for example when using [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/). `get(id, callback)` is better when the same code will receive subsequent requests, for example when you are building applications.
 
@@ -69,7 +69,7 @@ export default {
 	async fetch(request, env) {
 		// Load a worker.
 		const worker = env.LOADER.load({
-			compatibilityDate: "2026-08-27",
+			compatibilityDate: "2026-09-14",
 
 			mainModule: "src/index.js",
 			modules: {
@@ -134,7 +134,7 @@ In this example, `env.LOADER.load()` creates a Dynamic Worker from the code defi
 
 ### Reusing a Dynamic Worker across requests
 
-If you expect to load the exact same Worker more than once, use [get(id, callback)](https://developers.cloudflare.com/dynamic-workers/api-reference/#get) instead of `load()`. The `id` should be a unique string identifying the particular code you intend to load. When the runtime sees the same `id` again, it can reuse the existing Worker instead of creating a new one, if it hasn't been evicted yet.
+If you expect to load the exact same Worker more than once, use [`get(id, callback)`](https://developers.cloudflare.com/dynamic-workers/api-reference/#get) instead of `load()`. The `id` should be a unique string identifying the particular code you intend to load. When the runtime sees the same `id` again, it can reuse the existing Worker instead of creating a new one, if it hasn't been evicted yet.
 
 The callback you provide will only be called if the Worker is not already loaded. This lets you skip loading the code from storage when the Worker is already running.
 
@@ -148,7 +148,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 	// Return the same format as `env.LOADER.load()` accepts.
 	return {
-		compatibilityDate: "2026-08-27",
+		compatibilityDate: "2026-09-14",
 		mainModule: "index.js",
 		modules: { "index.js": code },
 		globalOutbound: null,
@@ -188,7 +188,7 @@ To run Python code in a Dynamic Worker, you must include the `python_workers` co
 
 ```js
 const worker = env.LOADER.load({
-	compatibilityDate: "2026-08-27",
+	compatibilityDate: "2026-09-14",
 	compatibilityFlags: ["python_workers"],
 	mainModule: "worker.py",
 	modules: {
@@ -224,7 +224,7 @@ class Default(WorkerEntrypoint):
 
 If your Dynamic Worker needs TypeScript compilation or npm dependencies, the code must be transpiled and bundled before passing to the Worker Loader.
 
-[@cloudflare/worker-bundler ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
+[`@cloudflare/worker-bundler` ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
 ```js
 import { createWorker } from "@cloudflare/worker-bundler";
@@ -244,7 +244,7 @@ const worker = env.LOADER.get("my-worker", async () => {
 		},
 	});
 
-	return { mainModule, modules, compatibilityDate: "2026-08-27" };
+	return { mainModule, modules, compatibilityDate: "2026-09-14" };
 });
 ```
 

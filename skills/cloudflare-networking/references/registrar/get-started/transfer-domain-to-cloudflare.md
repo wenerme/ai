@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transfer your domain to Cloudflare
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Transferring a domain moves your registration from your current registrar to Cloudflare.
 
-* **Active work:** About 30 minutes.
-* **Total time:** Up to 10 days, depending on your registrar.
-* **Cost:** Cloudflare domains are at-cost with no markup fees. Most transfers include a one-year extension from your current expiration date. Some country-code domains (such as `.uk`) have no transfer fee.
+- **Active work:** About 30 minutes.
+- **Total time:** Up to 10 days, depending on your registrar.
+- **Cost:** Cloudflare domains are at-cost with no markup fees. Most transfers include a one-year extension from your current expiration date. Some country-code domains (such as `.uk`) have no transfer fee.
 
 Note
 
@@ -34,23 +34,31 @@ If you purchased your domain through Cloudflare Registrar, [ICANN ↗](https://w
 
 ---
 
+<details>
+
+<summary>
+
 Before you begin
+
+</summary>
 
 Confirm the following before you start:
 
-* You have a [Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/) with a [verified email address](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
-* Your Cloudflare account has a valid payment method on file.
-* Your domain was registered at least 60 days ago and has not been transferred in the last 60 days (ICANN requirement).
-* You have not changed your registrant name, organization, or email address in the last 60 days. Under ICANN rules, changes to these fields trigger a 60-day transfer lock. Some registrars let you opt out of this lock during the change, but not all do.
-* Your account at your current registrar is active. If your domain has expired, renew it at your current registrar first.
-* Your domain uses only standard characters (letters, numbers, hyphens). Cloudflare does not support domains with non-Latin characters (for example, `例え.jp`).
-* If you are transferring a `.us` domain, refer to [Additional requirements for .US domains](https://developers.cloudflare.com/registrar/top-level-domains/us-domains/).
-* If you are transferring multiple domains, notify your bank to prevent fraud alerts on multiple charges.
-* Cloudflare Registrar requires your domain to use Cloudflare for [authoritative DNS](https://developers.cloudflare.com/dns/zone-setups/full-setup/) (full setup). You cannot use another DNS provider while registered with Cloudflare.
+- You have a <a href="https://developers.cloudflare.com/fundamentals/account/create-account/">Cloudflare account</a> with a <a href="https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/">verified email address</a>.
+- Your Cloudflare account has a valid payment method on file.
+- Your domain was registered at least 60 days ago and has not been transferred in the last 60 days (ICANN requirement).
+- You have not changed your registrant name, organization, or email address in the last 60 days. Under ICANN rules, changes to these fields trigger a 60-day transfer lock. Some registrars let you opt out of this lock during the change, but not all do.
+- Your account at your current registrar is active. If your domain has expired, renew it at your current registrar first.
+- Your domain uses only standard characters (letters, numbers, hyphens). Cloudflare does not support domains with non-Latin characters (for example, <code>例え.jp</code>).
+- If you are transferring a <code>.us</code> domain, refer to <a href="https://developers.cloudflare.com/registrar/top-level-domains/us-domains/">Additional requirements for .US domains</a>.
+- If you are transferring multiple domains, notify your bank to prevent fraud alerts on multiple charges.
+- Cloudflare Registrar requires your domain to use Cloudflare for <a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/">authoritative DNS</a> (full setup). You cannot use another DNS provider while registered with Cloudflare.
+
+</details>
 
 ---
 
-## 1\. Add your domain to Cloudflare
+## 1. Add your domain to Cloudflare
 
 Before you can transfer your registration, your domain must be [active on Cloudflare](https://developers.cloudflare.com/dns/zone-setups/full-setup/). This is what allows Cloudflare to protect your site with performance and security features during and after the transfer. You will not be able to enter an authorization code or proceed with the transfer until this step is complete.
 
@@ -64,32 +72,40 @@ If DNSSEC is enabled at your current registrar, disable it before you change nam
 2. Remove or disable DNSSEC (sometimes labeled "DS records").
 3. Wait at least 24 hours for the change to propagate before changing nameservers.
 
+<details>
+
+<summary>
+
 Provider-specific DNSSEC instructions
+
+</summary>
 
 This is not an exhaustive list, but the following links may be helpful:
 
-* [DNSimple ↗](https://support.dnsimple.com/articles/cloudflare-ds-record/)
-* [Domaindiscount24 ↗](https://support.domaindiscount24.com/hc/articles/4409759478161)
-* [DreamHost ↗](https://help.dreamhost.com/hc/en-us/articles/219539467)
-* [Dynadot ↗](https://www.dynadot.com/help/question/set-DNSSEC)
-* [Enom ↗](https://support.enom.com/support/solutions/articles/201000065386)
-* [Gandi ↗](https://docs.gandi.net/en/domain%5Fnames/advanced%5Fusers/dnssec.html)
-* [GoDaddy ↗](https://www.godaddy.com/help/add-a-ds-record-23865)
-* [Hostinger ↗](https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/)
-* [Hover ↗](https://support.hover.com/support/solutions/articles/201000064716)
-* [Infomaniak ↗](https://faq.infomaniak.com/2187)
-* [InMotion Hosting ↗](https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/)
-* [INWX ↗](https://kb.inwx.com/en-us/3-nameserver/131)
-* [Joker.com ↗](https://joker.com/faq/books/jokercom-faq-en/page/dnssec)
-* [Name.com ↗](https://www.name.com/support/articles/205439058-managing-dnssec)
-* [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/)
-* [NameISP ↗](https://support.nameisp.com/knowledgebase/dns)
-* [Namesilo ↗](https://www.namesilo.com/support/v2/articles/domain-manager/ds-records)
-* [OVH ↗](https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb%5Farticle%5Fview&sysparm%5Farticle=KB0051637)
-* [Squarespace ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec)
-* [Registro.br ↗](https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns)
-* [Porkbun ↗](https://kb.porkbun.com/article/93-how-to-install-dnssec) (do not fill out **keyData**)
-* [TransIP ↗](https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/)
+- <a href="https://support.dnsimple.com/articles/cloudflare-ds-record/">DNSimple ↗</a>
+- <a href="https://support.domaindiscount24.com/hc/articles/4409759478161">Domaindiscount24 ↗</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/219539467">DreamHost ↗</a>
+- <a href="https://www.dynadot.com/help/question/set-DNSSEC">Dynadot ↗</a>
+- <a href="https://support.enom.com/support/solutions/articles/201000065386">Enom ↗</a>
+- <a href="https://docs.gandi.net/en/domain_names/advanced_users/dnssec.html">Gandi ↗</a>
+- <a href="https://www.godaddy.com/help/add-a-ds-record-23865">GoDaddy ↗</a>
+- <a href="https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/">Hostinger ↗</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064716">Hover ↗</a>
+- <a href="https://faq.infomaniak.com/2187">Infomaniak ↗</a>
+- <a href="https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/">InMotion Hosting ↗</a>
+- <a href="https://kb.inwx.com/en-us/3-nameserver/131">INWX ↗</a>
+- <a href="https://joker.com/faq/books/jokercom-faq-en/page/dnssec">Joker.com ↗</a>
+- <a href="https://www.name.com/support/articles/205439058-managing-dnssec">Name.com ↗</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/">Namecheap ↗</a>
+- <a href="https://support.nameisp.com/knowledgebase/dns">NameISP ↗</a>
+- <a href="https://www.namesilo.com/support/v2/articles/domain-manager/ds-records">Namesilo ↗</a>
+- <a href="https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb_article_view&amp;sysparm_article=KB0051637">OVH ↗</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec">Squarespace ↗</a>
+- <a href="https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns">Registro.br ↗</a>
+- <a href="https://kb.porkbun.com/article/93-how-to-install-dnssec">Porkbun ↗</a> (do not fill out **keyData**)
+- <a href="https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/">TransIP ↗</a>
+
+</details>
 
 After your transfer completes, you can re-enable DNSSEC through Cloudflare with one click. Refer to [Enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare).
 
@@ -97,16 +113,24 @@ After your transfer completes, you can re-enable DNSSEC through Cloudflare with 
 
 Follow the steps in [Set up Cloudflare DNS](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) to add your domain, review your DNS records, and get your assigned nameservers. Then [update the nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) at your current registrar to the ones Cloudflare assigned.
 
+<details>
+
+<summary>
+
 Nameserver instructions for popular registrars
+
+</summary>
 
 Each registrar has a different interface for updating nameservers. These links explain the process at popular registrars:
 
-* [Enom ↗](https://support.enom.com/support/solutions/articles/201000065324-preparing-your-domain-for-transfer)
-* [GoDaddy ↗](https://www.godaddy.com/help/transfer-my-domain-away-from-godaddy-3560)
-* [Ionos by 1&1 ↗](https://www.ionos.com/help/domains/domain-transfers/#acc4514)
-* [Namecheap ↗](https://www.namecheap.com/support/knowledgebase/article.aspx/258/84/what-should-i-do-to-transfer-a-domain-from-namecheap/)
-* [Network Solutions ↗](https://www.networksolutions.com/help/article/transfer-out-of-network-solutions)
-* [Squarespace ↗](https://support.squarespace.com/hc/articles/205812338-Transferring-a-domain-away-from-Squarespace)
+- <a href="https://support.enom.com/support/solutions/articles/201000065324-preparing-your-domain-for-transfer">Enom ↗</a>
+- <a href="https://www.godaddy.com/help/transfer-my-domain-away-from-godaddy-3560">GoDaddy ↗</a>
+- <a href="https://www.ionos.com/help/domains/domain-transfers/#acc4514">Ionos by 1&amp;1 ↗</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/258/84/what-should-i-do-to-transfer-a-domain-from-namecheap/">Namecheap ↗</a>
+- <a href="https://www.networksolutions.com/help/article/transfer-out-of-network-solutions">Network Solutions ↗</a>
+- <a href="https://support.squarespace.com/hc/articles/205812338-Transferring-a-domain-away-from-Squarespace">Squarespace ↗</a>
+
+</details>
 
 ### Wait for your domain to become active
 
@@ -122,7 +146,7 @@ If your zone has been pending for more than 24 hours, verify that you updated th
 
 ---
 
-## 2\. Transfer your registration
+## 2. Transfer your registration
 
 Once your domain is active on Cloudflare, you can transfer the registration. This moves your domain record from your current registrar to Cloudflare. You will go back and forth between your current registrar and Cloudflare during this process.
 
@@ -148,7 +172,7 @@ Authorization codes are usually only valid for a limited period. Request the cod
 
 **In the Cloudflare dashboard:**
 
-[Go to **Transfer domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
+[Go to **Transfer domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
 
 Select your domain and enter the authorization code. For most generic TLDs (such as `.com`, `.net`, and `.org`), the transfer price includes a one-year registration extension from your current expiration date. This is an ICANN requirement for gTLD transfers. Country-code domains follow their own registry policies — for example, `.uk` transfers do not add an extra year or charge a transfer fee.
 
@@ -209,9 +233,9 @@ If you do not need Cloudflare as your registrar and only want to use Cloudflare 
 
 You can check the status of your transfer on the **Transfer Domains** page in the dashboard.
 
-* **Transfer in progress**: Cloudflare has submitted the request to your current registrar. If this status persists for more than 24 hours, verify that you have unlocked the domain at your current registrar.
-* **Pending approval**: Your current registrar has received the transfer request and can take up to five days to release the domain. To speed this up, approve the transfer through the email or dashboard of your current registrar.
-* **Transfer rejected**: The transfer was rejected by your current registrar. This can happen if you declined the transfer request, or if the registrar determined the domain is not eligible. Select **Retry** to start a new transfer request.
+- **Transfer in progress**: Cloudflare has submitted the request to your current registrar. If this status persists for more than 24 hours, verify that you have unlocked the domain at your current registrar.
+- **Pending approval**: Your current registrar has received the transfer request and can take up to five days to release the domain. To speed this up, approve the transfer through the email or dashboard of your current registrar.
+- **Transfer rejected**: The transfer was rejected by your current registrar. This can happen if you declined the transfer request, or if the registrar determined the domain is not eligible. Select **Retry** to start a new transfer request.
 
 ---
 
@@ -225,12 +249,12 @@ The process for transferring domains in bulk is the same as transferring a singl
 
 Here are suggestions for how to handle common transfer issues:
 
-* [Domain is still locked](https://developers.cloudflare.com/registrar/troubleshooting/#domain-is-still-locked)
-* [Authorization code is invalid or expired](https://developers.cloudflare.com/registrar/troubleshooting/#authorization-code-is-invalid-or-expired)
-* [Cannot find where to enter your authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code)
-* [Transfer rejected](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-rejected)
-* [Transfer is taking too long](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-is-taking-too-long)
-* [Payment failed during transfer](https://developers.cloudflare.com/registrar/troubleshooting/#payment-failed-during-transfer)
+- [Domain is still locked](https://developers.cloudflare.com/registrar/troubleshooting/#domain-is-still-locked)
+- [Authorization code is invalid or expired](https://developers.cloudflare.com/registrar/troubleshooting/#authorization-code-is-invalid-or-expired)
+- [Cannot find where to enter your authorization code](https://developers.cloudflare.com/registrar/troubleshooting/#cannot-find-where-to-enter-your-authorization-code)
+- [Transfer rejected](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-rejected)
+- [Transfer is taking too long](https://developers.cloudflare.com/registrar/troubleshooting/#transfer-is-taking-too-long)
+- [Payment failed during transfer](https://developers.cloudflare.com/registrar/troubleshooting/#payment-failed-during-transfer)
 
 For a full list of issues, refer to [Troubleshoot failed domain transfers](https://developers.cloudflare.com/registrar/troubleshooting/).
 
@@ -240,11 +264,19 @@ As mentioned in [Review DNS records in Cloudflare](https://developers.cloudflare
 
 Refer to your web host's documentation to learn what type of records you need to configure and where they should point, to avoid downtime.
 
+<details>
+
+<summary>
+
 Example
 
-For example, Netlify asks customers that host websites with them to add a `CNAME` record pointing `<YOUR-DOMAIN>` to `apex-loadbalancer.netlify.com`, and another `CNAME` record pointing `www` to `<YOUR-DOMAIN>.netlify.app`, depending on which one is the primary domain.
+</summary>
 
-![An example of DNS management in Cloudflare's DNS dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2106,height=546,format=webp/_astro/dns-management.0LI9Ggoq.png)
+For example, Netlify asks customers that host websites with them to add a <code>CNAME</code> record pointing <code>&lt;YOUR-DOMAIN&gt;</code> to <code>apex-loadbalancer.netlify.com</code>, and another <code>CNAME</code> record pointing <code>www</code> to <code>&lt;YOUR-DOMAIN&gt;.netlify.app</code>, depending on which one is the primary domain.
+
+![An example of DNS management in Cloudflare's DNS dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2106,height=546,format=webp/_astro/dns-management.0LI9Ggoq.png)</details>
+
+
 
 You may also want to [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare).
 

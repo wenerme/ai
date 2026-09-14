@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Table maintenance
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Table maintenance encompasses a set of operations that keep your Apache Iceberg tables performant and cost-efficient over time. As data is written, updated, and deleted, tables accumulate metadata and files that can degrade query performance over time.
 
 R2 Data Catalog automates two critical maintenance operations:
 
-* **Compaction**: Combines small data files into larger, more efficient files to improve query performance
-* **Snapshot expiration**: Removes old table snapshots and any unreferenced data files to reduce metadata overhead and storage costs
+- **Compaction**: Combines small data files into larger, more efficient files to improve query performance
+- **Snapshot expiration**: Removes old table snapshots and any unreferenced data files to reduce metadata overhead and storage costs
 
 Without regular maintenance, tables can suffer from:
 
-* **Query performance degradation**: More files to scan means slower queries and higher compute costs
-* **Increased storage costs**: Accumulation of small files and old snapshots consumes unnecessary storage
-* **Metadata overhead**: Large metadata files slow down query planning and table operations
+- **Query performance degradation**: More files to scan means slower queries and higher compute costs
+- **Increased storage costs**: Accumulation of small files and old snapshots consumes unnecessary storage
+- **Metadata overhead**: Large metadata files slow down query planning and table operations
 
 By enabling automatic table maintenance, R2 Data Catalog ensures your tables remain optimized without having to manually run them yourself.
 
@@ -33,13 +33,13 @@ By enabling automatic table maintenance, R2 Data Catalog ensures your tables rem
 
 Every write operation in [Apache Iceberg ↗](https://iceberg.apache.org/), no matter how small or large, results in a series of new files being generated. As time goes on, the number of files can grow unbounded. This can lead to:
 
-* Slower queries and increased I/O operations: Without compaction, query engines will have to open and read each individual file, resulting in longer query times and increased costs.
-* Increased metadata overhead: Query engines must scan metadata files to determine which ones to read. With thousands of small files, query planning takes longer even before data is accessed.
-* Reduced compression efficiency: Smaller files compress less efficiently than larger files, leading to higher storage costs and more data to transfer during queries.
+- Slower queries and increased I/O operations: Without compaction, query engines will have to open and read each individual file, resulting in longer query times and increased costs.
+- Increased metadata overhead: Query engines must scan metadata files to determine which ones to read. With thousands of small files, query planning takes longer even before data is accessed.
+- Reduced compression efficiency: Smaller files compress less efficiently than larger files, leading to higher storage costs and more data to transfer during queries.
 
 ## R2 Data Catalog automatic compaction
 
-R2 Data Catalog can now [manage compaction](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/) for Apache Iceberg tables stored in R2\. When enabled, compaction runs automatically and combines new files that have not been compacted yet.
+R2 Data Catalog can now [manage compaction](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/) for Apache Iceberg tables stored in R2. When enabled, compaction runs automatically and combines new files that have not been compacted yet.
 
 Compacted files are prefixed with `compacted-` in the `/data/` directory of a respective table.
 
@@ -72,17 +72,17 @@ Different compute engines have different optimal file sizes, so check their docu
 
 Performance tradeoffs depend on your use case. For example, queries that return small amounts of data may perform better with smaller files, as larger files could result in reading unnecessary data.
 
-* For workloads that are more latency sensitive, consider a smaller target file size (for example, 64 MB - 128 MB)
-* For streaming ingest workloads, consider medium file sizes (for example, 128 MB - 256 MB)
-* For OLAP style queries that need to scan a lot of data, consider larger file sizes (for example, 256 MB - 512 MB)
+- For workloads that are more latency sensitive, consider a smaller target file size (for example, 64 MB - 128 MB)
+- For streaming ingest workloads, consider medium file sizes (for example, 128 MB - 256 MB)
+- For OLAP style queries that need to scan a lot of data, consider larger file sizes (for example, 256 MB - 512 MB)
 
 ## Why do I need snapshot expiration?
 
 Every write to an Iceberg table—whether an insert, update, or delete—creates a new snapshot. Over time, these snapshots can accumulate and cause performance issues:
 
-* **Metadata overhead**: Each snapshot adds entries to the table's metadata files. As the number of snapshots grows, metadata files become larger, slowing down query planning and table operations
-* **Increased storage costs**: Old snapshots reference data files that may no longer be needed. Without snapshot expiration, these files continue consuming unnecessary storage
-* **Slower table operations**: Operations like listing snapshots or accessing table history become slower over time
+- **Metadata overhead**: Each snapshot adds entries to the table's metadata files. As the number of snapshots grows, metadata files become larger, slowing down query planning and table operations
+- **Increased storage costs**: Old snapshots reference data files that may no longer be needed. Without snapshot expiration, these files continue consuming unnecessary storage
+- **Slower table operations**: Operations like listing snapshots or accessing table history become slower over time
 
 ## R2 Data Catalog automatic snapshot expiration
 
@@ -90,8 +90,8 @@ Every write to an Iceberg table—whether an insert, update, or delete—creates
 
 Snapshot expiration uses two parameters to determine which snapshots to remove:
 
-* `--older-than-days`: Remove snapshots older than this many days (default: 30 days)
-* `--retain-last`: Always keep this minimum number of recent snapshots (default: 5 snapshots)
+- `--older-than-days`: Remove snapshots older than this many days (default: 30 days)
+- `--retain-last`: Always keep this minimum number of recent snapshots (default: 5 snapshots)
 
 Both conditions must be met for a snapshot to be expired. This ensures you always retain recent snapshots even if they are older than the age threshold.
 
@@ -120,22 +120,22 @@ npx wrangler r2 bucket catalog snapshot-expiration disable my-bucket
 
 Different workloads require different snapshot retention strategies:
 
-* **Development/testing tables**: Shorter retention (2-7 days, 5 snapshots) to minimize storage costs
-* **Production analytics tables**: Medium retention (7-30 days, 10-20 snapshots) for debugging and analysis
-* **Compliance/audit tables**: Longer retention (30-90 days, 50+ snapshots) to meet regulatory requirements
-* **High-frequency ingest**: Higher minimum snapshot count to preserve more granular history
+- **Development/testing tables**: Shorter retention (2-7 days, 5 snapshots) to minimize storage costs
+- **Production analytics tables**: Medium retention (7-30 days, 10-20 snapshots) for debugging and analysis
+- **Compliance/audit tables**: Longer retention (30-90 days, 50+ snapshots) to meet regulatory requirements
+- **High-frequency ingest**: Higher minimum snapshot count to preserve more granular history
 
 These are generic recommendations, make sure to consider:
 
-* Time travel requirements
-* Compliance requirements
-* Storage costs
+- Time travel requirements
+- Compliance requirements
+- Storage costs
 
 ## Current limitations
 
-* Only data files stored in parquet format are currently supported with compaction.
-* Files that were not previously referenced by a snapshot will not be cleaned up (orphaned files).
-* Minimum target file size for compaction is 64 MB and maximum is 512 MB.
+- Only data files stored in parquet format are currently supported with compaction.
+- Files that were not previously referenced by a snapshot will not be cleaned up (orphaned files).
+- Minimum target file size for compaction is 64 MB and maximum is 512 MB.
 
 Was this helpful?
 

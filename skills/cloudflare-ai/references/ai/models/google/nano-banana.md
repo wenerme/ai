@@ -16,21 +16,21 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Image • Google
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `google/nano-banana`
 
-* Third-party
-* Zero data retention
+- Third-party
+- Zero data retention
 
 Google's fast image generation model producing high-quality images from text prompts.
 
-| Model Info          |                                                                                                                      |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                     |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                               |
-| Zero data retention | Yes                                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
+| More information | [link ↗](https://deepmind.google/technologies/imagen/) |
+| Zero data retention | Yes |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
 
 ## Usage
 
@@ -75,7 +75,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Vintage Tokyo Poster** — Retro travel poster style illustration
+<details>
+
+<summary>**Vintage Tokyo Poster** — Retro travel poster style illustration</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -116,7 +120,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Dewdrops Macro** — Photorealistic macro photography
+</details>
+
+<details>
+
+<summary>**Dewdrops Macro** — Photorealistic macro photography</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -157,7 +167,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Pixel Art Marketplace** — Isometric pixel art scene
+</details>
+
+<details>
+
+<summary>**Pixel Art Marketplace** — Isometric pixel art scene</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -198,7 +214,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Resolution Landscape** — Generate a high-resolution 4K landscape image
+</details>
+
+<details>
+
+<summary>**High Resolution Landscape** — Generate a high-resolution 4K landscape image</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -243,13 +265,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+</details>
+
 ## Parameters
 
 prompt
 
 `string`required
 
-▶image\_input\[\]
+▶image\_input\[]
 
 `array`maxItems: 3
 
@@ -271,9 +295,9 @@ image
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json)
 
 Was this helpful?
 

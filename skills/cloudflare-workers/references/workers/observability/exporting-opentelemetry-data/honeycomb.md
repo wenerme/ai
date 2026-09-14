@@ -12,13 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Export to Honeycomb
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Honeycomb is an observability platform built for high-cardinality data that helps you understand and debug your applications. By exporting your Cloudflare Workers application telemetry to Honeycomb, you can:
 
-* Visualize traces to understand request flows and identify performance bottlenecks
-* Query and analyze logs with unlimited dimensionality across any attribute
-* Create custom queries and dashboards to monitor your Workers
+- Visualize traces to understand request flows and identify performance bottlenecks
+- Query and analyze logs with unlimited dimensionality across any attribute
+- Create custom queries and dashboards to monitor your Workers
+
 ![Trace view including POST request, fetch operations, durable object subrequest, and queue send, with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2196,height=704,format=webp/_astro/honeycomb-example.cEkEF1c4.png)
 
 This guide will walk you through configuring your Cloudflare Worker application to export OpenTelemetry-compliant traces and logs to Honeycomb.
@@ -27,8 +28,8 @@ This guide will walk you through configuring your Cloudflare Worker application 
 
 Before you begin, ensure you have:
 
-* An active [Honeycomb account ↗](https://ui.honeycomb.io/signup) (free tier available)
-* A deployed Worker that you want to monitor
+- An active [Honeycomb account ↗](https://ui.honeycomb.io/signup) (free tier available)
+- A deployed Worker that you want to monitor
 
 ## Step 1: Get your Honeycomb API key
 
@@ -39,8 +40,8 @@ Before you begin, ensure you have:
 5. Find your environment (e.g., `production`, `test`) or create a new one
 6. Under **API Keys**, click **Create Ingest API Key**
 7. Configure your API key:
-  * **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
-  * **Permissions**: Select **Can create services/datasets** (required for OTLP ingestion)
+   - **Name**: Enter a descriptive name (e.g., `cloudflare-workers-otel`)
+   - **Permissions**: Select **Can create services/datasets** (required for OTLP ingestion)
 8. Click **Create**
 9. **Important**: Copy the API key immediately and store it securely - you won't be able to see it again
 
@@ -54,20 +55,20 @@ Now you'll create destinations in the Cloudflare dashboard that point to Honeyco
 
 Honeycomb provides separate OTLP endpoints for traces and logs:
 
-* **Traces**: `https://api.honeycomb.io/v1/traces`
-* **Logs**: `https://api.honeycomb.io/v1/logs`
+- **Traces**: `https://api.honeycomb.io/v1/traces`
+- **Logs**: `https://api.honeycomb.io/v1/logs`
 
 ### Configure trace destination
 
 1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:
-  * **Destination Name**: `honeycomb-traces` (or any descriptive name)
-  * **Destination Type**: Select **Traces**
-  * **OTLP Endpoint**: `https://api.honeycomb.io/v1/traces`
-  * **Custom Headers**: Add the authentication header:
-    * Header name: `x-honeycomb-team`
-    * Header value: Your Honeycomb API key (e.g., `hcaik_01hq...`)
+   - **Destination Name**: `honeycomb-traces` (or any descriptive name)
+   - **Destination Type**: Select **Traces**
+   - **OTLP Endpoint**: `https://api.honeycomb.io/v1/traces`
+   - **Custom Headers**: Add the authentication header:
+     - Header name: `x-honeycomb-team`
+     - Header value: Your Honeycomb API key (e.g., `hcaik_01hq...`)
 4. Click **Save**
 
 ### Configure logs destination
@@ -76,12 +77,12 @@ Repeat the process for logs:
 
 1. Click **Add destination** again
 2. Configure your logs destination:
-  * **Destination Name**: `honeycomb-logs` (or any descriptive name)
-  * **Destination Type**: Select **Logs**
-  * **OTLP Endpoint**: `https://api.honeycomb.io/v1/logs`
-  * **Custom Headers**: Add the authentication header:
-    * Header name: `x-honeycomb-team`
-    * Header value: Your Honeycomb API key (same as above)
+   - **Destination Name**: `honeycomb-logs` (or any descriptive name)
+   - **Destination Type**: Select **Logs**
+   - **OTLP Endpoint**: `https://api.honeycomb.io/v1/logs`
+   - **Custom Headers**: Add the authentication header:
+     - Header name: `x-honeycomb-team`
+     - Header value: Your Honeycomb API key (same as above)
 3. Click **Save**
 
 ## Step 3: Configure your Worker

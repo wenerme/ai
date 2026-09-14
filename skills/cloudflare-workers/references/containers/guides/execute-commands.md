@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Execute commands
 
-Last updated Aug 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/guides/execute-commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/execute-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `exec()` to start another process inside a running [Container](https://developers.cloudflare.com/containers/reference/container-class/). The examples call `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`.
 
@@ -820,7 +820,7 @@ export class MyContainer extends Container {
 }
 ```
 
-For all fields and return types, refer to the [exec() API contract](https://developers.cloudflare.com/durable-objects/api/container/#exec).
+For all fields and return types, refer to the [`exec()` API contract](https://developers.cloudflare.com/durable-objects/api/container/#exec).
 
 Was this helpful?
 

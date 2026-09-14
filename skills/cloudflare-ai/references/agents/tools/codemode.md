@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Code Mode
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode is a tool-use pattern where a model writes code instead of requesting each operation separately. The model receives one code-execution tool. Its code becomes a compact plan that calls tools, processes results, and returns the information needed for a response.
 
@@ -28,11 +28,11 @@ With direct tool use, the model selects one tool, receives its result, and then 
 
 Code Mode moves that intermediate logic into executable code. A single plan can:
 
-* Compose several dependent tool calls.
-* Loop over collections of results.
-* Filter and transform returned data.
-* Branch based on earlier results.
-* Shape the final returned value.
+- Compose several dependent tool calls.
+- Loop over collections of results.
+- Filter and transform returned data.
+- Branch based on earlier results.
+- Shape the final returned value.
 
 This approach keeps control flow and data handling together. It is useful when the model must coordinate several operations before producing an answer.
 
@@ -50,10 +50,10 @@ Code Mode keeps that work inside one sandbox execution. Generated code can pass 
 
 Use direct tool calls for simple tasks with a small, fixed tool set. Use Code Mode when a task needs composition, dependent calls, progressive discovery, reusable logic, or control flow:
 
-| Pattern           | Best suited for                                                                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Direct tool calls | Simple tasks using a small, known tool set                                                                       |
-| Code Mode         | Composed or dependent calls, large tool catalogs, loops, branching, filtering, result shaping, or reusable logic |
+| Pattern | Best suited for |
+| --- | --- |
+| Direct tool calls | Simple tasks using a small, known tool set |
+| Code Mode | Composed or dependent calls, large tool catalogs, loops, branching, filtering, result shaping, or reusable logic |
 
 ## Choose an integration
 

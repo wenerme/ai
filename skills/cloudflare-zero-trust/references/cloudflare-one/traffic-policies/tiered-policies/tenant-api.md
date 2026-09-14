@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tenant API
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/tenant-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/tenant-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -38,15 +38,16 @@ The Gateway Tenant platform supports tiered and siloed account configurations.
 
 In a tiered account configuration, a top-level parent account enforces global security policies that apply to all of its child accounts. Child accounts can override or add policies as needed while still being managed by the parent account. MSPs can also configure child accounts independently from the parent account for the following Gateway features:
 
-* **[Custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)**: Child accounts will use the block page setting used by the parent account unless you configure separate block settings for the child account. This applies to both redirects and custom block pages. The block page uses the account certificate for each child account.
-* **[Root certificates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/)**: If Gateway cannot attribute an incoming DNS query to a child account, it will use the parent account's certificate. This happens when the source IP address of the DNS query does not match a child account or if a custom DNS resolver endpoint is not configured.
-* **[DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/)**
-* **[Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)**
+- **[Custom block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/)**: Child accounts will use the block page setting used by the parent account unless you configure separate block settings for the child account. This applies to both redirects and custom block pages. The block page uses the account certificate for each child account.
+- **[Root certificates](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/)**: If Gateway cannot attribute an incoming DNS query to a child account, it will use the parent account's certificate. This happens when the source IP address of the DNS query does not match a child account or if a custom DNS resolver endpoint is not configured.
+- **[DNS locations](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/)**
+- **[Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/)**
 
 Each child account is subject to the default Zero Trust [account limits](https://developers.cloudflare.com/cloudflare-one/account-limits/).
 
-Gateway evaluates parent account policies before any child account policies. To allow a child account to override a specific parent account policy, you can use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/rules/methods/update/) endpoint to set the policy's `allow_child_bypass` rule setting to `true`.
+Gateway evaluates parent account policies before any child account policies. To allow a child account to override a specific parent account policy, you can use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint to set the policy's `allow_child_bypass` rule setting to `true`.
 
+```
 flowchart TD
 %% Accessibility
  accTitle: How Gateway policies work in a tiered account configuration
@@ -75,10 +76,13 @@ flowchart TD
     n4@{ shape: lean-l}
     n5@{ shape: lean-l}
 
+```
+
 ### Siloed accounts
 
 In a siloed account configuration, each account operates independently within the same tenant. MSPs manage each account's own security policies, resources, and configurations separately.
 
+```
 flowchart TD
 %% Accessibility
  accTitle: How Gateway policies work in a siloed account configuration
@@ -99,6 +103,8 @@ flowchart TD
     n1@{ shape: lean-l}
     n2@{ shape: lean-l}
     n3@{ shape: lean-l}
+
+```
 
 Was this helpful?
 

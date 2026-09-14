@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Using JSONata
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/advanced/using-jsonata/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For advanced use cases, it is sometimes useful to be able to retrieve a value in a particular way. For instance, you might be using `zaraz.track` to send a list of products to Zaraz, but the third-party tool you want to send this data to requires the total cost of the products. Alternatively, you may want to manipulate a value, such as converting it to lowercase.
 
@@ -20,9 +20,8 @@ Cloudflare Zaraz uses JSONata to enable you to perform complex operations on you
 
 To use JSONata inside Zaraz, follow these steps:
 
-1. In the Cloudflare dashboard, go to the **Tag setup** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
-2. Go to **Tools configuration** \> **Tools**.
+1. In the Cloudflare dashboard, go to the **Tag setup** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+2. Go to **Tools configuration** > **Tools**.
 3. Select **Edit** next to a tool that you have already configured.
 4. Select an action or add a new one.
 5. Choose the field you want to use JSONata in, and wrap your JSONata expression with double curly brackets, like `{{ expression }}`.

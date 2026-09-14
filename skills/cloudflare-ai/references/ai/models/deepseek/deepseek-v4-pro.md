@@ -16,20 +16,20 @@ d
 
 Text Generation • deepseek
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `deepseek/deepseek-v4-pro`
 
-* Third-party
+- Third-party
 
 DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.
 
-| Model Info                                                                          |                                                                                                                            |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens                                                                                                             |
-| More information                                                                    | [link ↗](https://api-docs.deepseek.com)                                                                                    |
-| Request formats                                                                     | Chat Completions                                                                                                           |
-| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/deepseek/deepseek-v4-pro) |
+| Model Info | |
+| --- | --- |
+| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
+| More information | [link ↗](https://api-docs.deepseek.com) |
+| Request formats | Chat Completions |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/deepseek/deepseek-v4-pro) |
 
 ## Usage
 
@@ -59,7 +59,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+```
 The capital of France is **Paris**.
+```
 
 ```json
 {
@@ -94,7 +96,11 @@ The capital of France is **Paris**.
 
 ## Examples
 
-**With System Message** — Using a system message to set context
+<details>
+
+<summary>**With System Message** — Using a system message to set context</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -131,6 +137,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 To read a JSON file in Python, you use the built-in `json` module. The most common approach is `json.load()` which reads directly from a file object.
 
 ### Basic example
@@ -171,6 +178,7 @@ data = json.loads(json_string)
 ```
 
 That’s it! Let me know if you need help with writing JSON or more advanced usage.
+````
 
 ```json
 {
@@ -203,7 +211,13 @@ That’s it! Let me know if you need help with writing JSON or more advanced usa
 }
 ```
 
-**Streaming Response** — Enable streaming for real-time output
+</details>
+
+<details>
+
+<summary>**Streaming Response** — Enable streaming for real-time output</summary>
+
+
 
 ```ts
 const response = await env.AI.run(
@@ -233,6 +247,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/v1/
 }'
 ```
 
+````
 Recursion is a programming technique where a function calls itself to solve a smaller version of the same problem. Each recursive call works on a simpler input, and there’s always a **base case** that stops the recursion, preventing an infinite loop.
 
 ### The Two Essential Parts
@@ -272,6 +287,7 @@ The calls "stack up" until the base case is hit, then they resolve in reverse or
 - Every recursive function needs a stopping condition (base case).
 - Without a base case, you get infinite recursion (eventually a stack overflow).
 - It’s especially natural for problems with a recursive structure (trees, sorting, divide-and-conquer, etc.).
+````
 
 ```json
 [
@@ -10627,9 +10643,11 @@ The calls "stack up" until the base case is hit, then they resolve in reverse or
 ]
 ```
 
+</details>
+
 ## Parameters
 
-▶messages\[\]
+▶messages\[]
 
 `array`required
 
@@ -10651,11 +10669,11 @@ top\_p
 
 frequency\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 presence\_penalty
 
-`number`minimum: \-2maximum: 2
+`number`minimum: -2maximum: 2
 
 stream
 
@@ -10665,19 +10683,15 @@ stream
 
 `object`
 
-▶tools\[\]
+▶tools\[]
 
 `array`
 
 tool\_choice
 
-``
-
 response\_format
 
-``
-
-▶modalities\[\]
+▶modalities\[]
 
 `array`
 
@@ -10701,7 +10715,7 @@ model
 
 `string`
 
-▶choices\[\]
+▶choices\[]
 
 `array`
 
@@ -10711,9 +10725,9 @@ model
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/schema-output.json)
 
 Was this helpful?
 

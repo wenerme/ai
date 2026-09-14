@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create predefined variants
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Variants let you specify how images should be resized for different use cases. By default, images are served with a `public` variant, but you can create up to 100 variants to fit your needs. Follow these steps to create a variant.
 
@@ -20,8 +20,7 @@ Note
 
 Cloudflare Images can deliver SVG files but will not resize them because it is an inherently scalable format. Resize via the Cloudflare dashboard.
 
-1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
+1. In the Cloudflare dashboard, go to the **Hosted Images** page. [Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select the **Delivery** tab.
 3. Select **Create variant**.
 4. Name your variant and select **Create**.
@@ -42,21 +41,21 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v1/varia
 
 The `Fit` property describes how the width and height dimensions should be interpreted. The chart below describes each of the options.
 
-| Fit Options | Behavior                                                                                                                                                                                                                                                                    |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Scale down  | The image is shrunk in size to fully fit within the given width or height, but will not be enlarged.                                                                                                                                                                        |
-| Contain     | The image is resized (shrunk or enlarged) to be as large as possible within the given width or height while preserving the aspect ratio.                                                                                                                                    |
-| Cover       | The image is resized to exactly fill the entire area specified by width and height and will be cropped if necessary.                                                                                                                                                        |
-| Crop        | The image is shrunk and cropped to fit within the area specified by the width and height. The image will not be enlarged. For images smaller than the given dimensions, it is the same as scale-down. For images larger than the given dimensions, it is the same as cover. |
-| Pad         | The image is resized (shrunk or enlarged) to be as large as possible within the given width or height while preserving the aspect ratio. The extra area is filled with a background color (white by default).                                                               |
+| Fit Options | Behavior |
+| --- | --- |
+| Scale down | The image is shrunk in size to fully fit within the given width or height, but will not be enlarged. |
+| Contain | The image is resized (shrunk or enlarged) to be as large as possible within the given width or height while preserving the aspect ratio. |
+| Cover | The image is resized to exactly fill the entire area specified by width and height and will be cropped if necessary. |
+| Crop | The image is shrunk and cropped to fit within the area specified by the width and height. The image will not be enlarged. For images smaller than the given dimensions, it is the same as `scale-down`. For images larger than the given dimensions, it is the same as `cover`. |
+| Pad | The image is resized (shrunk or enlarged) to be as large as possible within the given width or height while preserving the aspect ratio. The extra area is filled with a background color (white by default). |
 
 ## Metadata options
 
 Variants allow you to choose what to do with your image’s metadata information. From the **Metadata** dropdown, choose:
 
-* Strip all metadata
-* Strip all metadata except copyright
-* Keep all metadata
+- Strip all metadata
+- Strip all metadata except copyright
+- Keep all metadata
 
 ## Public access
 

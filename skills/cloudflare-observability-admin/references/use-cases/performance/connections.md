@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Accelerate connections
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/use-cases/performance/connections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network congestion and suboptimal routing between your origin and visitors add latency. Cloudflare Argo Smart Routing uses real-time network telemetry to route requests through the fastest paths, while Early Hints preloads assets before the full HTML response arrives.
 
@@ -22,20 +22,20 @@ Network congestion and suboptimal routing between your origin and visitors add l
 
 Route traffic through the fastest paths across Cloudflare's network. [Learn more about Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/).
 
-* **Smart routing** \- Automatically route requests through uncongested network paths, reducing latency between edge and origin
-* **Optimized paths** \- Real-time network telemetry selects the fastest available route for each request
+- **Smart routing** - Automatically route requests through uncongested network paths, reducing latency between edge and origin
+- **Optimized paths** - Real-time network telemetry selects the fastest available route for each request
 
 ### Speed
 
 Improve the performance of your website or web application. [Learn more about Speed](https://developers.cloudflare.com/speed/).
 
-* **Faster handshakes** \- Assess the performance of your website and gain recommendations on how to optimize your website
+- **Faster handshakes** - Assess the performance of your website and gain recommendations on how to optimize your website
 
 ### Early Hints
 
 Preload assets before the HTML response arrives. [Learn more about Early Hints](https://developers.cloudflare.com/speed/optimization/content/early-hints/).
 
-* **Asset preloading** \- Send `103 Early Hints` responses so browsers start fetching assets before the full HTML arrives
+- **Asset preloading** - Send `103 Early Hints` responses so browsers start fetching assets before the full HTML arrives
 
 ## Get started
 

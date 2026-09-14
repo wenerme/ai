@@ -12,24 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GraphQL API
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/graphql-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/graphql-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Crawl Control analytics are available through Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can query the same data shown in the dashboard to build custom reports, integrate with monitoring systems, or export for analysis. Test queries using the [GraphQL API Explorer ↗](https://graphql.cloudflare.com/), or capture the exact queries the dashboard uses via [Chrome DevTools](https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/).
 
 ## Key filters
 
-| Filter                           | Description                                                                                                                     | Availability                                                                         |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| requestSource: "eyeball"         | Real client requests only. Excludes internal Cloudflare traffic.                                                                | All plans                                                                            |
-| userAgent\_like: "%...%"         | Filter by [user agent](https://developers.cloudflare.com/ai-crawl-control/reference/bots/). Can be spoofed.                     | All plans                                                                            |
-| edgeResponseStatus\_geq / \_lt   | Filter by HTTP status code range.                                                                                               | All plans                                                                            |
-| clientRequestPath\_like: "%...%" | Filter by URL path pattern.                                                                                                     | All plans                                                                            |
-| clientRefererHost\_like: "%...%" | Filter by [referrer domain](https://developers.cloudflare.com/ai-crawl-control/reference/bots/#referrer-domains-by-operator).   | Paid plans only                                                                      |
-| botDetectionIds\_hasany: \[...\] | Filter by [detection IDs](https://developers.cloudflare.com/ai-crawl-control/reference/bots/). Reliably verified by Cloudflare. | [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) |
+| Filter | Description | Availability |
+| --- | --- | --- |
+| `requestSource: "eyeball"` | Real client requests only. Excludes internal Cloudflare traffic. | All plans |
+| `userAgent_like: "%...%"` | Filter by [user agent](https://developers.cloudflare.com/ai-crawl-control/reference/bots/). Can be spoofed. | All plans |
+| `edgeResponseStatus_geq` / `_lt` | Filter by HTTP status code range. | All plans |
+| `clientRequestPath_like: "%...%"` | Filter by URL path pattern. | All plans |
+| `clientRefererHost_like: "%...%"` | Filter by [referrer domain](https://developers.cloudflare.com/ai-crawl-control/reference/bots/#referrer-domains-by-operator). | Paid plans only |
+| `botDetectionIds_hasany: [...]` | Filter by [detection IDs](https://developers.cloudflare.com/ai-crawl-control/reference/bots/). Reliably verified by Cloudflare. | [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) |
 
 ## Query examples
 
+<details>
+
+<summary>
+
 Get AI crawler requests over time using detection IDs
+
+</summary>
 
 ```graphql
 {
@@ -60,7 +66,15 @@ Get AI crawler requests over time using detection IDs
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Get AI crawler requests over time using user agent
+
+</summary>
 
 ```graphql
 {
@@ -90,7 +104,15 @@ Get AI crawler requests over time using user agent
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Get top crawled paths
+
+</summary>
 
 ```graphql
 {
@@ -119,7 +141,15 @@ Get top crawled paths
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Get AI referral traffic
+
+</summary>
 
 ```graphql
 {
@@ -151,7 +181,15 @@ Get AI referral traffic
 }
 ```
 
+</details>
+
+<details>
+
+<summary>
+
 Get data transfer by crawler
+
+</summary>
 
 ```graphql
 {
@@ -180,10 +218,12 @@ Get data transfer by crawler
 }
 ```
 
+</details>
+
 ## Related
 
-* [Bot reference](https://developers.cloudflare.com/ai-crawl-control/reference/bots/) — Detection IDs and user agents
-* [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — Full API documentation
+- [Bot reference](https://developers.cloudflare.com/ai-crawl-control/reference/bots/) — Detection IDs and user agents
+- [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) — Full API documentation
 
 Was this helpful?
 

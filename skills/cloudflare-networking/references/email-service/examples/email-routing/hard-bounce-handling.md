@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Detect and handle hard bounce emails to maintain sender reputation and manage undeliverable addresses
 
-Last updated Sep 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/hard-bounce-handling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Handle hard bounce notifications to automatically remove invalid email addresses from your mailing lists and maintain good sender reputation.
 
@@ -22,10 +22,10 @@ Handle hard bounce notifications to automatically remove invalid email addresses
 
 Hard bounces occur when an email cannot be delivered due to permanent reasons:
 
-* Invalid email address: The email address does not exist
-* Domain does not exist: The domain name is invalid or expired
-* Mailbox full: The recipient's mailbox has exceeded storage limits
-* Email blocked: The recipient's server permanently rejects emails
+- Invalid email address: The email address does not exist
+- Domain does not exist: The domain name is invalid or expired
+- Mailbox full: The recipient's mailbox has exceeded storage limits
+- Email blocked: The recipient's server permanently rejects emails
 
 ## Configuration
 
@@ -35,7 +35,7 @@ Configure your worker to handle bounce notifications:
 {
 	"name": "bounce-handler",
 	// Set this to today's date
-	"compatibility_date": "2026-09-05",
+	"compatibility_date": "2026-09-14",
 	"send_email": [{ "name": "EMAIL" }],
 	"kv_namespaces": [
 		{
@@ -49,7 +49,7 @@ Configure your worker to handle bounce notifications:
 ```toml
 name = "bounce-handler"
 # Set this to today's date
-compatibility_date = "2026-09-05"
+compatibility_date = "2026-09-14"
 
 [[send_email]]
 name = "EMAIL"
@@ -276,9 +276,9 @@ export async function sendEmail(recipient, subject, content, env) {
 
 ## Next steps
 
-* Learn about [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) to improve deliverability
-* Set up [metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) to monitor bounce rates
-* Implement [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) for incoming emails
+- Learn about [email authentication](https://developers.cloudflare.com/email-service/concepts/email-authentication/) to improve deliverability
+- Set up [metrics and analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) to monitor bounce rates
+- Implement [spam filtering](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/) for incoming emails
 
 Was this helpful?
 

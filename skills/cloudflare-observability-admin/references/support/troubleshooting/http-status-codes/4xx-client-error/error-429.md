@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 429
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-429/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-429/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 429 Too Many Requests
 
@@ -28,13 +28,13 @@ Servers use this status code to prevent excessive API requests from overloading 
 
 #### Cloudflare API limits
 
-| Type                              | Limit                               |
-| --------------------------------- | ----------------------------------- |
-| Client API per user/account token | 1200/5 minutes                      |
-| Client API per IP                 | 200/second                          |
-| GraphQL                           | Varies by query cost. Max 320/5 min |
-| User API token quota              | 50                                  |
-| Account API token quota           | 500                                 |
+| Type | Limit |
+| --- | --- |
+| Client API per user/account token | 1200/5 minutes |
+| Client API per IP | 200/second |
+| GraphQL | Varies by query cost. Max 320/5 min |
+| User API token quota | 50 |
+| Account API token quota | 500 |
 
 Note
 
@@ -44,17 +44,17 @@ If you exceed this limit, all API calls for the next five minutes will be blocke
 
 Some specific API calls have their own limits and are documented separately, such as the following:
 
-* [Cache Purge APIs](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits)
-* [GraphQL APIs](https://developers.cloudflare.com/analytics/graphql-api/limits/)
-* [Rulesets APIs](https://developers.cloudflare.com/ruleset-engine/rulesets-api/#limits)
-* [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/#rate-limiting-for-lists-api-requests)
-* [Gateway Lists API](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#api-rate-limit)
+- [Cache Purge APIs](https://developers.cloudflare.com/cache/how-to/purge-cache/#availability-and-limits)
+- [GraphQL APIs](https://developers.cloudflare.com/analytics/graphql-api/limits/)
+- [Rulesets APIs](https://developers.cloudflare.com/ruleset-engine/rulesets-api/#limits)
+- [Lists API](https://developers.cloudflare.com/waf/tools/lists/lists-api/#rate-limiting-for-lists-api-requests)
+- [Gateway Lists API](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/#api-rate-limit)
 
 Enterprise customers can also [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to raise the Client API per user, GraphQL, or API token limits to a higher value.
 
 #### R2 managed public buckets
 
-Cloudflare applies rate limiting to requests for R2 managed public buckets accessed via `r2.dev`. This helps protect customers from abuse and overuse of public buckets. For details, refer to [Rate limiting on managed public buckets through r2.dev](https://developers.cloudflare.com/r2/platform/limits/#rate-limiting-on-managed-public-buckets-through-r2dev).
+Cloudflare applies rate limiting to requests for R2 managed public buckets accessed via `r2.dev`. This helps protect customers from abuse and overuse of public buckets. For details, refer to [Rate limiting on managed public buckets through `r2.dev`](https://developers.cloudflare.com/r2/platform/limits/#rate-limiting-on-managed-public-buckets-through-r2dev).
 
 #### Website end users
 

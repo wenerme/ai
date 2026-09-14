@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Edge and Browser Cache TTL
 
-Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Edge Cache TTL
 
 Edge Cache TTL (Time to Live) specifies the maximum time to cache a resource in the Cloudflare global network. Edge Cache TTL is not visible in response headers and the minimum Edge Cache TTL depends on plan type.
 
-|                        | Free    | Pro    | Business | Enterprise |
-| ---------------------- | ------- | ------ | -------- | ---------- |
-| Availability           | Yes     | Yes    | Yes      | Yes        |
-| Minimum Edge Cache TTL | 2 hours | 1 hour | 1 second | 1 second   |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
+| Minimum Edge Cache TTL | 2 hours | 1 hour | 1 second | 1 second |
 
 For more information on how to set up Edge Cache TTL, refer to [Cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#edge-ttl).
 
@@ -29,23 +29,23 @@ For more information on how to set up Edge Cache TTL, refer to [Cache rules](htt
 
 The Browser Cache TTL sets the expiration for resources cached in a visitor’s browser. By default, Cloudflare honors the cache expiration set in your `Expires` and `Cache-Control` headers but overrides those headers if:
 
-* The value of the `Expires` or `Cache-Control` header from the origin web server is less than the Browser Cache TTL Cloudflare setting.
-* The origin web server does not send a `Cache-Control` or an `Expires` header.
+- The value of the `Expires` or `Cache-Control` header from the origin web server is less than the Browser Cache TTL Cloudflare setting.
+- The origin web server does not send a `Cache-Control` or an `Expires` header.
 
 Unless specifically set in a cache rule, Cloudflare does not override or insert `Cache-Control` headers if you set **Browser Cache TTL** to **Respect Existing Headers**.
 
 Note
 
-* Setting high Browser Cache TTL values means that the assets will be cached for a long time by users’ browsers.
-* If you modify cached assets, the new assets may not be displayed to repeat visitors before the Browser Cache TTL expires.
-* Purging Cloudflare’s cache does not affect assets stored by a visitor’s browser.
+- Setting high Browser Cache TTL values means that the assets will be cached for a long time by users’ browsers.
+- If you modify cached assets, the new assets may not be displayed to repeat visitors before the Browser Cache TTL expires.
+- Purging Cloudflare’s cache does not affect assets stored by a visitor’s browser.
 
-|                                        | Free      | Pro       | Business  | Enterprise |
-| -------------------------------------- | --------- | --------- | --------- | ---------- |
-| Availability                           | Yes       | Yes       | Yes       | Yes        |
+|  | Free | Pro | Business | Enterprise |
+| --- | --- | --- | --- | --- |
+| Availability | Yes | Yes | Yes | Yes |
 | Minimum Browser Cache TTL (Page Rules) | 2 minutes | 2 minutes | 2 minutes | 30 seconds |
-| Minimum Browser Cache TTL              | 1 second  | 1 second  | 1 second  | 1 second   |
-| Default Browser Cache TTL              | 4 hours   | 4 hours   | 4 hours   | 4 hours    |
+| Minimum Browser Cache TTL | 1 second | 1 second | 1 second | 1 second |
+| Default Browser Cache TTL | 4 hours | 4 hours | 4 hours | 4 hours |
 
 For more information on setting the Browser Cache TTL, refer to [Set Browser Cache TTL](https://developers.cloudflare.com/cache/how-to/edge-browser-cache-ttl/set-browser-ttl/).
 

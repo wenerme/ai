@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Programmable Platforms
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -36,7 +36,7 @@ The Workers for Platforms architecture consists of several key components that w
 
 ![Figure 1: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-1.BCCEhzLr.svg "Figure 1: Workers for Platforms: Main Flow")
 
-Figure 1: Workers for Platforms: Main Flow
+*Figure 1: Workers for Platforms: Main Flow*
 
 1. **Client Request**: Send request from a client application to the platform's [Dynamic Dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker).
 2. **Routing**: Identify the correct workload to execute and route the request to the respective [User Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers) in the [Dispatch Namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Each customer's workload runs in an isolated User Worker with its own resources and security boundaries.
@@ -45,7 +45,7 @@ Figure 1: Workers for Platforms: Main Flow
 
 ![Figure 2: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-2.DGAT6ZDR.svg "Figure 2: Workers for Platforms: Main Flow")
 
-Figure 2: Workers for Platforms: Main Flow
+*Figure 2: Workers for Platforms: Main Flow*
 
 For many use cases, it makes sense to retrieve additional metadata, user data, or configuration to process incoming requests and provide the User Worker invocation with additional context.
 
@@ -57,7 +57,7 @@ For many use cases, it makes sense to retrieve additional metadata, user data, o
 
 ![Figure 3: Workers for Platforms: Egress Control](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-3.C-LkeZtS.svg "Figure 3: Workers for Platforms: Egress Control")
 
-Figure 3: Workers for Platforms: Egress Control
+*Figure 3: Workers for Platforms: Egress Control*
 
 Data observability and control is crucial for security. [Outbound Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) allow for interception of all outgoing requests in User Worker scripts.
 
@@ -67,9 +67,9 @@ Data observability and control is crucial for security. [Outbound Workers](https
 
 ## Metrics & Logging Architecture
 
-![Figure 4: Workers for Platforms: Metrics & Logging](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=755,format=svg/_astro/programmable-platforms-4.BoFSkvXQ.svg "Figure 4: Workers for Platforms: Metrics & Logging")
+![Figure 4: Workers for Platforms: Metrics \& Logging](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=755,format=svg/_astro/programmable-platforms-4.BoFSkvXQ.svg "Figure 4: Workers for Platforms: Metrics & Logging")
 
-Figure 4: Workers for Platforms: Metrics & Logging
+*Figure 4: Workers for Platforms: Metrics & Logging*
 
 1. **Logging**: Collect logs throughout all Workers in the request flow via [Tail Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/#tail-workers) and [Workers Trace Events Logpush](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/#workers-trace-events-logpush) services.
 2. **Metrics**: Collect custom metrics via [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) and out-of-the-box [Analytics](https://developers.cloudflare.com/analytics/graphql-api/) that can readily be queried via GraphQL API.
@@ -79,29 +79,27 @@ Figure 4: Workers for Platforms: Metrics & Logging
 
 ![Figure 5: Workers for Platforms: Resources](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=585,format=svg/_astro/programmable-platforms-5.B2yd7IjV.svg "Figure 5: Workers for Platforms: Resources")
 
-Figure 5: Workers for Platforms: Resources
+*Figure 5: Workers for Platforms: Resources*
 
 1. **Incoming Request**: Send requests to custom hostnames or a Worker using a Workers wildcard route.
 2. **Worker Invocation**: Route requests to the appropriate User Worker in the Dispatch Namespace.
 3. **Resource Access**: Interact with per-script-specific resources:
-
-  * D1 for relational database storage
-  * Durable Objects for strongly consistent data
-  * KV for high-read, eventually consistent key-value storage
-  * R2 for object storage
+   - D1 for relational database storage
+   - Durable Objects for strongly consistent data
+   - KV for high-read, eventually consistent key-value storage
+   - R2 for object storage
 
 ## Deployment & Management Flow
 
-![Figure 6: Workers for Platforms: Deployment & Management Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-6.BfYznbr5.svg "Figure 6: Workers for Platforms: Deployment & Management Flow")
+![Figure 6: Workers for Platforms: Deployment \& Management Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-6.BfYznbr5.svg "Figure 6: Workers for Platforms: Deployment & Management Flow")
 
-Figure 6: Workers for Platforms: Deployment & Management Flow
+*Figure 6: Workers for Platforms: Deployment & Management Flow*
 
 1. **Management Interface**: Interact with the platform through GUI, API, or CLI interfaces.
 2. **Platform Processing**: Process these interactions to:
-
-  * Transform and bundle code
-  * Perform security checks
-  * Apply configuration
+   - Transform and bundle code
+   - Perform security checks
+   - Apply configuration
 3. **Change Management**: Deploy changes to Cloudflare using the Cloudflare REST API.
 
 ## Conclusion
@@ -110,9 +108,9 @@ Cloudflare Workers for Platforms provides a robust foundation for building multi
 
 ## Related resources
 
-* [Workers for Platforms: Get started](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
-* [Workers for Platforms: Outbound Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/)
-* [Workers for Platforms: Observability](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/)
+- [Workers for Platforms: Get started](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/get-started/)
+- [Workers for Platforms: Outbound Workers](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/)
+- [Workers for Platforms: Observability](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/observability/)
 
 Was this helpful?
 

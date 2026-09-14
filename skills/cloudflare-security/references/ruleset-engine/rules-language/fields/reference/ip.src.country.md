@@ -8,15 +8,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # ip.src.country
 
-`ip.src.country` `String`
+`ip.src.country``String`
 
 The 2-letter country code in [ISO 3166-1 Alpha 2](https://www.iso.org/obp/ui/#search/code/) format.
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2](https://en.wikipedia.org/wiki/ISO%5F3166-1%5Falpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 This field has the same value as the `ip.geoip.country` field, which is deprecated. The `ip.geoip.country` field is still available for new and existing rules, but you should use the `ip.src.country` field instead.
 
-_GeoIP is the registered trademark of MaxMind, Inc._
+*GeoIP is the registered trademark of MaxMind, Inc.*
 
 Example value:
 
@@ -25,8 +25,8 @@ Example value:
 ```
 
 Categories:
-* Request
-* Geolocation
+- Request
+- Geolocation
 
 Was this helpful?
 

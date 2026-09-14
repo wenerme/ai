@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is DNS filtering?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns-filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/what-is-dns-filtering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DNS filtering is a technique to block access to websites or online content. DNS filtering is implemented by specialized DNS resolvers (such as Cloudflare Gateway) that allow you to define a blocklist of domains or content categories. The DNS resolver acts as a filter by refusing to resolve queries for domains on the blocklist, thus preventing users from loading those websites.
 
@@ -20,14 +20,15 @@ DNS filtering is a technique to block access to websites or online content. DNS 
 
 DNS filtering is commonly used to:
 
-* Protect school data from phishing, ransomware, and malware.
-* Block websites that go against school acceptable use policy, such as adult content, gambling, and piracy.
-* Restrict access to websites that may impact student productivity, such as gaming, social media, and video streaming.
+- Protect school data from phishing, ransomware, and malware.
+- Block websites that go against school acceptable use policy, such as adult content, gambling, and piracy.
+- Restrict access to websites that may impact student productivity, such as gaming, social media, and video streaming.
 
 ## How DNS filtering works
 
 DNS filtering involves configuring your browser, device, or router to send all DNS requests to a DNS filtering service. The DNS filtering service checks the domain or IP against your DNS policies. If the domain or IP matches a block policy, the DNS filtering service can redirect the request to an alternative IP address or block it altogether. The diagram below shows the logic for Cloudflare Gateway's DNS filtering service.
 
+```
 flowchart LR
 accTitle: DNS filtering
 A[Browser] --  What is the IP address of www.example.com? --> B
@@ -38,11 +39,16 @@ subgraph ide1 [Cloudflare Gateway]
 end
 C --> D[(Nameservers)]
 
+```
+
+```
 flowchart TD
 accTitle: DNS filtering logic
 A[Blocked by DNS policy?] --Yes --> B[Block page is configured?] --Yes--> C[Return IP of block page]
 B--No-->E[Return 0.0.0.0]
 A --No --> D[Return IP of www.example.com]
+
+```
 
 ## DNS filtering vs. Secure Web Gateway
 
@@ -52,17 +58,17 @@ DNS filtering only applies to the hostname — `subdomain.domain.tld`. You canno
 
 Secure Web Gateways (SWGs) offer a greater set of capabilities, including:
 
-* [URL filtering ↗](https://www.cloudflare.com/learning/access-management/what-is-url-filtering/) to block specific paths and queries
-* L4 firewalls to block ports and protocols
-* Antivirus scanning
-* [Data loss prevention ↗](https://www.cloudflare.com/learning/access-management/what-is-dlp/)
-* [Browser isolation ↗](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/)
+- [URL filtering ↗](https://www.cloudflare.com/learning/access-management/what-is-url-filtering/) to block specific paths and queries
+- L4 firewalls to block ports and protocols
+- Antivirus scanning
+- [Data loss prevention ↗](https://www.cloudflare.com/learning/access-management/what-is-dlp/)
+- [Browser isolation ↗](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/)
 
 However, this can make SWGs more complex to deploy. Therefore, many organizations will start with DNS filtering as an initial layer of defense against Internet threats.
 
 ## Related resources
 
-* For more background information on DNS filtering, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/).
+- For more background information on DNS filtering, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/).
 
 ## Next steps
 

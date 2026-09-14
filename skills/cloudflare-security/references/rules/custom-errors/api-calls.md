@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Common API calls for Custom Errors
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/custom-errors/api-calls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/custom-errors/api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections provide examples of common API calls for managing custom error assets and Error Pages at the zone level.
 
@@ -178,13 +178,24 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_pages/assets/$A
 
 This example obtains the current configuration for the `Rate limiting block` error page (with ID `ratelimit_block`).
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Custom Pages Write`
-* `Custom Pages Read`
-* `Zone Settings Write`
-* `Zone Settings Read`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Custom Pages Write</code>
+- <code>Custom Pages Read</code>
+- <code>Zone Settings Write</code>
+- <code>Zone Settings Read</code>
+
+</details>
+
+*Get a custom pagebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
@@ -219,11 +230,22 @@ For a list of error page identifiers, refer to [Error page types](https://develo
 
 This example defines a custom error page for `Rate limiting block` errors (with ID `ratelimit_block`) based on the provided URL.
 
+<details>
+
+<summary>
+
 Required API token permissions
 
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Custom Pages Write`
-* `Zone Settings Write`
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Custom Pages Write</code>
+- <code>Zone Settings Write</code>
+
+</details>
+
+*Update a custom pagebash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_IDENTIFIER/custom_pages/ratelimit_block" \
@@ -260,7 +282,7 @@ For a list of error page identifiers, refer to [Error page types](https://develo
 
 ## More resources
 
-* [Custom Error Pages API reference](https://developers.cloudflare.com/api/resources/custom%5Fpages/)
+- [Custom Error Pages API reference](https://developers.cloudflare.com/api/resources/custom_pages/)
 
 Was this helpful?
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Backups
 
-Last updated Sep 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/backups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/api/backups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create point-in-time snapshots of sandbox directories and restore them from R2.
 
@@ -30,21 +30,21 @@ await sandbox.createBackup(options: BackupOptions): Promise<DirectoryBackup>
 
 **Parameters**:
 
-* `options` \- Backup configuration (see [BackupOptions](#backupoptions)):
-  * `dir` (required) - Absolute path to back up. Must be under `/workspace`, `/home`, `/tmp`, `/var/tmp`, or `/app`.
-  * `name` (optional) - Human-readable name. Maximum 256 characters. Control characters are rejected.
-  * `ttl` (optional) - Time-to-live in seconds. Default: `259200` (3 days). Must be a positive number.
-  * `gitignore` (optional) - When `true`, exclude paths matching `.gitignore` rules if `dir` is inside a git repository. Default: `false`. If the directory is not in a git repository, no git exclusions apply. If `git` is not installed, the SDK logs a warning and continues without git-based exclusions.
-  * `excludes` (optional) - Glob patterns to omit from the archive. Passed to `mksquashfs` as wildcard excludes. `**` globstars are normalized automatically. Default: `[]`.
-  * `localBucket` (optional) - When `true`, use the `BACKUP_BUCKET` R2 binding instead of presigned URLs. Intended for `wrangler dev`. Default: `false`.
-  * `compression` (optional) - Archive compression. Default format: `lz4`. Default threads: `8`. Format must be `gzip`, `lz4`, or `zstd`. `threads` must be a positive integer.
-  * `multipart` (optional) - Use parallel multipart upload for large archives. Default: `true`.
+- `options` - Backup configuration (see [`BackupOptions`](#backupoptions)):
+  - `dir` (required) - Absolute path to back up. Must be under `/workspace`, `/home`, `/tmp`, `/var/tmp`, or `/app`.
+  - `name` (optional) - Human-readable name. Maximum 256 characters. Control characters are rejected.
+  - `ttl` (optional) - Time-to-live in seconds. Default: `259200` (3 days). Must be a positive number.
+  - `gitignore` (optional) - When `true`, exclude paths matching `.gitignore` rules if `dir` is inside a git repository. Default: `false`. If the directory is not in a git repository, no git exclusions apply. If `git` is not installed, the SDK logs a warning and continues without git-based exclusions.
+  - `excludes` (optional) - Glob patterns to omit from the archive. Passed to `mksquashfs` as wildcard excludes. `**` globstars are normalized automatically. Default: `[]`.
+  - `localBucket` (optional) - When `true`, use the `BACKUP_BUCKET` R2 binding instead of presigned URLs. Intended for `wrangler dev`. Default: `false`.
+  - `compression` (optional) - Archive compression. Default format: `lz4`. Default threads: `8`. Format must be `gzip`, `lz4`, or `zstd`. `threads` must be a positive integer.
+  - `multipart` (optional) - Use parallel multipart upload for large archives. Default: `true`.
 
 **Returns**: `Promise<DirectoryBackup>` containing:
 
-* `id` \- Unique backup identifier (UUID)
-* `dir` \- Directory that was backed up
-* `localBucket` (optional) - Whether the backup used local R2 binding mode
+- `id` - Unique backup identifier (UUID)
+- `dir` - Directory that was backed up
+- `localBucket` (optional) - Whether the backup used local R2 binding mode
 
 ```js
 import { getSandbox } from "@cloudflare/sandbox";
@@ -82,8 +82,8 @@ With `localBucket: true`:
 
 **Throws**:
 
-* `InvalidBackupConfigError` \- If `dir` is not an allowed absolute path, the `BACKUP_BUCKET` binding is missing, or (in production) R2 presigned URL credentials are not configured
-* `BackupCreateError` \- If archive creation or the upload to R2 fails
+- `InvalidBackupConfigError` - If `dir` is not an allowed absolute path, the `BACKUP_BUCKET` binding is missing, or (in production) R2 presigned URL credentials are not configured
+- `BackupCreateError` - If archive creation or the upload to R2 fails
 
 R2 binding required
 
@@ -109,13 +109,13 @@ await sandbox.restoreBackup(backup: DirectoryBackup): Promise<RestoreBackupResul
 
 **Parameters**:
 
-* `backup` \- Handle returned by `createBackup()`. Contains `id` and `dir`. Restore writes into `backup.dir`, which may differ from the original backup path. (see [DirectoryBackup](#directorybackup))
+- `backup` - Handle returned by `createBackup()`. Contains `id` and `dir`. Restore writes into `backup.dir`, which may differ from the original backup path. (see [`DirectoryBackup`](#directorybackup))
 
 **Returns**: `Promise<RestoreBackupResult>` containing:
 
-* `success` \- Whether the restore succeeded
-* `dir` \- Directory that was restored
-* `id` \- Backup ID that was restored
+- `success` - Whether the restore succeeded
+- `dir` - Directory that was restored
+- `id` - Backup ID that was restored
 
 ```js
 await sandbox.restoreBackup(backup);
@@ -141,10 +141,10 @@ With `localBucket: true`:
 
 **Throws**:
 
-* `InvalidBackupConfigError` \- If `backup.id` is missing or not a UUID, or `backup.dir` is invalid
-* `BackupNotFoundError` \- If the metadata or archive is not in R2
-* `BackupExpiredError` \- If the TTL has elapsed
-* `BackupRestoreError` \- If the container fails to restore
+- `InvalidBackupConfigError` - If `backup.id` is missing or not a UUID, or `backup.dir` is invalid
+- `BackupNotFoundError` - If the metadata or archive is not in R2
+- `BackupExpiredError` - If the TTL has elapsed
+- `BackupRestoreError` - If the container fails to restore
 
 Copy-on-write
 
@@ -156,11 +156,11 @@ In production, the FUSE mount is lost when the sandbox sleeps or restarts. Resto
 
 ## Behavior
 
-* Concurrent backup and restore operations on the same sandbox are serialized.
-* `DirectoryBackup` is serializable. Store it in KV, D1, or Durable Object storage.
-* Overlapping backups are independent. Restoring a parent directory overwrites subdirectory mounts. Restore the parent first when restoring both.
-* `ttl` is enforced at restore time only. Expired objects remain in R2 until you delete them or an [R2 lifecycle rule](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) removes them.
-* Backup objects use `backups/{id}/data.sqsh` and `backups/{id}/meta.json`.
+- Concurrent backup and restore operations on the same sandbox are serialized.
+- `DirectoryBackup` is serializable. Store it in KV, D1, or Durable Object storage.
+- Overlapping backups are independent. Restoring a parent directory overwrites subdirectory mounts. Restore the parent first when restoring both.
+- `ttl` is enforced at restore time only. Expired objects remain in R2 until you delete them or an [R2 lifecycle rule](https://developers.cloudflare.com/r2/buckets/object-lifecycles/) removes them.
+- Backup objects use `backups/{id}/data.sqsh` and `backups/{id}/meta.json`.
 
 ## Types
 
@@ -186,14 +186,14 @@ interface BackupOptions {
 
 **Fields**:
 
-* `dir` (required) - Absolute path under `/workspace`, `/home`, `/tmp`, `/var/tmp`, or `/app`
-* `name` (optional) - Human-readable name. Maximum 256 characters. No control characters.
-* `ttl` (optional) - Time-to-live in seconds. Default: `259200` (3 days). Must be a positive number.
-* `gitignore` (optional) - When `true`, exclude `.gitignore` matches if `dir` is inside a git repository. Default: `false`.
-* `excludes` (optional) - Glob patterns to omit. Example: `['node_modules/.cache', '*.log']`. Refer to [Exclude generated caches](https://developers.cloudflare.com/sandbox/guides/backup-restore/#exclude-generated-caches).
-* `localBucket` (optional) - Use the `BACKUP_BUCKET` binding instead of presigned URLs. Default: `false`.
-* `compression` (optional) - `format` defaults to `lz4`. `threads` defaults to `8`.
-* `multipart` (optional) - Parallel multipart upload. Default: `true`.
+- `dir` (required) - Absolute path under `/workspace`, `/home`, `/tmp`, `/var/tmp`, or `/app`
+- `name` (optional) - Human-readable name. Maximum 256 characters. No control characters.
+- `ttl` (optional) - Time-to-live in seconds. Default: `259200` (3 days). Must be a positive number.
+- `gitignore` (optional) - When `true`, exclude `.gitignore` matches if `dir` is inside a git repository. Default: `false`.
+- `excludes` (optional) - Glob patterns to omit. Example: `['node_modules/.cache', '*.log']`. Refer to [Exclude generated caches](https://developers.cloudflare.com/sandbox/guides/backup-restore/#exclude-generated-caches).
+- `localBucket` (optional) - Use the `BACKUP_BUCKET` binding instead of presigned URLs. Default: `false`.
+- `compression` (optional) - `format` defaults to `lz4`. `threads` defaults to `8`.
+- `multipart` (optional) - Parallel multipart upload. Default: `true`.
 
 ### `DirectoryBackup`
 
@@ -207,9 +207,9 @@ interface DirectoryBackup {
 
 **Fields**:
 
-* `id` \- Unique backup identifier (UUID)
-* `dir` \- Directory to restore into
-* `localBucket` (optional) - Whether the backup used local R2 binding mode
+- `id` - Unique backup identifier (UUID)
+- `dir` - Directory to restore into
+- `localBucket` (optional) - Whether the backup used local R2 binding mode
 
 ### `RestoreBackupResult`
 
@@ -223,17 +223,17 @@ interface RestoreBackupResult {
 
 **Fields**:
 
-* `success` \- Whether the restore succeeded
-* `dir` \- Directory that was restored
-* `id` \- Backup ID that was restored
+- `success` - Whether the restore succeeded
+- `dir` - Directory that was restored
+- `id` - Backup ID that was restored
 
 ## Related resources
 
-* [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) \- Setup and restore workflows
-* [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) \- Overlay restore and `EXDEV`
-* [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) \- Mount S3-compatible buckets
-* [Files API](https://developers.cloudflare.com/sandbox/api/files/) \- Read and write files
-* [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Configure bindings
+- [Backup and restore](https://developers.cloudflare.com/sandbox/guides/backup-restore/) - Setup and restore workflows
+- [Directory backups](https://developers.cloudflare.com/sandbox/concepts/backup-restore/) - Overlay restore and `EXDEV`
+- [Storage API](https://developers.cloudflare.com/sandbox/api/storage/) - Mount S3-compatible buckets
+- [Files API](https://developers.cloudflare.com/sandbox/api/files/) - Read and write files
+- [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) - Configure bindings
 
 Was this helpful?
 

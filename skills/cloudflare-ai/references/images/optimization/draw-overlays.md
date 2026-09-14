@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Draw overlays and watermarks
 
-Last updated Sep 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/draw-overlays/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/images/optimization/draw-overlays/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use [Workers](https://developers.cloudflare.com/workers/) to draw text, watermarks, and logos over other images. Overlays support transparency, positioning, and compositing modes.
 
 You can draw overlays in a Worker using two approaches:
 
-* **[cf.image on a fetch subrequest](#draw-with-cfimage)** — Add a `draw` array to the image options to overlay with text or images. Overlay images must be accessible via URL. Use this approach when optimizing through the [URL interface](https://developers.cloudflare.com/images/optimization/features/#url-interface).
-* **[Images binding](#draw-with-the-images-binding)** — Chain `.draw()` calls to overlay images from any source, including [hosted images](https://developers.cloudflare.com/images/storage/binding/) or [R2](https://developers.cloudflare.com/r2/), or to overlay text.
+- **[`cf.image` on a fetch subrequest](#draw-with-cfimage)** — Add a `draw` array to the image options to overlay with text or images. Overlay images must be accessible via URL. Use this approach when optimizing through the [URL interface](https://developers.cloudflare.com/images/optimization/features/#url-interface).
+- **[Images binding](#draw-with-the-images-binding)** — Chain `.draw()` calls to overlay images from any source, including [hosted images](https://developers.cloudflare.com/images/storage/binding/) or [R2](https://developers.cloudflare.com/r2/), or to overlay text.
 
 ## Draw with `cf.image`
 
-To draw overlays on a [fetch() subrequest](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) in Workers, you can add a `draw` array to your `cf.image` options.
+To draw overlays on a [`fetch()` subrequest](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) in Workers, you can add a `draw` array to your `cf.image` options.
 
 Each entry draws either an image or text:
 
-* **Image** — Set `url` to the absolute URL of the image. Apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) like [width](https://developers.cloudflare.com/images/optimization/features/#width--w), [height](https://developers.cloudflare.com/images/optimization/features/#height--h), [fit](https://developers.cloudflare.com/images/optimization/features/#fit), [blur](https://developers.cloudflare.com/images/optimization/features/#blur), and [rotate](https://developers.cloudflare.com/images/optimization/features/#rotate).
-* **Text** — Set `text` to the string to render. Style it with the same `font`, `color`, and `size` options as the binding `.text()` method. Refer to [.text()](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
+- **Image** — Set `url` to the absolute URL of the image. Apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) like [`width`](https://developers.cloudflare.com/images/optimization/features/#width--w), [`height`](https://developers.cloudflare.com/images/optimization/features/#height--h), [`fit`](https://developers.cloudflare.com/images/optimization/features/#fit), [`blur`](https://developers.cloudflare.com/images/optimization/features/#blur), and [`rotate`](https://developers.cloudflare.com/images/optimization/features/#rotate).
+- **Text** — Set `text` to the string to render. Style it with the same `font`, `color`, and `size` options as the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
 
 Overlays are drawn in the order they appear — the last entry is the topmost layer.
 
@@ -73,8 +73,8 @@ The [Images binding](https://developers.cloudflare.com/images/optimization/bindi
 
 Pass the overlay as the first argument, then the draw options as the second. The overlay can be an image or text:
 
-* **Image** — Pass the image bytes or an `.input()` chain. To apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) to the overlay image, pass an `.input()` chain with `.transform()` as the first argument.
-* **Text** — Pass a handle created with `.text()`. Set the font, color, and size in the `.text()` `options` argument. Refer to [.text()](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
+- **Image** — Pass the image bytes or an `.input()` chain. To apply [optimization parameters](https://developers.cloudflare.com/images/optimization/features/) to the overlay image, pass an `.input()` chain with `.transform()` as the first argument.
+- **Text** — Pass a handle created with `.text()`. Set the font, color, and size in the `.text()` `options` argument. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
 
 ```js
 export default {
@@ -123,7 +123,7 @@ When drawing an image overlay with the binding, the overlay is passed as image b
 
 Renders a text string as an overlay when drawing with `cf.image`. When drawing with the Images binding, create the text overlay with `.text()` instead.
 
-Style the text with `font`, `color`, and `size` options. These apply to both `cf.image` text entries and the binding `.text()` method. Refer to [.text()](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
+Style the text with `font`, `color`, and `size` options. These apply to both `cf.image` text entries and the binding `.text()` method. Refer to [`.text()`](https://developers.cloudflare.com/images/optimization/binding/#textcontent-options) for the available options, defaults, and limits.
 
 ### `width` and `height`
 
@@ -131,7 +131,7 @@ Sets the maximum dimensions of the overlay image when drawing with `cf.image`. T
 
 Accepts an integer (pixels) or a decimal between `0` and `1` representing a fraction of the base image's dimension. For example, `height:0.25` sets the overlay height to 25% of the height of the base image.
 
-Use [fit](https://developers.cloudflare.com/images/optimization/features/#fit) and [gravity](https://developers.cloudflare.com/images/optimization/features/#gravity--g) to control how the overlay image is resized and cropped.
+Use [`fit`](https://developers.cloudflare.com/images/optimization/features/#fit) and [`gravity`](https://developers.cloudflare.com/images/optimization/features/#gravity--g) to control how the overlay image is resized and cropped.
 
 When drawing with the Images binding, the dimensions of the overlay image can be set using the `.transform()` method.
 
@@ -141,9 +141,9 @@ Determines whether to tile the overlay across the image.
 
 Accepts the following values:
 
-* `true` — Tiles the overlay to cover the entire area. This is useful for watermarks.
-* `x` — Tiles the overlay horizontally only.
-* `y` — Tiles the overlay vertically only.
+- `true` — Tiles the overlay to cover the entire area. This is useful for watermarks.
+- `x` — Tiles the overlay horizontally only.
+- `y` — Tiles the overlay vertically only.
 
 ### `top`, `left`, `bottom`, `right`
 

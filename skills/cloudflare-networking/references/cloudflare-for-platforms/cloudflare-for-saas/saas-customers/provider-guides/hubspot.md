@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HubSpot
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare partners with HubSpot to provide HubSpot customers’ websites with Cloudflare’s performance and security benefits.
 
@@ -30,9 +30,9 @@ For more details about how O2O is different than other Cloudflare setups, refer 
 
 O2O is enabled per hostname, so to enable O2O for a specific hostname within your Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with a target of your corresponding HubSpot CNAME. Which HubSpot CNAME is targeted will depend on your current [HubSpot proxy settings ↗](https://developers.hubspot.com/docs/cms/developer-reference/reverse-proxy-support#configure-the-proxy).
 
-| Type  | Name             | Target                               | Proxy status |
-| ----- | ---------------- | ------------------------------------ | ------------ |
-| CNAME | <YOUR\_HOSTNAME> | <HUBID>.sites-proxy.hscoscdn<##>.net | Proxied      |
+| Type | Name | Target | Proxy status |
+| --- | --- | --- | --- |
+| `CNAME` | `<YOUR_HOSTNAME>` | `<HUBID>.sites-proxy.hscoscdn<##>.net` | Proxied |
 
 Note
 
@@ -42,9 +42,9 @@ For questions about your HubSpot setup, refer to [HubSpot's reverse proxy suppor
 
 When a hostname within your Cloudflare zone has O2O enabled, you assume additional responsibility for the traffic on that hostname because you can now configure various Cloudflare products to affect that traffic. Some of the Cloudflare products compatible with O2O are:
 
-* [Caching](https://developers.cloudflare.com/cache/)
-* [Workers](https://developers.cloudflare.com/workers/)
-* [Rules](https://developers.cloudflare.com/rules/)
+- [Caching](https://developers.cloudflare.com/cache/)
+- [Workers](https://developers.cloudflare.com/workers/)
+- [Rules](https://developers.cloudflare.com/rules/)
 
 For a full list of compatible products and potential limitations, refer to [Product compatibility](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/product-compatibility/).
 
@@ -71,5 +71,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/#page","headline":"HubSpot · Cloudflare for Platforms docs","description":"Learn how to configure your zone with HubSpot.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/#page","headline":"HubSpot · Cloudflare for Platforms docs","description":"Learn how to configure your zone with HubSpot.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/hubspot/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create indexes
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/vectorize/best-practices/create-indexes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Indexes are the "atom" of Vectorize. Vectors are inserted into an index and enable you to query the index for similar vectors for a given input vector.
 
 Creating an index requires three inputs:
 
-* A kebab-cased name, such as `prod-search-index` or `recommendations-idx-dev`.
-* The (fixed) [dimension size](#dimensions) of each vector, for example 384 or 1536.
-* The (fixed) [distance metric](#distance-metrics) to use for calculating vector similarity.
+- A kebab-cased name, such as `prod-search-index` or `recommendations-idx-dev`.
+- The (fixed) [dimension size](#dimensions) of each vector, for example 384 or 1536.
+- The (fixed) [distance metric](#distance-metrics) to use for calculating vector similarity.
 
 An index cannot be created using the same name as an index that is currently active on your account. However, an index can be created with a name that belonged to an index that has been deleted.
 
@@ -48,7 +48,7 @@ To create an index with `wrangler`:
 npx wrangler vectorize create your-index-name --dimensions=NUM_DIMENSIONS --metric=SELECTED_METRIC
 ```
 
-To create an index that can accept vector embeddings from Worker's AI's [@cf/baai/bge-base-en-v1.5](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) embedding model, which outputs vectors with 768 dimensions, use the following command:
+To create an index that can accept vector embeddings from Worker's AI's [`@cf/baai/bge-base-en-v1.5`](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) embedding model, which outputs vectors with 768 dimensions, use the following command:
 
 ```sh
 npx wrangler vectorize create your-index-name --dimensions=768 --metric=cosine
@@ -96,12 +96,12 @@ The number of dimensions an index is created for cannot change. Indexes expect t
 
 The following table highlights some example embeddings models and their output dimensions:
 
-| Model / Embeddings API                 | Output dimensions | Use-case                   |
-| -------------------------------------- | ----------------- | -------------------------- |
-| Workers AI - @cf/baai/bge-base-en-v1.5 | 768               | Text                       |
-| OpenAI - ada-002                       | 1536              | Text                       |
-| Cohere - embed-multilingual-v2.0       | 768               | Text                       |
-| Google Cloud - multimodalembedding     | 1408              | Multi-modal (text, images) |
+| Model / Embeddings API | Output dimensions | Use-case |
+| --- | --- | --- |
+| Workers AI - `@cf/baai/bge-base-en-v1.5` | 768 | Text |
+| OpenAI - `ada-002` | 1536 | Text |
+| Cohere - `embed-multilingual-v2.0` | 768 | Text |
+| Google Cloud - `multimodalembedding` | 1408 | Multi-modal (text, images) |
 
 Learn more about Workers AI
 
@@ -111,18 +111,18 @@ Refer to the [Workers AI documentation](https://developers.cloudflare.com/worker
 
 Distance metrics are functions that determine how close vectors are from each other. Vectorize indexes support the following distance metrics:
 
-| Metric      | Details                                                                                                                                                                                      |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cosine      | Distance is measured between \-1 (most dissimilar) to 1 (identical). 0 denotes an orthogonal vector.                                                                                         |
-| euclidean   | Euclidean (L2) distance. 0 denotes identical vectors. The larger the positive number, the further the vectors are apart.                                                                     |
-| dot-product | Negative dot product. Larger negative values _or_ smaller positive values denote more similar vectors. A score of \-1000 is more similar than \-500, and a score of 15 more similar than 50. |
+| Metric | Details |
+| --- | --- |
+| `cosine` | Distance is measured between `-1` (most dissimilar) to `1` (identical). `0` denotes an orthogonal vector. |
+| `euclidean` | Euclidean (L2) distance. `0` denotes identical vectors. The larger the positive number, the further the vectors are apart. |
+| `dot-product` | Negative dot product. Larger negative values *or* smaller positive values denote more similar vectors. A score of `-1000` is more similar than `-500`, and a score of `15` more similar than `50`. |
 
-Determining the similarity between vectors can be subjective based on how the machine-learning model that represents features in the resulting vector embeddings. For example, a score of `0.8511` when using a `cosine` metric means that two vectors are close in distance, but whether data they represent is _similar_ is a function of how well the model is able to represent the original content.
+Determining the similarity between vectors can be subjective based on how the machine-learning model that represents features in the resulting vector embeddings. For example, a score of `0.8511` when using a `cosine` metric means that two vectors are close in distance, but whether data they represent is *similar* is a function of how well the model is able to represent the original content.
 
 When querying vectors, you can specify Vectorize to use either:
 
-* High-precision scoring, which increases the precision of the query matches scores as well as the accuracy of the query results.
-* Approximate scoring for faster response times. Using approximate scoring, returned scores will be an approximation of the real distance/similarity between your query and the returned vectors. Refer to [Control over scoring precision and query accuracy](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/#control-over-scoring-precision-and-query-accuracy).
+- High-precision scoring, which increases the precision of the query matches scores as well as the accuracy of the query results.
+- Approximate scoring for faster response times. Using approximate scoring, returned scores will be an approximation of the real distance/similarity between your query and the returned vectors. Refer to [Control over scoring precision and query accuracy](https://developers.cloudflare.com/vectorize/best-practices/query-vectors/#control-over-scoring-precision-and-query-accuracy).
 
 Distance metrics cannot be changed after index creation, and that each metric has a different scoring function.
 

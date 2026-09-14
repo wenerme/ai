@@ -16,19 +16,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Text-to-Speech • ElevenLabs
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `elevenlabs/eleven-v3`
 
-* Third-party
+- Third-party
 
 ElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control.
 
-| Model Info        |                                                                                                                        |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://elevenlabs.io/terms)                                                                                  |
-| More information  | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert)                                              |
-| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-v3) |
+| Model Info | |
+| --- | --- |
+| Terms and License | [link ↗](https://elevenlabs.io/terms) |
+| More information | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert) |
+| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-v3) |
 
 ## Usage
 
@@ -114,9 +114,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input
+Input [Open](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/schema-input.json) [Download](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/schema-input.json)
 
-Output
+Output [Open](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/schema-output.json) [Download](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/schema-output.json)
 
 Was this helpful?
 

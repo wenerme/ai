@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Data Access Logs
 
-Last updated Sep 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/data-access-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/data-access-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Access Logs provide per-request records for object operations in a bucket. The logs are generally available for R2 buckets without a [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions).
 
@@ -26,32 +26,31 @@ Data Access Logs include requests with HTTP status codes below `400`, including 
 
 Data Access Logs record requests from these interfaces:
 
-| Interface | Source                                                                                           |
-| --------- | ------------------------------------------------------------------------------------------------ |
-| S3        | Requests through the S3-compatible API.                                                          |
-| API       | Object operations from the Cloudflare dashboard or API.                                          |
-| Workers   | Object operations through an R2 binding. These events include the Worker script name.            |
-| Public    | Requests to public buckets through r2.dev or custom domains. These requests are unauthenticated. |
+| Interface | Source |
+| --- | --- |
+| `S3` | Requests through the S3-compatible API. |
+| `API` | Object operations from the Cloudflare dashboard or API. |
+| `Workers` | Object operations through an R2 binding. These events include the Worker script name. |
+| `Public` | Requests to public buckets through `r2.dev` or custom domains. These requests are unauthenticated. |
 
 ## Logged operations
 
 Data Access Logs record the following operations:
 
-| Category         | Operations                                                                                                                        |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Read             | GetObject, HeadObject                                                                                                             |
-| Write and copy   | PutObject, CopyObject                                                                                                             |
-| List             | ListObjectsV1, ListObjectsV2                                                                                                      |
-| Multipart upload | CreateMultipartUpload, UploadPart, UploadPartCopy, CompleteMultipartUpload, AbortMultipartUpload, ListMultipartUploads, ListParts |
-| Delete           | DeleteObject, DeleteObjects, DeleteObjectsByPrefix                                                                                |
+| Category | Operations |
+| --- | --- |
+| Read | `GetObject`, `HeadObject` |
+| Write and copy | `PutObject`, `CopyObject` |
+| List | `ListObjectsV1`, `ListObjectsV2` |
+| Multipart upload | `CreateMultipartUpload`, `UploadPart`, `UploadPartCopy`, `CompleteMultipartUpload`, `AbortMultipartUpload`, `ListMultipartUploads`, `ListParts` |
+| Delete | `DeleteObject`, `DeleteObjects`, `DeleteObjectsByPrefix` |
 
 Bucket and configuration operations are not included. Failed requests with an HTTP status code of `400` or greater are also not included.
 
 ## Turn on Data Access Logs
 
-1. In the Cloudflare dashboard, go to the bucket you wish to enable.
-[Go to **Bucket settings** ↗](https://dash.cloudflare.com/?to=/:account/r2/:bucket/settings)
-2. Under **Data Access Logs**, select _Enabled_.
+1. In the Cloudflare dashboard, go to the bucket you wish to enable. [Go to **Bucket settings** ↗](https://dash.cloudflare.com/?to=/:account/r2/:bucket/settings)
+2. Under **Data Access Logs**, select *Enabled*.
 
 R2 records new supported operations after you turn on Data Access Logs. Earlier operations are not added retroactively.
 
@@ -63,64 +62,63 @@ Use the [Query Builder](https://developers.cloudflare.com/workers/observability/
 
 ## Turn off Data Access Logs
 
-1. In the Cloudflare dashboard, go to the bucket you wish to disable.
-[Go to **Bucket settings** ↗](https://dash.cloudflare.com/?to=/:account/r2/:bucket/settings)
-2. In **Data Access Logs**, select _Disabled_.
+1. In the Cloudflare dashboard, go to the bucket you wish to disable. [Go to **Bucket settings** ↗](https://dash.cloudflare.com/?to=/:account/r2/:bucket/settings)
+2. In **Data Access Logs**, select *Disabled*.
 
 ## Log fields
 
 Every event can include these fields:
 
-| Field                 | Description                                                                                    |
-| --------------------- | ---------------------------------------------------------------------------------------------- |
-| $metadata.timestamp   | Event timestamp in Unix milliseconds.                                                          |
-| $metadata.service     | Bucket name used as the service name.                                                          |
-| $metadata.namespace   | Event namespace. The value is r2.                                                              |
-| action                | R2 operation name.                                                                             |
-| actor.type            | Actor type: user or service. Public bucket requests use service.                               |
-| actor.id              | Identifier for the authenticated actor. Public bucket requests use public.                     |
-| actor.email           | Email address for a user actor.                                                                |
-| actor.accessKeyId     | Access key ID for a request authenticated with AWS Signature Version 4.                        |
-| bucket                | Target bucket name.                                                                            |
-| interface             | Request interface: S3, API, Workers, or Public.                                                |
-| request.bytes         | Request Content-Length value in bytes.                                                         |
-| response.bytes        | Response Content-Length value in bytes.                                                        |
-| response.errorCode    | Response error code. This value is NotModified for a 304 response and null for a 2xx response. |
-| response.errorMessage | Response error message. This value describes a 304 response and is null for a 2xx response.    |
-| requestMetadata.colo  | Cloudflare data center code, or XXX when the data center is unavailable.                       |
+| Field | Description |
+| --- | --- |
+| `$metadata.timestamp` | Event timestamp in Unix milliseconds. |
+| `$metadata.service` | Bucket name used as the service name. |
+| `$metadata.namespace` | Event namespace. The value is `r2`. |
+| `action` | R2 operation name. |
+| `actor.type` | Actor type: `user` or `service`. Public bucket requests use `service`. |
+| `actor.id` | Identifier for the authenticated actor. Public bucket requests use `public`. |
+| `actor.email` | Email address for a user actor. |
+| `actor.accessKeyId` | Access key ID for a request authenticated with AWS Signature Version 4. |
+| `bucket` | Target bucket name. |
+| `interface` | Request interface: `S3`, `API`, `Workers`, or `Public`. |
+| `request.bytes` | Request `Content-Length` value in bytes. |
+| `response.bytes` | Response `Content-Length` value in bytes. |
+| `response.errorCode` | Response error code. This value is `NotModified` for a `304` response and `null` for a `2xx` response. |
+| `response.errorMessage` | Response error message. This value describes a `304` response and is `null` for a `2xx` response. |
+| `requestMetadata.colo` | Cloudflare data center code, or `XXX` when the data center is unavailable. |
 
 S3-compatible API, Cloudflare API, and public bucket events can also include these fields:
 
-| Field                     | Description                |
-| ------------------------- | -------------------------- |
-| request.method            | HTTP request method.       |
-| request.uri               | Request path.              |
-| response.status           | HTTP response status code. |
-| requestMetadata.ip        | Client IP address.         |
-| requestMetadata.userAgent | Client user agent.         |
+| Field | Description |
+| --- | --- |
+| `request.method` | HTTP request method. |
+| `request.uri` | Request path. |
+| `response.status` | HTTP response status code. |
+| `requestMetadata.ip` | Client IP address. |
+| `requestMetadata.userAgent` | Client user agent. |
 
 Workers binding events include this additional field:
 
-| Field      | Description                                             |
-| ---------- | ------------------------------------------------------- |
-| scriptName | Name of the Worker script that triggered the operation. |
+| Field | Description |
+| --- | --- |
+| `scriptName` | Name of the Worker script that triggered the operation. |
 
 Workers binding events do not include the HTTP method, URI, response status, client IP address, or user agent.
 
 An event can include these operation-specific fields:
 
-| Field             | Description                                                     |
-| ----------------- | --------------------------------------------------------------- |
-| resource.key      | Object key.                                                     |
-| resource.type     | Resource type: object or multipart\_upload.                     |
-| resource.size     | Object size in bytes when available.                            |
-| resource.uploadId | Upload ID for a multipart upload.                               |
-| sourceResource    | Source bucket, key, and resource type for a copy operation.     |
-| prefix            | Prefix used by a list or prefix-delete operation.               |
-| delimiter         | Delimiter used by a list operation.                             |
-| maxKeys           | Maximum keys requested by an object list operation.             |
-| maxUploads        | Maximum uploads requested by a multipart upload list operation. |
-| objects           | Object keys included in a bulk delete operation.                |
+| Field | Description |
+| --- | --- |
+| `resource.key` | Object key. |
+| `resource.type` | Resource type: `object` or `multipart_upload`. |
+| `resource.size` | Object size in bytes when available. |
+| `resource.uploadId` | Upload ID for a multipart upload. |
+| `sourceResource` | Source bucket, key, and resource type for a copy operation. |
+| `prefix` | Prefix used by a list or prefix-delete operation. |
+| `delimiter` | Delimiter used by a list operation. |
+| `maxKeys` | Maximum keys requested by an object list operation. |
+| `maxUploads` | Maximum uploads requested by a multipart upload list operation. |
+| `objects` | Object keys included in a bulk delete operation. |
 
 The `request.bytes` and `response.bytes` fields reflect `Content-Length` values, not exact transferred-byte measurements. A byte count or resource size of `0` can mean either zero bytes or that the value was unavailable when R2 created the event.
 

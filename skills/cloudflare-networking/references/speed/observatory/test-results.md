@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Understand test results
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/observatory/test-results/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/observatory/test-results/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The test result page shows you how your website performed regarding several key industry metrics. Some of these metrics are presented for synthetic tests and the real user monitoring, and others only apply to synthetic tests or only to real user monitoring.
 
@@ -20,43 +20,43 @@ The test result page shows you how your website performed regarding several key 
 
 These metrics are presented for the synthetic tests and they are also collected as part of the real user data.
 
-| Metric                                                                    | Definition                                                                                                                            |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Time to First Byte ([TTFB ↗](https://web.dev/ttfb/))                      | Measures the time between the request for a resource and when the first byte of a response begins to arrive.                          |
-| First Contentful Paint ([FCP ↗](https://web.dev/first-contentful-paint/)) | Measures the time from when the page starts loading to when any part of the page's content is rendered on the screen.                 |
-| Largest Contentful Paint ([LCP ↗](https://web.dev/lcp/))                  | CP reports the render time of the largest image or text block visible within the viewport.                                            |
-| Cumulative Layout Shift ([CLS ↗](https://web.dev/cls/))                   | Measures the largest burst of layout shift scores for every unexpected layout shift that occurs during the entire lifespan of a page. |
+| Metric | Definition |
+| --- | --- |
+| Time to First Byte ([TTFB ↗](https://web.dev/ttfb/)) | Measures the time between the request for a resource and when the first byte of a response begins to arrive. |
+| First Contentful Paint ([FCP ↗](https://web.dev/first-contentful-paint/)) | Measures the time from when the page starts loading to when any part of the page's content is rendered on the screen. |
+| Largest Contentful Paint ([LCP ↗](https://web.dev/lcp/)) | CP reports the render time of the largest image or text block visible within the viewport. |
+| Cumulative Layout Shift ([CLS ↗](https://web.dev/cls/)) | Measures the largest burst of layout shift scores for every unexpected layout shift that occurs during the entire lifespan of a page. |
 
 ## Synthetic tests metrics
 
 These metrics result from the synthetic tests.
 
-| Metric                                              | Definition                                                                                                                                                                              |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Time to Interactive ([TTI ↗](https://web.dev/tti/)) | Measures the time from when the page starts loading to when its main sub-resources have loaded and it is capable of reliably responding to user input quickly.                          |
+| Metric | Definition |
+| --- | --- |
+| Time to Interactive ([TTI ↗](https://web.dev/tti/)) | Measures the time from when the page starts loading to when its main sub-resources have loaded and it is capable of reliably responding to user input quickly. |
 | Total Blocking Time ([TBT ↗](https://web.dev/tbt/)) | Measures the total amount of time between First Contentful Paint (FCP) and Time to Interactive (TTI) where the main thread was blocked for long enough to prevent input responsiveness. |
-| [Speed index ↗](https://web.dev/speed-index/)       | Measures how quickly content is visually displayed during page load.                                                                                                                    |
+| [Speed index ↗](https://web.dev/speed-index/) | Measures how quickly content is visually displayed during page load. |
 
 ## Real user monitoring metrics
 
 These metrics are collected as part of the real user data, as they require real user interaction with a page.
 
-| Metric                                                    | Definition                                                                                                                 |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Metric | Definition |
+| --- | --- |
 | Interaction to Next Paint ([INP ↗](https://web.dev/inp/)) | Aims to represent a page's overall responsiveness by measuring all click, tap, and keyboard interactions made with a page. |
 
 Refer to [Data and metrics](https://developers.cloudflare.com/web-analytics/data-metrics/) for more information about the metrics you can find in the Real User Monitoring dashboard. You can find details about [Core Web Vitals](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/), the debug view and the data collected.
 
 ## Network monitoring metrics
 
-| Metric                                                       | Definition                                                                                                        |
-| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| Wait Time                                                    | Measures the time spent waiting for the server to send back the first byte of a response after a request is made. |
-| Load Time                                                    | Measures the total time it takes for a web page to fully load in a user’s browser from the network.               |
-| Time to First Byte ([TTFB ↗](https://web.dev/articles/ttfb)) | Measures the duration between initiating a web page request and receiving the first byte from the server.         |
-| Server Response Time                                         | Measures the time it takes for a server to respond to a request from a user's browser.                            |
-| Connect Time                                                 | Measures the time taken to establish a connection between the user's browser and the web server.                  |
-| TLS Time                                                     | Measures the time required to complete the TLS/SSL handshake between the user's browser and the web server.       |
+| Metric | Definition |
+| --- | --- |
+| Wait Time | Measures the time spent waiting for the server to send back the first byte of a response after a request is made. |
+| Load Time | Measures the total time it takes for a web page to fully load in a user’s browser from the network. |
+| Time to First Byte ([TTFB ↗](https://web.dev/articles/ttfb)) | Measures the duration between initiating a web page request and receiving the first byte from the server. |
+| Server Response Time | Measures the time it takes for a server to respond to a request from a user's browser. |
+| Connect Time | Measures the time taken to establish a connection between the user's browser and the web server. |
+| TLS Time | Measures the time required to complete the TLS/SSL handshake between the user's browser and the web server. |
 
 Was this helpful?
 
